@@ -1,0 +1,254 @@
+.cBallerina-io-Home-Left-col {
+    display: none;
+}
+.col-xs-12.col-sm-12.col-md-9.col-lg-9.cBallerina-io-Home-Middle-col {
+    width: 100%;
+}
+.rst-content .section table.cEventTable.docutils {
+    width: 100% !important;
+    float: none;
+}
+
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils {
+ border: none !important;
+}
+
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cTime , .rst-content .section table.cEventTable.cAgendaTable.docutils td.cSession , .rst-content .section table.cEventTable.cAgendaTable.docutils td.cSessionLink{
+    border-bottom: 1px solid #e1e4e5 !important
+}
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cSession {
+    font-size: 16px;
+color: #57595d;
+line-height: 24px;
+font-weight: 300;
+margin-bottom: 0;
+font-weight: 600;
+}
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cSession.cBreak {
+    font-weight: 200;
+}
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cTime {
+    font-family: "CalibreWeb-Semibold", "pragmatica", sans-serif;
+/*font-weight: 200;*/
+text-transform: uppercase;
+letter-spacing: 1.5px;
+vertical-align: top;
+width: 15%;
+padding-left: 0;
+}
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cSessionLink {
+    text-align: right;
+}
+
+.rst-content .section table.cEventTable.cAgendaTable.docutils td.cSessionLink  a.cEventRegistration.cSmallButton {
+    float: right;
+}
+
+span.cLocation {
+    display: inline-block;
+    width: 100%;
+/*    margin-top: 10px;*/
+    font-weight: 400;
+}
+
+.cWebinarForm {
+    background-color: #ffffff;
+    padding: 35px 30px;
+
+}
+.cWebinarForm ul {
+    padding: 0;
+    margin: 0;
+}
+.cWebinarForm ul li {
+/*    list-style: none !important;*/
+    width: 100% !important;
+    display: inline-block;
+    margin-left: 0 !important;
+    margin-bottom: 5px;
+
+}
+.modal-content .cWebinarForm .cTextfieldstyle , select.cSelect {
+    width: 100%;
+    margin-left: 0;
+    height: 40px;
+    color: #525252;
+    font-size: 16px;
+}
+
+table.cEventTable.docutils td.cEventDateContainer, table.cEventTable.docutils td.cEventDetail {
+    border:none !important;
+}
+
+table.cWebinarPresenter.docutils td {
+    background-color: transparent !important;
+    border:none !important;
+}
+table.cWebinarPresenter.docutils td p {
+    line-height: 24px;
+}
+table.cWebinarPresenter.docutils td.cWebinarPresenterPic {
+    width: 15%;
+    padding-right: 0;
+    padding-left: 0;
+    vertical-align: top;
+}
+
+td.cWebinarPresenterPic img {
+    filter: grayscale(100%);
+}
+
+
+
+
+.modal-dialog {
+    margin-top: 5%;
+/*    height: 100vh;*/
+}
+
+#webinar_registration {
+    padding: 0 !important;
+}
+
+#webinar_registration ul {
+   margin-bottom: 0;
+}
+
+.cCloseButton {
+    float: right;
+width: 20px;
+margin-top: -10px;
+}
+body {
+    padding-right: 0 !important;
+}
+
+.cPresenterName {
+  width: 100%;
+font-size: 18px;
+font-weight: 600;
+display: inline-block;
+color: #57595d;
+margin-bottom: 10px;
+}
+.cWebinarPresenterBio {
+    padding-left: 30px;
+}
+
+a.cEventRegistration , input.cSubmitButton {
+    display: block;
+margin: 0 15px;
+transition: none !important;
+font-size: 25px;
+font-weight: 200;
+background-color: #57595d;
+color: #ffffff !important;
+padding: 15px 40px 15px 40px;
+width: auto;
+/*background-repeat: no-repeat;*/
+/*background-position: left 25px top 18px;*/
+text-decoration: none;
+/*min-height: 85px;*/
+line-height: 27px;
+display: inline-block;
+float: right;
+margin: 0;
+border: none;
+font-family: "pragmatica", sans-serif;
+
+}
+a.cEventRegistration.cSmallButton , input.cSubmitButton.cSmallButton {
+  font-size: 16px;
+  float: left;
+}
+
+a.cEventRegistration:hover , input.cSubmitButton:hover {
+    background-color: #20b6b0 !important;
+} 
+
+
+input.cSubmitButton {
+    float: left;
+    margin-top: 25px;
+}
+table.cWebinarPresenter.docutils td.cEventURL {
+    padding-right: 0 !important;
+}
+
+.cSocial-sidebar {
+    display: block;
+}
+.cSelect.contact_country {
+    margin-bottom: 8px;
+}
+
+
+.navbar {
+    z-index: 0;
+}
+
+
+table.cUnconference.docutils td {
+    border-left: 1px solid #e1e4e5 !important
+}
+/*table.cUnconference td:first-child {
+    border-right: 1px solid #e1e4e5 !important
+}*/
+
+/*.cWebinarForm.cRegForm.cSessions ul.cKeyAreas li {
+    list-style: circle !important;
+    padding-left: 30px;
+}*/
+
+.cSessions {
+    background-color: #ffffff;
+padding: 35px 30px;
+}
+
+.cSpeakerDetail {
+    font-weight: normal;
+}
+
+
+@media screen and (max-width: 768px) {
+    table.cWebinarPresenter.docutils td , table.cEventTable.docutils td.cEventDateContainer , table.cEventTable.docutils td.cEventDetail , td.cEventURL {
+        display: list-item;
+        width: 100% !important;
+        list-style: none;
+    }
+    a.cEventRegistration {
+        float:left;
+        margin-bottom: 20px;
+
+    }
+    table.cEventTable.docutils td.cEventURL {
+        padding-left: 0;
+    }
+    .rst-content img {
+        max-width: 200px;
+    }
+    .cWebinarPresenterBio {
+        padding-left: 0 !important;
+    }
+
+    table.cUnconference.docutils td {
+        display: list-item;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    td.cTime , td.cSession {
+        display: list-item;
+        list-style: none;
+        display: inline-block;
+        width: 100% !important;
+        border: none !important;
+/*        padding-left: 0 !important;*/
+    }
+}

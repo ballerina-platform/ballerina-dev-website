@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      {% include ballerina-head.html %}
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      {% include nav.html %}
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        {% include nav-breadcrumbs.html %}
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" href="{{site.github.repository_url}}/blob/gh-pages/{{page.path}}">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 {{ content }}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% include ballerina-footer.html %}
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

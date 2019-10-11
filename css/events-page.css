@@ -104,6 +104,10 @@ td.cEventDateContainer , td.cEventDetail , td.cEventURL {
     padding: 30px 0;
 }
 
+.nav > li.cVersionItem {
+    display: none !important;
+}
+
 
 
 

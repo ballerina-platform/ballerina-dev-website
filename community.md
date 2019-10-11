@@ -74,3 +74,10 @@ Do you want to organize a local meetup or hackathon? WSO2 can help with presenta
 Join the project and write some code with us to make Ballerina better! You can hang out with us in the Slack channel, the mailing list and of course on GitHub.
 
 Please read the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contributor Guide</a> so you are aware of the ground rules as you start! Happy dancing!
+
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

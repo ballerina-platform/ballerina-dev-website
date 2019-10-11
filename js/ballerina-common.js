@@ -551,6 +551,53 @@ $(document).ready(function() {
  urlmenu.onchange = function() {
        window.open( this.options[ this.selectedIndex ].value , "_self" );
   }
+
+    //subscribe form
+    $("#subscribeUserButtonOS").click(function(event) {
+        event.preventDefault();
+        subscribeUserOS();
+    });
+
+    $('#emailUserOS').on('keypress', function(event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+            subscribeUserOS();
+            $(this).removeAttr("disabled");
+        }
+    });
+
+    function subscribeUserOS() {
+        var email = $('#emailUserOS').val();
+        $('#subscribeUserMessage').remove("");
+        if (email == "") {
+            $('#emailUserOS').val('');
+            $("#emailUserOS").attr("placeholder","Please enter your email.");
+        } else if (!isEmail(email)) {
+            $('#emailUserOS').val('');
+            $("#emailUserOS").attr("placeholder","Please enter a valid email.");
+        } else {
+            $('#emailUserOS').val('');
+            $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2018-03-26/4yl979?email=" + email + "'></iframe>");
+            $("#emailUserOS").attr("placeholder","Your email address has been added.");
+        }
+        return;
+    }
+    
+    //Slack user form
+    $("#slackSubscribeButton").click(function(event) {
+        event.preventDefault();
+        inviteSlackUser();
+    });
+    $('#email').on('keypress', function(event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+            var email = $("#email").val();
+            inviteSlackUser(email);
+            $(this).removeAttr("disabled");
+        }
+    });
 });
 
 

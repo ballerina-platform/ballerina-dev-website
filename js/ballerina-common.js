@@ -594,7 +594,7 @@ $(document).ready(function() {
             event.preventDefault();
             $(this).attr("disabled", "disabled");
             var email = $("#email").val();
-            inviteSlackUser(email);
+            inviteSlackUserService(email);
             $(this).removeAttr("disabled");
         }
     });

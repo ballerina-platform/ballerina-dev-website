@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Tools and IDEs
 ---
 
 # Tools and IDEs
@@ -16,10 +15,8 @@ Ballerina provides language servers, editors, IDEs, and graphical visualization 
 
 You can use plugins to write Ballerina code in your favorite editor or IDE. Click on the below icons to learn about the plugins that are currently available. 
 
-![VS Code](images/vscode-logo.jpg)&nbsp;&nbsp;[Visual Studio Code](tools-ides/vscode-plugin) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![IntelliJ](images/idea-logo.jpg)&nbsp;&nbsp;[IntelliJ IDEA](tools-ides/intellij-plugin)
-
-The graphical visualization tool is embedded in the Visual Studio Code plug-in.
+![VS Code](/learn/images/vscode-logo.jpg)&nbsp;&nbsp;[Visual Studio Code](/learn/tools-ides/vscode-plugin) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![IntelliJ](/learn/images/idea-logo.jpg)&nbsp;&nbsp;[IntelliJ IDEA](/learn/tools-ides/intellij-plugin)
 
 ## OpenAPI to Ballerina code generator
 
@@ -48,5 +45,3 @@ You can test a Ballerina file or module using the following command:
 ## Compatibility
 
 Ballerina Language Specification supports a set of experimental features such as *_transactions_* syntax. In order to be compatible with the experimental features and for supporting language intelligence in VSCode Plugin, enable the `Allow Experimental` option in user settings.
-
-<style>.rst-content img {max-width:30px;}</style>

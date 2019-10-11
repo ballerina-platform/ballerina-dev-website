@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: How to Observe Ballerina Services
 ---
 
 # How to Observe Ballerina Services
@@ -59,7 +58,7 @@ service hello on new http:Listener(9090) {
 
 **Step 3:** Observe Hello World Ballerina service
 
-Observability is disabled by default and can be enabled by using the `--b7a.observability.enabled=true` flag or updating the configurations.
+Observability is disabled by default and can be enabled by using the `--observe` flag or updating the configurations.
 
 When Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for metrics
 monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
@@ -68,19 +67,21 @@ the metrics HTTP endpoint in Ballerina.
 Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
 pushed to [Elastic Stack](#Distributed-Logging) to perform the log analysis.
 
-**Start the service using `--b7a.observability.enabled=true` flag:**
+**Start the service using `--observe` flag:**
 
-The Ballerina service is observable with default settings when the `--b7a.observability.enabled=true` flag is used along with the Ballerina
+The Ballerina service is observable with default settings when the `--observe` flag is used along with the Ballerina
 `run` command to start the service.
 This lets you to collect the distributed tracing information with Jaeger and metrics information with Prometheus.
 
 ```bash
-$ ballerina run hello_world_service.bal --b7a.observability.enabled=true
+$ ballerina run --observe hello_world_service.bal
 
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in 'ballerina-home/lib/balx/prometheus/reporter.balx'
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9797
+ballerina: started Prometheus HTTP endpoint 0.0.0.0:9797
+Initiating service(s) in 'hello_world_service.bal'
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 ```
 
 Redirect the standard output to a file if you want to monitor logs.
@@ -88,7 +89,7 @@ Redirect the standard output to a file if you want to monitor logs.
 For example:
 
 ```bash
-$ nohup ballerina run hello_world_service.bal --b7a.observability.enabled=true > ballerina.log &
+$ nohup ballerina run --observe hello_world_service.bal > ballerina.log &
 ```
 
 **Start the service using a configuration file:**
@@ -97,7 +98,7 @@ Observability of Ballerina service can also be enabled from the configuration. C
 `ballerina.conf` and add the below configuration that starts metrics monitoring and distributed tracing with default 
 settings.
 
-```toml
+```
 [b7a.observability.metrics]
 # Flag to enable Metrics
 enabled=true
@@ -107,23 +108,25 @@ enabled=true
 enabled=true
 ```
 
-The created configuration file can be passed to the Ballerina program with `--b7a.config.file` option along with
+The created configuration file can be passed to the Ballerina program with either `--config` or `--c` option along with
 the path of the configuration file.
 
 ```bash
-$ ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf
+$ ballerina run --config <path-to-conf>/ballerina.conf hello_world_service.bal
 
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in 'ballerina-home/lib/balx/prometheus/reporter.balx'
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9797
+ballerina: started Prometheus HTTP endpoint 0.0.0.0:9797
+Initiating service(s) in 'hello_world_service.bal'
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 ```
 
 Redirect the standard output to a file if you want to monitor logs.
 
 For example:
 ```bash
-$ nohup ballerina run hello_world_service.bal --b7a.config.file=<path-to-conf>/ballerina.conf > ballerina.log &
+$ nohup ballerina run --config <path-to-conf>/ballerina.conf hello_world_service.bal > ballerina.log &
 ```
 
 **Step 4:** Send few requests.
@@ -167,7 +170,7 @@ of `/metrics` in default port 9797 when starting the Ballerina service.
 This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
 and the sample configuration is provided below.
 
-```toml
+```
 [b7a.observability.metrics]
 enabled=true
 reporter="prometheus"
@@ -287,11 +290,11 @@ specification.](https://github.com/opentracing/specification/blob/master/semanti
 
 ### Advanced Tracing Configuration for Ballerina
 
-Tracing can be enabled in Ballerina with `--b7a.observability.enabled=true` flag as mentioned in the [Getting Started](#getting-started) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
+Tracing can be enabled in Ballerina with `--observe` flag as mentioned in the [Getting Started](#getting-started) section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.
 
 The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.
 
-```toml
+```yaml
 [b7a.observability.tracing]
 enabled=true
 name="jaeger"
@@ -308,24 +311,18 @@ b7a.observability.tracing.name | Tracer name which implements tracer interface. 
 Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
 the Jaeger.
 
-```toml
+```yaml
 [b7a.observability.tracing]
 enabled=true
 name="jaeger"
 
-[b7a.observability.tracing.jaeger.sampler]
-type="const"
-param=1.0
-
-[b7a.observability.tracing.jaeger.reporter]
-hostname="localhost"
-port=5775
-
-[b7a.observability.tracing.jaeger.reporter.flush.interval]
-ms=2000
-
-[b7a.observability.tracing.jaeger.reporter.max.buffer]
-spans=1000
+[b7a.observability.tracing.jaeger]
+reporter.hostname="localhost"
+reporter.port=5775
+sampler.type="const"
+sampler.param=1.0
+reporter.flush.interval.ms=2000
+reporter.max.buffer.spans=1000
 ```
 
 The below table provides the descriptions of each configuration option and possible values that can be assigned.
@@ -359,90 +356,23 @@ extract `distribution.zip`.
 
 **Step 5:** Copy all the JAR files inside the `distribution.zip` to 'bre/lib' directory in the Ballerina distribution.
 
-**Step 6:** Add following configuration to the `Ballerina.toml` of your module. 
-
-```toml
-[platform]
-target = "java8"
-
-    [[platform.libraries]]
-    artifactId = "ballerina-zipkin-extension"
-    version = "1.0.0-rc1-SNAPSHOT"
-    path = "/<absolute_path_to>/ballerina-zipkin-extension-1.0.0-rc1-SNAPSHOT.jar"
-    groupId = "org.ballerinalang"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave-opentracing"
-    version = "4.17.1"
-    path = "/<absolute_path_to>/brave-4.17.1.jar"
-    groupId = "io.opentracing.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "brave"
-    version = "0.29.0"
-    path = "/<absolute_path_to>/brave-opentracing-0.29.0.jar"
-    groupId = "io.zipkin.brave"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-reporter"
-    version = "2.6.1"
-    path = "/<absolute_path_to>/zipkin-2.6.1.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-reporter-2.5.0.jar"
-    groupId = "io.zipkin.zipkin2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-okhttp3"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-okhttp3-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "zipkin-sender-urlconnection"
-    version = "2.5.0"
-    path = "/<absolute_path_to>/zipkin-sender-urlconnection-2.5.0.jar"
-    groupId = "io.zipkin.reporter2"
-    modules = ["yourModuleName"]
-
-    [[platform.libraries]]
-    artifactId = "kotlin-stdlib"
-    version = "1.3.31"
-    path = "/<absolute_path_to>/kotlin-stdlib-1.3.31.jar"
-    groupId = "org.jetbrains.kotlin"
-    modules = ["yourModuleName"]
-```
-
-**Step 7:** Change the following configuration name to Zipkin. This ensures that all tracers are sent to Zipkin instead
+**Step 6:** Change the following configuration name to Zipkin. This ensures that all tracers are sent to Zipkin instead
 of the default Jaeger tracer.
 
-```toml
+```yaml
 [b7a.observability.tracing]
 name="zipkin"
 ```
 
-**Step 8:** The following configuration is a sample configuration option available for Zipkin tracer.
+**Step 7:** The following configuration is a sample configuration option available for Zipkin tracer.
 
-```toml
-[b7a.observability.tracing.zipkin.reporter]
-hostname="localhost"
-port=9411
-
-[b7a.observability.tracing.zipkin.reporter.api]
-context="/api/v2/spans"
-version="v2"
-
-[b7a.observability.tracing.zipkin.reporter.compression]
-enabled=true
+```yaml
+[b7a.observability.tracing.zipkin]
+reporter.hostname="localhost"
+reporter.port=9411
+reporter.api.context="/api/v2/spans"
+reporter.api.version="v2"
+reporter.compression.enabled=true
 ```
 
 The below table provides the descriptions of each configuration option and possible values that can be assigned. 

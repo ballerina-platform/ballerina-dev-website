@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Reporting a Security Vulnerability
+title: Release Notes
 ---
 
 # Release Notes

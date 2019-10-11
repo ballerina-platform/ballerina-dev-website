@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Top Level definitions
 ---
 
 # Top Level definitions
@@ -201,7 +200,7 @@ type Person record {|
 ```
 * Also, block-indent.
 
-**Example:**
+**Example,**
 
 ```ballerina
 type UserId record {

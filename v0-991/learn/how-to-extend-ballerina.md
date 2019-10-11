@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: How to Extend Ballerina
 ---
 
 # How to Extend Ballerina

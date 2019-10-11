@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Publish a Module
 ---
 
 # Publish a Module

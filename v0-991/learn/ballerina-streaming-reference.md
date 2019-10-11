@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Streaming Reference Guide
 ---
 
 # Ballerina Streaming Reference Guide
@@ -17,6 +16,9 @@ For example, following scenarios are supported by Ballerina stream processing:
 * Calculating aggregations over a short window or a long time period
 * Joining multiple data streams
 * Correlating data while finding missing and erroneous events
+* Detecting temporal event patterns
+* Tracking (something over space or time)
+* Analyzing trends (rise, fall, turn, triple bottom)
 
 The following topics explains the high level concepts about Ballerina streaming
 
@@ -193,6 +195,9 @@ public function initQuery() {
 * [Having](#having)
 * [Order By](#order-by)
 * [Join](#join)
+* [Pattern](#pattern)
+* [Sequence](#sequence)
+* [Output Rate Limiting](#output-rate-limiting)
 
 
 #### Query Projection
@@ -216,8 +221,10 @@ Streaming queries support the following for query projections.
         <td>Selecting all attributes for projection</td>
         <td>This involves selecting all the attributes in an input stream to be inserted into an output stream. This can be done by using an asterisk ( * ) or by omitting the `select` statement.
             <br><br>
-            e.g., The following query select all the attributes in the `tempStream` stream.
+            e.g., Both the following queries select all the attributes in the `tempStream` stream.
             <pre>from tempStream<br>select *<br>=> ( ) { <br/><br/>}</pre>
+            or
+            <pre>from tempStream<br>=> ( ) { <br/><br/>}</pre>
         </td>
     </tr>
     <tr>
@@ -260,13 +267,13 @@ Streaming queries support the following for query projections.
                 </tr>
                 <tr>
                     <td>
-                         == ()
+                         == NULL
                     </td>
                     <td>
-                        Nil check
+                        Null check
                     </td>
                     <td>
-                        <pre>deviceID == ()</pre>
+                        <pre>deviceID == null</pre>
                     </td>
                 </tr>
                 <tr>
@@ -518,15 +525,15 @@ Following are some inbuilt windows shipped with Ballerina Streams.
 
 7. externalTimeBatch window
 
-    `externalTimeBatch(timeStamp, int windowTime, int? startTime, int? timeout, boolean? replaceTimestampWithBatchEndTime)`
+    `externalTimeBatch(timeStamp, int windowTime, int? startTime, int? timeout)`
 
     A batch (tumbling) time window based on external time, that holds events arrived during `windowTime` periods, and
      gets updated for every `windowTime`. Here the `timeStamp` should be an attribute of the record which is used as
      the constraint type of relevant input stream. As the `timeStamp` parameter you should pass `<streamName>
      .<attiributeName>`. Parameters `startTime` and `timeout` are optional parameters. `startTime` can be used to
      specify a user defined time to start the first batch. `timeout` is time to wait for arrival of new event, before
-     flushing and giving output for events belonging to a specific batch. Usually `timeout` is greater than
-     `windowTime`. If `replaceTimestampWithBatchEndTime` is true replaces the event time with the current time batch’s end time.
+      flushing and giving output for events belonging to a specific batch. Usually `timeout` is greater than
+      `windowTime`.
 
 8. uniqueLength window
 
@@ -1047,5 +1054,615 @@ public function main() {
     orderStream.publish(o2);
 
     runtime:sleep(2000);
+}
+```
+
+
+****
+
+Capabilities mentioned in below sections are not supported by the native Ballerina-based
+stream processing. They are only available when using Siddhi CEP engine for stream processing capabilities
+in Ballerina. If you want to enable Siddhi runtime-based stream processing with Ballerina; please use
+the compile time flag `--siddhiruntime`.
+
+
+#### Pattern
+
+This is a state machine implementation that allows you to detect patterns in the events that arrive over time.
+This can correlate events within a single stream or between multiple streams.
+
+###### Purpose
+
+Patterns allow you to identify trends in events over a time period.
+
+###### Syntax
+
+The following is the syntax for a pattern query:
+
+```ballerina
+from (every)? <input stream> where <filter condition> as <event reference> followed by
+     <input stream where <filter condition> as <event reference> followed by
+    ...
+    (within <time gap>)?
+select <event reference>.<attribute name>, <event reference>.<attribute name>, ...
+=> ( ) {
+
+}
+```
+| Items| Description |
+|-------------------|-------------|
+| `followed by` | This is used to indicate an event that should be following another event. The subsequent event does not necessarily have to occur immediately after the preceding event. The condition to be met by the preceding event should be added before the sign, and the condition to be met by the subsequent event should be added after the sign. |
+| `<event reference>` | This allows you to add a reference to the the matching event so that it can be accessed later for further processing. |
+| `(within <time gap>)?` | The `within` clause is optional. It defines the time duration within which all the matching events should occur. |
+| `every` | `every` is an optional keyword. This defines whether the event matching should be triggered for every event arrival in the specified stream with the matching condition. <br/> When this keyword is not used, the matching is carried out only once. |
+
+Ballerina Streams also supports pattern matching with counting events and matching events in a logical order such
+as (`&&`, `||`, and `!`). These are described in detail further below in this documentation.
+
+###### Example
+
+This query sends an alert if the temperature of a room increases by 5 degrees within 10 min.
+
+```ballerina
+from every tempStream as e1
+    followed by tempStream where (e1.roomNo == roomNo && (e1.temp + 5) <= temp) as e2
+    within 10 minute
+select e1.roomNo, e1.temp as initialTemp, e2.temp as finalTemp
+=> (Alert [] alerts) {
+    foreach var alert in alerts {
+        alertStream.publish(alert);
+    }
+}
+```
+
+Here, the matching process begins for each event in the `tempStream` stream (because `every` is used with `e1=tempStream`),
+and if  another event arrives within 10 minutes with a value for the `temp` attribute that is greater than or equal to `e1.temp + 5`
+of the event e1, an output is generated via the `alertStream`.
+
+##### Counting Pattern
+
+Counting patterns allow you to match multiple events that may have been received for the same matching condition.
+The number of events matched per condition can be limited via condition postfixes.
+
+###### Syntax
+
+Each matching condition can contain a collection of events with the minimum and maximum number of events to be matched as shown in the syntax below.
+
+```ballerina
+from (every)? <input stream>
+        where <filter condition> ([<min count> .. <max count>])? as <event reference> followed by
+    ...
+    (within <time gap>)?
+select <event reference>([event index])?.<attribute name>, ...
+=> ( ) {
+
+}
+```
+
+|Postfix|Description|Example
+---------|---------|---------
+|`[n1..n2]`|This matches `n1` to `n2` events (including `n1` and not more than `n2`).| `[1..4]` matches 1 to 4 events.
+|`[n..]`|This matches `n` or more events (including `n`).|`[2..]` matches 2 or more events.
+|`[..n]`|This matches up to `n` events (excluding `n`).|`[..5]` matches up to 5 events.
+|`[n]`|This matches exactly `n` events.|`[5]` matches exactly 5 events.
+
+Specific occurrences of the event in a collection can be retrieved by using an event index with its reference.
+Square brackets can be used to indicate the event index where `1` can be used as the index of the first event and `last` can be used as the index
+ for the `last` available event in the event collection. If you provide an index greater then the last event index,
+ the system returns `null`. The following are some valid examples.
+
++ `e1[3]` refers to the 4rd event.
++ `e1[e1.length - 1]` refers to the last event.
++ `e1[e1.length - 2]` refers to the event before the last event.
+
+###### Example
+
+The following streaming query calculates the temperature difference between two regulator events.
+
+```ballerina
+type Temperature record {
+    int deviceID;
+    int roomNo;
+    float temp;
+};
+
+type Regulator record {
+    int deviceID;
+    int roomNo;
+    float tempSet;
+    boolean isOn;
+};
+
+stream<Temperature> tempStream = new;
+stream<Regulator> regulatorStream = new;
+
+from every regulatorStream as e1 
+    followed by tempStream where (e1.roomNo==roomNo) [1..] as e2
+    followed by regulatorStream where (e1.roomNo==roomNo) as e3
+select e1.roomNo, e2[0].temp - e2[last].temp as tempDiff
+=> (TemperatureDiff [] values) {
+    foreach var value in values {
+        tempDiffStream.publish(value);
+    }
+}
+```
+
+##### Logical Patterns
+
+Logical patterns match events that arrive in temporal order and correlate them with logical relationships such as `&&`,
+`||` and `!`.
+
+###### Syntax
+
+```ballerina
+from (every)? (!)? <input stream> where <filter condition> as <event reference>
+          ((&& | ||) <input stream> where <filter condition>)? as <event reference>
+          (within <time gap>)? followed by
+    ...
+select <event reference>([event index])?.<attribute name>, ...
+=> ( ) {
+
+}
+```
+
+Keywords such as `&&`, `||`, or `!` can be used to illustrate the logical relationship.
+
+Key Word|Description
+---------|---------
+`&&`|This allows both conditions of `&&` to be matched by two events in any order.|
+<code>&#124;&#124;</code>|The state succeeds if either condition of <code>&#124;&#124;</code> is satisfied. Here the event reference of the other condition is `null`.|
+`! <condition1> && <condition2>`| When `!` is included with `&&`, it identifies the events that match <condition2> arriving before any event that match <condition1>.|
+`! <condition> for <time period>`| When `!` is included with `for`, it allows you to identify a situation where no event that matches `<condition1>` arrives during the specified `<time period>`.  e.g.,`from ! temperatureStream where (temp > 60) for 5 second`.|
+
+Here the `!` pattern can be followed by either an `&&` clause or the effective period of `!` can be concluded after a given `<time period>`. Further in Ballerina Streams, more than two streams cannot be matched with logical conditions using `&&`, `||`, or `!` clauses at this point.
+
+###### Example
+
+Following streaming query, sends the `stop` control action to the regulator when the key is removed from the hotel room.
+```ballerina
+
+import ballerina/io;
+import ballerina/runtime;
+
+// Create a record type that represents the regulator state.
+type RegulatorState record {
+    int deviceId;
+    int roomNo;
+    float tempSet;
+    string userAction;
+};
+
+// Create a record type that represents the user actions on the hotel key.
+type RoomKeyAction record {
+    int roomNo;
+    string userAction;
+};
+
+stream<RegulatorState> regulatorStateChangeStream = new;
+stream<RoomKeyAction> roomKeyStream = new;
+stream<RoomKeyAction> regulatorActionStream = new;
+
+// Deploy the decision rules for the regulator's next action based on the current regulator state and the user action on
+// the hotel key. If the regulator was on before and is still on after the user has removed the hotel key from the
+// room, the `stop` control action is called.
+function deployRegulatorActionDecisionRules() {
+    forever {
+        from every regulatorStateChangeStream
+            where userAction == "on" as e1
+        followed by roomKeyStream
+            where e1.roomNo == roomNo && userAction == "removed" as e2
+        || regulatorStateChangeStream
+            where e1.roomNo == roomNo && userAction == "off" as e3
+        select e1.roomNo as roomNo,
+            e2 == null ? "none" : "stop" as userAction
+        having userAction != "none"
+        => (RoomKeyAction[] keyActions) {
+            foreach var keyAction in keyActions {
+                regulatorActionStream.publish(keyAction);
+            }
+        }
+    }
+}
+
+public function main() {
+
+    // Deploys the streaming pattern rules that define how the regulator is controlled based on received events.
+    deployRegulatorActionDecisionRules();
+
+    // Sample events that represent the different regulator states.
+    RegulatorState regulatorState1 = { deviceId: 1, roomNo: 2, tempSet: 23.56, userAction: "on" };
+    RegulatorState regulatorState2 = { deviceId: 1, roomNo: 2, tempSet: 23.56, userAction: "off" };
+
+    // A sample event that represents the user action on the door of the room. 'removed' indicates that the owner has left the room.
+    RoomKeyAction roomKeyAction = { roomNo: 2, userAction: "removed" };
+
+    // The `RegulatorActionStream` subscribes to the `alertRoomAction` function. Whenever the
+    // 'RegulatorActionStream' stream receives a valid event, this function is called.
+    regulatorActionStream.subscribe(alertRoomAction);
+
+    // Publish/simulate the sample event that represents the regulator `switch on` event.
+    regulatorStateChangeStream.publish(regulatorState1);
+    runtime:sleep(200);
+
+    // Simulate the sample event that represents the door/room closed event.
+    roomKeyStream.publish(roomKeyAction);
+    runtime:sleep(3000);
+}
+
+function alertRoomAction(RoomKeyAction action) {
+    io:println("alertRoomAction function invoked for Room : " +
+            action.roomNo + " and the action : " +
+            action.userAction);
+}
+
+```
+
+This streaming query generates an alert if we have switch off the regulator before the temperature reaches 12 degrees.
+
+```ballerina
+
+type RegulatorState record {
+    int deviceID;
+    int roomNo;
+    float tempSet;
+    string action;
+};
+
+type Temperature record {
+    int deviceID;
+    int roomNo;
+    float temp;
+};
+
+stream<RegulatorState> regulatorStateChangeStream = new;
+stream<Temperature> tempStream = new;
+
+from regulatorStateChangeStream where (action == 'start') as e1
+    followed by  !tempStream where (e1.roomNo == roomNo && temp < 12) 
+    && regulatorStateChangeStream where (action == 'off') as e2
+select e1.roomNo as roomNo
+=> (Alert [] alerts) {
+    foreach var alert in alerts {
+        alertStream.publish(alert);
+    }
+}
+```
+
+This streaming query generates an alert if the temperature does not reduce to 12 degrees within 5 minutes of switching on the regulator.
+
+```ballerina
+
+type RegulatorState record {
+    int deviceID;
+    int roomNo;
+    float tempSet;
+    string action;
+};
+
+type Temperature record {
+    int deviceID;
+    int roomNo;
+    float temp;
+};
+
+stream<RegulatorState> regulatorStateChangeStream = new;
+stream<Temperature> tempStream = new;
+
+from regulatorStateChangeStream where (action == 'start') as e1
+        followed by !tempStream
+        where (e1.roomNo == roomNo && temp < 12)
+        for 5 minutes
+select e1.roomNo as roomNo
+=> (Alert [] alerts) {
+    foreach var alert in alerts {
+        alertStream.publish(alert);
+    }
+}
+```
+
+
+#### Sequence
+
+Sequence is a state machine implementation that allows you to detect the sequence of event occurrences over time.
+Here **all matching events need to arrive consecutively** to match the sequence condition, and there cannot be any non-matching events arriving within a matching sequence of events.
+This can correlate events within a single stream or between multiple streams.
+
+###### Purpose
+
+This allows you to detect a specified event sequence over a specified time period.
+
+###### Syntax
+
+The syntax for a sequence query is as follows:
+
+```ballerina
+from (every)? <input stream> where <filter condition> as <event reference>,
+    <input stream where <filter condition> as <event reference>,
+    ...
+    (within <time gap>)?
+select <event reference>.<attribute name>, <event reference>.<attribute name>, ...
+=> ( ) {
+
+}
+```
+
+| Items | Description |
+|-------------------|-------------|
+| `,` | This represents the immediate next event, i.e., when an event that matches the first condition arrives, the event that arrives immediately after it should match the second condition. |
+| `<event reference>` | This allows you to add a reference to the the matching event so that it can be accessed later for further processing. |
+| `(within <time gap>)?` | The `within` clause is optional. It defines the time duration within which all the matching events should occur. |
+| `every` | `every` is an optional keyword. This defines whether the matching event should be triggered for every event that arrives at the specified stream with the matching condition. <br/> When this keyword is not used, the matching is carried out only once. |
+
+
+###### Example
+
+This query generates an alert if the increase in the temperature between two consecutive temperature events exceeds one degree.
+
+```ballerina
+from every tempStream as e1, tempStream where (e1.temp + 1 < temp) as e2
+select e1.temp as initialTemp, e2.temp as finalTemp
+=> (Alert [] alerts) {
+    foreach var alert in alerts {
+        alertStream.publish(alert);
+    }
+}
+```
+
+##### Counting Sequence
+
+Counting sequences allow you to match multiple events for the same matching condition.
+The number of events matched per condition can be limited via condition postfixes such as **Counting Patterns**, or by using the
+`[0..]`, `[1..]`, and `[0..1]` operators.
+
+The matching events can also be retrieved using event indexes, similar to how it is done in **Counting Patterns**.
+
+###### Syntax
+
+Each matching condition in a sequence can contain a collection of events as shown below.
+
+```ballerina
+from (every)? <input stream>
+        where <filter condition> ([0..]|[1..]|[0..1])? as <event reference>,
+        <input stream where <filter condition>([0..]|[1..]|[0..1])? as <event reference>,
+    ...
+    (within <time gap>)?
+select <event reference>.<attribute name>, <event reference>.<attribute name>, ...
+=> ( ) {
+
+}
+```
+
+|Postfix symbol|Required/Optional |Description|
+|---------|---------|---------|
+| `[1..]` | Optional |This matches **one or more** events to the given condition. |
+| `[0..]` | Optional |This matches **zero or more** events to the given condition. |
+| `[0..1]` | Optional |This matches **zero or one** events to the given condition. |
+
+
+###### Example
+
+This streaming query identifies temperature peeks.
+
+```ballerina
+import ballerina/runtime;
+import ballerina/io;
+
+// Create a record type that represents the device temperature reading.
+type DeviceTempInfo record {
+    int deviceID;
+    int roomNo;
+    float temp;
+};
+
+// Create a record type that represents the initial temperature and the peak temperature.
+type TempDiffInfo record {
+    float initialTemp;
+    float peakTemp;
+};
+
+// The stream that gets the input temperature readings.
+stream<DeviceTempInfo> tempStream = new;
+
+// The output stream with peak temperature values.
+stream<TempDiffInfo> tempDiffInfoStream = new;
+
+// This is the function that contains the rules that detect the temperature peak values. The first event's temperature
+// should be greater than the temperature values that are returned with the next event, which is e2. The last
+// temperature value in e2 should be greater than the temperature value that is given in the event e3. This makes
+// the last value of e2, the peak temperature.
+function deployPeakTempDetectionRules() {
+    forever {
+        from every tempStream as e1, tempStream
+            where e1.temp <= temp [1..] as e2,
+        tempStream where e2[e2.length - 1].temp > temp as e3
+        select e1.temp as initialTemp,
+            e2[e2.length - 1].temp as peakTemp
+        => (TempDiffInfo[] tempDiffInfos) {
+        // If the sequence is matched, the data is pushed/published to the output stream.
+            foreach var tempDiffInfo in tempDiffInfos {
+                tempDiffInfoStream.publish(tempDiffInfo);
+            }
+        }
+    }
+}
+
+public function main() {
+
+    // Deploy the streaming sequence rules.
+    deployPeakTempDetectionRules();
+
+    // Subscribe to the `printInitialAndPeakTemp` function. This prints the peak temperature values.
+    tempDiffInfoStream.subscribe(printInitalAndPeakTemp);
+
+    // Simulating the data that is being sent to the `tempStream` stream.
+    DeviceTempInfo t1 = { deviceID: 1, roomNo: 23, temp: 20.0 };
+    DeviceTempInfo t2 = { deviceID: 1, roomNo: 23, temp: 22.5 };
+    DeviceTempInfo t3 = { deviceID: 1, roomNo: 23, temp: 23.0 };
+    DeviceTempInfo t4 = { deviceID: 1, roomNo: 23, temp: 21.0 };
+    DeviceTempInfo t5 = { deviceID: 1, roomNo: 23, temp: 24.0 };
+    DeviceTempInfo t6 = { deviceID: 1, roomNo: 23, temp: 23.9 };
+
+    // Start simulating the events with the temperature readings.
+    tempStream.publish(t1);
+    runtime:sleep(200);
+
+    tempStream.publish(t2);
+    runtime:sleep(200);
+
+    tempStream.publish(t3);
+    runtime:sleep(200);
+
+    tempStream.publish(t4);
+    runtime:sleep(200);
+
+    tempStream.publish(t5);
+    runtime:sleep(200);
+
+    tempStream.publish(t6);
+    runtime:sleep(2000);
+}
+
+// The function that prints the peak temperature readings.
+function printInitalAndPeakTemp(TempDiffInfo tempDiff) {
+    io:println("printInitalAndPeakTemp function is invoked. " +
+                    "InitialTemp : " + tempDiff.initialTemp +
+                        " and Peak temp : " + tempDiff.peakTemp);
+}
+
+```
+
+##### Logical Sequence
+
+Logical sequences identify logical relationships using `&&`, `||` and `!` on consecutively arriving events.
+
+###### Syntax
+The syntax for a logical sequence is as follows:
+
+```ballerina
+from (every)? (!)? <input stream> where <filter condition> as <event reference>
+          ((&& | ||) <input stream> where <filter condition>)? as <event reference>
+          (within <time gap>)?,
+    ...
+select <event reference>([event index])?.<attribute name>, ...
+=> ( ) {
+
+}
+```
+
+Keywords such as `&&`, `||`, or `!` can be used to illustrate the logical relationship, similar to how it is done in **Logical Patterns**.
+
+###### Example
+
+This streaming query notifies the state when a regulator event is immediately followed by both temperature and humidity events.
+
+```ballerina
+
+type Temperature record {
+    int deviceID;
+    float temp;
+};
+
+type Humidity record {
+    int deviceID;
+    float humid;
+};
+
+type Regulator record {
+    int deviceID;
+    boolean isOn;
+};
+
+stream<Temperature> tempStream = new;
+stream<Humidity> humidStream = new;
+stream<Regulator> regulatorStream = new;
+
+from every regulatorStream as e1, tempStream as e2 && humidStream as e3
+select e2.temp, e3.humid
+=> (Notification [] notifications) {
+    foreach var notification in notifications {
+        stateNotificationStream.publish(notification);
+    }
+}
+```
+
+
+#### Output rate limiting
+
+Output rate limiting allows queries to output events periodically based on a specified condition.
+
+###### Purpose
+
+This allows you to limit the output to avoid overloading the subsequent executions, and to remove unnecessary
+information.
+
+###### Syntax
+
+The syntax of an output rate limiting configuration is as follows:
+
+```ballerina
+from <input stream> ...
+select <attribute name>, <attribute name>, ...
+output <rate limiting configuration>
+=> ( ) {
+
+}
+```
+Ballerina stream processing supports three types of output rate limiting configurations as explained in the following table:
+
+Rate limiting configuration|Syntax| Description
+---------|---------|--------
+Based on time | `<output event> every <time interval>` | This outputs `<output event>` every `<time interval>` time interval.
+Based on number of events | `<output event> every <event interval> events` | This outputs `<output event>` for every `<event interval>` number of events.
+Snapshot based output | `snapshot every <time interval>`| This outputs all events in the window (or the last event if no window is defined in the query) for every given `<time interval>` time interval.
+
+Here the `<output event>` specifies the event(s) that should be returned as the output of the query.
+The possible values are as follows:
+* `first` : Only the first event processed by the query during the specified time interval/sliding window is emitted.
+* `last` : Only the last event processed by the query during the specified time interval/sliding window is emitted.
+* `all` : All the events processed by the query during the specified time interval/sliding window are emitted. **When no `<output event>` is defined, `all` is used by default.**
+
+###### Examples
+
++ Returning events based on the number of events
+
+    Here, events are emitted every time the specified number of events arrive. You can also specify whether to emit only the first event/last event, or all the events out of the events that arrived.
+
+    In this example, the last temperature per sensor is emitted for every 10 events.
+
+```ballerina
+from tempStream
+select temp, deviceID
+group by deviceID
+output last every 10 events
+=> (LowRateTemperature [] values) {
+
+}
+```
+
++ Returning events based on time
+
+    Here events are emitted for every predefined time interval. You can also specify whether to emit only the first event, last event, or all events out of the events that arrived during the specified time interval.
+
+    In this example, emits all temperature events every 10 seconds
+
+```ballerina
+from tempStream
+output every 10 seconds
+=> (LowRateTemperature [] values) {
+
+}
+```
+
++ Returning a periodic snapshot of events
+
+    This method works best with windows. If the input stream is not connected to a window, only the last current event for each predefined time interval is emitted.
+
+    This query emits a snapshot of the events in a time window of 5 seconds every 1 second.
+
+```ballerina
+from tempStream window time(5000)
+output snapshot every 1 second
+=> (SnapshotTemperature [] values) {
+
 }
 ```

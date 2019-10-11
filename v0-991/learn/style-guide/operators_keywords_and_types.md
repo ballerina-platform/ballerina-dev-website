@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Operators, keywords, and types
 ---
 
 # Operators, keywords, and types
@@ -95,6 +94,6 @@ name += lastName;
   
 ```ballerina
 io:println("john");
-http:Response res = new();
+http:Response res = new ();
 ```
   

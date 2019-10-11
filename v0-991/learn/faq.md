@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: FAQs
 ---
 
 # FAQs

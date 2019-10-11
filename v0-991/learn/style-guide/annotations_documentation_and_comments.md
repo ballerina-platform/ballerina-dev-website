@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Annotations, Documentation and Comments
 ---
 
 # Annotations, Documentation and Comments

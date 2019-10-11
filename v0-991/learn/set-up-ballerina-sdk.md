@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Setting up Ballerina SDK
 ---
 
 # Setting up Ballerina SDK

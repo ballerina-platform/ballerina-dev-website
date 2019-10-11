@@ -1,6 +1,5 @@
 ---
 layout: ballerina-inner-page
-title: Statements
 ---
 
 # Statements

@@ -155,12 +155,19 @@ if (typeof hljs === 'object') {
     });
 }
 
+//matching version selected with the URL
+function versionSelectorValue(ver){
+    var pathValue = window.location.pathname;
+    var selected_value = "";
+    if(pathValue.indexOf(ver) > -1){
+        selected_value = "selected='selected'";
+    }
+    return selected_value;
+}
+
 $(document).ready(function() {
     var pathValue = window.location.pathname;
-
-    var versionselector =  '<div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css"><option value="'+pathValue+'" selected="selected">1.0</option><option value="/v0-991'+pathValue+'">0.991</option> </select></div>';
-       
-
+    
     var menu = '<div class="container">' +
         '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
         '<nav class="navbar">' +
@@ -181,7 +188,9 @@ $(document).ready(function() {
         '<li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/" target="_blank">Central</a></li>' +
         '<li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a></li>' +
         '<li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a></li>' +
-        '<li class="cVersionItem"><div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css"><option value="/'+pathValue+'" selected="selected">1.0</option><option value="/v0-991'+pathValue+'">0.991</option> </select></div></li>' +
+        '<li class="cVersionItem"><div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css">' +
+        '<option value="/'+pathValue+'" '+versionSelectorValue("")+'>1.0</option>' +
+        '<option value="/v0-991'+pathValue+'" '+versionSelectorValue("991")+'>0.991</option> </select></div></li>' +
         '</ul>' +
         '</div>' +
         '</div>' +
@@ -548,8 +557,8 @@ $(function() {
 
 $(document).ready(function() {
  var urlmenu = document.getElementById( 'versions' );
- urlmenu.onchange = function() {
-       window.open( this.options[ this.selectedIndex ].value , "_self" );
+ urlmenu.onchange = function() {    
+    window.open( this.options[ this.selectedIndex ].value , "_self" );
   }
 
     //subscribe form

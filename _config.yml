@@ -33,6 +33,8 @@ breadcrumbs:
   root:
     hide: trure  # show breadcrumbs on root/home page
     image: false # Show image or title text  
+github_username:  ballerina-platform
+git_repo: ballerina-platform.github.io
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

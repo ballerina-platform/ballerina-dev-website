@@ -1,9 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: Reporting a Security Vulnerability
+title: Release Notes
 ---
 
-<link rel="stylesheet" href="/css/download-page.css"></link>
+<link rel="stylesheet" href="/css/download-page.css" />
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
         <div class="cBallerina-archived-breadcrumbs">

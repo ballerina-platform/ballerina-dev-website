@@ -38,7 +38,7 @@ We’re happy to help! Come engage with us on any channel that works for you:
 
 ## Want to be kept up-to-date?
 
-We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below 
+We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below: 
 
 (GDPR compliant mandatory consent click included!):
 
@@ -53,7 +53,7 @@ Oh no, you hit a bump on the road! Please tell us - we want to fix all bugs!
 
 - Found a bug in the compiler, standard libraries or the runtime? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">https://github.com/ballerina-platform/ballerina-lang/issues</a>
 - Found a bug in the language specification? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">https://github.com/ballerina-platform/ballerina-spec/issues</a>
-- Found a bug on the website? Create an issue here:<a href="https://github.com/ballerina-platform/ballerina-www/issues">https://github.com/ballerina-platform/ballerina-www/issues</a> 
+- Found a bug on the website? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-www/issues">https://github.com/ballerina-platform/ballerina-www/issues</a> 
 
 
 ## Want to help us make Ballerina popular?!
@@ -67,11 +67,11 @@ Second is to share the wealth by publishing your code on <a href="https://centra
 Follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the “#ballerinalang" hashtag!
 
 
-Do you want to organize a local meetup or hackathon? WSO2 can help with presentation / training content, logistics, swag, and some funds to for munchies. Give us a buzz and we’ll get right on it: <a href="mailto:contact@ballerina.io">contact@ballerina.io</a>.
+Do you want to organize a local meetup or hackathon? WSO2 can help with presentation / training content, logistics, swag, and some funds for munchies. Give us a buzz and we’ll get right on it: <a href="mailto:contact@ballerina.io">contact@ballerina.io</a>.
 
 
 ## Want to help implement Ballerina?
-Join the project and write some code with us to make Ballerina better! You can hang out with us in the Slack channel, the mailing list and of course on GitHub.
+Join the project and write some code with us to make Ballerina better! You can hang out with us on the Slack channel, the mailing list and of course on GitHub.
 
 Please read the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contributor Guide</a> so you are aware of the ground rules as you start! Happy dancing!
 

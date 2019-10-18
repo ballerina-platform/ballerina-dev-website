@@ -40,7 +40,7 @@ We’re happy to help! Come engage with us on any channel that works for you:
 
 We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below: 
 
-(GDPR compliant mandatory consent click included!):
+(GDPR compliant mandatory consent click included!)
 
 <form class="cFormContainerOS">
 <label class="subscribeForm" id="subscribeFormLabelOS">Email Address</label>

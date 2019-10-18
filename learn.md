@@ -139,11 +139,11 @@ title: Let’s learn Ballerina!
 </tr>
 </table>
 <h3>Manage projects</h3>
-<p>Ballerina projects are the way to organize real world Ballerina development tasks. Learn more about in <a href="/learn/how-to-structure-ballerina-code/#projects">this How-To</a>.</p>
+<p>Ballerina projects are the way to organize real world Ballerina development tasks. Learn more about it in <a href="/learn/how-to-structure-ballerina-code">this How-To</a>.</p>
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project
+<td class="cDescription">Create a Ballerina project.
 </td>
 </tr>
 </table>
@@ -152,7 +152,7 @@ title: Let’s learn Ballerina!
 <table class="cComandTable">
 <tr>
 <td class="cCommand">encrypt</td>
-<td class="cDescription">Use this tool to encrypt sensitive data and pass them to a Ballerina program via the configuration system
+<td class="cDescription">Use this tool to encrypt sensitive data and pass them to a Ballerina program via the configuration system.
 </td>
 </tr>
 <tr>

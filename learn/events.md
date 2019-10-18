@@ -5,7 +5,6 @@ title: Events
 
 <script src="/js/events.js"></script>
 <link rel="stylesheet" href="/css/events-page.css">
-</link>
 
 <h1>Events</h1>
 
@@ -77,3 +76,13 @@ title: Events
 <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/columbus-microservices/events/264064167/" target="_blank">Register Now</a></td>
 </tr>
 </table>  -->
+
+<style>
+.navbar-nav > li.cActive > a {
+  color: rgb(87, 89, 93) !important;
+}
+
+.navbar-nav > li#Eventsli a  {
+  color: #20b6b0 !important;
+}
+</style>

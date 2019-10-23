@@ -42,4 +42,5 @@ table {
 td {
     padding: 20px; 
 }
+li.cVersionItem  {display: none !important;}
 </style>

@@ -5,7 +5,7 @@ title: The Ballerina Community
 
 # The Ballerina Community
 
-The Ballerina community has been bootstrapped by <a href="https://wso2.com/">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
+The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
 We warmly welcome any and all contributors to the community to help establish Ballerina as a truly community owned resource!
 
@@ -21,7 +21,7 @@ We’re happy to help! Come engage with us on any channel that works for you:
    </div>
    <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
       <div class="cBallerina-Box">
-      <a class="cCommunityIcons" href="/community/slack/"><img src="/img/slack.svg"></a>
+      <a class="cCommunityIcons" href="/community/slack"><img src="/img/slack.svg"></a>
       </div>
    </div>
       <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
@@ -40,7 +40,7 @@ We’re happy to help! Come engage with us on any channel that works for you:
 
 We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below: 
 
-(GDPR compliant mandatory consent click included!):
+(GDPR compliant mandatory consent click included!)
 
 <form class="cFormContainerOS">
 <label class="subscribeForm" id="subscribeFormLabelOS">Email Address</label>

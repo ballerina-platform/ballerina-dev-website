@@ -344,11 +344,6 @@ td.cDescTD {
     width: 40%;
 }
 
-
-.highlight code, .highlight pre {
-    background-color: #fff !important;
-}
-
 @media (max-width: 1200px) {
     .cButtonInfoContainer {
         width: 45%;
@@ -403,5 +398,8 @@ td.cDescTD {
     .highlight {
         width: 100%;
         min-width: 100%;
+    }
+    table {
+width:100%;
     }
 }

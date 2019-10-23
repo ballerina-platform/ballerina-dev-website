@@ -57,7 +57,7 @@ To remove an existing Ballerina installation, go to the Ballerina installation l
 
 ## Getting help
 
-To get help when you work with Ballerina, see the [help page](/help).
+To get help when you work with Ballerina, see the [community page](/community).
 
 ## What's next
 

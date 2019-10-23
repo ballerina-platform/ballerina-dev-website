@@ -66,7 +66,7 @@ monitoring and tracers will be published to Jaeger. Prometheus should be configu
 the metrics HTTP endpoint in Ballerina.
 
 Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
-pushed to [Elastic Stack](#Distributed-Logging) to perform the log analysis.
+pushed to [Elastic Stack](#distributed-logging) to perform the log analysis.
 
 **Start the service using `--b7a.observability.enabled=true` flag:**
 
@@ -486,7 +486,7 @@ $ docker run -d -p 9411:9411 openzipkin/zipkin
 ```
 
 **Step 2:** Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The below shown is the sample Zipkin dashboard for the hello world sample in the [Quick Start](#Quick-start)
+properly. The below shown is the sample Zipkin dashboard for the hello world sample in the [Quick Start](/learn/quick-tour)
 
 ![Zipkin Sample](images/zipkin-sample.png "Zipkin Sample")
 

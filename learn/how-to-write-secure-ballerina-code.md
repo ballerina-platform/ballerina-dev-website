@@ -11,53 +11,53 @@ This document demonstrates different security features and controls available wi
 **Table of Contents**
 
 <ul>
-<li><a href="#Secure-by-Design">Secure by Design</a>
+<li><a href="#secure-by-design">Secure by Design</a>
 <ul>
-<li><a href="#Ensuring-security-of-Ballerina-standard-libraries">Ensuring security of Ballerina standard libraries</a></li>
-<li><a href="#Securely-using-tainted-data-with-security-sensitive-parameters">Securely using tainted data with security-sensitive parameters</a></li>
+<li><a href="#ensuring-security-of-ballerina-standard-libraries">Ensuring security of Ballerina standard libraries</a></li>
+<li><a href="#securely-using-tainted-data-with-security-sensitive-parameters">Securely using tainted data with security-sensitive parameters</a></li>
 </ul>
 </li>
-<li><a href="#Securing-Passwords-and-Secrets">Securing Passwords and Secrets</a></li>
-<li><a href="#Authentication-and-Authorization">Authentication and Authorization</a>
+<li><a href="#securing-passwords-and-secrets">Securing Passwords and Secrets</a></li>
+<li><a href="#authentication-and-authorization">Authentication and Authorization</a>
 <ul>
-<li><a href="#Inbound-Authentication--Authorization">Inbound Authentication &amp; Authorization</a>
+<li><a href="#inbound-authentication--authorization">Inbound Authentication &amp; Authorization</a>
 <ul>
-<li><a href="#Advanced-Use-Cases">Advanced Use Cases</a>
+<li><a href="#advanced-use-cases">Advanced Use Cases</a>
 <ul>
-<li><a href="#Using-Multiple-Auth-Handlers">Using Multiple Auth Handlers</a></li>
-<li><a href="#Using-Multiple-Scopes">Using Multiple Scopes</a></li>
-<li><a href="#Per-Resource-and-Per-Service-Customization">Per-Resource and Per-Service Customization</a></li>
-<li><a href="#Implementing-Custom-Authentication-Mechanism">Implementing Custom Authentication Mechanism</a></li>
-<li><a href="#Disable-HTTPS-Enforcement">Disable HTTPS Enforcement</a></li>
-<li><a href="#Modify-Authn/Authz-Filter-Index">Modify Authn/Authz Filter Index</a></li>
+<li><a href="#using-multiple-auth-handlers">Using Multiple Auth Handlers</a></li>
+<li><a href="#using-multiple-scopes">Using Multiple Scopes</a></li>
+<li><a href="#per-resource-and-per-service-customization">Per-Resource and Per-Service Customization</a></li>
+<li><a href="#implementing-custom-authentication-mechanism">Implementing Custom Authentication Mechanism</a></li>
+<li><a href="#disable-https-enforcement">Disable HTTPS Enforcement</a></li>
+<li><a href="#modify-authn-or-authz-filter-index">Modify Authn or Authz Filter Index</a></li>
 </ul>
 </li>
-<li><a href="#JWT-Inbound-Authentication-and-Authorization">JWT Inbound Authentication and Authorization</a></li>
-<li><a href="#OAuth2-Inbound-Authentication-and-Authorization">OAuth2 Inbound Authentication and Authorization</a></li>
-<li><a href="#LDAP-Inbound-Authentication-and-Authorization">LDAP Inbound Authentication and Authorization</a></li>
-<li><a href="#Basic-Auth-Inbound-Authentication-and-Authorization">Basic Auth Inbound Authentication and Authorization</a></li>
+<li><a href="#jwt-inbound-authentication-and-authorization">JWT Inbound Authentication and Authorization</a></li>
+<li><a href="#oauth2-inbound-authentication-and-authorization">OAuth2 Inbound Authentication and Authorization</a></li>
+<li><a href="#ldap-inbound-authentication-and-authorization">LDAP Inbound Authentication and Authorization</a></li>
+<li><a href="#basic-auth-inbound-authentication-and-authorization">Basic Auth Inbound Authentication and Authorization</a></li>
 </ul>
 </li>
-<li><a href="#Outbound-Authentication--Authorization">Outbound Authentication &amp; Authorization</a>
+<li><a href="#outbound-authentication--authorization">Outbound Authentication &amp; Authorization</a>
 <ul>
-<li><a href="#Advanced-Use-Cases">Advanced Use Cases</a>
+<li><a href="#advanced-use-cases">Advanced Use Cases</a>
 <ul>
-<li><a href="#Implementing-Custom-Authentication-Mechanism">Implementing Custom Authentication Mechanism</a></li>
+<li><a href="#implementing-custom-authentication-mechanism">Implementing Custom Authentication Mechanism</a></li>
 </ul>
 </li>
-<li><a href="#JWT-Outbound-Authentication">JWT Outbound Authentication</a></li>
-<li><a href="#OAuth2-Outbound-Authentication">OAuth2 Outbound Authentication</a>
+<li><a href="#jwt-outbound-authentication">JWT Outbound Authentication</a></li>
+<li><a href="#oauth2-outbound-authentication">OAuth2 Outbound Authentication</a>
 <ul>
-<li><a href="#Client-Credentials-Grant-Type">Client Credentials Grant Type</a></li>
-<li><a href="#Password-Grant-Type">Password Grant Type</a></li>
-<li><a href="#Direct-Token-Mode">Direct Token Mode</a></li>
+<li><a href="#client-credentials-grant-type">Client Credentials Grant Type</a></li>
+<li><a href="#password-grant-type">Password Grant Type</a></li>
+<li><a href="#direct-token-mode">Direct Token Mode</a></li>
 </ul>
 </li>
-<li><a href="#Basic-Authentication">Basic Authentication</a></li>
-<li><a href="#Token-Propagation-for-Outbound-Authentication">Token Propagation for Outbound Authentication</a>
+<li><a href="#basic-authentication">Basic Authentication</a></li>
+<li><a href="#token-propagation-for-outbound-authentication">Token Propagation for Outbound Authentication</a>
 <ul>
-<li><a href="#Example---1">Example - 1</a></li>
-<li><a href="#Example---2">Example - 2</a></li>
+<li><a href="#example---1">Example - 1</a></li>
+<li><a href="#example---2">Example - 2</a></li>
 </ul>
 </li>
 </ul>
@@ -448,7 +448,7 @@ service helloWorld on secureHelloWorldEp {
 }
 ```
 
-##### Modify Authn/Authz Filter Index
+##### Modify Authn or Authz Filter Index
 
 The authn/authz filters are engaged as the top most filters of the filter array, which is configured in the HTTP listener configuration. The uer can configure the index of the authn/authz filters if it is needed to engage a custom filter before the authn/authz filters.
 

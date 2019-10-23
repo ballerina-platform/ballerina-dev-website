@@ -40,7 +40,7 @@ $ ballerina run filename.jar
 ```
 
 ### Running a Project
-A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code/) for in-depth structuring of projects.
+A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
 
 Build all modules of a project:
 ```bash    
@@ -177,7 +177,8 @@ These deployment artifacts can be a form of simple files or complex types, like 
 -   [Docker images](https://docs.docker.com/engine/reference/commandline/images/)
 -   [Kubernetes](http://kubernetes.io) artifacts
 
-It is possible for third parties and the ecosystem to create their own annotations and builder extensions that generate different kinds of deployment artifacts. You can publish these extensions within Ballerina Central for others to use. For more information, see [How to Extend Ballerina](/learn/how-to-extend-ballerina/).
+It is possible for third parties and the ecosystem to create their own annotations and builder extensions that generate different kinds of deployment artifacts. You can publish these extensions within Ballerina Central for others to use.
+
 
 ### How to Enable Deployment
 A developer enables deployment artifact generation by adding annotations to their Ballerina code: 
@@ -323,8 +324,7 @@ The following Kubernetes configurations are supported:
 - Kubernetes config map support
 - Kubernetes persistent volume claim support
 
-The following Ballerina code section explains how you can use some of these Kubernetes capabilities by using Kubernetes annotation support in Ballerina. 
-Full example can be found at [Database Interaction Guide](https://ballerina.io/learn/by-guide/data-backed-service/)
+The following Ballerina code section explains how you can use some of these Kubernetes capabilities by using Kubernetes annotation support in Ballerina.
 
 ```ballerina
 import ballerina/config;
@@ -629,4 +629,4 @@ $ curl -v -X POST -d '{"name":"Alice", "age":20,"ssn":123456789,"employeeId":1}'
 |baseImage|Base image to create the Docker image|ballerina/ballerina:latest|
   
 ### Extend Ballerina Deployment and Annotations
-Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation. For more information on how to extend Ballerina, see [How to Extend Ballerina](/learn/how-to-extend-ballerina/).
+Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation.

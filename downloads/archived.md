@@ -22,8 +22,6 @@ title: Release Notes
         </div>
     </div>
 </div>
-
-
 <style>
 li.cVersionItem  {display: none !important;  }
 </style>

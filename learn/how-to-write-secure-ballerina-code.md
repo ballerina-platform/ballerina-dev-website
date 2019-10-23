@@ -20,7 +20,7 @@ This document demonstrates different security features and controls available wi
 <li><a href="#securing-passwords-and-secrets">Securing Passwords and Secrets</a></li>
 <li><a href="#authentication-and-authorization">Authentication and Authorization</a>
 <ul>
-<li><a href="#inbound-authentication--Authorization">Inbound Authentication &amp; Authorization</a>
+<li><a href="#inbound-authentication--authorization">Inbound Authentication &amp; Authorization</a>
 <ul>
 <li><a href="#advanced-use-cases">Advanced Use Cases</a>
 <ul>
@@ -29,7 +29,7 @@ This document demonstrates different security features and controls available wi
 <li><a href="#per-resource-and-per-service-customization">Per-Resource and Per-Service Customization</a></li>
 <li><a href="#implementing-custom-authentication-mechanism">Implementing Custom Authentication Mechanism</a></li>
 <li><a href="#disable-https-enforcement">Disable HTTPS Enforcement</a></li>
-<li><a href="#modify-authn/authz-filter-index">Modify Authn/Authz Filter Index</a></li>
+<li><a href="#modify-authn-or-authz-filter-index">Modify Authn or Authz Filter Index</a></li>
 </ul>
 </li>
 <li><a href="#jwt-inbound-authentication-and-authorization">JWT Inbound Authentication and Authorization</a></li>
@@ -448,7 +448,7 @@ service helloWorld on secureHelloWorldEp {
 }
 ```
 
-##### Modify Authn/Authz Filter Index
+##### Modify Authn or Authz Filter Index
 
 The authn/authz filters are engaged as the top most filters of the filter array, which is configured in the HTTP listener configuration. The uer can configure the index of the authn/authz filters if it is needed to engage a custom filter before the authn/authz filters.
 

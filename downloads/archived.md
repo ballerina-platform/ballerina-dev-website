@@ -6,7 +6,7 @@ title: Release Notes
 <link rel="stylesheet" href="/css/download-page.css" />
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
-        <div class="cBallerina-archived-breadcrumbs">
+        <!-- <div class="cBallerina-archived-breadcrumbs">
             <div role="navigation" aria-label="breadcrumbs navigation">
                 <ul class="wy-breadcrumbs" id="breadcrumb-list" >
                     <li><a href="/">Home</a> »</li>
@@ -14,7 +14,7 @@ title: Release Notes
                     <li>Archived Versions</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers" id="archived-versions">
                 <h2>Archived Versions</h2>
@@ -22,3 +22,6 @@ title: Release Notes
         </div>
     </div>
 </div>
+<style>
+li.cVersionItem  {display: none !important;  }
+</style>

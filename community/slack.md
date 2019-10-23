@@ -11,7 +11,7 @@ We appreciate your help and participation!
 
 ## Already a team member?
 
-Click here: [ballerina-platform.slack.com](https://ballerina-platform.slack.com/)
+Click here: [ballerina-platform.slack.com](https://ballerina-platform.slack.com)
 
 ## If not, join us!
 

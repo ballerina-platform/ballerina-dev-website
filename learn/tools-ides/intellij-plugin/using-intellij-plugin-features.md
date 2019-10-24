@@ -160,4 +160,4 @@ You expand/collapse the following Ballerina code segments using the icons in the
 - markdown documentation
 - multiline comments
  
-![Code folding](../images/code-folding.gif)
+![Code folding](/learn/images/code-folding.gif)

@@ -1,0 +1,30 @@
+
+.logo , .row.cBallerina-io-top-row {
+    display: none;
+}
+body.cBallerina-io.pushable {
+    background: #fff !important;
+}
+
+#iMainNavigation .container {
+    width: 100%;
+}
+
+body .content-wrapper .module-title a.functions,  body .content-wrapper .modules  , body .content-wrapper .module-title a.records{
+    color: #20b6b0 !important;
+}
+
+.navi-wrapper .version, .navi-wrapper-sidebar .version {
+
+    text-align: right;
+    margin-right: 7.2em;
+    margin-top: 5px !important;
+    margin-bottom: 2em;
+    margin-right: 1.4em;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+a.toc.item {
+    top: 152px !important;
+}

@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Events</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - Events" />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name">Events</span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/learn/events.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <script src="/js/events.js"></script>
+<link rel="stylesheet" href="/css/events-page.css">
+</link>
+
+<h1>Events</h1>
+
+<!-- ## Meetups -->
+
+<!-- <table class="cEventTable cMeetupsList">
+ <tr>
+    <td class="cEventDateContainer"><span class="cEventDate">January 21, 2019 </span>6:30 PM to 8:30 PM
+            <p class="cEventLocation">1061 Budapest, Paulay Ede u. 12. Budapest</p>
+        </td>
+        <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Microservices-Budapest-Meetup/events/257128863/"><h4> Microservices Meetup</h4></a>
+      </td>
+        <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Microservices-Budapest-Meetup/events/257128863/" target="_blank">Register Now</a></td>
+</tr>
+
+</table>  -->
+
+<!-- ## No upcoming events -->
+
+<h2>Conferences</h2>
+
+
+<table class="cEventTable cConferencesList" style="width:100%;">      
+            <tr>
+                        <td class="cEventDateContainer"><span class="cEventDate">September 9-12 </span>
+                          <p class="cEventLocation">Las Vegas, NV</p>
+                          </td>
+                          <td class="cEventDetail"><a target="_blank" href="https://www.apachecon.com/acna19/schedule.html"><h4>APACHECON</h4></a>
+                              <!-- <h5>Microservices with Ballerina: A Open Source, Statically Typed, Cloud Native Programming Language</h5> -->
+                              <b>Anjana Fernando,</b> Director, WSO2</p>
+                     </td>
+                   <td class="cEventURL"><a class="cEventRegistration" href="https://www.apachecon.com/acna19/schedule.html" target="_blank">More Info</a></td> 
+                      </tr>
+                 <tr>
+                            <td class="cEventDateContainer"><span class="cEventDate">October 8-10 </span>
+                              <p class="cEventLocation">San Jose, CA</p>
+                              </td>
+                              <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World 2019</h4></a>
+                                  <h5>PRO TALK: Efficient Microservices Deployment Pipelines</h5>
+                                  <b>Anjana Fernando,</b> Director, WSO2</p>
+                         </td>
+                       <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
+                          </tr>
+                        <tr>
+                            <td class="cEventDateContainer"><span class="cEventDate">November 19-21 </span>
+                              <p class="cEventLocation">San Diego, California</p>
+                              </td>
+                              <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/"><h4>KubeCon + CloudNativeCon North America 2019</h4></a>
+                                  <h5>Platinum Sponsor</h5>
+                         </td>
+                       <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/" target="_blank">More Info</a></td> 
+                          </tr>
+                           
+                              
+</table>
+
+<h2>Meetups</h2> 
+
+<table class="cEventTable cMeetupsList" style="width:100%;">
+ <tr>
+    <td class="cEventDateContainer"><span class="cEventDate">September 26 </span>
+            <p class="cEventLocation">Columbus, USA</p>
+        </td>
+        <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/"><h4>Columbus Microservices Meetup</h4></a>
+        <h5>Effective Microservices Development with Ballerina </h5>
+         <b>Anjana Fernando,</b> Director, WSO2</p>
+         <h5>Ballerina in Real-World Use-Case</h5>
+          <b>Glenn Donaldson & Jim Kittle</b>  Ohio State University</p>
+ </td>
+        <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/columbus-microservices/events/264064167/" target="_blank">Register Now</a></td>
+</tr>
+</table> 
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

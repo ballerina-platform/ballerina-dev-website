@@ -1,0 +1,48 @@
+.col-lg-6.cBallerina-io-Home-Middle-col {
+    width: 100%;
+    padding: 0px 15px;
+}
+.cBallerina-io-Home-Left-col {
+    display: none;
+}
+.cBallerina-io-breadcrumbs {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.section , .rst-content , .wy-nav-content {
+    width: 100% !important;
+    display: content !important;
+}
+.wy-nav-content {
+    max-width: 100%;
+}
+.cLanguageFeaturesContainer {
+    padding: 30px 20px;
+}
+.cLanguageFeaturesContainer ul {
+    padding: 0;
+    margin: 0;
+    
+}
+.rst-content .section ul li, .rst-content .toctree-wrapper ul li, .wy-plain-list-disc li, article ul li {
+    list-style: none;
+}
+.row.cBallerina-io-Gray-row {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.cBBEtop {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.rst-content .section ul li, .rst-content .toctree-wrapper ul li, .wy-plain-list-disc li, article ul li {
+    margin-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 0;
+}
+
+.rst-content .section ol li, .rst-content ol.arabic li, .wy-plain-list-decimal li, article ol li, .rst-content .section ul li, .rst-content .toctree-wrapper ul li, .wy-plain-list-disc li, article ul li {
+    font-size: 14px;
+}

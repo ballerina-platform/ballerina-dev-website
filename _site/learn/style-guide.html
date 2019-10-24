@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Ballerina Style Guide</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - Ballerina Style Guide" />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name">Ballerina Style Guide</span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/learn/style-guide.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="ballerina-style-guide">Ballerina Style Guide</h1>
+
+<p>The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.</p>
+
+<p>You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.</p>
+
+<h2 id="indentation-and-line-length">Indentation and line length</h2>
+<ul>
+  <li>Use four spaces (not tabs) for each level of indentation.</li>
+  <li>Keep the maximum length of a line to 120 characters.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> You can configure tools and plugins to use tabs when indenting and to change the number of maximum characters of the line length.</p>
+</blockquote>
+
+<h2 id="line-spacing">Line spacing</h2>
+
+<ul>
+  <li>Use only a single space to separate keywords, types, and identifiers.</li>
+</ul>
+
+<p><strong>Do’s</strong></p>
+
+<pre><code class="language-ballerina">public function getFullName() returns string {
+    string fullName = "john doe";
+    return fullName;
+}
+</code></pre>
+
+<p><strong>Don’ts</strong></p>
+
+<pre><code class="language-ballerina">public   function   getFullName()   returns   string {
+    string   fullName = "john doe";
+    return     fullName;
+}
+</code></pre>
+
+<p>Few exceptions for this rule are:</p>
+<ul>
+  <li>Do not keep spaces around a type when it is enclosed using angle brackets <code class="highlighter-rouge">&lt;string&gt;</code>.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">map&lt;string&gt; names = {};
+</code></pre>
+
+<ul>
+  <li>Do not keep spaces between the type and the opening bracket in the array definition <code class="highlighter-rouge">string[]</code>.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">    string[] names = [];
+</code></pre>
+
+<ul>
+  <li>If it is a list of values separated by commas, add only a single space after each comma and don’t add spaces before the comma.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">[string, int, boolean] tupleVar = ["", 0, false];
+    
+int[] arrayOfString = [1, 2, 3, 4]
+    
+map&lt;string&gt; stringMap = {one: st1, two: st2, three: st3};
+    
+Person personRecord = {name:"marcus", id: 0};
+    
+function foo(string name, int id) {}
+    
+service hello on ep1, ep2 {...}
+</code></pre>
+
+<h2 id="blank-lines">Blank lines</h2>
+
+<p>Separate both statements and top level definitions by zero or one blank lines.</p>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/io;
+    
+const string CITY = "Colombo";
+const int CITY_NO = 1;
+    
+function getName() returns string {
+    string firstName = "john";
+    string lastName = "doe";
+        
+    return firstName + lastName;
+}
+    
+function setName(string name) {}
+function setAge(int age) {}
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> You can configure tools and plugins to change the number of minimum and maximum blank lines used when formatting.</p>
+</blockquote>
+
+<h2 id="blocks">Blocks</h2>
+<ul>
+  <li>Opening curly braces of a block should be placed inline.</li>
+</ul>
+
+<p><strong>Do’s</strong></p>
+
+<pre><code class="language-ballerina">if (true) {
+}
+  
+function setName(string name) {
+  
+}
+</code></pre>
+
+<p><strong>Don’ts</strong></p>
+
+<pre><code class="language-ballerina">if (true)
+{
+    
+}
+
+function setName(string name)
+{
+  
+}
+</code></pre>
+
+<ul>
+  <li>Add a single space before the opening curly braces.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">
+function func1() {
+    if (true) {}
+}
+
+</code></pre>
+
+<ul>
+  <li>If a block is empty, do not keep spaces in between the opening and closing braces.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function func1() {}
+</code></pre>
+
+<ul>
+  <li>Indent all the statements inside a block to be at the same level.</li>
+  <li>Indent the closing brace of a block to align it with the starting position of the block statement.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">if (false) {
+   ...
+}
+  
+match a {
+   ...
+}
+</code></pre>
+
+<h2 id="parentheses-and-brackets">Parentheses and Brackets</h2>
+<ul>
+  <li>Do not have spaces after opening parentheses/bracket and before closing parentheses/bracket.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">[string, int] tupleVar = ["", 0];
+  
+function setValue(string value) {...}
+  
+setValue("value");
+</code></pre>
+
+<ul>
+  <li>To define an empty parentheses, do not keep spaces between the opening and closing parentheses <code class="highlighter-rouge">()</code>.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">int | () result = getResult();
+</code></pre>
+
+<h2 id="line-breaks">Line breaks</h2>
+
+<ul>
+  <li>Have only one statement in a line.</li>
+  <li>When splitting lines, which contains operator(s), split them right before an operator.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// Binary operations.
+string s = "added " + People.name
+    + " in to database.";
+  
+// Function invocation.
+string s = person
+    .getName();
+  
+// Binary operations in if condition
+if (isNameAvailable 
+    &amp;&amp; (i == 1)) {
+  
+}
+</code></pre>
+
+<ul>
+  <li>When splitting lines, which contains separator(s), split them right after a separator.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// Function parameters.
+function getName(int id, int age,
+    string searchValue) returns string {
+    ...
+}
+</code></pre>
+
+<ul>
+  <li>If there isn’t any operator or separator to break the line from, move the whole expression to a new line.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// String literal.
+string s1 =
+    "My name is not in this description";
+  
+// Function invocation.
+string s2 =
+    getPersonNameWithUpperCaseLetters();
+</code></pre>
+
+<ul>
+  <li>If a line exceeds the max line length, start from the end of the line and come towards the start of the line until you find a point, which matches the above rules to break the line.</li>
+  <li>Indent split lines with relation to the starting position of the statement or definition.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">if (isNameAvailable 
+    &amp;&amp; (i == 1)) {
+      
+}
+  
+// Function parameters.
+function getName(int id, int age,
+    string searchValue) returns string {
+    ...
+}
+</code></pre>
+
+<ul>
+  <li>However, if you cannot add the type-casting expression or statement with the constrained type in a single line 
+due to it exceeding the max line length,</li>
+  <li>move the casting type with the operators to a new line.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">    string name =
+        &lt;string&gt;json.name;
+</code></pre>
+
+<ul>
+  <li>keep the constrained type on the same line by splitting the statement from a point before the constraint type.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">map&lt;int | string&gt; registry = {
+    name: "marcus"
+};
+      
+table&lt;Employee&gt; employee = table {
+    {key id, name, address}
+    };
+</code></pre>
+
+<h2 id="top-level-definitions">Top Level Definitions</h2>
+
+<p>For style guidelines on imports, service definition, object definiiton, record definition, referencing record or abstract object, etc., see <a href="/learn/style-guide/definitions">Top Level Definitions</a>.</p>
+
+<h2 id="operators-keywords-and-types">Operators, Keywords, and Types</h2>
+
+<p>For style guidelines on operators, keywords, and types, see <a href="/learn/style-guide/operators_keywords_and_types">Operators, Keywords, and Types</a>.</p>
+
+<h2 id="statements">Statements</h2>
+
+<p>For style guidelines on statemnets such as if, match, transcation etc., see <a href="/learn/style-guide/statements">Statements</a>.</p>
+
+<h2 id="expressions">Expressions</h2>
+
+<p>For style guidelines on function invocation, literals, tuple, type casting etc. see <a href="/learn/style-guide/expressions">Expressions</a>.</p>
+
+<h2 id="annotations-documentation-and-comments">Annotations, Documentation, and Comments</h2>
+
+<p>For style guidelines on annotations, documentation, and comments, see <a href="/learn/style-guide/annotations_documentation_and_comments">Annotations, Documentation, and Comments</a>.</p>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

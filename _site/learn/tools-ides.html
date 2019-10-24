@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Tools and IDEs</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - Tools and IDEs" />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name">Tools and IDEs</span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/learn/tools-ides.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="tools-and-ides">Tools and IDEs</h1>
+
+<p>Ballerina provides language servers, editors, IDEs, and graphical visualization tools to help you write, document, and test your code. The sections below introduce you to them.</p>
+
+<ul>
+  <li><a href="#editor-and-ide-support">Editor and IDE support</a></li>
+  <li><a href="#openapi-to-ballerina-code-generator">OpenAPI to Ballerina code generator</a></li>
+  <li><a href="#api-documentation-generator">API documentation generator</a></li>
+  <li><a href="#test-framework">Test framework</a></li>
+</ul>
+
+<h2 id="editor-and-ide-support">Editor and IDE support</h2>
+
+<p>You can use plugins to write Ballerina code in your favorite editor or IDE. Click on the below icons to learn about the plugins that are currently available.</p>
+
+<p><img src="images/vscode-logo.jpg" alt="VS Code" />  <a href="tools-ides/vscode-plugin">Visual Studio Code</a>           
+<img src="images/idea-logo.jpg" alt="IntelliJ" />  <a href="tools-ides/intellij-plugin">IntelliJ IDEA</a></p>
+
+<p>The graphical visualization tool is embedded in the Visual Studio Code plug-in.</p>
+
+<h2 id="openapi-to-ballerina-code-generator">OpenAPI to Ballerina code generator</h2>
+
+<p>You can use the existing OpenAPI/Swagger files to generate connectors and services in Ballerina code. For details, see the <a href="https://ballerina.io/learn/by-guide/open-api-based-service/">OpenAPI to Ballerina Code Generator</a>.</p>
+
+<h2 id="api-documentation-generator">API documentation generator</h2>
+
+<p>As you develop new connectors, remote functions in connectors and other functions that you want to share with others, it’s important to add API documentation that describes each entity and how it’s used. Ballerina provides a framework called <strong>Docerina</strong> that generates API documentation from the annotations in your Ballerina files. You can check it out <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/misc/docerina">here</a>.</p>
+
+<p>You can generate docs for a Ballerina file or module using the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./ballerina doc [&lt;ballerina-file&gt;|&lt;module-name&gt;]
+</code></pre></div></div>
+
+<h2 id="test-framework">Test framework</h2>
+
+<p>Ballerina provides a testing framework called <strong>Testerina</strong> that you can use to test your programs. You can check it out <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/misc/testerina">here</a>.</p>
+
+<p>You can test a Ballerina file or module using the following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./ballerina test [&lt;ballerina-file&gt;|&lt;module-name&gt;]
+</code></pre></div></div>
+
+<h2 id="compatibility">Compatibility</h2>
+
+<p>Ballerina Language Specification supports a set of experimental features such as <em>_transactions_</em> syntax. In order to be compatible with the experimental features and for supporting language intelligence in VSCode Plugin, enable the <code class="highlighter-rouge">Allow Experimental</code> option in user settings.</p>
+
+<style>.rst-content img {max-width:30px;}</style>
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

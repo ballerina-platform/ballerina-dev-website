@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - " />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name"></span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/v0-991/learn/set-up-ballerina-sdk.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="setting-up-ballerina-sdk">Setting up Ballerina SDK</h1>
+
+<p>After <a href="intellij-plugin-doc.md">installing the IntelliJ Ballerina plugin</a>, you need to set up Ballerina SDK for your Ballerina projects to activate all the capabilities of the plugin.</p>
+
+<p>Click on the below links for instructions on how to set up Ballerina SDK.</p>
+
+<ul>
+  <li><a href="#setting-up-for-a-new-project">Setting up for a new project</a></li>
+  <li><a href="#setting-up-for-an-existing-project">Setting up for an existing project</a></li>
+</ul>
+
+<h2 id="setting-up-for-a-new-project">Setting up for a new project</h2>
+
+<p>Follow the steps below to set up Ballerina SDK when creating a new Ballerina project.</p>
+
+<ol>
+  <li>In the editor, click <strong>File</strong> in the top menu, click <strong>New</strong>, and then click <strong>Project</strong>.</li>
+</ol>
+
+<p><img src="images/create-intellij-project.png" alt="Create a new Ballerina project in IntelliJ IDEA" /></p>
+
+<ol>
+  <li>Click <strong>Ballerina</strong> and then click <strong>Next</strong>.</li>
+</ol>
+
+<p><img src="images/select-a-ballerina-project-in-intellij.png" alt="Select Ballerina as the type of the project" /></p>
+
+<ol>
+  <li>If you do not have an already-configured Ballerina SDK, click <strong>Configure</strong> to add a new Ballerina SDK.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you have already-configured Ballerina SDKs, you can select one of them and click <strong>Next</strong> to continue with the project creation.</p>
+</blockquote>
+
+<p><img src="images/click-configure.png" alt="Configure a new Ballerina SDK" /></p>
+
+<ol>
+  <li>Select the location of the Ballerina distribution and click <strong>Open</strong>.</li>
+</ol>
+
+<p><img src="images/select-ballerina-distribution.png" alt="Select the Ballerina distribution" /></p>
+
+<p>Now, you have successfully added the Ballerina SDK. Click <strong>Next</strong> and continue with the project creation.</p>
+
+<p><img src="images/new-ballerina-sdk.png" alt="The new Ballerina SDK" /></p>
+
+<h2 id="setting-up-for-an-existing-project">Setting up for an existing project</h2>
+
+<p>Follow the steps below to set up Ballerina SDK for an exisitng Ballerina project.</p>
+
+<ol>
+  <li>
+    <p>Open the Project to which you want to set up a Ballerina SDK.</p>
+  </li>
+  <li>
+    <p>In the editor, click <strong>File</strong> in the top menu, click <strong>Project Structure</strong>.</p>
+  </li>
+</ol>
+
+<p><img src="images/open-project-structure.png" alt="Open the project structure" /></p>
+
+<ol>
+  <li>If you do not have an already-configured Ballerina SDK, in the <strong>Project</strong> tab, click <strong>New</strong> under <strong>Project SDK:</strong>, click <strong>Ballerina SDK</strong>, and then click <strong>OK</strong>.</li>
+</ol>
+
+<blockquote>
+  <p><strong>Tip:</strong> If you have already-configured Ballerina SDKs, select one under <strong>Project SDK:</strong> and click <strong>OK</strong> to continue.</p>
+</blockquote>
+
+<p><img src="images/add-new-sdk.png" alt="Add a new Ballerina SDK" /></p>
+
+<ol>
+  <li>Select the location of the Ballerina distribution and click <strong>Open</strong>.</li>
+</ol>
+
+<p><img src="images/select-ballerina-distribution.png" alt="Select the Ballerina distribution" /></p>
+
+<ol>
+  <li>Click <strong>Apply</strong> to save the changes.</li>
+</ol>
+
+<p><img src="images/apply-changes.png" alt="Restart the editor to apply the changes" /></p>
+
+<blockquote>
+  <p><strong>Tip</strong> This prompts a restart request. Click <strong>Restart</strong> to apply the changes.</p>
+</blockquote>
+
+<p>Now, you have successfully added the Ballerina SDK to this project.</p>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

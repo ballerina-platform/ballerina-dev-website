@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - " />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name"></span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/v0-991/learn/style-guide/annotations_documentation_and_comments.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="annotations-documentation-and-comments">Annotations, Documentation and Comments</h1>
+
+<h2 id="annotations">Annotations</h2>
+<ul>
+  <li>Do not have spaces around the <code class="highlighter-rouge">@</code> symbol.</li>
+  <li>Indent annotations to align them with the starting position of the owner (statement or definition).</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// Service annotations are indented to align it with the starting position of the service.
+@http:ServiceConfig {
+    ...
+}
+service greetingService on new http:Listener(8080) {
+    // Resource annotation is indented to align it with the starting position of the resource.
+    @http:ResourceConfig {
+      ...
+    }
+    resource function hello(http:Caller caller, http:Request req) returns error? {
+        ...
+    }
+}
+</code></pre>
+
+<ul>
+  <li>Each annotation attribute (i.e., key-value pairs) should block indent on its own line..</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">@http:ServiceConfig {
+    basePath: "greet",
+    methods: ["GET"]
+}
+</code></pre>
+
+<ul>
+  <li>If an annotation is empty, place it in a single line and 
+do not have spaces between both braces.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">@http:ServiceConfig {}
+</code></pre>
+
+<ul>
+  <li>If you are annotating a parameter or a return type, the annotation should be added inline to the parameter or the return type.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// Parameter annotation.
+public function secureFunction1(@sensitive string secureInName, @sensitive int secureInId, string insecureIn) {
+    ...
+}
+  
+public function secureFunction2(@sensitive string secureInName,
+    @sensitive int secureInId, string insecureIn) {
+    ...
+}
+  
+// Return type annotation.
+public function taintedReturn1() returns @tainted string {
+    ...
+}
+    
+public function taintedReturn2() returns 
+    @tainted string {
+    ...
+}
+  
+</code></pre>
+
+<h2 id="comments">Comments</h2>
+<ul>
+  <li>Use <code class="highlighter-rouge">//</code> for both single-line and multi-line comments.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// This is a single-line comment.
+</code></pre>
+
+<p>and</p>
+
+<pre><code class="language-ballerina">// Copyright (c) 2019 WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+//
+// WSO2 Inc. licenses this file to you under the Apache License,
+// Version 2.0 (the "License"); you may not use this file except
+// in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing,
+// software distributed under the License is distributed on an
+// "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, either express or implied.  See the License for the
+// specific language governing permissions and limitations
+// under the License.
+</code></pre>
+
+<ul>
+  <li>Add a single space between the <code class="highlighter-rouge">//</code> and the content.</li>
+  <li>If the comment is in its own line, then indent it considering its context (i.e., top level or in a block).</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">// This is a top level comment.
+
+function func1() {
+    // This is a block level comment. 
+}
+
+function func2() {
+    if (true) {
+        if (true) {
+            // This is a nested if block level comment.
+        }
+    }
+}
+</code></pre>
+
+<ul>
+  <li>If the comment is in line with the code, add a space before it.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">
+type People record {}; // Inline comment
+
+function func1() {
+    int a = 0; // Inline comment
+}
+
+</code></pre>
+
+<h2 id="documentation">Documentation</h2>
+<ul>
+  <li>Always, indent them to align with the starting position of the owner.</li>
+  <li>Add a space after the <code class="highlighter-rouge">#</code> symbol.</li>
+  <li>Add an empty line after the description.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina"># Description.
+#
+# + value - value input parameter 
+# + return - return a integer value
+function getValue(int value) returns int {
+    return value;
+}
+</code></pre>
+
+<ul>
+  <li>Add only one space after the parameter marker (<code class="highlighter-rouge">+</code>), divider (<code class="highlighter-rouge">-</code>), and <code class="highlighter-rouge">return</code>.</li>
+  <li>Begin the param identifier and description with a single space.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina"># Description.
+#
+# + value - Parameter description
+# + return - Return value description
+function getValue(int value) returns int {...}
+
+# Description.
+@http:ServiceConfig {...}
+service greet on new http:Listener(8080) {
+    # Description.
+    #
+    # + caller - Parameter description.
+    # + request - Parameter description.
+    @http:ResourceConfig {...}
+    resource function sayHello(http:Caller caller, http:Request request) {...}
+}
+</code></pre>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

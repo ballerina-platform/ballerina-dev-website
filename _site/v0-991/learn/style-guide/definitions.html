@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+<meta name="author" content="WSO2, Inc.">
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - " />
+<meta property="og:description"        content="A Programming Language for Network Distributed Applications" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="A Programming Language for Network Distributed Applications">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="A Programming Language for Network Distributed Applications"/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="/js/release_notes/all_release_notes.js"></script>
+<script src="/js/download/archived_download.js"></script>
+<script src="https://preprod.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   var base_download_url = 'https://product-dist.ballerina.io/downloads';
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var archived_versions_json = 'https://product-dist.ballerina.io/downloads/archived_releases.json';
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+   var nightly_versions_json = 'https://product-dist.ballerina.io/nightly/nightly_release.json';
+   var dev_versions_json = 'https://product-dist.ballerina.io/dev/dev_release.json';
+   var latest_versions_json = 'https://product-dist.ballerina.io/downloads/latest_release.json?982';
+   var release_notes_versions_json = 'https://product-dist.ballerina.io/downloads/release_notes_versions.json';
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation"></div>
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down" >
+  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
+    
+    
+      
+
+      
+
+      
+
+      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
+          <a property="item" typeof="WebPage" href="/"><span property="name">Home</span><meta property="position" content="1" /></a>
+      </li>
+    
+      
+
+      
+
+      
+        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name"></span><meta property="position" content="2" /></li>
+        
+
+    </ul>
+</nav>
+
+
+
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/v0-991/learn/style-guide/definitions.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="top-level-definitions">Top Level definitions</h1>
+
+<ul>
+  <li>Do not indent the top level definitions.</li>
+</ul>
+
+<p><strong>Do’s</strong></p>
+
+<pre><code class="language-ballerina">
+import ballerina/http;
+
+const int MIN_AGE = 20;
+int repititions = 0;
+    
+service hello on ep1 {
+    ...
+}
+
+</code></pre>
+
+<p><strong>Don’ts</strong></p>
+
+<pre><code class="language-ballerina">// This import is indented correctly.
+import ballerina/http; 
+    
+const int MIN_AGE = 20; // Not indented correctly.
+int repititions = 0; // Not indented correctly.
+        
+// Not indented correctly.
+service hello on ep1 {
+    ...
+    }
+        
+</code></pre>
+
+<h2 id="imports">Imports</h2>
+
+<ul>
+  <li>Do not keep spaces between the organization name, divider <code class="highlighter-rouge">/</code>, and module name.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+</code></pre>
+
+<ul>
+  <li>Imports should be sorted alphabetically, first by the organization name and then by the module name.</li>
+</ul>
+
+<h2 id="function-definition">Function definition</h2>
+<ul>
+  <li>Do not keep spaces between the function name and the open parentheses <code class="highlighter-rouge">(</code> of the function signature.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function func1() {}
+</code></pre>
+
+<ul>
+  <li>If the function has an object attached to it, do not keep spaces around the Dot <code class="highlighter-rouge">.</code>. Also, keep a single space between the <code class="highlighter-rouge">function</code> keyword and the name of the object.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function Person.getName() {}
+</code></pre>
+
+<ul>
+  <li>If the function needs to be split in to new lines due to it exceeding the max line length,
+    <ul>
+      <li>can break lines from the parameter list by moving a parameter value only to a 
+new line and indenting it with four spaces from the starting position of the function.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function getAddress(int value,
+    string name) returns (string | ()) {
+    ...
+}
+</code></pre>
+
+<ul>
+  <li>can break before the <code class="highlighter-rouge">returns</code> keyword and indent it with four spaces from the starting position of the function.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function getAddress(int value, string name)
+    returns (string | ()) {
+    ...
+}    
+</code></pre>
+
+<ul>
+  <li>can break after the <code class="highlighter-rouge">returns</code> keyword by moving the return value to a new line
+  and indenting it with four spaces from the starting position of the function.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">function getAddress(int value, string name) returns
+    (string | ()) {
+    ...
+}          
+</code></pre>
+
+<h2 id="service-definition">Service definition</h2>
+
+<ul>
+  <li>Keep the listener inline with the service signature.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">service hello on new http:Listener(9090) {
+  ...
+}
+</code></pre>
+
+<ul>
+  <li>When formatting resource functions and function definitions, block indent each element and
+follow the <a href="/learn/style-guide/definitions#function-definition">function formatting guidelines</a>.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">service hello on ep1, ep2 {
+    resource function sayHello(http:Caller caller, http:Request req) returns error? {
+        http:Response res = new;
+        res.setPayload(self.getGreeting());
+        _ = caller-&gt;respond(res);
+    }
+        
+    function getGreeting() returns string {
+        return "Hello";
+    }
+}
+</code></pre>
+
+<ul>
+  <li>Block indent each function definition, resource definition, and field definition inside a service definition.</li>
+</ul>
+
+<h2 id="object-definition">Object definition</h2>
+
+<ul>
+  <li>Block indent each field definition and each function definition on their own line.</li>
+  <li>Init function should be placed before all the other functions.</li>
+  <li>For function definitions in the object definition, follow the <a href="/learn/style-guide/definitions#function-definition">function formatting guidelines</a>.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">type Person object {
+    // Object field definitions.
+    public boolean isMarried = false;
+      int age;
+      string name;
+  
+    // Object init function.
+    function __init(int age = 0, string name) {
+        self.age = age;
+        self.name = name;
+    }
+  
+    // Object function definitions.
+    function getName() returns string {
+        return self.name;
+    }
+  
+    function setIsMarried(boolean isMarried) {
+        self.isMarried = isMarried;
+    }
+      
+    function getIsMarried() returns boolean {
+        return self.isMarried;
+    }
+}
+</code></pre>
+
+<h2 id="record-definition">Record definition</h2>
+<p>Block indent each of the field definitions (including the Rest field) in their own line.</p>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">type Person record {
+    string name;
+    int...;
+}
+
+// or
+
+type Person record {|
+    int id;
+    string name;
+|}
+</code></pre>
+
+<h2 id="referencing-record-or-abstract-object">Referencing record or abstract object</h2>
+<ul>
+  <li>Do not keep spaces between the <code class="highlighter-rouge">*</code>, the abstract object name, or the record name.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">*Person;
+</code></pre>
+<ul>
+  <li>Also, block-indent.</li>
+</ul>
+
+<p><strong>Example,</strong></p>
+
+<pre><code class="language-ballerina">type UserId record {
+    string id = "";
+};
+  
+type User record {
+    *UserId; // Reference to UserId record.
+    string name = "john";
+    int age = 20;
+};
+
+// or
+type Person abstract object {
+    string name;
+  
+    // Object function definitions.
+    function getName() returns string;
+};
+
+type Employee object {
+    *Person; // Reference to Person abstract object.
+
+    function __init() {
+          self.name = "asd";
+      }
+
+    function getName() returns string {
+          return self.name;
+    }
+};
+</code></pre>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row"></div>
+      <script src="/js/theme.js"></script>
+   </body>
+</html>
+

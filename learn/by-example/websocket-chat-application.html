@@ -106,30 +106,35 @@
 <span class="kd">service</span> <span class="nx">chatAppUpgrader</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">webSocketUpgrade</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/{name}&quot;</span><span class="p">,</span>
-                <span class="nx">upgradeService</span><span class="p">:</span> <span class="nx">chatApp</span>
+            <span class="nx">upgradePath</span><span class="p">:</span> <span class="s">&quot;/{name}&quot;</span><span class="p">,</span>
+            <span class="nx">upgradeService</span><span class="p">:</span> <span class="nx">chatApp</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">upgrader</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
-                                <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">wsEp</span><span class="p">;</span>
-        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">queryParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">[]&gt;</span> <span class="nx">queryParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(!</span><span class="nx">queryParams</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">cancelWebSocketUpgrade</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="s">&quot;Age is required&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error cancelling handshake&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error cancelling handshake&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">{};</span>
-        <span class="nx">wsEp</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
-        <span class="nx">wsEp</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">NAME</span><span class="p">]</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
-        <span class="nx">wsEp</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">AGE</span><span class="p">]</span> <span class="p">=</span> <span class="nx">queryParams</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">];</span>
-        <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">wsEp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">wsEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+            <span class="kt">string</span><span class="err">?</span> <span class="nx">ageValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">);</span>
+            <span class="kt">string</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">ageValue</span> <span class="nx">is</span> <span class="kt">string</span> <span class="err">?</span> <span class="nx">ageValue</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="nx">wsEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">AGE</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span>
             <span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;! You have successfully connected to the chat&quot;</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error during WebSocket upgrade&quot;</span><span class="p">,</span> <span class="nx">wsEp</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -137,9 +142,9 @@
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span><span class="p">;</span>
         <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; with age &quot;</span>
-                    <span class="o">+</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">AGE</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; connected to chat&quot;</span><span class="p">;</span>
+        <span class="o">+</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">AGE</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; connected to chat&quot;</span><span class="p">;</span>
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-        <span class="nx">connectionsMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
+        <span class="nx">connectionsMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">()]</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
@@ -147,25 +152,23 @@
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
-                                <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">connectionsMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">connectionsMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; left the chat&quot;</span><span class="p">;</span>
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
 <span class="kd">function</span> <span class="nx">broadcast</span><span class="p">(</span><span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">con</span><span class="p">)</span> <span class="nx">in</span> <span class="nx">connectionsMap</span> <span class="p">{</span>
-        <span class="nx">ep</span> <span class="p">=</span> <span class="nx">con</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">con</span> <span class="nx">in</span> <span class="nx">connectionsMap</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">con</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">key</span><span class="p">)</span>
-             <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
-    <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+<span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">key</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -323,13 +326,12 @@ service chatAppUpgrader on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         webSocketUpgrade: {
-                upgradePath: &quot;/{name}&quot;,
-                upgradeService: chatApp
+            upgradePath: &quot;/{name}&quot;,
+            upgradeService: chatApp
         }
     }
     resource function upgrader(http:Caller caller, http:Request req,
-                                string name) {
-        http:WebSocketCaller wsEp;
+    string name) {
 </code></pre></div>
 
                                 </td>
@@ -348,7 +350,7 @@ service chatAppUpgrader on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        map&lt;string&gt; queryParams = req.getQueryParams();
+                                    <div class="highlight"><pre><code class=ballerina>        map&lt;string[]&gt; queryParams = req.getQueryParams();
 </code></pre></div>
 
                                 </td>
@@ -356,7 +358,7 @@ service chatAppUpgrader on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Retrieves query parameters from the <code>http:Request</code>.</p>
+                                            <p>Retrieve query parameters from the <code>http:Request</code>.</p>
 
                                         </div>
                                     </div>
@@ -369,13 +371,14 @@ service chatAppUpgrader on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (!queryParams.hasKey(&quot;age&quot;)) {
             var err = caller-&gt;cancelWebSocketUpgrade(400, &quot;Age is required&quot;);
-            if (err is error) {
-                log:printError(&quot;Error cancelling handshake&quot;, err = err);
+            if (err is http:WebSocketError) {
+                log:printError(&quot;Error cancelling handshake&quot;, err);
             }
             return;
         }
         map&lt;string&gt; headers = {};
-        wsEp = caller-&gt;acceptWebSocketUpgrade(headers);
+        http:WebSocketCaller | http:WebSocketError wsEp = caller-&gt;acceptWebSocketUpgrade(headers);
+        if (wsEp is http:WebSocketCaller) {
 </code></pre></div>
 
                                 </td>
@@ -383,7 +386,7 @@ service chatAppUpgrader on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Cancel handshake by sending a 400 status code if the age parameter is missing in the request.</p>
+                                            <p>Cancel the handshake by sending a 400 status code if the age parameter is missing in the request.</p>
 
                                         </div>
                                     </div>
@@ -394,13 +397,18 @@ service chatAppUpgrader on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        wsEp.attributes[NAME] = name;
-        wsEp.attributes[AGE] = queryParams[&quot;age&quot;];
-        string msg =
+                                    <div class="highlight"><pre><code class=ballerina>            wsEp.setAttribute(NAME, name);
+            string? ageValue = req.getQueryParamValue(&quot;age&quot;);
+            string age = ageValue is string ? ageValue : &quot;&quot;;
+            wsEp.setAttribute(AGE, age);
+            string msg =
             &quot;Hi &quot; + name + &quot;! You have successfully connected to the chat&quot;;
-        var err = wsEp-&gt;pushText(msg);
-        if (err is error) {
-            log:printError(&quot;Error sending message&quot;, err = err);
+            var err = wsEp-&gt;pushText(msg);
+            if (err is http:WebSocketError) {
+                log:printError(&quot;Error sending message&quot;, err);
+            }
+        } else {
+            log:printError(&quot;Error during WebSocket upgrade&quot;, wsEp);
         }
     }
 }
@@ -411,8 +419,8 @@ service chatAppUpgrader on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The attributes map of the caller is useful for storing connection specific data.
- In this case <code>NAME</code>and <code>AGE</code> are unique to each connection.</p>
+                                            <p>The attributes of the caller is useful for storing connection-specific data.
+ In this case, the <code>NAME</code>and <code>AGE</code> are unique to each connection.</p>
 
                                         </div>
                                     </div>
@@ -457,9 +465,9 @@ service chatAppUpgrader on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
         string msg;
         msg = getAttributeStr(caller, NAME) + &quot; with age &quot;
-                    + getAttributeStr(caller, AGE) + &quot; connected to chat&quot;;
+        + getAttributeStr(caller, AGE) + &quot; connected to chat&quot;;
         broadcast(msg);
-        connectionsMap[caller.id] = caller;
+        connectionsMap[caller.getConnectionId()] = caller;
     }
 </code></pre></div>
 
@@ -504,8 +512,8 @@ service chatAppUpgrader on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onClose(http:WebSocketCaller caller, int statusCode,
-                                string reason) {
-        _ = connectionsMap.remove(caller.id);
+    string reason) {
+        _ = connectionsMap.remove(caller.getConnectionId());
         string msg = getAttributeStr(caller, NAME) + &quot; left the chat&quot;;
         broadcast(msg);
     }
@@ -529,12 +537,10 @@ service chatAppUpgrader on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function broadcast(string text) {
-    http:WebSocketCaller ep;
-    foreach var (id, con) in connectionsMap {
-        ep = con;
-        var err = ep-&gt;pushText(text);
-        if (err is error) {
-            log:printError(&quot;Error sending message&quot;, err = err);
+    foreach var con in connectionsMap {
+        var err = con-&gt;pushText(text);
+        if (err is http:WebSocketError) {
+            log:printError(&quot;Error sending message&quot;, err);
         }
     }
 }
@@ -557,9 +563,9 @@ service chatAppUpgrader on new http:Listener(9090) {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function getAttributeStr(http:WebSocketCaller ep, string key)
-             returns (string) {
-    var name = &lt;string&gt;ep.attributes[key];
-    return name;
+returns (string) {
+    var name = ep.getAttribute(key);
+    return name.toString();
 }
 </code></pre></div>
 
@@ -585,6 +591,10 @@ service chatAppUpgrader on new http:Listener(9090) {
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -594,8 +604,21 @@ service chatAppUpgrader on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run websocket_chat_application.bal
+# `.bal` file and use the `ballerina build` command.
+$ ballerina build websocket_chat_application.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Run the sample using the `run` command on the jar file generated:
+$ ballerina run websocket_chat_application-executable.jar
 </code></pre></div>
 
                                 </td>

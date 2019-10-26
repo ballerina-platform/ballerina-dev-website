@@ -103,11 +103,14 @@
     <span class="kt">string</span> <span class="nx">lname</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>    <span class="nx">Gender</span> <span class="nx">gender</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="err">?</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;male&quot;</span> <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with the non-defaultable required field set: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">);</span>
+    <span class="kt">int</span><span class="err">?</span> <span class="nx">age</span> <span class="p">=</span> <span class="nx">john</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age before setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
     <span class="nx">john</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="mi">25</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Updated person with the optional field set: &quot;</span><span class="p">,</span> <span class="nx">john</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;female&quot;</span><span class="p">};</span>
+    <span class="nx">age</span> <span class="p">=</span> <span class="nx">john</span><span class="err">?</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age after setting: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">gender</span><span class="p">:</span> <span class="s">&quot;female&quot;</span> <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person with values assigned to required fields: &quot;</span><span class="p">,</span> <span class="nx">jane</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -122,8 +125,8 @@
                         <td class="cLeftTD">
                             <h2>Optional Fields</h2>
                             <p><p>Fields of a record can be marked as optional. These fields can be omitted when creating a record.
- Absence of an optional field during run time will result in a panic if it is a field-based access (e.g., <code>p.name</code>) or
- it will return <code>()</code> if it is an index-based access (e.g., p[&ldquo;name&rdquo;]).</p>
+ Such fields can be accessed via optional field access (e.g., <code>p?.name</code>) or member access (e.g., p[&ldquo;name&rdquo;])
+ which will both return <code>()</code> if the field is not present in the record.</p>
 </p>
 
                         </td>
@@ -215,6 +218,10 @@
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -268,7 +275,7 @@
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This is a required field without an explicit default value.
- The compiler will not assign default values. Therefore a value should be specified
+ The compiler will not assign default values. Therefore, a value should be specified
  for this field when creating the record.</p>
 
                                         </div>
@@ -343,7 +350,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = {fname: &quot;John&quot;, gender: &quot;male&quot;};
+                                    <div class="highlight"><pre><code class=ballerina>    Person john = { fname: &quot;John&quot;, gender: &quot;male&quot; };
 </code></pre></div>
 
                                 </td>
@@ -352,7 +359,7 @@
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The required fields <code>fname</code> and <code>gender</code> are not given default values in the record type descriptor.
- Therefore values must be specified for <code>fname</code> and <code>gender</code> when creating the record.</p>
+ Therefore, values must be specified for <code>fname</code> and <code>gender</code> when creating the record.</p>
 
                                         </div>
                                     </div>
@@ -371,7 +378,29 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Note that the <code>age</code> field is not present in the record since it is an optional field.</p>
+                                            <p>The <code>age</code> field is not present in the record since it is an optional field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int? age = john?.age;
+    io:println(&quot;Age before setting: &quot;, age);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Optional fields of the record can be accessed using the <code>?.</code> operator.
+ This returns the value if the field is present in the record. Returns <code>()</code> if not.
+ Since the <code>age</code> field is not set, optional field access returns <code>()</code> here.</p>
 
                                         </div>
                                     </div>
@@ -383,8 +412,6 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    john.age = 25;
-    io:println(&quot;Age: &quot;, john.age);
-    io:println(&quot;Updated person with the optional field set: &quot;, john);
 </code></pre></div>
 
                                 </td>
@@ -392,7 +419,8 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Before accessing/using an optional field, it must be added to the record.</p>
+                                            <p>Now set a value for the <code>age</code> field. Field access can be used to set the value since
+ <code>age</code> is a field defined in the type descriptor for <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -400,14 +428,41 @@
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = {fname: &quot;Jane&quot;, lname: &quot;Doe&quot;, gender: &quot;female&quot;};
+                                    <div class="highlight"><pre><code class=ballerina>    age = john?.age;
+    io:println(&quot;Age after setting: &quot;, age);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the <code>age</code> field is set, optional field access returns the <code>int</code>-typed value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Person jane = { fname: &quot;Jane&quot;, lname: &quot;Doe&quot;, gender: &quot;female&quot; };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a <code>Person</code>-typed value specifying a value for the defaultable field <code>lname</code>.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -449,12 +504,12 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run record_optional_fields.bal
-Person with non-defaultable required field set: {lname:&quot;&quot;, fname:&quot;John&quot;, gender:&quot;male&quot;}
-Age: 25
-Updated person with optional field set: {lname:&quot;&quot;, fname:&quot;John&quot;, gender:&quot;male&quot;, age:25}
-Person with values assigned to required fields: {lname:&quot;Doe&quot;, fname:&quot;Jane&quot;, gender:&quot;female&quot;}
+Person with the non-defaultable required field set: lname= fname=John gender=male
+Age before setting:
+Age after setting: 25
+Person with values assigned to required fields: lname=Doe fname=Jane gender=female
 </code></pre></div>
 
                                 </td>

@@ -99,17 +99,17 @@
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="nx">anonFunction</span> <span class="p">=</span>
-            <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">anonFunction</span> <span class="p">=</span>
+            <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
             <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span> <span class="o">+</span> <span class="nx">anonFunction</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-    <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
+    <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
                             <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
                         <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span> <span class="o">+</span> <span class="nx">anonFunction2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span> <span class="o">+</span> <span class="nx">arrowExpr</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">arrowExpr</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -232,11 +232,11 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function (string, string) returns (string) anonFunction =
-            function (string x, string y) returns (string) {
+                                    <div class="highlight"><pre><code class=ballerina>    function (string, string) returns string anonFunction =
+            function (string x, string y) returns string {
                 return x + y;
             };
-    io:println(&quot;Output: &quot; + anonFunction.call(&quot;Hello &quot;, &quot;World.!!!&quot;));
+    io:println(&quot;Output: &quot;, anonFunction(&quot;Hello &quot;, &quot;World.!!!&quot;));
 </code></pre></div>
 
                                 </td>
@@ -244,7 +244,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define an anonymous function.</p>
+                                            <p>Defines an anonymous function.</p>
 
                                         </div>
                                     </div>
@@ -255,10 +255,10 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var anonFunction2 = function (string x, string y) returns (string) {
+                                    <div class="highlight"><pre><code class=ballerina>    var anonFunction2 = function (string x, string y) returns string {
                             return x + y;
                         };
-    io:println(&quot;Output: &quot; + anonFunction2.call(&quot;Hello &quot;, &quot;World.!!!&quot;));
+    io:println(&quot;Output: &quot;, anonFunction2(&quot;Hello &quot;, &quot;World.!!!&quot;));
 </code></pre></div>
 
                                 </td>
@@ -266,7 +266,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define an anonymous function with <code>var</code>.</p>
+                                            <p>Defines an anonymous function with <code>var</code>.</p>
 
                                         </div>
                                     </div>
@@ -277,8 +277,8 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    function (string, string) returns (string) arrowExpr = (x, y) =&gt; x + y;
-    io:println(&quot;Output: &quot; + arrowExpr.call(&quot;Hello &quot;, &quot;World.!!!&quot;));
+                                    <div class="highlight"><pre><code class=ballerina>    function (string, string) returns string arrowExpr = (x, y) =&gt; x + y;
+    io:println(&quot;Output: &quot;, arrowExpr(&quot;Hello &quot;, &quot;World.!!!&quot;));
 }
 </code></pre></div>
 
@@ -291,7 +291,7 @@
  you can use the <code>arrow function expression</code> instead of the anonymous function.
  The types of the input parameters are inferred from the left-hand side.
  The return of the arrow function expression is determined by the
- evaluation of the expression to the right-hand side of the <code>=&gt;</code> symbol.</p>
+ evaluation of the expression on the right-hand side of the <code>=&gt;</code> symbol.</p>
 
                                         </div>
                                     </div>
@@ -316,7 +316,7 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run anonymous_functions.bal
 Output: Hello World.!!!
 Output: Hello World.!!!

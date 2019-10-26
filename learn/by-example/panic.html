@@ -131,12 +131,12 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Panic</h2>
-                            <p><p>In Ballerina, panic indicates abnormal completions, and usually implies that something unexpected has occurred
+                            <p><p>In Ballerina, panic indicates abnormal completions and usually implies that something unexpected has occurred
  (i.e., something that should not have occurred during the normal operation). A panic causes
  the call stack to unwind until it is trapped.</p>
 
 <p>Ballerina discourages the use of <code>panic</code> to handle program-related
- errors such as <code>header not found</code>, <code>data mismatch</code> errors, etc.). However,
+ errors such as <code>header not found</code>, <code>data mismatch</code> errors etc.). However,
  <code>panic</code> can be used in scenarios such as <code>Connection Closed/Timeout</code> and <code>OutOfMemory</code>
  in which the program cannot handle the error by itself.</p>
 </p>
@@ -281,7 +281,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Panic if <code>value</code> is <code>()</code>.</p>
+                                            <p>Panics if <code>value</code> is <code>()</code>.</p>
 
                                         </div>
                                     </div>
@@ -337,7 +337,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since <code>r2</code> is <code>()</code> <code>readRecord()</code> would panic.</p>
+                                            <p>Since <code>r2</code> is <code>()</code>, <code>readRecord()</code> would panic.</p>
 
                                         </div>
                                     </div>
@@ -383,12 +383,12 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run panic.bal
 Record ID: 1, value: record1
-error: Record is nil {}
-	at readRecord(panic.bal:13)
-	   main(panic.bal:26)
+error: Record is nil
+        at panic:readRecord(panic.bal:13)
+           panic:main(panic.bal:27)
 </code></pre></div>
 
                                 </td>

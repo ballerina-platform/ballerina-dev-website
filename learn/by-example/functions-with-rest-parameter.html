@@ -99,29 +99,28 @@
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">printFruits</span><span class="p">(</span><span class="kt">string</span> <span class="nx">separator</span><span class="p">,</span>
-                     <span class="kt">string</span> <span class="nx">title</span> <span class="p">=</span> <span class="s">&quot;Fruits: &quot;</span><span class="p">,</span>
-                     <span class="kt">string</span><span class="o">...</span> <span class="nx">concatStrings</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">finalStr</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">str</span> <span class="nx">in</span> <span class="nx">concatStrings</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">printDetails</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
+                      <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
+                      <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">detailString</span> <span class="p">=</span> <span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;, Age: &quot;</span> <span class="o">+</span> <span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">moduleString</span> <span class="p">=</span> <span class="s">&quot;Module(s): &quot;</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">module</span> <span class="nx">in</span> <span class="nx">modules</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">finalStr</span> <span class="p">=</span> <span class="nx">str</span><span class="p">;</span>
+            <span class="nx">moduleString</span> <span class="o">+=</span> <span class="nx">module</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">finalStr</span> <span class="p">=</span> <span class="nx">finalStr</span> <span class="o">+</span> <span class="nx">separator</span> <span class="o">+</span> <span class="nx">str</span><span class="p">;</span>
+            <span class="nx">moduleString</span> <span class="o">+=</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">module</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="nx">index</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">title</span> <span class="o">+</span> <span class="nx">finalStr</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">detailString</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">moduleString</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">);</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot;Apples&quot;</span><span class="p">);</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nx">title</span> <span class="p">=</span> <span class="s">&quot;Available Fruits: &quot;</span><span class="p">,</span> <span class="s">&quot;Apples&quot;</span><span class="p">);</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot;Apples&quot;</span><span class="p">,</span> <span class="s">&quot;Oranges&quot;</span><span class="p">);</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nx">title</span> <span class="p">=</span> <span class="s">&quot;Available Fruits: &quot;</span><span class="p">,</span> <span class="s">&quot;Apples&quot;</span><span class="p">,</span> <span class="s">&quot;Oranges&quot;</span><span class="p">,</span>
-                <span class="s">&quot;Grapes&quot;</span><span class="p">);</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot;Apples&quot;</span><span class="p">,</span> <span class="s">&quot;Oranges&quot;</span><span class="p">,</span> <span class="nx">title</span> <span class="p">=</span> <span class="s">&quot;Available Fruits: &quot;</span><span class="p">,</span>
-                <span class="s">&quot;Grapes&quot;</span><span class="p">);</span>
-    <span class="kt">string</span><span class="p">[]</span> <span class="nx">fruits</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Apples&quot;</span><span class="p">,</span> <span class="s">&quot;Oranges&quot;</span><span class="p">,</span> <span class="s">&quot;Grapes&quot;</span><span class="p">];</span>
-    <span class="nx">printFruits</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nx">title</span> <span class="p">=</span> <span class="s">&quot;Available Fruits: &quot;</span><span class="p">,</span> <span class="o">...</span><span class="nx">fruits</span><span class="p">);</span>
+    <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Alice&quot;</span><span class="p">);</span>
+    <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Corey&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="s">&quot;Math&quot;</span><span class="p">);</span>
+    <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">);</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">modules</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Math&quot;</span><span class="p">,</span> <span class="s">&quot;Physics&quot;</span><span class="p">];</span>
+    <span class="nx">printDetails</span><span class="p">(</span><span class="s">&quot;Diana&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">...</span><span class="nx">modules</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -134,9 +133,11 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Rest Parameters</h2>
-                            <p><p>A Ballerina function can have at most one rest parameter, and the rest parameter
- can take zero or more values. The rest parameter inside a function is equivalent to an array of
- the same type.</p>
+                            <p><p>A Ballerina function can have only one rest parameter and the rest parameter
+ can take zero or more values. The rest parameter inside a function is equivalent to a list of
+ the same type.
+ When values are passed for the rest parameter, other arguments also need to be passed as positional
+ arguments (i.e., they cannot be passed as named arguments).</p>
 </p>
 
                         </td>
@@ -246,9 +247,10 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printFruits(string separator,
-                     string title = &quot;Fruits: &quot;,
-                     string... concatStrings) {
+                                    <div class="highlight"><pre><code class=ballerina>function printDetails(string name,
+                      int age = 18,
+                      string... modules) {
+    string detailString = &quot;Name: &quot; + name + &quot;, Age: &quot; + age.toString();
 </code></pre></div>
 
                                 </td>
@@ -256,10 +258,10 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function takes one required parameter, one defaultable parameter and
- one rest parameter of type <code>string</code>. A function can have only one rest
+                                            <p>This function takes one required parameter, one defaultable parameter, and
+ one rest parameter of the type <code>string</code>. A function can have only one rest
  parameter. The rest parameter can take any number of values and is
- equivalent to an array of the same type.</p>
+ equivalent to a list of the same type.</p>
 
                                         </div>
                                     </div>
@@ -270,13 +272,39 @@
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string finalStr = &quot;&quot;;
-    int index = 0;
-    foreach var str in concatStrings {
+                                    <div class="highlight"><pre><code class=ballerina>    if (modules.length() == 0) {
+        io:println(detailString);
+        return;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int index = 0;
+    string moduleString = &quot;Module(s): &quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    foreach string module in modules {
         if (index == 0) {
-            finalStr = str;
+            moduleString += module;
         } else {
-            finalStr = finalStr + separator + str;
+            moduleString += &quot;, &quot; + module;
         }
         index += 1;
     }
@@ -291,7 +319,7 @@
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(title + finalStr);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(detailString, &quot;, &quot;, moduleString);
 }
 </code></pre></div>
 
@@ -316,7 +344,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Alice&quot;);
 </code></pre></div>
 
                                 </td>
@@ -335,7 +363,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;, &quot;Apples&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Bob&quot;, 20);
 </code></pre></div>
 
                                 </td>
@@ -343,8 +371,9 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the function by passing the required parameter, and
- one value for the rest parameter.</p>
+                                            <p>Call the function by passing the required parameter and
+ the defaultable parameter. Named arguments can also be used
+ since values are not passed for the rest parameter.</p>
 
                                         </div>
                                     </div>
@@ -355,7 +384,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;, title = &quot;Available Fruits: &quot;, &quot;Apples&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Corey&quot;, 19, &quot;Math&quot;);
 </code></pre></div>
 
                                 </td>
@@ -363,27 +392,9 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the function by passing the required parameter, defaultable
- parameter, and one value for the rest parameter.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;, &quot;Apples&quot;, &quot;Oranges&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the function by passing the required parameter, and multiple values
+                                            <p>Call the function by passing the required parameter, the defaultable
+ parameter, and one value for the rest parameter.
+ Arguments cannot be passed as named arguments since values are specified
  for the rest parameter.</p>
 
                                         </div>
@@ -395,8 +406,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;, title = &quot;Available Fruits: &quot;, &quot;Apples&quot;, &quot;Oranges&quot;,
-                &quot;Grapes&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    printDetails(&quot;Diana&quot;, 20, &quot;Math&quot;, &quot;Physics&quot;);
 </code></pre></div>
 
                                 </td>
@@ -404,28 +414,8 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the function by passing all three parameters.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printFruits(&quot;,&quot;, &quot;Apples&quot;, &quot;Oranges&quot;, title = &quot;Available Fruits: &quot;,
-                &quot;Grapes&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The placement of the defaultable parameters can be mixed with the rest
- parameters when invoking the function.</p>
+                                            <p>Call the function by passing the required parameter, defaultable parameter,
+ and multiple values for the rest parameter.</p>
 
                                         </div>
                                     </div>
@@ -436,8 +426,8 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] fruits = [&quot;Apples&quot;, &quot;Oranges&quot;, &quot;Grapes&quot;];
-    printFruits(&quot;,&quot;, title = &quot;Available Fruits: &quot;, ...fruits);
+                                    <div class="highlight"><pre><code class=ballerina>    string[] modules = [&quot;Math&quot;, &quot;Physics&quot;];
+    printDetails(&quot;Diana&quot;, 20, ...modules);
 }
 </code></pre></div>
 
@@ -472,15 +462,13 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run functions_with_rest_parameter.bal
-Fruits:
-Fruits: Apples
-Available Fruits: Apples
-Fruits: Apples,Oranges
-Available Fruits: Apples,Oranges,Grapes
-Available Fruits: Apples,Oranges,Grapes
-Available Fruits: Apples,Oranges,Grapes
+Name: Alice, Age: 18
+Name: Bob, Age: 20
+Name: Corey, Age: 19, Module(s): Math
+Name: Diana, Age: 20, Module(s): Math, Physics
+Name: Diana, Age: 20, Module(s): Math, Physics
 </code></pre></div>
 
                                 </td>

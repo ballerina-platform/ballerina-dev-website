@@ -103,7 +103,7 @@
     <span class="kt">int</span> <span class="nx">length</span><span class="p">;</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Integer array size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-    <span class="kt">json</span> <span class="nx">jsonArray</span> <span class="p">=</span> <span class="p">[</span>
+    <span class="kt">json</span><span class="p">[]</span> <span class="nx">jsonArray</span> <span class="p">=</span> <span class="p">[</span>
         <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span> <span class="p">},</span>
         <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neal&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
     <span class="p">];</span>
@@ -124,30 +124,21 @@
 <span class="s">                    &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;</span>
 <span class="s">                    &lt;!--Price: $10--&gt;</span>
 <span class="s">                  &lt;/book&gt;`</span><span class="p">;</span>
-    <span class="nx">length</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="o">*</span><span class="p">.</span><span class="nx">elements</span><span class="p">().</span><span class="nx">length</span><span class="p">();</span>
+    <span class="nx">length</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">().</span><span class="nx">elements</span><span class="p">().</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML child elements size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-    <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">tupleVar</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">);</span>
+    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">tupleVar</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">tupleVar</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
     <span class="nx">Student</span> <span class="nx">stu</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">17</span><span class="p">};</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">stu</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Field size in `Student` record: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">tbStudent</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span> <span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">fname</span><span class="p">,</span> <span class="nx">lname</span><span class="p">,</span> <span class="nx">age</span> <span class="p">},</span>
-        <span class="p">[</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Mary&quot;</span><span class="p">,</span> <span class="s">&quot;Popins&quot;</span> <span class="p">,</span> <span class="mi">17</span> <span class="p">},</span>
-          <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="mi">16</span> <span class="p">},</span>
-          <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Jim&quot;</span><span class="p">,</span> <span class="s">&quot;Carter&quot;</span><span class="p">,</span> <span class="mi">17</span> <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">};</span>
-    <span class="nx">length</span> <span class="p">=</span> <span class="nx">tbStudent</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Row count in table : &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span><span class="o">...</span><span class="p">;</span>
-<span class="p">};</span>
+<span class="p">|};</span>
 </pre></div>
 
             </div>
@@ -159,8 +150,8 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Length</h2>
-                            <p><p>Ballerina provides a built-in method <code>length()</code> that returns the length/size of the given value.
- This <code>length()</code> method is supported for <code>string</code>, <code>array</code>, <code>map</code>, <code>record</code>, <code>table</code>, <code>json</code>, <code>xml</code> and <code>tuple</code> types.</p>
+                            <p><p>Ballerina provides a <code>.length()</code> method for strings, arrays, tuples, maps, records, and xml,
+ which returns the length/size of the given value.</p>
 </p>
 
                         </td>
@@ -260,10 +251,6 @@
                         
                             
                         
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -305,7 +292,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an integer array with several integer elements.</p>
+                                            <p>Create an integer array with several integer elements.</p>
 
                                         </div>
                                     </div>
@@ -325,8 +312,8 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the length of the integer array created. The length is
- calculated using the <code>length()</code> function.</p>
+                                            <p>Print the length of the created integer array. The length is
+ retrieved using the <code>.length()</code> method.</p>
 
                                         </div>
                                     </div>
@@ -337,7 +324,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json jsonArray = [
+                                    <div class="highlight"><pre><code class=ballerina>    json[] jsonArray = [
         { &quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 31 },
         { &quot;name&quot;: &quot;Neal&quot;, &quot;age&quot;: 22 }
     ];
@@ -348,7 +335,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates a JSON array with several JSON elements.</p>
+                                            <p>Create a JSON array with several JSON elements.</p>
 
                                         </div>
                                     </div>
@@ -368,7 +355,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the length of the created JSON array.</p>
+                                            <p>Print the length of the created JSON array.</p>
 
                                         </div>
                                     </div>
@@ -390,7 +377,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an <code>int</code> constrained <code>map</code>.</p>
+                                            <p>Create an <code>int</code>-constrained <code>map</code>.</p>
 
                                         </div>
                                     </div>
@@ -410,7 +397,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the length of the created <code>map</code>.</p>
+                                            <p>Print the length of the created <code>map</code>.</p>
 
                                         </div>
                                     </div>
@@ -430,7 +417,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates a <code>string</code>.</p>
+                                            <p>Define a <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -450,7 +437,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the length of the <code>string</code>.</p>
+                                            <p>Print the length of the string.</p>
 
                                         </div>
                                     </div>
@@ -473,7 +460,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an XML element.</p>
+                                            <p>Create an XML element.</p>
 
                                         </div>
                                     </div>
@@ -484,7 +471,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = x1.*.elements().length();
+                                    <div class="highlight"><pre><code class=ballerina>    length = x1.getChildren().elements().length();
     io:println(&quot;XML child elements size: &quot;, length);
 </code></pre></div>
 
@@ -493,7 +480,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the number of content items in the XML element.</p>
+                                            <p>Print the number of content items in the XML element.</p>
 
                                         </div>
                                     </div>
@@ -504,7 +491,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    (int, string) tupleVar = (10, &quot;John&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    [int, string] tupleVar = [10, &quot;John&quot;];
 </code></pre></div>
 
                                 </td>
@@ -512,7 +499,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates a tuple with two members.</p>
+                                            <p>Define a tuple with two members.</p>
 
                                         </div>
                                     </div>
@@ -532,7 +519,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the size of the tuple i.e. the number of members in the tuple.</p>
+                                            <p>Print the size of the tuple (i.e., the number of members in the tuple).</p>
 
                                         </div>
                                     </div>
@@ -551,7 +538,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates a <code>record</code> of <code>Student</code> type</p>
+                                            <p>Create a record of the <code>Student</code> type.</p>
 
                                         </div>
                                     </div>
@@ -564,51 +551,6 @@
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    length = stu.length();
     io:println(&quot;Field size in `Student` record: &quot;, length);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This prints the number of fields of the <code>Student</code> record type.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Student&gt; tbStudent = table {
-        { key id, fname, lname, age },
-        [ { 1, &quot;Mary&quot;, &quot;Popins&quot; , 17 },
-          { 2, &quot;John&quot;, &quot;Doe&quot;, 16 },
-          { 3, &quot;Jim&quot;, &quot;Carter&quot;, 17 }
-        ]
-    };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates an in-memory <code>table</code> constrained by the <code>Student</code> type.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = tbStudent.length();
-    io:println(&quot;Row count in table : &quot;, length);
 }
 </code></pre></div>
 
@@ -617,7 +559,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the number of rows in the in-memory table.</p>
+                                            <p>Print the number of fields in the created <code>Student</code> record.</p>
 
                                         </div>
                                     </div>
@@ -628,13 +570,13 @@
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+                                    <div class="highlight"><pre><code class=ballerina>type Student record {|
     int id;
     string fname;
     string lname;
     int age;
     string...;
-};
+|};
 </code></pre></div>
 
                                 </td>
@@ -660,7 +602,7 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run length.bal
 Integer array size: 3
 JSON array size: 2
@@ -669,7 +611,6 @@ String size: 23
 XML child elements size: 2
 Tuple size: 2
 Field size in `Student` record: 4
-Row count in table : 3
 </code></pre></div>
 
                                 </td>

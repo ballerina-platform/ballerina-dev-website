@@ -101,7 +101,7 @@
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">cache</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">cache</span><span class="p">:</span><span class="nx">Cache</span> <span class="nx">cache</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">expiryTimeMillis</span> <span class="p">=</span> <span class="mi">4000</span><span class="p">);</span>
+    <span class="nx">cache</span><span class="p">:</span><span class="nx">Cache</span> <span class="nx">cache</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">4000</span><span class="p">);</span>
     <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cache</span><span class="p">.</span><span class="nx">hasKey</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)){</span>
@@ -241,7 +241,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    cache:Cache cache = new(expiryTimeMillis = 4000);
+                                    <div class="highlight"><pre><code class=ballerina>    cache:Cache cache = new(4000);
 </code></pre></div>
 
                                 </td>
@@ -249,7 +249,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates a new cache. The cache cleanup task runs every five seconds
+                                            <p>This creates a new cache. The cache cleanup task runs every 5 seconds
  and clears all the expired caches. In this example, the cache expiry time
  is set to four seconds in order to demonstrate how cache cleaning is
  carried out.</p>
@@ -271,7 +271,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This adds a new entry to the cache.</p>
+                                            <p>Adds a new entry to the cache.</p>
 
                                         </div>
                                     </div>
@@ -294,7 +294,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This fetches the cached value.</p>
+                                            <p>Fetches the cached value.</p>
 
                                         </div>
                                     </div>
@@ -341,7 +341,7 @@ import ballerina/runtime;
                                         <div>
                                             <p>The cache expires after 4 seconds. The cache cleanup task runs during the
  fifth second and cleans the cache while this thread is in the sleep mode.
- As a result, the value in the cache is null.</p>
+ As a result, the value in the cache becomes null.</p>
 
                                         </div>
                                     </div>
@@ -366,7 +366,7 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run cache.bal
 Name: Ballerina
 Name:

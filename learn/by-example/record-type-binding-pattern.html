@@ -102,39 +102,30 @@
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">Capital</span> <span class="nx">capital</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Capital</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">firstName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">personAge</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">personAge</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>
     <span class="nx">Person</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">age</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
     <span class="k">var</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">vFirstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">vPersonAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">vOtherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">vFirstName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">vPersonAge</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">vOtherDetails</span><span class="p">));</span>
-    <span class="nx">Employee</span> <span class="p">{|</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">empName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">empAge</span> <span class="p">|}</span> <span class="p">=</span> <span class="nx">getEmployee</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">empName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">empAge</span><span class="p">);</span>
-    <span class="k">var</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{|</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">|}</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span> <span class="o">+</span> <span class="nx">countryName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span> <span class="o">+</span> <span class="nx">capitalName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">vFirstName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">vPersonAge</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">vOtherDetails</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">}</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span><span class="p">,</span> <span class="nx">countryName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span><span class="p">,</span> <span class="nx">capitalName</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span>
-                      <span class="nx">occupation</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
+                      <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">getEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
-    <span class="nx">Employee</span> <span class="nx">employee</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">26</span> <span class="p">};</span>
-    <span class="k">return</span> <span class="nx">employee</span><span class="p">;</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
     <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span> <span class="p">};</span>
     <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span> <span class="p">};</span>
@@ -151,7 +142,7 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Record Type Binding Pattern</h2>
-                            <p><p>Record typed binding patterns are used in declaring and defining new variables by de-structuring fields in a record variable.
+                            <p><p>Record typed binding patterns are used in declaring and defining new variables by destructuring fields in a record variable.
  The record type binding pattern statement must have an assignment expression on the right hand side.</p>
 </p>
 
@@ -246,12 +237,6 @@
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -277,21 +262,6 @@
     int age;
     string country;
 };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
-    string name;
-    int age;
-|};
 </code></pre></div>
 
                                 </td>
@@ -345,9 +315,9 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person { name: firstName, age: personAge, ...otherDetails } = getPerson();
-    io:println(&quot;Name: &quot; + firstName);
-    io:println(&quot;Age: &quot; + personAge);
-    io:println(&quot;Other Details: &quot; + io:sprintf(&quot;%s&quot;, otherDetails));
+    io:println(&quot;Name: &quot;, firstName);
+    io:println(&quot;Age: &quot;, personAge);
+    io:println(&quot;Other Details: &quot;, otherDetails);
 </code></pre></div>
 
                                 </td>
@@ -355,11 +325,11 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This record type binding pattern will destructure a <code>record</code> of type <code>Person</code> and create three variables as follows:
+                                            <p>This record type binding pattern will destructure a <code>record</code> of the type <code>Person</code> and create three variables as follows:
  The value of the field <code>name</code> in the <code>Person</code> record will be set to a new <code>string</code> variable <code>firstName</code>.
  The value of the field <code>age</code> in the <code>Person</code> record will be set to a new <code>int</code> variable <code>personAge</code>.
  <code>...otherDetails</code> is a rest parameter. Since <code>Person</code> is an open record, a new <code>map&lt;anydata|error&gt;</code> variable
- <code>otherDetails</code> will be created with the remaining fields that have not been matched in the record binding pattern.</p>
+ <code>otherDetails</code> will be created (with the remaining fields that have not been matched) in the record binding pattern.</p>
 
                                         </div>
                                     </div>
@@ -371,8 +341,8 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person { name, age } = getPerson();
-    io:println(&quot;Name: &quot; + name);
-    io:println(&quot;Age: &quot; + age);
+    io:println(&quot;Name: &quot;, name);
+    io:println(&quot;Age: &quot;, age);
 </code></pre></div>
 
                                 </td>
@@ -380,8 +350,8 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If no variable name is given for a field, a variable will be created with the same name as the field.
- i.e. <code>Person {name, age}</code> is same as Person <code>{name: name, age: age}</code>.
+                                            <p>If a variable name is not given for a field, a variable will be created with the same name as the field.
+ i.e, <code>Person {name, age}</code> is same as Person <code>{name: name, age: age}</code>.
  Since a rest parameter is not given, all remaining fields are ignored.</p>
 
                                         </div>
@@ -414,7 +384,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Name: &quot; + vFirstName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Name: &quot;, vFirstName);
 </code></pre></div>
 
                                 </td>
@@ -422,7 +392,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>vFirstName</code> is inferred as <code>string</code>.</p>
+                                            <p>The type of <code>vFirstName</code> is inferred as <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -433,7 +403,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Age: &quot; + vPersonAge);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Age: &quot;, vPersonAge);
 </code></pre></div>
 
                                 </td>
@@ -441,7 +411,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>vPersonAge</code> is inferred as <code>int</code>.</p>
+                                            <p>The type of <code>vPersonAge</code> is inferred as <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -452,7 +422,7 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Other Details: &quot; + io:sprintf(&quot;%s&quot;, vOtherDetails));
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Other Details: &quot;, vOtherDetails);
 </code></pre></div>
 
                                 </td>
@@ -460,7 +430,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type of <code>vOtherDetails</code> will be <code>map&lt;anydata|error&gt;</code>.</p>
+                                            <p>The type of <code>vOtherDetails</code> will be <code>map&lt;anydata|error&gt;</code>.</p>
 
                                         </div>
                                     </div>
@@ -471,31 +441,9 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee {| name: empName, age: empAge |} = getEmployee();
-    io:println(&quot;Name: &quot; + empName);
-    io:println(&quot;Age: &quot; + empAge);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>{|</code> and <code>|}</code> delimiters specify that there should not be any other fields other than <code>name</code> and <code>age</code>, hence
- <code>Employee</code> should be a closed record.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var { name: countryName, capital: {| name: capitalName |} } = getCountry();
-    io:println(&quot;Country Name: &quot; + countryName);
-    io:println(&quot;Capital Name: &quot; + capitalName);
+                                    <div class="highlight"><pre><code class=ballerina>    var { name: countryName, capital: { name: capitalName } } = getCountry();
+    io:println(&quot;Country Name: &quot;, countryName);
+    io:println(&quot;Capital Name: &quot;, capitalName);
 }
 </code></pre></div>
 
@@ -504,7 +452,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Binding patterns are recursive in nature. <code>capital</code>, which is a field of type <code>Capital</code> in <code>Country</code> can also be
+                                            <p>Binding patterns are recursive in nature. <code>capital</code>, which is a field of the type <code>Capital</code> in <code>Country</code> can also be
  destructured as follows:</p>
 
                                         </div>
@@ -518,23 +466,8 @@
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
     Person person = { name: &quot;Peter&quot;, age: 28, country: &quot;Sri Lanka&quot;,
-                      occupation: &quot;Software Engineer&quot; };
+                      &quot;occupation&quot;: &quot;Software Engineer&quot; };
     return person;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getEmployee() returns Employee {
-    Employee employee = { name: &quot;John&quot;, age: 26 };
-    return employee;
 }
 </code></pre></div>
 
@@ -577,18 +510,16 @@
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run record_type_binding_pattern.bal
 Name: Peter
 Age: 28
-Other Details: {&quot;country&quot;:&quot;Sri Lanka&quot;, &quot;occupation&quot;:&quot;Software Engineer&quot;}
+Other Details: country=Sri Lanka occupation=Software Engineer
 Name: Peter
 Age: 28
 Name: Peter
 Age: 28
-Other Details: {&quot;country&quot;:&quot;Sri Lanka&quot;, &quot;occupation&quot;:&quot;Software Engineer&quot;}
-Name: John
-Age: 26
+Other Details: country=Sri Lanka occupation=Software Engineer
 Country Name: Sri Lanka
 Capital Name: Colombo
 </code></pre></div>

@@ -100,8 +100,10 @@
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">openapi</span><span class="p">;</span><span class="err">@</span><span class="nx">openapi</span><span class="p">:</span><span class="nx">ClientEndpoint</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span><span class="nd">@openapi:ClientConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">openapi</span><span class="p">;</span>
+<span class="err">@</span><span class="nx">openapi</span><span class="p">:</span><span class="nx">ClientEndpoint</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nd">@openapi:ClientConfig {</span>
     <span class="nx">generate</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
@@ -131,10 +133,10 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Client Generation</h2>
-                            <p><p>In this example, you generate a client for a Ballerina service.
+                            <p><p>This example generates a client for a Ballerina service.
  Add the <code>@openapi:ClientEndpoint</code> annotation to mark the endpoint(s) that are used for client generation.
  Add the <code>@openapi:ClientConfig {generate: true}</code> annotation to the service to enable client generation.
- The generated client can be found in <code>&lt;project.home&gt;/target/client/</code> directory.</p>
+ The generated client can be found in the <code>&lt;project.home&gt;/target/bin/client/</code> or <code>&lt;program.dir&gt;/client/</code> directory.</p>
 </p>
 
                         </td>
@@ -227,7 +229,7 @@ import ballerina/openapi;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@openapi:ClientEndpoint
@@ -237,10 +239,17 @@ listener http:Listener helloEp = new(9090);
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Add the <code>@openapi:ClientEndpoint</code> annotation to the listener that is to be used for client generation.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@openapi:ClientConfig {
@@ -254,6 +263,13 @@ service Hello on helloEp {
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Add the <code>@openapi:ClientConfig {generate: true}</code> annotation to the service to enable client generation for it.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -290,10 +306,6 @@ service Hello on helloEp {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -301,25 +313,14 @@ service Hello on helloEp {
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina build` command.
+# `.bal` file, and execute the `ballerina build` command.
 $ ballerina build client_generation.bal
 Compiling source
-    client_generation.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Generating executable
-    ./target/client_generation.balx
+        client_generation.bal 
+Generating executables
+        client_generation.jar
 </code></pre></div>
 
                                 </td>

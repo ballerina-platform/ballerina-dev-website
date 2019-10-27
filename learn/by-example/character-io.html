@@ -113,19 +113,21 @@
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occured while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occured while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">readableFieldResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sourceChannel</span> <span class="p">=</span>
-            <span class="nx">new</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">),</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+            <span class="nx">new</span><span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">writableFileResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
-            <span class="nx">new</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">),</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+            <span class="nx">new</span><span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Started to process the file.&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -285,7 +287,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads characters from the source channel.</p>
+                                            <p>Reads the characters from the source channel.</p>
 
                                         </div>
                                     </div>
@@ -308,7 +310,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes characters to the destination channel.</p>
+                                            <p>Writes the characters to the destination channel.</p>
 
                                         </div>
                                     </div>
@@ -322,7 +324,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
-        log:printError(&quot;Error occured while closing the channel: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
     }
 }
 </code></pre></div>
@@ -346,7 +348,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
-        log:printError(&quot;Error occured while closing the channel: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
     }
 }
 </code></pre></div>
@@ -367,11 +369,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+    io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
     io:ReadableCharacterChannel sourceChannel =
-            new(io:openReadableFile(&quot;./files/sample.txt&quot;), &quot;UTF-8&quot;);
+            new(readableFieldResult, &quot;UTF-8&quot;);
+    io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
     io:WritableCharacterChannel destinationChannel =
-            new(io:openWritableFile(&quot;./files/sampleResponse.txt&quot;), &quot;UTF-8&quot;);
+            new(writableFileResult, &quot;UTF-8&quot;);
     io:println(&quot;Started to process the file.&quot;);
 </code></pre></div>
 
@@ -397,7 +401,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Process the given <code>string</code>.</p>
+                                            <p>Processes the given <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -461,7 +465,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run character_io.bal
 Started to process the file.
 File processing complete.

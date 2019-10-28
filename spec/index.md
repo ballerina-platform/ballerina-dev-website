@@ -1,7 +1,6 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Website License
-permlink: spec/
 ---
 
 # Ballerina Platform Specifications

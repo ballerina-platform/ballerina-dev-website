@@ -114,40 +114,31 @@
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">write</span><span class="p">(</span><span class="kt">json</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wbc</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">write</span><span class="p">(</span><span class="kt">json</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">wch</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">wbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wch</span><span class="p">.</span><span class="nx">writeJson</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">closeWc</span><span class="p">(</span><span class="nx">wch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">closeWc</span><span class="p">(</span><span class="nx">wch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="nx">closeWc</span><span class="p">(</span><span class="nx">wch</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">read</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rbc</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">read</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted json | error {</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rbc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">rch</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">rbc</span><span class="p">,</span> <span class="s">&quot;UTF8&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">rch</span><span class="p">.</span><span class="nx">readJson</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">closeRc</span><span class="p">(</span><span class="nx">rch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">closeRc</span><span class="p">(</span><span class="nx">rch</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="nx">closeRc</span><span class="p">(</span><span class="nx">rch</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">filePath</span> <span class="p">=</span> <span class="s">&quot;./files/sample.json&quot;</span><span class="p">;</span>
-    <span class="kt">json</span> <span class="nx">j1</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;Store&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&quot;@id&quot;</span><span class="p">:</span> <span class="s">&quot;AST&quot;</span><span class="p">,</span>
-        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span>
-        <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s">&quot;street&quot;</span><span class="p">:</span> <span class="s">&quot;Main&quot;</span><span class="p">,</span>
-            <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;94&quot;</span>
-        <span class="p">},</span>
-        <span class="s">&quot;codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
+    <span class="kt">json</span> <span class="nx">j1</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="s">&quot;Store&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;@id&quot;</span><span class="p">:</span> <span class="s">&quot;AST&quot;</span><span class="p">,</span>
+            <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span>
+            <span class="s">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s">&quot;street&quot;</span><span class="p">:</span> <span class="s">&quot;Main&quot;</span><span class="p">,</span>
+                <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;94&quot;</span>
+            <span class="p">},</span>
+            <span class="s">&quot;codes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;8&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Preparing to write json file&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">wResult</span> <span class="p">=</span> <span class="nx">write</span><span class="p">(</span><span class="nx">j1</span><span class="p">,</span> <span class="nx">filePath</span><span class="p">);</span>
@@ -160,7 +151,7 @@
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while reading json: &quot;</span><span class="p">,</span>
                             <span class="nx">err</span> <span class="p">=</span> <span class="nx">rResult</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rResult</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rResult</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -176,7 +167,7 @@
                         <td class="cLeftTD">
                             <h2>JSON I/O</h2>
                             <p><p>This sample demonstrates how to read JSON content from a file and write JSON content
- to a file using character channel <code>readJson()</code> and <code>writeJson()</code> of the I/O API.</p>
+ to a file using the character channel, <code>readJson()</code>, and <code>writeJson()</code> of the I/O API.</p>
 </p>
 
                         </td>
@@ -339,7 +330,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function write(json content, string path) returns error? {
+                                    <div class="highlight"><pre><code class=ballerina>function write(json content, string path) returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -358,7 +349,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel wbc = io:openWritableFile(path);
+                                    <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel wbc = check io:openWritableFile(path);
 </code></pre></div>
 
                                 </td>
@@ -379,13 +370,8 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:WritableCharacterChannel wch = new(wbc, &quot;UTF8&quot;);
     var result = wch.writeJson(content);
-    if (result is error) {
-        closeWc(wch);
-        return result;
-    } else {
-        closeWc(wch);
-        return result;
-    }
+    closeWc(wch);
+    return result;
 }
 </code></pre></div>
 
@@ -405,7 +391,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function read(string path) returns json|error {
+                                    <div class="highlight"><pre><code class=ballerina>function read(string path) returns @tainted json | error {
 </code></pre></div>
 
                                 </td>
@@ -424,7 +410,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel rbc = io:openReadableFile(path);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel rbc = check io:openReadableFile(path);
 </code></pre></div>
 
                                 </td>
@@ -445,13 +431,8 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:ReadableCharacterChannel rch = new(rbc, &quot;UTF8&quot;);
     var result = rch.readJson();
-    if (result is error) {
-        closeRc(rch);
-        return result;
-    } else {
-        closeRc(rch);
-        return result;
-    }
+    closeRc(rch);
+    return result;
 }
 </code></pre></div>
 
@@ -484,15 +465,16 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j1 = { &quot;Store&quot;: {
-        &quot;@id&quot;: &quot;AST&quot;,
-        &quot;name&quot;: &quot;Anne&quot;,
-        &quot;address&quot;: {
-            &quot;street&quot;: &quot;Main&quot;,
-            &quot;city&quot;: &quot;94&quot;
-        },
-        &quot;codes&quot;: [&quot;4&quot;, &quot;8&quot;]
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    json j1 = {
+        &quot;Store&quot;: {
+            &quot;@id&quot;: &quot;AST&quot;,
+            &quot;name&quot;: &quot;Anne&quot;,
+            &quot;address&quot;: {
+                &quot;street&quot;: &quot;Main&quot;,
+                &quot;city&quot;: &quot;94&quot;
+            },
+            &quot;codes&quot;: [&quot;4&quot;, &quot;8&quot;]
+        }
     };
     io:println(&quot;Preparing to write json file&quot;);
 </code></pre></div>
@@ -502,7 +484,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates <code>json</code> content from <code>string</code>.</p>
+                                            <p>Creates the<code>json</code> content from the <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -525,7 +507,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes the content.</p>
+                                            <p>Writes the <code>json</code> content.</p>
 
                                         </div>
                                     </div>
@@ -541,7 +523,7 @@ import ballerina/log;
             log:printError(&quot;Error occurred while reading json: &quot;,
                             err = rResult);
         } else {
-            io:println(rResult);
+            io:println(rResult.toJsonString());
         }
     }
 }
@@ -552,7 +534,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads the content.</p>
+                                            <p>Reads the <code>json</code> content.</p>
 
                                         </div>
                                     </div>
@@ -577,7 +559,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run json_io.bal
 Preparing to write json file
 Preparing to read the content written

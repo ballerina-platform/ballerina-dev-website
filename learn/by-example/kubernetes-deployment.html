@@ -101,7 +101,7 @@
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kubernetes</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kubernetes</span><span class="p">;</span>
 <span class="nd">@kubernetes:Service {</span>
     <span class="nx">serviceType</span><span class="p">:</span> <span class="s">&quot;NodePort&quot;</span>
 <span class="p">}</span>
@@ -111,11 +111,11 @@
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;./security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">},</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;./security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -125,7 +125,8 @@
 <span class="p">}</span>
 <span class="nd">@kubernetes:Deployment {</span>
     <span class="nx">livenessProbe</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">image</span><span class="p">:</span> <span class="s">&quot;kubernetes:v.1.0&quot;</span><span class="p">}</span>
+    <span class="nx">image</span><span class="p">:</span> <span class="s">&quot;kubernetes:v.1.0&quot;</span>
+<span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/helloWorld&quot;</span>
 <span class="p">}</span>
@@ -144,13 +145,13 @@
         <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getConfigValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">instanceId</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">property</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">key</span> <span class="p">=</span> <span class="nx">untaint</span> <span class="nx">instanceId</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span class="nx">untaint</span> <span class="nx">property</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">defaultValue</span> <span class="p">=</span> <span class="s">&quot;Invalid User&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="s">`ballerina.conf`</span> <span class="nx">file</span> <span class="nx">with</span> <span class="nx">following</span> <span class="nx">content</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">directory</span> <span class="k">as</span> <span class="nx">kubernetes_deployment</span><span class="p">.</span><span class="nx">bal</span> <span class="nx">file</span><span class="p">.</span>
+    <span class="kt">string</span> <span class="nx">key</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="p">(</span><span class="nx">instanceId</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span class="nx">property</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="s">&quot;Invalid User&quot;</span><span class="p">);</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="s">`ballerina.conf`</span> <span class="nx">file</span> <span class="nx">with</span> <span class="nx">the</span> <span class="nx">following</span> <span class="nx">content</span> <span class="nx">in</span> <span class="nx">the</span> <span class="nx">same</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">which</span> <span class="nx">contains</span> <span class="nx">the</span> <span class="nx">kubernetes_deployment</span><span class="p">.</span><span class="nx">bal</span> <span class="nx">file</span><span class="p">.</span>
 <span class="p">[</span><span class="nx">john</span><span class="p">]</span>
 <span class="nx">userid</span><span class="p">=</span><span class="s">&quot;john@ballerina.com&quot;</span>
 <span class="nx">groups</span><span class="p">=</span><span class="s">&quot;apim,esb&quot;</span>
@@ -168,11 +169,16 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Kubernetes Deployment</h2>
-                            <p><p>Ballerina supports generating kubernetes artifacts based on annotations.
+                            <p><p>Ballerina supports generating Kubernetes artifacts based on annotations.
 A single Ballerina module is mapped to a single Kubernetes deployment.
 Minikube or Docker for Mac/Windows should be configured and
 Kubernetes should be enabled to run the example.
-This example deploys https service which retrieve values from config file, to Kubernetes.</p>
+This example deploys an HTTPS service, which retrieves values from a config file to Kubernetes.
+Before running the sample, create a directory named <code>security</code> inside current working directory
+from where the ballerina build command will be issued.
+Then copy the ballerinaKeystore.p12 and ballerinaTruststore.p12 files
+located in <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/">https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/</a>
+to the security folder.</p>
 </p>
 
                         </td>
@@ -220,7 +226,7 @@ This example deploys https service which retrieve values from config file, to Ku
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/kubernetes-deployment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerinax/kubernetes/tree/master/kubernetes-extension-examples/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -264,8 +270,6 @@ This example deploys https service which retrieve values from config file, to Ku
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -277,7 +281,7 @@ This example deploys https service which retrieve values from config file, to Ku
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/config;
 import ballerina/http;
 import ballerina/log;
-import ballerinax/kubernetes;
+import ballerina/kubernetes;
 </code></pre></div>
 
                                 </td>
@@ -297,7 +301,7 @@ import ballerinax/kubernetes;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add <code>@kubernetes:Service</code> to a listner endpoint to expose the endpoint as Kubernetes Service.</p>
+                                            <p>Add the <code>@kubernetes:Service</code> to a listner endpoint to expose the endpoint as a Kubernetes Service.</p>
 
                                         </div>
                                     </div>
@@ -336,7 +340,7 @@ import ballerinax/kubernetes;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add <code>@kubernetes:Ingress</code> to a listner endpoint to expose the endpoint as Kubernetes Ingress.</p>
+                                            <p>Add the <code>@kubernetes:Ingress</code> to a listner endpoint to expose the endpoint as a Kubernetes Ingress.</p>
 
                                         </div>
                                     </div>
@@ -370,11 +374,11 @@ listener http:Listener helloWorldEP = new(9090, config = {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    secureSocket: {
         keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            path: &quot;./security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         },
         trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            path: &quot;./security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -386,7 +390,7 @@ listener http:Listener helloWorldEP = new(9090, config = {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Ballerina automatically creates Kubernetes secrets for the keystore and truststore when <code>@kubernetes:Service</code>
+                                            <p>Ballerina automatically creates Kubernetes secrets for the keystore and truststore when the <code>@kubernetes:Service</code>
 annotation is added to the endpoint.</p>
 
                                         </div>
@@ -406,7 +410,7 @@ annotation is added to the endpoint.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add <code>@kubernetes:ConfigMap</code> annotation to a Ballerina service to mount configs to the container.</p>
+                                            <p>Add the <code>@kubernetes:ConfigMap</code> annotation to a Ballerina service to mount configs to the container.</p>
 
                                         </div>
                                     </div>
@@ -446,7 +450,7 @@ If a releative path is provided, the path should be releative to where the <code
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add <code>@kubernetes:Deployment</code> annotation to a Ballerna service to generate Kuberenetes Deployment for a Ballerina module.</p>
+                                            <p>Add the <code>@kubernetes:Deployment</code> annotation to a Ballerna service to generate Kuberenetes Deployment for a Ballerina module.</p>
 
                                         </div>
                                     </div>
@@ -484,7 +488,7 @@ If a releative path is provided, the path should be releative to where the <code
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Genrate Docker image with name <code>kubernetes:v1.0</code>.</p>
+                                            <p>Generate a Docker image with the name <code>kubernetes:v1.0</code>.</p>
 
                                         </div>
                                     </div>
@@ -493,25 +497,6 @@ If a releative path is provided, the path should be releative to where the <code
                             </tr>
                             
                             <tr class="cTR hover-enable">
-
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Uncomment and change the following values accordingly if you are using minikube.
-//,dockerHost:&ldquo;tcp://<minikube IP>:2376&rdquo;,
-//dockerCertPath:&rdquo;<HOME_DIRECTORY>/.minikube/certs&rdquo;</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>}
@@ -533,7 +518,7 @@ service helloWorld on helloWorldEP {
         var responseResult = outboundEP-&gt;respond(payload);
         if (responseResult is error) {
             error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err = err);
+            log:printError(&quot;Error sending response&quot;, err);
         }
     }
 }
@@ -542,6 +527,15 @@ service helloWorld on helloWorldEP {
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If you are using minikube, uncomment and change the following values accordingly.
+//dockerHost:&ldquo;tcp://<minikube IP>:2376&rdquo;,
+//dockerCertPath:&rdquo;<HOME_DIRECTORY>/.minikube/certs&rdquo;</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
@@ -549,8 +543,8 @@ service helloWorld on helloWorldEP {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function getConfigValue(string instanceId, string property) returns (string) {
-    string key = untaint instanceId + &quot;.&quot; + untaint property;
-    return config:getAsString(key, defaultValue = &quot;Invalid User&quot;);
+    string key = &lt;@untainted string&gt; (instanceId + &quot;.&quot; + property);
+    return config:getAsString(key, &quot;Invalid User&quot;);
 }
 </code></pre></div>
 
@@ -616,6 +610,14 @@ service helloWorld on helloWorldEP {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -624,7 +626,7 @@ service helloWorld on helloWorldEP {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Create a `ballerina.conf` file with following content in the same directory as kubernetes_deployment.bal file.
+                                    <div class="highlight"><pre><code class=shell-session># Create a `ballerina.conf` file with the following content in the same directory, which contains the kubernetes_deployment.bal file.
 [john]
 userid=&quot;john@ballerina.com&quot;
 groups=&quot;apim,esb&quot;
@@ -645,7 +647,9 @@ groups=&quot;esb&quot;
                                     <div class="highlight"><pre><code class=shell-session># Build the ballerina program
 $ ballerina build kubernetes_deployment.bal
 Compiling source
-    kubernetes_deployment.bal
+	kubernetes_deployment.bal
+Generating executables
+	kubernetes_deployment.jar
 </code></pre></div>
 
                                 </td>
@@ -657,14 +661,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Generating executable
-    kubernetes_deployment.balx
-        @kubernetes:Service                      - complete 1/1
-        @kubernetes:Ingress                      - complete 1/1
-        @kubernetes:Secret                       - complete 1/1
-        @kubernetes:ConfigMap                    - complete 1/1
-        @kubernetes:Deployment                   - complete 1/1
-        @kubernetes:Docker                       - complete 3/3
+                                    <div class="highlight"><pre><code class=shell-session>Generating artifacts...
 </code></pre></div>
 
                                 </td>
@@ -676,8 +673,12 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        Run the following command to deploy the Kubernetes artifacts:
-        kubectl apply -f ./kubernetes
+                                    <div class="highlight"><pre><code class=shell-session>	@kubernetes:Service 			 - complete 1/1
+	@kubernetes:Ingress 			 - complete 1/1
+	@kubernetes:ConfigMap 			 - complete 1/1
+	@kubernetes:Deployment 			 - complete 1/1
+	@kubernetes:Docker 			 - complete 2/2 
+	@kubernetes:Helm 			 - complete 1/1
 </code></pre></div>
 
                                 </td>
@@ -689,7 +690,33 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify the docker image is generated
+                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy the Kubernetes artifacts: 
+	kubectl apply -f ./kubernetes
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to install the application using Helm: 
+	helm install --name kubernetes-deployment-deployment ./kubernetes-deployment-deployment
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Verify the Docker image is generated
 $ docker images
 REPOSITORY  TAG      IMAGE ID            CREATED             SIZE
 kubernetes  v1.0   6c0a26a62545        2 seconds ago       127MB
@@ -704,7 +731,7 @@ kubernetes  v1.0   6c0a26a62545        2 seconds ago       127MB
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run generated docker image
+                                    <div class="highlight"><pre><code class=shell-session># Run the generated Docker image
 $ kubectl apply -f ./kubernetes/
 service/helloworldep-svc created
 ingress.extensions/helloworldep-ingress created
@@ -722,7 +749,7 @@ deployment.extensions/kubernetes-deployment-deployment created
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify the service, pods &amp; config-maps are deployed
+                                    <div class="highlight"><pre><code class=shell-session># Verify if the service, pods, &amp; config-maps are deployed
 $ kubectl get pods
 NAME                                     READY     STATUS   RESTARTS   AGE
 kubernetes-deployment-5858fd78d4-lnz8n   1/1       Running   0         20s
@@ -793,7 +820,7 @@ $ curl https://localhost:&lt;32417&gt;/helloWorld/config/jane -k
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If you are using minikube, IP address should be changed according to output of `minikube ip` command.
+                                    <div class="highlight"><pre><code class=shell-session># If you are using minikube, IP address should be changed according to the output of the `minikube ip` command.
 $ minikube ip
 192.168.99.100
 </code></pre></div>

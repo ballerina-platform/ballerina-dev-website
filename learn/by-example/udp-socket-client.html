@@ -102,34 +102,37 @@
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">socket</span><span class="p">:</span><span class="nx">UdpClient</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello from UDP client&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">c1</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toByteArray</span><span class="p">(</span><span class="s">&quot;utf-8&quot;</span><span class="p">);</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">c1</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
     <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span>
         <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">sendTo</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="p">{</span> <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">48826</span> <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">panic</span> <span class="nx">sendResult</span><span class="p">;</span>
+        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">sendResult</span><span class="p">;</span>
+        <span class="nx">panic</span> <span class="nx">e</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">receiveFrom</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">(</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Address</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">byteChannel</span> <span class="p">=</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Address</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
-            <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">characterChannel</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="nx">untaint</span> <span class="nx">str</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
+                <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">characterChannel</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">str</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occured while receiving the data &quot;</span><span class="p">,</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while receiving the data &quot;</span><span class="p">,</span>
             <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occured while closing the connection &quot;</span><span class="p">,</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while closing the connection &quot;</span><span class="p">,</span>
             <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -145,7 +148,7 @@
                         <td class="cLeftTD">
                             <h2>Basic UDP Client Socket</h2>
                             <p><p>The UDP Client is used to connect to a remote UDP host.
- This sample demonstrates how the send data to remote server and print the echo response.</p>
+ This sample demonstrates how to send data to a remote server and print the echoed response.</p>
 </p>
 
                         </td>
@@ -265,7 +268,7 @@ import ballerina/socket;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    socket:UdpClient socketClient = new;
     string msg = &quot;Hello from UDP client&quot;;
-    byte[] c1 = msg.toByteArray(&quot;utf-8&quot;);
+    byte[] c1 = msg.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -293,7 +296,8 @@ import ballerina/socket;
     if (sendResult is int) {
         io:println(&quot;Number of bytes written: &quot;, sendResult);
     } else {
-        panic sendResult;
+        error e = sendResult;
+        panic e;
     }
 </code></pre></div>
 
@@ -315,20 +319,22 @@ import ballerina/socket;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;receiveFrom();
-    if (result is (byte[], int, socket:Address)) {
-        var (content, length, address) = result;
-        io:ReadableByteChannel byteChannel =
+    if (result is [byte[], int, socket:Address]) {
+        var [content, length, address] = result;
+        var byteChannel =
             io:createReadableChannel(content);
-        io:ReadableCharacterChannel characterChannel =
-            new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
-        var str = characterChannel.read(60);
-        if (str is string) {
-            io:println(&quot;Received: &quot;, untaint str);
-        } else {
-            io:println(&quot;Error: &quot;, str.detail().message);
+        if (byteChannel is io:ReadableByteChannel) {
+            io:ReadableCharacterChannel characterChannel =
+                new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
+            var str = characterChannel.read(60);
+            if (str is string) {
+                io:println(&quot;Received: &quot;, &lt;@untainted&gt; str);
+            } else {
+                io:println(&quot;Error: &quot;, str.detail()?.message);
+            }
         }
     } else {
-        io:println(&quot;An error occured while receiving the data &quot;,
+        io:println(&quot;An error occurred while receiving the data &quot;,
             result);
     }
 </code></pre></div>
@@ -355,7 +361,7 @@ import ballerina/socket;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    var closeResult = socketClient-&gt;close();
     if (closeResult is error) {
-        io:println(&quot;An error occured while closing the connection &quot;,
+        io:println(&quot;An error occurred while closing the connection &quot;,
             closeResult);
     }
 }
@@ -395,7 +401,7 @@ import ballerina/socket;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the client, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
+# `.bal` file, and execute the `ballerina run` command.
 $ ballerina run udp_socket_client.bal
 </code></pre></div>
 
@@ -408,9 +414,9 @@ $ ballerina run udp_socket_client.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># This will print upon successful write.
+                                    <div class="highlight"><pre><code class=shell-session># This will print the below output upon a successful write.
 Number of bytes written: 21
-# Print the response that is return from the server as a echo.
+# Print the response that is returned from the server as an echo.
 Received: Hello from UDP client
 </code></pre></div>
 

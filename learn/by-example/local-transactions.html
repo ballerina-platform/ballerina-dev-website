@@ -99,11 +99,9 @@
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">h2</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
-<span class="nx">h2</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
-    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;./local-transactions/&quot;</span><span class="p">,</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Testdb&quot;</span><span class="p">,</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
@@ -117,8 +115,8 @@
 <span class="s">                                     VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, MON_SALARY)</span>
 <span class="s">                                 VALUES (1, 2500)&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted count: &quot;</span> <span class="o">+</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted count: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">abort</span><span class="p">;</span>
             <span class="p">}</span>
@@ -137,16 +135,16 @@
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table SALARY&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">stopRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">stopRet</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stopRet</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stopRet</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span> <span class="o">+</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span> <span class="o">+</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
     <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">H2</span> <span class="nx">DB</span> <span class="nx">connection</span> <span class="nx">properties</span> <span class="k">as</span> <span class="nx">required</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -159,12 +157,12 @@
                         <td class="cLeftTD">
                             <h2>Local Transactions</h2>
                             <p><p>A Ballerina transaction is a series of data manipulation statements
- that must either fully complete or fully fail, thereby leaving the
- system in a consistent state. This sample uses H2 database, which is
+ that must either fully complete or fully fail, thereby, leaving the
+ system in a consistent state. This sample uses an H2 database, which is
  created when running the sample. Prior to running this sample,
- change the DB connection properties as required.
- Ballerina transactions are at experimental stage,
- please use  &ndash;experimental flag to enable them.</p>
+ the DB connection properties need to be changed as required.
+ Ballerina transactions are at the experimental stage,
+ Thus, use the &ndash;experimental flag to enable them.</p>
 </p>
 
                         </td>
@@ -275,8 +273,7 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/h2;
-import ballerina/sql;
+import ballerinax/java.jdbc;
 </code></pre></div>
 
                                 </td>
@@ -288,9 +285,8 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>h2:Client testDB = new ({
-    path: &quot;./local-transactions/&quot;,
-    name: &quot;Testdb&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+    url: &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
     username: &quot;test&quot;,
     password: &quot;test&quot;,
     poolOptions: { maximumPoolSize: 5 }
@@ -302,7 +298,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an endpoint for H2 database. Change the DB details before running the sample.</p>
+                                            <p>Creates an endpoint for the H2 database. Changes the DB details before running the example.</p>
 
                                         </div>
                                     </div>
@@ -335,7 +331,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the tables required for the transaction.</p>
+                                            <p>Creates the tables that are required for the transaction.</p>
 
                                         </div>
                                     </div>
@@ -367,14 +363,14 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here is the <code>transaction</code> block. Any transacted action within the <code>transaction</code> block
- may return errors like backend DB errors, connection pool errors, etc. User can
- decide whether to <code>abort</code> or <code>retry</code> based on the error returned. If you do not
- explicitly <code>abort</code> or <code>retry</code> on a returned error, transaction will be automatically
+                                            <p>The below is a <code>transaction</code> block. Any transacted action within the <code>transaction</code> block
+ may return errors such as backend DB errors, connection pool errors etc. The user can
+ decide whether to <code>abort</code> or <code>retry</code> based on the returned error. If you do not
+ explicitly <code>abort</code> or <code>retry</code> a returned error, the transaction will be automatically
  retried until the retry count is reached and aborted.
- The retry count that is given with <code>retries</code> is the number of times the transaction
- is retried before aborting it. By default, a transaction is tried three times before
- aborting. Only integer literals or constants are allowed for <code>retry count</code>.</p>
+ The retry count that is given via <code>retries</code> is the number of times the transaction
+ is retried before it being aborted. By default, a transaction is tried three times before
+ aborting it. Only integer literals or constants are allowed as the <code>retry count</code>.</p>
 
                                         </div>
                                     </div>
@@ -394,7 +390,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the first remote function participant in the transaction.</p>
+                                            <p>This is the first remote function participant of the transaction.</p>
 
                                         </div>
                                     </div>
@@ -407,8 +403,8 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO SALARY (ID, MON_SALARY)
                                  VALUES (1, 2500)&quot;);
-        if (ret is sql:UpdateResult) {
-            io:println(&quot;Inserted count: &quot; + ret.updatedRowCount);
+        if (ret is jdbc:UpdateResult) {
+            io:println(&quot;Inserted count: &quot;, ret.updatedRowCount);
 </code></pre></div>
 
                                 </td>
@@ -416,7 +412,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the second remote function participant in the transaction.</p>
+                                            <p>This is the second remote function participant of the transaction.</p>
 
                                         </div>
                                     </div>
@@ -480,7 +476,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The end curly bracket marks the end of the transaction, and the transaction will
+                                            <p>The end curly bracket marks the end of the transaction and the transaction will
  be committed or rolled back at this point.</p>
 
                                         </div>
@@ -503,7 +499,7 @@ import ballerina/sql;
                                         <div>
                                             <p>The <code>onretry</code> block will be executed whenever the transaction is retried until it
  reaches the retry count. A transaction could be retried if it fails due to an
- exception or throw statement, or from an explicit retry statement.</p>
+ exception or throw statement or from an explicit retry statement.</p>
 
                                         </div>
                                     </div>
@@ -523,7 +519,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Any action that needs to perform once the transaction is committed should go here.</p>
+                                            <p>Any action that needs to be performed once the transaction is committed should be added as shown below.</p>
 
                                         </div>
                                     </div>
@@ -543,7 +539,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Any action that needs to perform if the transaction is aborted should go here.</p>
+                                            <p>Any action that needs to perform if the transaction is aborted should be added as shown below.</p>
 
                                         </div>
                                     </div>
@@ -563,7 +559,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Drop the tables.</p>
+                                            <p>Drops the tables.</p>
 
                                         </div>
                                     </div>
@@ -589,7 +585,7 @@ import ballerina/sql;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var stopRet = testDB.stop();
     if (stopRet is error) {
-        io:println(stopRet.detail().message);
+        io:println(stopRet.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>
@@ -599,7 +595,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Close the connection pool.</p>
+                                            <p>Closes the connection pool.</p>
 
                                         </div>
                                     </div>
@@ -610,11 +606,11 @@ import ballerina/sql;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(sql:UpdateResult|error returned, string message) {
-    if (returned is sql:UpdateResult) {
-        io:println(message + &quot; status: &quot; + returned.updatedRowCount);
+                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|error returned, string message) {
+    if (returned is jdbc:UpdateResult) {
+        io:println(message + &quot; status: &quot;, returned.updatedRowCount);
     } else {
-        io:println(message + &quot; failed: &quot; + returned.reason());
+        io:println(message + &quot; failed: &quot;, returned.reason());
     }
 }
 </code></pre></div>
@@ -624,7 +620,7 @@ import ballerina/sql;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Function to handle return of the update operation.</p>
+                                            <p>This function handles the return of the update operation.</p>
 
                                         </div>
                                     </div>
@@ -640,6 +636,10 @@ import ballerina/sql;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -647,19 +647,32 @@ import ballerina/sql;
                             
                             <tr class="cTR cOutputTr">
 
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Before running this sample, change the H2 DB connection properties as required.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run  --experimental local_transactions.bal
-[ballerina/http] started HTTP/WS endpoint 172.17.0.1:49479
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run --experimental local_transactions.bal
+[ballerina/http] started HTTP/WS listener 172.17.0.1:49479
 Create CUSTOMER table status: 0
 Create SALARY table status: 0
-2018-12-04 20:16:37,124 INFO  [ballerina/log] - Created transaction: 1fba678d-d677-4301-bd1b-a7fa60664f6a
+2018-12-04 20:16:37,124 INFO  [ballerina/transactions] - Created transaction: 1fba678d-d677-4301-bd1b-a7fa60664f6a
 Inserted count: 1
-2018-12-04 20:16:37,137 INFO  [ballerina/log] - Running 2-phase commit for transaction: 1fba678d-d677-4301-bd1b-a7fa60664f6a:$anon$.$1
+2018-12-04 20:16:37,137 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 1fba678d-d677-4301-bd1b-a7fa60664f6a:$anon$.$1
 Transaction committed
 Drop table CUSTOMER status: 0
 Drop table SALARY status: 0
+[ballerina/http] started HTTP/WS listener 10.100.7.118:64298
 </code></pre></div>
 
                                 </td>

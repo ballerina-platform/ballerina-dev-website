@@ -99,15 +99,14 @@
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
 <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-        <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
-        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
-        <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
-    <span class="p">});</span>
+    <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
+    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+    <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+<span class="p">});</span>
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
@@ -127,44 +126,58 @@
             <span class="s">&quot;firstname&quot;</span><span class="p">:</span> <span class="s">&quot;James&quot;</span><span class="p">,</span>
             <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">12</span>
         <span class="p">}]</span>
-    <span class="p">};</span>
-    <span class="kt">int</span> <span class="nx">datalen</span> <span class="p">=</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">student</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
-    <span class="nx">myBatchType</span><span class="p">[][]</span> <span class="nx">dataBatch</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="kt">json</span><span class="p">[]</span> <span class="nx">students</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span><span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">student</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="p">(</span><span class="k">var</span> <span class="nx">studentData</span> <span class="nx">in</span> <span class="nx">students</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">studentData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-        <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">studentData</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>        <span class="nx">myBatchType</span><span class="err">?</span><span class="p">[]</span> <span class="nx">dataRow</span> <span class="p">=</span> <span class="p">[</span><span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">];</span>
-        <span class="nx">dataBatch</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dataRow</span><span class="p">;</span>
-        <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">};</span>    <span class="kt">int</span> <span class="nx">datalen</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">student</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">students</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="nx">datalen</span> <span class="p">=</span> <span class="nx">students</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
+    <span class="p">}</span>    <span class="nx">myBatchType</span><span class="p">[][]</span> <span class="nx">dataBatch</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">students</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="p">(</span><span class="k">var</span> <span class="nx">studentData</span> <span class="nx">in</span> <span class="nx">students</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">studentData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+            <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">studentData</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>            <span class="nx">myBatchType</span><span class="err">?</span><span class="p">[]</span> <span class="nx">dataRow</span> <span class="p">=</span> <span class="p">[</span><span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">];</span>
+            <span class="nx">dataBatch</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">dataRow</span><span class="p">;</span>
+            <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">retBatch</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">batchUpdate</span><span class="p">(</span><span class="s">&quot;INSERT INTO student</span>
-<span class="s">                    (age,name) VALUES (?,?)&quot;</span><span class="p">,</span> <span class="o">...</span><span class="nx">dataBatch</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">retBatch</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">[])</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch 1 update counts: &quot;</span> <span class="o">+</span> <span class="nx">retBatch</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch 2 update counts: &quot;</span> <span class="o">+</span> <span class="nx">retBatch</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">BatchUpdateResult</span> <span class="nx">retBatch</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">batchUpdate</span><span class="p">(</span><span class="s">&quot;INSERT INTO student</span>
+<span class="s">                    (age,name) VALUES (?,?)&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="o">...</span><span class="nx">dataBatch</span><span class="p">);</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">retBatch</span><span class="p">.</span><span class="nx">returnedError</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch update operation failed:&quot;</span><span class="p">,</span>
+                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch update operation failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retBatch</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch 1 update counts: &quot;</span><span class="p">,</span> <span class="nx">retBatch</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch 2 update counts: &quot;</span><span class="p">,</span> <span class="nx">retBatch</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="nx">anydata</span><span class="p">[]</span><span class="err">?</span> <span class="nx">generatedKeys</span> <span class="p">=</span> <span class="nx">retBatch</span><span class="p">.</span><span class="nx">generatedKeys</span><span class="p">[</span><span class="s">&quot;GENERATED_KEY&quot;</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">generatedKeys</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="nx">key1</span> <span class="p">=</span> <span class="nx">generatedKeys</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="nx">key2</span> <span class="p">=</span> <span class="nx">generatedKeys</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+            <span class="kt">int</span> <span class="nx">key3</span> <span class="p">=</span> <span class="nx">generatedKeys</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated keys are: &quot;</span> <span class="p">,</span> <span class="nx">key1</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="nx">key2</span><span class="p">,</span> <span class="s">&quot; and &quot;</span><span class="p">,</span> <span class="nx">key3</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">checkData</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe update operation - Drop the student table&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE student&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table student&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span> <span class="o">+</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">returned</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">checkData</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">dtReturned</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student&quot;</span><span class="p">,</span> <span class="nx">Student</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">dtReturned</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in students table:&quot;</span><span class="p">);</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">dtReturned</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student:&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student:&quot;</span><span class="p">,</span> <span class="nx">row</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">,</span> <span class="nx">row</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">,</span> <span class="nx">row</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span>
-                <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">dtReturned</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">dtReturned</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span><span class="p">,</span>
+                 <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -179,8 +192,6 @@
                         <td class="cLeftTD">
                             <h2>JDBC Client Batch Update</h2>
                             <p><p>This example demonstrates how to execute batch update using JDBC Client.
- For MYSQL and H2 you could use corresponding MYSQL and H2 clients
- implemented specifically for each of them.
  This sample uses MySQL DB. Before running the sample, copy the
  MySQL JDBC driver to the <code>BALLERINA_HOME/bre/lib</code> folder and change the DB
  connection properties as required.</p>
@@ -231,7 +242,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-client-batch-update/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerinax/jdbc/tree/master/jdbc-extension-examples/examples/jdbc-client-batch-update/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -283,6 +294,10 @@
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -292,8 +307,7 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/sql;
-import ballerinax/jdbc;
+import ballerinax/java.jdbc;
 </code></pre></div>
 
                                 </td>
@@ -306,12 +320,12 @@ import ballerinax/jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new({
-        url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
-        username: &quot;test&quot;,
-        password: &quot;test&quot;,
-        poolOptions: { maximumPoolSize: 5 },
-        dbOptions: { useSSL: false }
-    });
+    url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
+    username: &quot;test&quot;,
+    password: &quot;test&quot;,
+    poolOptions: { maximumPoolSize: 5 },
+    dbOptions: { useSSL: false }
+});
 </code></pre></div>
 
                                 </td>
@@ -422,12 +436,25 @@ import ballerinax/jdbc;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int datalen = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int datalen = jsonMsg.student.length();
-    myBatchType[][] dataBatch = [];
-    int i = 0;
+                                    <div class="highlight"><pre><code class=ballerina>    json|error students = jsonMsg.student;
+    if (students is json[]) {
+        datalen = students.length();
+    }
 </code></pre></div>
 
                                 </td>
@@ -446,10 +473,8 @@ import ballerinax/jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] students = &lt;json[]&gt;jsonMsg.student;
-    foreach (var studentData in students) {
-        string name = studentData.firstname.toString();
-        int age = &lt;int&gt;studentData.age;
+                                    <div class="highlight"><pre><code class=ballerina>    myBatchType[][] dataBatch = [];
+    int i = 0;
 </code></pre></div>
 
                                 </td>
@@ -461,9 +486,25 @@ import ballerinax/jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        myBatchType?[] dataRow = [age, name];
-        dataBatch[i] = dataRow;
-        i = i + 1;
+                                    <div class="highlight"><pre><code class=ballerina>    if (students is json[]) {
+        foreach (var studentData in students) {
+            string name = studentData.firstname.toString();
+            int age = &lt;int&gt;studentData.age;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            myBatchType?[] dataRow = [age, name];
+            dataBatch[i] = dataRow;
+            i = i + 1;
+        }
     }
 </code></pre></div>
 
@@ -476,13 +517,22 @@ import ballerinax/jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student
-                    (age,name) VALUES (?,?)&quot;, ...dataBatch);
-    if (retBatch is int[]) {
-        io:println(&quot;Batch 1 update counts: &quot; + retBatch[0]);
-        io:println(&quot;Batch 2 update counts: &quot; + retBatch[1]);
+                                    <div class="highlight"><pre><code class=ballerina>    jdbc:BatchUpdateResult retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student
+                    (age,name) VALUES (?,?)&quot;, false, ...dataBatch);
+    error? e = retBatch.returnedError;
+    if (e is error) {
+        io:println(&quot;Batch update operation failed:&quot;,
+                    &lt;string&gt; e.detail()[&quot;message&quot;]);
     } else {
-        io:println(&quot;Batch update operation failed: &quot; + &lt;string&gt;retBatch.detail().message);
+        io:println(&quot;Batch 1 update counts: &quot;, retBatch.updatedRowCount[0]);
+        io:println(&quot;Batch 2 update counts: &quot;, retBatch.updatedRowCount[1]);
+        anydata[]? generatedKeys = retBatch.generatedKeys[&quot;GENERATED_KEY&quot;];
+        if (generatedKeys is int[]) {
+            int key1 = generatedKeys[0];
+            int key2 = generatedKeys[1];
+            int key3 = generatedKeys[2];
+            io:println(&quot;Generated keys are: &quot; , key1, &quot;, &quot;, key2, &quot; and &quot;, key3);
+        }
     }
 </code></pre></div>
 
@@ -538,11 +588,12 @@ import ballerinax/jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(sql:UpdateResult|error returned, string message) {
-    if (returned is sql:UpdateResult) {
-        io:println(message + &quot; status: &quot; + returned.updatedRowCount);
+                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
+    if (returned is jdbc:UpdateResult) {
+        io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {
-        io:println(message + &quot; failed: &quot; + &lt;string&gt;returned.detail().message);
+        error err = returned;
+        io:println(message, &quot; failed: &quot;, &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>
@@ -597,11 +648,12 @@ import ballerinax/jdbc;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Data in students table:&quot;);
         foreach var row in dtReturned {
-            io:println(&quot;Student:&quot; + row.id + &quot;|&quot; + row.name + &quot;|&quot; + row.age);
+            io:println(&quot;Student:&quot;, row.id, &quot;|&quot;, row.name, &quot;|&quot;, row.age);
         }
     } else {
-        io:println(&quot;Select data from student table failed: &quot;
-                + &lt;string&gt;dtReturned.detail().message);
+        error err = dtReturned;
+        io:println(&quot;Select data from student table failed: &quot;,
+                 &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>
@@ -646,6 +698,7 @@ The update operation - Creating a table:
 Create student table status: 0
 Batch 1 update counts: 1
 Batch 2 update counts: 1
+Generated keys are: 1, 2 and 3
 Data in students table:
 Student:1|Peter|10
 Student:2|John|15

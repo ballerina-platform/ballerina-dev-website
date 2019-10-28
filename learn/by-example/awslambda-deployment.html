@@ -177,7 +177,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/awslambda-deployment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerinax/awslambda/tree/master/awslambda-examples/examples/aws-lambda-deployment/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -363,9 +363,9 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the AWS Lambda functions
 $ ./ballerina build aws_lambda_deployment.bal
 Compiling source
-    aws_lambda_deployment.bal
-Generating executable
-    aws_lambda_deployment.balx
+	aws_lambda_deployment.bal
+Generating executables
+	aws_lambda_deployment-executable.jar
 	@awslambda:Function: echo, uuid, ctxinfo
 </code></pre></div>
 
@@ -378,7 +378,7 @@ Generating executable
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        The Ballerina AWS Lambda layer information can be found at https://ballerina.io/deployment/aws-lambda.
+                                    <div class="highlight"><pre><code class=shell-session>	The Ballerina AWS Lambda layer information can be found at https://ballerina.io/deployment/aws-lambda.
 </code></pre></div>
 
                                 </td>
@@ -391,7 +391,7 @@ Generating executable
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following commands to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --timeout 10 --memory-size 1024
+	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment-executable.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --timeout 10 --memory-size 1024
 	aws lambda update-function-configuration --function-name &lt;FUNCTION_NAME&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
 </code></pre></div>
 

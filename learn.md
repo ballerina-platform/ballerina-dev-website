@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Let’s learn Ballerina!
-
+permlink: learn/
 ---
 
 <h1>Let’s learn Ballerina!</h1>

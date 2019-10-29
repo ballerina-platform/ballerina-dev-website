@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
     <script src="../../html-template-resources/semantic.min.js"></script>
-    <script src="../../vs/monaco.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
 
 </head>
 
@@ -52,7 +52,7 @@
             <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
             <div class="primary-list">
                 <h3>Clients</h3>
@@ -60,10 +60,6 @@
                     
                         <li class="active active-item">
                             <a href="Client.html">Client</a> 
-                        </li>
-                    
-                        <li >
-                            <a href="JdbcClient.html">JdbcClient</a> 
                         </li>
                     
                 </ul>
@@ -82,20 +78,12 @@
         </li>
         
         
-            <li>
-                <a  data="objects" href="../../java.jdbc/index.html#objects">Objects</a>
-            </li>
-        
         
             <li>
                 <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
             </li>
         
         
-        
-            <li>
-                <a data="functions" href="../../java.jdbc/index.html#functions">Functions</a>
-            </li>
         
         
             <li>
@@ -347,7 +335,7 @@
                 <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
                 <div class="primary-list">
                     <h3>Clients</h3>
@@ -355,10 +343,6 @@
                         
                             <li class="active active-item">
                                 <a href="Client.html">Client</a>
-                            </li>
-                        
-                            <li >
-                                <a href="JdbcClient.html">JdbcClient</a>
                             </li>
                         
                     </ul>
@@ -377,20 +361,12 @@
         </li>
         
         
-            <li>
-                <a  data="objects" href="../../java.jdbc/index.html#objects">Objects</a>
-            </li>
-        
         
             <li>
                 <a data="clients" href="../../java.jdbc/index.html#clients">Clients</a>
             </li>
         
         
-        
-            <li>
-                <a data="functions" href="../../java.jdbc/index.html#functions">Functions</a>
-            </li>
         
         
             <li>
@@ -699,14 +675,14 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="update"><a
                                             class="functions" href="#update">update</a></td>
-                                    <td class="module-desc"><p>The update remote function implementation for JDBC Client to update data and schema of the database.</p>
+                                    <td class="module-desc"><p>The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="batchUpdate"><a
                                             class="functions" href="#batchUpdate">batchUpdate</a></td>
-                                    <td class="module-desc"><p>The batchUpdate remote function implementation for JDBC Client to batch data insert.</p>
+                                    <td class="module-desc"><p>The batchUpdate remote function implementation for JDBC Client to execute batch operations.</p>
 </td>
                                 </tr>
                             
@@ -788,7 +764,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The parameters to be passed to the procedure/function call. The number of parameters is variable</p>
+                        <p><p>The parameters to be passed to the procedure/function call</p>
 </p>
                     </li>
                 </ul>
@@ -863,7 +839,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The parameters to be passed to the select query. The number of parameters is variable</p>
+                        <p><p>The parameters to be passed to the select query</p>
 </p>
                     </li>
                 </ul>
@@ -898,7 +874,7 @@
         </span>
         
     </div>
-    <p><p>The update remote function implementation for JDBC Client to update data and schema of the database.</p>
+    <p><p>The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.</p>
 </p>
      
         <div class="data-wrapper">
@@ -924,7 +900,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The parameters to be passed to the update query. The number of parameters is variable</p>
+                        <p><p>The parameters to be passed to the update query</p>
 </p>
                     </li>
                 </ul>
@@ -960,7 +936,7 @@ else <code>Error</code> will be returned if there is an error</p>
         </span>
         
     </div>
-    <p><p>The batchUpdate remote function implementation for JDBC Client to batch data insert.</p>
+    <p><p>The batchUpdate remote function implementation for JDBC Client to execute batch operations.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1004,7 +980,7 @@ also will get rolled back.</p>
                     </li>
                     <li>
                         <p><p>Variable number of parameter arrays each representing the set of parameters belonging to each
-individual update</p>
+update statement</p>
 </p>
                     </li>
                 </ul>
@@ -1021,7 +997,7 @@ individual update</p>
                 <li><p>A <code>BatchUpdateResult</code> with the updated row count and returned error if any. If all the commands
 in the batch have executed successfully, the error will be <code>nil</code>. If one or more commands have failed,
 the <code>returnedError</code> field will give the corresponding <code>Error</code> along with the int[] which
-contains updated row count or the status returned from the each command in the batch.</p>
+contains updated row count or the status returned from each command in the batch.</p>
 </li>
             </ul>
         </div>

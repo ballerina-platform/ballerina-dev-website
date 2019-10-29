@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Website License
+permalink: /spec/
 redirect_from:
   - /learn/language-specification
   - /learn/language-specification/
@@ -26,9 +27,9 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 | Version | Release Date | Description | Link |
 | ------- | ------------ | ----------- | ---- |
-| 2019R3 | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2. | <a target="_blank" href="/spec/lang/v2019R3/">Read</a> |
-| 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/v2019R2/">Read</a> |
-| 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/v2019R1/">Read</a> |
+| 2019R3 | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2 | <a target="_blank" href="/spec/lang/2019R3/">Read</a> |
+| 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/2019R2/">Read</a> |
+| 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/2019R1/">Read</a> |
 
 ### Specification for experimental features
 

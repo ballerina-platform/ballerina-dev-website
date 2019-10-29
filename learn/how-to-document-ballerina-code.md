@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
 title: How to Document Ballerina Code
+permalink: /learn/how-to-document-ballerina-code/
+
 ---
 
 # How to Document Ballerina Code

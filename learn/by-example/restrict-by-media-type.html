@@ -110,28 +110,16 @@
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">validateString</span><span class="p">(</span><span class="nx">nameString</span><span class="p">))</span> <span class="p">{</span>
-                <span class="kt">xml</span> <span class="nx">name</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;{{untaint nameString}}&lt;/name&gt;`</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Name contains invalid data&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
+            <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+            <span class="kt">xml</span> <span class="nx">name</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;${nameString}&lt;/name&gt;`</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="nx">name</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">validateString</span><span class="p">(</span><span class="kt">string</span> <span class="nx">nameString</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">nameString</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;[a-zA-Z]+&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -211,8 +199,6 @@
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -311,8 +297,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string nameString = &lt;string&gt;msg[&quot;name&quot;];
-            if (validateString(nameString)) {
+                                    <div class="highlight"><pre><code class=ballerina>            string nameString = &lt;string&gt;msg.name;
 </code></pre></div>
 
                                 </td>
@@ -331,15 +316,11 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                xml name = xml `&lt;name&gt;{{untaint nameString}}&lt;/name&gt;`;
-                res.setXmlPayload(name);
-            } else {
-                res.statusCode = 400;
-                res.setPayload(&quot;Name contains invalid data&quot;);
-            }
+                                    <div class="highlight"><pre><code class=ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
+            res.setXmlPayload(&lt;@untained&gt; name);
         } else {
             res.statusCode = 500;
-            res.setPayload(untaint &lt;string&gt;msg.detail().message);
+            res.setPayload(&lt;@untainted&gt; &lt;string&gt;msg.detail()?.message);
         }
 </code></pre></div>
 
@@ -358,30 +339,11 @@ import ballerina/log;
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error in responding&quot;, err = result);
         }
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function validateString(string nameString) returns boolean {
-    var result = nameString.matches(&quot;[a-zA-Z]+&quot;);
-    if (result is error) {
-        return false;
-    } else {
-        return result;
     }
 }
 </code></pre></div>
@@ -412,8 +374,7 @@ import ballerina/log;
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run restrict_by_media_type.bal
 # Service deployment
-Initiating service(s) in &#39;restrict_by_media_type.bal&#39;
-[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
                                 </td>

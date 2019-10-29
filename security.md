@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Reporting a Security Vulnerability
+permalink: /security/
 ---
 
 # Reporting a Security Vulnerability

@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Community
+permalink: /community/
 ---
 
 # The Ballerina Community

@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Getting Started
+permalink: /learn/getting-started/
 ---
 
 # Getting Started

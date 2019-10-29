@@ -100,7 +100,7 @@
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
-                                 <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">});</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+                                 <span class="p">{</span> <span class="nx">http1Settings</span> <span class="p">:</span> <span class="p">{</span> <span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span> <span class="p">}});</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -132,13 +132,7 @@
         <span class="kt">boolean</span> <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;content-length&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;\\d+&quot;</span><span class="p">)))</span> <span class="p">{</span>
-                <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Content-Length contains invalid data&quot;</span><span class="p">);</span>
-                <span class="nx">validationErrorFound</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
-            <span class="p">}</span>
+            <span class="nx">value</span> <span class="p">=</span> <span class="s">&quot;Length-&quot;</span> <span class="o">+</span> <span class="nx">value</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">hasHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">))</span> <span class="p">{</span>
             <span class="nx">value</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Transfer-Encoding&quot;</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;chunked&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;compress&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">value</span> <span class="o">!=</span> <span class="s">&quot;deflate&quot;</span>
@@ -151,7 +145,7 @@
             <span class="nx">value</span> <span class="p">=</span>
                 <span class="s">&quot;Neither Transfer-Encoding nor content-length header found&quot;</span><span class="p">;</span>
         <span class="p">}</span>        <span class="k">if</span> <span class="p">(!</span><span class="nx">validationErrorFound</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="nx">untaint</span> <span class="nx">value</span> <span class="p">});</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Outbound request content&quot;</span><span class="p">:</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">value</span> <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -273,8 +267,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -316,7 +308,7 @@ in the request. When chunking is set to auto, chunking is done as specified in t
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://localhost:9090&quot;,
-                                 config = {chunking: http:CHUNKING_NEVER});
+                                 { http1Settings : { chunking: http:CHUNKING_NEVER }});
 </code></pre></div>
 
                                 </td>
@@ -467,31 +459,7 @@ in the request. When chunking is set to auto, chunking is done as specified in t
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (req.hasHeader(&quot;content-length&quot;)) {
             value = req.getHeader(&quot;content-length&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Set the response according to the request headers.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            if (isValid(value.matches(&quot;\\d+&quot;))) {
-                value = &quot;Length-&quot; + value;
-            } else {
-                res.statusCode = 400;
-                res.setPayload(&quot;Content-Length contains invalid data&quot;);
-                validationErrorFound = true;
-            }
+            value = &quot;Length-&quot; + value;
         } else if (req.hasHeader(&quot;Transfer-Encoding&quot;)) {
             value = req.getHeader(&quot;Transfer-Encoding&quot;);
 </code></pre></div>
@@ -501,7 +469,7 @@ in the request. When chunking is set to auto, chunking is done as specified in t
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Perform data validation for content-length.</p>
+                                            <p>Set the response according to the request headers.</p>
 
                                         </div>
                                     </div>
@@ -552,7 +520,7 @@ in the request. When chunking is set to auto, chunking is done as specified in t
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload({ &quot;Outbound request content&quot;: untaint value });
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload({ &quot;Outbound request content&quot;: &lt;@untainted&gt; value });
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
@@ -613,9 +581,8 @@ in the request. When chunking is set to auto, chunking is done as specified in t
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_disable_chunking.bal
 # Service deployment
-Initiating service(s) in &#39;http_disable_chunking.bal&#39;
-[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
-[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
 </code></pre></div>
 
                                 </td>

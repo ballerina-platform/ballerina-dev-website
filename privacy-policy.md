@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Privacy Policy
+permalink: /privacy-policy/
 
 ---
 

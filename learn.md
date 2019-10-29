@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Let’s learn Ballerina!
-
+permalink: /learn/
 ---
 
 <h1>Let’s learn Ballerina!</h1>
@@ -212,6 +212,10 @@ title: Let’s learn Ballerina!
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-write-secure-ballerina-code">Writing Secure Ballerina Code</a></h3>
       <p>Provides guidelines on writing secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
+   </div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
+      <p>This guide shows how additional compile-time behavior can be added using compiler extensions and annotations.</p>
    </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

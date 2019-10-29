@@ -105,7 +105,7 @@ target/
 
 ### Verifying the Annotation
 
-At this stage, you can use the annotation only to verify what was done so far by using it annotation in a program. Create a demo project, add our `hello` module as a dependency, and attach it to a function. Your program should compile without any errors.
+At this stage, you can use the annotation in a program to verify the correctness of what was done so far. To do so, create a demo project, add our `hello` module as a dependency, and attach it to a function. Your program should compile without any errors.
 
 The demo project structure looks like the following:
 ```
@@ -120,7 +120,7 @@ Add the `foo/hello` module as a path dependency in the `Ballerina.toml` file.
 
 ```toml
 [project]
-org-name= "foo"
+org-name= "bar"
 version= "0.1.0"
 
 [dependencies]
@@ -331,7 +331,7 @@ class HelloModel {
 }
 ```
 
-Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/bre/lib` directory. 
+Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/distributions/jballerina-1.0.2/bre/lib/` directory. 
 
 ## Putting It All Together
 
@@ -340,13 +340,13 @@ Now, build your hello world project again. You should see an additional step log
 ```
 $ ballerina build greet
 Compiling source
-	pubudu/greet:0.1.0
+	bar/greet:0.1.0
 
 Creating balos
 	target/balo/greet-2019r3-any-0.1.0.balo
 
 Running tests
-    pubudu/greet:0.1.0
+    bar/greet:0.1.0
 	No tests found
 
 Generating executables

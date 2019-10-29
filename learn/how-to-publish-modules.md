@@ -1,9 +1,10 @@
 ---
 layout: ballerina-inner-page
-title: Publish a Module
+title: How to Publish a Module
+permalink: /learn/how-to-publish-modules/
 ---
 
-# Publish a Module
+# How to Publish a Module
 
 ## CLI Command
 

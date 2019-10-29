@@ -215,7 +215,7 @@ permalink: /learn/
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
-      <p>This guide shows how additional compile-time behavior can be added through compiler extensions and annotations.</p>
+      <p>This guide shows how additional compile-time behavior can be added using compiler extensions and annotations.</p>
    </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Write Secure Ballerina Programs
+permalink: /learn/how-to-write-secure-ballerina-code/
 ---
 
 # How to Write Secure Ballerina Programs

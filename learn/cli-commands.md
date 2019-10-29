@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: CLI Commands
+permalink: /learn/cli-commands/
 ---
 
 # CLI Commands

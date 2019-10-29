@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Quick Tour
+permalink: /learn/quick-tour/
 ---
 
 # Quick Tour

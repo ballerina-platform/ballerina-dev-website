@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Events
+permalink: /events/
 ---
 
 <script src="/js/events.js"></script>

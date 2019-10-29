@@ -113,22 +113,22 @@
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The update operation - Creating table and procedures:&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT,</span>
-<span class="s">                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
+                         <span class="s">&quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create student table&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT,</span>
-<span class="s">                       IN pName VARCHAR(255))</span>
-<span class="s">	                   BEGIN</span>
-<span class="s">                       INSERT INTO student(age, name) values (pAge, pName);</span>
-<span class="s">                       END&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;IN pName VARCHAR(255)) &quot;</span> <span class="o">+</span>
+	                   <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;INSERT INTO student(age, name) values (pAge, pName); &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with IN param creation&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT,</span>
-<span class="s">                          OUT pCount INT)</span>
-<span class="s">                          BEGIN</span>
-<span class="s">                          SELECT id INTO pID FROM student WHERE age = pID;</span>
-<span class="s">                          SELECT COUNT(*) INTO pCount FROM student</span>
-<span class="s">                            WHERE age = 20;</span>
-<span class="s">                          END&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;OUT pCount INT) &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;SELECT id INTO pID FROM student WHERE age = pID; &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;SELECT COUNT(*) INTO pCount FROM student &quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;WHERE age = 20; &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with INOUT/OUT param creation&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe call operation - With IN params&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;{CALL INSERTDATA(?,?)}&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;George&quot;</span><span class="p">);</span>
@@ -244,7 +244,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerinax/jdbc/tree/master/jdbc-extension-examples/examples/jdbc-client-call-procedures/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-client-call-procedures/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -383,8 +383,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating table and procedures:&quot;);
-    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT,
-                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
+    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
+                         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
 </code></pre></div>
 
@@ -406,11 +406,11 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT,
-                       IN pName VARCHAR(255))
-	                   BEGIN
-                       INSERT INTO student(age, name) values (pAge, pName);
-                       END&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE INSERTDATA(IN pAge INT, &quot; +
+                       &quot;IN pName VARCHAR(255)) &quot; +
+	                   &quot;BEGIN &quot; +
+                       &quot;INSERT INTO student(age, name) values (pAge, pName); &quot; +
+                       &quot;END&quot;);
     handleUpdate(ret, &quot;Stored procedure with IN param creation&quot;);
 </code></pre></div>
 
@@ -430,13 +430,13 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT,
-                          OUT pCount INT)
-                          BEGIN
-                          SELECT id INTO pID FROM student WHERE age = pID;
-                          SELECT COUNT(*) INTO pCount FROM student
-                            WHERE age = 20;
-                          END&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE GETCOUNT (INOUT pID INT, &quot; +
+                          &quot;OUT pCount INT) &quot; +
+                          &quot;BEGIN &quot; +
+                          &quot;SELECT id INTO pID FROM student WHERE age = pID; &quot; +
+                          &quot;SELECT COUNT(*) INTO pCount FROM student &quot; +
+                            &quot;WHERE age = 20; &quot; +
+                          &quot;END&quot;);
     handleUpdate(ret, &quot;Stored procedure with INOUT/OUT param creation&quot;);
 </code></pre></div>
 

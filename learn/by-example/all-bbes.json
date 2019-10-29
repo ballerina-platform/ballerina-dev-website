@@ -55,6 +55,10 @@
         {
             "name": "Documentation",
             "url": "documentation"
+        },
+        {
+            "name": "Quoted Identifiers",
+            "url": "quoted-identifiers"
         }
     ]
 },
@@ -324,12 +328,12 @@
             "url": "xml-attributes"
         },
         {
-            "name": "XML Access",
-            "url": "xml-access"
-        },
-        {
             "name": "XML Namespaces",
             "url": "xml-namespaces"
+        },
+        {
+            "name": "XML Access",
+            "url": "xml-access"
         },
         {
             "name": "XML Functions",

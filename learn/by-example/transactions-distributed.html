@@ -167,10 +167,9 @@
                        <span class="nx">transactions</span><span class="p">:</span><span class="nx">getCurrentTransactionId</span><span class="p">());</span>        <span class="k">var</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">updateReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received.</span>
-<span class="s">                            symbol:%s, price:%s&quot;</span><span class="p">,</span>
-                            <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span>
-                            <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;symbol:%s, price:%s&quot;</span><span class="p">,</span>
+                            <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>            <span class="kt">json</span> <span class="nx">jsonRes</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;updating stock&quot;</span> <span class="p">};</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonRes</span><span class="p">);</span>
@@ -710,10 +709,9 @@ service ParticipantService on new http:Listener(8889) {
                                     <div class="highlight"><pre><code class=ballerina>        var updateReq = &lt;@untainted&gt; req.getJsonPayload();
         if (updateReq is json) {
             string msg =
-                io:sprintf(&quot;Update stock quote request received.
-                            symbol:%s, price:%s&quot;,
-                            updateReq.symbol,
-                            updateReq.price);
+                io:sprintf(&quot;Update stock quote request received. &quot; +
+                            &quot;symbol:%s, price:%s&quot;,
+                            updateReq.symbol, updateReq.price);
             log:printInfo(msg);
 </code></pre></div>
 

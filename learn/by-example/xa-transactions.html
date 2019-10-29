@@ -112,14 +112,14 @@
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">isXA</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
 <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER</span>
-<span class="s">                    AUTO_INCREMENT, NAME VARCHAR(30))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;AUTO_INCREMENT, NAME VARCHAR(30))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE SALARY (ID INT, VALUE FLOAT)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(NAME)</span>
-<span class="s">                                        VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(NAME) &quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">key</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">;</span>
@@ -358,8 +358,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB1-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER
-                    AUTO_INCREMENT, NAME VARCHAR(30))&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB1-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER &quot; +
+                    &quot;AUTO_INCREMENT, NAME VARCHAR(30))&quot;);
     handleUpdate(ret, &quot;Create CUSTOMER table&quot;);
 </code></pre></div>
 
@@ -418,8 +418,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = testDB1-&gt;update(&quot;INSERT INTO CUSTOMER(NAME)
-                                        VALUES (&#39;Anne&#39;)&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        var result = testDB1-&gt;update(&quot;INSERT INTO CUSTOMER(NAME) &quot; +
+                                        &quot;VALUES (&#39;Anne&#39;)&quot;);
         int key = -1;
         if (result is jdbc:UpdateResult) {
             int count = result.updatedRowCount;

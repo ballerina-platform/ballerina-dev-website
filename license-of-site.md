@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Website License
+permalink: /license-of-site/
 ---
 
 # Ballerina Website License

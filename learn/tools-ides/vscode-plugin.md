@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Visual Studio Code Plugin
+permalink: /vscode-plugin/
 ---
 
 # The Visual Studio Code Plugin

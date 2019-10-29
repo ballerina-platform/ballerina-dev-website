@@ -5,7 +5,7 @@
 ## Check List
 
 - [ ] **Page Addition**
-  - [ ] Add `permlink` to pages
+  - [ ] Add `permalink` to pages
   - [ ] If contains empty folder(s), Add front-matter `redirect_to:`
 
 - [ ] **Page Rename**

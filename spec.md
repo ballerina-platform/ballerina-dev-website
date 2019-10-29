@@ -2,6 +2,9 @@
 layout: ballerina-inner-page
 title: Ballerina Website License
 permalink: /spec/
+redirect_from:
+  - /learn/language-specification
+  - /learn/language-specification/
 ---
 
 # Ballerina Platform Specifications

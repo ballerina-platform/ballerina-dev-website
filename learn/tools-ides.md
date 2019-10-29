@@ -1,6 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Tools and IDEs
+permalink: /learn/tools-ides/
 ---
 
 # Tools and IDEs

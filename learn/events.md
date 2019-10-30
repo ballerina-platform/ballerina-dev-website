@@ -44,7 +44,7 @@ title: Events
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/Austin/conference/"><h4>DeveloperWeek Austin 2019 </h4></a>
                           <h5>Pro Session: Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director - Cloud Architecture, WSO2</p>
+                           <b>Lakmal Warusawithana,</b> Senior Director - Cloud Architecture, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/Austin/conference/" target="_blank">More Info</a></td> 
                   </tr>

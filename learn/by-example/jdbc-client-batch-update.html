@@ -113,8 +113,8 @@
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">myBatchType</span> <span class="kt">int</span><span class="p">|</span><span class="kt">string</span><span class="err">?</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The update operation - Creating a table:&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT,</span>
-<span class="s">                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
+                         <span class="s">&quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create student table&quot;</span><span class="p">);</span>    <span class="kt">json</span> <span class="nx">jsonMsg</span> <span class="p">=</span> <span class="p">{</span>
         <span class="s">&quot;student&quot;</span><span class="p">:</span> <span class="p">[{</span>
             <span class="s">&quot;firstname&quot;</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
@@ -139,8 +139,8 @@
             <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">BatchUpdateResult</span> <span class="nx">retBatch</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">batchUpdate</span><span class="p">(</span><span class="s">&quot;INSERT INTO student</span>
-<span class="s">                    (age,name) VALUES (?,?)&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="o">...</span><span class="nx">dataBatch</span><span class="p">);</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">BatchUpdateResult</span> <span class="nx">retBatch</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">batchUpdate</span><span class="p">(</span><span class="s">&quot;INSERT INTO student &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;(age,name) VALUES (?,?)&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="o">...</span><span class="nx">dataBatch</span><span class="p">);</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">retBatch</span><span class="p">.</span><span class="nx">returnedError</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Batch update operation failed:&quot;</span><span class="p">,</span>
@@ -242,7 +242,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerinax/jdbc/tree/master/jdbc-extension-examples/examples/jdbc-client-batch-update/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-client-batch-update/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -393,8 +393,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating a table:&quot;);
-    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT,
-                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
+    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
+                         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
 </code></pre></div>
 
@@ -517,8 +517,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:BatchUpdateResult retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student
-                    (age,name) VALUES (?,?)&quot;, false, ...dataBatch);
+                                    <div class="highlight"><pre><code class=ballerina>    jdbc:BatchUpdateResult retBatch = testDB-&gt;batchUpdate(&quot;INSERT INTO student &quot; +
+                    &quot;(age,name) VALUES (?,?)&quot;, false, ...dataBatch);
     error? e = retBatch.returnedError;
     if (e is error) {
         io:println(&quot;Batch update operation failed:&quot;,

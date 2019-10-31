@@ -106,15 +106,15 @@
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
     <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
 <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME</span>
-<span class="s">                              VARCHAR(30))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME &quot;</span> <span class="o">+</span>
+                              <span class="s">&quot;VARCHAR(30))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE SALARY (ID INTEGER, MON_SALARY FLOAT)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
     <span class="nx">transaction</span> <span class="nx">with</span> <span class="nx">retries</span> <span class="p">=</span> <span class="mi">4</span> <span class="p">{</span>
-        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(ID,NAME)</span>
-<span class="s">                                     VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
-        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, MON_SALARY)</span>
-<span class="s">                                 VALUES (1, 2500)&quot;</span><span class="p">);</span>
+        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(ID,NAME) &quot;</span> <span class="o">+</span>
+                                     <span class="s">&quot;VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
+        <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, MON_SALARY) &quot;</span> <span class="o">+</span>
+                                 <span class="s">&quot;VALUES (1, 2500)&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted count: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -321,8 +321,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME
-                              VARCHAR(30))&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE CUSTOMER (ID INTEGER, NAME &quot; +
+                              &quot;VARCHAR(30))&quot;);
     handleUpdate(ret, &quot;Create CUSTOMER table&quot;);
 </code></pre></div>
 
@@ -381,8 +381,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO CUSTOMER(ID,NAME)
-                                     VALUES (1, &#39;Anne&#39;)&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO CUSTOMER(ID,NAME) &quot; +
+                                     &quot;VALUES (1, &#39;Anne&#39;)&quot;);
 </code></pre></div>
 
                                 </td>
@@ -401,8 +401,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO SALARY (ID, MON_SALARY)
-                                 VALUES (1, 2500)&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        ret = testDB-&gt;update(&quot;INSERT INTO SALARY (ID, MON_SALARY) &quot; +
+                                 &quot;VALUES (1, 2500)&quot;);
         if (ret is jdbc:UpdateResult) {
             io:println(&quot;Inserted count: &quot;, ret.updatedRowCount);
 </code></pre></div>

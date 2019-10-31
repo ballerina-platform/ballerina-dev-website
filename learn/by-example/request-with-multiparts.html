@@ -150,8 +150,8 @@
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error occurred while sending multipart</span>
-<span class="s">                                    request!&quot;</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error occurred while sending multipart &quot;</span> <span class="o">+</span>
+                                    <span class="s">&quot;request!&quot;</span><span class="p">);</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -536,8 +536,8 @@ import ballerina/mime;
             }
         } else {
             http:Response response = new;
-            response.setPayload(&quot;Error occurred while sending multipart
-                                    request!&quot;);
+            response.setPayload(&quot;Error occurred while sending multipart &quot; +
+                                    &quot;request!&quot;);
             response.statusCode = 500;
             var result = caller-&gt;respond(response);
             if (result is error) {

@@ -114,12 +114,12 @@
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The update operation - Creating a table&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT,</span>
-<span class="s">                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
+                         <span class="s">&quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create student table&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe update operation - Inserting data to a table&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values</span>
-<span class="s">                          (23, &#39;john&#39;)&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values &quot;</span> <span class="o">+</span>
+                          <span class="s">&quot;(23, &#39;john&#39;)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to student table with no parameters&quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">24</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Anne&quot;</span><span class="p">;</span>
@@ -141,8 +141,8 @@
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe Update operation - Inserting data&quot;</span><span class="p">);</span>
     <span class="nx">age</span> <span class="p">=</span> <span class="mi">31</span><span class="p">;</span>
     <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Kate&quot;</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">retWithKey</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student</span>
-<span class="s">                        (age, name) values (?, ?)&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">retWithKey</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student &quot;</span> <span class="o">+</span>
+                        <span class="s">&quot;(age, name) values (?, ?)&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">retWithKey</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">retWithKey</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">generatedKey</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">retWithKey</span><span class="p">.</span><span class="nx">generatedKeys</span><span class="p">[</span><span class="s">&quot;GENERATED_KEY&quot;</span><span class="p">];</span>
@@ -239,7 +239,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerinax/jdbc/tree/master/jdbc-extension-examples/examples/jdbc-client-crud-operations/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-client-crud-operations/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -371,8 +371,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating a table&quot;);
-    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT,
-                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
+    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
+                         &quot;age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
 </code></pre></div>
 
@@ -395,8 +395,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Inserting data to a table&quot;);
-    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values
-                          (23, &#39;john&#39;)&quot;);
+    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values &quot; +
+                          &quot;(23, &#39;john&#39;)&quot;);
     handleUpdate(ret, &quot;Insert to student table with no parameters&quot;);
 </code></pre></div>
 
@@ -515,8 +515,8 @@ import ballerinax/java.jdbc;
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Inserting data&quot;);
     age = 31;
     name = &quot;Kate&quot;;
-    var retWithKey = testDB-&gt;update(&quot;INSERT INTO student
-                        (age, name) values (?, ?)&quot;, age, name);
+    var retWithKey = testDB-&gt;update(&quot;INSERT INTO student &quot; +
+                        &quot;(age, name) values (?, ?)&quot;, age, name);
     if (retWithKey is jdbc:UpdateResult) {
         int count = retWithKey.updatedRowCount;
         int generatedKey = &lt;int&gt;retWithKey.generatedKeys[&quot;GENERATED_KEY&quot;];

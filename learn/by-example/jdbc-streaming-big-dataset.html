@@ -115,8 +115,8 @@
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">jsonConversionRet</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while retrieving data</span>
-<span class="s">            from the database&quot;</span> <span class="p">});</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while retrieving data &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from the database&quot;</span> <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">respondRet</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondRet</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -130,26 +130,26 @@
         <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span>
     <span class="p">});</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE Data (id INT, field1</span>
-<span class="s">        VARCHAR(1024), field2 VARCHAR(1024));&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE Data (id INT, field1 &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create Data table&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE PopulateData(IN row_count INT)</span>
-<span class="s">       BEGIN</span>
-<span class="s">           DECLARE count INT;</span>
-<span class="s">           DECLARE strDataEntry VARCHAR(1024);</span>
-<span class="s">           SET count = 1;</span>
-<span class="s">           SET strDataEntry =  &#39;&#39;;</span>
-<span class="s">           WHILE count &lt;= 1024 DO</span>
-<span class="s">                       SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;);</span>
-<span class="s">                       SET count = count + 1;</span>
-<span class="s">           END WHILE;</span>
-<span class="s">           SET count = 1;</span>
-<span class="s">           WHILE count &lt;= row_count DO</span>
-<span class="s">                       INSERT INTO Data VALUES (count, strDataEntry, strDataEntry);</span>
-<span class="s">                       SET count = count + 1;</span>
-<span class="s">           END WHILE;</span>
-<span class="s">           SELECT strDataEntry;</span>
-<span class="s">       END&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot;</span> <span class="o">+</span>
+       <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;DECLARE count INT; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;DECLARE strDataEntry VARCHAR(1024); &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;SET count = 1; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;SET strDataEntry =  &#39;&#39;; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;WHILE count &lt;= 1024 DO &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;); &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;SET count = count + 1; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;END WHILE; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;SET count = 1; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;WHILE count &lt;= row_count DO &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;INSERT INTO Data VALUES (count, strDataEntry, strDataEntry); &quot;</span> <span class="o">+</span>
+                       <span class="s">&quot;SET count = count + 1; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;END WHILE; &quot;</span> <span class="o">+</span>
+           <span class="s">&quot;SELECT strDataEntry; &quot;</span> <span class="o">+</span>
+       <span class="s">&quot;END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with IN param creation&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;CALL PopulateData(?)&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">100000</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="p">()|</span><span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;[])</span> <span class="p">{</span>
@@ -416,8 +416,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            res.setPayload({ &quot;Error&quot;: &quot;Error occured while retrieving data
-            from the database&quot; });
+            res.setPayload({ &quot;Error&quot;: &quot;Error occured while retrieving data &quot; +
+            &quot;from the database&quot; });
         }
 </code></pre></div>
 
@@ -563,8 +563,8 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1
-        VARCHAR(1024), field2 VARCHAR(1024));&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1 &quot; +
+        &quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;);
     handleUpdate(ret, &quot;Create Data table&quot;);
 </code></pre></div>
 
@@ -584,23 +584,23 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT)
-       BEGIN
-           DECLARE count INT;
-           DECLARE strDataEntry VARCHAR(1024);
-           SET count = 1;
-           SET strDataEntry =  &#39;&#39;;
-           WHILE count &lt;= 1024 DO
-                       SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;);
-                       SET count = count + 1;
-           END WHILE;
-           SET count = 1;
-           WHILE count &lt;= row_count DO
-                       INSERT INTO Data VALUES (count, strDataEntry, strDataEntry);
-                       SET count = count + 1;
-           END WHILE;
-           SELECT strDataEntry;
-       END&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot; +
+       &quot;BEGIN &quot; +
+           &quot;DECLARE count INT; &quot; +
+           &quot;DECLARE strDataEntry VARCHAR(1024); &quot; +
+           &quot;SET count = 1; &quot; +
+           &quot;SET strDataEntry =  &#39;&#39;; &quot; +
+           &quot;WHILE count &lt;= 1024 DO &quot; +
+                       &quot;SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;); &quot; +
+                       &quot;SET count = count + 1; &quot; +
+           &quot;END WHILE; &quot; +
+           &quot;SET count = 1; &quot; +
+           &quot;WHILE count &lt;= row_count DO &quot; +
+                       &quot;INSERT INTO Data VALUES (count, strDataEntry, strDataEntry); &quot; +
+                       &quot;SET count = count + 1; &quot; +
+           &quot;END WHILE; &quot; +
+           &quot;SELECT strDataEntry; &quot; +
+       &quot;END&quot;);
     handleUpdate(ret, &quot;Stored procedure with IN param creation&quot;);
 </code></pre></div>
 

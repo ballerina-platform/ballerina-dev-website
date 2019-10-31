@@ -180,10 +180,10 @@
                             <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">items</span> <span class="k">as</span> <span class="nx">items</span><span class="p">,</span>
                             <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">amount</span> <span class="k">as</span> <span class="nx">amount</span><span class="p">;</span>
     <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;OrderDetails&gt; orderDetailsTable = &quot;</span> <span class="o">+</span>
-            <span class="s">&quot;from personTable as tempPersonTable</span>
-<span class="s">            join orderTable as tempOrderTable &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId</span>
-<span class="s">            select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from personTable as tempPersonTable &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;join orderTable as tempOrderTable &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
                     <span class="s">&quot;tempPersonTable.name as personName, &quot;</span> <span class="o">+</span>
                     <span class="s">&quot;tempOrderTable.items as items, &quot;</span> <span class="o">+</span>
                     <span class="s">&quot;tempOrderTable.amount as amount;&quot;</span><span class="p">;</span>
@@ -198,13 +198,13 @@
                             <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">items</span> <span class="k">as</span> <span class="nx">items</span><span class="p">,</span>
                             <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">amount</span> <span class="k">as</span> <span class="nx">amount</span><span class="p">;</span>
     <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;OrderDetails&gt; orderDetailsWithFilter = &quot;</span> <span class="o">+</span>
-            <span class="s">&quot;from personTable where name != &#39;jane&#39; as tempPersonTable</span>
-<span class="s">             join orderTable where personId != 3 as tempOrderTable &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId</span>
-<span class="s">             select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;tempPersonTable.name as personName,&quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;tempOrderTable.items as items,</span>
-<span class="s">                    tempOrderTable.amount as amount;&quot;</span><span class="p">;</span>
+            <span class="s">&quot;from personTable where name != &#39;jane&#39; as tempPersonTable &quot;</span> <span class="o">+</span>
+             <span class="s">&quot;join orderTable where personId != 3 as tempOrderTable &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId &quot;</span> <span class="o">+</span>
+             <span class="s">&quot;select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempPersonTable.name as personName, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempOrderTable.items as items, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempOrderTable.amount as amount;&quot;</span><span class="p">;</span>
     <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;orderDetailsWithFilter: &quot;</span><span class="p">,</span> <span class="nx">orderDetailsWithFilter</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printTable</span><span class="p">(</span><span class="kt">string</span> <span class="nx">stmt</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">returnedTable</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stmt</span><span class="p">);</span>
@@ -759,10 +759,10 @@ and the order details).</p>
                             tempOrderTable.items as items,
                             tempOrderTable.amount as amount;
     queryStmt = &quot;\ntable&lt;OrderDetails&gt; orderDetailsTable = &quot; +
-            &quot;from personTable as tempPersonTable
-            join orderTable as tempOrderTable &quot; +
-                    &quot;on tempPersonTable.id == tempOrderTable.personId
-            select tempOrderTable.orderId as orderId, &quot; +
+            &quot;from personTable as tempPersonTable &quot; +
+            &quot;join orderTable as tempOrderTable &quot; +
+                    &quot;on tempPersonTable.id == tempOrderTable.personId &quot; +
+            &quot;select tempOrderTable.orderId as orderId, &quot; +
                     &quot;tempPersonTable.name as personName, &quot; +
                     &quot;tempOrderTable.items as items, &quot; +
                     &quot;tempOrderTable.amount as amount;&quot;;
@@ -796,13 +796,13 @@ constrained by a different type.</p>
                             tempOrderTable.items as items,
                             tempOrderTable.amount as amount;
     queryStmt = &quot;\ntable&lt;OrderDetails&gt; orderDetailsWithFilter = &quot; +
-            &quot;from personTable where name != &#39;jane&#39; as tempPersonTable
-             join orderTable where personId != 3 as tempOrderTable &quot; +
-                    &quot;on tempPersonTable.id == tempOrderTable.personId
-             select tempOrderTable.orderId as orderId, &quot; +
-                    &quot;tempPersonTable.name as personName,&quot; +
-                    &quot;tempOrderTable.items as items,
-                    tempOrderTable.amount as amount;&quot;;
+            &quot;from personTable where name != &#39;jane&#39; as tempPersonTable &quot; +
+             &quot;join orderTable where personId != 3 as tempOrderTable &quot; +
+                    &quot;on tempPersonTable.id == tempOrderTable.personId &quot; +
+             &quot;select tempOrderTable.orderId as orderId, &quot; +
+                    &quot;tempPersonTable.name as personName, &quot; +
+                    &quot;tempOrderTable.items as items, &quot; +
+                    &quot;tempOrderTable.amount as amount;&quot;;
     printTable(queryStmt, &quot;orderDetailsWithFilter: &quot;, orderDetailsWithFilter);
 }
 </code></pre></div>

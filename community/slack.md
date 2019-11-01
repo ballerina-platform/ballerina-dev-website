@@ -1,5 +1,6 @@
 ---
 layout: ballerina-inner-page
+permalink: /community/slack/
 ---
 
 <link rel="stylesheet" href="/css/slack-page.css">

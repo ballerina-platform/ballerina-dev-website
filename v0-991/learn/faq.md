@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-permalink: /v0-991/learn/faq
+permalink: /v0-991/learn/faq/
 ---
 
 # FAQs

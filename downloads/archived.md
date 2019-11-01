@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-landing-page
 title: Release Notes
 permalink: /downloads/archived/
 ---

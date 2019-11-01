@@ -120,11 +120,11 @@ Add the `foo/hello` module as a path dependency in the `Ballerina.toml` file.
 
 ```toml
 [project]
-org-name= "bar"
-version= "0.1.0"
+org-name = "bar"
+version = "0.1.0"
 
 [dependencies]
-"foo/hello" = {path = "<path_to_annotation_project_dir>/hello-annot/target/balo/hello-2019r3-any-0.1.0.balo"}
+"foo/hello" = { path = "<path_to_annotation_project_dir>/hello-annot/target/balo/hello-2019r3-any-0.1.0.balo" }
 ```
 
 Add a function to the `greeting.bal` file. Note that the function is annotated using the `@hello:Greeting` annotation. 
@@ -144,7 +144,7 @@ public function main() {
 }
 ```
 
-Building the `greet` module should produce an executable named `greet.jar` in the `/target/bin` directory.
+Building the `greet` module should produce an executable named `greet.jar` in the `target/bin` directory.
  
 ## Writing the Compiler Extension
 
@@ -331,7 +331,7 @@ class HelloModel {
 }
 ```
 
-Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/distributions/jballerina-1.0.2/bre/lib/` directory. 
+Finally, build the extension and place the resulting JAR file inside the `<BALLERINA_HOME>/distributions/jballerina-<BALLERINA_VERSION>/bre/lib/` directory. 
 
 ## Putting It All Together
 
@@ -346,7 +346,7 @@ Creating balos
 	target/balo/greet-2019r3-any-0.1.0.balo
 
 Running tests
-    bar/greet:0.1.0
+	bar/greet:0.1.0
 	No tests found
 
 Generating executables

@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
-    <script src="../vs/monaco.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
 
 </head>
 
@@ -52,7 +52,7 @@
             <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
             <div class="primary-list">
                 <h3>Functions</h3>
@@ -60,10 +60,6 @@
                     
                         <li >
                             <a href="#getCurrentTransactionId">getCurrentTransactionId</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#registerParticipantWithRemoteInitiator">registerParticipantWithRemoteInitiator</a>
                         </li>
                     
                 </ul>
@@ -77,15 +73,7 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../transactions/index.html#records">Records</a>
-        </li>
         
-        
-        
-            <li>
-                <a data="clients" href="../transactions/index.html#clients">Clients</a>
-            </li>
         
         
         
@@ -94,19 +82,11 @@
             </li>
         
         
-            <li>
-                <a data="constants" href="../transactions/index.html#constants">Constants</a>
-            </li>
-        
         
             <li>
                 <a data="annotations" href="../transactions/index.html#annotations">Annotations</a>
             </li>
         
-        
-            <li>
-                <a data="types" href="../transactions/index.html#types">Types</a>
-            </li>
         
         
     </ul>
@@ -343,7 +323,7 @@
                 <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
                 <div class="primary-list">
                     <h3>Functions</h3>
@@ -351,10 +331,6 @@
                         
                             <li >
                                 <a href="#getCurrentTransactionId">getCurrentTransactionId</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#registerParticipantWithRemoteInitiator">registerParticipantWithRemoteInitiator</a>
                             </li>
                         
                     </ul>
@@ -368,15 +344,7 @@
     
     <ul>
         
-        <li>
-            <a data="records" href="../transactions/index.html#records">Records</a>
-        </li>
         
-        
-        
-            <li>
-                <a data="clients" href="../transactions/index.html#clients">Clients</a>
-            </li>
         
         
         
@@ -385,19 +353,11 @@
             </li>
         
         
-            <li>
-                <a data="constants" href="../transactions/index.html#constants">Constants</a>
-            </li>
-        
         
             <li>
                 <a data="annotations" href="../transactions/index.html#annotations">Annotations</a>
             </li>
         
-        
-            <li>
-                <a data="types" href="../transactions/index.html#types">Types</a>
-            </li>
         
         
     </ul>
@@ -658,14 +618,6 @@ transaction  that is passed in to those functions.</p>
                             </tr>
                         </tbody>
                     
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#registerParticipantWithRemoteInitiator">registerParticipantWithRemoteInitiator</a></td>
-                                <td width="70%"><p>Registers a participant with the initiator's coordinator. This function will be called by the participant.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
                 </table>
                 <div>
                     
@@ -696,93 +648,6 @@ transaction  that is passed in to those functions.</p>
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
                 <li><p>A string representing the ID of the current transaction.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="registerParticipantWithRemoteInitiator" title="registerParticipantWithRemoteInitiator">
-             <a class="url-link" href="#registerParticipantWithRemoteInitiator">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> registerParticipantWithRemoteInitiator </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> transactionId, <span class="builtin-type">string</span> transactionBlockId, <span class="builtin-type">string</span> registerAtURL, <a href="../transactions/records/RemoteProtocol.html">RemoteProtocol</a>[] participantProtocols)</p>
-            <b> returns </b><a href="../transactions/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span> 
-        </span>
-        
-    </div>
-    <p><p>Registers a participant with the initiator's coordinator. This function will be called by the participant.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        transactionId<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Global transaction ID to which this participant is registering with.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        transactionBlockId<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The local ID of the transaction block on the participant.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        registerAtURL<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The URL of the coordinator.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        participantProtocols<span class="type">  <a href="../transactions/records/RemoteProtocol.html">RemoteProtocol</a>[] </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The coordination protocals supported by the participant.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../transactions/records/TransactionContext.html">TransactionContext</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>TransactionContext if the registration is successful or an error in case of a failure.</p>
 </li>
             </ul>
         </div>

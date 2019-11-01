@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
-    <script src="../vs/monaco.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
 
 </head>
 
@@ -52,7 +52,7 @@
             <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
             <div class="primary-list">
                 <h3>Types</h3>
@@ -90,20 +90,12 @@
         </li>
         
         
-            <li>
-                <a  data="objects" href="../java.jdbc/index.html#objects">Objects</a>
-            </li>
-        
         
             <li>
                 <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
             </li>
         
         
-        
-            <li>
-                <a data="functions" href="../java.jdbc/index.html#functions">Functions</a>
-            </li>
         
         
             <li>
@@ -355,7 +347,7 @@
                 <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.1</div>
+<div class="version">v1.0.2</div>
 
                 <div class="primary-list">
                     <h3>Types</h3>
@@ -393,20 +385,12 @@
         </li>
         
         
-            <li>
-                <a  data="objects" href="../java.jdbc/index.html#objects">Objects</a>
-            </li>
-        
         
             <li>
                 <a data="clients" href="../java.jdbc/index.html#clients">Clients</a>
             </li>
         
         
-        
-            <li>
-                <a data="functions" href="../java.jdbc/index.html#functions">Functions</a>
-            </li>
         
         
             <li>
@@ -710,11 +694,11 @@
                                 <li id="SQLType"><b>SQLType</b><span class="type">  <a href="../java.jdbc/constants.html#TYPE_VARCHAR">TYPE_VARCHAR</a> | <a href="../java.jdbc/constants.html#TYPE_CHAR">TYPE_CHAR</a> | <a href="../java.jdbc/constants.html#TYPE_LONGVARCHAR">TYPE_LONGVARCHAR</a> | <a href="../java.jdbc/constants.html#TYPE_NCHAR">TYPE_NCHAR</a> | <a href="../java.jdbc/constants.html#TYPE_LONGNVARCHAR">TYPE_LONGNVARCHAR</a> | <a href="../java.jdbc/constants.html#TYPE_NVARCHAR">TYPE_NVARCHAR</a> | <a href="../java.jdbc/constants.html#TYPE_BIT">TYPE_BIT</a> | <a href="../java.jdbc/constants.html#TYPE_BOOLEAN">TYPE_BOOLEAN</a> | <a href="../java.jdbc/constants.html#TYPE_TINYINT">TYPE_TINYINT</a> | <a href="../java.jdbc/constants.html#TYPE_SMALLINT">TYPE_SMALLINT</a> | <a href="../java.jdbc/constants.html#TYPE_INTEGER">TYPE_INTEGER</a> | <a href="../java.jdbc/constants.html#TYPE_BIGINT">TYPE_BIGINT</a> | <a href="../java.jdbc/constants.html#TYPE_NUMERIC">TYPE_NUMERIC</a> | <a href="../java.jdbc/constants.html#TYPE_DECIMAL">TYPE_DECIMAL</a> | <a href="../java.jdbc/constants.html#TYPE_REAL">TYPE_REAL</a> | <a href="../java.jdbc/constants.html#TYPE_FLOAT">TYPE_FLOAT</a> | <a href="../java.jdbc/constants.html#TYPE_DOUBLE">TYPE_DOUBLE</a> | <a href="../java.jdbc/constants.html#TYPE_BINARY">TYPE_BINARY</a> | <a href="../java.jdbc/constants.html#TYPE_BLOB">TYPE_BLOB</a> | <a href="../java.jdbc/constants.html#TYPE_LONGVARBINARY">TYPE_LONGVARBINARY</a> | <a href="../java.jdbc/constants.html#TYPE_VARBINARY">TYPE_VARBINARY</a> | <a href="../java.jdbc/constants.html#TYPE_CLOB">TYPE_CLOB</a> | <a href="../java.jdbc/constants.html#TYPE_NCLOB">TYPE_NCLOB</a> | <a href="../java.jdbc/constants.html#TYPE_DATE">TYPE_DATE</a> | <a href="../java.jdbc/constants.html#TYPE_TIME">TYPE_TIME</a> | <a href="../java.jdbc/constants.html#TYPE_DATETIME">TYPE_DATETIME</a> | <a href="../java.jdbc/constants.html#TYPE_TIMESTAMP">TYPE_TIMESTAMP</a> | <a href="../java.jdbc/constants.html#TYPE_ARRAY">TYPE_ARRAY</a> | <a href="../java.jdbc/constants.html#TYPE_STRUCT">TYPE_STRUCT</a> | <a href="../java.jdbc/constants.html#TYPE_REFCURSOR">TYPE_REFCURSOR</a></span></li>
                                 <li>
                                     <p>The SQL Datatype of the parameter.</p>
-<p><code>VARCHAR</code> - Small, variable length character string
-<code>CHAR</code> - Small, fixed length character string
-<code>LONGVARCHAR</code> - Large, variable length character string
-<code>NCHAR</code> - Small, fixed length character string with unicode support
-<code>LONGNVARCHAR</code> - Large, variable length character string with unicode support</p>
+<p><code>VARCHAR</code> - Small, variable-length character string
+<code>CHAR</code> - Small, fixed-length character string
+<code>LONGVARCHAR</code> - Large, variable-length character string
+<code>NCHAR</code> - Small, fixed-length character string with unicode support
+<code>LONGNVARCHAR</code> - Large, variable-length character string with Unicode support</p>
 <p><code>BIT</code> - Single bit value that can be zero or one, or nil
 <code>BOOLEAN</code> - Boolean value either True or false
 <code>TINYINT</code> - 8-bit integer value which may be unsigned or signed
@@ -728,8 +712,8 @@
 <code>DOUBLE</code> - Double precision floating point number</p>
 <p><code>BINARY</code> - Small, fixed-length binary value
 <code>BLOB</code> - Binary Large Object
-<code>LONGVARBINARY</code> - Large, variable length binary value
-<code>VARBINARY</code> - Small, variable length binary value</p>
+<code>LONGVARBINARY</code> - Large, variable-length binary value
+<code>VARBINARY</code> - Small, variable-length binary value</p>
 <p><code>CLOB</code> - Character Large Object.
 <code>NCLOB</code> - Character large objects in multibyte national character set</p>
 <p><code>DATE</code> - Date consisting of day, month, and year
@@ -737,7 +721,7 @@
 <code>DATETIME</code> - Both DATE and TIME with additional a nanosecond field
 <code>TIMESTAMP</code> - Both DATE and TIME with additional a nanosecond field</p>
 <p><code>ARRAY</code> - Composite data value that consists of zero or more elements of a specified data type
-<code>STRUCT</code> - User defined structured type, consists of one or more attributes
+<code>STRUCT</code> - User-defined structured type, consists of one or more attributes
 <code>REFCURSOR</code> - Cursor value</p>
 
                                 </li>

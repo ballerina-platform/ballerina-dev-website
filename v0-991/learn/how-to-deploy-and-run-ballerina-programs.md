@@ -1,5 +1,7 @@
 ---
 layout: ballerina-inner-page
+permalink: /v0-991/learn/how-to-deploy-and-run-ballerina-programs/
+
 ---
 
 # How to Run and Deploy Ballerina Programs

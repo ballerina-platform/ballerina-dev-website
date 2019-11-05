@@ -52,7 +52,7 @@
             <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.2</div>
+<div class="version">v1.0.3</div>
 
             <div class="primary-list">
                 <h3>Records</h3>
@@ -275,6 +275,10 @@
                 </li>
             
                 <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
                     <a href="../../reflect/index.html">reflect</a>
                 </li>
             
@@ -315,6 +319,10 @@
                 </li>
             
                 <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
                     <a href="../../xmlutils/index.html">xmlutils</a>
                 </li>
             
@@ -335,7 +343,7 @@
                 <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.2</div>
+<div class="version">v1.0.3</div>
 
                 <div class="primary-list">
                     <h3>Records</h3>
@@ -558,6 +566,10 @@
                 </li>
             
                 <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
                     <a href="../../reflect/index.html">reflect</a>
                 </li>
             
@@ -595,6 +607,10 @@
             
                 <li>
                     <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
                 </li>
             
                 <li>
@@ -652,7 +668,7 @@
         <ul>
             <li> name<span class="type">  <span class="builtin-type">string</span></span> </li>
             <li>
-                <p><p>Name of the docker image. Default value is the file name of the generated balx file.</p>
+                <p><p>Name of the docker image. Default value is the file name of the executable .jar file.</p>
 </p>
             </li>
         </ul>
@@ -692,8 +708,7 @@
         <ul>
             <li> baseImage<span class="type">  <span class="builtin-type">string</span></span> </li>
             <li>
-                <p><p>Base image to create the docker image. Default value is <code>&quot;ballerina/ballerina-runtime:&lt;BALLERINA_VERSION&gt;&quot;</code>.
-Use <code>&quot;ballerina/ballerina-runtime:latest&quot;</code> to use the latest stable ballerina runtime docker image.</p>
+                <p><p>Base image to create the docker image. Default value is <code>&quot;openjdk:8-jre-alpine&quot;</code>.</p>
 </p>
             </li>
         </ul>
@@ -714,6 +729,16 @@ Use <code>&quot;ballerina/ballerina-runtime:latest&quot;</code> to use the lates
             <li> push<span class="type">  <span class="builtin-type">boolean</span></span> false</li>
             <li>
                 <p><p>Enable pushing docker image to registry. Field <code>buildImage</code> must be set to <code>true</code> to be effective. Default value is <code>false</code>.</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> cmd<span class="type">  <span class="builtin-type">string</span></span> </li>
+            <li>
+                <p><p>Value for CMD for the generated Dockerfile. Default is <code>CMD java -jar ${APP} [--b7a.config.file=${CONFIG_FILE}] [--debug]</code>.</p>
 </p>
             </li>
         </ul>
@@ -753,7 +778,7 @@ Use <code>&quot;ballerina/ballerina-runtime:latest&quot;</code> to use the lates
         <ul>
             <li> dockerHost<span class="type">  <span class="builtin-type">string</span></span> </li>
             <li>
-                <p><p>Docker host IP and docker PORT. ( e.g minikube IP and docker PORT).
+                <p><p>Docker host IP and docker PORT. (e.g minikube IP and docker PORT).
 Default is to use DOCKER_HOST environment variable.
 If DOCKER_HOST is unavailable, use <code>&quot;unix:///var/run/docker.sock&quot;</code> for Unix or use <code>&quot;npipe:////./pipe/docker_engine&quot;</code> for Windows 10 or use <code>&quot;localhost:2375&quot;</code>.</p>
 </p>

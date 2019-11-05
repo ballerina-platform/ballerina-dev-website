@@ -144,10 +144,11 @@
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                  <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="nx">Name</span><span class="p">:</span> <span class="p">&lt;@untainted&gt; name, Grade: &lt;@untainted&gt; grade });        var result = caller-&gt;respond(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span> <span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
@@ -446,10 +447,11 @@ match the record.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string name = student.Name;
-        int grade = student.Grade;
+                                    <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt; student.Name;
+        int grade = &lt;@untainted&gt; student.Grade;
+        string english = &lt;@untained&gt; &lt;string&gt; student.Marks[&quot;English&quot;];
         http:Response res = new;
-        res.setPayload({ Name: &lt;@untainted&gt; name, Grade: &lt;@untainted&gt; grade });
+        res.setPayload({ Name: name, Grade: grade, English: english });
 </code></pre></div>
 
                                 </td>
@@ -457,7 +459,7 @@ match the record.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accesses the fields of the record <code>Student</code>.</p>
+                                            <p>Accesses the fields of the <code>Student</code> record.</p>
 
                                         </div>
                                     </div>
@@ -535,10 +537,10 @@ $ ballerina run http_data_binding.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, use the following HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, execute the below HTTP request.
 $ curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
-{&quot;ID&quot;:&quot;77999&quot;,&quot;Name&quot;:&quot;XYZ&quot;}
+{&quot;ID&quot;:&quot;77999&quot;, &quot;Name&quot;:&quot;XYZ&quot;}
 </code></pre></div>
 
                                 </td>
@@ -550,7 +552,7 @@ $ curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { 
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, use the following  HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, execute the below HTTP request.
 $ curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
 # Server response:
 &lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;
@@ -565,10 +567,10 @@ $ curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;A
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, use the following  HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, execute the below HTTP request.
 $ curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
-{&quot;Name&quot;:&quot;John&quot;,&quot;Grade&quot;:12}
+{&quot;Name&quot;:&quot;John&quot;, &quot;Grade&quot;:12, &quot;English&quot;:&quot;85&quot;}
 </code></pre></div>
 
                                 </td>

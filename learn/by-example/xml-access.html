@@ -106,6 +106,7 @@
 <span class="s">                    &lt;mname&gt;Conan&lt;/mname&gt;</span>
 <span class="s">                    &lt;lname&gt;Doyle&lt;/lname&gt;</span>
 <span class="s">                &lt;/author&gt;</span>
+<span class="s">                &lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;</span>
 <span class="s">                &lt;!--Price: $10--&gt;</span>
 <span class="s">                &lt;/book&gt;`</span><span class="p">;</span>
     
@@ -117,6 +118,9 @@
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">fname</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">]</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;{http://ballerina.com/a}year&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
+    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/a&quot;</span> <span class="k">as</span> <span class="nx">foo</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="nx">foo</span><span class="p">:</span><span class="nx">year</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -210,6 +214,8 @@
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -249,6 +255,7 @@
                     &lt;mname&gt;Conan&lt;/mname&gt;
                     &lt;lname&gt;Doyle&lt;/lname&gt;
                 &lt;/author&gt;
+                &lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;
                 &lt;!--Price: $10--&gt;
                 &lt;/book&gt;`;
     
@@ -330,10 +337,9 @@
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.author.fname@[&quot;title&quot;]);
     io:println(bookXML[&quot;author&quot;][&quot;fname&quot;]@[&quot;title&quot;]);
-}
 </code></pre></div>
 
                                 </td>
@@ -342,6 +348,28 @@
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>You can also retrieve attributes of the resulting child XML.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML[&quot;{http://ballerina.com/a}year&quot;].getTextValue());
+    xmlns &quot;http://ballerina.com/a&quot; as foo;
+    io:println(bookXML[foo:year].getTextValue());
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>You can access the elements by their namespace-qualified (fully-qualified) name.</p>
 
                                         </div>
                                     </div>
@@ -389,6 +417,8 @@ $ ballerina run xml-access.bal
 Arthur
 Sir
 Sir
+2019
+2019
 </code></pre></div>
 
                                 </td>

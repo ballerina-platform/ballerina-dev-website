@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-permalink: /v0-991/learn/getting-started/
+permalink: /v0-991/learn/ballerina-streaming-reference/
 ---
 
 # Ballerina Streaming Reference Guide

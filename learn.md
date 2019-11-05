@@ -172,50 +172,50 @@ permalink: /learn/
       <h3><a href="/learn/how-to-structure-ballerina-code">Structuring Ballerina Code</a></h3>
       <p>How to use Ballerina to fetch, build, create, version, search, and install Ballerina modules with repositories that are local and remote.</p>
    </div>
+    <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-document-ballerina-code">Documenting Ballerina Code</a></h3>
+      <p>How to document your Ballerina programs and modules in order to generate API documentation.</p>
+   </div>
+   <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-test-ballerina-code">Testing Ballerina Code</a></h3>
       <p>How to write testable Ballerina code using its built-in test framework, which provides a set of building blocks to help write tests.</p>
    </div>
-   <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-document-ballerina-code">Documenting Ballerina Code</a></h3>
-      <p>How to document your Ballerina programs and modules in order to generate API documentation.</p>
+  <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-deploy-and-run-ballerina-programs">Running and Deploying Ballerina Services</a></h3>
+      <p>How to configure your runtime services and generate deployment artifacts for various targets including Docker and Kubernetes.</p>
    </div>
+   <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-publish-modules">Publishing Modules on Ballerina Central</a></h3>
       <p>How to share your local modules with the Ballerina community using Ballerina Central.</p>
-   </div>
-   <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-deploy-and-run-ballerina-programs">Running and Deploying Ballerina Services</a></h3>
-      <p>How to configure your runtime services and generate deployment artifacts for various targets including Docker and Kubernetes.</p>
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-observe-ballerina-code">Observing Ballerina Services</a></h3>
       <p>How to use logging, metrics, and tracing to observe Ballerina services.</p>
    </div>
-     <div class="clearfix"></div>
+   <div class="clearfix"></div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-write-secure-ballerina-code">Writing Secure Ballerina Code</a></h3>
+      <p>How to write secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
+   </div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/style-guide">Ballerina Style Guide</a></h3>
+      <p>How to maintain a standard coding style among the Ballerina community.</p>
+   </div>
+   <div class="clearfix"></div>
+    <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
+      <p>How to add additional compile-time behavior using compiler extensions and annotations.</p>
+   </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-generate-code-for-protocol-buffers">Generating Ballerina Code for Protocol Buffer Definition</a></h3>
       <p>How to generate Ballerina connector and service code for your existing Protocol Buffer definition.</p>
    </div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/style-guide">Ballerina Style Guide</a></h3>
-      <p>The Ballerina Style Guide shows how to maintain a standard coding style among the Ballerina community.</p>
-   </div>
      <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-use-openapi-tools">Developing Ballerina Services Using an OpenAPI Documentation</a></h3>
-      <p>This guide shows how to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
-   </div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-write-secure-ballerina-code">Writing Secure Ballerina Code</a></h3>
-      <p>Provides guidelines on writing secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
-   </div>
-     <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
-      <p>This guide shows how additional compile-time behavior can be added using compiler extensions and annotations.</p>
+      <p>How to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
    </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

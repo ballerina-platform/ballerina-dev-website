@@ -121,22 +121,30 @@
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">readableFieldResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sourceChannel</span> <span class="p">=</span>
-            <span class="nx">new</span><span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">writableFileResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
-            <span class="nx">new</span><span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Started to process the file.&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while processing chars &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File processing complete.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">closeRc</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">);</span>
-    <span class="nx">closeWc</span><span class="p">(</span><span class="nx">destinationChannel</span><span class="p">);</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="c1">// This example uses the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sample.txt file as the </span>
+    <span class="c1">// source file, which includes the text &quot;Hello Ballerina!!&quot;. </span>
+    <span class="c1">// You can replace this with the file path of a preferred text file. </span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">readableFieldResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sourceChannel</span> <span class="p">=</span>
+            <span class="nx">new</span><span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>    <span class="c1">// This example creates the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sampleResponse.txt</span>
+    <span class="c1">// destination file and writes the text &quot;Hello my name is Ballerina!!&quot;&quot;.  </span>
+    <span class="c1">// You can replace this with the file path of a preferred text file.</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">writableFileResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
+            <span class="nx">new</span><span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Started to process the file.&quot;</span><span class="p">);</span>
+    <span class="c1">// Processes the given `string`.</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while processing chars &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File processing complete.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// Closes the readable channel.</span>
+    <span class="nx">closeRc</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">);</span>
+    <span class="c1">// Closes the writable channel.</span>
+    <span class="nx">closeWc</span><span class="p">(</span><span class="nx">destinationChannel</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -214,10 +222,6 @@
                     </table>
 
                     
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -369,14 +373,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
-    io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
-    io:ReadableCharacterChannel sourceChannel =
-            new(readableFieldResult, &quot;UTF-8&quot;);
-    io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
-    io:WritableCharacterChannel destinationChannel =
-            new(writableFileResult, &quot;UTF-8&quot;);
-    io:println(&quot;Started to process the file.&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+    // This example uses the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sample.txt file as the 
+    // source file, which includes the text &quot;Hello Ballerina!!&quot;. 
+    // You can replace this with the file path of a preferred text file. 
+    io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
+    io:ReadableCharacterChannel sourceChannel =
+            new(readableFieldResult, &quot;UTF-8&quot;);
 </code></pre></div>
 
                                 </td>
@@ -385,65 +388,32 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = process(sourceChannel, destinationChannel);
-    if (result is error) {
-        log:printError(&quot;error occurred while processing chars &quot;, err = result);
-    } else {
-        io:println(&quot;File processing complete.&quot;);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Processes the given <code>string</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    closeRc(sourceChannel);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the readable channel.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    closeWc(destinationChannel);
+                                    <div class="highlight"><pre><code class=ballerina>    // This example creates the &lt;BALLERINA_LANG&gt;/examples/character-io/files/sampleResponse.txt
+    // destination file and writes the text &quot;Hello my name is Ballerina!!&quot;&quot;.  
+    // You can replace this with the file path of a preferred text file.
+    io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
+    io:WritableCharacterChannel destinationChannel =
+            new(writableFileResult, &quot;UTF-8&quot;);
+    io:println(&quot;Started to process the file.&quot;);
+    // Processes the given `string`.
+    var result = process(sourceChannel, destinationChannel);
+    if (result is error) {
+        log:printError(&quot;error occurred while processing chars &quot;, err = result);
+    } else {
+        io:println(&quot;File processing complete.&quot;);
+    }
+    // Closes the readable channel.
+    closeRc(sourceChannel);
+    // Closes the writable channel.
+    closeWc(destinationChannel);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Closes the writable channel.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

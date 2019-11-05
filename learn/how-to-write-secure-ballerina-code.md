@@ -436,12 +436,6 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     auth: {
         authHandlers: [authHandler],
         mandateSecureSocket: false
-    },
-    secureSocket: {
-        keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
-            password: "ballerina"
-        }
     }
 });
 service helloWorld on secureHelloWorldEp {

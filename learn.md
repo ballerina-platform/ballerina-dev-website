@@ -17,10 +17,10 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">1</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Download a Ballerina installer and make sure it’s working on your machine. </p>
-     <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions available for <br>Linux, OS X, and Windows</p></a>
+     <p>Click below to download a Ballerina installer and use the downloaded installer to install Ballerina on your machine. </p>
+     <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions are available for <br>Linux, OS X, and Windows.</p></a>
      <div class="clearfix"></div>
-   <p>Need some help? Read the <a href="/learn/getting-started">Getting Started guide</a>.</p>
+   <p>For more information, see <a href="/learn/getting-started">Getting Started </a></p>
       </div>
 </div>
 </div>
@@ -28,8 +28,8 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">2</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Get your IDE set up: Download your <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VSCode</a> or IntelliJ Idea plugin (coming soon!) from their marketplaces.</p>
-    <p>Need some help? Read the instructions for <a  href="/learn/tools-ides/vscode-plugin">VSCode</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ Idea</a>.</p>
+     <p>To set up your IDE, download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA </a>plugin from their marketplaces and install it.</p>
+    <p>For instructions, see <a  href="/learn/tools-ides/vscode-plugin">VS Code</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ IDEA</a>.</p>
       </div>
    </div>
 </div>
@@ -37,8 +37,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">3</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Take a quick tour to run a simple hello world services and call a web API. </p>
-     <p>Read the <a href="/learn/quick-tour">quickstart guide</a> and follow along in your IDE</p>
+     <p>Take a <a href="/learn/quick-tour">Quick Tour </a>using your IDE to run a simple hello world service and call a web API. </p>
       </div>
    </div>
 </div>
@@ -55,13 +54,13 @@ permalink: /learn/
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Learn the “batteries-included” standard library</p>
+     <p class="cBoxpara">Learn the “batteries-included” standard library.</p>
          <a class="cBallerinaLearnButtons" href="/learn/api-docs/ballerina">The Standard Library</a>
       </div>
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Read the language & platform specifications to really understand the guts of the language.</p>
+     <p class="cBoxpara">Read the language & platform specifications to get an in-depth understanding of the language and its design.</p>
          <a class="cBallerinaLearnButtons" href="/spec">Language Specification</a>
       </div>
    </div>

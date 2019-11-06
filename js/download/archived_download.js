@@ -61,12 +61,12 @@ $(document).ready(function() {
 	    data.sort(function(a, b) {
 	       return new Date(b["release-date"]) - new Date(a["release-date"]);
             });
-            updateReleaseTable(data);
+            updateReleasearchiveTable(data);
         });
     });
 });
 
-function updateReleaseTable(allData) {
+function updateReleasearchiveTable(allData) {
     $.get('/hbs/archived_list.hbs', function(data) {
         var template = Handlebars.compile(data);
         allData.forEach(function(item) {

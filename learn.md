@@ -20,7 +20,7 @@ permalink: /learn/
      <p>Click below to download a Ballerina installer and install Ballerina on your machine. </p>
      <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions are available for <br>Linux, OS X, and Windows.</p></a>
      <div class="clearfix"></div>
-   <p>For more information, see <a href="/learn/getting-started">Getting Started </a></p>
+   <p>For more information, see <a href="/learn/getting-started">Getting Started</a></p>
       </div>
 </div>
 </div>

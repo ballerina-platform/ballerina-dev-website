@@ -17,7 +17,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">1</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Click below to download a Ballerina installer and install Ballerina on your machine. </p>
+     <p>Download a Ballerina installer and install Ballerina on your machine. </p>
      <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions are available for <br>Linux, OS X, and Windows.</p></a>
      <div class="clearfix"></div>
    <p>For more information, see <a href="/learn/getting-started">Getting Started</a></p>

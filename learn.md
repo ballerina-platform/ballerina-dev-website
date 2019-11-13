@@ -28,7 +28,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">2</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>To set up your IDE, download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA </a>plugin from their marketplaces and install it.</p>
+     <p>To set up your IDE, download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA</a> plugin from their marketplaces and install it.</p>
     <p>For instructions, see <a  href="/learn/tools-ides/vscode-plugin">VS Code</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ IDEA</a>.</p>
       </div>
    </div>

@@ -37,7 +37,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">3</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Take a <a href="/learn/quick-tour">Quick Tour </a>using your IDE to run a simple hello world service and call a web API. </p>
+     <p>Take a <a href="/learn/quick-tour">Quick Tour</a> using your IDE to run a simple hello world service and call a web API. </p>
       </div>
    </div>
 </div>

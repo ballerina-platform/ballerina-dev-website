@@ -249,7 +249,7 @@ a project will build all modules found in the project's root folder. Building a 
 dependency resolution, compilation, artifact generation, and unit test execution.
 
 ```bash
-ballerina build
+ballerina build -a
 ```
 
 ### Build a Module
@@ -261,7 +261,7 @@ ballerina build <module-name>
 Use the `--skip-tests` flag with the `ballerina build` command to skip running the tests during the build process.
 
 ```bash
-ballerina build --skip-tests
+ballerina build --skip-tests <module-name>
 ```
 
 
@@ -271,19 +271,19 @@ Compiling a project will compile all the modules found in the project's root fol
 including dependency resolution, compilation, artifact generation, and unit test execution.
 
 ```bash
-ballerina compile
+ballerina build -c -a
 ```
 
 ### Compile a Module
 You can build a single module contained within a project:
 
 ```bash
-ballerina compile <module-name>
+ballerina build -c <module-name>
 ```
 Use the `--skip-tests` flag with the `ballerina compile` command to skip running the tests during the compile process.
 
 ```bash
-ballerina compile --skip-tests
+ballerina build -c --skip-tests <module-name>
 ```
 
 ### Version a Module

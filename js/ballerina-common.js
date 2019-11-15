@@ -209,17 +209,17 @@ $(document).ready(function() {
         '</ul>' +
         '</div>' +
         '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">' +
-        '<p><span>Announcement List</span><br/>' +
-        '<div class="cFormContainer">' +
-        '<form>' +
-        '<div class="cFieldContainer">' +
-        '<input maxlength="90" value="" id="emailUser" name="email" placeholder="I consent to join the email list" title="email" type="text">' +
-        '</div>' +
-        '<div class="cButtonContainer">' +
-        '<a class="cBallerinaButtons subscribeUserForm" href="" id="subscribeUserButton"></a>' +
-        '</div>' +
-        '</form>' +
-        '</div>' +
+        // '<p><span>Announcement List</span><br/>' +
+        // '<div class="cFormContainer">' +
+        // '<form>' +
+        // '<div class="cFieldContainer">' +
+        // '<input maxlength="90" value="" id="emailUser" name="email" placeholder="I consent to join the email list" title="email" type="text">' +
+        // '</div>' +
+        // '<div class="cButtonContainer">' +
+        // '<a class="cBallerinaButtons subscribeUserForm" href="" id="subscribeUserButton"></a>' +
+        // '</div>' +
+        // '</form>' +
+        // '</div>' +
         '<div class="cSocialmedia">' +
         '<ul>' +
         '<li>' +

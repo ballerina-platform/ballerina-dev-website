@@ -171,7 +171,11 @@ padding-bottom: 30px;
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
 }
 
-.cBBEButton img {
+.cBBEButton img  {
+    height: 24px !important;
+}
+
+.cPlayButton img  {
     height: 24px !important;
 }
 

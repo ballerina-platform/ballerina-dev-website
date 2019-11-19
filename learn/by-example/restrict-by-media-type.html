@@ -133,7 +133,7 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Restrict By Media Type</h2>
-                            <p><p>You can configure resources of HTTP services to restrict the types of media it consumes and produces.
+                            <p><p>You can configure resources of HTTP services to restrict the types of media they consume and produce.
  This is done through the &lsquo;consumes&rsquo; and &lsquo;produces&rsquo; annotation attributes of the ResourceConfig annotation, which is used with resources.</p>
 </p>
 
@@ -262,8 +262,8 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The <code>consumes</code> and <code>produces</code> annotations contain MIME types as an
- array of strings. The resource can consume/accept <code>text/json</code> and
- <code>application/json</code> media types only. Therefore, the <code>Content-Type</code> header
+ array of strings. The resource can only consume/accept <code>text/json</code> and
+ <code>application/json</code> media types. Therefore, the <code>Content-Type</code> header
  of the request must be in one of these two types. The resource can produce
  <code>application/xml</code> payloads. Therefore, you need to set the <code>Accept</code> header accordingly.</p>
 
@@ -286,7 +286,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get JSON payload from the request message.</p>
+                                            <p>Get the JSON payload from the request message.</p>
 
                                         </div>
                                     </div>
@@ -305,7 +305,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>string</code> value that is relevant to the key &ldquo;name&rdquo;.</p>
+                                            <p>Get the <code>string</code> value, which is relevant to the key &ldquo;name&rdquo;.</p>
 
                                         </div>
                                     </div>
@@ -329,7 +329,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create XML payload and send back a response.</p>
+                                            <p>Create the XML payload and send back a response.</p>
 
                                         </div>
                                     </div>
@@ -371,7 +371,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run restrict_by_media_type.bal
 # Service deployment
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9092
@@ -407,7 +407,7 @@ $ ballerina run restrict_by_media_type.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use the following client.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the following cURL request.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
 # The server response.
 &lt; HTTP/1.1 200 OK
@@ -427,8 +427,8 @@ $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the following client to invoke the service using unsupported media type. The Content type of the
-# request is not listed under consumes resource configuration.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service using unsupported media type, execute the following cURL request. The content type of the
+# request is not listed under the `consumes` resource configuration.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:text/plain&quot; -d &quot;Hello ballerina&quot;
 # The server response.
 &lt; HTTP/1.1 415 Unsupported Media Type
@@ -447,8 +447,8 @@ $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the following client to invoke the service with a media type that is not acceptable. The media type mentioned
-# in the Accept header is not listed under produces resource configuration.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned
+# in the Accept header is not listed under the `produces` resource configuration.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
 # The server response.
 &lt; HTTP/1.1 406 Not Acceptable

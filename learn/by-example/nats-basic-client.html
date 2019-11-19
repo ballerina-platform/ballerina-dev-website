@@ -109,13 +109,11 @@
     <span class="nx">nats</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">producer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">connection</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message : &quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">producer</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message published successfully.&quot;</span><span class="p">);</span>
-            <span class="p">}</span>
+        <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">producer</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while producing the message.&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Message published successfully.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">producer</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
@@ -299,7 +297,6 @@ import ballerina/nats;
     nats:Producer producer = new(connection);
     while (message != ESCAPE) {
         message = io:readln(&quot;Message : &quot;);
-        if (message != ESCAPE) {
 </code></pre></div>
 
                                 </td>
@@ -318,12 +315,11 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
-            if (result is nats:Error) {
-                io:println(&quot;Error occurred while producing the message.&quot;);
-            } else {
-                io:println(&quot;Message published successfully.&quot;);
-            }
+                                    <div class="highlight"><pre><code class=ballerina>        nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
+        if (result is nats:Error) {
+            io:println(&quot;Error occurred while producing the message.&quot;);
+        } else {
+            io:println(&quot;Message published successfully.&quot;);
         }
     }
 </code></pre></div>

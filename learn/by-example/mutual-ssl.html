@@ -173,7 +173,7 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Mutual SSL</h2>
-                            <p><p>Ballerina supports mutual SSL, which is a certificate based authentication process where two parties (client and
+                            <p><p>Ballerina supports mutual SSL, which is a certificate-based authentication process where two parties (client and
 server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of
 each other&rsquo;s identity.</p>
 </p>
@@ -322,7 +322,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Configure the preferred SSL protocol and the versions to enable.</p>
+                                            <p>Enable the preferred SSL protocol and its versions.</p>
 
                                         </div>
                                     </div>
@@ -454,7 +454,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send response to the caller.</p>
+                                            <p>Send the response to the caller.</p>
 
                                         </div>
                                     </div>
@@ -479,7 +479,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run mutual_ssl_service.bal
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
 </code></pre></div>
@@ -586,7 +586,7 @@ import ballerina/log;
                                         <div>
                                             <p>Create a client configuration to be passed to the client endpoint.
  Configure the <code>keyStoreFile</code>, <code>keyStorePassword</code>, <code>trustStoreFile</code>, and
- The<code>trustStorePassword</code>, which is required to enable mutual SSL.</p>
+ the<code>trustStorePassword</code>, which are required to enable mutual SSL.</p>
 
                                         </div>
                                     </div>
@@ -721,7 +721,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an error occurs when getting the response, log the error.</p>
+                                            <p>If an error occurs while getting the response, log the error.</p>
 
                                         </div>
                                     </div>
@@ -746,7 +746,7 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run ssl_client.bal
 INFO  [] - Successful
 </code></pre></div>

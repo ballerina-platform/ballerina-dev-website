@@ -52,7 +52,7 @@
             <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.3</div>
+<div class="version">v1.0.4</div>
 
             <div class="primary-list module">
     
@@ -344,7 +344,7 @@
                 <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.3</div>
+<div class="version">v1.0.4</div>
 
                 
                 <div class="primary-list module">
@@ -680,13 +680,43 @@ APIs to publish messages to each server.</p>
 <li>Publish with the subject and the message content.</li>
 </ol>
 <pre><code class="language-ballerina">nats:Producer producer = new(connection);
-error? result = producer-&gt;publish(subject, &quot;hello world&quot;);
+nats:Error? result = producer-&gt;publish(subject, &quot;hello world&quot;);
 </code></pre>
 <ol start="2">
 <li>Publish as a request that expects a reply.</li>
 </ol>
 <pre><code class="language-ballerina">nats:Producer producer = new(connection);
-nats:Message|error reqReply = producer-&gt;request(subject, &quot;hello world&quot;, 5000);
+nats:Message|nats:Error reqReply = producer-&gt;request(subject, &quot;hello world&quot;, 5000);
+</code></pre>
+<ol start="3">
+<li>Publish messages with a replyTo subject</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message, 
+                         replyToSubject);
+</code></pre>
+<ol start="4">
+<li>Publish messages with a replyTo callback service</li>
+</ol>
+<pre><code class="language-ballerina">nats:Producer producer = new(connection);
+nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message, 
+                         replyToService);
+</code></pre>
+<pre><code class="language-ballerina">service replyToService =
+@nats:SubscriptionConfig {
+    subject: &quot;replySubject&quot;
+}
+service {
+
+    resource function onMessage(nats:Message msg, string data) {
+        // Prints the incoming message in the console.
+        log:printInfo(&quot;Received reply message : &quot; + data);
+    }
+
+    resource function onError(nats:Message msg, nats:Error err) {
+        log:printError(&quot;Error occurred in data binding&quot;, err);
+    }
+};
 </code></pre>
 <h3>Publishing messages to a NATS streaming server</h3>
 <p>Once connected to a streaming server, publishing messages is accomplished using the following method.</p>
@@ -791,6 +821,14 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                                 <a class="records"
                                    href="records/ConnectionConfig.html">ConnectionConfig</a></td>
                             <td class="module-desc">The parameters used to create a NATS streaming subscription.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Detail" title="Detail">
+                                <a class="records"
+                                   href="records/Detail.html">Detail</a></td>
+                            <td class="module-desc">Record type to hold the details of an error.
 </td>
                         </tr>
                     

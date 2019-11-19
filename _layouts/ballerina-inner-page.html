@@ -42,6 +42,38 @@
       </div>
       {% include ballerina-footer.html %}
       <script src="/js/theme.js"></script>
+
+      <script>
+            $(document).ready(function() {
+                     var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+                     var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+             });
+            </script>
+         
+            <style>
+                .cGitButtonContainer {
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+         
+                 #iGitStarText {
+                     height: 20px;
+                     float: left;
+                     padding: 0;
+                     margin: 0;
+                 }
+                #iGitStarIframe , #iGitWatchIframe {
+                     height: 20px;
+                     width: 100px;
+                     float: left;
+                 }
+             </style>
+
    </body>
 </html>
 

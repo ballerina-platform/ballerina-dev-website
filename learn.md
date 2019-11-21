@@ -209,7 +209,7 @@ permalink: /learn/
       <p>How to add additional compile-time behavior using compiler extensions and annotations.</p>
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-generate-code-for-protocol-buffers">Generating Ballerina Code for Protocol Buffer Definition</a></h3>
+      <h3><a href="/learn/how-to-generate-code-for-protocol-buffers">Generating Ballerina Code for Protocol Buffer Definitions</a></h3>
       <p>How to generate Ballerina connector and service code for your existing Protocol Buffer definition.</p>
    </div>
      <div class="clearfix"></div>

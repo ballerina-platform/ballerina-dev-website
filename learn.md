@@ -10,7 +10,7 @@ permalink: /learn/
 <!-- <a href="" class="cGreenLinkArrow">Take Quick Tour</a> -->
 </div>
 <div class="col-sm-12 col-md-12 cBallerinaLearnTitleWrapper">
-   <h2>Get started with Ballerina</h2>
+   <h2>Get started</h2>
 </div>
 <div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper">
 <div class="col-sm-12 col-md-12 cRowLearnSteps">

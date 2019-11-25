@@ -54,7 +54,7 @@ Oh no, you hit a bump on the road! Please tell us - we want to fix all bugs!
 
 - Found a bug in the compiler, standard libraries or the runtime? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">https://github.com/ballerina-platform/ballerina-lang/issues</a>
 - Found a bug in the language specification? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">https://github.com/ballerina-platform/ballerina-spec/issues</a>
-- Found a bug on the website? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-www/issues">https://github.com/ballerina-platform/ballerina-www/issues</a> 
+- Found a bug on the website? Create an issue here: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">https://github.com/ballerina-platform/ballerina-dev-website/issues</a> 
 
 
 ## Want to help us make Ballerina popular?!

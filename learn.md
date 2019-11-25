@@ -17,10 +17,10 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">1</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Download a Ballerina installer and make sure it’s working on your machine. </p>
-     <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions available for <br>Linux, OS X, and Windows</p></a>
+     <p>Download a Ballerina installer and install Ballerina on your machine. </p>
+     <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions are available for <br>Linux, OS X, and Windows.</p></a>
      <div class="clearfix"></div>
-   <p>Need some help? Read the <a href="/learn/getting-started">Getting Started guide</a>.</p>
+   <p>For more information, see <a href="/learn/getting-started">Getting Started</a></p>
       </div>
 </div>
 </div>
@@ -28,8 +28,8 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">2</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Get your IDE set up: Download your <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VSCode</a> or IntelliJ Idea plugin (coming soon!) from their marketplaces.</p>
-    <p>Need some help? Read the instructions for <a  href="/learn/tools-ides/vscode-plugin">VSCode</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ Idea</a>.</p>
+     <p>To set up your IDE, download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA</a> plugin from their marketplaces and install it.</p>
+    <p>For instructions, see <a  href="/learn/tools-ides/vscode-plugin">VS Code</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ IDEA</a>.</p>
       </div>
    </div>
 </div>
@@ -37,8 +37,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">3</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>Take a quick tour to run a simple hello world services and call a web API. </p>
-     <p>Read the <a href="/learn/quick-tour">quickstart guide</a> and follow along in your IDE</p>
+     <p>Take a <a href="/learn/quick-tour">Quick Tour</a> using your IDE to run a simple hello world service and call a web API. </p>
       </div>
    </div>
 </div>
@@ -55,13 +54,13 @@ permalink: /learn/
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Learn the “batteries-included” standard library</p>
+     <p class="cBoxpara">Learn the “batteries-included” standard library.</p>
          <a class="cBallerinaLearnButtons" href="/learn/api-docs/ballerina">The Standard Library</a>
       </div>
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Read the language & platform specifications to really understand the guts of the language.</p>
+     <p class="cBoxpara">Read the language & platform specifications to get an in-depth understanding of the language and its design.</p>
          <a class="cBallerinaLearnButtons" href="/spec">Language Specification</a>
       </div>
    </div>
@@ -173,50 +172,50 @@ permalink: /learn/
       <h3><a href="/learn/how-to-structure-ballerina-code">Structuring Ballerina Code</a></h3>
       <p>How to use Ballerina to fetch, build, create, version, search, and install Ballerina modules with repositories that are local and remote.</p>
    </div>
+    <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-document-ballerina-code">Documenting Ballerina Code</a></h3>
+      <p>How to document your Ballerina programs and modules in order to generate API documentation.</p>
+   </div>
+   <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-test-ballerina-code">Testing Ballerina Code</a></h3>
       <p>How to write testable Ballerina code using its built-in test framework, which provides a set of building blocks to help write tests.</p>
    </div>
-   <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-document-ballerina-code">Documenting Ballerina Code</a></h3>
-      <p>How to document your Ballerina programs and modules in order to generate API documentation.</p>
+  <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-deploy-and-run-ballerina-programs">Running and Deploying Ballerina Services</a></h3>
+      <p>How to configure your runtime services and generate deployment artifacts for various targets including Docker and Kubernetes.</p>
    </div>
+   <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-publish-modules">Publishing Modules on Ballerina Central</a></h3>
       <p>How to share your local modules with the Ballerina community using Ballerina Central.</p>
-   </div>
-   <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-deploy-and-run-ballerina-programs">Running and Deploying Ballerina Services</a></h3>
-      <p>How to configure your runtime services and generate deployment artifacts for various targets including Docker and Kubernetes.</p>
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-observe-ballerina-code">Observing Ballerina Services</a></h3>
       <p>How to use logging, metrics, and tracing to observe Ballerina services.</p>
    </div>
-     <div class="clearfix"></div>
+   <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-generate-code-for-protocol-buffers">Generating Ballerina Code for Protocol Buffer Definition</a></h3>
-      <p>How to generate Ballerina connector and service code for your existing Protocol Buffer definition.</p>
+      <h3><a href="/learn/how-to-write-secure-ballerina-code">Writing Secure Ballerina Code</a></h3>
+      <p>How to write secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/style-guide">Ballerina Style Guide</a></h3>
-      <p>The Ballerina Style Guide shows how to maintain a standard coding style among the Ballerina community.</p>
+      <p>How to maintain a standard coding style among the Ballerina community.</p>
+   </div>
+   <div class="clearfix"></div>
+    <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
+      <p>How to add additional compile-time behavior using compiler extensions and annotations.</p>
+   </div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-generate-code-for-protocol-buffers">Generating Ballerina Code for Protocol Buffer Definitions</a></h3>
+      <p>How to generate Ballerina connector and service code for your existing Protocol Buffer definition.</p>
    </div>
      <div class="clearfix"></div>
    <div class="col-sm-12 col-md-6 cTwoCol">
       <h3><a href="/learn/how-to-use-openapi-tools">Developing Ballerina Services Using an OpenAPI Documentation</a></h3>
-      <p>This guide shows how to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
-   </div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-write-secure-ballerina-code">Writing Secure Ballerina Code</a></h3>
-      <p>Provides guidelines on writing secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
-   </div>
-     <div class="clearfix"></div>
-   <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/learn/how-to-extend-ballerina">Extending Ballerina</a></h3>
-      <p>This guide shows how additional compile-time behavior can be added using compiler extensions and annotations.</p>
+      <p>How to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
    </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

@@ -35,7 +35,7 @@ These commands help you check your installation and know that things are set up 
 
 ## Build, test, and run programs
 
-These commands are your best friends! These everyday commands are for the very basics of being a Ballerina programmer: from compiling and running programs to testing them to generating their documentation.
+These everyday commands are your best friends! They address the very basics of programming in Ballerina such as compiling, running, testing programs, and generating their documentation.
 
 <table class="cComandTable">
 <tr>

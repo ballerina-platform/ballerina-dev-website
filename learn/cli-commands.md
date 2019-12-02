@@ -28,7 +28,7 @@ These commands help you check your installation and know that things are set up 
 </tr>
 <tr>
 <td class="cCommand">home</td>
-<td class="cDescription">Prints out the location of you current Ballerina distribution. This is useful if you need to help your IDE plugin to figure out where Ballerina is.
+<td class="cDescription">Prints out the location of your current Ballerina distribution. This is useful if you need to help your IDE plugin to figure out where Ballerina is.
 </td>
 </tr>
 </table>

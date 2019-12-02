@@ -23,7 +23,7 @@ These commands help you check your installation and know that things are set up 
 
 <table class="cComandTable">
 <tr>
-<td class="cCommand">`version`</td>
+<td class="cCommand">version</td>
 <td class="cDescription">Tells you the version of Ballerina you have installed.</td>
 </tr>
 <tr>

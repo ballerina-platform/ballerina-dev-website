@@ -62,7 +62,7 @@ permalink: /learn/
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Read the language & platform specifications to get an in-depth understanding of the language and its design.</p>
+     <p class="cBoxpara">Get an in-depth understanding of the language and its design.</p>
          <a class="cBallerinaLearnButtons" href="/spec">Language Specification</a>
       </div>
    </div>

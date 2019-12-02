@@ -105,7 +105,7 @@ Ballerina projects are the way to organize real world Ballerina development task
 
 ## Use the supporting tools
 
-These powerful supporting tools extend Ballerina to various ecosystem technologies that are inherently cloud native. This functionality will grow over time and will even be developer extensible in the future.
+These powerful supporting tools extend Ballerina to various ecosystem technologies that are inherently cloud-native. This functionality will grow over time and will even be developer extensible in the future.
 
 <table class="cComandTable">
 <tr>

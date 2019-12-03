@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta property="og:url" content="https://ballerina.io" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Select with order-by clause" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Error-Typed Binding Pattern" />
     <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
     <meta property="og:image" content="/img/ballerina-sm.jpg" />
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
-    <title>Ballerina by Example: Select with order-by clause</title>
+    <title>Ballerina by Example: Error-Typed Binding Pattern</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
@@ -98,38 +98,35 @@
     <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">married</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1000.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1050.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;kane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1200.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jack&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p4</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1100.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;alex&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">id</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">salary</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">married</span><span class="p">},</span>
-        <span class="p">[</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">,</span> <span class="nx">p4</span><span class="p">]</span>
-    <span class="p">};</span>
-    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;The personTable:  &quot;</span><span class="p">,</span> <span class="nx">personTable</span><span class="p">);</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">orderedPersonTable</span> <span class="p">=</span> <span class="nx">from</span> <span class="nx">personTable</span> <span class="nx">select</span> <span class="o">*</span> <span class="nx">order</span> <span class="nx">by</span> <span class="nx">salary</span><span class="p">;</span>
-    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;Person&gt; orderedPersonTable = &quot;</span> <span class="o">+</span>
-            <span class="s">&quot;from personTable select * order by salary;&quot;</span><span class="p">;</span>
-    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;orderedPersonTable: &quot;</span><span class="p">,</span> <span class="nx">orderedPersonTable</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printTable</span><span class="p">(</span><span class="kt">string</span> <span class="nx">stmt</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">returnedTable</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stmt</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tableName</span><span class="p">);</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">returnedTable</span> <span class="p">{</span>
-       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
-    <span class="p">}</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleErrorData</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
+    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">info</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nx">fatal</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">SampleErrorData</span><span class="p">&gt;;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">fatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Info: &quot;</span><span class="p">,</span> <span class="nx">info</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Fatal: &quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span><span class="p">,</span> <span class="nx">reasonTwo</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonThree</span><span class="p">,</span> <span class="nx">info</span><span class="p">=</span><span class="nx">info2</span><span class="p">,</span> <span class="o">...</span><span class="nx">filteredParams</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">filteredParams</span><span class="p">);</span>
+    
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="nx">detailMsg</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="nx">isFatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Message: &quot;</span><span class="p">,</span> <span class="nx">detailMsg</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">SampleError</span> <span class="p">{</span>
+    <span class="nx">SampleError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="s">&quot;Detail Msg&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
+    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">detailMsg</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nx">isFatal</span><span class="p">;</span>
+<span class="p">|};</span><span class="kd">function</span> <span class="nx">getRecordConstrainedError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Some Error&quot;</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="s">&quot;Failed Message&quot;</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -141,12 +138,9 @@
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Select with order-by clause</h2>
-                            <p><p>Ballerina supports re-ordering table rows in ascending or descending order by the given fields. In this example, all the
- rows in the person table are ordered in ascending order by the field &ldquo;salary&rdquo;. This query syntax can only be used to
- query a table. The modification of an existing table is not supported. When an existing table is queried using Ballerina
- SQL, a new in-memory table is created with the queried data and that table is returned. Executing these SQL-like
- queries on tables returned through Ballerina database clients is not supported yet.</p>
+                            <h2>Error-Typed Binding Pattern</h2>
+                            <p><p>Error-type binding patterns are used in declaring and defining new variables by destructuring an <code>error</code> value.
+ The error-type binding pattern statement must have an assignment expression on the right hand side.</p>
 </p>
 
                         </td>
@@ -154,16 +148,16 @@
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="table-queries-select-with-filtering.html">
+                                    <a class="prev" href="record-typed-binding-pattern.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Select with filtering</p>
+                                        <p>Record-Typed Binding Pattern</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="table-queries-select-with-group-by.html">
+                                    <a class="next" href="tuple-destructure-binding-pattern.html">
                                         <span>NEXT ></span>
-                                        <p>Select with group-by clause</p>
+                                        <p>Tuple Destructure Binding Pattern</p>
                                     </a>
                                 </div>
                                 
@@ -172,7 +166,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="example" id="table-queries-select-with-order-by">
+            <div class="example" id="error-typed-binding-pattern">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -185,7 +179,7 @@
                                         <li>»</li>
                                         <li><a href="/learn/by-example">By Example</a></li>
                                         <li>»</li>
-                                        <li>Select with order-by clause</li>
+                                        <li>Error-Typed Binding Pattern</li>
                                     </ul>
                                 </div>
                                 <div class="cBBE-links">
@@ -194,7 +188,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/table-queries-select-with-order-by/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/error-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -211,6 +205,12 @@
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -245,27 +245,31 @@
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {
-    int id;
-    int age = -1;
-    float salary;
-    string name;
-    boolean married;
+                                    <div class="highlight"><pre><code class=ballerina>type SampleErrorData record {
+    string message?;
+    error cause?;
+    string info;
+    boolean fatal;
 };
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This <code>record</code> type represents a person.</p>
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
-                                        </div>
-                                    </div>
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, SampleErrorData&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -274,7 +278,6 @@
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
-    string queryStmt = &quot;&quot;;
 </code></pre></div>
 
                                 </td>
@@ -286,14 +289,10 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 =
-    {id: 1, age: 25, salary: 1000.50, name: &quot;jane&quot;, married: true};
-    Person p2 =
-    {id: 2, age: 26, salary: 1050.50, name: &quot;kane&quot;, married: false};
-    Person p3 =
-    {id: 3, age: 27, salary: 1200.50, name: &quot;jack&quot;, married: true};
-    Person p4 =
-    {id: 4, age: 28, salary: 1100.50, name: &quot;alex&quot;, married: false};
+                                    <div class="highlight"><pre><code class=ballerina>    var error(reason, info = info, fatal = fatal) = getSampleError();
+    io:println(&quot;Reason String: &quot; + reason);
+    io:println(&quot;Info: &quot;, info);
+    io:println(&quot;Fatal: &quot;, fatal);
 </code></pre></div>
 
                                 </td>
@@ -301,7 +300,9 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>These are a few sample values, which represent different <code>Person</code> records.</p>
+                                            <p>This error-type binding pattern will destructure an <code>error</code> of the type <code>SampleError</code>, and create two variables as follows:
+ The value of the reason string in the<code>SampleError</code> will be set to a new <code>string</code> variable <code>reason</code>.
+ The values in the detail mapping will be set to new variables <code>info</code> and <code>fatal</code>.</p>
 
                                         </div>
                                     </div>
@@ -312,10 +313,9 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTable = table {
-        {id, age, salary, name, married},
-        [p1, p2, p3, p4]
-    };
+                                    <div class="highlight"><pre><code class=ballerina>    var error(reasonTwo, ...params) = getSampleError();
+    io:println(&quot;Reason String: &quot;, reasonTwo);
+    io:println(&quot;Detail Mapping: &quot;, params);
 </code></pre></div>
 
                                 </td>
@@ -323,7 +323,9 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the in-memory <code>table</code>, which is constrained by the <code>Person</code> type.</p>
+                                            <p>The detail mapping can also be destructured using a rest parameter.
+ <code>params</code> will be of the type <code>map&lt;anydata|error&gt;</code>, and will have the
+ <code>info</code> and <code>fatal</code> fields.</p>
 
                                         </div>
                                     </div>
@@ -334,7 +336,9 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    printTable(queryStmt, &quot;The personTable:  &quot;, personTable);
+                                    <div class="highlight"><pre><code class=ballerina>    var error(reasonThree, info=info2, ...filteredParams) = getSampleError();
+    io:println(&quot;Detail Mapping: &quot;, filteredParams);
+    
 </code></pre></div>
 
                                 </td>
@@ -342,7 +346,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the content of the <code>Person</code> table.</p>
+                                            <p>When some error detail field names are provided rest parameter will only contain detail field that are not matched.</p>
 
                                         </div>
                                     </div>
@@ -353,10 +357,8 @@
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; orderedPersonTable = from personTable select * order by salary;
-    queryStmt = &quot;\ntable&lt;Person&gt; orderedPersonTable = &quot; +
-            &quot;from personTable select * order by salary;&quot;;
-    printTable(queryStmt, &quot;orderedPersonTable: &quot;, orderedPersonTable);
+                                    <div class="highlight"><pre><code class=ballerina>    var error(_, detailMsg = detailMsg, isFatal = isFatal) = getRecordConstrainedError();
+    io:println(&quot;Detail Message: &quot;, detailMsg);
 }
 </code></pre></div>
 
@@ -365,8 +367,7 @@
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Querying a <code>table</code> always returns a new in-memory <code>table</code>.
- Queries all the records and returns them in the ascending order of the salary.</p>
+                                            <p>The underscore &lsquo;_&rsquo; sign can be used to ignore either the reason string or the detail mapping.</p>
 
                                         </div>
                                     </div>
@@ -376,13 +377,42 @@
                             
                             <tr class="cTR">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getSampleError() returns SampleError {
+    SampleError e = error(&quot;Sample Error&quot;, info = &quot;Detail Msg&quot;, fatal = true);
+    return e;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Foo record {|
+    string message?;
+    error cause?;
+    string detailMsg;
+    boolean isFatal;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
-    io:println(stmt);
-    io:println(tableName);
-    foreach var row in returnedTable {
-       io:println(row);
-    }
+                                    <div class="highlight"><pre><code class=ballerina>function getRecordConstrainedError() returns error&lt;string, Foo&gt; {
+    error&lt;string, Foo&gt; e = error(&quot;Some Error&quot;, detailMsg = &quot;Failed Message&quot;, isFatal = true);
+    return e;
 }
 </code></pre></div>
 
@@ -400,10 +430,6 @@
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -411,32 +437,17 @@
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
+                                <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run --experimental table_queries_select_with_order_by.bal
-The personTable:
-id=1 age=25 salary=1000.5 name=jane married=true
-id=2 age=26 salary=1050.5 name=kane married=false
-id=3 age=27 salary=1200.5 name=jack married=true
-id=4 age=28 salary=1100.5 name=alex married=false
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>table&lt;Person&gt; orderedPersonTable = from personTable select * order by salary;
-orderedPersonTable:
-id=1 age=25 salary=1000.5 name=jane married=true
-id=2 age=26 salary=1050.5 name=kane married=false
-id=4 age=28 salary=1100.5 name=alex married=false
-id=3 age=27 salary=1200.5 name=jack married=true
+$ ballerina run error_type_binding_pattern.bal
+Reason String: Sample Error
+Info: Detail Msg
+Fatal: true
+Reason String: Sample Error
+Detail Mapping: info=Detail Msg fatal=true
+Detail Mapping: fatal=true
+Detail Message: Failed Message
 </code></pre></div>
 
                                 </td>

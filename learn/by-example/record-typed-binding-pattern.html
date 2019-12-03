@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta property="og:url" content="https://ballerina.io" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Data Binding" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Record-Typed Binding Pattern" />
     <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
     <meta property="og:image" content="/img/ballerina-sm.jpg" />
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
-    <title>Ballerina by Example: Data Binding</title>
+    <title>Ballerina by Example: Record-Typed Binding Pattern</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
@@ -98,36 +98,39 @@
     <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
-<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span> <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span> <span class="p">});</span><span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span><span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">connection</span><span class="p">);</span><span class="nd">@rabbitmq:ServiceConfig {</span>
-    <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
-    <span class="p">},</span>
-    <span class="nx">ackMode</span><span class="p">:</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">CLIENT_ACK</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">Capital</span> <span class="nx">capital</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Capital</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Person</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">personAge</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>
+    <span class="nx">Person</span> <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">vFirstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">vPersonAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">vOtherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">vFirstName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">vPersonAge</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">vOtherDetails</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">}</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span><span class="p">,</span> <span class="nx">countryName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span><span class="p">,</span> <span class="nx">capitalName</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
+    <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span> <span class="p">};</span>
+    <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">dataBindingConsumer</span> <span class="nx">on</span> <span class="nx">channelListener</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">stringMessage</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">messageContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextContent</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">messageContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received: &quot;</span> <span class="o">+</span> <span class="nx">messageContent</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving the message content.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;The message received from data binding: &quot;</span> <span class="o">+</span> <span class="nx">stringMessage</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="kt">message</span><span class="o">-&gt;</span><span class="nx">basicAck</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while acknowledging the message.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                                  <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
-<span class="err">#</span>
-<span class="err">#</span> <span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="err">&#39;</span><span class="nx">rabbitmq_consumer_with_data_binding</span><span class="p">.</span><span class="nx">bal</span><span class="err">&#39;</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">issue</span> <span class="nx">the</span> <span class="err">&#39;</span><span class="nx">ballerina</span> <span class="nx">run</span><span class="err">&#39;</span> <span class="nx">command</span> <span class="k">as</span> <span class="nx">follows</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -138,13 +141,9 @@
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Data Binding</h2>
-                            <p><p>In this example, the messages are consumed from an
- existing queue using the Ballerina RabbitMQ message listener.
- The messages can be accessed using the rabbitmq:Message object and also
- the second parameter of the resource function.
- <code>string</code>, <code>json</code>, <code>xml</code>, <code>byte[]</code>, <code>record</code>, <code>float</code> and <code>int</code> are
- supported as parameter types.</p>
+                            <h2>Record-Typed Binding Pattern</h2>
+                            <p><p>Record typed binding patterns are used in declaring and defining new variables by destructuring fields in a record variable.
+ The record type binding pattern statement must have an assignment expression on the right hand side.</p>
 </p>
 
                         </td>
@@ -152,16 +151,16 @@
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="rabbitmq-consumer-with-client-acknowledgement.html">
+                                    <a class="prev" href="tuple-typed-binding-pattern.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Client Acknowledgements</p>
+                                        <p>Tuple-Typed Binding Pattern</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="rabbitmq-consumer-with-qos-settings.html">
+                                    <a class="next" href="error-typed-binding-pattern.html">
                                         <span>NEXT ></span>
-                                        <p>QoS Settings</p>
+                                        <p>Error-Typed Binding Pattern</p>
                                     </a>
                                 </div>
                                 
@@ -170,7 +169,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="example" id="rabbitmq-consumer-with-data-binding">
+            <div class="example" id="record-typed-binding-pattern">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -183,7 +182,7 @@
                                         <li>»</li>
                                         <li><a href="/learn/by-example">By Example</a></li>
                                         <li>»</li>
-                                        <li>Data Binding</li>
+                                        <li>Record-Typed Binding Pattern</li>
                                     </ul>
                                 </div>
                                 <div class="cBBE-links">
@@ -192,7 +191,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/rabbitmq-consumer-with-data-binding/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/record-typed-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -230,6 +229,14 @@
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -238,8 +245,64 @@
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
-import ballerina/rabbitmq;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+    string name;
+    int age;
+    string country;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Country record {
+    string name;
+    Capital capital;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Capital record {|
+    string name;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
 </code></pre></div>
 
                                 </td>
@@ -251,7 +314,10 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>rabbitmq:Connection connection = new({ host: &quot;localhost&quot;, port: 5672 });
+                                    <div class="highlight"><pre><code class=ballerina>    Person { name: firstName, age: personAge, ...otherDetails } = getPerson();
+    io:println(&quot;Name: &quot;, firstName);
+    io:println(&quot;Age: &quot;, personAge);
+    io:println(&quot;Other Details: &quot;, otherDetails);
 </code></pre></div>
 
                                 </td>
@@ -259,7 +325,135 @@ import ballerina/rabbitmq;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a ballerina RabbitMQ connection that allows re-usability if necessary.</p>
+                                            <p>This record type binding pattern will destructure a <code>record</code> of the type <code>Person</code> and create three variables as follows:
+ The value of the field <code>name</code> in the <code>Person</code> record will be set to a new <code>string</code> variable <code>firstName</code>.
+ The value of the field <code>age</code> in the <code>Person</code> record will be set to a new <code>int</code> variable <code>personAge</code>.
+ <code>...otherDetails</code> is a rest parameter. Since <code>Person</code> is an open record, a new <code>map&lt;anydata|error&gt;</code> variable
+ <code>otherDetails</code> will be created (with the remaining fields that have not been matched) in the record binding pattern.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Person { name, age } = getPerson();
+    io:println(&quot;Name: &quot;, name);
+    io:println(&quot;Age: &quot;, age);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If a variable name is not given for a field, a variable will be created with the same name as the field.
+ i.e, <code>Person {name, age}</code> is same as Person <code>{name: name, age: age}</code>.
+ Since a rest parameter is not given, all remaining fields are ignored.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var { name: vFirstName, age: vPersonAge, ...vOtherDetails } = getPerson();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Record type binding patterns can be used with <code>var</code> to infer the type from the right hand side.
+ Since the types of the new variables are based on the type of the type binding pattern, using <code>var</code> will
+ infer the types from the right hand side.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Name: &quot;, vFirstName);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type of <code>vFirstName</code> is inferred as <code>string</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Age: &quot;, vPersonAge);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type of <code>vPersonAge</code> is inferred as <code>int</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Other Details: &quot;, vOtherDetails);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type of <code>vOtherDetails</code> will be <code>map&lt;anydata|error&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var { name: countryName, capital: { name: capitalName } } = getCountry();
+    io:println(&quot;Country Name: &quot;, countryName);
+    io:println(&quot;Capital Name: &quot;, capitalName);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Binding patterns are recursive in nature. <code>capital</code>, which is a field of the type <code>Capital</code> in <code>Country</code> can also be
+ destructured as follows:</p>
 
                                         </div>
                                     </div>
@@ -270,23 +464,10 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener rabbitmq:Listener channelListener= new(connection);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@rabbitmq:ServiceConfig {
-    queueConfig: {
-        queueName: &quot;MyQueue&quot;
-    },
-    ackMode: rabbitmq:CLIENT_ACK
+                                    <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
+    Person person = { name: &quot;Peter&quot;, age: 28, country: &quot;Sri Lanka&quot;,
+                      &quot;occupation&quot;: &quot;Software Engineer&quot; };
+    return person;
 }
 </code></pre></div>
 
@@ -296,130 +477,18 @@ import ballerina/rabbitmq;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service dataBindingConsumer on channelListener {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Attaches the service to the listener.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(rabbitmq:Message message, string stringMessage) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gets triggered when a message is received by the queue.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var messageContent = message.getTextContent();
-        if (messageContent is string) {
-            log:printInfo(&quot;The message received: &quot; + messageContent);
-        } else {
-            log:printError(&quot;Error occurred while retrieving the message content.&quot;);
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Retrieves the text content of the message.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;The message received from data binding: &quot; + stringMessage);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Message content can be accessed using the second parameter
- of the resource function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = message-&gt;basicAck();
-        if (result is error) {
-            log:printError(&quot;Error occurred while acknowledging the message.&quot;);
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Acknowledges a single message positively.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(rabbitmq:Message message, error err) {
-        log:printError(&quot;Error from connector: &quot; + err.reason() + &quot; - &quot;
-                                                  + &lt;string&gt;err.detail().message);
-    }
+                                    <div class="highlight"><pre><code class=ballerina>function getCountry() returns Country {
+    Capital capital = { name: &quot;Colombo&quot; };
+    Country country = { name: &quot;Sri Lanka&quot;, capital: capital };
+    return country;
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gets triggered when an error is encountered.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -432,18 +501,6 @@ import ballerina/rabbitmq;
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -451,48 +508,20 @@ import ballerina/rabbitmq;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Make sure to have the RabbitMQ broker running.
-#
-# Navigate to the directory that contains the
-# &#39;rabbitmq_consumer_with_data_binding.bal&#39; file, and issue the &#39;ballerina run&#39; command as follows.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina run rabbitmq_consumer_with_data_binding.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The RabbitMQ consumer runs as a Ballerina service and listens to the subscribed queue.
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2019-06-13 13:15:35,611 INFO  [] - The message received: Hello from Ballerina
-2019-06-13 13:15:35,612 INFO  [] - The message received from data binding: Hello from Ballerina
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run record_type_binding_pattern.bal
+Name: Peter
+Age: 28
+Other Details: country=Sri Lanka occupation=Software Engineer
+Name: Peter
+Age: 28
+Name: Peter
+Age: 28
+Other Details: country=Sri Lanka occupation=Software Engineer
+Country Name: Sri Lanka
+Capital Name: Colombo
 </code></pre></div>
 
                                 </td>

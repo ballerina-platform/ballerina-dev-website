@@ -12,6 +12,8 @@ redirect_from:
 
 <h1>Events</h1>
 
+<h2>No upcoming events</h2>
+
 <!-- ## Meetups -->
 
 <!-- <table class="cEventTable cMeetupsList">
@@ -28,7 +30,7 @@ redirect_from:
 
 <!-- ## No upcoming events -->
 
-<h2>Conferences</h2>
+<!-- <h2>Conferences</h2> -->
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
@@ -42,24 +44,25 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
                   </tr> -->
-                  <tr>
-                    <td class="cEventDateContainer"><span class="cEventDate">November 5-7</span>
-                      <p class="cEventLocation">Austin, TX</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="December 05, 2019 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">Thursday, December 5, 2019</span>
+                      <p class="cEventLocation">San Jose, CA</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/Austin/conference/"><h4>DeveloperWeek Austin 2019 </h4></a>
-                          <h5>Pro Session: Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director - Cloud Architecture, WSO2</p>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/downtown-san-jose-devops/events/265982303/"><h4>Downtown San Jose DevOps Meetup</h4></a>
+                          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/Austin/conference/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/downtown-san-jose-devops/events/265982303/" target="_blank">More Info</a></td> 
                   </tr>
-                <tr>
-                    <td class="cEventDateContainer"><span class="cEventDate">November 19-21 </span>
-                      <p class="cEventLocation">San Diego, CA</p>
+                    <tr class="event-expiry" style="display:none" data-expiry="December 12, 2019 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">Thursday, December 12, 2019</span>
+                      <p class="cEventLocation">Mountain View, CA</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/"><h4>KubeCon + CloudNativeCon North America 2019</h4></a>
-                          <h5>Platinum Sponsor</h5>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/"><h4>Cloud-Native and Kubernetes Meetup in Silicon Valley</h4></a>
+                          <h5>An Introduction to the Ballerina Programming Language</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">More Info</a></td> 
                   </tr>
                   
 </table>

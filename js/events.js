@@ -12,3 +12,27 @@ $(document).ready(function(){
 	$( ".cWorkshopList tr:first" ).addClass("cFirstTableRow");
 
 });
+
+
+
+
+$(function() {
+
+        var current_date = new Date();
+        
+              $(".event-expiry").each(function() {
+                        var div_date = $(this).data('expiry');
+            
+            // wrap in Date class
+            div_date = new Date(div_date);
+        
+                        if(current_date.getTime()>div_date.getTime()){
+                                      $(this).hide();
+            } else {
+                    $(this).show();
+            }
+        });
+      
+      
+      
+      })

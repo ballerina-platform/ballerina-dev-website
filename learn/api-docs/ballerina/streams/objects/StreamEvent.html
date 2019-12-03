@@ -52,7 +52,7 @@
             <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.4</div>
+<div class="version">v1.0.5</div>
 
             <div class="primary-list">
                 <h3>Objects</h3>
@@ -519,7 +519,7 @@
                 <a href="../../index.html">
     <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.4</div>
+<div class="version">v1.0.5</div>
 
                 <div class="primary-list">
                     <h3>Objects</h3>
@@ -1087,6 +1087,17 @@ state and a timer event is used to trigger the <code>process</code> method of a 
 </a>
                             
                                 
+<a href="#getAttributeValue">
+    <div class="param-sum">
+        <div class="param-name">
+        getAttributeValue 
+        </div>
+        <div class="param-details"> <p>Returns the value of an attribute.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
 <a href="#get">
     <div class="param-sum">
         <div class="param-name">
@@ -1393,6 +1404,67 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
+    <div class="main-method-title here" id="getAttributeValue" title="getAttributeValue">
+             <a class="url-link" href="#getAttributeValue">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> getAttributeValue </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">boolean</span> useDataMap)</p>
+            <b> returns </b><span class="builtin-type">anydata</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the value of an attribute.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        path<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the path</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        useDataMap<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>whether to use the dataMap or the data</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">anydata</span></span>)</li>
+                <li><p>the attribute value.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
     <div class="main-method-title here" id="get" title="get">
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
@@ -1418,7 +1490,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>the path</p>
+                        <p><p>the absolute attribute path</p>
 </p>
                     </li>
                 </ul>

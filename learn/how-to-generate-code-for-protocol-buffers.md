@@ -7,8 +7,7 @@ permalink: /learn/how-to-generate-code-for-protocol-buffers/
 # How to generate Ballerina code for Protocol Buffer Definition
 
 The `Protocol Buffers` to Ballerina tool provides capabilities to generate Ballerina source code for the Protocol
- Buffer definition. The code generation tool can produce `ballerina stub` and `ballerina service/client template
- ` files.
+Buffer definition. The code generation tool can produce `ballerina stub` and `ballerina service/client template` files.
  
 > In Ballerina, Protocol Buffers serialization is only supported in the gRPC module. Therefore, you can only use
 > this tool to generate Ballerina source code for gRPC service definitions.

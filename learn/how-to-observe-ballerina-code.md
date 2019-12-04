@@ -25,7 +25,7 @@ analysis.
 ### Prerequisites
 
 Make sure you have already installed [Docker](https://www.docker.com/) to setup external products such as Jaeger,
-Prometheus, etc. You can follow [official documentation](https://docs.docker.com/install/) to install Docker.
+Prometheus, etc. You can follow [official documentation of Docker](https://docs.docker.com/install/) to install Docker.
 
 ### Steps
 

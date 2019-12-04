@@ -29,7 +29,7 @@ To write tests, you need to import the `test` module in all Ballerina test sourc
 import ballerina/test;
 ```
 
-For structured projects, it is recommended to use a structured test model that is aligned with standard module semantics. Structured test model consists of a seperate `tests` directory in a Ballerina module, which allows you to isolate the source from the tests.
+For structured projects, it is recommended to use a structured test model that is aligned with standard module semantics. Structured test model consists of a separate `tests` directory in a Ballerina module, which allows you to isolate the source from the tests.
 
 In a standard Ballerina project, a module is mapped to a test suite. Unit and integration tests bound to a module need to be placed in a subfolder called `tests/` within the module. All tests within a module’s `tests/` subfolder are considered to be part of the same test suite.
 
@@ -165,7 +165,7 @@ Default: none
 
 `after: "<function name>"`: Name of the function to be run just after the test is run.
  
-`dependsOn: ["<function names>", …]`: A list of function names the test function depends on, and will be run before the test. The list of functions provided has no order of execution. The current test function will depend on the list provided and that list will run in whatever order, the order in which the comma separated list appears has no prominence. In case there needs to be an order, the way to do that is to define a sequence of test functions with one point to another based on dependency using `dependsOn` parameter in each one's config.
+`dependsOn: ["<function names>", …]`: A list of function names the test function depends on, and will be run before the test. The list of functions provided has no order of execution. The current test function will depend on the list provided and that list will run in whatever order, the order in which the comma-separated list appears has no prominence. In case there needs to be an order, the way to do that is to define a sequence of test functions with one point to another based on dependency using `dependsOn` parameter in each one's config.
 
 `dataProvider: “<function name>”`: Specifies the name of the function that will be used to provide the value sets to execute the test against. The given Ballerina function should return an array of arrays (e.g., string[][] for a test function that accepts string parameters). Each array of the returned array of arrays should have a length similar to the number of arguments of the function (e.g., function testSuffixC(string input, string expected) could have a dataProvider function that returns a `string[][]` like `[ [“ab”, “abc”], [“de”, “dec”] ]` ). The length of the array of arrays represents the number of time the same test case would run (e.g., in the above example the test function testSuffixC would run 2 times with input parameters “ab”, “abc” and “de”, “dec” respectively).
 

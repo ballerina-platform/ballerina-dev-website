@@ -77,7 +77,7 @@ redirect_from:
 </td>
 <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/"><h4>Cloud-Native and Kubernetes Meetup in Silicon Valley</h4></a>
 <h5>An Introduction to the Ballerina Programming Language </h5>
- <b>Anjana Fernando,</b>  Director of Developer Relations - CTO Office, WSO2</p>
+ <b>Anjana Fernando,</b>  Director of Developer Relations - CTO Office, WSO2
 
 </td>
 <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>

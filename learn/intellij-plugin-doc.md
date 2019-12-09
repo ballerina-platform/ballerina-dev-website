@@ -104,7 +104,12 @@ After installing the IntelliJ Ballerina plugin, you need to [set up Ballerina SD
 
 ## Using the plugin
 
-For information on using the IntelliJ Ballerina plugin to write Ballerina programs, see [Using the IntelliJ Ballerina plugin](using-the-intellij-plugin.md).
+Click on the below links to find information on using the IntelliJ Ballerina plugin to write Ballerina programs.
+
+- [Creating a new Ballerina project](using-the-intellij-plugin.md#creating-a-new-ballerina-project)
+- [Setting up Ballerina SDK for an existing project](using-the-intellij-plugin.md#setting-up-ballerina-sdk-for-an-existing-project)
+- [Creating a new Ballerina file](using-the-intellij-plugin.md#creating-a-new-ballerina-file)
+- [Configuring the plugin settings](using-the-intellij-plugin.md#configuring-the-plugin-settings)
 
 ## Using the features of the plugin
 

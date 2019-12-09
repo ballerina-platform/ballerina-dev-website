@@ -95,7 +95,12 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 
 ## Using the plugin
 
-For information on using the IntelliJ Ballerina plugin to write Ballerina programs, see [Using the IntelliJ Ballerina plugin](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin).
+Click on the below links to find information on using the IntelliJ Ballerina plugin to write Ballerina programs.
+
+- [Creating a new Ballerina project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-project)
+- [Setting up Ballerina SDK for an existing project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#setting-up-ballerina-sdk-for-an-existing-project)
+- [Creating a new Ballerina file](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
+- [Configuring the plugin settings](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
 
 ## Using the features of the plugin
 

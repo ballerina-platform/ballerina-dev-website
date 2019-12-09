@@ -12,7 +12,7 @@ permalink: /learn/
 <!-- <a href="" class="cGreenLinkArrow">Take Quick Tour</a> -->
 </div>
 <div class="col-sm-12 col-md-12 cBallerinaLearnTitleWrapper">
-   <h2>Getting set up to dance</h2>
+   <h2>Get started</h2>
 </div>
 <div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper">
 <div class="col-sm-12 col-md-12 cRowLearnSteps">
@@ -22,7 +22,7 @@ permalink: /learn/
      <p>Download a Ballerina installer and install Ballerina on your machine. </p>
      <a class="cBallerina-io-Home-main-download-button" href="/downloads">Download Ballerina<p>Distributions are available for <br>Linux, OS X, and Windows.</p></a>
      <div class="clearfix"></div>
-   <p>For more information, see <a href="/learn/getting-started">Getting Started</a></p>
+   <p>For more information, see <a href="/learn/getting-started">Installing Ballerina.</a></p>
       </div>
 </div>
 </div>
@@ -30,7 +30,7 @@ permalink: /learn/
 <div class="col-sm-12 col-md-1 cLearnSteps">2</div>
 <div class="col-sm-12 col-md-11 cBoxContainer">
       <div class="cBallerina-Box">
-     <p>To set up your IDE, download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA</a> plugin from their marketplaces and install it.</p>
+     <p>Set up your IDE: Download the <a href="https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina" target="_blank">VS Code</a> or <a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank">IntelliJ IDEA</a> plugin from their marketplaces and install it.</p>
     <p>For instructions, see <a  href="/learn/tools-ides/vscode-plugin">VS Code</a> or <a href="/learn/tools-ides/intellij-plugin">IntelliJ IDEA</a>.</p>
       </div>
    </div>

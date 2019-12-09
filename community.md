@@ -52,7 +52,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 Oh no, you hit a bump on the road? Please tell us - we want to fix all bugs!
 
-- Found a bug in the compiler, standard library, runtime, or tooling? Create an <a href="https://github.com/ballerina-platform/ballerina-lang/issues">issue</a>.
+- Found a bug in the compiler, runtime, standard library, or tooling? Create an <a href="https://github.com/ballerina-platform/ballerina-lang/issues">issue</a>.
 - Found a bug in the language specification? Create an <a href="https://github.com/ballerina-platform/ballerina-spec/issues">issue</a>.
 - Found a bug on the website? Create an <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">issue</a>. 
 

@@ -55,7 +55,7 @@ Oh no, you hit a bump on the road? Please tell us - we want to fix all bugs!
 - Found a bug in the compiler, runtime, standard library, or tooling? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
 - Found a bug in the language specification? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
 - Found a bug on the website? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
-
+- Found a security flaw? Send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
 ## Want to help us make Ballerina popular?!
 

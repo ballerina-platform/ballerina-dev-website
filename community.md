@@ -65,7 +65,7 @@ Let’s start with starring the <a href="https://github.com/ballerina-platform/b
 
 Next, let's share the wealth by publishing your code on <a href="https://central.ballerina.io">Ballerina Central</a>. Hope you will do it now.
 
-Also, follow us on Twitter:" <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the “#ballerinalang" hashtag.
+Also, follow us on Twitter:" <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
 
 Do you want to organize a local meetup or hackathon? WSO2 can help with presentation / training content, logistics, swag, and some funds for munchies. Give us a buzz and we’ll get right on it: <a href="mailto:contact@ballerina.io">contact@ballerina.io</a>.
 

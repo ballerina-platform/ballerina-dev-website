@@ -1519,7 +1519,7 @@ padding-right: 0;
 
 /* select */
 
-#versions {
+#versions , .form-control-field {
     float: right;
     
     /* margin-right: 15px; */
@@ -1607,4 +1607,27 @@ text-shadow: 0 1px 0 rgba(255,255,255,.25);
 }
 .select-css option {
 	font-weight:normal;
+}
+
+
+/* SEARCH */
+
+
+.cSearch-form-inline {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    margin-top: -9px;
+}
+.form-control-field {
+ float: left;
+}
+
+a.cSearchButton {
+    width: 30px;
+    height: 30px ;
+    display: inline-block;
+    /* background: red; */
+    text-align: center;
+    padding: 2px;
 }

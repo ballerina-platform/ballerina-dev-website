@@ -61,7 +61,7 @@ Oh no, you hit a bump on the road? Please tell us - we want to fix all bugs!
 
 We know getting a language established is like getting a new religion going. We really need you, our fans, to help spread the word.
 
-Let’s start with starring the <a href="https://github.com/ballerina-platform/ballerina-lang">main GitHub repo</a>. Thank you!
+Let's start with starring the <a href="https://github.com/ballerina-platform/ballerina-lang">main GitHub repo</a>. Thank you!
 
 Next, let's share the wealth by publishing your code on <a href="https://central.ballerina.io">Ballerina Central</a>. Hope you will do it now.
 

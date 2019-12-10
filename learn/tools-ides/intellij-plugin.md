@@ -6,7 +6,7 @@ permalink: /learn/tools-ides/intellij-plugin/
 
 # The IntelliJ IDEA Ballerina Plugin
 
-The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. Click on the below links for instructions on how to download, install, and use the features of the IntelliJ plugin.
+The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
 
 - [Prerequisites](#prerequisites)
 - [Installing the plugin](#installing-the-plugin)
@@ -95,11 +95,16 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 
 ## Using the plugin
 
-For information on using the IntelliJ Ballerina plugin to write Ballerina programs, see [Using the IntelliJ Ballerina plugin](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin).
+The below sections include information on using the IntelliJ Ballerina plugin to write Ballerina programs.
+
+- [Creating a new Ballerina project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-project)
+- [Setting up Ballerina SDK for an existing project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#setting-up-ballerina-sdk-for-an-existing-project)
+- [Creating a new Ballerina file](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
+- [Configuring the plugin settings](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
 
 ## Using the features of the plugin
 
-Click on the below links to find information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
+The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 
 - [Running Ballerina programs](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#running-ballerina-programs)
 - [Debugging Ballerina programs](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#debugging-ballerina-programs)
@@ -114,4 +119,3 @@ Click on the below links to find information on the various capabilities that ar
 - [Checking spellings](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#checking-spellings)
 - [Analyzing semantics](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
 - [Code folding](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#code-folding)
-

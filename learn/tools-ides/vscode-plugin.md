@@ -6,7 +6,7 @@ permalink: /learn/tools-ides/vscode-plugin/
 
 # The Visual Studio Code Plugin
 
-The VS Code Ballerina plugin provides the Ballerina development capabilities in VS Code. Click on the below links for instructions on how to download, install, and use the features of the VS Code plugin.
+The VS Code Ballerina plugin provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code plugin.
 
 - [Downloading VS Code](#downloading-vs-code)
 - [Installing the plugin](#installing-the-plugin)
@@ -62,7 +62,7 @@ $ code --install-extension <BALLERINA-PLUGIN-DIRECTORY>
 
 > **Troubleshooting**: If you installed a new Ballerina version recently, you might need to restart the VS Code Editor to pick the new Ballerina version. Herein, If you are using Mac OS, press 'Command+Q' keys to quit the app and reopen it.
 
-Click on the below links to find information on the various capabilities that are facilitated by the VS Code Ballerina plugin for the development process.
+The below sections include information on the various capabilities that are facilitated by the VS Code Ballerina plugin for the development process.
 
 - [Language intelligence](/learn/tools-ides/vscode-plugin/language-intelligence)
 - [Run and debug](/learn/tools-ides/vscode-plugin/run-and-debug)

@@ -14,8 +14,8 @@ The `Ballerina Tool` requires you to organize your code in a specific way. This 
 get it up and running with a Ballerina installation.
 
 ## Overview
-* Ballerina progammers can either place their code into a single source code file or in a *project* directory.
-* A Ballerina program residing in a single source code file should have a `.bal` extension and an entry point (i.e., either a main 
+* Ballerina programmers can either place their code into a single source code file or in a *project* directory.
+* A Ballerina program residing in a single source code file should have a `.bal` extension and an entry point (i.e., either a `main`
   method or a service).
 * A Ballerina *program* is a compiled and linked binary.
 * A *module* is a directory that contains Ballerina source code files.
@@ -335,7 +335,7 @@ The BIR files of the other dependencies will be kept inside the target directory
 #### JAR Cache
 
 The JAR files generated during the build will be kept inside the target directory when building a Ballerina project. The
-JAR file will be generated only if there is an entry point (main funtion or service) within the module.
+JAR file will be generated only if there is an entry point (`main` function or service) within the module.
 
 
 ## Module Repository - Ballerina Central

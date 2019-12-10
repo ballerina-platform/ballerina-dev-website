@@ -115,7 +115,7 @@ You can view the documentation of a function, remote function, etc. by pressing 
 
 ## Adding annotation fields via suggestions
 
-You can add annothation fields to your code uisng the annotation field names that are suggested inside annotation attachments.
+You can add annotation fields to your code using the annotation field names that are suggested inside annotation attachments.
 
 ![Adding annotation fields via suggestions](/learn/images/annotation-field-suggestion.gif)
 

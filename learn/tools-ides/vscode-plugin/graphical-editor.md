@@ -36,7 +36,7 @@ This gives a graphical representation of the content of the current Ballerina fi
 
 ## Exploring the features of the Graphical View
 
-Click on the below links to explore the features of the Graphical Editor.
+The below sections include information to explore the features of the Graphical Editor.
 
 - [Viewing the source](#viewing-the-source)
 - [Expanding the Diagram View](#expanding-the-diagram-view)

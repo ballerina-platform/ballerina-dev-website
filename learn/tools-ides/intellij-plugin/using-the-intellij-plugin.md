@@ -5,7 +5,7 @@ title: Using the IntelliJ Ballerina Plugin
 
 # Using the IntelliJ Ballerina Plugin
 
-Click the links below to start using the IntelliJ Ballerina plugin after [installing it](/learn/tools-ides/intellij-plugin).
+The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/tools-ides/intellij-plugin).
 
 - [Creating a new Ballerina project](#creating-a-new-ballerina-project)
 - [Setting up Ballerina SDK for an existing project](#setting-up-ballerina-sdk-for-an-existing-project)
@@ -36,6 +36,8 @@ Now, you have successfully created a new Ballerina project.
 ![New Ballerina project](/learn/images/new-ballerina-project.png)
 
 ## Setting up Ballerina SDK for an existing project
+
+Follow the steps below to set up Ballerina SDK for an existing project.
 
 1. Open the Project to which you want to set up a Ballerina SDK.
 2. In the IDE, click **File** in the top menu, and then click **Project Structure**.

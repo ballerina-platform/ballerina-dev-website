@@ -5,7 +5,7 @@ title: Using the features of the IntelliJ plugin
 
 # Using the features of the IntelliJ plugin
 
-Click on the below links to find information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
+The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 
 - [Running Ballerina programs](#running-ballerina-programs)
 - [Debugging Ballerina programs](#debugging-ballerina-programs)
@@ -25,7 +25,7 @@ Click on the below links to find information on the various capabilities that ar
 
 You can run Ballerina main/service programs with a single click without adding or changing any configurations.
 
-Click on the below links for instructions on how to run different elements of a Ballerina file.
+The below sections include instructions on how to run different elements of a Ballerina file.
 
 - [Running the main method](#running-the-main-method)
 - [Running Ballerina services](#running-ballerina-services)

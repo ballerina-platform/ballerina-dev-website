@@ -6,7 +6,7 @@ permalink: /learn/tools-ides/intellij-plugin/
 
 # The IntelliJ IDEA Ballerina Plugin
 
-The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. Click on the below links for instructions on how to download, install, and use the features of the IntelliJ plugin.
+The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below links sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
 
 - [Prerequisites](#prerequisites)
 - [Installing the plugin](#installing-the-plugin)

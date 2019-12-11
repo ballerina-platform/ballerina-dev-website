@@ -191,7 +191,7 @@ $(document).ready(function() {
         '<li class="cVersionItem"><div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css">' +
         '<option value="/" '+versionSelectorValue("")+'>1.0</option>' +
         '<option value="/v0-991'+pathValue+'" '+versionSelectorValue("991")+'>0.991</option> </select></div></li>' +
-        '<li class="cSearchMenu"><form class="cSearch-form-inline "><input class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a href="/search" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>'+
+        '<li class="cSearchMenu"><form class="cSearch-form-inline "><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>'+
         '</ul>' +
        '</div>' +
         '</div>' +
@@ -300,7 +300,11 @@ $(document).ready(function() {
 
     $(".cSEQUENCEContent").addClass('cShow');
 
-
+    $('#searchBtn').click(function () {
+        var searchText = $('#searchTxt').val();
+        console.log(searchText);
+        window.location.assign("/search?" + searchText);
+    });
 
 
     $(".cSEQUENCE").click(function() {

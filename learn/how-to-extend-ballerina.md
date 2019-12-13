@@ -74,8 +74,8 @@ public type HelloConfiguration record {|
 |};
 
 # Define an annotation named `Greeting`. Its type is `HelloConfiguration` and it can be
-# attached to services. 
-public annotation HelloConfiguration Greeting on service;
+# attached to functions. 
+public annotation HelloConfiguration Greeting on function;
 ```
 
 Now, build this annotation. The `-c` flag is used since this module will only be used as a library.

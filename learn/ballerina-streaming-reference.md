@@ -671,7 +671,7 @@ The `group by` clause allows you to group the aggregate based on specified attri
 
 ###### Syntax
 
-The syntax for the 'group by` aggregate function is as follows:
+The syntax for the `group by` aggregate function is as follows:
 
 ```ballerina
 from <input stream> window <window name>(...)

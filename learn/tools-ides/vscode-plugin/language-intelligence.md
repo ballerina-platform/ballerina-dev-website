@@ -54,7 +54,7 @@ For example, you can add documentation for a function as shown below.
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
-Above are the lanugage intelligence features that are currently available in the Ballerina VS Code Plugin. 
+Above are the language intelligence features that are currently available in the Ballerina VS Code Plugin.
 
 ## What's next?
 

@@ -52,7 +52,7 @@
             <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.2</div>
+<div class="version">v1.0.5</div>
 
             <div class="primary-list">
                 <h3>Functions</h3>
@@ -64,10 +64,6 @@
                     
                         <li >
                             <a href="#extractUsernameAndPassword">extractUsernameAndPassword</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#prepareError">prepareError</a>
                         </li>
                     
                         <li >
@@ -291,6 +287,10 @@
                 </li>
             
                 <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
                     <a href="../reflect/index.html">reflect</a>
                 </li>
             
@@ -331,6 +331,10 @@
                 </li>
             
                 <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
                     <a href="../xmlutils/index.html">xmlutils</a>
                 </li>
             
@@ -351,7 +355,7 @@
                 <a href="../index.html">
     <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
 </a>
-<div class="version">v1.0.2</div>
+<div class="version">v1.0.5</div>
 
                 <div class="primary-list">
                     <h3>Functions</h3>
@@ -363,10 +367,6 @@
                         
                             <li >
                                 <a href="#extractUsernameAndPassword">extractUsernameAndPassword</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#prepareError">prepareError</a>
                             </li>
                         
                             <li >
@@ -590,6 +590,10 @@
                 </li>
             
                 <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
                     <a href="../reflect/index.html">reflect</a>
                 </li>
             
@@ -627,6 +631,10 @@
             
                 <li>
                     <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
                 </li>
             
                 <li>
@@ -676,14 +684,6 @@
                             <tr>
                                 <td width="30%" ><a class="functions" href="#extractUsernameAndPassword">extractUsernameAndPassword</a></td>
                                 <td width="70%"><p>Extracts the username and password from the credential values.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#prepareError">prepareError</a></td>
-                                <td width="70%"><p>Log and prepare <code>error</code> as a <code>Error</code>.</p>
 </td>
                             </tr>
                         </tbody>
@@ -850,67 +850,6 @@
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span><span>]</span> | <a href="../auth/errors.html#Error">Error</a></span>)</li>
                 <li><p>A <code>string</code> tuple with the extracted username and password or <code>Error</code> occurred while extracting credentials</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="prepareError" title="prepareError">
-             <a class="url-link" href="#prepareError">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> prepareError </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> message, <span class="builtin-type">error</span> err)</p>
-            <b> returns </b><a href="../auth/errors.html#Error">Error</a> 
-        </span>
-        
-    </div>
-    <p><p>Log and prepare <code>error</code> as a <code>Error</code>.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Error message</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        err<span class="type">  <span class="builtin-type">error</span> </span>
-                        <span class="default"> (default ())</span>
-                    </li>
-                    <li>
-                        <p><p><code>error</code> instance</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p>Prepared <code>Error</code> instance</p>
 </li>
             </ul>
         </div>

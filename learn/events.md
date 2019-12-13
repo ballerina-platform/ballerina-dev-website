@@ -12,6 +12,8 @@ redirect_from:
 
 <h1>Events</h1>
 
+<!-- <h2>No upcoming events</h2> -->
+
 <!-- ## Meetups -->
 
 <!-- <table class="cEventTable cMeetupsList">
@@ -28,7 +30,7 @@ redirect_from:
 
 <!-- ## No upcoming events -->
 
-<h2>Conferences</h2>
+<!-- <h2>Conferences</h2> -->
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
@@ -42,7 +44,7 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
                   </tr> -->
-                  <tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="November 07, 2019 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">November 5-7</span>
                       <p class="cEventLocation">Austin, TX</p>
                       </td>
@@ -52,7 +54,7 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/Austin/conference/" target="_blank">More Info</a></td> 
                   </tr>
-                <tr>
+                <tr class="event-expiry" style="display:none" data-expiry="November 21, 2019 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">November 19-21 </span>
                       <p class="cEventLocation">San Diego, CA</p>
                       </td>
@@ -64,22 +66,23 @@ redirect_from:
                   
 </table>
 
-<!-- ## Meetups
+## Meetups
 
 <table class="cEventTable cMeetupsList" style="width:100%;">
-<tr>
-<td class="cEventDateContainer"><span class="cEventDate">September 26 </span>
-    <p class="cEventLocation">Columbus, USA</p>
+<tr data-expiry="December 12, 2019 12:00:00">
+<td class="cEventDateContainer"><span class="cEventDate">December 12
+ </span>
+    <p class="cEventLocation">Mountain View, California
+</p>
 </td>
-<td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/"><h4>Columbus Microservices Meetup</h4></a>
-<h5>Effective Microservices Development with Ballerina </h5>
- <b>Anjana Fernando,</b> Director, WSO2</p>
- <h5>Ballerina in Real-World Use-Case</h5>
-  <b>Glenn Donaldson & Jim Kittle</b>  Ohio State University</p>
+<td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/"><h4>Cloud-Native and Kubernetes Meetup in Silicon Valley</h4></a>
+<h5>An Introduction to the Ballerina Programming Language </h5>
+ <b>Anjana Fernando,</b>  Director of Developer Relations - CTO Office, WSO2
+
 </td>
-<td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/columbus-microservices/events/264064167/" target="_blank">Register Now</a></td>
+<td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>
 </tr>
-</table>  -->
+</table> 
 
 <style>
 .navbar-nav > li.cActive > a {

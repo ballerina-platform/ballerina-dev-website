@@ -14,6 +14,6 @@ This option allows you to run all the tests that belong to multiple modules of y
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina plugin, see [Graphical Editor](graphical-editor.md).
+- For information on the next capability of the VS Code Ballerina plugin, see [Graphical Editor](graphical-editor.md).
 - For information on the VS Code Ballerina plugin, see [The Visual Studio Code Plugin](../vscode-plugin.md).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina plugin, see [Tools and IDEs](../../tools-ides.md).
+- For information on the tools and IDEs that are supported by the VS Code Ballerina plugin, see [Tools and IDEs](../../tools-ides.md).

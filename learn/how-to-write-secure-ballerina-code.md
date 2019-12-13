@@ -23,12 +23,12 @@ This document demonstrates different security features and controls available wi
 <ul>
 <li><a href="#inbound-authentication--authorization">Inbound Authentication &amp; Authorization</a>
 <ul>
-<li><a href="#advanced-use-cases">Advanced Use Cases</a>
+<li><a href="#inbound-advanced-use-cases">Inbound Advanced Use Cases</a>
 <ul>
 <li><a href="#using-multiple-auth-handlers">Using Multiple Auth Handlers</a></li>
 <li><a href="#using-multiple-scopes">Using Multiple Scopes</a></li>
 <li><a href="#per-resource-and-per-service-customization">Per-Resource and Per-Service Customization</a></li>
-<li><a href="#implementing-custom-authentication-mechanism">Implementing Custom Authentication Mechanism</a></li>
+<li><a href="#implementing-inbound-custom-authentication-mechanism">Implementing Inbound Custom Authentication Mechanism</a></li>
 <li><a href="#disable-https-enforcement">Disable HTTPS Enforcement</a></li>
 <li><a href="#modify-authn-or-authz-filter-index">Modify Authn or Authz Filter Index</a></li>
 </ul>
@@ -41,9 +41,9 @@ This document demonstrates different security features and controls available wi
 </li>
 <li><a href="#outbound-authentication--authorization">Outbound Authentication &amp; Authorization</a>
 <ul>
-<li><a href="#advanced-use-cases">Advanced Use Cases</a>
+<li><a href="#outbound-advanced-use-cases">Outbound Advanced Use Cases</a>
 <ul>
-<li><a href="#implementing-custom-authentication-mechanism">Implementing Custom Authentication Mechanism</a></li>
+<li><a href="#implementing-outbound-custom-authentication-mechanism">Implementing Outbound Custom Authentication Mechanism</a></li>
 </ul>
 </li>
 <li><a href="#jwt-outbound-authentication">JWT Outbound Authentication</a></li>
@@ -54,7 +54,7 @@ This document demonstrates different security features and controls available wi
 <li><a href="#direct-token-mode">Direct Token Mode</a></li>
 </ul>
 </li>
-<li><a href="#basic-authentication">Basic Authentication</a></li>
+<li><a href="#basic-auth-outbound-authentication">Basic Auth Outbound Authentication</a></li>
 <li><a href="#token-propagation-for-outbound-authentication">Token Propagation for Outbound Authentication</a>
 <ul>
 <li><a href="#example---1">Example - 1</a></li>
@@ -149,7 +149,7 @@ Command-line arguments passed to Ballerina programs and inputs received through 
 
 For example, the `select` remote method of the `java:jdbc` client highlighted above returns a `@tainted table<record {}>|Error`. This means that any value read from a database is considered as untrusted.
 
-When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type as `@tainted`. If not, the function author has to clean up the data before returning. For instance, if you are to read from the database and return that result, you either need to annotate that function's return type as @tainted or you have to clean up and make sure the returned data is not tainted. 
+When the Ballerina compiler can determine that a function is returning tainted data without tainted data being passed in as parameters to that function, it is required to annotate the function's return type as `@tainted`. If not, the function author has to clean up the data before returning. For instance, if you are to read from the database and return that result, you either need to annotate that function's return type as `@tainted` or you have to clean up and make sure the returned data is not tainted.
 
 ### Securely using tainted data with security-sensitive parameters
 
@@ -271,7 +271,7 @@ service helloWorld on secureHelloWorldEp {
 }
 ```
 
-_Note: It is a must to use HTTPS when enforcing authentication and authorization checks, to ensure the confidentiality of sensitive authentication data._
+> **Note:** It is a must to use HTTPS when enforcing authentication and authorization checks, to ensure the confidentiality of sensitive authentication data.
 
 Optionally, the `scopes` attribute is configured for the authorization as follows. If it is not specified, that means the service is authorized for any authenticated user.
 
@@ -293,7 +293,7 @@ service helloWorld on secureHelloWorldEp {
 }
 ```
 
-#### Advanced Use Cases
+#### Inbound Advanced Use Cases
 
 ##### Using Multiple Auth Handlers
 
@@ -397,7 +397,7 @@ resource function sayHello (http:Caller caller, http:Request req) {
 
 The same configuration patterns used for the listener-level configurations are applied for `authHandlers` and the `scopes` attributes in service-level configurations and resource-level configurations.
 
-##### Implementing Custom Authentication Mechanism
+##### Implementing Inbound Custom Authentication Mechanism
 
 The user can implement a custom version of AuthHandler and AuthProvider with the use of the object-equivalency pattern as follows. With that, the `http:Listener` can be enforced with custom authentication and authorization mechanisms.
 
@@ -436,12 +436,6 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     auth: {
         authHandlers: [authHandler],
         mandateSecureSocket: false
-    },
-    secureSocket: {
-        keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
-            password: "ballerina"
-        }
     }
 });
 service helloWorld on secureHelloWorldEp {
@@ -492,7 +486,7 @@ JWT validation requires several additional configurations for the `jwt:JwtValida
 
 The `jwt:JwtValidatorConfig` record should be provided into the `jwt:InboundJwtAuthProvider` when initializing. The initialized `jwt:InboundJwtAuthProvider` is passed to the `http:BearerAuthHandler.
 
-_Note: For demonstration purposes, the `ballerinaTruststore.p12` included with Ballerina runtime is used. In a production deployment, the truststore should only contain the public key certificates of the trusted JWT issuers._
+> **Note:** For demonstration purposes, the `ballerinaTruststore.p12` included with Ballerina runtime is used. In a production deployment, the truststore should only contain the public key certificates of the trusted JWT issuers.
 
 ```ballerina
 import ballerina/http;
@@ -927,7 +921,7 @@ service helloWorld on secureHelloWorldEp {
 }
 ```
 
-To enforce Basic Authentication, users and scopes should be configured through a configuration file. The following example file introduces two users. The 'generalUser` has no scopes and the 'admin' user has the 'hello' scope.
+To enforce Basic Authentication, users and scopes should be configured through a configuration file. The following example file introduces two users. The `generalUser` has no scopes and the `admin` user has the `hello` scope.
 
 **sample-users.toml**
 ```
@@ -947,7 +941,7 @@ Restart the service using the following command.
 ballerina run --config sample-users.toml basic_auth_sample.bal
 ```
 
-Since passwords are encrypted, the Config API will request for the decryption key. Use 'ballerina' as the decryption key in this sample.
+Since passwords are encrypted, the Config API will request for the decryption key. Use `ballerina` as the decryption key in this sample.
 
 Also, the passwords can be hashed and provided with the configuration file. The following example file introduces three users along with the passwords hashed with `sha256`, `sha384`, and `sha512` hashing algorithms.
 
@@ -965,7 +959,7 @@ password="@sha384:{1249e15f035ed34786a328d9fdb2689ab24f7c7b253d1b7f66ed92a679d66
 password="@sha512:{9057ff1aa9509b2a0af624d687461d2bbeb07e2f37d953b1ce4a9dc921a7f19c45dc35d7c5363b373792add57d0d7dc41596e1c585d6ef7844cdf8ae87af443f}"
 ```
 
-Once the service is restarted with the first configuration file in place, the 'generalUser' will not be able to invoke the service due to authorization failure:
+Once the service is restarted with the first configuration file in place, the `generalUser` will not be able to invoke the service due to authorization failure:
 
 ```
 curl -k -v -u generalUser:password https://localhost:9091/hello
@@ -1042,11 +1036,11 @@ http:Client secureHelloWorldClient = new("https://localhost:9092", {
 });
 ```
 
-_Note: It is better to use HTTPS when enforcing authentication and authorization checks to ensure the confidentiality of sensitive authentication data._
+> **Note:** It is better to use HTTPS when enforcing authentication and authorization checks to ensure the confidentiality of sensitive authentication data.
 
-#### Advanced Use Cases
+#### Outbound Advanced Use Cases
 
-##### Implementing Custom Authentication Mechanism
+##### Implementing Outbound Custom Authentication Mechanism
 
 The user can implement a custom version of the AuthHandler and AuthProvider with the use of the object equivalency pattern as follows. With that, the `http:Client` can be enforced with custom authentication and authorization mechanisms.
 
@@ -1289,7 +1283,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
 });
 ```
 
-#### Basic Authentication
+#### Basic Auth Outbound Authentication
 
 Ballerina supports Basic Authentication for clients. The `auth:OutboundBasicAuthProvider` is used to create a token against the `auth:Credential` provided by the user. The `http:BasicAuthHandler` is used to add the HTTP `Authorization` header with the value received from the AuthProvider as the `Basic <token>`.
 
@@ -1335,7 +1329,7 @@ The following program has an `http:Client` secured with Basic authentication and
 The `auth:OutboundBasicAuthProvider` is initialized without providing any configurations. Therefore, the program gets the token from the `runtime:InvocationContext` and uses it for the outbound request.
 If the downstream service is also secured with Basic authentication and as same as the upstream service, the user does not need to configure the client.
 
-_NOTE: This scenario is the same for all the scenarios where both the upstream and downstream services are secured using the same authentication scheme and clients are also configured using the same authentication scheme but without any configurations. The token propagation happens internally._
+> **Note:** This scenario is the same for all the scenarios in which both the upstream and downstream services are secured using the same authentication scheme and clients are also configured using the same authentication scheme but without any configurations. The token propagation happens internally.
 
 ```ballerina
 import ballerina/auth;
@@ -1440,7 +1434,7 @@ Start the service using the following command after creating the `sample-users.t
 ballerina run --config sample-users.toml example.bal
 ```
 
-The 'Tom' user will be able to invoke the `/hello` resource and invoke the Basic Auth protected downstream service.
+The `Tom` user will be able to invoke the `/hello` resource and invoke the Basic Auth protected downstream service.
 
 ```
 curl -k -v -u tom:123 https://localhost:9091/hello

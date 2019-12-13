@@ -58,7 +58,7 @@ The `@openapi:ClientConfig { generate: true }` annotation is used to enable or d
 ## Samples
 
 ### Mock service from OpenAPI
-`ballerinna openapi gen-service helloworld:helloService hello_service.yaml`
+`ballerina openapi gen-service helloworld:helloService hello_service.yaml`
 
 This will generate a Ballerina service, for `hello_service.yaml` OpenAPI contract, named `helloService` in the module named `helloworld`.
 This command should be executed inside a Ballerina project. 

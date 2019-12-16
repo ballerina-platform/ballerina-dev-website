@@ -2,7 +2,9 @@ $(function () {
     let contentSearch = lunr(function () {
         this.ref('page');
         this.field('content');
+        this.field('name');
         contentIndex.forEach(function (doc) {
+            doc.page = JSON.stringify({page:doc.page, name: doc.name});
             this.add(doc)
         }, this);
     });
@@ -10,7 +12,9 @@ $(function () {
     let titleSearch = lunr(function () {
         this.ref('page');
         this.field('content');
+        this.field('name');
         titleIndex.forEach(function (doc) {
+            doc.page = JSON.stringify({page:doc.page, name: doc.name});
             this.add(doc)
         }, this);
     });
@@ -25,10 +29,15 @@ $(function () {
         }
 
         searched.forEach(function (searchtxt) {
-            $('#searchResult').append('<li><h3><a href="' + searchtxt.ref + '">' + searchtxt.ref + '</a></h3><p>'
-                + 'exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'
+            let refObj = JSON.parse(searchtxt.ref);
+            $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3><p>'
                 + '</p></li>');
         });
+
+        if(searched.length <= 0) {
+            $('#searchResult').append('<li><h3><a>Oops!</a></h3>' +
+                '<p>Looks like we cannot find what you are looking for.</p></li>');
+        }
     };
 
     let init = function () {
@@ -39,6 +48,13 @@ $(function () {
 
     $('#searchButton').on('click', function () {
         search();
+    });
+
+    $( "#searchText" ).keypress(function( event ) {
+        if (event.which === 13) {
+            event.preventDefault();
+            search();
+        }
     });
 
     init();

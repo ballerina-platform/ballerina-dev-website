@@ -301,9 +301,16 @@ $(document).ready(function() {
     $(".cSEQUENCEContent").addClass('cShow');
 
     $('#searchBtn').click(function () {
-        var searchText = $('#searchTxt').val();
-        console.log(searchText);
+        let searchText = $('#searchTxt').val();
         window.location.assign("/search?" + searchText);
+    });
+
+    $( "#searchTxt" ).keypress(function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            let searchText = $('#searchTxt').val();
+            window.location.assign("/search?" + searchText);
+        }
     });
 
 

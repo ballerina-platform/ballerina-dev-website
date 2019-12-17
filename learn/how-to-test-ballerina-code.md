@@ -368,7 +368,6 @@ test:stopServiceSkeleton(“petstore.service.skeleton”);
 The following sample explains how you can start and stop a skeleton service based on an OpenAPI definition.
 
 ```ballerina
-import ballerina/config;
 import ballerina/http;
 import ballerina/test;
 
@@ -395,7 +394,7 @@ function testService() {
     test:assertTrue(isServiceSkeletonStarted, msg = "Service skeleton failed to start");
 
     // Send a GET request to the specified endpoint
-    var response = httpEndpoint->get("/pets");
+    var response = clientEndpoint->get("/pets");
     if (response is http:Response) {
          var strRes = response.getTextPayload();
          string expected = "Sample listPets Response";

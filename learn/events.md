@@ -12,7 +12,7 @@ redirect_from:
 
 <h1>Events</h1>
 
-<!-- <h2>No upcoming events</h2> -->
+<h2>No upcoming events</h2>
 
 <!-- ## Meetups -->
 
@@ -66,7 +66,7 @@ redirect_from:
                   
 </table>
 
-## Meetups
+<!--## Meetups
 
 <table class="cEventTable cMeetupsList" style="width:100%;">
 <tr data-expiry="December 12, 2019 12:00:00">
@@ -82,7 +82,7 @@ redirect_from:
 </td>
 <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">Register Now</a></td>
 </tr>
-</table> 
+</table> -->
 
 <style>
 .navbar-nav > li.cActive > a {

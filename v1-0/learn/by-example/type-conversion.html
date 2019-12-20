@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Type Conversion" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Type Conversion</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">decimal</span> <span class="k">as</span> <span class="nx">decimals</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">float</span> <span class="k">as</span> <span class="nx">floats</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">empNo</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;anydata&gt; to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">createNumericValues</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="s">&quot;45&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">s3</span> <span class="p">=</span> <span class="s">&quot;12.3&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">s4</span> <span class="p">=</span> <span class="s">&quot;8&quot;</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s1</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+    <span class="p">}</span>    <span class="nx">res1</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s2</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="nx">floats</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s3</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res2</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;float value: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="nx">decimal</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">decimals</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s4</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">res3</span> <span class="nx">is</span> <span class="nx">decimal</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;decimal value: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Sparrow&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
+    <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Hector Barbossa&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
+    <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">n</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Elizabeth Swann&quot;</span> <span class="p">};</span>
+    <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+    <span class="nx">createNumericValues</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Type Conversion</h2>
+                            <p><p>The <code>.constructFrom()</code> method creates a new value with a target storage type from a given <code>anydata</code>-typed
+ value, and assigns it to a target variable.
+ <code>.constructFrom()</code> is defined on all structured types, and returns an error if the operation is unsuccessful.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="immutable-values.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Immutable Values</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="json.html">
+                                        <span>NEXT ></span>
+                                        <p>JSON</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="type-conversion">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Type Conversion</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/type-conversion/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/lang.&#39;decimal as decimals;
+import ballerina/lang.&#39;float as floats;
+import ballerina/lang.&#39;int as ints;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+    string name;
+    int age;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Employee record {
+    string name;
+    int age;
+    int empNo;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function convertEmployeeToPerson(Employee emp) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function attempts to convert an <code>anydata</code> record <code>Employee</code> to an <code>anydata</code> record <code>Person</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(emp);
+    if (res is Person) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempts to create a new value of the type <code>Person</code> from the <code>Employee</code>-typed <code>emp</code> value without changing
+ the inherent type of <code>emp</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Employee to Person, name: &quot;, res[&quot;name&quot;]);
+    } else {
+        io:println(&quot;Error occurred on conversion&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the conversion is successful, this prints the <code>name</code> field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function convertAnydataMapToPerson(map&lt;anydata&gt; m) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function attempts to convert an <code>anydata</code> constrained map to an <code>anydata</code> record <code>Person</code>.
+ The conversion would return an error if an incompatible value is found.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(m);
+    if (res is Person) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempts to create a new value of the type <code>Person</code> from the <code>map&lt;anydata&gt;</code> typed <code>m</code> value without changing
+ the inherent type of <code>m</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;map&lt;anydata&gt; to Person, name: &quot;, res[&quot;name&quot;]);
+    } else {
+        io:println(&quot;Error occurred on conversion: &quot;, res.detail());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the conversion is successful, this prints the <code>name</code> field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function createNumericValues() {
+    string s1 = &quot;45&quot;;
+    string s2 = &quot;abc&quot;;
+    string s3 = &quot;12.3&quot;;
+    string s4 = &quot;8&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function creates numeric values from string values.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int|error res1 = ints:fromString(s1);
+    if (res1 is int) {
+        io:println(&quot;int value: &quot;, res1);
+    } else {
+        io:println(&quot;error: &quot;, res1.detail());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>fromString()</code> method in the ballerina/lang.int module returns the integer value represented by a
+ given string if there is a valid representation, else returns an <code>error</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    res1 = ints:fromString(s2);
+    if (res1 is int) {
+        io:println(&quot;int value: &quot;, res1);
+    } else {
+        io:println(&quot;error: &quot;, res1.detail());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    float|error res2 = floats:fromString(s3);
+    if (res2 is float) {
+        io:println(&quot;float value: &quot;, res2);
+    } else {
+        io:println(&quot;error: &quot;, res2.detail());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>fromString()</code> method in the ballerina/lang.float module returns the float value represented by a given
+ string if there is a valid representation, else returns an <code>error</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    decimal|error res3 = decimals:fromString(s4);
+    if (res3 is decimal) {
+        io:println(&quot;decimal value: &quot;, res3);
+    } else {
+        io:println(&quot;error: &quot;, res3.detail());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>fromString()</code> method in the ballerina/lang.decimal module returns the decimal value represented by a given
+ string if there is a valid representation, else returns an <code>error</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = { name: &quot;Jack Sparrow&quot;, age: 54, empNo: 100 };
+    convertEmployeeToPerson(emp);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempts to convert an <code>anydata</code>-typed record to another <code>anydata</code>-typed record.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; m = { name: &quot;Hector Barbossa&quot;, age: 54, empNo: 100 };
+    convertAnydataMapToPerson(m);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempts to convert an <code>anydata</code> constrained map to an <code>anydata</code>-typed record.
+ This conversion would be successful since all the expected elements are present.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; n = { name: &quot;Elizabeth Swann&quot; };
+    convertAnydataMapToPerson(n);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This conversion would not be successful since all the required elements are not
+ present in the map.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    createNumericValues();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempts to convert strings to numeric types.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run the program, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run type_conversion.bal
+Employee to Person, name: Jack Sparrow
+map&lt;anydata&gt; to Person, name: Hector Barbossa
+Error occurred on conversion: message=&#39;map&lt;anydata&gt;&#39; value cannot be converted to &#39;Person&#39;
+int value: 45
+error: message=&#39;string&#39; value &#39;abc&#39; cannot be converted to &#39;int&#39;
+float value: 12.3
+decimal value: 8
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

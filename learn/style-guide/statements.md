@@ -56,14 +56,16 @@ if (inProperSallaryRange) {
 
 * Block indent each pattern clause in its own line.
 * Keep a single space before and after the `=>` sign.
-* If a pattern clause contains only one statement, place it in the same line as the pattern clause without enclosing it with curly braces.
+* If a pattern clause contains only one statement, place it in the same line as the pattern clause enclosing it with curly braces.
 
 **Example,**
 
 ```ballerina
 function foo(string | int | boolean a) returns string {
     match a {
-        12 => return "Value is '12'";
+        12 => {
+            return "Value is '12'";
+        }
     }
   
     return "Value is 'Default'";

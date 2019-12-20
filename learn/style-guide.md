@@ -62,7 +62,7 @@ map<string> names = {};
 ```ballerina
 [string, int, boolean] tupleVar = ["", 0, false];
     
-int[] arrayOfString = [1, 2, 3, 4]
+int[] arrayOfInteger = [1, 2, 3, 4];
     
 map<string> stringMap = {one: st1, two: st2, three: st3};
     
@@ -277,7 +277,7 @@ table<Employee> employee = table {
 
 ## Top Level Definitions
 
-For style guidelines on imports, service definition, object definiiton, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definition, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
@@ -285,7 +285,7 @@ For style guidelines on operators, keywords, and types, see [Operators, Keywords
 
 ## Statements
 
-For style guidelines on statemnets such as if, match, transcation etc., see [Statements](/learn/style-guide/statements).
+For style guidelines on statements such as if, match, transaction etc., see [Statements](/learn/style-guide/statements).
 
 ## Expressions
 

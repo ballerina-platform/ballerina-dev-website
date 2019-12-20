@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Join Tables and Streams" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Join Tables and Streams</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">Item</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">price</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">stockAmount</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">type</span> <span class="nx">Order</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">itemName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">orderingAmount</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">type</span> <span class="nx">OutOfStockAlert</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">itemName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">stockAmount</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">stream</span><span class="p">&lt;</span><span class="nx">Order</span><span class="p">&gt;</span> <span class="nx">orderStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="nx">table</span><span class="p">&lt;</span><span class="nx">Item</span><span class="p">&gt;</span> <span class="nx">itemStockTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">stockAmount</span> <span class="p">},</span>
+    <span class="p">[</span>
+        <span class="p">{</span><span class="s">&quot;Book&quot;</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">&quot;Pen&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">};</span>
+<span class="nx">stream</span><span class="p">&lt;</span><span class="nx">OutOfStockAlert</span><span class="p">&gt;</span> <span class="nx">oredrAlertStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initOutOfStockAlert</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">forever</span> <span class="p">{</span>
+        <span class="nx">from</span> <span class="nx">orderStream</span> <span class="nx">window</span> <span class="nx">length</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="nx">itemOrder</span>
+        <span class="k">join</span> <span class="nx">queryItemTable</span><span class="p">(</span><span class="nx">itemOrder</span><span class="p">.</span><span class="nx">itemName</span><span class="p">,</span> <span class="nx">itemOrder</span><span class="p">.</span><span class="nx">orderingAmount</span><span class="p">)</span> <span class="k">as</span> <span class="nx">item</span>
+        <span class="nx">select</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="k">as</span> <span class="nx">itemName</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">stockAmount</span>
+        <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">OutOfStockAlert</span><span class="p">[]</span> <span class="nx">alerts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">alert</span> <span class="nx">in</span> <span class="nx">alerts</span> <span class="p">{</span>
+                <span class="nx">oredrAlertStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">alert</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">queryItemTable</span><span class="p">(</span><span class="kt">string</span> <span class="nx">itemName</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">orderingAmount</span><span class="p">)</span>
+        <span class="nx">returns</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Item</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Item</span><span class="p">&gt;</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
+        <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">price</span><span class="p">,</span> <span class="nx">stockAmount</span> <span class="p">},</span> <span class="p">[]</span>
+    <span class="p">};</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itemStockTable</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">itemName</span> <span class="o">&amp;&amp;</span> <span class="nx">orderingAmount</span> <span class="p">&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">stockAmount</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">initOutOfStockAlert</span><span class="p">();</span>    <span class="nx">Order</span> <span class="nx">order1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">itemName</span><span class="p">:</span> <span class="s">&quot;Pen&quot;</span><span class="p">,</span> <span class="nx">orderingAmount</span><span class="p">:</span> <span class="mi">5</span><span class="p">};</span>
+    <span class="nx">Order</span> <span class="nx">order2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">itemName</span><span class="p">:</span> <span class="s">&quot;Book&quot;</span><span class="p">,</span> <span class="nx">orderingAmount</span><span class="p">:</span> <span class="mi">2</span><span class="p">};</span>
+    <span class="nx">oredrAlertStream</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">printOutOfStocksAlert</span><span class="p">);</span>    <span class="nx">orderStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">order1</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="nx">orderStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">order2</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">printOutOfStocksAlert</span><span class="p">(</span><span class="nx">OutOfStockAlert</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alert! : &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">itemName</span><span class="p">,</span>
+            <span class="s">&quot; stock is not enough to satisfy the order.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Join Tables and Streams</h2>
+                            <p><p>Tables and streams can be joined using streaming query logic.
+In this example, orders coming from the customers for a certain item are checked against the stock table to verify
+whether there is enough stock to deliver the order. An alert is triggered if the stock is not sufficient.
+Ballerina Streams is an experimental feature. Use the <code>--experimental</code> flag when compiling Ballerina files
+that have streaming constructs.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="join-multiple-streams.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Join Multiple Streams</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="local-transactions.html">
+                                        <span>NEXT ></span>
+                                        <p>Local Transactions</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="join-tables-and-streams">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Join Tables and Streams</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/join-tables-and-streams/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/runtime;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Item record {|
+    string name;
+    float price;
+    int stockAmount;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the <code>record</code>, which holds item details in the stockTable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Order record {|
+    string itemName;
+    int orderingAmount;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the <code>record</code>, which holds order events from the customer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type OutOfStockAlert record {|
+    string itemName;
+    int stockAmount;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the <code>record</code>, which holds alert events.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>stream&lt;Order&gt; orderStream = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the input <code>stream</code>, which uses <code>Order</code> as the constraint type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>table&lt;Item&gt; itemStockTable = table {
+    { name, price, stockAmount },
+    [
+        {&quot;Book&quot;, 100.0, 10},
+        {&quot;Pen&quot;, 20.0, 4}
+    ]
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the <code>table</code>, which holds the item stock data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>stream&lt;OutOfStockAlert&gt; oredrAlertStream = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the output stream, which contains the events/alerts that are generated based on the streaming logic.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function initOutOfStockAlert() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    forever {
+        from orderStream window length(1) as itemOrder
+        join queryItemTable(itemOrder.itemName, itemOrder.orderingAmount) as item
+        select item.name as itemName, item.stockAmount
+        =&gt; (OutOfStockAlert[] alerts) {
+            foreach var alert in alerts {
+                oredrAlertStream.publish(alert);
+            }
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Whenever an order event is published to the <code>orderStream</code>, it is matched against the <code>itemStockTable</code> through
+the <code>queryItemTable</code> function. If there is a match, an alert event is published to the <code>orderAlertStream</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function queryItemTable(string itemName, int orderingAmount)
+        returns table&lt;Item&gt; {
+    table&lt;Item&gt; result = table {
+        { name, price, stockAmount }, []
+    };
+    foreach var item in itemStockTable {
+        if (item.name == itemName &amp;&amp; orderingAmount &gt; item.stockAmount) {
+            var ret = result.add(item);
+        }
+    }
+    return result;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>queryItemTable</code> function returns a <code>table</code> of items whose stock is not enough to satisfy the order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+    initOutOfStockAlert();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Order order1 = { itemName: &quot;Pen&quot;, orderingAmount: 5};
+    Order order2 = { itemName: &quot;Book&quot;, orderingAmount: 2};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    oredrAlertStream.subscribe(printOutOfStocksAlert);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Whenever the <code>orderAlertStream</code> stream receives an event from the streaming rules defined in the <code>forever</code>
+ block, the <code>printOutOfStocksAlert</code> function is invoked.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    orderStream.publish(order1);
+    runtime:sleep(500);
+    orderStream.publish(order2);
+    runtime:sleep(500);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function printOutOfStocksAlert(OutOfStockAlert a) {
+    io:println(&quot;Alert! : &quot;, a.itemName,
+            &quot; stock is not enough to satisfy the order.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run --experimental join-tables-and-streams.bal
+Alert! : Pen stock is not enough to satisfy the order.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

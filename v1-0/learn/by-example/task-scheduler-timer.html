@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Task Scheduler Timer" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Task Scheduler Timer</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">maxAge</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">intervalInMillis</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+        <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="nx">intervalInMillis</span><span class="p">,</span>
+        <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">});</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">10</span> <span class="p">};</span>
+    <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service1</span><span class="p">,</span> <span class="nx">attachment</span> <span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service1.&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service2</span><span class="p">,</span> <span class="nx">attachment</span> <span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service2.&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">startResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">startResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">stopResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">stopResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stopping the task is failed.&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;End.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">service1</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="kd">service</span> <span class="nx">service2</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; started schooling&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Task Scheduler Timer</h2>
+                            <p><p>A Task scheduler can be used to create timers to trigger periodically. A
+ service can be attached to the task Scheduler object using the <code>attach()</code>
+ function and the Listener can be started using the <code>start()</code> function.
+ The service that is being attached must contain the <code>onTrigger()</code> resource function. A parameter
+ can be passed into the service using the default <code>attachment</code> parameter
+ through the <code>attach()</code> function, which then can be used inside the <code>onTrigger()</code>
+ function. The Listener can be stopped by calling the <code>stop()</code> function.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="task-scheduler-appointment.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Task Scheduler Appointment</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="task-service-appointment.html">
+                                        <span>NEXT ></span>
+                                        <p>Task Service Appointment</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="task-scheduler-timer">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Task Scheduler Timer</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/task-scheduler-timer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/runtime;
+import ballerina/task;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public type Person record {|
+    string name;
+    int age;
+    int maxAge;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines a custom record type to use in the timer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int intervalInMillis = 1000;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The interval in which the timer should trigger.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler timer = new({
+        intervalInMillis: intervalInMillis,
+        initialDelayInMillis: 0
+    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initializes the timer scheduler using the interval value.
+ The delay will be equal to the interval as an initial delay is not provided.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Person person = { name: &quot;Sam&quot;, age: 0, maxAge: 10 };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define a person object</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var attachResult = timer.attach(service1, attachment = person);
+    if (attachResult is error) {
+        io:println(&quot;Error attaching the service1.&quot;);
+        return;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attaching the service to the timer. This will not start the timer.
+ However, it will attach the service to the timer and also passes the
+ person object into the <code>onTrigger()</code> resource</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    attachResult = timer.attach(service2, attachment = person);
+    if (attachResult is error) {
+        io:println(&quot;Error attaching the service2.&quot;);
+        return;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var startResult = timer.start();
+    if (startResult is error) {
+        io:println(&quot;Starting the task is failed.&quot;);
+        return;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Starts the timer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    while (person.age &lt; person.maxAge) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>While loop will stop the function from exiting until the service ends.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        runtime:sleep(2000);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Waits until the age of the person reaches the max age.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var stopResult = timer.stop();
+    if (stopResult is error) {
+        io:println(&quot;Stopping the task is failed.&quot;);
+        return;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Cancels the timer. This will stop the timer and all the services
+ attached to it.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;End.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service service1 = service {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The service, which will be attached to the timer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onTrigger(Person person) {
+        if (person.age &lt; person.maxAge) {
+            person.age = person.age + 1;
+            io:println(&quot;Hi &quot; + person.name + &quot; you are &quot; + person.age.toString() + &quot; years old now.&quot;);
+        }
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The onTrigger resource, which will trigger when the timer runs off.
+ The usage of the Person object being passed inside the function, which we
+ attached with the timer.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>service service2 = service {
+    resource function onTrigger(Person person) {
+        if (person.age == 5) {
+            io:println(person.name + &quot; started schooling&quot;);
+        }
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run task_scheduler_timer.bal
+Hi Sam you are 1 years old now.
+Hi Sam you are 2 years old now.
+Hi Sam you are 3 years old now.
+Hi Sam you are 4 years old now.
+Hi Sam you are 5 years old now.
+Hi Sam you are 6 years old now.
+Sam started schooling
+Hi Sam you are 7 years old now.
+Hi Sam you are 8 years old now.
+Hi Sam you are 9 years old now.
+Hi Sam you are 10 years old now.
+End.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A scheduler can have any number of services attached to it. All the attached services
+ will run when the scheduler triggers them.
+ A <code>Person</code> record is attached to the Scheduler when attaching the service.
+ It is then passed into the resource functions of the service.
+ When the <code>age</code> of the <code>person</code> reaches the <code>maxAge</code>, the while loop is returned.
+ Hence the task is stopped.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

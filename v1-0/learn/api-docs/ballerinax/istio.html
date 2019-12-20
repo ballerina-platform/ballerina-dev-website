@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <title>Ballerina - ballerina/istio API Docs</title>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Nanoscroller JS -->
+    <script src="docerina-theme/js/jquery.nanoscroller.min.js"></script>
+    <!-- Docerina JS -->
+    <script src="docerina-theme/js/docerina.js"></script>
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+    <link rel="stylesheet" href="//use.typekit.net/son4ymv.css" /> 
+    <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+    <script type="text/javascript" src="/js/ballerina-common.js"></script>
+    <link rel="stylesheet" href="/css/ballerina-io.css">
+    <link rel="stylesheet" href="/css/ballerina-io-docs.css">
+    <link rel="stylesheet" href="/css/ballerina-io-api.css">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#iBallerinaXtoc").load("/learn/api-docs/ballerinax/module-list.html");
+             $("#iBallerinaPACKAGEStoc").load("/learn/api-docs/ballerina/module-list.html");
+
+            if (typeof hljs === 'object') {
+                $('code.language-ballerina').addClass('ballerina');
+                hljs.initHighlighting();
+            }
+        });
+    </script>
+    <script>
+        var base_url = "";
+
+        window.location.href = "https://ballerina.io/learn/api-docs/ballerina/istio/";
+        
+    </script>
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io" role="document">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="row cBallerina-io-top-row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+            <div class="cTopLine"></div>
+        </div>
+    </div>
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+    </div>
+    <div class="row cBallerina-io-Logo-row">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cBallerina-io-Logo-Container">
+                <a class="cLogo" href="/">
+                    <img src="/img/ballerina-logo.png" alt="Ballerina" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container-fluid">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 cBallerina-io-Home-Left-col">
+                
+                
+                <!-- TODO check existence of links and remove-->
+                <div class="cBlallerina-io-docs-left-nav-container">
+                    <div class="cSideBar-Button">
+                        <img src="/img/sidebar.svg" />
+                    </div>
+                    <div class="cLectColStyle">
+                        <div class="cBallerina-io-docs-Title">TABLE OF CONTENTS</div>
+                        
+                        <ul class=" ">
+                            <li>
+                                <!--Package Name-->
+                                  
+                            </li>
+                        </ul>
+                        
+                        <ul class=" ">
+                            <li>
+                                <!--Package Name-->
+                                  
+                            </li>
+                        </ul>
+                        
+                        <ul class=" active-package">
+                            <li>
+                                <!--Package Name-->
+                                 
+                                <a class="cPackageList">ballerinax/<span class="bold">istio</span></a>  
+                                <div class="constructs-wrapper">
+                                    <!--Construct of Package-->
+                                    <ul class="constructs-ul">
+                                        
+                                        
+                                        <li>
+                                            <a href="#RecordsSummary">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    Records
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <li>
+                                            <a href="#TypeDefinitions">
+                                                <div class="construct-icon">
+                                                    <span class="fw-type"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    Type Definitions
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+                                        
+                                        
+                                        <li>
+                                            <a href="#Annotations">
+                                                <div class="construct-icon">
+                                                    <span class="fw-annotation"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    Annotations
+                                                </div>
+                                            </a>
+                                        </li>
+                                        
+
+                                        
+                                          
+                                        <li>
+                                            <a href="#DestinationConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    DestinationConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#DestinationWeightConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    DestinationWeightConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#GatewayConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    GatewayConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#HTTPRouteConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    HTTPRouteConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#PortConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    PortConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#ServerConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    ServerConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#TLSOptionConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    TLSOptionConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                          
+                                        <li>
+                                            <a href="#VirtualServiceConfig">
+                                                <div class="construct-icon">
+                                                    <span class="fw-record"> </span>
+                                                </div>
+                                                <div class="construct-name">
+                                                    VirtualServiceConfig
+                                                </div>
+                                            </a>
+                                        </li>
+                                            
+                                           
+                                           
+                                             
+                                             
+                                    </ul>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                        
+                        <ul class=" ">
+                            <li>
+                                <!--Package Name-->
+                                  
+                            </li>
+                        </ul>
+                        
+                        <ul class=" ">
+                            <li>
+                                <!--Package Name-->
+                                  
+                            </li>
+                        </ul>
+                        
+                        <ul class=" ">
+                            <li>
+                                <!--Package Name-->
+                                  
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 cBallerina-io-Home-Middle-col">
+                <div class="cBallerina-io-breadcrumbs">
+                    <div role="navigation" aria-label="breadcrumbs navigation">
+                        <ul class="wy-breadcrumbs">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>»</li>
+                            <li>
+                                <a href="/learn">Learn</a>
+                            </li>
+                            <li>»</li>
+                            <li>
+                                <a href="/learn/api-docs/">API Docs</a>
+                            </li>
+                            <li>»</li>
+                            <li><span class="bold">ballerinax/istio</span> module </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cBlallerina-io-docs-content-container">
+                    <div>
+                        <div>
+                            <div role="main">
+                                <div>
+                                    <div id="content" class="nano">
+                                        <div class="nano-content">
+                                            <h1 class="thin-text padding-bottom">
+                                                <span class="bold">ballerinax/istio</span>  module 
+                                            </h1>
+                                            
+
+                                            <div class="summary-wrapper">
+                                                <h2 class="cPageSubHeading">Module Detail</h2>
+                                        <!--Primitive Types-->
+                                        
+                                         
+                                        <!-- records -->
+                                        
+                                        <h3 id="RecordsSummary">Records</h3>
+                                         <table class="cSummary-Table c2Col-Medium">
+                                             <tr>
+                                                 <th class="cSummary-table-name">Record</th>
+                                                 <th class="cSummary-table-desc">Description</th>
+                                             </tr>
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#DestinationConfig">DestinationConfig</a></td>
+                                                         <td class="cSummary-table-desc">Configuration to a network addressable service.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#DestinationWeightConfig">DestinationWeightConfig</a></td>
+                                                         <td class="cSummary-table-desc">Configuration for weight for destination to traffic route.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#GatewayConfig">GatewayConfig</a></td>
+                                                         <td class="cSummary-table-desc">Istio gateway annotation configuration.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#HTTPRouteConfig">HTTPRouteConfig</a></td>
+                                                         <td class="cSummary-table-desc">Configurations for conditions and actions for routing HTTP.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#PortConfig">PortConfig</a></td>
+                                                         <td class="cSummary-table-desc">Port of a service.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#ServerConfig">ServerConfig</a></td>
+                                                         <td class="cSummary-table-desc">Istio gateway server configuration to describe the properties of the proxy on a given load balancer.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#TLSOptionConfig">TLSOptionConfig</a></td>
+                                                         <td class="cSummary-table-desc">Istio gateway server tls option configurations.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                                     <tr>
+                                                         <td class="cSummary-table-name"><a href="#VirtualServiceConfig">VirtualServiceConfig</a></td>
+                                                         <td class="cSummary-table-desc">Virtual service configuration for @istio:VirtualService annotation.
+</td>
+                                                     </tr>
+                                                 
+                                             
+                                                 
+                                             
+                                                 
+                                             
+                                                 
+                                             
+                                                 
+                                             
+                                         </table>
+                                         
+                                        <!-- objects -->
+                                        
+                                         <!-- endpoints -->
+                                         
+                                         <!-- functions -->
+                                         
+                                         <!-- Type Definitions-->
+                                         
+                                        <h3 id="TypeDefinitions">Type Definitions</h3>
+                                        <table class="cSummary-Table c3Col-Narrow">
+                                            <tr>
+                                                <th class="cSummary-table-name">Type</th>
+                                                <th class="cSummary-table-type">Values</th>
+                                                <th class="cSummary-table-desc">Description</th>
+                                            </tr>
+                                            
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                            
+                                            <tr>
+                                                <td class="cSummary-table-name">PortProtocol</td>
+                                                <td class="cSummary-table-type">TLS | TCP | MONGO | HTTPS | HTTP2 | HTTP | GRPC</td>
+                                                <td class="cSummary-table-desc"><p>Types of protocols of a port.</p>
+</td>
+                                            </tr>
+                                              
+                                            
+                                            <tr>
+                                                <td class="cSummary-table-name">TLSOptionMode</td>
+                                                <td class="cSummary-table-type">SIMPLE | PASSTHROUGH | MUTUAL</td>
+                                                <td class="cSummary-table-desc"><p>TLS mode enforced by the proxy.</p>
+</td>
+                                            </tr>
+                                              
+                                              
+                                              
+                                        </table>
+                                        
+                                        <!-- Global Variables-->
+                                        
+                                         <!-- Annotations -->
+                                        
+                                        <h3 id="Annotations">Annotations</h3>
+                                        <table class="cSummary-Table c4Col-Narrow">
+                                            <tr>
+                                                <th class="cSummary-table-name">Name</th>
+                                                <th class="cSummary-table-attach">Attaches To</th>
+                                                <th class="cSummary-table-type">Data Type</th>
+                                                <th class="cSummary-table-desc">Description</th>
+                                            </tr>
+                                            
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                              
+                                            
+                                            <tr>
+                                                <td class="cSummary-table-name">Gateway</td>
+                                                <td class="cSummary-table-attach">service, listener</td>
+                                                <td class="cSummary-table-type"><a href="istio.html#GatewayConfig">GatewayConfig</a></td>
+                                                <td class="cSummary-table-desc"><p>@istio:Gateway annotation to generate istio gateways.</p>
+</td>
+                                            </tr>
+                                              
+                                            
+                                            <tr>
+                                                <td class="cSummary-table-name">VirtualService</td>
+                                                <td class="cSummary-table-attach">service, listener</td>
+                                                <td class="cSummary-table-type"><a href="istio.html#VirtualServiceConfig">VirtualServiceConfig</a></td>
+                                                <td class="cSummary-table-desc"><p>@istio:VirtualService annotation to generate istio virtual service.</p>
+</td>
+                                            </tr>
+                                              
+                                        </table>
+                                        
+                                     </div>
+                                      
+                                      <div class="cConstructsWraperContainer"> 
+                                            
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="DestinationConfig">
+                                                    <span class="fw-record sm-icon"></span> public type DestinationConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Configuration to a network addressable service.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">host</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Host of a service.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">subset</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Subset within the service.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">port</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#int">int</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>The port on the host that is being addressed.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="DestinationWeightConfig">
+                                                    <span class="fw-record sm-icon"></span> public type DestinationWeightConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Configuration for weight for destination to traffic route.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">destination</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#DestinationConfig">istio:DestinationConfig</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Destination to forward to.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">weight</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#int">int</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Weight for the destination.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="GatewayConfig">
+                                                    <span class="fw-record sm-icon"></span> public type GatewayConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Istio gateway annotation configuration.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">name</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Name of the resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">labels</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Map of labels for the resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">annotations</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Map of annotations for resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">selector</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Specific set of pods/VMs on which this gateway configuration should be applied.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">servers</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#ServerConfig">istio:ServerConfig?[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>List of servers to pass.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="HTTPRouteConfig">
+                                                    <span class="fw-record sm-icon"></span> public type HTTPRouteConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Configurations for conditions and actions for routing HTTP.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">route</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#DestinationWeightConfig">istio:DestinationWeightConfig[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Route destination.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">timeout</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#int">int</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Timeout for requests in seconds.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">appendHeaders</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Additional header to add before forwarding/directing.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="PortConfig">
+                                                    <span class="fw-record sm-icon"></span> public type PortConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Port of a service.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">number</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#int">int</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>The port number.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">protocol</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#PortProtocol">HTTP|HTTPS|GRPC|HTTP2|MONGO|TCP|TLS</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>The protocol exposed by the port.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">name</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Label for the port.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="ServerConfig">
+                                                    <span class="fw-record sm-icon"></span> public type ServerConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Istio gateway server configuration to describe the properties of the proxy on a given load balancer.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">port</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#PortConfig">istio:PortConfig</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>The port of the proxy.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">hosts</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>List of hosts exposed by the gateway.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">tls</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#TLSOptionConfig">istio:TLSOptionConfig</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>TLS options.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="TLSOptionConfig">
+                                                    <span class="fw-record sm-icon"></span> public type TLSOptionConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Istio gateway server tls option configurations.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">httpsRedirect</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#boolean">boolean</a></td>
+                                                        <td class="cAPI-table-default">false</td>
+                                                        <td class="cAPI-table-desc"><p>If set to true, the load balancer will send a 301 redirect for all http connections, asking the clients to use HTTPS.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">mode</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#TLSOptionMode">PASSTHROUGH|SIMPLE|MUTUAL</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">serverCertificate</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>REQUIRED if mode is SIMPLE or MUTUAL. The path to the file holding the server-side TLS certificate to use.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">privateKey</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>REQUIRED if mode is SIMPLE or MUTUAL. The path to the file holding the server’s private key.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">caCertificates</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>REQUIRED if mode is MUTUAL. The path to a file containing certificate authority certificates to use in verifying a presented client side certificate.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">subjectAltNames</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>A list of alternate names to verify the subject identity in the certificate presented by the client.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <h2 id="VirtualServiceConfig">
+                                                    <span class="fw-record sm-icon"></span> public type VirtualServiceConfig
+                                                </h2>
+                                                
+                                                <p>
+                                                    <span class="fw-right gray xs-icon"></span>Virtual service configuration for @istio:VirtualService annotation.
+
+                                                </p>
+                                                 
+                                                <table>
+                                                    <tr>
+                                                        <th class="cAPI-table-name">Field Name</th>
+                                                        <th class="cAPI-table-type">Data Type</th>
+                                                        <th class="cAPI-table-default">Default Value</th>
+                                                        <th class="cAPI-table-desc">Description</th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">name</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Name of the resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">labels</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Map of labels for the resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">annotations</td>
+                                                        <td class="cAPI-table-type"><a href="builtin.html#map">map&lt;string&gt;</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Map of annotations for resource</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">hosts</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Destination which traffic should be sent.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">gateways</td>
+                                                        <td class="cAPI-table-type"><a href="primitive-types.html#string">string[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Names of the gateways which the service should listen to.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                        <td class="cAPI-table-name">http</td>
+                                                        <td class="cAPI-table-type"><a href="istio.html#HTTPRouteConfig">istio:HTTPRouteConfig[]</a></td>
+                                                        <td class="cAPI-table-default"></td>
+                                                        <td class="cAPI-table-desc"><p>Route rules for HTTP traffic.</p>
+</td>
+                                                    </tr>
+                                                    
+                                                </table>
+                                                 
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            <div class="construct-wrapper">
+                                                <!--Primitive Types-->
+                                                
+                                                <!-- Function -->
+                                                
+                                                <!-- Struct-binded functions grouped together -->
+                                                
+                                                <!-- Connectors and its actions -->
+                                                
+                                                <!-- Records -->
+                                                
+                                                <!-- Objects and its functions -->
+                                                
+                                            </div>
+                                                
+                                            </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2 cBallerina-io-Home-Right-col">
+                <div class="cBlallerina-io-docs-right-nav-container">
+                    <div class="cLectColStyle cLeftColTop">
+                        <div class="cBallerina-io-docs-Title cBallerina-io-primitive-types">PRIMITIVE TYPES</div>
+                        <div class="cCollaps-Menu-first">
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#int">
+                                        <span class="bold">int</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#float">
+                                        <span class="bold">float</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#boolean">
+                                        <span class="bold">boolean</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#string">
+                                        <span class="bold">string</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#json">
+                                        <span class="bold">json</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#xml">
+                                        <span class="bold">xml</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#any">
+                                        <span class="bold">any</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#blob">
+                                        <span class="bold">blob</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#typedesc">
+                                        <span class="bold">typedesc</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#record">
+                                        <span class="bold">record</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#array">
+                                        <span class="bold">array</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#map">
+                                        <span class="bold">map</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#union">
+                                        <span class="bold">union</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#tuple">
+                                        <span class="bold">tuple</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#table">
+                                        <span class="bold">table</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#stream">
+                                        <span class="bold">stream</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#future">
+                                        <span class="bold">future</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                            <ul class="">
+                                <li>
+                                    <a href="primitive-types.html#function">
+                                        <span class="bold">function</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="cBlallerina-io-docs-right-nav-container">
+                    <div class="cBlallerina-io-docs-right-nav-container">
+                    <div class="cLectColStyle cLeftColTop">
+                        <div class="cBallerina-io-docs-Title cBallerina-io-packages cOpenMenu">BALLERINA MODULES</div>
+
+                        <div class="cCollaps-Menu cOpenMenu" id="iBallerinaPACKAGEStoc">
+                            
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="awslambda.html">ballerina/<span class="bold">awslambda</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="docker.html">ballerina/<span class="bold">docker</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="active-package">
+                                <li>
+                                   <!--Package Name-->
+                                    
+                                   <a>ballerina/<span class="bold">istio</a>
+                                   
+                                   
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="jdbc.html">ballerina/<span class="bold">jdbc</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="kubernetes.html">ballerina/<span class="bold">kubernetes</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="openshift.html">ballerina/<span class="bold">openshift</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                        </div>
+                        <div class="cBallerina-io-docs-Title cBallerina-io-x cOpenMenu">BALLERINAX MODULES</div>
+                        <div class="cCollaps-Menu-second cOpenMenu" id="iBallerinaXtoc">
+                            
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="awslambda.html">ballerina/<span class="bold">awslambda</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="docker.html">ballerina/<span class="bold">docker</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="active-package">
+                                <li>
+                                   <!--Package Name-->
+                                    
+                                   <a>ballerina/<span class="bold">istio</a>
+                                   
+                                   
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="jdbc.html">ballerina/<span class="bold">jdbc</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="kubernetes.html">ballerina/<span class="bold">kubernetes</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                             <ul class="">
+                                <li>
+                                   <!--Package Name-->
+                                   
+                                   <a href="openshift.html">ballerina/<span class="bold">openshift</span>
+                                   </a>
+                                   
+                                </li>
+                             </ul>
+                             
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+            $(".cSideBar-Button").click(function() {
+                $(".cSideBar-Button").toggleClass('cOpen');
+                $(".cBallerina-io-Home-Left-col").toggleClass('cOpen-col');
+            });
+        });
+    </script>
+    <script type="text/javascript" src="/search/search.js"></script>
+</body>
+</html>
+

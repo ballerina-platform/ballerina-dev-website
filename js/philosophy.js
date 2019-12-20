@@ -137,7 +137,7 @@ function printExamples() {
                     if (is_exist == -1) {
                         return true;
                     } else {
-                        div_content += '<li><a href="/learn/by-example/' + link + '.html">' + example['name'] + '</a></li>';
+                        div_content += '<li><a href="/v1-1/learn/by-example/' + link + '.html">' + example['name'] + '</a></li>';
                     }
                 });
 

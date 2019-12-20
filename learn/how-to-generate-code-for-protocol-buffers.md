@@ -17,7 +17,7 @@ Buffer definition. The code generation tool can produce `ballerina stub` and `ba
 You can generate Ballerina source code using the following command:
 
 ```
-./ballerina grpc --input <proto-file-path> [--output <path>] [--mode client | server]
+./ballerina grpc --input <proto-file-path> [--output <path>] [--mode client | service]
 ```
 
 ____**Options**____
@@ -30,7 +30,7 @@ If output path is not specified, output will be written to a directory correspon
  Buffers definition. 
 If package is not specified, output will be written to a 'temp' directory in the current location.
 
-`--mode`   - Set the mode (client or server) to generate code samples. If not specified, only the stub file is
+`--mode`   - Set the mode (client or service) to generate code samples. If not specified, only the stub file is
  generated.
 
 

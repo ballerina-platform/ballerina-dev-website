@@ -48,7 +48,7 @@ You can follow your own coding style when writing Ballerina source code. Also, p
     ```ballerina
     (string, int, boolean) tupleVar = ("", 0, false);
     
-    int[] arrayOfString = [1, 2, 3, 4]
+    int[] arrayOfInteger = [1, 2, 3, 4];
     
     map<string> stringMap = {one: st1, two: st2, three: st3};
     

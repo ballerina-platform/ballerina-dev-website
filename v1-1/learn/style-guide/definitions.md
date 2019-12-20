@@ -14,7 +14,7 @@ title: Top Level definitions
 import ballerina/http;
 
 const int MIN_AGE = 20;
-int repititions = 0;
+int repetitions = 0;
     
 service hello on ep1 {
     ...
@@ -28,8 +28,8 @@ service hello on ep1 {
 // This import is indented correctly.
 import ballerina/http; 
     
-const int MIN_AGE = 20; // Not indented correctly.
-int repititions = 0; // Not indented correctly.
+    const int MIN_AGE = 20; // Not indented correctly.
+    int repetitions = 0; // Not indented correctly.
         
 // Not indented correctly.
 service hello on ep1 {
@@ -152,7 +152,7 @@ type Person object {
       string name;
   
     // Object init function.
-    function __init(int age = 0, string name) {
+    function __init(string name, int age = 0) {
         self.age = age;
         self.name = name;
     }

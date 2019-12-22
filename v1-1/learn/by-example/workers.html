@@ -109,9 +109,6 @@
         <span class="p">}</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nd">@strand {</span>
-        <span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span>
-    <span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -134,7 +131,7 @@
                     <tr>
                         <td class="cLeftTD">
                             <h2>Workers</h2>
-                            <p><p>Workers in Ballerina allow developers to delegate their tasks to independently running executions.
+                            <p><p>Workers in Ballerina allow developers to delegate their tasks to parallel running executions.
  Worker execution starts immediately after invoking the relevant function, remote function, or resource that encloses the worker(s).
  Workers can be declared within functions, remote functions, or resources.
  Worker execution starts immediately after executing the statements declared before the first worker declaration in the relevant function,
@@ -146,9 +143,9 @@
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="trap.html">
+                                    <a class="prev" href="user-defined-error.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Trap</p>
+                                        <p>User-defined Error Types</p>
                                     </a>
                                 </div>
                                  
@@ -220,8 +217,6 @@
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -252,7 +247,7 @@
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>In Ballerina, each function consists of one or more workers, which are
- independent execution paths called strands. If explicit workers are
+ independent parallel execution paths called strands. If explicit workers are
  not mentioned within worker blocks, the function code will belong to a
  single implicit default worker. The default worker in each function wil be
  executed in the same strand as the caller function.</p>
@@ -300,29 +295,6 @@
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Calculates the sum(n).</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @strand {
-        thread:&quot;any&quot;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>By default workers run on the same physical thread of the parent strand.
- By adding <code>@strand</code> annotation, this worker&rsquo;s strand is allowed to run
- on any available physical thread.</p>
 
                                         </div>
                                     </div>

@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta property="og:url" content="https://ballerina.io" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Compound Assignment Operators" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Iterable Objects" />
     <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
     <meta property="og:image" content="/img/ballerina-sm.jpg" />
     <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
-    <title>Ballerina by Example: Compound Assignment Operators</title>
+    <title>Ballerina by Example: Iterable Objects</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
@@ -98,29 +98,31 @@
     <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">value</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">+=</span> <span class="mi">7</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value += 7: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value -= 2: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">/=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value /= 3: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value *= 2: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">&amp;=</span> <span class="mi">4</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value &amp;= 4: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">|=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value |= 3: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="p">^=</span> <span class="mi">5</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value ^= 5: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value &lt;&lt;= 1: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value &gt;&gt;= 1: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-    <span class="nx">value</span> <span class="o">&gt;&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;value &gt;&gt;&gt;= 1: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">ArrayIterator</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">private</span> <span class="kt">int</span><span class="p">[]</span> <span class="nx">integers</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">];</span>
+    <span class="nx">private</span> <span class="kt">int</span> <span class="nx">cursor</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span> <span class="p">&lt;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span> <span class="nx">nextVal</span> <span class="p">=</span> <span class="p">{</span><span class="nx">value</span><span class="p">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">integers</span><span class="p">[</span><span class="nx">self</span><span class="p">.</span><span class="nx">cursor</span><span class="p">]};</span>
+            <span class="k">return</span> <span class="nx">nextVal</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">IteratorGenerator</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+            <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;}</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">new</span> <span class="nx">ArrayIterator</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">IteratorGenerator</span> <span class="nx">itrGen</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">itrGen</span> <span class="p">{</span>
+        <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Element &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -132,9 +134,12 @@
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Compound Assignment Operators</h2>
-                            <p><p>Compound assignment operators can be used to simplify the code and increase readability. These operators can only be
- used as statements (i.e., they cannot be used as expressions).</p>
+                            <h2>Iterable Objects</h2>
+                            <p><p>An object can be made iterable as a sequence of values of type <code>T</code> by providing a method named <code>__iterator</code> which
+ returns a value that is a subtype of <code>Iterator&lt;T&gt;</code>. We refer to this type as <code>Iterable&lt;T&gt;</code>. Any subtype
+ of <code>abstract object {public next() returns record {| T value; |}?;}</code>, is called Iterator<T>. An iterable object can be
+ iterated over using a <code>foreach</code> loop. In this example, <code>IteratorGenerator</code> is a subtype of <code>Iterable&lt;int&gt;</code> and
+ <code>ArrayIterator</code> is a subtype of <code>Iterator&lt;int&gt;</code>.</p>
 </p>
 
                         </td>
@@ -142,16 +147,16 @@
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="iterable-objects.html">
+                                    <a class="prev" href="object-type-reference.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Iterable Objects</p>
+                                        <p>Object Type Reference</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="equality.html">
+                                    <a class="next" href="compound-assignment-operators.html">
                                         <span>NEXT ></span>
-                                        <p>Equality</p>
+                                        <p>Compound Assignment Operators</p>
                                     </a>
                                 </div>
                                 
@@ -160,7 +165,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="example" id="compound-assignment-operators">
+            <div class="example" id="iterable-objects">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -173,7 +178,7 @@
                                         <li>»</li>
                                         <li><a href="/learn/by-example">By Example</a></li>
                                         <li>»</li>
-                                        <li>Compound Assignment Operators</li>
+                                        <li>Iterable Objects</li>
                                     </ul>
                                 </div>
                                 <div class="cBBE-links">
@@ -182,7 +187,7 @@
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/compound-assignment-operators/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/iterable-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -199,18 +204,6 @@
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -241,217 +234,111 @@
                                 </td>
                             </tr>
                             
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type ArrayIterator object {
+    private int[] integers = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+    private int cursor = -1;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An object that is a subtype of <code>Iterator&lt;int&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    public function next() returns record {|int value;|}? {
+        self.cursor += 1;
+        if (self.cursor &lt; self.integers.length()) {
+            record {|int value;|} nextVal = {value: self.integers[self.cursor]};
+            return nextVal;
+        }
+        return ();
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>next</code> method which generates the sequence of values of type <code>int</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type IteratorGenerator object {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An object that is a subtype of <code>Iterable&lt;int&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    public function __iterator() returns abstract object {
+            public function next() returns record {|int value;|}?;} {
+        return new ArrayIterator();
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>__iterator()</code> method should return a new <code>Iterator&lt;T&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
-    int value = 1;
-    io:println(&quot;value: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value += 7;
-    io:println(&quot;value += 7: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>add</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value -= 2;
-    io:println(&quot;value -= 2: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>subtract</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value /= 3;
-    io:println(&quot;value /= 3: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>divide</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value *= 2;
-    io:println(&quot;value *= 2: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>multiply</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value &amp;= 4;
-    io:println(&quot;value &amp;= 4: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>and</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value |= 3;
-    io:println(&quot;value |= 3: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>or</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value ^= 5;
-    io:println(&quot;value ^= 5: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>xor</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value &lt;&lt;= 1;
-    io:println(&quot;value &lt;&lt;= 1: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>left shift</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    value &gt;&gt;= 1;
-    io:println(&quot;value &gt;&gt;= 1: &quot;, value);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>right shift</code> operator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    value &gt;&gt;&gt;= 1;
-    io:println(&quot;value &gt;&gt;&gt;= 1: &quot;, value);
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+    IteratorGenerator itrGen = new;
+    int i = 0;
+    foreach var item in itrGen {
+        i += 1;
+        io:println(&quot;Element &quot;, i, &quot;: &quot;, item);
+    }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Compound <code>logical shift</code> operator.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -474,18 +361,17 @@
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run compound_assignment_operators.bal
-value: 1
-value += 7: 8
-value -= 2: 6
-value /= 3: 2
-value *= 2: 4
-value &amp;= 4: 4
-value |= 3: 7
-value ^= 5: 2
-value &lt;&lt;= 1: 4
-value &gt;&gt;= 1: 2
-value &gt;&gt;&gt;= 1: 1
+$ ballerina run iterable_objects.bal
+Element 1: 0
+Element 2: 1
+Element 3: 1
+Element 4: 2
+Element 5: 3
+Element 6: 5
+Element 7: 8
+Element 8: 13
+Element 9: 21
+Element 10: 34
 </code></pre></div>
 
                                 </td>

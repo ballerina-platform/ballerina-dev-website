@@ -197,6 +197,7 @@ Add the following code to the `hello_world_docker.bal` file.
 ```ballerina
 import ballerina/http;  
 import ballerina/docker;  
+import ballerina/log;
   
 @http:ServiceConfig {  
     basePath:"/helloWorld"  

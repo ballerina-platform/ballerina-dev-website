@@ -199,7 +199,7 @@
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP1.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">response1</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response2</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -210,7 +210,7 @@
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">response2</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
@@ -221,7 +221,7 @@
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -565,7 +565,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
             log:printError(&quot;Failed to retrieve payload for clientEP1.&quot;);
         }
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, err = response1);
+        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, response1);
     }
 </code></pre></div>
 
@@ -594,7 +594,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
             log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
         }
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, err = response2);
+        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, response2);
     }
 </code></pre></div>
 
@@ -623,7 +623,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
             log:printInfo(&lt;string&gt; result.kind);
         }
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, err = response3);
+        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
     }
 }
 </code></pre></div>

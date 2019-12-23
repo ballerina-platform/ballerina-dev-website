@@ -90,12 +90,12 @@ Person p = {
 ```ballerina
   
 // Inline map literal.
-map<string> mapOfString1 = {name: "john", id: 0};
+map<string> mapOfString1 = {name: "john", id: "0"};
   
 // Mulitline map literal.
 map<string> mapOfString2 = {
     name: "john",
-    id: 0
+    id: "0"
 }
 ```
 
@@ -106,7 +106,7 @@ map<string> mapOfString2 = {
 **Example,**
 
 ```ballerina
-(string, int) tuple = ("john", 20);
+[string, int] tuple = ["john", 20];
 ```
 
 * If a tuple exceeds the maximum line length limit, move the whole tuple to a new line and indent with four spaces from the starting position of the statement or definition.
@@ -199,7 +199,7 @@ table<Employee> employee3 = table {
     ]
  };
 
-table<Employee> employee3 = table {
+table<Employee> employee4 = table {
     {id, name, address},
     [
         {

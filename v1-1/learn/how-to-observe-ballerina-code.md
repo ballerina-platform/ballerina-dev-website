@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Observe Ballerina Services
-permalink: /learn/how-to-observe-ballerina-code/
+permalink: /v1-1/learn/how-to-observe-ballerina-code/
 ---
 
 # How to Observe Ballerina Services
@@ -487,7 +487,7 @@ $ docker run -d -p 9411:9411 openzipkin/zipkin
 ```
 
 **Step 2:** Go to <http://localhost:9411/zipkin/> and load the web UI of the Zipkin to make sure it is functioning
-properly. The below shown is the sample Zipkin dashboard for the hello world sample in the [Quick Start](/learn/quick-tour)
+properly. The below shown is the sample Zipkin dashboard for the hello world sample in the [Quick Start](/v1-1/learn/quick-tour)
 
 ![Zipkin Sample](../images/zipkin-sample.png "Zipkin Sample")
 

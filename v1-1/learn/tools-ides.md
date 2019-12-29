@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Tools and IDEs
-permalink: /learn/tools-ides/
+permalink: /v1-1/learn/tools-ides/
 ---
 
 # Tools and IDEs
@@ -17,14 +17,14 @@ Ballerina provides language servers, editors, IDEs, and graphical visualization 
 
 You can use plugins to write Ballerina code in your favorite editor or IDE. Click on the below icons to learn about the plugins that are currently available. 
 
-![VS Code](images/vscode-logo.jpg)&nbsp;&nbsp;[Visual Studio Code](/learn/tools-ides/vscode-plugin) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![IntelliJ](images/idea-logo.jpg)&nbsp;&nbsp;[IntelliJ IDEA](/learn/tools-ides/intellij-plugin)
+![VS Code](images/vscode-logo.jpg)&nbsp;&nbsp;[Visual Studio Code](/v1-1/learn/tools-ides/vscode-plugin) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![IntelliJ](images/idea-logo.jpg)&nbsp;&nbsp;[IntelliJ IDEA](/v1-1/learn/tools-ides/intellij-plugin)
 
 The graphical visualization tool is embedded in the Visual Studio Code plug-in.
 
 ## OpenAPI to Ballerina code generator
 
-You can use the existing OpenAPI/Swagger files to generate connectors and services in Ballerina code. For details, see the [OpenAPI to Ballerina Code Generator](/learn/by-example/openapi-to-ballerina.html).
+You can use the existing OpenAPI/Swagger files to generate connectors and services in Ballerina code. For details, see the [OpenAPI to Ballerina Code Generator](/v1-1/learn/by-example/openapi-to-ballerina.html).
 
 ## API documentation generator
 

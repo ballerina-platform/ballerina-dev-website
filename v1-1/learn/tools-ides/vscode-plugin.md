@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Visual Studio Code Plugin
-permalink: /learn/tools-ides/vscode-plugin/
+permalink: /v1-1/learn/tools-ides/vscode-plugin/
 ---
 
 # The Visual Studio Code Plugin
@@ -30,7 +30,7 @@ Click **Extensions** on the left-most menu of the editor, search for the Balleri
 
 > **Tip**: Click **Reload** to reload the editor to apply the change.
 
-![Install the plugin via VS Code](/learn/images/install-via-editor.gif)
+![Install the plugin via VS Code](/v1-1/learn/images/install-via-editor.gif)
 
 This downloads the plugin and installs it.
 
@@ -47,7 +47,7 @@ This downloads the plugin and installs it.
 2. In the search bar, type "vsix" and click **Extensions: Install from VSIX...**.
 3. Browse and select the VSIX file of the plugin you downloaded.
 
-![Install using the Command Palette of the editor.](/learn/images/install-via-palette.gif)
+![Install using the Command Palette of the editor.](/v1-1/learn/images/install-via-palette.gif)
 
 #### Using the Command Line
 In a new Command Line tab, execute the below command.
@@ -64,8 +64,8 @@ $ code --install-extension <BALLERINA-PLUGIN-DIRECTORY>
 
 The below sections include information on the various capabilities that are facilitated by the VS Code Ballerina plugin for the development process.
 
-- [Language intelligence](/learn/tools-ides/vscode-plugin/language-intelligence)
-- [Run and debug](/learn/tools-ides/vscode-plugin/run-and-debug)
-- [Graphical View](/learn/tools-ides/vscode-plugin/graphical-editor)
-- [Documentation Viewer](/learn/tools-ides/vscode-plugin/documentation-viewer)
+- [Language intelligence](/v1-1/learn/tools-ides/vscode-plugin/language-intelligence)
+- [Run and debug](/v1-1/learn/tools-ides/vscode-plugin/run-and-debug)
+- [Graphical View](/v1-1/learn/tools-ides/vscode-plugin/graphical-editor)
+- [Documentation Viewer](/v1-1/learn/tools-ides/vscode-plugin/documentation-viewer)
 

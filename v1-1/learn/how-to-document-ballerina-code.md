@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Document Ballerina Code
-permalink: /learn/how-to-document-ballerina-code/
+permalink: /v1-1/learn/how-to-document-ballerina-code/
 
 ---
 
@@ -106,7 +106,7 @@ A typical project structure of a Ballerina project is like this:
 
 `ballerina doc` command will read the `Module.md` and prepend it to the generated HTML file.
 
-Check [HTTP module documentation](/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
+Check [HTTP module documentation](/v1-1/learn/api-docs/ballerina/http/index.html) for sample HTML that has `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation

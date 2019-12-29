@@ -12,5 +12,5 @@ The Documentation Viewer represents the documented entities in a file in an orga
 1. Click **View** in the top menu and click **Command Palette**.
 2. In the search box, type "Show" and click **Ballerina: Show Documentation Preview**.
 
-![Documentation Viewer](/learn/images/documentation-viewer.gif)
+![Documentation Viewer](/v1-1/learn/images/documentation-viewer.gif)
 

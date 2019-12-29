@@ -21,7 +21,7 @@ debug session.
 
 You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](/learn/images/run-and-debug.gif)
+![Run and debug](/v1-1/learn/images/run-and-debug.gif)
 
 For more information on debugging your code using VS Code, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
@@ -33,7 +33,7 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina plugin, see [Graphical View](/learn/tools-ides//vscode-plugin/graphical-editor).
- - For information on the VS Code Ballerina plugin, see [The Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina plugin, see [Tools and IDEs](/learn/tools-ides).
+ - For information on the next capability of the VS Code Ballerina plugin, see [Graphical View](/v1-1/learn/tools-ides//vscode-plugin/graphical-editor).
+ - For information on the VS Code Ballerina plugin, see [The Visual Studio Code Plugin](/v1-1/learn/tools-ides/vscode-plugin).
+ - For information on the tools and IDEs that are supported by the VS Code Ballerina plugin, see [Tools and IDEs](/v1-1/learn/tools-ides).
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Test Ballerina Code
-permalink: /learn/how-to-test-ballerina-code/
+permalink: /v1-1/learn/how-to-test-ballerina-code/
 ---
 
 # How to Test Ballerina Code

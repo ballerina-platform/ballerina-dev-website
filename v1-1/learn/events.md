@@ -3,8 +3,8 @@ layout: ballerina-inner-page
 title: Events
 permalink: /events/
 redirect_from:
-  - /learn/events
-  - /learn/events/
+  - /v1-1/learn/events
+  - /v1-1/learn/events/
 ---
 
 <script src="/js/events.js"></script>

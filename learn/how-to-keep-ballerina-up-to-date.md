@@ -207,7 +207,7 @@ Distributions available locally:
 
 ### Pull a specific distribution
 
-The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
+- The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
 → sudo ballerina dist pull jballerina-1.0.3
@@ -217,7 +217,7 @@ Downloading jballerina-1.0.3 100% [==================================] 96/96 MB 
 
 ### Update Ballerina tool
 
-The `ballerina update` command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
+- The `ballerina update` command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
 
 ```sh
 → ballerina update

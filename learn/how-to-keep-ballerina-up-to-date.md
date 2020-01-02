@@ -37,8 +37,7 @@ It also enables you to easily install, update and switch among Ballerina distrib
 
 ### Ballerina distributions
 
-The language specification defines the syntax and semantics of Ballerina programming language. Ballerina compiler is a software program that validates the Ballerina source code and translates it to an executable program. There exist a production-ready official compiler called  jBallerina. We also have a plan to do a native compiler called nBallerina.
-
+- The language specification defines the syntax and semantics of Ballerina programming language. Ballerina compiler is a software program that validates the Ballerina source code and translates it to an executable program. There exist a production-ready official compiler called  jBallerina. We also have a plan to do a native compiler called nBallerina.
 - jBallerina
   - Ballerina compiler that targets the JVM.
   - The most stable and production-ready compiler.
@@ -68,15 +67,14 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 
 #### Release maintenance
 
-We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
-
-In other words, patch releases for jBallerina 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when jBallerina 1.2 is available, we stop maintaining jBallerina 1.0.0.
+- We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
+- In other words, patch releases for jBallerina 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when jBallerina 1.2 is available, we stop maintaining jBallerina 1.0.0.
 
 ## Keeping Ballerina up to date
 
 Now that you are familiar with the terminology, let’s look at how you can keep your Ballerina distributions up to date.
 
-The first step is to install Ballerina. Visit our [Getting Started](https://ballerina.io/learn/getting-started/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
+- The first step is to install Ballerina. Visit our [installing Ballerina](https://ballerina.io/learn/getting-started/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
 
 ```sh
 .

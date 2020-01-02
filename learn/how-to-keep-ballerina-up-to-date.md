@@ -167,6 +167,7 @@ Distributions available locally:
 
 Distributions available remotely:
 
+  jballerina-1.1.0
   jballerina-1.0.0
   jballerina-1.0.1
   jballerina-1.0.2  
@@ -199,9 +200,10 @@ The `ballerina dist use <distribution>` command sets a particular distribution v
 → ballerina dist list
 Distributions available locally:
 
-  jballerina-1.0.2
+  jballerina-1.1.0
+  jballerina-1.0.5
 * jballerina-1.0.4
-  jballerina-1.1.0-beta
+  jballerina-1.0.0
 …
 ```
 
@@ -221,7 +223,7 @@ Downloading jballerina-1.0.3 100% [==================================] 96/96 MB 
 
 ```sh
 → ballerina update
-Fetching latest version from remote server...
+Fetching the latest version from the remote server...
 Downloading ballerina-command-0.8.1
 Downloading ballerina-tool-0.8.1 100% [====================================] 1/1 MB
 

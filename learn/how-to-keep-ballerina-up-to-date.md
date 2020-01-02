@@ -79,9 +79,9 @@ Now that you are familiar with the terminology, let’s look at how you can keep
 ```sh
 .
 ├── bin/
-│ └── ballerina
+│   └── ballerina
 ├── lib/
-│ └── ballerina-command-0.8.0.jar
+│   └── ballerina-command-0.8.0.jar
 ├── dependencies/
 │   └── jdk8u202-b08-jre/
 └── distributions/

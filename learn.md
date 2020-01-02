@@ -131,5 +131,9 @@ permalink: /learn/
       <h3><a href="/learn/how-to-use-openapi-tools">Developing Ballerina Services Using an OpenAPI Documentation</a></h3>
       <p>How to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
    </div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/learn/how-to-keep-ballerina-up-to-date">Keeping Ballerina up to date</a></h3>
+      <p>How to keep your Ballerina installation up to date with the latest patch and minor releases.</p>
+   </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

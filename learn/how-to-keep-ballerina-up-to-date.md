@@ -39,12 +39,12 @@ It also enables you to easily install, update and switch among Ballerina distrib
 
 The language specification defines the syntax and semantics of Ballerina programming language. Ballerina compiler is a software program that validates the Ballerina source code and translates it to an executable program. There exist a production-ready official compiler called  jBallerina. We also have a plan to do a native compiler called nBallerina.
 
-* jBallerina
-    - Ballerina compiler that targets the JVM.
-    - The most stable and production-ready compiler.
-* nBallerina
-    - Ballerina compiler that targets platforms such as Linux, Windows and Mac OS.
-    - Not available yet.
+- jBallerina
+  - Ballerina compiler that targets the JVM.
+  - The most stable and production-ready compiler.
+- nBallerina
+  - Ballerina compiler that targets platforms such as Linux, Windows and Mac OS.
+  - Not available yet.
 
 Ballerina distribution is a term that we use to refer to jBallerina and nBallerina compilers.
 
@@ -81,11 +81,11 @@ The first step is to install Ballerina. Visit our [Getting Started](https://ball
 ```sh
 .
 ├── bin/
-│	└── ballerina
+│ └── ballerina
 ├── lib/
-│	└── ballerina-command-0.8.0.jar
+│ └── ballerina-command-0.8.0.jar
 ├── dependencies/
-│   	└── jdk8u202-b08-jre/ 
+│   └── jdk8u202-b08-jre/
 └── distributions/
     ├── ballerina-version
     ├── jballerina-1.0.5/
@@ -211,13 +211,13 @@ Distributions available locally:
 
 ### Pull a specific distribution
 
-The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution. 
+The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
 → sudo ballerina dist pull jballerina-1.0.3
 Fetching the 'jballerina-1.0.3' distribution from the remote server...
 Downloading jballerina-1.0.3 100% [==================================] 96/96 MB 'jballerina-1.0.3' successfully set as the active distribution
-``` 
+```
 
 ### Update Ballerina tool
 

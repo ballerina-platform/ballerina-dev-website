@@ -97,11 +97,9 @@ The first step is to install Ballerina. Visit our [Getting Started](https://ball
 
 ### The “active” distribution
 
-One only distribution from the above list can be active at a given time.
-
-Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
-
-You can change the active distribution at any time. Refer the [Change the active distribution](#Change-the-active-distribution) section for more details.  
+- One only distribution from the above list can be active at a given time.
+- Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
+- You can change the active distribution at any time. Refer the [Change the active distribution](#Change-the-active-distribution) section for more details.  
 
 ### The `ballerina dist` command
 

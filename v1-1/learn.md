@@ -6,7 +6,7 @@ keywords: Ballerina, ballerinalang
 permalink: /v1-1/learn/
 ---
 
-<h1>Let’s learn Ballerina!</h1>
+<h2>Let’s learn Ballerina!</h2>
 
 <div class="col-sm-12 col-md-12 cTwoCol cBallerinaLearnWrapper">
    <p>Ballerina is meant to be a quick start for anyone with prior programming experience. Let’s get you going on to happy dancing!</p>

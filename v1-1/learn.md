@@ -131,7 +131,7 @@ permalink: /v1-1/learn/
       <p>How to develop a restful API in Ballerina which is documented in an OpenAPI contract.</p>
    </div>
    <div class="col-sm-12 col-md-6 cTwoCol">
-      <h3><a href="/v1-1/learn/how-to-keep-ballerina-up-to-date">Keeping Ballerina up to date</a></h3>
+      <h3><a href="/v1-1/learn/how-to-keep-ballerina-up-to-date">Keeping Ballerina Up to Date</a></h3>
       <p>How to keep your Ballerina installation up to date with the latest patch and minor releases.</p>
    </div>
 </div>

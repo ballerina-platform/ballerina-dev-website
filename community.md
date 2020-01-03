@@ -50,7 +50,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 ## How you can help 
 
-We know getting a language established is like getting a new religion going. We really need you, our fans, to help spread the word.
+Getting a language established is like getting a new religion going. We really need you, our fans, to help spread the word.
 
 - Start with starring the <a href="https://github.com/ballerina-platform/ballerina-lang">main GitHub repo</a>. Thank you!
 - Follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.

@@ -189,8 +189,9 @@ $(document).ready(function() {
         '<li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a></li>' +
         '<li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a></li>' +
         '<li class="cVersionItem"><div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css">' +
-        '<option value="/" '+versionSelectorValue("")+'>1.0</option>' +
-        '<option value="/v0-991'+pathValue+'" '+versionSelectorValue("991")+'>0.991</option> </select></div></li>' +
+        '<option value="/v1-1/learn/" '+versionSelectorValue("")+'>1.1</option>' +
+        '<option value="/v1-0/learn/" '+versionSelectorValue("1-0")+'>1.0</option>' +
+        '<option value="/v0-991/learn/" '+versionSelectorValue("991")+'>0.991</option> </select></div></li>' +
         '</ul>' +
         '</div>' +
         '</div>' +

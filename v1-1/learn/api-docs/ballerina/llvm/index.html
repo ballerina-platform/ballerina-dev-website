@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - ballerina/llvm</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../llvm/index.html">
+            <h3>llvm</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../llvm/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../llvm/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../llvm/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../llvm/index.html">
+            <h3>llvm</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../llvm/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../llvm/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../llvm/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper module-wrapper">
+                <h1>
+                    <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                    
+                        Module : <span class="modules">llvm</span>
+                    
+                </h1>
+                    
+
+            
+
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="ByteBuffer" title="ByteBuffer">
+                                <a class="records"
+                                   href="records/ByteBuffer.html">ByteBuffer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="BytePointer" title="BytePointer">
+                                <a class="records"
+                                   href="records/BytePointer.html">BytePointer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="IntPointer" title="IntPointer">
+                                <a class="records"
+                                   href="records/IntPointer.html">IntPointer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMAttributeRef" title="LLVMAttributeRef">
+                                <a class="records"
+                                   href="records/LLVMAttributeRef.html">LLVMAttributeRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMBasicBlockRef" title="LLVMBasicBlockRef">
+                                <a class="records"
+                                   href="records/LLVMBasicBlockRef.html">LLVMBasicBlockRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMBuilderRef" title="LLVMBuilderRef">
+                                <a class="records"
+                                   href="records/LLVMBuilderRef.html">LLVMBuilderRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMContextRef" title="LLVMContextRef">
+                                <a class="records"
+                                   href="records/LLVMContextRef.html">LLVMContextRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMDiagnosticHandler" title="LLVMDiagnosticHandler">
+                                <a class="records"
+                                   href="records/LLVMDiagnosticHandler.html">LLVMDiagnosticHandler</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMDiagnosticInfoRef" title="LLVMDiagnosticInfoRef">
+                                <a class="records"
+                                   href="records/LLVMDiagnosticInfoRef.html">LLVMDiagnosticInfoRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMDisasmContextRef" title="LLVMDisasmContextRef">
+                                <a class="records"
+                                   href="records/LLVMDisasmContextRef.html">LLVMDisasmContextRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMExecutionEngineRef" title="LLVMExecutionEngineRef">
+                                <a class="records"
+                                   href="records/LLVMExecutionEngineRef.html">LLVMExecutionEngineRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMGenericValueRef" title="LLVMGenericValueRef">
+                                <a class="records"
+                                   href="records/LLVMGenericValueRef.html">LLVMGenericValueRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMCJITCompilerOptions" title="LLVMMCJITCompilerOptions">
+                                <a class="records"
+                                   href="records/LLVMMCJITCompilerOptions.html">LLVMMCJITCompilerOptions</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMCJITMemoryManagerRef" title="LLVMMCJITMemoryManagerRef">
+                                <a class="records"
+                                   href="records/LLVMMCJITMemoryManagerRef.html">LLVMMCJITMemoryManagerRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMemoryBufferRef" title="LLVMMemoryBufferRef">
+                                <a class="records"
+                                   href="records/LLVMMemoryBufferRef.html">LLVMMemoryBufferRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMemoryManagerAllocateCodeSectionCallback" title="LLVMMemoryManagerAllocateCodeSectionCallback">
+                                <a class="records"
+                                   href="records/LLVMMemoryManagerAllocateCodeSectionCallback.html">LLVMMemoryManagerAllocateCodeSectionCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMemoryManagerAllocateDataSectionCallback" title="LLVMMemoryManagerAllocateDataSectionCallback">
+                                <a class="records"
+                                   href="records/LLVMMemoryManagerAllocateDataSectionCallback.html">LLVMMemoryManagerAllocateDataSectionCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMemoryManagerDestroyCallback" title="LLVMMemoryManagerDestroyCallback">
+                                <a class="records"
+                                   href="records/LLVMMemoryManagerDestroyCallback.html">LLVMMemoryManagerDestroyCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMemoryManagerFinalizeMemoryCallback" title="LLVMMemoryManagerFinalizeMemoryCallback">
+                                <a class="records"
+                                   href="records/LLVMMemoryManagerFinalizeMemoryCallback.html">LLVMMemoryManagerFinalizeMemoryCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMMetadataRef" title="LLVMMetadataRef">
+                                <a class="records"
+                                   href="records/LLVMMetadataRef.html">LLVMMetadataRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMModuleProviderRef" title="LLVMModuleProviderRef">
+                                <a class="records"
+                                   href="records/LLVMModuleProviderRef.html">LLVMModuleProviderRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMModuleRef" title="LLVMModuleRef">
+                                <a class="records"
+                                   href="records/LLVMModuleRef.html">LLVMModuleRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMObjectFileRef" title="LLVMObjectFileRef">
+                                <a class="records"
+                                   href="records/LLVMObjectFileRef.html">LLVMObjectFileRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMOpInfoCallback" title="LLVMOpInfoCallback">
+                                <a class="records"
+                                   href="records/LLVMOpInfoCallback.html">LLVMOpInfoCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMPassManagerBuilderRef" title="LLVMPassManagerBuilderRef">
+                                <a class="records"
+                                   href="records/LLVMPassManagerBuilderRef.html">LLVMPassManagerBuilderRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMPassManagerRef" title="LLVMPassManagerRef">
+                                <a class="records"
+                                   href="records/LLVMPassManagerRef.html">LLVMPassManagerRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMPassRegistryRef" title="LLVMPassRegistryRef">
+                                <a class="records"
+                                   href="records/LLVMPassRegistryRef.html">LLVMPassRegistryRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMRelocationIteratorRef" title="LLVMRelocationIteratorRef">
+                                <a class="records"
+                                   href="records/LLVMRelocationIteratorRef.html">LLVMRelocationIteratorRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMSectionIteratorRef" title="LLVMSectionIteratorRef">
+                                <a class="records"
+                                   href="records/LLVMSectionIteratorRef.html">LLVMSectionIteratorRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMSymbolIteratorRef" title="LLVMSymbolIteratorRef">
+                                <a class="records"
+                                   href="records/LLVMSymbolIteratorRef.html">LLVMSymbolIteratorRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMSymbolLookupCallback" title="LLVMSymbolLookupCallback">
+                                <a class="records"
+                                   href="records/LLVMSymbolLookupCallback.html">LLVMSymbolLookupCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMTargetDataRef" title="LLVMTargetDataRef">
+                                <a class="records"
+                                   href="records/LLVMTargetDataRef.html">LLVMTargetDataRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMTargetLibraryInfoRef" title="LLVMTargetLibraryInfoRef">
+                                <a class="records"
+                                   href="records/LLVMTargetLibraryInfoRef.html">LLVMTargetLibraryInfoRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMTargetMachineRef" title="LLVMTargetMachineRef">
+                                <a class="records"
+                                   href="records/LLVMTargetMachineRef.html">LLVMTargetMachineRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMTargetRef" title="LLVMTargetRef">
+                                <a class="records"
+                                   href="records/LLVMTargetRef.html">LLVMTargetRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMTypeRef" title="LLVMTypeRef">
+                                <a class="records"
+                                   href="records/LLVMTypeRef.html">LLVMTypeRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMUseRef" title="LLVMUseRef">
+                                <a class="records"
+                                   href="records/LLVMUseRef.html">LLVMUseRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMValueRef" title="LLVMValueRef">
+                                <a class="records"
+                                   href="records/LLVMValueRef.html">LLVMValueRef</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LLVMYieldCallback" title="LLVMYieldCallback">
+                                <a class="records"
+                                   href="records/LLVMYieldCallback.html">LLVMYieldCallback</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Pointer" title="Pointer">
+                                <a class="records"
+                                   href="records/Pointer.html">Pointer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="PointerPointer" title="PointerPointer">
+                                <a class="records"
+                                   href="records/PointerPointer.html">PointerPointer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="SizeTPointer" title="SizeTPointer">
+                                <a class="records"
+                                   href="records/SizeTPointer.html">SizeTPointer</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+            
+
+            
+
+            
+           
+
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmAddFunction" title="llvmAddFunction"><a
+                                    class="functions" href="functions.html#llvmAddFunction">llvmAddFunction</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmAppendBasicBlock" title="llvmAppendBasicBlock"><a
+                                    class="functions" href="functions.html#llvmAppendBasicBlock">llvmAppendBasicBlock</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildAdd" title="llvmBuildAdd"><a
+                                    class="functions" href="functions.html#llvmBuildAdd">llvmBuildAdd</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildAlloca" title="llvmBuildAlloca"><a
+                                    class="functions" href="functions.html#llvmBuildAlloca">llvmBuildAlloca</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildBr" title="llvmBuildBr"><a
+                                    class="functions" href="functions.html#llvmBuildBr">llvmBuildBr</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildCall" title="llvmBuildCall"><a
+                                    class="functions" href="functions.html#llvmBuildCall">llvmBuildCall</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildCondBr" title="llvmBuildCondBr"><a
+                                    class="functions" href="functions.html#llvmBuildCondBr">llvmBuildCondBr</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildGlobalStringPtr" title="llvmBuildGlobalStringPtr"><a
+                                    class="functions" href="functions.html#llvmBuildGlobalStringPtr">llvmBuildGlobalStringPtr</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildICmp" title="llvmBuildICmp"><a
+                                    class="functions" href="functions.html#llvmBuildICmp">llvmBuildICmp</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildLoad" title="llvmBuildLoad"><a
+                                    class="functions" href="functions.html#llvmBuildLoad">llvmBuildLoad</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildMul" title="llvmBuildMul"><a
+                                    class="functions" href="functions.html#llvmBuildMul">llvmBuildMul</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildRet" title="llvmBuildRet"><a
+                                    class="functions" href="functions.html#llvmBuildRet">llvmBuildRet</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildRetVoid" title="llvmBuildRetVoid"><a
+                                    class="functions" href="functions.html#llvmBuildRetVoid">llvmBuildRetVoid</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildSDiv" title="llvmBuildSDiv"><a
+                                    class="functions" href="functions.html#llvmBuildSDiv">llvmBuildSDiv</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildStore" title="llvmBuildStore"><a
+                                    class="functions" href="functions.html#llvmBuildStore">llvmBuildStore</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmBuildSub" title="llvmBuildSub"><a
+                                    class="functions" href="functions.html#llvmBuildSub">llvmBuildSub</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmConstInt" title="llvmConstInt"><a
+                                    class="functions" href="functions.html#llvmConstInt">llvmConstInt</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmCreateBuilder" title="llvmCreateBuilder"><a
+                                    class="functions" href="functions.html#llvmCreateBuilder">llvmCreateBuilder</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmCreatePassManager" title="llvmCreatePassManager"><a
+                                    class="functions" href="functions.html#llvmCreatePassManager">llvmCreatePassManager</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmCreateTargetMachine" title="llvmCreateTargetMachine"><a
+                                    class="functions" href="functions.html#llvmCreateTargetMachine">llvmCreateTargetMachine</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmDisposeBuilder" title="llvmDisposeBuilder"><a
+                                    class="functions" href="functions.html#llvmDisposeBuilder">llvmDisposeBuilder</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmDisposePassManager" title="llvmDisposePassManager"><a
+                                    class="functions" href="functions.html#llvmDisposePassManager">llvmDisposePassManager</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmDisposeTargetMachine" title="llvmDisposeTargetMachine"><a
+                                    class="functions" href="functions.html#llvmDisposeTargetMachine">llvmDisposeTargetMachine</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmDumpModule" title="llvmDumpModule"><a
+                                    class="functions" href="functions.html#llvmDumpModule">llvmDumpModule</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmFunctionType1" title="llvmFunctionType1"><a
+                                    class="functions" href="functions.html#llvmFunctionType1">llvmFunctionType1</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmGetDefaultTargetTriple" title="llvmGetDefaultTargetTriple"><a
+                                    class="functions" href="functions.html#llvmGetDefaultTargetTriple">llvmGetDefaultTargetTriple</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmGetFirstTarget" title="llvmGetFirstTarget"><a
+                                    class="functions" href="functions.html#llvmGetFirstTarget">llvmGetFirstTarget</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmGetParam" title="llvmGetParam"><a
+                                    class="functions" href="functions.html#llvmGetParam">llvmGetParam</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInitializeAllAsmParsers" title="llvmInitializeAllAsmParsers"><a
+                                    class="functions" href="functions.html#llvmInitializeAllAsmParsers">llvmInitializeAllAsmParsers</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInitializeAllAsmPrinters" title="llvmInitializeAllAsmPrinters"><a
+                                    class="functions" href="functions.html#llvmInitializeAllAsmPrinters">llvmInitializeAllAsmPrinters</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInitializeAllTargetInfos" title="llvmInitializeAllTargetInfos"><a
+                                    class="functions" href="functions.html#llvmInitializeAllTargetInfos">llvmInitializeAllTargetInfos</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInitializeAllTargetMCs" title="llvmInitializeAllTargetMCs"><a
+                                    class="functions" href="functions.html#llvmInitializeAllTargetMCs">llvmInitializeAllTargetMCs</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInitializeAllTargets" title="llvmInitializeAllTargets"><a
+                                    class="functions" href="functions.html#llvmInitializeAllTargets">llvmInitializeAllTargets</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInt1Type" title="llvmInt1Type"><a
+                                    class="functions" href="functions.html#llvmInt1Type">llvmInt1Type</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInt1TypeInContext" title="llvmInt1TypeInContext"><a
+                                    class="functions" href="functions.html#llvmInt1TypeInContext">llvmInt1TypeInContext</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInt32Type" title="llvmInt32Type"><a
+                                    class="functions" href="functions.html#llvmInt32Type">llvmInt32Type</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInt64Type" title="llvmInt64Type"><a
+                                    class="functions" href="functions.html#llvmInt64Type">llvmInt64Type</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmInt8Type" title="llvmInt8Type"><a
+                                    class="functions" href="functions.html#llvmInt8Type">llvmInt8Type</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmModuleCreateWithName" title="llvmModuleCreateWithName"><a
+                                    class="functions" href="functions.html#llvmModuleCreateWithName">llvmModuleCreateWithName</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPassManagerBuilderCreate" title="llvmPassManagerBuilderCreate"><a
+                                    class="functions" href="functions.html#llvmPassManagerBuilderCreate">llvmPassManagerBuilderCreate</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPassManagerBuilderDispose" title="llvmPassManagerBuilderDispose"><a
+                                    class="functions" href="functions.html#llvmPassManagerBuilderDispose">llvmPassManagerBuilderDispose</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPassManagerBuilderPopulateFunctionPassManager" title="llvmPassManagerBuilderPopulateFunctionPassManager"><a
+                                    class="functions" href="functions.html#llvmPassManagerBuilderPopulateFunctionPassManager">llvmPassManagerBuilderPopulateFunctionPassManager</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPassManagerBuilderPopulateModulePassManager" title="llvmPassManagerBuilderPopulateModulePassManager"><a
+                                    class="functions" href="functions.html#llvmPassManagerBuilderPopulateModulePassManager">llvmPassManagerBuilderPopulateModulePassManager</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPassManagerBuilderSetOptLevel" title="llvmPassManagerBuilderSetOptLevel"><a
+                                    class="functions" href="functions.html#llvmPassManagerBuilderSetOptLevel">llvmPassManagerBuilderSetOptLevel</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPointerType" title="llvmPointerType"><a
+                                    class="functions" href="functions.html#llvmPointerType">llvmPointerType</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmPositionBuilderAtEnd" title="llvmPositionBuilderAtEnd"><a
+                                    class="functions" href="functions.html#llvmPositionBuilderAtEnd">llvmPositionBuilderAtEnd</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmRunPassManager" title="llvmRunPassManager"><a
+                                    class="functions" href="functions.html#llvmRunPassManager">llvmRunPassManager</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmTargetMachineEmitToFile" title="llvmTargetMachineEmitToFile"><a
+                                    class="functions" href="functions.html#llvmTargetMachineEmitToFile">llvmTargetMachineEmitToFile</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="llvmVoidType" title="llvmVoidType"><a
+                                    class="functions" href="functions.html#llvmVoidType">llvmVoidType</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="print" title="print"><a
+                                    class="functions" href="functions.html#print">print</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+            <section class="method-content" id="constants">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#constants">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Constants </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntEQ" title="LLVMIntEQ"><a
+                                    class="constant" href="constants.html#LLVMIntEQ">LLVMIntEQ</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntNE" title="LLVMIntNE"><a
+                                    class="constant" href="constants.html#LLVMIntNE">LLVMIntNE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntUGT" title="LLVMIntUGT"><a
+                                    class="constant" href="constants.html#LLVMIntUGT">LLVMIntUGT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntUGE" title="LLVMIntUGE"><a
+                                    class="constant" href="constants.html#LLVMIntUGE">LLVMIntUGE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntULT" title="LLVMIntULT"><a
+                                    class="constant" href="constants.html#LLVMIntULT">LLVMIntULT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntULE" title="LLVMIntULE"><a
+                                    class="constant" href="constants.html#LLVMIntULE">LLVMIntULE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntSGT" title="LLVMIntSGT"><a
+                                    class="constant" href="constants.html#LLVMIntSGT">LLVMIntSGT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntSGE" title="LLVMIntSGE"><a
+                                    class="constant" href="constants.html#LLVMIntSGE">LLVMIntSGE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntSLT" title="LLVMIntSLT"><a
+                                    class="constant" href="constants.html#LLVMIntSLT">LLVMIntSLT</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="LLVMIntSLE" title="LLVMIntSLE"><a
+                                    class="constant" href="constants.html#LLVMIntSLE">LLVMIntSLE</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
+
+            
+
+            
+
+            
+        </div>
+    </div>
+
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

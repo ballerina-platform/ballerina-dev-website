@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Service Integration Sample" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Service Integration Sample</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nx">final</span> <span class="kt">string</span> <span class="nx">ORDER_TOPIC</span> <span class="p">=</span> <span class="s">&quot;http://localhost:9090/ordermgt/ordertopic&quot;</span><span class="p">;</span>
+<span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">orderMap</span> <span class="p">=</span> <span class="p">{};</span>
+<span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">();</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/ordermgt&quot;</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">orderMgt</span> <span class="nx">on</span> <span class="nx">httpListener</span> <span class="p">{</span>
+    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/order&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">discoverPlaceOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">websub</span><span class="p">:</span><span class="nx">addWebSubLinkHeader</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="p">[</span><span class="nx">webSubHub</span><span class="p">.</span><span class="nx">subscriptionUrl</span><span class="p">],</span> <span class="nx">ORDER_TOPIC</span><span class="p">);</span>
+        <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/order&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">placeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">orderReq</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">orderReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span> <span class="nx">orderId</span> <span class="p">=</span> <span class="nx">orderReq</span><span class="p">.</span><span class="nx">Order</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+            <span class="nx">orderMap</span><span class="p">[</span><span class="nx">orderId</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">orderReq</span><span class="p">;</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="kt">string</span> <span class="nx">orderCreatedNotification</span> <span class="p">=</span> <span class="s">&quot;New Order Added: &quot;</span> <span class="o">+</span> <span class="nx">orderId</span><span class="p">;</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">orderCreatedNotification</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">updateResult</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">,</span>
+                                                    <span class="nx">orderCreatedNotification</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">updateResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error publishing update&quot;</span><span class="p">,</span> <span class="nx">updateResult</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">orderReq</span><span class="p">;</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+            <span class="nx">panic</span> <span class="nx">e</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}}</span>
+<span class="kd">function</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">hubStartUpResult</span> <span class="p">=</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">startHub</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9191</span><span class="p">),</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span> <span class="s">&quot;/hub&quot;</span><span class="p">);</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="err">?</span> <span class="nx">hubVar</span> <span class="p">=</span> <span class="p">();</span>
+    <span class="k">if</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartupError</span> <span class="p">{</span>
+        <span class="nx">panic</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span>
+                            <span class="err">?</span> <span class="nx">hubStartUpResult</span><span class="p">.</span><span class="nx">startedUpHub</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span> <span class="nx">hubVar</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">internalHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error registering topic&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">internalHub</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+<span class="nd">@websub:SubscriberServiceConfig {</span>
+    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/ordereventsubscriber&quot;</span><span class="p">,</span>
+    <span class="nx">subscribeOnStartUp</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">target</span><span class="p">:</span> <span class="s">&quot;http://localhost:9090/ordermgt/order&quot;</span><span class="p">,</span>
+    <span class="nx">leaseSeconds</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+    <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onNotification</span><span class="p">(</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Notification</span> <span class="nx">notification</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">notification</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Service Integration Sample</h2>
+                            <p><p>Ballerina provides the capability to easily introduce webhooks via its implementation of the WebSub recommendation.</p>
+
+<p>Ballerina Services, which act as WebSub Publishers could start up a Ballerina WebSub Hub to which they would publish
+ updates against topics on the occurrence of particular events.</p>
+
+<p>Ballerina WebSub subscribers can subscribe at these hubs, by specifying the topics, to receive notifications on
+ the occurrence of particular events.</p>
+
+<p>Any of the Ballerina&rsquo;s WebSub components (Publisher, Hub, or Subscriber) could be used with non-Ballerina components, which
+ are WebSub-compliant.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="websub-hub-client-sample.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Hub Client Sample</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="jdbc-client-crud-operations.html">
+                                        <span>NEXT ></span>
+                                        <p>JDBC Client CRUD Operations</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="websub-service-integration-sample">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Service Integration Sample</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/websub-service-integration-sample/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/log;
+import ballerina/websub;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The order management HTTP service acting as a Ballerina WebSub Publisher brings up an internal Ballerina WebSub Hub
+ at which it will publish updates.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener httpListener = new(9090);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>final string ORDER_TOPIC = &quot;http://localhost:9090/ordermgt/ordertopic&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The topic against which the publisher will publish updates and the subscribers
+ need to subscribe to, to receive notifications when an order is placed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>map&lt;json&gt; orderMap = {};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An in-memory <code>map</code> to which orders will be added.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>websub:Hub webSubHub = startHubAndRegisterTopic();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invokes the function that starts up a Ballerina WebSub Hub, registers the topic
+ against which updates will be published, and maintains a reference to the
+ returned hub object to publish updates.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/ordermgt&quot;
+}
+service orderMgt on httpListener {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;GET&quot;, &quot;HEAD&quot;],
+        path: &quot;/order&quot;
+    }
+    resource function discoverPlaceOrder(http:Caller caller, http:Request req) {
+        http:Response response = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource accepts the discovery requests.
+ Requests received at this resource would respond with a Link Header
+ indicating the topic to subscribe to and the hub(s) to subscribe at.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        websub:addWebSubLinkHeader(response, [webSubHub.subscriptionUrl], ORDER_TOPIC);
+        response.statusCode = 202;
+        var result = caller-&gt;respond(response);
+        if (result is error) {
+           log:printError(&quot;Error responding on ordering&quot;, result);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Adds a link header indicating the hub and topic.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;POST&quot;],
+        path: &quot;/order&quot;
+    }
+    resource function placeOrder(http:Caller caller, http:Request req) {
+        var orderReq = req.getJsonPayload();
+        if (orderReq is json) {
+            string orderId = orderReq.Order.ID.toString();
+            orderMap[orderId] = &lt;@untainted&gt; orderReq;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource accepts order placement requests.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            http:Response response = new;
+            response.statusCode = 202;
+            var result = caller-&gt;respond(response);
+            if (result is error) {
+               log:printError(&quot;Error responding on ordering&quot;, result);
+            }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Creates the response message indicating successful order creation.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            string orderCreatedNotification = &quot;New Order Added: &quot; + orderId;
+            log:printInfo(orderCreatedNotification);
+            var updateResult = webSubHub.publishUpdate(ORDER_TOPIC,
+                                                    orderCreatedNotification);
+            if (updateResult is error) {
+                log:printError(&quot;Error publishing update&quot;, updateResult);
+            }
+        } else {
+            error e = orderReq;
+            log:printError(&quot;Error retrieving payload&quot;, e);
+            panic e;
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Publishes the update to the Hub to notify the subscribers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function startHubAndRegisterTopic() returns websub:Hub {
+    var hubStartUpResult = websub:startHub(new http:Listener(9191), &quot;/websub&quot;, &quot;/hub&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Starts up a Ballerina WebSub Hub on port 9191 and registers the topic against
+ which updates will be published.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub? hubVar = ();
+    if hubStartUpResult is websub:HubStartupError {
+        panic hubStartUpResult;
+    } else {
+        hubVar = hubStartUpResult is websub:HubStartedUpError
+                            ? hubStartUpResult.startedUpHub : hubStartUpResult;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub internalHub = &lt;websub:Hub&gt; hubVar;
+    var result = internalHub.registerTopic(ORDER_TOPIC);
+    if (result is error) {
+        log:printError(&quot;Error registering topic&quot;, result);
+    }
+    return internalHub;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># This sample requires starting up the Subscriber Service after the Publisher Service.
+# To start the service, navigate to the directory that contains the
+# `.bal` file, and use the `ballerina run` command.
+$ ballerina run order_mgmt_service.bal
+[ballerina/websub] Ballerina WebSub Hub started up.
+[ballerina/websub] Publish URL: http://localhost:9191/websub/publish
+[ballerina/websub] Subscription URL: http://localhost:9191/websub/hub
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9191
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+2019-11-01 14:15:05,814 INFO  [ballerina/websub] - Subscription request received for topic[http://localhost:9090/ordermgt/ordertopic] with callback[http://localhost:8181/ordereventsubscriber]
+2019-11-01 14:15:05,858 INFO  [ballerina/websub] - Sending intent verification request to callback[http://localhost:8181/ordereventsubscriber] for topic[http://localhost:9090/ordermgt/ordertopic]
+2019-11-01 14:15:06,037 INFO  [ballerina/websub] - Intent verification successful for mode: [subscribe], for callback URL: [http://localhost:8181/ordereventsubscriber]
+2019-11-01 14:15:58,756 INFO  [] - New Order Added: 1001
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>$ curl -X POST -d &#39;{ &quot;Order&quot;: { &quot;ID&quot;: &quot;1001&quot;, &quot;Name&quot;: &quot;XYZ&quot; } }&#39; &quot;http://localhost:9090/ordermgt/order&quot; -H &quot;Content-Type:application/json&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invoke the service via the below &ldquo;curl&rdquo; command to place an order after starting up the subscriber service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/log;
+import ballerina/websub;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The Ballerina WebSub Subscriber service, which subscribes to notifications at the Hub.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new(8181);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The endpoint to which the subscriber service is bound.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@websub:SubscriberServiceConfig {
+    path: &quot;/ordereventsubscriber&quot;,
+    subscribeOnStartUp: true,
+    target: &quot;http://localhost:9090/ordermgt/order&quot;,
+    leaseSeconds: 3600,
+    secret: &quot;Kslk30SNF2AChs2&quot;
+}
+service websubSubscriber on websubEP {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Annotations specifying the subscription parameters for the order management service.
+ A subscription request would be sent to the hub with the topic discovered at the
+ resource URL specified.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onNotification(websub:Notification notification) {
+        var payload = notification.getTextPayload();
+        if (payload is string) {
+            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
+        } else {
+            log:printError(&quot;Error retrieving payload as string&quot;, payload);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the resource, which accepts the content delivery requests.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file, and use the `ballerina run` command.
+$ ballerina run subscriber.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:8181
+2019-11-01 14:15:05,823 INFO  [ballerina/websub] - Subscription Request successfully sent to Hub[http://localhost:9191/websub/hub], for Topic[http://localhost:9090/ordermgt/ordertopic], with Callback [http://localhost:8181/ordereventsubscriber]
+ballerina: Intent Verification agreed - Mode [subscribe], Topic [http://localhost:9090/ordermgt/ordertopic], Lease Seconds [3600]
+2019-11-01 14:15:58,892 INFO  [] - WebSub Notification Received: New Order Added: 1001
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

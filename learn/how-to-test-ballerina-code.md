@@ -19,7 +19,6 @@ Testerina design and usage is aligned with project and module semantics of Balle
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
 * Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service
-* Function mocks can be used to mimic third party function calls to enable testing a project module in isolation 
 
 ## Writing and Running Tests 
 
@@ -402,55 +401,5 @@ function testService() {
     } else {
         test:assertFail(msg = "Failed to call the endpoint: " + uri);
     }
-}
-```
-
-## Function Mocks
-
-Testerina provides the functionality to mock a function in a different third-party module with your own Ballerina function, which will help you test your module independently. 
-
-#### @test:Mock {}
-
-The function specified following the annotation will be a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the annotation parameters.
-
-###### Parameters:
-
-`moduleName: “<module_name>”`: Name of the module where the function to be mocked resides in. 
-Default: “.” (No Module)
-
-`functionName: “<function_name>”`: Name of the function to be mocked. 
-Default: none
-
-The following is an example for function mocking.
-
-``` ballerina
-import ballerina/test;
-import ballerina/io;
-
-// This is the mock function which will replace the real intAdd function.
-@test:Mock {
-    // Since we do not have a module, `.` is the current module
-    // We can include any module here e.g., `ballerina/io, foo/bar:0.0.1` etc.
-    moduleName: ".",
-    functionName: "intAdd"
-}
-// The mock function signature should match the actual function signature.
-public function mockIntAdd(int a, int b) returns (int) {
-    io:println("I'm the mock function!");
-    return (a - b);
-}
-
-// This is the test function.
-@test:Config {}
-function testAssertIntEquals() {
-    int answer = 0;
-    answer = intAdd(5, 3);
-    io:println("Function mocking test");
-    test:assertEquals(answer, 2, msg = "function mocking failed");
-}
-
-// The real function which is mocked above.
-public function intAdd(int a, int b) returns (int) {
-    return (a + b);
 }
 ```

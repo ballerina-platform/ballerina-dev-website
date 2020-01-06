@@ -63,7 +63,7 @@ Getting a language established is like getting a new religion going. We really n
    - website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
    - security flaw: send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
-- Join with us and contribute to the source code to make Ballerina better! Read the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contributor Guide</a> to be aware of the ground rules as you start. Happy contributing! 
+- Join with us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contributor Guide</a>. Happy contributing! 
 
 <style>
 .nav > li.cVersionItem {

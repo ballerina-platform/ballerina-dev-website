@@ -4,21 +4,26 @@ title: Reporting a Security Vulnerability
 permalink: /security/
 ---
 
-# Reporting a Security Vulnerability
+# Security Policy
 
-The WSO2 security team welcomes contributions from our user community, developers, and security researchers to reinforce our product security. The security team will be more than happy to assist you in such efforts.
+Ballerina project maintainers take security issues very seriously and all the vulnerability reports are treated with the highest priority and confidentiality.
 
-We strongly encourage you to report security vulnerabilities to our private security mailing list: [security@ballerina.io](mailto:security@ballerina.io) - first, before disclosing them in any public forums.
+- [Reporting a vulnerability](#reporting-a-vulnerability)
+- [Handling a vulnerability](#handling-a-vulnerability)
 
-This is a private mailing list where only members of the WSO2 internal security team are subscribed to, and is treated as top priority.
+## Reporting a vulnerability
 
-If you wish to send secure messages to [security@ballerina.io](mailto:security@ballerina.io), you may use the following key:
+Ensure you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against them.
 
-security@ballerina.io: 0168 DA26 2989 0DB9 4ACD  8367 E683 061E 2F85 C381 [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381)
+If you have any concerns regarding the security aspects of the source code or any other resource in this repo or have uncovered a security vulnerability, we strongly encourage you to report that to our private and highly confidential security mailing list: **security@ballerina.io** first using the below key without disclosing them in any forums, sites, or other groups - public or private. 
 
-## Vulnerability Information
+s0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 pgp.mit.edu
 
-Please use the following template in reporting vulnerabilities:
+We will keep you informed of the progress towards a fix and disclosure of the vulnerability if reported issue is identified as a true positive. To protect the end-user security, these issues could be disclosed in other places only after it’s mitigation actions and disclosure process are completed.
+
+**Warning:** Please do not create GitHub issues for security vulnerabilities. Further, kindly refrain from sharing the vulnerability details you come across with other individuals. 
+
+Also, use the following template when reporting vulnerabilities so that it contains all the required information and helps expedite the analysis and mitigation process.
 
 - Vulnerable Ballerina artifacts(s) and version(s)
 - Overview: High-level overview of the issue and self-assessed severity
@@ -26,13 +31,12 @@ Please use the following template in reporting vulnerabilities:
 - Impact: Self-assessed impact
 - Solution: Any proposed solution
 
-## Vulnerability Handling
+## Handling a vulnerability
 
-Here's an overview of our vulnerability handling process:
+The below is an overview of the vulnerability handling process.
 
-1. The user reports the vulnerability privately to [security@ballerina.io](mailto:security@ballerina.io)
-2. The WSO2 security team works privately with the user to resolve the vulnerability. The initial response time will be less than one hour
-3. Fix the vulnerability and provide a patch for internal QA testing
-4. QA verifies the patch and approves the release
-5. New version is released with the patch built in
-6. Announce the vulnerability
+1. The user privately reports the vulnerability to security@ballerina.io. (The initial response time will be less than 24 hours).
+2. The WSO2 security team works privately with the user to fix the vulnerability and QA verifies the solution.
+3. Apply the fix to the master branch and release a new version of the distribution if required.
+4. The reported user is kept updated on the progress of the process. 
+

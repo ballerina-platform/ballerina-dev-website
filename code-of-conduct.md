@@ -46,7 +46,59 @@ This Code of Conduct applies both within project spaces and in public spaces, an
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project team responsible for enforcement at **legal@wso2.com**. All complaints will be reviewed and investigated promptly and fairly.
 
-All project and scommunity leaders are obligated to respect the privacy and security of the reporter of any incident.
+All project/community leaders are obligated to respect the privacy and security of the reporter of any incident.
+
+## Enforcement guidelines
+
+Community leaders will follow the below Community Impact Guidelines in determining the consequences for any action they deem in violation of this code of conduct:
+
+**1. Correction**
+
+<table border=1>
+<th> Community Impact </th>
+<th> Consequence </th>
+<tr>
+<td width=50%> Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community. </td>
+<td width=50%> A private, written warning from community leaders providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+</td>
+</tr>
+</table>
+
+**2. Warning**
+
+<table border=1>
+<th> Community Impact </th>
+<th> Consequence </th>
+<tr>
+<td width=50%> A violation through a single incident or series of actions. </td>
+<td width=50%> A warning with consequences for continued behavior. No interaction with the people involved including unsolicited interaction with those enforcing the code of conduct for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+</td>
+</tr>
+</table>
+
+**3. Temporary ban**
+
+<table border=1>
+<th> Community Impact </th>
+<th> Consequence </th>
+<tr>
+<td width=50%> A serious violation of community standards including sustained inappropriate behavior. </td>
+<td width=50%> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
+</td>
+</tr>
+</table>
+
+**4. Permanent ban**
+
+<table border=1>
+<th> Community Impact </th>
+<th> Consequence </th>
+<tr>
+<td width=50%> Demonstrating a pattern of violation of community standards including sustained inappropriate behavior, harassment of an individual, or aggression towards or disparagement of classes of individuals. </td>
+<td width=50%> A permanent ban from any sort of public interaction within the project community.
+</td>
+</tr>
+</table>
 
 ## Attribution
 

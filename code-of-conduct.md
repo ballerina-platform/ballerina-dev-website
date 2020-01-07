@@ -69,9 +69,9 @@ Community leaders will follow the below Community Impact Guidelines in determini
 <table border=1>
 <th> Community Impact </th>
 <th> Consequence </th>
-<tr border=1>
-<td width=50% border=1> A violation through a single incident or series of actions. </td>
-<td width=50% border=1> A warning with consequences for continued behavior. No interaction with the people involved including unsolicited interaction with those enforcing the code of conduct for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+<tr>
+<td width=50%> A violation through a single incident or series of actions. </td>
+<td width=50%>> A warning with consequences for continued behavior. No interaction with the people involved including unsolicited interaction with those enforcing the code of conduct for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
 </td>
 </tr>
 </table>
@@ -81,9 +81,9 @@ Community leaders will follow the below Community Impact Guidelines in determini
 <table border=1>
 <th> Community Impact </th>
 <th> Consequence </th>
-<tr border=1>
-<td width=50% border=1> A serious violation of community standards including sustained inappropriate behavior. </td>
-<td width=50% border=1> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
+<tr>>
+<td width=50%>> A serious violation of community standards including sustained inappropriate behavior. </td>
+<td width=50%>> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
 </td>
 </tr>
 </table>
@@ -93,9 +93,9 @@ Community leaders will follow the below Community Impact Guidelines in determini
 <table border=1>
 <th> Community Impact </th>
 <th> Consequence </th>
-<tr border=1>
-<td width=50% border=1> Demonstrating a pattern of violation of community standards including sustained inappropriate behavior, harassment of an individual, or aggression towards or disparagement of classes of individuals. </td>
-<td width=50% border=1> A permanent ban from any sort of public interaction within the project community.
+<tr>>
+<td width=50%> Demonstrating a pattern of violation of community standards including sustained inappropriate behavior, harassment of an individual, or aggression towards or disparagement of classes of individuals. </td>
+<td width=50%> A permanent ban from any sort of public interaction within the project community.
 </td>
 </tr>
 </table>

@@ -50,7 +50,7 @@ We appreciate your help!
     - [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     - [OpenJDK](http://openjdk.java.net/install/index.html) and install it.
 >**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
-4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and intsall it.
+4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and install it.
 5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
 
 ## Setting up the developer environment

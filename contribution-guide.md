@@ -28,7 +28,7 @@ We appreciate your help!
 
 - **IMPORTANT:** Send an email to security@ballerina.io to report sensitive security-related issues. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
-- Submitting a bug is just as important as contributing to code. Click the **Issues** tab of the below GitHub repos, click **New Issue**, fill out all sections in the issue template, and submit the bug/issue report.
+- Submitting a bug is just as important as contributing to code. Click the **Issues** tab of the corresponding GitHub repo from the below ones, click **New Issue**, fill out all sections in the issue template, and submit the bug/issue report.
 
     >**Tip:** If you are unsure whether you have found a bug, search existing issues in GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
    - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.

@@ -10,19 +10,19 @@ Ballerina is an open source programming language and platform for cloud-era appl
 
 We appreciate your help!
 
-- [Getting engaged](#getting-engaged)
 - [Getting started](#getting-started)
-- [Obtaining the source code](#obtaining-the-source-code)
-- [Building the project](building-the-project)
-- [Setting up the developer environment](setting-up-the-developer-environment)
-    - [Setting up IntelliJ IDEA](#setting-up-intelliJ-idea)
+- [Setting up the Prerequisites](#setting-up-the-prerequisites)
+- [Setting up the developer environment](#setting-up-the-developer-environment)
+    - [Setting up IntelliJ IDEA](#setting-up-intellij-idea)
     - [Setting up Eclipse](#setting-up-eclipse)
+- [Obtaining the source code](#obtaining-the-source-code)
+- [Building the project](#building-the-project)
 - [Contributing to Ballerina grammar](#contributing-to-ballerina-grammar)
 - [Submitting your contribution](#submitting-your-contribution)
 - [Accepting the Contributor License Agreement](#accepting-the-contributor-license-agreement)
 - [Proposing changes to Ballerina](#proposing-changes-to-ballerina)
 
-## Getting engaged
+## Getting started
 
 - Join the conversations at:
 
@@ -39,8 +39,11 @@ We appreciate your help!
    - language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
    - website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
 
-## Prerequisites
+-  Start with GitHub issues that can be fixed easily:
+    - Browse issues labeled "good first issue" in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
+    - Use comments on the issue itself to indicate that you will be working on it and get guidance and help.
 
+## Setting up the prerequisites
 1. Download [Ballerina](https://ballerina.io) and go through the [learning resources](https://ballerina.io/learn).
 2. Read the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct).
 3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations:
@@ -49,9 +52,34 @@ We appreciate your help!
 >**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
 4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and intsall it.
 5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
-6. Start with GitHub issues that can be fixed easily:
-    - Browse issues labeled "good first issue" in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
-    - Use comments on the issue itself to indicate that you will be working on it and get guidance and help.
+
+## Setting up the developer environment
+
+See the below sections to set up IntelliJ IDEA or Eclipse as your development environment.
+
+### Setting up IntelliJ IDEA
+
+Follow the steps below to import the Ballerina project to IntelliJ IDEA similar to any other Gradle project.
+
+1. In IntelliJ, click **File** and then click **Open**.
+2. Browse the file system and select the <BALLERINA-LANG_REPO> root directory.
+>**Tip:** If you are opening the directory for the first time in IntelliJ and if prompted to import it as a Gradle project, select the **Auto import** option.
+3. Set Project SDK as Java 1.8.
+4. Install the following plugins:
+    - [Ballerina plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/9520-ballerina)
+    
+        For installation instructions, see [Ballerina IntelliJ Plugin Documentation](https://ballerina.io/learn/tools-ides/intellij-plugin).
+    - [ANTLR plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/7358-antlr-v4-grammar-plugin)
+        
+        This will be useful to check and validate a [grammar rule](#contributing-to-ballerina-grammar) you wrote.
+
+### Setting up Eclipse
+
+As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any Maven or Gradle project.
+
+1. In Eclipse, click **File** and then click **Import..**.
+2. Under the **Maven** option, select **Existing Maven Projects**. 
+3. Browse the file system and select the Maven module to open it.
 
 ## Obtaining the source code 
 
@@ -77,34 +105,6 @@ git submodule update --init
 -  **runtime only:** <BALLERINA-LANG_REPO>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip. 
 -  **runtime and tools (e.g., Ballerina Composer):** <BALLERINA-LANG_REPO>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
 >**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
-
-## Setting up the developer environment
-
-See the below sections to set up IntelliJ IDEA or Eclipse as your development environment.
-
-### Setting up IntelliJ IDEA
-
-Follow the steps below to import the Ballerina project to IntelliJ IDEA similar to any other Gradle project.
-
-1. In IntelliJ, click **File** and then click **Open**.
-2. Browse the file system and select the <BALLERINA-LANG_REPO> root directory.
->**Tip:** If you are opening the directory for the first time in IntelliJ and if prompted to import it as a Gradle project, select the **Auto import** option.
-3. Set Project SDK as Java 1.8.
-4. Install the following plugins:
-    - [Ballerina plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/9520-ballerina)
-    
-        For installation instructions, see [Ballerina IntelliJ Plugin Documentation](https://ballerina.io/learn/tools-ides/intellij-plugin).
-    - [ANTLR plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/7358-antlr-v4-grammar-plugin)
-        
-        This will be useful to check and validate a grammar rule you wrote.
-
-### Setting up Eclipse
-
-As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any Maven or Gradle project.
-
-1. In Eclipse, click **File** and then click **Import..**.
-2. Under the **Maven** option, select **Existing Maven Projects**. 
-3. Browse the file system and select the Maven module to open it.
 
 ## Contributing to Ballerina grammar
 

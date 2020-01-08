@@ -4,7 +4,7 @@ title: The Ballerina Contribution Guide
 permalink: /contribution-guide/
 ---
 
-# The ballerina Contribution Guide
+# The Ballerina Contribution Guide
 
 Ballerina is an open source programming language and platform for cloud-era application programmers to easily write software. It is an open-source project under the Apache license and the work of hundreds of contributors.
 

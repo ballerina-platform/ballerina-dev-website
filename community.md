@@ -55,7 +55,7 @@ Getting a language established is like getting a new religion going. We really n
 - Start by starring the <a href="https://github.com/ballerina-platform/ballerina-lang">main GitHub repo</a>. Thank you!
 - Follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
 - Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io">Ballerina Central</a>. 
-- Give us a buzz on <a href="mailto:contact@ballerina.io">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
+- Buzz us on <a href="mailto:contact@ballerina.io">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
 - Report an issue/bug in the below GitHub repos and tell us if you hit a bump on the road. We want to fix all bugs!
 
    - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.

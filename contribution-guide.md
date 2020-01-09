@@ -10,19 +10,19 @@ Ballerina is an open source programming language and platform for cloud-era appl
 
 We appreciate your help!
 
-- [Getting started](#getting-started)
-- [Setting up the Prerequisites](#setting-up-the-prerequisites)
-- [Setting up the developer environment](#setting-up-the-developer-environment)
-    - [Setting up IntelliJ IDEA](#setting-up-intellij-idea)
-    - [Setting up Eclipse](#setting-up-eclipse)
-- [Obtaining the source code](#obtaining-the-source-code)
-- [Building the project](#building-the-project)
-- [Contributing to Ballerina grammar](#contributing-to-ballerina-grammar)
-- [Submitting your contribution](#submitting-your-contribution)
-- [Accepting the Contributor License Agreement](#accepting-the-contributor-license-agreement)
-- [Proposing changes to Ballerina](#proposing-changes-to-ballerina)
+- [Gett started](#get-started)
+- [Set up the Prerequisites](#set-up-the-prerequisites)
+- [Set up the developer environment](#set-up-the-developer-environment)
+    - [Set up IntelliJ IDEA](#set-up-intellij-idea)
+    - [Set up Eclipse](#set-up-eclipse)
+- [Obtain the source code](#obtain-the-source-code)
+- [Build the project](#build-the-project)
+- [Contribute to Ballerina grammar](#contribute-to-ballerina-grammar)
+- [Submit your contribution](#submit-your-contribution)
+- [Accept the Contributor License Agreement](#accept-the-contributor-license-agreement)
+- [Propose changes to Ballerina](#propose-changes-to-ballerina)
 
-## Getting started
+## Gett started
 
 - Join the conversations at:
 
@@ -34,7 +34,7 @@ We appreciate your help!
 
 - Submitting a bug is just as important as contributing to code. Create a new issue in the relevant GitHub repo using the below links, fill out all sections in the issue template, and submit the bug/issue report. 
 
-    >**Tip:** If you are unsure whether you have found a bug, search existing issues in GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
+    >**Tip:** If you are unsure whether you have found a bug, search existing issues in the corresponding repo on GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
    - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
    - language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
    - website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
@@ -43,7 +43,7 @@ We appreciate your help!
     - Browse issues labeled "good first issue" in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
     - Use comments on the issue itself to indicate that you will be working on it and get guidance and help.
 
-## Setting up the prerequisites
+## Set up the prerequisites
 1. Download [Ballerina](https://ballerina.io) and go through the [learning resources](https://ballerina.io/learn).
 2. Read the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct).
 3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations:
@@ -53,11 +53,11 @@ We appreciate your help!
 4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and install it.
 5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
 
-## Setting up the developer environment
+## Set up the developer environment
 
 See the below sections to set up IntelliJ IDEA or Eclipse as your development environment.
 
-### Setting up IntelliJ IDEA
+### Set up IntelliJ IDEA
 
 Follow the steps below to import the Ballerina project to IntelliJ IDEA similar to any other Gradle project.
 
@@ -73,7 +73,7 @@ Follow the steps below to import the Ballerina project to IntelliJ IDEA similar 
         
         This will be useful to check and validate a [grammar rule](#contributing-to-ballerina-grammar) you wrote.
 
-### Setting up Eclipse
+### Set up Eclipse
 
 As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any Maven or Gradle project.
 
@@ -81,7 +81,7 @@ As all Ballerina repositories are developed as Maven or Gradle projects, follow 
 2. Under the **Maven** option, select **Existing Maven Projects**. 
 3. Browse the file system and select the Maven module to open it.
 
-## Obtaining the source code 
+## Obtain the source code 
 
 1. Execute the below command to clone the ballerina-lang Git repo.
 ```bash 
@@ -95,7 +95,7 @@ git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.g
 ```bash 
 git submodule update --init
 ```
-## Building the project
+## Build the project
 
 1. Navigate to the <BALLERINA-LANG_REPO> root directory and execute the below Gradle command.
 ```bash 
@@ -106,7 +106,7 @@ git submodule update --init
 -  **runtime and tools (e.g., Ballerina Composer):** <BALLERINA-LANG_REPO>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
 >**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 
-## Contributing to Ballerina grammar
+## Contribute to Ballerina grammar
 
 Ballerina grammar has been implemented using ANTLR plugin version 4.5.3. To get a basic understanding on ANTLR grammar syntax and concepts before working with Ballerina grammar, go to [Parr, Terence (January 15, 2013), The Definitive ANTLR 4 Reference](https://www.oreilly.com/library/view/the-definitive-antlr/9781941222621/).
 
@@ -125,7 +125,7 @@ java -jar <PATH-TO-ANTLR-JAR>/antlr-4.5.3-complete.jar *.g4 -package org.wso2.ba
 
 For more information about the Ballerina compiler, go to [Ballerina Compiler — Design](https://medium.com/@sameerajayasoma/ballerina-compiler-design-3406acc2476c?).
 
-## Submitting your contribution
+## Submit your contribution
 
 1. Do your changes in the <BALLERINA_LANG_REPO> using Eclipse or IntelliJ IDEA.
 2. Add unit tests accordingly. (The build process will automatically execute all the tests.)
@@ -143,12 +143,12 @@ For more information about the Ballerina compiler, go to [Ballerina Compiler —
 
 For more information, go to [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
 
-## Accepting the Contributor License Agreement 
+## Accept the Contributor License Agreement 
 
 You need to Accept the Ballerina Contributor License Agreement (CLA) here when prompted by GitHub while sending your first Pull Request (PR). Subsequent PRs will not require CLA acceptance.
 
 If the CLA gets changed for some (unlikely) reason, you will be presented with the new CLA text when sending your first PR after the change.
 
-## Proposing changes to Ballerina
+## Propose changes to Ballerina
 
-Start the discussion on the changes you propose in the [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev). Once there is enough consensus around the proposal, you will likely be asked to file an issue in GitHub and label it as 'Proposal' to continue a detailed discussion there.
+Start the discussion on the changes you propose in the [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev). Once there is enough consensus around the proposal, you will likely be asked to file an issue on GitHub and label it as 'Proposal' to continue a detailed discussion there.

@@ -10,7 +10,7 @@ Ballerina is an open source programming language and platform for cloud-era appl
 
 We appreciate your help!
 
-- [Gett started](#get-started)
+- [Get started](#get-started)
 - [Set up the Prerequisites](#set-up-the-prerequisites)
 - [Set up the developer environment](#set-up-the-developer-environment)
     - [Set up IntelliJ IDEA](#set-up-intellij-idea)
@@ -22,7 +22,7 @@ We appreciate your help!
 - [Accept the Contributor License Agreement](#accept-the-contributor-license-agreement)
 - [Propose changes to Ballerina](#propose-changes-to-ballerina)
 
-## Gett started
+## Get started
 
 - Join the conversations at:
 

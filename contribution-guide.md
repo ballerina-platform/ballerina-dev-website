@@ -6,7 +6,7 @@ permalink: /contribution-guide/
 
 # The Ballerina Contribution Guide
 
-Ballerina is an open source programming language and platform for cloud-era application programmers to easily write software. It is an open-source project under the Apache license, which is owned by the Ballerina community.
+Ballerina is an open source programming language and platform for cloud-era application programmers to easily write software. It is licensed under the Apache license and is nurtured by all the contributors of the Ballerina community.
 
 We appreciate your help!
 
@@ -32,7 +32,7 @@ We appreciate your help!
 
 - **IMPORTANT:** Send an email to security@ballerina.io to report sensitive security-related issues. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
-- Submitting a bug is just as important as contributing to code. Click **Issues** in the corresponding GitHub repo from the below ones, click **New Issue**, fill out all sections in the issue template, and submit the bug/issue report.
+- Submitting a bug is just as important as contributing to code. Create a new issue in the relevant GitHub repo using the below links, fill out all sections in the issue template, and submit the bug/issue report. 
 
     >**Tip:** If you are unsure whether you have found a bug, search existing issues in GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
    - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
@@ -129,7 +129,7 @@ For more information about the Ballerina compiler, go to [Ballerina Compiler —
 
 1. Do your changes in the <BALLERINA_LANG_REPO> using Eclipse or IntelliJ IDEA.
 2. Add unit tests accordingly. (The build process will automatically execute all the tests.)
-3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo by sending a Pull Request. 
+3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo by sending a Pull Request (PR). 
 
 >**Tip:** Follow these commit message requirements:
 
@@ -145,7 +145,7 @@ For more information, go to [How to Write a Git Commit Message](https://chris.be
 
 ## Accepting the Contributor License Agreement 
 
-You need to Accept the Ballerina Contributor License Agreement (CLA) here when prompted by GitHub while sending your first Pull Request. Subsequent PRs will not require CLA acceptance.
+You need to Accept the Ballerina Contributor License Agreement (CLA) here when prompted by GitHub while sending your first Pull Request (PR). Subsequent PRs will not require CLA acceptance.
 
 If the CLA gets changed for some (unlikely) reason, you will be presented with the new CLA text when sending your first PR after the change.
 

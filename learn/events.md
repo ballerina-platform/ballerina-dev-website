@@ -30,7 +30,7 @@ redirect_from:
 
 <!-- ## No upcoming events -->
 
-<!-- <h2>Conferences</h2> -->
+<h2>Conferences</h2>
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
@@ -59,7 +59,8 @@ redirect_from:
                       <p class="cEventLocation">São Paulo, Brazil</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
-                          <h5><b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2</h5>
+                        <h5></h5>
+                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>

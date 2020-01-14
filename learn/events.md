@@ -12,7 +12,7 @@ redirect_from:
 
 <h1>Events</h1>
 
-<h2>No upcoming events</h2>
+<!-- <h2>No upcoming events</h2> -->
 
 <!-- ## Meetups -->
 
@@ -30,7 +30,7 @@ redirect_from:
 
 <!-- ## No upcoming events -->
 
-<!-- <h2>Conferences</h2> -->
+<h2>Conferences</h2>
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
@@ -44,24 +44,25 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
                   </tr> -->
-                  <tr class="event-expiry" style="display:none" data-expiry="November 07, 2019 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">November 5-7</span>
-                      <p class="cEventLocation">Austin, TX</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/Austin/conference/"><h4>DeveloperWeek Austin 2019 </h4></a>
-                          <h5>Pro Session: Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director - Cloud Architecture, WSO2
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>Code to Cloud</h5>
+                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/Austin/conference/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/confirmed-talks-2/" target="_blank">More Info</a></td> 
                   </tr>
-                <tr class="event-expiry" style="display:none" data-expiry="November 21, 2019 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">November 19-21 </span>
-                      <p class="cEventLocation">San Diego, CA</p>
+                <tr class="event-expiry" style="display:none" data-expiry="May 06, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 6, 2020</span>
+                      <p class="cEventLocation">São Paulo, Brazil</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/"><h4>KubeCon + CloudNativeCon North America 2019</h4></a>
-                          <h5>Platinum Sponsor</h5>
+                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
+                        <h5></h5>
+                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>
                   
 </table>

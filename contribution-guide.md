@@ -109,7 +109,7 @@ As all Ballerina repositories are developed as Maven or Gradle projects, follow 
 
 ## Contribute to Ballerina grammar
 
-Ballerina grammar has been implemented using ANTLR plugin version 4.5.3. To get a basic understanding on ANTLR grammar syntax and concepts before working with Ballerina grammar, go to [Parr, Terence (January 15, 2013), The Definitive ANTLR 4 Reference](https://www.oreilly.com/library/view/the-definitive-antlr/9781941222621/).
+Ballerina grammar has been implemented using ANTLR plugin version 4.5.3. To get a basic understanding of ANTLR grammar syntax and concepts before working with Ballerina grammar, go to [Parr, Terence (January 15, 2013), The Definitive ANTLR 4 Reference](https://www.oreilly.com/library/view/the-definitive-antlr/9781941222621/).
 
 [Ballerina grammar](https://github.com/ballerina-platform/ballerina-lang/tree/master/compiler/ballerina-lang/src/main/resources/grammar) consists of two files:
 

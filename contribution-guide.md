@@ -130,7 +130,7 @@ For more information about the Ballerina compiler, go to [Ballerina Compiler —
 
 1. Do your changes in the <BALLERINA_LANG_REPO> using Eclipse or IntelliJ IDEA.
 2. Add unit tests accordingly. (The build process will automatically execute all the tests.)
-3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo by sending a Pull Request (PR). 
+3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang">ballerina-lang</a> repo by sending a Pull Request (PR). 
 
 >**Tip:** Follow these commit message requirements:
 

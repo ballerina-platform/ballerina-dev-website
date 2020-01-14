@@ -6,17 +6,17 @@ permalink: /contribution-guide/
 
 # The Ballerina Contribution Guide
 
-Ballerina is an open source programming language and platform for cloud-era application programmers to easily write software. It is licensed under the Apache license and is nurtured by all the contributors of the Ballerina community.
+Ballerina is an open source programming language and platform for cloud-era application programmers to easily write software. It is licensed under the [Apache license](https://www.apache.org/licenses/LICENSE-2.0) and is nurtured by all the contributors of the Ballerina community.
 
 We appreciate your help!
 
 - [Get started](#get-started)
 - [Set up the Prerequisites](#set-up-the-prerequisites)
+- [Obtain the source code](#obtain-the-source-code)
+- [Build the project](#build-the-project)
 - [Set up the developer environment](#set-up-the-developer-environment)
     - [Set up IntelliJ IDEA](#set-up-intellij-idea)
     - [Set up Eclipse](#set-up-eclipse)
-- [Obtain the source code](#obtain-the-source-code)
-- [Build the project](#build-the-project)
 - [Contribute to Ballerina grammar](#contribute-to-ballerina-grammar)
 - [Submit your contribution](#submit-your-contribution)
 - [Accept the Contributor License Agreement](#accept-the-contributor-license-agreement)
@@ -27,8 +27,9 @@ We appreciate your help!
 - Join the conversations at:
 
     - [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev): to join the developer team mailing list to discuss Ballerina roadmap, features, issues that are in progress etc.
+    - [Slack](https://ballerina-platform.slack.com/): for real-time communications with the team and community.
     - [StackOverflow](https://stackoverflow.com/questions/tagged/ballerina): to get help with Ballerina. (Use the Ballerina tag for your questions there.) 
-    - [Slack](https://app.slack.com/client/T47EAEKB5/DF818FX9Q): for real-time communications with the team and community.
+    - [GitHub][(https://github.com/ballerina-platform/ballerina-lang/issues): to file issues, comment on other issues, send your pull requests.
 
 - **IMPORTANT:** Send an email to security@ballerina.io to report sensitive security-related issues. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
@@ -46,12 +47,37 @@ We appreciate your help!
 ## Set up the prerequisites
 1. Download [Ballerina](https://ballerina.io) and go through the [learning resources](https://ballerina.io/learn).
 2. Read the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct).
-3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations:
+3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations and install it.
     - [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-    - [OpenJDK](http://openjdk.java.net/install/index.html) and install it.
+    - [OpenJDK](http://openjdk.java.net/install/index.html) 
 >**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
 4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and install it.
 5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
+
+## Obtain the source code 
+
+1. Execute the below command to clone the ballerina-lang Git repo.
+```bash 
+git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
+```
+>**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing 'YOUR-GITHUB-USERNAME' with your Git username.
+```bash 
+git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
+```
+2. Execute the below command to update the Git submodules.
+```bash 
+git submodule update --init
+```
+## Build the project
+
+1. Navigate to the <BALLERINA-LANG_REPO> root directory and execute the below Gradle command.
+```bash 
+./gradlew clean build
+```
+2. Extract the built Ballerina distributions in the below locations.
+-  **runtime only:** <BALLERINA-LANG_REPO>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip. 
+-  **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA-LANG_REPO>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
+>**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 
 ## Set up the developer environment
 
@@ -80,31 +106,6 @@ As all Ballerina repositories are developed as Maven or Gradle projects, follow 
 1. In Eclipse, click **File** and then click **Import..**.
 2. Under the **Maven** option, select **Existing Maven Projects**. 
 3. Browse the file system and select the Maven module to open it.
-
-## Obtain the source code 
-
-1. Execute the below command to clone the ballerina-lang Git repo.
-```bash 
-git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
-```
->**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing 'YOUR-GITHUB-USERNAME' with your Git username.
-```bash 
-git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
-```
-2. Execute the below command to update the Git submodules.
-```bash 
-git submodule update --init
-```
-## Build the project
-
-1. Navigate to the <BALLERINA-LANG_REPO> root directory and execute the below Gradle command.
-```bash 
-./gradlew clean build
-```
-2. Extract the built Ballerina distributions in the below locations.
--  **runtime only:** <BALLERINA-LANG_REPO>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip. 
--  **runtime and tools (e.g., Ballerina Composer):** <BALLERINA-LANG_REPO>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
->**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 
 ## Contribute to Ballerina grammar
 

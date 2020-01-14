@@ -118,7 +118,7 @@ Ballerina grammar has been implemented using ANTLR plugin version 4.5.3. To get 
 
 Once a change is done to any of the grammar files, the lexer and the parser need to be re-generated. To generate the lexer and the parser, navigate to the <BALLERINA_LANG_REPO>/compiler/ballerina-lang/src/main/resources/grammar/ directory, and execute the below command. 
 
->**Tip:** Download the [antlr-complete-4.5.3.jar](https://jar-download.com/artifacts/org.antlr/antlr4/4.5.3/source-code) file and replace <PATH-TO-ANTLR-JAR> in the below command with the location in which you saved it.
+>**Tip:** Download the [antlr-complete-4.5.3.jar](https://jar-download.com/artifacts/org.antlr/antlr4/4.5.3/source-code) file and replace `<PATH-TO-ANTLR-JAR>` in the below command with the location in which you saved it.
 
 ```bash 
 java -jar <PATH-TO-ANTLR-JAR>/antlr-4.5.3-complete.jar *.g4 -package org.wso2.ballerinalang.compiler.par

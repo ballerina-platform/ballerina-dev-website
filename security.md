@@ -19,7 +19,7 @@ If you have any concerns regarding the security aspects of the source code or an
 
 security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381)
 
-We will keep you informed of the progress towards a fix and disclosure of the vulnerability if reported issue is identified as a true positive. To protect the end-user security, these issues could be disclosed in other places only after it’s mitigation actions and disclosure process are completed.
+We will keep you informed of the progress towards a fix and disclosure of the vulnerability if the reported issue is identified as a true positive. To protect the end-user security, these issues could be disclosed in other places only after it’s mitigation actions and disclosure process are completed.
 
 **Warning:** Please do not create GitHub issues for security vulnerabilities. Further, kindly refrain from sharing the vulnerability details you come across with other individuals. 
 

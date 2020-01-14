@@ -26,7 +26,7 @@ We appreciate your help!
 
 - Join the conversations at:
 
-    - [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev): to join the developer team mailing list to discuss Ballerina roadmap, features, issues that are in progress etc.
+    - [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev): to join the developer team mailing list to discuss Ballerina roadmap, features, issues that are in progress, etc.
     - [Slack](https://ballerina-platform.slack.com/): for real-time communications with the team and community.
     - [StackOverflow](https://stackoverflow.com/questions/tagged/ballerina): to get help with Ballerina. (Use the Ballerina tag for your questions there.) 
     - [GitHub][(https://github.com/ballerina-platform/ballerina-lang/issues): to file issues, comment on other issues, send your pull requests.

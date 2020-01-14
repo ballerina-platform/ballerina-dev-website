@@ -50,7 +50,7 @@ We appreciate your help!
 3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations and install it.
     - [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     - [OpenJDK](http://openjdk.java.net/install/index.html) 
->**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
+>**Note:** Set the `JAVA_HOME` environment variable to the path name of the directory into which you installed JDK.
 4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and install it.
 5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
 

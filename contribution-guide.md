@@ -101,7 +101,7 @@ Follow the steps below to import the Ballerina project to IntelliJ IDEA similar 
 
 ### Set up Eclipse
 
-As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any Maven or Gradle project.
+As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any other Maven or Gradle project.
 
 1. In Eclipse, click **File** and then click **Import..**.
 2. Under the **Maven** option, select **Existing Maven Projects**. 

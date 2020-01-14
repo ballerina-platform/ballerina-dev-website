@@ -55,7 +55,7 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 ## Report issues
 
-Report an issue/bug in the below GitHub repos and tell us if you hit a bump on the road. We want to fix all bugs!
+Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
    - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
    - language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.

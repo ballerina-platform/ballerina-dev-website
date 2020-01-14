@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Using the IntelliJ Ballerina Plugin
+permalink: /learn/intellij-plugin/using-the-intellij-plugin
+redirect_from:
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
 ---
 
 # Using the IntelliJ Ballerina Plugin

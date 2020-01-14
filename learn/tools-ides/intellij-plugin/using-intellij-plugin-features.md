@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Using the features of the IntelliJ plugin
+permalink: /learn/intellij-plugin/using-intellij-plugin-features
+redirect_from:
+  - /learn/tools-ides/intellij-plugin/using-intellij-plugin-features
 ---
 
 # Using the features of the IntelliJ plugin

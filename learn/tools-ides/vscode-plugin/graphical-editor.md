@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Graphical View
+permalink: /learn/vscode-plugin/graphical-editor
+redirect_from:
+  - /learn/tools-ides/vscode-plugin/graphical-editor
 ---
 
 # Graphical View

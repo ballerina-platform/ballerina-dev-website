@@ -40,7 +40,7 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 
 ## Scope
 
-This Code of Conduct applies both within project spaces and in public spaces, and also applies when an individual is officially representing the project or its community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
+This code of conduct applies both within project spaces and in public spaces, and also applies when an individual is officially representing the project or its community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
 
 ## Enforcement
 
@@ -50,7 +50,7 @@ All project/community leaders are obligated to respect the privacy and security 
 
 ## Enforcement guidelines
 
-Community leaders will follow the below Community Impact Guidelines in determining the consequences for any action they deem in violation of this code of conduct:
+Project/Community leaders will follow the below Community Impact Guidelines in determining the consequences for any action they deem in violation of this code of conduct:
 
 **1. Correction**
 
@@ -102,4 +102,4 @@ Community leaders will follow the below Community Impact Guidelines in determini
 
 ## Attribution
 
-This code of conduct is adapted from the [Contributor Covenant, version 2.0](#https://www.contributor-covenant.org/version/2/0/code_of_conduct).
+This code of conduct is adapted from the [Contributor Covenant, version 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct).

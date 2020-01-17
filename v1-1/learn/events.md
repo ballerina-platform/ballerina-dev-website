@@ -34,16 +34,16 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
-    <!-- <tr> 
-    <td class="cEventDateContainer"><span class="cEventDate">October 8-10 </span>
-                      <p class="cEventLocation">San Jose, CA</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
+                      <p class="cEventLocation">San Francisco, California, USA</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World 2019</h4></a>
-                          <h5>PRO TALK: Efficient Microservices Deployment Pipelines</h5>
-                          <b>Anjana Fernando,</b> Director, WSO2</p>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
+                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
-                  </tr> -->
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">More Info</a></td> 
+                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>

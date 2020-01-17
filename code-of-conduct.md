@@ -71,7 +71,7 @@ Community leaders will follow the below Community Impact Guidelines in determini
 <th> Consequence </th>
 <tr>
 <td width=50%> A violation through a single incident or series of actions. </td>
-<td width=50%>> A warning with consequences for continued behavior. No interaction with the people involved including unsolicited interaction with those enforcing the code of conduct for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
+<td width=50%> A warning with consequences for continued behavior. No interaction with the people involved including unsolicited interaction with those enforcing the code of conduct for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
 </td>
 </tr>
 </table>

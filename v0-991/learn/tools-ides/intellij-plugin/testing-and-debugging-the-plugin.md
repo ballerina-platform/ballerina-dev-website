@@ -1,5 +1,8 @@
 ---
 layout: ballerina-inner-page
+permalink: /v0-991/learn/intellij-plugin/testing-and-debugging-the-plugin
+redirect_from:
+  - /v0-991/learn/tools-ides/intellij-plugin/testing-and-debugging-the-plugin
 ---
 
 # Testing and debugging the plugin using IntelliJ IDEA

@@ -1,3 +1,11 @@
+---
+layout: ballerina-inner-page
+title: Documentation Viewer
+permalink: /v0-991/learn/vscode-plugin/documentation-viewer
+redirect_from:
+  - /v0-991/learn/tools-ides/vscode-plugin/documentation-viewer
+---
+
 # Documentation Viewer
 
 The VS Code Ballerina extension is shipped with a Documentation Viewer. You can add documentation for the functions and other public entities in your module for the reference of other users of it. 

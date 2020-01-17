@@ -1,5 +1,8 @@
 ---
 layout: ballerina-inner-page
+permalink: /v0-991/learn/intellij-plugin/using-the-intellij-plugin
+redirect_from:
+  - /v0-991/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
 ---
 
 # Using the IntelliJ Ballerina Plugin

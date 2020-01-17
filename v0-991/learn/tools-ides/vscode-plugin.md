@@ -1,5 +1,8 @@
 ---
 layout: ballerina-inner-page
+permalink: /v0-991/learn/vscode-plugin/
+redirect_from:
+  - /v0-991/learn/tools-ides/vscode-plugin
 ---
 
 # The Visual Studio Code Extension

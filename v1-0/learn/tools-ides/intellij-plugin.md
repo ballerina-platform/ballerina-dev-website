@@ -1,7 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: The IntelliJ IDEA Ballerina Plugin
-permalink: /learn/tools-ides/intellij-plugin/
+permalink: /v1-0/learn/intellij-plugin/
+redirect_from:
+  - /v1-0/learn/tools-ides/intellij-plugin
 ---
 
 # The IntelliJ IDEA Ballerina Plugin

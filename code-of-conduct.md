@@ -83,7 +83,7 @@ Community leaders will follow the below Community Impact Guidelines in determini
 <th> Consequence </th>
 <tr>>
 <td width=50%> A serious violation of community standards including sustained inappropriate behavior. </td>
-<td width=50%>> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
+<td width=50%> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
 </td>
 </tr>
 </table>

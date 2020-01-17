@@ -121,26 +121,28 @@ Once a change is done to any of the grammar files, the lexer and the parser need
 >**Tip:** Download the [antlr-complete-4.5.3.jar](https://jar-download.com/artifacts/org.antlr/antlr4/4.5.3/source-code) file and replace `<PATH-TO-ANTLR-JAR>` in the below command with the location in which you saved it.
 
 ```bash 
-java -jar <PATH-TO-ANTLR-JAR>/antlr-4.5.3-complete.jar *.g4 -package org.wso2.ballerinalang.compiler.par
+java -jar <PATH-TO-ANTLR-JAR>/antlr-4.5.3-complete.jar *.g4 -package org.wso2.ballerinalang.compiler.parser.antlr4 -o <BALLERINA_LANG_REPO>/compiler/ballerina-lang/src/main/java/org/wso2/ballerinalang/compiler/parser/antlr4/
 ```
+
+**Info:** The above command will autogenerate some Java classes. The Ballerina AST builder is written on top of the auto-generated `BallerinaParserBaseListener.java` class. Thus, if any new rules are added to the `BallerinaParser.g4`, above command will generate new methods in the `BallerinaParserBaseListener.java` and you need to override those newly-added methods inside the `BLangParserListener.java` accordingly.
 
 For more information about the Ballerina compiler, go to [Ballerina Compiler — Design](https://medium.com/@sameerajayasoma/ballerina-compiler-design-3406acc2476c?).
 
 ## Submit your contribution
 
-1. Do your changes in the <BALLERINA_LANG_REPO> using Eclipse or IntelliJ IDEA.
+1. Do your changes in the <BALLERINA_LANG_REPO>.
 2. Add unit tests accordingly. (The build process will automatically execute all the tests.)
 3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang">ballerina-lang</a> repo by sending a Pull Request (PR). 
 
 >**Tip:** Follow these commit message requirements:
 
-- Separate subject from body with a blank line
-- Limit the subject line to 50 characters
-- Capitalize the subject line
-- Do not end the subject line with a period
-- Use the imperative mood in the subject line
-- Wrap the body at 72 characters
-- Use the body to explain what and why vs. how
+    - Separate subject from body with a blank line
+    - Limit the subject line to 50 characters
+    - Capitalize the subject line
+    - Do not end the subject line with a period
+    - Use the imperative mood in the subject line
+    - Wrap the body at 72 characters
+    - Use the body to explain what and why vs. how
 
 For more information, go to [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
 

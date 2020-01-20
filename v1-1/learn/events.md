@@ -119,7 +119,7 @@ redirect_from:
                           <h5>Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
                         <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://developerweekaustin2019.sched.com/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/developerweek-austin-2019-microservices-in-practice-with-ballerina-kubernetes-and-istio" target="_blank">View Slides</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">November 5, 2019</span>

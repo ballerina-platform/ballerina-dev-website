@@ -1299,7 +1299,7 @@ padding-right: 0;
 
 /* -------------------------------- */
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 991px) {
     .navbar-header {
         width: 200px !important;
     }
@@ -1312,7 +1312,7 @@ padding-right: 0;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
     .navbar-header {
         width: 100% !important;
     }
@@ -1430,7 +1430,7 @@ padding-right: 0;
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 991px) {
     #iBallerinaFooter .cBallerina-io-right-col p {
         padding-left: 0;
         padding-top: 20px;
@@ -1479,7 +1479,7 @@ padding-right: 0;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .navbar-nav>li:last-child a.cSerachIcon {
         display: none;
     }
@@ -1496,7 +1496,7 @@ padding-right: 0;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .navbar-nav>li:last-child a.cSerachIcon {
         display: none;
     }
@@ -1607,4 +1607,25 @@ text-shadow: 0 1px 0 rgba(255,255,255,.25);
 }
 .select-css option {
 	font-weight:normal;
+}
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+	
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+	
+    .navbar-nav>li {
+        float: none;
+    }
+	
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
 }

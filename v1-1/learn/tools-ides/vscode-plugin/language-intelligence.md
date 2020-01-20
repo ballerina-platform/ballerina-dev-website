@@ -63,4 +63,4 @@ Above are the language intelligence features that are currently available in the
 
  - For information on the next capability of the VS Code Ballerina plugin, see [Run and Debug](/v1-1/learn/tools-ides/vscode-plugin/run-and-debug).
  - For information on the VS Code Ballerina plugin, see [The Visual Studio Code Ballerina Plugin](/v1-1/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina plugin, see [Tools and IDEs](/v1-1/learn/tools-ides).
+

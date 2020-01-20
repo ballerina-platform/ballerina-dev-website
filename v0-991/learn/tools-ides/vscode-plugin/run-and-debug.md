@@ -22,13 +22,13 @@ debug session.
 
 You view the output in the **DEBUG CONSOLE**.
 
-![Run and debug](../images/run-and-debug.gif)
+![Run and debug](/v0-991/learn/images/run-and-debug.gif)
 
 For more information on debugging your code using VS Code, go to [VS Code Documentation](https://code.visualstudio.com/docs/editor/debugging).
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run All Tests](vscode-plugin/run-all-tests).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](../tools-ides).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run All Tests](/v0-991/learn/tools-ides/vscode-plugin/run-all-tests).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/tools-ides/vscode-plugin).
+
 

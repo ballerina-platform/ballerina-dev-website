@@ -58,5 +58,5 @@ You can expand the Diagram View to show not only the control flow but also to sh
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina plugin, see [Documentation Viewer](/v1-0/learn/tools-ides/vscode-plugin/documentation-viewer).
- - For information on the VS Code Ballerina plugin, see [The Visual Studio Code Plugin](/v1-0/learn/tools-ides/vscode-plugin).
+ - For information on the next capability of the VS Code Ballerina plugin, see [Documentation Viewer](/v1-0/learn/vscode-plugin/documentation-viewer).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v1-0/learn/vscode-plugin).

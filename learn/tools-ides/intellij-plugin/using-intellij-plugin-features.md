@@ -164,3 +164,8 @@ You expand/collapse the following Ballerina code segments using the icons in the
 - multiline comments
  
 ![Code folding](/learn/images/code-folding.gif)
+
+## What's next?
+
+- For information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](/learn/intellij-plugin)
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/learn).

@@ -28,7 +28,7 @@ For more information on debugging your code using VS Code, go to [VS Code Docume
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run All Tests](/v0-991/learn/tools-ides/vscode-plugin/run-all-tests).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/tools-ides/vscode-plugin).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run All Tests](/v0-991/learn/vscode-plugin/run-all-tests).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/vscode-plugin).
 
 

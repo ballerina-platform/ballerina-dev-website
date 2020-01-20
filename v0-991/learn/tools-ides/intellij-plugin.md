@@ -104,30 +104,30 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 
 ## Using the plugin
 
-For information on using the IntelliJ Ballerina plugin to write Ballerina programs, see [Using the IntelliJ Ballerina plugin](/v0-991/learn/tools-ides/intellij-plugin/using-the-intellij-plugin).
+For information on using the IntelliJ Ballerina plugin to write Ballerina programs, see [Using the IntelliJ Ballerina plugin](/v0-991/learn/intellij-plugin/using-the-intellij-plugin).
 
 ## Using the features of the plugin
 
 Click on the below links to find information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 
-- [Running Ballerina programs](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#running-ballerina-programs)
-- [Debugging Ballerina programs](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#debugging-ballerina-programs)
-- [Viewing the sequence diagram](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-the-sequence-diagram)
-- [Importing modules on the fly](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#importing-modules-on-the-fly)
-- [Importing unambiguous modules](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#importing-unambiguous-modules)
-- [Finding usages](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#finding-usages)
-- [Viewing definitions](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-definitions)
-- [Formatting Ballerina codes](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#formatting-ballerina-codes)
-- [Viewing details of parameters](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-details-of-parameters)
-- [Viewing documentation](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-documentation)
-- [Adding annotation fields via suggestions](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#adding-annotation-fields-via-suggestions)
-- [Using file templates](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#using-file-templates)
-- [Using code snippet templates](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#using-code-snippet-templates)
-- [Checking spellings](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#checking-spellings)
-- [Analyzing semantics](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
-- [Code folding](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#code-folding)
+- [Running Ballerina programs](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#running-ballerina-programs)
+- [Debugging Ballerina programs](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#debugging-ballerina-programs)
+- [Viewing the sequence diagram](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#viewing-the-sequence-diagram)
+- [Importing modules on the fly](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#importing-modules-on-the-fly)
+- [Importing unambiguous modules](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#importing-unambiguous-modules)
+- [Finding usages](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#finding-usages)
+- [Viewing definitions](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#viewing-definitions)
+- [Formatting Ballerina codes](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#formatting-ballerina-codes)
+- [Viewing details of parameters](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#viewing-details-of-parameters)
+- [Viewing documentation](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#viewing-documentation)
+- [Adding annotation fields via suggestions](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#adding-annotation-fields-via-suggestions)
+- [Using file templates](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#using-file-templates)
+- [Using code snippet templates](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#using-code-snippet-templates)
+- [Checking spellings](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#checking-spellings)
+- [Analyzing semantics](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
+- [Code folding](/v0-991/learn/intellij-plugin/using-intellij-plugin-features#code-folding)
 
 
 ## Testing/Debugging the plugin
 
-For instructions on testing and debugging the plugin, see [Testing and debugging the plugin](/v0-991/learn/tools-ides/intellij-plugin/testing-and-debugging-the-plugin).
+For instructions on testing and debugging the plugin, see [Testing and debugging the plugin](/v0-991/learn/intellij-plugin/testing-and-debugging-the-plugin).

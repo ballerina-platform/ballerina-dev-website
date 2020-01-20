@@ -61,9 +61,9 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 Click on the below links to find information on the various capabilities that are facilitated by the VS Code Ballerina extension for the development process.
 
-- [Language intelligence](/v0-991/learn/tools-ides/vscode-plugin/language-intelligence)
-- [Run and debug](/v0-991/learn/tools-ides/vscode-plugin/run-and-debug)
-- [Run all tests](/v0-991/learn/tools-ides/vscode-plugin/run-all-tests)
-- [Graphical Editor](/v0-991/learn/tools-ides/vscode-plugin/graphical-editor)
-- [Documentation Viewer](/v0-991/learn/tools-ides/vscode-plugin/documentation-viewer)
+- [Language intelligence](/v0-991/learn/vscode-plugin/language-intelligence)
+- [Run and debug](/v0-991/learn/vscode-plugin/run-and-debug)
+- [Run all tests](/v0-991/learn/vscode-plugin/run-all-tests)
+- [Graphical Editor](/v0-991/learn/vscode-plugin/graphical-editor)
+- [Documentation Viewer](/v0-991/learn/vscode-plugin/documentation-viewer)
 

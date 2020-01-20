@@ -46,5 +46,7 @@ This builds the plugin and starts a new IDEA instance with the installed plugin.
 
 ## What's next?
 
-For more information on the IntelliJ Ballerina plugin, see [The IntelliJ Plugin](/v0-991/learn/tools-ides/intellij-plugin).
+- For information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](/v0-991/learn/intellij-plugin)
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v0-991/learn).
+
  

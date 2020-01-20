@@ -19,5 +19,6 @@ The Documentation Viewer represents the documented entities in a file in an orga
 
 ## What's next?
 
-For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/tools-ides/vscode-plugin).
+- For information on the Ballerina VSCode extension, see [VSCode Extension](/v0-991/learn/vscode-plugin)
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v0-991/learn).
  

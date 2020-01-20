@@ -188,5 +188,5 @@ You expand/collapse the following Ballerina code segments using the icons in the
 
 ## What's next?
 
- - For instructions on testing and debugging the plugin, see [Testing and debugging the plugin](/v0-991/learn/tools-ides/intellij-plugin/testing-and-debugging-the-plugin)
+ - For instructions on testing and debugging the plugin, see [Testing and debugging the plugin](/v0-991/learn/intellij-plugin/testing-and-debugging-the-plugin)
 

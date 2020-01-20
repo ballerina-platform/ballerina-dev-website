@@ -7,7 +7,7 @@ redirect_from:
 
 # Using the IntelliJ Ballerina Plugin
 
-Click the links below to start using the IntelliJ Ballerina plugin after [installing it](/v0-991/learn/tools-ides/intellij-plugin).
+Click the links below to start using the IntelliJ Ballerina plugin after [installing it](/v0-991/learn/intellij-plugin).
 
 - [Creating a new Ballerina project](#creating-a-new-ballerina-project)
 - [Setting up Ballerina SDK for an existing project](#setting-up-ballerina-sdk-for-an-existing-project)
@@ -78,7 +78,7 @@ Now, you have successfully created a new Ballerina file with a **main** function
 
 ## What's next?
 
- Next, for information on using the features of the IntelliJ Ballerina plugin, see [Using the IntelliJ plugin features](/v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features).
+ Next, for information on using the features of the IntelliJ Ballerina plugin, see [Using the IntelliJ plugin features](/v0-991/learn/intellij-plugin/using-intellij-plugin-features).
  
 
 

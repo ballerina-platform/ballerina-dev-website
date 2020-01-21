@@ -1,3 +1,8 @@
+---
+layout: ballerina-inner-page
+title: Graphical View
+---
+
 # Graphical Editor
 
 A rich set of Visualization tools will immensely enhance your development experience especially in the integration space. 

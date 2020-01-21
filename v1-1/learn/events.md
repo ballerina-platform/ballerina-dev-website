@@ -54,6 +54,16 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/confirmed-talks-2/" target="_blank">More Info</a></td> 
                   </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 5, 2020</span>
+                      <p class="cEventLocation">Seattle, Washington, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
+                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+                  </tr>
                 <tr class="event-expiry" style="display:none" data-expiry="May 06, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 4 - 6, 2020</span>
                       <p class="cEventLocation">São Paulo, Brazil</p>
@@ -64,6 +74,7 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>
+  
                   
 </table>
 

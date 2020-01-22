@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
 permalink: /v0-991/learn/
+redirect_from:
+  - /v0-991/learn/tools-ides
 ---
 
 # Learn Ballerina

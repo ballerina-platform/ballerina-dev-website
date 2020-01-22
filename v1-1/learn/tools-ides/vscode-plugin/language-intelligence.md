@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Language intelligence
+permalink: /v1-1/learn/vscode-plugin/language-intelligence
+redirect_from:
+  - /v1-1/learn/tools-ides/vscode-plugin/language-intelligence
 ---
 
 # Language intelligence
@@ -58,6 +61,5 @@ Above are the language intelligence features that are currently available in the
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/v1-1/learn/tools-ides/vscode-plugin/run-and-debug).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/v1-1/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](/v1-1/learn/tools-ides).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/v1-1/learn/vscode-plugin/run-and-debug).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/v1-1/learn/vscode-plugin).

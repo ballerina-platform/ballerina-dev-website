@@ -30,7 +30,7 @@ Follow the steps below to create a new Ballerina project.
    
 4. Enter a name for the project, a location to save it, and click **Finish**.
 
-    ![Enter project name and location](/v0-991/learn./images/enter-project-name-and-location.png)
+    ![Enter project name and location](/v0-991/learn/images/enter-project-name-and-location.png)
 
 Now, you have successfully created a new Ballerina project.
 

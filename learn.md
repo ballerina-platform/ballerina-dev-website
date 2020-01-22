@@ -6,6 +6,7 @@ keywords: Ballerina, ballerinalang
 permalink: /learn/
 redirect_from:
   - /learn/tools-ides
+  - /learn/tools-ides/
 ---
 
 <meta http-equiv="refresh" content="0; url=/v1-1/learn">

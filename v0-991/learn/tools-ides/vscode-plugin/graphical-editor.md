@@ -22,11 +22,11 @@ Follow the steps below to launch the Graphical Editor.
 
 2. In the search box, type "Show" and click **Ballerina: Show Diagram**.
 
-![Show Diagram option](../images/show-diagram.gif)
+    ![Show Diagram option](../images/show-diagram.gif)
 
-> **Tip**: For a quick launch, click the **Show Diagram** icon in the top right corner.
+    > **Tip**: For a quick launch, click the **Show Diagram** icon in the top right corner.
 
-![Quick launch of the Graphical Editor](../images/graphical-editor-quick-launch.gif)
+    ![Quick launch of the Graphical Editor](../images/graphical-editor-quick-launch.gif)
 
 ## Exploring the features of the Graphical Editor
 

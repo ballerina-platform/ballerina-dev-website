@@ -18,20 +18,19 @@ The bellow sections discuss how to use the Graphical Editor and explore its capa
 
 The below are the two types of Graphical Views you can find in the VSCode extension.
 
-**Project Overview**
+**1. Project Overview**
 
 This gives a graphical representation of a grouping of the content in the project modules. Click the name of the entity under **BALLERINA PROJECT OVERVIEW** to view its graphical representation.
 
 ![Open using the project overview](/learn/images/select-from-overview.gif)
 
-**File Overview**
+**2. File Overview**
 
 This gives a graphical representation of the content of the current Ballerina file. Use one of the methods to view it.
 
 1. Click the **Show File Overview** icon in the top right corner.
 
-![Open Using the Show Diagram icon](/learn/images/show-diagram-icon.gif)
-
+    ![Open Using the Show Diagram icon](/learn/images/show-diagram-icon.gif)
 
 2. Select the **Show File Overview** command option from the **Command Palette**.
 

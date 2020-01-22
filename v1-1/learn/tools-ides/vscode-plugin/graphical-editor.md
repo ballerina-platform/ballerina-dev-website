@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Graphical View
+permalink: /v1-1/learn/vscode-plugin/graphical-editor
+redirect_from:
+  - /v1-1/learn/tools-ides/vscode-plugin/graphical-editor
 ---
 
 # Graphical View
@@ -55,6 +58,5 @@ You can expand the Diagram View to show not only the control flow but also to sh
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Documentation Viewer](/v1-1/learn/tools-ides/vscode-plugin/documentation-viewer).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v1-1/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](/v1-1/learn/tools-ides).
+ - For information on the next capability of the VS Code Ballerina plugin, see [Documentation Viewer](/v1-1/learn/vscode-plugin/documentation-viewer).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v1-1/learn/vscode-plugin).

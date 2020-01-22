@@ -1,7 +1,9 @@
 ---
 layout: ballerina-inner-page
-title: The Visual Studio Code Extension
-permalink: /learn/tools-ides/vscode-plugin/
+title: The Visual Studio Code Plugin
+permalink: /learn/vscode-plugin/
+redirect_from:
+  - /learn/tools-ides/vscode-plugin
 ---
 
 # The Visual Studio Code Extension
@@ -64,8 +66,8 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 The below sections include information on the various capabilities that are facilitated by the VS Code Ballerina extension for the development process.
 
-- [Language intelligence](/learn/tools-ides/vscode-plugin/language-intelligence)
-- [Run and debug](/learn/tools-ides/vscode-plugin/run-and-debug)
-- [Graphical View](/learn/tools-ides/vscode-plugin/graphical-editor)
-- [Documentation Viewer](/learn/tools-ides/vscode-plugin/documentation-viewer)
+- [Language intelligence](/learn/vscode-plugin/language-intelligence)
+- [Run and debug](/learn/vscode-plugin/run-and-debug)
+- [Graphical View](/learn/vscode-plugin/graphical-editor)
+- [Documentation Viewer](/learn/vscode-plugin/documentation-viewer)
 

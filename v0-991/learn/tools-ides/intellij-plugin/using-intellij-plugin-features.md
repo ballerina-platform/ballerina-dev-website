@@ -3,6 +3,7 @@ layout: ballerina-inner-page
 permalink: /v0-991/learn/intellij-plugin/using-intellij-plugin-features
 redirect_from:
   - /v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
+  - /v0-991/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
 ---
 
 # Using the features of the IntelliJ plugin

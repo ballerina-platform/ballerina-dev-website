@@ -4,6 +4,7 @@ title: Run and debug
 permalink: /learn/vscode-plugin/run-and-debug
 redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
+  - /learn/tools-ides/vscode-plugin/run-and-debug/
 ---
 
 # Run and debug

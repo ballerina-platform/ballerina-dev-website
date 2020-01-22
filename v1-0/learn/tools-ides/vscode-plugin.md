@@ -4,6 +4,7 @@ title: The Visual Studio Code Plugin
 permalink: /v1-0/learn/vscode-plugin/
 redirect_from:
   - /v1-0/learn/tools-ides/vscode-plugin
+  - /v1-0/learn/tools-ides/vscode-plugin/
 ---
 
 # The Visual Studio Code Extension

@@ -4,6 +4,7 @@ title: Language intelligence
 permalink: /learn/vscode-plugin/language-intelligence
 redirect_from:
   - /learn/tools-ides/vscode-plugin/language-intelligence
+  - /learn/tools-ides/vscode-plugin/language-intelligence/
 ---
 
 # Language intelligence

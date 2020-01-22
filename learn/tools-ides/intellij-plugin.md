@@ -4,6 +4,7 @@ title: The IntelliJ IDEA Ballerina Plugin
 permalink: /learn/intellij-plugin/
 redirect_from:
   - /learn/tools-ides/intellij-plugin
+  - /learn/tools-ides/intellij-plugin/
 ---
 
 # The IntelliJ IDEA Ballerina Plugin

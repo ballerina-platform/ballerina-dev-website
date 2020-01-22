@@ -54,7 +54,6 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
                   </tr>
-                    </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>

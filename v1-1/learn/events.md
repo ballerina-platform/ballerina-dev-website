@@ -52,7 +52,7 @@ redirect_from:
                           <h5>Code to Cloud</h5>
                            <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/confirmed-talks-2/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 4 - 5, 2020</span>

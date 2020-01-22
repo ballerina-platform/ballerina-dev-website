@@ -90,7 +90,7 @@ redirect_from:
                           <h5>An Introduction to the Ballerina Programming Language</h5>
                         <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/cloudnative-and-kubernetes-meetup-in-silicon-valley-ballerina-cloud-native-programming-language" target="_blank">View Slides</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">December 10 - 11, 2019</span>
@@ -110,7 +110,7 @@ redirect_from:
                           <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
                         <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/downtown-san-jose-devops/events/265982303/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/downtown-san-jose-devops-meetup-ballerina-a-programming-language-for-cloud-and-devops-221963732" target="_blank">View Slides</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">November 7, 2019</span>
@@ -190,7 +190,7 @@ redirect_from:
                           <h5>Ballerina in Real-World Use-Case</h5>
                         <b>Glenn Donaldson & Jim Kittle,</b> Ohio State University
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/columbus-microservices/events/264064167/" target="_blank">More Info</a></td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/secret/AW4Gz2reZ0xNW" target="_blank">View Slides</a></td>
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">September 24, 2019</span>

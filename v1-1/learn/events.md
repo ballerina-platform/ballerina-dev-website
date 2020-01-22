@@ -60,7 +60,8 @@ redirect_from:
                       <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
+                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
+                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
                            <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 

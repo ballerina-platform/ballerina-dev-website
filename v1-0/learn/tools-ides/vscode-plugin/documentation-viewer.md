@@ -8,7 +8,7 @@ redirect_from:
 
 # Documentation Viewer
 
-The VS Code Ballerina plugin is shipped with a Documentation Viewer. You can add documentation for the functions and other public entities in your module for the reference of other users of it. 
+The VS Code Ballerina extension is shipped with a Documentation Viewer. You can add documentation for the functions and other public entities in your module for the reference of other users of it. 
 
 The Documentation Viewer represents the documented entities in a file in an organized manner. Follow the steps below to launch the Documentation Viewer.
 

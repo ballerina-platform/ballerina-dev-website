@@ -10,7 +10,7 @@ redirect_from:
 
 A rich set of Visualization tools will immensely enhance your development experience especially in the integration space. 
 
-The Graphical Editor of the VS Code Ballerina plugin allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. 
+The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. 
 
 The bellow sections discuss how to use the Graphical Editor and explore its capabilities.
 
@@ -19,7 +19,7 @@ The bellow sections discuss how to use the Graphical Editor and explore its capa
 
 ## Launching the Graphical View
 
-The below are the two types of Graphical Views you can find in the VSCode plugin.
+The below are the two types of Graphical Views you can find in the VSCode extension.
 
 1.Project Overview
 
@@ -60,4 +60,3 @@ You can expand the Diagram View to show not only the control flow but also to sh
 
  - For information on the next capability of the VS Code Ballerina plugin, see [Documentation Viewer](/learn/vscode-plugin/documentation-viewer).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/learn/vscode-plugin).
- 

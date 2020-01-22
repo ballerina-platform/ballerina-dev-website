@@ -8,9 +8,9 @@ redirect_from:
 
 # Language intelligence
 
-The VS Code Ballerina plugin brings in language intelligence to enhance the development experience and increase its efficiency.
+The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency.
 
-Language intelligence is built in to the plugin via a Language Server implementation, which consists of the below language intelligence options.
+Language intelligence is built in to the extension via a Language Server implementation, which consists of the below language intelligence options.
 
 - [Semantic and syntactic diagnostics](#semantic-and-syntactic-diagnostics)
 - [Suggestions and auto completion](#suggestions-and-auto-completion)
@@ -27,7 +27,7 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 ## Suggestions and auto completion
 
-The plugin provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.).
+The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.).
 
 ![Suggestions and auto completion](/v1-1/learn/images/suggestions.gif)
 
@@ -57,10 +57,9 @@ For example, you can add documentation for a function as shown below.
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
-Above are the language intelligence features that are currently available in the Ballerina VS Code Plugin.
+Above are the language intelligence features that are currently available in the Ballerina VS Code Extension.
 
 ## What's next?
 
  - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/v1-1/learn/vscode-plugin/run-and-debug).
  - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/v1-1/learn/vscode-plugin).
-

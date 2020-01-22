@@ -4,6 +4,7 @@ title: Graphical View
 permalink: /learn/vscode-plugin/graphical-editor
 redirect_from:
   - /learn/tools-ides/vscode-plugin/graphical-editor
+  - /learn/tools-ides/vscode-plugin/graphical-editor/
 ---
 
 # Graphical View

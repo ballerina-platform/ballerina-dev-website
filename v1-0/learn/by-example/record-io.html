@@ -1,108 +1,17 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta property="og:url" content="https://ballerina.io" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Record I/O" />
-    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
-    <meta property="og:image" content="/img/ballerina-sm.jpg" />
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
-    <title>Ballerina by Example: Record I/O</title>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-92163714-2');
-    </script>
-
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
-    <script>
-        (function(h, o, t, j, a, r) {
-            h.hj = h.hj || function() {
-                (h.hj.q = h.hj.q || []).push(arguments)
-            };
-            h._hjSettings = {
-                hjid: 442732,
-                hjsv: 5
-            };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script');
-            r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script>
-
-    <!--copy to clipboard lib-->
-    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
-
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        var base_url = "";
-    </script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
-
-    <script type="text/javascript" src="/js/highlight.pack.js"></script>
-
-    <script src="/js/ballerina-common.js"></script>
-    <link rel=stylesheet href="/css/ballerina-io.css">
-    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
-    <script src="/search/require.js"></script>
-</head>
-
-<body class="cBallerina-io">
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <div class="row cBallerina-io-Nav" id="iMainNavigation">
-
-    </div>
- 
-    <div class="row cBallerina-io-Gray-row">
+---
+layout: ballerina-example-page
+title: Record I/O
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /v1-0/learn/by-example/record-io
+---
+<div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">getReadableRecordChannel</span><span class="p">(</span><span class="kt">string</span> <span class="nx">filePath</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">encoding</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">rs</span><span class="p">,</span>
-                                  <span class="kt">string</span> <span class="nx">fs</span><span class="p">)</span>
-                                        <span class="nx">returns</span> <span class="nd">@tainted io:ReadableTextRecordChannel|error {</span>
+<span class="kd">function</span> <span class="nx">getReadableRecordChannel</span><span class="p">(</span><span class="kt">string</span> <span class="nx">filePath</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">encoding</span><span class="p">,</span>
+                        <span class="kt">string</span> <span class="nx">rs</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">fs</span><span class="p">)</span>
+                        <span class="nx">returns</span> <span class="nd">@tainted io:ReadableTextRecordChannel|error {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">byteChannel</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="nx">encoding</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">delimitedRecordChannel</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">characterChannel</span><span class="p">,</span>
@@ -111,8 +20,8 @@
     <span class="k">return</span> <span class="nx">delimitedRecordChannel</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getWritableRecordChannel</span><span class="p">(</span><span class="kt">string</span> <span class="nx">filePath</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">encoding</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">rs</span><span class="p">,</span>
-                                  <span class="kt">string</span> <span class="nx">fs</span><span class="p">)</span>
-                                        <span class="nx">returns</span> <span class="nd">@tainted io:WritableTextRecordChannel|error {</span>
+                    <span class="kt">string</span> <span class="nx">fs</span><span class="p">)</span>
+                    <span class="nx">returns</span> <span class="nd">@tainted io:WritableTextRecordChannel|error {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">byteChannel</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">filePath</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="nx">encoding</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">delimitedRecordChannel</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">characterChannel</span><span class="p">,</span>
@@ -121,7 +30,8 @@
     <span class="k">return</span> <span class="nx">delimitedRecordChannel</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">srcRecordChannel</span><span class="p">,</span>
-                 <span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">dstRecordChannel</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+                 <span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">dstRecordChannel</span><span class="p">)</span>
+                 <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
         <span class="kt">string</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">srcRecordChannel</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dstRecordChannel</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">records</span><span class="p">);</span>
@@ -131,30 +41,42 @@
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">rc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">rc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
-                       <span class="nx">err</span> <span class="p">=</span> <span class="nx">closeResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">wc</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">wc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
-                       <span class="nx">err</span> <span class="p">=</span> <span class="nx">closeResult</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">closeResult</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">dstFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">srcRecordChannel</span> <span class="p">=</span>
-    <span class="nx">check</span> <span class="nx">getReadableRecordChannel</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\\r?\\n&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">dstRecordChannel</span> <span class="p">=</span>
-    <span class="nx">check</span> <span class="nx">getWritableRecordChannel</span><span class="p">(</span><span class="nx">dstFileName</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\r\n&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start processing the CSV file from &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableTextRecordChannel</span> <span class="nx">srcRecordChannel</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">readableChannel</span> <span class="p">=</span> <span class="nx">getReadableRecordChannel</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">,</span>
+                                                        <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\\r?\\n&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">readableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating readable record channel. &quot;</span><span class="p">,</span>
+                        <span class="nx">readableChannel</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">srcRecordChannel</span> <span class="p">=</span> <span class="nx">readableChannel</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableTextRecordChannel</span> <span class="nx">dstRecordChannel</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">writableChannel</span> <span class="p">=</span> <span class="nx">getWritableRecordChannel</span><span class="p">(</span><span class="nx">dstFileName</span><span class="p">,</span>
+                                                        <span class="s">&quot;UTF-8&quot;</span><span class="p">,</span> <span class="s">&quot;\r\n&quot;</span><span class="p">,</span> <span class="s">&quot;|&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">writableChannel</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while creating writable record channel. &quot;</span><span class="p">,</span>
+                        <span class="nx">writableChannel</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">dstRecordChannel</span> <span class="p">=</span> <span class="nx">writableChannel</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start processing the CSV file from &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span>
                <span class="s">&quot; to the text file in &quot;</span> <span class="o">+</span> <span class="nx">dstFileName</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">srcRecordChannel</span><span class="p">,</span> <span class="nx">dstRecordChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while processing the records: &quot;</span><span class="p">,</span>
-                       <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;An error occurred while processing the records: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed. The processed file is located in &quot;</span><span class="p">,</span>
                     <span class="nx">dstFileName</span><span class="p">);</span>
@@ -167,8 +89,6 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
-
-
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
@@ -181,9 +101,9 @@
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="byte-io.html">
+                                    <a class="prev" href="character-io.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Byte I/O</p>
+                                        <p>Character I/O</p>
                                     </a>
                                 </div>
                                  
@@ -204,17 +124,6 @@
                     <table class="cTopControlsContainer">
                         <tr>
                             <td class="cLeftTD">
-                                <div class="cBreadcrums">
-                                    <ul>
-                                        <li><a href="/">Home</a></li>
-                                        <li>»</li>
-                                        <li><a href="/learn">Learn</a></li>
-                                        <li>»</li>
-                                        <li><a href="/learn/by-example">By Example</a></li>
-                                        <li>»</li>
-                                        <li>Record I/O</li>
-                                    </ul>
-                                </div>
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -273,6 +182,8 @@
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -294,9 +205,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getReadableRecordChannel(string filePath, string encoding, string rs,
-                                  string fs)
-                                        returns @tainted io:ReadableTextRecordChannel|error {
+                                    <div class="highlight"><pre><code class=ballerina>function getReadableRecordChannel(string filePath, string encoding,
+                        string rs, string fs)
+                        returns @tainted io:ReadableTextRecordChannel|error {
     io:ReadableByteChannel byteChannel = check io:openReadableFile(filePath);
 </code></pre></div>
 
@@ -307,8 +218,8 @@ import ballerina/log;
                                         <div>
                                             <p>This function returns a <code>ReadableTextRecordChannel</code> from a given file location.
  The encoding is a character representation (i.e., UTF-8 ASCCI) of the
- content in the file. The <code>rs</code> annotation defines a record separator
- (e.g., a new line) and the <code>fs</code> annotation is a field separator
+ content in the file. The <code>rs</code> parameter defines a record separator
+ (e.g., a new line) and the <code>fs</code> parameter is a field separator
  (e.g., a comma).</p>
 
                                         </div>
@@ -365,8 +276,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getWritableRecordChannel(string filePath, string encoding, string rs,
-                                  string fs)
-                                        returns @tainted io:WritableTextRecordChannel|error {
+                    string fs)
+                    returns @tainted io:WritableTextRecordChannel|error {
     io:WritableByteChannel byteChannel = check io:openWritableFile(filePath);
 </code></pre></div>
 
@@ -377,8 +288,8 @@ import ballerina/log;
                                         <div>
                                             <p>This function returns a <code>WritableTextRecordChannel</code> from a given file location.
  The encoding is a character representation (i.e., UTF-8 ASCCI) of the
- content in the file. The <code>rs</code> annotation defines a record separator
- (e.g., a new line) and the <code>fs</code> annotation is a field separator
+ content in the file. The <code>rs</code> parameter defines a record separator
+ (e.g., a new line) and the <code>fs</code> parameter is a field separator
  (e.g., a comma).</p>
 
                                         </div>
@@ -435,7 +346,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function process(io:ReadableTextRecordChannel srcRecordChannel,
-                 io:WritableTextRecordChannel dstRecordChannel) returns error? {
+                 io:WritableTextRecordChannel dstRecordChannel)
+                 returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -519,8 +431,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableTextRecordChannel rc) {
     var closeResult = rc.close();
     if (closeResult is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;,
-                       err = closeResult);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
     }
 }
 </code></pre></div>
@@ -544,8 +455,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableTextRecordChannel wc) {
     var closeResult = wc.close();
     if (closeResult is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;,
-                       err = closeResult);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, closeResult);
     }
 }
 </code></pre></div>
@@ -566,7 +476,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
     string srcFileName = &quot;./files/sample.csv&quot;;
     string dstFileName = &quot;./files/sampleResponse.txt&quot;;
 </code></pre></div>
@@ -587,8 +497,16 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableTextRecordChannel srcRecordChannel =
-    check getReadableRecordChannel(srcFileName, &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableTextRecordChannel srcRecordChannel;
+    var readableChannel = getReadableRecordChannel(srcFileName,
+                                                        &quot;UTF-8&quot;, &quot;\\r?\\n&quot;, &quot;,&quot;);
+    if (readableChannel is error) {
+        log:printError(&quot;An error occurred while creating readable record channel. &quot;,
+                        readableChannel);
+        return;
+    } else {
+        srcRecordChannel = readableChannel;
+    }
 </code></pre></div>
 
                                 </td>
@@ -608,17 +526,15 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableTextRecordChannel dstRecordChannel =
-    check getWritableRecordChannel(dstFileName, &quot;UTF-8&quot;, &quot;\r\n&quot;, &quot;|&quot;);
-    io:println(&quot;Start processing the CSV file from &quot; + srcFileName +
-               &quot; to the text file in &quot; + dstFileName);
-    var result = process(srcRecordChannel, dstRecordChannel);
-    if (result is error) {
-        log:printError(&quot;An error occurred while processing the records: &quot;,
-                       err = result);
+                                    <div class="highlight"><pre><code class=ballerina>    io:WritableTextRecordChannel dstRecordChannel;
+    var writableChannel = getWritableRecordChannel(dstFileName,
+                                                        &quot;UTF-8&quot;, &quot;\r\n&quot;, &quot;|&quot;);
+    if (writableChannel is error) {
+        log:printError(&quot;An error occurred while creating writable record channel. &quot;,
+                        writableChannel);
+        return;
     } else {
-        io:println(&quot;Processing completed. The processed file is located in &quot;,
-                    dstFileName);
+        dstRecordChannel = writableChannel;
     }
 </code></pre></div>
 
@@ -632,6 +548,26 @@ is a new line and the field separator is a pipe (|).</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Start processing the CSV file from &quot; + srcFileName +
+               &quot; to the text file in &quot; + dstFileName);
+    var result = process(srcRecordChannel, dstRecordChannel);
+    if (result is error) {
+        log:printError(&quot;An error occurred while processing the records: &quot;, result);
+    } else {
+        io:println(&quot;Processing completed. The processed file is located in &quot;,
+                    dstFileName);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -702,56 +638,49 @@ Processing completed. The processed file is located in ./files/sampleResponse.tx
         </div>
     </div>
 
-    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
-    </div>
-    <script>
-        $(document).ready(function() {
+     <script>
+            $(document).ready(function() {
 
-            hljs.initHighlightingOnLoad();
+                hljs.initHighlightingOnLoad();
 
-            $(".switch").click(function() {
-                $(".cCodeRight").toggleClass('cShow');
-                $(".cCodeLeft").toggleClass('cHide');
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
             });
 
-            // register "copy to clipboard" event to elements with "copy" class
-            var clipboard = new ClipboardJS('.copy', {
-                text: function(trigger) {
-                    return $('.FullCode').find('pre').text();
-                }
-            });
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
 
-            // Register events show hide tooltip on click event
-            clipboard.on('success', function(e) {
-                setTooltip(e.trigger, 'Copied!');
-                hideTooltip(e.trigger);
-            });
-
-            clipboard.on('error', function(e) {
-                setTooltip(e.trigger, 'Failed!');
-                hideTooltip(e.trigger);
-            });
-
-            $('.copy').tooltip({
-                trigger: 'click',
-                placement: 'bottom'
-            });
-            $("a.copy").unbind("click");
-        });
-
-        function setTooltip(btn, message) {
-            $(btn).attr('data-original-title', message)
-                .tooltip('show');
-        }
-
-        function hideTooltip(btn) {
-            setTimeout(function() {
-                $(btn).tooltip('hide').removeAttr('data-original-title');
-            }, 1000);
-        }
-    </script>
-
-    <script src="/search/search.js"></script>
-</body>
-
-</html>
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

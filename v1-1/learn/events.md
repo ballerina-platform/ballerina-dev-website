@@ -3,8 +3,8 @@ layout: ballerina-inner-page
 title: Events
 permalink: /events/
 redirect_from:
-  - /v1-1/learn/events
-  - /v1-1/learn/events/
+  - /learn/events
+  - /learn/events/
 ---
 
 <script src="/js/events.js"></script>
@@ -12,7 +12,7 @@ redirect_from:
 
 <h1>Events</h1>
 
-<h2>No upcoming events</h2>
+<!-- <h2>No upcoming events</h2> -->
 
 <!-- ## Meetups -->
 
@@ -30,38 +30,208 @@ redirect_from:
 
 <!-- ## No upcoming events -->
 
-<!-- <h2>Conferences</h2> -->
+<h2>Upcoming Events</h2>
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
-    <!-- <tr> 
-    <td class="cEventDateContainer"><span class="cEventDate">October 8-10 </span>
-                      <p class="cEventLocation">San Jose, CA</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
+                      <p class="cEventLocation">San Francisco, California, USA</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World 2019</h4></a>
-                          <h5>PRO TALK: Efficient Microservices Deployment Pipelines</h5>
-                          <b>Anjana Fernando,</b> Director, WSO2</p>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
+                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://apiworld.co/" target="_blank">More Info</a></td> 
-                  </tr> -->
-                  <tr class="event-expiry" style="display:none" data-expiry="November 07, 2019 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">November 5-7</span>
-                      <p class="cEventLocation">Austin, TX</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/Austin/conference/"><h4>DeveloperWeek Austin 2019 </h4></a>
-                          <h5>Pro Session: Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director - Cloud Architecture, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/Austin/conference/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">More Info</a></td> 
                   </tr>
-                <tr class="event-expiry" style="display:none" data-expiry="November 21, 2019 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">November 19-21 </span>
-                      <p class="cEventLocation">San Diego, CA</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/"><h4>KubeCon + CloudNativeCon North America 2019</h4></a>
-                          <h5>Platinum Sponsor</h5>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>Code to Cloud</h5>
+                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/events/kubecon-cloudnativecon-north-america-2019/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
+                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 5, 2020</span>
+                      <p class="cEventLocation">Seattle, Washington, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
+                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+                  </tr>
+                <tr class="event-expiry" style="display:none" data-expiry="May 06, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 6, 2020</span>
+                      <p class="cEventLocation">São Paulo, Brazil</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
+                        <h5></h5>
+                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+                  </tr>
+  
+                  
+</table>
+
+<h2>Past Events</h2>
+
+
+<table class="cEventTable cConferencesList" style="width:100%;">      
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">December 12, 2019</span>
+                      <p class="cEventLocation">Mountain View, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Silicon-Valley-Cloud-Native-and-Kubernetes-Meetup/events/265530711/"><h4>Cloud-Native and Kubernetes Meetup in Silicon Valley</h4></a>
+                          <h5>An Introduction to the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/cloudnative-and-kubernetes-meetup-in-silicon-valley-ballerina-cloud-native-programming-language" target="_blank">View Slides</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">December 10 - 11, 2019</span>
+                      <p class="cEventLocation">Paris, France</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.opensourcesummit.paris/"><h4>Paris Open Source Summit</h4></a>
+                          <h5>Ballerina - A Modern Cloud-based Open Source Programming Language</h5>
+                           <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.opensourcesummit.paris/" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">December 5, 2019</span>
+                      <p class="cEventLocation">San Jose, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/downtown-san-jose-devops/events/265982303/"><h4>Downtown San Jose DevOps Meetup</h4></a>
+                          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/downtown-san-jose-devops-meetup-ballerina-a-programming-language-for-cloud-and-devops-221963732" target="_blank">View Slides</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">November 7, 2019</span>
+                      <p class="cEventLocation">London, UK</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/london-2019/"><h4>WSO2 Summit London</h4></a>
+                          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/11/wso2-integration-summit-london-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View Video</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">November 5 - 7, 2019</span>
+                      <p class="cEventLocation">Austin, Texas, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://developerweekaustin2019.sched.com/"><h4>DeveloperWeek Austin</h4></a>
+                          <h5>Microservices in Practice with Ballerina, Kubernetes and Istio</h5>
+                        <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/developerweek-austin-2019-microservices-in-practice-with-ballerina-kubernetes-and-istio" target="_blank">View Slides</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">November 5, 2019</span>
+                      <p class="cEventLocation">Bern, Switzerland</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/bern-2019/"><h4>WSO2 Summit Bern</h4></a>
+                          <h5>Ballerina — Cloud-native Middleware as a Programming Language</h5>
+                        <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/wso2.org/wso2-integration-summit-bern-2019-ballerina-cloudnative-middleware-as-a-programming-language" target="_blank">View Slides</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">November 5, 2019</span>
+                      <p class="cEventLocation">Colombo, Sri Lanka</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/java-colombo/events/265738162/"><h4>Java Colombo Meetup</h4></a>
+                          <h5>The better java for Java microservice developers</h5>
+                        <b>Sanjiva Weerawarana,</b> Founder and CEO, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=tZwOl01x8TU" target="_blank">View Video</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 8 - 10, 2019</span>
+                      <p class="cEventLocation">San Jose, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://apiworld.co/"><h4>API World</h4></a>
+                          <h5>Efficient Microservices Deployment Pipelines</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://files.devnetwork.cloud/APIWorld/presentations/2019/Anjana_Fernando.pdf" target="_blank">View Slides</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">October 8, 2019</span>
+                      <p class="cEventLocation">San Francisco, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/sanfrancisco-2019/"><h4>WSO2 Summit San Francisco</h4></a>
+                          <h5>Ballerina — Cloud-native Middleware as a Programming Language</h5>
+                        <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/10/wso2-integration-summit-sanfrancisco-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View Video</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 26, 2019</span>
+                      <p class="cEventLocation">Columbus, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/"><h4>Columbus Microservices Meetup</h4></a>
+                          <h5>Effective Microservices Development with Ballerina</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/lafernando/effective-microservices-development-with-ballerina" target="_blank">View Slides</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 26, 2019</span>
+                      <p class="cEventLocation">Columbus, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/columbus-microservices/events/264064167/"><h4>Columbus Microservices Meetup</h4></a>
+                          <h5>Ballerina in Real-World Use-Case</h5>
+                        <b>Glenn Donaldson & Jim Kittle,</b> Ohio State University
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/secret/AW4Gz2reZ0xNW" target="_blank">View Slides</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 24, 2019</span>
+                      <p class="cEventLocation">New York, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/newyork-2019/"><h4>WSO2 Summit New York</h4></a>
+                          <h5>Ballerina - Cloud Native Middleware as a Programming Language</h5>
+                        <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/wso2.org/wso2-integration-summit-new-york-2019-ballerina-cloud-native-middleware-as-a-programming-language" target="_blank">View Slides</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 9 - 12, 2019</span>
+                      <p class="cEventLocation">Las Vegas, Nevada, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://apachecon.com/acna19/s/#/schedule"><h4>ApacheCon North America 2019</h4></a>
+                          <h5>Ballerina - Re-inventing Middleware in a Programming Language</h5>
+                        <b>Paul Fremantle,</b> CTO and Co-founder, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-reinventing-middleware-in-a-programming-language" target="_blank">View Slides</a></td>
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 9 - 12, 2019</span>
+                      <p class="cEventLocation">Las Vegas, Nevada, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://apachecon.com/acna19/s/#/schedule"><h4>ApacheCon North America 2019</h4></a>
+                          <h5>Conquering Network Distributed Applications Using the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/apachecon-na-2019-conquering-network-distributed-applications-using-the-ballerina-programming-language" target="_blank">View Slides</a></td>
                   </tr>
                   
 </table>

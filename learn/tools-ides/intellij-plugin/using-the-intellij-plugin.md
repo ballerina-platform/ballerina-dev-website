@@ -1,11 +1,15 @@
 ---
 layout: ballerina-inner-page
 title: Using the IntelliJ Ballerina Plugin
+permalink: /learn/intellij-plugin/using-the-intellij-plugin
+redirect_from:
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
 ---
 
 # Using the IntelliJ Ballerina Plugin
 
-The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/tools-ides/intellij-plugin).
+The below sections include information to start using the IntelliJ Ballerina plugin after [installing it](/learn/intellij-plugin).
 
 - [Creating a new Ballerina project](#creating-a-new-ballerina-project)
 - [Setting up Ballerina SDK for an existing project](#setting-up-ballerina-sdk-for-an-existing-project)
@@ -101,7 +105,7 @@ Then, the language server debug logs will be added to the IDEA log files. (Click
 
 ## What's next?
 
- Next, for information on using the features of the IntelliJ Ballerina plugin, see [Using the IntelliJ plugin features](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features).
+ Next, for information on using the features of the IntelliJ Ballerina plugin, see [Using the IntelliJ plugin features](/learn/intellij-plugin/using-intellij-plugin-features).
  
 
 

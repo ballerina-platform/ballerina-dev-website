@@ -1,3 +1,12 @@
+---
+layout: ballerina-inner-page
+title: Run all tests
+permalink: /v0-991/learn/vscode-plugin/run-all-tests
+redirect_from:
+  - /v0-991/learn/tools-ides/vscode-plugin/run-all-tests
+  - /v0-991/learn/tools-ides/vscode-plugin/run-all-tests/
+---
+
 # Run all tests
 
 This option allows you to run all the tests that belong to multiple modules of your project. Follow the steps below to do this.
@@ -5,10 +14,10 @@ This option allows you to run all the tests that belong to multiple modules of y
 1. Click **View** in the top menu and click **Command Palette**.
 2. In the search box, type "Ballerina" and click **Ballerina: Run All Tests**.
 
-![Run all tests](../images/run-all-tests.gif)
+![Run all tests](/v0-991/learn/images/run-all-tests.gif)
 
 ## What's next?
 
-- For information on the next capability of the VS Code Ballerina extension, see [Graphical Editor](vscode-plugin/graphical-editor).
-- For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/learn/tools-ides/vscode-plugin).
-- For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](../tools-ides).
+- For information on the next capability of the VS Code Ballerina extension, see [Graphical Editor](/v0-991/learn/vscode-plugin/graphical-editor).
+- For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/vscode-plugin).
+

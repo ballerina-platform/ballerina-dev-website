@@ -1,3 +1,12 @@
+---
+layout: ballerina-inner-page
+title: Graphical View
+permalink: /v0-991/learn/vscode-plugin/graphical-editor
+redirect_from:
+  - /v0-991/learn/tools-ides/vscode-plugin/graphical-editor
+  - /v0-991/learn/tools-ides/vscode-plugin/graphical-editor/
+---
+
 # Graphical Editor
 
 A rich set of Visualization tools will immensely enhance your development experience especially in the integration space. 
@@ -17,11 +26,11 @@ Follow the steps below to launch the Graphical Editor.
 
 2. In the search box, type "Show" and click **Ballerina: Show Diagram**.
 
-![Show Diagram option](../images/show-diagram.gif)
+![Show Diagram option](/v0-991/learn/images/show-diagram.gif)
 
 > **Tip**: For a quick launch, click the **Show Diagram** icon in the top right corner.
 
-![Quick launch of the Graphical Editor](../images/graphical-editor-quick-launch.gif)
+![Quick launch of the Graphical Editor](/v0-991/learn/images/graphical-editor-quick-launch.gif)
 
 ## Exploring the features of the Graphical Editor
 
@@ -38,7 +47,7 @@ Click on the below links to explore the features of the Graphical Editor.
 
 You can design your control flow graphically by switching to the Edit mode of the Graphival Editor. Click **Edit** in the design view to do this.
 
-![Designing the control flow](../images/edit-mode.gif)
+![Designing the control flow](/v0-991/learn/images/edit-mode.gif)
 
 ### Adding definitions
 
@@ -46,13 +55,13 @@ In the edit mode, click **Definitions** to add main top-level constructs which a
 
 This feature of the Graphical Editor represents the text to visual syntax parity of Ballerina.
 
-![Adding definitions](../images/add-definitions.gif)
+![Adding definitions](/v0-991/learn/images/add-definitions.gif)
 
 ### Adding control flow constructs
 
 To add statments to the constructs in your design, click the green color plus sign appearing in the scope of each construct.
 
-![Adding control flow constructs](../images/add-constructs.png)
+![Adding control flow constructs](/v0-991/learn/images/add-constructs.png)
 
 ### Adding workers and endpoints
 
@@ -60,26 +69,25 @@ You can add endpoints and workers for constructs such as resource definitions an
 
 - When defining your control flow with parallel execution, add workers as shown below.
 
-    ![Adding workers](../images/add-workers.png)
+    ![Adding workers](/v0-991/learn/images/add-workers.png)
 
 - When defining external endpoint interactions, add endpoint constructs. 
 
-    ![Adding endpoints](../images/add-endpoints.png)
+    ![Adding endpoints](/v0-991/learn/images/add-endpoints.png)
 
 ### Viewing the source
 
 From the design view you can jump to the respective source segment as shown below.
 
-![Viewing the source](../images/jump-to-source-view.gif)
+![Viewing the source](/v0-991/learn/images/jump-to-source-view.gif)
 
 ### Expanding the Diagram View
 
 You can expand the Diagram View to show not only the control flow but also to show more fine-grained statements of the constructs.
 
-![Expanding the Diagram View](../images/expand-diagram-view.gif)
+![Expanding the Diagram View](/v0-991/learn/images/expand-diagram-view.gif)
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Documentation Viewer](vscode-plugin/documentation-viewer).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](../tools-ides).
+ - For information on the next capability of the VS Code Ballerina extension, see [Documentation Viewer](/v0-991/learn/vscode-plugin/documentation-viewer).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v0-991/learn/vscode-plugin).

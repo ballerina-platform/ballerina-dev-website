@@ -1,6 +1,10 @@
 ---
 layout: ballerina-inner-page
 title: Using the features of the IntelliJ plugin
+permalink: /learn/intellij-plugin/using-intellij-plugin-features
+redirect_from:
+  - /learn/tools-ides/intellij-plugin/using-intellij-plugin-features
+  - /learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
 ---
 
 # Using the features of the IntelliJ plugin
@@ -161,3 +165,8 @@ You expand/collapse the following Ballerina code segments using the icons in the
 - multiline comments
  
 ![Code folding](/learn/images/code-folding.gif)
+
+## What's next?
+
+- For information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](/learn/intellij-plugin)
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/learn).

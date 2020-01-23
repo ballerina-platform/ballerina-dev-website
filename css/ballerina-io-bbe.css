@@ -403,3 +403,46 @@ td.cDescTD {
 width:100%;
     }
 }
+
+.fa-github, .icon-github {
+    background-image: url("/img/github.svg");
+    background-size: 20px;
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-left: 28px !important;
+}
+
+.cBallerina-io-breadcrumbs {
+    padding: 15px 0px 5px 0px;
+    margin-bottom: 20px;
+}
+
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a {
+    color: #22b7b1 !important;
+    font-size: 16px;
+}
+
+.wy-breadcrumbs li a {
+    padding-right: 0;
+}
+
+.float-right, .wy-breadcrumbs li.wy-breadcrumbs-aside {
+    float: right;
+}
+
+.wy-breadcrumbs li, .wy-breadcrumbs li a {
+    display: inline-block;
+}
+
+li, ul {
+    list-style: none;
+}
+
+body, ol, ul {
+    margin: 0;
+}
+
+ol, ul {
+    padding: 0;
+}

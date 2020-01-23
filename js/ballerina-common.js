@@ -156,113 +156,21 @@ if (typeof hljs === 'object') {
 }
 
 //matching version selected with the URL
-function versionSelectorValue(ver){
-    var pathValue = window.location.pathname;
-    var selected_value = "";
-    if(pathValue.indexOf(ver) > -1){
-        selected_value = "selected='selected'";
-    }
-    return selected_value;
+function versionSelectorValue(){
+    let pathValue = window.location.pathname;
+    let options = $("#versions").find("option");
+    $.each(options, function (key, option) {
+        let optionText = $(option).text();
+        let ver = "v" + optionText.replace(".", "-");
+        if(pathValue.indexOf(ver) > -1){
+            $(option).attr("selected", "selected");
+        }
+    });
 }
 
 $(document).ready(function() {
-    var pathValue = window.location.pathname;
-    
-    var menu = '<div class="container">' +
-        '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-        '<nav class="navbar">' +
-        '<div>' +
-        '<div class="navbar-header">' +
-        '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">' +
-        '<span class="sr-only">&#9776</span>' +
-        '<span class="icon-bar"></span>' +
-        '<span class="icon-bar"></span>' +
-        '<span class="icon-bar"></span>' +
-        '</button>' +
-        '<a class="cMobileLogo" href="/" ><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>' +
-        '</div>' +
-        '<div id="navbar" class="collapse navbar-collapse">' +
-        '<ul class="nav navbar-nav cTopNav">' +
-        '<li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a></li>' +
-        '<li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a></li>' +
-        '<li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/" target="_blank">Central</a></li>' +
-        '<li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a></li>' +
-        '<li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a></li>' +
-        '<li class="cVersionItem"><div class="cVersionContainer"><lable class="cVlable">Version</lable><select name="versions" id="versions" class="select-css">' +
-        '<option value="/v1-1/learn/" '+versionSelectorValue("")+'>1.1</option>' +
-        '<option value="/v1-0/learn/" '+versionSelectorValue("1-0")+'>1.0</option>' +
-        '<option value="/v0-991/learn/" '+versionSelectorValue("991")+'>0.991</option> </select></div></li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '</nav>' +
-        '</div>' +
-        '</div>';
-
-    var footer = '<div class="container">' +
-        '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">' +
-        '<ul>' +
-        '<li><a class="cBioFooterLink" href="/downloads">Download</a></li>' +
-        '<li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>' +
-        '<li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>' +
-        '<li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>' +
-        '<li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>' +
-        '</ul>' +
-        '</div>' +
-        '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">' +
-        // '<p><span>Announcement List</span><br/>' +
-        // '<div class="cFormContainer">' +
-        // '<form>' +
-        // '<div class="cFieldContainer">' +
-        // '<input maxlength="90" value="" id="emailUser" name="email" placeholder="I consent to join the email list" title="email" type="text">' +
-        // '</div>' +
-        // '<div class="cButtonContainer">' +
-        // '<a class="cBallerinaButtons subscribeUserForm" href="" id="subscribeUserButton"></a>' +
-        // '</div>' +
-        // '</form>' +
-        // '</div>' +
-        '<div class="cSocialmedia">' +
-        '<ul>' +
-        '<li>' +
-        '<a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>' +
-        '</li>' +
-        '<li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>' +
-        '<li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>' +
-        '<li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>' +
-        '</ul>' +
-        '<div class="pdframe"></div>' +
-        '</div>' +
-        '</div>' +
-        '<div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">' +
-        //'<div class="cFooterBanner"><a href="https://con.ballerina.io/?utm_source=bio&utm_medium=banner&utm_campaign=bio_footer_banner" class="cFooterBanner-link" target="_blank"><img src="https://con.ballerina.io/wp-content/themes/ballerinacon/images/bcon-logo.png"/></a></div>' +
-        '<p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>' +
-        '</div>';
-
-
-
-    // var pathValue = window.location.pathname;
-    // var version =    '<div class="cVersionContainer"><lable class="cVlable">Version</lable>' +
-    // '<select name="versions" id="versions" class="select-css">' +
-    // '<option value="http://v1-0.ballerina.io'+pathValue+'">1.0</option>' +
-    // '<option value="https://v0-991.ballerina.io'+pathValue+'" selected="selected">0.991</option>' +
-    // '</select>'+
-    // '</div>';
-
-    // var homelink =  '<a href="/"><img class="logo" src="html-template-resources/images/ballerina-logo.png"></a>';
-
-    
-    // $('.navi-wrapper-content a').replaceWith(homelink);
-
-
-
-   
-   // $('.cBallerina-io-Logo-row .container').append(version);
-   // $('.navi-wrapper').append(version);
-
-
-    $('#iMainNavigation').append(menu);
-    $('#iBallerinaFooter').append(footer);
-    // $('.cVersionContainer').append (versionselector);
+    // Change version selected in the versions dropdown according to version on the URL.
+    versionSelectorValue();
 
     $("code").addClass('cBasicCode');
     $(".ballerina").removeClass('cBasicCode');
@@ -273,14 +181,11 @@ $(document).ready(function() {
     $(".cSEQUENCE").addClass('active');
     $(".cRUNTIME").addClass('active');
 
-
-
     $(".cRUNTIME").click(function() {
         $(".cRuntimeContent").addClass('cShow');
         $(".cDeploymentContent").removeClass('cShow');
         $(".cSECUREBYDEFAULTContent").removeClass('cShow');
         $(".cLifecycleContent").removeClass('cShow');
-
     });
 
     $(".cDEPLOYMENT").click(function() {
@@ -300,9 +205,6 @@ $(document).ready(function() {
 
     $(".cSEQUENCEContent").addClass('cShow');
 
-
-
-
     $(".cSEQUENCE").click(function() {
         $(".cSEQUENCEContent").addClass('cShow');
         $(".cCONCURRENCYContent").removeClass('cShow');
@@ -312,7 +214,6 @@ $(document).ready(function() {
         $(".cCLOUDNATIVEContent").removeClass('cShow');
         $(".cBESTPRACTICESENFORCEDContent").removeClass('cShow');
         $(".cBEYONDTHELANGUAGEContent").removeClass('cShow');
-
     });
 
     $(".cCONCURRENCY").click(function() {
@@ -324,7 +225,6 @@ $(document).ready(function() {
         $(".cCLOUDNATIVEContent").removeClass('cShow');
         $(".cBESTPRACTICESENFORCEDContent").removeClass('cShow');
         $(".cBEYONDTHELANGUAGEContent").removeClass('cShow');
-
     });
 
     $(".cTYPE").click(function() {
@@ -392,6 +292,7 @@ $(document).ready(function() {
         $(".cBESTPRACTICESENFORCEDContent").addClass('cShow');
         $(".cBEYONDTHELANGUAGEContent").removeClass('cShow');
        });
+
     $(".cBEYONDTHELANGUAGE").click(function() {
         $(".cSEQUENCEContent").removeClass('cShow');
         $(".cCONCURRENCYContent").removeClass('cShow');
@@ -414,12 +315,6 @@ $(document).ready(function() {
         if ($menuDropWindow.hasClass('cShowcSearchTopMenu')) {
             $searchInput.focus();
         }
-
-
-
-
-
-        
     });
 
     $(document).mouseup(function(e) {
@@ -553,14 +448,14 @@ $(function() {
 });
 
 
-
-
-
 $(document).ready(function() {
- var urlmenu = document.getElementById( 'versions' );
- urlmenu.onchange = function() {    
-    window.open( this.options[ this.selectedIndex ].value , "_self" );
-  }
+    let urlmenu = document.getElementById( 'versions' );
+    urlmenu.onchange = function() {
+        let pathname = window.location.pathname;
+        let splitedPath = pathname.split("/learn/");
+        let newPath = "/" + this.options[ this.selectedIndex ].value + "/learn/" + splitedPath[1];
+        window.open( newPath , "_self" );
+    };
 
     //subscribe form
     $("#subscribeUserButtonOS").click(function(event) {
@@ -609,35 +504,3 @@ $(document).ready(function() {
         }
     });
 });
-
-
-
-// $(document).ready(function() {
-//     var a = function() {
-//       var b = $(window).scrollTop();
-//       var d = $("#scroller-anchor").offset({scroll:false}).top;
-//       var c = $("#scroller");
-//       if (b>d) {
-//         c.css({position:"fixed",top:"0px"})
-//       } else {
-//         c.css({position:"relative",top:""})
-//       }
-//     };
-//     $(window).scroll(a);a()
-//   });
-
-/*
-function sticky_relocate() {
-    var window_top = $(window).scrollTop();
-    var div_top = $('#scroller-anchor').offset().top;
-    if (window_top > div_top) {
-      $('#scroller').addClass('stick');
-    } else {
-      $('#scroller').removeClass('stick');
-    }
-  }
-  
-  $(function() {
-    $(window).scroll(sticky_relocate);
-    sticky_relocate();
-  });*/

@@ -60,7 +60,7 @@ We appreciate your help!
 ```bash 
 git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
 ```
->**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing 'YOUR-GITHUB-USERNAME' with your Git username.
+>**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing `<YOUR-GITHUB-USERNAME>` with your Git username.
 ```bash 
 git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
 ```

@@ -59,7 +59,7 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 <th> Consequence </th>
 <tr border=1>
 <td width=50% border=1> Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community. </td>
-<td width=50% border=1> A private, written warning from community leaders providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
+<td width=50% border=1> A private, written warning from project/community leaders providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
 </td>
 </tr>
 </table>
@@ -81,7 +81,7 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 <table border=1>
 <th> Community Impact </th>
 <th> Consequence </th>
-<tr>>
+<tr>
 <td width=50%> A serious violation of community standards including sustained inappropriate behavior. </td>
 <td width=50%> A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved including unsolicited interaction with those enforcing the code of conduct is allowed during this period. Violating these terms may lead to a permanent ban.
 </td>
@@ -93,7 +93,7 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 <table border=1>
 <th> Community Impact </th>
 <th> Consequence </th>
-<tr>>
+<tr>
 <td width=50%> Demonstrating a pattern of violation of community standards including sustained inappropriate behavior, harassment of an individual, or aggression towards or disparagement of classes of individuals. </td>
 <td width=50%> A permanent ban from any sort of public interaction within the project community.
 </td>

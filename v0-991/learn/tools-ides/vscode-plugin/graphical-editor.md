@@ -5,7 +5,7 @@ title: Graphical View
 
 # Graphical Editor
 
-A rich set of Visualization tools will immensely enhance your development experience especially in the integration space. 
+A rich set of visualization tools will immensely enhance your development experience especially in the integration space. 
 
 The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. 
 

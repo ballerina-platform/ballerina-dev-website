@@ -15,8 +15,8 @@ We appreciate your help!
 - [Obtain the source code](#obtain-the-source-code)
 - [Build the project](#build-the-project)
 - [Set up the developer environment](#set-up-the-developer-environment)
-    - [Set up IntelliJ IDEA](#set-up-intellij-idea)
-    - [Set up Eclipse](#set-up-eclipse)
+    - [Set up the Ballerina plugin](#set-up-the-ballerina-plugin)
+    - [Set up the ANTLR4 plugin](#set-up-the-antlr4-plugin)
 - [Contribute to Ballerina grammar](#contribute-to-ballerina-grammar)
 - [Submit your contribution](#submit-your-contribution)
 - [Accept the Contributor License Agreement](#accept-the-contributor-license-agreement)
@@ -81,31 +81,21 @@ git submodule update --init
 
 ## Set up the development environment
 
-See the below sections to set up IntelliJ IDEA or Eclipse as your development environment.
+See the below sections to set up the required plugins in your preferred IDEs/Editors.
 
-### Set up IntelliJ IDEA
+### Set up the Ballerina plugin
 
-Follow the steps below to import the Ballerina project to IntelliJ IDEA similar to any other Gradle project.
-
-1. In IntelliJ, click **File** and then click **Open**.
-2. Browse the file system and select the <BALLERINA_PROJECT_ROOT> root directory.
->**Tip:** If you are opening the directory for the first time in IntelliJ and if prompted to import it as a Gradle project, select the **Auto import** option.
-3. Set Project SDK as Java 1.8.
-4. Install the following plugins:
-    - [Ballerina plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/9520-ballerina)
+Currently, Ballerina has the below plugins developed for IntelliJ IDEA and VS Code. 
+- [Ballerina plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/9520-ballerina)
     
-        For installation instructions, see [Ballerina IntelliJ Plugin Documentation](https://ballerina.io/learn/tools-ides/intellij-plugin).
-    - [ANTLR plugin for IntelliJ IDEA](https://plugins.jetbrains.com/plugin/7358-antlr-v4-grammar-plugin)
-        
-        This will be useful to check and validate a [grammar rule](#contributing-to-ballerina-grammar) you wrote.
+    For installation instructions, see [Ballerina IntelliJ Plugin Documentation](https://ballerina.io/learn/vscode-plugin).
+- [Ballerina plugin for VS Code](https://plugins.jetbrains.com/plugin/9520-ballerina)
+    
+    For installation instructions, see [Ballerina VS Code Documentation](https://ballerina.io/learn/vscode-plugin).
 
-### Set up Eclipse
+### Set up the ANTLR4 plugin
 
-As all Ballerina repositories are developed as Maven or Gradle projects, follow the steps below to import any Ballerina project to Eclipse similar to any other Maven or Gradle project.
-
-1. In Eclipse, click **File** and then click **Import..**.
-2. Under the **Maven** option, select **Existing Maven Projects**. 
-3. Browse the file system and select the Maven module to open it.
+This plugin will be useful to check and validate a [grammar rule](#contributing-to-ballerina-grammar) you wrote. For instructions on installing the ANTLR4 plugin based on your preferred IDE/Editor (which supports antlr 4.x version), go to [ANTLR Documentation](https://www.antlr.org/tools.html).
 
 ## Contribute to Ballerina grammar
 

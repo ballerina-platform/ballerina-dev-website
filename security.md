@@ -21,7 +21,7 @@ Based on the ethics of responsible disclosure, you must only use the **security@
 
 Use the following key to send secure messages to security@ballerina.io:
 
-security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381)
+> security@ballerina.io: 0168 DA26 2989 0DB9 4ACD 8367 E683 061E 2F85 C381 [pgp.mit.edu](https://pgp.surfnet.nl/pks/lookup?op=vindex&fingerprint=on&search=0xE683061E2F85C381)
 
 Also, use the following template when reporting vulnerabilities so that it contains all the required information and helps expedite the analysis and mitigation process.
 

@@ -29,16 +29,16 @@ We appreciate your help!
     - [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev): to join the developer team mailing list to discuss Ballerina roadmap, features, issues that are in progress, etc.
     - [Slack](https://ballerina-platform.slack.com/): for real-time communications with the team and community.
     - [StackOverflow](https://stackoverflow.com/questions/tagged/ballerina): to get help with Ballerina. (Use the Ballerina tag for your questions there.) 
-    - [GitHub][(https://github.com/ballerina-platform/ballerina-lang/issues): to file issues, comment on other issues, send your pull requests.
+    - [GitHub](https://github.com/ballerina-platform/ballerina-lang/issues): to file issues, comment on other issues, send your pull requests.
 
 - **IMPORTANT:** Send an email to security@ballerina.io to report sensitive security-related issues. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
 
 - Submitting a bug is just as important as contributing to code. Create a new issue in the relevant GitHub repo using the below links, fill out all sections in the issue template, and submit the bug/issue report. 
 
     >**Tip:** If you are unsure whether you have found a bug, search existing issues in the corresponding repo on GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
-   - compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
-   - language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
-   - website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
+   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
+   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
+   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
 
 -  Start with GitHub issues that can be fixed easily:
     - Browse issues labeled "good first issue" in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
@@ -70,13 +70,13 @@ git submodule update --init
 ```
 ## Build the project
 
-1. Navigate to the <BALLERINA-LANG_REPO> root directory and execute the below Gradle command.
+1. Navigate to the root directory of the Ballerina project (i.e., <BALLERINA_PROJECT_ROOT>) and execute the below Gradle command.
 ```bash 
 ./gradlew clean build
 ```
 2. Extract the built Ballerina distributions in the below locations.
--  **runtime only:** <BALLERINA-LANG_REPO>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip. 
--  **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA-LANG_REPO>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
+-  **runtime only:** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip. 
+-  **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip.
 >**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 
 ## Set up the developer environment
@@ -88,7 +88,7 @@ See the below sections to set up IntelliJ IDEA or Eclipse as your development en
 Follow the steps below to import the Ballerina project to IntelliJ IDEA similar to any other Gradle project.
 
 1. In IntelliJ, click **File** and then click **Open**.
-2. Browse the file system and select the <BALLERINA-LANG_REPO> root directory.
+2. Browse the file system and select the <BALLERINA_PROJECT_ROOT> root directory.
 >**Tip:** If you are opening the directory for the first time in IntelliJ and if prompted to import it as a Gradle project, select the **Auto import** option.
 3. Set Project SDK as Java 1.8.
 4. Install the following plugins:
@@ -130,11 +130,11 @@ For more information about the Ballerina compiler, go to [Ballerina Compiler —
 
 ## Submit your contribution
 
-1. Do your changes in the <BALLERINA_LANG_REPO>.
+1. Do your changes in the source code.
 2. Add unit tests accordingly. (The build process will automatically execute all the tests.)
-3. Commit the changes to your fork and push them to the original <a href="https://github.com/ballerina-platform/ballerina-lang">ballerina-lang</a> repo by sending a Pull Request (PR). 
+3. Commit the changes to your fork and push them to the corresponding original repo by sending a Pull Request (PR). 
 
->**Tip:** Follow these commit message requirements:
+    >**Tip:** Follow these commit message requirements:
 
     - Separate subject from body with a blank line
     - Limit the subject line to 50 characters

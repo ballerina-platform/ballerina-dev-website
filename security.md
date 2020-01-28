@@ -15,7 +15,7 @@ Ballerina project maintainers take security issues very seriously and all the vu
 
 Ensure you are using the latest Ballerina version before you run an automated security scan or perform a penetration test against it.
 
-Based on the ethics of responsible disclosure, you must only use the **security@ballerina.io** mailing list to report security vulnerabilities and any other concerns regarding the security aspects of the source code or any other resource in this repo.
+Based on the ethics of responsible disclosure, you must only use the **[security@ballerina.io](mailto:security@ballerina.io)** mailing list to report security vulnerabilities and any other concerns regarding the security aspects of the source code or any other resource in this repo.
 
 **Warning:** To protect the end-user security, please do not use any other medium to report security vulnerabilities. Also, kindly refrain from disclosing the vulnerability details you come across with other individuals, in any forums, sites, or other groups - public or private before it’s mitigation actions and disclosure process are completed.
 

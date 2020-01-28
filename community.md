@@ -18,11 +18,7 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 ## Try out Ballerina
 
-Use the below resources to learn Ballerina and try out writing Ballerina code on your own.
-- [Quick Tour](https://ballerina.io/learn/quick-tour)
-- [Ballerina By Examples](https://ballerina.io/learn/by-example)
-- [How-To Guides](https://ballerina.io/learn)
-- [The Standard Library](https://ballerina.io/learn/api-docs)
+[Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
 ## Seek for help
 

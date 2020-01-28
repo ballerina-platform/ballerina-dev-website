@@ -14,7 +14,7 @@ We appreciate your help!
 - [Set up the Prerequisites](#set-up-the-prerequisites)
 - [Obtain the source code](#obtain-the-source-code)
 - [Build the project](#build-the-project)
-- [Set up the developer environment](#set-up-the-developer-environment)
+- [Set up the development environment](#set-up-the-development-environment)
     - [Set up the Ballerina plugin](#set-up-the-ballerina-plugin)
     - [Set up the ANTLR4 plugin](#set-up-the-antlr4-plugin)
 - [Contribute to Ballerina grammar](#contribute-to-ballerina-grammar)

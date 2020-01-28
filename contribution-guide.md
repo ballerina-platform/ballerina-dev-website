@@ -26,19 +26,36 @@ We appreciate your help!
 
 - Join the conversations at:
 
-    - [Ballerina-Dev Google Group](https://groups.google.com/forum/#!forum/ballerina-dev): to join the developer team mailing list to discuss Ballerina roadmap, features, issues that are in progress, etc.
-    - [Slack](https://ballerina-platform.slack.com/): for real-time communications with the team and community.
-    - [StackOverflow](https://stackoverflow.com/questions/tagged/ballerina): to get help with Ballerina. (Use the Ballerina tag for your questions there.) 
-    - [GitHub](https://github.com/ballerina-platform/ballerina-lang/issues): to file issues, comment on other issues, send your pull requests.
+ <div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
+  <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
+      <div class="cBallerina-Box">
+      <a class="cCommunityIcons" href="https://twitter.com/ballerinalang"><img src="/img/twitter.svg"></a>
+      </div>
+   </div>
+   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
+      <div class="cBallerina-Box">
+      <a class="cCommunityIcons" href="/community/slack"><img src="/img/slack.svg"></a>
+      </div>
+   </div>
+      <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
+      <div class="cBallerina-Box">
+      <a class="cCommunityIcons" href="https://stackoverflow.com/questions/tagged/ballerina"><img src="/img/stackoverflow.svg"></a>
+      </div>
+   </div>
+   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
+      <div class="cBallerina-Box">
+      <a class="cCommunityIcons" href="https://groups.google.com/forum/#!forum/ballerina-dev"><img src="/img/google-groups.svg"></a>
+      </div>
+   </div>
+</div>
 
-- **IMPORTANT:** Send an email to security@ballerina.io to report sensitive security-related issues. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
-
-- Submitting a bug is just as important as contributing to code. Create a new issue in the relevant GitHub repo using the below links, fill out all sections in the issue template, and submit the bug/issue report. 
+- Submitting a bug is just as important as contributing to code. Report an issue in the relevant repo out of the GitHub repos listed below. 
 
     >**Tip:** If you are unsure whether you have found a bug, search existing issues in the corresponding repo on GitHub and raise it in the [Ballerina-Dev Google Group](#https://groups.google.com/forum/#!forum/ballerina-dev).
-   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
-   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
-   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
+    - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+    - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
+    - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
+    - Security flaw: send an email to security@ballerina.io. For details, see the security policy.
 
 -  Start with GitHub issues that can be fixed easily:
     - Browse issues labeled "good first issue" in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.

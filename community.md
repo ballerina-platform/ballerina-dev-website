@@ -20,9 +20,9 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 Use the below resources to learn Ballerina and try out writing Ballerina code on your own.
 - [Quick Tour](https://ballerina.io/learn/quick-tour)
-- [Ballerina By Examples](https://ballerina.io/learn/by-example/)
-- [How-To Guides](https://ballerina.io/learn/)
-- [The Standard Library](https://ballerina.io/learn/api-docs/ballerina/)
+- [Ballerina By Examples](https://ballerina.io/learn/by-example)
+- [How-To Guides](https://ballerina.io/learn)
+- [The Standard Library](https://ballerina.io/learn/api-docs)
 
 ## Seek for help
 
@@ -55,10 +55,10 @@ We are happy to help! Come engage with us on any channel that works for you.
 
 Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
 
-   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
-   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
-   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
-   - Security flaw: send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
+   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
+   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
+   - Security flaw: send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>
 
 ## Help us grow 
 

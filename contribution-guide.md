@@ -87,7 +87,7 @@ git submodule update --init
 ```
 ## Build the project
 
-1. Navigate to the root directory of the Ballerina project (i.e., <BALLERINA_PROJECT_ROOT>) and execute the below Gradle command.
+1. Navigate to the root directory of the Ballerina project (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute the below Gradle command.
 ```bash 
 ./gradlew clean build
 ```

@@ -104,7 +104,7 @@ The complete source code should look similar to the following:
 import ballerina/http;
 import ballerina/io;
 
-public function main() returns error? {
+public function main() returns @tainted error? {
     http:Client helloClient = new("http://localhost:9090/hello");
     http:Response helloResp = check helloClient->get("/sayHello");
     io:println(check helloResp.getTextPayload());

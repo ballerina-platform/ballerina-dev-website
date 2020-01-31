@@ -210,9 +210,9 @@ service helloWorld on new http:Listener(9090) {
     resource function sayHello (http:Caller caller, http:Request request) {
         http:Response response = new;
         response.setTextPayload("Hello, World! \n");
-        var result = caller -> respond(response);
-        if (result is error) {
-            log:printError("Error sending response", result);
+        var responseResult = caller -> respond(response);
+        if(responseResult is error){
+            log:printError("error while sending result to client.", responseResult);
         }
     }
 }

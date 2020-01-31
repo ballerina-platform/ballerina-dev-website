@@ -1,8 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Run and Deploy Ballerina Programs
-permalink: /learn/how-to-deploy-and-run-ballerina-programs/
-
+permalink: /v1-0/learn/how-to-deploy-and-run-ballerina-programs/
 ---
 
 # How to Run and Deploy Ballerina Programs
@@ -197,6 +196,7 @@ Add the following code to the `hello_world_docker.bal` file.
 ```ballerina
 import ballerina/http;  
 import ballerina/docker;  
+import ballerina/log;
   
 @http:ServiceConfig {  
     basePath:"/helloWorld"  
@@ -210,9 +210,9 @@ service helloWorld on new http:Listener(9090) {
     resource function sayHello (http:Caller caller, http:Request request) {
         http:Response response = new;
         response.setTextPayload("Hello, World! \n");
-        var result = caller -> respond(response);
-        if (result is error) {
-            log:printError("Error sending response", result);
+        var responseResult = caller -> respond(response);
+        if(responseResult is error){
+            log:printError("error while sending result to client.", responseResult);
         }
     }
 }

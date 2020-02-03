@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Streaming Reference Guide
-permalink: /learn/ballerina-streaming-reference/
+permalink: /v1-0/learn/ballerina-streaming-reference/
 ---
 
 # Ballerina Streaming Reference Guide

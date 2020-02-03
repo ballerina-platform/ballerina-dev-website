@@ -62,5 +62,5 @@ Above are the language intelligence features that are currently available in the
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/learn/vscode-plugin/run-and-debug).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/v1-0/learn/vscode-plugin/run-and-debug).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/v1-0/learn/vscode-plugin).

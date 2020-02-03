@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Quick Tour
-permalink: /learn/quick-tour/
+permalink: /v1-0/learn/quick-tour/
 ---
 
 # Quick Tour
@@ -11,8 +11,8 @@ Now, that you know a little bit of Ballerina, let's take it for a spin!
 ## Install Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
-1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
-1. Follow the instructions given on the [Visual Studio Code Plugin](/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
+1. Follow the instructions given on the [Getting Started](/v1-0/learn/getting-started) page to set it up. 
+1. Follow the instructions given on the [Visual Studio Code Plugin](/v1-0/learn/tools-ides/vscode-plugin) page or the [IntelliJ IDEA Plugin](/v1-0/learn/tools-ides/intellij-plugin) page to set up your preferred editor for Ballerina.
 
 ## Write a Service, Run It, and Invoke It
 
@@ -180,4 +180,4 @@ Star [GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and sho
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
-* Go through [Ballerina by Example](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Go through [Ballerina by Example](/v1-0/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Publish a Module
-permalink: /learn/how-to-publish-modules/
+permalink: /v1-0/learn/how-to-publish-modules/
 ---
 
 # How to Publish a Module

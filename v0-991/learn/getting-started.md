@@ -85,4 +85,4 @@ To get help when you work with Ballerina, see the [help page](/help).
 
 ## What's next
 
-Once you have successfully installed Ballerina, try out the [Quick Tour](/learn/quick-tour) and take Ballerina for its first spin.
+Once you have successfully installed Ballerina, try out the [Quick Tour](/v0-991/learn/quick-tour) and take Ballerina for its first spin.

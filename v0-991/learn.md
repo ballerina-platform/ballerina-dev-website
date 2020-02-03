@@ -1,5 +1,8 @@
 ---
 layout: ballerina-inner-page
+title: Let’s learn Ballerina!
+description: Ballerina is meant to be a quick start for anyone with prior programming experience.
+keywords: Ballerina, ballerinalang
 permalink: /v0-991/learn/
 redirect_from:
   - /v0-991/learn/tools-ides

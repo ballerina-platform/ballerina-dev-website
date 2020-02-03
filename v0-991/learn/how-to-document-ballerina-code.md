@@ -118,7 +118,7 @@ A typical project structure of a Ballerina project is like this:
 
 `ballerina doc` command will read the `Module.md` and append it in the generated HTML file.
 
-Please check [HTTP module documentation](https://ballerina.io/learn/api-docs/ballerina/http.html) for a sample HTML that has a `Module.md` content at the top, followed by the other module constructs.
+Please check [HTTP module documentation](https://ballerina.io/v0-991/learn/api-docs/ballerina/http.html) for a sample HTML that has a `Module.md` content at the top, followed by the other module constructs.
 
 
 ## Generating Ballerina Documentation

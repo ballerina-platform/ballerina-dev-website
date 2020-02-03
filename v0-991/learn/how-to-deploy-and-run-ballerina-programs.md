@@ -214,22 +214,22 @@ See the following example on how a developer can add Docker support in the code.
 Add the following code to the `hello_world_docker.bal` file.
 
 ```ballerina
-import ballerina/http;  
-import ballerinax/docker;  
-  
-@http:ServiceConfig {  
-    basePath:"/helloWorld"  
-}  
+import ballerina/http;
+import ballerinax/docker;
+
+@http:ServiceConfig {
+    basePath: "/helloWorld"
+}
 @docker:Config {
-    registry:"docker.abc.com",
-    name:"helloworld",
-    tag:"v1.0"
+    registry: "docker.abc.com",
+    name: "helloworld",
+    tag: "v1.0"
 }
 service helloWorld on new http:Listener(9090) {
-    resource function sayHello (http:Caller caller, http:Request request) {
+    resource function sayHello(http:Caller caller, http:Request request) {
         http:Response response = new;
         response.setTextPayload("Hello, World! \n");
-        _ = caller -> respond(response);
+        _ = caller->respond(response);
     }
 }
 ```

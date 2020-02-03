@@ -9,9 +9,9 @@ permalink: /v0-991/learn/how-to-deploy-and-run-ballerina-programs/
 ## Running Ballerina Programs and Services
 A Ballerina application can either be:
 
-1. A [`public function`](/learn/by-example/functions-as-entry-points.html) including [`main()`](/learn/by-example/hello-world.html) function that runs as a terminating process.
+1. A [`public function`](/v0-991/learn/by-example/functions-as-entry-points.html) including [`main()`](/v0-991/learn/by-example/hello-world.html) function that runs as a terminating process.
 
-2. A [`service<>`](/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
+2. A [`service<>`](/v0-991/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
 
 Both of these are considered "entrypoints" for program execution. 
 
@@ -40,7 +40,7 @@ $ ballerina run filename.balx
 ```
 
 ### Running a Project
-A project is a folder that manages source files and modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code/) for in-depth structuring of projects.
+A project is a folder that manages source files and modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/v0-991/learn/how-to-structure-ballerina-code/) for in-depth structuring of projects.
 
 Build all source files and modules of a project:
 ```bash    
@@ -65,7 +65,7 @@ The `<module>` is the module name, which is the same as the name of the director
 
 ### Ballerina Runtime Configuration Files
 
-A Ballerina runtime can be configured using configuration parameters, which are arbitrary key/value pairs with structure. The `ballerina/config` module provides an API for sourcing configuration parameters and using them within your source code. See [Config API Documentation](/learn/api-docs/ballerina/config.html) for details.
+A Ballerina runtime can be configured using configuration parameters, which are arbitrary key/value pairs with structure. The `ballerina/config` module provides an API for sourcing configuration parameters and using them within your source code. See [Config API Documentation](/v0-991/learn/api-docs/ballerina/config.html) for details.
 
 The configuration APIs accept a key and an optional default value. If a mapping does not exist for the specified key, the default value is returned as the configuration value. The default values of these optional configurations are the default values of the return types of the functions.
 
@@ -198,7 +198,7 @@ These deployment artifacts can be a form of simple files or complex types, like 
 -   [Docker images](https://docs.docker.com/engine/reference/commandline/images/)
 -   [Kubernetes](http://kubernetes.io) artifacts
 
-It is possible for third parties and the ecosystem to create their own annotations and builder extensions that generate different kinds of deployment artifacts. You can publish these extensions within Ballerina Central for others to use. For more information, see [How to Extend Ballerina](/learn/how-to-extend-ballerina/).
+It is possible for third parties and the ecosystem to create their own annotations and builder extensions that generate different kinds of deployment artifacts. You can publish these extensions within Ballerina Central for others to use. For more information, see [How to Extend Ballerina](/v0-991/learn/how-to-extend-ballerina/).
 
 ### How to Enable Deployment
 A developer enables deployment artifact generation by adding annotations to their Ballerina code: 
@@ -339,7 +339,7 @@ The following Kubernetes configurations are supported:
 - Kubernetes persistent volume claim support
 
 The following Ballerina code section explains how you can use some of these Kubernetes capabilities by using Kubernetes annotation support in Ballerina. 
-Full example can be found at [Database Interaction Guide](https://ballerina.io/learn/by-guide/data-backed-service/)
+Full example can be found at [Database Interaction Guide](https://ballerina.io/v0-991/learn/by-guide/data-backed-service/)
 
 ```ballerina
 import ballerina/config;
@@ -639,4 +639,4 @@ $ curl -v -X POST -d '{"name":"Alice", "age":20,"ssn":123456789,"employeeId":1}'
 |baseImage|Base image to create the Docker image|ballerina/ballerina:latest|
   
 ### Extend Ballerina Deployment and Annotations
-Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation. For more information on how to extend Ballerina, see [How to Extend Ballerina](/learn/how-to-extend-ballerina/).
+Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation. For more information on how to extend Ballerina, see [How to Extend Ballerina](/v0-991/learn/how-to-extend-ballerina/).

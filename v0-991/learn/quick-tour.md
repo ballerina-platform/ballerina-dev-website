@@ -11,7 +11,7 @@ Now that you know a little bit [about Ballerina](/philosophy), let's take it for
 ## Install Ballerina
 
 1. [Download](https://ballerina.io/downloads) Ballerina based on the Operating System you are using. 
-1. Follow the instructions given on the [Getting Started](/learn/getting-started) page to set it up. 
+1. Follow the instructions given on the [Getting Started](/v0-991/learn/getting-started) page to set it up. 
 
 > **Note**: Throughout this documentation, `<ballerina_home>` refers to the directory in which you just installed Ballerina.
 
@@ -58,7 +58,7 @@ You just started Ballerina, created a project, started a service, invoked the se
 
 Let's try this on VS Code.
 
-> **Tip:** You can use your [favorite editor to work on Ballerina code](https://ballerina.io/learn/tools-ides/).
+> **Tip:** You can use your [favorite editor to work on Ballerina code](https://ballerina.io/v0-991/learn/tools-ides/).
 
 Open your service in VS Code. You can use the following command to do this on Linux or OSX. Replace '/<folder_path>/' with the actual folder path in which the Ballerina project was initialized.
 =======
@@ -112,7 +112,7 @@ service hello on new http:Listener(9090) {
 }
 ```
 
-You can find an extension for Ballerina in the VS Code marketplace. For instructions on installing and using it, see [The Visual Studio Code Extension](#https://ballerina.io/learn/tools-ides/vscode-plugin/).
+You can find an extension for Ballerina in the VS Code marketplace. For instructions on installing and using it, see [The Visual Studio Code Extension](#https://ballerina.io/v0-991/learn/tools-ides/vscode-plugin/).
 
 ## Use an Endpoint
 Ballerina endpoint is a component that interacts with a network accessible service. It aggregates one or more actions that can be executed on the network accessible service. An endpoint can be used to configure parameters related to the network accessible service.
@@ -417,5 +417,5 @@ Star [GitHub repo](https://github.com/ballerina-platform/ballerina-lang)  and sh
 
 Now that you have taken Ballerina around for a quick twirl, you can explore Ballerina more.
 
-* Go through [Ballerina by Example](/learn/by-example/) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
-* See [Ballerina by Guide](/learn/by-guide/) for long form examples that showcase how to build different types of integrations using a complete development lifecycle including IDE configuration, modules, dependencies, coding, unit testing, deployment, and observability.
+* Go through [Ballerina by Example](/v0-991/learn/by-example/) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* See [Ballerina by Guide](/v0-991/learn/by-guide/) for long form examples that showcase how to build different types of integrations using a complete development lifecycle including IDE configuration, modules, dependencies, coding, unit testing, deployment, and observability.

@@ -137,7 +137,10 @@ function printExamples() {
                     if (is_exist == -1) {
                         return true;
                     } else {
-                        div_content += '<li><a href="/v1-1/learn/by-example/' + link + '.html">' + example['name'] + '</a></li>';
+                        let pathValue = window.location.pathname;
+                        let splitedPath = pathValue.split("/learn/");
+                        let selectedVersion = splitedPath[0];
+                        div_content += '<li><a href="'+selectedVersion+'/learn/by-example/' + link + '.html">' + example['name'] + '</a></li>';
                     }
                 });
 

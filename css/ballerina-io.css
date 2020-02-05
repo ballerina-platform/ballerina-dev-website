@@ -1616,16 +1616,37 @@ text-shadow: 0 1px 0 rgba(255,255,255,.25);
     .navbar-toggle {
         display: block;
     }
-	
+
     .navbar-collapse.collapse {
         display: none!important;
     }
-	
+
     .navbar-nav>li {
         float: none;
     }
-	
-    .navbar-collapse.collapse.in { 
+
+    .navbar-collapse.collapse.in {
         display: block!important;
     }
+}
+
+
+.wy-breadcrumbs li,
+.wy-breadcrumbs li a {
+    color: #22b7b1 !important;
+    font-size: 16px;
+}
+
+.wy-breadcrumbs li a {
+    padding-right: 0;
+}
+
+.cBallerina-io-breadcrumbs {
+    padding: 15px 0px 5px 0px;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    padding: 0;
+    background: #fff !important;
 }

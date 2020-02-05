@@ -1,9 +1,9 @@
 ---
 layout: ballerina-inner-page
 title: Installing Ballerina
-permalink: /learn/installing-ballerina/
+permalink: /v1-0/learn/installing-ballerina/
 redirect_from:
-  - /learn/getting-started
+  - /v1-0/learn/getting-started
 ---
 
 # Installing Ballerina
@@ -59,4 +59,4 @@ To get help when you work with Ballerina, see [Community](/community).
 
 ## What's next
 
-Once you have successfully installed Ballerina, try out the [Quick Tour](/learn/quick-tour) and take Ballerina for its first spin.
+Once you have successfully installed Ballerina, try out the [Quick Tour](/v1-0/learn/quick-tour) and take Ballerina for its first spin.

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Style Guide
-permalink: /learn/style-guide/
+permalink: /v1-0/learn/style-guide/
 ---
 
 # Ballerina Style Guide
@@ -277,20 +277,20 @@ table<Employee> employee = table {
 
 ## Top Level Definitions
 
-For style guidelines on imports, service definition, object definiiton, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/learn/style-guide/definitions).
+For style guidelines on imports, service definition, object definiiton, record definition, referencing record or abstract object, etc., see [Top Level Definitions](/v1-0/learn/style-guide/definitions).
 
 ## Operators, Keywords, and Types
 
-For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/learn/style-guide/operators_keywords_and_types).
+For style guidelines on operators, keywords, and types, see [Operators, Keywords, and Types](/v1-0/learn/style-guide/operators_keywords_and_types).
 
 ## Statements
 
-For style guidelines on statemnets such as if, match, transcation etc., see [Statements](/learn/style-guide/statements).
+For style guidelines on statemnets such as if, match, transcation etc., see [Statements](/v1-0/learn/style-guide/statements).
 
 ## Expressions
 
-For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/learn/style-guide/expressions).
+For style guidelines on function invocation, literals, tuple, type casting etc. see [Expressions](/v1-0/learn/style-guide/expressions).
 
 ## Annotations, Documentation, and Comments
 
-For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/learn/style-guide/annotations_documentation_and_comments).
+For style guidelines on annotations, documentation, and comments, see [Annotations, Documentation, and Comments](/v1-0/learn/style-guide/annotations_documentation_and_comments).

@@ -9,9 +9,9 @@ permalink: /v1-0/learn/how-to-deploy-and-run-ballerina-programs/
 ## Running Ballerina Programs and Services
 A Ballerina application can have:
 
-1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.
+1. A [`main()`](/v1-0/learn/by-example/the-main-function.html) function that runs as a terminating process.
 
-2. A [`service`](/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
+2. A [`service`](/v1-0/learn/by-example/hello-world-service.html), which is a hosted non-terminating process.
 
 Both of these are considered as entry points for program execution. 
 
@@ -40,7 +40,7 @@ $ ballerina run filename.jar
 ```
 
 ### Running a Project
-A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
+A project is a folder that manages modules as part of a common versioning, dependency management, build, and execution. You can build and run items collectively or individually as modules. See [How To Structure Ballerina Code](/v1-0/learn/how-to-structure-ballerina-code) for in-depth structuring of projects.
 
 Build all modules of a project:
 ```bash    
@@ -62,7 +62,7 @@ $ ballerina run main.jar
 
 ### Ballerina Runtime Configuration Files
 
-A Ballerina runtime can be configured using configuration parameters, which are arbitrary key/value pairs with structure. The `ballerina/config` module provides an API for sourcing configuration parameters and using them within your source code. See [Config API Documentation](/learn/api-docs/ballerina/config/index.html) for details.
+A Ballerina runtime can be configured using configuration parameters, which are arbitrary key/value pairs with structure. The `ballerina/config` module provides an API for sourcing configuration parameters and using them within your source code. See [Config API Documentation](/v1-0/learn/api-docs/ballerina/config/index.html) for details.
 
 The configuration APIs accept a key and an optional default value. If a mapping does not exist for the specified key, the default value is returned as the configuration value. The default values of these optional configurations are the default values of the return types of the functions.
 

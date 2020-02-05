@@ -8,11 +8,21 @@ permalink: /community/
 
 The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2</a> via sponsorship of the design & implementation of the Ballerina platform. Ballerina is a fully open source project with all source code licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a> and the specifications licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0">Creative Commons Attribution-NoDerivatives 4.0 International</a> license.
 
-We warmly welcome any and all contributors to the community to help establish Ballerina as a truly community-owned resource!
+We warmly welcome all contributors to the community to help establish Ballerina as a truly community-owned resource!
 
-## Looking for help?
+- [Try out Ballerina](#try-out-ballerina)
+- [Seek for help](#seek-for-help)
+- [Report issues](#report-issues)
+- [Help us grow](#help-us-grow)
+- [Contribute to Ballerina](#contribute-to-ballerina)
 
-We’re happy to help! Come engage with us on any channel that works for you:
+## Try out Ballerina
+
+[Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
+
+## Seek for help
+
+We are happy to help! Come engage with us on any channel that works for you.
 
 <div class="col-sm-12 col-md-12 cBallerinaLearnWrapper cGrayWrapper cCommunityLinks">
   <div class="col-sm-12 col-md-3 cBoxContainer cCommunityIconsContainer">
@@ -37,6 +47,24 @@ We’re happy to help! Come engage with us on any channel that works for you:
    </div>
 </div>
 
+## Report issues
+
+Hit a bump on the road? Report an issue in the relevant repo out of the GitHub repos listed below. We want to fix all bugs!
+
+   - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
+   - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
+   - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
+   - Security flaw: send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
+
+## Help us grow 
+
+Getting a language established is like getting a new religion going. If you like the experience so far, help us to spread the word.
+
+- Start by starring the <a href="https://github.com/ballerina-platform/ballerina-lang">Ballerina GitHub repo</a>. Thank you!
+- Follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
+- Share the wealth by publishing your Ballerina module on <a href="https://central.ballerina.io">Ballerina Central</a> so that the whole community can benefit from your work. 
+- Buzz us on <a href="mailto:contact@ballerina.io">contact@ballerina.io</a> if you want to organize a local meetup or hackathon. WSO2 will get right on it and help with presentation/training content, logistics, swag, and some funds for munchies.
+
 <!-- ## Want to be kept up-to-date?
 
 We run an announcement-only, no-marketing-spam mailing list that we will use to inform you of new releases and similar relevant information. If you’d like to join please submit the form below: 
@@ -48,32 +76,9 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 <input class="cTextfieldstyle" maxlength="90" value="" id="emailUserOS" name="email" placeholder="I consent to join the email list" title="Email" type="text">
 </form> -->
 
-## Want to report issues? 
+## Contribute to Ballerina
 
-Oh no, you hit a bump on the road? Please tell us - we want to fix all bugs!
-
-- Found a bug in the compiler, runtime, standard library, or tooling? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo.
-- Found a bug in the language specification? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo.
-- Found a bug on the website? Create an issue in the <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo. 
-- Found a security flaw? Send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
-
-## Want to help us make Ballerina popular?!
-
-We know getting a language established is like getting a new religion going. We really need you, our fans, to help spread the word.
-
-Let's start with starring the <a href="https://github.com/ballerina-platform/ballerina-lang">main GitHub repo</a>. Thank you!
-
-Next, let's share the wealth by publishing your code on <a href="https://central.ballerina.io">Ballerina Central</a>. Hope you will do it now.
-
-Also, follow us on Twitter: <a href="https://twitter.com/ballerinalang">@ballerinalang</a>. Tweet with the "#ballerinalang" hashtag.
-
-Do you want to organize a local meetup or hackathon? WSO2 can help with presentation / training content, logistics, swag, and some funds for munchies. Give us a buzz and we’ll get right on it: <a href="mailto:contact@ballerina.io">contact@ballerina.io</a>.
-
-
-## Want to help implement Ballerina?
-Join the project and write some code with us to make Ballerina better! You can hang out with us on the Slack channel, the mailing list, and of course on GitHub.
-
-Read the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contributor Guide</a> so you are aware of the ground rules as you start. Happy dancing!
+Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://ballerina.io/contribution-guide">Contribution Guide</a>. Happy contributing! 
 
 
 <style>

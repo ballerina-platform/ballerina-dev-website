@@ -1,8 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Run and Deploy Ballerina Programs
-permalink: /learn/how-to-deploy-and-run-ballerina-programs/
-
+permalink: /v1-0/learn/how-to-deploy-and-run-ballerina-programs/
 ---
 
 # How to Run and Deploy Ballerina Programs
@@ -195,24 +194,25 @@ See the following example on how a developer can add Docker support in the code.
 Add the following code to the `hello_world_docker.bal` file.
 
 ```ballerina
-import ballerina/http;  
-import ballerina/docker;  
-  
-@http:ServiceConfig {  
-    basePath:"/helloWorld"  
-}  
+import ballerina/docker;
+import ballerina/http;
+import ballerina/log;
+
+@http:ServiceConfig {
+    basePath: "/helloWorld"
+}
 @docker:Config {
-    registry:"docker.abc.com",
-    name:"helloworld",
-    tag:"v1.0"
+    registry: "docker.abc.com",
+    name: "helloworld",
+    tag: "v1.0"
 }
 service helloWorld on new http:Listener(9090) {
-    resource function sayHello (http:Caller caller, http:Request request) {
+    resource function sayHello(http:Caller caller, http:Request request) {
         http:Response response = new;
         response.setTextPayload("Hello, World! \n");
-        var result = caller -> respond(response);
+        var result = caller->respond(response);
         if (result is error) {
-            log:printError("Error sending response", result);
+            log:printError("error sending response", result);
         }
     }
 }

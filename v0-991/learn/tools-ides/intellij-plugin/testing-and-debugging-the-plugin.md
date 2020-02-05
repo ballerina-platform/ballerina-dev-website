@@ -1,5 +1,9 @@
 ---
 layout: ballerina-inner-page
+permalink: /v0-991/learn/intellij-plugin/testing-and-debugging-the-plugin
+redirect_from:
+  - /v0-991/learn/tools-ides/intellij-plugin/testing-and-debugging-the-plugin
+  - /v0-991/learn/tools-ides/intellij-plugin/testing-and-debugging-the-plugin/
 ---
 
 # Testing and debugging the plugin using IntelliJ IDEA
@@ -17,13 +21,13 @@ Follow the steps below to import and open the project of the plugin.
 
 2. Open IntelliJ, click **File**, click **New**, and then click **Project from Existing Sources...**.
 
-![select menu](../images/select-menu.png)
+![select menu](/v0-991/learn/images/select-menu.png)
 
 3. Browse and select the **<CLONED_BALLERINA_DIRECTORY>/tool-plugins/intellij/build.gradle** file and click **Open**.
 
 4. Select **Use default gradle wrapper (recommended)** and then click **OK**.
 
-![select Gradle home](../images/select-gradle-home.png)
+![select Gradle home](/v0-991/learn/images/select-gradle-home.png)
 
 ## Testing and debugging the plugin
 
@@ -35,7 +39,7 @@ Follow the steps below to test and debug the plugin using IntelliJ.
 
 3. Right-click on the **runIde** Task and select **Run 'intellij [runIde]'**.
 
-![run the task](../images/run-the-runIde-task.png)
+![run the task](/v0-991/learn/images/run-the-runIde-task.png)
 
 This builds the plugin and starts a new IDEA instance with the installed plugin.
 
@@ -43,5 +47,7 @@ This builds the plugin and starts a new IDEA instance with the installed plugin.
 
 ## What's next?
 
- - For more information on the IntelliJ Ballerina plugin, see [The IntelliJ Plugin](/learn/tools-ides/intellij-plugin).
- - For information on the other tools and IDEs that are supported by Ballerina, see [Tools and IDEs](../tools-ides).
+- For information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](/v0-991/learn/intellij-plugin)
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v0-991/learn).
+
+ 

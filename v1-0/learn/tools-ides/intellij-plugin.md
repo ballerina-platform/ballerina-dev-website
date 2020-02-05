@@ -1,7 +1,10 @@
 ---
 layout: ballerina-inner-page
 title: The IntelliJ IDEA Ballerina Plugin
-permalink: /learn/tools-ides/intellij-plugin/
+permalink: /v1-0/learn/intellij-plugin/
+redirect_from:
+  - /v1-0/learn/tools-ides/intellij-plugin
+  - /v1-0/learn/tools-ides/intellij-plugin/
 ---
 
 # The IntelliJ IDEA Ballerina Plugin
@@ -41,7 +44,7 @@ Use either of the below approaches to install the IntelliJ Ballerina plugin.
 3. Click **Install**, and then click **Accept**.
 4. Click **Restart IDE**, and then click **Restart**.
 
-![Install the plugin via IntelliJ IDEA](/learn/images/install-plugin-via-intellij.gif)
+![Install the plugin via IntelliJ IDEA](/v1-0/learn/images/install-plugin-via-intellij.gif)
 
 This downloads the plugin and installs it.
 
@@ -91,31 +94,31 @@ After obtaining the ZIP file using either of the above approaches, follow the st
 > **Important:** Make sure you install the ZIP file and not the extracted JAR files. This is because the ZIP file contains of an additional library that is required by the plugin to function as expected.
 4. Click the **Installed** tab, click **Restart IDE**, and then click **Restart**.
 
-![Install using the Preferences option of the IDE.](/learn/images/install-via-editor-preferences.gif)
+![Install using the Preferences option of the IDE.](/v1-0/learn/images/install-via-editor-preferences.gif)
 
 ## Using the plugin
 
 The below sections include information on using the IntelliJ Ballerina plugin to write Ballerina programs.
 
-- [Creating a new Ballerina project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-project)
-- [Setting up Ballerina SDK for an existing project](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#setting-up-ballerina-sdk-for-an-existing-project)
-- [Creating a new Ballerina file](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
-- [Configuring the plugin settings](/learn/tools-ides/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
+- [Creating a new Ballerina project](/v1-0/learn/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-project)
+- [Setting up Ballerina SDK for an existing project](/v1-0/learn/intellij-plugin/using-the-intellij-plugin#setting-up-ballerina-sdk-for-an-existing-project)
+- [Creating a new Ballerina file](/v1-0/learn/intellij-plugin/using-the-intellij-plugin#creating-a-new-ballerina-file)
+- [Configuring the plugin settings](/v1-0/learn/intellij-plugin/using-the-intellij-plugin#configuring-the-plugin-settings)
 
 ## Using the features of the plugin
 
 The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 
-- [Running Ballerina programs](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#running-ballerina-programs)
-- [Debugging Ballerina programs](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#debugging-ballerina-programs)
-- [Viewing the sequence diagram](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-the-sequence-diagram)
-- [Importing modules on the fly](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#importing-modules-on-the-fly)
-- [Importing unambiguous modules](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#importing-unambiguous-modules)
-- [Formatting Ballerina codes](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#formatting-ballerina-codes)
-- [Viewing documentation](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#viewing-documentation)
-- [Adding annotation fields via suggestions](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#adding-annotation-fields-via-suggestions)
-- [Using file templates](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#using-file-templates)
-- [Using code snippet templates](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#using-code-snippet-templates)
-- [Checking spellings](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#checking-spellings)
-- [Analyzing semantics](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
-- [Code folding](/learn/tools-ides/intellij-plugin/using-intellij-plugin-features#code-folding)
+- [Running Ballerina programs](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#running-ballerina-programs)
+- [Debugging Ballerina programs](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#debugging-ballerina-programs)
+- [Viewing the sequence diagram](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#viewing-the-sequence-diagram)
+- [Importing modules on the fly](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#importing-modules-on-the-fly)
+- [Importing unambiguous modules](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#importing-unambiguous-modules)
+- [Formatting Ballerina codes](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#formatting-ballerina-codes)
+- [Viewing documentation](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#viewing-documentation)
+- [Adding annotation fields via suggestions](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#adding-annotation-fields-via-suggestions)
+- [Using file templates](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#using-file-templates)
+- [Using code snippet templates](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#using-code-snippet-templates)
+- [Checking spellings](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#checking-spellings)
+- [Analyzing semantics](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
+- [Code folding](/v1-0/learn/intellij-plugin/using-intellij-plugin-features#code-folding)

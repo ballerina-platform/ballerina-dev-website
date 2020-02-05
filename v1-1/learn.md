@@ -4,6 +4,9 @@ title: Let’s learn Ballerina!
 description: Ballerina is meant to be a quick start for anyone with prior programming experience.
 keywords: Ballerina, ballerinalang
 permalink: /v1-1/learn/
+redirect_from:
+  - /v1-1/learn/tools-ides
+  - /v1-1/learn/tools-ides/
 ---
 
 <h1>Let’s learn Ballerina!</h1>

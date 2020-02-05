@@ -1,3 +1,12 @@
+---
+layout: ballerina-inner-page
+title: Language intelligence
+permalink: /v0-991/learn/vscode-plugin/language-intelligence
+redirect_from:
+  - /v0-991/learn/tools-ides/vscode-plugin/language-intelligence
+  - /v0-991/learn/tools-ides/vscode-plugin/language-intelligence/
+---
+
 # Language intelligence
 
 The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency.
@@ -21,13 +30,13 @@ When there are syntax or semantic errors in your code, you will be notified with
 
 > **Tip**: The detailed description that appears when you hover over the lines underlined in red will be consistent with the error message that you get during compile-time.
 
-![Semantic and syntactic diagnostics](../images/semantic-and-syntactic.gif)
+![Semantic and syntactic diagnostics](/v0-991/learn/images/semantic-and-syntactic.gif)
 
 ## Suggestions and auto completion
 
 The extension provides you with suggestions on keywords, variables, and code snippets of language constructs (such as functions, services, and iterable constructs etc.).
 
-![Suggestions and auto completion](../images/suggestions.gif)
+![Suggestions and auto completion](/v0-991/learn/images/suggestions.gif)
 
 > **Tip**: You can use these suggestions to access the contents of the modules available in your Ballerina home repo as well as in the Ballerina distribution.
 
@@ -35,13 +44,13 @@ The extension provides you with suggestions on keywords, variables, and code sni
 
 This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project.
 
-![Go to definition](../images/go-to-definition.gif)
+![Go to definition](/v0-991/learn/images/go-to-definition.gif)
 
 ## Find all references
 
 This option allows you to find all the references of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project.
 
-![Find all references](../images/find-all-references.gif)
+![Find all references](/v0-991/learn/images/find-all-references.gif)
 
 ## Code actions
 
@@ -55,7 +64,7 @@ These allow you to perform the below tasks easily based on the diagnostics and t
 
 For example, you can add documentation for a function as shown below.
 
- ![Code actions](../images/code-actions.gif)
+ ![Code actions](/v0-991/learn/images/code-actions.gif)
 
 ## Refactoring options
 
@@ -67,7 +76,7 @@ For example, you can add documentation for a function as shown below.
 
  For example, you can refactor your code to add missing imports corresponding to a service via a code action as shown below.
 
- ![Refactoring options](../images/refactoring-options.gif)
+ ![Refactoring options](/v0-991/learn/images/refactoring-options.gif)
 
 ## Hover support
 
@@ -75,7 +84,7 @@ For example, you can add documentation for a function as shown below.
  
  For an example, if you hover over a function name, you can view its description, information about its parameters, and the description of its return type as shown below.
 
-  ![Hover support](../images/hover-support.gif)
+  ![Hover support](/v0-991/learn/images/hover-support.gif)
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
@@ -83,7 +92,7 @@ For example, you can add documentation for a function as shown below.
 
   This provides the descriptions of the parameters of the function while you are typing your code. Signature help will automatically trigger you typing the open parenthesis (i.e., “(“) as well as the comma.
  
- ![Signature help support](../images/signature-help-support.gif)
+ ![Signature help support](/v0-991/learn/images/signature-help-support.gif)
 
 ## Document symbols
 
@@ -91,7 +100,7 @@ For example, you can add documentation for a function as shown below.
 
 > **Tip**: You can access the document symbols palette by pressing the **Control + Shift + O** keys.
 
-![Document symbols](../images/document-symbols.gif)
+![Document symbols](/v0-991/learn/images/document-symbols.gif)
 
 ## Workspace symbols
 
@@ -99,12 +108,11 @@ Workspace symbols provide you all the symbols of the current project. These symb
 
 > **Tip**: You can access the workspace symbols palette by pressing the **Control + T** keys.
 
-![Workspace symbols](../images/workspace-symbols.gif)
+![Workspace symbols](/v0-991/learn/images/workspace-symbols.gif)
 
 Above are the lanugage intelligence features that are currently available in the Ballerina VS Code Extension. 
 
 ## What's next?
 
- - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](vscode-plugin/run-and-debug).
- - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/learn/tools-ides/vscode-plugin).
- - For information on the tools and IDEs that are supported by the VS Code Ballerina extension, see [Tools and IDEs](../tools-ides).
+ - For information on the next capability of the VS Code Ballerina extension, see [Run and Debug](/v0-991/learn/vscode-plugin/run-and-debug).
+ - For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/v0-991/learn/vscode-plugin).

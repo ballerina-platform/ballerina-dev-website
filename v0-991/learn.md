@@ -1,6 +1,9 @@
 ---
 layout: ballerina-inner-page
 permalink: /v0-991/learn/
+redirect_from:
+  - /v0-991/learn/tools-ides
+  - /v0-991/learn/tools-ides/
 ---
 
 # Learn Ballerina
@@ -30,7 +33,7 @@ The [Quick Tour](/v0-991/learn/quick-tour/) is the fastest way to try Ballerina.
 
 ### Tools and IDEs
 
-The [Tools and IDEs](/v0-991/learn/tools-ides/) section introduces the language servers, editors, IDEs, and graphical visualization tools that are supported by Ballerina.
+The [VS Code](/v0-991/learn/vscode-plugin) and [IntelliJ IDEA](/v0-991/learn/intellij-plugin) extesnions are the Tools & IDEs that are currently supported by Ballerina.
 
 ### How to Structure Ballerina Code
 

@@ -13,7 +13,6 @@ Developers can write the documentation inline with the Ballerina source code usi
 
 Ballerina documentation design and usage is aligned with project and module semantics of Ballerina. You can generate documentation for modules using the `ballerina doc` command.
 
-
 ## Overview
 
 * Ballerina programmers can place the documentation inline with the source code using the documentation syntax.

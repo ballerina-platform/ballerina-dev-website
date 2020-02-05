@@ -9,7 +9,7 @@ redirect_from:
 
 # Graphical Editor
 
-A rich set of Visualization tools will immensely enhance your development experience especially in the integration space. 
+A rich set of visualization tools will immensely enhance your development experience especially in the integration space. 
 
 The Graphical Editor of the VS Code Ballerina extension allows you to design your integration scenario graphically. Thus, by using it, you can visualize your code in a sequence diagram, which presents the endpoint interactions and parallel invocations that happen in the code. 
 
@@ -26,11 +26,11 @@ Follow the steps below to launch the Graphical Editor.
 
 2. In the search box, type "Show" and click **Ballerina: Show Diagram**.
 
-![Show Diagram option](/v0-991/learn/images/show-diagram.gif)
+    ![Show Diagram option](/v0-991/learn//images/show-diagram.gif)
 
-> **Tip**: For a quick launch, click the **Show Diagram** icon in the top right corner.
+    > **Tip**: For a quick launch, click the **Show Diagram** icon in the top right corner.
 
-![Quick launch of the Graphical Editor](/v0-991/learn/images/graphical-editor-quick-launch.gif)
+    ![Quick launch of the Graphical Editor](/v0-991/learn/images/graphical-editor-quick-launch.gif)
 
 ## Exploring the features of the Graphical Editor
 

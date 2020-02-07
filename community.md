@@ -54,7 +54,7 @@ Hit a bump on the road? Report an issue in the relevant repo out of the GitHub r
    - Compiler, runtime, standard library, or tooling: <a href="https://github.com/ballerina-platform/ballerina-lang/issues">ballerina-lang</a> repo
    - Language specification: <a href="https://github.com/ballerina-platform/ballerina-spec/issues">ballerina-spec</a> repo
    - Website: <a href="https://github.com/ballerina-platform/ballerina-dev-website/issues">ballerina-dev-website</a> repo
-   - Security flaw: send an email to security@ballerina.io. For details, see the <a href="https://ballerina.io/security/">security policy</a>.
+   - Security flaw: send an email to security@ballerina.io. For details, see the <a href="/security">security policy</a>.
 
 ## Help us grow 
 

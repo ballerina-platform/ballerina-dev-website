@@ -65,10 +65,10 @@ You need to have the below installed to build particlura Ballerina modules.
 ```
 git clone --recursive https://github.com/ballerina-platform/ballerina-lang
 ```
-2. Execute one of the below commands to build project using Gradle. 
+2. Execute one of the below commands to build the project using Gradle. 
 
-    **On Unix/Mac OS:** ```./gradlew build ```
-    **Windows:** ```gradlew build ```
+  - **On Unix/Mac OS:** ```./gradlew build ```
+  - **Windows:** ```gradlew build ```
 
 3. Extract the Ballerina distribution created at: `distribution/zip/jballerina-tools/build/extracted-distributions/ballerina-<VERSION>-SNAPSHOT.zip`.
 

@@ -46,6 +46,32 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 dpkg -i <ballerina-binary>.deb
 ```
 
+## Installing from source
+
+Alternatively, follow the instructions below to install Ballerina from the source.
+
+### Prerequisites
+
+You need to have the below installed to build particlura Ballerina modules.
+
+- [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [OpenJDK 8](http://openjdk.java.net/install/)
+- [Node (version 8.9.x or later) and npm (version 5.6.0 or later)](https://nodejs.org/en/download/)
+- [Docker](https://www.docker.com/get-started)
+
+### Building the source
+
+1. Execute the below command to clone the ['ballerina-lang'](https://github.com/ballerina-platform/ballerina-lang) source repository.
+
+```
+git clone --recursive https://github.com/ballerina-platform/ballerina-lang
+```
+2. Execute one of the below commands to build project using Gradle. 
+
+    **On Unix/Mac OS:** ```./gradlew build ```
+    **Windows:** ```gradlew build ```
+
+3. Extract the Ballerina distribution created at: `distribution/zip/jballerina-tools/build/extracted-distributions/ballerina-<VERSION>-SNAPSHOT.zip`.
+
 ## Uninstalling Ballerina
 
 To remove an existing Ballerina installation, go to the Ballerina installation location and delete the Ballerina directory.

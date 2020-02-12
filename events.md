@@ -44,6 +44,16 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">More Info</a></td> 
                   </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="March 10, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>
+                      <p class="cEventLocation">San Jose, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Kubernetes-for-Developers"><h4>Kubernetes for Developers Meetup</h4></a>
+                          <h5>Ballerinas & Zebras in Kubernetes</h5>
+                        <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Kubernetes-for-Developers/events/268523459/" target="_blank">More Info</a></td> 
+                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>
@@ -53,16 +63,6 @@ redirect_from:
                            <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
-                  </tr>
-                    <tr class="event-expiry" style="display:none" data-expiry="March 10, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>
-                      <p class="cEventLocation">San Jose, California, USA</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Kubernetes-for-Developers"><h4>Kubernetes for Developers Meetup</h4></a>
-                          <h5>Ballerinas & Zebras in Kubernetes</h5>
-                        <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Kubernetes-for-Developers/events/268523459/" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>

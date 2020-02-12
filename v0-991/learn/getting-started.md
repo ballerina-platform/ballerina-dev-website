@@ -6,7 +6,15 @@ permalink: /v0-991/learn/getting-started/
 
 # Getting Started
 
-## Download the Ballerina distribution
+- [Downloading the Ballerina distribution](#downloading-the-ballerina-distribution)
+- [Installing Ballerina via installers](#installing-ballerina-via-installers)
+- [Installing via the Ballerina language ZIP file](#installing-via-the-ballerinalanguag-zip-file)
+- [Installing from source](#installing-from-source)
+- [Uninstalling Ballerina](#uninstalling-ballerina)
+- [Getting help](#getting-help)
+- [What's next](#what's-next)
+
+## Downloading the Ballerina distribution
 
 You can download the Ballerina distribution from [download page](https://ballerina.io/downloads/) for your operating system.
 
@@ -22,7 +30,7 @@ Ballerina binary distributions are available for the following supported operati
 - Red Hat Enterprise Linux 5.5 x64 and above
 - OS X 10.8.3 x64 and above
 
-If your operating system or architecture is not on the list, you can [install from source](https://github.com/ballerina-platform/ballerina-lang#install-from-source) instead.
+If your operating system or architecture is not on the list, you can [install from source](#installing-from-source) instead.
 
 ## Installing Ballerina via installers
 

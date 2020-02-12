@@ -8,6 +8,13 @@ redirect_from:
 
 # Installing Ballerina
 
+- [Downloading the Ballerina distribution](#downloading-the-ballerina-distribution)
+- [Installing Ballerina via installers](#installing-ballerina-via-installers)
+- [Installing from source](#installing-from-source)
+- [Uninstalling Ballerina](#uninstalling-ballerina)
+- [Getting help](#getting-help)
+- [What's next](#what's-next)
+
 ## Downloading the Ballerina distribution
 
 [Download](https://ballerina.io/downloads/) a Ballerina distribution based on your operating system.
@@ -17,7 +24,7 @@ redirect_from:
 - Ubuntu Linux 12.04 x64 - LTS and above
 - OS X 10.8.3 x64 and above
 
-If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](https://github.com/ballerina-platform/ballerina-lang#install-from-source).
+If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
 
 ## Installing Ballerina via installers
 

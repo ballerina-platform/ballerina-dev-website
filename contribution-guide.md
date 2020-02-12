@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Contribution Guide
-permalink: /contribution-guide/
+permalink: /contribution-guide
 ---
 
 # The Ballerina Contribution Guide
@@ -63,7 +63,7 @@ We appreciate your help!
 
 ## Set up the prerequisites
 1. Download [Ballerina](https://ballerina.io) and go through the [learning resources](https://ballerina.io/learn).
-2. Read the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct).
+2. Read the <a href="/code-of-conduct">Ballerina Code of Conduct</a>.
 
 ## Build the source code 
 

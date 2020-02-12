@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Code of Conduct
-permalink: /code-of-conduct/
+permalink: /code-of-conduct
 ---
 
 # Contributor Covenant Code of Conduct

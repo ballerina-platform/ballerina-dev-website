@@ -74,27 +74,54 @@ Follow one of the steps below depending on your operating system to configure yo
 
 Alternatively, follow the instructions below to install Ballerina from the source.
 
-### Prerequisites
+### Setting up the prerequisites
 
-You need to have the below installed to build particlura Ballerina modules.
+You need to download and install the below to build the Ballerina modules.
+1. Java SE Development Kit (JDK) version 8 (from one of the following locations) 
+    - [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+    - [OpenJDK](http://openjdk.java.net/install/index.html)
 
-- [Oracle JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or [OpenJDK 8](http://openjdk.java.net/install/)
-- [Node (version 8.9.x or later) and npm (version 5.6.0 or later)](https://nodejs.org/en/download/)
-- [Docker](https://www.docker.com/get-started)
+>**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
 
-### Building the source
+2. [Node.js (version 8.9.x or the latest LTS release)](https://nodejs.org/en/download/)
+3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
+4. [Docker](https://www.docker.com/get-started)
+
+### Obtaining the source code
+Follow the steps below to obtain the Ballerina source code.
 
 1. Execute the below command to clone the ['ballerina-lang'](https://github.com/ballerina-platform/ballerina-lang) source repository.
 
 ```
-git clone --recursive https://github.com/ballerina-platform/ballerina-lang
+git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
 ```
-2. Execute one of the below commands to build the project using Gradle. 
+>**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing <YOUR-GITHUB-USERNAME> with your Git username.
+
+```
+git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
+```
+
+2. Execute the below command to update the Git submodules.
+
+```
+git submodule update --init
+```
+
+### Building the source
+
+Follow the steps below to build the project of the obtained source.
+
+1. Navigate to the root directory of the Ballerina repo (i.e., <BALLERINA_PROJECT_ROOT>) and execute one of the below Gradle commands to build the project using Gradle.
 
   - **On Unix/Mac OS:** ```./gradlew build ```
   - **Windows:** ```gradlew build ```
 
-3. Extract the Ballerina distribution created at: `distribution/zip/jballerina-tools/build/extracted-distributions/ballerina-<VERSION>-SNAPSHOT.zip`.
+2. Extract the built Ballerina distributions created in the below locations: 
+
+- **runtime only:** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip
+- **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip
+
+>**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
   
 ## Uninstalling Ballerina
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Contribution Guide
-permalink: /contribution-guide/
+permalink: /contribution-guide
 ---
 
 # The Ballerina Contribution Guide
@@ -63,38 +63,11 @@ We appreciate your help!
 
 ## Set up the prerequisites
 1. Download [Ballerina](https://ballerina.io) and go through the [learning resources](https://ballerina.io/learn).
-2. Read the [Ballerina Code of Conduct](https://ballerina.io/code-of-conduct).
-3. Download the Java SE Development Kit (JDK) version 8 from one of the following locations and install it.
-    - [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-    - [OpenJDK](http://openjdk.java.net/install/index.html) 
->**Note:** Set the `JAVA_HOME` environment variable to the path name of the directory into which you installed JDK.
-4. Download [Node.js](https://nodejs.org/en/download/) (version 8.9.x or the latest LTS release) and install it.
-5. Download [npm](https://www.npmjs.com/get-npm) (version 5.6.0 or later) and install it.
+2. Read the <a href="/code-of-conduct">Ballerina Code of Conduct</a>.
 
-## Obtain the source code 
+## Build the source code 
 
-1. Execute the below command to clone the ballerina-lang Git repo.
-```bash 
-git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
-```
->**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing `<YOUR-GITHUB-USERNAME>` with your Git username.
-```bash 
-git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
-```
-2. Execute the below command to update the Git submodules.
-```bash 
-git submodule update --init
-```
-## Build the project
-
-1. Navigate to the root directory of the Ballerina project (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute the below Gradle command.
-```bash 
-./gradlew clean build
-```
-2. Extract the built Ballerina distributions in the below locations.
--  **runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
--  **runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
->**Note:** If you face an IOException error stating "Too many open files", this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
+For instructions, see [Installing from source](https://ballerina.io/learn/installing-ballerina/installing-from-source).
 
 ## Set up the development environment
 

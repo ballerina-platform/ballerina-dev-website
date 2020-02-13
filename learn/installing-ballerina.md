@@ -68,7 +68,6 @@ You need to download and install the below to build the Ballerina modules.
 
 2. [Node.js (version 8.9.x or the latest LTS release)](https://nodejs.org/en/download/)
 3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
-4. [Docker](https://www.docker.com/get-started)
 
 ### Obtaining the source code
 Follow the steps below to obtain the Ballerina source code.

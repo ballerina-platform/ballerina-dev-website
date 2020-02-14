@@ -67,7 +67,7 @@ We appreciate your help!
 
 ## Build the source code 
 
-For instructions, see <a href="/learn/installing-ballerina/#installing-from-source">Installing from source</a>.
+For instructions, see <a href="https://ballerina.io/learn/installing-ballerina/#installing-from-source">Installing from source</a>.
 
 ## Set up the development environment
 

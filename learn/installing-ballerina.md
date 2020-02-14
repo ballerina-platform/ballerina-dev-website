@@ -61,14 +61,11 @@ Alternatively, follow the instructions below to install Ballerina from the sourc
 
 You need to download and install the below to build the Ballerina modules.
 1. Java SE Development Kit (JDK) version 8 (from one of the following locations) 
-    - [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-    - [OpenJDK](http://openjdk.java.net/install/index.html)
-
+- [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [OpenJDK](http://openjdk.java.net/install/index.html)
 >**Note:** Set the JAVA_HOME environment variable to the path name of the directory into which you installed JDK.
-
 2. [Node.js (version 8.9.x or the latest LTS release)](https://nodejs.org/en/download/)
 3. [npm (version 5.6.0 or later)](https://www.npmjs.com/get-npm)
-4. [Docker](https://www.docker.com/get-started)
 
 ### Obtaining the source code
 Follow the steps below to obtain the Ballerina source code.

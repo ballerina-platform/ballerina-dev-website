@@ -111,7 +111,7 @@ redirect_from:
                           <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
                         <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">View Slides</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/developerweek-2020-conquering-network-distributed-applications-using-ballerina" target="_blank">View Slides</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">December 12, 2019</span>

@@ -34,16 +34,6 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
-                  <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
-                      <p class="cEventLocation">San Francisco, California, USA</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
-                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
-                        <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">More Info</a></td> 
-                  </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="March 10, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>
                       <p class="cEventLocation">San Jose, California, USA</p>
@@ -112,7 +102,17 @@ redirect_from:
 <h2>Past Events</h2>
 
 
-<table class="cEventTable cConferencesList" style="width:100%;">      
+<table class="cEventTable cConferencesList" style="width:100%;">  
+                    <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
+                      <p class="cEventLocation">San Francisco, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
+                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">View Slides</a></td> 
+                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">December 12, 2019</span>
                       <p class="cEventLocation">Mountain View, California, USA</p>

@@ -66,7 +66,7 @@ int[] arrayOfInteger = [1, 2, 3, 4];
     
 map<string> stringMap = {one: st1, two: st2, three: st3};
     
-Person personRecord = {name:"marcus", id: 0};
+Person personRecord = {name: "marcus", id: 0};
     
 function foo(string name, int id) {}
     

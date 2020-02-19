@@ -79,7 +79,7 @@ We run an announcement-only, no-marketing-spam mailing list that we will use to 
 
 ## Contribute to Ballerina
 
-Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="/contribution-guide">Contribution Guide</a>. Happy contributing! 
+Join us and contribute to the source code to make Ballerina better! To be aware of the ground rules as you start, see the <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/CONTRIBUTING.md">Contribution Guide</a>. Happy contributing! 
 
 <style>
 .nav > li.cVersionItem {

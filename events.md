@@ -148,8 +148,8 @@ redirect_from:
                       <p class="cEventLocation">London, UK</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/london-2019/"><h4>WSO2 Summit London</h4></a>
-                          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
-                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                          <h5>Ballerina — Cloud-native Middleware as a Programming Language</h5>
+                        <b>Mauro Niewolski,</b> Senior Solutions Engineer, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/11/wso2-integration-summit-london-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View Video</a></td> 
                   </tr>

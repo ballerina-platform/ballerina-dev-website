@@ -34,16 +34,6 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
-                  <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
-                      <p class="cEventLocation">San Francisco, California, USA</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
-                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
-                        <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.developerweek.com/conference/conference-schedule/" target="_blank">More Info</a></td> 
-                  </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="March 10, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>
                       <p class="cEventLocation">San Jose, California, USA</p>
@@ -112,7 +102,17 @@ redirect_from:
 <h2>Past Events</h2>
 
 
-<table class="cEventTable cConferencesList" style="width:100%;">      
+<table class="cEventTable cConferencesList" style="width:100%;">  
+                    <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
+                      <p class="cEventLocation">San Francisco, California, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/"><h4>DeveloperWeek 2020</h4></a>
+                          <h5>Conquering Network-Distributed Applications Using the Ballerina Programming Language</h5>
+                        <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/developerweek-2020-conquering-network-distributed-applications-using-ballerina" target="_blank">View Slides</a></td> 
+                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">December 12, 2019</span>
                       <p class="cEventLocation">Mountain View, California, USA</p>
@@ -148,8 +148,8 @@ redirect_from:
                       <p class="cEventLocation">London, UK</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://wso2.com/integration-summit/london-2019/"><h4>WSO2 Summit London</h4></a>
-                          <h5>Ballerina - A Programming Language for Cloud and DevOps</h5>
-                        <b>Anjana Fernando,</b> Director of Developer Relations - CTO Office, WSO2
+                          <h5>Ballerina — Cloud-native Middleware as a Programming Language</h5>
+                        <b>Mauro Niewolski,</b> Senior Solutions Engineer, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://wso2.com/library/summit/2019/11/wso2-integration-summit-london-2019-ballerina-cloud-native-middleware-as-a-programming-language/" target="_blank">View Video</a></td> 
                   </tr>

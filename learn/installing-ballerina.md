@@ -72,20 +72,20 @@ Follow the steps below to obtain the Ballerina source code.
 
 1. Execute the below command to clone the ['ballerina-lang'](https://github.com/ballerina-platform/ballerina-lang) source repository.
 
-```
-git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
-```
->**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing <YOUR-GITHUB-USERNAME> with your Git username.
+  ```
+  git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
+  ```
+  >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing <YOUR-GITHUB-USERNAME> with your Git username.
 
-```
-git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
-```
+  ```
+  git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
+  ```
 
 2. Execute the below command to update the Git submodules.
 
-```
-git submodule update --init
-```
+  ```
+  git submodule update --init
+  ```
 
 ### Building the source
 
@@ -98,10 +98,10 @@ Follow the steps below to build the project of the obtained source.
 
 2. Extract the built Ballerina distributions created in the below locations: 
 
-- **runtime only:** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip
-- **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip
+  - **runtime only:** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip
+  - **runtime and tools (e.g., Ballerina Language Server):** <BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip
 
->**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
+  >**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 
 ## Uninstalling Ballerina
 

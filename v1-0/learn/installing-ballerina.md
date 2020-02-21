@@ -79,7 +79,6 @@ Follow the steps below to obtain the Ballerina source code.
   ```
   git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
   ```
-
 2. Execute the below command to update the Git submodules.
 
   ```

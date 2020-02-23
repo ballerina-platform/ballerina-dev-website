@@ -197,10 +197,11 @@ service helloService on new http:Listener(9095) {
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># At the command line, navigate to the directory that contains the
 # `.bal` file and do one of the following depending on whether you want the logs to be logged on the console, or in a file.
-# Run the service by setting the `--b7a.http.accesslog.console=true` property to log to the console.
-$ ballerina run http_access_logs.bal --b7a.http.accesslog.console=true 
+# Run the service by setting `-e b7a.http.accesslog.console=true` to log to console.
+$ ballerina run -e b7a.http.accesslog.console=true http_access_logs.bal
 ballerina: HTTP access log enabled
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9095
+Initiating service(s) in &#39;http_access_logs.bal&#39;
+[ballerina/http] started HTTP/WS server connector 0.0.0.0:9095
 127.0.0.1 - - [30/Oct/2018:11:23:08 +0530] &quot;GET /hello HTTP/1.1&quot; 200 10 &quot;-&quot; &quot;curl/7.58.0&quot;
 </code></pre></div>
 
@@ -213,10 +214,11 @@ ballerina: HTTP access log enabled
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Or, run the service by setting `--b7a.http.accesslog.path=path/to/file.txt` to log to the specified file.
-$ ballerina run http_access_logs.bal --b7a.http.accesslog.path=path/to/file.txt 
+                                    <div class="highlight"><pre><code class=shell-session># Or, run the service by setting `-e b7a.http.accesslog.path=path/to/file.txt` to log to the specified file.
+$ ballerina run -e b7a.http.accesslog.path=path/to/file.txt http_access_logs.bal
 ballerina: HTTP access log enabled
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9095
+Initiating service(s) in &#39;http_access_logs.bal&#39;
+[ballerina/http] started HTTP/WS server connector 0.0.0.0:9095
 </code></pre></div>
 
                                 </td>

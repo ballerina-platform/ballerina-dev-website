@@ -29,7 +29,8 @@ permalink: /v0-991/learn/by-example/task-scheduler-appointment
     <span class="k">if</span> <span class="p">(</span><span class="nx">startResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while cancelling the task&quot;</span><span class="p">);</span>
@@ -41,7 +42,7 @@ permalink: /v0-991/learn/by-example/task-scheduler-appointment
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">reminderCount</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">reminderCount</span> <span class="p">=</span> <span class="nx">reminderCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span> <span class="o">+</span> <span class="nx">reminderCount</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span> <span class="o">+</span> <span class="nx">reminderCount</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -69,9 +70,9 @@ permalink: /v0-991/learn/by-example/task-scheduler-appointment
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="file.html">
+                                    <a class="prev" href="filepath.html">
                                         <span>< PREVIOUS</span>
-                                        <p>File</p>
+                                        <p>File Path</p>
                                     </a>
                                 </div>
                                  
@@ -242,7 +243,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attach the service to the scheduler and exit if there is an error.</p>
+                                            <p>Attach the service to the Scheduler.</p>
 
                                         </div>
                                     </div>
@@ -265,7 +266,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Start the scheduler and exit if there is an error.</p>
+                                            <p>Start the scheduler.</p>
 
                                         </div>
                                     </div>
@@ -273,7 +274,7 @@ import ballerina/task;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    runtime:sleep(10000);
@@ -281,6 +282,13 @@ import ballerina/task;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Wait for 10000 milliseconds</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -335,7 +343,7 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
         if (reminderCount &lt; 5) {
             reminderCount = reminderCount + 1;
-            io:println(&quot;Schedule is due - Reminder: &quot; + reminderCount.toString());
+            io:println(&quot;Schedule is due - Reminder: &quot; + reminderCount);
         }
     }
 };

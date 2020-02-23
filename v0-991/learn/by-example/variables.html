@@ -26,9 +26,9 @@ permalink: /v0-991/learn/by-example/variables
                     <tr>
                         <td class="cLeftTD">
                             <h2>Variables</h2>
-                            <p><p>Ballerina provides you with two ways to declare variables.
- You can either use the <code>var</code> keyword followed by the variable name and an initializer expression or use a
- type name followed by the variable name in which you can optionally specify the initializer expression.</p>
+                            <p><p>Ballerina provides you two ways to declare variables.
+ You can either use the <code>var</code> keyword followed by the variable name and an initializer expression, or use a
+ type name followed by the variable name, where you can optionally specify the initializer expression.</p>
 </p>
 
                         </td>
@@ -187,8 +187,8 @@ permalink: /v0-991/learn/by-example/variables
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Declare a final variable.
- The value of the <code>final</code> variable is read-only. Once a value is assigned to a final
- variable, it becomes immutable. All parameters of a function call are
+ Value of the <code>final</code> variable is frozen. Once a value is assigned to a final
+ variable it becomes immutable. All parameters of a function call are
  implicitly final.</p>
 
                                         </div>
@@ -285,7 +285,7 @@ permalink: /v0-991/learn/by-example/variables
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run variables.bal
 99
 1

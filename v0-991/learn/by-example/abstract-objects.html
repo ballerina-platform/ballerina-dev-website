@@ -25,16 +25,16 @@ permalink: /v0-991/learn/by-example/abstract-objects
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
-        <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">);</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">Employee</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">condition</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">condition</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>
-    
-    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">getFullName</span><span class="p">());</span>    <span class="nx">p</span><span class="p">.</span><span class="nx">checkAndModifyAge</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -46,7 +46,7 @@ permalink: /v0-991/learn/by-example/abstract-objects
                         <td class="cLeftTD">
                             <h2>Abstract Objects</h2>
                             <p><p>In Ballerina, objects can be abstract. Abstract objects only describe the fields and the signatures of the methods.
- An abstract object cannot be initialized and does not have a default value.</p>
+ An abstract object cannot be initialized, and does not have a default value.</p>
 </p>
 
                         </td>
@@ -125,6 +125,10 @@ permalink: /v0-991/learn/by-example/abstract-objects
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -156,7 +160,7 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an abstract object called <code>Person</code>. It should only contain
+                                            <p>Define an abstract object called <code>Person</code>. It should only contain
  fields and method declarations. An abstract object cannot have
  an initializer or method definitions.</p>
 
@@ -177,7 +181,7 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Method declarations can be within the object. However, the method cannot
+                                            <p>Method declarations can be within the object. But the method cannot
  have a body.</p>
 
                                         </div>
@@ -213,8 +217,8 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a non-abstract object called <code>Employee</code>, which is structurally equivalent
- to <code>Person</code>. A non-abstract object cannot have any methods
+                                            <p>Define a non-abstract object called <code>Employee</code>, which is structurally equivalent
+ to <code>Person</code>. Note that a non-abstract object cannot have any methods
  without a body.</p>
 
                                         </div>
@@ -259,7 +263,7 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Methods should have a body.</p>
+                                            <p>Methods should have a body either within the object or as outside method definitions.</p>
 
                                         </div>
                                     </div>
@@ -267,19 +271,45 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function checkAndModifyAge(int condition, int a) {
-        if (self.age &lt; condition) {
-            self.age = a;
-        }
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    function checkAndModifyAge(int condition, int a);
 };
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Otherwise must be defined outside.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function Employee.checkAndModifyAge(int condition, int a) {
+    if (self.age &lt; condition) {
+        self.age = a;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Implement the declared method.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -319,8 +349,6 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person p = new Employee(5, &quot;John&quot;, &quot;Doe&quot;);
     io:println(p.getFullName());
-    
-    p.checkAndModifyAge(10, 50);
 </code></pre></div>
 
                                 </td>
@@ -328,8 +356,8 @@ permalink: /v0-991/learn/by-example/abstract-objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes a value using the non-abstract object <code>Employee</code>,
- and then assigns the value to the abstract object type variable.</p>
+                                            <p>Initialize a value using the non-abstract object <code>Employee</code>,
+ and then assign the value to the abstract object type variable.</p>
 
                                         </div>
                                     </div>
@@ -339,8 +367,20 @@ permalink: /v0-991/learn/by-example/abstract-objects
                             
                             <tr class="cTR">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    p.checkAndModifyAge(10, 50);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(p.age);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(p);
 }
 </code></pre></div>
 
@@ -367,10 +407,10 @@ permalink: /v0-991/learn/by-example/abstract-objects
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run abstract_object.bal
 John Doe
-50
+{age:50, firstName:&quot;John&quot;, lastName:&quot;Doe&quot;}
 </code></pre></div>
 
                                 </td>

@@ -157,9 +157,9 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>checkpanic</code> unary operator can be used to terminate execution on error.
- Here, <code>checkpanic</code> is used to panic if the <code>parse()</code>
- function evaluates to <code>error</code>. If the actual value returned
+                                            <p>The <code>checkpanic</code> unary operator can be used to lift errors.
+ In this instance, <code>checkpanic</code> is used to lift the (potential) error
+ returned by the <code>parse()</code> function. If the actual value returned
  by the function is an <code>error</code>, the function immediately panics
  with the error.
  Passing a valid integer as a <code>string</code> will return an <code>int</code>.</p>
@@ -183,7 +183,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Passing a random <code>string</code> will result in a panic.</p>
+                                            <p>Passing a random <code>string</code> will result in a <code>panic</code>.</p>
 
                                         </div>
                                     </div>
@@ -214,7 +214,7 @@ $ ballerina run checkpanic.bal
 error: {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;Invalid&#39; cannot be converted to &#39;int&#39;
         at ballerina.lang_int:fromString(int.bal:53)
            checkpanic:parse(checkpanic.bal:6)
-           checkpanic:main(checkpanic.bal:20)
+           checkpanic:main(checkpanic.bal:22)
 </code></pre></div>
 
                                 </td>

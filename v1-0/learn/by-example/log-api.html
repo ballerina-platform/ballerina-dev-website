@@ -227,6 +227,9 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    log:printDebug(&quot;Name of the fruit is Strawberry.&quot;);
     log:printDebug(io:sprintf(&quot;Names of the fruits are %s, %s.&quot;, apple.getName(), orange.getName()));
+    log:printDebug(function() returns string {
+        return io:sprintf(&quot;Name of the fruit is is %s&quot;, apple.getName());
+    });
 </code></pre></div>
 
                                 </td>
@@ -238,10 +241,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    log:printDebug(function() returns string {
-        return io:sprintf(&quot;Name of the fruit is is %s&quot;, apple.getName());
-    });
-}
+                                    <div class="highlight"><pre><code class=ballerina>}
 </code></pre></div>
 
                                 </td>
@@ -249,8 +249,8 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Logic constructing log messages with expensive operations can alternatively be passed as a function
- pointer implementation. The function will be executed if and only if that particular log level is enabled.</p>
+                                            <p>Retrieving log messages through complex operations is allowed through an optional function pointer
+ parameter that will be executed if and only if that particular log level is activated.</p>
 
                                         </div>
                                     </div>

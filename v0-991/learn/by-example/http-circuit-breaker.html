@@ -10,16 +10,16 @@ permalink: /v0-991/learn/by-example/http-circuit-breaker
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">rollingWindow</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">timeWindowInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="nx">bucketSizeInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+                <span class="nx">timeWindowMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                <span class="nx">bucketSizeMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
                 <span class="nx">requestVolumeThreshold</span><span class="p">:</span> <span class="mi">0</span>            <span class="p">},</span>
             <span class="nx">failureThreshold</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-            <span class="nx">resetTimeInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+            <span class="nx">resetTimeMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
             <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>        <span class="p">},</span>
-        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
+        <span class="nx">timeoutMillis</span><span class="p">:</span> <span class="mi">2000</span>
     <span class="p">});</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cb&quot;</span>
@@ -29,20 +29,20 @@ permalink: /v0-991/learn/by-example/http-circuit-breaker
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">INTERNAL_SERVER_ERROR_500</span><span class="p">;</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -56,24 +56,31 @@ permalink: /v0-991/learn/by-example/http-circuit-breaker
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span>
                     <span class="s">&quot;Internal error occurred while processing the request.&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                               <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+               <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                               <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-        <span class="nx">counter</span> <span class="p">=</span> <span class="nx">counter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -184,6 +191,8 @@ permalink: /v0-991/learn/by-example/http-circuit-breaker
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -206,7 +215,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new(&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new(&quot;http://localhost:8080&quot;, config = {
 </code></pre></div>
 
                                 </td>
@@ -214,7 +223,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The circuit breaker looks for errors across a rolling time window.
+                                            <p>Circuit Breakers are used to protect against distributed failure.
+ The circuit breaker looks for errors across a rolling time window.
  After the circuit is broken, it does not send requests to
  the backend until the <code>resetTime</code>.</p>
 
@@ -235,8 +245,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Configuration options that control the behavior of the circuit
- breaker.</p>
+                                            <p>Circuit breaker configuration options that control the
+ behavior of the Ballerina circuit breaker.</p>
 
                                         </div>
                                     </div>
@@ -255,8 +265,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Failure calculation window. This is how long the circuit breaker
- keeps the statistics for the operations.</p>
+                                            <p>Failure calculation window. This is how long Ballerina
+ circuit breaker keeps the statistics for the operations.</p>
 
                                         </div>
                                     </div>
@@ -267,7 +277,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                timeWindowInMillis: 10000,
+                                    <div class="highlight"><pre><code class=ballerina>                timeWindowMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -287,7 +297,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                bucketSizeInMillis: 2000,
+                                    <div class="highlight"><pre><code class=ballerina>                bucketSizeMillis: 2000,
 </code></pre></div>
 
                                 </td>
@@ -295,16 +305,17 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The granularity (in milliseconds) at which the time window
- slides.
- The <code>RollingWindow</code> is divided into buckets and slides by
- these increments.
- For an example, if this <code>timeWindowInMillis</code> is set to 10000
- milliseconds and <code>bucketSizeInMillis</code> 2000, then
- <code>RollingWindow</code> breaks into sub windows with 2-second
- buckets. Stats are collected with respect to the buckets. As
- time rolls, a new bucket will be appended to the end of the
- window and the old bucket will be removed.</p>
+                                            <p>The granularity at which the time window slides.
+ This is measured in milliseconds.
+ The <code>RollingWindow</code> is divided into buckets
+  and slides by these increments.
+ For example, if this <code>timeWindowMillis</code> is set to
+ 10000 milliseconds and <code>bucketSizeMillis</code> 2000.
+ Then <code>RollingWindow</code> breaks into sub windows with
+ 2-second buckets and stats are collected with
+ respect to the buckets. As time rolls a new bucket
+ will be appended to the end of the window and the
+ old bucket will be removed.</p>
 
                                         </div>
                                     </div>
@@ -323,8 +334,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Minimum number of requests in a <code>RollingWindow</code> that will
- trip the circuit.</p>
+                                            <p>Minimum number of requests in a <code>RollingWindow</code>
+ that will trip the circuit.</p>
 
                                         </div>
                                     </div>
@@ -357,8 +368,9 @@ import ballerina/runtime;
                                         <div>
                                             <p>The threshold for request failures.
  When this threshold exceeds, the circuit trips.
- This is the ratio between failures and total requests and the
- ratio is considered only within the configured <code>RollingWindow</code>.</p>
+ This is the ratio between failures and total requests
+  and the ratio is considered only within the configured
+ <code>RollingWindow</code>.</p>
 
                                         </div>
                                     </div>
@@ -369,7 +381,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            resetTimeInMillis: 10000,
+                                    <div class="highlight"><pre><code class=ballerina>            resetTimeMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -377,12 +389,12 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The time period (in milliseconds) to wait before attempting to
- make another request to the upstream service.
- When the failure threshold exceeds, the circuit trips to <code>OPEN</code>
- state. Once the circuit is in <code>OPEN</code> state circuit breaker waits
- for the time configured in <code>resetTimeInMillis</code> and switch the
- circuit to the <code>HALF_OPEN</code> state.</p>
+                                            <p>The time period (in milliseconds) to wait before
+ attempting to make another request to the upstream service.
+ When the failure threshold exceeds, the circuit trips to
+ <code>OPEN</code> state. Once the circuit is in <code>OPEN</code> state
+ circuit breaker waits for the time configured in <code>resetTimeMillis</code>
+ and switch the circuit to the <code>HALF_OPEN</code> state.</p>
 
                                         </div>
                                     </div>
@@ -413,7 +425,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        },
-        timeoutInMillis: 2000
+        timeoutMillis: 2000
     });
 </code></pre></div>
 
@@ -471,7 +483,6 @@ service circuitbreaker on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
-        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -488,21 +499,58 @@ service circuitbreaker on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (backendResponse is http:Response) {
-            var responseToCaller = caller-&gt;respond(backendResponse);
-            if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>is</code> operator is used to separate out union-type returns.
+ The type of <code>backendResponse</code> variable is the union of <code>http:Response</code> and <code>error</code>.
+ If a response is returned, <code>backendResponse</code> is treated as an <code>http:Response</code>
+ within the if-block and the normal process runs.
+ If the service returns an <code>error</code>, <code>backendResponse</code> is implicitly
+ converted to an <code>error</code> within the else block.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var responseToCaller = caller-&gt;respond(backendResponse);
+            if (responseToCaller is error) {
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         } else {
             http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(&lt;string&gt; backendResponse.detail()?.message);
+            response.statusCode = http:INTERNAL_SERVER_ERROR_500;
+            response.setPayload(&lt;string&gt; backendResponse.detail().message);
             var responseToCaller = caller-&gt;respond(response);
-            if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+            if (responseToCaller is error) {
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         }
     }
@@ -511,15 +559,6 @@ service circuitbreaker on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the <code>backendResponse</code> is an <code>http:Response</code>, it is sent back to
- the client. If <code>backendResponse</code> is an <code>http:ClientError</code>, an
- internal server error is returned to the client.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -568,6 +607,7 @@ service helloWorld on new http:Listener(8080) {
     }
     resource function sayHello(http:Caller caller, http:Request req) {
         if (counter % 5 == 0) {
+            counter = counter + 1;
 </code></pre></div>
 
                                 </td>
@@ -598,37 +638,31 @@ service helloWorld on new http:Listener(8080) {
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Hello World!!!&quot;);
-            handleRespondResult(result);
+            if (result is error) {
+               log:printError(&quot;Error sending response from mock service&quot;,
+                                err = result);
+            }
         } else if (counter % 5 == 3) {
+            counter = counter + 1;
             http:Response res = new;
             res.statusCode = 500;
             res.setPayload(
                     &quot;Internal error occurred while processing the request.&quot;);
             var result = caller-&gt;respond(res);
-            handleRespondResult(result);
+            if (result is error) {
+               log:printError(&quot;Error sending response from mock service&quot;,
+                               err = result);
+            }
         } else {
+            counter = counter + 1;
             var result = caller-&gt;respond(&quot;Hello World!!!&quot;);
-            handleRespondResult(result);
+            if (result is error) {
+               log:printError(&quot;Error sending response from mock service&quot;,
+                               err = result);
+            }
         }
-        counter = counter + 1;
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(error? result) {
-    if (result is http:ListenerError) {
-        log:printError(&quot;Error sending response from mock service&quot;, result);
     }
 }
 </code></pre></div>
@@ -658,15 +692,16 @@ service helloWorld on new http:Listener(8080) {
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_circuit_breaker.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-2019-09-04 17:08:02,595 INFO  [ballerina/http/resiliency] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
-2019-09-04 17:08:12,514 INFO  [ballerina/http/resiliency] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
-2019-09-04 17:08:14,993 INFO  [ballerina/http/resiliency] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
-2019-09-04 17:08:20,003 ERROR [] - Error sending response from mock service : error {ballerina/http}GenericListenerError message=Connection between remote client and host is closed
-2019-09-04 17:08:22,082 INFO  [ballerina/http/resiliency] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
-2019-09-04 17:08:32,755 INFO  [ballerina/http/resiliency] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
-2019-09-04 17:08:35,268 INFO  [ballerina/http/resiliency] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
+Initiating service(s) in &#39;http_circuit_breaker.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:8080
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
+2018-04-23 15:35:04,407 INFO  [ballerina/http] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
+2018-04-23 15:35:31,257 INFO  [ballerina/http] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
+2018-04-23 15:35:33,032 INFO  [ballerina/http] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
+2018-04-23 15:35:37,621 INFO  [ballerina/http] - CircuitBreaker failure threshold exceeded. Circuit tripped from CLOSE to OPEN state.
+2018-04-23 15:35:38,041 ERROR [] - Error sending response from mock service : {ballerina/http}HTTPError {message:&quot;Connection between remote client and host is closed&quot;}
+2018-04-23 15:35:50,612 INFO  [ballerina/http] - CircuitBreaker reset timeout reached. Circuit switched from OPEN to HALF_OPEN state.
+2018-04-23 15:35:51,613 INFO  [ballerina/http] - CircuitBreaker trial run  was successful. Circuit switched from HALF_OPEN to CLOSE state.
 </code></pre></div>
 
                                 </td>
@@ -733,19 +768,16 @@ $ ballerina run http_circuit_breaker.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The first two requests complete without any errors.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:07:58 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 14
+&lt; Content-Length: 14
+&lt; Content-Type: text/plain
 &lt;
 * Connection #0 to host localhost left intact
 Hello World!!!
@@ -761,19 +793,16 @@ Hello World!!!
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:00 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 14
+&lt; Content-Length: 14
+&lt; Content-Type: text/plain
 &lt;
 * Connection #0 to host localhost left intact
 Hello World!!!
@@ -788,23 +817,20 @@ Hello World!!!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The third request responds with a `500 Internal Server Error` because the
-# mock service sends a `500` http status code when responding to every third
-# request.
+                                    <div class="highlight"><pre><code class=shell-session># The third request responds with a `500 Internal Server Error` because the mock service sends a `500` http status code
+# when responding to every third request.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:00 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 53
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 53
 &lt;
 * Connection #0 to host localhost left intact
 Internal error occurred while processing the request.
@@ -819,25 +845,22 @@ Internal error occurred while processing the request.
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Subsequent requests fail immediately since the reset timeout period has not
-# elapsed.
+                                    <div class="highlight"><pre><code class=shell-session># Subsequent requests fail immediately since the reset timeout period has not elapsed.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:02 +0530
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 100
 &lt;
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 8340 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 14061 milliseconds
 </code></pre></div>
 
                                 </td>
@@ -850,22 +873,20 @@ Upstream service unavailable. Requests to upstream service will be suspended for
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:04 +0530
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 99
 &lt;
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 6079 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 5398 milliseconds
 </code></pre></div>
 
                                 </td>
@@ -878,22 +899,20 @@ Upstream service unavailable. Requests to upstream service will be suspended for
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:07 +0530
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 99
 &lt;
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 3475 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 1753 milliseconds
 </code></pre></div>
 
                                 </td>
@@ -905,24 +924,19 @@ Upstream service unavailable. Requests to upstream service will be suspended for
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The request sent immediately after the timeout period expires, is the trial
-# request. It is sent to see if the backend service is back to normal.
-# If this request is successful, the circuit is set to `close` and normal
-# functionality resumes.
+                                    <div class="highlight"><pre><code class=shell-session># The request sent immediately after the timeout period expires, is the trial request. It is sent to see if the backend service is back to normal.
+# If this request is successful, the circuit is set to `close` and normal functionality resumes.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:12 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 14
+&lt; Content-Length: 14
+&lt; Content-Type: text/plain
 &lt;
 * Connection #0 to host localhost left intact
 Hello World!!!
@@ -937,25 +951,22 @@ Hello World!!!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The fifth request times out because the mock service times out when
-# responding to every fifth request.
+                                    <div class="highlight"><pre><code class=shell-session># The fifth request times out because the mock service times out when responding to every fifth request.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 57
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:17 +0530
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 54
 &lt;
 * Connection #0 to host localhost left intact
-Idle timeout triggered before initiating inbound response
+Idle timeout triggered before reading inbound response
 </code></pre></div>
 
                                 </td>
@@ -967,25 +978,22 @@ Idle timeout triggered before initiating inbound response
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Subsequent requests fail immediately since the reset timeout period has not
-# elapsed.
+                                    <div class="highlight"><pre><code class=shell-session># Subsequent requests fail immediately since the reset timeout period has not elapsed.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 500 Internal Server Error
-&lt; content-type: text/plain
-&lt; content-length: 99
-&lt; server: ballerina/1.0.0-beta
-&lt; date: Wed, 4 Sep 2019 17:08:22 +0530
+&lt; Connection: Keep-Alive
+&lt; Content-Type: text/plain
+&lt; Content-Length: 100
 &lt;
 * Connection #0 to host localhost left intact
-Upstream service unavailable. Requests to upstream service will be suspended for 4917 milliseconds.
+Upstream service unavailable. Requests to upstream service will be suspended for 14061 milliseconds
 </code></pre></div>
 
                                 </td>
@@ -997,24 +1005,19 @@ Upstream service unavailable. Requests to upstream service will be suspended for
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The request sent immediately after the timeout period expires, is the trial
-# request. It is sent to see if the backend service is back to normal.
-# If this request is successful, the circuit is set to `close` and normal
-# functionality resumes.
+                                    <div class="highlight"><pre><code class=shell-session># The request sent immediately after the timeout period expires, is the trial request. It is sent to see if the backend service is back to normal.
+# If this request is successful, the circuit is set to `close` and normal functionality resumes.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:32 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 14
+&lt; Content-Length: 14
+&lt; Content-Type: text/plain
 &lt;
 * Connection #0 to host localhost left intact
 Hello World!!!
@@ -1029,22 +1032,18 @@ Hello World!!!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Since the immediate request after the timeout expired was successful, the
-# requests sent after that complete normally.
+                                    <div class="highlight"><pre><code class=shell-session># Since the immediate request after the timeout expired was successful, the requests sent after that complete normally.
 $ curl -v http://localhost:9090/cb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cb HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 17:08:35 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 14
+&lt; Content-Length: 14
+&lt; Content-Type: text/plain
 &lt;
 * Connection #0 to host localhost left intact
 Hello World!!!

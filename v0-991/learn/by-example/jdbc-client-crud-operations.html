@@ -8,79 +8,97 @@ permalink: /v0-991/learn/by-example/jdbc-client-crud-operations
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jsonutils</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">time</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
-    <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-    <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
-<span class="p">});</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+        <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
+        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">},</span>
+        <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}</span>
+    <span class="p">});</span>
 <span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">insertedTime</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;The update operation - Creating a table&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;age INT, name VARCHAR(255), insertedTime TIMESTAMP DEFAULT &quot;</span> <span class="o">+</span>
-        <span class="s">&quot;CURRENT_TIMESTAMP, PRIMARY KEY (id))&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE student(id INT AUTO_INCREMENT,</span>
+<span class="s">                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create student table&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe update operation - Inserting data to a table&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values &quot;</span> <span class="o">+</span>
-                          <span class="s">&quot;(23, &#39;john&#39;)&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values</span>
+<span class="s">                          (23, &#39;john&#39;)&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to student table with no parameters&quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">24</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Anne&quot;</span><span class="p">;</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values (?, ?)&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to student table with variable parameters&quot;</span><span class="p">);</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">p1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">sqlType</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">TYPE_INTEGER</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">25</span><span class="p">};</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">sqlType</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">TYPE_VARCHAR</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="s">&quot;James&quot;</span><span class="p">};</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">p3</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">sqlType</span><span class="p">:</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">TYPE_TIMESTAMP</span><span class="p">,</span>
-        <span class="nx">value</span><span class="p">:</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">()</span>
-    <span class="p">};</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name, insertedTime) &quot;</span> <span class="o">+</span>
-                         <span class="s">&quot;values (?, ?, ?)&quot;</span><span class="p">,</span> <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">);</span>
-    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to student table with jdbc:parameter values&quot;</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">p1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">sqlType</span><span class="p">:</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">TYPE_INTEGER</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Parameter</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">sqlType</span><span class="p">:</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">TYPE_VARCHAR</span><span class="p">,</span> <span class="nx">value</span><span class="p">:</span> <span class="s">&quot;James&quot;</span> <span class="p">};</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student(age, name) values (?, ?)&quot;</span><span class="p">,</span>
+        <span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to student table with sql:parameter values&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe Update operation - Update data in a table&quot;</span><span class="p">);</span>
-    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;UPDATE student SET name = &#39;jane&#39; WHERE age = ?&quot;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;UPDATE student SET name = &#39;Jones&#39; WHERE age = ?&quot;</span><span class="p">,</span>
+        <span class="mi">23</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Update a row in student table&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe Update operation - Delete data from table&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DELETE FROM student WHERE age = ?&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Delete a row from student table&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe Update operation - Inserting data&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">retWithKey</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;(age, name) values (?, ?)&quot;</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="s">&quot;Kate&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">retWithKey</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted row count: &quot;</span><span class="p">,</span> <span class="nx">retWithKey</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated key: &quot;</span><span class="p">,</span>
-                    <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">retWithKey</span><span class="p">.</span><span class="nx">generatedKeys</span><span class="p">[</span><span class="s">&quot;GENERATED_KEY&quot;</span><span class="p">]);</span>
+    <span class="nx">age</span> <span class="p">=</span> <span class="mi">31</span><span class="p">;</span>
+    <span class="nx">name</span> <span class="p">=</span> <span class="s">&quot;Kate&quot;</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">retWithKey</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO student</span>
+<span class="s">                        (age, name) values (?, ?)&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retWithKey</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">retWithKey</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">generatedKey</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">retWithKey</span><span class="p">.</span><span class="nx">generatedKeys</span><span class="p">.</span><span class="nx">GENERATED_KEY</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Inserted row count: &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated key: &quot;</span> <span class="o">+</span> <span class="nx">generatedKey</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Insert failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retWithKey</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Insert to table failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retWithKey</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe select operation - Select data from a table&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">selectRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student where age &lt; ?&quot;</span><span class="p">,</span>
-                                    <span class="nx">Student</span><span class="p">,</span> <span class="mi">35</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">selectRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student&quot;</span><span class="p">,</span> <span class="nx">Student</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;</span> <span class="nx">dt</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">selectRet</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="kt">json</span> <span class="nx">jsonConversionRet</span> <span class="p">=</span> <span class="nx">jsonutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">selectRet</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON: &quot;</span><span class="p">,</span> <span class="nx">jsonConversionRet</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="k">var</span> <span class="nx">jsonConversionRet</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">selectRet</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">jsonConversionRet</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON: &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">jsonConversionRet</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in table to json conversion&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span><span class="p">,</span>
-        <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">selectRet</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span>
+                <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">selectRet</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe select operation - By loading table to memory&quot;</span><span class="p">);</span>
+    <span class="nx">selectRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student&quot;</span><span class="p">,</span> <span class="nx">Student</span><span class="p">,</span>
+        <span class="nx">loadToMemory</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">selectRet</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Iterating data first time:&quot;</span><span class="p">);</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">selectRet</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student:&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Iterating data second time:&quot;</span><span class="p">);</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">selectRet</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student:&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">id</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;|&quot;</span> <span class="o">+</span> <span class="nx">row</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from student table failed: &quot;</span>
+                <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">selectRet</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nThe update operation - Drop the student table&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;DROP TABLE student&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table student&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span> <span class="o">+</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -93,7 +111,8 @@ permalink: /v0-991/learn/by-example/jdbc-client-crud-operations
                         <td class="cLeftTD">
                             <h2>JDBC Client CRUD Operations</h2>
                             <p><p>This example demonstrates how to execute data definition statements, insert/update/delete data
- and select data using JDBC Client.
+ and select data using JDBC Client. For MYSQL and H2 you could use corresponding MYSQL and
+ H2 clients implemented specifically for each of them.
  This sample uses MySQL DB. Before running the sample, copy the
  MySQL JDBC driver to the <code>BALLERINA_HOME/bre/lib</code> folder and change the DB connection
  properties as required.</p>
@@ -104,9 +123,9 @@ permalink: /v0-991/learn/by-example/jdbc-client-crud-operations
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="http-timeout.html">
+                                    <a class="prev" href="mysql-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Timeout</p>
+                                        <p>MySQL Client</p>
                                     </a>
                                 </div>
                                  
@@ -181,6 +200,12 @@ permalink: /v0-991/learn/by-example/jdbc-client-crud-operations
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -190,9 +215,8 @@ permalink: /v0-991/learn/by-example/jdbc-client-crud-operations
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/jsonutils;
-import ballerina/time;
-import ballerinax/java.jdbc;
+import ballerina/sql;
+import ballerinax/jdbc;
 </code></pre></div>
 
                                 </td>
@@ -204,12 +228,13 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
-    url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
-    username: &quot;test&quot;,
-    password: &quot;test&quot;,
-    dbOptions: {useSSL: false}
-});
+                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new({
+        url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
+        username: &quot;test&quot;,
+        password: &quot;test&quot;,
+        poolOptions: { maximumPoolSize: 5 },
+        dbOptions: { useSSL: false }
+    });
 </code></pre></div>
 
                                 </td>
@@ -217,7 +242,7 @@ import ballerinax/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>JDBC Client for MySQL database. This client can be used with any JDBC
+                                            <p>Client for MySQL database. This client can be used with any JDBC
  supported database by providing the corresponding JDBC URL.</p>
 
                                         </div>
@@ -233,7 +258,6 @@ import ballerinax/java.jdbc;
     int id;
     int age;
     string name;
-    time:Time insertedTime;
 };
 </code></pre></div>
 
@@ -266,9 +290,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;The update operation - Creating a table&quot;);
-    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT, &quot; +
-        &quot;age INT, name VARCHAR(255), insertedTime TIMESTAMP DEFAULT &quot; +
-        &quot;CURRENT_TIMESTAMP, PRIMARY KEY (id))&quot;);
+    var ret = testDB-&gt;update(&quot;CREATE TABLE student(id INT AUTO_INCREMENT,
+                         age INT, name VARCHAR(255), PRIMARY KEY (id))&quot;);
     handleUpdate(ret, &quot;Create student table&quot;);
 </code></pre></div>
 
@@ -291,8 +314,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe update operation - Inserting data to a table&quot;);
-    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values &quot; +
-                          &quot;(23, &#39;john&#39;)&quot;);
+    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values
+                          (23, &#39;john&#39;)&quot;);
     handleUpdate(ret, &quot;Insert to student table with no parameters&quot;);
 </code></pre></div>
 
@@ -328,9 +351,8 @@ import ballerinax/java.jdbc;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The query parameters are given as variables for the <code>update</code> remote
- function. Only <code>int</code>, <code>float</code>, <code>decimal</code>, <code>boolean</code>, <code>string</code>  and
- <code>byte[]</code> values are supported as direct variables any remote function
- of the <code>java.jdbc</code> module.</p>
+ function. Only <code>int</code>, <code>float</code>, <code>boolean</code>, and <code>string</code> values are
+ supported as direct variables.</p>
 
                                         </div>
                                     </div>
@@ -341,15 +363,11 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Parameter p1 = {sqlType: jdbc:TYPE_INTEGER, value: 25};
-    jdbc:Parameter p2 = {sqlType: jdbc:TYPE_VARCHAR, value: &quot;James&quot;};
-    jdbc:Parameter p3 = {
-        sqlType: jdbc:TYPE_TIMESTAMP,
-        value: time:currentTime()
-    };
-    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name, insertedTime) &quot; +
-                         &quot;values (?, ?, ?)&quot;, p1, p2, p3);
-    handleUpdate(ret, &quot;Insert to student table with jdbc:parameter values&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    sql:Parameter p1 = { sqlType: sql:TYPE_INTEGER, value: 25 };
+    sql:Parameter p2 = { sqlType: sql:TYPE_VARCHAR, value: &quot;James&quot; };
+    ret = testDB-&gt;update(&quot;INSERT INTO student(age, name) values (?, ?)&quot;,
+        p1, p2);
+    handleUpdate(ret, &quot;Insert to student table with sql:parameter values&quot;);
 </code></pre></div>
 
                                 </td>
@@ -357,11 +375,9 @@ import ballerinax/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The query parameters can be given as arguments of the type
- <code>jdbc:Parameter</code> for the any remote function. This is useful if
- we want to set the SQL type explicitly or for the parameter types
- other than <code>int</code>, <code>float</code>, <code>decimal</code>, <code>boolean</code>, <code>string</code>  or
- <code>byte[]</code> (e.g. time). Default direction is IN.</p>
+                                            <p>The query parameters are given as arguments of the type <code>sql:Parameter</code>
+ for the <code>update</code> remote function.
+ Default direction is IN.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +389,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Update data in a table&quot;);
-    ret = testDB-&gt;update(&quot;UPDATE student SET name = &#39;jane&#39; WHERE age = ?&quot;, 23);
+    ret = testDB-&gt;update(&quot;UPDATE student SET name = &#39;Jones&#39; WHERE age = ?&quot;,
+        23);
     handleUpdate(ret, &quot;Update a row in student table&quot;);
 </code></pre></div>
 
@@ -415,14 +432,17 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe Update operation - Inserting data&quot;);
-    var retWithKey = testDB-&gt;update(&quot;INSERT INTO student &quot; +
-                    &quot;(age, name) values (?, ?)&quot;, 31, &quot;Kate&quot;);
-    if (retWithKey is jdbc:UpdateResult) {
-        io:println(&quot;Inserted row count: &quot;, retWithKey.updatedRowCount);
-        io:println(&quot;Generated key: &quot;,
-                    &lt;int&gt;retWithKey.generatedKeys[&quot;GENERATED_KEY&quot;]);
+    age = 31;
+    name = &quot;Kate&quot;;
+    var retWithKey = testDB-&gt;update(&quot;INSERT INTO student
+                        (age, name) values (?, ?)&quot;, age, name);
+    if (retWithKey is sql:UpdateResult) {
+        int count = retWithKey.updatedRowCount;
+        int generatedKey = &lt;int&gt;retWithKey.generatedKeys.GENERATED_KEY;
+        io:println(&quot;Inserted row count: &quot; + count);
+        io:println(&quot;Generated key: &quot; + generatedKey);
     } else {
-        io:println(&quot;Insert failed: &quot;, &lt;string&gt;retWithKey.detail()?.message);
+        io:println(&quot;Insert to table failed: &quot; + &lt;string&gt;retWithKey.detail().message);
     }
 </code></pre></div>
 
@@ -449,8 +469,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe select operation - Select data from a table&quot;);
-    var selectRet = testDB-&gt;select(&quot;SELECT * FROM student where age &lt; ?&quot;,
-                                    Student, 35);
+    var selectRet = testDB-&gt;select(&quot;SELECT * FROM student&quot;, Student);
+    table&lt;Student&gt; dt;
     if (selectRet is table&lt;Student&gt;) {
 </code></pre></div>
 
@@ -460,7 +480,8 @@ import ballerinax/java.jdbc;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Select data using the <code>select</code> remote function. The <code>select</code> remote
- function returns a <code>table</code>.</p>
+ function returns a <code>table</code>. See the <code>table</code> ballerina example for
+ more details on how to access data.</p>
 
                                         </div>
                                     </div>
@@ -471,11 +492,15 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json jsonConversionRet = jsonutils:fromTable(selectRet);
-        io:println(&quot;JSON: &quot;, jsonConversionRet.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>        var jsonConversionRet = json.convert(selectRet);
+        if (jsonConversionRet is json) {
+            io:println(&quot;JSON: &quot;, io:sprintf(&quot;%s&quot;, jsonConversionRet));
+        } else {
+            io:println(&quot;Error in table to json conversion&quot;);
+        }
     } else {
-        io:println(&quot;Select data from student table failed: &quot;,
-        &lt;string&gt;selectRet.detail()?.message);
+        io:println(&quot;Select data from student table failed: &quot;
+                + &lt;string&gt;selectRet.detail().message);
     }
 </code></pre></div>
 
@@ -488,7 +513,79 @@ import ballerinax/java.jdbc;
  conversion happens on-demand. When a service client makes a request,
  the result is streamed to the service instead of building the full
  result in the server and returning it. This allows unlimited payload
- sizes in the result and the response is instantaneous to the client.</p>
+ sizes in the result and the response is instantaneous to the client.
+ Convert a table to <code>json</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\nThe select operation - By loading table to memory&quot;);
+    selectRet = testDB-&gt;select(&quot;SELECT * FROM student&quot;, Student,
+        loadToMemory = true);
+    if (selectRet is table&lt;Student&gt;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Re-iteration of the result is possible only if <code>loadToMemory</code> named argument
+ is set to <code>true</code> in <code>select</code> remote function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Iterating data first time:&quot;);
+        foreach var row in selectRet {
+            io:println(&quot;Student:&quot; + row.id + &quot;|&quot; + row.name + &quot;|&quot; + row.age);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>First iteration of data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Iterating data second time:&quot;);
+        foreach var row in selectRet {
+            io:println(&quot;Student:&quot; + row.id + &quot;|&quot; + row.name + &quot;|&quot; + row.age);
+        }
+    } else {
+        io:println(&quot;Select data from student table failed: &quot;
+                + &lt;string&gt;selectRet.detail().message);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Second iteration of data.</p>
 
                                         </div>
                                     </div>
@@ -521,11 +618,11 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(jdbc:UpdateResult|jdbc:Error returned, string message) {
-    if (returned is jdbc:UpdateResult) {
-        io:println(message, &quot; status: &quot;, returned.updatedRowCount);
+                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(sql:UpdateResult|error returned, string message) {
+    if (returned is sql:UpdateResult) {
+        io:println(message + &quot; status: &quot; + returned.updatedRowCount);
     } else {
-        io:println(message, &quot; failed: &quot;, &lt;string&gt;returned.detail()?.message);
+        io:println(message + &quot; failed: &quot; + &lt;string&gt;returned.detail().message);
     }
 }
 </code></pre></div>
@@ -546,6 +643,10 @@ import ballerinax/java.jdbc;
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -602,7 +703,7 @@ Create student table status: 0
                                     <div class="highlight"><pre><code class=shell-session>The update operation - Inserting data to a table
 Insert to student table with no parameters status: 1
 Insert to student table with variable parameters status: 1
-Insert to student table with jdbc:parameter values status: 1
+Insert to student table with sql:parameter values status: 1
 </code></pre></div>
 
                                 </td>
@@ -655,8 +756,27 @@ Generated key: 4
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>The select operation - Select data from a table
-JSON: [{&quot;id&quot;:1, &quot;age&quot;:23, &quot;name&quot;:&quot;jane&quot;, &quot;insertedTime&quot;:&quot;2019-12-10 17:07:35.0&quot;}, {&quot;id&quot;:3, &quot;age&quot;:25, &quot;name&quot;:&quot;James&quot;,
-&quot;insertedTime&quot;:&quot;2019-12-10 17:07:36.0&quot;}, {&quot;id&quot;:4, &quot;age&quot;:31, &quot;name&quot;:&quot;Kate&quot;, &quot;insertedTime&quot;:&quot;2019-12-10 17:07:35.0&quot;}]
+JSON: [{&quot;id&quot;:1, &quot;age&quot;:23, &quot;name&quot;:&quot;Jones&quot;}, {&quot;id&quot;:3, &quot;age&quot;:25, &quot;name&quot;:&quot;James&quot;}, {&quot;id&quot;:4, &quot;age&quot;:31, &quot;name&quot;:&quot;Kate&quot;}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>The select operation - By loading table to memory
+Iterating data first time:
+Student:1|Jones|23
+Student:3|James|25
+Student:4|Kate|31
+Iterating data second time:
+Student:1|Jones|23
+Student:3|James|25
+Student:4|Kate|31
 </code></pre></div>
 
                                 </td>

@@ -61,7 +61,7 @@ permalink: /v0-991/learn/by-example/join-tables-and-streams
     <span class="nx">orderStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">order2</span><span class="p">);</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printOutOfStocksAlert</span><span class="p">(</span><span class="nx">OutOfStockAlert</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alert! : &quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">itemName</span><span class="p">,</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alert! : &quot;</span> <span class="o">+</span> <span class="nx">a</span><span class="p">.</span><span class="nx">itemName</span> <span class="o">+</span>
             <span class="s">&quot; stock is not enough to satisfy the order.&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -73,10 +73,10 @@ permalink: /v0-991/learn/by-example/join-tables-and-streams
                     <tr>
                         <td class="cLeftTD">
                             <h2>Join Tables and Streams</h2>
-                            <p><p>Tables and streams can be joined using streaming query logic.
-In this example, orders coming from the customers for a certain item are checked against the stock table to verify
+                            <p><p>Tables and steams can be joined using streaming query logic.
+In this example, orders coming from customers for a certain item are checked against the stock table to verify
 whether there is enough stock to deliver the order. An alert is triggered if the stock is not sufficient.
-Ballerina Streams is an experimental feature. Use the <code>--experimental</code> flag when compiling Ballerina files
+Ballerina Streams is an experimental feature. Please use <code>--experimental</code> flag when compiling Ballerina files
 that have streaming constructs.</p>
 </p>
 
@@ -87,7 +87,7 @@ that have streaming constructs.</p>
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="join-multiple-streams.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Join Multiple Streams</p>
+                                        <p>Join Mutiple Streams</p>
                                     </a>
                                 </div>
                                  
@@ -195,7 +195,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the <code>record</code>, which holds item details in the stockTable.</p>
+                                            <p>This is the <code>record</code> that holds item details in the stockTable.</p>
 
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the <code>record</code>, which holds order events from the customer.</p>
+                                            <p>This is the <code>record</code> that holds order events from customer.</p>
 
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the <code>record</code>, which holds alert events.</p>
+                                            <p>This is the <code>record</code> that holds alert events.</p>
 
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the input <code>stream</code>, which uses <code>Order</code> as the constraint type.</p>
+                                            <p>This is the input <code>stream</code> that uses <code>Order</code> as the constraint type.</p>
 
                                         </div>
                                     </div>
@@ -283,7 +283,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the <code>table</code>, which holds the item stock data.</p>
+                                            <p>This is the <code>table</code> that holds the item stock data.</p>
 
                                         </div>
                                     </div>
@@ -302,7 +302,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the output stream, which contains the events/alerts that are generated based on the streaming logic.</p>
+                                            <p>This is the output stream that contains the events/alerts that are generated based on streaming logic.</p>
 
                                         </div>
                                     </div>
@@ -343,8 +343,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Whenever an order event is published to the <code>orderStream</code>, it is matched against the <code>itemStockTable</code> through
-the <code>queryItemTable</code> function. If there is a match, an alert event is published to the <code>orderAlertStream</code>.</p>
+                                            <p>Whenever an order event is published to <code>orderStream</code>, it is matched against the <code>itemStockTable</code> through
+the <code>queryItemTable</code> function. If there is a match, an alert event is published to <code>oredrAlertStream</code>.</p>
 
                                         </div>
                                     </div>
@@ -374,7 +374,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>queryItemTable</code> function returns a <code>table</code> of items whose stock is not enough to satisfy the order.</p>
+                                            <p><code>queryItemTable</code> function returns a <code>table</code> of items whose stock is not enough to satisfy the order.</p>
 
                                         </div>
                                     </div>
@@ -419,7 +419,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Whenever the <code>orderAlertStream</code> stream receives an event from the streaming rules defined in the <code>forever</code>
+                                            <p>Whenever the <code>oredrAlertStream</code> stream receives an event from the streaming rules defined in the <code>forever</code>
  block, the <code>printOutOfStocksAlert</code> function is invoked.</p>
 
                                         </div>
@@ -448,7 +448,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function printOutOfStocksAlert(OutOfStockAlert a) {
-    io:println(&quot;Alert! : &quot;, a.itemName,
+    io:println(&quot;Alert! : &quot; + a.itemName +
             &quot; stock is not enough to satisfy the order.&quot;);
 }
 </code></pre></div>
@@ -476,7 +476,7 @@ the <code>queryItemTable</code> function. If there is a match, an alert event is
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental join-tables-and-streams.bal
 Alert! : Pen stock is not enough to satisfy the order.
 </code></pre></div>

@@ -34,9 +34,15 @@ permalink: /v0-991/learn/by-example/clone
         <span class="nx">salary</span><span class="p">:</span> <span class="mf">8000.0</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="nx">address</span>
     <span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source value: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cloned value: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source and Clone are at two different memory locations: &quot;</span><span class="p">,</span> <span class="nx">result</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="kt">any</span> <span class="nx">anyValue</span> <span class="p">=</span> <span class="nx">person</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">anyValue</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source value: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cloned value: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Source and Clone are at two different memory locations: &quot;</span><span class="p">,</span> <span class="nx">result</span> <span class="o">!=</span><span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cannot clone: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -47,13 +53,12 @@ permalink: /v0-991/learn/by-example/clone
                     <tr>
                         <td class="cLeftTD">
                             <h2>Cloning Values</h2>
-                            <p><p>The <code>.clone()</code> method can be used to make a copy of an <code>anydata</code> value.
+                            <p><p>The <code>.clone()</code> built-in method is used to make a copy of an <code>anydata</code> value.
  <code>anydata</code> is equivalent to <code>()|boolean|int|float|decimal|string|(anydata|error)[]|map&lt;anydata|error&gt;|xml|table</code>.
- Clone is defined for all structured types that belong to <code>anydata</code>.
+ Clone is defined on all structured types but returns an error if the value is not <code>anydata</code>.
  The resultant copy is a deep copy.
- A deep copy copies all fields and makes copies of the dynamically-allocated memory that is pointed to by the fields.
- It preserves cycles, storage type, and immutability.
- Cloning an immutable value will return the value itself.</p>
+ A deep copy copies all fields, and makes copies of dynamically allocated memory pointed to by the fields.
+ It preserves cycles, storage type, and immutability.</p>
 </p>
 
                         </td>
@@ -61,16 +66,16 @@ permalink: /v0-991/learn/by-example/clone
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="optional-field-access.html">
+                                    <a class="prev" href="immutable-values.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Optional Field Access</p>
+                                        <p>Immutable Values</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="immutable-values.html">
+                                    <a class="next" href="stamp.html">
                                         <span>NEXT ></span>
-                                        <p>Immutable Values</p>
+                                        <p>Stamping Values</p>
                                     </a>
                                 </div>
                                 
@@ -107,6 +112,10 @@ permalink: /v0-991/learn/by-example/clone
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -220,7 +229,7 @@ permalink: /v0-991/learn/by-example/clone
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define an <code>Address</code> value.</p>
+                                            <p>Define an <code>Address</code> record.</p>
 
                                         </div>
                                     </div>
@@ -245,7 +254,7 @@ permalink: /v0-991/learn/by-example/clone
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Define a <code>Person</code> value.</p>
+                                            <p>Define a <code>Person</code> record.</p>
 
                                         </div>
                                     </div>
@@ -256,7 +265,7 @@ permalink: /v0-991/learn/by-example/clone
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person result = person.clone();
+                                    <div class="highlight"><pre><code class=ballerina>    any anyValue = person;
 </code></pre></div>
 
                                 </td>
@@ -264,10 +273,8 @@ permalink: /v0-991/learn/by-example/clone
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke the <code>.clone()</code> method. The return type is also <code>Person</code>.
- Provided that the type of the value being cloned belongs to <code>anydata</code>, the return type of <code>.clone()</code> would be
- the same as the type of the value being cloned.
- E.g., <code>anydata result = anydataValue.clone();</code> where <code>anydataValue</code> is a variable of type <code>anydata</code>.</p>
+                                            <p>Assign the <code>person</code> value to an <code>any</code> typed variable called <code>anyValue</code>.
+ The type of the value held by <code>anyValue</code> is determined at runtime.</p>
 
                                         </div>
                                     </div>
@@ -275,15 +282,70 @@ permalink: /v0-991/learn/by-example/clone
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Source value: &quot;, person);
-    io:println(&quot;Cloned value: &quot;, result);
+                                    <div class="highlight"><pre><code class=ballerina>    var result = anyValue.clone();
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invoke the <code>.clone()</code> built-in method. The return type is either <code>Person</code> or <code>error</code>. Note that <code>error</code> could be
+ returned if the variable on which <code>.clone()</code> is called is not of type <code>anydata</code>.
+ If the type of the value that is cloned can be determined at compile time and is <code>anydata</code>, the type of the
+ return value is exactly the type of the value being cloned.
+ e.g. <code>Person result = person.clone();</code>
+ If <code>person</code> is cloned instead of <code>anyValue</code>, at compile time the compiler will determine that the return type is
+ <code>Person</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (result is Person) {
+        io:println(&quot;Source value: &quot;, person);
+        io:println(&quot;Cloned value: &quot;, result);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The type of the value held by an <code>any</code> typed variable is only determined at runtime.
+ Therefore, the type of the returned value on a clone attempt could be <code>error</code>, in case a non-<code>anydata</code> value is
+ found.
+ Check if the <code>.clone()</code> attempt is successful, and returns a <code>Person</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Source and Clone are at two different memory locations: &quot;, result !== person);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Check reference inequality for the original value and the cloned value.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -291,7 +353,9 @@ permalink: /v0-991/learn/by-example/clone
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Source and Clone are at two different memory locations: &quot;, result !== person);
+                                    <div class="highlight"><pre><code class=ballerina>    } else if (result is error) {
+        io:println(&quot;Cannot clone: &quot;, result.detail().message);
+    }
 }
 </code></pre></div>
 
@@ -300,7 +364,7 @@ permalink: /v0-991/learn/by-example/clone
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check reference inequality between the original value and the cloned value.</p>
+                                            <p>If the result is an error, print out the detailed error message.</p>
 
                                         </div>
                                     </div>
@@ -325,10 +389,10 @@ permalink: /v0-991/learn/by-example/clone
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run clone.bal
-Source value: name=Alex age=24 married=false salary=8000.0 address=country=USA state=NC city=Raleigh street=Daniels St
-Cloned value: name=Alex age=24 married=false salary=8000.0 address=country=USA state=NC city=Raleigh street=Daniels St
+Source value: {name:&quot;Alex&quot;, age:24, married:false, salary:8000.0, address:{country:&quot;USA&quot;, state:&quot;NC&quot;, city:&quot;Raleigh&quot;, street:&quot;Daniels St&quot;}}
+Cloned value: {name:&quot;Alex&quot;, age:24, married:false, salary:8000.0, address:{country:&quot;USA&quot;, state:&quot;NC&quot;, city:&quot;Raleigh&quot;, street:&quot;Daniels St&quot;}}
 Source and Clone are at two different memory locations: true
 </code></pre></div>
 

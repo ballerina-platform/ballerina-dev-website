@@ -13,8 +13,7 @@ permalink: /v0-991/learn/by-example/csv-io
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span>
-                                <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">csvChannel</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">records</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
@@ -23,17 +22,14 @@ permalink: /v0-991/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[][]</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">[[</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;James&quot;</span><span class="p">,</span> <span class="s">&quot;10000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;Nathan&quot;</span><span class="p">,</span> <span class="s">&quot;150000&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;Ronald&quot;</span><span class="p">,</span> <span class="s">&quot;120000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;Roy&quot;</span><span class="p">,</span> <span class="s">&quot;6000&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
+    <span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;Ronald&quot;</span><span class="p">,</span> <span class="s">&quot;120000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;Roy&quot;</span><span class="p">,</span> <span class="s">&quot;6000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
     <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">,</span> <span class="o">...</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start processing the CSV file from &quot;</span><span class="p">,</span> <span class="nx">srcFileName</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">processedResult</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">rCsvChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">processedResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -42,8 +38,7 @@ permalink: /v0-991/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed.&quot;</span><span class="p">);</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span>
-                            <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading  &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span> <span class="s">&quot; as a table&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">tblResult</span> <span class="p">=</span> <span class="nx">rCsvChannel2</span><span class="p">.</span><span class="nx">getTable</span><span class="p">(</span><span class="nx">Employee</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;)</span> <span class="p">{</span>
@@ -56,13 +51,12 @@ permalink: /v0-991/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel2</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">targetFileName</span> <span class="p">=</span> <span class="s">&quot;./files/output.csv&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel2</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">targetFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel2</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">targetFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Creating a table and adding data&quot;</span><span class="p">);</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">employeeTable</span> <span class="p">=</span> <span class="nx">createTableAndAddData</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Writing the table to &quot;</span> <span class="o">+</span> <span class="nx">targetFileName</span><span class="p">);</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">entry</span> <span class="nx">in</span> <span class="nx">employeeTable</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">[]</span> <span class="nx">rec</span> <span class="p">=</span> <span class="p">[</span><span class="nx">entry</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">salary</span><span class="p">.</span><span class="nx">toString</span><span class="p">()];</span>
+        <span class="kt">string</span><span class="p">[]</span> <span class="nx">rec</span> <span class="p">=</span> <span class="p">[</span><span class="nx">entry</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="kt">string</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">salary</span><span class="p">)];</span>
         <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel2</span><span class="p">,</span> <span class="nx">rec</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel2</span><span class="p">);</span>
@@ -95,14 +89,14 @@ permalink: /v0-991/learn/by-example/csv-io
 <span class="kd">function</span> <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occured while closing the channel: &quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occured while closing the channel: &quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -115,7 +109,7 @@ permalink: /v0-991/learn/by-example/csv-io
                     <tr>
                         <td class="cLeftTD">
                             <h2>CSV I/O</h2>
-                            <p><p>This sample demonstrates how to read/write from/to a CSV file using the CSV channel of the I/O API</p>
+                            <p><p>This sample demonstrates how to read/write from/to a CSV file using CSV channel of the I/O API</p>
 </p>
 
                         </td>
@@ -241,8 +235,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCSVChannel csvChannel)
-                                returns @tainted error? {
+                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCSVChannel csvChannel) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -269,7 +262,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads all the records from the provided file
+                                            <p>Read all the records from the provided file
  until there are no more records.</p>
 
                                         </div>
@@ -289,7 +282,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads the records.</p>
+                                            <p>Read the records.</p>
 
                                         </div>
                                     </div>
@@ -313,7 +306,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the records.</p>
+                                            <p>Print the records.</p>
 
                                         </div>
                                     </div>
@@ -324,7 +317,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
     string srcFileName = &quot;./files/sample.csv&quot;;
 </code></pre></div>
 
@@ -333,7 +326,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Specifies the location of the <code>.CSV</code> file.</p>
+                                            <p>Specify the location of the <code>.CSV</code> file.</p>
 
                                         </div>
                                     </div>
@@ -344,11 +337,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCSVChannel wCsvChannel =
-                        check io:openWritableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCSVChannel wCsvChannel = io:openWritableCsvFile(srcFileName);
     string[][] data = [[&quot;1&quot;, &quot;James&quot;, &quot;10000&quot;], [&quot;2&quot;, &quot;Nathan&quot;, &quot;150000&quot;],
-    [&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;], [&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;],
-    [&quot;5&quot;, &quot;Oliver&quot;, &quot;1100000&quot;]];
+    [&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;], [&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;], [&quot;5&quot;, &quot;Oliver&quot;, &quot;1100000&quot;]];
     writeDataToCSVChannel(wCsvChannel, ...data);
     closeWritableCSVChannel(wCsvChannel);
 </code></pre></div>
@@ -358,10 +349,10 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a CSV channel in the <code>write</code> mode and writes some data to
- the <code>./files/sample.csv</code> file for later use.
+                                            <p>Open a CSV channel in <code>write</code> mode and write some data to
+ ./files/sample.csv for later use.
  The record separator of the <code>.CSV</code> file is a
- new line and the field separator is a comma (,).</p>
+ new line, and the field separator is a comma (,).</p>
 
                                         </div>
                                     </div>
@@ -372,8 +363,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel =
-                        check io:openReadableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel = io:openReadableCsvFile(srcFileName);
     io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
     var processedResult = process(rCsvChannel);
     if (processedResult is error) {
@@ -388,7 +378,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a CSV channel in the <code>read</code> mode, which is the default mode.</p>
+                                            <p>Open a CSV channel in <code>read</code> mode which is the default mode.</p>
 
                                         </div>
                                     </div>
@@ -407,7 +397,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the CSV channel.</p>
+                                            <p>Close the CSV channel.</p>
 
                                         </div>
                                     </div>
@@ -418,8 +408,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel2 =
-                            check io:openReadableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel2 = io:openReadableCsvFile(srcFileName);
 </code></pre></div>
 
                                 </td>
@@ -427,7 +416,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a CSV channel in the <code>read</code> mode, which is the default mode.</p>
+                                            <p>Open a CSV channel in <code>read</code> mode which is the default mode.</p>
 
                                         </div>
                                     </div>
@@ -456,7 +445,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reads the <code>.CSV</code> file as a <code>table</code>.</p>
+                                            <p>Read the <code>.CSV</code> file as a <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -468,13 +457,12 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string targetFileName = &quot;./files/output.csv&quot;;
-    io:WritableCSVChannel wCsvChannel2 =
-                        check io:openWritableCsvFile(targetFileName);
+    io:WritableCSVChannel wCsvChannel2 = io:openWritableCsvFile(targetFileName);
     io:println(&quot;Creating a table and adding data&quot;);
     table&lt;Employee&gt; employeeTable = createTableAndAddData();
     io:println(&quot;Writing the table to &quot; + targetFileName);
     foreach var entry in employeeTable {
-        string[] rec = [entry.id, entry.name, entry.salary.toString()];
+        string[] rec = [entry.id, entry.name, string.convert(entry.salary)];
         writeDataToCSVChannel(wCsvChannel2, rec);
     }
     closeWritableCSVChannel(wCsvChannel2);
@@ -486,7 +474,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Opens a CSV channel in the &ldquo;write&rdquo; mode and writes the <code>table</code> to a <code>.CSV</code> file.</p>
+                                            <p>Open a CSV channel in &ldquo;write&rdquo; mode and write the <code>table</code> to a <code>.CSV</code> file.</p>
 
                                         </div>
                                     </div>
@@ -547,7 +535,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Writes data to a given CSV Channel.</p>
+                                            <p>Write data to a given CSV Channel.</p>
 
                                         </div>
                                     </div>
@@ -561,7 +549,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeReadableCSVChannel(io:ReadableCSVChannel csvChannel) {
     var result = csvChannel.close();
     if (result is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;,
+        log:printError(&quot;Error occured while closing the channel: &quot;,
                         err = result);
     }
 }
@@ -572,7 +560,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the Readable CSV channel.</p>
+                                            <p>Close Readable CSV channel.</p>
 
                                         </div>
                                     </div>
@@ -586,7 +574,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeWritableCSVChannel(io:WritableCSVChannel csvChannel) {
     var result = csvChannel.close();
     if (result is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;,
+        log:printError(&quot;Error occured while closing the channel: &quot;,
                         err = result);
     }
 }
@@ -597,7 +585,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Closes the Writable CSV channel.</p>
+                                            <p>Close Writable CSV channel.</p>
 
                                         </div>
                                     </div>
@@ -622,21 +610,21 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run csv_io.bal
 Start processing the CSV file from ./files/sample.csv
-1 James 10000
-2 Nathan 150000
-3 Ronald 120000
-4 Roy 6000
-5 Oliver 1100000
+[&quot;1&quot;, &quot;James&quot;, &quot;10000&quot;]
+[&quot;2&quot;, &quot;Nathan&quot;, &quot;150000&quot;]
+[&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;]
+[&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;]
+[&quot;5&quot;, &quot;Oliver&quot;, &quot;1100000&quot;]
 Processing completed.
 Reading  ./files/sample.csv as a table
-id=1 name=James salary=10000.0
-id=2 name=Nathan salary=150000.0
-id=3 name=Ronald salary=120000.0
-id=4 name=Roy salary=6000.0
-id=5 name=Oliver salary=1100000.0
+{id:&quot;1&quot;, name:&quot;James&quot;, salary:10000.0}
+{id:&quot;2&quot;, name:&quot;Nathan&quot;, salary:150000.0}
+{id:&quot;3&quot;, name:&quot;Ronald&quot;, salary:120000.0}
+{id:&quot;4&quot;, name:&quot;Roy&quot;, salary:6000.0}
+{id:&quot;5&quot;, name:&quot;Oliver&quot;, salary:1100000.0}
 Creating a table and adding data
 Writing the table to ./files/output.csv
 </code></pre></div>

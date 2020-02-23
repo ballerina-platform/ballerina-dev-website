@@ -8,53 +8,45 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">float</span> <span class="nx">a1</span> <span class="p">=</span> <span class="mf">66.6</span><span class="p">;</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">float</span> <span class="nx">a2</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">float</span> <span class="nx">a3</span> <span class="p">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">float</span> <span class="nx">a4</span> <span class="p">=</span> <span class="p">[</span><span class="mf">6.7</span><span class="p">,</span> <span class="s">&quot;Test&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">];</span>    <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">a1</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a1</span> <span class="p">=</span> <span class="mf">66.6</span><span class="p">;</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a2</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a3</span> <span class="p">=</span> <span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a4</span> <span class="p">=</span> <span class="p">(</span><span class="mf">6.7</span><span class="p">,</span> <span class="s">&quot;Test&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>    <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">a1</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">a3</span><span class="p">);</span>
     <span class="nx">basicMatch</span><span class="p">(</span><span class="nx">a4</span><span class="p">);</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b1</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b2</span> <span class="p">=</span> <span class="p">[</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b3</span> <span class="p">=</span> <span class="p">[</span><span class="kc">false</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b4</span> <span class="p">=</span> <span class="p">[</span><span class="mi">455</span><span class="p">,</span> <span class="kc">true</span><span class="p">];</span>
-    <span class="p">[</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|[</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">]|[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">]|</span><span class="kt">float</span> <span class="nx">b5</span> <span class="p">=</span> <span class="mf">5.6</span><span class="p">;</span>    <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="nx">b1</span><span class="p">);</span>
-    <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="nx">b2</span><span class="p">);</span>
-    <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="nx">b3</span><span class="p">);</span>
-    <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="nx">b4</span><span class="p">);</span>
-    <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="nx">b5</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b1</span> <span class="p">=</span> <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b2</span> <span class="p">=</span> <span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b3</span> <span class="p">=</span> <span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b4</span> <span class="p">=</span> <span class="p">(</span><span class="mi">455</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">b5</span> <span class="p">=</span> <span class="mf">5.6</span><span class="p">;</span>    <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="nx">b1</span><span class="p">);</span>
+    <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="nx">b2</span><span class="p">);</span>
+    <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="nx">b3</span><span class="p">);</span>
+    <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="nx">b4</span><span class="p">);</span>
+    <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="nx">b5</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">basicMatch</span><span class="p">(</span><span class="kt">any</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">a</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with three vars : &quot;</span><span class="p">,</span>  <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with two vars : &quot;</span><span class="p">,</span>  <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">s</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with single var : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
-        <span class="p">}</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with three vars : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with two vars : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+        <span class="k">var</span> <span class="nx">s</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with single var : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">matchWithMatchGuard</span><span class="p">(</span><span class="kt">any</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="kt">any</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">b</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;s&#39; is float : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">]</span> <span class="k">if</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="p">{</span>
-           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;i&#39; is int : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">]</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;No type guard : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">s</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span> <span class="p">{</span>
-           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
-        <span class="p">}</span>    <span class="p">}</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;s&#39; is float : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;i&#39; is int : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;No type guard : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="nx">s</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -65,10 +57,10 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                     <tr>
                         <td class="cLeftTD">
                             <h2>Tuple Match</h2>
-                            <p><p>The match statement in Ballerina will support value-based match patterns only. There are static and structured
+                            <p><p>The match statement in Ballerina will support value based match patterns only. There are static and structured
  based match patterns that can be used with the match clauses. Structured match patterns will take structured
  binding patterns for matching. Tuple binding pattern is one of the structured binding patterns that can be used
- with the match. The value will be checked for the &ldquo;isLike&rdquo; relationship with the pattern to match at runtime.
+ with the match. The value will be checked for &ldquo;isLike&rdquo; relationship with the pattern to match at runtime.
  The match pattern clauses can also have additional type guard conditions as strong match conditions.</p>
 </p>
 
@@ -156,8 +148,6 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -190,10 +180,10 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [string, int]|[float, string, boolean]|float a1 = 66.6;
-    [string, int]|[float, string, boolean]|float a2 = [&quot;Hello&quot;, 12];
-    [float, boolean]|[float, string, boolean]|float a3 = [4.5, true];
-    [string, int]|[float, string, boolean]|float a4 = [6.7, &quot;Test&quot;, false];
+                                    <div class="highlight"><pre><code class=ballerina>    (string, int)|(float, string, boolean)|float a1 = 66.6;
+    (string, int)|(float, string, boolean)|float a2 = (&quot;Hello&quot;, 12);
+    (float, boolean)|(float, string, boolean)|float a3 = (4.5, true);
+    (string, int)|(float, string, boolean)|float a4 = (6.7, &quot;Test&quot;, false);
 </code></pre></div>
 
                                 </td>
@@ -201,8 +191,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this example, four variables are created and they will be matched against
- the patterns specified in the <code>match</code> statement of the <code>basicMatch()</code> function.</p>
+                                            <p>Here there are four different variables created and they will be used with
+ the <code>basicMatch()</code> function, which does the match.</p>
 
                                         </div>
                                     </div>
@@ -228,11 +218,11 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [string, int]|[boolean, int]|[int, boolean]|int|float b1 = [&quot;Hello&quot;, 45];
-    [string, int]|[float, boolean]|[int, boolean]|int|float b2 = [4.5, true];
-    [float, boolean]|[boolean, int]|[int, boolean]|int|float b3 = [false, 4];
-    [string, int]|[float, boolean]|[int, boolean]|int|float b4 = [455, true];
-    [float, boolean]|[boolean, int]|[int, boolean]|float b5 = 5.6;
+                                    <div class="highlight"><pre><code class=ballerina>    (string, int)|(boolean, int)|(int, boolean)|int|float b1 = (&quot;Hello&quot;, 45);
+    (string, int)|(float, boolean)|(int, boolean)|int|float b2 = (4.5, true);
+    (float, boolean)|(boolean, int)|(int, boolean)|int|float b3 = (false, 4);
+    (string, int)|(float, boolean)|(int, boolean)|int|float b4 = (455, true);
+    (float, boolean)|(boolean, int)|(int, boolean)|float b5 = 5.6;
 </code></pre></div>
 
                                 </td>
@@ -240,8 +230,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In this example, five variables are created and they will be matched
- against the match-guarded patterns specified in the <code>match</code> statement of the &lsquo;matchWithMatchGuard()&rsquo; function.</p>
+                                            <p>In this example, there are five different variables created and they will be used
+ with the &lsquo;matchWithTypeGuard()&rsquo; function, which does the match along with type guard conditions.</p>
 
                                         </div>
                                     </div>
@@ -252,11 +242,11 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    matchWithMatchGuard(b1);
-    matchWithMatchGuard(b2);
-    matchWithMatchGuard(b3);
-    matchWithMatchGuard(b4);
-    matchWithMatchGuard(b5);
+                                    <div class="highlight"><pre><code class=ballerina>    matchWithTypeGuard(b1);
+    matchWithTypeGuard(b2);
+    matchWithTypeGuard(b3);
+    matchWithTypeGuard(b4);
+    matchWithTypeGuard(b5);
 }
 </code></pre></div>
 
@@ -278,9 +268,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This method uses tuple match patterns of different sizes. The <code>match</code> expression <code>a</code>
- will be matched against the given pattern list at run time based on the
- &ldquo;is-like&rdquo; relationship between the expression and a pattern.</p>
+                                            <p>Following method uses structured tuple match patterns with different sizes. The given <code>match</code> expression
+ will be checked for &ldquo;isLike&rdquo; relationship and will be matched at runtime.</p>
 
                                         </div>
                                     </div>
@@ -291,9 +280,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i, b] =&gt; {
-            io:println(&quot;Matched with three vars : &quot;,  io:sprintf(&quot;%s&quot;, a));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i, b) =&gt; io:println(&quot;Matched with three vars : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
 </code></pre></div>
 
                                 </td>
@@ -301,7 +289,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of three members of any type.</p>
+                                            <p>This pattern check for tuple type of three variables and types can be of any.</p>
 
                                         </div>
                                     </div>
@@ -312,9 +300,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] =&gt; {
-            io:println(&quot;Matched with two vars : &quot;,  io:sprintf(&quot;%s&quot;, a));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) =&gt; io:println(&quot;Matched with two vars : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
 </code></pre></div>
 
                                 </td>
@@ -322,7 +309,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of two members of any type.</p>
+                                            <p>This pattern check for tuple type of two variables and types can be of any.</p>
 
                                         </div>
                                     </div>
@@ -333,9 +320,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var s =&gt; {
-            io:println(&quot;Matched with single var : &quot;, io:sprintf(&quot;%s&quot;, a));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var s =&gt; io:println(&quot;Matched with single var : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
     }
 }
 </code></pre></div>
@@ -345,7 +331,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a single variable, which can be of type <code>any</code>. This has to be the last pattern.</p>
+                                            <p>This pattern check for single variable and type can be of any. This has to be last pattern.</p>
 
                                         </div>
                                     </div>
@@ -356,7 +342,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function matchWithMatchGuard(any b) {
+                                    <div class="highlight"><pre><code class=ballerina>function matchWithTypeGuard(any b) {
     match b {
 </code></pre></div>
 
@@ -365,8 +351,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This method uses structured tuple match patterns with different sizes along with match guards. The given
- <code>match</code> expression will be checked for &ldquo;is-like&rdquo; relationship and also it will check the match guard for the pattern
+                                            <p>Following method uses structured tuple match patterns with different sizes along with a type guards. The given
+ <code>match</code> expression will be checked for &ldquo;isLike&rdquo; relationship and also it will check the type guard for the pattern
  to match at runtime.</p>
 
                                         </div>
@@ -378,9 +364,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if (s is string &amp;&amp; i is int) =&gt; {
-            io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if (s is string &amp;&amp; i is int) =&gt;
+           io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot; + io:sprintf(&quot;%s&quot;, b));
 </code></pre></div>
 
                                 </td>
@@ -388,7 +373,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of two members of the types <code>string</code> and <code>int</code> respectively.</p>
+                                            <p>This pattern check for tuple type of two variables and types has to <code>string</code> and <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -399,9 +384,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if s is float =&gt; {
-            io:println(&quot;Only &#39;s&#39; is float : &quot;, io:sprintf(&quot;%s&quot;, b));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if s is float =&gt;
+           io:println(&quot;Only &#39;s&#39; is float : &quot; + io:sprintf(&quot;%s&quot;, b));
 </code></pre></div>
 
                                 </td>
@@ -409,7 +393,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of two members where the first member is of the type <code>float</code>.</p>
+                                            <p>This pattern check for tuple type of two variables and first variable should be of type <code>float</code>.</p>
 
                                         </div>
                                     </div>
@@ -420,9 +404,8 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] if i is int =&gt; {
-           io:println(&quot;Only &#39;i&#39; is int : &quot;, io:sprintf(&quot;%s&quot;, b));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if i is int =&gt;
+           io:println(&quot;Only &#39;i&#39; is int : &quot; + io:sprintf(&quot;%s&quot;, b));
 </code></pre></div>
 
                                 </td>
@@ -430,7 +413,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of two members where the second member is of the type <code>int</code>.</p>
+                                            <p>This pattern check for tuple type of two variables and second variable should be of type <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -441,9 +424,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var [s, i] =&gt; {
-            io:println(&quot;No type guard : &quot;, io:sprintf(&quot;%s&quot;, b));
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) =&gt; io:println(&quot;No type guard : &quot; + io:sprintf(&quot;%s&quot;, b));
 </code></pre></div>
 
                                 </td>
@@ -451,7 +432,7 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This pattern check is for a tuple of two members without any match guard.</p>
+                                            <p>This pattern check for tuple type of two variables without any type guard.</p>
 
                                         </div>
                                     </div>
@@ -460,35 +441,23 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
                             </tr>
                             
                             <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var s if s is float =&gt; {
-           io:println(&quot;&#39;s&#39; is float only : &quot;, io:sprintf(&quot;%s&quot;, b));
-        }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This pattern check is for a single variable of the type <code>float</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=ballerina>        var s if s is float =&gt;
+           io:println(&quot;&#39;s&#39; is float only : &quot; + io:sprintf(&quot;%s&quot;, b));
+    }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for single variable and its type should be <code>float</code>.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -510,16 +479,16 @@ permalink: /v0-991/learn/by-example/tuple-match-statement
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run tuple_match_statement.bal
 Matched with single var : 66.6
-Matched with two vars : Hello 12
-Matched with two vars : 4.5 true
-Matched with three vars : 6.7 Test false
-&#39;s&#39; is string and &#39;i&#39; is int : Hello 45
-Only &#39;s&#39; is float : 4.5 true
-Only &#39;i&#39; is int : false 4
-No type guard : 455 true
+Matched with two vars : (&quot;Hello&quot;, 12)
+Matched with two vars : (4.5, true)
+Matched with three vars : (6.7, &quot;Test&quot;, false)
+&#39;s&#39; is string and &#39;i&#39; is int : (&quot;Hello&quot;, 45)
+Only &#39;s&#39; is float : (4.5, true)
+Only &#39;i&#39; is int : (false, 4)
+No type guard : (455, true)
 &#39;s&#39; is float only : 5.6
 </code></pre></div>
 

@@ -16,7 +16,7 @@ permalink: /v1-0/learn/by-example/json-csv
     <span class="p">}</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">rec</span><span class="p">.</span><span class="nx">keys</span><span class="p">(),</span> <span class="nx">fields</span><span class="p">];</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">writeCsv</span><span class="p">(</span><span class="kt">json</span><span class="p">[]</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="kd">function</span> <span class="nx">writeCsv</span><span class="p">(</span><span class="kt">json</span><span class="p">[]</span> <span class="nx">content</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">csvch</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">recIndex</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">recLen</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
@@ -80,9 +80,9 @@ permalink: /v1-0/learn/by-example/json-csv
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-io.html">
+                                    <a class="prev" href="character-io.html">
                                         <span>< PREVIOUS</span>
-                                        <p>XML I/O</p>
+                                        <p>Read/Write Files</p>
                                     </a>
                                 </div>
                                  
@@ -190,7 +190,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function writeCsv(json[] content, string path) returns @tainted error? {
+                                    <div class="highlight"><pre><code class=ballerina>function writeCsv(json[] content, string path) returns error? {
     io:WritableCSVChannel csvch = check io:openWritableCsvFile(path);
     int recIndex = 0;
     int recLen = content.length();

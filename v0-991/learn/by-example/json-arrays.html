@@ -9,30 +9,26 @@ permalink: /v0-991/learn/by-example/json-arrays
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">j1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Pala&quot;</span> <span class="p">}];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j1</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">json</span><span class="p">[]</span> <span class="nx">j2</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">j1</span><span class="p">;</span>
-    <span class="kt">json</span> <span class="nx">j3</span> <span class="p">=</span> <span class="nx">j2</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j3</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="nx">j2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mf">8.00</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j1</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">p</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
-        <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span>
-        <span class="nx">family</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Emma&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jena&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Paul&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">};</span>    <span class="kt">json</span><span class="p">[]</span> <span class="nx">family</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">p</span><span class="p">[</span><span class="s">&quot;family&quot;</span><span class="p">];</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">member2</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">family</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-    <span class="nx">member2</span><span class="p">[</span><span class="s">&quot;fname&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Alisha&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j1</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">j2</span> <span class="p">=</span> <span class="nx">j1</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j2</span><span class="p">.</span><span class="nx">first</span><span class="p">);</span>
+    <span class="nx">j1</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">=</span> <span class="mf">8.00</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j1</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">p</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span>
+        <span class="nx">family</span><span class="p">:</span> <span class="p">[{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Emma&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jena&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Paul&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span> <span class="p">}]</span>
+    <span class="p">};</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">family</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nx">fname</span> <span class="p">=</span> <span class="s">&quot;Alisha&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">family</span> <span class="p">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">family</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">l</span> <span class="p">=</span> <span class="nx">family</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;length of the array: &quot;</span><span class="p">,</span> <span class="nx">l</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;length of array: &quot;</span> <span class="o">+</span> <span class="nx">l</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">l</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">family</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">family</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
         <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -46,7 +42,7 @@ permalink: /v0-991/learn/by-example/json-arrays
                         <td class="cLeftTD">
                             <h2>JSON Arrays</h2>
                             <p><p>JSON array literals are written exactly the same way as Ballerina arrays.
- JSON array values must be of the JSON types: string, number, object, array, boolean, or null.</p>
+ JSON array values must be of JSON types string, number, object, array, boolean, or null.</p>
 </p>
 
                         </td>
@@ -54,16 +50,16 @@ permalink: /v0-991/learn/by-example/json-arrays
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="json-objects.html">
+                                    <a class="prev" href="json.html">
                                         <span>< PREVIOUS</span>
-                                        <p>JSON Objects</p>
+                                        <p>JSON</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="json-access.html">
+                                    <a class="next" href="json-record-map-conversion.html">
                                         <span>NEXT ></span>
-                                        <p>JSON Access</p>
+                                        <p>JSON/Record/Map Conversion</p>
                                     </a>
                                 </div>
                                 
@@ -117,8 +113,6 @@ permalink: /v0-991/learn/by-example/json-arrays
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -152,7 +146,7 @@ permalink: /v0-991/learn/by-example/json-arrays
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    json j1 = [1, false, null, &quot;foo&quot;, { first: &quot;John&quot;, last: &quot;Pala&quot; }];
-    io:println(j1.toJsonString());
+    io:println(j1);
 </code></pre></div>
 
                                 </td>
@@ -160,9 +154,7 @@ permalink: /v0-991/learn/by-example/json-arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>JSON Arrays are arrays with JSON values as members.
- The same could be written as
- <code>json[] j1 = [1, false, null, &quot;foo&quot;, { first: &quot;John&quot;, last: &quot;Pala];</code></p>
+                                            <p>JSON Arrays. They are arrays of any JSON value.</p>
 
                                         </div>
                                     </div>
@@ -173,9 +165,8 @@ permalink: /v0-991/learn/by-example/json-arrays
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] j2 = &lt;json[]&gt; j1;
-    json j3 = j2[4];
-    io:println(j3.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    json j2 = j1[4];
+    io:println(j2.first);
 </code></pre></div>
 
                                 </td>
@@ -183,9 +174,7 @@ permalink: /v0-991/learn/by-example/json-arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>JSON array elements can be accessed by index.
- The <code>json</code> value <code>j1</code> first needs to be cast to a <code>json[]</code> to use member access.
- Alternatively, <code>j1</code> could have been defined as a <code>json[]</code>.</p>
+                                            <p>Access JSON array elements by index.</p>
 
                                         </div>
                                     </div>
@@ -196,8 +185,8 @@ permalink: /v0-991/learn/by-example/json-arrays
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    j2[4] = 8.00;
-    io:println(j1.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    j1[4] = 8.00;
+    io:println(j1);
 </code></pre></div>
 
                                 </td>
@@ -205,8 +194,7 @@ permalink: /v0-991/learn/by-example/json-arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Similarly, member access could be used with <code>json[]</code>-typed variables to add or
- change members in a <code>json</code> array.</p>
+                                            <p>Add or change elements in a JSON array.</p>
 
                                         </div>
                                     </div>
@@ -217,16 +205,15 @@ permalink: /v0-991/learn/by-example/json-arrays
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; p = {
-        fname: &quot;John&quot;,
-        lname: &quot;Stallone&quot;,
-        family: [
-            { fname: &quot;Peter&quot;, lname: &quot;Stallone&quot; },
-            { fname: &quot;Emma&quot;, lname: &quot;Stallone&quot; },
-            { fname: &quot;Jena&quot;, lname: &quot;Stallone&quot; },
-            { fname: &quot;Paul&quot;, lname: &quot;Stallone&quot; }
-        ]
+                                    <div class="highlight"><pre><code class=ballerina>    json p = {
+        fname: &quot;John&quot;, lname: &quot;Stallone&quot;,
+        family: [{ fname: &quot;Peter&quot;, lname: &quot;Stallone&quot; },
+        { fname: &quot;Emma&quot;, lname: &quot;Stallone&quot; },
+        { fname: &quot;Jena&quot;, lname: &quot;Stallone&quot; },
+        { fname: &quot;Paul&quot;, lname: &quot;Stallone&quot; }]
     };
+    p.family[2].fname = &quot;Alisha&quot;;
+    io:println(p);
 </code></pre></div>
 
                                 </td>
@@ -242,26 +229,12 @@ permalink: /v0-991/learn/by-example/json-arrays
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json[] family = &lt;json[]&gt; p[&quot;family&quot;];
-    map&lt;json&gt; member2 = &lt;map&lt;json&gt;&gt; family[2];
-    member2[&quot;fname&quot;] = &quot;Alisha&quot;;
-    io:println(p.toJsonString());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int l = family.length();
-    io:println(&quot;length of the array: &quot;, l);
+                                    <div class="highlight"><pre><code class=ballerina>    json family = p.family;
+    int l = family.length();
+    io:println(&quot;length of array: &quot; + l);
 </code></pre></div>
 
                                 </td>
@@ -282,7 +255,7 @@ permalink: /v0-991/learn/by-example/json-arrays
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    int i = 0;
     while (i &lt; l) {
-        io:println(family[i].toJsonString());
+        io:println(family[i]);
         i = i + 1;
     }
 }
@@ -318,13 +291,17 @@ permalink: /v0-991/learn/by-example/json-arrays
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run json_arrays.bal
 [1, false, null, &quot;foo&quot;, {&quot;first&quot;:&quot;John&quot;, &quot;last&quot;:&quot;Pala&quot;}]
-{&quot;first&quot;:&quot;John&quot;, &quot;last&quot;:&quot;Pala&quot;}
+John
 [1, false, null, &quot;foo&quot;, 8.0]
-{&quot;fname&quot;:&quot;John&quot;, &quot;lname&quot;:&quot;Stallone&quot;, &quot;family&quot;:[{&quot;fname&quot;:&quot;Peter&quot;, &quot;lname&quot;:&quot;Stallone&quot;}, {&quot;fname&quot;:&quot;Emma&quot;, &quot;lname&quot;:&quot;Stallone&quot;}, {&quot;fname&quot;:&quot;Alisha&quot;, &quot;lname&quot;:&quot;Stallone&quot;}, {&quot;fname&quot;:&quot;Paul&quot;, &quot;lname&quot;:&quot;Stallone&quot;}]}
-length of the array: 4
+{&quot;fname&quot;:&quot;John&quot;, &quot;lname&quot;:&quot;Stallone&quot;,
+    &quot;family&quot;:[{&quot;fname&quot;:&quot;Peter&quot;, &quot;lname&quot;:&quot;Stallone&quot;},
+              {&quot;fname&quot;:&quot;Emma&quot;, &quot;lname&quot;:&quot;Stallone&quot;},
+              {&quot;fname&quot;:&quot;Alisha&quot;, &quot;lname&quot;:&quot;Stallone&quot;},
+              {&quot;fname&quot;:&quot;Paul&quot;, &quot;lname&quot;:&quot;Stallone&quot;}]}
+length of array: 4
 {&quot;fname&quot;:&quot;Peter&quot;, &quot;lname&quot;:&quot;Stallone&quot;}
 {&quot;fname&quot;:&quot;Emma&quot;, &quot;lname&quot;:&quot;Stallone&quot;}
 {&quot;fname&quot;:&quot;Alisha&quot;, &quot;lname&quot;:&quot;Stallone&quot;}

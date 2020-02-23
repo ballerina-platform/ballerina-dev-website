@@ -31,9 +31,9 @@ permalink: /v1-0/learn/by-example/check
                     <tr>
                         <td class="cLeftTD">
                             <h2>Check</h2>
-                            <p><p>The <code>check</code> expression is a unary expression that is used to handle errors.
- The <code>check</code> expression checks the result of the sub expression and returns if the result is of type <code>error</code>.
- Hence, <code>check</code> can only be used in a function which has <code>error</code> in its return type.</p>
+                            <p><p>The check is a unary expression that is used to handle errors.
+ The <code>check</code> expression checks the result of the sub expression and return if the result is <code>error</code>.
+ Hence, check can only be used in functions which has <code>error</code> in it&rsquo;s return type.</p>
 </p>
 
                         </td>
@@ -170,12 +170,11 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>check</code> unary operator can be used to return early on error.
- Here, <code>check</code> is used to return the error if the <code>parse()</code>
- function evaluates to <code>error</code>. If the actual value returned
- by the <code>parse()</code> function is an error, this function immediately returns
- the error, else the <code>int</code> value returned by <code>parse()</code> is set to <code>x</code> and
- execution continues. If <code>check</code> is used within a function, the return type
+                                            <p>The <code>check</code> unary operator can be used to lift errors.
+ In this instance, <code>check</code> is used to lift the (potential) error
+ returned by the <code>parse()</code> function. If the actual value returned
+ by the function is an <code>error</code>, the function immediately returns
+ the error. If <code>check</code> is used within a function, the return type
  of the function must include <code>error</code> in its return signature.</p>
 
                                         </div>

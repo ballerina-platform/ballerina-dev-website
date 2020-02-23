@@ -7,63 +7,87 @@ permalink: /v0-991/learn/by-example/table
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jsonutils</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xmlutils</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">EmployeeSalary</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">tbEmployee</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span><span class="p">},</span>
-        <span class="p">[</span>
-            <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Mary&quot;</span><span class="p">,</span> <span class="mf">300.5</span><span class="p">},</span>
-            <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="mf">200.5</span><span class="p">},</span>
-            <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Jim&quot;</span><span class="p">,</span> <span class="mf">330.5</span><span class="p">}</span>
+        <span class="p">{</span> <span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span> <span class="p">},</span>
+        <span class="p">[</span> <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Mary&quot;</span><span class="p">,</span>  <span class="mf">300.5</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>  <span class="mf">200.5</span> <span class="p">},</span>
+          <span class="p">{</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Jim&quot;</span><span class="p">,</span> <span class="mf">330.5</span> <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Table Information: &quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tbEmployee</span><span class="p">);</span>
-    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">100.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">400.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">150.0</span><span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span> <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">e2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">100.50</span> <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">e3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">400.50</span> <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">e4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">150.0</span> <span class="p">};</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">tb</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span><span class="p">},</span>
-        <span class="p">[</span>
-            <span class="nx">e1</span><span class="p">,</span>
-            <span class="nx">e2</span>
-        <span class="p">]</span>
+        <span class="p">{</span> <span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span> <span class="p">},</span>
+        <span class="p">[</span><span class="nx">e1</span><span class="p">,</span> <span class="nx">e2</span><span class="p">]</span>
     <span class="p">};</span>    <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">employees</span> <span class="p">=</span> <span class="p">[</span><span class="nx">e3</span><span class="p">,</span> <span class="nx">e4</span><span class="p">];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">emp</span> <span class="nx">in</span> <span class="nx">employees</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Adding record to table successful&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Adding to table failed: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Adding to table failed: &quot;</span> <span class="o">+</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table Information: &quot;</span><span class="p">,</span> <span class="nx">tb</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Using foreach: &quot;</span><span class="p">);</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">x</span> <span class="nx">in</span> <span class="nx">tb</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">x</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Using while loop: &quot;</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">tb</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">Employee</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">tb</span><span class="p">.</span><span class="nx">getNext</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">Employee</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in get employee from table: &quot;</span>
+                                  <span class="o">+</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-    <span class="kt">json</span> <span class="nx">retValJson</span> <span class="p">=</span> <span class="nx">jsonutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON: &quot;</span><span class="p">,</span> <span class="nx">retValJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">xml</span> <span class="nx">retValXml</span> <span class="p">=</span> <span class="nx">xmlutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML: &quot;</span><span class="p">,</span> <span class="nx">retValXml</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">isHigherSalary</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted Count: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">isHigherSalary</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">salary</span> <span class="p">&gt;</span> <span class="mf">300.0</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">lowerAvgSal</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">isLowerSalary</span><span class="p">).</span><span class="kt">map</span><span class="p">(</span><span class="nx">getSalary</span><span class="p">).</span><span class="nx">average</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Average of Low salary: &quot;</span> <span class="o">+</span> <span class="nx">lowerAvgSal</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">EmployeeSalary</span><span class="p">&gt;</span> <span class="nx">salaryTable</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="nx">getEmployeeSalary</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">salaryTable</span><span class="p">.</span><span class="nx">count</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Selected row count: &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">salaryTable</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">isLowerSalary</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted row count: &quot;</span> <span class="o">+</span> <span class="nx">ret</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in removing employees from table: &quot;</span>
+                               <span class="o">+</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After Delete: &quot;</span><span class="p">,</span> <span class="nx">tb</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">retValJson</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retValJson</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON: &quot;</span><span class="p">,</span> <span class="nx">retValJson</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in table to json conversion&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">var</span> <span class="nx">retValXml</span> <span class="p">=</span> <span class="kt">xml</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retValXml</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML: &quot;</span><span class="p">,</span> <span class="nx">retValXml</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in table to xml conversion&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">isLowerSalary</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">p</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">p</span><span class="p">.</span><span class="nx">salary</span> <span class="p">&lt;</span> <span class="mi">200</span><span class="p">;</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getSalary</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">p</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">p</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getEmployeeSalary</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">EmployeeSalary</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">EmployeeSalary</span> <span class="nx">s</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">salary</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">s</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -75,7 +99,7 @@ permalink: /v0-991/learn/by-example/table
                         <td class="cLeftTD">
                             <h2>Table</h2>
                             <p><p>The type <code>table</code> is a data structure that organizes information in rows and columns. This example demonstrates how to
- create an in-memory table using a type constraint, insert data to it, and then access/delete the data.</p>
+ create an in-memory table using a type constraint, insert data to it and then access/delete the data.</p>
 </p>
 
                         </td>
@@ -164,6 +188,16 @@ permalink: /v0-991/learn/by-example/table
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -173,8 +207,6 @@ permalink: /v0-991/learn/by-example/table
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/jsonutils;
-import ballerina/xmlutils;
 </code></pre></div>
 
                                 </td>
@@ -183,7 +215,7 @@ import ballerina/xmlutils;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>type Employee record {
@@ -196,12 +228,20 @@ import ballerina/xmlutils;
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the <code>type</code> created to represent a data row.</p>
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
-                                        </div>
-                                    </div>
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type EmployeeSalary record {
+    int id;
+    float salary;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -222,11 +262,10 @@ import ballerina/xmlutils;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tbEmployee = table {
-        {key id, name, salary},
-        [
-            {1, &quot;Mary&quot;, 300.5},
-            {2, &quot;John&quot;, 200.5},
-            {3, &quot;Jim&quot;, 330.5}
+        { key id, name, salary },
+        [ { 1, &quot;Mary&quot;,  300.5 },
+          { 2, &quot;John&quot;,  200.5 },
+          { 3, &quot;Jim&quot;, 330.5 }
         ]
     };
 </code></pre></div>
@@ -236,8 +275,8 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an in-memory <code>table</code> constrained by the <code>Employee</code> type with the <code>id</code> marked as the
- primary key in the column descriptor. Three data records are inserted into the <code>table</code>. The order of
+                                            <p>This creates an in-memory <code>table</code> constrained by the <code>Employee</code> type with <code>id</code> marked as the
+ primary key in the column descriptor. Three data records are inserted to the <code>table</code>. Order of
  the data values should match the order of the column descriptor.</p>
 
                                         </div>
@@ -258,7 +297,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the <code>table</code> data.</p>
+                                            <p>This prints the <code>table</code> data.</p>
 
                                         </div>
                                     </div>
@@ -269,10 +308,10 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = {id: 1, name: &quot;Jane&quot;, salary: 300.50};
-    Employee e2 = {id: 2, name: &quot;Anne&quot;, salary: 100.50};
-    Employee e3 = {id: 3, name: &quot;John&quot;, salary: 400.50};
-    Employee e4 = {id: 4, name: &quot;Peter&quot;, salary: 150.0};
+                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = { id: 1, name: &quot;Jane&quot;, salary: 300.50 };
+    Employee e2 = { id: 2, name: &quot;Anne&quot;, salary: 100.50 };
+    Employee e3 = { id: 3, name: &quot;John&quot;, salary: 400.50 };
+    Employee e4 = { id: 4, name: &quot;Peter&quot;, salary: 150.0 };
 </code></pre></div>
 
                                 </td>
@@ -292,11 +331,8 @@ import ballerina/xmlutils;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tb = table {
-        {key id, name, salary},
-        [
-            e1,
-            e2
-        ]
+        { key id, name, salary },
+        [e1, e2]
     };
 </code></pre></div>
 
@@ -305,8 +341,8 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an in-memory <code>table</code> constrained by the <code>Employee</code> type with
- the <code>id</code> as the primary key. Two records are inserted into the <code>table</code>.</p>
+                                            <p>This creates an in-memory <code>table</code> constrained by the <code>Employee</code> type with <code>id</code> as the primary key.
+ Two records are inserted to the <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -334,7 +370,7 @@ import ballerina/xmlutils;
         if (ret is ()) {
             io:println(&quot;Adding record to table successful&quot;);
         } else {
-            io:println(&quot;Adding to table failed: &quot;, ret.reason());
+            io:println(&quot;Adding to table failed: &quot; + ret.reason());
         }
     }
 </code></pre></div>
@@ -344,7 +380,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add the created records to the <code>table</code>.</p>
+                                            <p>This adds the created records to the <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -363,7 +399,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the <code>table</code> data.</p>
+                                            <p>This prints the <code>table</code> data.</p>
 
                                         </div>
                                     </div>
@@ -376,7 +412,7 @@ import ballerina/xmlutils;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using foreach: &quot;);
     foreach var x in tb {
-        io:println(&quot;Name: &quot;, x.name);
+        io:println(&quot;Name: &quot; + x.name);
     }
 </code></pre></div>
 
@@ -385,7 +421,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Access the rows using the <code>foreach</code> loop.</p>
+                                            <p>This accesses rows using the <code>foreach</code> loop.</p>
 
                                         </div>
                                     </div>
@@ -398,8 +434,13 @@ import ballerina/xmlutils;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using while loop: &quot;);
     while (tb.hasNext()) {
-        var ret = tb.getNext();
-        io:println(&quot;Name: &quot;, ret.name);
+        var ret = Employee.convert(tb.getNext());
+        if (ret is Employee) {
+            io:println(&quot;Name: &quot; + ret.name);
+        } else {
+            io:println(&quot;Error in get employee from table: &quot;
+                                  + ret.reason());
+        }
     }
 </code></pre></div>
 
@@ -408,7 +449,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Access rows using the <code>while</code> loop.</p>
+                                            <p>This accesses rows using the <code>while</code> loop.</p>
 
                                         </div>
                                     </div>
@@ -419,8 +460,8 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json retValJson = jsonutils:fromTable(tb);
-    io:println(&quot;JSON: &quot;, retValJson.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    float lowerAvgSal = tb.filter(isLowerSalary).map(getSalary).average();
+    io:println(&quot;Average of Low salary: &quot; + lowerAvgSal);
 </code></pre></div>
 
                                 </td>
@@ -428,7 +469,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Convert the <code>table</code> to JSON format.</p>
+                                            <p>This derives the average salary using the iterable operations.</p>
 
                                         </div>
                                     </div>
@@ -439,8 +480,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml retValXml = xmlutils:fromTable(tb);
-    io:println(&quot;XML: &quot;, retValXml);
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;EmployeeSalary&gt; salaryTable = tb.select(getEmployeeSalary);
 </code></pre></div>
 
                                 </td>
@@ -448,7 +488,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Convert the <code>table</code> to XML format.</p>
+                                            <p>This selects a subset of columns from the <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -459,8 +499,9 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error count = tb.remove(isHigherSalary);
-    io:println(&quot;Deleted Count: &quot;, count);
+                                    <div class="highlight"><pre><code class=ballerina>    int count = salaryTable.count();
+    io:println(&quot;Selected row count: &quot; + count);
+    io:println(salaryTable);
 </code></pre></div>
 
                                 </td>
@@ -468,8 +509,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Remove employees with salaries higher than 300.0
- from the table.</p>
+                                            <p>This fetches the <code>table</code> row count using the <code>count</code> operation.</p>
 
                                         </div>
                                     </div>
@@ -480,7 +520,62 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(tb);
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = tb.remove(isLowerSalary);
+    if (ret is int) {
+        io:println(&quot;Deleted row count: &quot; + ret);
+    } else {
+        io:println(&quot;Error in removing employees from table: &quot;
+                               + ret.reason());
+    }
+    io:println(&quot;After Delete: &quot;, tb);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This deletes the rows that match a given criteria.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var retValJson = json.convert(tb);
+    if (retValJson is json) {
+        io:println(&quot;JSON: &quot;, retValJson);
+    } else {
+        io:println(&quot;Error in table to json conversion&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This converts the <code>table</code> to JSON format.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var retValXml = xml.convert(tb);
+    if (retValXml is xml) {
+        io:println(&quot;XML: &quot;, retValXml);
+    } else {
+        io:println(&quot;Error in table to xml conversion&quot;);
+    }
 }
 </code></pre></div>
 
@@ -489,7 +584,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Now the table contains the employees with salaries less than 300.0.</p>
+                                            <p>This converts the <code>table</code> to XML format.</p>
 
                                         </div>
                                     </div>
@@ -497,23 +592,45 @@ import ballerina/xmlutils;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function isLowerSalary(Employee p) returns boolean {
+    return p.salary &lt; 200;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getSalary(Employee p) returns float {
+    return p.salary;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isHigherSalary(Employee emp) returns boolean {
-    return emp.salary &gt; 300.0;
+                                    <div class="highlight"><pre><code class=ballerina>function getEmployeeSalary(Employee e) returns (EmployeeSalary) {
+    EmployeeSalary s = { id: e.id, salary: e.salary };
+    return s;
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Check whether a given employee&rsquo;s salary is higher than 300.0.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -535,12 +652,12 @@ import ballerina/xmlutils;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run table.bal
-Table Information: id=1 name=Mary salary=300.5 id=2 name=John salary=200.5 id=3 name=Jim salary=330.5
+Table Information: table&lt;Employee&gt; {index: [], primaryKey: [&quot;id&quot;], data: [{id:1, name:&quot;Mary&quot;, salary:300.5}, {id:2, name:&quot;John&quot;, salary:200.5}, {id:3, name:&quot;Jim&quot;, salary:330.5}]}
 Adding record to table successful
 Adding record to table successful
-Table Information: id=1 name=Jane salary=300.5 id=2 name=Anne salary=100.5 id=3 name=John salary=400.5 id=4 name=Peter salary=150.0
+Table Information: table&lt;Employee&gt; {index: [], primaryKey: [&quot;id&quot;], data: [{id:1, name:&quot;Jane&quot;, salary:300.5}, {id:2, name:&quot;Anne&quot;, salary:100.5}, {id:3, name:&quot;John&quot;, salary:400.5}, {id:4, name:&quot;Peter&quot;, salary:150.0}]}
 Using foreach:
 Name: Jane
 Name: Anne
@@ -551,10 +668,13 @@ Name: Jane
 Name: Anne
 Name: John
 Name: Peter
-JSON: [{&quot;id&quot;:1, &quot;name&quot;:&quot;Jane&quot;, &quot;salary&quot;:300.5}, {&quot;id&quot;:2, &quot;name&quot;:&quot;Anne&quot;, &quot;salary&quot;:100.5}, {&quot;id&quot;:3, &quot;name&quot;:&quot;John&quot;, &quot;salary&quot;:400.5}, {&quot;id&quot;:4, &quot;name&quot;:&quot;Peter&quot;, &quot;salary&quot;:150.0}]
-XML: &lt;results&gt;&lt;result&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;Jane&lt;/name&gt;&lt;salary&gt;300.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;Anne&lt;/name&gt;&lt;salary&gt;100.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;3&lt;/id&gt;&lt;name&gt;John&lt;/name&gt;&lt;salary&gt;400.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;4&lt;/id&gt;&lt;name&gt;Peter&lt;/name&gt;&lt;salary&gt;150.0&lt;/salary&gt;&lt;/result&gt;&lt;/results&gt;
-Deleted Count: 2
-id=2 name=Anne salary=100.5 id=4 name=Peter salary=150.0
+Average of Low salary: 125.25
+Selected row count: 4
+table&lt;EmployeeSalary&gt; {index: [], primaryKey: [], data: [{id:1, salary:300.5}, {id:2, salary:100.5}, {id:3, salary:400.5}, {id:4, salary:150.0}]}
+Deleted row count: 2
+After Delete: table&lt;Employee&gt; {index: [], primaryKey: [&quot;id&quot;], data: [{id:1, name:&quot;Jane&quot;, salary:300.5}, {id:3, name:&quot;John&quot;, salary:400.5}]}
+JSON: [{&quot;id&quot;:1, &quot;name&quot;:&quot;Jane&quot;, &quot;salary&quot;:300.5}, {&quot;id&quot;:3, &quot;name&quot;:&quot;John&quot;, &quot;salary&quot;:400.5}]
+XML: &lt;results&gt;&lt;result&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;Jane&lt;/name&gt;&lt;salary&gt;300.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;3&lt;/id&gt;&lt;name&gt;John&lt;/name&gt;&lt;salary&gt;400.5&lt;/salary&gt;&lt;/result&gt;&lt;/results&gt;
 </code></pre></div>
 
                                 </td>

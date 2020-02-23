@@ -30,9 +30,9 @@ permalink: /v0-991/learn/by-example/closures
                 <span class="nx">b</span> <span class="p">=</span> <span class="nx">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">z</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span> <span class="o">+</span> <span class="nx">c</span><span class="p">;</span>
             <span class="p">};</span>
-            <span class="k">return</span> <span class="nx">func3</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">x</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nx">func3</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">y</span> <span class="o">+</span> <span class="nx">x</span><span class="p">;</span>
         <span class="p">};</span>
-        <span class="k">return</span> <span class="nx">func2</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nx">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">func2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="nx">x</span><span class="p">;</span>
     <span class="p">};</span>
     <span class="k">return</span> <span class="nx">func1</span><span class="p">;</span>
 <span class="p">}</span>
@@ -45,15 +45,15 @@ permalink: /v0-991/learn/by-example/closures
     <span class="p">};</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">foo</span> <span class="p">=</span> <span class="nx">basicClosure</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result1</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">result1</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">multilevelClosure</span><span class="p">();</span>
-    <span class="kt">int</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">bar</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result2</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">result2</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">baz1</span> <span class="p">=</span> <span class="nx">functionPointers</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">baz2</span> <span class="p">=</span> <span class="nx">baz1</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">baz2</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">result3</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">baz2</span> <span class="p">=</span> <span class="nx">baz1</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="nx">result3</span> <span class="p">=</span> <span class="nx">baz2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">result3</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -65,8 +65,8 @@ permalink: /v0-991/learn/by-example/closures
                         <td class="cLeftTD">
                             <h2>Closures</h2>
                             <p><p>In Ballerina, a closure is an inner anonymous function that has visibility to
- the scope of its enclosing environment. It can access its own scope, its enclosing
- environment&rsquo;s scope, and variables defined in the global scope.</p>
+ its enclosing environment&rsquo;s scope. It can access its own scope, its enclosing
+ environment&rsquo;s scope, and variables defined at the global scope.</p>
 </p>
 
                         </td>
@@ -193,7 +193,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A basic example in which an anonymous function with an <code>if</code> block accesses its outer scope
+                                            <p>Basic example where an anonymous function with an <code>if</code> block accesses its outer scope
  variables.</p>
 
                                         </div>
@@ -216,7 +216,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An example function with multiple levels of anonymous functions in which the
+                                            <p>Example function with multiple levels of anonymous functions where the
  innermost anonymous function has access to all of its outer scope variables.</p>
 
                                         </div>
@@ -239,7 +239,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The variable <code>a</code> defined in the outer scope is modified.
+                                            <p>Variable <code>a</code> defined in the outer scope is modified.
  The original value of <code>a</code> will be changed to <code>10</code>.</p>
 
                                         </div>
@@ -254,9 +254,9 @@ permalink: /v0-991/learn/by-example/closures
                                     <div class="highlight"><pre><code class=ballerina>                b = b + 1;
                 return x + y + z + a + b + c;
             };
-            return func3(8) + y + x;
+            return func3.call(8) + y + x;
         };
-        return func2(4) + x;
+        return func2.call(4) + x;
     };
     return func1;
 }
@@ -267,7 +267,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The variable <code>b</code> defined in the <code>func1</code> function is modified.
+                                            <p>Variable <code>b</code> defined in function <code>func1</code> is modified.
  The original value of <code>b</code> will be changed to <code>24</code>.</p>
 
                                         </div>
@@ -294,7 +294,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An Example to represent how function pointers are passed with closures
+                                            <p>Example to represent how function pointers are passed with closures
  so that the inner scope anonymous function can access the outer scope variables.</p>
 
                                         </div>
@@ -319,8 +319,8 @@ permalink: /v0-991/learn/by-example/closures
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var foo = basicClosure();
-    int result1 = foo(3);
-    io:println(&quot;Answer: &quot;, result1);
+    int result1 = foo.call(3);
+    io:println(&quot;Answer: &quot; + result1);
 </code></pre></div>
 
                                 </td>
@@ -328,7 +328,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invokes the function that shows basic closure support.</p>
+                                            <p>Invoke the function that shows basic closure support.</p>
 
                                         </div>
                                     </div>
@@ -340,8 +340,8 @@ permalink: /v0-991/learn/by-example/closures
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var bar = multilevelClosure();
-    int result2 = bar(5);
-    io:println(&quot;Answer: &quot;, result2);
+    int result2 = bar.call(5);
+    io:println(&quot;Answer: &quot; + result2);
 </code></pre></div>
 
                                 </td>
@@ -349,7 +349,7 @@ permalink: /v0-991/learn/by-example/closures
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The function invocation that represents multiple levels of anonymous functions
+                                            <p>Function invocation that represents multiple levels of anonymous functions
  with closure support.</p>
 
                                         </div>
@@ -362,9 +362,9 @@ permalink: /v0-991/learn/by-example/closures
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    var baz1 = functionPointers(7);
-    var baz2 = baz1(5);
-    int result3 = baz2(3);
-    io:println(&quot;Answer: &quot;, result3);
+    var baz2 = baz1.call(5);
+    int result3 = baz2.call(3);
+    io:println(&quot;Answer: &quot; + result3);
 }
 </code></pre></div>
 
@@ -399,7 +399,7 @@ permalink: /v0-991/learn/by-example/closures
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run closures.bal
 Answer: 48
 Answer: 72

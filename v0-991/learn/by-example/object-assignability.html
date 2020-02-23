@@ -27,7 +27,8 @@ permalink: /v0-991/learn/by-example/object-assignability
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;street1&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;street1&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -40,16 +41,16 @@ permalink: /v0-991/learn/by-example/object-assignability
                             <h2>Object Assignability</h2>
                             <p><p>An object is assignable to another object type if they are structurally equivalent. There are rules that need to
  be satisfied for objects to be structurally equivalent. The following are the general equivalency rules
- that are applicable for objects.</p>
+ for objects.</p>
 
 <ul>
 <li>Both objects should have the same access modifier (i.e., either both should be public or both should be private).</li>
 <li>If both objects are private, they should be in the same package.</li>
 <li>The right hand side (RHS) object type should at least have all the fields as well as the methods of the left hand side (LHS) type.</li>
 <li>If the objects are public object types, all the fields and methods must be public as well.</li>
-<li>The field types of the RHS object should be assignable to the field types of the LHS object.</li>
-<li>The method signatures of the RHS object type should match the method signatures of the LHS object type.</li>
-<li>The parameters and return types of the RHS object type should also be the same types or subtypes of
+<li>The RHS object&rsquo;s field types should be assignable to the LHS object type&rsquo;s field types.</li>
+<li>The RHS object&rsquo;s method signatures should match the LHS object type&rsquo;s method signatures.
+The parameters and return types of the RHS object type should also be the same types or subtypes of
 the corresponding parameters and return types of the LHS object type.</li>
 </ul>
 </p>
@@ -193,7 +194,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>Employee</code> with public fields, methods, and the initializer.</p>
+                                            <p>Defines an object called <code>Employee</code> with public fields, methods and the initializer.</p>
 
                                         </div>
                                     </div>
@@ -262,6 +263,7 @@ the corresponding parameters and return types of the LHS object type.</li>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person p1 = new Employee(50, &quot;John&quot;, &quot;street1&quot;);
+    io:println(p1);
 </code></pre></div>
 
                                 </td>
@@ -269,7 +271,7 @@ the corresponding parameters and return types of the LHS object type.</li>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an object of the type <code>Employee</code> and assigns that to a variable of the type <code>Person</code>.</p>
+                                            <p>Create an object of type <code>Employee</code> and assign that to a variable of type <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -307,8 +309,9 @@ the corresponding parameters and return types of the LHS object type.</li>
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run object_assignability.bal
+{age:50, name:&quot;John&quot;, address:&quot;street1&quot;}
 John Doe
 </code></pre></div>
 

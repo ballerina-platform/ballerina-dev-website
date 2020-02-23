@@ -25,16 +25,15 @@ permalink: /v0-991/learn/by-example/anonymous-records
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
     <span class="p">|}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span> <span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span> <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="p">(</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">)[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">anydataRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">field</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">pureRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">)[]</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">)[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">field</span><span class="p">)</span> <span class="nx">in</span> <span class="nx">pureRecord</span> <span class="p">{</span>
         <span class="nx">fields</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">field</span><span class="p">;</span>
         <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -101,6 +100,8 @@ permalink: /v0-991/learn/by-example/anonymous-records
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -253,7 +254,7 @@ permalink: /v0-991/learn/by-example/anonymous-records
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    anydata[] fields = toFieldsArray(john);
+                                    <div class="highlight"><pre><code class=ballerina>    (anydata|error)[] fields = toFieldsArray(john);
     io:println(fields);
 }
 </code></pre></div>
@@ -267,8 +268,8 @@ permalink: /v0-991/learn/by-example/anonymous-records
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function toFieldsArray(record {} anydataRecord) returns anydata[] {
-    anydata[] fields = [];
+                                    <div class="highlight"><pre><code class=ballerina>function toFieldsArray(record {} pureRecord) returns (anydata|error)[] {
+    (anydata|error)[] fields = [];
     int i = 0;
 </code></pre></div>
 
@@ -277,8 +278,10 @@ permalink: /v0-991/learn/by-example/anonymous-records
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function accepts any record with <code>anydata</code>-typed fields.
- Anonymous record types are implicitly public.</p>
+                                            <p>This function accepts any record with pure typed fields
+ (i.e., <code>anydata</code> or <code>error</code> fields). Anonymous record types are implicitly public.
+ Hence, non-public normal records will never be structurally equivalent
+ to anonymous records even if they have the same fields.</p>
 
                                         </div>
                                     </div>
@@ -288,12 +291,23 @@ permalink: /v0-991/learn/by-example/anonymous-records
                             
                             <tr class="cTR">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var field in anydataRecord {
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    foreach var (_, field) in pureRecord {
         fields[i] = field;
         i += 1;
     }
-    return fields;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    return fields;
 }
 </code></pre></div>
 
@@ -322,9 +336,9 @@ permalink: /v0-991/learn/by-example/anonymous-records
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run anonymous_records.bal
-name=John Doe age=25 address=city=Colombo country=Sri Lanka
-name=Jane Doe age=20 address=city=London country=UK
-John Doe 25 city=Colombo country=Sri Lanka
+{name:&quot;John Doe&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}}
+{name:&quot;Jane Doe&quot;, age:20, address:{city:&quot;London&quot;, country:&quot;UK&quot;}}
+[&quot;John Doe&quot;, 25, {city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}]
 </code></pre></div>
 
                                 </td>

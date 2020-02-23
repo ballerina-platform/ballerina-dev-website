@@ -10,15 +10,15 @@ permalink: /v0-991/learn/by-example/task-service-appointment
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">AppointmentConfiguration</span> <span class="nx">appointmentConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">appointmentDetails</span><span class="p">:</span> <span class="s">&quot;* * * * * ?&quot;</span><span class="p">,</span>
-    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="nx">appointmentDetails</span><span class="p">:</span> <span class="s">&quot;0/2 * * * * ?&quot;</span><span class="p">,</span>
+    <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">11</span>
 <span class="p">};</span>
 <span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">appointment</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">appointmentConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">service</span> <span class="nx">appointmentService</span> <span class="nx">on</span> <span class="nx">appointment</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">count</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -148,7 +148,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    appointmentDetails: &quot;* * * * * ?&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>    appointmentDetails: &quot;0/2 * * * * ?&quot;,
 </code></pre></div>
 
                                 </td>
@@ -156,7 +156,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This cron expression will schedule the appointment every second.</p>
+                                            <p>This cron expression will schedule the appointment once every 2 seconds.</p>
 
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    noOfRecurrences: 10
+                                    <div class="highlight"><pre><code class=ballerina>    noOfRecurrences: 11
 };
 </code></pre></div>
 
@@ -238,9 +238,9 @@ import ballerina/task;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
         count = count + 1;
+        log:printInfo(&quot;Cleaning up...&quot;);
+        log:printInfo(string.convert(count));
     }
 }
 </code></pre></div>
@@ -277,26 +277,27 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run task_service_appointment.bal
-2019-09-06 13:35:28,259 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:28,260 INFO  [ballerina/log] - 0
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:29,004 INFO  [ballerina/log] - 1
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:30,003 INFO  [ballerina/log] - 2
-2019-09-06 13:35:31,005 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:31,006 INFO  [ballerina/log] - 3
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:32,003 INFO  [ballerina/log] - 4
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:33,003 INFO  [ballerina/log] - 5
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:34,003 INFO  [ballerina/log] - 6
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:35,003 INFO  [ballerina/log] - 7
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:36,006 INFO  [ballerina/log] - 8
-2019-09-06 13:35:37,006 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:35:37,007 INFO  [ballerina/log] - 9
+Initiating service(s) in &#39;task_service_appointment.bal&#39;
+INFO  [] - Cleaning up...
+INFO  [] - 1
+INFO  [] - Cleaning up...
+INFO  [] - 2
+INFO  [] - Cleaning up...
+INFO  [] - 3
+INFO  [] - Cleaning up...
+INFO  [] - 4
+INFO  [] - Cleaning up...
+INFO  [] - 5
+INFO  [] - Cleaning up...
+INFO  [] - 6
+INFO  [] - Cleaning up...
+INFO  [] - 7
+INFO  [] - Cleaning up...
+INFO  [] - 8
+INFO  [] - Cleaning up...
+INFO  [] - 9
+INFO  [] - Cleaning up...
+INFO  [] - 10
 </code></pre></div>
 
                                 </td>

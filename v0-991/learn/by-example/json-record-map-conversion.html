@@ -27,14 +27,14 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
             <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Punke&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
+    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">movieMap</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">]);</span>
+        <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">]);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">writer</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">writer</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
@@ -49,7 +49,7 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">Movie</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">inceptionJ</span><span class="p">);</span>
+    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">Movie</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">inceptionJ</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">inception</span> <span class="nx">is</span> <span class="nx">Movie</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">inception</span><span class="p">);</span>
     <span class="p">}</span>
@@ -64,7 +64,7 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                         <td class="cLeftTD">
                             <h2>JSON/Record/Map Conversion</h2>
                             <p><p>Ballerina records, maps, and JSON objects are used to hold records.
- Records are collections of fields and each field value is accessed by a key.
+ Records are collections of fields, and each field value is accessed by a key.
  Converting from one type to another is very useful in certain situations.</p>
 </p>
 
@@ -73,16 +73,16 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="json-access.html">
+                                    <a class="prev" href="json-arrays.html">
                                         <span>< PREVIOUS</span>
-                                        <p>JSON Access</p>
+                                        <p>JSON Arrays</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="json-to-xml-conversion.html">
+                                    <a class="next" href="xml.html">
                                         <span>NEXT ></span>
-                                        <p>JSON to XML Conversion</p>
+                                        <p>XML</p>
                                     </a>
                                 </div>
                                 
@@ -215,9 +215,9 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error j = json.constructFrom(theRevenant);
+                                    <div class="highlight"><pre><code class=ballerina>    json|error j = json.convert(theRevenant);
     if (j is json) {
-        io:println(j.toJsonString());
+        io:println(j);
         io:println(j.writer.lname);
     }
 </code></pre></div>
@@ -227,9 +227,11 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This example shows how you can convert a record to a JSON object.
- This conversion could return an error because it may not be possible
- to convert some data types that are defined in the record to JSON.</p>
+                                            <p>Here&rsquo;s how you can convert a record to a JSON object.
+ This conversion is unsafe because it may not be possible to convert some data types
+ that are defined in the record to JSON.
+ Similarly, you can use the <code>.stamp()</code> built-in method to manipulate the value
+ itself, by attempting to change its type.</p>
 
                                         </div>
                                     </div>
@@ -240,9 +242,9 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt;|error movieMap = map&lt;anydata&gt;.constructFrom(theRevenant);
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt;|error movieMap = map&lt;anydata&gt;.convert(theRevenant);
     if (movieMap is map&lt;anydata&gt;) {
-        Person|error writer = Person.constructFrom(movieMap[&quot;writer&quot;]);
+        Person|error writer = Person.convert(movieMap[&quot;writer&quot;]);
         if (writer is Person) {
             io:println(writer.age);
         }
@@ -275,7 +277,7 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
             age: 30
         }
     };
-    Movie|error inception = Movie.constructFrom(inceptionJ);
+    Movie|error inception = Movie.convert(inceptionJ);
     if (inception is Movie) {
         io:println(inception);
     }
@@ -287,9 +289,8 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This example shows how you can convert a JSON object to a record.
- This conversion could return an error because the field names and
- types are unknown until they are evaluated at runtime.</p>
+                                            <p>Here&rsquo;s how you can convert a JSON object to a record.
+ This conversion is unsafe because the field names and types are unknown until runtime.</p>
 
                                         </div>
                                     </div>
@@ -314,12 +315,14 @@ permalink: /v0-991/learn/by-example/json-record-map-conversion
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run json_record_map_conversion.bal
-{&quot;title&quot;:&quot;The Revenant&quot;, &quot;year&quot;:&quot;2015&quot;, &quot;released&quot;:&quot;08 Jan 2016&quot;, &quot;writer&quot;:{&quot;fname&quot;:&quot;Michael&quot;, &quot;lname&quot;:&quot;Punke&quot;, &quot;age&quot;:30}}
+{&quot;title&quot;:&quot;The Revenant&quot;, &quot;year&quot;:&quot;2015&quot;, &quot;released&quot;:&quot;08 Jan 2016&quot;,
+ &quot;writer&quot;:{&quot;fname&quot;:&quot;Michael&quot;, &quot;lname&quot;:&quot;Punke&quot;, &quot;age&quot;:30}}
 Punke
 30
-title=Inception year=2010 released=16 Jul 2010 writer=fname=Christopher lname=Nolan age=30
+{title:&quot;Inception&quot;, year:&quot;2010&quot;, released:&quot;16 Jul 2010&quot;,
+ writer:{fname:&quot;Christopher&quot;, lname:&quot;Nolan&quot;, age:30}}
 </code></pre></div>
 
                                 </td>

@@ -23,9 +23,7 @@ permalink: /v0-991/learn/by-example/modules
                             <h2>Modules</h2>
                             <p><p>Ballerina program files have the <code>.bal</code> extension and the file names do not have semantics.
  These source files can be grouped into modules. The code within a module can refer to any module-level symbol (name) declared
- in the same module. Module names can only contain alphanumerics, underscores, and periods and the maximum length is 256 characters.
- By default, the last element of the module name becomes an alias that is used to refer to the symbols of the imported module.
- If the module name has periods, then the word after the last period becomes the alias.</p>
+ in the same module. Module names can only contain alphanumerics, underscores and periods and the maximum length is 256 characters.</p>
 </p>
 
                         </td>
@@ -106,8 +104,12 @@ permalink: /v0-991/learn/by-example/modules
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This example imports a module. You can only refer to the public symbols of
- an imported module.</p>
+                                            <p>Here&rsquo;s how you can import a module. You can only refer to public symbols of
+ an imported module.
+ By default, the last element of the module name becomes an alias that is
+ used to refer to symbols of the imported module.
+ If the module name has periods, then the word after the last period becomes
+ the alias.</p>
 
                                         </div>
                                     </div>
@@ -126,7 +128,7 @@ permalink: /v0-991/learn/by-example/modules
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Declare an explicit alias.</p>
+                                            <p>Declare an explicit alias</p>
 
                                         </div>
                                     </div>
@@ -157,8 +159,8 @@ permalink: /v0-991/learn/by-example/modules
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Refer symbols of another module.
- <code>math:PI</code> is a qualified identifier. Note the usage of the module alias.</p>
+                                            <p>Refer to the symbols of another module.
+ Here <code>math:PI</code> is a qualified identifier. Note the usage of the module alias.</p>
 
                                         </div>
                                     </div>
@@ -203,7 +205,7 @@ permalink: /v0-991/learn/by-example/modules
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run modules.bal
 3.141592653589793
 </code></pre></div>

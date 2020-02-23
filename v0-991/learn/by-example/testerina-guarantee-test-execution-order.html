@@ -23,7 +23,7 @@ permalink: /v0-991/learn/by-example/testerina-guarantee-test-execution-order
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config{</span><span class="p">}</span>
+<span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">Config</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 3!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
@@ -38,8 +38,8 @@ permalink: /v0-991/learn/by-example/testerina-guarantee-test-execution-order
                         <td class="cLeftTD">
                             <h2>Guarantee Test Execution Order</h2>
                             <p><p>The <code>dependsOn</code>attribute can be used to define a list of function names that the test
- function depends on. These functions will be executed before the test execution.
- This allows you to ensure that the tests are being executed in the expected order.</p>
+ function depends on. These functions will be run before the test execution.
+ This allows you to ensure that the tests run in the expected order.</p>
 </p>
 
                         </td>
@@ -54,9 +54,9 @@ permalink: /v0-991/learn/by-example/testerina-guarantee-test-execution-order
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="docker-deployment.html">
+                                    <a class="next" href="testerina-function-mocks.html">
                                         <span>NEXT ></span>
-                                        <p>Docker Deployment</p>
+                                        <p>Function Mocks</p>
                                     </a>
                                 </div>
                                 
@@ -133,7 +133,7 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This test function depends on the <code>testFunction3</code>.</p>
+                                            <p>This test function depends on <code>testFunction3</code>.</p>
 
                                         </div>
                                     </div>
@@ -157,7 +157,7 @@ function testFunction1() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can provide a list of the dependent functions here.</p>
+                                            <p>You can provide a list of depends on functions here.</p>
 
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ function testFunction2() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This test function depends on the <code>testFunction1</code>.</p>
+                                            <p>This test function depends on <code>testFunction1</code>.</p>
 
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config{}
+                                    <div class="highlight"><pre><code class=ballerina>@test:Config
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -205,8 +205,8 @@ function testFunction3() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is a random test function. This will randomly execute without depending on other functions.
- However,the other function does depend on this.</p>
+                                            <p>This is a rondom test function, this will randomly execute without depending on other functions.
+ But note that other function do depend on this.</p>
 
                                         </div>
                                     </div>
@@ -238,10 +238,13 @@ function testFunction3() {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
-$ ballerina test test_module
-Compiling source
-        ballerinatest/test_module:0.1.0
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+# Note that you need to have the ballerina-tools distribution
+# installed in order to run this command.
+$ ballerina test testerina_guarantee_test_execution_order.bal
+Compiling tests
+    testerina_guarantee_test_execution_order.bal
 </code></pre></div>
 
                                 </td>
@@ -253,8 +256,14 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/test_module-2019r3-any-0.1.0.balo
+                                    <div class="highlight"><pre><code class=shell-session>Running tests
+    testerina_guarantee_test_execution_order.bal
+I&#39;m in test function 3!
+I&#39;m in test function 1!
+I&#39;m in test function 2!
+        [pass] testFunction3
+        [pass] testFunction1
+        [pass] testFunction2
 </code></pre></div>
 
                                 </td>
@@ -266,12 +275,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running tests
-    ballerinatest/test_module:0.1.0
-I&#39;m in test function 3!
-I&#39;m in test function 1!
-I&#39;m in test function 2!
-        3 passing
+                                    <div class="highlight"><pre><code class=shell-session>        3 passing
         0 failing
         0 skipped
 </code></pre></div>

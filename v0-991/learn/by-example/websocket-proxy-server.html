@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Proxy Server
+title: WebSocket Proxy Server
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /v0-991/learn/by-example/websocket-proxy-server
 ---
@@ -12,103 +12,112 @@ permalink: /v0-991/learn/by-example/websocket-proxy-server
 <span class="nx">final</span> <span class="kt">string</span> <span class="nx">REMOTE_BACKEND</span> <span class="p">=</span> <span class="s">&quot;ws://echo.websocket.org&quot;</span><span class="p">;</span><span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/proxy/ws&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">SimpleProxyService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">SimpleProxyService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketListener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClientEp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span>
             <span class="nx">REMOTE_BACKEND</span><span class="p">,</span>
-            <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">,</span>
+            <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span><span class="p">,</span>
             <span class="nx">readyOnConnect</span><span class="p">:</span> <span class="kc">false</span>
         <span class="p">});</span>
-        <span class="nx">wsClientEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">caller</span><span class="p">);</span>
-        <span class="nx">caller</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">,</span> <span class="nx">wsClientEp</span><span class="p">);</span>
+        <span class="nx">wsClientEp</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">]</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
+        <span class="nx">caller</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">]</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">wsClientEp</span><span class="o">-&gt;</span><span class="nx">ready</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error calling ready on client&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error calling ready on client&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span>
                     <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span> <span class="p">=</span> <span class="nx">finalFrame</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onBinary</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">pushBinary</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">pushBinary</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">finalFrame</span> <span class="p">=</span> <span class="nx">finalFrame</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary message&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1011</span><span class="p">,</span>
                         <span class="nx">reason</span> <span class="p">=</span> <span class="s">&quot;Unexpected condition&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hence closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hense closing the connection&quot;</span><span class="p">,</span>
+                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">clientEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">clientEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">statusCode</span><span class="p">,</span> <span class="nx">reason</span> <span class="p">=</span> <span class="nx">reason</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {} service {</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">finalFrame</span> <span class="p">=</span> <span class="nx">finalFrame</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending text message&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onBinary</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">byte</span><span class="p">[]</span> <span class="nx">data</span><span class="p">,</span>
                                 <span class="kt">boolean</span> <span class="nx">finalFrame</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">pushBinary</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">finalFrame</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary message&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">pushBinary</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">finalFrame</span> <span class="p">=</span> <span class="nx">finalFrame</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when sending binary message&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">1011</span><span class="p">,</span>
                         <span class="nx">reason</span> <span class="p">=</span> <span class="s">&quot;Unexpected condition&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
                             <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hense closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Unexpected error hense closing the connection&quot;</span><span class="p">,</span>
+                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onClose</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">statusCode</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">serverEp</span> <span class="p">=</span>
                         <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">caller</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">serverEp</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">(</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">statusCode</span><span class="p">,</span> <span class="nx">reason</span> <span class="p">=</span> <span class="nx">reason</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred when closing the connection&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">removeAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+        <span class="nx">_</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">attributes</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
 <span class="kd">function</span> <span class="nx">getAssociatedClientEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">ep</span><span class="p">)</span>
                                         <span class="nx">returns</span> <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">wsClient</span> <span class="p">=</span>
-            <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+            <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">];</span>
     <span class="k">return</span> <span class="nx">wsClient</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getAssociatedServerEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketClient</span> <span class="nx">ep</span><span class="p">)</span>
                                         <span class="nx">returns</span> <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">wsEndpoint</span> <span class="p">=</span>
-            <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">getAttribute</span><span class="p">(</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">);</span>
+            <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">&gt;</span><span class="nx">ep</span><span class="p">.</span><span class="nx">attributes</span><span class="p">[</span><span class="nx">ASSOCIATED_CONNECTION</span><span class="p">];</span>
     <span class="k">return</span> <span class="nx">wsEndpoint</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -119,7 +128,7 @@ permalink: /v0-991/learn/by-example/websocket-proxy-server
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Proxy Server</h2>
+                            <h2>WebSocket Proxy Server</h2>
                             <p><p>Ballerina can act as a proxy to another remote service. Ballerina forwards the
 requests sent by the clients that connect to it via a WebSocket to the respective remote service.</p>
 </p>
@@ -138,7 +147,7 @@ requests sent by the clients that connect to it via a WebSocket to the respectiv
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="websocket-chat-application.html">
                                         <span>NEXT ></span>
-                                        <p>Chat Application</p>
+                                        <p>WebSocket Chat Application</p>
                                     </a>
                                 </div>
                                 
@@ -287,7 +296,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>@http:WebSocketServiceConfig {
     path: &quot;/proxy/ws&quot;
 }
-service SimpleProxyService on new http:Listener(9090) {
+service SimpleProxyService on new http:WebSocketListener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -322,7 +331,7 @@ service SimpleProxyService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient wsClientEp = new(
             REMOTE_BACKEND,
-            {callbackService: ClientService,
+            config = {callbackService: ClientService,
 </code></pre></div>
 
                                 </td>
@@ -355,8 +364,8 @@ service SimpleProxyService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        wsClientEp.setAttribute(ASSOCIATED_CONNECTION, caller);
-        caller.setAttribute(ASSOCIATED_CONNECTION, wsClientEp);
+                                    <div class="highlight"><pre><code class=ballerina>        wsClientEp.attributes[ASSOCIATED_CONNECTION] = caller;
+        caller.attributes[ASSOCIATED_CONNECTION] = wsClientEp;
 </code></pre></div>
 
                                 </td>
@@ -376,8 +385,8 @@ service SimpleProxyService on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var err = wsClientEp-&gt;ready();
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error calling ready on client&quot;, err);
+        if (err is error) {
+            log:printError(&quot;Error calling ready on client&quot;, err = err);
         }
     }
 </code></pre></div>
@@ -421,9 +430,10 @@ service SimpleProxyService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
                     getAssociatedClientEndpoint(caller);
-        var err = clientEp-&gt;pushText(text, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when sending text message&quot;, err);
+        var err = clientEp-&gt;pushText(text, finalFrame = finalFrame);
+        if (err is error) {
+            log:printError(&quot;Error occurred when sending text message&quot;,
+                            err = err);
         }
     }
 </code></pre></div>
@@ -459,9 +469,10 @@ service SimpleProxyService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
                         getAssociatedClientEndpoint(caller);
-        var err = clientEp-&gt;pushBinary(data, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when sending binary message&quot;, err);
+        var err = clientEp-&gt;pushBinary(data, finalFrame = finalFrame);
+        if (err is error) {
+            log:printError(&quot;Error occurred when sending binary message&quot;,
+                            err = err);
         }
     }
 </code></pre></div>
@@ -498,11 +509,13 @@ service SimpleProxyService on new http:Listener(9090) {
                         getAssociatedClientEndpoint(caller);
         var e = clientEp-&gt;close(statusCode = 1011,
                         reason = &quot;Unexpected condition&quot;);
-        if (e is http:WebSocketError) {
-            log:printError(&quot;Error occurred when closing the connection&quot;, e);
+        if (e is error) {
+            log:printError(&quot;Error occurred when closing the connection&quot;,
+                            err = e);
         }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
-        log:printError(&quot;Unexpected error hence closing the connection&quot;, err);
+        _ = caller.attributes.remove(ASSOCIATED_CONNECTION);
+        log:printError(&quot;Unexpected error hense closing the connection&quot;,
+                        err = err);
     }
 </code></pre></div>
 
@@ -538,10 +551,11 @@ service SimpleProxyService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketClient clientEp =
                         getAssociatedClientEndpoint(caller);
         var err = clientEp-&gt;close(statusCode = statusCode, reason = reason);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when closing the connection&quot;, err);
+        if (err is error) {
+            log:printError(&quot;Error occurred when closing the connection&quot;,
+                            err = err);
         }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+        _ = caller.attributes.remove(ASSOCIATED_CONNECTION);
     }
 }
 </code></pre></div>
@@ -596,9 +610,10 @@ service SimpleProxyService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
-        var err = serverEp-&gt;pushText(text, finalFrame);
-        if (err is http:WebSocketError) {
-            log:printError(&quot;Error occurred when sending text message&quot;, err);
+        var err = serverEp-&gt;pushText(text, finalFrame = finalFrame);
+        if (err is error) {
+            log:printError(&quot;Error occurred when sending text message&quot;,
+                            err = err);
         }
     }
 </code></pre></div>
@@ -634,9 +649,10 @@ service SimpleProxyService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
-        var err = serverEp-&gt;pushBinary(data, finalFrame);
-        if (err is http:WebSocketError) {
-           log:printError(&quot;Error occurred when sending binary message&quot;, err);
+        var err = serverEp-&gt;pushBinary(data, finalFrame = finalFrame);
+        if (err is error) {
+           log:printError(&quot;Error occurred when sending binary message&quot;,
+                            err = err);
         }
     }
 </code></pre></div>
@@ -673,12 +689,13 @@ service SimpleProxyService on new http:Listener(9090) {
                         getAssociatedServerEndpoint(caller);
         var e = serverEp-&gt;close(statusCode = 1011,
                         reason = &quot;Unexpected condition&quot;);
-        if (e is http:WebSocketError) {
+        if (e is error) {
             log:printError(&quot;Error occurred when closing the connection&quot;,
                             err = e);
         }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
-        log:printError(&quot;Unexpected error hense closing the connection&quot;, err);
+        _ = caller.attributes.remove(ASSOCIATED_CONNECTION);
+        log:printError(&quot;Unexpected error hense closing the connection&quot;,
+                        err = err);
     }
 </code></pre></div>
 
@@ -714,10 +731,11 @@ service SimpleProxyService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>        http:WebSocketCaller serverEp =
                         getAssociatedServerEndpoint(caller);
         var err = serverEp-&gt;close(statusCode = statusCode, reason = reason);
-            if (err is http:WebSocketError) {
-                log:printError(&quot;Error occurred when closing the connection&quot;, err);
+            if (err is error) {
+                log:printError(&quot;Error occurred when closing the connection&quot;,
+                                err = err);
             }
-        _ = caller.removeAttribute(ASSOCIATED_CONNECTION);
+        _ = caller.attributes.remove(ASSOCIATED_CONNECTION);
     }
 };
 </code></pre></div>
@@ -734,7 +752,7 @@ service SimpleProxyService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>function getAssociatedClientEndpoint(http:WebSocketCaller ep)
                                         returns (http:WebSocketClient) {
     http:WebSocketClient wsClient =
-            &lt;http:WebSocketClient&gt;ep.getAttribute(ASSOCIATED_CONNECTION);
+            &lt;http:WebSocketClient&gt;ep.attributes[ASSOCIATED_CONNECTION];
     return wsClient;
 }
 </code></pre></div>
@@ -758,7 +776,7 @@ service SimpleProxyService on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>function getAssociatedServerEndpoint(http:WebSocketClient ep)
                                         returns (http:WebSocketCaller) {
     http:WebSocketCaller wsEndpoint =
-            &lt;http:WebSocketCaller&gt;ep.getAttribute(ASSOCIATED_CONNECTION);
+            &lt;http:WebSocketCaller&gt;ep.attributes[ASSOCIATED_CONNECTION];
     return wsEndpoint;
 }
 </code></pre></div>
@@ -796,14 +814,6 @@ service SimpleProxyService on new http:Listener(9090) {
                                 
                             
                         
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -813,33 +823,9 @@ service SimpleProxyService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina build` command.
-$ ballerina build websocket_proxy_server.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the sample using the `run` command on the jar file generated:
-$ ballerina run websocket_proxy_server-executable.jar
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Now, this service can be invoked by any WebSocket client using the url &quot;ws://localhost:9090/proxy/ws&quot;
+# `.bal` file and use the `ballerina run` command.
+$ ballerina run websocket_proxy_server.bal
+# Now, this service can be invoked by any WebSocket client using the url &quot;ws://localhost:9090/proxy/ws&quot;
 </code></pre></div>
 
                                 </td>

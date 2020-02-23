@@ -163,7 +163,7 @@ permalink: /v0-991/learn/by-example/type-guard
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>value</code> variable can hold a value of the type <code>string</code>, <code>int</code> or <code>boolean</code>.</p>
+                                            <p>The variable <code>value</code> can hold a value of type <code>string</code> or <code>int</code> or <code>boolean</code>.</p>
 
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ permalink: /v0-991/learn/by-example/type-guard
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type guard can be used with <code>value</code> to test to which of the types it belongs to and perform conditional
+                                            <p>The type guard can be used with <code>value</code>, to test which of the types it belongs to and perform conditional
  logic based on the type which it belongs to.</p>
 
                                         </div>
@@ -204,8 +204,8 @@ permalink: /v0-991/learn/by-example/type-guard
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type of <code>value</code> within this block is narrowed to <code>string</code>, and thus, <code>value</code> can be assigned to a
- variable of the type <code>string</code>.</p>
+                                            <p>The type of <code>value</code> within this block is narrowed to <code>string</code>, and thus <code>value</code> can be assigned to a
+ variable of type <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@ permalink: /v0-991/learn/by-example/type-guard
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type of <code>value</code> within this block is narrowed to <code>int</code>, and thus, <code>value</code> can be used in a
+                                            <p>The type of <code>value</code> within this block is narrowed to <code>int</code>, and thus <code>value</code> can be used in a
  context where an <code>int</code> is expected.</p>
 
                                         </div>
@@ -264,7 +264,7 @@ permalink: /v0-991/learn/by-example/type-guard
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type test needs to be used again since the type of <code>value</code> is reset to <code>string|int|boolean</code>.</p>
+                                            <p>The type test needs to be used again, since the type of <code>value</code> is reset to <code>string|int|boolean</code>.</p>
 
                                         </div>
                                     </div>
@@ -377,7 +377,7 @@ permalink: /v0-991/learn/by-example/type-guard
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run type_guard.bal
 value is an int: 10
 value + 1: 11

@@ -17,7 +17,7 @@ permalink: /v0-991/learn/by-example/http-100-continue
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">expects100Continue</span><span class="p">())</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">mediaType</span> <span class="p">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span><span class="p">.</span><span class="nx">toLowerAscii</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;text/plain&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">mediaType</span><span class="p">.</span><span class="nx">equalsIgnoreCase</span><span class="p">(</span><span class="s">&quot;text/plain&quot;</span><span class="p">))</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="k">continue</span><span class="p">();</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
@@ -45,7 +45,7 @@ permalink: /v0-991/learn/by-example/http-100-continue
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
@@ -185,7 +185,7 @@ service helloWorld on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (request.expects100Continue()) {
             string mediaType = request.getHeader(&quot;Content-Type&quot;);
-            if (mediaType.toLowerAscii() == &quot;text/plain&quot;) {
+            if (mediaType.equalsIgnoreCase(&quot;text/plain&quot;)) {
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ service helloWorld on new http:Listener(9090) {
             }
         } else {
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt; &lt;string&gt; payload.detail()?.message);
+            res.setPayload(untaint &lt;string&gt; payload.detail().message);
             var result = caller-&gt;respond(res);
             if (result is error) {
                 log:printError(&quot;Error sending response&quot;, err = result);
@@ -311,7 +311,8 @@ service helloWorld on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_expect_header.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;http_100_continue.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 2018-12-04 21:37:36,272 INFO  [ballerina/log] - TEST 100 CONTINUE
 </code></pre></div>
 

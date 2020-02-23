@@ -11,9 +11,9 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
+    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span><span class="p">,</span>
+    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;mMNWS9PLmM93V5WHjC&quot;</span><span class="p">,</span>
+    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;</span><span class="p">,</span>
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -23,7 +23,7 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://api.bitbucket.org/2.0&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
     <span class="p">},</span>
@@ -35,11 +35,11 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
     <span class="p">}</span>
 <span class="p">});</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;&lt;Username for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;&lt;Password for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for password grant authentication&gt;&quot;</span><span class="p">,</span>
+    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span><span class="p">,</span>
+    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;b7a.demo@gmail.com&quot;</span><span class="p">,</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;mMNWS9PLmM93V5WHjC&quot;</span><span class="p">,</span>
+    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;</span><span class="p">,</span>
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -49,7 +49,7 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token URL for the refresh token server&gt;&quot;</span><span class="p">,</span>
+        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span><span class="p">,</span>
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -60,7 +60,7 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://api.bitbucket.org/2.0&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
     <span class="p">},</span>
@@ -72,12 +72,12 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
     <span class="p">}</span>
 <span class="p">});</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;&lt;Access token for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
+    <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;ya29.GlvQBkqJS0yn0zsZm4IIUUzLk3DH1rRiCMKnHiz6deycKmTFiDsuoFlFfrmXF8dCb0gyzLyXpnv3VcrIlauj3nMs61CbydaAqMl6RwVIU2r2qg1StVVvxRWT9_Or&quot;</span><span class="p">,</span>
     <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for authentication with the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">refreshToken</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token for the refresh token server&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token URL for the refresh token server&gt;&quot;</span><span class="p">,</span>
+        <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;506144513496-dqm5vdqfrfhdjjom10rmvafb8e3h7rtm.apps.googleusercontent.com&quot;</span><span class="p">,</span>
+        <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;3hw2XN4MfiIRrv6mghX6m5gM&quot;</span><span class="p">,</span>
+        <span class="nx">refreshToken</span><span class="p">:</span> <span class="s">&quot;1/UwH3YyYccKTrH9bqj35Y7hMYTK9f3HEC3uzlrleFwPE&quot;</span><span class="p">,</span>
+        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;https://www.googleapis.com/oauth2/v4/token&quot;</span><span class="p">,</span>
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
@@ -88,7 +88,7 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://www.googleapis.com/tasks/v1&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
     <span class="p">},</span>
@@ -99,38 +99,48 @@ permalink: /v1-0/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/repositories/b7ademo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response1</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">values</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">values</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="nx">uuid</span> <span class="p">=</span> <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">uuid</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">uuid</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">uuid</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP1.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">response1</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/repositories/b7ademo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response2</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+            <span class="k">var</span> <span class="nx">values</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">values</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">values</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="nx">uuid</span> <span class="p">=</span> <span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">uuid</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">uuid</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">uuid</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">response2</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/users/@me/lists&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span>
+                                    <span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span>
+                                    <span class="p">:</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -250,9 +260,9 @@ import ballerina/oauth2;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
-    tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
-    clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
-    clientSecret: &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
+    tokenUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;,
+    clientId: &quot;mMNWS9PLmM93V5WHjC&quot;,
+    clientSecret: &quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;,
     clientConfig: {
         secureSocket: {
             trustStore: {
@@ -284,7 +294,7 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new(&quot;https://api.bitbucket.org/2.0&quot;, {
     auth: {
         authHandler: oauth2Handler1
     },
@@ -307,11 +317,11 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new({
-    tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
-    username: &quot;&lt;Username for password grant authentication&gt;&quot;,
-    password: &quot;&lt;Password for password grant authentication&gt;&quot;,
-    clientId: &quot;&lt;Client ID for password grant authentication&gt;&quot;,
-    clientSecret: &quot;&lt;Client secret for password grant authentication&gt;&quot;,
+    tokenUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;,
+    username: &quot;b7a.demo@gmail.com&quot;,
+    password: &quot;ballerina&quot;,
+    clientId: &quot;mMNWS9PLmM93V5WHjC&quot;,
+    clientSecret: &quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;,
     clientConfig: {
         secureSocket: {
             trustStore: {
@@ -321,7 +331,7 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
         }
     },
     refreshConfig: {
-        refreshUrl: &quot;&lt;Refresh token URL for the refresh token server&gt;&quot;,
+        refreshUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;,
         clientConfig: {
             secureSocket: {
                 trustStore: {
@@ -356,7 +366,7 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new(&quot;https://api.bitbucket.org/2.0&quot;, {
     auth: {
         authHandler: oauth2Handler2
     },
@@ -379,12 +389,12 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new({
-    accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
+    accessToken: &quot;ya29.GlvQBkqJS0yn0zsZm4IIUUzLk3DH1rRiCMKnHiz6deycKmTFiDsuoFlFfrmXF8dCb0gyzLyXpnv3VcrIlauj3nMs61CbydaAqMl6RwVIU2r2qg1StVVvxRWT9_Or&quot;,
     refreshConfig: {
-        clientId: &quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;,
-        clientSecret: &quot;&lt;Client secret for authentication with the authorization endpoint&gt;&quot;,
-        refreshToken: &quot;&lt;Refresh token for the refresh token server&gt;&quot;,
-        refreshUrl: &quot;&lt;Refresh token URL for the refresh token server&gt;&quot;,
+        clientId: &quot;506144513496-dqm5vdqfrfhdjjom10rmvafb8e3h7rtm.apps.googleusercontent.com&quot;,
+        clientSecret: &quot;3hw2XN4MfiIRrv6mghX6m5gM&quot;,
+        refreshToken: &quot;1/UwH3YyYccKTrH9bqj35Y7hMYTK9f3HEC3uzlrleFwPE&quot;,
+        refreshUrl: &quot;https://www.googleapis.com/oauth2/v4/token&quot;,
         clientConfig: {
             secureSocket: {
                 trustStore: {
@@ -418,7 +428,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new(&quot;https://www.googleapis.com/tasks/v1&quot;, {
     auth: {
         authHandler: oauth2Handler3
     },
@@ -452,16 +462,22 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/repositories/b7ademo&quot;);
     if (response1 is http:Response) {
         var result = response1.getJsonPayload();
         if (result is json) {
-            log:printInfo(result.toJsonString());
+            var values = result.values;
+            if (values is json[]) {
+                var uuid = values[0].uuid;
+                if (uuid is json) {
+                    log:printInfo(uuid.toJsonString());
+                }
+            }
         } else {
             log:printError(&quot;Failed to retrieve payload for clientEP1.&quot;);
         }
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, response1);
+        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, err = response1);
     }
 </code></pre></div>
 
@@ -481,16 +497,22 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/repositories/b7ademo&quot;);
     if (response2 is http:Response) {
         var result = response2.getJsonPayload();
         if (result is json) {
-            log:printInfo(result.toJsonString());
+            var values = result.values;
+            if (values is json[]) {
+                var uuid = values[0].uuid;
+                if (uuid is json) {
+                    log:printInfo(uuid.toJsonString());
+                }
+            }
         } else {
             log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
         }
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, response2);
+        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, err = response2);
     }
 </code></pre></div>
 
@@ -510,16 +532,14 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/users/@me/lists&quot;);
     if (response3 is http:Response) {
         var result = response3.getJsonPayload();
-        if (result is error) {
-            log:printInfo(&quot;Failed to retrieve payload for clientEP3.&quot;);
-        } else {
-            log:printInfo(&lt;string&gt; result.kind);
-        }
+        log:printInfo((result is error) ?
+                                    &quot;Failed to retrieve payload for clientEP3.&quot;
+                                    : &lt;string&gt; result.kind);
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
+        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, err = response3);
     }
 }
 </code></pre></div>
@@ -556,7 +576,9 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run secured_client_with_oauth2.bal
-# This should log the json output returned by the REST endpoint.
+INFO  [] - {9356828d-6797-496f-975e-3fabaf677214}
+INFO  [] - {9356828d-6797-496f-975e-3fabaf677214}
+INFO  [] - tasks#taskLists
 </code></pre></div>
 
                                 </td>

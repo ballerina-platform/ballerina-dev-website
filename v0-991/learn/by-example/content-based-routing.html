@@ -19,33 +19,23 @@ permalink: /v0-991/learn/by-example/content-based-routing
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">cbrResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">outboundEP</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">locationEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">jsonMsg</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">jsonMsg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;sanFrancisco&quot;</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">clientResponse</span> <span class="p">=</span>
-                            <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/594e018c1100002811d6d39a&quot;</span><span class="p">,</span> <span class="p">());</span>                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">clientResponse</span> <span class="p">=</span>
-                            <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/594e026c1100004011d6d39c&quot;</span><span class="p">,</span> <span class="p">());</span>
-                <span class="p">}</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">);</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                       <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-                    <span class="p">}</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
-                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                       <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
-                    <span class="p">}</span>
+            <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="nx">jsonMsg</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">].</span><span class="nx">toString</span><span class="p">();</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">clientResponse</span><span class="p">;</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">nameString</span> <span class="o">==</span> <span class="s">&quot;sanFrancisco&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">clientResponse</span> <span class="p">=</span>
+                        <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/594e018c1100002811d6d39a&quot;</span><span class="p">,</span> <span class="p">());</span>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">clientResponse</span> <span class="p">=</span>
+                        <span class="nx">locationEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/v2/594e026c1100004011d6d39c&quot;</span><span class="p">,</span> <span class="p">());</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">clientResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                   <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">nameString</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
@@ -53,7 +43,7 @@ permalink: /v0-991/learn/by-example/content-based-routing
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
@@ -257,10 +247,8 @@ service contentBasedRouting on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            json|error nameString = jsonMsg.name;
+                                    <div class="highlight"><pre><code class=ballerina>            string nameString = jsonMsg[&quot;name&quot;].toString();
             http:Response|error clientResponse;
-            if (nameString is json) {
-                if (nameString.toString() == &quot;sanFrancisco&quot;) {
 </code></pre></div>
 
                                 </td>
@@ -276,11 +264,23 @@ service contentBasedRouting on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (nameString == &quot;sanFrancisco&quot;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                    clientResponse =
-                            locationEP-&gt;post(&quot;/v2/594e018c1100002811d6d39a&quot;, ());
+                                    <div class="highlight"><pre><code class=ballerina>                clientResponse =
+                        locationEP-&gt;post(&quot;/v2/594e018c1100002811d6d39a&quot;, ());
 </code></pre></div>
 
                                 </td>
@@ -302,10 +302,10 @@ service contentBasedRouting on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                } else {
-                    clientResponse =
-                            locationEP-&gt;post(&quot;/v2/594e026c1100004011d6d39c&quot;, ());
-                }
+                                    <div class="highlight"><pre><code class=ballerina>            } else {
+                clientResponse =
+                        locationEP-&gt;post(&quot;/v2/594e026c1100004011d6d39c&quot;, ());
+            }
 </code></pre></div>
 
                                 </td>
@@ -317,24 +317,24 @@ service contentBasedRouting on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                if (clientResponse is http:Response) {
-                    var result = outboundEP-&gt;respond(clientResponse);
-                    if (result is error) {
-                       log:printError(&quot;Error sending response&quot;, err = result);
-                    }
-                } else {
-                    http:Response res = new;
-                    res.statusCode = 500;
-                    res.setPayload(&lt;string&gt;clientResponse.detail()?.message);
-                    var result = outboundEP-&gt;respond(res);
-                    if (result is error) {
-                       log:printError(&quot;Error sending response&quot;, err = result);
-                    }
+                                    <div class="highlight"><pre><code class=ballerina>            if (clientResponse is http:Response) {
+                var result = outboundEP-&gt;respond(clientResponse);
+                if (result is error) {
+                   log:printError(&quot;Error sending response&quot;, err = result);
                 }
             } else {
                 http:Response res = new;
                 res.statusCode = 500;
-                res.setPayload(&lt;@untainted&gt; &lt;string&gt;nameString.detail()?.message);
+                res.setPayload(&lt;string&gt;clientResponse.detail().message);
+                var result = outboundEP-&gt;respond(res);
+                if (result is error) {
+                   log:printError(&quot;Error sending response&quot;, err = result);
+                }
+            }
+        } else {
+            http:Response res = new;
+            res.statusCode = 500;
+            res.setPayload(untaint &lt;string&gt;jsonMsg.detail().message);
 </code></pre></div>
 
                                 </td>
@@ -347,26 +347,6 @@ service contentBasedRouting on new http:Listener(9090) {
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                var result = outboundEP-&gt;respond(res);
-                if (result is error) {
-                   log:printError(&quot;Error sending response&quot;, err = result);
-                }
-            }
-        } else {
-            http:Response res = new;
-            res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt; &lt;string&gt;jsonMsg.detail()?.message);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -408,7 +388,8 @@ service contentBasedRouting on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run content_based_routing.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;content_based_routing.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

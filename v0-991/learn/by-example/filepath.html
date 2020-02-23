@@ -9,23 +9,23 @@ permalink: /v0-991/learn/by-example/filepath
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">filepath</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">absValue</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">absolute</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">absValue</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">absolute</span><span class="p">(</span><span class="nx">untaint</span> <span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
     <span class="kt">boolean</span> <span class="nx">isAbs</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">isAbsolute</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;/A/B/C is absolute: &quot;</span><span class="p">,</span> <span class="nx">isAbs</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;/A/B/C is absolute: &quot;</span> <span class="o">+</span> <span class="nx">isAbs</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">filename</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filename of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span> <span class="c1">// returns C</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Filename of /A/B/C: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span> <span class="c1">// returns C</span>
     <span class="kt">string</span> <span class="nx">parentPath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">parent</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Parent of /A/B/C: &quot;</span><span class="p">,</span> <span class="nx">parentPath</span><span class="p">);</span> <span class="c1">// returns B</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Parent of /A/B/C: &quot;</span> <span class="o">+</span> <span class="nx">parentPath</span><span class="p">);</span> <span class="c1">// returns B</span>
     <span class="kt">string</span> <span class="nx">normalizedPath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">normalize</span><span class="p">(</span><span class="s">&quot;foo/../bar&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Normalized path of foo/../bar: &quot;</span><span class="p">,</span> <span class="nx">normalizedPath</span><span class="p">);</span> <span class="c1">// returns bar</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Normalized path of foo/../bar: &quot;</span> <span class="o">+</span> <span class="nx">normalizedPath</span><span class="p">);</span> <span class="c1">// returns bar</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">parts</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">split</span><span class="p">(</span><span class="s">&quot;/A/B/C&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Path elements of /A/B/C: %s&quot;</span><span class="p">,</span> <span class="nx">parts</span><span class="p">));</span> <span class="c1">// returns {&quot;A&quot;, &quot;B&quot;, &quot;C&quot;}</span>
     <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">build</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="s">&quot;bar&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span> <span class="c1">// On Unix : returns /foo/bar</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;</span> <span class="o">+</span> <span class="nx">path</span><span class="p">);</span> <span class="c1">// On Unix : returns /foo/bar</span>
     <span class="kt">string</span> <span class="nx">ext</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">extension</span><span class="p">(</span><span class="s">&quot;path.bal&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Extension of path.bal: &quot;</span><span class="p">,</span> <span class="nx">ext</span><span class="p">);</span> <span class="c1">// returns bal</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Extension of path.bal: &quot;</span> <span class="o">+</span> <span class="nx">ext</span><span class="p">);</span> <span class="c1">// returns bal</span>
     <span class="kt">string</span> <span class="nx">relPath</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">filepath</span><span class="p">:</span><span class="nx">relative</span><span class="p">(</span><span class="s">&quot;a/b/c&quot;</span><span class="p">,</span> <span class="s">&quot;a/c/d&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot;</span><span class="p">,</span> <span class="nx">relPath</span><span class="p">);</span> <span class="c1">// On Unix : returns ../../c/d}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot;</span> <span class="o">+</span> <span class="nx">relPath</span><span class="p">);</span> <span class="c1">// On Unix : returns ../../c/d}</span>
 </pre></div>
 
             </div>
@@ -51,9 +51,9 @@ permalink: /v0-991/learn/by-example/filepath
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="file.html">
+                                    <a class="next" href="task-scheduler-appointment.html">
                                         <span>NEXT ></span>
-                                        <p>File</p>
+                                        <p>Task Scheduler Appointment</p>
                                     </a>
                                 </div>
                                 
@@ -148,7 +148,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string absValue = checkpanic filepath:absolute(&quot;test.txt&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    string absValue = checkpanic filepath:absolute(untaint &quot;test.txt&quot;);
 </code></pre></div>
 
                                 </td>
@@ -168,7 +168,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    boolean isAbs = checkpanic filepath:isAbsolute(&quot;/A/B/C&quot;);
-    io:println(&quot;/A/B/C is absolute: &quot;, isAbs);
+    io:println(&quot;/A/B/C is absolute: &quot; + isAbs);
 </code></pre></div>
 
                                 </td>
@@ -188,7 +188,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string name = checkpanic filepath:filename(&quot;/A/B/C&quot;);
-    io:println(&quot;Filename of /A/B/C: &quot;, name); // returns C
+    io:println(&quot;Filename of /A/B/C: &quot; + name); // returns C
 </code></pre></div>
 
                                 </td>
@@ -208,7 +208,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string parentPath = checkpanic filepath:parent(&quot;/A/B/C&quot;);
-    io:println(&quot;Parent of /A/B/C: &quot;, parentPath); // returns B
+    io:println(&quot;Parent of /A/B/C: &quot; + parentPath); // returns B
 </code></pre></div>
 
                                 </td>
@@ -228,7 +228,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string normalizedPath = checkpanic filepath:normalize(&quot;foo/../bar&quot;);
-    io:println(&quot;Normalized path of foo/../bar: &quot;, normalizedPath); // returns bar
+    io:println(&quot;Normalized path of foo/../bar: &quot; + normalizedPath); // returns bar
 </code></pre></div>
 
                                 </td>
@@ -268,7 +268,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string path = checkpanic filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
-    io:println(&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot;, path); // On Unix : returns /foo/bar
+    io:println(&quot;Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: &quot; + path); // On Unix : returns /foo/bar
 </code></pre></div>
 
                                 </td>
@@ -276,7 +276,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Join any number of path elements into a single path.</p>
+                                            <p>Join any number of path elements into a single path</p>
 
                                         </div>
                                     </div>
@@ -288,7 +288,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string ext = checkpanic filepath:extension(&quot;path.bal&quot;);
-    io:println(&quot;Extension of path.bal: &quot;, ext); // returns bal
+    io:println(&quot;Extension of path.bal: &quot; + ext); // returns bal
 </code></pre></div>
 
                                 </td>
@@ -308,7 +308,7 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string relPath = checkpanic filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
-    io:println(&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot;, relPath); // On Unix : returns ../../c/d
+    io:println(&quot;Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: &quot; + relPath); // On Unix : returns ../../c/d
 </code></pre></div>
 
                                 </td>
@@ -364,7 +364,7 @@ On Unix:
 Filename of /A/B/C: C
 Parent of /A/B/C: /A/B
 Normalized path of foo/../bar: bar
-Path elements of /A/B/C: A B C
+Path elements of /A/B/C: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]
 Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: /foo/bar
 Extension of path.bal: bal
 Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ../../c/d
@@ -382,12 +382,12 @@ Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ../../c/d
                                     <div class="highlight"><pre><code class=shell-session>On Windows:
 /A/B/C is absolute: false
 Filename of /A/B/C: C
-Parent of /A/B/C: \A\B
+Parent of /A/B/C: \\A\\B
 Normalized path of foo/../bar: bar
-Path elements of /A/B/C: A B C
-Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: \foo\bar
+Path elements of /A/B/C: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]
+Built path of &#39;/&#39;, &#39;foo&#39;, &#39;bar&#39;: \\foo\\bar
 Extension of path.bal: bal
-Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ..\..\c\d
+Relative path between &#39;a/b/c&#39; and &#39;a/c/d&#39;: ..\\..\\c\\d
 </code></pre></div>
 
                                 </td>

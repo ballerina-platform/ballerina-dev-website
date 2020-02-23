@@ -8,9 +8,8 @@ permalink: /v0-991/learn/by-example/check
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">scale</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">check</span> <span class="nb">parse</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
@@ -31,9 +30,9 @@ permalink: /v0-991/learn/by-example/check
                     <tr>
                         <td class="cLeftTD">
                             <h2>Check</h2>
-                            <p><p>The <code>check</code> expression is a unary expression that is used to handle errors.
- The <code>check</code> expression checks the result of the sub expression and returns if the result is of type <code>error</code>.
- Hence, <code>check</code> can only be used in a function which has <code>error</code> in its return type.</p>
+                            <p><p>The check is a unary expression that is used to handle errors.
+ The check expression lifts the <code>error</code> from the sub-expression&rsquo;s result and handles error cases separately.
+ Hence, check can be considered as a built-in type-guard for errors.</p>
 </p>
 
                         </td>
@@ -41,9 +40,9 @@ permalink: /v0-991/learn/by-example/check
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="error-handling.html">
+                                    <a class="prev" href="error-lifting.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Error Handling</p>
+                                        <p>Error Lifting</p>
                                     </a>
                                 </div>
                                  
@@ -115,7 +114,6 @@ permalink: /v0-991/learn/by-example/check
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -128,7 +126,7 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function parse(string num) returns int|error {
-    return ints:fromString(num);
+    return int.convert(num);
 }
 </code></pre></div>
 
@@ -137,7 +135,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>parse()</code> function takes a <code>string</code> argument and attempts to convert it to an <code>int</code>.</p>
+                                            <p><code>parse()</code> takes a <code>string</code> argument and attempts to convert it to an <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -170,12 +168,11 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>check</code> unary operator can be used to return early on error.
- Here, <code>check</code> is used to return the error if the <code>parse()</code>
- function evaluates to <code>error</code>. If the actual value returned
- by the <code>parse()</code> function is an error, this function immediately returns
- the error, else the <code>int</code> value returned by <code>parse()</code> is set to <code>x</code> and
- execution continues. If <code>check</code> is used within a function, the return type
+                                            <p>The <code>check</code> unary operator can be used to lift errors.
+ In this instance, <code>check</code> is used to lift the (potential) error
+ returned by the <code>parse()</code> function. If the actual value returned
+ by the function is an <code>error</code>, the function immediately returns
+ with the error. If <code>check</code> is used within a function, the return type
  of the function must include <code>error</code> in its return signature.</p>
 
                                         </div>
@@ -280,12 +277,12 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run check.bal
 12
-error {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;invalid&#39; cannot be converted to &#39;int&#39;
+{ballerina}ConversionError {&quot;message&quot;:&quot;incompatible convert operation: &#39;string&#39; value &#39;invalid&#39; cannot be converted as &#39;int&#39;&quot;}
 120
-error {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;invalid&#39; cannot be converted to &#39;int&#39;
+{ballerina}ConversionError {&quot;message&quot;:&quot;incompatible convert operation: &#39;string&#39; value &#39;Invalid&#39; cannot be converted as &#39;int&#39;&quot;}
 </code></pre></div>
 
                                 </td>

@@ -13,8 +13,7 @@ permalink: /v1-0/learn/by-example/csv-io
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span>
-                                <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="kd">function</span> <span class="nx">process</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">csvChannel</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">csvChannel</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">records</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">csvChannel</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">records</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">[])</span> <span class="p">{</span>
@@ -23,17 +22,14 @@ permalink: /v1-0/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">srcFileName</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[][]</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">[[</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;James&quot;</span><span class="p">,</span> <span class="s">&quot;10000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;Nathan&quot;</span><span class="p">,</span> <span class="s">&quot;150000&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;Ronald&quot;</span><span class="p">,</span> <span class="s">&quot;120000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;Roy&quot;</span><span class="p">,</span> <span class="s">&quot;6000&quot;</span><span class="p">],</span>
-    <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
+    <span class="p">[</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;Ronald&quot;</span><span class="p">,</span> <span class="s">&quot;120000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="s">&quot;Roy&quot;</span><span class="p">,</span> <span class="s">&quot;6000&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s">&quot;5&quot;</span><span class="p">,</span> <span class="s">&quot;Oliver&quot;</span><span class="p">,</span> <span class="s">&quot;1100000&quot;</span><span class="p">]];</span>
     <span class="nx">writeDataToCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">,</span> <span class="o">...</span><span class="nx">data</span><span class="p">);</span>
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Start processing the CSV file from &quot;</span><span class="p">,</span> <span class="nx">srcFileName</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">processedResult</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">rCsvChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">processedResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -42,8 +38,7 @@ permalink: /v1-0/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Processing completed.&quot;</span><span class="p">);</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span>
-                            <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCSVChannel</span> <span class="nx">rCsvChannel2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading  &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span> <span class="s">&quot; as a table&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">tblResult</span> <span class="p">=</span> <span class="nx">rCsvChannel2</span><span class="p">.</span><span class="nx">getTable</span><span class="p">(</span><span class="nx">Employee</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;)</span> <span class="p">{</span>
@@ -56,8 +51,7 @@ permalink: /v1-0/learn/by-example/csv-io
     <span class="p">}</span>
     <span class="nx">closeReadableCSVChannel</span><span class="p">(</span><span class="nx">rCsvChannel2</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">targetFileName</span> <span class="p">=</span> <span class="s">&quot;./files/output.csv&quot;</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel2</span> <span class="p">=</span>
-                        <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">targetFileName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCSVChannel</span> <span class="nx">wCsvChannel2</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableCsvFile</span><span class="p">(</span><span class="nx">targetFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Creating a table and adding data&quot;</span><span class="p">);</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">employeeTable</span> <span class="p">=</span> <span class="nx">createTableAndAddData</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Writing the table to &quot;</span> <span class="o">+</span> <span class="nx">targetFileName</span><span class="p">);</span>
@@ -241,8 +235,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCSVChannel csvChannel)
-                                returns @tainted error? {
+                                    <div class="highlight"><pre><code class=ballerina>function process(io:ReadableCSVChannel csvChannel) returns error? {
 </code></pre></div>
 
                                 </td>
@@ -324,7 +317,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
     string srcFileName = &quot;./files/sample.csv&quot;;
 </code></pre></div>
 
@@ -344,11 +337,9 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCSVChannel wCsvChannel =
-                        check io:openWritableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:WritableCSVChannel wCsvChannel = check io:openWritableCsvFile(srcFileName);
     string[][] data = [[&quot;1&quot;, &quot;James&quot;, &quot;10000&quot;], [&quot;2&quot;, &quot;Nathan&quot;, &quot;150000&quot;],
-    [&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;], [&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;],
-    [&quot;5&quot;, &quot;Oliver&quot;, &quot;1100000&quot;]];
+    [&quot;3&quot;, &quot;Ronald&quot;, &quot;120000&quot;], [&quot;4&quot;, &quot;Roy&quot;, &quot;6000&quot;], [&quot;5&quot;, &quot;Oliver&quot;, &quot;1100000&quot;]];
     writeDataToCSVChannel(wCsvChannel, ...data);
     closeWritableCSVChannel(wCsvChannel);
 </code></pre></div>
@@ -372,8 +363,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel =
-                        check io:openReadableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel = check io:openReadableCsvFile(srcFileName);
     io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
     var processedResult = process(rCsvChannel);
     if (processedResult is error) {
@@ -418,8 +408,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel2 =
-                            check io:openReadableCsvFile(srcFileName);
+                                    <div class="highlight"><pre><code class=ballerina>    io:ReadableCSVChannel rCsvChannel2 = check io:openReadableCsvFile(srcFileName);
 </code></pre></div>
 
                                 </td>
@@ -468,8 +457,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string targetFileName = &quot;./files/output.csv&quot;;
-    io:WritableCSVChannel wCsvChannel2 =
-                        check io:openWritableCsvFile(targetFileName);
+    io:WritableCSVChannel wCsvChannel2 = check io:openWritableCsvFile(targetFileName);
     io:println(&quot;Creating a table and adding data&quot;);
     table&lt;Employee&gt; employeeTable = createTableAndAddData();
     io:println(&quot;Writing the table to &quot; + targetFileName);

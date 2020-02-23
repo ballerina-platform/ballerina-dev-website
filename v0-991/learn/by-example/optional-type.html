@@ -9,23 +9,32 @@ permalink: /v0-991/learn/by-example/optional-type
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">getValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">key</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">key</span> <span class="o">==</span> <span class="s">&quot;string&quot;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&quot;hello world&quot;</span><span class="p">;</span>
-    <span class="p">}</span>
     <span class="k">return</span> <span class="p">();</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">getValue</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">s</span> <span class="p">=</span> <span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Length of the string: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;s is ()&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">Address</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">line01</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">line02</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">state</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">zipcode</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">Address</span><span class="err">?</span> <span class="nx">addr</span><span class="p">;</span>
+    <span class="nx">Person</span><span class="err">?</span> <span class="nx">guardian</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Person</span> <span class="nx">p</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Paul&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="nx">addr</span><span class="p">:</span> <span class="p">(),</span> <span class="nx">guardian</span><span class="p">:()</span> <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="nx">Address</span><span class="err">?</span> <span class="nx">addr</span> <span class="p">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">addr</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addr</span><span class="p">);</span>    <span class="nx">Address</span> <span class="nx">myAddr</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">line01</span><span class="p">:</span> <span class="s">&quot;No. 61&quot;</span><span class="p">,</span>
+        <span class="nx">line02</span><span class="p">:</span> <span class="s">&quot;Brandon street&quot;</span><span class="p">,</span>
+        <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Santa Clara&quot;</span><span class="p">,</span>
+        <span class="nx">state</span><span class="p">:</span> <span class="s">&quot;CA&quot;</span><span class="p">,</span>
+        <span class="nx">zipcode</span><span class="p">:</span> <span class="s">&quot;95134&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">addr</span> <span class="p">=</span> <span class="nx">myAddr</span><span class="p">;</span>    <span class="nx">addr</span> <span class="p">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">addr</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">addr</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -37,9 +46,9 @@ permalink: /v0-991/learn/by-example/optional-type
                         <td class="cLeftTD">
                             <h2>Optional Type</h2>
                             <p><p>One of the design principles of the type system of Ballerina is to eliminate null reference errors.
- Over the years, null reference errors have caused numerous system crashes, security vulnerabilities etc.
- Optional types in Ballerina allow developers to identify where the value or the function
- is of type <code>T</code> optionally, for any T. You can syntactically represent this as <code>T?</code> or T|()`.</p>
+ Over the years, null reference errors have caused numerous system crashes, security vulnerabilities, etc.
+ Optional types in Ballerina are union types that allow developers to identify where the value or the function
+ is of type <code>T</code>. Optionally, this can be done for any T. You can syntactically represent this as <code>T?</code> or T|()`.</p>
 </p>
 
                         </td>
@@ -108,6 +117,10 @@ permalink: /v0-991/learn/by-example/optional-type
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -129,9 +142,6 @@ permalink: /v0-991/learn/by-example/optional-type
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getValue(string key) returns string? {
-    if (key == &quot;string&quot;) {
-        return &quot;hello world&quot;;
-    }
 </code></pre></div>
 
                                 </td>
@@ -139,7 +149,7 @@ permalink: /v0-991/learn/by-example/optional-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function (optionally) returns a <code>string</code> value. In this example, <code>string?</code> is equivalent to <code>string|()</code>.</p>
+                                            <p>This function optionally returns a <code>string</code> value. Here, <code>string?</code> is equivalent to <code>string|()</code>.</p>
 
                                         </div>
                                     </div>
@@ -159,12 +169,53 @@ permalink: /v0-991/learn/by-example/optional-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>In Ballerina, the <code>nil</code> type that is provided as <code>()</code> contains a single value named &ldquo;nil&rdquo;. This is used
+                                            <p>In Ballerina, the <code>nil</code> type that is provided as <code>()</code> contains a single value named <code>nil</code>. This is used
  to represent the absence of any other value.
  The <code>nil</code> value is written as <code>()</code>.
- <code>null</code> is syntactic sugar for &ldquo;nil&rdquo; that is to be used with JSON values because JSON uses <code>null</code>.
- <code>return ();</code> here is the same as <code>return;</code>. Not having a return statement at the end is also the same as
- explicitly returning <code>()</code>.</p>
+ <code>null</code> is syntactic sugar for <code>nil</code> that is to be used with JSON values because JSON uses <code>null</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Address record {
+    string line01;
+    string line02;
+    string city;
+    string state;
+    string zipcode;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Person record {
+    string name;
+    int age;
+    Address? addr;
+    Person? guardian;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Here, the <code>addr</code> and <code>guardian</code> fields may or may not contain values. And either all the fields must be assigned with
+ default values e.g. <code>string name = &quot;&quot;</code> or be initialized before use.</p>
 
                                         </div>
                                     </div>
@@ -176,6 +227,8 @@ permalink: /v0-991/learn/by-example/optional-type
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
+    Person p = { name: &quot;Paul&quot;, age: 40, addr: (), guardian:() };
+    io:println(p);
 </code></pre></div>
 
                                 </td>
@@ -187,7 +240,8 @@ permalink: /v0-991/learn/by-example/optional-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = getValue(&quot;string&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    Address? addr = p.addr;
+    io:println(addr);
 </code></pre></div>
 
                                 </td>
@@ -195,9 +249,9 @@ permalink: /v0-991/learn/by-example/optional-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>It is optional for <code>getValue()</code> to return a value of type <code>string</code>. Thus, the value could be either
- of type <code>string</code> or of type <code>()</code> and needs to be handled explicitly.
- The statement <code>string s = getValue(&quot;string&quot;);</code> produces a compilation error.</p>
+                                            <p>It is optional for the <code>addr</code> field to have a value. Therefore, it needs to be handled explicitly.
+ The statement <code>Address addr = p.addr</code> produces a compilation error.
+ The next example demonstrates how you can operate on the <code>Address</code> record if a value is available.</p>
 
                                         </div>
                                     </div>
@@ -205,50 +259,35 @@ permalink: /v0-991/learn/by-example/optional-type
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (s is string) {
-        io:println(&quot;Length of the string: &quot;, s.length());
-    } else {
-        io:println(&quot;s is ()&quot;);
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    Address myAddr = {
+        line01: &quot;No. 61&quot;,
+        line02: &quot;Brandon street&quot;,
+        city: &quot;Santa Clara&quot;,
+        state: &quot;CA&quot;,
+        zipcode: &quot;95134&quot;
+    };
+    p.addr = myAddr;
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The type test can then be used to check if the value is in fact a <code>string</code> and then operate on it.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    s = ();
-    if (s is string) {
-        io:println(&quot;Length of the string: &quot;, s.length());
-    } else {
-        io:println(&quot;s is ()&quot;);
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    addr = p.addr;
+    io:println(addr);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>A value of type <code>string</code> or <code>()</code> can be assigned to <code>s</code>.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -261,6 +300,10 @@ permalink: /v0-991/learn/by-example/optional-type
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -268,12 +311,23 @@ permalink: /v0-991/learn/by-example/optional-type
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run optional_type.bal
-Length of the string: 11
-s is ()
+{name:&quot;Paul&quot;, age:40, addr:null, guardian:null}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>{line01:&quot;No. 61&quot;, line02:&quot;Brandon street&quot;, city:&quot;Santa Clara&quot;, state:&quot;CA&quot;, zipcode:&quot;95134&quot;}
 </code></pre></div>
 
                                 </td>

@@ -44,9 +44,9 @@ permalink: /v0-991/learn/by-example/time
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Millisecond: &quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">weekday</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getWeekday</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Weekday: &quot;</span><span class="p">,</span> <span class="nx">weekday</span><span class="p">);</span>
-    <span class="p">[</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">day</span><span class="p">]</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDate</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
+    <span class="p">(</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="nx">day</span><span class="p">)</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getDate</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Date: &quot;</span><span class="p">,</span> <span class="nx">year</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">month</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">day</span><span class="p">);</span>
-    <span class="p">[</span><span class="nx">hour</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">]</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getTime</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
+    <span class="p">(</span><span class="nx">hour</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">)</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">getTime</span><span class="p">(</span><span class="nx">time</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Time: &quot;</span><span class="p">,</span> <span class="nx">hour</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">minute</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">second</span><span class="p">,</span> <span class="s">&quot;:&quot;</span><span class="p">,</span> <span class="nx">milliSecond</span><span class="p">);</span>
     <span class="nx">time</span><span class="p">:</span><span class="nx">Time</span> <span class="nx">tmAdd</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">addDuration</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After adding a duration: &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">:</span><span class="nx">toString</span><span class="p">(</span><span class="nx">tmAdd</span><span class="p">));</span>
@@ -71,7 +71,7 @@ permalink: /v0-991/learn/by-example/time
                     <tr>
                         <td class="cLeftTD">
                             <h2>Time</h2>
-                            <p><p>The Ballerina time API manipulates information with relation to
+                            <p><p>The Ballerina time API manipulates information relating to
  date and time.</p>
 </p>
 
@@ -80,9 +80,9 @@ permalink: /v0-991/learn/by-example/time
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="java-exceptions.html">
+                                    <a class="prev" href="json-csv.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Java Exceptions</p>
+                                        <p>JSON to CSV Transform</p>
                                     </a>
                                 </div>
                                  
@@ -210,7 +210,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>To create the <code>time:Time</code> object, use either the <code>currentTime()</code>,
+                                            <p>To create the <code>time:Time</code> object you can use either the <code>currentTime()</code>,
  <code>createTime()</code>, or the <code>parse()</code> function.
  This fetches the current time.</p>
 
@@ -235,7 +235,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Specifies a time with the required year, month, date,
+                                            <p>Specify a time with the required year, month, date,
  time, and timezone information.</p>
 
                                         </div>
@@ -260,7 +260,7 @@ import ballerina/time;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This retrieves the time for a given string representation
- based on the specified String format.</p>
+ based on the specified string format.</p>
 
                                         </div>
                                     </div>
@@ -282,7 +282,7 @@ import ballerina/time;
                                         <div>
                                             <p>You can retrieve the string representation of the time via the <code>toString()</code>
  function or the <code>format()</code> function.
- This fetches the ISO 8601 formatted String of a given time.</p>
+ This fetches the ISO 8601 formatted string of a given time.</p>
 
                                         </div>
                                     </div>
@@ -304,7 +304,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This fetches the formatted String of a given time.</p>
+                                            <p>This fetches the formatted string of a given time.</p>
 
                                         </div>
                                     </div>
@@ -324,7 +324,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>These functions retrieve information related to a time object.
+                                            <p>These functions retrieve information relating to a time object.
  This fetches the year of a given time.</p>
 
                                         </div>
@@ -345,7 +345,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This fetches the month value of a given time.</p>
+                                            <p>This fetches the month of a given time.</p>
 
                                         </div>
                                     </div>
@@ -365,7 +365,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This fetches the day value of a given time.</p>
+                                            <p>This fetches the day of a given time.</p>
 
                                         </div>
                                     </div>
@@ -476,7 +476,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [year, month, day] = time:getDate(time);
+                                    <div class="highlight"><pre><code class=ballerina>    (year, month, day) = time:getDate(time);
     io:println(&quot;Date: &quot;, year, &quot;:&quot;, month, &quot;:&quot;, day);
 </code></pre></div>
 
@@ -485,7 +485,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This fetches the date component of the time using a single function.</p>
+                                            <p>This fetches the date component of time using a single function.</p>
 
                                         </div>
                                     </div>
@@ -496,7 +496,7 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [hour, minute, second, milliSecond] = time:getTime(time);
+                                    <div class="highlight"><pre><code class=ballerina>    (hour, minute, second, milliSecond) = time:getTime(time);
     io:println(&quot;Time: &quot;, hour, &quot;:&quot;, minute, &quot;:&quot;, second, &quot;:&quot;, milliSecond);
 </code></pre></div>
 
@@ -525,7 +525,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This adds a given duration to a time. This example adds
+                                            <p>This adds a given duration to a time. In this example, let&rsquo;s add
  one year, one month, and one second to the current time.</p>
 
                                         </div>
@@ -546,8 +546,8 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This subtracts a given duration from a time. This example
- subtract sone year, one month, and one second from the current time.</p>
+                                            <p>This subtracts a given duration from a time. In this example, let&rsquo;s
+ subtract one year, one month, and one second from the current time.</p>
 
                                         </div>
                                     </div>
@@ -600,7 +600,7 @@ import ballerina/time;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run time.bal
 Current system time in milliseconds: 1543938113165
 Created Time: 2017-03-28T23:42:45.554-05:00

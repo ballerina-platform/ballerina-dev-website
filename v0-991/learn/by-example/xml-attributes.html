@@ -11,7 +11,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
     <span class="kt">xml</span> <span class="nx">x1</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;ns0:book ns0:status=&quot;available&quot; count=&quot;5&quot;/&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="err">@</span><span class="p">[</span><span class="nx">ns0</span><span class="p">:</span><span class="nx">status</span><span class="p">]);</span>
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">x1</span><span class="nd">@[&quot;{</span><span class="nx">http</span><span class="p">:</span><span class="c1">//ballerina.com/aa}status&quot;];</span>
+    <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">x1</span><span class="nd">@[&quot;{</span><span class="nx">http</span><span class="p">:</span><span class="c1">//ballerina.com/aa}status&quot;];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x1</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;count&quot;</span><span class="p">]);</span>
     <span class="kt">string</span> <span class="nx">attributeName</span> <span class="p">=</span> <span class="s">&quot;count&quot;</span><span class="p">;</span>
@@ -47,16 +47,16 @@ permalink: /v0-991/learn/by-example/xml-attributes
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-literal.html">
+                                    <a class="prev" href="xml-namespaces.html">
                                         <span>< PREVIOUS</span>
-                                        <p>XML Literal</p>
+                                        <p>XML Namespaces</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xml-access.html">
+                                    <a class="next" href="xml-functions.html">
                                         <span>NEXT ></span>
-                                        <p>XML Access</p>
+                                        <p>XML Functions</p>
                                     </a>
                                 </div>
                                 
@@ -171,7 +171,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an XML element, which has attributes that are bound to a namespace as well as ones that are not.</p>
+                                            <p>Create an XML element that has attributes that are bound to a namespace as well as ones that are not.</p>
 
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? s = x1@[&quot;{http://ballerina.com/aa}status&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    string s = x1@[&quot;{http://ballerina.com/aa}status&quot;];
     io:println(s);
 </code></pre></div>
 
@@ -249,7 +249,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accesses an attribute using a dynamic name.</p>
+                                            <p>Access an attribute using a dynamic name.</p>
 
                                         </div>
                                     </div>
@@ -269,7 +269,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Updates an attribute.</p>
+                                            <p>Update an attribute.</p>
 
                                         </div>
                                     </div>
@@ -309,7 +309,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The<code>x1@</code> syntax can be used to get all the attributes of a singleton XML element as a map.</p>
+                                            <p>We can use <code>x1@</code> syntax to get all attributes of a singleton XML element as a map.</p>
 
                                         </div>
                                     </div>
@@ -332,7 +332,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>However, if we apply the <code>@</code> operator to a XML sequence, it will return NIL because only XML elements have attributes.</p>
+                                            <p>However if we apply <code>@</code> operator to a XML sequence it will return NIL, because only XML elements have attributes.</p>
 
                                         </div>
                                     </div>
@@ -357,7 +357,7 @@ permalink: /v0-991/learn/by-example/xml-attributes
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run xml_attributes.bal
 &lt;ns0:book xmlns:ns0=&quot;http://ballerina.com/aa&quot; ns0:status=&quot;available&quot; count=&quot;5&quot;&gt;&lt;/ns0:book&gt;
 available
@@ -365,8 +365,8 @@ available
 5
 5
 Not Available
-{http://www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=Not Available count=5
-{http://www.w3.org/2000/xmlns/}ns0=http://ballerina.com/aa {http://ballerina.com/aa}status=Not Available count=5
+{&quot;{http://www.w3.org/2000/xmlns/}ns0&quot;:&quot;http://ballerina.com/aa&quot;, &quot;{http://ballerina.com/aa}status&quot;:&quot;Not Available&quot;, &quot;count&quot;:&quot;5&quot;}
+{&quot;{http://www.w3.org/2000/xmlns/}ns0&quot;:&quot;http://ballerina.com/aa&quot;, &quot;{http://ballerina.com/aa}status&quot;:&quot;Not Available&quot;, &quot;count&quot;:&quot;5&quot;}
 5
 </code></pre></div>
 

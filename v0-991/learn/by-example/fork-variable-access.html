@@ -56,11 +56,11 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                         <td class="cLeftTD">
                             <h2>Fork Variable Access</h2>
                             <p><p>Workers within a fork can access the variables that are declared within the scope of that block.
- The variables can be value-type variables or reference -ype variables.
- Both value-type variables such as <code>string</code>, <code>int</code>, <code>float</code>, and <code>byte</code> and reference-type
+ The variables can be value type variables or reference type variables.
+ Both value type variables such as <code>string</code>, <code>int</code>, <code>float</code>, and <code>byte</code> and reference type
  variables such as <code>map</code>, <code>json</code>, <code>xml</code>, and <code>record</code> are passed into the workers as a reference to the
  original data. Therefore, if you update the value of these variables within a worker, the value gets
- updated for the entire function. You may wait until the worker finishes by using the <code>wait</code> expression.</p>
+ updated for the entire function. You may wait for the worker returns using the <code>wait</code> expression.</p>
 </p>
 
                         </td>
@@ -185,7 +185,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The in-scope variables can be accessed by the workers inside the <code>fork</code> block.</p>
+                                            <p>The in scope variables can be accessed by the workers inside the <code>fork</code> block.</p>
 
                                         </div>
                                     </div>
@@ -268,7 +268,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Declares the <code>fork</code> block.</p>
+                                            <p>Declare the <code>fork</code> block.</p>
 
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the integer variable <code>i</code> within the worker <code>W1</code>.</p>
+                                            <p>Change the value of the integer variable <code>i</code> within worker <code>W1</code>.</p>
 
                                         </div>
                                     </div>
@@ -306,7 +306,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the <code>map</code> variable <code>m</code> within the worker <code>W1</code>.</p>
+                                            <p>Change the value of the <code>map</code> variable <code>m</code> within worker <code>W1</code>.</p>
 
                                         </div>
                                     </div>
@@ -339,8 +339,8 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the <code>map</code> variable <code>m</code> within
- the worker <code>W3</code>.</p>
+                                            <p>Change the value of the <code>map</code> variable <code>m</code> within worker
+ <code>W3</code>.</p>
 
                                         </div>
                                     </div>
@@ -361,8 +361,8 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the integer variable <code>i</code> within
- the worker <code>W3</code>.</p>
+                                            <p>Change the value of the integer variable <code>i</code> within
+ worker <code>W3</code>.</p>
 
                                         </div>
                                     </div>
@@ -382,7 +382,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for the worker <code>W3</code> to finish.</p>
+                                            <p>Wait for worker <code>W3</code> to finish.</p>
 
                                         </div>
                                     </div>
@@ -413,7 +413,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the <code>string</code> variable <code>s</code> within the worker <code>W2</code>.</p>
+                                            <p>Change the value of the <code>string</code> variable <code>s</code> within worker <code>W2</code>.</p>
 
                                         </div>
                                     </div>
@@ -434,7 +434,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Changes the value of the <code>map</code> variable <code>m</code> within the worker <code>W2</code>.</p>
+                                            <p>Change the value of the <code>map</code> variable <code>m</code> within the worker <code>W2</code>.</p>
 
                                         </div>
                                     </div>
@@ -453,7 +453,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for both workers <code>W1</code> and <code>W2</code> to finish.</p>
+                                            <p>Wait for both workers <code>W1</code> and <code>W2</code> to finish.</p>
 
                                         </div>
                                     </div>
@@ -470,7 +470,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the values after the <code>fork</code> block to check if the values of the
+                                            <p>Print the values after the <code>fork</code> block to check if the values of the
  variables have changed.</p>
 
                                         </div>
@@ -492,7 +492,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The value-type variables have changed since the original variables are passed in.</p>
+                                            <p>The value type variables have changed since the original variables are passed in</p>
 
                                         </div>
                                     </div>
@@ -512,7 +512,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The internal content of the reference-type variables have got updated
+                                            <p>The internal content of the reference type variables have got updated
  since they are passed in as a reference to the workers.</p>
 
                                         </div>
@@ -537,7 +537,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets the value of the new field added to the <code>map</code> variable <code>m</code> inside the worker <code>W3</code>.</p>
+                                            <p>Get value of the new field added to <code>map</code> variable <code>m</code> inside worker <code>W3</code>.</p>
 
                                         </div>
                                     </div>
@@ -570,7 +570,7 @@ permalink: /v0-991/learn/by-example/fork-variable-access
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run fork_variable_access.bal
 [value type variables] before fork: value of integer variable is [100] value of string variable is [WSO2]
 [reference type variables] before fork: value of name is [Bert] value of city is [New York] value of postcode is [10001]
@@ -585,7 +585,7 @@ $ ballerina run fork_variable_access.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The value-type variables have changed since the original variables are passed in to the workers.
+                                    <div class="highlight"><pre><code class=shell-session># The value type variables have changed since the original variables are passed in to the workers.
 [value type variables] after fork: value of integer variable is [123] value of string variable is [Ballerina]
 </code></pre></div>
 
@@ -598,7 +598,7 @@ $ ballerina run fork_variable_access.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># The content of the reference-type variables have got updated since they are passed in as a reference to the workers.
+                                    <div class="highlight"><pre><code class=shell-session># The reference type variables&#39; content have got updated since they are passed in as a reference to the workers.
 [reference type variables] after fork: value of name is [Moose] value of city is [Manhattan] value of street is [Wall Street] value of postcode is [10001]
 </code></pre></div>
 

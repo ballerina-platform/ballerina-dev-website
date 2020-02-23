@@ -36,9 +36,9 @@ permalink: /v0-991/learn/by-example/type-test-expression
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Alex is not a vehicle&quot;</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kt">boolean</span> <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;student&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is foo returns a student?&quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
     <span class="nx">isStudent</span> <span class="p">=</span> <span class="nx">foo</span><span class="p">(</span><span class="s">&quot;vehicle&quot;</span><span class="p">)</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Does foo return a student? &quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Is foo returns a student?&quot;</span><span class="p">,</span> <span class="nx">isStudent</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
@@ -187,7 +187,7 @@ permalink: /v0-991/learn/by-example/type-test-expression
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Checks whether the actual value of the <code>any</code> type variable is a <code>string</code>.</p>
+                                            <p>Check whether the actual value inside the <code>any</code> type variable is a <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -314,9 +314,9 @@ permalink: /v0-991/learn/by-example/type-test-expression
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    boolean isStudent = foo(&quot;student&quot;) is Student;
-    io:println(&quot;Does foo return a student? &quot;, isStudent);
+    io:println(&quot;Is foo returns a student?&quot;, isStudent);
     isStudent = foo(&quot;vehicle&quot;) is Student;
-    io:println(&quot;Does foo return a student? &quot;, isStudent);
+    io:println(&quot;Is foo returns a student?&quot;, isStudent);
 }
 </code></pre></div>
 
@@ -412,15 +412,13 @@ permalink: /v0-991/learn/by-example/type-test-expression
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run type_test_expression.bal
 Is &#39;a&#39; a string? true
 &#39;a&#39; is a string with value: Hello, world!
 Alex is a student
 Alex is a person
 Alex is not a vehicle
-Does foo return a student? true
-Does foo return a student? false
 </code></pre></div>
 
                                 </td>

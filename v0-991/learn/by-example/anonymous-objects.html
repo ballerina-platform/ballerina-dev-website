@@ -25,7 +25,7 @@ permalink: /v0-991/learn/by-example/anonymous-objects
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
         <span class="nx">address</span><span class="p">:</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">)</span>
     <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">object</span> <span class="p">{</span>
         <span class="nx">public</span> <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="nx">public</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">city</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">country</span><span class="p">)</span> <span class="p">{</span>
@@ -35,7 +35,7 @@ permalink: /v0-991/learn/by-example/anonymous-objects
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span> <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -47,8 +47,8 @@ permalink: /v0-991/learn/by-example/anonymous-objects
                         <td class="cLeftTD">
                             <h2>Anonymous Objects</h2>
                             <p><p>Object types can be defined in-line as well. These types do not have a type name associated with them.
- Such anonymous object types can be used in instances in which there is no need to refer to the object type by its name
- (e.g., objects as fields of records or objects or objects as function parameters).</p>
+ Such anonymous object types can be used in instances where there is no need to refer to the object type by its name
+ (e.g., objects as record or object fields, objects as function parameters).</p>
 </p>
 
                         </td>
@@ -170,7 +170,7 @@ permalink: /v0-991/learn/by-example/anonymous-objects
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This is an anonymous object type descriptor. All the fields and
- methods are made public. This is done to allow the declaration of
+ methods are made public in order to allow declaration of
  variables equivalent to this object type (since two public object types
  are considered unequivalent if either of the objects have
  any private members).</p>
@@ -232,7 +232,7 @@ permalink: /v0-991/learn/by-example/anonymous-objects
         age: 25,
         address: new(&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
     };
-    io:println(john.address.city);
+    io:println(john);
 </code></pre></div>
 
                                 </td>
@@ -305,7 +305,7 @@ permalink: /v0-991/learn/by-example/anonymous-objects
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    Person jane = { name: &quot;Jane Doe&quot;, age: 20, address: adr };
-    io:println(jane.address.country);
+    io:println(jane);
 }
 </code></pre></div>
 
@@ -332,10 +332,10 @@ permalink: /v0-991/learn/by-example/anonymous-objects
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run anonymous_objects.bal
-Colombo
-UK
+{name:&quot;John Doe&quot;, age:25, address:{city:&quot;Colombo&quot;, country:&quot;Sri Lanka&quot;}}
+{name:&quot;Jane Doe&quot;, age:20, address:{city:&quot;London&quot;, country:&quot;UK&quot;}}
 </code></pre></div>
 
                                 </td>

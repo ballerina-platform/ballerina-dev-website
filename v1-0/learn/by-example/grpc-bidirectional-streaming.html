@@ -26,7 +26,7 @@ permalink: /v1-0/learn/by-example/grpc-bidirectional-streaming
 <span class="kd">service</span> <span class="nx">Chat</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${caller.getId()} connected to chat`</span><span class="p">);</span>
-        <span class="nx">consMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">()]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">caller</span><span class="p">;</span>
+        <span class="nx">consMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">()]</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">ChatMessage</span> <span class="nx">chatMsg</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">ep</span><span class="p">;</span>
@@ -365,7 +365,7 @@ service Chat on new grpc:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onOpen(grpc:Caller caller) {
         log:printInfo(string `${caller.getId()} connected to chat`);
-        consMap[caller.getId().toString()] = &lt;@untainted&gt; caller;
+        consMap[caller.getId().toString()] = caller;
     }
 </code></pre></div>
 

@@ -7,37 +7,29 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleErrorData</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
-    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">info</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">fatal</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">SampleErrorData</span><span class="p">&gt;;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">reason</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">info</span><span class="p">;</span>
-    <span class="kt">boolean</span> <span class="nx">fatal</span><span class="p">;</span>
-    <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="nx">info</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">fatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">detail</span><span class="p">;</span>
+    <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="nx">detail</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Info: &quot;</span><span class="p">,</span> <span class="nx">info</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Fatal: &quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">reasonTwo</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">params</span><span class="p">;</span>
-    <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span><span class="p">,</span> <span class="nx">reasonTwo</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Map: &quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
-    
-    <span class="kt">string</span><span class="err">?</span> <span class="nx">detailMsg</span><span class="p">;</span>
-    <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="nx">detailMsg</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Message: &quot;</span><span class="p">,</span> <span class="nx">detailMsg</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping: %s&quot;</span><span class="p">,</span> <span class="nx">detail</span><span class="p">));</span>    <span class="kt">string</span> <span class="nx">reasonTwo</span><span class="p">;</span>
+    <span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span> <span class="nx">detailTwo</span><span class="p">;</span>
+    <span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span> <span class="nx">fatal</span><span class="p">;</span>
+    <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detail</span><span class="p">:</span> <span class="nx">detailTwo</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">})</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reasonTwo</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping Field One: %s&quot;</span><span class="p">,</span> <span class="nx">detailTwo</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping Field Two: %s&quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">));</span>
+    <span class="nx">Foo</span> <span class="nx">fooRec</span><span class="p">;</span>
+    <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">fooRec</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping: %s&quot;</span><span class="p">,</span> <span class="nx">fooRec</span><span class="p">));</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">SampleError</span> <span class="p">{</span>
-    <span class="nx">SampleError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="s">&quot;Detail Info&quot;</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">SampleError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detail</span><span class="p">:</span> <span class="s">&quot;Detail Msg&quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
     <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
 <span class="p">}</span><span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="kt">message</span><span class="err">?</span><span class="p">;</span>
-    <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">detailMsg</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">isFatal</span><span class="p">;</span>
 <span class="p">|};</span><span class="kd">function</span> <span class="nx">getRecordConstrainedError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Some Error&quot;</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="s">&quot;Failed Message&quot;</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Some Error&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detailMsg</span><span class="p">:</span> <span class="s">&quot;Failed Message&quot;</span><span class="p">,</span> <span class="nx">isFatal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
     <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -49,7 +41,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                     <tr>
                         <td class="cLeftTD">
                             <h2>Error Destructure Binding Pattern</h2>
-                            <p><p>Error destructuring binding patterns are used to destructure the reason string and the detail mapping values from an
+                            <p><p>Error destructuring binding patterns are used to destructure the reason string and the detail mapping values from a
  <code>error</code> value, and assign the values to existing variable references.</p>
 </p>
 
@@ -125,8 +117,6 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -147,24 +137,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SampleErrorData record {
-    string message?;
-    error cause?;
-    string info;
-    boolean fatal;
-};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, SampleErrorData&gt;;
+                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, map&lt;anydata|error&gt;&gt;;
 </code></pre></div>
 
                                 </td>
@@ -178,8 +151,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
     string reason;
-    string info;
-    boolean fatal;
+    map&lt;anydata|error&gt; detail;
 </code></pre></div>
 
                                 </td>
@@ -191,10 +163,9 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error(reason, info = info, fatal = fatal) = getSampleError();
+                                    <div class="highlight"><pre><code class=ballerina>    error(reason, detail) = getSampleError();
     io:println(&quot;Reason String: &quot; + reason);
-    io:println(&quot;Info: &quot;, info);
-    io:println(&quot;Fatal: &quot;, fatal);
+    io:println(io:sprintf(&quot;Detail Mapping: %s&quot;, detail));
 </code></pre></div>
 
                                 </td>
@@ -202,10 +173,10 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This error-destructure binding pattern will destructure an <code>error</code> value of the type <code>SampleError</code>
- and assign the values to the relevant variable references.
- The value of the reason string in the <code>SampleError</code> will be assigned to the variable <code>reason</code>.
- The values in the detail mapping will be assigned to the relevant variables.</p>
+                                            <p>This error destructure binding pattern will destructure an <code>error</code> value of type <code>SampleError</code>
+ and assign the values to two variable references as follows:
+ The value of the reason string in <code>SampleError</code> will be assigned to the variable <code>reason</code>.
+ The value of the detail mapping will be assigned to the variable <code>detail</code>.</p>
 
                                         </div>
                                     </div>
@@ -217,7 +188,8 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string reasonTwo;
-    map&lt;anydata|error&gt; params;
+    anydata|error detailTwo;
+    anydata|error fatal;
 </code></pre></div>
 
                                 </td>
@@ -229,10 +201,10 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error(reasonTwo, ...params) = getSampleError();
-    io:println(&quot;Reason String: &quot;, reasonTwo);
-    io:println(&quot;Detail Map: &quot;, params);
-    
+                                    <div class="highlight"><pre><code class=ballerina>    error(reasonTwo, { detail: detailTwo, fatal }) = getSampleError();
+    io:println(&quot;Reason String: &quot; + reasonTwo);
+    io:println(io:sprintf(&quot;Detail Mapping Field One: %s&quot;, detailTwo));
+    io:println(io:sprintf(&quot;Detail Mapping Field Two: %s&quot;, fatal));
 </code></pre></div>
 
                                 </td>
@@ -240,7 +212,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The detail mapping can be destructured into an existing <code>map&lt;anydata|error&gt;</code>-typed variable by using a rest parameter.</p>
+                                            <p>The detail mapping can further be destructured into existing variable references.</p>
 
                                         </div>
                                     </div>
@@ -251,9 +223,9 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string? detailMsg;
-    error(_, detailMsg = detailMsg) = getRecordConstrainedError();
-    io:println(&quot;Detail Message: &quot;, detailMsg);
+                                    <div class="highlight"><pre><code class=ballerina>    Foo fooRec;
+    error(_, fooRec) = getRecordConstrainedError();
+    io:println(io:sprintf(&quot;Detail Mapping: %s&quot;, fooRec));
 }
 </code></pre></div>
 
@@ -262,7 +234,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The underscore &lsquo;_&rsquo; sign can be used to ignore either the reason string or the detail mapping.</p>
+                                            <p>Underscore &lsquo;_&rsquo; can be used to ignore either the reason string or the detail mapping.</p>
 
                                         </div>
                                     </div>
@@ -274,7 +246,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getSampleError() returns SampleError {
-    SampleError e = error(&quot;Sample Error&quot;, info = &quot;Detail Info&quot;, fatal = true);
+    SampleError e = error(&quot;Sample Error&quot;, { detail: &quot;Detail Msg&quot;, fatal: true });
     return e;
 }
 </code></pre></div>
@@ -289,8 +261,6 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>type Foo record {|
-    string message?;
-    error cause?;
     string detailMsg;
     boolean isFatal;
 |};
@@ -306,7 +276,7 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function getRecordConstrainedError() returns error&lt;string, Foo&gt; {
-    error&lt;string, Foo&gt; e = error(&quot;Some Error&quot;, detailMsg = &quot;Failed Message&quot;, isFatal = true);
+    error&lt;string, Foo&gt; e = error(&quot;Some Error&quot;, { detailMsg: &quot;Failed Message&quot;, isFatal: true });
     return e;
 }
 </code></pre></div>
@@ -334,14 +304,14 @@ permalink: /v0-991/learn/by-example/error-destructure-binding-pattern
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run error_destructure_binding_pattern.bal
 Reason String: Sample Error
-Info: Detail Info
-Fatal: true
+Detail Mapping: {&quot;detail&quot;:&quot;Detail Msg&quot;, &quot;fatal&quot;:true}
 Reason String: Sample Error
-Detail Map: info=Detail Info fatal=true
-Detail Message: Failed Message
+Detail Mapping Field One: Detail Msg
+Detail Mapping Field Two: true
+Detail Mapping: {detailMsg:&quot;Failed Message&quot;, isFatal:true}
 </code></pre></div>
 
                                 </td>

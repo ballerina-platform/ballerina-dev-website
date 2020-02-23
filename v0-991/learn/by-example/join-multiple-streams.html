@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Join Multiple Streams
+title: Join Mutiple Streams
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /v0-991/learn/by-example/join-multiple-streams
 ---
@@ -19,7 +19,8 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
 <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ProductMaterial</span><span class="p">&gt;</span> <span class="nx">rawMaterialStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ProductMaterial</span><span class="p">&gt;</span> <span class="nx">productionInputStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">MaterialUsage</span><span class="p">&gt;</span> <span class="nx">materialUsageStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initRealtimeProductionAlert</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">materialUsageStream</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">printMaterialUsageAlert</span><span class="p">);</span>    <span class="nx">forever</span> <span class="p">{</span>
+    <span class="nx">materialUsageStream</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">printMaterialUsageAlert</span><span class="p">);</span>
+    <span class="nx">forever</span> <span class="p">{</span>
         <span class="nx">from</span> <span class="nx">productionInputStream</span> <span class="nx">window</span> <span class="nx">time</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="k">as</span> <span class="nx">p</span>
         <span class="k">join</span> <span class="nx">rawMaterialStream</span> <span class="nx">window</span> <span class="nx">time</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="k">as</span> <span class="nx">r</span>
         <span class="nx">on</span> <span class="nx">r</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="nx">p</span><span class="p">.</span><span class="nx">name</span>
@@ -37,23 +38,22 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printMaterialUsageAlert</span><span class="p">(</span><span class="nx">MaterialUsage</span> <span class="nx">materialUsage</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="nx">materialUsageDifference</span> <span class="p">=</span> <span class="p">(</span><span class="nx">materialUsage</span><span class="p">.</span><span class="nx">totalRawMaterial</span> <span class="o">-</span>
             <span class="nx">materialUsage</span><span class="p">.</span><span class="nx">totalConsumption</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span> <span class="o">/</span>
-                <span class="p">(</span><span class="nx">materialUsage</span><span class="p">.</span><span class="nx">totalRawMaterial</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ALERT!! : Material usage is higher than the expected&quot;</span><span class="p">,</span>
-            <span class="s">&quot; limit for material : &quot;</span><span class="p">,</span> <span class="nx">materialUsage</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
-            <span class="s">&quot;, usage difference (%) : &quot;</span><span class="p">,</span> <span class="nx">materialUsageDifference</span><span class="p">);</span>
+                <span class="p">(</span><span class="nx">materialUsage</span><span class="p">.</span><span class="nx">totalRawMaterial</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ALERT!! : Material usage is higher than the expected&quot;</span>
+            <span class="o">+</span> <span class="s">&quot; limit for material : &quot;</span> <span class="o">+</span> <span class="nx">materialUsage</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span>
+            <span class="s">&quot; , usage difference (%) : &quot;</span> <span class="o">+</span> <span class="nx">materialUsageDifference</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">productMaterialListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">productMaterialService</span> <span class="nx">on</span> <span class="nx">productMaterialListener</span> <span class="p">{</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">initRealtimeProductionAlert</span><span class="p">();</span>
-    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">productMaterialService</span> <span class="nx">on</span> <span class="nx">productMaterialListener</span> <span class="p">{</span>
+    <span class="nx">future</span><span class="p">&lt;()&gt;</span> <span class="nx">ftr</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">initRealtimeProductionAlert</span><span class="p">();</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/rawmaterial&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">rawmaterialrequests</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">jsonMsg</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">jsonMsg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">conversionResult</span> <span class="p">=</span> <span class="nx">ProductMaterial</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">jsonMsg</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">conversionResult</span> <span class="p">=</span> <span class="nx">ProductMaterial</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">jsonMsg</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">conversionResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending response to caller&quot;</span><span class="p">,</span>
                                                         <span class="nx">conversionResult</span><span class="p">);</span>
@@ -69,7 +69,7 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
             <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending response to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -83,7 +83,7 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
                                <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">jsonMsg</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">jsonMsg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">conversionResult</span> <span class="p">=</span> <span class="nx">ProductMaterial</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">jsonMsg</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">conversionResult</span> <span class="p">=</span> <span class="nx">ProductMaterial</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">jsonMsg</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">conversionResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending response to caller&quot;</span><span class="p">,</span>
                                                     <span class="nx">conversionResult</span><span class="p">);</span>
@@ -98,7 +98,7 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
             <span class="p">}</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
             <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in sending response to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -114,12 +114,12 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Join Multiple Streams</h2>
+                            <h2>Join Mutiple Streams</h2>
                             <p><p>Streams can be joined using a streaming query logic.
- In this example, events related to raw materials and production output wait for 10 seconds and then correlate the
+In this example, events related to raw materials and production output wait for 10 seconds and then correlate the
  data gathered during that time period. An alert is triggered if the raw material usage is 5% higher than the
  production outcome. This example can be extended to make decisions based on the output of the streaming rules.
- Ballerina Streams is an experimental feature. Use the <code>--experimental</code> flag when compiling Ballerina files,
+ Ballerina Streams is an experimental feature. Please use <code>--experimental</code> flag when compiling Ballerina files
  which have streaming constructs.</p>
 </p>
 
@@ -174,8 +174,6 @@ permalink: /v0-991/learn/by-example/join-multiple-streams
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -295,7 +293,7 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the output stream, which contains the events/alerts that are generated based on the streaming logic.</p>
+                                            <p>This is the output stream that contains the events/alerts that are generated based on streaming logic.</p>
 
                                         </div>
                                     </div>
@@ -337,27 +335,6 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Gathers events related to raw materials through the <code>rawMaterialStream</code> stream and production-related events
- through the <code>productionInputStream</code>. The raw materials usage and production outcome for the last
- 10 seconds are calculated and an alert is triggered if the raw material usage is 5% higher than the
- production outcome. This <code>forever</code> block is executed once when initializing the service. The processing happens
- asynchronously each time the <code>requestStream</code> or <code>productionInputStream</code> receives an event.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    forever {
         from productionInputStream window time(10000) as p
@@ -373,6 +350,17 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gather events related to raw materials through the <code>rawMaterialStream</code> stream and production related events
+ through the <code>productionInputStream</code>. The raw materials usage and production outcome for the last
+ 10 seconds are calculated and an alert is triggered if the raw material usage is 5% higher than the
+ production outcome. This <code>forever</code> block is executed once, when initializing the service. The processing happens
+ asynchronously each time the <code>requestStream</code> or <code>productionInputStream</code> receives an event.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -420,9 +408,9 @@ stream&lt;ProductMaterial&gt; productionInputStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;ALERT!! : Material usage is higher than the expected&quot;,
-            &quot; limit for material : &quot;, materialUsage.name,
-            &quot;, usage difference (%) : &quot;, materialUsageDifference);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;ALERT!! : Material usage is higher than the expected&quot;
+            + &quot; limit for material : &quot; + materialUsage.name +
+            &quot; , usage difference (%) : &quot; + materialUsageDifference);
 }
 </code></pre></div>
 
@@ -466,16 +454,21 @@ service productMaterialService on productMaterialListener {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init() {
-        initRealtimeProductionAlert();
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    future&lt;()&gt; ftr = start initRealtimeProductionAlert();
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the function that contains streaming queries.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -490,7 +483,7 @@ service productMaterialService on productMaterialListener {
     resource function rawmaterialrequests(http:Caller caller, http:Request req) {
         var jsonMsg = req.getJsonPayload();
         if (jsonMsg is json) {
-            var conversionResult = ProductMaterial.constructFrom(jsonMsg);
+            var conversionResult = ProductMaterial.convert(jsonMsg);
             if (conversionResult is error) {
                 io:println(&quot;Error in sending response to caller&quot;,
                                                         conversionResult);
@@ -518,7 +511,7 @@ service productMaterialService on productMaterialListener {
         } else {
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt; jsonMsg.reason());
+            res.setPayload(untaint jsonMsg.reason());
             error? result = caller-&gt;respond(res);
             if (result is error) {
                 io:println(&quot;Error in sending response to caller&quot;, result);
@@ -544,7 +537,7 @@ service productMaterialService on productMaterialListener {
                                http:Request req) {
         var jsonMsg = req.getJsonPayload();
         if (jsonMsg is json) {
-            var conversionResult = ProductMaterial.constructFrom(jsonMsg);
+            var conversionResult = ProductMaterial.convert(jsonMsg);
             if (conversionResult is error) {
                 io:println(&quot;Error in sending response to caller&quot;,
                                                     conversionResult);
@@ -583,7 +576,7 @@ service productMaterialService on productMaterialListener {
                                     <div class="highlight"><pre><code class=ballerina>        } else {
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt; jsonMsg.reason());
+            res.setPayload(untaint jsonMsg.reason());
             error? result = caller-&gt;respond(res);
             if (result is error) {
                 io:println(&quot;Error in sending response to caller&quot;, result);
@@ -624,9 +617,10 @@ service productMaterialService on productMaterialListener {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental join_multiple_streams.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;join_multiple_streams.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -638,7 +632,7 @@ $ ballerina run --experimental join_multiple_streams.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Execute the following cURL request. 
+                                    <div class="highlight"><pre><code class=shell-session># Run the following cURL request. 
 $ curl -H &quot;Content-Type: application/json&quot; -X POST -d &quot;{&#39;name&#39;:&#39;Teak&#39;,&#39;amount&#39;:1000.0}&quot; http://localhost:9090/rawmaterial
 {&quot;message&quot;:&quot;Raw material request successfully received&quot;}
 # Run the following cURL request within 10 seconds of running the first cURL request.
@@ -655,7 +649,7 @@ $ curl -H &quot;Content-Type: application/json&quot; -X POST -d &quot;{&#39;name
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the two cURL requests were executed within 10 seconds, the following log is printed where you ran the &#39;join_multiple_streams.bal&#39;.
+                                    <div class="highlight"><pre><code class=shell-session># If the two cURL requests were run within 10 seconds, the following log is printed where you ran the &#39;join_multiple_streams.bal&#39;.
 ALERT!! : Material usage is higher than the expected limit for material : Teak , usage difference (%) : 50.0
 </code></pre></div>
 

@@ -11,7 +11,7 @@ permalink: /v0-991/learn/by-example/config-api
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span>
-    <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">config</span><span class="p">:</span><span class="nx">getAsInt</span><span class="p">(</span><span class="s">&quot;hello.http.port&quot;</span><span class="p">,</span> <span class="mi">9095</span><span class="p">),</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">config</span><span class="p">:</span><span class="nx">getAsInt</span><span class="p">(</span><span class="s">&quot;hello.http.port&quot;</span><span class="p">,</span> <span class="nx">defaultValue</span> <span class="p">=</span> <span class="mi">9095</span><span class="p">),</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
@@ -127,7 +127,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>listener http:Listener helloWorldEP
-    = new(config:getAsInt(&quot;hello.http.port&quot;, 9095), config = {
+    = new(config:getAsInt(&quot;hello.http.port&quot;, defaultValue = 9095), config = {
         secureSocket: {
             keyStore: {
                 path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
@@ -159,7 +159,8 @@ import ballerina/log;
  if the same is set as a CLI parameter, it replaces the environment
  variable value.</p>
 
-<p>The configuration file is in TOML(v0.4) format.</p>
+<p>The configuration file format is a subset of the TOML file format. It
+ supports <code>string</code>, <code>int</code>, <code>float</code> and <code>boolean</code> value types.</p>
 
 <p>The configuration API is particularly useful for configuring services.
  In this example, the port and keystore password are read through the
@@ -305,8 +306,8 @@ Enter value:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Add the following to the configuration file:
-&lt;key&gt;=&quot;@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}&quot;
+                                    <div class="highlight"><pre><code class=shell-session>Add the following to the runtime config:
+@encrypted:{jFMAXsuMSiOCaxuDLuQjVXzMzZxQrten0652/j93Amw=}
 </code></pre></div>
 
                                 </td>
@@ -318,8 +319,8 @@ Enter value:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Or provide it as a command line argument:
---&lt;key&gt;=@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}
+                                    <div class="highlight"><pre><code class=shell-session>Or add to the runtime command line:
+-e&lt;param&gt;=@encrypted:{jFMAXsuMSiOCaxuDLuQjVXzMzZxQrten0652/j93Amw=}
 </code></pre></div>
 
                                 </td>
@@ -346,18 +347,16 @@ ballerina: enter secret for config value decryption:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To specify a configuration file explicitly, use the `--b7a.config.file=&lt;path_to_configuration_file&gt;` property.
-# If this property is not set, Ballerina looks for a `ballerina.conf` file in the current directory. The path
-# to the configuration file can be either an absolute or a relative path.
+                                    <div class="highlight"><pre><code class=shell-session># To explicitly specify a configuration file, use either the `--config` or the `-c` flag.
+# If this flag is not set, Ballerina looks for a `ballerina.conf` file in the directory in which the source files
+# are located. The path to the configuration file can be either an absolute or a relative path.
 # To run this example, place the following configurations in a file and provide its path.
 # ```
-# [hello.http]
-#  port=8085
-# [hello.keystore]
-#  password=&quot;@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}&quot;
-#
+# [hello]
+# http.port=8085
+# keystore.password=&quot;@encrypted:{jFMAXsuMSiOCaxuDLuQjVXzMzZxQrten0652/j93Amw=}&quot;
 # ```
-$ ballerina run config_api.bal --b7a.config.file=path/to/conf/file/custom-config-file-name.conf
+$ ballerina run --config path/to/conf/file/custom-config-file-name.conf config_api.bal
 ballerina: enter secret for config value decryption:
 </code></pre></div>
 
@@ -370,7 +369,8 @@ ballerina: enter secret for config value decryption:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina: started HTTPS/WSS listener 0.0.0.0:8085
+                                    <div class="highlight"><pre><code class=shell-session>Initiating service(s) in `config_api.bal`
+ballerina: started HTTPS/WSS endpoint 0.0.0.0:8085
 </code></pre></div>
 
                                 </td>
@@ -384,7 +384,7 @@ ballerina: enter secret for config value decryption:
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The same configurations given via a configuration file can also be given via CLI parameters. &lt;br&gt;
 # e.g., hello.http.port
-$ ballerina run config_api.bal --hello.http.port=8085 --hello.keystore.password=@encrypted:{69P5VGO+hOomLWhoY28gJiGPmBzWvzlmGGWA9X3uWZM=}
+$ ballerina run -e hello.http.port=8085 -e hello.keystore.password=@encrypted:{jFMAXsuMSiOCaxuDLuQjVXzMzZxQrten0652/j93Amw=} config_api.bal
 ballerina: enter secret for config value decryption:
 </code></pre></div>
 
@@ -397,7 +397,8 @@ ballerina: enter secret for config value decryption:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>ballerina: started HTTPS/WSS listener 0.0.0.0:8085
+                                    <div class="highlight"><pre><code class=shell-session>Initiating service(s) in `config_api.bal`
+ballerina: started HTTPS/WSS endpoint 0.0.0.0:8085
 </code></pre></div>
 
                                 </td>

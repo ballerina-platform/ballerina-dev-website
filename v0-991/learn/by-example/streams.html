@@ -34,12 +34,11 @@ permalink: /v0-991/learn/by-example/streams
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">printEmployeeName</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee event received for Employee Name: &quot;</span><span class="p">,</span>
-        <span class="nx">employee</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee event received for Employee Name: &quot;</span>
+                    <span class="o">+</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">printTemperature</span><span class="p">(</span><span class="kt">float</span> <span class="nx">temperature</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Temperature event received: &quot;</span><span class="p">,</span>
-        <span class="nx">temperature</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Temperature event received: &quot;</span> <span class="o">+</span> <span class="nx">temperature</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">printEvent</span><span class="p">(</span><span class="nx">anydata</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Event received: &quot;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
@@ -53,11 +52,11 @@ permalink: /v0-991/learn/by-example/streams
                     <tr>
                         <td class="cLeftTD">
                             <h2>Streams</h2>
-                            <p><p>The <code>stream</code> type represents a stream of values in which, the constraint type of the stream defines the type of values
+                            <p><p>The <code>stream</code> type represents a stream of values, where the constraint type of the stream defines the type of values
  accepted by the stream. Functions allowed on a stream include publishing values to the stream and/or subscribing
  to the stream to receive values that are published to the stream.
- Ballerina Streams is an experimental feature. Therefore, it requires setting the <code>--experimental</code> flag when compiling
- Ballerina files, which have streaming constructs.</p>
+ Ballerina Streams is an experimental feature, and requires setting the <code>--experimental</code> option when compiling
+ Ballerina files which have streaming constructs.</p>
 </p>
 
                         </td>
@@ -65,9 +64,9 @@ permalink: /v0-991/learn/by-example/streams
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="locks.html">
+                                    <a class="prev" href="udp-socket-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Lock</p>
+                                        <p>UDP Client Socket Basic Example</p>
                                     </a>
                                 </div>
                                  
@@ -206,7 +205,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a <code>stream</code>, which is constrained by the <code>Employee</code> type.</p>
+                                            <p>Define a <code>stream</code> constrained by the <code>Employee</code> type.</p>
 
                                         </div>
                                     </div>
@@ -225,7 +224,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Subscribes to the <code>employeeStream</code> using a function that accepts <code>Employee</code> values.</p>
+                                            <p>Subscribe to the <code>employeeStream</code> using a function that accepts <code>Employee</code> values.</p>
 
                                         </div>
                                     </div>
@@ -246,7 +245,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes <code>Employee</code> values to the <code>stream</code>.</p>
+                                            <p>Publish <code>Employee</code> values to the <code>stream</code>.</p>
 
                                         </div>
                                     </div>
@@ -279,7 +278,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Allows receipt by subscribers. The <code>printEmployeeName()</code> function should be invoked for each published value.</p>
+                                            <p>Allow for receipt by subscribers. The <code>printEmployeeName()</code> function should be invoked for each published value.</p>
 
                                         </div>
                                     </div>
@@ -298,7 +297,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a stream, which is constrained by the <code>float</code> type.</p>
+                                            <p>Define a stream constrained by the <code>float</code> type.</p>
 
                                         </div>
                                     </div>
@@ -317,7 +316,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Subscribes to the <code>temperatureStream</code> using a function that accepts <code>float</code> values.</p>
+                                            <p>Subscribe to the <code>temperatureStream</code> using a function that accepts <code>float</code> values.</p>
 
                                         </div>
                                     </div>
@@ -338,7 +337,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes <code>float</code> values to the stream indicating the temperature.</p>
+                                            <p>Publish <code>float</code> values to the stream, indicating temperature.</p>
 
                                         </div>
                                     </div>
@@ -357,8 +356,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for the subscriber to receive the values. The <code>printTemperature()</code> function
- should be invoked for each published value.</p>
+                                            <p>Wait for the subscriber to receive the values. The <code>printTemperature()</code> function should be invoked for each
+ published value.</p>
 
                                         </div>
                                     </div>
@@ -377,7 +376,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a <code>stream</code>, which accepts values of the <code>anydata</code> type.</p>
+                                            <p>Define a <code>stream</code> that accepts values of the <code>anydata</code> type.</p>
 
                                         </div>
                                     </div>
@@ -396,7 +395,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Subscribes to the <code>stream</code> using a function that accepts values of the <code>anydata</code> type.</p>
+                                            <p>Subscribe to the <code>stream</code> using a function that accepts values of the <code>anydata</code> type.</p>
 
                                         </div>
                                     </div>
@@ -417,7 +416,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes values to the <code>stream</code>.</p>
+                                            <p>Publish values to the <code>stream</code>.</p>
 
                                         </div>
                                     </div>
@@ -450,8 +449,8 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function printEmployeeName(Employee employee) {
-    io:println(&quot;Employee event received for Employee Name: &quot;,
-        employee.name);
+    io:println(&quot;Employee event received for Employee Name: &quot;
+                    + employee.name);
 }
 </code></pre></div>
 
@@ -472,8 +471,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function printTemperature(float temperature) {
-    io:println(&quot;Temperature event received: &quot;,
-        temperature.toString());
+    io:println(&quot;Temperature event received: &quot; + temperature);
 }
 </code></pre></div>
 
@@ -528,7 +526,7 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental streams.bal
 Employee event received for Employee Name: Jane
 Employee event received for Employee Name: Anne
@@ -538,7 +536,7 @@ Temperature event received: 30.1
 Temperature event received: 29.5
 Event received: Hello Ballerina!
 Event received: 1.0
-Event received: id=1 name=Jane
+Event received: {id:1, name:&quot;Jane&quot;}
 </code></pre></div>
 
                                 </td>

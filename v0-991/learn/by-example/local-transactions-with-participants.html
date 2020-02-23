@@ -42,12 +42,12 @@ permalink: /v0-991/learn/by-example/local-transactions-with-participants
                         <td class="cLeftTD">
                             <h2>Local Transactions with participants</h2>
                             <p><p>A Ballerina transaction is a series of data manipulation statements
- that must either fully complete or fully fail, thereby, leaving the
- system in a consistent state. This example demonstrates the usage of
- transactions with local participants. If the participant panics even when it
- is trapped and if the initiator completes, the transaction is considered as a failure.
- Ballerina transactions are at the experimental stage.
- Hence, use the &ndash;experimental flag to enable them.</p>
+ that must either fully complete or fully fail, thereby leaving the
+ system in a consistent state. This sample demonstrates the usage of
+ transaction local participants. If participant panics, even when it
+ is trapped and initiator completes, the transaction is considered failure.
+ Ballerina transactions are at experimental stage,
+ please use  &ndash;experimental flag to enable them.</p>
 </p>
 
                         </td>
@@ -146,8 +146,7 @@ permalink: /v0-991/learn/by-example/local-transactions-with-participants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Import the <code>ballerina/transactions</code> module to use the
- <code>@transactions:Participant</code> annotation.</p>
+                                            <p>Import <code>ballerina/transactions</code> module in order to use participant annotation.</p>
 
                                         </div>
                                     </div>
@@ -178,7 +177,7 @@ permalink: /v0-991/learn/by-example/local-transactions-with-participants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>transaction</code> block initiates the transaction. Thus, it is called the initiator.</p>
+                                            <p><code>transaction</code> blocks initiates the transaction, it&rsquo;s called the initiator.</p>
 
                                         </div>
                                     </div>
@@ -198,7 +197,7 @@ permalink: /v0-991/learn/by-example/local-transactions-with-participants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invokes the local participant.</p>
+                                            <p>Invoke local participant.</p>
 
                                         </div>
                                     </div>
@@ -226,7 +225,7 @@ permalink: /v0-991/learn/by-example/local-transactions-with-participants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The local participant gets panicked.</p>
+                                            <p>local participant panicked.</p>
 
                                         </div>
                                     </div>
@@ -252,8 +251,8 @@ function localTransactionParticipant() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>@transactions:Participant</code> annotation from the
- <code>transactions</code> module is used to indicate the function as a local participant.</p>
+                                            <p><code>@transactions:Participant</code> annotation from <code>transactions</code> package is used to indicate
+ function as a local participant.</p>
 
                                         </div>
                                     </div>
@@ -292,30 +291,30 @@ function localTransactionParticipant() {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command with the --experimental option.
-$ ballerina run --experimental local_transactions_with_participants.bal
-2018-12-04 20:14:08,399 INFO  [ballerina/transactions] - Created transaction: c5fe74ef-da8c-41ab-8ba6-e7c6daceea93
-2018-12-04 20:14:08,416 INFO  [ballerina/transactions] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:c5fe74ef-da8c-41ab-8ba6-e7c6daceea93
+# `.bal` file and execute the `ballerina run` command with --experimental param.
+$ ballerina run  --experimental local_transaction_participants.bal
+[ballerina/http] started HTTP/WS endpoint 172.17.0.1:53605
+2018-12-04 20:14:08,399 INFO  [ballerina/log] - Created transaction: c5fe74ef-da8c-41ab-8ba6-e7c6daceea93
+2018-12-04 20:14:08,416 INFO  [ballerina/log] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:c5fe74ef-da8c-41ab-8ba6-e7c6daceea93
 Invoke local participant function.
 Local participant panicked.
-2018-12-04 20:14:08,421 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: c5fe74ef-da8c-41ab-8ba6-e7c6daceea93:$anon$.$1
-2018-12-04 20:14:08,422 INFO  [ballerina/transactions] - Local prepare failed, aborting..
+2018-12-04 20:14:08,421 INFO  [ballerina/log] - Running 2-phase commit for transaction: c5fe74ef-da8c-41ab-8ba6-e7c6daceea93:$anon$.$1
+2018-12-04 20:14:08,422 INFO  [ballerina/log] - Local prepare failed, aborting..
 Retrying transaction
-2018-12-04 20:14:08,428 INFO  [ballerina/transactions] - Created transaction: be71f53a-aab1-4b90-9174-b48c96a42a00
-2018-12-04 20:14:08,431 INFO  [ballerina/transactions] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:be71f53a-aab1-4b90-9174-b48c96a42a00
+2018-12-04 20:14:08,428 INFO  [ballerina/log] - Created transaction: be71f53a-aab1-4b90-9174-b48c96a42a00
+2018-12-04 20:14:08,431 INFO  [ballerina/log] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:be71f53a-aab1-4b90-9174-b48c96a42a00
 Invoke local participant function.
 Local participant panicked.
-2018-12-04 20:14:08,432 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: be71f53a-aab1-4b90-9174-b48c96a42a00:$anon$.$1
-2018-12-04 20:14:08,433 INFO  [ballerina/transactions] - Local prepare failed, aborting..
+2018-12-04 20:14:08,432 INFO  [ballerina/log] - Running 2-phase commit for transaction: be71f53a-aab1-4b90-9174-b48c96a42a00:$anon$.$1
+2018-12-04 20:14:08,433 INFO  [ballerina/log] - Local prepare failed, aborting..
 Retrying transaction
-2018-12-04 20:14:08,435 INFO  [ballerina/transactions] - Created transaction: 2e0c1784-1b17-42e8-a864-ae20d3a25c65
-2018-12-04 20:14:08,437 INFO  [ballerina/transactions] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:2e0c1784-1b17-42e8-a864-ae20d3a25c65
+2018-12-04 20:14:08,435 INFO  [ballerina/log] - Created transaction: 2e0c1784-1b17-42e8-a864-ae20d3a25c65
+2018-12-04 20:14:08,437 INFO  [ballerina/log] - Registered local participant: ef90ded8-0a11-4509-b922-c2f3ba501f68:$anon$.$2 for transaction:2e0c1784-1b17-42e8-a864-ae20d3a25c65
 Invoke local participant function.
 Local participant panicked.
-2018-12-04 20:14:08,437 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 2e0c1784-1b17-42e8-a864-ae20d3a25c65:$anon$.$1
-2018-12-04 20:14:08,438 INFO  [ballerina/transactions] - Local prepare failed, aborting..
+2018-12-04 20:14:08,437 INFO  [ballerina/log] - Running 2-phase commit for transaction: 2e0c1784-1b17-42e8-a864-ae20d3a25c65:$anon$.$1
+2018-12-04 20:14:08,438 INFO  [ballerina/log] - Local prepare failed, aborting..
 Transaction aborted
-[ballerina/http] started HTTP/WS listener 10.100.7.118:64310
 </code></pre></div>
 
                                 </td>

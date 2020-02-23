@@ -9,8 +9,8 @@ permalink: /v0-991/learn/by-example/openshift-deployment
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kubernetes</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">openshift</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">kubernetes</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">openshift</span><span class="p">;</span>
 <span class="nd">@kubernetes:Service {</span><span class="p">}</span>
 <span class="nd">@openshift:Route {</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;www.oc-example.com&quot;</span>
@@ -32,11 +32,11 @@ permalink: /v0-991/learn/by-example/openshift-deployment
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/{user}&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Hello ${&lt;@untainted string&gt; user}!`</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Hello ${untaint user}!`</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -49,10 +49,10 @@ permalink: /v0-991/learn/by-example/openshift-deployment
                     <tr>
                         <td class="cLeftTD">
                             <h2>OpenShift Deployment</h2>
-                            <p><p>Ballerina supports generating the OpenShift Route, BuildConfig, and ImageStream artifacts based on annotations.
-Docker image of the Ballerina service is built using the BuildConfig, which then can be used by the generated Kubernetes Deployment.
+                            <p><p>Ballerina supports generating OpenShift Route, BuildConfig and ImageStream artifacts based on annotations.
+Docker image of the ballerina service is built using the BuildConfig which then can be used by the generated Kubernetes Deployment.
 A generated OpenShift Route exposes the Kubernetes Service of the Ballerina Service.
-This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; followed by a name.</p>
+This example deploys http service which responses &ldquo;Hello&rdquo; followed by a name.</p>
 </p>
 
                         </td>
@@ -135,8 +135,8 @@ This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; follow
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/kubernetes;
-import ballerina/openshift;
+import ballerinax/kubernetes;
+import ballerinax/openshift;
 </code></pre></div>
 
                                 </td>
@@ -156,7 +156,7 @@ import ballerina/openshift;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add the <code>@kubernetes:Service</code> to a listener endpoint to expose the endpoint as a Kubernetes Service.</p>
+                                            <p>Add <code>@kubernetes:Service</code> to a listener endpoint to expose the endpoint as Kubernetes Service.</p>
 
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@ listener http:Listener helloEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add the <code>@openshift:Route</code> to expose the Kubernetes Service through an OpenShift Route.</p>
+                                            <p>Add <code>@openshift:Route</code> to expose Kubernetes Service through an OpenShift Route.</p>
 
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@ listener http:Listener helloEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add the <code>@kubernetes:Deployment</code> annotation to a Ballerina service to generate a Kuberenetes Deployment for a Ballerina module.</p>
+                                            <p>Add <code>@kubernetes:Deployment</code> annotation to a Ballerina service to generate Kuberenetes Deployment for a Ballerina module.</p>
 
                                         </div>
                                     </div>
@@ -235,7 +235,7 @@ listener http:Listener helloEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>IP and port of the OpenShift docker registry. If you are using minishift, use the <code>minishift openshift registry</code> to find the Docker registry.</p>
+                                            <p>IP and port of the OpenShift docker registry. Use <code>minishift openshift registry</code> to find the docker registry if you are using minishift.</p>
 
                                         </div>
                                     </div>
@@ -254,7 +254,7 @@ listener http:Listener helloEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Generate a Docker image with the name <code>172.30.1.1:5000/hello-api/hello-service:v1.0</code>.</p>
+                                            <p>Generate Docker image with name <code>172.30.1.1:5000/hello-api/hello-service:v1.0</code>.</p>
 
                                         </div>
                                     </div>
@@ -273,7 +273,7 @@ listener http:Listener helloEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Disable the image being built by default so that the OpenShift BuildConfig can build it.</p>
+                                            <p>Disable building image by default so that OpenShift BuildConfig can build it.</p>
 
                                         </div>
                                     </div>
@@ -295,11 +295,11 @@ service hello on helloEP {
         path: &quot;/{user}&quot;
     }
     resource function sayHello(http:Caller caller, http:Request request, string user) {
-        string payload = string `Hello ${&lt;@untainted string&gt; user}!`;
+        string payload = string `Hello ${untaint user}!`;
         var responseResult = caller-&gt;respond(payload);
         if (responseResult is error) {
             error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err);
+            log:printError(&quot;Error sending response&quot;, err = err);
         }
     }
 }
@@ -310,7 +310,7 @@ service hello on helloEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Generate the OpenShift BuildConfig for building the Docker image.</p>
+                                            <p>Generate the OpenShift BuildConfig for building the docker image.</p>
 
                                         </div>
                                     </div>
@@ -481,7 +481,7 @@ route.route.openshift.io/helloep-openshift-route created
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Trigger a build to create the Docker image
+                                    <div class="highlight"><pre><code class=shell-session># Trigger a build to create the docker image
 $ oc start-build bc/openshift-openshift-bc-openshift-bc --from-dir=. --follow
 Uploading directory &quot;.&quot; as binary input for the build ...
 </code></pre></div>
@@ -566,7 +566,7 @@ openshift-deployment-deployment-865d564bc9-5rh78   1/1       Running     0      
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Invoke the service. If you are using minikube, go to www.oc-example.com to get the minikube IP. Use the `minikube ip` command to find the IP.
+                                    <div class="highlight"><pre><code class=shell-session># Invoke the service. If you are using minikube, resolving www.oc-example.com to minikube IP. Use `minikube ip` command to find the IP.
 $ curl --resolve www.oc-example.com:80:192.168.99.101 http://www.oc-example.com/hello/john
 Hello john!
 </code></pre></div>

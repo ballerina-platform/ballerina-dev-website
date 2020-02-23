@@ -7,21 +7,47 @@ permalink: /v0-991/learn/by-example/immutable-values
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">freeze</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 === m2: &quot;</span><span class="p">,</span> <span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Frozen status of m1: &quot;</span><span class="p">,</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">isFrozen</span><span class="p">());</span>
     <span class="nx">error</span><span class="err">?</span> <span class="nx">updateResult</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">addEntryToMap</span><span class="p">(</span><span class="nx">m2</span><span class="p">,</span> <span class="s">&quot;intValTwo&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">updateResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on update: &quot;</span><span class="p">,</span>
-                   <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                   <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">updateResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 === m3: &quot;</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">);</span>
+    <span class="nx">Department</span> <span class="nx">d</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;finance&quot;</span><span class="p">,</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1100</span> <span class="p">};</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">recVal</span><span class="p">:</span> <span class="nx">d</span> <span class="p">};</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">freezeResult</span> <span class="p">=</span> <span class="nx">m3</span><span class="p">.</span><span class="nx">freeze</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">freezeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;.freeze()&#39; failed for m3: &quot;</span><span class="p">,</span>
+                   <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">freezeResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;.freeze()&#39; successful for m3&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">Employee</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Anne&quot;</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">m4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">objVal</span><span class="p">:</span> <span class="nx">e</span> <span class="p">};</span>
+    <span class="nx">freezeResult</span> <span class="p">=</span> <span class="nx">m4</span><span class="p">.</span><span class="nx">freeze</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">freezeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;.freeze()&#39; failed for m4: &quot;</span><span class="p">,</span>
+                   <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">freezeResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;.freeze()&#39; successful for m4&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m5</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">valueType</span><span class="p">:</span> <span class="s">&quot;map&quot;</span><span class="p">,</span> <span class="nx">constraint</span><span class="p">:</span> <span class="s">&quot;string&quot;</span> <span class="p">};</span>
-    <span class="k">var</span> <span class="nx">frozenVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">frozenVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">freeze</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">frozenVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;frozenVal is map&lt;string&gt;&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -38,17 +64,18 @@ permalink: /v0-991/learn/by-example/immutable-values
                     <tr>
                         <td class="cLeftTD">
                             <h2>Immutable Values</h2>
-                            <p><p>Ballerina allows creating immutable or read-only clones of values.</p>
+                            <p><p>Ballerina allows making values immutable, or read-only.</p>
 
-<p>The <code>.cloneReadOnly()</code> method can be called on a value of type <code>anydata</code> to create a clone of the value,
- which is immutable. No changes are done to the original value.
- Calling <code>.cloneReadOnly()</code> on structures would deeply clone the elements and mark them as immutable.
- Moreover, if the value is already an immutable value, <code>.cloneReadOnly()</code> returns the value itself (no cloning is
- done).</p>
+<p>A value of type <code>anydata</code> can be made immutable by calling the <code>.freeze()</code> built-in method on it. A successful
+ freeze attempt would return the value with the frozen flag set. Calling freeze on structures would deeply
+ freeze all elements.</p>
 
-<p>The <code>.isReadOnly()</code> method could be used on <code>anydata</code> values to check if they are immutable.</p>
+<p>Freeze is also defined on values that may be of type <code>anydata</code> at run time (e.g., <code>any</code>, unions consisting of
+ <code>anydata</code> and <code>non-anydata</code> types). If a <code>non-anydata</code> value is found, the freeze attempt would return an error.</p>
 
-<p>Attempts to modify an immutable/read-only value would cause panicking.</p>
+<p>The built-in method <code>.isFrozen()</code> could be used to check if a value is frozen.</p>
+
+<p>Attempts to modify a frozen value would cause panic.</p>
 </p>
 
                         </td>
@@ -56,16 +83,16 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="clone.html">
+                                    <a class="prev" href="nil-lifting.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Cloning Values</p>
+                                        <p>Nil Lifting</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="type-conversion.html">
+                                    <a class="next" href="clone.html">
                                         <span>NEXT ></span>
-                                        <p>Type Conversion</p>
+                                        <p>Cloning Values</p>
                                     </a>
                                 </div>
                                 
@@ -133,6 +160,20 @@ permalink: /v0-991/learn/by-example/immutable-values
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -142,6 +183,78 @@ permalink: /v0-991/learn/by-example/immutable-values
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Department record {
+    string name;
+    int id;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define a <code>Department</code> record that only has <code>anydata|error</code> typed fields.
+ (A record with fields only of types <code>anydata</code> or <code>error</code> belongs to <code>anydata</code>)</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Employee object {
+    string name;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define an <code>Employee</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function __init(string name) {
+        self.name = name;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function getName() returns string {
+        return self.name;
+    }
+};
 </code></pre></div>
 
                                 </td>
@@ -173,7 +286,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an <code>anydata</code>-typed <code>map</code> with two entries.</p>
+                                            <p>Create an <code>anydata</code> typed <code>map</code> with two entries.</p>
 
                                         </div>
                                     </div>
@@ -184,7 +297,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m2 = m1.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m2 = m1.freeze();
 </code></pre></div>
 
                                 </td>
@@ -192,7 +305,8 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call <code>.cloneReadOnly()</code> on the map <code>m1</code> and assign the returned value to another variable.</p>
+                                            <p>Freeze the map <code>m1</code> and assign the returned value to another variable.
+ Since the map is of type <code>anydata</code>, the return value would be of the same type as <code>m1</code>.</p>
 
                                         </div>
                                     </div>
@@ -211,8 +325,8 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reference equality checks for <code>m1</code> and <code>m2</code> should evaluate to false due to a clone being created
- since <code>m1</code> is not an immutable value.</p>
+                                            <p>Reference equality checks for <code>m1</code> and <code>m2</code> should evaluate to true, since the same value is returned with the
+ frozen flag set.</p>
 
                                         </div>
                                     </div>
@@ -223,7 +337,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m1 is immutable: &quot;, m1.isReadOnly());
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Frozen status of m1: &quot;, m1.isFrozen());
 </code></pre></div>
 
                                 </td>
@@ -231,28 +345,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Check if <code>m1</code> is immutable. This evaluates to false since no changes are done to
- the original value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m2 is immutable: &quot;, m2.isReadOnly());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Check if <code>m2</code> is immutable. This evaluates to true since the returned clone is
- marked as immutable.</p>
+                                            <p>Check if <code>m1</code> is frozen.</p>
 
                                         </div>
                                     </div>
@@ -272,7 +365,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempt to add an entry to the <code>map</code> and trap the panic if it results in a panic.</p>
+                                            <p>Attempt adding an entry to the <code>map</code>, and <code>trap</code> the panic if it results in a panic.</p>
 
                                         </div>
                                     </div>
@@ -284,7 +377,7 @@ permalink: /v0-991/learn/by-example/immutable-values
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Error occurred on update: &quot;,
-                   &lt;string&gt;updateResult.detail()?.message);
+                   &lt;string&gt;updateResult.detail().message);
     }
 </code></pre></div>
 
@@ -293,7 +386,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An error should occur since <code>m2</code> is frozen.</p>
+                                            <p>An error should occur since <code>m2</code> is frozen</p>
 
                                         </div>
                                     </div>
@@ -304,7 +397,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m3 = m2.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=ballerina>    Department d = { name: &quot;finance&quot;, id: 1100 };
 </code></pre></div>
 
                                 </td>
@@ -312,7 +405,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Now call <code>.cloneReadOnly()</code> on the immutable value <code>m2</code>.</p>
+                                            <p>Create a <code>Department</code> record.</p>
 
                                         </div>
                                     </div>
@@ -323,7 +416,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;m2 === m3: &quot;, m2 === m3);
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;any&gt; m3 = { stringVal: &quot;str&quot;, intVal: 1, recVal: d };
 </code></pre></div>
 
                                 </td>
@@ -331,8 +424,97 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reference equality checks for <code>m2</code> and <code>m3</code> should evaluate to true due to no clones being created
- since <code>m2</code> is already an immutable value.</p>
+                                            <p>Create a <code>map</code> that may hold <code>anydata|error</code> typed values.
+ (<code>map&lt;anydata|error&gt;</code> belongs to <code>anydata</code>)</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;any&gt;|error freezeResult = m3.freeze();
+    if (freezeResult is error) {
+        io:println(&quot;&#39;.freeze()&#39; failed for m3: &quot;,
+                   &lt;string&gt;freezeResult.detail().message);
+    } else {
+        io:println(&quot;&#39;.freeze()&#39; successful for m3&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempt freezing <code>m3</code>. Note how the return type could now be an <code>error</code>, since there is the possibility that a
+ <code>map</code> constrained by type <code>any</code> could have non-anydata values.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee e = new(&quot;Anne&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create an <code>Employee</code> object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;any&gt; m4 = { stringVal: &quot;str&quot;, intVal: 1, objVal: e };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Now, create a <code>map</code> that may hold <code>anydata|error</code> values, and add the non-anydata object <code>Employee</code> too.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    freezeResult = m4.freeze();
+    if (freezeResult is error) {
+        io:println(&quot;&#39;.freeze()&#39; failed for m4: &quot;,
+                   &lt;string&gt;freezeResult.detail().message);
+    } else {
+        io:println(&quot;&#39;.freeze()&#39; successful for m4&quot;);
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempt freezing <code>m4</code>.</p>
 
                                         </div>
                                     </div>
@@ -353,8 +535,8 @@ permalink: /v0-991/learn/by-example/immutable-values
                                         <div>
                                             <p>An <code>is</code> check for a frozen value becomes an <code>is like</code> check.
  In other words, storage type is not considered.
- Define a <code>map</code> of the constraint type <code>string</code> or <code>int</code>, but with
- values of the type <code>string</code> only.</p>
+ Define a <code>map</code> of constraint type <code>string</code> or <code>int</code>, but with
+ values of type <code>string</code> only.</p>
 
                                         </div>
                                     </div>
@@ -365,7 +547,7 @@ permalink: /v0-991/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var frozenVal = m5.cloneReadOnly();
+                                    <div class="highlight"><pre><code class=ballerina>    var frozenVal = m5.freeze();
 </code></pre></div>
 
                                 </td>
@@ -373,9 +555,9 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Make the map immutable. The resultant value would only
- contain values of the type <code>string</code> and no values can now be
- added to the map.</p>
+                                            <p>Freeze the <code>map</code>. The <code>.freeze()</code> attempt will be successful
+ since the constraint is <code>anydata</code>. The frozen <code>map</code> only
+ contains values of type <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -397,8 +579,8 @@ permalink: /v0-991/learn/by-example/immutable-values
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Checking if the frozen value is of the type <code>map&lt;string&gt;</code> thus
- evaluates to <code>true</code>.</p>
+                                            <p>Checking if the frozen value is of type <code>map&lt;string&gt;</code> would
+ evaluate to <code>true</code>.</p>
 
                                         </div>
                                     </div>
@@ -444,13 +626,13 @@ permalink: /v0-991/learn/by-example/immutable-values
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run immutable_values.bal
-m1 === m2: false
-m1 is immutable: false
-m2 is immutable: true
-Error occurred on update: Invalid map insertion: modification not allowed on readonly value
-m2 === m3: true
+m1 === m2: true
+Frozen status of m1: true
+Error occurred on update: Invalid map insertion: modification not allowed on frozen value
+&#39;.freeze()&#39; successful for m3
+&#39;.freeze()&#39; failed for m4: &#39;freeze()&#39; not allowed on &#39;Employee&#39;
 frozenVal is map&lt;string&gt;
 </code></pre></div>
 

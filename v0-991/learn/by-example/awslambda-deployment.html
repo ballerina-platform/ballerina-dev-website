@@ -259,9 +259,9 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the AWS Lambda functions
 $ ./ballerina build aws_lambda_deployment.bal
 Compiling source
-	aws_lambda_deployment.bal
-Generating executables
-	aws_lambda_deployment-executable.jar
+    aws_lambda_deployment.bal
+Generating executable
+    aws_lambda_deployment.balx
 	@awslambda:Function: echo, uuid, ctxinfo
 </code></pre></div>
 
@@ -274,7 +274,7 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	The Ballerina AWS Lambda layer information can be found at https://ballerina.io/deployment/aws-lambda.
+                                    <div class="highlight"><pre><code class=shell-session>        The Ballerina AWS Lambda layer information can be found at https://ballerina.io/deployment/aws-lambda.
 </code></pre></div>
 
                                 </td>
@@ -287,7 +287,7 @@ Generating executables
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following commands to deploy each Ballerina AWS Lambda function:
-	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment-executable.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --timeout 10 --memory-size 1024
+	aws lambda create-function --function-name &lt;FUNCTION_NAME&gt; --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.&lt;FUNCTION_NAME&gt; --runtime provided --role &lt;LAMBDA_ROLE_ARN&gt; --timeout 10 --memory-size 1024
 	aws lambda update-function-configuration --function-name &lt;FUNCTION_NAME&gt; --layers &lt;BALLERINA_LAYER_ARN&gt;
 </code></pre></div>
 

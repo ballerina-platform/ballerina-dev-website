@@ -59,7 +59,7 @@ permalink: /v0-991/learn/by-example/projection
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printChildrenMessage</span><span class="p">(</span><span class="nx">Message</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child name : &quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="s">&quot; and message : &quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child name : &quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; and message : &quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="nx">addToGlobalChildrenMessageArray</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">addToGlobalChildrenMessageArray</span><span class="p">(</span><span class="nx">Message</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">globalChildrenMessageArray</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">e</span><span class="p">;</span>
@@ -74,13 +74,13 @@ permalink: /v0-991/learn/by-example/projection
                     <tr>
                         <td class="cLeftTD">
                             <h2>Projection</h2>
-                            <p><p>Projection involves selecting some of the attributes from the input
+                            <p><p>Projection involves selecting only some of the attributes from the input
  stream to be inserted into an output stream, renaming the attributes, adding
  constant values to the output stream, and performing logical or mathematical operations.
  In this example, events are related to the person being monitored and there will be a
  children&rsquo;s day wish triggered when there is a person found whose age is less
  than or equal to 16.
- Ballerina Streams is an experimental feature. Therefore, use the <code>--experimental</code> flag when compiling Ballerina
+ Ballerina Streams is an experimental feature. Please use the <code>--experimental</code> flag when compiling Ballerina
  files that have streaming constructs.</p>
 </p>
 
@@ -207,7 +207,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a <code>record</code> type that represents the <code>Person</code>.</p>
+                                            <p>Create a <code>record</code> type that represents the <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a <code>record</code> type that represents the <code>Message</code>.</p>
+                                            <p>Create a <code>record</code> type that represents the <code>Message</code>.</p>
 
                                         </div>
                                     </div>
@@ -316,8 +316,8 @@ stream&lt;Message&gt; childrenMessageStream = new;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This is a streaming query that filters events based on the attribute age
- and generates a custom message by calling a user-defined function.
- The filtered events are pushed to a <code>stream</code> called <code>childrenMessageStream</code>.</p>
+ and generates a custom message by calling a user defined function.
+ Filtered events are pushed to a <code>stream</code> called <code>childrenMessageStream</code>.</p>
 
                                         </div>
                                     </div>
@@ -443,7 +443,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Simulates the sample event that represents the <code>Person</code>.</p>
+                                            <p>Simulate the sample event that represents the <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -475,7 +475,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function printChildrenMessage(Message msg) {
-    io:println(&quot;Child name : &quot;, msg.name, &quot; and message : &quot;, msg.message);
+    io:println(&quot;Child name : &quot; + msg.name + &quot; and message : &quot; + msg.message);
     addToGlobalChildrenMessageArray(msg);
 }
 </code></pre></div>
@@ -518,7 +518,7 @@ stream&lt;Message&gt; childrenMessageStream = new;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental projection.bal
 Child name : Raja and message : Hi Raja!!! , wish you a happy children&#39;s day
 Child name : Shareek and message : Hi Shareek!!! , wish you a happy children&#39;s day

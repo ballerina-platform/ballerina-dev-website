@@ -47,7 +47,7 @@ permalink: /v1-0/learn/by-example/secured-service-with-jwt
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -65,11 +65,25 @@ permalink: /v1-0/learn/by-example/secured-service-with-jwt
  token sent in the Authorization header. For this, Ballerina should trust the
  JWT issuer (the certificate of the JWT issuer must be present in the Ballerina
  certificate truststore).
- Ballerina uses the concept of scopes for authorization. A resource declared
- in a service can be bound to one/more scope(s). The scope can be included
- in the JWT using the <code>scope</code> attribute.
+ Ballerina uses the concept of scopes for authorization. A resource
+ declared in a service can be bound to one/more scope(s). In the config
+ auth provider, scopes are mapped to users.
  In the authorization phase, the scopes of the resource are compared against
- the scopes mapped to the user for at least one match between the two sets.</p>
+ the scopes mapped to the user for at least one match between the two sets.
+ The scope can be included in the JWT using the <code>scope</code> attribute,
+ or the scopes for a user can be set in a Ballerina configuration file
+ (e.g., sample-users.toml).</p>
+
+<pre><code>  [&quot;b7a.users&quot;]
+
+  [&quot;b7a.users.tom&quot;]
+  scopes=&quot;scope2,scope3&quot;
+
+  [&quot;b7a.users.dick&quot;]
+  scopes=&quot;scope1&quot;
+</code></pre>
+
+<p>Tom is assigned &ldquo;scope2&rdquo; and &ldquo;scope3&rdquo;, while Dick is assigned &ldquo;scope1&rdquo;.</p>
 </p>
 
                         </td>
@@ -312,7 +326,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>    resource function hello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
+            log:printError(&quot;Error in responding to caller&quot;, err = result);
         }
     }
 }

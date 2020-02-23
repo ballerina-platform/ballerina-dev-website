@@ -9,7 +9,7 @@ permalink: /v0-991/learn/by-example/https-listener
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">ServiceEndpointConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
@@ -129,7 +129,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:ListenerConfiguration helloWorldEPConfig = {
+                                    <div class="highlight"><pre><code class=ballerina>http:ServiceEndpointConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
             path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
@@ -146,7 +146,7 @@ import ballerina/log;
                                         <div>
                                             <p>An HTTP endpoint can be configured to communicate through HTTPS as well.
  To secure an endpoint using HTTPS, the endpoint needs to be configured with
- a keystore, a certificate, and a private key for the endpoint.</p>
+ a keystore a certificate and private key for the endpoint.</p>
 
                                         </div>
                                     </div>
@@ -245,9 +245,10 @@ service helloWorld on helloWorldEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file and use the `ballerina run` command.
 $ ballerina run https_listener.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
+Initiating service(s) in &#39;https_listener.bal&#39;
+[ballerina/http] started HTTPS/WSS endpoint 0.0.0.0:9095
 </code></pre></div>
 
                                 </td>
@@ -272,7 +273,7 @@ $ ballerina run https_listener.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the below cURL command with the `-k` option.
+                                    <div class="highlight"><pre><code class=shell-session>#Run this curl command with the `-k` option to invoke the service.
 $ curl -k https://localhost:9095/hello
 Hello World!
 </code></pre></div>

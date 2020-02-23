@@ -19,22 +19,30 @@ permalink: /v0-991/learn/by-example/json
     <span class="kt">json</span> <span class="nx">j5</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
     <span class="kt">json</span> <span class="nx">j6</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">j2</span> <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="kt">json</span> <span class="nx">j7</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Pala&quot;</span> <span class="p">}];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j7</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">json</span> <span class="nx">j8</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">j5</span><span class="p">.</span><span class="nx">mergeJson</span><span class="p">(</span><span class="nx">j7</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j8</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">json</span> <span class="nx">j9</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span> <span class="nx">math</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="nx">language</span><span class="p">:</span> <span class="mi">95</span> <span class="p">}</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">j10</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="p">(),</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span> <span class="nx">physics</span><span class="p">:</span> <span class="mi">85</span> <span class="p">}</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">j11</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">j9</span><span class="p">.</span><span class="nx">mergeJson</span><span class="p">(</span><span class="nx">j10</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j11</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j9</span> <span class="o">==</span><span class="p">=</span> <span class="nx">j11</span><span class="p">);</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j12</span> <span class="p">=</span> <span class="nx">j2</span><span class="p">.</span><span class="nx">mergeJson</span><span class="p">(</span><span class="nx">j3</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j12</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="nx">j6</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
-    <span class="kt">json</span> <span class="nx">j13</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">s</span><span class="p">.</span><span class="nx">fromJsonString</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j13</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span> <span class="o">==</span> <span class="nx">j13</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j7</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">empty</span> <span class="p">=</span> <span class="p">{};</span>    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">30</span><span class="p">;</span>
+    <span class="kt">json</span> <span class="nx">p</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="nx">age</span> <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">firstName</span> <span class="p">=</span> <span class="nx">p</span><span class="p">.</span><span class="nx">fname</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">firstName</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="nx">p</span><span class="p">[</span><span class="s">&quot;lname&quot;</span><span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">lastName</span><span class="p">);</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">lname</span> <span class="p">=</span> <span class="s">&quot;Silva&quot;</span><span class="p">;</span>
+    <span class="nx">p</span><span class="p">[</span><span class="s">&quot;age&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="mi">31</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+    <span class="kt">json</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span>
+         <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
+         <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Stallone&quot;</span><span class="p">,</span>
+         <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="nx">age</span><span class="p">,</span>
+         <span class="nx">address</span><span class="p">:</span> <span class="p">{</span>
+             <span class="nx">line</span><span class="p">:</span> <span class="s">&quot;20 Palm Grove&quot;</span><span class="p">,</span>
+             <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo 03&quot;</span><span class="p">,</span>
+             <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+         <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">);</span>    <span class="nx">p2</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">province</span> <span class="p">=</span> <span class="s">&quot;Western&quot;</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -46,10 +54,10 @@ permalink: /v0-991/learn/by-example/json
                         <td class="cLeftTD">
                             <h2>JSON</h2>
                             <p><p>JSON is a textual format for representing a collection of values:
- a simple value (string, number, &ldquo;true&rdquo;, &ldquo;false&rdquo;, &ldquo;null&rdquo;), an array of values, or an object.
+ a simple value (string, number, “true”, “false”, “null”), an array of values, or an object.
  Ballerina has a single type named <code>json</code> that can represent any JSON value.
- Thus, <code>json</code> is a built-in union type in Ballerina that can contain values of the types
- nil (as the <code>null</code> value), <code>boolean</code>, <code>int</code>, <code>float</code>, <code>decimal</code>, <code>string</code>, <code>json[]</code>, and <code>map&lt;json&gt;</code>.</p>
+ Thus, <code>json</code> is a built-in union type in Ballerina that can contain values of types
+ <code>nil</code> (as the <code>null</code> value), <code>boolean</code>, <code>int</code>, <code>float</code>, <code>decimal</code>, <code>string</code>, <code>json[]</code> and <code>map&lt;json&gt;</code>.</p>
 </p>
 
                         </td>
@@ -57,16 +65,16 @@ permalink: /v0-991/learn/by-example/json
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="type-conversion.html">
+                                    <a class="prev" href="stamp.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Type Conversion</p>
+                                        <p>Stamping Values</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="json-objects.html">
+                                    <a class="next" href="json-arrays.html">
                                         <span>NEXT ></span>
-                                        <p>JSON Objects</p>
+                                        <p>JSON Arrays</p>
                                     </a>
                                 </div>
                                 
@@ -103,6 +111,8 @@ permalink: /v0-991/learn/by-example/json
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -276,27 +286,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a JSON Object. This is equivalent to a <code>map&lt;json&gt;</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(j6.toJsonString());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>.toJsonString()</code> defined for <code>json</code> values returns a <code>string</code> that
- represents the value in JSON format.</p>
+                                            <p>Create a JSON Objects.</p>
 
                                         </div>
                                     </div>
@@ -308,7 +298,7 @@ permalink: /v0-991/learn/by-example/json
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    json j7 = [1, false, null, &quot;foo&quot;, { first: &quot;John&quot;, last: &quot;Pala&quot; }];
-    io:println(j7.toJsonString());
+    io:println(j7);
 </code></pre></div>
 
                                 </td>
@@ -316,7 +306,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a JSON Array. This is equivalent to a <code>json[]</code>.</p>
+                                            <p>Create a JSON Array. They are arrays of any JSON value.</p>
 
                                         </div>
                                     </div>
@@ -327,8 +317,7 @@ permalink: /v0-991/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j8 = checkpanic j5.mergeJson(j7);
-    io:println(j8.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    json empty = {};
 </code></pre></div>
 
                                 </td>
@@ -336,9 +325,40 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>.mergeJson()</code> method can be used to merge two <code>json</code> values.
- If either of the two values is <code>null</code>, the result of <code>.mergeJson()</code> is
- the other value.</p>
+                                            <p>Create an empty JSON Object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int age = 30;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    json p = { fname: &quot;John&quot;, lname: &quot;Stallone&quot;, &quot;age&quot;: age };
+    io:println(p);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a JSON object. Keys can be defined with or without quotes.
+ Values can be any expression.</p>
 
                                         </div>
                                     </div>
@@ -349,10 +369,8 @@ permalink: /v0-991/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j9 = { name: &quot;Anne&quot;, age: null, marks: { math: 90, language: 95 } };
-    json j10 = { name: (), age: 20, marks: { physics: 85 } };
-    json j11 = checkpanic j9.mergeJson(j10);
-    io:println(j11.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    json firstName = p.fname;
+    io:println(firstName);
 </code></pre></div>
 
                                 </td>
@@ -360,11 +378,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>.mergeJson()</code> can also be used to merge two JSON objects.
- Where both <code>json</code> values are mappings, for each entry in the second,
- if an entry is not present in the first by the same key, the entry
- is added to the first mapping. If there is already a field by the same
- key in the first mapping, <code>.mergeJson()</code> is called recursively.</p>
+                                            <p>You can access the object values by using dot (.) notation or array index notation.</p>
 
                                         </div>
                                     </div>
@@ -375,7 +389,8 @@ permalink: /v0-991/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(j9 === j11);
+                                    <div class="highlight"><pre><code class=ballerina>    json lastName = p[&quot;lname&quot;];
+    io:println(lastName);
 </code></pre></div>
 
                                 </td>
@@ -383,8 +398,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reference equality checks between <code>j9</code> and <code>j11</code> evaluate to true since
- the <code>j9</code> itself is updated and returned if the merge is successful.</p>
+                                            <p>Array index notation allows you to use any string valued expression as the index.</p>
 
                                         </div>
                                     </div>
@@ -395,8 +409,9 @@ permalink: /v0-991/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error j12 = j2.mergeJson(j3);
-    io:println(j12);
+                                    <div class="highlight"><pre><code class=ballerina>    p.lname = &quot;Silva&quot;;
+    p[&quot;age&quot;] = 31;
+    io:println(p);
 </code></pre></div>
 
                                 </td>
@@ -404,9 +419,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>.mergeJson()</code> returns an <code>error</code> if the values cannot be merged.
- For example, attempting to merge a mapping value with a non-mapping value
- or two non-mapping values where neither is <code>null</code>.</p>
+                                            <p>You can add or change object values.</p>
 
                                         </div>
                                     </div>
@@ -417,9 +430,17 @@ permalink: /v0-991/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string s = j6.toJsonString();
-    json j13 = checkpanic s.fromJsonString();
-    io:println(j13.toJsonString());
+                                    <div class="highlight"><pre><code class=ballerina>    json p2 = {
+         fname: &quot;Peter&quot;,
+         lname: &quot;Stallone&quot;,
+         &quot;age&quot;: age,
+         address: {
+             line: &quot;20 Palm Grove&quot;,
+             city: &quot;Colombo 03&quot;,
+             country: &quot;Sri Lanka&quot;
+         }
+    };
+    io:println(p2);
 </code></pre></div>
 
                                 </td>
@@ -427,9 +448,7 @@ permalink: /v0-991/learn/by-example/json
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>.fromJsonString()</code> defined on <code>string</code> values attempts parsing the
- string expected to be in the JSON format and returns the represented JSON value
- if successful. This method returns an error if the string cannot be parsed.</p>
+                                            <p>Create a Nested JSON object.</p>
 
                                         </div>
                                     </div>
@@ -437,23 +456,16 @@ permalink: /v0-991/learn/by-example/json
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(j6 == j13);
+                                    <div class="highlight"><pre><code class=ballerina>    p2.address.province = &quot;Western&quot;;
+    io:println(p2);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The value would be equal to the original value from which the string
- was created.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -475,21 +487,23 @@ permalink: /v0-991/learn/by-example/json
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run json.bal
 Apple
 5.36
 true
 false
-name=apple color=red price=5.36
 {&quot;name&quot;:&quot;apple&quot;, &quot;color&quot;:&quot;red&quot;, &quot;price&quot;:5.36}
 [1, false, null, &quot;foo&quot;, {&quot;first&quot;:&quot;John&quot;, &quot;last&quot;:&quot;Pala&quot;}]
-[1, false, null, &quot;foo&quot;, {&quot;first&quot;:&quot;John&quot;, &quot;last&quot;:&quot;Pala&quot;}]
-{&quot;name&quot;:&quot;Anne&quot;, &quot;age&quot;:20, &quot;marks&quot;:{&quot;math&quot;:90, &quot;language&quot;:95, &quot;physics&quot;:85}}
-true
-error {ballerina/lang.value}MergeJsonError message=Cannot merge JSON values of types &#39;float&#39; and &#39;boolean&#39;
-{&quot;name&quot;:&quot;apple&quot;, &quot;color&quot;:&quot;red&quot;, &quot;price&quot;:5.36}
-true
+{&quot;fname&quot;:&quot;John&quot;, &quot;lname&quot;:&quot;Stallone&quot;, &quot;age&quot;:30}
+John
+Stallone
+{&quot;fname&quot;:&quot;John&quot;, &quot;lname&quot;:&quot;Silva&quot;, &quot;age&quot;:31}
+{&quot;fname&quot;:&quot;Peter&quot;, &quot;lname&quot;:&quot;Stallone&quot;, &quot;age&quot;:30,
+    &quot;address&quot;:{&quot;line&quot;:&quot;20 Palm Grove&quot;, &quot;city&quot;:&quot;Colombo 03&quot;, &quot;country&quot;:&quot;Sri Lanka&quot;}}
+{&quot;fname&quot;:&quot;Peter&quot;, &quot;lname&quot;:&quot;Stallone&quot;, &quot;age&quot;:30,
+    &quot;address&quot;:{&quot;line&quot;:&quot;20 Palm Grove&quot;, &quot;city&quot;:&quot;Colombo 03&quot;,
+        &quot;country&quot;:&quot;Sri Lanka&quot;,&quot;province&quot;:&quot;Western&quot;}}
 </code></pre></div>
 
                                 </td>

@@ -8,9 +8,8 @@ permalink: /v0-991/learn/by-example/checkpanic
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;120&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
@@ -27,8 +26,8 @@ permalink: /v0-991/learn/by-example/checkpanic
                         <td class="cLeftTD">
                             <h2>Check Panic</h2>
                             <p><p><code>checkpanic</code> is a unary expression that is used to handle errors.
- The <code>checkpanic</code> expression checks the result of the sub expression and panics if the result is <code>error</code>.
- Hence, <code>checkpanic</code> can be considered as a built-in type-guard for errors where the program will panic
+ The <code>checkpanic</code> expression checks the result of the sub-expression and panics if the result is <code>error</code>.
+ Hence, <code>checkpanic</code> can be considered as a built-in type-guard for errors, where the program will panic
  if the result is an <code>error</code>.</p>
 </p>
 
@@ -103,7 +102,6 @@ permalink: /v0-991/learn/by-example/checkpanic
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -116,7 +114,7 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function parse(string num) returns int|error {
-    return ints:fromString(num);
+    return int.convert(num);
 }
 </code></pre></div>
 
@@ -125,7 +123,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>parse()</code> function takes a <code>string</code> argument and attempts to convert it to an <code>int</code>.</p>
+                                            <p><code>parse()</code> takes a <code>string</code> argument and attempts to convert it to an <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -157,9 +155,9 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>checkpanic</code> unary operator can be used to terminate execution on error.
- Here, <code>checkpanic</code> is used to panic if the <code>parse()</code>
- function evaluates to <code>error</code>. If the actual value returned
+                                            <p>The <code>checkpanic</code> unary operator can be used to lift errors.
+ In this instance, <code>checkpanic</code> is used to lift the (potential) error
+ returned by the <code>parse()</code> function. If the actual value returned
  by the function is an <code>error</code>, the function immediately panics
  with the error.
  Passing a valid integer as a <code>string</code> will return an <code>int</code>.</p>
@@ -183,7 +181,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Passing a random <code>string</code> will result in a panic.</p>
+                                            <p>Passing a random <code>string</code> will result in a <code>panic</code>.</p>
 
                                         </div>
                                     </div>
@@ -208,13 +206,13 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run checkpanic.bal
 120
-error: {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;Invalid&#39; cannot be converted to &#39;int&#39;
-        at ballerina.lang_int:fromString(int.bal:53)
-           checkpanic:parse(checkpanic.bal:6)
-           checkpanic:main(checkpanic.bal:20)
+error: {ballerina}ConversionError {&quot;message&quot;:&quot;incompatible convert operation: &#39;string&#39; value &#39;Invalid&#39; cannot be converted as &#39;int&#39;&quot;}
+        at ballerina/utils:simpleValueConvert(&lt;native&gt;)
+           parse(checkpanic.bal:5)
+           main(checkpanic.bal:19)
 </code></pre></div>
 
                                 </td>

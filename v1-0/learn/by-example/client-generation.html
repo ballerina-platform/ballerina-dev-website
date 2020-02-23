@@ -23,7 +23,9 @@ permalink: /v1-0/learn/by-example/client-generation
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
@@ -39,7 +41,7 @@ permalink: /v1-0/learn/by-example/client-generation
                         <td class="cLeftTD">
                             <h2>Client Generation</h2>
                             <p><p>This example generates a client for a Ballerina service.
- Add the <code>@openapi:ClientEndpoint</code> annotation to mark the listener(s) that are used for client generation.
+ Add the <code>@openapi:ClientEndpoint</code> annotation to mark the endpoint(s) that are used for client generation.
  Add the <code>@openapi:ClientConfig {generate: true}</code> annotation to the service to enable client generation.
  The generated client can be found in the <code>&lt;project.home&gt;/target/bin/client/</code> or <code>&lt;program.dir&gt;/client/</code> directory.</p>
 </p>
@@ -176,7 +178,9 @@ service Hello on helloEp {
         path: &quot;/hello&quot;
     }
     resource function hello(http:Caller caller, http:Request req) {
-        var result = caller-&gt;respond(&quot;Hello&quot;);
+        http:Response res = new;
+        res.setPayload(&quot;Hello&quot;);
+        var result = caller-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Error when responding&quot;, err = result);
         }

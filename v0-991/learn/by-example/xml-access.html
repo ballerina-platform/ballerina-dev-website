@@ -15,7 +15,6 @@ permalink: /v0-991/learn/by-example/xml-access
 <span class="s">                    &lt;mname&gt;Conan&lt;/mname&gt;</span>
 <span class="s">                    &lt;lname&gt;Doyle&lt;/lname&gt;</span>
 <span class="s">                &lt;/author&gt;</span>
-<span class="s">                &lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;</span>
 <span class="s">                &lt;!--Price: $10--&gt;</span>
 <span class="s">                &lt;/book&gt;`</span><span class="p">;</span>
     
@@ -27,9 +26,6 @@ permalink: /v0-991/learn/by-example/xml-access
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">fname</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">]</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;{http://ballerina.com/a}year&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
-    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/a&quot;</span> <span class="k">as</span> <span class="nx">foo</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="nx">foo</span><span class="p">:</span><span class="nx">year</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -49,16 +45,16 @@ permalink: /v0-991/learn/by-example/xml-access
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-attributes.html">
+                                    <a class="prev" href="xml-functions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>XML Attributes</p>
+                                        <p>XML Functions</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xml-namespaces.html">
+                                    <a class="next" href="xml-to-json-conversion.html">
                                         <span>NEXT ></span>
-                                        <p>XML Namespaces</p>
+                                        <p>XML/JSON Conversion</p>
                                     </a>
                                 </div>
                                 
@@ -95,8 +91,6 @@ permalink: /v0-991/learn/by-example/xml-access
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -151,7 +145,6 @@ permalink: /v0-991/learn/by-example/xml-access
                     &lt;mname&gt;Conan&lt;/mname&gt;
                     &lt;lname&gt;Doyle&lt;/lname&gt;
                 &lt;/author&gt;
-                &lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;
                 &lt;!--Price: $10--&gt;
                 &lt;/book&gt;`;
     
@@ -182,7 +175,7 @@ permalink: /v0-991/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can access child XML items using the field-based or index-based access expressions.</p>
+                                            <p>You can access child XML items using field-based or index-based access expressions.</p>
 
                                         </div>
                                     </div>
@@ -202,7 +195,7 @@ permalink: /v0-991/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accessing a non-existing child will return <code>nil</code>.</p>
+                                            <p>Accessing a non existing child will return <code>nil</code>.</p>
 
                                         </div>
                                     </div>
@@ -222,7 +215,7 @@ permalink: /v0-991/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The result of the above field-based or index-based access is another XML.
+                                            <p>Result of the above field-based or index-based access is another XML.
  Any XML function can be invoked on top of the resulting XML.</p>
 
                                         </div>
@@ -233,30 +226,9 @@ permalink: /v0-991/learn/by-example/xml-access
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.author.fname@[&quot;title&quot;]);
     io:println(bookXML[&quot;author&quot;][&quot;fname&quot;]@[&quot;title&quot;]);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>You can also retrieve attributes of the resulting child XML.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML[&quot;{http://ballerina.com/a}year&quot;].getTextValue());
-    xmlns &quot;http://ballerina.com/a&quot; as foo;
-    io:println(bookXML[foo:year].getTextValue());
 }
 </code></pre></div>
 
@@ -265,7 +237,7 @@ permalink: /v0-991/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can access the elements by their namespace-qualified (fully-qualified) name.</p>
+                                            <p>You can also retrieve attributes of the resulting child XML.</p>
 
                                         </div>
                                     </div>
@@ -294,7 +266,7 @@ permalink: /v0-991/learn/by-example/xml-access
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run xml-access.bal
 &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
 &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
@@ -313,8 +285,6 @@ $ ballerina run xml-access.bal
 Arthur
 Sir
 Sir
-2019
-2019
 </code></pre></div>
 
                                 </td>

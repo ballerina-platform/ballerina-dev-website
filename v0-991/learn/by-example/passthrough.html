@@ -22,7 +22,7 @@ permalink: /v0-991/learn/by-example/passthrough
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
@@ -263,7 +263,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;string&gt;clientResponse.detail()?.message);
+            res.setPayload(&lt;string&gt;clientResponse.detail().message);
             var result = caller-&gt;respond(res);
             if (result is error) {
                log:printError(&quot;Error sending response&quot;, err = result);
@@ -371,8 +371,9 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run passthrough.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;passthrough.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

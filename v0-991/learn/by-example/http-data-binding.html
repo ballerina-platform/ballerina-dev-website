@@ -12,21 +12,25 @@ permalink: /v0-991/learn/by-example/http-data-binding
     <span class="kt">string</span> <span class="nx">Name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">Grade</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">Marks</span><span class="p">;</span>
-<span class="p">};</span><span class="nd">@http:ServiceConfig{</span><span class="p">}</span>
-<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">};</span><span class="err">@</span><span class="nx">http</span><span class="p">:</span><span class="nx">ServiceConfig</span>
+<span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">respErr</span> <span class="p">=</span> <span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">;</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;orderDetails&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindJson</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                <span class="kt">json</span> <span class="nx">orderDetails</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">;</span>
+        <span class="kt">json</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">details</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;\\d+&quot;</span><span class="p">)))</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Details unavailable&quot;</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Details ID containts invalid data&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(!</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">.</span><span class="nx">Name</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span>
+                            <span class="nx">matches</span><span class="p">(</span><span class="s">&quot;[a-zA-Z]+&quot;</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Details Name containts invalid data&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">details</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -41,7 +45,13 @@ permalink: /v0-991/learn/by-example/http-data-binding
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span> <span class="kt">xml</span> <span class="nx">store</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;{http://www.test.com}city&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">city</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">city</span><span class="p">.</span><span class="nx">getTextValue</span><span class="p">().</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;\\d+&quot;</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;City containts invalid data&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">city</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
@@ -53,15 +63,28 @@ permalink: /v0-991/learn/by-example/http-data-binding
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                  <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
-        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
+        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span> <span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;[a-zA-Z]+&quot;</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Student name contains invalid data&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">untaint</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">untaint</span> <span class="nx">grade</span> <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">isValid</span><span class="p">(</span><span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">boolean</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -151,6 +174,18 @@ permalink: /v0-991/learn/by-example/http-data-binding
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -188,8 +223,20 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig{}
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig
 service hello on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string respErr = &quot;Failed to respond to the caller&quot;;
 </code></pre></div>
 
                                 </td>
@@ -225,13 +272,53 @@ service hello on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var details = orderDetails.Details;
+                                    <div class="highlight"><pre><code class=ballerina>        json details = orderDetails.Details;
         http:Response res = new;
-        if (details is json) {
-            res.setPayload(&lt;@untainted&gt; details);
-        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Accesses the JSON field values.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (!isValid(orderDetails.Details.ID.toString().matches(&quot;\\d+&quot;))) {
             res.statusCode = 400;
-            res.setPayload(&quot;Order Details unavailable&quot;);
+            res.setPayload(&quot;Order Details ID containts invalid data&quot;);
+        } else if (!isValid(orderDetails.Details.Name.toString().
+                            matches(&quot;[a-zA-Z]+&quot;))) {
+            res.statusCode = 400;
+            res.setPayload(&quot;Order Details Name containts invalid data&quot;);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Performs data validation for orderDetails.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(untaint details);
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
@@ -245,7 +332,8 @@ service hello on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accesses the JSON field values.</p>
+                                            <p>Since there is no validation error, mark the details as trusted
+ data and set it to the response.</p>
 
                                         </div>
                                     </div>
@@ -282,7 +370,6 @@ service hello on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
         http:Response res = new;
-        res.setPayload(&lt;@untainted&gt; city);
 </code></pre></div>
 
                                 </td>
@@ -298,10 +385,34 @@ service hello on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
+                                    <div class="highlight"><pre><code class=ballerina>        if (!isValid(city.getTextValue().matches(&quot;\\d+&quot;))) {
+            res.statusCode = 400;
+            res.setPayload(&quot;City containts invalid data&quot;);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Performs data validation for input data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(untaint city);
+        }
+        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(result.reason(), err = result);
         }
@@ -310,6 +421,14 @@ service hello on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since there is no validation error, mark the city as trusted
+ data and set it to the response.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -343,11 +462,9 @@ match the record.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt; student.Name;
-        int grade = &lt;@untainted&gt; student.Grade;
-        string english = &lt;@untained&gt; &lt;string&gt; student.Marks[&quot;English&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>        string name = student.Name;
+        int grade = student.Grade;
         http:Response res = new;
-        res.setPayload({ Name: name, Grade: grade, English: english });
 </code></pre></div>
 
                                 </td>
@@ -355,7 +472,56 @@ match the record.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accesses the fields of the <code>Student</code> record.</p>
+                                            <p>Accesses the fields of the record <code>Student</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (!isValid(student.Name.matches(&quot;[a-zA-Z]+&quot;))) {
+            res.statusCode = 400;
+            res.setPayload(&quot;Student name contains invalid data&quot;);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Performs data validation for input data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload({ Name: untaint name, Grade: untaint grade });
+        }
+        var result = caller-&gt;respond(res);
+        if (result is error) {
+           log:printError(result.reason(), err = result);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since there is no validation error, mark the inputs as trusted
+ data and set them to the response.</p>
 
                                         </div>
                                     </div>
@@ -366,11 +532,14 @@ match the record.</p>
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
-        if (result is error) {
-           log:printError(result.reason(), err = result);
-        }
+                                    <div class="highlight"><pre><code class=ballerina>function isValid(boolean|error result) returns boolean {
+    if (result is boolean) {
+        return result;
+    } if (result is error) {
+        log:printError(result.reason(), err = result);
+        return false;
     }
+    return false;
 }
 </code></pre></div>
 
@@ -400,7 +569,8 @@ match the record.</p>
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_data_binding.bal
 #Service deployment
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;http_data_binding.bal&#39;
+[ballerina/http] started HTTP/WS server connector 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -433,10 +603,10 @@ $ ballerina run http_data_binding.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, execute the below HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindJson` resource, use the following HTTP request.
 $ curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { &quot;ID&quot;: &quot;77999&quot;, &quot;Name&quot;: &quot;XYZ&quot;} , &quot;Location&quot;: { &quot;No&quot;: &quot;01&quot;, &quot;City&quot;: &quot;Colombo&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
-{&quot;ID&quot;:&quot;77999&quot;, &quot;Name&quot;:&quot;XYZ&quot;}
+{&quot;ID&quot;:&quot;77999&quot;,&quot;Name&quot;:&quot;XYZ&quot;}
 </code></pre></div>
 
                                 </td>
@@ -448,7 +618,7 @@ $ curl -v http://localhost:9090/hello/bindJson -d &#39;{ &quot;Details&quot;: { 
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, execute the below HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindXML` resource, use the following  HTTP request.
 $ curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;AST\&quot; xmlns:h=\&quot;http://www.test.com\&quot;&gt;&lt;h:street&gt;Main&lt;/h:street&gt;&lt;h:city&gt;94&lt;/h:city&gt;&lt;/h:Store&gt;&quot; -H &quot;Content-Type:application/xml&quot;
 # Server response:
 &lt;h:city xmlns:h=&quot;http://www.test.com&quot;&gt;94&lt;/h:city&gt;
@@ -463,10 +633,10 @@ $ curl -v http://localhost:9090/hello/bindXML -d &quot;&lt;h:Store id = \&quot;A
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, execute the below HTTP request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the `bindStruct` resource, use the following  HTTP request.
 $ curl -v http://localhost:9090/hello/bindStruct -d &#39;{ &quot;Name&quot;: &quot;John&quot;, &quot;Grade&quot;: 12, &quot;Marks&quot;: {&quot;English&quot; : &quot;85&quot;, &quot;IT&quot; : &quot;100&quot;}}&#39; -H &quot;Content-Type:application/json&quot;
 # Server response:
-{&quot;Name&quot;:&quot;John&quot;, &quot;Grade&quot;:12, &quot;English&quot;:&quot;85&quot;}
+{&quot;Name&quot;:&quot;John&quot;,&quot;Grade&quot;:12}
 </code></pre></div>
 
                                 </td>

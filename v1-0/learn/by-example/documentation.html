@@ -36,14 +36,6 @@ permalink: /v1-0/learn/by-example/documentation
     <span class="kt">string</span> <span class="nx">fieldOne</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">fieldTwo</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="err">#</span> <span class="nx">This</span> <span class="kd">function</span> <span class="nx">returns</span> <span class="nx">the</span> <span class="s">`fieldTwo`</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="s">`DummyRecord`</span><span class="o">-</span><span class="nx">typed</span> 
-<span class="err">#</span> <span class="nx">record</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="k">as</span> <span class="nx">an</span> <span class="nx">argument</span><span class="p">.</span>
-<span class="err">#</span>
-<span class="err">#</span> <span class="o">+</span> <span class="nx">recordValue</span> <span class="o">-</span> <span class="nx">Parameter</span> <span class="nx">of</span> <span class="nx">type</span> <span class="s">`DummyRecord`</span><span class="p">.</span>
-<span class="err">#</span> <span class="o">+</span> <span class="k">return</span> <span class="o">-</span> <span class="nx">The</span> <span class="s">`fieldTwo`</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">record</span> <span class="nx">value</span> <span class="nx">passed</span> <span class="k">as</span> <span class="nx">an</span> <span class="nx">argument</span><span class="p">.</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">dummyFunction</span><span class="p">(</span><span class="nx">DummyRecord</span> <span class="nx">recordValue</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">recordValue</span><span class="p">.</span><span class="nx">fieldTwo</span><span class="p">;</span>
-<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -69,9 +61,9 @@ permalink: /v1-0/learn/by-example/documentation
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="function-pointers.html">
+                                    <a class="next" href="quoted-identifiers.html">
                                         <span>NEXT ></span>
-                                        <p>Function Pointers</p>
+                                        <p>Quoted Identifiers</p>
                                     </a>
                                 </div>
                                 
@@ -108,8 +100,6 @@ permalink: /v1-0/learn/by-example/documentation
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -221,7 +211,7 @@ public type DummyObject abstract object {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina># `DummyRecord` is a user-defined record.
 # This `DummyRecord` has a `string` data field and an `int` data field.
 #
@@ -239,32 +229,6 @@ public type DummyRecord record {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This is the documentation attachment of the <code>DummyRecord</code> record.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina># This function returns the `fieldTwo` field of the `DummyRecord`-typed 
-# record value passed as an argument.
-#
-# + recordValue - Parameter of type `DummyRecord`.
-# + return - The `fieldTwo` field of the record value passed as an argument.
-public function dummyFunction(DummyRecord recordValue) returns int {
-    return recordValue.fieldTwo;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the documentation attachment of the <code>dummyFunction</code> function.</p>
 
                                         </div>
                                     </div>

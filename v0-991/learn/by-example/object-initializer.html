@@ -10,27 +10,19 @@ permalink: /v0-991/learn/by-example/object-initializer
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">Person</span> <span class="nx">object</span> <span class="p">{</span>    <span class="nx">public</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">private</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
-        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">validateAge</span><span class="p">(</span><span class="nx">age</span><span class="p">);</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">validateName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="kd">function</span> <span class="nx">validateAge</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">age</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">age</span> <span class="p">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">age</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">error</span> <span class="nx">invalidAge</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;The age should be between 0-100&quot;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">invalidAge</span><span class="p">;</span>
+<span class="p">};</span><span class="kd">function</span> <span class="nx">validateName</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">check</span> <span class="nx">name</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;[A-Za-z]*&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">error</span> <span class="nx">invName</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Invalid name format&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">invName</span><span class="p">;</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">p1</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
-    <span class="p">}</span>
-    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">p2</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;John123&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -41,10 +33,10 @@ permalink: /v0-991/learn/by-example/object-initializer
                     <tr>
                         <td class="cLeftTD">
                             <h2>Object Initializer</h2>
-                            <p><p>In Ballerina, objects can have a method named <code>__init()</code>, which is used to initialize the object when creating a
+                            <p><p>In Ballerina, objects can have a method named <code>__init()</code> which is used to initialize the object when creating a
  new object. This method can have parameters as in any other method. However, the return type of the <code>__init()</code> method
- should be a subtype of <code>error|()</code>, which includes <code>()</code>. If an explicit definition for the <code>__init()</code> method
- is not specified, there will be an implicit <code>__init()</code> method, which does not accept any parameters and returns <code>()</code>.</p>
+ should be a subtype of <code>error|()</code> which includes <code>()</code>. If an explicit definition for the <code>__init()</code> method
+ is not specified, there will be an implicit <code>__init()</code> method which does not accept any parameters and returns <code>()</code>.</p>
 </p>
 
                         </td>
@@ -145,8 +137,8 @@ permalink: /v0-991/learn/by-example/object-initializer
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>Person</code>. Each object has its own <code>__init()</code> method, which gets
- invoked when creating the objects. You can place the logic for initializing the fields of the
+                                            <p>Defines an object called <code>Person</code>. Each object has its own <code>__init()</code> method which gets
+ invoked when creating objects. You can place the logic for initializing the fields of the
  object within the body of the <code>__init()</code> method.</p>
 
                                         </div>
@@ -172,8 +164,8 @@ permalink: /v0-991/learn/by-example/object-initializer
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    function __init(string name, int age) returns error? {
-        self.name = name;
-        self.age = check validateAge(age);
+        self.name = check validateName(name);
+        self.age = age;
     }
 };
 </code></pre></div>
@@ -187,9 +179,9 @@ permalink: /v0-991/learn/by-example/object-initializer
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function validateAge(int age) returns int|error {
-    if (age &gt; 0 &amp;&amp; age &lt; 100) {
-        return age;
+                                    <div class="highlight"><pre><code class=ballerina>function validateName(string name) returns string|error {
+    if (check name.matches(&quot;[A-Za-z]*&quot;)) {
+        return name;
     }
 </code></pre></div>
 
@@ -202,8 +194,8 @@ permalink: /v0-991/learn/by-example/object-initializer
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error invalidAge = error(&quot;The age should be between 0-100&quot;);
-    return invalidAge;
+                                    <div class="highlight"><pre><code class=ballerina>    error invName = error(&quot;Invalid name format&quot;);
+    return invName;
 }
 </code></pre></div>
 
@@ -229,11 +221,7 @@ permalink: /v0-991/learn/by-example/object-initializer
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person|error p1 = new(&quot;John&quot;, 25);
-    if (p1 is Person) {
-        io:println(p1.name);
-    } else {
-        io:println(p1.reason());
-    }
+    io:println(p1);
 </code></pre></div>
 
                                 </td>
@@ -242,7 +230,7 @@ permalink: /v0-991/learn/by-example/object-initializer
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Since the <code>__init()</code> method potentially returns an <code>error</code>, the <code>p1</code> variable should
- be of the type <code>Person|error</code>.</p>
+ be of type <code>Person|error</code>.</p>
 
                                         </div>
                                     </div>
@@ -253,12 +241,8 @@ permalink: /v0-991/learn/by-example/object-initializer
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error p2 = new(&quot;Sam&quot;, -20);
-    if (p2 is Person) {
-        io:println(p2.name);
-    } else {
-        io:println(p2.reason());
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error p2 = new(&quot;John123&quot;, 25);
+    io:println(p2);
 }
 </code></pre></div>
 
@@ -292,10 +276,10 @@ permalink: /v0-991/learn/by-example/object-initializer
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run object_initializer.bal
-John
-The age should be between 0-100
+{name:&quot;John&quot;}
+Invalid name format {}
 </code></pre></div>
 
                                 </td>

@@ -16,10 +16,10 @@ permalink: /v0-991/learn/by-example/objects
     <span class="kt">string</span> <span class="nx">address</span> <span class="p">=</span> <span class="s">&quot;No 20, Palm grove&quot;</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p1</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">);</span>
     <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Person</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p3</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -30,9 +30,9 @@ permalink: /v0-991/learn/by-example/objects
                     <tr>
                         <td class="cLeftTD">
                             <h2>Object</h2>
-                            <p><p>Objects are a behaviourial type. An object is a combination of public, private, and module-level visible fields along with a
+                            <p><p>Objects are a behaviourial type. An object is a combination of public, private and module-level visible fields along with a
  set of associated functions (called methods) that can be used to manipulate the fields. This allows you
- to define custom-behavioural data types.</p>
+ to define custom behavioural data types.</p>
 </p>
 
                         </td>
@@ -135,7 +135,7 @@ permalink: /v0-991/learn/by-example/objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an object called <code>Person</code>. It contains <code>public</code>, <code>private</code>, and module-level visible fields along with their types.
+                                            <p>Defines an object called <code>Person</code>. It contains <code>public</code>, <code>private</code> and module-level visible fields along with their types.
  For fields, the default value must be specified if an explicit object initializer method is not defined.</p>
 
                                         </div>
@@ -155,9 +155,9 @@ permalink: /v0-991/learn/by-example/objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If you need to have a field with its own type, you need to make that field defaultable
+                                            <p>If you need to have a field with own type, you need to make that field defaultable
  (i.e., able to specify a default value).
- Here, the <code>parent</code> field is made defaultable by allowing it to have nil as a value.</p>
+ Here we have made the <code>parent</code> field defaultable by making it nilable.</p>
 
                                         </div>
                                     </div>
@@ -220,7 +220,7 @@ permalink: /v0-991/learn/by-example/objects
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person p1 = new;
-    io:println(p1.age);
+    io:println(p1);
 </code></pre></div>
 
                                 </td>
@@ -240,7 +240,7 @@ permalink: /v0-991/learn/by-example/objects
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    Person p2 = new();
-    io:println(p2.age);
+    io:println(p2);
 </code></pre></div>
 
                                 </td>
@@ -253,7 +253,7 @@ permalink: /v0-991/learn/by-example/objects
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    Person p3 = new Person();
-    io:println(p3.age);
+    io:println(p2);
 }
 </code></pre></div>
 
@@ -262,7 +262,7 @@ permalink: /v0-991/learn/by-example/objects
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This type of initialization is useful when you cannot determine the type of the object to be
+                                            <p>This type of initialization is useful when you can not determine the type of the object to be
  created based on the context (e.g., when the left hand side is a union of object types).</p>
 
                                         </div>
@@ -288,11 +288,11 @@ permalink: /v0-991/learn/by-example/objects
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run objects.bal
-0
-0
-0
+{age:0, name:&quot;&quot;, parent:()}
+{age:0, name:&quot;&quot;, parent:()}
+{age:0, name:&quot;&quot;, parent:()}
 </code></pre></div>
 
                                 </td>

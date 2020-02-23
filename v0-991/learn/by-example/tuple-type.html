@@ -8,26 +8,24 @@ permalink: /v0-991/learn/by-example/tuple-type
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
-    
-    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
+    <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">aint</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">astr</span><span class="p">;</span>
-    <span class="p">[</span><span class="nx">aint</span><span class="p">,</span> <span class="nx">astr</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="p">(</span><span class="nx">aint</span><span class="p">,</span> <span class="nx">astr</span><span class="p">)</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">aint</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">astr</span><span class="p">);</span>
-    <span class="k">var</span> <span class="p">[</span><span class="nx">aint1</span><span class="p">,</span> <span class="nx">astr1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
-    <span class="k">var</span> <span class="p">[</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;06/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span> <span class="nx">q</span><span class="p">,</span> <span class="s">&quot; remainder=&quot;</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
-    <span class="k">var</span> <span class="p">[</span><span class="nx">q1</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">57</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span><span class="p">,</span> <span class="s">&quot;quotient=&quot;</span><span class="p">,</span>  <span class="nx">q1</span><span class="p">);</span>    <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
-    <span class="k">var</span> <span class="p">[</span><span class="nx">_</span><span class="p">,</span> <span class="nx">r1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;09/10: &quot;</span><span class="p">,</span> <span class="s">&quot;remainder=&quot;</span><span class="p">,</span> <span class="nx">r1</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">(</span><span class="nx">aint1</span><span class="p">,</span> <span class="nx">astr1</span><span class="p">)</span> <span class="p">=</span> <span class="nx">a</span><span class="p">;</span>
+    <span class="k">var</span> <span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">)</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;06/10: &quot;</span> <span class="o">+</span> <span class="s">&quot;quotient=&quot;</span> <span class="o">+</span> <span class="nx">q</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="s">&quot;remainder=&quot;</span> <span class="o">+</span> <span class="nx">r</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">(</span><span class="nx">q1</span><span class="p">,</span> <span class="nx">_</span><span class="p">)</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">57</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;57/10: &quot;</span> <span class="o">+</span> <span class="s">&quot;quotient=&quot;</span> <span class="o">+</span> <span class="nx">q1</span><span class="p">);</span>    <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">returnValue</span> <span class="p">=</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="mi">9</span><span class="p">);</span>
+    <span class="k">var</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">r1</span><span class="p">)</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;09/10: &quot;</span> <span class="o">+</span> <span class="s">&quot;remainder=&quot;</span> <span class="o">+</span> <span class="nx">r1</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="kt">int</span> <span class="nx">d</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">([</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">divideBy10</span><span class="p">(</span><span class="kt">int</span> <span class="nx">d</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">q</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">d</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">];</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -38,8 +36,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                     <tr>
                         <td class="cLeftTD">
                             <h2>Tuples</h2>
-                            <p><p>A tuple is an immutable list of two or more values of a fixed length.
- A tuple type is described by specifying the type of each member in the list.</p>
+                            <p><p>A tuple is an immutable list of two or more values of fixed length.
+ A tuple type is described by specifying the type for each member in the list.</p>
 </p>
 
                         </td>
@@ -114,6 +112,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -146,11 +146,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, string] a = [10, &quot;John&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    (int, string) a = (10, &quot;John&quot;);
     io:println(a);
-    
-    int aint;
-    string astr;
 </code></pre></div>
 
                                 </td>
@@ -158,7 +155,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the type of <code>a</code> as a pair that consists of an <code>int</code> and a <code>string</code>.</p>
+                                            <p>Define the type of <code>a</code> as a pair that consists of an <code>int</code> and a <code>string</code>.</p>
 
                                         </div>
                                     </div>
@@ -166,10 +163,23 @@ permalink: /v0-991/learn/by-example/tuple-type
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int aint;
+    string astr;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [aint, astr] = a;
+                                    <div class="highlight"><pre><code class=ballerina>    (aint, astr) = a;
     io:println(aint);
     io:println(astr);
 </code></pre></div>
@@ -179,7 +189,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a tuple of variable names on the left with a variable reference of which the type is a tuple.
+                                            <p>Define a tuple of variable names on the left, with a variable reference of which the type is a tuple.
  The assignment statement assigns values of the tuple on the right to the variables on the left.
  In Ballerina, this is referred to as tuple destructuring.</p>
 
@@ -192,7 +202,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var [aint1, astr1] = a;
+                                    <div class="highlight"><pre><code class=ballerina>    var (aint1, astr1) = a;
 </code></pre></div>
 
                                 </td>
@@ -200,7 +210,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can declare and assign values with <code>var</code> like this.</p>
+                                            <p>You can declare and assign values with <code>var</code> as shown here.</p>
 
                                         </div>
                                     </div>
@@ -211,8 +221,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var [q, r] = divideBy10(6);
-    io:println(&quot;06/10: &quot;, &quot;quotient=&quot;, q, &quot; remainder=&quot;, r);
+                                    <div class="highlight"><pre><code class=ballerina>    var (q, r) = divideBy10(6);
+    io:println(&quot;06/10: &quot; + &quot;quotient=&quot; + q + &quot; &quot; + &quot;remainder=&quot; + r);
 </code></pre></div>
 
                                 </td>
@@ -220,7 +230,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invokes a function that returns a tuple.</p>
+                                            <p>Invoke a function that returns a tuple.</p>
 
                                         </div>
                                     </div>
@@ -231,8 +241,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var [q1, _] = divideBy10(57);
-    io:println(&quot;57/10: &quot;, &quot;quotient=&quot;,  q1);
+                                    <div class="highlight"><pre><code class=ballerina>    var (q1, _) = divideBy10(57);
+    io:println(&quot;57/10: &quot; + &quot;quotient=&quot; + q1);
 </code></pre></div>
 
                                 </td>
@@ -252,7 +262,7 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    [int, int] returnValue = divideBy10(9);
+                                    <div class="highlight"><pre><code class=ballerina>    (int, int) returnValue = divideBy10(9);
 </code></pre></div>
 
                                 </td>
@@ -264,8 +274,8 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var [_, r1] = returnValue;
-    io:println(&quot;09/10: &quot;, &quot;remainder=&quot;, r1);
+                                    <div class="highlight"><pre><code class=ballerina>    var (_, r1) = returnValue;
+    io:println(&quot;09/10: &quot; + &quot;remainder=&quot; + r1);
 }
 </code></pre></div>
 
@@ -285,10 +295,10 @@ permalink: /v0-991/learn/by-example/tuple-type
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function divideBy10(int d) returns ([int, int]) {
+                                    <div class="highlight"><pre><code class=ballerina>function divideBy10(int d) returns (int, int) {
     int q = d / 10;
     int r = d % 10;
-    return [q, r];
+    return (q, r);
 }
 </code></pre></div>
 
@@ -322,9 +332,9 @@ permalink: /v0-991/learn/by-example/tuple-type
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run tuple_type.bal
-10 John
+(10, &quot;John&quot;)
 10
 John
 06/10: quotient=0 remainder=6

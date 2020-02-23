@@ -8,26 +8,24 @@ permalink: /v1-0/learn/by-example/jdbc-streaming-big-dataset
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jsonutils</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jsonutils</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
-<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-    <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
+    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span>
 <span class="p">});</span>
 <span class="kd">service</span> <span class="nx">dataService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">selectRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM Data&quot;</span><span class="p">,</span> <span class="p">());</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">selectRet</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">selectRet</span> <span class="nx">is</span> <span class="nx">table</span> <span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
             <span class="kt">json</span> <span class="nx">jsonConversionRet</span> <span class="p">=</span> <span class="nx">jsonutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">selectRet</span><span class="p">);</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">jsonConversionRet</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">jsonConversionRet</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while retrieving data &quot;</span> <span class="o">+</span>
-                <span class="s">&quot;from the database&quot;</span>
-            <span class="p">});</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while retrieving data &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from the database&quot;</span> <span class="p">});</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">respondRet</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">respondRet</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -36,14 +34,13 @@ permalink: /v1-0/learn/by-example/jdbc-streaming-big-dataset
     <span class="p">}</span>
 <span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
         <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/testdb&quot;</span><span class="p">,</span>
         <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
-        <span class="nx">dbOptions</span><span class="p">:</span> <span class="p">{</span><span class="nx">useSSL</span><span class="p">:</span> <span class="kc">false</span><span class="p">}</span>
+        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span>
     <span class="p">});</span>
     <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE Data (id INT, field1 &quot;</span> <span class="o">+</span>
-    <span class="s">&quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;</span><span class="p">);</span>
+        <span class="s">&quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create Data table&quot;</span><span class="p">);</span>
     <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE PopulateData(IN row_count INT) &quot;</span> <span class="o">+</span>
        <span class="s">&quot;BEGIN &quot;</span> <span class="o">+</span>
@@ -64,18 +61,20 @@ permalink: /v1-0/learn/by-example/jdbc-streaming-big-dataset
        <span class="s">&quot;END&quot;</span><span class="p">);</span>
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with IN param creation&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;CALL PopulateData(?)&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">100000</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span><span class="p">,</span>
-                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retCall</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="p">()|</span><span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;[])</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call operation is successful&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">retCall</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span><span class="p">,</span>
+                     <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">|</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">returned</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -180,8 +179,8 @@ permalink: /v1-0/learn/by-example/jdbc-streaming-big-dataset
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
-import ballerina/jsonutils;
 import ballerina/log;
+import ballerina/jsonutils;
 import ballerinax/java.jdbc;
 </code></pre></div>
 
@@ -194,11 +193,10 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new ({
+                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new({
     url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
     username: &quot;test&quot;,
-    password: &quot;test&quot;,
-    dbOptions: {useSSL: false}
+    password: &quot;test&quot;
 });
 </code></pre></div>
 
@@ -207,8 +205,7 @@ import ballerinax/java.jdbc;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>JDBC Client for MySQL database. This client can be used with any JDBC
- supported database by providing the corresponding JDBC URL.</p>
+                                            <p>Create MySQL client.</p>
 
                                         </div>
                                     </div>
@@ -252,7 +249,7 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var selectRet = testDB-&gt;select(&quot;SELECT * FROM Data&quot;, ());
-        if (selectRet is table&lt;record {}&gt;) {
+        if (selectRet is table &lt;record {}&gt;) {
 </code></pre></div>
 
                                 </td>
@@ -293,7 +290,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(&lt;@untainted&gt;jsonConversionRet);
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(&lt;@untainted&gt; jsonConversionRet);
         } else {
 </code></pre></div>
 
@@ -315,9 +312,8 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            res.setPayload({&quot;Error&quot;: &quot;Error occured while retrieving data &quot; +
-                &quot;from the database&quot;
-            });
+            res.setPayload({ &quot;Error&quot;: &quot;Error occured while retrieving data &quot; +
+            &quot;from the database&quot; });
         }
 </code></pre></div>
 
@@ -447,11 +443,10 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
-    jdbc:Client testDB = new ({
+    jdbc:Client testDB = new({
         url: &quot;jdbc:mysql://localhost:3306/testdb&quot;,
         username: &quot;test&quot;,
-        password: &quot;test&quot;,
-        dbOptions: {useSSL: false}
+        password: &quot;test&quot;
     });
 </code></pre></div>
 
@@ -465,7 +460,7 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1 &quot; +
-    &quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;);
+        &quot;VARCHAR(1024), field2 VARCHAR(1024));&quot;);
     handleUpdate(ret, &quot;Create Data table&quot;);
 </code></pre></div>
 
@@ -522,11 +517,12 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var retCall = testDB-&gt;call(&quot;CALL PopulateData(?)&quot;, (), 100000);
-    if (retCall is error) {
-        io:println(&quot;Stored procedure call failed: &quot;,
-                    &lt;string&gt;retCall.detail()?.message);
-    } else {
+    if (retCall is ()|table&lt;record {}&gt;[]) {
         io:println(&quot;Call operation is successful&quot;);
+    } else {
+        error err = retCall;
+        io:println(&quot;Stored procedure call failed: &quot;,
+                     &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>
@@ -552,7 +548,8 @@ import ballerinax/java.jdbc;
     if (returned is jdbc:UpdateResult) {
         io:println(message, &quot; status: &quot;, returned.updatedRowCount);
     } else {
-        io:println(message, &quot; failed: &quot;, &lt;string&gt;returned.detail()?.message);
+        error err = returned;
+        io:println(message, &quot; failed: &quot;, &lt;string&gt; err.detail()[&quot;message&quot;]);
     }
 }
 </code></pre></div>

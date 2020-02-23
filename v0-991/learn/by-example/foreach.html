@@ -11,26 +11,23 @@ permalink: /v0-991/learn/by-example/foreach
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Iterating a string array :&quot;</span><span class="p">);</span>
     <span class="kt">string</span><span class="p">[]</span> <span class="nx">fruits</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="s">&quot;cherry&quot;</span><span class="p">];</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">v</span> <span class="nx">in</span> <span class="nx">fruits</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;fruit: &quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;fruit: &quot;</span> <span class="o">+</span> <span class="nx">v</span><span class="p">);</span>
     <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a map :&quot;</span><span class="p">);</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">words</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">a</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="s">&quot;banana&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">:</span> <span class="s">&quot;cherry&quot;</span> <span class="p">};</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">fruit</span> <span class="nx">in</span> <span class="nx">words</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">fruit</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">words</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;letter: &quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="s">&quot;, word: &quot;</span><span class="p">,</span> <span class="nx">v</span><span class="p">);</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span> <span class="nx">in</span> <span class="nx">words</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;letter: &quot;</span> <span class="o">+</span> <span class="nx">k</span> <span class="o">+</span> <span class="s">&quot;, word: &quot;</span> <span class="o">+</span> <span class="nx">v</span><span class="p">);</span>
     <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON object :&quot;</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">apple</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">colors</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">],</span> <span class="nx">price</span><span class="p">:</span> <span class="mi">5</span> <span class="p">};</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">mapValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">apple</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">value</span> <span class="nx">in</span> <span class="nx">mapValue</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;string value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;json array value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">mapValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">apple</span><span class="p">);</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">j</span><span class="p">)</span> <span class="nx">in</span> <span class="nx">mapValue</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;string value: &quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;json array value: &quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;non-string value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;non-string value: &quot;</span><span class="p">,</span> <span class="nx">j</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a JSON array :&quot;</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">colors</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span><span class="nx">apple</span><span class="p">.</span><span class="nx">colors</span><span class="p">;</span>
@@ -44,7 +41,7 @@ permalink: /v0-991/learn/by-example/foreach
 <span class="s">                        &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;</span>
 <span class="s">                    &lt;/book&gt;`</span><span class="p">;</span>
     <span class="nx">counter</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">x</span> <span class="nx">in</span> <span class="nx">book</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">().</span><span class="nx">elements</span><span class="p">(){</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">x</span> <span class="nx">in</span> <span class="nx">book</span><span class="p">.</span><span class="o">*</span><span class="p">.</span><span class="nx">elements</span><span class="p">(){</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;xml at &quot;</span><span class="p">,</span> <span class="nx">counter</span><span class="p">,</span> <span class="s">&quot;: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">);</span>
         <span class="nx">counter</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a closed integer range :&quot;</span><span class="p">);</span>
@@ -53,13 +50,13 @@ permalink: /v0-991/learn/by-example/foreach
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">..</span><span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a half open integer range :&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;summation from 1 to &quot;</span> <span class="o">+</span> <span class="nx">endValue</span> <span class="o">+</span> <span class="s">&quot; is &quot;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nIterating a half open integer range :&quot;</span><span class="p">);</span>
     <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">.&lt;</span><span class="nx">endValue</span> <span class="p">{</span>
         <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">i</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;summation from 1 to &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span>
-                        <span class="s">&quot; excluding &quot;</span><span class="p">,</span> <span class="nx">endValue</span><span class="p">,</span> <span class="s">&quot; is &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;summation from 1 to &quot;</span> <span class="o">+</span> <span class="nx">endValue</span> <span class="o">+</span> <span class="s">&quot; excluding &quot;</span>
+                    <span class="o">+</span> <span class="nx">endValue</span> <span class="o">+</span> <span class="s">&quot; is &quot;</span> <span class="o">+</span> <span class="nx">sum</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -158,8 +155,6 @@ permalink: /v0-991/learn/by-example/foreach
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -195,7 +190,7 @@ permalink: /v0-991/learn/by-example/foreach
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    foreach var v in fruits {
-        io:println(&quot;fruit: &quot;, v);
+        io:println(&quot;fruit: &quot; + v);
     }
 </code></pre></div>
 
@@ -204,8 +199,8 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>foreach</code> statement can be used to iterate an array. Each iteration returns an element in the array.
- The index of the corresponding element is not returned.</p>
+                                            <p>The <code>foreach</code> statement can be used to iterate an array. Each iteration returns an element in the array. Note
+ that the index of the corresponding element is not returned.</p>
 
                                         </div>
                                     </div>
@@ -229,8 +224,8 @@ permalink: /v0-991/learn/by-example/foreach
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var fruit in words {
-        io:println(fruit);
+                                    <div class="highlight"><pre><code class=ballerina>    foreach var (k, v) in words {
+        io:println(&quot;letter: &quot; + k + &quot;, word: &quot; + v);
     }
 </code></pre></div>
 
@@ -239,29 +234,8 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Iterating a map will return the values in the map.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var [k, v] in words.entries() {
-        io:println(&quot;letter: &quot;, k, &quot;, word: &quot;, v);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Calling the <code>.entries()' method on a</code>map<code>and iterating it will return the key (</code>string<code>) and the value as a
-</code>tuple` variable. Tuple destructuring can be used to split the tuple variable into two variables.</p>
+                                            <p>Iterating a <code>map</code> will return the key (<code>string</code>) and the value as a <code>tuple</code> variable.
+ We can use tuple destructuring to split the tuple variable in to two variables.</p>
 
                                         </div>
                                     </div>
@@ -285,14 +259,14 @@ permalink: /v0-991/learn/by-example/foreach
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; mapValue = &lt;map&lt;json&gt;&gt; apple;
-    foreach var value in mapValue {
-        if (value is string) {
-            io:println(&quot;string value: &quot;, value);
-        } else if (value is int) {
-            io:println(&quot;int value: &quot;, value);
-        } else if (value is json[]) {
-            io:println(&quot;json array value: &quot;, value);
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;json&gt; mapValue = &lt;map&lt;json&gt;&gt; map&lt;json&gt;.convert(apple);
+    foreach var (i, j) in mapValue {
+        if (j is string) {
+            io:println(&quot;string value: &quot;, j);
+        } else if (j is int) {
+            io:println(&quot;int value: &quot;, j);
+        } else if (j is json[]) {
+            io:println(&quot;json array value: &quot;, j);
         } else {
 </code></pre></div>
 
@@ -301,8 +275,8 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Iterating a JSON is only supported with <code>map&lt;json&gt;</code> or <code>json[]</code>.
- To iterate a JSON, first cast it to the relevant iterable type.</p>
+                                            <p>Iterating a JSON is not supported. To iterate a JSON, first convert the JSON to a <code>map</code> and then iterate
+ the newly created <code>map</code>.</p>
 
                                         </div>
                                     </div>
@@ -313,7 +287,7 @@ permalink: /v0-991/learn/by-example/foreach
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;non-string value: &quot;, value);
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;non-string value: &quot;, j);
         }
     }
 </code></pre></div>
@@ -323,8 +297,8 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>JSON is a union type for <code>()</code> or <code>null</code> | <code>int</code> | <code>float</code> | <code>decimal</code> | <code>string</code> | <code>json[]</code> | <code>map&lt;json&gt;</code>.
- The else block will be reached if <code>j</code> is neither <code>string</code>, <code>int</code>, or <code>json[]</code>.</p>
+                                            <p>JSON is a union type for <code>()</code> or <code>null</code> | <code>int</code> | <code>float</code> | <code>decimal</code> | <code>string</code> | <code>json[]</code> | <code>map&lt;json&gt;</code>,
+ The else block will be reached if <code>j</code> is neither <code>string</code>, <code>int</code> or <code>json[]</code>.</p>
 
                                         </div>
                                     </div>
@@ -360,7 +334,7 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>To iterate a JSON array, you need to first cast it into a JSON array (<code>json[]</code>).</p>
+                                            <p>To iterate a JSON array, you need to first cast it into an array of json (<code>json[]</code>).</p>
 
                                         </div>
                                     </div>
@@ -388,7 +362,7 @@ permalink: /v0-991/learn/by-example/foreach
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    counter = 0;
-    foreach var x in book.getChildren().elements(){
+    foreach var x in book.*.elements(){
         io:println(&quot;xml at &quot;, counter, &quot;: &quot;, x);
         counter += 1;
     }
@@ -427,7 +401,7 @@ permalink: /v0-991/learn/by-example/foreach
                                     <div class="highlight"><pre><code class=ballerina>    foreach var i in 1...endValue {
         sum = sum + i;
     }
-    io:println(&quot;summation from 1 to &quot;, endValue, &quot; is &quot;, sum);
+    io:println(&quot;summation from 1 to &quot; + endValue + &quot; is &quot; + sum);
 </code></pre></div>
 
                                 </td>
@@ -463,8 +437,8 @@ permalink: /v0-991/learn/by-example/foreach
                                     <div class="highlight"><pre><code class=ballerina>    foreach var i in 1..&lt;endValue {
         sum = sum + i;
     }
-    io:println(&quot;summation from 1 to &quot;, endValue,
-                        &quot; excluding &quot;, endValue, &quot; is &quot;, sum);
+    io:println(&quot;summation from 1 to &quot; + endValue + &quot; excluding &quot;
+                    + endValue + &quot; is &quot; + sum);
 }
 </code></pre></div>
 
@@ -473,7 +447,7 @@ permalink: /v0-991/learn/by-example/foreach
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A half-open integer range in the <code>foreach</code> statement represents an incremental integer value range from the start
+                                            <p>A half open integer range in the <code>foreach</code> statement represents an incremental integer value range from the start
  expression (<code>1</code>) inclusively, to the end expression (<code>endValue</code>) exclusively.</p>
 
                                         </div>
@@ -523,7 +497,7 @@ permalink: /v0-991/learn/by-example/foreach
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run foreach.bal
 Iterating a string array :
 fruit: apple
@@ -541,9 +515,6 @@ fruit: cherry
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Iterating a map :
-apple
-banana
-cherry
 letter: a, word: apple
 letter: b, word: banana
 letter: c, word: cherry
@@ -560,7 +531,7 @@ letter: c, word: cherry
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Iterating a JSON object :
 string value: apple
-json array value: red green
+json array value: [&quot;red&quot;, &quot;green&quot;]
 int value: 5
 </code></pre></div>
 

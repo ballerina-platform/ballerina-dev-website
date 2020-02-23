@@ -11,17 +11,12 @@ permalink: /v0-991/learn/by-example/constants
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">GET</span> <span class="p">=</span> <span class="s">&quot;GET&quot;</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">POST</span> <span class="p">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">ACTION</span> <span class="nx">GET</span><span class="p">|</span><span class="nx">POST</span><span class="p">;</span>
-<span class="kd">const</span> <span class="kt">int</span> <span class="nx">I</span> <span class="p">=</span> <span class="mi">125</span><span class="p">;</span>
-<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">{</span>  <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span> <span class="p">};</span>
-<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span> <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="kt">int</span> <span class="nx">I</span> <span class="p">=</span> <span class="mi">125</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">ACTION</span> <span class="nx">get</span> <span class="p">=</span> <span class="nx">GET</span><span class="p">;</span>
     <span class="nx">testAction</span><span class="p">(</span><span class="nx">get</span><span class="p">);</span>    <span class="nx">ACTION</span> <span class="nx">post</span> <span class="p">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span>
     <span class="nx">testAction</span><span class="p">(</span><span class="nx">POST</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">I</span> <span class="o">+</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">complexData</span><span class="p">[</span><span class="s">&quot;data&quot;</span><span class="p">][</span><span class="s">&quot;user&quot;</span><span class="p">]);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">testAction</span><span class="p">(</span><span class="nx">ACTION</span> <span class="kd">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);}</span><span class="kd">function</span> <span class="nx">testAction</span><span class="p">(</span><span class="nx">ACTION</span> <span class="kd">action</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="kd">action</span> <span class="o">==</span> <span class="nx">GET</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GET action&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="kd">action</span> <span class="o">==</span> <span class="nx">POST</span><span class="p">)</span> <span class="p">{</span>
@@ -37,10 +32,10 @@ permalink: /v0-991/learn/by-example/constants
                     <tr>
                         <td class="cLeftTD">
                             <h2>Constants</h2>
-                            <p><p>Constants are values known at compile time. As of now, only value-type constants (i.e., constants of <code>boolean</code>, <code>byte</code>,
- <code>decimal</code>, <code>float</code>, <code>int</code>, and <code>string</code> types) are supported. Constants are useful for defining enumeration types.</p>
+                            <p><p>Constants are values known at compile time. As of now only value type constants (i.e., constants of <code>boolean</code>, <code>byte</code>,
+ <code>decimal</code>, <code>float</code>, <code>int</code> and <code>string</code> types) are supported. Constants are useful for defining enumeration types.</p>
 
-<p>These constants can be used just like any other value-type variable except the value of these constants cannot be
+<p>We can use these constants just like any other value type variable except the value of these constants cannot be
  changed after initializing. The difference between the final variables and constants is that the value of the final
  variables can be initialized at runtime. However, constants must be initialized at compile time.</p>
 </p>
@@ -57,9 +52,9 @@ permalink: /v0-991/learn/by-example/constants
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="range-expressions.html">
+                                    <a class="next" href="integer-ranges.html">
                                         <span>NEXT ></span>
-                                        <p>Range Expressions</p>
+                                        <p>Integer Ranges</p>
                                     </a>
                                 </div>
                                 
@@ -96,14 +91,6 @@ permalink: /v0-991/learn/by-example/constants
                     </table>
 
                     
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
                         
                             
                         
@@ -174,7 +161,7 @@ permalink: /v0-991/learn/by-example/constants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Constants can be defined without the type using the <code>var</code> keyword. Then, the type is inferred from the right hand side.</p>
+                                            <p>Constants can be defined without the type using the <code>var</code> keyword. Then the type is inferred from the right hand side.</p>
 
                                         </div>
                                     </div>
@@ -194,7 +181,7 @@ permalink: /v0-991/learn/by-example/constants
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Constants can be used to create type definitions. The type definition below specifies that a variable of the type
- <code>ACTION</code> can only hold either <code>GET</code> or <code>POST</code> as its value.</p>
+ <code>ACTION</code> can only hold either <code>GET</code> or <code>POST</code>.</p>
 
                                         </div>
                                     </div>
@@ -213,47 +200,7 @@ permalink: /v0-991/learn/by-example/constants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>An integer constant.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;string&gt; data = {  &quot;user&quot;: &quot;Ballerina&quot;, &quot;ID&quot;: &quot;1234&quot; };
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Constants of the <code>map</code> type can be defined as well. The constraint of these constant maps should be either a simple type
- or another map type, which should eventually have a simple type constraint. <code>var</code> cannot be used to declare
- constant maps. Therefore, the correct type should be present when declaring the constant.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;map&lt;string&gt;&gt; complexData = { &quot;data&quot;: data, &quot;data2&quot;: { &quot;user&quot;: &quot;WSO2&quot; }};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Constant with nested map literals.</p>
+                                            <p>Integer constant.</p>
 
                                         </div>
                                     </div>
@@ -318,7 +265,7 @@ permalink: /v0-991/learn/by-example/constants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>I</code> can be concatenated with any other integer value.</p>
+                                            <p>We can concatenate <code>I</code> with any other integer value.</p>
 
                                         </div>
                                     </div>
@@ -329,52 +276,11 @@ permalink: /v0-991/learn/by-example/constants
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(data);
-    io:println(complexData);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(complexData[&quot;data&quot;][&quot;user&quot;]);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Values of a constant map can be accessed and used as usual.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>However, updating a constant map will produce a compile-time error. E.g., -
- data.ID = &ldquo;4321&rdquo;;
- data.newField = 10;</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -414,14 +320,11 @@ permalink: /v0-991/learn/by-example/constants
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run constant.bal
 GET action
 POST action
 135
-user=Ballerina ID=1234
-data=user=Ballerina ID=1234 data2=user=WSO2
-Ballerina
 </code></pre></div>
 
                                 </td>

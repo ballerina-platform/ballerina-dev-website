@@ -13,17 +13,17 @@ permalink: /v0-991/learn/by-example/testerina-before-each-test
 <span class="kd">function</span> <span class="nx">beforeFunc</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the before function!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config{</span><span class="p">}</span>
+<span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">Config</span>
 <span class="kd">function</span> <span class="nx">testFunction1</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 1!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config{</span><span class="p">}</span>
+<span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">Config</span>
 <span class="kd">function</span> <span class="nx">testFunction2</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 2!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nd">@test:Config{</span><span class="p">}</span>
+<span class="err">@</span><span class="nx">test</span><span class="p">:</span><span class="nx">Config</span>
 <span class="kd">function</span> <span class="nx">testFunction3</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m in test function 3!&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Failed!&quot;</span><span class="p">);</span>
@@ -37,7 +37,7 @@ permalink: /v0-991/learn/by-example/testerina-before-each-test
                     <tr>
                         <td class="cLeftTD">
                             <h2>Before Each Test</h2>
-                            <p><p>The function specified with the <code>BeforeEach</code> annotation is executed before every test within the test suite.
+                            <p><p>The function specified with the <code>BeforeEach</code> annotation is run before every test within the test suite.
  This can be used for repeatedly initializing test level aspects before every test function.</p>
 </p>
 
@@ -135,7 +135,7 @@ function beforeFunc() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The before-each function, which is executed before each test function.</p>
+                                            <p>Before each function, which is executed before each test function</p>
 
                                         </div>
                                     </div>
@@ -146,7 +146,7 @@ function beforeFunc() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config{}
+                                    <div class="highlight"><pre><code class=ballerina>@test:Config
 function testFunction1() {
     io:println(&quot;I&#39;m in test function 1!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -158,7 +158,7 @@ function testFunction1() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A test function.</p>
+                                            <p>Test function</p>
 
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@ function testFunction1() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config{}
+                                    <div class="highlight"><pre><code class=ballerina>@test:Config
 function testFunction2() {
     io:println(&quot;I&#39;m in test function 2!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -181,7 +181,7 @@ function testFunction2() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A test function.</p>
+                                            <p>Test function</p>
 
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@ function testFunction2() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config{}
+                                    <div class="highlight"><pre><code class=ballerina>@test:Config
 function testFunction3() {
     io:println(&quot;I&#39;m in test function 3!&quot;);
     test:assertTrue(true, msg = &quot;Failed!&quot;);
@@ -204,7 +204,7 @@ function testFunction3() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A test function.</p>
+                                            <p>Test function</p>
 
                                         </div>
                                     </div>
@@ -236,10 +236,13 @@ function testFunction3() {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For the moment `ballerina test` works only in projects.
-$ ballerina test test_module
-Compiling source
-        ballerinatest/test_module:0.1.0
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+# Note that you need to have the ballerina-tools distribution
+# installed in order to run this command.
+$ ballerina test testerina_before_each_test.bal
+Compiling tests
+    testerina_before_each_test.bal
 </code></pre></div>
 
                                 </td>
@@ -251,8 +254,17 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/test_module-2019r3-any-0.1.0.balo
+                                    <div class="highlight"><pre><code class=shell-session>Running tests
+    testerina_before_each_test.bal
+I&#39;m the before function!
+I&#39;m in test function 3!
+I&#39;m the before function!
+I&#39;m in test function 2!
+I&#39;m the before function!
+I&#39;m in test function 1!
+        [pass] testFunction3
+        [pass] testFunction2
+        [pass] testFunction1
 </code></pre></div>
 
                                 </td>
@@ -264,15 +276,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running tests
-    ballerinatest/test_module:0.1.0
-I&#39;m the before function!
-I&#39;m in test function 3!
-I&#39;m the before function!
-I&#39;m in test function 2!
-I&#39;m the before function!
-I&#39;m in test function 1!
-        3 passing
+                                    <div class="highlight"><pre><code class=shell-session>        3 passing
         0 failing
         0 skipped
 </code></pre></div>

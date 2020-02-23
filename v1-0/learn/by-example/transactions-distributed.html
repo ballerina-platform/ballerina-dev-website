@@ -23,9 +23,8 @@ permalink: /v1-0/learn/by-example/transactions-distributed
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Initiating transaction...&quot;</span><span class="p">);</span>
         <span class="nx">transaction</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Started transaction: &quot;</span> <span class="o">+</span>
-                          <span class="nx">transactions</span><span class="p">:</span><span class="nx">getCurrentTransactionId</span><span class="p">());</span>
-            <span class="kt">boolean</span> <span class="nx">successful</span> <span class="p">=</span> <span class="nx">callBusinessService</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">successful</span><span class="p">)</span> <span class="p">{</span>
+                             <span class="nx">transactions</span><span class="p">:</span><span class="nx">getCurrentTransactionId</span><span class="p">());</span>
+            <span class="kt">boolean</span> <span class="nx">successful</span> <span class="p">=</span> <span class="nx">callBusinessService</span><span class="p">();</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">successful</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
@@ -35,8 +34,7 @@ permalink: /v1-0/learn/by-example/transactions-distributed
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Initiated transaction committed&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Initiated transaction aborted&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to client&quot;</span><span class="p">,</span>
                             <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
@@ -44,20 +42,18 @@ permalink: /v1-0/learn/by-example/transactions-distributed
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Sent response back to client&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/update&quot;</span><span class="p">);</span>
-    <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">math</span><span class="p">:</span><span class="nx">randomInRange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span> <span class="o">+</span> <span class="nx">math</span><span class="p">:</span><span class="nx">random</span><span class="p">();</span>
-    <span class="kt">json</span> <span class="nx">bizReq</span> <span class="p">=</span> <span class="p">{</span><span class="nx">symbol</span><span class="p">:</span> <span class="s">&quot;GOOG&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">price</span><span class="p">};</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">callBusinessService</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">participantEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8889/stockquote/update&quot;</span><span class="p">);</span>    <span class="kt">float</span> <span class="nx">price</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">math</span><span class="p">:</span><span class="nx">randomInRange</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span> <span class="o">+</span> <span class="nx">math</span><span class="p">:</span><span class="nx">random</span><span class="p">();</span>
+    <span class="kt">json</span> <span class="nx">bizReq</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">symbol</span><span class="p">:</span> <span class="s">&quot;GOOG&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">price</span> <span class="p">};</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">req</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">bizReq</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+	<span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
+    <span class="p">}</span>  <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
@@ -70,31 +66,30 @@ permalink: /v1-0/learn/by-example/transactions-distributed
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/update&quot;</span>
     <span class="p">}</span>
     <span class="nd">@transactions:Participant {</span>
-        <span class="nx">oncommit</span><span class="p">:</span> <span class="nx">printParticipantCommit</span><span class="p">,</span>
-        <span class="nx">onabort</span><span class="p">:</span> <span class="nx">printParticipantAbort</span>
+        <span class="nx">oncommit</span><span class="p">:</span><span class="nx">printParticipantCommit</span><span class="p">,</span>
+        <span class="nx">onabort</span><span class="p">:</span><span class="nx">printParticipantAbort</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">updateStockQuote</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Received update stockquote request&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Joined transaction: &quot;</span> <span class="o">+</span>
-        <span class="nx">transactions</span><span class="p">:</span><span class="nx">getCurrentTransactionId</span><span class="p">());</span>
-        <span class="k">var</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Joined transaction: &quot;</span> <span class="o">+</span>
+                       <span class="nx">transactions</span><span class="p">:</span><span class="nx">getCurrentTransactionId</span><span class="p">());</span>        <span class="k">var</span> <span class="nx">updateReq</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">updateReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;symbol:%s, price:%s&quot;</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-            <span class="kt">json</span> <span class="nx">jsonRes</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;updating stock&quot;</span><span class="p">};</span>
+            <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Update stock quote request received. &quot;</span> <span class="o">+</span>
+                            <span class="s">&quot;symbol:%s, price:%s&quot;</span><span class="p">,</span>
+                            <span class="nx">updateReq</span><span class="p">.</span><span class="nx">symbol</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>            <span class="kt">json</span> <span class="nx">jsonRes</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;updating stock&quot;</span> <span class="p">};</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonRes</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">updateReq</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">updateReq</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Could not send response back to initiator&quot;</span><span class="p">,</span>
-                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                                 <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Sent response back to initiator&quot;</span><span class="p">);</span>
         <span class="p">}</span>
@@ -138,7 +133,7 @@ permalink: /v1-0/learn/by-example/transactions-distributed
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="table-queries.html">
                                         <span>NEXT ></span>
-                                        <p>Table Queries</p>
+                                        <p>Select all the fields</p>
                                     </a>
                                 </div>
                                 
@@ -281,7 +276,7 @@ service InitiatorService on new http:Listener(8080) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            log:printInfo(&quot;Started transaction: &quot; +
-                          transactions:getCurrentTransactionId());
+                             transactions:getCurrentTransactionId());
 </code></pre></div>
 
                                 </td>
@@ -301,12 +296,6 @@ service InitiatorService on new http:Listener(8080) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            boolean successful = callBusinessService();
-            if (successful) {
-                res.statusCode = http:STATUS_OK;
-            } else {
-                res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-                abort;
-            }
 </code></pre></div>
 
                                 </td>
@@ -319,6 +308,23 @@ service InitiatorService on new http:Listener(8080) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (successful) {
+                res.statusCode = http:STATUS_OK;
+            } else {
+                res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
+                abort;
+            }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -349,7 +355,7 @@ service InitiatorService on new http:Listener(8080) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = conn-&gt;respond(res);
@@ -366,81 +372,42 @@ service InitiatorService on new http:Listener(8080) {
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the response back to the client.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function callBusinessService() returns boolean {
-    http:Client participantEP = new (&quot;http://localhost:8889/stockquote/update&quot;);
+    http:Client participantEP = new(&quot;http://localhost:8889/stockquote/update&quot;);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the participant business function call.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float price = &lt;int&gt;math:randomInRange(200, 250) + math:random();
-    json bizReq = {symbol: &quot;GOOG&quot;, price: price};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Generate the payload</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Request req = new;
+                                    <div class="highlight"><pre><code class=ballerina>    float price = &lt;int&gt;math:randomInRange(200, 250) + math:random();
+    json bizReq = { symbol: &quot;GOOG&quot;, price: price };
+    http:Request req = new;
     req.setJsonPayload(bizReq);
     var result = participantEP-&gt;post(&quot;&quot;, req);
     log:printInfo(&quot;Got response from bizservice&quot;);
     if (result is error) {
-        log:printError(&quot;Error when calling the backend: &quot;, err = result);
+	log:printInfo(result.toString());
         return false;
-    } else {
-        return result.statusCode == http:STATUS_OK;
+    }  else {
+        return (result.statusCode == http:STATUS_OK);
     }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the request to the backend service.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -579,10 +546,12 @@ service ParticipantService on new http:Listener(8889) {
         path: &quot;/update&quot;
     }
     @transactions:Participant {
-        oncommit: printParticipantCommit,
-        onabort: printParticipantAbort
+        oncommit:printParticipantCommit,
+        onabort:printParticipantAbort
     }
     resource function updateStockQuote(http:Caller conn, http:Request req) {
+        log:printInfo(&quot;Received update stockquote request&quot;);
+        http:Response res = new;
 </code></pre></div>
 
                                 </td>
@@ -593,17 +562,16 @@ service ParticipantService on new http:Listener(8889) {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Received update stockquote request&quot;);
-</code></pre></div>
-
+                                <td class="code empty leading">
+                                    
                                 </td>
                                 <td class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since a transaction context has been received, this resource will
- register with the initiator as a participant.</p>
+                                            <p>At the beginning of the <code>transaction</code> statement, since a transaction
+ context has been received, this service will register with the
+ initiator as a participant.</p>
 
                                         </div>
                                     </div>
@@ -615,7 +583,7 @@ service ParticipantService on new http:Listener(8889) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Joined transaction: &quot; +
-        transactions:getCurrentTransactionId());
+                       transactions:getCurrentTransactionId());
 </code></pre></div>
 
                                 </td>
@@ -623,7 +591,7 @@ service ParticipantService on new http:Listener(8889) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the current transaction ID.</p>
+                                            <p>Print the current transaction ID</p>
 
                                         </div>
                                     </div>
@@ -631,34 +599,28 @@ service ParticipantService on new http:Listener(8889) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var updateReq = &lt;@untainted&gt;req.getJsonPayload();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get the json payload.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        http:Response res = new;
+                                    <div class="highlight"><pre><code class=ballerina>        var updateReq = &lt;@untainted&gt; req.getJsonPayload();
         if (updateReq is json) {
-            string msg = io:sprintf(&quot;Update stock quote request received. &quot; +
-                    &quot;symbol:%s, price:%s&quot;, updateReq.symbol, updateReq.price);
+            string msg =
+                io:sprintf(&quot;Update stock quote request received. &quot; +
+                            &quot;symbol:%s, price:%s&quot;,
+                            updateReq.symbol, updateReq.price);
             log:printInfo(msg);
-            json jsonRes = {&quot;message&quot;: &quot;updating stock&quot;};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            json jsonRes = { &quot;message&quot;: &quot;updating stock&quot; };
             res.statusCode = http:STATUS_OK;
             res.setJsonPayload(jsonRes);
         } else {
@@ -671,23 +633,16 @@ service ParticipantService on new http:Listener(8889) {
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Generate the response.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = conn-&gt;respond(res);
         if (result is error) {
             log:printError(&quot;Could not send response back to initiator&quot;,
-                            err = result);
+                                 err = result);
         } else {
             log:printInfo(&quot;Sent response back to initiator&quot;);
         }
@@ -697,13 +652,6 @@ service ParticipantService on new http:Listener(8889) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send the response back to the initiator.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -722,7 +670,7 @@ service ParticipantService on new http:Listener(8889) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The participant function that will get called when the distributed
- transaction is aborted.</p>
+ transaction is aborted</p>
 
                                         </div>
                                     </div>
@@ -744,7 +692,7 @@ service ParticipantService on new http:Listener(8889) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The participant function that will get called when the distributed
- transaction is committed.</p>
+ transaction is committed</p>
 
                                         </div>
                                     </div>

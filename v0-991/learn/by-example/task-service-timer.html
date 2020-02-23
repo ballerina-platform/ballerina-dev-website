@@ -10,16 +10,16 @@ permalink: /v0-991/learn/by-example/task-service-timer
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span>
 <span class="nx">task</span><span class="p">:</span><span class="nx">TimerConfiguration</span> <span class="nx">timerConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="nx">interval</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="nx">initialDelay</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
     <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">};</span>
 <span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">timerConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">service</span> <span class="nx">timerService</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">count</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -32,12 +32,12 @@ permalink: /v0-991/learn/by-example/task-service-timer
                         <td class="cLeftTD">
                             <h2>Task Service Timer</h2>
                             <p><p>Task Timer Services are used to execute tasks periodically. A timer should
- have an <code>intervalInMillis</code> specified and an <code>initialDelayInMillis</code> if
- needed. The delay specifies the initial delay before the task is executed
- for the first time. Thereafter, the timer triggers at the provided interval.
- The <code>onTrigger()</code> resource is called when the timer triggers. An optional
- <code>noOfRecurrences</code> field can be used to provide the maximum number of times
- the Timer should run before shutting down.</p>
+ have an <code>interval</code> specified and an <code>initialDelay</code> if needed. The delay
+ specifies the initial delay before the task is executed for the first time.
+ Thereafter, the timer triggers at the provided interval. The <code>onTrigger()</code>
+ resource is called when the timer triggers. An optional <code>noOfRecurrences</code>
+ field can be used to provide the maximum number of times the Timer should
+ run before shutting down.</p>
 </p>
 
                         </td>
@@ -128,8 +128,8 @@ import ballerina/task;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>task:TimerConfiguration timerConfiguration = {
-    intervalInMillis: 1000,
-    initialDelayInMillis: 3000,
+    interval: 1000,
+    initialDelay: 3000,
 </code></pre></div>
 
                                 </td>
@@ -176,7 +176,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initialize the listener using the above defined configurations.</p>
+                                            <p>Initialize the listener using pre defined configurations.</p>
 
                                         </div>
                                     </div>
@@ -219,9 +219,9 @@ import ballerina/task;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
         count = count + 1;
+        log:printInfo(&quot;Cleaning up...&quot;);
+        log:printInfo(string.convert(count));
     }
 }
 </code></pre></div>
@@ -258,26 +258,27 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run task_service_timer.bal
-2019-09-06 13:37:17,298 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:17,299 INFO  [ballerina/log] - 0
-2019-09-06 13:37:18,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:18,289 INFO  [ballerina/log] - 1
-2019-09-06 13:37:19,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:19,289 INFO  [ballerina/log] - 2
-2019-09-06 13:37:20,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:20,289 INFO  [ballerina/log] - 3
-2019-09-06 13:37:21,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:21,288 INFO  [ballerina/log] - 4
-2019-09-06 13:37:22,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:22,287 INFO  [ballerina/log] - 5
-2019-09-06 13:37:23,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:23,288 INFO  [ballerina/log] - 6
-2019-09-06 13:37:24,287 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:24,287 INFO  [ballerina/log] - 7
-2019-09-06 13:37:25,288 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:25,289 INFO  [ballerina/log] - 8
-2019-09-06 13:37:26,285 INFO  [ballerina/log] - Cleaning up...
-2019-09-06 13:37:26,286 INFO  [ballerina/log] - 9
+Initiating service(s) in &#39;task_service_timer.bal&#39;
+INFO  [] - Cleaning up...
+INFO  [] - 1
+INFO  [] - Cleaning up...
+INFO  [] - 2
+INFO  [] - Cleaning up...
+INFO  [] - 3
+INFO  [] - Cleaning up...
+INFO  [] - 4
+INFO  [] - Cleaning up...
+INFO  [] - 5
+INFO  [] - Cleaning up...
+INFO  [] - 6
+INFO  [] - Cleaning up...
+INFO  [] - 7
+INFO  [] - Cleaning up...
+INFO  [] - 8
+INFO  [] - Cleaning up...
+INFO  [] - 9
+INFO  [] - Cleaning up...
+INFO  [] - 10
 </code></pre></div>
 
                                 </td>

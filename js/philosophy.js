@@ -20,7 +20,7 @@ $(document).ready(function() {
             { "name": "Backend for Frontend", "desc": "Backend for Frontend", "url": "backend-for-frontend", "git": "" },
             { "name": "EIP-Message-Transformation", "desc": "EIP-Message-Transformation", "url": "eip-message-transformation", "git": "" }
         ],
-        "Integrating Ballerina With Other Technologies": [            
+        "Integrating Ballerina With Other Technologies": [
             { "name": "Building an API Gateway", "desc": "Ballerina services with policies enforced by Ballerina API Gateway", "url": "api-gateway", "git": "" },
             { "name": "Salesforce-Twilio Integration", "desc": "", "url": "salesforce-twilio-integration", "git": "" },
             { "name": "Gmail-Google Sheets Integration", "desc": "", "url": "gmail-spreadsheet-integration", "git": "" },
@@ -47,7 +47,7 @@ $(document).ready(function() {
             { "name": "Load Balancing", "desc": "", "url": "loadbalancing-failover", "git": "" }
 
         ],
-        
+
 	"Cloud Native Deployment": [
             { "name": "Deployment with Azure Kubernetes Service", "desc": "", "url": "ballerina-aks-deployment", "git": "" },
 	    { "name": "Running with Istio", "desc": "", "url": "ballerina-with-istio", "git": "" },
@@ -92,9 +92,11 @@ String.prototype.toSentenceCase = function () {
 
 //Generating BBEs
 function printExamples() {
-    $.getJSON("/learn/by-example/all-bbes.json", function(example_data) {
-        $.getJSON("/learn/by-example/built-bbes.json", function(built_example_data) {
-
+    let pathValue = window.location.pathname;
+    let splitedPath = pathValue.split("/learn/");
+    let version = splitedPath[0];
+    $.getJSON(version + "/learn/by-example/all-bbes.json", function(example_data) {
+        $.getJSON(version +"/learn/by-example/built-bbes.json", function(built_example_data) {
             var i = 0;
             var div_content;
             $.each(example_data, function(key, value) {

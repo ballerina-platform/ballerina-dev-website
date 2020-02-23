@@ -17,13 +17,8 @@ permalink: /v1-0/learn/by-example/range-expressions
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__iterator</span><span class="p">()</span> <span class="nx">returns</span>
-            <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-                <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">;</span>
-            <span class="p">};</span>
-    <span class="p">}</span> <span class="nx">iterableObj</span> <span class="p">=</span> <span class="mi">25</span> <span class="p">..&lt;</span> <span class="mi">28</span><span class="p">;</span>    <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-            <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">__iterator</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
+        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span><span class="err">?</span><span class="p">);</span>
+    <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="mi">25</span> <span class="p">..&lt;</span> <span class="mi">28</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span><span class="err">?</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|})</span> <span class="p">{</span>
@@ -97,8 +92,6 @@ permalink: /v1-0/learn/by-example/range-expressions
                     </table>
 
                     
-                        
-                            
                         
                             
                         
@@ -193,11 +186,8 @@ permalink: /v1-0/learn/by-example/range-expressions
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    abstract object {
-        public function __iterator() returns
-            abstract object {
-                public function next() returns record {|int value;|}?;
-            };
-    } iterableObj = 25 ..&lt; 28;
+        public function next() returns (record {| int value; |}?);
+    } iterator = 25 ..&lt; 28;
 </code></pre></div>
 
                                 </td>
@@ -210,20 +200,6 @@ permalink: /v1-0/learn/by-example/range-expressions
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    abstract object {
-            public function next() returns (record {|int value;|}?);
-    } iterator = iterableObj.__iterator();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>

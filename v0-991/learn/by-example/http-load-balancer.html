@@ -16,7 +16,7 @@ permalink: /v0-991/learn/by-example/http-load-balancer
             <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock2&quot;</span> <span class="p">},</span>
             <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock3&quot;</span> <span class="p">}</span>
         <span class="p">],</span>
-        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span>
+        <span class="nx">timeoutMillis</span><span class="p">:</span> <span class="mi">5000</span>
 <span class="p">});</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/lb&quot;</span>
@@ -30,16 +30,17 @@ permalink: /v0-991/learn/by-example/http-load-balancer
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">lbBackendEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="nx">requestPayload</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">outResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">outResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">outResponse</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -53,8 +54,8 @@ permalink: /v0-991/learn/by-example/http-load-balancer
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock1Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock1 resource was invoked.&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
@@ -66,8 +67,8 @@ permalink: /v0-991/learn/by-example/http-load-balancer
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock2 resource was invoked.&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
@@ -79,14 +80,9 @@ permalink: /v0-991/learn/by-example/http-load-balancer
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mock3Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock3 resource was invoked.&quot;</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -240,7 +236,7 @@ import ballerina/log;
             { url: &quot;http://localhost:8080/mock2&quot; },
             { url: &quot;http://localhost:8080/mock3&quot; }
         ],
-        timeoutInMillis: 5000
+        timeoutMillis: 5000
 });
 </code></pre></div>
 
@@ -271,7 +267,7 @@ service loadBalancerDemoService on new http:Listener (9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an HTTP service bound to the endpoint (<code>loadBalancerEP</code>).</p>
+                                            <p>Create an HTTP service bound to the endpoint (<code>loadBlancerEP</code>).</p>
 
                                         </div>
                                     </div>
@@ -285,9 +281,6 @@ service loadBalancerDemoService on new http:Listener (9090) {
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         path: &quot;/&quot;
     }
-    resource function roundRobin(http:Caller caller, http:Request req) {
-        json requestPayload = { &quot;name&quot;: &quot;Ballerina&quot; };
-        var response = lbBackendEP-&gt;post(&quot;/&quot;, requestPayload);
 </code></pre></div>
 
                                 </td>
@@ -306,18 +299,41 @@ service loadBalancerDemoService on new http:Listener (9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function roundRobin(http:Caller caller, http:Request req) {
+        json requestPayload = { &quot;name&quot;: &quot;Ballerina&quot; };
+        var response = lbBackendEP-&gt;post(&quot;/&quot;, requestPayload);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Parameters include a reference to the
+ caller endpoint and an object of the request data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (response is http:Response) {
             var responseToCaller = caller-&gt;respond(response);
-            if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+            if (responseToCaller is error) {
+                log:printError(&quot;Error sending response&quot;,
+                                err = responseToCaller);
             }
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(&lt;string&gt;response.detail()?.message);
+            outResponse.setPayload(&lt;string&gt;response.detail().message);
             var responseToCaller = caller-&gt;respond(outResponse);
-            if (responseToCaller is http:ListenerError) {
-                log:printError(&quot;Error sending response&quot;, responseToCaller);
+            if (responseToCaller is error) {
+                log:printError(&quot;Error sending response&quot;, err = responseToCaller);
             }
         }
     }
@@ -329,9 +345,9 @@ service loadBalancerDemoService on new http:Listener (9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If a response is returned, the normal process runs. If the service
- does not get the expected response, the error-handling logic is
- executed.</p>
+                                            <p>If a response is returned, the normal process runs.
+ If the service does not get the expected response,
+ the error-handling logic is executed.</p>
 
                                         </div>
                                     </div>
@@ -351,8 +367,8 @@ service mock1 on backendEP {
     }
     resource function mock1Resource(http:Caller caller, http:Request req) {
         var responseToCaller = caller-&gt;respond(&quot;Mock1 resource was invoked.&quot;);
-        if (responseToCaller is http:ListenerError) {
-            handleRespondResult(responseToCaller);
+        if (responseToCaller is error) {
+            log:printError(&quot;Error sending response from mock service&quot;, err = responseToCaller);
         }
     }
 }
@@ -383,8 +399,8 @@ service mock2 on backendEP {
     }
     resource function mock2Resource(http:Caller caller, http:Request req) {
         var responseToCaller = caller-&gt;respond(&quot;Mock2 resource was invoked.&quot;);
-        if (responseToCaller is http:ListenerError) {
-            handleRespondResult(responseToCaller);
+        if (responseToCaller is error) {
+            log:printError(&quot;Error sending response from mock service&quot;, err = responseToCaller);
         }
     }
 }
@@ -398,7 +414,7 @@ service mock2 on backendEP {
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
     basePath: &quot;/mock3&quot;
 }
@@ -408,8 +424,8 @@ service mock3 on backendEP {
     }
     resource function mock3Resource(http:Caller caller, http:Request req) {
         var responseToCaller = caller-&gt;respond(&quot;Mock3 resource was invoked.&quot;);
-        if (responseToCaller is http:ListenerError) {
-            handleRespondResult(responseToCaller);
+        if (responseToCaller is error) {
+            log:printError(&quot;Error sending response from mock service&quot;, err = responseToCaller);
         }
     }
 }
@@ -417,29 +433,6 @@ service mock3 on backendEP {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function handleRespondResult(http:ListenerError? result) {
-    if (result is http:ListenerError) {
-        log:printError(&quot;Error sending response from mock service&quot;, result);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Function to handle respond results</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -464,8 +457,9 @@ service mock3 on backendEP {
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_load_balancer.bal
 # Service deployment
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;http_load_balancer.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:8080
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -504,22 +498,8 @@ $ ballerina run http_load_balancer.bal
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To invoke the Load Balancer Demo Service, use following cURL command.
 $ curl -v http://localhost:9090/lb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /lb HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:36:57 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 27
-&lt;
-* Connection #0 to host localhost left intact
-Mock1 resource was invoked.
+# Server response:
+Mock1 Resource is invoked.
 </code></pre></div>
 
                                 </td>
@@ -534,22 +514,8 @@ Mock1 resource was invoked.
                                     <div class="highlight"><pre><code class=shell-session># Repeat the same cURL command to invoke the Load Balance Demo Service again.
 # The request will be load balanced to the second mock service.
 $ curl -v http://localhost:9090/lb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /lb HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:36:58 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 27
-&lt;
-* Connection #0 to host localhost left intact
-Mock2 resource was invoked.
+# Server response:
+Mock2 Resource is invoked.
 </code></pre></div>
 
                                 </td>
@@ -564,22 +530,8 @@ Mock2 resource was invoked.
                                     <div class="highlight"><pre><code class=shell-session># Invoke the Load Balancer Demo Service one more time using the same cURL command.
 # The request will be load balanced to the third mock service.
 $ curl -v http://localhost:9090/lb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /lb HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:36:59 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 27
-&lt;
-* Connection #0 to host localhost left intact
-Mock3 resource was invoked.
+# Server response:
+Mock3 Resource is invoked.
 </code></pre></div>
 
                                 </td>
@@ -594,22 +546,8 @@ Mock3 resource was invoked.
                                     <div class="highlight"><pre><code class=shell-session># Invoke the Load Balancer Demo Service using the same cURL command for the last time.
 # The request will be load balanced to the first mock service again.
 $ curl -v http://localhost:9090/lb
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /lb HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:37:00 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 27
-&lt;
-* Connection #0 to host localhost left intact
-Mock1 resource was invoked.
+# Server response:
+Mock1 Resource is invoked.
 </code></pre></div>
 
                                 </td>

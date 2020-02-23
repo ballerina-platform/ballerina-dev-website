@@ -11,7 +11,10 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">type</span> <span class="nx">Country</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="nx">Capital</span> <span class="nx">capital</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Capital</span> <span class="nx">record</span> <span class="p">{|</span>
@@ -20,21 +23,28 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
     <span class="kt">int</span> <span class="nx">personAge</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">otherDetails</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">personAge</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">firstName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">personAge</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">));</span>    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">countryName</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">age</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">empName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">empAge</span><span class="p">;</span>
+    <span class="p">{|</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">empName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">empAge</span> <span class="p">|}</span> <span class="p">=</span> <span class="nx">getEmployee</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span> <span class="o">+</span> <span class="nx">empName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span> <span class="o">+</span> <span class="nx">empAge</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">countryName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">capitalName</span><span class="p">;</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">}}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span><span class="p">,</span> <span class="nx">countryName</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span><span class="p">,</span> <span class="nx">capitalName</span><span class="p">);</span>
+    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{|</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">|}}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span> <span class="o">+</span> <span class="nx">countryName</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span> <span class="o">+</span> <span class="nx">capitalName</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
+                      <span class="nx">occupation</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getEmployee</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">{</span>
+    <span class="nx">Employee</span> <span class="nx">employee</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">26</span> <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">employee</span><span class="p">;</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
     <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span> <span class="p">};</span>
     <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span> <span class="p">};</span>
@@ -50,8 +60,8 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                         <td class="cLeftTD">
                             <h2>Record Destructure Binding Pattern</h2>
                             <p><p>Record destructure binding patterns are used to destructure and assign the values of each field in the destructed record to variable references.
- The record destructuring binding patterns will be used to refer to existing variables as a record, destructure
- the given value on the right hand side, and assign the values to each individual variable of the record during the runtime.</p>
+ The record destructuring binding patterns will be used to refer existing variables as a record and destructure the
+ the given value on the right hand side and assign the values to each individual variable of the record at runtime.</p>
 </p>
 
                         </td>
@@ -132,6 +142,14 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -157,6 +175,21 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
     int age;
     string country;
 };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
+    string name;
+    int age;
+|};
 </code></pre></div>
 
                                 </td>
@@ -224,9 +257,9 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    { name: firstName, age: personAge, ...otherDetails } = getPerson();
-    io:println(&quot;Name: &quot;, firstName);
-    io:println(&quot;Age: &quot;, personAge);
-    io:println(&quot;Other Details: &quot;, otherDetails);
+    io:println(&quot;Name: &quot; + firstName);
+    io:println(&quot;Age: &quot; + personAge);
+    io:println(&quot;Other Details: &quot; + io:sprintf(&quot;%s&quot;, otherDetails));
 </code></pre></div>
 
                                 </td>
@@ -234,12 +267,12 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This record destructure binding pattern will destructure a <code>record</code> of the type <code>Person</code> and assign the values
+                                            <p>This record destructure binding pattern will destructure a <code>record</code> of type <code>Person</code> and assign the values
  to three variable references as follows:
  The value of the field <code>name</code> in the <code>Person</code> record will be assigned to the variable <code>firstName</code>.
  The value of the field <code>age</code> in the <code>Person</code> record will be assigned to the variable <code>personAge</code>.
  <code>...otherDetails</code> is a rest parameter. Since <code>Person</code> is an open record, the remaining field values that have
- not been matched in the record binding pattern will be assigned as a <code>map&lt;anydata|error&gt;</code> to the variable
+ not been matched in the record binding pattern, will be assigned as a <code>map&lt;anydata|error&gt;</code> to the variable
  <code>otherDetails</code>.</p>
 
                                         </div>
@@ -265,8 +298,8 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    { name, age } = getPerson();
-    io:println(&quot;Name: &quot;, name);
-    io:println(&quot;Age: &quot;, age);
+    io:println(&quot;Name: &quot; + name);
+    io:println(&quot;Age: &quot; + age);
 </code></pre></div>
 
                                 </td>
@@ -274,10 +307,44 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If no variable name is given for a field, the value of the field will be assigned to a variable reference of the
- same name as the field.
- i.e., {name, age} is same as {name: name, age: age}.
+                                            <p>If no variable name is given for a field, the value of the field will be assigned to a variable reference of the same name as the field.
+ i.e. {name, age} is same as {name: name, age: age}.
  Since a rest parameter is not given, all remaining fields are ignored.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string empName;
+    int empAge;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    {| name: empName, age: empAge |} = getEmployee();
+    io:println(&quot;Name: &quot; + empName);
+    io:println(&quot;Age: &quot; + empAge);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>{|</code> and <code>|}</code> delimiters specify that there should not be any other fields other than <code>name</code> and <code>age</code>, hence
+ <code>Employee</code> should be a closed record.</p>
 
                                         </div>
                                     </div>
@@ -301,9 +368,9 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    { name: countryName, capital: { name: capitalName }} = getCountry();
-    io:println(&quot;Country Name: &quot;, countryName);
-    io:println(&quot;Capital Name: &quot;, capitalName);
+                                    <div class="highlight"><pre><code class=ballerina>    { name: countryName, capital: {| name: capitalName |}} = getCountry();
+    io:println(&quot;Country Name: &quot; + countryName);
+    io:println(&quot;Capital Name: &quot; + capitalName);
 }
 </code></pre></div>
 
@@ -326,8 +393,23 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
     Person person = { name: &quot;Peter&quot;, age: 28, country: &quot;Sri Lanka&quot;,
-                      &quot;occupation&quot;: &quot;Software Engineer&quot; };
+                      occupation: &quot;Software Engineer&quot; };
     return person;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getEmployee() returns Employee {
+    Employee employee = { name: &quot;John&quot;, age: 26 };
+    return employee;
 }
 </code></pre></div>
 
@@ -370,13 +452,15 @@ permalink: /v0-991/learn/by-example/record-destructure-binding-pattern
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run record_destructure_binding_pattern.bal
 Name: Peter
 Age: 28
-Other Details: country=Sri Lanka occupation=Software Engineer
+Other Details: {&quot;country&quot;:&quot;Sri Lanka&quot;, &quot;occupation&quot;:&quot;Software Engineer&quot;}
 Name: Peter
 Age: 28
+Name: John
+Age: 26
 Country Name: Sri Lanka
 Capital Name: Colombo
 </code></pre></div>

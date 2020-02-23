@@ -37,7 +37,7 @@ permalink: /v0-991/learn/by-example/response-with-multiparts
             <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">MULTIPART_FORM_DATA</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">outResponse</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -68,13 +68,13 @@ permalink: /v0-991/learn/by-example/response-with-multiparts
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">handleNestedParts</span><span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span> <span class="nx">parentPart</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">contentTypeOfParent</span> <span class="p">=</span> <span class="nx">parentPart</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">contentTypeOfParent</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s">&quot;multipart/&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">contentTypeOfParent</span><span class="p">.</span><span class="nx">hasPrefix</span><span class="p">(</span><span class="s">&quot;multipart/&quot;</span><span class="p">))</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">childParts</span> <span class="p">=</span> <span class="nx">parentPart</span><span class="p">.</span><span class="nx">getBodyParts</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">childParts</span> <span class="nx">is</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">Entity</span><span class="p">[])</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Nested Parts Detected!&quot;</span><span class="p">);</span>
@@ -95,35 +95,36 @@ permalink: /v0-991/learn/by-example/response-with-multiparts
             <span class="kt">string</span> <span class="nx">strValue</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
              <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;XML data: &quot;</span> <span class="o">+</span> <span class="nx">strValue</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing XML data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing XML data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;JSON data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;JSON data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing JSON data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing JSON data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text data: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing text data&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_PDF</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getByteChannel</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
-            <span class="p">&lt;@untainted io:WritableByteChannel&gt;io:openWritableFile(</span><span class="s">&quot;ReceivedFile.pdf&quot;</span><span class="p">);</span>
+                                    <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;ReceivedFile.pdf&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while performing copy &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while performing copy &quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="nx">close</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
             <span class="nx">close</span><span class="p">(</span><span class="nx">destinationChannel</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing byte channel :&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in parsing byte channel :&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -137,23 +138,12 @@ permalink: /v0-991/learn/by-example/response-with-multiparts
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span> <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span>
                 <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">byte</span><span class="p">[]</span> <span class="p">|</span> <span class="nx">io</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
-                <span class="k">var</span> <span class="nx">result2</span> <span class="p">=</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">result2</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="k">return</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">result2</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+    <span class="kt">int</span> <span class="nx">readCount</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">readContent</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">readCount</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">src</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">(</span><span class="nx">readContent</span><span class="p">,</span> <span class="nx">readCount</span><span class="p">)</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">writeResult</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">dst</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">readContent</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
@@ -163,7 +153,7 @@ permalink: /v0-991/learn/by-example/response-with-multiparts
     <span class="p">}</span> <span class="nx">channelResult</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">channelResult</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occured while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -491,7 +481,7 @@ absolute file path instead.</p>
             contentType = mime:MULTIPART_FORM_DATA);
         var result = caller-&gt;respond(outResponse);
         if (result is error) {
-            log:printError(&quot;Error in responding &quot;, result);
+            log:printError(&quot;Error in responding &quot;, err = result);
         }
     }
 }
@@ -572,7 +562,7 @@ service multipartResponseDecoder on multipartEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Extracts the body parts from the response.</p>
+                                            <p>Extracts the bodyparts from the response.</p>
 
                                         </div>
                                     </div>
@@ -594,7 +584,7 @@ service multipartResponseDecoder on multipartEP {
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Error in responding &quot;, result);
+            log:printError(&quot;Error in responding &quot;, err = result);
         }
     }
 }
@@ -618,7 +608,7 @@ service multipartResponseDecoder on multipartEP {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function handleNestedParts(mime:Entity parentPart) {
     string contentTypeOfParent = parentPart.getContentType();
-    if (contentTypeOfParent.startsWith(&quot;multipart/&quot;)) {
+    if (contentTypeOfParent.hasPrefix(&quot;multipart/&quot;)) {
         var childParts = parentPart.getBodyParts();
         if (childParts is mime:Entity[]) {
             log:printInfo(&quot;Nested Parts Detected!&quot;);
@@ -676,7 +666,7 @@ vary based on your requirement.</p>
             string strValue = io:sprintf(&quot;%s&quot;, payload);
              log:printInfo(&quot;XML data: &quot; + strValue);
         } else {
-             log:printError(&quot;Error in parsing XML data&quot;, payload);
+             log:printError(&quot;Error in parsing XML data&quot;, err = payload);
         }
     } else if (mime:APPLICATION_JSON == baseType) {
 </code></pre></div>
@@ -699,9 +689,9 @@ vary based on your requirement.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getJson();
         if (payload is json) {
-            log:printInfo(&quot;JSON data: &quot; + payload.toJsonString());
+            log:printInfo(&quot;JSON data: &quot; + payload.toString());
         } else {
-             log:printError(&quot;Error in parsing JSON data&quot;, payload);
+             log:printError(&quot;Error in parsing JSON data&quot;, err = payload);
         }
     } else if (mime:TEXT_PLAIN == baseType) {
 </code></pre></div>
@@ -726,7 +716,7 @@ vary based on your requirement.</p>
         if (payload is string) {
             log:printInfo(&quot;Text data: &quot; + payload);
         } else {
-            log:printError(&quot;Error in parsing text data&quot;, payload);
+            log:printError(&quot;Error in parsing text data&quot;, err = payload);
         }
     } else if (mime:APPLICATION_PDF == baseType) {
 </code></pre></div>
@@ -750,15 +740,16 @@ vary based on your requirement.</p>
                                     <div class="highlight"><pre><code class=ballerina>        var payload = bodyPart.getByteChannel();
         if (payload is io:ReadableByteChannel) {
             io:WritableByteChannel destinationChannel =
-            &lt;@untainted io:WritableByteChannel&gt;io:openWritableFile(&quot;ReceivedFile.pdf&quot;);
+                                    io:openWritableFile(&quot;ReceivedFile.pdf&quot;);
             var result = copy(payload, destinationChannel);
             if (result is error) {
-                log:printError(&quot;error occurred while performing copy &quot;, result);
+                log:printError(&quot;error occurred while performing copy &quot;,
+                                err = result);
             }
             close(payload);
             close(destinationChannel);
         } else {
-            log:printError(&quot;Error in parsing byte channel :&quot;, payload);
+            log:printError(&quot;Error in parsing byte channel :&quot;, err = payload);
         }
     }
 }
@@ -808,7 +799,9 @@ vary based on your requirement.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function copy(io:ReadableByteChannel src, io:WritableByteChannel dst)
                 returns error? {
-    while (true) {
+    int readCount = 1;
+    byte[] readContent;
+    while (readCount &gt; 0) {
 </code></pre></div>
 
                                 </td>
@@ -827,12 +820,8 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        byte[] | io:Error result = src.read(1000);
-        if (result is io:EofError) {
-            break;
-        } else if (result is error) {
-            return &lt;@untained&gt; result;
-        } else {
+                                    <div class="highlight"><pre><code class=ballerina>    (byte[], int) result = check src.read(1000);
+    (readContent, readCount) = result;
 </code></pre></div>
 
                                 </td>
@@ -851,16 +840,7 @@ vary based on your requirement.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            int i = 0;
-            while (i &lt; result.length()) {
-                var result2 = dst.write(result, i);
-                if (result2 is error) {
-                    return result2;
-                } else {
-                    i = i + result2;
-                }
-            }
-        }
+                                    <div class="highlight"><pre><code class=ballerina>    var writeResult = check dst.write(readContent, 0);
     }
     return;
 }
@@ -888,7 +868,7 @@ vary based on your requirement.</p>
     } channelResult = ch;
     var cr = channelResult.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
+        log:printError(&quot;Error occured while closing the channel: &quot;, err = cr);
     }
 }
 </code></pre></div>
@@ -925,8 +905,9 @@ vary based on your requirement.</p>
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run response_with_multiparts.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
+Initiating service(s) in &#39;response_with_multiparts.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
 2018-11-30 08:43:53,163 INFO  [ballerina/log] - Nested Parts Detected!
 2018-11-30 08:43:53,177 INFO  [ballerina/log] - JSON data: {&quot;name&quot;:&quot;wso2&quot;}
 2018-11-30 08:43:53,240 INFO  [ballerina/log] - XML data: &lt;ballerinalang&gt;

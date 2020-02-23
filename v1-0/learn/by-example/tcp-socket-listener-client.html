@@ -11,7 +11,8 @@ permalink: /v1-0/learn/by-example/tcp-socket-listener-client
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">socket</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">socketClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
-        <span class="nx">port</span><span class="p">:</span> <span class="mi">61598</span>
+        <span class="nx">port</span><span class="p">:</span> <span class="mi">61598</span><span class="p">,</span>
+        <span class="nx">callbackService</span><span class="p">:</span> <span class="nx">ClientService</span>
     <span class="p">});</span>
     <span class="kt">string</span> <span class="nx">content</span> <span class="p">=</span> <span class="s">&quot;Hello Ballerina&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
@@ -26,35 +27,45 @@ permalink: /v1-0/learn/by-example/tcp-socket-listener-client
             <span class="nx">payloadByte</span> <span class="p">=</span> <span class="nx">payloadByte</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">writeResult</span><span class="p">,</span> <span class="nx">arrayLength</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="p">[</span><span class="nx">reply</span><span class="p">,</span> <span class="nx">length</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">length</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">reply</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
-                <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
-                <span class="k">var</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">characterChannel</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">str</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while reading characters &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">);</span>
-                <span class="p">}</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client close: &quot;</span><span class="p">,</span> <span class="nx">socketClient</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">closeResult</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connection closed successfully.&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
 <span class="p">}</span>
+<span class="kd">service</span> <span class="nx">ClientService</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onConnect</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Connect to: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onReadReady</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">read</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">])</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">length</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
+                    <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+                    <span class="k">var</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">characterChannel</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">str</span><span class="p">);</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error while reading characters &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client close: &quot;</span><span class="p">,</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">remotePort</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">close</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">closeResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">closeResult</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Client connection closed successfully.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">socket</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">socket</span><span class="p">;</span>
@@ -125,9 +136,9 @@ permalink: /v1-0/learn/by-example/tcp-socket-listener-client
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka_message_consumer_group_service.html">
+                                    <a class="prev" href="rabbitmq-consumer-with-qos-settings.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Consumer Groups</p>
+                                        <p>QoS Settings</p>
                                     </a>
                                 </div>
                                  
@@ -184,6 +195,12 @@ permalink: /v1-0/learn/by-example/tcp-socket-listener-client
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -226,7 +243,8 @@ import ballerina/socket;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    socket:Client socketClient = new ({
         host: &quot;localhost&quot;,
-        port: 61598
+        port: 61598,
+        callbackService: ClientService
     });
     string content = &quot;Hello Ballerina&quot;;
     byte[] payloadByte = content.toBytes();
@@ -259,6 +277,7 @@ import ballerina/socket;
             payloadByte = payloadByte.slice(writeResult, arrayLength);
         }
     }
+}
 </code></pre></div>
 
                                 </td>
@@ -277,27 +296,27 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;read();
-    if (result is [byte[], int]) {
-        var [reply, length] = result;
-        if (length &gt; 0) {
-            var byteChannel =
-            io:createReadableChannel(reply);
-            if (byteChannel is io:ReadableByteChannel) {
-                io:ReadableCharacterChannel characterChannel =
-                new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
-                var str = characterChannel.read(25);
-                if (str is string) {
-                    io:println(&lt;@untainted&gt;str);
-                } else {
-                    io:println(&quot;Error while reading characters &quot;, str);
-                }
-            } else {
-                io:println(&quot;Client close: &quot;, socketClient.remotePort);
-            }
-        }
-    } else {
-        io:println(result);
+                                    <div class="highlight"><pre><code class=ballerina>service ClientService = service {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Callback service for the TCP client. The service needs to have four predefined resources.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onConnect(socket:Caller caller) {
+        io:println(&quot;Connect to: &quot;, caller.remotePort);
     }
 </code></pre></div>
 
@@ -306,7 +325,73 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Reading response from the server.</p>
+                                            <p>This is invoked once the client connects to the TCP server.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onReadReady(socket:Caller caller) {
+        var result = caller-&gt;read();
+        if (result is [byte[], int]) {
+            var [content, length] = result;
+            if (length &gt; 0) {
+                var byteChannel =
+                io:createReadableChannel(content);
+                if (byteChannel is io:ReadableByteChannel) {
+                    io:ReadableCharacterChannel characterChannel =
+                    new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
+                    var str = characterChannel.read(25);
+                    if (str is string) {
+                        io:println(&lt;@untainted&gt;str);
+                    } else {
+                        io:println(&quot;Error while reading characters &quot;, str);
+                    }
+                } else {
+                    io:println(&quot;Client close: &quot;, caller.remotePort);
+                }
+            }
+        } else {
+            io:println(result);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is invoked when the server sends any content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var closeResult = caller-&gt;close();
+        if (closeResult is error) {
+            io:println(closeResult);
+        } else {
+            io:println(&quot;Client connection closed successfully.&quot;);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the connection between the server and the client.</p>
 
                                         </div>
                                     </div>
@@ -317,13 +402,10 @@ import ballerina/socket;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var closeResult = socketClient-&gt;close();
-    if (closeResult is error) {
-        io:println(closeResult);
-    } else {
-        io:println(&quot;Client connection closed successfully.&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onError(socket:Caller caller, error err) {
+        io:println(err);
     }
-}
+};
 </code></pre></div>
 
                                 </td>
@@ -331,7 +413,8 @@ import ballerina/socket;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Close the connection between the server and the client.</p>
+                                            <p>This resource is invoked for the error situation
+ if it happens during the <code>onConnect</code> and <code>onReadReady</code> functions.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +456,9 @@ $ ballerina run tcp_socket_client.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Print the response that is obtained from the server.
+                                    <div class="highlight"><pre><code class=shell-session># `onConnect` invokes and prints the remote server port once the connection to the server is successful.
+Connect to: 61598
+# Print the response that is obtained from the server through the callback service.
 Hello Ballerina back
 Client connection closed successfully.
 </code></pre></div>

@@ -7,10 +7,7 @@ permalink: /v0-991/learn/by-example/type-conversion
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">decimal</span> <span class="k">as</span> <span class="nx">decimals</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">float</span> <span class="k">as</span> <span class="nx">floats</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
@@ -19,57 +16,58 @@ permalink: /v0-991/learn/by-example/type-conversion
     <span class="kt">int</span> <span class="nx">empNo</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="kd">function</span> <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">convertAnyMapToPerson</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;anydata&gt; to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;any&gt; to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred on conversion&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">createNumericValues</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">convertSimpleBasicTypes</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="s">&quot;45&quot;</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="s">&quot;abc&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">s3</span> <span class="p">=</span> <span class="s">&quot;12.3&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">s4</span> <span class="p">=</span> <span class="s">&quot;8&quot;</span><span class="p">;</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s1</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">s3</span> <span class="p">=</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">10.2</span><span class="p">;</span>
+    <span class="kt">any</span> <span class="nx">a</span> <span class="p">=</span> <span class="mf">3.14</span><span class="p">;</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">s1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
-    <span class="p">}</span>    <span class="nx">res1</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s2</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">res1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">s2</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res1</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="nx">floats</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s3</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">intVal</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">f</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">intVal</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int value: &quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">boolean</span> <span class="nx">b</span> <span class="p">=</span> <span class="kt">boolean</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">s3</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;boolean value: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+    <span class="kt">float</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res2</span> <span class="p">=</span> <span class="kt">float</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res2</span> <span class="nx">is</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;float value: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
-    <span class="p">}</span>
-    <span class="nx">decimal</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res3</span> <span class="p">=</span> <span class="nx">decimals</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s4</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">res3</span> <span class="nx">is</span> <span class="nx">decimal</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;decimal value: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res3</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error: &quot;</span><span class="p">,</span> <span class="nx">res2</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Sparrow&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
     <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Hector Barbossa&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
-    <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">n</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Elizabeth Swann&quot;</span> <span class="p">};</span>
-    <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
-    <span class="nx">createNumericValues</span><span class="p">();</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jack Sparrow&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">54</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">100</span> <span class="p">};</span>
+    <span class="nx">convertAnyMapToPerson</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+    <span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="kt">int</span><span class="p">;</span>
+    <span class="nx">convertAnyMapToPerson</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+    <span class="nx">convertSimpleBasicTypes</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -80,9 +78,10 @@ permalink: /v0-991/learn/by-example/type-conversion
                     <tr>
                         <td class="cLeftTD">
                             <h2>Type Conversion</h2>
-                            <p><p>The <code>.constructFrom()</code> method creates a new value with a target storage type from a given <code>anydata</code>-typed
+                            <p><p>The <code>.convert()</code> built-in method creates a new value with a target storage type, from a given <code>anydata</code> typed
  value, and assigns it to a target variable.
- <code>.constructFrom()</code> is defined on all structured types, and returns an error if the operation is unsuccessful.</p>
+ Conversion attempts could be safe or unsafe, and unsafe conversion attempts could return an <code>error</code>.
+ <code>.convert()</code> is defined on all structured types, but returns an error if the value is not of type <code>anydata</code>.</p>
 </p>
 
                         </td>
@@ -90,16 +89,16 @@ permalink: /v0-991/learn/by-example/type-conversion
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="immutable-values.html">
+                                    <a class="prev" href="length.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Immutable Values</p>
+                                        <p>Length</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="json.html">
+                                    <a class="next" href="type-cast.html">
                                         <span>NEXT ></span>
-                                        <p>JSON</p>
+                                        <p>Type Cast</p>
                                     </a>
                                 </div>
                                 
@@ -175,6 +174,8 @@ permalink: /v0-991/learn/by-example/type-conversion
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -184,9 +185,6 @@ permalink: /v0-991/learn/by-example/type-conversion
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;decimal as decimals;
-import ballerina/lang.&#39;float as floats;
-import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -237,7 +235,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function attempts to convert an <code>anydata</code> record <code>Employee</code> to an <code>anydata</code> record <code>Person</code>.</p>
+                                            <p>Function to attempt converting an <code>anydata</code> record <code>Employee</code>, to an <code>anydata</code> record <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -248,7 +246,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(emp);
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.convert(emp);
     if (res is Person) {
 </code></pre></div>
 
@@ -257,8 +255,8 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempts to create a new value of the type <code>Person</code> from the <code>Employee</code>-typed <code>emp</code> value without changing
- the inherent type of <code>emp</code>.</p>
+                                            <p>Attempt creating a new value of type <code>Person</code> from the <code>Employee</code> typed <code>emp</code> value, without changing <code>emp</code>&rsquo;s
+ inherent type.</p>
 
                                         </div>
                                     </div>
@@ -281,7 +279,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the conversion is successful, this prints the <code>name</code> field.</p>
+                                            <p>If the conversion is successful, print the <code>name</code> field.</p>
 
                                         </div>
                                     </div>
@@ -292,7 +290,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function convertAnydataMapToPerson(map&lt;anydata&gt; m) {
+                                    <div class="highlight"><pre><code class=ballerina>function convertAnyMapToPerson(map&lt;any&gt; m) {
 </code></pre></div>
 
                                 </td>
@@ -300,8 +298,8 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function attempts to convert an <code>anydata</code> constrained map to an <code>anydata</code> record <code>Person</code>.
- The conversion would return an error if an incompatible value is found.</p>
+                                            <p>Function to attempt converting an <code>any</code> constrained map, to an <code>anydata</code> record <code>Person</code>.
+ The conversion would return an error if non-<code>anydata</code> or an incompatible value is found.</p>
 
                                         </div>
                                     </div>
@@ -312,7 +310,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(m);
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.convert(m);
     if (res is Person) {
 </code></pre></div>
 
@@ -321,8 +319,8 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempts to create a new value of the type <code>Person</code> from the <code>map&lt;anydata&gt;</code> typed <code>m</code> value without changing
- the inherent type of <code>m</code>.</p>
+                                            <p>Attempt creating a new value of type <code>Person</code> from the <code>map&lt;any&gt;</code> typed <code>m</code> value, without changing <code>m</code>&rsquo;s
+ inherent type.</p>
 
                                         </div>
                                     </div>
@@ -333,9 +331,9 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;map&lt;anydata&gt; to Person, name: &quot;, res[&quot;name&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;map&lt;any&gt; to Person, name: &quot;, res[&quot;name&quot;]);
     } else {
-        io:println(&quot;Error occurred on conversion: &quot;, res.detail());
+        io:println(&quot;Error occurred on conversion&quot;);
     }
 }
 </code></pre></div>
@@ -345,7 +343,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the conversion is successful, this prints the <code>name</code> field.</p>
+                                            <p>If the conversion is successful, print the <code>name</code> field.</p>
 
                                         </div>
                                     </div>
@@ -356,11 +354,12 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function createNumericValues() {
+                                    <div class="highlight"><pre><code class=ballerina>function convertSimpleBasicTypes() {
     string s1 = &quot;45&quot;;
     string s2 = &quot;abc&quot;;
-    string s3 = &quot;12.3&quot;;
-    string s4 = &quot;8&quot;;
+    string s3 = &quot;true&quot;;
+    float f = 10.2;
+    any a = 3.14;
 </code></pre></div>
 
                                 </td>
@@ -368,7 +367,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function creates numeric values from string values.</p>
+                                            <p>Function to convert simple basic types using the <code>.convert()</code> built-in method.</p>
 
                                         </div>
                                     </div>
@@ -379,11 +378,11 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error res1 = ints:fromString(s1);
+                                    <div class="highlight"><pre><code class=ballerina>    int|error res1 = int.convert(s1);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
-        io:println(&quot;error: &quot;, res1.detail());
+        io:println(&quot;error: &quot;, res1.detail().message);
     }
 </code></pre></div>
 
@@ -392,8 +391,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>fromString()</code> method in the ballerina/lang.int module returns the integer value represented by a
- given string if there is a valid representation, else returns an <code>error</code>.</p>
+                                            <p><code>string</code> to <code>int</code> conversion is unsafe, since the <code>string</code> value may not be convertible to <code>int</code>.</p>
 
                                         </div>
                                     </div>
@@ -404,11 +402,11 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    res1 = ints:fromString(s2);
+                                    <div class="highlight"><pre><code class=ballerina>    res1 = int.convert(s2);
     if (res1 is int) {
         io:println(&quot;int value: &quot;, res1);
     } else {
-        io:println(&quot;error: &quot;, res1.detail());
+        io:println(&quot;error: &quot;, res1.detail().message);
     }
 </code></pre></div>
 
@@ -421,11 +419,9 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float|error res2 = floats:fromString(s3);
-    if (res2 is float) {
-        io:println(&quot;float value: &quot;, res2);
-    } else {
-        io:println(&quot;error: &quot;, res2.detail());
+                                    <div class="highlight"><pre><code class=ballerina>    int|error intVal = int.convert(f);
+    if (intVal is int) {
+        io:println(&quot;int value: &quot;, intVal);
     }
 </code></pre></div>
 
@@ -434,8 +430,9 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>fromString()</code> method in the ballerina/lang.float module returns the float value represented by a given
- string if there is a valid representation, else returns an <code>error</code>.</p>
+                                            <p>A <code>float</code> to <code>int</code> conversion can result in some of the information getting lost.
+ However, this conversion is unsafe due to <code>NaN</code> or <code>infinite</code> float values where the conversion attempt will
+ result in a error.</p>
 
                                         </div>
                                     </div>
@@ -446,11 +443,33 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    decimal|error res3 = decimals:fromString(s4);
-    if (res3 is decimal) {
-        io:println(&quot;decimal value: &quot;, res3);
+                                    <div class="highlight"><pre><code class=ballerina>    boolean b = boolean.convert(s3);
+    io:println(&quot;boolean value: &quot;, b);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>string</code> to <code>boolean</code> conversion is always safe. The <code>string</code> value <code>true</code> (ignoring case)
+ evaluates to the <code>boolean</code> value <code>true</code>, while any other <code>string</code> is converted to the
+ <code>boolean</code> value <code>false</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    float|error res2 = float.convert(a);
+    if (res2 is float) {
+        io:println(&quot;float value: &quot;, res2);
     } else {
-        io:println(&quot;error: &quot;, res3.detail());
+        io:println(&quot;error: &quot;, res2.detail().message);
     }
 }
 </code></pre></div>
@@ -460,8 +479,9 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>fromString()</code> method in the ballerina/lang.decimal module returns the decimal value represented by a given
- string if there is a valid representation, else returns an <code>error</code>.</p>
+                                            <p>A simple basic typed value held in an <code>any</code> typed variable can also be converted to its inherent
+ type using the <code>.convert()</code> method. This attempt is unsafe, since the value may not be compatible
+ with the target type.</p>
 
                                         </div>
                                     </div>
@@ -493,7 +513,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempts to convert an <code>anydata</code>-typed record to another <code>anydata</code>-typed record.</p>
+                                            <p>Attempt converting an <code>anydata</code> typed record to another <code>anydata</code> typed record.</p>
 
                                         </div>
                                     </div>
@@ -504,8 +524,8 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; m = { name: &quot;Hector Barbossa&quot;, age: 54, empNo: 100 };
-    convertAnydataMapToPerson(m);
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;any&gt; m = { name: &quot;Jack Sparrow&quot;, age: 54, empNo: 100 };
+    convertAnyMapToPerson(m);
 </code></pre></div>
 
                                 </td>
@@ -513,8 +533,9 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempts to convert an <code>anydata</code> constrained map to an <code>anydata</code>-typed record.
- This conversion would be successful since all the expected elements are present.</p>
+                                            <p>Attempt converting an <code>any</code> constrained map to an <code>anydata</code> typed record.
+ This conversion would be successful since all the expected elements are present
+ and no non-<code>anydata</code> elements are added to the map.</p>
 
                                         </div>
                                     </div>
@@ -525,8 +546,8 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt; n = { name: &quot;Elizabeth Swann&quot; };
-    convertAnydataMapToPerson(n);
+                                    <div class="highlight"><pre><code class=ballerina>    m[&quot;name&quot;] = int;
+    convertAnyMapToPerson(m);
 </code></pre></div>
 
                                 </td>
@@ -534,8 +555,8 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This conversion would not be successful since all the required elements are not
- present in the map.</p>
+                                            <p>Add a non-<code>anydata</code> element (e.g., <code>typedesc</code>) to the map and re-attempt conversion.
+ The conversion attempt would now return an error.</p>
 
                                         </div>
                                     </div>
@@ -546,7 +567,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    createNumericValues();
+                                    <div class="highlight"><pre><code class=ballerina>    convertSimpleBasicTypes();
 }
 </code></pre></div>
 
@@ -555,7 +576,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Attempts to convert strings to numeric types.</p>
+                                            <p>Attempt converting to/from simple basic types.</p>
 
                                         </div>
                                     </div>
@@ -580,15 +601,16 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run the program, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run type_conversion.bal
 Employee to Person, name: Jack Sparrow
-map&lt;anydata&gt; to Person, name: Hector Barbossa
-Error occurred on conversion: message=&#39;map&lt;anydata&gt;&#39; value cannot be converted to &#39;Person&#39;
+map&lt;any&gt; to Person, name: Jack Sparrow
+Error occurred on conversion
 int value: 45
-error: message=&#39;string&#39; value &#39;abc&#39; cannot be converted to &#39;int&#39;
-float value: 12.3
-decimal value: 8
+error: incompatible convert operation: &#39;string&#39; value &#39;abc&#39; cannot be converted as &#39;int&#39;
+int value: 10
+boolean value: true
+float value: 3.14
 </code></pre></div>
 
                                 </td>

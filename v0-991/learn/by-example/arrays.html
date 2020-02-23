@@ -13,15 +13,6 @@ permalink: /v0-991/learn/by-example/arrays
     <span class="kt">int</span><span class="p">[]</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">bReveresed</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reversed: &quot;</span><span class="p">,</span> <span class="nx">bReveresed</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Before pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="nx">poppedValue</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Popped value: &quot;</span><span class="p">,</span> <span class="nx">poppedValue</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;After pop: &quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">[]</span> <span class="nx">doubled</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span> <span class="nx">value</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-        <span class="p">});</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Doubled: &quot;</span><span class="p">,</span> <span class="nx">doubled</span><span class="p">);</span>
     <span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">[</span><span class="mi">999</span><span class="p">]);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
@@ -46,7 +37,7 @@ permalink: /v0-991/learn/by-example/arrays
                     <tr>
                         <td class="cLeftTD">
                             <h2>Arrays</h2>
-                            <p><p>Arrays are mutable lists of values of dynamic length in which each member in the list is
+                            <p><p>Arrays are mutable lists of values of dynamic length, where each member in the list is
  of the same type.
  A fixed length array can be created by specifying the length of the array at the time of declaration.</p>
 </p>
@@ -125,12 +116,6 @@ permalink: /v0-991/learn/by-example/arrays
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -172,7 +157,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an <code>int</code> array of length 0.</p>
+                                            <p>Create an <code>int</code> array of length 0.</p>
 
                                         </div>
                                     </div>
@@ -193,65 +178,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an array specifying an array literal.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] bReveresed = b.reverse();
-    io:println(&quot;Reversed: &quot;, bReveresed);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Arrays support several inbuilt functions such as <code>.reverse()</code>, <code>.pop()</code>, <code>.push()</code>, and <code>.removeAll()</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Before pop: &quot;, b);
-    int poppedValue = b.pop();
-    io:println(&quot;Popped value: &quot;, poppedValue);
-    io:println(&quot;After pop: &quot;, b);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int[] doubled = b.map(function (int value) returns int {
-            return value * 2;
-        });
-    io:println(&quot;Doubled: &quot;, doubled);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Arrays are an iterable type and arrays support functional iteration operations such as <code>.map()</code>, <code>.filter()</code>, and
- <code>.reduce()</code>.</p>
+                                            <p>Create an array specifying an array literal.</p>
 
                                         </div>
                                     </div>
@@ -295,7 +222,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes a two dimensional <code>int</code> array.</p>
+                                            <p>Initialize a two dimensional <code>int</code> array.</p>
 
                                         </div>
                                     </div>
@@ -314,7 +241,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the outermost array to an empty array.</p>
+                                            <p>Initialize the outermost array to an empty array.</p>
 
                                         </div>
                                     </div>
@@ -334,7 +261,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adds a new array as the first element.</p>
+                                            <p>Add a new array as the first element.</p>
 
                                         </div>
                                     </div>
@@ -353,7 +280,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the first value of the two-dimensional array.</p>
+                                            <p>Print the first value of the two-dimensional array.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +300,7 @@ permalink: /v0-991/learn/by-example/arrays
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an <code>int</code> array with the fixed length of five.</p>
+                                            <p>Create an <code>int</code> array with the fixed length of five.</p>
 
                                         </div>
                                     </div>
@@ -420,16 +347,11 @@ permalink: /v0-991/learn/by-example/arrays
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run arrays.bal
 0
 1
 8
-Reversed: 8 7 6 5 4 3 2 1
-Before pop: 1 2 3 4 5 6 7 8
-Popped value: 8
-After pop: 1 2 3 4 5 6 7
-Doubled: 2 4 6 8 10 12 14
 23
 1000
 3

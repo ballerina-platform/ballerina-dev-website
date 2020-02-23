@@ -8,20 +8,25 @@ permalink: /v0-991/learn/by-example/the-main-function
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">,</span>
-                     <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="kt">string</span> <span class="nx">year</span> <span class="p">=</span> <span class="s">&quot;Freshman&quot;</span><span class="p">,</span>
-                     <span class="kt">string</span><span class="o">...</span> <span class="nx">modules</span><span class="p">)</span>
-                  <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;InvalidName&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;invalid length&quot;</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kt">string</span> <span class="nx">info</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`Name: ${name}, Age: ${age}, Year: ${year}`</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">modules</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">info</span> <span class="o">+=</span> <span class="s">&quot;, Module(s): &quot;</span> <span class="o">+</span> <span class="nx">modules</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="kt">string</span> <span class="nx">operation</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">initialValue</span> <span class="p">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span> <span class="nx">values</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">initialValue</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">operation</span> <span class="o">==</span> <span class="s">&quot;add&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="kt">int</span> <span class="nx">intValue</span> <span class="nx">in</span> <span class="nx">values</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">+=</span> <span class="nx">intValue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">operation</span> <span class="o">==</span> <span class="s">&quot;subtract&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">intValue</span> <span class="nx">in</span> <span class="nx">values</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">-=</span> <span class="nx">intValue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Result: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: Unknown Operation&quot;</span><span class="p">);</span>
+        <span class="nx">error</span> <span class="nx">unknownOpError</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;unknown operation&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">unknownOpError</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">info</span><span class="p">);</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
-<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
+<span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
 </pre></div>
 
             </div>
@@ -31,8 +36,8 @@ permalink: /v0-991/learn/by-example/the-main-function
                     <tr>
                         <td class="cLeftTD">
                             <h2>The Main Function</h2>
-                            <p><p>A <code>public</code> function named <code>main</code> is considered as an entry point to a Ballerina program.
- The <code>main</code> function is data-binding and can have zero or more parameters whose types are subtypes of <code>anydata</code>,
+                            <p><p>A <code>public</code> function named <code>main</code> is considered an entry point to a Ballerina program.
+ The <code>main</code> function is data-binding, and can have zero or more parameters whose types are subtypes of <code>anydata</code>,
  including any number of required/defaultable parameters and/or a single rest parameter.
  The <code>main</code> function could also return a value whose type is a subtype of <code>error?</code>.</p>
 </p>
@@ -93,12 +98,6 @@ permalink: /v0-991/learn/by-example/the-main-function
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -118,12 +117,25 @@ permalink: /v0-991/learn/by-example/the-main-function
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main(string name,
-                     int age = 18,
-                     string year = &quot;Freshman&quot;,
-                     string... modules)
-                  returns error? {
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>public function main(string operation, int initialValue = 0, int... values) returns error? {
+    int value = initialValue;
+    if (operation == &quot;add&quot;) {
+        foreach int intValue in values {
+            value += intValue;
+        }
+        io:println(&quot;Result: &quot;, value);
+    } else if (operation == &quot;subtract&quot;) {
+        foreach var intValue in values {
+            value -= intValue;
+        }
+        io:println(&quot;Result: &quot;, value);
+    } else {
+        io:println(&quot;Error: Unknown Operation&quot;);
+        error unknownOpError = error(&quot;unknown operation&quot;);
+        return unknownOpError;
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -131,10 +143,10 @@ permalink: /v0-991/learn/by-example/the-main-function
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>main</code> function that accepts student information and prints out a formatted string.
- The first parameter <code>name</code> is a required parameter, while the second parameter <code>age</code> is a defaultable
- parameter with the default value <code>18</code>. The third parameter <code>year</code> is also a defaultable parameter.
- The rest parameter <code>modules</code> represents the additional arguments.
+                                            <p>The <code>main</code> function, that performs a math operation. The first parameter <code>operation</code>,
+ represents the math operation while the second parameter <code>initialValue</code> is a defaultable
+ parameter with the default value <code>0</code>, representing the base value upon which the operation
+ should be performed. The rest parameter <code>values</code> represents the additional arguments.
  The <code>main</code> function may return an <code>error</code> or <code>()</code>.</p>
 
                                         </div>
@@ -143,67 +155,9 @@ permalink: /v0-991/learn/by-example/the-main-function
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (name.length() &lt; 5) {
-        error e = error(&quot;InvalidName&quot;, message = &quot;invalid length&quot;);
-        return e;
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Return an error if the name is invalid.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string info = string `Name: ${name}, Age: ${age}, Year: ${year}`;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    if (modules.length() &gt; 0) {
-        info += &quot;, Module(s): &quot; + modules.toString();
-    }
-    io:println(info);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                         </table>
                     </div>
                     
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
                         
                             
                                 
@@ -230,7 +184,7 @@ permalink: /v0-991/learn/by-example/the-main-function
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 </code></pre></div>
 
                                 </td>
@@ -242,11 +196,11 @@ permalink: /v0-991/learn/by-example/the-main-function
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name`. `18` would be set as the value for
-# `age` and `Freshman` would be set as the value for `year`.
-$  ballerina run the_main_function.bal Alice
-Name: Alice, Age: 18, Year: Freshman
+                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function, specifying `add`
+# as the string argument for `operation` and `10` and `20` as the integer arguments
+# with which the operation is to be performed.
+$ ballerina run the_main_function.bal add 10 20
+Result: 30
 </code></pre></div>
 
                                 </td>
@@ -258,43 +212,12 @@ Name: Alice, Age: 18, Year: Freshman
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name` and `20` as the integer value for
-# `age`. Both arguments are specified as positional arguments.
-$ ballerina run the_main_function.bal Alice 20
-Name: Alice, Age: 20, Year: Freshman
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying `Alice`
-# as the string argument for `name` and `Sophomore` as the string argument for
-# `year`. The value for `year` is specified as a named argument.
-$ ballerina run the_main_function.bal Alice -year=Sophomore
-Name: Alice, Age: 18, Year: Sophomore
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying values for
-# all parameters, including the rest parameter. All arguments are specified as
-# positional arguments.
-$ ballerina run the_main_function.bal Alice 20 Sophomore math physics
-Name: Alice, Age: 20, Year: Sophomore, Module(s): math physics
+                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function, specifying `subtract`
+# as the string argument for `operation`, `40` as the integer argument for the defaultable
+# parameter `initialValue`, and `10` and `20` as the integer arguments with which the
+# operation is to be performed.
+$ ballerina run the_main_function.bal subtract -initialValue=40 10 20
+Result: 10
 </code></pre></div>
 
                                 </td>
@@ -306,10 +229,10 @@ Name: Alice, Age: 20, Year: Sophomore, Module(s): math physics
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function specifying an invalid 
-# string as the argument for `name`. The `error` returned would be printed.
-$ ballerina run the_main_function.bal Ali
-error: InvalidName message=invalid length
+                                    <div class="highlight"><pre><code class=shell-session># Use the ballerina `run` command to invoke the `main` function, specifying `unknown op`
+# as the string argument for `operation`.
+$ ballerina run the_main_function.bal &quot;unknown op&quot;
+Error: Unknown Operation
 </code></pre></div>
 
                                 </td>

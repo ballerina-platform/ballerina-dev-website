@@ -34,14 +34,12 @@ permalink: /v0-991/learn/by-example/temporal-aggregations-and-windows
 <span class="p">}</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">requestService</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>    <span class="kd">function</span> <span class="nx">__init</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">initRealtimeRequestCounter</span><span class="p">();</span>
-    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">requestService</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>    <span class="nx">future</span><span class="p">&lt;()&gt;</span> <span class="nx">ftr</span> <span class="p">=</span> <span class="nx">start</span> <span class="nx">initRealtimeRequestCounter</span><span class="p">();</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/requests&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">requests</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">conn</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">hostName</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">remoteAddress</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">hostName</span> <span class="p">=</span> <span class="nx">untaint</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">remoteAddress</span><span class="p">.</span><span class="nx">host</span><span class="p">;</span>
         <span class="nx">ClientRequest</span> <span class="nx">clientRequest</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">host</span><span class="p">:</span> <span class="nx">hostName</span> <span class="p">};</span>
         <span class="nx">requestStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">clientRequest</span><span class="p">);</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="s">&quot;{&#39;message&#39; : &#39;request successfully &quot;</span> <span class="o">+</span>
@@ -63,9 +61,9 @@ permalink: /v0-991/learn/by-example/temporal-aggregations-and-windows
                             <h2>Temporal Aggregations</h2>
                             <p><p>Streaming rules can be used within services to process incoming requests in the background.
  In this example, the incoming requests are fed into a global stream. If the number of requests from
- the same host is greater than 6 within 10 seconds, a log is printed. This example can be extended to make
+ the same host is greater than six within 10 seconds, a log is printed. This example can be extended to make
  decisions based on the output of the streaming rules.
- Ballerina Streams is an experimental feature. Therefore, use the <code>--experimental</code> flag when compiling Ballerina files,
+ Ballerina Streams is an experimental feature. Please use <code>--experimental</code> flag when compiling Ballerina files
  which have streaming constructs.</p>
 </p>
 
@@ -83,7 +81,7 @@ permalink: /v0-991/learn/by-example/temporal-aggregations-and-windows
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="join-multiple-streams.html">
                                         <span>NEXT ></span>
-                                        <p>Join Multiple Streams</p>
+                                        <p>Join Mutiple Streams</p>
                                     </a>
                                 </div>
                                 
@@ -259,9 +257,9 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gathers all the events coming in to the <code>requestStream</code> for five seconds, groups them by the host, counts the number
- of requests per host, and checks if the count is more than 6. If yes, publish the output (host and the count) to
- the <code>requestCountStream</code> stream as an alert. This <code>forever</code> block is executed once when initializing the service.
+                                            <p>Gather all the events coming in to the <code>requestStream</code> for five seconds, group them by the host, count the number
+ of requests per host, and check if the count is more than six. If yes, publish the output (host and the count) to
+ the <code>requestCountStream</code> stream as an alert. This <code>forever</code> block is executed once, when initializing the service.
  The processing happens asynchronously each time the <code>requestStream</code> receives an event.</p>
 
                                         </div>
@@ -309,7 +307,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the <code>printRequestCount</code> function.</p>
+                                            <p>Define the <code>printRequestCount</code> function.</p>
 
                                         </div>
                                     </div>
@@ -366,9 +364,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init() {
-        initRealtimeRequestCounter();
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    future&lt;()&gt; ftr = start initRealtimeRequestCounter();
 </code></pre></div>
 
                                 </td>
@@ -385,7 +381,7 @@ stream&lt;RequestCount&gt; requestCountStream = new;
         path: &quot;/requests&quot;
     }
     resource function requests(http:Caller conn, http:Request req) {
-        string hostName = &lt;@untainted&gt; conn.remoteAddress.host;
+        string hostName = untaint conn.remoteAddress.host;
         ClientRequest clientRequest = { host: hostName };
         requestStream.publish(clientRequest);
 </code></pre></div>
@@ -441,9 +437,10 @@ stream&lt;RequestCount&gt; requestCountStream = new;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental temporal_aggregations_and_windows.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;temporal_aggregations_and_windows.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -480,7 +477,7 @@ $ curl -X POST http://localhost:9090/requests -d &quot;{&#39;message&#39; : &#39
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># If the number of requests from the same host is greater than 6, a log is printed where you ran the &#39;temporal_aggregations_and_windows.bal&#39;.
+                                    <div class="highlight"><pre><code class=shell-session># If the number of requests from the same host is greater than six, a log is printed where you ran the &#39;temporal_aggregations_and_windows.bal&#39;.
 ALERT!! : Received more than 6 requests from the host within 10 seconds : localhost
 </code></pre></div>
 

@@ -14,20 +14,21 @@ permalink: /v0-991/learn/by-example/query-path-matrix-param
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">params</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                 <span class="kt">string</span> <span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;bar&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">params</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParams</span><span class="p">();</span>
+        <span class="k">var</span> <span class="nx">bar</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">params</span><span class="p">.</span><span class="nx">bar</span><span class="p">;</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">pathMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">];</span>
-        <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">[</span><span class="s">&quot;b&quot;</span><span class="p">];</span>
+        <span class="k">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">.</span><span class="nx">a</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">pathMParams</span><span class="p">.</span><span class="nx">b</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">pathMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`a=${a}, b=${b}`</span><span class="p">;</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">fooMParams</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getMatrixParams</span><span class="p">(</span><span class="s">&quot;/sample/path/&quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">];</span>
-        <span class="k">var</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;y&quot;</span><span class="p">];</span>
+        <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">fooMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`x=${x}, y=${y}`</span><span class="p">;</span>
         <span class="kt">json</span> <span class="nx">matrixJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="nx">pathMatrixStr</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="nx">fooMatrixStr</span> <span class="p">};</span>
         <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;pathParam&quot;</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="s">&quot;queryParam&quot;</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span>
                                 <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span> <span class="p">};</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">responseJson</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
@@ -185,7 +186,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var bar = req.getQueryParamValue(&quot;bar&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        var params = req.getQueryParams();
+        var bar = &lt;string&gt;params.bar;
 </code></pre></div>
 
                                 </td>
@@ -193,7 +195,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>QueryParam</code> value for a given parameter key.</p>
+                                            <p>Get <code>QueryParams</code>.</p>
 
                                         </div>
                                     </div>
@@ -205,12 +207,12 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        map&lt;any&gt; pathMParams = req.getMatrixParams(&quot;/sample/path&quot;);
-        var a = &lt;string&gt;pathMParams[&quot;a&quot;];
-        var b = &lt;string&gt;pathMParams[&quot;b&quot;];
+        var a = &lt;string&gt;pathMParams.a;
+        var b = &lt;string&gt;pathMParams.b;
         string pathMatrixStr = string `a=${a}, b=${b}`;
         map&lt;any&gt; fooMParams = req.getMatrixParams(&quot;/sample/path/&quot; + foo);
-        var x = &lt;string&gt;fooMParams[&quot;x&quot;];
-        var y = &lt;string&gt;fooMParams[&quot;y&quot;];
+        var x = &lt;string&gt;fooMParams.x;
+        var y = &lt;string&gt;fooMParams.y;
         string fooMatrixStr = string `x=${x}, y=${y}`;
         json matrixJson = { &quot;path&quot;: pathMatrixStr, &quot;foo&quot;: fooMatrixStr };
 </code></pre></div>
@@ -220,7 +222,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>MatrixParams</code>.</p>
+                                            <p>Get <code>MatrixParams</code>.</p>
 
                                         </div>
                                     </div>
@@ -252,7 +254,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setJsonPayload(&lt;@untainted&gt; responseJson);
+                                    <div class="highlight"><pre><code class=ballerina>        res.setJsonPayload(untaint responseJson);
 </code></pre></div>
 
                                 </td>
@@ -322,7 +324,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run query_path_matrix_param.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;query_path_matrix_param.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

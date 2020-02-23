@@ -26,9 +26,10 @@ permalink: /v0-991/learn/by-example/ballerina-to-openapi
                     <tr>
                         <td class="cLeftTD">
                             <h2>Ballerina To OpenAPI</h2>
-                            <p><p>The Ballerina to OpenApi tool is used to generate an OpenAPI Specification(OAS) v3 definition of a Ballerina service.
- This tool&rsquo;s command structure is as below.
- <code>ballerina openapi gen-contract [&lt;module&gt;:]&lt;service-name&gt; [-i &lt;ballerina-file&gt;] [-o &lt;contract-file&gt;] [-s|--skip-bind] [-h|--help]</code></p>
+                            <p><p>The Ballerina to OpenApi tool is used to export an Open API Specification(OAS) v3 definition of a Ballerina service.
+ This tool accepts the following command line arguments,
+ <code>-s | --service</code> If the provided file contains multiple services, define a specific service that needs to be exported.
+ <code>-o | --output</code> The destination path to write the exported OAS definition.</p>
 </p>
 
                         </td>
@@ -169,12 +170,9 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To export the OpenAPI definition of ballerina service `hello`, navigate to the directory that contains the
-# `ballerina_to_openapi.bal` file, and execute `ballerina openapi gen-contract` command.
-$ ballerina openapi gen-contract hello -i ballerina_to_openapi.bal
-Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
-Successfully generated the ballerina contract at location
-/examples/ballerina-to-openapi/hello.openapi.yaml
+                                    <div class="highlight"><pre><code class=shell-session>#Run the following command in the Ballerina tools distribution to export the OAS definition of a ballerina service.
+$ ballerina openapi export ballerina_to_openapi.bal
+successfully generated openapi definition for input file - ballerina_to_openapi.bal
 </code></pre></div>
 
                                 </td>

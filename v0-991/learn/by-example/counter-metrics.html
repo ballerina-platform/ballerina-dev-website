@@ -23,7 +23,7 @@ permalink: /v0-991/learn/by-example/counter-metrics
         <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">localCounter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
         <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
-        <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+        <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="nx">amount</span> <span class="p">=</span> <span class="mi">20</span><span class="p">);</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">registeredCounter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;total_product_order_quantity&quot;</span><span class="p">,</span>
             <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">,</span>
             <span class="nx">tags</span> <span class="p">=</span> <span class="p">{</span><span class="nx">prodName</span><span class="p">:</span><span class="s">&quot;HeadPhone&quot;</span><span class="p">,</span> <span class="nx">prodType</span><span class="p">:</span><span class="s">&quot;Electronics&quot;</span><span class="p">});</span>
@@ -31,11 +31,11 @@ permalink: /v0-991/learn/by-example/counter-metrics
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
-        <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+        <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="nx">amount</span> <span class="p">=</span> <span class="mi">10</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Global Counter = &quot;</span><span class="p">,</span> <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local Counter = &quot;</span><span class="p">,</span> <span class="nx">localCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Registered Counter = &quot;</span><span class="p">,</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Global Counter = &quot;</span><span class="o">+</span> <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local Counter = &quot;</span><span class="o">+</span> <span class="nx">localCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Registered Counter = &quot;</span><span class="o">+</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">getValue</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
@@ -55,7 +55,7 @@ permalink: /v0-991/learn/by-example/counter-metrics
                         <td class="cLeftTD">
                             <h2>Counter-Based Metrics</h2>
                             <p><p>Ballerina supports Observability out of the box, and Metrics is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
+ Observability. To observe Ballerina code, the <code>--observe</code> flag should be given when starting the service.
  The developers can define and use metrics to measure their own logic. A counter is one type of metric that is
  supported by default in Ballerina, and it is a cumulative metric that represents a single monotonically increasing
  counter whose value can only increase or be reset to zero.</p>
@@ -195,7 +195,7 @@ service onlineStoreService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Make sure you start the service with &lsquo;&ndash;b7a.observability.enabled=true&rsquo;, or metrics enabled.</p>
+                                            <p>Make sure you start the service with <code>--observe</code>, or metrics enabled.</p>
 
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        localCounter.increment(20);
+                                    <div class="highlight"><pre><code class=ballerina>        localCounter.increment(amount = 20);
 </code></pre></div>
 
                                 </td>
@@ -327,7 +327,7 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        registeredCounter.increment(10);
+                                    <div class="highlight"><pre><code class=ballerina>        registeredCounter.increment(amount = 10);
 </code></pre></div>
 
                                 </td>
@@ -347,9 +347,9 @@ counter instance.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        io:println(&quot;------------------------------------------&quot;);
-        io:println(&quot;Global Counter = &quot;, globalCounter.getValue());
-        io:println(&quot;Local Counter = &quot;, localCounter.getValue());
-        io:println(&quot;Registered Counter = &quot;, registeredCounter.getValue());
+        io:println(&quot;Global Counter = &quot;+ globalCounter.getValue());
+        io:println(&quot;Local Counter = &quot;+ localCounter.getValue());
+        io:println(&quot;Registered Counter = &quot;+ registeredCounter.getValue());
         io:println(&quot;------------------------------------------&quot;);
 </code></pre></div>
 
@@ -436,6 +436,10 @@ counter instance.</p>
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -443,15 +447,28 @@ counter instance.</p>
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command with the &#39;--b7a.observability.enabled=true&#39; property.
-$ ballerina run counter_metrics.bal --b7a.observability.enabled=true
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
-ballerina: started Prometheus HTTP listener 0.0.0.0:9797
+# `.bal` file and use the `ballerina run` command with `--observe` param.
+$ ballerina run --observe counter_metrics.bal
 ballerina: started publishing tracers to Jaeger on localhost:5775
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
-------------------------------------------
+Initiating service(s) in &#39;ballerina-home/lib/balx/prometheus/reporter.balx&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9797
+ballerina: started Prometheus HTTP endpoint 0.0.0.0:9797
+Initiating service(s) in &#39;counter-metrics.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>------------------------------------------
 Global Counter = 1
 Local Counter = 21
 Registered Counter = 10

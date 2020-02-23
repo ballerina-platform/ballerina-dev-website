@@ -11,18 +11,13 @@ permalink: /v0-991/learn/by-example/functions
 <span class="kd">function</span> <span class="nx">printValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">t</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">t</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">t</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">printValue</span><span class="p">(</span><span class="s">&quot;This is a sample text&quot;</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-    <span class="nx">_</span> <span class="p">=</span> <span class="nx">printAndReturnValue</span><span class="p">(</span><span class="s">&quot;World&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -33,7 +28,7 @@ permalink: /v0-991/learn/by-example/functions
                     <tr>
                         <td class="cLeftTD">
                             <h2>Functions</h2>
-                            <p><p>Functions operate in the same way as in any other language. It is a mechanism to create a reusable unit of
+                            <p><p>Functions operate the same way as in any other language. It is a mechanism to create a reusable unit of
  functionality within a program.</p>
 </p>
 
@@ -49,9 +44,9 @@ permalink: /v0-991/learn/by-example/functions
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="functions-with-required-parameters.html">
+                                    <a class="next" href="functions-with-defaultable-parameters.html">
                                         <span>NEXT ></span>
-                                        <p>Required Parameters</p>
+                                        <p>Defaultable Parameters</p>
                                     </a>
                                 </div>
                                 
@@ -101,12 +96,6 @@ permalink: /v0-991/learn/by-example/functions
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -137,7 +126,7 @@ permalink: /v0-991/learn/by-example/functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This function takes a <code>string</code> argument. However, it does not return a value.</p>
+                                            <p>This function takes a <code>string</code> argument, but does not return a value.</p>
 
                                         </div>
                                     </div>
@@ -148,7 +137,7 @@ permalink: /v0-991/learn/by-example/functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function add(int a, int b) returns int {
+                                    <div class="highlight"><pre><code class=ballerina>function add(int a, int b) returns (int) {
     return a + b;
 }
 </code></pre></div>
@@ -167,22 +156,6 @@ permalink: /v0-991/learn/by-example/functions
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function printAndReturnValue(string s) returns string {
-    string t = &quot;Hello &quot;.concat(s);
-    io:println(t);
-    return t;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
@@ -194,7 +167,7 @@ permalink: /v0-991/learn/by-example/functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A public function named <code>main</code> is considered as a default entry point of a
+                                            <p>A public function named <code>main</code> is considered a default entry point to a
  Ballerina program.</p>
 
                                         </div>
@@ -214,45 +187,7 @@ permalink: /v0-991/learn/by-example/functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Call the <code>printValue()</code> function that prints the value provided.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int result = add(5, 6);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Call the <code>add()</code> function to retrieve the result of adding two given values.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(result);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Print the result.</p>
+                                            <p>Call a function that prints the given value to the console.</p>
 
                                         </div>
                                     </div>
@@ -263,7 +198,8 @@ permalink: /v0-991/learn/by-example/functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    _ = printAndReturnValue(&quot;World&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    int result = add(5, 6);
+    io:println(result);
 }
 </code></pre></div>
 
@@ -272,10 +208,8 @@ permalink: /v0-991/learn/by-example/functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Ballerina does not allow ignoring the return value of a function
- invocation implicitly unless the return type is <code>()</code>. A return value can be ignored
- using <code>_</code> if the value may never be an <code>error</code> (i.e., the return type of the
- function does not contain <code>error</code>).</p>
+                                            <p>Directly print the value that was returned from the function to the
+ console.</p>
 
                                         </div>
                                     </div>
@@ -300,11 +234,10 @@ permalink: /v0-991/learn/by-example/functions
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run functions.bal
 This is a sample text
 11
-Hello World
 </code></pre></div>
 
                                 </td>

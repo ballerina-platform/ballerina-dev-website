@@ -12,15 +12,14 @@ permalink: /v0-991/learn/by-example/http-failover
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">FailoverClient</span> <span class="nx">foBackendEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-    <span class="nx">failoverCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">501</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">],</span>
-    <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-    <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://nonexistentEP/mock1&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/echo&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock&quot;</span> <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+        <span class="nx">timeoutMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="nx">failoverCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">501</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">],</span>
+        <span class="nx">intervalMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://nonexistentEP/mock1&quot;</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/echo&quot;</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock&quot;</span> <span class="p">}</span>
+        <span class="p">]</span>    <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/fo&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">failoverDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
@@ -28,8 +27,7 @@ permalink: /v0-991/learn/by-example/http-failover
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">request</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">foBackendEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -37,8 +35,8 @@ permalink: /v0-991/learn/by-example/http-failover
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">INTERNAL_SERVER_ERROR_500</span><span class="p">;</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseToCaller</span><span class="p">);</span>
@@ -57,7 +55,8 @@ permalink: /v0-991/learn/by-example/http-failover
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">echoResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">30000</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;echo Resource is invoked&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                          <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -72,7 +71,8 @@ permalink: /v0-991/learn/by-example/http-failover
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">mockResource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Mock Resource is Invoked.&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span>
+                          <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -164,6 +164,10 @@ permalink: /v0-991/learn/by-example/http-failover
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -206,9 +210,9 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:FailoverClient foBackendEP = new({
-    timeoutInMillis: 5000,
-    failoverCodes: [501, 502, 503],
-    intervalInMillis: 5000,
+        timeoutMillis: 5000,
+        failoverCodes: [501, 502, 503],
+        intervalMillis: 5000,
 </code></pre></div>
 
                                 </td>
@@ -227,12 +231,11 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    targets: [
-        { url: &quot;http://nonexistentEP/mock1&quot; },
-        { url: &quot;http://localhost:8080/echo&quot; },
-        { url: &quot;http://localhost:8080/mock&quot; }
-    ]
-});
+                                    <div class="highlight"><pre><code class=ballerina>        targets: [
+            { url: &quot;http://nonexistentEP/mock1&quot; },
+            { url: &quot;http://localhost:8080/echo&quot; },
+            { url: &quot;http://localhost:8080/mock&quot; }
+        ]
 </code></pre></div>
 
                                 </td>
@@ -244,6 +247,18 @@ import ballerina/runtime;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -289,7 +304,6 @@ service failoverDemoService on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
-        var backendResponse = foBackendEP-&gt;get(&quot;/&quot;, &lt;@untainted&gt; request);
 </code></pre></div>
 
                                 </td>
@@ -297,11 +311,22 @@ service failoverDemoService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Parameters include a reference to the caller and an object with the
- request data.</p>
+                                            <p>Parameters include a reference to the caller and an object with the request data.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var backendResponse = foBackendEP-&gt;get(&quot;/&quot;, message = request);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -316,8 +341,8 @@ service failoverDemoService on new http:Listener(9090) {
             }
         } else {
             http:Response response = new;
-            response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(&lt;string&gt;backendResponse.detail()?.message);
+            response.statusCode = http:INTERNAL_SERVER_ERROR_500;
+            response.setPayload(&lt;string&gt;backendResponse.detail().message);
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, err = responseToCaller);
@@ -332,9 +357,12 @@ service failoverDemoService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If <code>backendResponse</code> is an <code>http:Response</code>, it is sent back to the
- client. If <code>backendResponse</code> is an <code>http:ClientError</code>, an internal
- server error is returned to the client.</p>
+                                            <p>The <code>is</code> operator is used to separate out union-type returns.
+ The type of <code>backendResponse</code> variable is the union of <code>http:Response</code> and <code>error</code>.
+ If a response is returned, <code>backendResponse</code> is treated as an <code>http:Response</code>
+ within the if-block and the normal process runs.
+ If the service returns an <code>error</code>, <code>backendResponse</code> is implicitly
+ converted to an <code>error</code> within the else block.</p>
 
                                         </div>
                                     </div>
@@ -380,8 +408,7 @@ service echo on backendEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Delay the response for 30000 milliseconds to mimic network level
- delays.</p>
+                                            <p>Delay the response for 30000 milliseconds to mimic network level delays.</p>
 
                                         </div>
                                     </div>
@@ -394,7 +421,8 @@ service echo on backendEP {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(&quot;echo Resource is invoked&quot;);
         if (result is error) {
-           log:printError(&quot;Error sending response from mock service&quot;, result);
+           log:printError(&quot;Error sending response from mock service&quot;,
+                          err = result);
         }
     }
 }
@@ -420,7 +448,8 @@ service mock on backendEP {
     resource function mockResource(http:Caller caller, http:Request req) {
         var result = caller-&gt;respond(&quot;Mock Resource is Invoked.&quot;);
         if (result is error) {
-           log:printError(&quot;Error sending response from mock service&quot;, result);
+           log:printError(&quot;Error sending response from mock service&quot;,
+                          err = result);
         }
     }
 }
@@ -458,8 +487,9 @@ service mock on backendEP {
                                     <div class="highlight"><pre><code class=shell-session># To start the services, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_failover.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:8080
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;http_failover.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:8080
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -492,21 +522,6 @@ $ curl -v http://localhost:9090/fo
 # target endpoints. In this example, the third target is configured to give a successful response and the following
 # response is given when the failover demo service is invoked.
 # Server response:
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /fo HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:29:37 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 25
-&lt;
-* Connection #0 to host localhost left intact
 Mock Resource is Invoked.
 # Invoke the Failover Service again using the curl command.
 $ curl -v http://localhost:9090/fo
@@ -515,21 +530,6 @@ $ curl -v http://localhost:9090/fo
 # resumes the failover from the last successful target. In this case it is the third target and the client will get
 # the immediate response for subsequent calls.
 # Server response:
-*   Trying ::1...
-* TCP_NODELAY set
-* Connected to localhost (::1) port 9090 (#0)
-&gt; GET /fo HTTP/1.1
-&gt; Host: localhost:9090
-&gt; User-Agent: curl/7.54.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 200 OK
-&lt; content-type: text/plain
-&lt; date: Wed, 4 Sep 2019 15:29:41 +0530
-&lt; server: ballerina/1.0.0-beta
-&lt; content-length: 25
-&lt;
-* Connection #0 to host localhost left intact
 Mock Resource is Invoked.
 </code></pre></div>
 

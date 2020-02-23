@@ -56,8 +56,8 @@ permalink: /v0-991/learn/by-example/simple-filtering
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printChildren</span><span class="p">(</span><span class="nx">Child</span> <span class="nx">child</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child detected. Child name : &quot;</span><span class="p">,</span>
-            <span class="nx">child</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>  <span class="s">&quot;, age : &quot;</span><span class="p">,</span> <span class="nx">child</span><span class="p">.</span><span class="nx">age</span><span class="p">,</span> <span class="s">&quot; and from : &quot;</span><span class="p">,</span> <span class="nx">child</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Child detected. Child name : &quot;</span> <span class="o">+</span>
+            <span class="nx">child</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot;, age : &quot;</span> <span class="o">+</span> <span class="nx">child</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="s">&quot; and from : &quot;</span> <span class="o">+</span> <span class="nx">child</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
     <span class="nx">addToGlobalChildrenArray</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">addToGlobalChildrenArray</span><span class="p">(</span><span class="nx">Child</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">globalChildrenArray</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">e</span><span class="p">;</span>
@@ -72,11 +72,11 @@ permalink: /v0-991/learn/by-example/simple-filtering
                     <tr>
                         <td class="cLeftTD">
                             <h2>Simple Filtering</h2>
-                            <p><p>Simple filtering can be performed for the events of a stream.
+                            <p><p>Simple filtering can be performed for the events that come in the stream.
  In this example, events are related to the person being monitored and there
  will be an alert triggered when there is a person whose age is less than or equal to 16.
  This example can be extended to make simple filtering based on some condition.
- Ballerina Streams is an experimental feature. Therefore, use the <code>--experimental</code> flag when
+ Ballerina Streams is an experimental feature. Please use <code>--experimental</code> flag when
  compiling Ballerina files that have streaming constructs.</p>
 </p>
 
@@ -201,7 +201,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a <code>record</code> type that represents the <code>Person</code>.</p>
+                                            <p>Create a <code>record</code> type that represents the <code>Person</code>.</p>
 
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates a <code>record</code> type that represents the <code>Child</code>.</p>
+                                            <p>Create a <code>record</code> type that represents the <code>Child</code>.</p>
 
                                         </div>
                                     </div>
@@ -309,7 +309,7 @@ stream&lt;Child&gt; childrenStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Streaming query, which filters events based on the age attribute.
+                                            <p>Streaming query that filters events based on the attribute age.
  Filtered events are pushed to a stream called <code>childrenStream</code>.</p>
 
                                         </div>
@@ -421,7 +421,7 @@ stream&lt;Child&gt; childrenStream = new;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Simulates the sample event that represents the Person.</p>
+                                            <p>Simulate the sample event that represents the Person.</p>
 
                                         </div>
                                     </div>
@@ -453,8 +453,8 @@ stream&lt;Child&gt; childrenStream = new;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function printChildren(Child child) {
-    io:println(&quot;Child detected. Child name : &quot;,
-            child.name,  &quot;, age : &quot;, child.age, &quot; and from : &quot;, child.city);
+    io:println(&quot;Child detected. Child name : &quot; +
+            child.name + &quot;, age : &quot; + child.age + &quot; and from : &quot; + child.city);
     addToGlobalChildrenArray(child);
 }
 </code></pre></div>

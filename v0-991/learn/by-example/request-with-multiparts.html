@@ -24,9 +24,9 @@ permalink: /v0-991/learn/by-example/request-with-multiparts
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
                 <span class="nx">handleContent</span><span class="p">(</span><span class="nx">part</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">bodyParts</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">bodyParts</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">bodyParts</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error in decoding multiparts!&quot;</span><span class="p">);</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="p">}</span>
@@ -59,8 +59,8 @@ permalink: /v0-991/learn/by-example/request-with-multiparts
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error occurred while sending multipart &quot;</span> <span class="o">+</span>
-                                    <span class="s">&quot;request!&quot;</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error occurred while sending multipart</span>
+<span class="s">                                    request!&quot;</span><span class="p">);</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -76,14 +76,14 @@ permalink: /v0-991/learn/by-example/request-with-multiparts
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_XML</span> <span class="o">==</span> <span class="nx">baseType</span> <span class="o">||</span> <span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_XML</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getXml</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
@@ -293,9 +293,9 @@ import ballerina/mime;
             foreach var part in bodyParts {
                 handleContent(part);
             }
-            response.setPayload(&lt;@untainted&gt; bodyParts);
+            response.setPayload(untaint bodyParts);
         } else {
-            log:printError(&lt;string&gt; bodyParts.reason());
+            log:printError(&lt;string&gt; bodyParts.detail().message);
             response.setPayload(&quot;Error in decoding multiparts!&quot;);
             response.statusCode = 500;
         }
@@ -432,8 +432,8 @@ import ballerina/mime;
             }
         } else {
             http:Response response = new;
-            response.setPayload(&quot;Error occurred while sending multipart &quot; +
-                                    &quot;request!&quot;);
+            response.setPayload(&quot;Error occurred while sending multipart
+                                    request!&quot;);
             response.statusCode = 500;
             var result = caller-&gt;respond(response);
             if (result is error) {
@@ -489,7 +489,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            var payload = bodyPart.getXml();
             if (payload is xml) {
-                log:printInfo(payload.toString());
+                log:printInfo(string.convert(payload));
             } else {
                 log:printError(&lt;string&gt; payload.detail().message);
             }
@@ -514,7 +514,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            var payload = bodyPart.getJson();
             if (payload is json) {
-                log:printInfo(payload.toJsonString());
+                log:printInfo(payload.toString());
             } else {
                 log:printError(&lt;string&gt; payload.detail().message);
             }
@@ -598,7 +598,8 @@ import ballerina/mime;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run request_with_multiparts.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+Initiating service(s) in &#39;request_with_multiparts.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>

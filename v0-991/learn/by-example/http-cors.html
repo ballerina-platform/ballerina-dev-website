@@ -18,7 +18,7 @@ permalink: /v0-991/learn/by-example/http-cors
         <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">84900</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">crossOriginService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">respErr</span> <span class="p">=</span> <span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">;</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/company&quot;</span><span class="p">,</span>
@@ -125,6 +125,8 @@ unless there are headers configured at the resource-level. Ballerina CORS suppor
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -167,6 +169,18 @@ service crossOriginService on new http:Listener(9092) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string respErr = &quot;Failed to respond to the caller&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -259,7 +273,8 @@ service-level CORS headers are applied to this resource.</p>
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run http_cors.bal
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
+Initiating service(s) in &#39;http_cors.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
 </code></pre></div>
 
                                 </td>

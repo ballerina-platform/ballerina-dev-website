@@ -9,7 +9,7 @@ permalink: /v0-991/learn/by-example/http-caching-client
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
-                            <span class="p">{</span> <span class="nx">cache</span><span class="p">:</span> <span class="p">{</span> <span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+                            <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">cache</span><span class="p">:</span> <span class="p">{</span> <span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cache&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">cachingProxy</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -199,7 +199,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:Client cachingEP = new(&quot;http://localhost:8080&quot;,
-                            { cache: { isShared: true } });
+                            config = { cache: { isShared: true } });
 </code></pre></div>
 
                                 </td>
@@ -546,6 +546,14 @@ service helloWorld on new http:Listener(8080) {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -557,15 +565,15 @@ service helloWorld on new http:Listener(8080) {
                                     <div class="highlight"><pre><code class=shell-session># The two services have to be run separately to observe the following output. 
 # For clarity, only the relevant parts of the HTTP trace logs have been included here.
 # At the command line, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command by setting the `--b7a.http.tracelog.console=true` property to start the service.
-$ ballerina run caching_proxy.bal --b7a.http.tracelog.console=true
+# `.bal` file and run the `ballerina run` command by setting `-e b7a.http.tracelog.console=true` to start the service.
+$ ballerina run caching_proxy.bal -e b7a.http.tracelog.console=true
 ballerina: deploying service(s) in &#39;caching_proxy.bal&#39;
-ballerina: started HTTP/WS listener 0.0.0.0:9090
+ballerina: started HTTP/WS server connector 0.0.0.0:9090
 # The caching proxy receives a request from a client.
-[2019-09-08 12:35:46,581] TRACE {http.tracelog.downstream} - [id: 0x75aee346, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:54140] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:28,309] TRACE {http.tracelog.downstream} - [id: 0x340d752c, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60366] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /cache HTTP/1.1
 Host: localhost:9090
-User-Agent: curl/7.58.0
+User-Agent: curl/7.47.0
 Accept: */*
 </code></pre></div>
 
@@ -579,12 +587,12 @@ Accept: */*
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The proxy in turn, makes a request to the backend service.
-[2019-09-08 12:35:46,750] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0x75aee346, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:28,434] TRACE {tracelog.http.upstream} - [id: 0xb83303e8, correlatedSource: 0x340d752c, host:/127.0.0.1:47474 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
 Accept: */*
+user-agent: curl/7.47.0
 host: localhost:8080
-user-agent: ballerina/1.0.0
-connection: keep-alive
+accept-encoding: deflate, gzip
 </code></pre></div>
 
                                 </td>
@@ -597,16 +605,15 @@ connection: keep-alive
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The backend service responds with a `200 OK` and it contains `etag` and `cache-control` headers. This response can be cached and as such, the caching client caches it. As seen from the `max-age` directive of the &#39;cache-control` header, this response is valid for 15 seconds.
-[2019-09-08 12:35:46,800] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0x75aee346, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:28,496] TRACE {tracelog.http.upstream} - [id: 0xb83303e8, correlatedSource: 0x340d752c, host:/127.0.0.1:47474 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
 HTTP/1.1 200 OK
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
 content-type: application/json
-cache-control: must-revalidate,public,max-age=15
-content-length: 27
-server: ballerina/1.0.0
-date: Sun, 8 Sep 2019 12:35:46 +0530
-[2019-09-08 12:35:46,808] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0x75aee346, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultLastHttpContent(data: PooledSlicedByteBuf(ridx: 0, widx: 27, cap: 27/27, unwrapped: PooledUnsafeDirectByteBuf(ridx: 287, widx: 287, cap: 1024)), decoderResult: success), 27B
+server: ballerina/0.970.0-alpha1-SNAPSHOT
+date: Wed, 28 Mar 2018 21:43:28 +0530
+transfer-encoding: chunked
+[2018-03-28 21:43:28,503] TRACE {tracelog.http.upstream} - [id: 0xb83303e8, correlatedSource: 0x340d752c, host:/127.0.0.1:47474 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpContent(data: PooledUnsafeHeapByteBuf(ridx: 0, widx: 27, cap: 86), decoderResult: success), 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
@@ -620,14 +627,13 @@ date: Sun, 8 Sep 2019 12:35:46 +0530
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The response is sent back to the client.
-[2019-09-08 12:35:46,814] TRACE {http.tracelog.downstream} - [id: 0x75aee346, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54140] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
+[2018-03-28 21:43:28,514] TRACE {http.tracelog.downstream} - [id: 0x340d752c, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60366] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
 content-type: application/json
-cache-control: must-revalidate,public,max-age=15
-date: Sun, 8 Sep 2019 12:35:46 +0530
-server: ballerina/1.0.0
+date: Wed, 28 Mar 2018 21:43:28 +0530
+server: ballerina/0.970.0-alpha1-SNAPSHOT
 content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
@@ -642,10 +648,10 @@ content-length: 27, 27B
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Subsequent requests to the proxy within the next 15 seconds are served from the proxy&#39;s cache. As seen here, the backend service is not contacted.
-[2019-09-08 12:36:00,421] TRACE {http.tracelog.downstream} - [id: 0xa8de466e, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:54146] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:42,323] TRACE {http.tracelog.downstream} - [id: 0xc0dc2067, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60370] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /cache HTTP/1.1
 Host: localhost:9090
-User-Agent: curl/7.58.0
+User-Agent: curl/7.47.0
 Accept: */*
 </code></pre></div>
 
@@ -659,15 +665,52 @@ Accept: */*
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Cached response.
-[2019-09-08 12:36:00,435] TRACE {http.tracelog.downstream} - [id: 0xa8de466e, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54146] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
+[2018-03-28 21:43:42,332] TRACE {http.tracelog.downstream} - [id: 0xc0dc2067, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60370] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
 content-type: application/json
-cache-control: must-revalidate,public,max-age=15
-date: Sun, 8 Sep 2019 12:35:46 +0530
+date: Wed, 28 Mar 2018 21:43:28 +0530
 age: 14
-server: ballerina/1.0.0
+server: ballerina/0.970.0-alpha1-SNAPSHOT
+content-length: 27, 27B
+{&quot;message&quot;:&quot;Hello, World!&quot;}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Another request, which results in a cached response being served.
+2018-03-28 21:43:47,496] TRACE {http.tracelog.downstream} - [id: 0x8088f232, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60372] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+GET /cache HTTP/1.1
+Host: localhost:9090
+User-Agent: curl/7.47.0
+Accept: */*
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>[2018-03-28 21:43:47,504] TRACE {http.tracelog.downstream} - [id: 0x8088f232, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60372] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
+HTTP/1.1 200 OK
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
+content-type: application/json
+date: Wed, 28 Mar 2018 21:43:28 +0530
+age: 19
+server: ballerina/0.970.0-alpha1-SNAPSHOT
 content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
@@ -682,10 +725,10 @@ content-length: 27, 27B
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Another request is sent after remaining idle for a while.
-[2019-09-08 12:36:11,009] TRACE {http.tracelog.downstream} - [id: 0xc7e78a3e, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:54148] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:57,308] TRACE {http.tracelog.downstream} - [id: 0xa960aed2, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60376] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /cache HTTP/1.1
 Host: localhost:9090
-User-Agent: curl/7.58.0
+User-Agent: curl/7.47.0
 Accept: */*
 </code></pre></div>
 
@@ -699,14 +742,12 @@ Accept: */*
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># This time, the request is not served from the cache. The backend service is contacted. The `if-none-match` header sends the entity tag of the now stale response, so that the backend service may determine whether this response is still valid.
-[2019-09-08 12:36:11,022] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0xc7e78a3e, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:57,312] TRACE {tracelog.http.upstream} - [id: 0xb83303e8, correlatedSource: 0xa960aed2, host:/127.0.0.1:47474 - remote:localhost/127.0.0.1:8080] OUTBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
-if-none-match: c854ce2c
-if-modified-since: Sun, 8 Sep 2019 12:35:46 +0530
+if-none-match: 620328e8
 host: localhost:8080
-user-agent: ballerina/1.0.0
-connection: keep-alive
-content-length: 0
+user-agent: ballerina/0.970.0-alpha1-SNAPSHOT
+accept-encoding: deflate, gzip
 </code></pre></div>
 
                                 </td>
@@ -719,14 +760,14 @@ content-length: 0
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The response has not changed. Therefore the backend services respond with a `304 Not Modified` response. Based on this, the proxy will refresh the response, so that it can continue serving the cached response.
-[2019-09-08 12:36:11,028] TRACE {http.tracelog.upstream} - [id: 0x91bab3cd, correlatedSource: 0xc7e78a3e, host:/127.0.0.1:46172 - remote:localhost/127.0.0.1:8080] INBOUND: DefaultHttpResponse(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:57,323] TRACE {http.tracelog.downstream} - [id: 0x5f677afe, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:47474] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=1))
 HTTP/1.1 304 Not Modified
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:36:11 +0530
-cache-control: must-revalidate,public,max-age=15
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
+content-type: application/json
 content-length: 0
-server: ballerina/1.0.0
-date: Sun, 8 Sep 2019 12:36:11 +0530
+server: ballerina/0.970.0-alpha1-SNAPSHOT
+date: Wed, 28 Mar 2018 21:43:57 +0530
 </code></pre></div>
 
                                 </td>
@@ -739,15 +780,14 @@ date: Sun, 8 Sep 2019 12:36:11 +0530
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The cached response is served yet again since the response has not changed.
-[2019-09-08 12:36:11,039] TRACE {http.tracelog.downstream} - [id: 0xc7e78a3e, correlatedSource: n/a, host:localhost/127.0.0.1:9090 - remote:localhost/127.0.0.1:54148] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
+[2018-03-28 21:43:57,341] TRACE {http.tracelog.downstream} - [id: 0xa960aed2, correlatedSource: n/a, host:/127.0.0.1:9090 - remote:/127.0.0.1:60376] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
+age: 19
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
 content-type: application/json
-cache-control: must-revalidate,public,max-age=15
-date: Sun, 8 Sep 2019 12:36:11 +0530
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:36:11 +0530
-age: 0
-server: ballerina/1.0.0
+date: Wed, 28 Mar 2018 21:43:57 +0530
+server: ballerina/0.970.0-alpha1-SNAPSHOT
 content-length: 27, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
@@ -762,16 +802,16 @@ content-length: 27, 27B
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The output for the mock service.
-$ ballerina run  hello_service.bal --b7a.http.tracelog.console=true 
+$ ballerina run hello_service.bal -e b7a.http.tracelog.console=true
 ballerina: deploying service(s) in &#39;hello_service.bal&#39;
-ballerina: started HTTP/WS listener 0.0.0.0:8080
+ballerina: started HTTP/WS server connector 0.0.0.0:8080
 # For the first request that the caching proxy receives, it sends a request to the hello service.
-[2019-09-08 12:35:46,758] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:46172] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:28,443] TRACE {http.tracelog.downstream} - [id: 0x5f677afe, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:47474] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
 Accept: */*
+user-agent: curl/7.47.0
 host: localhost:8080
-user-agent: ballerina/1.0.0
-connection: keep-alive
+accept-encoding: deflate, gzip
 </code></pre></div>
 
                                 </td>
@@ -784,15 +824,14 @@ connection: keep-alive
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The service responds with a `200 OK` with the relevant caching headers set.
-[2019-09-08 12:35:46,792] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
+[2018-03-28 21:43:28,470] TRACE {http.tracelog.downstream} - [id: 0x5f677afe, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:47474] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 27, cap: 27, components=1))
 HTTP/1.1 200 OK
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
 content-type: application/json
-cache-control: must-revalidate,public,max-age=15
 content-length: 27
-server: ballerina/1.0.0
-date: Sun, 8 Sep 2019 12:35:46 +0530, 27B
+server: ballerina/0.970.0-alpha1-SNAPSHOT
+date: Wed, 28 Mar 2018 21:43:28 +0530, 27B
 {&quot;message&quot;:&quot;Hello, World!&quot;}
 </code></pre></div>
 
@@ -806,14 +845,12 @@ date: Sun, 8 Sep 2019 12:35:46 +0530, 27B
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># The backend service only gets another request when the cached response and the proxy have expired and it wants to validate it again.
-[2019-09-08 12:36:11,024] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
+[2018-03-28 21:43:57,314] TRACE {http.tracelog.downstream} - [id: 0x5f677afe, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:47474] INBOUND: DefaultHttpRequest(decodeResult: success, version: HTTP/1.1)
 GET /hello HTTP/1.1
-if-none-match: c854ce2c
-if-modified-since: Sun, 8 Sep 2019 12:35:46 +0530
+if-none-match: 620328e8
 host: localhost:8080
-user-agent: ballerina/1.0.0
-connection: keep-alive
-content-length: 0
+user-agent: ballerina/0.970.0-alpha1-SNAPSHOT
+accept-encoding: deflate, gzip
 </code></pre></div>
 
                                 </td>
@@ -826,14 +863,14 @@ content-length: 0
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># After checking the `if-none-match` header, the service determines that the response is still the same and that the proxy can keep reusing it.
-[2019-09-08 12:36:11,027] TRACE {http.tracelog.downstream} - [id: 0xfef23c5c, correlatedSource: n/a, host:localhost/127.0.0.1:8080 - remote:localhost/127.0.0.1:46172] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=1))
+[2018-03-28 21:43:57,323] TRACE {http.tracelog.downstream} - [id: 0x5f677afe, correlatedSource: n/a, host:/127.0.0.1:8080 - remote:/127.0.0.1:47474] OUTBOUND: DefaultFullHttpResponse(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=1))
 HTTP/1.1 304 Not Modified
-etag: c854ce2c
-last-modified: Sun, 8 Sep 2019 12:36:11 +0530
-cache-control: must-revalidate,public,max-age=15
+cache-control: must-revalidate, no-transform, public, max-age=15
+etag: 620328e8
+content-type: application/json
 content-length: 0
-server: ballerina/1.0.0
-date: Sun, 8 Sep 2019 12:36:11 +0530, 0B
+server: ballerina/0.970.0-alpha1-SNAPSHOT
+date: Wed, 28 Mar 2018 21:43:57 +0530, 0B
 </code></pre></div>
 
                                 </td>
@@ -858,6 +895,10 @@ date: Sun, 8 Sep 2019 12:36:11 +0530, 0B
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -869,20 +910,18 @@ date: Sun, 8 Sep 2019 12:36:11 +0530, 0B
                                     <div class="highlight"><pre><code class=shell-session>#Run the following curl command to run the client. 
 $ curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
-* TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cache HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.58.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; etag: c854ce2c
-&lt; last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+&lt; cache-control: must-revalidate, no-transform, public, max-age=15
+&lt; etag: 620328e8
 &lt; content-type: application/json
-&lt; cache-control: must-revalidate,public,max-age=15
-&lt; date: Sun, 8 Sep 2019 12:35:46 +0530
-&lt; server: ballerina/1.0.0-rc1-SNAPSHOT
+&lt; date: Wed, 28 Mar 2018 21:43:28 +0530
+&lt; server: ballerina/0.970.0-alpha1-SNAPSHOT
 &lt; content-length: 27
 &lt;
 * Connection #0 to host localhost left intact
@@ -900,21 +939,49 @@ $ curl -v http://localhost:9090/cache
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
-* TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cache HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.58.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
-&lt; etag: c854ce2c
-&lt; last-modified: Sun, 8 Sep 2019 12:35:46 +0530
+&lt; cache-control: must-revalidate, no-transform, public, max-age=15
+&lt; etag: 620328e8
 &lt; content-type: application/json
-&lt; cache-control: must-revalidate,public,max-age=15
-&lt; date: Sun, 8 Sep 2019 12:35:46 +0530
+&lt; date: Wed, 28 Mar 2018 21:43:28 +0530
 &lt; age: 14
-&lt; server: ballerina/1.0.0-rc1-SNAPSHOT
+&lt; server: ballerina/0.970.0-alpha1-SNAPSHOT
+&lt; content-length: 27
+&lt;
+* Connection #0 to host localhost left intact
+{&quot;message&quot;:&quot;Hello, World!&quot;}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cache
+*   Trying 127.0.0.1...
+* Connected to localhost (127.0.0.1) port 9090 (#0)
+&gt; GET /cache HTTP/1.1
+&gt; Host: localhost:9090
+&gt; User-Agent: curl/7.47.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; cache-control: must-revalidate, no-transform, public, max-age=15
+&lt; etag: 620328e8
+&lt; content-type: application/json
+&lt; date: Wed, 28 Mar 2018 21:43:28 +0530
+&lt; age: 19
+&lt; server: ballerina/0.970.0-alpha1-SNAPSHOT
 &lt; content-length: 27
 &lt;
 * Connection #0 to host localhost left intact
@@ -932,21 +999,19 @@ $ curl -v http://localhost:9090/cache
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session>$ curl -v http://localhost:9090/cache
 *   Trying 127.0.0.1...
-* TCP_NODELAY set
 * Connected to localhost (127.0.0.1) port 9090 (#0)
 &gt; GET /cache HTTP/1.1
 &gt; Host: localhost:9090
-&gt; User-Agent: curl/7.58.0
+&gt; User-Agent: curl/7.47.0
 &gt; Accept: */*
 &gt;
 &lt; HTTP/1.1 200 OK
+&lt; age: 19
+&lt; cache-control: must-revalidate, no-transform, public, max-age=15
+&lt; etag: 620328e8
 &lt; content-type: application/json
-&lt; cache-control: must-revalidate,public,max-age=15
-&lt; date: Sun, 8 Sep 2019 12:36:11 +0530
-&lt; etag: c854ce2c
-&lt; last-modified: Sun, 8 Sep 2019 12:36:11 +0530
-&lt; age: 0
-&lt; server: ballerina/1.0.0-rc1-SNAPSHOT
+&lt; date: Wed, 28 Mar 2018 21:43:57 +0530
+&lt; server: ballerina/0.970.0-alpha1-SNAPSHOT
 &lt; content-length: 27
 &lt;
 * Connection #0 to host localhost left intact

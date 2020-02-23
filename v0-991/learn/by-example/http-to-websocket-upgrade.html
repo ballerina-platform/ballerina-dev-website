@@ -26,7 +26,7 @@ permalink: /v0-991/learn/by-example/http-to-websocket-upgrade
             <span class="nx">resp</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="kt">string</span> <span class="s">`HTTP POST received: ${&lt;@untainted&gt; payload}`</span><span class="p">);</span>
+            <span class="nx">resp</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="kt">string</span> <span class="s">`HTTP POST received: ${untaint payload}`</span><span class="p">);</span>
         <span class="p">}</span>        <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">resp</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
@@ -42,7 +42,7 @@ permalink: /v0-991/learn/by-example/http-to-websocket-upgrade
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">wsService</span> <span class="p">=</span> <span class="nd">@http:WebSocketServiceConfig {</span><span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml, json&quot;</span><span class="p">]</span>
                                          <span class="p">,</span><span class="nx">idleTimeoutInSeconds</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span> <span class="kd">service</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New WebSocket connection: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New WebSocket connection: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">pushText</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
@@ -50,7 +50,7 @@ permalink: /v0-991/learn/by-example/http-to-websocket-upgrade
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending message&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">err</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onIdleTimeout</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Idle timeout: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Idle timeout: &quot;</span> <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </pre></div>
@@ -72,14 +72,14 @@ permalink: /v0-991/learn/by-example/http-to-websocket-upgrade
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="websocket-basic-sample.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Basic Server Functionalities</p>
+                                        <p>WebSocket Basic Example</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="websocket-proxy-server.html">
                                         <span>NEXT ></span>
-                                        <p>Proxy Server</p>
+                                        <p>WebSocket Proxy Server</p>
                                     </a>
                                 </div>
                                 
@@ -187,7 +187,7 @@ service httpService on new http:Listener(9090) {
             resp.statusCode = 500;
         } else {
             io:println(payload);
-            resp.setPayload(string `HTTP POST received: ${&lt;@untainted&gt; payload}`);
+            resp.setPayload(string `HTTP POST received: ${untaint payload}`);
         }
 </code></pre></div>
 
@@ -287,7 +287,7 @@ service httpService on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onOpen(http:WebSocketCaller caller) {
-        io:println(&quot;New WebSocket connection: &quot; + caller.getConnectionId());
+        io:println(&quot;New WebSocket connection: &quot; + caller.id);
     }
 </code></pre></div>
 
@@ -319,7 +319,7 @@ service httpService on new http:Listener(9090) {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onIdleTimeout(http:WebSocketCaller caller) {
-        io:println(&quot;Idle timeout: &quot; + caller.getConnectionId());
+        io:println(&quot;Idle timeout: &quot; + caller.id);
     }
 };
 </code></pre></div>
@@ -354,10 +354,6 @@ service httpService on new http:Listener(9090) {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -367,21 +363,8 @@ service httpService on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina build` command.
-$ ballerina build http_to_websocket_upgrade.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the sample using the `run` command on the jar file generated:
-$ ballerina run http_to_websocket_upgrade-executable.jar
+# `.bal` file and use the `ballerina run` command.
+$ ballerina run http_to_websocket_upgrade.bal
 </code></pre></div>
 
                                 </td>

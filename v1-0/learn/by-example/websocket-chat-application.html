@@ -53,7 +53,7 @@ permalink: /v1-0/learn/by-example/websocket-chat-application
         <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; with age &quot;</span>
         <span class="o">+</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">AGE</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; connected to chat&quot;</span><span class="p">;</span>
         <span class="nx">broadcast</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
-        <span class="nx">connectionsMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">()]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">caller</span><span class="p">;</span>
+        <span class="nx">connectionsMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">()]</span> <span class="p">=</span> <span class="nx">caller</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onText</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">getAttributeStr</span><span class="p">(</span><span class="nx">caller</span><span class="p">,</span> <span class="nx">NAME</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="nx">text</span><span class="p">;</span>
@@ -363,7 +363,7 @@ service chatAppUpgrader on new http:Listener(9090) {
         msg = getAttributeStr(caller, NAME) + &quot; with age &quot;
         + getAttributeStr(caller, AGE) + &quot; connected to chat&quot;;
         broadcast(msg);
-        connectionsMap[caller.getConnectionId()] = &lt;@untainted&gt;caller;
+        connectionsMap[caller.getConnectionId()] = caller;
     }
 </code></pre></div>
 

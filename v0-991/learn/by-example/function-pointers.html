@@ -8,29 +8,26 @@ permalink: /v0-991/learn/by-example/function-pointers
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span> <span class="nx">x</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="p">|</span> <span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">s</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
     <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">x</span> <span class="p">{</span>
-            <span class="nx">f</span> <span class="o">+=</span> <span class="nx">item</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
-        <span class="p">}</span>
+        <span class="nx">f</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">panic</span> <span class="nx">y</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="nx">bar</span><span class="p">)</span>
-             <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">bar</span><span class="p">(</span><span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">int</span> <span class="nx">x</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="nx">bar</span><span class="p">)</span> 
+             <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">x</span> <span class="o">*</span> <span class="nx">bar</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">getFunctionPointer</span><span class="p">()</span> <span class="nx">returns</span>
-                    <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">getFunctionPointer</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">test</span><span class="p">;</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">test</span><span class="p">));</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">getFunctionPointer</span><span class="p">()));</span>
-    <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">getFunctionPointer</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span><span class="p">,</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">test</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">getFunctionPointer</span><span class="p">()));</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="nx">f</span> <span class="p">=</span> <span class="nx">getFunctionPointer</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Answer: &quot;</span> <span class="o">+</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nx">f</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -117,8 +114,6 @@ permalink: /v0-991/learn/by-example/function-pointers
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -128,7 +123,6 @@ permalink: /v0-991/learn/by-example/function-pointers
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
 </code></pre></div>
 
                                 </td>
@@ -140,8 +134,8 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function test(string s, int... x) returns float {
-    int | error y = ints:fromString(s);
+                                    <div class="highlight"><pre><code class=ballerina>function test(int x, string s) returns float {
+    int|error y = int.convert(s);
     float f = 0.0;
 </code></pre></div>
 
@@ -150,7 +144,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>test</code> function acts as a variable function pointer in the <code>main</code> function.</p>
+                                            <p>The <code>test</code> function acts as a variable function pointer in the <code>main</code> function</p>
 
                                         </div>
                                     </div>
@@ -162,9 +156,7 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    if (y is int) {
-        foreach var item in x {
-            f += item * 1.0 * y;
-        }
+        f = x * 1.0 * y;
     } else {
 </code></pre></div>
 
@@ -188,7 +180,8 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The type of <code>y</code> within the else block would be <code>error</code>.</p>
+                                            <p>The type of <code>y</code> within the else block would be <code>error</code>, since the <code>int</code>
+ case is already handled by the <code>if</code> block.</p>
 
                                         </div>
                                     </div>
@@ -199,9 +192,9 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function foo(int x, function (string, int...) returns float bar)
-             returns float {
-    return x * bar(&quot;2&quot;, 2, 3, 4, 5);
+                                    <div class="highlight"><pre><code class=ballerina>function foo(int x, function (int, string) returns (float) bar) 
+             returns (float) {
+    return x * bar.call(10, &quot;2&quot;);
 }
 </code></pre></div>
 
@@ -210,7 +203,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A function pointer as a parameter. A function pointer can be invoked similar to how a normal function is invoked.</p>
+                                            <p>Function pointer as a parameter. Use the <code>.call()</code> method to invoke the function using the function pointer.</p>
 
                                         </div>
                                     </div>
@@ -221,8 +214,7 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getFunctionPointer() returns
-                    (function (string, int...) returns float) {
+                                    <div class="highlight"><pre><code class=ballerina>function getFunctionPointer() returns (function (int, string) returns (float)) {
     return test;
 }
 </code></pre></div>
@@ -232,7 +224,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A function pointer as a return type.</p>
+                                            <p>Function pointer as a return type.</p>
 
                                         </div>
                                     </div>
@@ -255,8 +247,8 @@ import ballerina/lang.&#39;int as ints;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Answer: &quot;, foo(10, test));
-    io:println(&quot;Answer: &quot;, foo(10, getFunctionPointer()));
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Answer: &quot; + foo(10, test));
+    io:println(&quot;Answer: &quot; + foo(10, getFunctionPointer()));
 </code></pre></div>
 
                                 </td>
@@ -264,7 +256,7 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Value <code>test</code> will serve as a function pointer for the <code>foo</code> function.</p>
+                                            <p>Value <code>test</code> will serve as a function pointer to the <code>foo</code> function.</p>
 
                                         </div>
                                     </div>
@@ -274,8 +266,10 @@ import ballerina/lang.&#39;int as ints;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function (string, int...) returns float f = getFunctionPointer();
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    function (int, string) returns (float) f = getFunctionPointer();
+    io:println(&quot;Answer: &quot; + foo(10, f));
+}
 </code></pre></div>
 
                                 </td>
@@ -283,23 +277,10 @@ import ballerina/lang.&#39;int as ints;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A function pointer as a variable.</p>
+                                            <p>Function pointer as a variable.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Answer: &quot;, foo(10, f));
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -321,11 +302,11 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run function_pointers.bal
-Answer: 280.0
-Answer: 280.0
-Answer: 280.0
+Answer: 200.0
+Answer: 200.0
+Answer: 200.0
 </code></pre></div>
 
                                 </td>

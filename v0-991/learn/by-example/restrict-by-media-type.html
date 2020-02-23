@@ -19,16 +19,28 @@ permalink: /v0-991/learn/by-example/restrict-by-media-type
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-            <span class="kt">xml</span> <span class="nx">name</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;${nameString}&lt;/name&gt;`</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="nx">name</span><span class="p">);</span>
+            <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">validateString</span><span class="p">(</span><span class="nx">nameString</span><span class="p">))</span> <span class="p">{</span>
+                <span class="kt">xml</span> <span class="nx">name</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;{{untaint nameString}}&lt;/name&gt;`</span><span class="p">;</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Name contains invalid data&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">validateString</span><span class="p">(</span><span class="kt">string</span> <span class="nx">nameString</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">nameString</span><span class="p">.</span><span class="nx">matches</span><span class="p">(</span><span class="s">&quot;[a-zA-Z]+&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -40,7 +52,7 @@ permalink: /v0-991/learn/by-example/restrict-by-media-type
                     <tr>
                         <td class="cLeftTD">
                             <h2>Restrict By Media Type</h2>
-                            <p><p>You can configure resources of HTTP services to restrict the types of media they consume and produce.
+                            <p><p>You can configure resources of HTTP services to restrict the types of media it consumes and produces.
  This is done through the &lsquo;consumes&rsquo; and &lsquo;produces&rsquo; annotation attributes of the ResourceConfig annotation, which is used with resources.</p>
 </p>
 
@@ -110,6 +122,8 @@ permalink: /v0-991/learn/by-example/restrict-by-media-type
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -158,8 +172,8 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The <code>consumes</code> and <code>produces</code> annotations contain MIME types as an
- array of strings. The resource can only consume/accept <code>text/json</code> and
- <code>application/json</code> media types. Therefore, the <code>Content-Type</code> header
+ array of strings. The resource can consume/accept <code>text/json</code> and
+ <code>application/json</code> media types only. Therefore, the <code>Content-Type</code> header
  of the request must be in one of these two types. The resource can produce
  <code>application/xml</code> payloads. Therefore, you need to set the <code>Accept</code> header accordingly.</p>
 
@@ -182,7 +196,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the JSON payload from the request message.</p>
+                                            <p>Get JSON payload from the request message.</p>
 
                                         </div>
                                     </div>
@@ -193,7 +207,8 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string nameString = &lt;string&gt;msg.name;
+                                    <div class="highlight"><pre><code class=ballerina>            string nameString = &lt;string&gt;msg[&quot;name&quot;];
+            if (validateString(nameString)) {
 </code></pre></div>
 
                                 </td>
@@ -201,7 +216,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the <code>string</code> value, which is relevant to the key &ldquo;name&rdquo;.</p>
+                                            <p>Get the <code>string</code> value that is relevant to the key &ldquo;name&rdquo;.</p>
 
                                         </div>
                                     </div>
@@ -212,11 +227,15 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
-            res.setXmlPayload(&lt;@untained&gt; name);
+                                    <div class="highlight"><pre><code class=ballerina>                xml name = xml `&lt;name&gt;{{untaint nameString}}&lt;/name&gt;`;
+                res.setXmlPayload(name);
+            } else {
+                res.statusCode = 400;
+                res.setPayload(&quot;Name contains invalid data&quot;);
+            }
         } else {
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted&gt; &lt;string&gt;msg.detail()?.message);
+            res.setPayload(untaint &lt;string&gt;msg.detail().message);
         }
 </code></pre></div>
 
@@ -225,7 +244,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create the XML payload and send back a response.</p>
+                                            <p>Create XML payload and send back a response.</p>
 
                                         </div>
                                     </div>
@@ -235,11 +254,30 @@ import ballerina/log;
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
            log:printError(&quot;Error in responding&quot;, err = result);
         }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function validateString(string nameString) returns boolean {
+    var result = nameString.matches(&quot;[a-zA-Z]+&quot;);
+    if (result is error) {
+        return false;
+    } else {
+        return result;
     }
 }
 </code></pre></div>
@@ -267,10 +305,11 @@ import ballerina/log;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
+# `.bal` file and use the `ballerina run` command.
 $ ballerina run restrict_by_media_type.bal
 # Service deployment
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9092
+Initiating service(s) in &#39;restrict_by_media_type.bal&#39;
+[ballerina/http] started HTTP/WS endpoint 0.0.0.0:9092
 </code></pre></div>
 
                                 </td>
@@ -303,7 +342,7 @@ $ ballerina run restrict_by_media_type.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, execute the following cURL request.
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use the following client.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
 # The server response.
 &lt; HTTP/1.1 200 OK
@@ -323,8 +362,8 @@ $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service using unsupported media type, execute the following cURL request. The content type of the
-# request is not listed under the `consumes` resource configuration.
+                                    <div class="highlight"><pre><code class=shell-session># Use the following client to invoke the service using unsupported media type. The Content type of the
+# request is not listed under consumes resource configuration.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot; -H &quot;Content-Type:text/plain&quot; -d &quot;Hello ballerina&quot;
 # The server response.
 &lt; HTTP/1.1 415 Unsupported Media Type
@@ -343,8 +382,8 @@ $ curl -v http://localhost:9092/infoService -H &quot;Accept:application/xml&quot
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To invoke the service with a media type that is not acceptable, execute the following cURL request. The media type mentioned
-# in the Accept header is not listed under the `produces` resource configuration.
+                                    <div class="highlight"><pre><code class=shell-session># Use the following client to invoke the service with a media type that is not acceptable. The media type mentioned
+# in the Accept header is not listed under produces resource configuration.
 $ curl -v http://localhost:9092/infoService -H &quot;Accept:text/html&quot; -H &quot;Content-Type:application/json&quot; -d &#39;{&quot;name&quot;:&quot;Ballerina&quot;}&#39;
 # The server response.
 &lt; HTTP/1.1 406 Not Acceptable

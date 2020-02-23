@@ -13,15 +13,10 @@ permalink: /v1-0/learn/by-example/anonymous-functions
                 <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
             <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
-    <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">,</span> <span class="kt">string</span><span class="o">...</span> <span class="nx">z</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-                            <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-                            <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">z</span> <span class="p">{</span>
-                                <span class="nx">value</span> <span class="o">+=</span> <span class="nx">item</span><span class="p">;</span>
-                            <span class="p">}</span>
-                            <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+                            <span class="k">return</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
                         <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Ballerina &quot;</span><span class="p">,</span> <span class="s">&quot;is &quot;</span><span class="p">,</span> <span class="s">&quot;an &quot;</span><span class="p">,</span> <span class="s">&quot;open &quot;</span><span class="p">,</span>
-     <span class="s">&quot;source &quot;</span><span class="p">,</span> <span class="s">&quot;programming &quot;</span><span class="p">,</span> <span class="s">&quot;language.&quot;</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
     <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">arrowExpr</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
 <span class="p">}</span>
@@ -156,15 +151,10 @@ permalink: /v1-0/learn/by-example/anonymous-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var anonFunction2 = function (string x, string y, string... z) returns string {
-                            string value = x + y;
-                            foreach var item in z {
-                                value += item;
-                            }
-                            return value;
+                                    <div class="highlight"><pre><code class=ballerina>    var anonFunction2 = function (string x, string y) returns string {
+                            return x + y;
                         };
-    io:println(&quot;Output: &quot;, anonFunction2(&quot;Ballerina &quot;, &quot;is &quot;, &quot;an &quot;, &quot;open &quot;,
-     &quot;source &quot;, &quot;programming &quot;, &quot;language.&quot;));
+    io:println(&quot;Output: &quot;, anonFunction2(&quot;Hello &quot;, &quot;World.!!!&quot;));
 </code></pre></div>
 
                                 </td>
@@ -225,7 +215,7 @@ permalink: /v1-0/learn/by-example/anonymous-functions
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run anonymous_functions.bal
 Output: Hello World.!!!
-Output: Ballerina is an open source programming language.
+Output: Hello World.!!!
 Output: Hello World.!!!
 </code></pre></div>
 

@@ -15,11 +15,8 @@ permalink: /v0-991/learn/by-example/task-scheduler-timer
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">maxAge</span><span class="p">;</span>
 <span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">intervalInMillis</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-        <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="nx">intervalInMillis</span><span class="p">,</span>
-        <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
-    <span class="p">});</span>
+    <span class="kt">int</span> <span class="nx">interval</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span> <span class="nx">interval</span><span class="p">:</span> <span class="nx">interval</span> <span class="p">});</span>
     <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">10</span> <span class="p">};</span>
     <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service1</span><span class="p">,</span> <span class="nx">attachment</span> <span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -36,8 +33,8 @@ permalink: /v0-991/learn/by-example/task-scheduler-timer
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">stopResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">stopResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stopping the task is failed.&quot;</span><span class="p">);</span>
@@ -48,13 +45,13 @@ permalink: /v0-991/learn/by-example/task-scheduler-timer
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span><span class="kd">service</span> <span class="nx">service2</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; started schooling&quot;</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; started schooling at age &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -67,9 +64,9 @@ permalink: /v0-991/learn/by-example/task-scheduler-timer
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Scheduler Timer</h2>
-                            <p><p>A Task scheduler can be used to create timers to trigger periodically. A
- service can be attached to the task Scheduler object using the <code>attach()</code>
- function and the Listener can be started using the <code>start()</code> function.
+                            <p><p>Task scheduler can be used to create timers to trigger periodically. A
+ service can be attached to the task Scheduler object using <code>attach()</code>
+ function, and the Listener can be started using the <code>start()</code> function.
  The service that is being attached must contain the <code>onTrigger()</code> resource function. A parameter
  can be passed into the service using the default <code>attachment</code> parameter
  through the <code>attach()</code> function, which then can be used inside the <code>onTrigger()</code>
@@ -196,7 +193,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines a custom record type to use in the timer.</p>
+                                            <p>Define a custom record type to use in timer.</p>
 
                                         </div>
                                     </div>
@@ -219,7 +216,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int intervalInMillis = 1000;
+                                    <div class="highlight"><pre><code class=ballerina>    int interval = 1000;
 </code></pre></div>
 
                                 </td>
@@ -227,7 +224,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The interval in which the timer should trigger.</p>
+                                            <p>Interval in which the timer should trigger.</p>
 
                                         </div>
                                     </div>
@@ -238,10 +235,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler timer = new({
-        intervalInMillis: intervalInMillis,
-        initialDelayInMillis: 0
-    });
+                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler timer = new({ interval: interval });
 </code></pre></div>
 
                                 </td>
@@ -250,7 +244,7 @@ import ballerina/task;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Initializes the timer scheduler using the interval value.
- The delay will be equal to the interval as an initial delay is not provided.</p>
+ The delay will be equal to the interval as we do not provide an initial delay here.</p>
 
                                         </div>
                                     </div>
@@ -293,8 +287,10 @@ import ballerina/task;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Attaching the service to the timer. This will not start the timer.
- However, it will attach the service to the timer and also passes the
- person object into the <code>onTrigger()</code> resource</p>
+ But it will attach the service to the timer, and also passes the
+ person object into the timer service.
+ Defaultable <code>serviceParameter</code> will pass the object into the resources
+ if it is set.</p>
 
                                         </div>
                                     </div>
@@ -333,7 +329,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Starts the timer.</p>
+                                            <p>Start the timer.</p>
 
                                         </div>
                                     </div>
@@ -352,7 +348,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>While loop will stop the function from exiting until the service ends.</p>
+                                            <p>While loop will stop function from exiting until the service ends.</p>
 
                                         </div>
                                     </div>
@@ -363,8 +359,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        runtime:sleep(2000);
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    }
 </code></pre></div>
 
                                 </td>
@@ -372,7 +367,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits until the age of the person reaches the max age.</p>
+                                            <p>Wait until person age reaches max age.</p>
 
                                         </div>
                                     </div>
@@ -380,7 +375,7 @@ import ballerina/task;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
@@ -388,6 +383,13 @@ import ballerina/task;
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Additional sleep to finish onTrigger function.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -407,7 +409,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Cancels the timer. This will stop the timer and all the services
+                                            <p>Cancel the timer. This will stop the timer and all the services
  attached to it.</p>
 
                                         </div>
@@ -440,7 +442,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The service, which will be attached to the timer.</p>
+                                            <p>Service which will be attached to the timer.</p>
 
                                         </div>
                                     </div>
@@ -454,7 +456,7 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger(Person person) {
         if (person.age &lt; person.maxAge) {
             person.age = person.age + 1;
-            io:println(&quot;Hi &quot; + person.name + &quot; you are &quot; + person.age.toString() + &quot; years old now.&quot;);
+            io:println(&quot;Hi &quot; + person.name + &quot; you are &quot; + person.age + &quot; years old now.&quot;);
         }
     }
 };
@@ -465,8 +467,8 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The onTrigger resource, which will trigger when the timer runs off.
- The usage of the Person object being passed inside the function, which we
+                                            <p>onTrigger resource which will trigger when the timer runs off.
+ Note the usage of Person object passing inside the function, which we
  attached with the timer.</p>
 
                                         </div>
@@ -481,7 +483,7 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=ballerina>service service2 = service {
     resource function onTrigger(Person person) {
         if (person.age == 5) {
-            io:println(person.name + &quot; started schooling&quot;);
+            io:println(person.name + &quot; started schooling at age &quot; + person.age);
         }
     }
 };
@@ -510,15 +512,15 @@ import ballerina/task;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run task_scheduler_timer.bal
 Hi Sam you are 1 years old now.
 Hi Sam you are 2 years old now.
 Hi Sam you are 3 years old now.
 Hi Sam you are 4 years old now.
 Hi Sam you are 5 years old now.
+Sam started schooling at age 5
 Hi Sam you are 6 years old now.
-Sam started schooling
 Hi Sam you are 7 years old now.
 Hi Sam you are 8 years old now.
 Hi Sam you are 9 years old now.

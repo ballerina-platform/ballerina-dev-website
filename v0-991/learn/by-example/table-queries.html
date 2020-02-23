@@ -14,29 +14,115 @@ permalink: /v0-991/learn/by-example/table-queries
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">boolean</span> <span class="nx">married</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">Order</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">personId</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">orderId</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">items</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">amount</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">SummedOrder</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">personId</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">amount</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">OrderDetails</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">orderId</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">personName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">items</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">amount</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">PersonPublicProfile</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">knownName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1000.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1050.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;kane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1200.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jack&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">p4</span> <span class="p">=</span>
-    <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1100.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;alex&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">p1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1000.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">p2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1050.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;kane&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">p3</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1200.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;jack&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">true</span> <span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">p4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1100.50</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;alex&quot;</span><span class="p">,</span> <span class="nx">married</span><span class="p">:</span> <span class="kc">false</span> <span class="p">};</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">id</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">salary</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">married</span><span class="p">},</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">age</span><span class="p">,</span> <span class="nx">salary</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">married</span> <span class="p">},</span>
         <span class="p">[</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">,</span> <span class="nx">p3</span><span class="p">,</span> <span class="nx">p4</span><span class="p">]</span>
     <span class="p">};</span>
     <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;The personTable:  &quot;</span><span class="p">,</span> <span class="nx">personTable</span><span class="p">);</span>
+    <span class="nx">Order</span> <span class="nx">o1</span> <span class="p">=</span>
+    <span class="p">{</span> <span class="nx">personId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span> <span class="nx">items</span><span class="p">:</span> <span class="s">&quot;pen, book, eraser&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mf">34.75</span> <span class="p">};</span>
+    <span class="nx">Order</span> <span class="nx">o2</span> <span class="p">=</span>
+    <span class="p">{</span> <span class="nx">personId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">:</span> <span class="mi">2314</span><span class="p">,</span> <span class="nx">items</span><span class="p">:</span> <span class="s">&quot;dhal, rice, carrot&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mf">14.75</span> <span class="p">};</span>
+    <span class="nx">Order</span> <span class="nx">o3</span> <span class="p">=</span>
+    <span class="p">{</span> <span class="nx">personId</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">:</span> <span class="mi">5643</span><span class="p">,</span> <span class="nx">items</span><span class="p">:</span> <span class="s">&quot;Macbook Pro&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mf">2334.75</span> <span class="p">};</span>
+    <span class="nx">Order</span> <span class="nx">o4</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">personId</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">:</span> <span class="mi">8765</span><span class="p">,</span> <span class="nx">items</span><span class="p">:</span> <span class="s">&quot;Tshirt&quot;</span><span class="p">,</span> <span class="nx">amount</span><span class="p">:</span> <span class="mf">20.75</span> <span class="p">};</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Order</span><span class="p">&gt;</span> <span class="nx">orderTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
+        <span class="p">{</span> <span class="nx">personId</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">,</span> <span class="nx">items</span><span class="p">,</span> <span class="nx">amount</span> <span class="p">},</span>
+        <span class="p">[</span><span class="nx">o1</span><span class="p">,</span> <span class="nx">o2</span><span class="p">,</span> <span class="nx">o3</span><span class="p">,</span> <span class="nx">o4</span><span class="p">]</span>
+    <span class="p">};</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;The orderTable: &quot;</span><span class="p">,</span> <span class="nx">orderTable</span><span class="p">);</span>
     <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTableCopy</span> <span class="p">=</span> <span class="nx">from</span> <span class="nx">personTable</span> <span class="nx">select</span> <span class="o">*</span><span class="p">;</span>
     <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;Person&gt; personTableCopy = from personTable select *;&quot;</span><span class="p">;</span>
     <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span><span class="s">&quot;personTableCopy: &quot;</span><span class="p">,</span> <span class="nx">personTableCopy</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">orderedPersonTable</span> <span class="p">=</span> <span class="nx">from</span> <span class="nx">personTable</span> <span class="nx">select</span> <span class="o">*</span> <span class="nx">order</span> <span class="nx">by</span> <span class="nx">salary</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;Person&gt; orderedPersonTable = &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from personTable select * order by salary;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;orderedPersonTable: &quot;</span><span class="p">,</span> <span class="nx">orderedPersonTable</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTableCopyWithFilter</span> <span class="p">=</span>
+                 <span class="nx">from</span> <span class="nx">personTable</span> <span class="nx">where</span> <span class="nx">name</span> <span class="o">==</span> <span class="s">&quot;jane&quot;</span> <span class="nx">select</span> <span class="o">*</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;Person&gt; personTableCopyWithFilter = &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from personTable where name == &#39;jane&#39; select *;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;personTableCopyWithFilter: &quot;</span><span class="p">,</span> <span class="nx">personTableCopyWithFilter</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">PersonPublicProfile</span><span class="p">&gt;</span> <span class="nx">childTable</span> <span class="p">=</span> <span class="nx">from</span> <span class="nx">personTable</span>
+                  <span class="nx">select</span> <span class="nx">name</span> <span class="k">as</span> <span class="nx">knownName</span><span class="p">,</span> <span class="nx">age</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;PersonPublicProfile &gt; childTable = &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;from personTable select name as knownName, age;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;childTable: &quot;</span><span class="p">,</span> <span class="nx">childTable</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">SummedOrder</span><span class="p">&gt;</span> <span class="nx">summedOrderTable</span> <span class="p">=</span> <span class="nx">from</span> <span class="nx">orderTable</span>
+                  <span class="nx">select</span> <span class="nx">personId</span><span class="p">,</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">amount</span><span class="p">)</span> <span class="nx">group</span> <span class="nx">by</span> <span class="nx">personId</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;SummedOrder&gt; summedOrderTable = &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from orderTable select personId, sum(amount) group by personId;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;summedOrderTable: &quot;</span><span class="p">,</span> <span class="nx">summedOrderTable</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">OrderDetails</span><span class="p">&gt;</span> <span class="nx">orderDetailsTable</span> <span class="p">=</span>
+                    <span class="nx">from</span> <span class="nx">personTable</span> <span class="k">as</span> <span class="nx">tempPersonTable</span>
+                    <span class="k">join</span> <span class="nx">orderTable</span> <span class="k">as</span> <span class="nx">tempOrderTable</span>
+                        <span class="nx">on</span> <span class="nx">tempPersonTable</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">personId</span>
+                    <span class="nx">select</span> <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">orderId</span> <span class="k">as</span> <span class="nx">orderId</span><span class="p">,</span>
+                            <span class="nx">tempPersonTable</span><span class="p">.</span><span class="nx">name</span> <span class="k">as</span> <span class="nx">personName</span><span class="p">,</span>
+                            <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">items</span> <span class="k">as</span> <span class="nx">items</span><span class="p">,</span>
+                            <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">amount</span> <span class="k">as</span> <span class="nx">amount</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;OrderDetails&gt; orderDetailsTable = &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from personTable as tempPersonTable</span>
+<span class="s">            join orderTable as tempOrderTable &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId</span>
+<span class="s">            select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempPersonTable.name as personName, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempOrderTable.items as items, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempOrderTable.amount as amount;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;orderDetailsTable: &quot;</span><span class="p">,</span> <span class="nx">orderDetailsTable</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">OrderDetails</span><span class="p">&gt;</span> <span class="nx">orderDetailsWithFilter</span> <span class="p">=</span>
+                    <span class="nx">from</span> <span class="nx">personTable</span>
+                    <span class="nx">where</span> <span class="nx">name</span> <span class="o">!=</span> <span class="s">&quot;jane&quot;</span> <span class="k">as</span> <span class="nx">tempPersonTable</span>
+                    <span class="k">join</span> <span class="nx">orderTable</span> <span class="nx">where</span> <span class="nx">personId</span> <span class="o">!=</span> <span class="mi">3</span> <span class="k">as</span> <span class="nx">tempOrderTable</span>
+                            <span class="nx">on</span> <span class="nx">tempPersonTable</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">personId</span>
+                    <span class="nx">select</span> <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">orderId</span> <span class="k">as</span> <span class="nx">orderId</span><span class="p">,</span>
+                            <span class="nx">tempPersonTable</span><span class="p">.</span><span class="nx">name</span> <span class="k">as</span> <span class="nx">personName</span><span class="p">,</span>
+                            <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">items</span> <span class="k">as</span> <span class="nx">items</span><span class="p">,</span>
+                            <span class="nx">tempOrderTable</span><span class="p">.</span><span class="nx">amount</span> <span class="k">as</span> <span class="nx">amount</span><span class="p">;</span>
+    <span class="nx">queryStmt</span> <span class="p">=</span> <span class="s">&quot;\ntable&lt;OrderDetails&gt; orderDetailsWithFilter = &quot;</span> <span class="o">+</span>
+            <span class="s">&quot;from personTable where name != &#39;jane&#39; as tempPersonTable</span>
+<span class="s">             join orderTable where personId != 3 as tempOrderTable &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;on tempPersonTable.id == tempOrderTable.personId</span>
+<span class="s">             select tempOrderTable.orderId as orderId, &quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempPersonTable.name as personName,&quot;</span> <span class="o">+</span>
+                    <span class="s">&quot;tempOrderTable.items as items,</span>
+<span class="s">                    tempOrderTable.amount as amount;&quot;</span><span class="p">;</span>
+    <span class="nx">printTable</span><span class="p">(</span><span class="nx">queryStmt</span><span class="p">,</span> <span class="s">&quot;orderDetailsWithFilter: &quot;</span><span class="p">,</span> <span class="nx">orderDetailsWithFilter</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printTable</span><span class="p">(</span><span class="kt">string</span> <span class="nx">stmt</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">tableName</span><span class="p">,</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">returnedTable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">retData</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">returnedTable</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">stmt</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tableName</span><span class="p">);</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">returnedTable</span> <span class="p">{</span>
-       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">row</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="nx">tableName</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retData</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">retData</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error in table to json conversion&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -48,11 +134,11 @@ permalink: /v0-991/learn/by-example/table-queries
                     <tr>
                         <td class="cLeftTD">
                             <h2>Table Queries</h2>
-                            <p><p>Ballerina allows querying in-memory tables with syntax similar to SQL. To select all the columns/fields from the
- source table, &ldquo;*&rdquo; can be used along with the select clause. In this example, an exact copy of the source table is
- created. This query syntax can only be used to query a table. The modification of an existing table is not supported.
+                            <p><p>Ballerina supports querying tables using a syntax similar to SQL. This query syntax can only be used to query a table.
+ Modification of an existing table is not supported.
  When an existing table is queried using Ballerina SQL, a new in-memory table is created with the queried data and
- that table is returned. Executing these SQL-like queries on tables returned through Ballerina database clients is not
+ that table is returned.
+ Please note that executing these SQL-like queries, on tables returned through Ballerina database clients, is not
  supported yet.</p>
 </p>
 
@@ -61,9 +147,9 @@ permalink: /v0-991/learn/by-example/table-queries
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="transactions-distributed.html">
+                                    <a class="prev" href="channels-workers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Distributed Transactions</p>
+                                        <p>Worker Interactions with Channels</p>
                                     </a>
                                 </div>
                                  
@@ -100,6 +186,34 @@ permalink: /v0-991/learn/by-example/table-queries
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -159,7 +273,100 @@ permalink: /v0-991/learn/by-example/table-queries
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Order record {
+    int personId;
+    int orderId;
+    string items;
+    float amount;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This <code>record</code> type represents an order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type SummedOrder record {
+    int personId;
+    float amount;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This <code>record</code> type represents the summed up order details.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type OrderDetails record {
+    int orderId;
+    string personName;
+    string items;
+    float amount;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This <code>record</code> type represents order details (this is derived by joining the person details
+and the order details).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type PersonPublicProfile record {
+    string knownName;
+    int age = -1;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This <code>record</code> type represents the public profile of a person.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
@@ -169,20 +376,23 @@ permalink: /v0-991/learn/by-example/table-queries
                                 </td>
                                 <td class="docs">
                                     
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the main function.</p>
+
+                                        </div>
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person p1 =
-    {id: 1, age: 25, salary: 1000.50, name: &quot;jane&quot;, married: true};
-    Person p2 =
-    {id: 2, age: 26, salary: 1050.50, name: &quot;kane&quot;, married: false};
-    Person p3 =
-    {id: 3, age: 27, salary: 1200.50, name: &quot;jack&quot;, married: true};
-    Person p4 =
-    {id: 4, age: 28, salary: 1100.50, name: &quot;alex&quot;, married: false};
+                                    <div class="highlight"><pre><code class=ballerina>    Person p1 = { id: 1, age: 25, salary: 1000.50, name: &quot;jane&quot;, married: true };
+    Person p2 = { id: 2, age: 26, salary: 1050.50, name: &quot;kane&quot;, married: false };
+    Person p3 = { id: 3, age: 27, salary: 1200.50, name: &quot;jack&quot;, married: true };
+    Person p4 = { id: 4, age: 28, salary: 1100.50, name: &quot;alex&quot;, married: false };
 </code></pre></div>
 
                                 </td>
@@ -202,7 +412,7 @@ permalink: /v0-991/learn/by-example/table-queries
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTable = table {
-        {id, age, salary, name, married},
+        { id, age, salary, name, married },
         [p1, p2, p3, p4]
     };
 </code></pre></div>
@@ -231,7 +441,91 @@ permalink: /v0-991/learn/by-example/table-queries
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This prints the content of the <code>Person</code> table.</p>
+                                            <p>This prints the <code>Person</code> table content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Order o1 =
+    { personId: 1, orderId: 1234, items: &quot;pen, book, eraser&quot;, amount: 34.75 };
+    Order o2 =
+    { personId: 1, orderId: 2314, items: &quot;dhal, rice, carrot&quot;, amount: 14.75 };
+    Order o3 =
+    { personId: 2, orderId: 5643, items: &quot;Macbook Pro&quot;, amount: 2334.75 };
+    Order o4 = { personId: 3, orderId: 8765, items: &quot;Tshirt&quot;, amount: 20.75 };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>These are a few sample values that represent orders made by the people who were
+ listed above as person records.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Order&gt; orderTable = table {
+        { personId, orderId, items, amount },
+        [o1, o2, o3, o4]
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the in-memory <code>table</code> that is constrained by the <code>Order</code> type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    printTable(queryStmt, &quot;The orderTable: &quot;, orderTable);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This prints the <code>Order</code> table content.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code empty leading">
+                                    
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Querying for a <code>table</code> always returns a new in-memory <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -245,6 +539,170 @@ permalink: /v0-991/learn/by-example/table-queries
                                     <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTableCopy = from personTable select *;
     queryStmt = &quot;\ntable&lt;Person&gt; personTableCopy = from personTable select *;&quot;;
     printTable(queryStmt,&quot;personTableCopy: &quot;, personTableCopy);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Queries all the records in a <code>table</code> and returns them as another in-memory <code>table</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; orderedPersonTable = from personTable select * order by salary;
+    queryStmt = &quot;\ntable&lt;Person&gt; orderedPersonTable = &quot; +
+            &quot;from personTable select * order by salary;&quot;;
+    printTable(queryStmt, &quot;orderedPersonTable: &quot;, orderedPersonTable);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Queries all the records and returns them in the ascending order of the salary.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTableCopyWithFilter =
+                 from personTable where name == &quot;jane&quot; select *;
+    queryStmt = &quot;\ntable&lt;Person&gt; personTableCopyWithFilter = &quot; +
+            &quot;from personTable where name == &#39;jane&#39; select *;&quot;;
+    printTable(queryStmt, &quot;personTableCopyWithFilter: &quot;, personTableCopyWithFilter);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Queries all the records in a <code>table</code> that match a specific filter criterion.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;PersonPublicProfile&gt; childTable = from personTable
+                  select name as knownName, age;
+    queryStmt = &quot;\ntable&lt;PersonPublicProfile &gt; childTable = &quot; +
+                    &quot;from personTable select name as knownName, age;&quot;;
+    printTable(queryStmt, &quot;childTable: &quot;, childTable);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Queries only few fields in a <code>table</code> and returns the results as a new in-memory
+<code>table</code> constrained by a different type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;SummedOrder&gt; summedOrderTable = from orderTable
+                  select personId, sum(amount) group by personId;
+    queryStmt = &quot;\ntable&lt;SummedOrder&gt; summedOrderTable = &quot; +
+            &quot;from orderTable select personId, sum(amount) group by personId;&quot;;
+    printTable(queryStmt, &quot;summedOrderTable: &quot;, summedOrderTable);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This applies the <code>group by</code> clause to a <code>table</code> and returns a new <code>table</code> with the result.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;OrderDetails&gt; orderDetailsTable =
+                    from personTable as tempPersonTable
+                    join orderTable as tempOrderTable
+                        on tempPersonTable.id == tempOrderTable.personId
+                    select tempOrderTable.orderId as orderId,
+                            tempPersonTable.name as personName,
+                            tempOrderTable.items as items,
+                            tempOrderTable.amount as amount;
+    queryStmt = &quot;\ntable&lt;OrderDetails&gt; orderDetailsTable = &quot; +
+            &quot;from personTable as tempPersonTable
+            join orderTable as tempOrderTable &quot; +
+                    &quot;on tempPersonTable.id == tempOrderTable.personId
+            select tempOrderTable.orderId as orderId, &quot; +
+                    &quot;tempPersonTable.name as personName, &quot; +
+                    &quot;tempOrderTable.items as items, &quot; +
+                    &quot;tempOrderTable.amount as amount;&quot;;
+    printTable(queryStmt, &quot;orderDetailsTable: &quot;, orderDetailsTable);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Joins a <code>table</code> with another <code>table</code> and returns the selected fields in a <code>table</code>
+constrained by a different type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;OrderDetails&gt; orderDetailsWithFilter =
+                    from personTable
+                    where name != &quot;jane&quot; as tempPersonTable
+                    join orderTable where personId != 3 as tempOrderTable
+                            on tempPersonTable.id == tempOrderTable.personId
+                    select tempOrderTable.orderId as orderId,
+                            tempPersonTable.name as personName,
+                            tempOrderTable.items as items,
+                            tempOrderTable.amount as amount;
+    queryStmt = &quot;\ntable&lt;OrderDetails&gt; orderDetailsWithFilter = &quot; +
+            &quot;from personTable where name != &#39;jane&#39; as tempPersonTable
+             join orderTable where personId != 3 as tempOrderTable &quot; +
+                    &quot;on tempPersonTable.id == tempOrderTable.personId
+             select tempOrderTable.orderId as orderId, &quot; +
+                    &quot;tempPersonTable.name as personName,&quot; +
+                    &quot;tempOrderTable.items as items,
+                    tempOrderTable.amount as amount;&quot;;
+    printTable(queryStmt, &quot;orderDetailsWithFilter: &quot;, orderDetailsWithFilter);
 }
 </code></pre></div>
 
@@ -253,8 +711,8 @@ permalink: /v0-991/learn/by-example/table-queries
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Querying a <code>table</code> always returns a new in-memory <code>table</code>.
- Queries all the records in a <code>table</code> and returns them as another in-memory <code>table</code>.</p>
+                                            <p>Joins a <code>table</code> with another <code>table</code> using the <code>where</code> clause and return the selected fields in a
+ <code>table</code> constrained by a different type.</p>
 
                                         </div>
                                     </div>
@@ -266,10 +724,13 @@ permalink: /v0-991/learn/by-example/table-queries
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function printTable(string stmt, string tableName, table&lt;anydata&gt; returnedTable) {
+    var retData = json.convert(returnedTable);
     io:println(stmt);
-    io:println(tableName);
-    foreach var row in returnedTable {
-       io:println(row);
+    io:print(tableName);
+    if (retData is json) {
+        io:println(io:sprintf(&quot;%s&quot;, retData));
+    } else {
+        io:println(&quot;Error in table to json conversion&quot;);
     }
 }
 </code></pre></div>
@@ -292,6 +753,34 @@ permalink: /v0-991/learn/by-example/table-queries
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -301,13 +790,101 @@ permalink: /v0-991/learn/by-example/table-queries
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run --experimental table_queries.bal
-The personTable:
-id=1 age=25 salary=1000.5 name=jane married=true
-id=2 age=26 salary=1050.5 name=kane married=false
-id=3 age=27 salary=1200.5 name=jack married=true
-id=4 age=28 salary=1100.5 name=alex married=false
+The personTable:  [{&quot;id&quot;:1, &quot;age&quot;:25, &quot;salary&quot;:1000.5, &quot;name&quot;:&quot;jane&quot;, &quot;married&quot;:true}, {&quot;id&quot;:2, &quot;age&quot;:26, &quot;salary&quot;:1050.5, &quot;name&quot;:&quot;kane&quot;, &quot;married&quot;:false}, {&quot;id&quot;:3, &quot;age&quot;:27, &quot;salary&quot;:1200.5, &quot;name&quot;:&quot;jack&quot;, &quot;married&quot;:true}, {&quot;id&quot;:4, &quot;age&quot;:28, &quot;salary&quot;:1100.5, &quot;name&quot;:&quot;alex&quot;, &quot;married&quot;:false}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>The orderTable: [{&quot;personId&quot;:1, &quot;orderId&quot;:1234, &quot;items&quot;:&quot;pen, book, eraser&quot;, &quot;amount&quot;:34.75}, {&quot;personId&quot;:1, &quot;orderId&quot;:2314, &quot;items&quot;:&quot;dhal, rice, carrot&quot;, &quot;amount&quot;:14.75}, {&quot;personId&quot;:2, &quot;orderId&quot;:5643, &quot;items&quot;:&quot;Macbook Pro&quot;, &quot;amount&quot;:2334.75}, {&quot;personId&quot;:3, &quot;orderId&quot;:8765, &quot;items&quot;:&quot;Tshirt&quot;, &quot;amount&quot;:20.75}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;Person&gt; personTableCopy = from personTable select *;
+personTableCopy: [{&quot;id&quot;:1, &quot;age&quot;:25, &quot;salary&quot;:1000.5, &quot;name&quot;:&quot;jane&quot;, &quot;married&quot;:true}, {&quot;id&quot;:2, &quot;age&quot;:26, &quot;salary&quot;:1050.5, &quot;name&quot;:&quot;kane&quot;, &quot;married&quot;:false}, {&quot;id&quot;:3, &quot;age&quot;:27, &quot;salary&quot;:1200.5, &quot;name&quot;:&quot;jack&quot;, &quot;married&quot;:true}, {&quot;id&quot;:4, &quot;age&quot;:28, &quot;salary&quot;:1100.5, &quot;name&quot;:&quot;alex&quot;, &quot;married&quot;:false}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;Person&gt; orderedPersonTable = from personTable select * order by salary;
+orderedPersonTable: [{&quot;id&quot;:1, &quot;age&quot;:25, &quot;salary&quot;:1000.5, &quot;name&quot;:&quot;jane&quot;, &quot;married&quot;:true}, {&quot;id&quot;:2, &quot;age&quot;:26, &quot;salary&quot;:1050.5, &quot;name&quot;:&quot;kane&quot;, &quot;married&quot;:false}, {&quot;id&quot;:4, &quot;age&quot;:28, &quot;salary&quot;:1100.5, &quot;name&quot;:&quot;alex&quot;, &quot;married&quot;:false}, {&quot;id&quot;:3, &quot;age&quot;:27, &quot;salary&quot;:1200.5, &quot;name&quot;:&quot;jack&quot;, &quot;married&quot;:true}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;Person&gt; personTableCopyWithFilter = from personTable where name == &#39;jane&#39; select *;
+personTableCopyWithFilter: [{&quot;id&quot;:1, &quot;age&quot;:25, &quot;salary&quot;:1000.5, &quot;name&quot;:&quot;jane&quot;, &quot;married&quot;:true}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;PersonPublicProfile &gt; childTable = from personTable select name as knownName, age;
+childTable: [{&quot;knownName&quot;:&quot;jane&quot;, &quot;age&quot;:25}, {&quot;knownName&quot;:&quot;kane&quot;, &quot;age&quot;:26}, {&quot;knownName&quot;:&quot;jack&quot;, &quot;age&quot;:27}, {&quot;knownName&quot;:&quot;alex&quot;, &quot;age&quot;:28}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;SummedOrder&gt; summedOrderTable = from orderTable select personId, sum(amount) group by personId;
+summedOrderTable: [{&quot;personId&quot;:1, &quot;amount&quot;:49.5}, {&quot;personId&quot;:2, &quot;amount&quot;:2334.75}, {&quot;personId&quot;:3, &quot;amount&quot;:20.75}]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;OrderDetails&gt; orderDetailsTable = from personTable as tempPersonTable
+            join orderTable as tempOrderTable on tempPersonTable.id == tempOrderTable.personId
+            select tempOrderTable.orderId as orderId, tempPersonTable.name as personName, tempOrderTable.items as items, tempOrderTable.amount as amount;
+orderDetailsTable: [{&quot;orderId&quot;:1234, &quot;personName&quot;:&quot;jane&quot;, &quot;items&quot;:&quot;pen, book, eraser&quot;, &quot;amount&quot;:34.75}, {&quot;orderId&quot;:2314, &quot;personName&quot;:&quot;jane&quot;, &quot;items&quot;:&quot;dhal, rice, carrot&quot;, &quot;amount&quot;:14.75}, {&quot;orderId&quot;:5643, &quot;personName&quot;:&quot;kane&quot;, &quot;items&quot;:&quot;Macbook Pro&quot;, &quot;amount&quot;:2334.75}, {&quot;orderId&quot;:8765, &quot;personName&quot;:&quot;jack&quot;, &quot;items&quot;:&quot;Tshirt&quot;, &quot;amount&quot;:20.75}]
 </code></pre></div>
 
                                 </td>
@@ -319,12 +896,11 @@ id=4 age=28 salary=1100.5 name=alex married=false
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>table&lt;Person&gt; personTableCopy = from personTable select *;
-personTableCopy:
-id=1 age=25 salary=1000.5 name=jane married=true
-id=2 age=26 salary=1050.5 name=kane married=false
-id=3 age=27 salary=1200.5 name=jack married=true
-id=4 age=28 salary=1100.5 name=alex married=false
+                                    <div class="highlight"><pre><code class=shell-session>table&lt;OrderDetails&gt; orderDetailsWithFilter = from personTable where name != &#39;jane&#39; as tempPersonTable
+             join orderTable where personId != 3 as tempOrderTable on tempPersonTable.id == tempOrderTable.personId
+             select tempOrderTable.orderId as orderId, tempPersonTable.name as personName,tempOrderTable.items as items,
+                    tempOrderTable.amount as amount;
+orderDetailsWithFilter: [{&quot;orderId&quot;:5643, &quot;personName&quot;:&quot;kane&quot;, &quot;items&quot;:&quot;Macbook Pro&quot;, &quot;amount&quot;:2334.75}]
 </code></pre></div>
 
                                 </td>

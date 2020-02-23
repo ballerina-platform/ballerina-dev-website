@@ -13,8 +13,7 @@ permalink: /v0-991/learn/by-example/worker-interaction
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
         <span class="kt">float</span> <span class="nx">k</span> <span class="p">=</span> <span class="mf">2.34</span><span class="p">;</span>
-        <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="nx">t1</span> <span class="p">=</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span> <span class="nx">k</span><span class="p">];</span>
-        <span class="nx">t1</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">;</span>
+        <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">k</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">w2</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1 -&gt; w2] i: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; k: &quot;</span><span class="p">,</span> <span class="nx">k</span><span class="p">);</span>
         <span class="kt">json</span> <span class="nx">j</span> <span class="p">=</span> <span class="p">{};</span>
         <span class="nx">j</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w2</span><span class="p">;</span>
@@ -32,17 +31,17 @@ permalink: /v0-991/learn/by-example/worker-interaction
     <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">iw</span><span class="p">;</span>
         <span class="kt">float</span> <span class="nx">kw</span><span class="p">;</span>
-        <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">]</span> <span class="nx">vW1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">];</span>
+        <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">float</span><span class="p">)</span> <span class="nx">vW1</span> <span class="p">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span>
         <span class="nx">vW1</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
-        <span class="p">[</span><span class="nx">iw</span><span class="p">,</span> <span class="nx">kw</span><span class="p">]</span> <span class="p">=</span> <span class="nx">vW1</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] iw: &quot;</span><span class="p">,</span> <span class="nx">iw</span><span class="p">,</span> <span class="s">&quot; kw: &quot;</span><span class="p">,</span> <span class="nx">kw</span><span class="p">);</span>
+        <span class="p">(</span><span class="nx">iw</span><span class="p">,</span> <span class="nx">kw</span><span class="p">)</span> <span class="p">=</span> <span class="nx">vW1</span><span class="p">;</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] iw: &quot;</span> <span class="o">+</span> <span class="nx">iw</span> <span class="o">+</span> <span class="s">&quot; kw: &quot;</span> <span class="o">+</span> <span class="nx">kw</span><span class="p">);</span>
         <span class="kt">json</span> <span class="nx">jw</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span> <span class="p">};</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 -&gt; w1] jw: &quot;</span><span class="p">,</span> <span class="nx">jw</span><span class="p">);</span>
         <span class="nx">jw</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">lw</span><span class="p">;</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
         <span class="nx">lw</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] lw: &quot;</span><span class="p">,</span> <span class="nx">lw</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] lw: &quot;</span> <span class="o">+</span> <span class="nx">lw</span><span class="p">);</span>
     <span class="p">}</span>    <span class="kd">worker</span> <span class="nx">w3</span> <span class="p">{</span>
         <span class="kt">float</span> <span class="nx">mw</span><span class="p">;</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
@@ -64,10 +63,10 @@ permalink: /v0-991/learn/by-example/worker-interaction
                             <h2>Worker Interactions</h2>
                             <p><p>Workers interact with each other by sending and receiving messages.
  Messages are sent and received over a communication channel that is transparent to the user.
- Asynchronous sending of the worker does not wait until the message is delivered whereas synchronous sending waits until the message is delivered.
- Flush can be used to check if all asynchronous messages were sent successfully to a given worker.
+ Worker asynchronous send does not wait until the message is delivered where as worker synchronous send waits until the message is delivered.
+ Flush can be used to check if all asynchronous messages sent to a given worker is successful.
  Both synchronous send and flush may fail if a receiving worker returned an error before receiving the messages.
- Similarly ,they may panic if a receiver panicked.</p>
+ Similarly they may panic if a receiver panicked.</p>
 </p>
 
                         </td>
@@ -187,8 +186,8 @@ import ballerina/runtime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Workers interact with each other by sending and receiving messages.
- Ballerina validates every worker interaction (send and receive)
- to avoid deadlocks.</p>
+ Ballerina validates every worker interactions (send and receive) in order to
+ avoid deadlocks.</p>
 
                                         </div>
                                     </div>
@@ -199,8 +198,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        [int, float] t1 = [i, k];
-        t1 -&gt; w2;
+                                    <div class="highlight"><pre><code class=ballerina>        (i, k) -&gt; w2;
         io:println(&quot;[w1 -&gt; w2] i: &quot;, i, &quot; k: &quot;, k);
 </code></pre></div>
 
@@ -209,8 +207,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends messages asynchronously to the worker <code>w2</code>. This message contains a
- tuple value with the member types <code>int</code> and <code>float</code>.</p>
+                                            <p>Send messages asynchronously to worker <code>w2</code>. This message contains a
+ tuple value with member types of <code>int</code> and <code>float</code>.</p>
 
                                         </div>
                                     </div>
@@ -233,8 +231,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Receives a message from the worker <code>w2</code>. This message contains <code>
- a</code>json`-typed value.</p>
+                                            <p>Receive a message from worker <code>w2</code>. This message contains a <code>json</code>
+ typed value.</p>
 
                                         </div>
                                     </div>
@@ -253,8 +251,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends messages synchronously to the worker <code>w2</code>. The worker <code>w1</code> will wait
- until the worker <code>w2</code> receives the message.</p>
+                                            <p>Send messages synchronously to worker <code>w2</code>. Worker <code>w1</code> will wait
+ until worker <code>w2</code> receives the message.</p>
 
                                         </div>
                                     </div>
@@ -273,7 +271,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The synchronous sending returns <code>nil</code> if the message was successfully sent or
+                                            <p>Synchronous send returns <code>nil</code> if the message was successfully sent or
  returns an error or panics based on the receiving worker&rsquo;s state.</p>
 
                                         </div>
@@ -296,7 +294,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends messages asynchronously to the worker <code>w3</code>.</p>
+                                            <p>Send messages asynchronously to worker <code>w3</code>.</p>
 
                                         </div>
                                     </div>
@@ -329,8 +327,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Flushes all messages sent asynchronously to the worker <code>w3</code>. The worker
- will halt at this point until all messages are sent or until the worker <code>w3</code>
+                                            <p>Flush all messages sent asynchronously to worker <code>w3</code>. The worker
+ will halt here until all messages are sent or until worker <code>w3</code>
  fails.</p>
 
                                         </div>
@@ -356,10 +354,10 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        int iw;
         float kw;
-        [int, float] vW1 = [0, 1.0];
+        (int, float) vW1 = (0, 1.0);
         vW1 = &lt;- w1;
-        [iw, kw] = vW1;
-        io:println(&quot;[w2 &lt;- w1] iw: &quot;, iw, &quot; kw: &quot;, kw);
+        (iw, kw) = vW1;
+        io:println(&quot;[w2 &lt;- w1] iw: &quot; + iw + &quot; kw: &quot; + kw);
 </code></pre></div>
 
                                 </td>
@@ -367,7 +365,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Receives a message from the worker <code>w1</code>.</p>
+                                            <p>Receive a message from worker <code>w1</code>.</p>
 
                                         </div>
                                     </div>
@@ -388,7 +386,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends a message asynchronously to the worker <code>w1</code>.</p>
+                                            <p>Send a message asynchronously to worker <code>w1</code>.</p>
 
                                         </div>
                                     </div>
@@ -402,7 +400,7 @@ import ballerina/runtime;
                                     <div class="highlight"><pre><code class=ballerina>        int lw;
         runtime:sleep(5);
         lw = &lt;- w1;
-        io:println(&quot;[w2 &lt;- w1] lw: &quot;, lw);
+        io:println(&quot;[w2 &lt;- w1] lw: &quot; + lw);
     }
 </code></pre></div>
 
@@ -411,7 +409,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Receives the message sent synchronously from the worker <code>w1</code></p>
+                                            <p>Receive the message sent synchronously from the worker <code>w1</code></p>
 
                                         </div>
                                     </div>
@@ -448,7 +446,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Receives messages from the worker <code>w1</code> after a certain time.</p>
+                                            <p>Receive messages from worker <code>w1</code> after a certain time.</p>
 
                                         </div>
                                     </div>
@@ -468,7 +466,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Waits for the worker <code>w1</code>to finish.</p>
+                                            <p>Wait for worker <code>w1</code>to finish.</p>
 
                                         </div>
                                     </div>
@@ -493,12 +491,12 @@ import ballerina/runtime;
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run worker_interaction.bal
 [w1 -&gt; w2] i: 100 k: 2.34
 [w2 &lt;- w1] iw: 100 kw: 2.34
-[w2 -&gt; w1] jw: name=Ballerina
-[w1 &lt;- w2] j: name=Ballerina
+[w2 -&gt; w1] jw: {&quot;name&quot;:&quot;Ballerina&quot;}
+[w1 &lt;- w2] j: {&quot;name&quot;:&quot;Ballerina&quot;}
 [w1 -&gt;&gt; w2] i: 100
 [w2 &lt;- w1] lw: 100
 [w1 -&gt;&gt; w2] successful!!

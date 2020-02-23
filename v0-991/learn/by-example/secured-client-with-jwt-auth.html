@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Secured Client with JWT Auth
+title: Secured Client With JWT Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
 ---
@@ -8,72 +8,71 @@ permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">jwt</span><span class="p">:</span><span class="nx">OutboundJwtAuthProvider</span> <span class="nx">outboundJwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-    <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-    <span class="nx">audience</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina.org&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">],</span>
-    <span class="nx">customClaims</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;scope&quot;</span><span class="p">:</span> <span class="s">&quot;hello&quot;</span> <span class="p">},</span>
-    <span class="nx">keyStoreConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">keyAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-        <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">outboundJwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">outboundJwtAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">outboundJwtAuthHandler</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
+        <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">JWT_AUTH</span>
     <span class="p">}</span>
 <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">token</span> <span class="p">=</span> <span class="s">&quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYWxsZXJ&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;pbmEiLCJpc3MiOiJiYWxsZXJpbmEiLCJleHAiOjI4MTg0MTUwMTksImlhdCI6MTUyND&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;U3NTAxOSwianRpIjoiZjVhZGVkNTA1ODVjNDZmMmI4Y2EyMzNkMGMyYTNjOWQiLCJhdW&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;QiOlsiYmFsbGVyaW5hIiwiYmFsbGVyaW5hLm9yZyIsImJhbGxlcmluYS5pbyJdLCJzY&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;29wZSI6ImhlbGxvIn0.bNoqz9_DzgeKSK6ru3DnKL7NiNbY32ksXPYrh6Jp0_O3ST7W&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;fXMs9WVkx6Q2TiYukMAGrnMUFrJnrJvZwC3glAmRBrl4BYCbQ0c5mCbgM9qhhCjC1tB&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;A50rjtLAtRW-JTRpCKS0B9_EmlVKfvXPKDLIpM5hnfhOin1R3lJCPspJ2ey_Ho6fDhs&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;KE3DZgssvgPgI9PBItnkipQ3CqqXWhV-RFBkVBEGPDYXTUVGbXhdNOBSwKw5ZoVJrCU&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;iNG5XD0K4sgN9udVTi3EMKNMnVQaq399k6RYPAy3vIhByS6QZtRjOG8X93WJw-9GLiH&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;vcabuid80lnrs2-mAEcstgiHVw&quot;</span><span class="p">;</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">getInvocationContext</span><span class="p">().</span><span class="nx">authenticationContext</span><span class="p">.</span><span class="nx">scheme</span> <span class="p">=</span> <span class="s">&quot;jwt&quot;</span><span class="p">;</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">getInvocationContext</span><span class="p">().</span><span class="nx">authenticationContext</span><span class="p">.</span><span class="nx">authToken</span> <span class="p">=</span> <span class="nx">token</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span>
                                         <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">inboundJwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
-    <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
-    <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">AuthProvider</span> <span class="nx">jwtAuthProvider</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">JWT_AUTH</span><span class="p">,</span>
+    <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">audience</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;ballerina.io&quot;</span><span class="p">],</span>
         <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">inboundJwtAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">inboundJwtAuthProvider</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">inboundJwtAuthHandler</span><span class="p">],</span>
-        <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
-    <span class="p">},</span>
+<span class="p">};</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">authProviders</span><span class="p">:</span> <span class="p">[</span><span class="nx">jwtAuthProvider</span><span class="p">],</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="p">},</span>
+        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span><span class="p">,</span>
+    <span class="nx">authConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">authentication</span><span class="p">:</span> <span class="p">{</span> <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/sayHello&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -85,21 +84,12 @@ permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Secured Client with JWT Auth</h2>
-                            <p><p>A secured client, which is secured  with JWT authentication should be used
- to connect to a service, which is secured with JWT authentication.
- The <code>jwt:OutboundJWTAuthProvider</code> is initialized with/without passing
- the JWT issuer configurations as a record. If the JWT issuer configurations
- are passed, a new JWT will be issued and it will be used for the outbound
- authentication. If the JWT issuer configurations are not passed,
- a JWT will be searched in <code>runtime:AuthenticationContext</code> and it will be
- used for the outbound authentication.
- The <code>http:BearerAuthHandler</code> is initialized by  providing
- the created <code>jwt:OutboundBasicAuthProvider</code>. An additional <code>auth</code> field is
- added to the HTTP client endpoint initialization in order to secure the
- simple HTTP client endpoint.
- The <code>authHandler</code> field is defined inside the <code>auth</code> field with the value
- of it being the reference of the created <code>http:BearerAuthHandler</code>.</p>
+                            <h2>Secured Client With JWT Auth</h2>
+                            <p><p>A secured client with JWT authentication is used to connect to a
+ secured service with JWT authentication. An additional <code>auth</code>
+ field is added to the HTTP client endpoint initialization in order
+ to make the simple HTTP client endpoint into a secure client endpoint.
+ Inside the <code>auth</code> field the <code>scheme</code> is defined for JWT authentication.</p>
 </p>
 
                         </td>
@@ -109,14 +99,14 @@ permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="secured-client-with-basic-auth.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with Basic Auth</p>
+                                        <p>Secured Client With Basic Auth</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="secured-client-with-oauth2.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Client with OAuth2</p>
+                                        <p>Secured Client With OAuth2</p>
                                     </a>
                                 </div>
                                 
@@ -166,6 +156,12 @@ permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -175,8 +171,8 @@ permalink: /v0-991/learn/by-example/secured-client-with-jwt-auth
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
-import ballerina/jwt;
 import ballerina/log;
+import ballerina/runtime;
 </code></pre></div>
 
                                 </td>
@@ -188,77 +184,23 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jwt:OutboundJwtAuthProvider outboundJwtAuthProvider = new({
-    username: &quot;ballerina&quot;,
-    issuer: &quot;ballerina&quot;,
-    audience: [&quot;ballerina&quot;, &quot;ballerina.org&quot;, &quot;ballerina.io&quot;],
-    customClaims: { &quot;scope&quot;: &quot;hello&quot; },
-    keyStoreConfig: {
-        keyAlias: &quot;ballerina&quot;,
-        keyPassword: &quot;ballerina&quot;,
-        keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the JWT auth client endpoint to call the backend services.
- JWT authentication is enabled by creating a <code>jwt:OutboundJWTAuthProvider</code>
- with/without passing the JWT issuer configurations as a record.
- If the JWT issuer configurations are not passed, a JWT will be searched
- in <code>runtime:AuthenticationContext</code> and it will be used for the outbound
- authentication.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler outboundJwtAuthHandler = new(outboundJwtAuthProvider);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a Bearer Auth handler with the created JWT Auth provider.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client httpEndpoint = new(&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client httpEndpoint = new(&quot;https://localhost:9090&quot;, config = {
     auth: {
-        authHandler: outboundJwtAuthHandler
-    },
-    secureSocket: {
-        trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
+        scheme: http:JWT_AUTH
     }
 });
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define the JWT auth client endpoint to call the backend services.
+ JWT authentication is enabled by setting the <code>scheme: http:JWT_AUTH</code></p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -277,14 +219,45 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string token = &quot;eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYWxsZXJ&quot; +
+        &quot;pbmEiLCJpc3MiOiJiYWxsZXJpbmEiLCJleHAiOjI4MTg0MTUwMTksImlhdCI6MTUyND&quot; +
+        &quot;U3NTAxOSwianRpIjoiZjVhZGVkNTA1ODVjNDZmMmI4Y2EyMzNkMGMyYTNjOWQiLCJhdW&quot; +
+        &quot;QiOlsiYmFsbGVyaW5hIiwiYmFsbGVyaW5hLm9yZyIsImJhbGxlcmluYS5pbyJdLCJzY&quot; +
+        &quot;29wZSI6ImhlbGxvIn0.bNoqz9_DzgeKSK6ru3DnKL7NiNbY32ksXPYrh6Jp0_O3ST7W&quot; +
+        &quot;fXMs9WVkx6Q2TiYukMAGrnMUFrJnrJvZwC3glAmRBrl4BYCbQ0c5mCbgM9qhhCjC1tB&quot; +
+        &quot;A50rjtLAtRW-JTRpCKS0B9_EmlVKfvXPKDLIpM5hnfhOin1R3lJCPspJ2ey_Ho6fDhs&quot; +
+        &quot;KE3DZgssvgPgI9PBItnkipQ3CqqXWhV-RFBkVBEGPDYXTUVGbXhdNOBSwKw5ZoVJrCU&quot; +
+        &quot;iNG5XD0K4sgN9udVTi3EMKNMnVQaq399k6RYPAy3vIhByS6QZtRjOG8X93WJw-9GLiH&quot; +
+        &quot;vcabuid80lnrs2-mAEcstgiHVw&quot;;
+    runtime:getInvocationContext().authenticationContext.scheme = &quot;jwt&quot;;
+    runtime:getInvocationContext().authenticationContext.authToken = token;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set the JWT token into runtime invocation context mentioning
+ scheme as <code>jwt</code></p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var response = httpEndpoint-&gt;get(&quot;/hello/sayHello&quot;);
     if (response is http:Response) {
         var result = response.getTextPayload();
         log:printInfo((result is error) ? &quot;Failed to retrieve payload.&quot;
                                         : result);
     } else {
-        log:printError(&quot;Failed to call the endpoint.&quot;, response);
+        log:printError(&quot;Failed to call the endpoint.&quot;, err = response);
     }
 }
 </code></pre></div>
@@ -294,10 +267,104 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends a <code>GET</code> request to the specified endpoint.</p>
+                                            <p>Send a <code>GET</code> request to the specified endpoint.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>http:AuthProvider jwtAuthProvider = {
+    scheme: http:JWT_AUTH,
+    config: {
+        issuer: &quot;ballerina&quot;,
+        audience: [&quot;ballerina.io&quot;],
+        certificateAlias: &quot;ballerina&quot;,
+        trustStore: {
+            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            password: &quot;ballerina&quot;
+        }
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a JWT authentication provider with the relevant configurations.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new(9090, config = {
+    authProviders: [jwtAuthProvider],
+    secureSocket: {
+        keyStore: {
+            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            password: &quot;ballerina&quot;
+        },
+        trustStore: {
+            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            password: &quot;ballerina&quot;
+        }
+    }
+});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/hello&quot;,
+    authConfig: {
+        authentication: { enabled: true }
+    }
+}
+service echo on ep {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;GET&quot;],
+        path: &quot;/sayHello&quot;
+    }
+    resource function hello(http:Caller caller, http:Request req) {
+        error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
+        if (result is error) {
+            log:printError(&quot;Error in responding to caller&quot;, err = result);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -321,115 +388,8 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run secured_client_with_jwt_auth.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
+[ballerina/http] started HTTPS/WSS endpoint 0.0.0.0:9090
 INFO  [ballerina/log] - Hello, World!!!
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
-import ballerina/jwt;
-import ballerina/log;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new({
-    issuer: &quot;ballerina&quot;,
-    audience: &quot;ballerina.io&quot;,
-    trustStoreConfig: {
-        certificateAlias: &quot;ballerina&quot;,
-        trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-http:BearerAuthHandler inboundJwtAuthHandler = new(inboundJwtAuthProvider);
-listener http:Listener ep = new(9090, config = {
-    auth: {
-        authHandlers: [inboundJwtAuthHandler],
-        scopes: [&quot;hello&quot;]
-    },
-    secureSocket: {
-        keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Defines the sample backend service, which is secured with JWT Auth
- authentication.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>service hello on ep {
-    resource function sayHello(http:Caller caller, http:Request req) {
-        error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
-        if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>

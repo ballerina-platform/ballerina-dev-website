@@ -9,19 +9,19 @@ permalink: /v0-991/learn/by-example/fork
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">fork</span> <span class="p">{</span>
-        <span class="kd">worker</span> <span class="nx">w1</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="p">{</span>
+        <span class="kd">worker</span> <span class="nx">w1</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">23</span><span class="p">;</span>
             <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;Colombo&quot;</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w1] i: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot; s: &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
-            <span class="k">return</span> <span class="p">[</span><span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">];</span>
+            <span class="k">return</span> <span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
         <span class="p">}</span>        <span class="kd">worker</span> <span class="nx">w2</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
             <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">10.344</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2] f: &quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">);</span>
             <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">record</span><span class="p">{</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">float</span> <span class="nx">w2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
-    <span class="k">var</span> <span class="p">[</span><span class="nx">iW1</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w1</span><span class="p">;</span>
+    <span class="nx">record</span><span class="p">{</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">float</span> <span class="nx">w2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+    <span class="k">var</span> <span class="p">(</span><span class="nx">iW1</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">)</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w1</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">fW2</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[main] iW1: &quot;</span><span class="p">,</span> <span class="nx">iW1</span><span class="p">,</span> <span class="s">&quot; sW1: &quot;</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">,</span> <span class="s">&quot; fW2: &quot;</span><span class="p">,</span> <span class="nx">fW2</span><span class="p">);</span>
 <span class="p">}</span>
@@ -34,10 +34,10 @@ permalink: /v0-991/learn/by-example/fork
                     <tr>
                         <td class="cLeftTD">
                             <h2>Fork</h2>
-                            <p><p>The <code>fork</code> block allows you to start any number of parallel workers simultaneously. Workers are visible outside the fork block as futures.
- These futures behave similar to the futures returned by asynchronous functions created by <code>start</code>. You may wait until the worker
- finishes by using the <code>wait</code> expression.
- You can only send <code>anydata</code> variables from a worker of one fork to another worker in the same fork.</p>
+                            <p><p>The <code>fork</code> block allows you to start any number of parallel workers at once. Workers are visible outside the fork block as futures.
+ These futures behave similar to the futures returned by asynchronous functions created by <code>start</code>. You may wait for the worker
+ returns using the <code>wait</code> expression.
+ You can only send <code>anydata</code> variables from one fork worker to another worker in the same fork.</p>
 </p>
 
                         </td>
@@ -141,7 +141,7 @@ permalink: /v0-991/learn/by-example/fork
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    fork {
-        worker w1 returns [int, string] {
+        worker w1 returns (int, string) {
             int i = 23;
             string s = &quot;Colombo&quot;;
             io:println(&quot;[w1] i: &quot;, i, &quot; s: &quot;, s);
@@ -164,7 +164,7 @@ permalink: /v0-991/learn/by-example/fork
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            return [i, s];
+                                    <div class="highlight"><pre><code class=ballerina>            return (i, s);
         }
 </code></pre></div>
 
@@ -219,7 +219,7 @@ permalink: /v0-991/learn/by-example/fork
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record{ [int, string] w1; float w2; } results = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=ballerina>    record{ (int, string) w1; float w2; } results = wait {w1, w2};
 </code></pre></div>
 
                                 </td>
@@ -239,7 +239,7 @@ permalink: /v0-991/learn/by-example/fork
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var [iW1, sW1] = results.w1;
+                                    <div class="highlight"><pre><code class=ballerina>    var (iW1, sW1) = results.w1;
     var fW2 = results.w2;
     io:println(&quot;[main] iW1: &quot;, iW1, &quot; sW1: &quot;, sW1, &quot; fW2: &quot;, fW2);
 }
@@ -250,8 +250,8 @@ permalink: /v0-991/learn/by-example/fork
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The resulting record contains returned values from each worker with
- the field name as the worker name (if a field name is not provided).</p>
+                                            <p>The resulting record contains returned values from each worker, with
+ the field name as worker name if a field name is not provided.</p>
 
                                         </div>
                                     </div>

@@ -1,21 +1,19 @@
 ---
 layout: ballerina-example-page
-title: Secured Service with Basic Auth
+title: Secured Service With Basic Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">auth</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">auth</span><span class="p">:</span><span class="nx">InboundBasicAuthProvider</span> <span class="nx">basicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">basicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">basicAuthProvider</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">AuthProvider</span> <span class="nx">basicAuthProvider</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">BASIC_AUTH</span><span class="p">,</span>
+    <span class="nx">authStoreProvider</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CONFIG_AUTH_STORE</span>
+<span class="p">};</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">basicAuthHandler</span><span class="p">]</span>
-    <span class="p">},</span>
+    <span class="nx">authProviders</span><span class="p">:</span> <span class="p">[</span><span class="nx">basicAuthProvider</span><span class="p">],</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
@@ -24,21 +22,22 @@ permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
     <span class="p">}</span>
 <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span><span class="p">,</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">authConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">authentication</span><span class="p">:</span> <span class="p">{</span> <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span> <span class="p">},</span>
         <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;scope1&quot;</span><span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">ep</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/sayHello&quot;</span><span class="p">,</span>
-        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">authConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;scope2&quot;</span><span class="p">]</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello, World!!!&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding to caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -50,7 +49,7 @@ permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Secured Service with Basic Auth</h2>
+                            <h2>Secured Service With Basic Auth</h2>
                             <p><p>A service can be secured using basic authentication and optionally, by
  enforcing authorization. The auth provider reads the username and password
  from a file which has a toml format. This stores usernames, passwords for
@@ -60,17 +59,16 @@ permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
  auth provider, scopes are mapped to users.
  In the authorization phase, the scopes of the resource are compared against
  the scopes mapped to the user for at least one match between the two sets.
- The following code block shows the contents of the file <code>sample-users.toml</code>,
- which has the required format of usernames, passwords and scopes, including
- their mapping.</p>
+ The following code block shows the contents of the file <code>sample-users.toml</code>, which has the
+ required format of usernames, passwords and scopes, including their mapping.</p>
 
-<pre><code>  [b7a.users]
+<pre><code>  [&quot;b7a.users&quot;]
 
-  [b7a.users.tom]
+  [&quot;b7a.users.tom&quot;]
   password=&quot;password1&quot;
   scopes=&quot;scope2,scope3&quot;
 
-  [b7a.users.dick]
+  [&quot;b7a.users.dick&quot;]
   password=&quot;password2&quot;
   scopes=&quot;scope1&quot;
 </code></pre>
@@ -86,14 +84,14 @@ permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="secured-service-with-jwt.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Service with JWT</p>
+                                        <p>Secured Service With JWT</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="secured-client-with-basic-auth.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Client with Basic Auth</p>
+                                        <p>Secured Client With Basic Auth</p>
                                     </a>
                                 </div>
                                 
@@ -155,8 +153,7 @@ permalink: /v0-991/learn/by-example/secured-service-with-basic-auth
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/auth;
-import ballerina/http;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -166,22 +163,17 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>auth:InboundBasicAuthProvider basicAuthProvider = new;
-http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
+                                    <div class="highlight"><pre><code class=ballerina>http:AuthProvider basicAuthProvider = {
+    scheme: http:BASIC_AUTH,
+    authStoreProvider: http:CONFIG_AUTH_STORE
+};
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Creates a Basic Auth header handler with the relevant configurations.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -190,9 +182,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new(9090, config = {
-    auth: {
-        authHandlers: [basicAuthHandler]
-    },
+    authProviders: [basicAuthProvider],
 </code></pre></div>
 
                                 </td>
@@ -200,10 +190,9 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The endpoint used here is the <code>http:Listener</code>, which by default tries to
- authenticate and authorize each request. The Basic Authentication handler is
- set to this endpoint using the <code>authHandlers</code> attribute. It is optional to
- override the authentication and authorization at the service level and/or
+                                            <p>The endpoint used here is <code>http:Listener</code>, which by default tries to
+ authenticate and authorize each request. The developer has the option to
+ override the authentication and authorization at the service level and
  resource level.</p>
 
                                         </div>
@@ -229,7 +218,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The secure hello world sample uses HTTPS.</p>
+                                            <p>The secure hello world sample uses https.</p>
 
                                         </div>
                                     </div>
@@ -242,7 +231,8 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
     basePath: &quot;/hello&quot;,
-    auth: {
+    authConfig: {
+        authentication: { enabled: true },
         scopes: [&quot;scope1&quot;]
     }
 }
@@ -265,11 +255,10 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The Auth configuration comprises of two parts -
- authentication &amp; authorization.
- Authentication can be disabled by setting the <code>enabled: false</code> annotation
- attribute.
- Authorization is based on scopes. A scope maps to one or more groups.
+                                            <p>Auth configuration comprises of two parts - authentication &amp; authorization.
+ Authentication can be enabled by setting the <code>authentication:{enabled:true}</code>
+ annotation attribute.
+ Authorization is based on scopes, where a scope maps to one or more groups.
  For a user to access a resource, the user should be in the same groups as
  the scope.
  To specify one or more scopes of a resource, the <code>scopes</code> annotation
@@ -287,7 +276,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/sayHello&quot;,
-        auth: {
+        authConfig: {
             scopes: [&quot;scope2&quot;]
         }
     }
@@ -305,7 +294,7 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     <div class="highlight"><pre><code class=ballerina>    resource function hello(http:Caller caller, http:Request req) {
         error? result = caller-&gt;respond(&quot;Hello, World!!!&quot;);
         if (result is error) {
-            log:printError(&quot;Error in responding to caller&quot;, result);
+            log:printError(&quot;Error in responding to caller&quot;, err = result);
         }
     }
 }
@@ -316,12 +305,11 @@ http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The authentication and authorization settings can be overridden at the
+                                            <p>The authentication and authorization settings can be overridden at
  resource level.
- The hello resource would inherit the <code>enabled: true</code> flag from the
- service level, which is set automatically. The service level scope
- (i.e., scope1) will be overridden by the scope defined in the resource
- level (i.e., scope2).</p>
+ The hello resource would inherit the <code>authentication:{enabled:true}</code>
+ flag from the service level, and override the scope defined in the
+ service level (i.e., scope1) with scope2.</p>
 
                                         </div>
                                     </div>
@@ -372,10 +360,11 @@ scopes=&quot;scope2&quot;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Specify the configuration file name using the `--b7a.config.file=&lt;path to configuration file&gt;` property and run the
+                                    <div class="highlight"><pre><code class=shell-session># Specify the configuration file name using the `--config` flag and run the
 # program using `ballerina run` command.
-$ ballerina run secured_service_with_basic_auth.bal --b7a.config.file=sample-users.toml
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
+$ ballerina run --config sample-users.toml secured_service_with_basic_auth.bal
+Initiating service(s) in &#39;secured_service_with_basic_auth.bal&#39;
+[ballerina/http] started HTTPS/WSS endpoint 0.0.0.0:9090
 </code></pre></div>
 
                                 </td>
@@ -422,7 +411,7 @@ Authorization failure
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Since `generalUser2` has `scope2` the invocation will succeeded.
 $ curl -k -u generalUser2:password https://localhost:9090/hello/sayHello
-Hello, World!!!
+Hello, World!
 </code></pre></div>
 
                                 </td>

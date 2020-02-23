@@ -31,10 +31,11 @@ permalink: /v0-991/learn/by-example/object-type-reference
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">{</span>
-        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span>
+<span class="kd">function</span> <span class="nx">Manager</span><span class="p">.</span><span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Manager</span> <span class="nx">p</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="s">&quot;Senior&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">dpt</span><span class="p">);</span>
@@ -52,8 +53,8 @@ permalink: /v0-991/learn/by-example/object-type-reference
                             <h2>Object Type Reference</h2>
                             <p><p>Object type references provide a way to copy the members from an abstract
  object into another object. It is equivalent to specifying the members
- explicitly within the new object, thus, eliminating redundancy. An object can have
- zero or more type references and may have chained references as well.</p>
+ explicitly within the new object, thus eliminating redundancy. An object can have
+ zero or more type references, and may have chained references as well.</p>
 </p>
 
                         </td>
@@ -175,7 +176,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines an abstract object called <code>Person</code>. It should only contain fields and the
+                                            <p>Define an abstract object called <code>Person</code>. It should only contain the fields and the
  method declarations.</p>
 
                                         </div>
@@ -195,7 +196,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Method declarations can be within the object. However, the method cannot
+                                            <p>Method declarations can be within the object. But the method cannot
  have a body.</p>
 
                                         </div>
@@ -227,7 +228,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines another abstract object called <code>Employee</code>, which references the <code>Person</code> object.</p>
+                                            <p>Define another abstract object called <code>Employee</code>, which references the <code>Person</code> object.</p>
 
                                         </div>
                                     </div>
@@ -247,7 +248,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Add a reference to the <code>Person</code> object type. Only abstract objects can be referred.
+                                            <p>Add a reference to the <code>Person</code> object type. Note that only abstract objects can be referred.
  All the member fields and member methods will be copied from the <code>Person</code> object.</p>
 
                                         </div>
@@ -306,7 +307,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Type references can be chained by adding a reference to the <code>Employee</code> object, which
+                                            <p>Type references can be chained, by adding a reference to the <code>Employee</code> object which
  again has a reference to the <code>Employee</code> object. This will copy all the members from
  the <code>Employee</code> object. It will be same as defining each of those members within this object.</p>
 
@@ -379,6 +380,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     <div class="highlight"><pre><code class=ballerina>    function getFullName() returns string {
         return self.firstName + &quot; &quot; + self.lastName;
     }
+};
 </code></pre></div>
 
                                 </td>
@@ -386,7 +388,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The member methods coming from the referenced type should be defined within the object.</p>
+                                            <p>Member methods coming from the referenced type can be defined within the object.</p>
 
                                         </div>
                                     </div>
@@ -394,17 +396,23 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
+                            <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getSalary() returns float{
+                                    <div class="highlight"><pre><code class=ballerina>function Manager.getSalary() returns float {
         return self.salary;
-    }
-};
+}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Member methods coming from the referenced type can also be defined outside the object.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -434,7 +442,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accessing the fields that are coming from the referenced type.</p>
+                                            <p>Accessing fields that are coming from the referenced type.</p>
 
                                         </div>
                                     </div>
@@ -455,7 +463,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoking the methods that are coming from the referenced type.</p>
+                                            <p>Invoking methods that are coming from the referenced type.</p>
 
                                         </div>
                                     </div>
@@ -480,7 +488,7 @@ permalink: /v0-991/learn/by-example/object-type-reference
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
+# `.bal` file and execute the `ballerina run` command.
 $ ballerina run object_type_reference.bal
 5
 HR

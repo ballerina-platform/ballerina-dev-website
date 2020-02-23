@@ -125,13 +125,14 @@ permalink: /v0-991/learn/by-example/openapi-to-ballerina
                     <tr>
                         <td class="cLeftTD">
                             <h2>OpenAPI To Ballerina</h2>
-                            <p><p>If you already have an OpenApi Specification(OAS)-3 document for your service(s),
- you can use that contract to generate a Ballerina source code.
+                            <p><p>If you already have an Open-Api-Specification(OAS)-3 document for your service(s),
+ you can use that to autogenerate Ballerina source code.
  Currently, Ballerina supports two types of code generation.
- &lsquo;gen-service&rsquo; generates a mock version of the Ballerina service for a provided OAS definition.
- <code>ballerina openapi gen-service &lt;module-name&gt;:&lt;service-name&gt; &lt;openapi-contract&gt;</code>
- &lsquo;gen-client&rsquo; generates a Ballerina client endpoint for a provided OAS definition.
- <code>ballerina openapi gen-client [&lt;module&gt;:]&lt;client-name&gt; &lt;openapi-file&gt; [-o=&lt;outputFileName&gt;]</code></p>
+ &lsquo;mock&rsquo; generation generates a mock version of the Ballerina service for an input OAS definition.
+ &lsquo;client&rsquo; generation generates a Ballerina client endpoint for an input OAS definition.
+ The Ballerina code generator supports the following parameters:
+ <code>-m | --module</code> The Ballerina module name for the generated code.
+ <code>-o | --output</code> The destination path to write generated source code. This path must be a project directory.</p>
 </p>
 
                         </td>
@@ -146,9 +147,9 @@ permalink: /v0-991/learn/by-example/openapi-to-ballerina
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="nats-basic-client.html">
+                                    <a class="next" href="jms-simple-queue-message-receiver.html">
                                         <span>NEXT ></span>
-                                        <p>Basic Publisher and Subscriber</p>
+                                        <p>Simple Queue Receiver</p>
                                     </a>
                                 </div>
                                 
@@ -333,15 +334,9 @@ components:
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service from OpenAPI contract.
-$ ballerina openapi gen-service petStore:petService openapi_to_ballerina.yaml
-Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
-Service generated successfully and the OpenApi contract is copied to petStore/resources. this location will be referenced throughout the ballerina project.
-Following files were created.
-src/
-- petStore
--- petservice.bal
--- schema.bal
+                                    <div class="highlight"><pre><code class=shell-session>#Run the following command in the Ballerina tools distribution for mock service generation.
+$ ballerina openapi gen-service openapi_to_ballerina.yaml -m pet_service
+successfully generated ballerina mock service for input file - openapi_to_ballerina.yaml
 </code></pre></div>
 
                                 </td>
@@ -353,15 +348,9 @@ src/
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the following command in a Ballerina project to generate the service client from OpenAPI contract.
-$ ballerina openapi gen-client petservice_client openapi_to_ballerina.yaml
-Note: This is an Experimental tool ship under ballerina hence this will only support limited set of functionality.
-Client generated successfully.
-Following files were created.
-src/
-- client
--- openapi_petstore.bal
--- schema.bal
+                                    <div class="highlight"><pre><code class=shell-session>#Run the following command in the Ballerina tools distribution for client service generation.
+$ ballerina openapi gen-client openapi_to_ballerina.yaml -m pet_client
+successfully generated ballerina client for input file - openapi_to_ballerina.yaml
 </code></pre></div>
 
                                 </td>

@@ -1,6 +1,6 @@
 ---
 layout: ballerina-example-page
-title: Secured Client with OAuth2
+title: Secured Client With OAuth2
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /v0-991/learn/by-example/secured-client-with-oauth2
 ---
@@ -9,128 +9,77 @@ permalink: /v0-991/learn/by-example/secured-client-with-oauth2
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;&lt;Username for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;&lt;Password for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for password grant authentication&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token URL for the refresh token server&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://api.bitbucket.org/2.0&quot;</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">OAUTH2</span><span class="p">,</span>
+            <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">grantType</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CLIENT_CREDENTIALS_GRANT</span><span class="p">,</span>
+                <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span><span class="p">,</span>
+                    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;mMNWS9PLmM93V5WHjC&quot;</span><span class="p">,</span>
+                    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
-    <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;&lt;Access token for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-    <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for authentication with the authorization endpoint&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">refreshToken</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token for the refresh token server&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Refresh token URL for the refresh token server&gt;&quot;</span><span class="p">,</span>
-        <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+    <span class="p">});</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://api.bitbucket.org/2.0&quot;</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">OAUTH2</span><span class="p">,</span>
+            <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">grantType</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">PASSWORD_GRANT</span><span class="p">,</span>
+                <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span><span class="p">,</span>
+                    <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;b7a.demo@gmail.com&quot;</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+                    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;mMNWS9PLmM93V5WHjC&quot;</span><span class="p">,</span>
+                    <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;</span><span class="p">,</span>
+                    <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;https://bitbucket.org/site/oauth2/access_token&quot;</span>
+                    <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
-    <span class="p">},</span>
-    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+    <span class="p">});</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://www.googleapis.com/tasks/v1&quot;</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">scheme</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">OAUTH2</span><span class="p">,</span>
+            <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">grantType</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">DIRECT_TOKEN</span><span class="p">,</span>
+                <span class="nx">config</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;ya29.GlvQBkqJS0yn0zsZm4IIUUzLk3DH1rRiCMKnHiz6deycKmTFiDsuoFlFfrmXF8dCb0gyzLyXpnv3VcrIlauj3nMs61CbydaAqMl6RwVIU2r2qg1StVVvxRWT9_Or&quot;</span><span class="p">,</span>
+                    <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;506144513496-dqm5vdqfrfhdjjom10rmvafb8e3h7rtm.apps.googleusercontent.com&quot;</span><span class="p">,</span>
+                        <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;3hw2XN4MfiIRrv6mghX6m5gM&quot;</span><span class="p">,</span>
+                        <span class="nx">refreshToken</span><span class="p">:</span> <span class="s">&quot;1/UwH3YyYccKTrH9bqj35Y7hMYTK9f3HEC3uzlrleFwPE&quot;</span><span class="p">,</span>
+                        <span class="nx">refreshUrl</span><span class="p">:</span> <span class="s">&quot;https://www.googleapis.com/oauth2/v4/token&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/repositories/b7ademo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response1</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP1.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload for clientEP1.&quot;</span>
+                                        <span class="p">:</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">uuid</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">response1</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/repositories/b7ademo&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response2</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span>
+                                        <span class="p">:</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">uuid</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">response2</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/users/@me/lists&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span>
+                                        <span class="p">:</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -141,16 +90,16 @@ permalink: /v0-991/learn/by-example/secured-client-with-oauth2
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Secured Client with OAuth2</h2>
-                            <p><p>A client, which is secured with OAuth2 Authentication should be used
- to connect to a service, which is secured with OAuth2 Authentication.
- The <code>oauth2:OutboundOAuth2Provider</code> is initialized with the relevant
- configurations passed as a record. The <code>http:BearerAuthHandler</code>
- is initialized by providing the created <code>oauth2:OutboundOAuth2Provider</code>.
- An additional <code>auth</code> field is added to the HTTP client endpoint
- initialization in order to secure the simple HTTP client endpoint.
- The <code>authHandler</code> field is defined inside the <code>auth</code> field with the
- value of it being the reference of the created <code>http:BearerAuthHandler</code>.</p>
+                            <h2>Secured Client With OAuth2</h2>
+                            <p><p>A secured client with OAuth2 authentication is used to connect to a
+ secured service with OAuth2 authentication. An additional <code>auth</code>
+ field is added to the HTTP client endpoint initialization in order
+ to make the simple HTTP client endpoint into a secure client endpoint.
+ Within the <code>auth</code> field, the <code>scheme</code> is defined as <code>http:OAUTH2</code> and
+ <code>config</code> is defined accordingly based on the OAuth2 authentication. Within
+ the <code>config</code> field, the <code>grantType</code> is defined as <code>http:CLIENT_CREDENTIALS_GRANT</code>,
+ <code>http:PASSWORD_GRANT</code>, or <code>http:DIRECT_TOKEN</code>. Also, the <code>config</code> field
+ is defined with relevant grant type configurations.</p>
 </p>
 
                         </td>
@@ -160,14 +109,14 @@ permalink: /v0-991/learn/by-example/secured-client-with-oauth2
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="secured-client-with-jwt-auth.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with JWT Auth</p>
+                                        <p>Secured Client With JWT Auth</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="locks.html">
+                                    <a class="next" href="crypto.html">
                                         <span>NEXT ></span>
-                                        <p>Lock</p>
+                                        <p>Cryptographic Operations</p>
                                     </a>
                                 </div>
                                 
@@ -221,12 +170,6 @@ permalink: /v0-991/learn/by-example/secured-client-with-oauth2
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -237,7 +180,6 @@ permalink: /v0-991/learn/by-example/secured-client-with-oauth2
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
 import ballerina/log;
-import ballerina/oauth2;
 </code></pre></div>
 
                                 </td>
@@ -249,20 +191,19 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
-    tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
-    clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
-    clientSecret: &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
-    clientConfig: {
-        secureSocket: {
-            trustStore: {
-                 path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                 password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new(&quot;https://api.bitbucket.org/2.0&quot;, config = {
+        auth: {
+            scheme: http:OAUTH2,
+            config: {
+                grantType: http:CLIENT_CREDENTIALS_GRANT,
+                config: {
+                    tokenUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;,
+                    clientId: &quot;mMNWS9PLmM93V5WHjC&quot;,
+                    clientSecret: &quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;
+                }
             }
         }
-    }
-});
-http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
+    });
 </code></pre></div>
 
                                 </td>
@@ -271,34 +212,12 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Define the OAuth2 client endpoint to call the backend services.
- The OAuth2 authentication with client credentials grant type is enabled by
- creating an <code>oauth2:OutboundOAuth2Provider</code> with the relevant configurations
- passed as a record.</p>
+ Setting the <code>scheme: http:OAUTH2</code> enables OAuth2 authentication.
+ Setting the <code>grantType: http:CLIENT_CREDENTIALS_GRANT</code> configures the
+ OAuth2 client credentials grant type.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler1
-    },
-    secureSocket: {
-        trustStore: {
-             path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-             password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -306,33 +225,24 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new({
-    tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
-    username: &quot;&lt;Username for password grant authentication&gt;&quot;,
-    password: &quot;&lt;Password for password grant authentication&gt;&quot;,
-    clientId: &quot;&lt;Client ID for password grant authentication&gt;&quot;,
-    clientSecret: &quot;&lt;Client secret for password grant authentication&gt;&quot;,
-    clientConfig: {
-        secureSocket: {
-            trustStore: {
-                 path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                 password: &quot;ballerina&quot;
-            }
-        }
-    },
-    refreshConfig: {
-        refreshUrl: &quot;&lt;Refresh token URL for the refresh token server&gt;&quot;,
-        clientConfig: {
-            secureSocket: {
-                trustStore: {
-                     path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                     password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new(&quot;https://api.bitbucket.org/2.0&quot;, config = {
+        auth: {
+            scheme: http:OAUTH2,
+            config: {
+                grantType: http:PASSWORD_GRANT,
+                config: {
+                    tokenUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;,
+                    username: &quot;b7a.demo@gmail.com&quot;,
+                    password: &quot;ballerina&quot;,
+                    clientId: &quot;mMNWS9PLmM93V5WHjC&quot;,
+                    clientSecret: &quot;jLY6xPY3ER4bNTspaGu6fb7kahhs7kUa&quot;,
+                    refreshConfig: {
+                        refreshUrl: &quot;https://bitbucket.org/site/oauth2/access_token&quot;
+                    }
                 }
             }
         }
-    }
-});
-http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
+    });
 </code></pre></div>
 
                                 </td>
@@ -340,37 +250,15 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the OAuth2 client endpoint to call the backend services.
- The OAuth2 authentication with the password grant type is enabled by
- creating an <code>oauth2:OutboundOAuth2Provider</code> with the relevant
- configurations passed as a record. If the access token expires or
- becomes invalid, then it will be automatically refreshed with the provided
- <code>refreshConfig</code>.</p>
+                                            <p>Define the OAuth2 client endpoint to call the backend services.
+ Setting the <code>scheme: http:OAUTH2</code> to enable OAuth2 authentication.
+ Setting the <code>grantType: http:PASSWORD_GRANT</code> configures the
+ OAuth2 password grant type.
+ If the access token expires or become invalid, then it will be automatically
+ refreshed with the provided <code>refreshUrl</code>.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler2
-    },
-    secureSocket: {
-        trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -378,24 +266,23 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new({
-    accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
-    refreshConfig: {
-        clientId: &quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;,
-        clientSecret: &quot;&lt;Client secret for authentication with the authorization endpoint&gt;&quot;,
-        refreshToken: &quot;&lt;Refresh token for the refresh token server&gt;&quot;,
-        refreshUrl: &quot;&lt;Refresh token URL for the refresh token server&gt;&quot;,
-        clientConfig: {
-            secureSocket: {
-                trustStore: {
-                     path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                     password: &quot;ballerina&quot;
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new(&quot;https://www.googleapis.com/tasks/v1&quot;, config = {
+        auth: {
+            scheme: http:OAUTH2,
+            config: {
+                grantType: http:DIRECT_TOKEN,
+                config: {
+                    accessToken: &quot;ya29.GlvQBkqJS0yn0zsZm4IIUUzLk3DH1rRiCMKnHiz6deycKmTFiDsuoFlFfrmXF8dCb0gyzLyXpnv3VcrIlauj3nMs61CbydaAqMl6RwVIU2r2qg1StVVvxRWT9_Or&quot;,
+                    refreshConfig: {
+                        clientId: &quot;506144513496-dqm5vdqfrfhdjjom10rmvafb8e3h7rtm.apps.googleusercontent.com&quot;,
+                        clientSecret: &quot;3hw2XN4MfiIRrv6mghX6m5gM&quot;,
+                        refreshToken: &quot;1/UwH3YyYccKTrH9bqj35Y7hMYTK9f3HEC3uzlrleFwPE&quot;,
+                        refreshUrl: &quot;https://www.googleapis.com/oauth2/v4/token&quot;
+                    }
                 }
             }
         }
-    }
-});
-http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
+    });
 </code></pre></div>
 
                                 </td>
@@ -403,36 +290,16 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the OAuth2 client endpoint to call the backend services.
- The OAuth2 authentication with direct token mode is enabled by creating
- an <code>oauth2:OutboundOAuth2Provider</code> with the relevant configurations passed
- as a record. If the <code>accessToken</code> is invalid or not provided, it will
- be automatically refreshed with the provided <code>refreshConfig</code>.</p>
+                                            <p>Define the OAuth2 client endpoint to call the backend services.
+ Setting the <code>scheme: http:OAUTH2</code>enables OAuth2 authentication.
+ Setting the <code>grantType: http:DIRECT_TOKEN</code> configures the
+ OAuth2 direct token mode.
+ If the<code>accessToken</code> is invalid or not provided, it will be automatically
+ refreshed with the provided <code>clientId</code>, <code>clientSecret</code>, <code>refreshToken</code>,
+ and <code>refreshUrl</code>.</p>
 
                                         </div>
                                     </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
-    auth: {
-        authHandler: oauth2Handler3
-    },
-    secureSocket: {
-        trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-            password: &quot;ballerina&quot;
-        }
-    }
-});
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -452,16 +319,13 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/repositories/b7ademo&quot;);
     if (response1 is http:Response) {
         var result = response1.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError(&quot;Failed to retrieve payload for clientEP1.&quot;);
-        }
+        log:printInfo(result is error ? &quot;Failed to retrieve payload for clientEP1.&quot;
+                                        : &lt;string&gt; result.values[0].uuid);
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, response1);
+        log:printError(&quot;Failed to call the endpoint.&quot;, err = response1);
     }
 </code></pre></div>
 
@@ -470,7 +334,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sends a <code>GET</code> request to the specified endpoint.</p>
+                                            <p>Send a <code>GET</code> request to the specified endpoint.</p>
 
                                         </div>
                                     </div>
@@ -481,16 +345,13 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/repositories/b7ademo&quot;);
     if (response2 is http:Response) {
         var result = response2.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
-        }
+        log:printInfo((result is error) ? &quot;Failed to retrieve payload for clientEP2.&quot;
+                                        : &lt;string&gt; result.values[0].uuid);
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, response2);
+        log:printError(&quot;Failed to call the endpoint.&quot;, err = response2);
     }
 </code></pre></div>
 
@@ -510,16 +371,13 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/users/@me/lists&quot;);
     if (response3 is http:Response) {
         var result = response3.getJsonPayload();
-        if (result is error) {
-            log:printInfo(&quot;Failed to retrieve payload for clientEP3.&quot;);
-        } else {
-            log:printInfo(&lt;string&gt; result.kind);
-        }
+        log:printInfo((result is error) ? &quot;Failed to retrieve payload for clientEP3.&quot;
+                                        : &lt;string&gt; result.kind);
     } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
+        log:printError(&quot;Failed to call the endpoint.&quot;, err = response3);
     }
 }
 </code></pre></div>
@@ -556,7 +414,9 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run secured_client_with_oauth2.bal
-# This should log the json output returned by the REST endpoint.
+INFO  [] - {9356828d-6797-496f-975e-3fabaf677214}
+INFO  [] - {9356828d-6797-496f-975e-3fabaf677214}
+INFO  [] - tasks#taskLists
 </code></pre></div>
 
                                 </td>

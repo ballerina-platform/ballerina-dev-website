@@ -49,16 +49,6 @@ redirect_from:
                       <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>Code to Cloud</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
-                  </tr>
-                  <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
-                      <p class="cEventLocation">Vilnius, Lithuania</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
                           <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
                           <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
                            <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
@@ -94,6 +84,16 @@ redirect_from:
                         <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/San-Diego-Cloud-Native-Computing-Meetup/events/268618473/" target="_blank">More Info</a></td> 
+                  </tr>
+                    <tr class="event-expiry" style="display:none" data-expiry="July 16, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">July 13 - 16, 2020</span>
+                      <p class="cEventLocation">Portland, Oregano, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://conferences.oreilly.com/oscon/oscon-or"><h4>O'Reilly Open Source Software Conference</h4></a>
+                        <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
+                        <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://conferences.oreilly.com/oscon/oscon-or/public/content/about" target="_blank">More Info</a></td> 
                   </tr>
   
                   

@@ -93,7 +93,7 @@ redirect_from:
                         <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
                         <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/San-Diego-Cloud-Native-Computing-Meetup/events/268618473/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://conferences.oreilly.com/oscon/oscon-or/public/content/about" target="_blank">More Info</a></td> 
                   </tr>
   
                   

@@ -168,5 +168,5 @@ You expand/collapse the following Ballerina code segments using the icons in the
 
 ## What's next?
 
-- For information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](v1-1/learn/intellij-plugin)
-- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](v1-1/learn).
+- For more information on the Ballerina IntelliJ IDEA plugin, see [IntelliJ IDEA Plugin](/v1-1/learn/intellij-plugin).
+- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v1-1/learn).

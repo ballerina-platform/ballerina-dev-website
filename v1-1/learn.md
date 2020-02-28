@@ -69,7 +69,7 @@ redirect_from:
    </div>
    <div class="col-sm-12 col-md-4 cBoxContainer">
       <div class="cBallerina-Box">
-     <p class="cBoxpara">Learn the “batteries-included” standard library.</p>
+     <p class="cBoxpara">Check out the API docs of the “batteries-included” standard library.</p>
          <a class="cBallerinaLearnButtons" href="/v1-1/learn/api-docs/ballerina">The Standard Library</a>
       </div>
    </div>

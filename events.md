@@ -103,7 +103,7 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">  
-                    <tr class="event-expiry" style="display:none" data-expiry="February 16, 2020 12:00:00">
+                    <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>
                       <p class="cEventLocation">San Francisco, California, USA</p>
                       </td>

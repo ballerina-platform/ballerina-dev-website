@@ -33,8 +33,8 @@ If you are agreeing to these Terms on behalf of a company or other legal entity,
 - [User disagreements](#user-disagreements)
 - [Third party Sites and Services](#third-party-sites-and-services)
 - [Revisions to these Terms and termination](#revisions-to-these-terms-and-termination)
-- [Subscriptions and mail notifications: your choice](#subscriptions-and-mail-notifications:-your-choice)
-- [Limitation of liability; disclaimer of warranties](#limitation-of-liability;-disclaimer-of-warranties)
+- [Subscriptions and mail notifications](#subscriptions-and-mail-notifications)
+- [Limitation of liability and disclaimer of warranties](#limitation-of-liability-and-disclaimer-of-warranties)
 - [Indemnification](#indemnification)
 - [General](#General)
 
@@ -152,11 +152,11 @@ The Sites and Services may hyperlink to and integrate with third-party applicati
 
 3. Upon any termination or expiration of these Terms, whether by you or WSO2, ANY INFORMATION (INCLUDING USER CONTENT) THAT YOU HAVE POSTED OR SUBMITTED ON OR THROUGH THE SERVICE OR THAT WHICH IS RELATED TO YOUR ACCOUNT MAY NO LONGER BE ACCESSED BY YOU and WSO2 will have no obligation to maintain any such information in its databases or to forward any such information to you or any third party. However, you acknowledge that the ecosystem and community beyond WSO2 may build a lasting dependency upon your User Content once it is posted upon the Sites. To ensure community continuity, WSO2 retains the right to continue to host and maintain your User Content on the Sites and Services even after the termination of your account, or the expiration of these terms, at our sole discretion. In the event of any contradiction between the right granted herein and any term of the license specified with your User Content, you agree that the right granted in this section 9.3 shall prevail. You are solely responsible for retrieving your User Content from the Services prior to termination of your account for any reason, provided that if we terminate your account, we will attempt to provide you a with reasonable opportunity to retrieve your User Content.
 
-## Subscriptions and mail notifications: your choice
+## Subscriptions and mail notifications 
 
-If you have chosen to subscribe to receive any services related information, Ballerina updates, newsletters, or other informational material, you have the right to opt-out of receiving such email notifications at any point by clicking on the “unsubscribe” link at the bottom of any email sent by us, or by notifying us at [dpo@wso2.com](mailto:dpo@wso2.com) if you would like us to delete all contact information and personal data we have from you.
+It's your choice. If you have chosen to subscribe to receive any services related information, Ballerina updates, newsletters, or other informational material, you have the right to opt-out of receiving such email notifications at any point by clicking on the “unsubscribe” link at the bottom of any email sent by us, or by notifying us at [dpo@wso2.com](mailto:dpo@wso2.com) if you would like us to delete all contact information and personal data we have from you.
 
-## Limitation of liability; disclaimer of warranties
+## Limitation of liability and disclaimer of warranties
 
 YOUR USE OF THE SITES AND SERVICE IS AT YOUR SOLE RISK. THE SERVICE IS PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS. WSO2 AND ITS SUBSIDIARIES, AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS, AND LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
 

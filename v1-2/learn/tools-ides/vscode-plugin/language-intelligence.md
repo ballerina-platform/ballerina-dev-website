@@ -63,7 +63,7 @@ For example, you can add documentation for a function as shown below.
 
 This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](v1-2/learn/api-docs/ballerina/).
 
-![Go to definition](/v1-2/learn/images/go-to-definition.gif)
+![Go to definition](/v1-2/learn/images/go-to-definition-vscode.gif)
 
 ## What's next?
 

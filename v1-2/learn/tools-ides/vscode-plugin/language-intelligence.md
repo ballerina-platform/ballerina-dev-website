@@ -17,6 +17,7 @@ Language intelligence is built in to the extension via a Language Server impleme
 - [Suggestions and auto completion](#suggestions-and-auto-completion)
 - [Code actions](#code-actions)
 - [Hover support](#hover-support)
+- [Go to definition](#go-to-definition)
 
 ## Semantic and syntactic diagnostics
 
@@ -58,7 +59,11 @@ For example, you can add documentation for a function as shown below.
  
  > **Tip**: Likewise, if you hover over an entity name of an object or a record, you can view the description of the object/record as well as descriptions of its fields.
 
-Above are the language intelligence features that are currently available in the Ballerina VS Code Extension.
+## Go to definition
+
+This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](v1-2/learn/api-docs/ballerina/).
+
+![Go to definition](/v1-2/learn/images/go-to-definition.gif)
 
 ## What's next?
 

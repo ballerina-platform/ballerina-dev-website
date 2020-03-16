@@ -2,6 +2,9 @@
 layout: ballerina-inner-page
 title: Ballerina Style Guide
 permalink: /v1-1/learn/style-guide/
+redirect_from:
+  - /learn/style-guide/
+  - /learn/style-guide
 ---
 
 # Ballerina Style Guide

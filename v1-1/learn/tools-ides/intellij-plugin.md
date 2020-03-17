@@ -5,8 +5,6 @@ permalink: /v1-1/learn/intellij-plugin/
 redirect_from:
   - /v1-1/learn/tools-ides/intellij-plugin
   - /v1-1/learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin
 ---
 
 # The IntelliJ IDEA Ballerina Plugin

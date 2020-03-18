@@ -20,7 +20,7 @@ You can generate Ballerina source code using the following command:
 ./ballerina grpc --input <proto-file-path> [--output <path>] [--mode client | service]
 ```
 
-____**Options**____
+### Options
 
 `--input`  - Path of the input .proto file. This is a mandatory field. You need to provide the path of the definition
  file.
@@ -53,17 +53,20 @@ message HelloResponse {
 }
 ```
 
-* You can run the following command to generate the client/service stub and service template.
+* You can run the following command to generate the service template file.
 ```
 $ ballerina grpc --input helloworld_service.proto --mode service --output service
 ```
-Once you execute the command, the stub file(`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_service.bal`) are generated inside the service directory.
+Once you execute the command, the service template file (`helloWorld_sample_service.bal`) are generated inside the service directory.
+Note: If you have multiple services in Protocol Buffers definition, this command will generate a stub file with common message types and service template file for each service definition. This is to avoid duplicating message types in all service files.
+
 
 * You can run the following command to generate the client/service stub and client template.
 ```
 $ ballerina grpc --input helloworld_service.proto --mode client --output client
 ```
 Once you execute the command, the stub file(`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_client.bal`) are generated inside the client directory.
+
 
 * You can run the following command to generate only the client/service stub.
 ```

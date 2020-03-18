@@ -111,7 +111,7 @@ type ResultStudent record {
     string name;
 };
 
-public function main() {
+public function main(string... args) {
 
     jdbc:Client testDB = new({
         url: "jdbc:mysql://localhost:3306/testdb",
@@ -140,7 +140,7 @@ tainted value passed to sensitive parameter 'sqlQuery'
 In order to compile, the program is modified to use query parameters:
 
 ```ballerina
-sql:Parameter paramId = {sqlType:sql:TYPE_VARCHAR, value:studentId};
+jdbc:Parameter paramId = {sqlType:jdbc:TYPE_VARCHAR, value:studentId};
 var dt = testDB->select("SELECT NAME FROM STUDENT WHERE ID = ?", ResultStudent,
                         paramId);
 ```
@@ -251,6 +251,7 @@ The following example represents how a listener is secured with Basic Auth with 
 ```ballerina
 import ballerina/auth;
 import ballerina/http;
+import ballerina/config;
 
 auth:InboundBasicAuthProvider basicAuthProvider = new;
 http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
@@ -261,7 +262,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -283,7 +284,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -315,7 +316,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -346,7 +347,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -460,7 +461,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     filters: [customFilter1, customFilter2],
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -491,6 +492,7 @@ The `jwt:JwtValidatorConfig` record should be provided into the `jwt:InboundJwtA
 ```ballerina
 import ballerina/http;
 import ballerina/jwt;
+import ballerina/config;
 
 jwt:InboundJwtAuthProvider jwtAuthProvider = new({
     issuer: "ballerina",
@@ -498,7 +500,7 @@ jwt:InboundJwtAuthProvider jwtAuthProvider = new({
     trustStoreConfig: {
         certificateAlias: "ballerina",
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -511,7 +513,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -524,7 +526,11 @@ service helloWorld on secureHelloWorldEp {
 
     @http:ResourceConfig {
         methods: ["GET"],
-        path: "/"
+        path: "/",
+        auth:{
+            scopes:["hello"],
+            enabled: true
+        }
     }
     resource function sayHello(http:Caller caller, http:Request req) {
         http:Response resp = new;
@@ -647,6 +653,7 @@ The `oauth2:IntrospectionServerConfig` record should be provided into the `oauth
 ```ballerina
 import ballerina/http;
 import ballerina/oauth2;
+import ballerina/config;
 
 oauth2:InboundOAuth2Provider oauth2Provider = new({
     url: "https://localhost:9196/oauth2/token/introspect",
@@ -656,11 +663,11 @@ http:BearerAuthHandler oauth2Handler = new(oauth2Provider);
 
 listener http:Listener secureHelloWorldEp = new(9091, {
     auth: {
-        authHandlers: [oAuth2Handler]
+        authHandlers: [oauth2Handler]
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -768,6 +775,7 @@ The `ldap:LdapConnectionConfig` record should be provided into the `ldap:Inbound
 ```ballerina
 import ballerina/http;
 import ballerina/ldap;
+import ballerina/config;
 
 ldap:LdapConnectionConfig ldapConfig = {
     domainName: "ballerina.io",
@@ -800,7 +808,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -885,6 +893,7 @@ Ballerina supports Basic Authentication and Authorizations for services. The `ht
 ```ballerina
 import ballerina/auth;
 import ballerina/http;
+import ballerina/config;
 
 auth:InboundBasicAuthProvider basicAuthProvider = new;
 http:BasicAuthHandler basicAuthHandler = new(basicAuthProvider);
@@ -895,7 +904,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1016,6 +1025,7 @@ The following example represents how a client is secured with Basic Auth with th
 ```ballerina
 import ballerina/auth;
 import ballerina/http;
+import ballerina/config;
 
 auth:OutboundBasicProvider basicAuthProvider = new({
     username: "user",
@@ -1029,7 +1039,7 @@ http:Client secureHelloWorldClient = new("https://localhost:9092", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1100,6 +1110,7 @@ The`jwt:JwtIssuerConfig` record should be provided into the `jwt:OutboundJwtAuth
 ```ballerina
 import ballerina/http;
 import ballerina/jwt;
+import ballerina/config;
 
 jwt:OutboundJwtAuthProvider jwtAuthProvider = new({
     username: "ballerinaUser",
@@ -1109,7 +1120,7 @@ jwt:OutboundJwtAuthProvider jwtAuthProvider = new({
         keyAlias: "ballerina",
         keyPassword: "ballerina",
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1122,7 +1133,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1157,6 +1168,7 @@ The `oauth2:ClientCredentialsGrantConfig` record should be provided into the `oa
 ```ballerina
 import ballerina/http;
 import ballerina/oauth2;
+import ballerina/config;
 
 oauth2:OutboundOAuth2Provider oauth2Provider = new({
     tokenUrl: "https://localhost:9196/oauth2/token/authorize",
@@ -1172,7 +1184,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1206,6 +1218,7 @@ The `oauth2:PasswordGrantConfig` record should be provided into the `oauth2:Outb
 ```ballerina
 import ballerina/http;
 import ballerina/oauth2;
+import ballerina/config;
 
 oauth2:OutboundOAuth2Provider oauth2Provider = new({
     tokenUrl: "https://localhost:9196/oauth2/token/authorize",
@@ -1227,7 +1240,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1276,7 +1289,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1297,6 +1310,7 @@ The `auth:Credential` record should be provided into the `auth:OutboundBasicAuth
 ```ballerina
 import ballerina/auth;
 import ballerina/http;
+import ballerina/config;
 
 auth:OutboundBasicProvider basicAuthProvider = new({
     username: "user",
@@ -1310,7 +1324,7 @@ http:Client downstreamServiceEP = new("https://localhost:9091", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1334,6 +1348,7 @@ If the downstream service is also secured with Basic authentication and as same 
 ```ballerina
 import ballerina/auth;
 import ballerina/http;
+import ballerina/config;
 
 auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
 http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
@@ -1344,7 +1359,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1359,7 +1374,7 @@ http:Client downstreamClientEP = new("https://localhost:9092", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1394,7 +1409,7 @@ listener http:Listener downstreamServiceEp = new(9092, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1462,6 +1477,7 @@ In this example, the downstream service is secured using JWT authentication and 
 import ballerina/auth;
 import ballerina/http;
 import ballerina/jwt;
+import ballerina/config;
 
 auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
 http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
@@ -1472,7 +1488,7 @@ listener http:Listener secureHelloWorldEp = new(9091, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1485,7 +1501,7 @@ jwt:OutboundJwtAuthProvider outboundJwtAuthProvider = new({
         keyAlias: "ballerina",
         keyPassword: "ballerina",
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }
@@ -1498,7 +1514,7 @@ http:Client downstreamClientEP = new("https://localhost:9092", {
     },
     secureSocket: {
         trustStore: {
-            path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
             password: "ballerina"
         }
     }
@@ -1532,7 +1548,7 @@ jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new({
     audience: ["ballerina.io"],
     certificateAlias: "ballerina",
     trustStore: {
-        path: "${ballerina.home}/bre/security/ballerinaTruststore.p12",
+        path: config:getAsString("b7a.home") + "/bre/security/ballerinaTruststore.p12",
         password: "ballerina"
     }
 });
@@ -1544,7 +1560,7 @@ listener http:Listener downstreamServiceEp = new(9092, {
     },
     secureSocket: {
         keyStore: {
-            path: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
+            path: config:getAsString("b7a.home") + "/bre/security/ballerinaKeystore.p12",
             password: "ballerina"
         }
     }

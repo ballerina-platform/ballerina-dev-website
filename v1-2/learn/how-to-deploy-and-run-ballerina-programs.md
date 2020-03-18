@@ -329,7 +329,8 @@ For more information, see the [Docker build extension GitHub repo](https://githu
 The Kubernetes builder extension offers native support for running Ballerina programs on Kubernetes with the use of annotations that you can include as part of your service code. Also, it will take care of the creation of the Docker images, so you don't need to explicitly create Docker images prior to deployment on Kubernetes.
 
 The following Kubernetes configurations are supported:
-- Kubernetes deployment support. 
+- Kubernetes deployment support
+
 - Kubernetes service support.
 - Kubernetes liveness probe support
 - Kubernetes readiness probe support

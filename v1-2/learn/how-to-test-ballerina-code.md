@@ -18,7 +18,6 @@ Testerina design and usage is aligned with project and module semantics of Balle
 * Ballerina tests are defined using a set of **annotations**
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
-* Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service
 * Function mocks can be used to mock a function in a module that you are testing or a function of an imported module
 
 ## Writing and Running Tests 
@@ -339,68 +338,6 @@ function foo() {
         test:assertEquals(e.reason(), "Invalid Operation", msg = "Invalid error reason"); // Some other assertions
     } else {
         test:assertFail(msg = "Expected an error");
-    }
-}
-```
-
-## Service Skeleton Start/Stop Utility
-
-Testerina provides the functionality to start/stop service skeletons generated from OpenAPI definitions.
-
-#### test:startServiceSkeleton(string moduleName, string openApiFilePath) (boolean isSuccessful)
-
-Start a service skeleton from a given OpenAPI definition in the given Ballerina module. If it is successful, it returns true. Alternatively, it returns false or throws an exception. For example: 
-
-```ballerina
-boolean isSuccessful = test:startServiceSkeleton("petstore.service.skeleton", "/tmp/petstore.yaml");
-```
-
-When the tests are executing service skeleton related to the Ballerina service definition will be generated and started. The host names and ports you have defined in the OpenAPI definition will be used when starting the services. You can then invoke this service skeleton using a HTTP client endpoint, just like a normal Ballerina service.
-
-#### test:stopServiceSkeleton (string moduleName) 
-
-Stop a service skeleton and cleanup created directories of a given Ballerina module. This function would first try to stop the service that was created using test:startServiceSkeleton function and then would try to clean up the directories created.
-
-```ballerina
-test:stopServiceSkeleton(“petstore.service.skeleton”);
-```
-
-The following sample explains how you can start and stop a skeleton service based on an OpenAPI definition.
-
-```ballerina
-import ballerina/http;
-import ballerina/test;
-
-string uri = "http://0.0.0.0:9095/v1";
-boolean isServiceSkeletonStarted = false;
-
-function init() {
-    // Starting the OpenAPI based service
-    isServiceSkeletonStarted = test:startServiceSkeleton("mymodule",
-        "<PATH_TO_OPENAPI_DEFINITION>/petstore.yaml");
-}
-
-function clean() {
-    // Stopping the swager based service
-    test:stopServiceSkeleton("mymodule");
-}
-
-@test:Config {
-    before: "init", 
-    after: "clean"
-}
-function testService() {
-    http:Client clientEndpoint = new(uri);
-    test:assertTrue(isServiceSkeletonStarted, msg = "Service skeleton failed to start");
-
-    // Send a GET request to the specified endpoint
-    var response = clientEndpoint->get("/pets");
-    if (response is http:Response) {
-         var strRes = response.getTextPayload();
-         string expected = "Sample listPets Response";
-         test:assertEquals(strRes, expected);
-    } else {
-        test:assertFail(msg = "Failed to call the endpoint: " + uri);
     }
 }
 ```

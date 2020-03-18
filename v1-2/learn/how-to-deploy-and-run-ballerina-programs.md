@@ -292,7 +292,8 @@ The following features are supported by the Docker builder extension.
 
 |username|Username for the Docker registry|None|
 
-|password|Password for Docker registry|None|
+|password|Password for the Docker registry|None|
+
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
 |buildImage|Enable building the Docker image|true|
 

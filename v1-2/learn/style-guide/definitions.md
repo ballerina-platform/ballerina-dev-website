@@ -75,7 +75,7 @@ function Person.getName() {}
 
 ```ballerina
 function getAddress(int value,
-    string name) returns (string | ()) {
+    string name) returns (string|()) {
     ...
 }
 ```
@@ -86,7 +86,7 @@ function getAddress(int value,
 
 ```ballerina
 function getAddress(int value, string name)
-    returns (string | ()) {
+    returns (string|()) {
     ...
 }    
 ```
@@ -98,7 +98,7 @@ function getAddress(int value, string name)
 
 ```ballerina
 function getAddress(int value, string name) returns
-    (string | ()) {
+    (string|()) {
     ...
 }          
 ```

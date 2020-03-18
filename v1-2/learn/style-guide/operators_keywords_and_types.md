@@ -6,21 +6,21 @@ title: Operators, keywords, and types
 # Operators, keywords, and types
 
 ## Keywords and types
-* Keep only a single space between the type and the pipe operator when it is in an union type (e.g., `string | int`).
+* Do not keep spaces between the type and the pipe operator when it is in an union type (e.g., `string|int`).
   
 **Example,**
 
 ```ballerina
-type method "POST" | "GET" | "PUT";
+type method "POST"|"GET"|"PUT";
     
-(int | string) variable = 0;
+(int|string) variable = 0;
   
-function getValue(string key) returns (string | error) {
+function getValue(string key) returns (string|error) {
     ...
 }
   
-function getName() returns string | error {
-    (string | error) valueOrError = getValue("name");
+function getName() returns string|error {
+    (string|error) valueOrError = getValue("name");
     ...
 }
 ```
@@ -38,7 +38,7 @@ string? name;
 **Do's**
 
 ```ballerina
-  map<int | string> // map reference type
+  map<int|string> // map reference type
 ```
   
 **Don'ts**
@@ -76,7 +76,7 @@ a = -a;
 ```ballerina
 var fullName = firstName + lastName;
   
-string | () name = isNameAvailable() ? getName() : "Unknown";
+string|() name = isNameAvailable() ? getName() : "Unknown";
   
 var elvisOperator = name ?: "Unknown";
 ```

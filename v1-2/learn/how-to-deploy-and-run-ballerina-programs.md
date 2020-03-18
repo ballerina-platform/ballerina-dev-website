@@ -469,7 +469,8 @@ $ tree
 
 ```
 
-Now you can create the Kubernetes deployment using:
+Now, you can create the Kubernetes deployment using:
+
 
 ```bash
 $ kubectl apply -f ./kubernetes 

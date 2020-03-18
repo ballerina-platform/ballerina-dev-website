@@ -318,7 +318,8 @@ The following features are supported by the Docker builder extension.
 |isBallerinaConf|Flag whether file is a ballerina config file|false|
 
 **@docker:Expose{}**
-- Supported with ballerina listeners.
+- Supported by Ballerina listeners.
+
 
 For more information, see the [Docker build extension GitHub repo](https://github.com/ballerinax/docker).
 

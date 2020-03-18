@@ -448,7 +448,8 @@ Generating artifacts...
         helm install --name ballerina-guides-user-retrieval-service ./kubernetes/ballerina-guides-user-retrieval-service
 
 ```
-You can use the `docker images` command to verify that the Docker image that we specified in `@kubernetes:Deployment` was created. The Kubernetes artifacts related to your service will be generated in addition to the `.jar` file.
+You can use the `docker images` command to verify that the Docker image specified in the `@kubernetes:Deployment` was created. The Kubernetes artifacts related to your service will be generated in addition to the `.jar` file.
+
 
 ```bash
 $ tree

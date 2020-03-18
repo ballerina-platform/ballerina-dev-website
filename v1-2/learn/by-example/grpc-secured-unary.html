@@ -1,10 +1,101 @@
----
-layout: ballerina-example-page
-title: Secured Unary
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/grpc-secured-unary
----
-<div class="row cBallerina-io-Gray-row">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Secured Unary" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Secured Unary</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="nx">syntax</span> <span class="p">=</span> <span class="s">&quot;proto3&quot;</span><span class="p">;</span>
@@ -13,13 +104,14 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
 	<span class="nx">rpc</span> <span class="nx">hello</span> <span class="p">(</span><span class="nx">google</span><span class="p">.</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">)</span>
 			<span class="nx">returns</span> <span class="p">(</span><span class="nx">google</span><span class="p">.</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">);</span>
 <span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">listener</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -29,7 +121,7 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
         <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                           <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                                           <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server send response : &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
@@ -42,12 +134,13 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
 <span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
 <span class="err">#</span> <span class="nx">Copy</span> <span class="nx">generated</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary_pb.bal`</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">module</span><span class="p">.</span>
 <span class="err">#</span> <span class="nx">For</span> <span class="nx">example</span><span class="p">,</span> <span class="k">if</span> <span class="nx">you</span> <span class="nx">create</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">named</span> <span class="s">`service`</span><span class="p">,</span> <span class="nx">copy</span> <span class="nx">the</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="nx">to</span> <span class="nx">the</span> <span class="s">`service`</span> <span class="nx">module</span><span class="p">.</span><span class="err">#</span> <span class="nx">Add</span> <span class="nx">new</span> <span class="nx">Ballerina</span> <span class="nx">file</span> <span class="s">`grpc_secured_unary.bal`</span> <span class="nx">inside</span> <span class="nx">the</span> <span class="s">`service`</span> <span class="nx">module</span> <span class="nx">and</span> <span class="nx">add</span> <span class="kd">service</span> <span class="nx">implementation</span><span class="p">.</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">HelloWorldBlockingClient</span> <span class="nx">helloWorldBlockingEp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">HelloWorldBlockingClient</span> <span class="nx">helloWorldBlockingEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -55,7 +148,7 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
     <span class="k">var</span> <span class="nx">unionResp</span> <span class="p">=</span> <span class="nx">helloWorldBlockingEp</span><span class="o">-&gt;</span><span class="nx">hello</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">unionResp</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">unionResp</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                         <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">unionResp</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                                         <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">unionResp</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">result</span><span class="p">;</span>
         <span class="p">[</span><span class="nx">result</span><span class="p">,</span> <span class="nx">_</span><span class="p">]</span> <span class="p">=</span> <span class="nx">unionResp</span><span class="p">;</span>
@@ -69,6 +162,8 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
+
+
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
@@ -105,6 +200,17 @@ permalink: /v1-1/learn/by-example/grpc-secured-unary
                     <table class="cTopControlsContainer">
                         <tr>
                             <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Secured Unary</li>
+                                    </ul>
+                                </div>
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -265,7 +371,8 @@ $ ballerina grpc --input grpc_secured_unary.proto  --output stubs
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+import ballerina/grpc;
 import ballerina/log;
 </code></pre></div>
 
@@ -285,11 +392,11 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener grpc:Listener ep = new(9090, {
+                                    <div class="highlight"><pre><code class=ballerina>listener grpc:Listener ep = new (9090, {
     host: &quot;localhost&quot;,
     secureSocket: {
         keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -348,7 +455,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (err is grpc:Error) {
             log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                           + &lt;string&gt; err.detail()[&quot;message&quot;]);
+                                           + &lt;string&gt;err.detail()[&quot;message&quot;]);
         } else {
             log:printInfo(&quot;Server send response : &quot; + message);
         }
@@ -452,8 +559,8 @@ $ ballerina build service
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the service using the following command.
-$ ballerina run target/bin/service.jar
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path as a system property.
+$ ballerina run target/bin/service.jar --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>
@@ -500,7 +607,8 @@ $ ballerina run target/bin/service.jar
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/grpc;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+import ballerina/grpc;
 import ballerina/io;
 </code></pre></div>
 
@@ -509,7 +617,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the client implementation for the secured connection (HTTPS) scenario.</p>
+                                            <p>This is the client implementation of the secured connection (HTTPS) scenario.</p>
 
                                         </div>
                                     </div>
@@ -532,10 +640,10 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new(&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>    HelloWorldBlockingClient helloWorldBlockingEp = new (&quot;https://localhost:9090&quot;, {
             secureSocket: {
                 trustStore: {
-                    path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                    path: config:getAsString(&quot;b7a.home&quot;) + &quot;/bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
@@ -561,7 +669,7 @@ import ballerina/io;
                                     <div class="highlight"><pre><code class=ballerina>    var unionResp = helloWorldBlockingEp-&gt;hello(&quot;WSO2&quot;);
     if (unionResp is grpc:Error) {
         io:println(&quot;Error from Connector: &quot; + unionResp.reason() + &quot; - &quot;
-                                         + &lt;string&gt; unionResp.detail()[&quot;message&quot;]);
+                                         + &lt;string&gt;unionResp.detail()[&quot;message&quot;]);
     } else {
         string result;
         [result, _] = unionResp;
@@ -650,8 +758,8 @@ $ ballerina build client
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the client using the following command.
-$ ballerina run target/bin/client.jar
+                                    <div class="highlight"><pre><code class=shell-session># To run the client, execute the below command by passing the path to the Ballerina home directory using the --`b7a.home` parameter.
+$ ballerina run target/bin/client.jar --b7a.home=&lt;ballerina_home_path&gt;
 </code></pre></div>
 
                                 </td>
@@ -676,49 +784,56 @@ $ ballerina run target/bin/client.jar
         </div>
     </div>
 
-     <script>
-            $(document).ready(function() {
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+            hljs.initHighlightingOnLoad();
 
-                $(".switch").click(function() {
-                    $(".cCodeRight").toggleClass('cShow');
-                    $(".cCodeLeft").toggleClass('cHide');
-                });
-
-                // register "copy to clipboard" event to elements with "copy" class
-                var clipboard = new ClipboardJS('.copy', {
-                    text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
-                    }
-                });
-
-                // Register events show hide tooltip on click event
-                clipboard.on('success', function(e) {
-                    setTooltip(e.trigger, 'Copied!');
-                    hideTooltip(e.trigger);
-                });
-
-                clipboard.on('error', function(e) {
-                    setTooltip(e.trigger, 'Failed!');
-                    hideTooltip(e.trigger);
-                });
-
-                $('.copy').tooltip({
-                    trigger: 'click',
-                    placement: 'bottom'
-                });
-                $("a.copy").unbind("click");
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
             });
 
-            function setTooltip(btn, message) {
-                $(btn).attr('data-original-title', message)
-                    .tooltip('show');
-            }
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
 
-            function hideTooltip(btn) {
-                setTimeout(function() {
-                    $(btn).tooltip('hide').removeAttr('data-original-title');
-                }, 1000);
-            }
-        </script>
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

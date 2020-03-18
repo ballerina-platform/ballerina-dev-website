@@ -1,35 +1,122 @@
----
-layout: ballerina-example-page
-title: XML Functions
-description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/xml-functions
----
-<div class="row cBallerina-io-Gray-row">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: XML Functions" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: XML Functions</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">xml</span> <span class="nx">bookName</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;Book1&lt;/name&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">bookComment</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--some comment--&gt;`</span><span class="p">;</span>
     <span class="kt">xml</span> <span class="nx">someText</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, World!`</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>    <span class="kt">xml</span> <span class="nx">book</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookComment</span><span class="p">.</span><span class="nx">getItemType</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookName</span><span class="p">.</span><span class="nx">getElementName</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookName</span><span class="p">.</span><span class="nx">getTextValue</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">content</span><span class="p">.</span><span class="nx">isSingleton</span><span class="p">());</span>
+    <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
+    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">bookNameElem</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="nx">bookName</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookNameElem</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+    <span class="kt">xml</span> <span class="nx">concat</span> <span class="p">=</span> <span class="nx">xmllib</span><span class="p">:</span><span class="nx">concat</span><span class="p">(</span><span class="nx">someText</span><span class="p">,</span> <span class="nx">bookName</span><span class="p">,</span> <span class="nx">bookComment</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">concat</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">content</span> <span class="o">==</span> <span class="nx">concat</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">concat</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
     <span class="kt">xml</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
     <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">elements</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
     <span class="nx">book</span><span class="p">.</span><span class="nx">setChildren</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">book</span><span class="p">);</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">book</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
     <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">strip</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">bookName</span><span class="p">.</span><span class="nx">copy</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -37,6 +124,8 @@ permalink: /v1-1/learn/by-example/xml-functions
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">
+
+
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
@@ -72,6 +161,17 @@ permalink: /v1-1/learn/by-example/xml-functions
                     <table class="cTopControlsContainer">
                         <tr>
                             <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>XML Functions</li>
+                                    </ul>
+                                </div>
                                 <div class="cBBE-links">
                                     <ul>
                                         <li>
@@ -116,16 +216,6 @@ permalink: /v1-1/learn/by-example/xml-functions
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -135,6 +225,7 @@ permalink: /v1-1/learn/by-example/xml-functions
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/lang.&#39;xml as xmllib;
 </code></pre></div>
 
                                 </td>
@@ -162,7 +253,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml book = xml `&lt;book/&gt;`;
+                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element book = &lt;xmllib:Element&gt; xml `&lt;book/&gt;`;
 </code></pre></div>
 
                                 </td>
@@ -174,7 +265,8 @@ permalink: /v1-1/learn/by-example/xml-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookComment.getItemType());
+                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element bookNameElem = &lt;xmllib:Element&gt; bookName;
+    io:println(bookNameElem.getName());
 </code></pre></div>
 
                                 </td>
@@ -182,7 +274,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets the type of the XML element.</p>
+                                            <p>Get the name of an XML element.</p>
 
                                         </div>
                                     </div>
@@ -193,7 +285,9 @@ permalink: /v1-1/learn/by-example/xml-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookName.getElementName());
+                                    <div class="highlight"><pre><code class=ballerina>    xml concat = xmllib:concat(someText, bookName, bookComment);
+    io:println(concat);
+    io:println(content == concat);
 </code></pre></div>
 
                                 </td>
@@ -201,7 +295,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets the name of an XML element.</p>
+                                            <p>Concatenate XML and string values.</p>
 
                                         </div>
                                     </div>
@@ -212,7 +306,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookName.getTextValue());
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(concat.length());
 </code></pre></div>
 
                                 </td>
@@ -220,45 +314,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets the text content of an XML element.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(content.isEmpty());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Checks if the XML element is empty.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(content.isSingleton());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Checks if the XML element has only one value.</p>
+                                            <p>Get the number of XML items in a sequence.</p>
 
                                         </div>
                                     </div>
@@ -278,7 +334,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets a subsequence of an XML sequence.</p>
+                                            <p>Get a subsequence of an XML sequence.</p>
 
                                         </div>
                                     </div>
@@ -298,27 +354,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Gets all the element-type items in an XML sequence.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.select(&quot;name&quot;);
-    io:println(x);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Retrieves an XML element by its name.</p>
+                                            <p>Get all the element-type items in an XML sequence.</p>
 
                                         </div>
                                     </div>
@@ -338,47 +374,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sets the children elements of an XML element.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = book.selectDescendants(&quot;name&quot;);
-    io:println(x);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Retrieves a particular child of an XML element by its name.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.strip();
-    io:println(x);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Removes any text items from an XML sequence that are all whitespaces.</p>
+                                            <p>Set the children elements of an XML element.</p>
 
                                         </div>
                                     </div>
@@ -389,7 +385,7 @@ permalink: /v1-1/learn/by-example/xml-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    x = bookName.copy();
+                                    <div class="highlight"><pre><code class=ballerina>    x = content.strip();
     io:println(x);
 }
 </code></pre></div>
@@ -399,7 +395,8 @@ permalink: /v1-1/learn/by-example/xml-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Makes a copy of an XML element.</p>
+                                            <p>Strip the insignificant parts of an XML value.
+ Comment items, processing instruction items are considered insignificant.</p>
 
                                         </div>
                                     </div>
@@ -427,18 +424,14 @@ permalink: /v1-1/learn/by-example/xml-functions
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run xml_functions.bal
 # Type of XML element.
-comment
 name
-Book1
-false
-false
+Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;
+true
+3
 &lt;!--some comment--&gt;
 &lt;name&gt;Book1&lt;/name&gt;
-&lt;name&gt;Book1&lt;/name&gt;
 &lt;book&gt;Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;&lt;/book&gt;
-&lt;name&gt;Book1&lt;/name&gt;
-Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;
-&lt;name&gt;Book1&lt;/name&gt;
+Hello, World!&lt;name&gt;Book1&lt;/name&gt;
 </code></pre></div>
 
                                 </td>
@@ -463,49 +456,56 @@ Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;
         </div>
     </div>
 
-     <script>
-            $(document).ready(function() {
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
 
-                hljs.initHighlightingOnLoad();
+            hljs.initHighlightingOnLoad();
 
-                $(".switch").click(function() {
-                    $(".cCodeRight").toggleClass('cShow');
-                    $(".cCodeLeft").toggleClass('cHide');
-                });
-
-                // register "copy to clipboard" event to elements with "copy" class
-                var clipboard = new ClipboardJS('.copy', {
-                    text: function(trigger) {
-                        return $('.FullCode').find('pre').text();
-                    }
-                });
-
-                // Register events show hide tooltip on click event
-                clipboard.on('success', function(e) {
-                    setTooltip(e.trigger, 'Copied!');
-                    hideTooltip(e.trigger);
-                });
-
-                clipboard.on('error', function(e) {
-                    setTooltip(e.trigger, 'Failed!');
-                    hideTooltip(e.trigger);
-                });
-
-                $('.copy').tooltip({
-                    trigger: 'click',
-                    placement: 'bottom'
-                });
-                $("a.copy").unbind("click");
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
             });
 
-            function setTooltip(btn, message) {
-                $(btn).attr('data-original-title', message)
-                    .tooltip('show');
-            }
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
 
-            function hideTooltip(btn) {
-                setTimeout(function() {
-                    $(btn).tooltip('hide').removeAttr('data-original-title');
-                }, 1000);
-            }
-        </script>
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

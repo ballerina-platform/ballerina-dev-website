@@ -279,7 +279,8 @@ The following features are supported by the Docker builder extension.
 ##### Supported Docker Annotations
 
 **@docker:Config{}**
-- Supported with Ballerina services, listeners or functions.
+- Supported by Ballerina services, listeners, or functions.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|

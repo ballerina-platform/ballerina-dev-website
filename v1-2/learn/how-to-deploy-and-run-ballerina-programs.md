@@ -299,7 +299,8 @@ The following features are supported by the Docker builder extension.
 
 |push|Enable pushing the Docker image to the registry|false|
 
-|enableDebug|Enable debug for ballerina|false|
+|enableDebug|Enable debugging for Ballerina|false|
+
 |debugPort|Remote debug port|5005|
 |dockerAPIVersion|Docker API Version|None|
 |dockerHost|Docker host IP and docker PORT. ( e.g minikube IP and docker PORT)|DOCKER_HOST environment variable. If DOCKER_HOST is unavailable, uses "unix:///var/run/docker.sock" for Unix or uses "tcp://localhost:2375" for Windows|

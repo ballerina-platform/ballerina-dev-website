@@ -679,7 +679,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
 
-|username|Username for the docker registry|null|
+|username|Username for the Docker registry|null|
+
 |password|Password for the Docker registry|null|
 
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|

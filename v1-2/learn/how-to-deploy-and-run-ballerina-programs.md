@@ -286,25 +286,17 @@ The following features are supported by the Docker builder extension.
 |--|--|--|
 |name|Name of the Docker image|File name of the generated .jar file|
 |registry|Docker registry URL|None|
-
 |tag|Docker image tag|latest|
 |env|Environment variables of the Docker image|None|
-
 |username|Username for the Docker registry|None|
-
 |password|Password for the Docker registry|None|
-
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
 |buildImage|Enable building the Docker image|true|
-
 |push|Enable pushing the Docker image to the registry|false|
-
 |enableDebug|Enable debugging for Ballerina|false|
-
 |debugPort|Remote debug port|5005|
 |dockerAPIVersion|Docker API Version|None|
 |dockerHost|Docker host IP and Docker PORT. ( e.g., Minikube IP and Docker PORT)|DOCKER_HOST environment variable. If `DOCKER_HOST` is unavailable, use "unix:///var/run/docker.sock" for Unix or use "tcp://localhost:2375" for Windows|
-
 |dockerCertPath|Docker certificate path|"DOCKER_CERT_PATH" environment variable|
 
 **@docker:CopyFiles{}**
@@ -330,33 +322,20 @@ The Kubernetes builder extension offers native support for running Ballerina pro
 
 The following Kubernetes configurations are supported:
 - Kubernetes deployment support
-
 - Kubernetes service support
-
 - Kubernetes liveness probe support
 - Kubernetes readiness probe support
 - Kubernetes ingress support
-
 - Kubernetes horizontal pod autoscaler support
-
 - Docker image generation
-
 - Docker push support with remote Docker registry
-
 - Kubernetes secret support
-
 - Kubernetes config map support
-
 - Kubernetes persistent volume claim support
-
 - Kubernetes resource quotas
-
 - Istio gateways support
-
 - Istio virtual services support
-
 - OpenShift build config and image stream support
-
 - OpenShift route support
 
 
@@ -589,26 +568,16 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |labels|Labels for deployment|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Annotations for deployment|{}|
 |dockerHost|Docker host IP and Docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If `DOCKER_HOST` is unavailable, use "unix:///var/run/docker.sock" for Unix or use "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
-
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
-
 |username|Username for the Docker registry|null|
-
 |password|Password for the Docker registry|null|
-
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
-
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set ,then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
-
 |buildImage|Building the Docker image|true|
-
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
-
 |copyFiles|Copy external files of the Docker image|null|
-
 |singleYAML|Generate a single YAML file for all K8s resources|true|
-
 |namespace|Namespace of the deployment|null|
 |replicas|Number of replicas|1|
 |livenessProbe|Enable or disable liveness probe|false|
@@ -618,11 +587,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |podAnnotations|Pod annotations|{}|
 |podTolerations|Pod tolerations|{}|
 |buildExtension|Extension for building Docker images and artifacts|null|
-
 |dependsOn|Listeners on which this deployment depends|null|
-
 |imagePullSecrets|Image pull secret's value|null|
-
 |strategy|Update strategy|null|
 
 **@kubernetes:Service{}**
@@ -635,11 +601,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |portName|Name for the port|The protocol of the listener|
 |port|Service port|Port of the Ballerina service|
-
 |targetPort|Target pod(s) port|Port of the Ballerina service|
-
 |nodePort|NodePort to expose the service|None|
-
 |sessionAffinity|Pod session affinity|None|
 |serviceType|Service type of the service|ClusterIP|
 
@@ -650,13 +613,11 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|
 |name|Name of the ingress|<BALLERINA_SERVICE_NAME>-ingress|
-
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Map of additional annotations|null|
 |hostname|Host name of the ingress|<BALLERINA_SERVICE_NAME>.com or <BALLERINA_SERVICE_LISTENER_NAME>.com|
 |path|Resource path.|/|
 |targetPath|This will use for rewriting the URL.|null|
-
 |ingressClass|Ingress class|nginx|
 |enableTLS|Enable ingress TLS|false|
 
@@ -670,7 +631,6 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Map of annotations|null|
 |minReplicas|Minimum number of replicas|Number of replicas in the deployment|
-
 |maxReplicas|Maximum number of replicas|minReplicas + 1|
 |cpuPrecentage|CPU percentage to start scaling|50|
 
@@ -723,32 +683,21 @@ $ curl -kv https://ballerina.guides.io/users/jane
 
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
-
 |username|Username for the Docker registry|null|
-
 |password|Password for the Docker registry|null|
-
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
-
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set, then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
-
 |buildImage|Building the Docker image|true|
-
 |push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
-
 |copyFiles|Copy external files for the Docker image|null|
-
 |singleYAML|Generate a single YAML file for all K8s resources|true|
-
 |namespace|Namespace for the Job|default|
 |imagePullPolicy|Docker image pull policy|IfNotPresent|
 |env|List of the environment variables|null|
-
 |restartPolicy|Restart policy|Never|
 |backoffLimit|Backoff limit|3|
 |activeDeadlineSeconds|Active deadline seconds|20|
 |schedule|Schedule for CRON jobs|none|
-
 |imagePullSecrets|Image pull secret's value|null|
 
   

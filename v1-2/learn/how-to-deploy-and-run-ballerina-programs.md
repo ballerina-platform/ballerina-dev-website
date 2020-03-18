@@ -339,16 +339,26 @@ The following Kubernetes configurations are supported:
 
 - Kubernetes horizontal pod autoscaler support
 
-- Docker image generation. 
-- Docker push support with remote docker registry.
-- Kubernetes secret support.
-- Kubernetes config map support.
-- Kubernetes persistent volume claim support.
-- Kubernetes resource quotas.
-- Istio gateways support.
-- Istio virtual services support.
-- OpenShift build config and image stream support.
-- OpenShift route support.
+- Docker image generation
+
+- Docker push support with remote Docker registry
+
+- Kubernetes secret support
+
+- Kubernetes config map support
+
+- Kubernetes persistent volume claim support
+
+- Kubernetes resource quotas
+
+- Istio gateways support
+
+- Istio virtual services support
+
+- OpenShift build config and image stream support
+
+- OpenShift route support
+
 
 The following Ballerina code section explains how you can use some of these Kubernetes capabilities by using Kubernetes annotation support in Ballerina.
 
@@ -578,7 +588,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |name|Name of the deployment|<BALLERINA_FILE_NAME>-deployment or <BALLERINA_MODULE_NAME>-deployment|
 |labels|Labels for deployment|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Annotations for deployment|{}|
-|dockerHost|Docker host IP and docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If DOCKER_HOST is unavailable, uses "unix:///var/run/docker.sock" for Unix or uses "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
+|dockerHost|Docker host IP and Docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If `DOCKER_HOST` is unavailable, use "unix:///var/run/docker.sock" for Unix or use "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
+
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
 
@@ -588,11 +599,16 @@ $ curl -kv https://ballerina.guides.io/users/jane
 
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
 
-|image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set then it will be prepended to the docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
-|buildImage|Building docker image|true|
-|push|Push docker image to registry. This will be effective if image buildImage field is true|false|
-|copyFiles|Copy external files for Docker image|null|
-|singleYAML|Generate a single yaml file for all k8s resources|true|
+|image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set ,then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
+
+|buildImage|Building the Docker image|true|
+
+|push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
+
+|copyFiles|Copy external files of the Docker image|null|
+
+|singleYAML|Generate a single YAML file for all K8s resources|true|
+
 |namespace|Namespace of the deployment|null|
 |replicas|Number of replicas|1|
 |livenessProbe|Enable or disable liveness probe|false|
@@ -601,48 +617,60 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |env|List of environment variables|null|
 |podAnnotations|Pod annotations|{}|
 |podTolerations|Pod tolerations|{}|
-|buildExtension|Extension for building docker images and artifacts|null|
-|dependsOn|Listeners this deployment Depends on|null|
-|imagePullSecrets|Image pull secrets value|null|
+|buildExtension|Extension for building Docker images and artifacts|null|
+
+|dependsOn|Listeners on which this deployment depends|null|
+
+|imagePullSecrets|Image pull secret's value|null|
+
 |strategy|Update strategy|null|
 
 **@kubernetes:Service{}**
-- Supported with Ballerina services and listeners.
+- Supported by Ballerina services and listeners.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|
 |name|Name of the Service|<BALLERINA_SERVICE_NAME>-service|
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |portName|Name for the port|The protocol of the listener|
-|port|Service port|Port of the ballerina service|
-|targetPort|Target pod(s) port|Port of the ballerina service|
-|nodePort|NodePort to expose service|None|
+|port|Service port|Port of the Ballerina service|
+
+|targetPort|Target pod(s) port|Port of the Ballerina service|
+
+|nodePort|NodePort to expose the service|None|
+
 |sessionAffinity|Pod session affinity|None|
 |serviceType|Service type of the service|ClusterIP|
 
 **@kubernetes:Ingress{}**
-- Supported with Ballerina services and listeners.
+- Supported by Ballerina services and listeners.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|
-|name|Name of the Ingress|<BALLERINA_SERVICE_NAME>-ingress|
+|name|Name of the ingress|<BALLERINA_SERVICE_NAME>-ingress|
+
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Map of additional annotations|null|
 |hostname|Host name of the ingress|<BALLERINA_SERVICE_NAME>.com or <BALLERINA_SERVICE_LISTENER_NAME>.com|
 |path|Resource path.|/|
-|targetPath|This will use for URL rewrite.|null|
+|targetPath|This will use for rewriting the URL.|null|
+
 |ingressClass|Ingress class|nginx|
 |enableTLS|Enable ingress TLS|false|
 
 **@kubernetes:HPA{}**
-- Supported with Ballerina services and functions.
+- Supported by Ballerina services and functions.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|
 |name|Name of the Horizontal Pod Autoscaler|<BALLERINA_SERVICE_NAME>-hpa|
 |labels|Labels for the service|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Map of annotations|null|
-|minReplicas|Minimum number of replicas|Number of replicas in deployment|
+|minReplicas|Minimum number of replicas|Number of replicas in the deployment|
+
 |maxReplicas|Maximum number of replicas|minReplicas + 1|
 |cpuPrecentage|CPU percentage to start scaling|50|
 
@@ -691,7 +719,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |name|Name of the job|<BALLERINA_FILE_NAME>-job or <BALLERINA_MODULE_NAME>-job|
 |labels|Labels for the job|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Metadata Annotations map|{}|
-|dockerHost|Docker host IP and docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If DOCKER_HOST is unavailable, uses "unix:///var/run/docker.sock" for Unix or uses "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
+|dockerHost|Docker host IP and Docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If `DOCKER_HOST` is unavailable, use "unix:///var/run/docker.sock" for Unix or use "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
+
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
 
@@ -705,19 +734,23 @@ $ curl -kv https://ballerina.guides.io/users/jane
 
 |buildImage|Building the Docker image|true|
 
-|push|Push docker image to registry. This will be effective if image buildImage field is true|false|
+|push|Push the Docker image to registry. This will be effective if the `buildImage` field of the image is true|false|
+
 |copyFiles|Copy external files for the Docker image|null|
 
-|singleYAML|Generate a single yaml file for all k8s resources|true|
+|singleYAML|Generate a single YAML file for all K8s resources|true|
+
 |namespace|Namespace for the Job|default|
 |imagePullPolicy|Docker image pull policy|IfNotPresent|
-|env|List of environment variables|null|
+|env|List of the environment variables|null|
+
 |restartPolicy|Restart policy|Never|
 |backoffLimit|Backoff limit|3|
 |activeDeadlineSeconds|Active deadline seconds|20|
 |schedule|Schedule for CRON jobs|none|
 
-|imagePullSecrets|Image pull secrets value|null|
+|imagePullSecrets|Image pull secret's value|null|
+
   
 ### Extend Ballerina Deployment and Annotations
 Ballerina can be augmented with your own annotations that represent your own unique deployment artifacts. You can also write builder extensions that generate these files during compilation. Refer to the example at https://github.com/ballerinax/hello.

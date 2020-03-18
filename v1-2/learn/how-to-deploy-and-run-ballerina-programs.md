@@ -414,7 +414,8 @@ name="Jane Doe"
 email="jane@ballerina.com"
 ```
 
-Here we have used `@kubernetes:Deployment` to specify the Docker image name that will be created as part of building this service.
+Here, `@kubernetes:Deployment` is used to specify the Docker image name, which will be created as part of building this service.
+
 
 The `@kubernetes:Service {}` annotation will create a Kubernetes service that will expose the Ballerina service running on a Pod.
 

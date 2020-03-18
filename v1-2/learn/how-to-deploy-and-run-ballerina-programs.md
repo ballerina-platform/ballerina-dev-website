@@ -564,7 +564,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |annotations|Annotations for deployment|{}|
 |dockerHost|Docker host IP and docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If DOCKER_HOST is unavailable, uses "unix:///var/run/docker.sock" for Unix or uses "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
-|registry|Docker registry url|null|
+|registry|Docker registry URL|null|
+
 |username|Username for the docker registry|null|
 |password|Password for the docker registry|null|
 |baseImage|Base image to create the docker image|ballerina/jre8:v1|

@@ -331,7 +331,8 @@ The Kubernetes builder extension offers native support for running Ballerina pro
 The following Kubernetes configurations are supported:
 - Kubernetes deployment support
 
-- Kubernetes service support.
+- Kubernetes service support
+
 - Kubernetes liveness probe support
 - Kubernetes readiness probe support
 - Kubernetes ingress support.

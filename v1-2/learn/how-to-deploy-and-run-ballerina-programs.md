@@ -315,7 +315,8 @@ The following features are supported by the Docker builder extension.
 |--|--|--|
 |sourceFile|Source path of the file (in your machine)|None|
 |target|Target path (inside container)|None|
-|isBallerinaConf|Flag whether file is a ballerina config file|false|
+|isBallerinaConf|Flag whether the file is a Ballerina config file or not|false|
+
 
 **@docker:Expose{}**
 - Supported by Ballerina listeners.

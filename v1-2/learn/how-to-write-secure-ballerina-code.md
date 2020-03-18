@@ -659,7 +659,7 @@ oauth2:InboundOAuth2Provider oauth2Provider = new({
     url: "https://localhost:9196/oauth2/token/introspect",
     tokenTypeHint: "access_token"
 });
-http:BearerAuthHandler oAuth2Handler = new(oauth2Provider);
+http:BearerAuthHandler oauth2Handler = new(oauth2Provider);
 
 listener http:Listener secureHelloWorldEp = new(9091, {
     auth: {

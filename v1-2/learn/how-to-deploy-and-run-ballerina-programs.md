@@ -451,6 +451,7 @@ Generating artifacts...
         Run the following command to install the application using Helm: 
         helm install --name ballerina-guides-user-retrieval-service ./kubernetes/ballerina-guides-user-retrieval-service
 
+
 ```
 You can use the `docker images` command to verify that the Docker image specified in the `@kubernetes:Deployment` was created. The Kubernetes artifacts related to your service will be generated in addition to the `.jar` file.
 

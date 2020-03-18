@@ -308,7 +308,8 @@ The following features are supported by the Docker builder extension.
 |dockerCertPath|Docker certificate path|"DOCKER_CERT_PATH" environment variable|
 
 **@docker:CopyFiles{}**
-- Supported with Ballerina services, listeners or functions.
+- Supported by Ballerina services, listeners, or functions.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|

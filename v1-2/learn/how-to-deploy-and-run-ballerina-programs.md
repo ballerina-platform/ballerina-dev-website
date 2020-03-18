@@ -287,7 +287,8 @@ The following features are supported by the Docker builder extension.
 |registry|Docker registry URL|None|
 
 |tag|Docker image tag|latest|
-|env|Environment variables for Docker image|None|
+|env|Environment variables of the Docker image|None|
+
 |username|Username for Docker registry|None|
 |password|Password for Docker registry|None|
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|

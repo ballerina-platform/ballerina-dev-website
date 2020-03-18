@@ -297,7 +297,8 @@ The following features are supported by the Docker builder extension.
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
 |buildImage|Enable building the Docker image|true|
 
-|push|Enable pushing Docker image to registry|false|
+|push|Enable pushing the Docker image to the registry|false|
+
 |enableDebug|Enable debug for ballerina|false|
 |debugPort|Remote debug port|5005|
 |dockerAPIVersion|Docker API Version|None|

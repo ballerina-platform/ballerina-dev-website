@@ -566,7 +566,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
 
-|username|Username for the docker registry|null|
+|username|Username for the Docker registry|null|
+
 |password|Password for the docker registry|null|
 |baseImage|Base image to create the docker image|ballerina/jre8:v1|
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set then it will be prepended to the docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|

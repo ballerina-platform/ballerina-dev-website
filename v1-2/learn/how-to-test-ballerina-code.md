@@ -19,6 +19,7 @@ Testerina design and usage is aligned with project and module semantics of Balle
 * Test **assertions** can be used to verify the set of program behaviour expectations 
 * Data providers can be used to feed in the test data sets 
 * Service calls can be tested using service skeletons in the test phase of the project until the system is connected to the real service
+* Function mocks can be used to mock a function in a module that you are testing or a function of an imported module
 
 ## Writing and Running Tests 
 
@@ -402,4 +403,83 @@ function testService() {
         test:assertFail(msg = "Failed to call the endpoint: " + uri);
     }
 }
+```
+
+## Function Mocks
+
+Ballerina test framework provides the capability to mock a function. Using the mocking feature you can easily mock a function in a module that you are testing or a function of an imported module. This feature will help you to test your Ballerina code independently from other modules and functions
+
+#### @test:Mock {}
+
+The function specified with the `@test:Mock {}` annotation will be considered as a mock function that gets triggered every time the original function is called. The original function that will be mocked should be defined using the annotation parameters.
+
+##### Annotation Value Fields
+
+`moduleName : "<moduleName>"` : Name of the module where the function to be mocked resides in. If the function is within the same module, this can be left blank or "." (No module) can be passed. If the function is in a different module, but within the same project, just passing the module name will suffice. For functions in completely seperate modules, the fully qualified module name must be passed, which includes the `orgName` and the `version`. ie. `orgName/module:version`. For native function, the ballerina module needs to be specified. 
+
+`functionName : "<functionName>"` : Name of the function to be mocked.
+
+Sample :
+
+The following is an example for function mocking.
+
+The following is the function definition in the module that we are trying to mock in the test case
+
+```ballerina
+
+public function intAdd(int a, int b) returns (int) {
+    return (a + b);
+}
+
+```
+
+The following is the Ballerina test file where the function mocking takes place
+
+```ballerina
+import ballerina/io;
+import ballerina/test;
+import ballerina/math;
+
+
+// This is the mock function which will replace the real `intAdd` function
+@test:Mock {
+    // Since the function is defined in the same module, "." can be passed as the current module.
+    // This can also be left blank.
+    moduleName : ".",
+    functionName : "intAdd"
+}
+// The mock function signature should match the actual function signature.
+public function mockIntAdd(int a, int b) returns (int) {
+    io:println("I am the mockIntAdd function");
+    return (a - b);
+}
+
+
+// This test function calls the local `intAdd()` function but it expects the mocked result
+@test:Config {}  
+function test_intAdd() {
+    int answer = 0;
+    answer = intAdd(5, 3);
+    test:assertEquals(answer, 2, msg = "function mocking failed");
+}
+
+// This test function calls the native `sqrt()` function but it expects the mocked result
+@test:Config {}  
+function test_sqrt() {
+    float answer = 0;
+    answer = math:sqrt(5);
+
+    test:assertEquals(answer, 125.0, "mocking did not take place");
+}
+
+// This is a mock function which will replace `sqrt()` by `ballerina/math`.
+@test:Mock {
+    moduleName : "ballerina/math",
+    functionName : "sqrt"
+}
+function mocksqrt(float a) returns (float) {
+    io:println("I am the mocksqrt function");
+    return a*a*a;
+}
+
 ```

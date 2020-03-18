@@ -631,7 +631,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |cpuPrecentage|CPU percentage to start scaling|50|
 
 **@kubernetes:Secret{}**
-- Supported with Ballerina service and functions.
+- Supported by Ballerina services and functions.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|

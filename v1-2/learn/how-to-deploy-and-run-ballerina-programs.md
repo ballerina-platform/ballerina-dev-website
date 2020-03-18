@@ -335,7 +335,8 @@ The following Kubernetes configurations are supported:
 
 - Kubernetes liveness probe support
 - Kubernetes readiness probe support
-- Kubernetes ingress support.
+- Kubernetes ingress support
+
 - Kubernetes horizontal pod autoscaler support.
 - Docker image generation. 
 - Docker push support with remote docker registry.

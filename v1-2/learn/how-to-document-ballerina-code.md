@@ -116,10 +116,12 @@ Ballerina provides a `doc` command which can be executed against a given Balleri
 First, let's create a new Ballerina project:
 ```
 $ ballerina new myproject
-$ cd myproject/
+Created new Ballerina project at myproject
 
 Next:
-    Use `ballerina add` to add a Ballerina module.
+    Move into the project directory and use `ballerina add <module-name>` to
+    add a new Ballerina module.
+$ cd myproject/
 $ ballerina add math -t service
 Added new ballerina module at 'src/math'
 $ ballerina add time -t service

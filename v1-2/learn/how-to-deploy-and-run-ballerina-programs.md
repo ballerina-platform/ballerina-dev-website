@@ -680,7 +680,6 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |labels|Labels for the job|{ app: <OUTPUT_FILE_NAME> }|
 |annotations|Metadata Annotations map|{}|
 |dockerHost|Docker host IP and Docker PORT.(e.g "tcp://192.168.99.100:2376")|DOCKER_HOST environment variable. If `DOCKER_HOST` is unavailable, use "unix:///var/run/docker.sock" for Unix or use "npipe:////./pipe/docker_engine" for Windows 10 or uses "localhost:2375"|
-
 |dockerCertPath|Docker cert path|DOCKER_CERT_PATH environment variable|
 |registry|Docker registry URL|null|
 |username|Username for the Docker registry|null|

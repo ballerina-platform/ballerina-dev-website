@@ -68,7 +68,7 @@ This command should be executed inside a Ballerina project.
 This will generate a Client named `hello_client` in a module named `client` for the service documented in `hello_service.yaml`.
 This command should be executed inside a Ballerina project. 
 ### OpenAPI from service
-`ballerina openapi gen-contract hello -i src/helloS/hello.bal`
+`ballerina openapi gen-contract helloworld:helloService -i src/helloworld/helloService.bal`
 
 This will generate the OpenAPI contract for the Ballerina service `hello` which is in `hello.bal` Ballerina file.
 ### Client stub from service

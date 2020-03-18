@@ -687,7 +687,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 
 |image|Docker image with tag|<OUTPUT_FILE_NAME>:latest. If field `registry` is set, then it will be prepended to the Docker image name as <registry>/<OUTPUT_FILE_NAME>:latest|
 
-|buildImage|Building docker image|true|
+|buildImage|Building the Docker image|true|
+
 |push|Push docker image to registry. This will be effective if image buildImage field is true|false|
 |copyFiles|Copy external files for the Docker image|null|
 

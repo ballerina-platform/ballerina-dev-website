@@ -24,6 +24,7 @@ The below sections include information on the various capabilities that are faci
 - [Checking spellings](#checking-spellings)
 - [Analyzing semantics](#analyzing-semantics)
 - [Code folding](#code-folding)
+- [Go to definition](#go-to-definition)
 
 ## Running Ballerina programs
 
@@ -165,6 +166,12 @@ You expand/collapse the following Ballerina code segments using the icons in the
 - multiline comments
  
 ![Code folding](/v1-2/learn/images/code-folding.gif)
+
+## Go to definition
+
+This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](v1-2/learn/api-docs/ballerina/).
+
+![Go to definition](/v1-2/learn/images/go-to-definition-intellij.gif)
 
 ## What's next?
 

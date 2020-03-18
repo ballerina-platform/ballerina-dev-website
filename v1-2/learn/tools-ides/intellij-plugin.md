@@ -124,3 +124,4 @@ The below sections include information on the various capabilities that are faci
 - [Checking spellings](/v1-2/learn/intellij-plugin/using-intellij-plugin-features#checking-spellings)
 - [Analyzing semantics](/v1-2/learn/intellij-plugin/using-intellij-plugin-features#analyzing-semantics)
 - [Code folding](/v1-2/learn/intellij-plugin/using-intellij-plugin-features#code-folding)
+- [Go to definition](/v1-2/learn/intellij-plugin/using-intellij-plugin-features#go-to-definition)

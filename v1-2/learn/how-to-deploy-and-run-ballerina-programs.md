@@ -293,7 +293,8 @@ The following features are supported by the Docker builder extension.
 |username|Username for Docker registry|None|
 |password|Password for Docker registry|None|
 |baseImage|Base image to create the Docker image|ballerina/jre8:v1|
-|buildImage|Enable building Docker image|true|
+|buildImage|Enable building the Docker image|true|
+
 |push|Enable pushing Docker image to registry|false|
 |enableDebug|Enable debug for ballerina|false|
 |debugPort|Remote debug port|5005|

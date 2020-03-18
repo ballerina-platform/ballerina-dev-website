@@ -681,7 +681,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |restartPolicy|Restart policy|Never|
 |backoffLimit|Backoff limit|3|
 |activeDeadlineSeconds|Active deadline seconds|20|
-|schedule|Schedule for cron jobs|none|
+|schedule|Schedule for CRON jobs|none|
+
 |imagePullSecrets|Image pull secrets value|null|
   
 ### Extend Ballerina Deployment and Annotations

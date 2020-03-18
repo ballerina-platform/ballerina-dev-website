@@ -284,7 +284,8 @@ The following features are supported by the Docker builder extension.
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|
 |name|Name of the Docker image|File name of the generated .jar file|
-|registry|Docker registry url|None|
+|registry|Docker registry URL|None|
+
 |tag|Docker image tag|latest|
 |env|Environment variables for Docker image|None|
 |username|Username for Docker registry|None|

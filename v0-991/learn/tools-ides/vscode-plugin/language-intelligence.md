@@ -44,7 +44,7 @@ The extension provides you with suggestions on keywords, variables, and code sni
 
 This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project.
 
-![Go to definition](/v0-991/learn/images/go-to-definition.gif)
+![Go to definition](/v0-991/learn/images/go-to-definition-vscode.gif)
 
 ## Find all references
 

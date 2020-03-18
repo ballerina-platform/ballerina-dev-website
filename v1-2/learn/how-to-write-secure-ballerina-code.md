@@ -663,7 +663,7 @@ http:BearerAuthHandler oAuth2Handler = new(oauth2Provider);
 
 listener http:Listener secureHelloWorldEp = new(9091, {
     auth: {
-        authHandlers: [oAuth2Handler]
+        authHandlers: [oauth2Handler]
     },
     secureSocket: {
         keyStore: {

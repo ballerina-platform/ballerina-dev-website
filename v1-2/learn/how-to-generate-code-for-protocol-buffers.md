@@ -57,7 +57,7 @@ message HelloResponse {
 ```
 $ ballerina grpc --input helloworld_service.proto --mode service --output service
 ```
-Once you execute the command, the service template file (`helloWorld_sample_service.bal`) are generated inside the service directory.
+Once you execute the command, the service template file (`helloWorld_sample_service.bal`) is generated inside the service directory.
 > **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
 
 

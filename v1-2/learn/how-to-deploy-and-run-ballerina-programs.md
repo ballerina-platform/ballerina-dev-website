@@ -644,7 +644,8 @@ $ curl -kv https://ballerina.guides.io/users/jane
 |data|Paths to data files|null|
 
 **@kubernetes:ConfigMap{}**
-- Supported with Ballerina services and functions.
+- Supported by Ballerina services and functions.
+
 
 |**Annotation Name**|**Description**|**Default value**|
 |--|--|--|

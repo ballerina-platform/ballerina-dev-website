@@ -183,7 +183,7 @@ setValue("value");
 **Example,**
 
 ```ballerina
-int | () result = getResult();
+int|() result = getResult();
 ```
   
 ## Line breaks
@@ -269,7 +269,7 @@ function getName(int id, int age,
 **Example,**
 
 ```ballerina
-map<int | string> registry = {
+map<int|string> registry = {
     name: "marcus"
 };
       

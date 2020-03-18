@@ -61,7 +61,7 @@ if (inProperSallaryRange) {
 **Example,**
 
 ```ballerina
-function foo(string | int | boolean a) returns string {
+function foo(string|int|boolean a) returns string {
     match a {
         12 => {
             return "Value is '12'";

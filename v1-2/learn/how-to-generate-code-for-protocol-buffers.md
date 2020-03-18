@@ -53,22 +53,22 @@ message HelloResponse {
 }
 ```
 
-* You can run the following command to generate the service template file.
+* Execute the below command to generate the service template file.
 ```
 $ ballerina grpc --input helloworld_service.proto --mode service --output service
 ```
 Once you execute the command, the service template file (`helloWorld_sample_service.bal`) are generated inside the service directory.
-Note: If you have multiple services in Protocol Buffers definition, this command will generate a stub file with common message types and service template file for each service definition. This is to avoid duplicating message types in all service files.
+> **Note:** If you have multiple services in a Protocol Buffers definition, this command will generate a stub file with common message types and a service template file for each service definition. This is to avoid duplicating message types in all the service files.
 
 
-* You can run the following command to generate the client/service stub and client template.
+* Execute the below command to generate the client/service stub and client template.
 ```
 $ ballerina grpc --input helloworld_service.proto --mode client --output client
 ```
 Once you execute the command, the stub file(`helloworld_service_pb.bal`) and the service template file (`helloWorld_sample_client.bal`) are generated inside the client directory.
 
 
-* You can run the following command to generate only the client/service stub.
+* Execute the below command to generate only the client/service stub.
 ```
 $ ballerina grpc --input helloworld_service.proto --output stubs
 ```

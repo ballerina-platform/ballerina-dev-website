@@ -327,6 +327,123 @@ The next sections provide more details on various aspects related to Java intero
 
 
 ## The `bindgen` tool
+
 ## Packaging Java libraries with Ballerina programs
+This section assumes that you have already read the guide [How to Structure Ballerina Code](https://ballerina.io/v1-1/learn/how-to-structure-ballerina-code/). When you compile a Ballerina program with `ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with `ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
+
+There are two kinds of Ballerina projects: 
+1. Produces executable programs 
+	* Contain one or more Ballerina modules and at least one of them has to be a root module.
+	* A root module has a `main` method and/or one or more services.
+	* Build the project with `ballerina build <root-module>` or use `ballerina build -a` if there is more than one root module.
+	* The best practice is to maintain a single root module in a Ballerina project.
+2. Produces Ballerina library modules
+	* Contains one or more Ballerina library modules. 
+	* Build the modules with `ballerina build -c <module>` or `ballerina build -c -a` to build all modules.
+	* Usually, the compiled library modules are pushed to Ballerina central.
+
+How you package JAR files with compiled archives is the same in both kinds of projects. Therefore, a sample Ballerina project, which produces an executable is used here.
+
+Here is a Ballerina project layout of a microservice called "order management". The module `ordermgt` - the root module - contains a RESTFul service, which exposes resource functions to create, retrieve, update, and cancel orders. The module `dbutils` offers utility functions that use a MySQL database to store orders. 
+
+```
+ordermgt_service/
+├── Ballerina.toml
+└── javalibs/
+    └── mysql-connector-java-<version>.jar
+└── src/
+    └── ordermgt/
+    └── dbutils/
+```    
+    
+The Java MySQL connector is placed inside the `javalibs` directory. You are free to store the JAR files anywhere in your file system. This example places those JAR files inside the project directory. As a best practice, maintain Java libraries inside the project.
+The `Ballerina.toml` file, which marks a directory as a Ballerina project lives at the root of the project. It is also a manifest file that contains project information, dependent Ballerina module information, and platform-specific library information. Java libraries are considered as platform-specific libraries. 
+Here is how you can specify a JAR file dependency in `Ballerina.toml`.
+
+```toml
+[platform] 
+target = "java8" 
+
+[[platform.libraries]] 
+# Absolute or relative path to the jar file
+path = "<path-to-jar-file-1>" 
+# A comma-separated list of Ballerina module names that depends on this jar
+modules = ["<ballerina-module-1>"]
+
+[[platform.libraries]] 
+path = "<path-to-jar-file-2>" 
+modules = ["<ballerina-module-1>","<ballerina-module-2>"]
+```
+
+Now, let’s look at the contents of the `Ballerina.toml` file in this project.
+```toml
+[platform] 
+target = "java8" 
+
+	[[platform.libraries]] 
+	path = "./javalibs/mysql-connector-java-<version>.jar" 
+	modules = ["ordermgt"]
+```
+
+If your project has only one root module, then you can attach all the JAR file dependencies to your root module as the best practise. 
+
+If your project is a Ballerina library module project, then you should specify the JAR file dependencies in each Ballerina module if that module depends on the JAR file. 
+
+Now, use `ballerina build ordermgt` to build an executable JAR. This command packages all JARs specified in your `Ballerina.toml` with the executable JAR file. 
+
 ## Ballerina FFI
+Let's look at the list of language features that enable Ballerina developers to call foreign code written in other programming languages. E.g., while the jBallerina compiler allows you to call any `Java` code, the nBallerina compiler will allow you to call any `C` Code. 
+
+### The external function body
+Usually, the body or the implementation of a function is specified in the same source file. The part which is enclosed by curly braces is called the function body.
+
+```ballerina
+function doSomething(int i) returns string {
+	...
+}
+```
+
+Ballerina also allows you to define a function without a function body and marks it with the `external` keyword to express that the implementation is not provided by the Ballerina source file. 
+
+```ballerina
+function doSomething(int i) returns string = external;
+```
+
+Now, let’s see how you can link this function with a foriegn function. 
+
+```ballerina
+import ballerinax/java;
+
+function doSomething(int i) returns string = @java:Method {
+	name: "doSomethingInJava"
+	class: "a.b.c.Foo"
+} external;
+```
+
+The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There exists a set of annotations and other utilities available in the `ballerinax/java` module to make Java interoperability work.  This guide covers most of them.
+
+### The handle type
+The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
+
+Consider the `randomUUID` method in Java UUID class, which gives you a UUID object. This is the Java method signature.
+
+```java
+static UUID randomUUID()
+```
+
+Here is the corresponding Ballerina function that returns a value of the handle type.
+
+```ballerina
+import ballerinax/java;
+
+function randomUUID() returns handle = @java:Method {
+    name: "randomUUID",
+    class: "java.util.UUID"
+} external;
+```
+
+In Java, you can assign the `null` value to any variable of a reference type. Therefore, a `handle` type variable may also refer to the Java `null`.
+
+The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste following examples into a .bal file and run it using the `ballerina run <file_name.bal>` command.
+
 ## Calling Java code from Ballerina

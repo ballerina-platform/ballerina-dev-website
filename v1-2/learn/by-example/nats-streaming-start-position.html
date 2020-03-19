@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Historical Message Replay
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/nats-streaming-start-position
+permalink: /v1-2/learn/by-example/nats-streaming-start-position
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,14 +13,13 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">ESCAPE</span> <span class="p">=</span> <span class="s">&quot;!q&quot;</span><span class="p">;</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Subject : &quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost:4222&quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Subject : &quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message : &quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="kt">message</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span>
-                                                                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span>
                                         <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
@@ -30,13 +29,13 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
-<span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost:4222&quot;</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+<span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span>
 <span class="p">}</span>
@@ -51,12 +50,12 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
-    <span class="nx">startPosition</span> <span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">FIRST</span>
+    <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">FIRST</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromBegining</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
@@ -69,12 +68,12 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
-    <span class="nx">startPosition</span> <span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">LAST_RECEIVED</span>
+    <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">LAST_RECEIVED</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromLastReceived</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
@@ -87,12 +86,12 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">sequenceNo</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">SEQUENCE_NUMBER</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
-    <span class="nx">startPosition</span> <span class="p">:</span> <span class="nx">sequenceNo</span>
+    <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">sequenceNo</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveFromGivenIndex</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
@@ -105,12 +104,12 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="kt">int</span><span class="p">]</span> <span class="nx">timeDelta</span> <span class="p">=</span> <span class="p">[</span><span class="nx">nats</span><span class="p">:</span><span class="nx">TIME_DELTA_START</span><span class="p">,</span> <span class="mi">5</span><span class="p">];</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span><span class="p">,</span>
-    <span class="nx">startPosition</span> <span class="p">:</span> <span class="nx">timeDelta</span>
+    <span class="nx">startPosition</span><span class="p">:</span> <span class="nx">timeDelta</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">receiveSinceTimeDelta</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
@@ -123,7 +122,7 @@ permalink: /v1-1/learn/by-example/nats-streaming-start-position
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">To</span> <span class="nx">run</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">directory</span> <span class="nx">that</span> <span class="nx">contains</span> <span class="nx">the</span>
 <span class="err">#</span> <span class="s">`.bal`</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">execute</span> <span class="nx">the</span> <span class="s">`ballerina run`</span> <span class="nx">command</span><span class="p">.</span>
@@ -292,7 +291,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -304,7 +303,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new(conn);
+                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -330,11 +329,10 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt; message);
+                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
-                log:printError(&quot;Error occurred while closing the connection&quot;,
-                                                                        err = e);
+                log:printError(&quot;Error occurred while closing the connection&quot;, e);
             } else {
                 log:printInfo(&quot;GUID &quot; + result
                                         + &quot; received for the produced message.&quot;);
@@ -362,7 +360,7 @@ import ballerina/nats;
                                     <div class="highlight"><pre><code class=ballerina>    var result = conn.close();
     if (result is error) {
         error e = result;
-        log:printError(&quot;Error occurred while closing the connection&quot;, err = e);
+        log:printError(&quot;Error occurred while closing the connection&quot;, e);
     }
 }
 </code></pre></div>
@@ -533,7 +531,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -552,7 +550,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new(conn);
+                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -623,7 +621,7 @@ service receiveNewOnly on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>
@@ -639,7 +637,7 @@ service receiveNewOnly on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
-    startPosition : nats:FIRST
+    startPosition: nats:FIRST
 }
 service receiveFromBegining on lis {
     resource function onMessage(nats:StreamingMessage message) {
@@ -690,7 +688,7 @@ service receiveFromBegining on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>
@@ -706,7 +704,7 @@ service receiveFromBegining on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
-    startPosition : nats:LAST_RECEIVED
+    startPosition: nats:LAST_RECEIVED
 }
 service receiveFromLastReceived on lis {
     resource function onMessage(nats:StreamingMessage message) {
@@ -757,7 +755,7 @@ service receiveFromLastReceived on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>
@@ -785,7 +783,7 @@ service receiveFromLastReceived on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
-    startPosition : sequenceNo
+    startPosition: sequenceNo
 }
 service receiveFromGivenIndex on lis {
     resource function onMessage(nats:StreamingMessage message) {
@@ -836,7 +834,7 @@ service receiveFromGivenIndex on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>
@@ -864,7 +862,7 @@ service receiveFromGivenIndex on lis {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@nats:StreamingSubscriptionConfig {
     subject: &quot;demo&quot;,
-    startPosition : timeDelta
+    startPosition: timeDelta
 }
 service receiveSinceTimeDelta on lis {
     resource function onMessage(nats:StreamingMessage message) {
@@ -915,7 +913,7 @@ service receiveSinceTimeDelta on lis {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>

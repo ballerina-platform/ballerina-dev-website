@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: CSV I/O
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/csv-io
+permalink: /v1-2/learn/by-example/csv-io
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -46,8 +46,9 @@ permalink: /v1-1/learn/by-example/csv-io
                             <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableCsvFile</span><span class="p">(</span><span class="nx">srcFileName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reading  &quot;</span> <span class="o">+</span> <span class="nx">srcFileName</span> <span class="o">+</span> <span class="s">&quot; as a table&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">tblResult</span> <span class="p">=</span> <span class="nx">rCsvChannel2</span><span class="p">.</span><span class="nx">getTable</span><span class="p">(</span><span class="nx">Employee</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">rec</span> <span class="nx">in</span> <span class="nx">tblResult</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">tblResult</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
+        <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">empTable</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="o">&gt;&gt;</span> <span class="nx">tblResult</span><span class="p">;</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">rec</span> <span class="nx">in</span> <span class="nx">empTable</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">rec</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -68,11 +69,11 @@ permalink: /v1-1/learn/by-example/csv-io
     <span class="nx">closeWritableCSVChannel</span><span class="p">(</span><span class="nx">wCsvChannel2</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">createTableAndAddData</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="p">{</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">employeeTable</span> <span class="p">=</span> <span class="nx">table</span><span class="p">{};</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">employeeTable</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{};</span>
     <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">employees</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="nx">employees</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Allen&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300000.0</span> <span class="p">};</span>
-    <span class="nx">employees</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Wallace&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">200000.0</span> <span class="p">};</span>
-    <span class="nx">employees</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sheldon&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1000000.0</span> <span class="p">};</span>
+    <span class="nx">employees</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Allen&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300000.0</span><span class="p">};</span>
+    <span class="nx">employees</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Wallace&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">200000.0</span><span class="p">};</span>
+    <span class="nx">employees</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sheldon&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">1000000.0</span><span class="p">};</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">employee</span> <span class="nx">in</span> <span class="nx">employees</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">employeeTable</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">employee</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -440,8 +441,9 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Reading  &quot; + srcFileName + &quot; as a table&quot;);
     var tblResult = rCsvChannel2.getTable(Employee);
-    if (tblResult is table&lt;Employee&gt;) {
-        foreach var rec in tblResult {
+    if (tblResult is table&lt;record {}&gt;) {
+        table&lt;Employee&gt; empTable = &lt;table&lt;Employee&gt;&gt; tblResult;
+        foreach var rec in empTable {
             io:println(rec);
         }
     } else {
@@ -498,11 +500,11 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function createTableAndAddData() returns table&lt;Employee&gt; {
-    table&lt;Employee&gt; employeeTable = table{};
+    table&lt;Employee&gt; employeeTable = table {};
     Employee[] employees = [];
-    employees[0] = { id: &quot;1&quot;, name: &quot;Allen&quot;, salary: 300000.0 };
-    employees[1] = { id: &quot;2&quot;, name: &quot;Wallace&quot;, salary: 200000.0 };
-    employees[2] = { id: &quot;3&quot;, name: &quot;Sheldon&quot;, salary: 1000000.0 };
+    employees[0] = {id: &quot;1&quot;, name: &quot;Allen&quot;, salary: 300000.0};
+    employees[1] = {id: &quot;2&quot;, name: &quot;Wallace&quot;, salary: 200000.0};
+    employees[2] = {id: &quot;3&quot;, name: &quot;Sheldon&quot;, salary: 1000000.0};
     foreach var employee in employees {
         var result = employeeTable.add(employee);
         if (result is error) {

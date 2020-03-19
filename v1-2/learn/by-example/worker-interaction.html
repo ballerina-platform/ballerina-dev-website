@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Worker Interactions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/worker-interaction
+permalink: /v1-2/learn/by-example/worker-interaction
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -36,7 +36,7 @@ permalink: /v1-1/learn/by-example/worker-interaction
         <span class="nx">vW1</span> <span class="p">=</span> <span class="o">&lt;-</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="p">[</span><span class="nx">iw</span><span class="p">,</span> <span class="nx">kw</span><span class="p">]</span> <span class="p">=</span> <span class="nx">vW1</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 &lt;- w1] iw: &quot;</span><span class="p">,</span> <span class="nx">iw</span><span class="p">,</span> <span class="s">&quot; kw: &quot;</span><span class="p">,</span> <span class="nx">kw</span><span class="p">);</span>
-        <span class="kt">json</span> <span class="nx">jw</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span> <span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">jw</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[w2 -&gt; w1] jw: &quot;</span><span class="p">,</span> <span class="nx">jw</span><span class="p">);</span>
         <span class="nx">jw</span> <span class="o">-&gt;</span> <span class="nx">w1</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">lw</span><span class="p">;</span>
@@ -378,7 +378,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json jw = { &quot;name&quot;: &quot;Ballerina&quot; };
+                                    <div class="highlight"><pre><code class=ballerina>        json jw = {&quot;name&quot;: &quot;Ballerina&quot;};
         io:println(&quot;[w2 -&gt; w1] jw: &quot;, jw);
         jw -&gt; w1;
 </code></pre></div>

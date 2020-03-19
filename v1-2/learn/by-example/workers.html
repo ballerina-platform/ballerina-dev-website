@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Workers
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/workers
+permalink: /v1-2/learn/by-example/workers
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,15 +13,18 @@ permalink: /v1-1/learn/by-example/workers
     <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">..</span><span class="nx">n</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
             <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="s">&quot; positive numbers = &quot;</span><span class="p">,</span> <span class="nx">sum</span><span class="p">);</span>
     <span class="p">}</span>
+    <span class="nd">@strand {</span>
+        <span class="nx">thread</span><span class="p">:</span><span class="s">&quot;any&quot;</span>
+    <span class="p">}</span>
     <span class="kd">worker</span> <span class="nx">w2</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="nx">n</span> <span class="p">=</span> <span class="mi">10000000</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mf">1.</span><span class="p">..</span><span class="nx">n</span> <span class="p">{</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">i</span> <span class="nx">in</span> <span class="mi">1</span> <span class="o">...</span> <span class="nx">n</span> <span class="p">{</span>
             <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span> <span class="o">*</span> <span class="nx">i</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;sum of squares of first &quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span>
@@ -38,7 +41,7 @@ permalink: /v1-1/learn/by-example/workers
                     <tr>
                         <td class="cLeftTD">
                             <h2>Workers</h2>
-                            <p><p>Workers in Ballerina allow developers to delegate their tasks to parallel running executions.
+                            <p><p>Workers in Ballerina allow developers to delegate their tasks to independently running executions.
  Worker execution starts immediately after invoking the relevant function, remote function, or resource that encloses the worker(s).
  Workers can be declared within functions, remote functions, or resources.
  Worker execution starts immediately after executing the statements declared before the first worker declaration in the relevant function,
@@ -113,6 +116,8 @@ permalink: /v1-1/learn/by-example/workers
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -143,7 +148,7 @@ permalink: /v1-1/learn/by-example/workers
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>In Ballerina, each function consists of one or more workers, which are
- independent parallel execution paths called strands. If explicit workers are
+ independent execution paths called strands. If explicit workers are
  not mentioned within worker blocks, the function code will belong to a
  single implicit default worker. The default worker in each function wil be
  executed in the same strand as the caller function.</p>
@@ -178,7 +183,7 @@ permalink: /v1-1/learn/by-example/workers
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
         int sum = 0;
-        foreach var i in 1...n {
+        foreach var i in 1 ... n {
             sum += i;
         }
         io:println(&quot;sum of first &quot;, n, &quot; positive numbers = &quot;, sum);
@@ -191,6 +196,29 @@ permalink: /v1-1/learn/by-example/workers
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Calculates the sum(n).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @strand {
+        thread:&quot;any&quot;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>By default workers run on the same physical thread of the parent strand.
+ By adding <code>@strand</code> annotation, this worker&rsquo;s strand is allowed to run
+ on any available physical thread.</p>
 
                                         </div>
                                     </div>
@@ -222,7 +250,7 @@ permalink: /v1-1/learn/by-example/workers
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        int n = 10000000;
         int sum = 0;
-        foreach var i in 1...n {
+        foreach var i in 1 ... n {
             sum += i * i;
         }
         io:println(&quot;sum of squares of first &quot;, n,

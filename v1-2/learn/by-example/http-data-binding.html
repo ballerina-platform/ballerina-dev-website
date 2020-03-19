@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-data-binding
+permalink: /v1-2/learn/by-example/http-data-binding
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -12,7 +12,7 @@ permalink: /v1-1/learn/by-example/http-data-binding
     <span class="kt">string</span> <span class="nx">Name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">Grade</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="p">&gt;</span> <span class="nx">Marks</span><span class="p">;</span>
-<span class="p">};</span><span class="nd">@http:ServiceConfig{</span><span class="p">}</span>
+<span class="p">};</span><span class="nd">@http:ServiceConfig {</span><span class="p">}</span>
 <span class="kd">service</span> <span class="nx">hello</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
     <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
@@ -23,14 +23,14 @@ permalink: /v1-1/learn/by-example/http-data-binding
         <span class="k">var</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">orderDetails</span><span class="p">.</span><span class="nx">Details</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">details</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">details</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">400</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Details unavailable&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -41,9 +41,9 @@ permalink: /v1-1/learn/by-example/http-data-binding
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindXML</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span> <span class="kt">xml</span> <span class="nx">store</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">xml</span> <span class="nx">city</span> <span class="p">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">selectDescendants</span><span class="p">(</span><span class="s">&quot;{http://www.test.com}city&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">city</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">city</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -53,13 +53,13 @@ permalink: /v1-1/learn/by-example/http-data-binding
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">bindStruct</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">,</span>
                                  <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
-        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
-        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
+        <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span> <span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -188,7 +188,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig{}
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {}
 service hello on new http:Listener(9090) {
 </code></pre></div>
 
@@ -228,14 +228,14 @@ service hello on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>        var details = orderDetails.Details;
         http:Response res = new;
         if (details is json) {
-            res.setPayload(&lt;@untainted&gt; details);
+            res.setPayload(&lt;@untainted&gt;details);
         } else {
             res.statusCode = 400;
             res.setPayload(&quot;Order Details unavailable&quot;);
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
-           log:printError(result.reason(), err = result);
+            log:printError(result.reason(), result);
         }
     }
 </code></pre></div>
@@ -282,7 +282,7 @@ service hello on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        xml city = store.selectDescendants(&quot;{http://www.test.com}city&quot;);
         http:Response res = new;
-        res.setPayload(&lt;@untainted&gt; city);
+        res.setPayload(&lt;@untainted&gt;city);
 </code></pre></div>
 
                                 </td>
@@ -303,7 +303,7 @@ service hello on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-           log:printError(result.reason(), err = result);
+            log:printError(result.reason(), result);
         }
     }
 </code></pre></div>
@@ -343,11 +343,11 @@ match the record.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt; student.Name;
-        int grade = &lt;@untainted&gt; student.Grade;
-        string english = &lt;@untained&gt; &lt;string&gt; student.Marks[&quot;English&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt;student.Name;
+        int grade = &lt;@untainted&gt;student.Grade;
+        string english = &lt;@untained string&gt;student.Marks[&quot;English&quot;];
         http:Response res = new;
-        res.setPayload({ Name: name, Grade: grade, English: english });
+        res.setPayload({Name: name, Grade: grade, English: english});
 </code></pre></div>
 
                                 </td>
@@ -368,7 +368,7 @@ match the record.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-           log:printError(result.reason(), err = result);
+            log:printError(result.reason(), result);
         }
     }
 }

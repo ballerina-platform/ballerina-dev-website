@@ -2,13 +2,13 @@
 layout: ballerina-example-page
 title: Immutable Values
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/immutable-values
+permalink: /v1-2/learn/by-example/immutable-values
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">stringVal</span><span class="p">:</span> <span class="s">&quot;str&quot;</span><span class="p">,</span> <span class="nx">intVal</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m2</span> <span class="p">=</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 === m2: &quot;</span><span class="p">,</span> <span class="nx">m1</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m2</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m1 is immutable: &quot;</span><span class="p">,</span> <span class="nx">m1</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
@@ -20,7 +20,7 @@ permalink: /v1-1/learn/by-example/immutable-values
     <span class="p">}</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m3</span> <span class="p">=</span> <span class="nx">m2</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;m2 === m3: &quot;</span><span class="p">,</span> <span class="nx">m2</span> <span class="o">==</span><span class="p">=</span> <span class="nx">m3</span><span class="p">);</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m5</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">valueType</span><span class="p">:</span> <span class="s">&quot;map&quot;</span><span class="p">,</span> <span class="nx">constraint</span><span class="p">:</span> <span class="s">&quot;string&quot;</span> <span class="p">};</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">|</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">m5</span> <span class="p">=</span> <span class="p">{</span><span class="nx">valueType</span><span class="p">:</span> <span class="s">&quot;map&quot;</span><span class="p">,</span> <span class="nx">constraint</span><span class="p">:</span> <span class="s">&quot;string&quot;</span><span class="p">};</span>
     <span class="k">var</span> <span class="nx">frozenVal</span> <span class="p">=</span> <span class="nx">m5</span><span class="p">.</span><span class="nx">cloneReadOnly</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">frozenVal</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;frozenVal is map&lt;string&gt;&quot;</span><span class="p">);</span>
@@ -165,7 +165,7 @@ permalink: /v1-1/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m1 = { stringVal: &quot;str&quot;, intVal: 1 };
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m1 = {stringVal: &quot;str&quot;, intVal: 1};
 </code></pre></div>
 
                                 </td>
@@ -343,7 +343,7 @@ permalink: /v1-1/learn/by-example/immutable-values
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m5 = { valueType: &quot;map&quot;, constraint: &quot;string&quot; };
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;string|int&gt; m5 = {valueType: &quot;map&quot;, constraint: &quot;string&quot;};
 </code></pre></div>
 
                                 </td>

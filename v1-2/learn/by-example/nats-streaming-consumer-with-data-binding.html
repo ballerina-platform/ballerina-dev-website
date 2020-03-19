@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Streaming Publisher and Subscriber With Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/nats-streaming-consumer-with-data-binding
+permalink: /v1-2/learn/by-example/nats-streaming-consumer-with-data-binding
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,14 +13,13 @@ permalink: /v1-1/learn/by-example/nats-streaming-consumer-with-data-binding
 <span class="kd">const</span> <span class="kt">string</span> <span class="nx">ESCAPE</span> <span class="p">=</span> <span class="s">&quot;!q&quot;</span><span class="p">;</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Subject : &quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost:4222&quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="s">&quot;p0&quot;</span><span class="p">,</span> <span class="s">&quot;test-cluster&quot;</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">subject</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Subject : &quot;</span><span class="p">);</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>    <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingProducer</span> <span class="nx">publisher</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">,</span> <span class="s">&quot;p0&quot;</span><span class="p">,</span> <span class="s">&quot;test-cluster&quot;</span><span class="p">);</span>    <span class="k">while</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">message</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">readln</span><span class="p">(</span><span class="s">&quot;Message : &quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="o">!=</span> <span class="nx">ESCAPE</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="kt">message</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span>
-                                                                        <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span>
                                         <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
@@ -30,18 +29,18 @@ permalink: /v1-1/learn/by-example/nats-streaming-consumer-with-data-binding
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">nats</span><span class="p">;</span>
-<span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;localhost:4222&quot;</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
+<span class="nx">nats</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">conn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingListener</span> <span class="nx">lis</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">conn</span><span class="p">);</span>
 <span class="nd">@nats:StreamingSubscriptionConfig {</span>
     <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;demo&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">demoService</span> <span class="nx">on</span> <span class="nx">lis</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="p">|</span> <span class="nx">error</span> <span class="nx">val</span> <span class="p">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val</span> <span class="p">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">val</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message Received: &quot;</span> <span class="o">+</span> <span class="nx">val</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -50,7 +49,7 @@ permalink: /v1-1/learn/by-example/nats-streaming-consumer-with-data-binding
         <span class="p">}</span>
     <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">nats</span><span class="p">:</span><span class="nx">StreamingMessage</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">errorVal</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">errorVal</span><span class="p">;</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -197,7 +196,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -209,7 +208,7 @@ import ballerina/nats;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new(conn, &quot;p0&quot;, &quot;test-cluster&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    nats:StreamingProducer publisher = new (conn, &quot;p0&quot;, &quot;test-cluster&quot;);
 </code></pre></div>
 
                                 </td>
@@ -235,11 +234,10 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt; message);
+                                    <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
-                log:printError(&quot;Error occurred while closing the connection&quot;,
-                                                                        err = e);
+                log:printError(&quot;Error occurred while closing the connection&quot;, e);
             } else {
                 log:printInfo(&quot;GUID &quot; + result
                                         + &quot; received for the produced message.&quot;);
@@ -267,7 +265,7 @@ import ballerina/nats;
                                     <div class="highlight"><pre><code class=ballerina>    var result = conn.close();
     if (result is error) {
         error e = result;
-        log:printError(&quot;Error occurred while closing the connection&quot;, err = e);
+        log:printError(&quot;Error occurred while closing the connection&quot;, e);
     }
 }
 </code></pre></div>
@@ -379,7 +377,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new(&quot;localhost:4222&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>nats:Connection conn = new;
 </code></pre></div>
 
                                 </td>
@@ -398,7 +396,7 @@ import ballerina/nats;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new(conn);
+                                    <div class="highlight"><pre><code class=ballerina>listener nats:StreamingListener lis = new (conn);
 </code></pre></div>
 
                                 </td>
@@ -440,7 +438,7 @@ service demoService on lis {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        string | error val = data.toJsonString();
+                                    <div class="highlight"><pre><code class=ballerina>        string|error val = data.toJsonString();
         if (val is string) {
 </code></pre></div>
 
@@ -486,7 +484,7 @@ service demoService on lis {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(nats:StreamingMessage message, nats:Error errorVal) {
         error e = errorVal;
-        log:printError(&quot;Error occurred: &quot;, err = e);
+        log:printError(&quot;Error occurred: &quot;, e);
     }
 }
 </code></pre></div>

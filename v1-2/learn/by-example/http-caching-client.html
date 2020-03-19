@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: HTTP Caching
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-caching-client
+permalink: /v1-2/learn/by-example/http-caching-client
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
-                            <span class="p">{</span> <span class="nx">cache</span><span class="p">:</span> <span class="p">{</span> <span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span> <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">cachingEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
+                             <span class="p">{</span><span class="nx">cache</span><span class="p">:</span> <span class="p">{</span><span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nx">isShared</span><span class="p">:</span> <span class="kc">true</span><span class="p">}});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cache&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">cachingProxy</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -20,23 +20,23 @@ permalink: /v1-1/learn/by-example/http-caching-client
         <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">cachingEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span><span class="kt">json</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span> <span class="p">};</span>
+<span class="p">}</span><span class="kt">json</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;Hello, World!&quot;</span><span class="p">};</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span> <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span> <span class="p">}</span>
+<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span><span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">ResponseCacheControl</span> <span class="nx">resCC</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -46,7 +46,7 @@ permalink: /v1-1/learn/by-example/http-caching-client
         <span class="nx">res</span><span class="p">.</span><span class="nx">setETag</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setLastModified</span><span class="p">();</span>        <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond to the caller&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -59,7 +59,7 @@ permalink: /v1-1/learn/by-example/http-caching-client
                     <tr>
                         <td class="cLeftTD">
                             <h2>HTTP Caching</h2>
-                            <p><p>HTTP caching is enabled by default in HTTP client endpoints.
+                            <p><p>HTTP caching is disabled by default in HTTP client endpoints.
  Users can configure caching using the <code>cache</code> field in the endpoint configurations.</p>
 </p>
 
@@ -178,8 +178,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>HTTP caching is enabled by default for client endpoints. Caching can be
- disabled by setting <code>enabled=false</code> in the <code>cache</code> config of the client
+                                            <p>HTTP caching is disabled by default for client endpoints. Caching can be
+ enabled by setting <code>enabled=true</code> in the <code>cache</code> config of the client
  endpoint. In this example, the <code>isShared</code> field of the <code>cacheConfig</code> is set
  to true, as the cache will be a public cache in this particular scenario.</p>
 
@@ -198,8 +198,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client cachingEP = new(&quot;http://localhost:8080&quot;,
-                            { cache: { isShared: true } });
+                                    <div class="highlight"><pre><code class=ballerina>http:Client cachingEP = new (&quot;http://localhost:8080&quot;,
+                             {cache: {enabled: true, isShared: true}});
 </code></pre></div>
 
                                 </td>
@@ -257,7 +257,7 @@ service cachingProxy on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(response);
             if (result is error) {
-                log:printError(&quot;Failed to respond to the caller&quot;, err = result);
+                log:printError(&quot;Failed to respond to the caller&quot;, result);
             }
         } else {
 </code></pre></div>
@@ -282,10 +282,10 @@ service cachingProxy on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(response.reason());
+            res.setPayload(&lt;string&gt;response.detail()?.message);
             var result = caller-&gt;respond(res);
             if (result is error) {
-                log:printError(&quot;Failed to respond to the caller&quot;, err = result);
+                log:printError(&quot;Failed to respond to the caller&quot;, result);
             }
         }
     }
@@ -309,7 +309,7 @@ service cachingProxy on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>json payload = { &quot;message&quot;: &quot;Hello, World!&quot; };
+                                    <div class="highlight"><pre><code class=ballerina>json payload = {&quot;message&quot;: &quot;Hello, World!&quot;};
 </code></pre></div>
 
                                 </td>
@@ -343,7 +343,7 @@ service helloWorld on new http:Listener(8080) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig { path: &quot;/&quot; }
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {path: &quot;/&quot;}
     resource function sayHello(http:Caller caller, http:Request req) {
         http:Response res = new;
 </code></pre></div>
@@ -474,7 +474,7 @@ service helloWorld on new http:Listener(8080) {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Failed to respond to the caller&quot;, err = result);
+            log:printError(&quot;Failed to respond to the caller&quot;, result);
         }
     }
 }

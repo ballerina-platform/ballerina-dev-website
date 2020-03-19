@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Counter-Based Metrics
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/counter-metrics
+permalink: /v1-2/learn/by-example/counter-metrics
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -11,7 +11,7 @@ permalink: /v1-1/learn/by-example/counter-metrics
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
-<span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">globalCounter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;total_orders&quot;</span><span class="p">,</span>
+<span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">globalCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;total_orders&quot;</span><span class="p">,</span>
                                     <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">);</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
@@ -21,15 +21,15 @@ permalink: /v1-1/learn/by-example/counter-metrics
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">makeOrder</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">globalCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">localCounter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">localCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
         <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="nx">localCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">registeredCounter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;total_product_order_quantity&quot;</span><span class="p">,</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">registeredCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;total_product_order_quantity&quot;</span><span class="p">,</span>
             <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">,</span>
-            <span class="nx">tags</span> <span class="p">=</span> <span class="p">{</span><span class="nx">prodName</span><span class="p">:</span><span class="s">&quot;HeadPhone&quot;</span><span class="p">,</span> <span class="nx">prodType</span><span class="p">:</span><span class="s">&quot;Electronics&quot;</span><span class="p">});</span>
+            <span class="nx">tags</span> <span class="p">=</span> <span class="p">{</span><span class="nx">prodName</span><span class="p">:</span> <span class="s">&quot;HeadPhone&quot;</span><span class="p">,</span> <span class="nx">prodType</span><span class="p">:</span> <span class="s">&quot;Electronics&quot;</span><span class="p">});</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering counter&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">registeredCounter</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
@@ -41,7 +41,7 @@ permalink: /v1-1/learn/by-example/counter-metrics
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -164,7 +164,7 @@ import ballerina/observe;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>observe:Counter globalCounter = new(&quot;total_orders&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>observe:Counter globalCounter = new (&quot;total_orders&quot;,
                                     desc = &quot;Total quantity required&quot;);
 </code></pre></div>
 
@@ -240,7 +240,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter localCounter = new(&quot;local_operations&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter localCounter = new (&quot;local_operations&quot;);
         localCounter.increment();
 </code></pre></div>
 
@@ -279,9 +279,9 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter registeredCounter = new(&quot;total_product_order_quantity&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>        observe:Counter registeredCounter = new (&quot;total_product_order_quantity&quot;,
             desc = &quot;Total quantity required&quot;,
-            tags = {prodName:&quot;HeadPhone&quot;, prodType:&quot;Electronics&quot;});
+            tags = {prodName: &quot;HeadPhone&quot;, prodType: &quot;Electronics&quot;});
 </code></pre></div>
 
                                 </td>
@@ -302,7 +302,7 @@ service onlineStoreService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        error? result = registeredCounter.register();
         if (result is error) {
-            log:printError(&quot;Error in registering counter&quot;, err = result);
+            log:printError(&quot;Error in registering counter&quot;, result);
         }
 </code></pre></div>
 
@@ -409,7 +409,7 @@ counter instance.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, result);
         }
     }
 }

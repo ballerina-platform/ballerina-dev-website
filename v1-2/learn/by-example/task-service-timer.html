@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Task Service Timer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/task-service-timer
+permalink: /v1-2/learn/by-example/task-service-timer
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,7 +14,7 @@ permalink: /v1-1/learn/by-example/task-service-timer
     <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
     <span class="nx">noOfRecurrences</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">};</span>
-<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">timerConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">timerConfiguration</span><span class="p">);</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">service</span> <span class="nx">timerService</span> <span class="nx">on</span> <span class="nx">timer</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Cleaning up...&quot;</span><span class="p">);</span>
@@ -168,7 +168,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener task:Listener timer = new(timerConfiguration);
+                                    <div class="highlight"><pre><code class=ballerina>listener task:Listener timer = new (timerConfiguration);
 </code></pre></div>
 
                                 </td>

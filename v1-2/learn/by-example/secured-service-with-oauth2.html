@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Secured Service with OAuth2
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/secured-service-with-oauth2
+permalink: /v1-2/learn/by-example/secured-service-with-oauth2
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,11 +10,11 @@ permalink: /v1-1/learn/by-example/secured-service-with-oauth2
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">InboundOAuth2Provider</span> <span class="nx">oauth2Provider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">InboundOAuth2Provider</span> <span class="nx">oauth2Provider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:9095/oauth2/token/introspect&quot;</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider</span><span class="p">);</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">oauth2Handler</span><span class="p">]</span>
     <span class="p">},</span>
@@ -56,9 +56,9 @@ permalink: /v1-1/learn/by-example/secured-service-with-oauth2
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-service-with-basic-auth.html">
+                                    <a class="prev" href="secured-service-with-jwt-auth.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Service with Basic Auth</p>
+                                        <p>Secured Service with JWT Auth</p>
                                     </a>
                                 </div>
                                  
@@ -137,7 +137,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new({
+                                    <div class="highlight"><pre><code class=ballerina>oauth2:InboundOAuth2Provider oauth2Provider = new ({
     url: &quot;https://localhost:9095/oauth2/token/introspect&quot;
 });
 </code></pre></div>
@@ -159,7 +159,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler oauth2Handler = new(oauth2Provider);
+                                    <div class="highlight"><pre><code class=ballerina>http:BearerAuthHandler oauth2Handler = new (oauth2Provider);
 </code></pre></div>
 
                                 </td>
@@ -178,7 +178,7 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new(9090, {
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, {
     auth: {
         authHandlers: [oauth2Handler]
     },

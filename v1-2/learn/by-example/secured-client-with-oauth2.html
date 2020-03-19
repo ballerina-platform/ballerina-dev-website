@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Secured Client with OAuth2
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/secured-client-with-oauth2
+permalink: /v1-2/learn/by-example/secured-client-with-oauth2
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,31 +10,31 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientSecret</span><span class="p">:</span> <span class="s">&quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider1</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler1</span>
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-             <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;&lt;Username for password grant authentication&gt;&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;&lt;Password for password grant authentication&gt;&quot;</span><span class="p">,</span>
@@ -43,8 +43,8 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">},</span>
@@ -53,14 +53,14 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider2</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP2</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler2</span>
     <span class="p">},</span>
@@ -71,7 +71,7 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+<span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">accessToken</span><span class="p">:</span> <span class="s">&quot;&lt;Access token for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
     <span class="nx">refreshConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;</span><span class="p">,</span>
@@ -81,14 +81,14 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
-                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BearerAuthHandler</span> <span class="nx">oauth2Handler3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">oauth2Provider3</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP3</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;&lt;URL of the secured endpoint&gt;&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">oauth2Handler3</span>
     <span class="p">},</span>
@@ -127,7 +127,7 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
@@ -165,9 +165,9 @@ permalink: /v1-1/learn/by-example/secured-client-with-oauth2
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="locks.html">
+                                    <a class="next" href="send-and-receive-emails.html">
                                         <span>NEXT ></span>
-                                        <p>Lock</p>
+                                        <p>Send and Receive Emails</p>
                                     </a>
                                 </div>
                                 
@@ -249,20 +249,20 @@ import ballerina/oauth2;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
+                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider1 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     clientId: &quot;&lt;Client ID for the client credentials grant authentication&gt;&quot;,
     clientSecret: &quot;&lt;Client secret for the client credentials grant authentication&gt;&quot;,
     clientConfig: {
         secureSocket: {
             trustStore: {
-                 path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                 password: &quot;ballerina&quot;
+                path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                password: &quot;ballerina&quot;
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
+http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
 </code></pre></div>
 
                                 </td>
@@ -284,14 +284,14 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP1 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler1
     },
     secureSocket: {
         trustStore: {
-             path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-             password: &quot;ballerina&quot;
+            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            password: &quot;ballerina&quot;
         }
     }
 });
@@ -306,7 +306,7 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new({
+                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider2 = new ({
     tokenUrl: &quot;&lt;Token URL for the authorization endpoint&gt;&quot;,
     username: &quot;&lt;Username for password grant authentication&gt;&quot;,
     password: &quot;&lt;Password for password grant authentication&gt;&quot;,
@@ -315,8 +315,8 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
     clientConfig: {
         secureSocket: {
             trustStore: {
-                 path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                 password: &quot;ballerina&quot;
+                path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                password: &quot;ballerina&quot;
             }
         }
     },
@@ -325,14 +325,14 @@ http:BearerAuthHandler oauth2Handler1 = new(oauth2Provider1);
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                     path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                     password: &quot;ballerina&quot;
+                    path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                    password: &quot;ballerina&quot;
                 }
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
+http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
 </code></pre></div>
 
                                 </td>
@@ -356,7 +356,7 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP2 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler2
     },
@@ -378,7 +378,7 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new({
+                                    <div class="highlight"><pre><code class=ballerina>oauth2:OutboundOAuth2Provider oauth2Provider3 = new ({
     accessToken: &quot;&lt;Access token for the authorization endpoint&gt;&quot;,
     refreshConfig: {
         clientId: &quot;&lt;Client ID for authentication with the authorization endpoint&gt;&quot;,
@@ -388,14 +388,14 @@ http:BearerAuthHandler oauth2Handler2 = new(oauth2Provider2);
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                     path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-                     password: &quot;ballerina&quot;
+                    path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                    password: &quot;ballerina&quot;
                 }
             }
         }
     }
 });
-http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
+http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 </code></pre></div>
 
                                 </td>
@@ -418,7 +418,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new(&quot;&lt;URL of the secured endpoint&gt;&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler3
     },
@@ -516,7 +516,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
         if (result is error) {
             log:printInfo(&quot;Failed to retrieve payload for clientEP3.&quot;);
         } else {
-            log:printInfo(&lt;string&gt; result.kind);
+            log:printInfo(&lt;string&gt;result.kind);
         }
     } else {
         log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
@@ -556,7 +556,7 @@ http:BearerAuthHandler oauth2Handler3 = new(oauth2Provider3);
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
 $ ballerina run secured_client_with_oauth2.bal
-# This should log the json output returned by the REST endpoint.
+# This should log the JSON output returned by the REST endpoint.
 </code></pre></div>
 
                                 </td>

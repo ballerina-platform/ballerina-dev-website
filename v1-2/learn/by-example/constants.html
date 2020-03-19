@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Constants
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/constants
+permalink: /v1-2/learn/by-example/constants
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -12,8 +12,8 @@ permalink: /v1-1/learn/by-example/constants
 <span class="kd">const</span> <span class="nx">POST</span> <span class="p">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span>
 <span class="nx">type</span> <span class="nx">ACTION</span> <span class="nx">GET</span><span class="p">|</span><span class="nx">POST</span><span class="p">;</span>
 <span class="kd">const</span> <span class="kt">int</span> <span class="nx">I</span> <span class="p">=</span> <span class="mi">125</span><span class="p">;</span>
-<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">{</span>  <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span> <span class="p">};</span>
-<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span> <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span> <span class="p">}};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">data</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ID&quot;</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span><span class="p">};</span>
+<span class="kd">const</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span> <span class="nx">complexData</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;data&quot;</span><span class="p">:</span> <span class="nx">data</span><span class="p">,</span> <span class="s">&quot;data2&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="s">&quot;WSO2&quot;</span><span class="p">}};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">ACTION</span> <span class="nx">get</span> <span class="p">=</span> <span class="nx">GET</span><span class="p">;</span>
     <span class="nx">testAction</span><span class="p">(</span><span class="nx">get</span><span class="p">);</span>    <span class="nx">ACTION</span> <span class="nx">post</span> <span class="p">=</span> <span class="s">&quot;POST&quot;</span><span class="p">;</span>
     <span class="nx">testAction</span><span class="p">(</span><span class="nx">POST</span><span class="p">);</span>
@@ -174,7 +174,7 @@ permalink: /v1-1/learn/by-example/constants
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Constants can be defined without the type using the <code>var</code> keyword. Then, the type is inferred from the right hand side.</p>
+                                            <p>Constants can be defined without the type. Then, the type is inferred from the right hand side.</p>
 
                                         </div>
                                     </div>
@@ -224,7 +224,7 @@ permalink: /v1-1/learn/by-example/constants
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;string&gt; data = {  &quot;user&quot;: &quot;Ballerina&quot;, &quot;ID&quot;: &quot;1234&quot; };
+                                    <div class="highlight"><pre><code class=ballerina>const map&lt;string&gt; data = {&quot;user&quot;: &quot;Ballerina&quot;, &quot;ID&quot;: &quot;1234&quot;};
 </code></pre></div>
 
                                 </td>
@@ -245,7 +245,7 @@ permalink: /v1-1/learn/by-example/constants
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>const map&lt;map&lt;string&gt;&gt; complexData = { &quot;data&quot;: data, &quot;data2&quot;: { &quot;user&quot;: &quot;WSO2&quot; }};
+                                    <div class="highlight"><pre><code class=ballerina>const map&lt;map&lt;string&gt;&gt; complexData = {&quot;data&quot;: data, &quot;data2&quot;: {&quot;user&quot;: &quot;WSO2&quot;}};
 </code></pre></div>
 
                                 </td>

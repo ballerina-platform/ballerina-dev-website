@@ -2,13 +2,13 @@
 layout: ballerina-example-page
 title: String
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/strings
+permalink: /v1-2/learn/by-example/strings
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">statement</span> <span class="p">=</span> <span class="s">&quot;Lion in Town. Catch the Lion&quot;</span><span class="p">;</span>    <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">statement</span> <span class="p">=</span> <span class="s">&quot;Lion in Town. Catch the Lion&quot;</span><span class="p">;</span>    <span class="kt">string</span> <span class="nx">s1</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">toUpperAscii</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ToUpper: &quot;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">s2</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">toLowerAscii</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ToLower: &quot;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">);</span>
     <span class="kt">string</span> <span class="nx">s3</span> <span class="p">=</span> <span class="nx">statement</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
@@ -25,7 +25,7 @@ permalink: /v1-1/learn/by-example/strings
     <span class="kt">string</span> <span class="nx">s5</span> <span class="p">=</span> <span class="s">&quot;,&quot;</span><span class="p">.</span><span class="err">&#39;</span><span class="k">join</span><span class="p">(</span><span class="nx">hello</span><span class="p">,</span> <span class="nx">ballerina</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Join: &quot;</span><span class="p">,</span> <span class="nx">s5</span><span class="p">);</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">bArray</span> <span class="p">=</span> <span class="nx">hello</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
-    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">s6</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">bArray</span><span class="p">);</span>
+    <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">s6</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">bArray</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">s6</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;From bytes: &quot;</span><span class="p">,</span> <span class="nx">s6</span><span class="p">);</span>
     <span class="p">}</span>
@@ -156,7 +156,7 @@ permalink: /v1-1/learn/by-example/strings
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;string as strings;
+import ballerina/lang.&#39;string;
 </code></pre></div>
 
                                 </td>
@@ -354,7 +354,7 @@ import ballerina/lang.&#39;string as strings;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string|error s6 = strings:fromBytes(bArray);
+                                    <div class="highlight"><pre><code class=ballerina>    string|error s6 = &#39;string:fromBytes(bArray);
     if (s6 is string) {
         io:println(&quot;From bytes: &quot;, s6);
     }

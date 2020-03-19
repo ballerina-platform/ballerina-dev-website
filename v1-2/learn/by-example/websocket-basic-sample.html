@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Basic Server Functionalities
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/websocket-basic-sample
+permalink: /v1-2/learn/by-example/websocket-basic-sample
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="kt">string</span> <span class="nx">ping</span> <span class="p">=</span> <span class="s">&quot;ping&quot;</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kt">string</span> <span class="nx">ping</span> <span class="p">=</span> <span class="s">&quot;ping&quot;</span><span class="p">;</span>
 <span class="nx">byte</span><span class="p">[]</span> <span class="nx">pingData</span> <span class="p">=</span> <span class="nx">ping</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span><span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/basic/ws&quot;</span><span class="p">,</span>
     <span class="nx">subProtocols</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;xml&quot;</span><span class="p">,</span> <span class="s">&quot;json&quot;</span><span class="p">],</span>
@@ -176,9 +176,9 @@ permalink: /v1-1/learn/by-example/websocket-basic-sample
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/io;
 import ballerina/log;
-import ballerina/http;
 </code></pre></div>
 
                                 </td>
@@ -467,10 +467,6 @@ service basic on new http:Listener(9090) {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -480,21 +476,8 @@ service basic on new http:Listener(9090) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina build` command.
-$ ballerina build websocket_basic_sample.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the sample using the `run` command on the jar file generated:
-$ ballerina run  websocket_basic_sample-executable.jar
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run websocket_basic_sample.bal
 </code></pre></div>
 
                                 </td>

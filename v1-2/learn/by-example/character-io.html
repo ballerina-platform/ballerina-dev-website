@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Read/Write Files
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/character-io
+permalink: /v1-2/learn/by-example/character-io
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -22,27 +22,27 @@ permalink: /v1-1/learn/by-example/character-io
 <span class="kd">function</span> <span class="nx">closeRc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">closeWc</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">ch</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">cr</span> <span class="p">=</span> <span class="nx">ch</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cr</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">cr</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the channel: &quot;</span><span class="p">,</span> <span class="nx">cr</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">readableFieldResult</span> <span class="p">=</span>
                                 <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="s">&quot;./files/sample.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">sourceChannel</span> <span class="p">=</span>
-                                <span class="nx">new</span><span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+                                <span class="nx">new</span> <span class="p">(</span><span class="nx">readableFieldResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">writableFileResult</span> <span class="p">=</span>
                 <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/sampleResponse.txt&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableCharacterChannel</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
-                                <span class="nx">new</span><span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
+                                <span class="nx">new</span> <span class="p">(</span><span class="nx">writableFileResult</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Started to process the file.&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">process</span><span class="p">(</span><span class="nx">sourceChannel</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while processing chars &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while processing chars &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;File processing complete.&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -226,7 +226,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeRc(io:ReadableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
     }
 }
 </code></pre></div>
@@ -250,7 +250,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>function closeWc(io:WritableCharacterChannel ch) {
     var cr = ch.close();
     if (cr is error) {
-        log:printError(&quot;Error occurred while closing the channel: &quot;, err = cr);
+        log:printError(&quot;Error occurred while closing the channel: &quot;, cr);
     }
 }
 </code></pre></div>
@@ -286,7 +286,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>    io:ReadableByteChannel readableFieldResult =
                                 check io:openReadableFile(&quot;./files/sample.txt&quot;);
     io:ReadableCharacterChannel sourceChannel =
-                                new(readableFieldResult, &quot;UTF-8&quot;);
+                                new (readableFieldResult, &quot;UTF-8&quot;);
 </code></pre></div>
 
                                 </td>
@@ -310,7 +310,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>    io:WritableByteChannel writableFileResult =
                 check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
     io:WritableCharacterChannel destinationChannel =
-                                new(writableFileResult, &quot;UTF-8&quot;);
+                                new (writableFileResult, &quot;UTF-8&quot;);
     io:println(&quot;Started to process the file.&quot;);
 </code></pre></div>
 
@@ -334,7 +334,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var result = process(sourceChannel, destinationChannel);
     if (result is error) {
-        log:printError(&quot;error occurred while processing chars &quot;, err = result);
+        log:printError(&quot;error occurred while processing chars &quot;, result);
     } else {
         io:println(&quot;File processing complete.&quot;);
     }

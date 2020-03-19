@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Before and After Test
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/testerina-before-and-after-test
+permalink: /v1-2/learn/by-example/testerina-before-and-after-test
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -201,6 +201,14 @@ function testFunction() {
                                 
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -225,7 +233,35 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/test_module-2019r3-any-0.1.0.balo
+        target/balo/test_module-2020r1-any-0.1.0.balo
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Running tests
+    ballerinatest/test_module:0.1.0
+I&#39;m the before function!
+I&#39;m in test function!
+I&#39;m the after function!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testFunction
 </code></pre></div>
 
                                 </td>
@@ -237,12 +273,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running tests
-    ballerinatest/test_module:0.1.0
-I&#39;m the before function!
-I&#39;m in test function!
-I&#39;m the after function!
-        1 passing
+                                    <div class="highlight"><pre><code class=shell-session>        1 passing
         0 failing
         0 skipped
 </code></pre></div>

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: JSON
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/json
+permalink: /v1-2/learn/by-example/json
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -17,15 +17,15 @@ permalink: /v1-1/learn/by-example/json
     <span class="kt">json</span> <span class="nx">j4</span> <span class="p">=</span> <span class="kc">false</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j4</span><span class="p">);</span>
     <span class="kt">json</span> <span class="nx">j5</span> <span class="p">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="kt">json</span> <span class="nx">j6</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">j2</span> <span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">j6</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;apple&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="nx">price</span><span class="p">:</span> <span class="nx">j2</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j6</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">json</span> <span class="nx">j7</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">first</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Pala&quot;</span> <span class="p">}];</span>
+    <span class="kt">json</span> <span class="nx">j7</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">first</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">last</span><span class="p">:</span> <span class="s">&quot;Pala&quot;</span><span class="p">}];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j7</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="kt">json</span> <span class="nx">j8</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">j5</span><span class="p">.</span><span class="nx">mergeJson</span><span class="p">(</span><span class="nx">j7</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j8</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">json</span> <span class="nx">j9</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span> <span class="nx">math</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="nx">language</span><span class="p">:</span> <span class="mi">95</span> <span class="p">}</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">j10</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="p">(),</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span> <span class="nx">physics</span><span class="p">:</span> <span class="mi">85</span> <span class="p">}</span> <span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">j9</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span><span class="nx">math</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="nx">language</span><span class="p">:</span> <span class="mi">95</span><span class="p">}};</span>
+    <span class="kt">json</span> <span class="nx">j10</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="p">(),</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">marks</span><span class="p">:</span> <span class="p">{</span><span class="nx">physics</span><span class="p">:</span> <span class="mi">85</span><span class="p">}};</span>
     <span class="kt">json</span> <span class="nx">j11</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nx">j9</span><span class="p">.</span><span class="nx">mergeJson</span><span class="p">(</span><span class="nx">j10</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j11</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j9</span> <span class="o">==</span><span class="p">=</span> <span class="nx">j11</span><span class="p">);</span>
@@ -267,7 +267,7 @@ permalink: /v1-1/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j6 = { name: &quot;apple&quot;, color: &quot;red&quot;, price: j2 };
+                                    <div class="highlight"><pre><code class=ballerina>    json j6 = {name: &quot;apple&quot;, color: &quot;red&quot;, price: j2};
     io:println(j6);
 </code></pre></div>
 
@@ -307,7 +307,7 @@ permalink: /v1-1/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j7 = [1, false, null, &quot;foo&quot;, { first: &quot;John&quot;, last: &quot;Pala&quot; }];
+                                    <div class="highlight"><pre><code class=ballerina>    json j7 = [1, false, null, &quot;foo&quot;, {first: &quot;John&quot;, last: &quot;Pala&quot;}];
     io:println(j7.toJsonString());
 </code></pre></div>
 
@@ -349,8 +349,8 @@ permalink: /v1-1/learn/by-example/json
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json j9 = { name: &quot;Anne&quot;, age: null, marks: { math: 90, language: 95 } };
-    json j10 = { name: (), age: 20, marks: { physics: 85 } };
+                                    <div class="highlight"><pre><code class=ballerina>    json j9 = {name: &quot;Anne&quot;, age: null, marks: {math: 90, language: 95}};
+    json j10 = {name: (), age: 20, marks: {physics: 85}};
     json j11 = checkpanic j9.mergeJson(j10);
     io:println(j11.toJsonString());
 </code></pre></div>

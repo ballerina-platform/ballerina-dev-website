@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: CORS
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-cors
+permalink: /v1-2/learn/by-example/http-cors
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -30,11 +30,11 @@ permalink: /v1-1/learn/by-example/http-cors
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">companyInfo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;middleware&quot;</span> <span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;middleware&quot;</span><span class="p">};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -43,11 +43,11 @@ permalink: /v1-1/learn/by-example/http-cors
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">langInfo</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;lang&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span> <span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;lang&quot;</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">};</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -185,11 +185,11 @@ service crossOriginService on new http:Listener(9092) {
     }
     resource function companyInfo(http:Caller caller, http:Request req) {
         http:Response res = new;
-        json responseJson = { &quot;type&quot;: &quot;middleware&quot; };
+        json responseJson = {&quot;type&quot;: &quot;middleware&quot;};
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-           log:printError(result.reason(), err = result);
+            log:printError(result.reason(), result);
         }
     }
 </code></pre></div>
@@ -216,11 +216,11 @@ service crossOriginService on new http:Listener(9092) {
     }
     resource function langInfo(http:Caller caller, http:Request req) {
         http:Response res = new;
-        json responseJson = { &quot;lang&quot;: &quot;Ballerina&quot; };
+        json responseJson = {&quot;lang&quot;: &quot;Ballerina&quot;};
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-           log:printError(result.reason(), err = result);
+            log:printError(result.reason(), result);
         }
     }
 }

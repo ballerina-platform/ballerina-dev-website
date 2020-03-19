@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Distributed Tracing
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/tracing
+permalink: /v1-2/learn/by-example/tracing
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -23,21 +23,21 @@ permalink: /v1-1/learn/by-example/tracing
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="nx">error</span><span class="p">? result = observe:finishSpan(</span><span class="nx">childSpanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">finishSpan</span><span class="p">(</span><span class="nx">rootParentSpanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">observe</span><span class="p">:</span><span class="nx">finishSpan</span><span class="p">(</span><span class="nx">spanId</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in finishing span&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>        <span class="k">return</span> <span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -303,7 +303,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        error? result = observe:finishSpan(childSpanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, err = result);
+            log:printError(&quot;Error in finishing span&quot;, result);
         }
 </code></pre></div>
 
@@ -344,7 +344,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        result = observe:finishSpan(rootParentSpanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, err = result);
+            log:printError(&quot;Error in finishing span&quot;, result);
         }
 </code></pre></div>
 
@@ -385,7 +385,7 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        result = observe:finishSpan(spanId);
         if (result is error) {
-            log:printError(&quot;Error in finishing span&quot;, err = result);
+            log:printError(&quot;Error in finishing span&quot;, result);
         }
 </code></pre></div>
 
@@ -444,7 +444,7 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (result is error) {
-           log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, result);
         }
 </code></pre></div>
 

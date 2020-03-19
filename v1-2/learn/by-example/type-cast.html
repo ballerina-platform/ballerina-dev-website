@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Type Cast
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/type-cast
+permalink: /v1-2/learn/by-example/type-cast
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -17,22 +17,22 @@ permalink: /v1-1/learn/by-example/type-cast
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Department</span> <span class="nx">record</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">code</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">Employee</span> <span class="nx">employee</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">1</span> <span class="p">};</span>
-    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">employee</span><span class="p">;</span>
+    <span class="nx">Employee</span> <span class="nx">employee</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="nx">empNo</span><span class="p">:</span> <span class="mi">1</span><span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span><span class="nx">employee</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Name: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Age: &quot;</span><span class="p">,</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
-    <span class="nx">Employee</span> <span class="nx">employeeTwo</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">person</span><span class="p">;</span>
+    <span class="nx">Employee</span> <span class="nx">employeeTwo</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span><span class="nx">person</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Name: &quot;</span><span class="p">,</span> <span class="nx">employeeTwo</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Age: &quot;</span><span class="p">,</span> <span class="nx">employeeTwo</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
     <span class="nx">anydata</span> <span class="nx">value</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Integer Value: &quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
-    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Converted Float Value: &quot;</span><span class="p">,</span> <span class="nx">f</span><span class="p">);</span>
-    <span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span> <span class="nx">u</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span> <span class="nx">u</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">float</span><span class="p">|</span><span class="kt">boolean</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Converted Float Value: &quot;</span><span class="p">,</span> <span class="nx">u</span><span class="p">);</span>
     <span class="nx">value</span> <span class="p">=</span> <span class="nx">employee</span><span class="p">;</span>
-    <span class="nx">Department</span> <span class="nx">department</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Department</span><span class="p">&gt;</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="nx">Department</span> <span class="nx">department</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">Department</span><span class="p">&gt;</span><span class="nx">value</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -204,8 +204,8 @@ permalink: /v1-1/learn/by-example/type-cast
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee employee = { name: &quot;Jane Doe&quot;, age: 25, empNo: 1 };
-    Person person = &lt;Person&gt; employee;
+                                    <div class="highlight"><pre><code class=ballerina>    Employee employee = {name: &quot;Jane Doe&quot;, age: 25, empNo: 1};
+    Person person = &lt;Person&gt;employee;
     io:println(&quot;Person Name: &quot;, person.name);
     io:println(&quot;Person Age: &quot;, person.age);
 </code></pre></div>
@@ -226,7 +226,7 @@ permalink: /v1-1/learn/by-example/type-cast
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee employeeTwo = &lt;Employee&gt; person;
+                                    <div class="highlight"><pre><code class=ballerina>    Employee employeeTwo = &lt;Employee&gt;person;
     io:println(&quot;Employee Name: &quot;, employeeTwo.name);
     io:println(&quot;Employee Age: &quot;, employeeTwo.age);
 </code></pre></div>
@@ -249,7 +249,7 @@ permalink: /v1-1/learn/by-example/type-cast
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    anydata value = 100;
-    int i = &lt;int&gt; value;
+    int i = &lt;int&gt;value;
     io:println(&quot;Integer Value: &quot;, i);
 </code></pre></div>
 
@@ -270,7 +270,7 @@ permalink: /v1-1/learn/by-example/type-cast
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float f = &lt;float&gt; value;
+                                    <div class="highlight"><pre><code class=ballerina>    float f = &lt;float&gt;value;
     io:println(&quot;Converted Float Value: &quot;, f);
 </code></pre></div>
 
@@ -292,7 +292,7 @@ permalink: /v1-1/learn/by-example/type-cast
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    float|boolean u = &lt;float|boolean&gt; value;
+                                    <div class="highlight"><pre><code class=ballerina>    float|boolean u = &lt;float|boolean&gt;value;
     io:println(&quot;Converted Float Value: &quot;, u);
 </code></pre></div>
 
@@ -335,7 +335,7 @@ permalink: /v1-1/learn/by-example/type-cast
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Department department = &lt;Department&gt; value;
+                                    <div class="highlight"><pre><code class=ballerina>    Department department = &lt;Department&gt;value;
 }
 </code></pre></div>
 

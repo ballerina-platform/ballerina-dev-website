@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Secured Client with Basic Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/secured-client-with-basic-auth
+permalink: /v1-2/learn/by-example/secured-client-with-basic-auth
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,12 +10,12 @@ permalink: /v1-1/learn/by-example/secured-client-with-basic-auth
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">auth</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">auth</span><span class="p">:</span><span class="nx">OutboundBasicAuthProvider</span> <span class="nx">outboundBasicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+<span class="nx">auth</span><span class="p">:</span><span class="nx">OutboundBasicAuthProvider</span> <span class="nx">outboundBasicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;tom&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span>
 <span class="p">});</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">outboundBasicAuthHandler</span> <span class="p">=</span>
-                                            <span class="nx">new</span><span class="p">(</span><span class="nx">outboundBasicAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+                                            <span class="nx">new</span> <span class="p">(</span><span class="nx">outboundBasicAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">outboundBasicAuthHandler</span>
     <span class="p">},</span>
@@ -38,7 +38,7 @@ permalink: /v1-1/learn/by-example/secured-client-with-basic-auth
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">auth</span><span class="p">:</span><span class="nx">InboundBasicAuthProvider</span> <span class="nx">inboundBasicAuthProvider</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">inboundBasicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">inboundBasicAuthProvider</span><span class="p">);</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span>  <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">inboundBasicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">inboundBasicAuthProvider</span><span class="p">);</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">,</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandlers</span><span class="p">:</span> <span class="p">[</span><span class="nx">inboundBasicAuthHandler</span><span class="p">],</span>
         <span class="nx">scopes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;hello&quot;</span><span class="p">]</span>
@@ -163,7 +163,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new({
+                                    <div class="highlight"><pre><code class=ballerina>auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new ({
     username: &quot;tom&quot;,
     password: &quot;1234&quot;
 });
@@ -189,7 +189,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:BasicAuthHandler outboundBasicAuthHandler =
-                                            new(outboundBasicAuthProvider);
+                                            new (outboundBasicAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -208,7 +208,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client httpEndpoint = new(&quot;https://localhost:9090&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client httpEndpoint = new (&quot;https://localhost:9090&quot;, {
     auth: {
         authHandler: outboundBasicAuthHandler
     },
@@ -285,7 +285,6 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
 # `.bal` file and use the `ballerina run` command.
 $ ballerina run secured_client_with_basic_auth.bal
-[ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 INFO  [ballerina/log] - Hello, World!!!
 </code></pre></div>
 
@@ -348,7 +347,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
-http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
+http:BasicAuthHandler inboundBasicAuthHandler = new (inboundBasicAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -368,7 +367,7 @@ http:BasicAuthHandler inboundBasicAuthHandler = new(inboundBasicAuthProvider);
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep  = new(9090, config = {
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener ep = new (9090, config = {
     auth: {
         authHandlers: [inboundBasicAuthHandler],
         scopes: [&quot;hello&quot;]

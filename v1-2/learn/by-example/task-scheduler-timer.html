@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Task Scheduler Timer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/task-scheduler-timer
+permalink: /v1-2/learn/by-example/task-scheduler-timer
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -16,16 +16,16 @@ permalink: /v1-1/learn/by-example/task-scheduler-timer
     <span class="kt">int</span> <span class="nx">maxAge</span><span class="p">;</span>
 <span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">intervalInMillis</span> <span class="p">=</span> <span class="mi">1000</span><span class="p">;</span>
-    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+    <span class="nx">task</span><span class="p">:</span><span class="nx">Scheduler</span> <span class="nx">timer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
         <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="nx">intervalInMillis</span><span class="p">,</span>
         <span class="nx">initialDelayInMillis</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">});</span>
-    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">10</span> <span class="p">};</span>
-    <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service1</span><span class="p">,</span> <span class="nx">attachment</span> <span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">maxAge</span><span class="p">:</span> <span class="mi">10</span><span class="p">};</span>
+    <span class="k">var</span> <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service1</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service1.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service2</span><span class="p">,</span> <span class="nx">attachment</span> <span class="p">=</span> <span class="nx">person</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">attachResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">attach</span><span class="p">(</span><span class="nx">service2</span><span class="p">,</span> <span class="nx">person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">attachResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error attaching the service2.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
@@ -70,9 +70,9 @@ permalink: /v1-1/learn/by-example/task-scheduler-timer
                             <p><p>A Task scheduler can be used to create timers to trigger periodically. A
  service can be attached to the task Scheduler object using the <code>attach()</code>
  function and the Listener can be started using the <code>start()</code> function.
- The service that is being attached must contain the <code>onTrigger()</code> resource function. A parameter
- can be passed into the service using the default <code>attachment</code> parameter
- through the <code>attach()</code> function, which then can be used inside the <code>onTrigger()</code>
+ The service that is being attached must contain the <code>onTrigger()</code> resource function.
+ Additionally, a user can pass a set of <code>any</code> values to the resource using
+ the <code>attach()</code> function, which then can be used inside the <code>onTrigger()</code>
  function. The Listener can be stopped by calling the <code>stop()</code> function.</p>
 </p>
 
@@ -238,7 +238,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler timer = new({
+                                    <div class="highlight"><pre><code class=ballerina>    task:Scheduler timer = new ({
         intervalInMillis: intervalInMillis,
         initialDelayInMillis: 0
     });
@@ -261,7 +261,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person person = { name: &quot;Sam&quot;, age: 0, maxAge: 10 };
+                                    <div class="highlight"><pre><code class=ballerina>    Person person = {name: &quot;Sam&quot;, age: 0, maxAge: 10};
 </code></pre></div>
 
                                 </td>
@@ -280,7 +280,7 @@ import ballerina/task;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var attachResult = timer.attach(service1, attachment = person);
+                                    <div class="highlight"><pre><code class=ballerina>    var attachResult = timer.attach(service1, person);
     if (attachResult is error) {
         io:println(&quot;Error attaching the service1.&quot;);
         return;
@@ -305,7 +305,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    attachResult = timer.attach(service2, attachment = person);
+                                    <div class="highlight"><pre><code class=ballerina>    attachResult = timer.attach(service2, person);
     if (attachResult is error) {
         io:println(&quot;Error attaching the service2.&quot;);
         return;

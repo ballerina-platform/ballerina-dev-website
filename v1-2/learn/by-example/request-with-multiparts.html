@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Request With Multiparts
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/request-with-multiparts
+permalink: /v1-2/learn/by-example/request-with-multiparts
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">mime</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/multiparts&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">multipartDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -24,15 +24,15 @@ permalink: /v1-1/learn/by-example/request-with-multiparts
             <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">part</span> <span class="nx">in</span> <span class="nx">bodyParts</span> <span class="p">{</span>
                 <span class="nx">handleContent</span><span class="p">(</span><span class="nx">part</span><span class="p">);</span>
             <span class="p">}</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">bodyParts</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bodyParts</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">bodyParts</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">bodyParts</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Error in decoding multiparts!&quot;</span><span class="p">);</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
@@ -55,7 +55,7 @@ permalink: /v1-1/learn/by-example/request-with-multiparts
         <span class="k">if</span> <span class="p">(</span><span class="nx">returnResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">returnResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
@@ -64,7 +64,7 @@ permalink: /v1-1/learn/by-example/request-with-multiparts
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -78,21 +78,21 @@ permalink: /v1-1/learn/by-example/request-with-multiparts
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">APPLICATION_JSON</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getJson</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">bodyPart</span><span class="p">.</span><span class="nx">getText</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -225,7 +225,7 @@ import ballerina/mime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new(&quot;http://localhost:9090&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEP = new (&quot;http://localhost:9090&quot;);
 </code></pre></div>
 
                                 </td>
@@ -293,15 +293,15 @@ import ballerina/mime;
             foreach var part in bodyParts {
                 handleContent(part);
             }
-            response.setPayload(&lt;@untainted&gt; bodyParts);
+            response.setPayload(&lt;@untainted&gt;bodyParts);
         } else {
-            log:printError(&lt;string&gt; bodyParts.reason());
+            log:printError(&lt;string&gt;bodyParts.reason());
             response.setPayload(&quot;Error in decoding multiparts!&quot;);
             response.statusCode = 500;
         }
         var result = caller-&gt;respond(response);
         if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, result);
         }
     }
 </code></pre></div>
@@ -428,7 +428,7 @@ import ballerina/mime;
         if (returnResponse is http:Response) {
             var result = caller-&gt;respond(returnResponse);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
+                log:printError(&quot;Error sending response&quot;, result);
             }
         } else {
             http:Response response = new;
@@ -437,7 +437,7 @@ import ballerina/mime;
             response.statusCode = 500;
             var result = caller-&gt;respond(response);
             if (result is error) {
-                log:printError(&quot;Error sending response&quot;, err = result);
+                log:printError(&quot;Error sending response&quot;, result);
             }
         }
     }
@@ -491,7 +491,7 @@ import ballerina/mime;
             if (payload is xml) {
                 log:printInfo(payload.toString());
             } else {
-                log:printError(&lt;string&gt; payload.detail().message);
+                log:printError(&lt;string&gt;payload.detail().message);
             }
         } else if (mime:APPLICATION_JSON == baseType) {
 </code></pre></div>
@@ -516,7 +516,7 @@ import ballerina/mime;
             if (payload is json) {
                 log:printInfo(payload.toJsonString());
             } else {
-                log:printError(&lt;string&gt; payload.detail().message);
+                log:printError(&lt;string&gt;payload.detail().message);
             }
         } else if (mime:TEXT_PLAIN == baseType) {
 </code></pre></div>
@@ -541,7 +541,7 @@ import ballerina/mime;
             if (payload is string) {
                 log:printInfo(payload);
             } else {
-                log:printError(&lt;string&gt; payload.detail().message);
+                log:printError(&lt;string&gt;payload.detail().message);
             }
         }
     }

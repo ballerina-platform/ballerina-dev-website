@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Client Generation
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/client-generation
+permalink: /v1-2/learn/by-example/client-generation
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -11,7 +11,7 @@ permalink: /v1-1/learn/by-example/client-generation
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">openapi</span><span class="p">;</span>
 <span class="err">@</span><span class="nx">openapi</span><span class="p">:</span><span class="nx">ClientEndpoint</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 <span class="nd">@openapi:ClientConfig {</span>
     <span class="nx">generate</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
@@ -25,7 +25,7 @@ permalink: /v1-1/learn/by-example/client-generation
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">hello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -127,7 +127,7 @@ import ballerina/openapi;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@openapi:ClientEndpoint
-listener http:Listener helloEp = new(9090);
+listener http:Listener helloEp = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -178,7 +178,7 @@ service Hello on helloEp {
     resource function hello(http:Caller caller, http:Request req) {
         var result = caller-&gt;respond(&quot;Hello&quot;);
         if (result is error) {
-            log:printError(&quot;Error when responding&quot;, err = result);
+            log:printError(&quot;Error when responding&quot;, result);
         }
     }
 }

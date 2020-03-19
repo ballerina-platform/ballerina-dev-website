@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Range Expressions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/range-expressions
+permalink: /v1-2/learn/by-example/range-expressions
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -25,8 +25,8 @@ permalink: /v1-1/learn/by-example/range-expressions
             <span class="nx">public</span> <span class="kd">function</span> <span class="nx">next</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span><span class="p">);</span>
     <span class="p">}</span> <span class="nx">iterator</span> <span class="p">=</span> <span class="nx">iterableObj</span><span class="p">.</span><span class="nx">__iterator</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\niterable object for 25 ..&lt; 28&quot;</span><span class="p">);</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|}</span><span class="err">?</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span> <span class="kt">int</span> <span class="nx">value</span><span class="p">;</span> <span class="p">|})</span> <span class="p">{</span>
+        <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|}</span><span class="err">?</span> <span class="nx">r</span> <span class="p">=</span> <span class="nx">iterator</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">r</span> <span class="nx">is</span> <span class="nx">record</span> <span class="p">{|</span><span class="kt">int</span> <span class="nx">value</span><span class="p">;|})</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
@@ -233,8 +233,8 @@ permalink: /v1-1/learn/by-example/range-expressions
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:println(&quot;\niterable object for 25 ..&lt; 28&quot;);
     while (true) {
-        record {| int value; |}? r = iterator.next();
-        if (r is record {| int value; |}) {
+        record {|int value;|}? r = iterator.next();
+        if (r is record {|int value;|}) {
             io:println(r.value);
         } else {
 </code></pre></div>

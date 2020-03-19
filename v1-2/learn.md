@@ -139,5 +139,9 @@ redirect_from:
       <h3><a href="/v1-2/learn/how-to-keep-ballerina-up-to-date">Keeping Ballerina Up to Date</a></h3>
       <p>How to keep your Ballerina installation up to date with the latest patch and minor releases.</p>
    </div>
+   <div class="col-sm-12 col-md-6 cTwoCol">
+      <h3><a href="/v1-2/learn/how-to-use-java-interoperability">Java Interoperability</a></h3>
+      <p>How to use Java interoperability to call Java code from Ballerina.</p>
+   </div>
 </div>
 <link rel="stylesheet" href="/css/ballerina-io-learn.css">

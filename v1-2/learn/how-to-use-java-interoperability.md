@@ -38,14 +38,14 @@ The [fourth](#ballerina-ffi) and [fifth](#calling-java-code-from-ballerina) sect
 - [Calling Java code from Ballerina](#calling-java-code-from-ballerina)
 
 ## How to use SnakeYAML Java library in Ballerina
-SnakeYAML is a YAML parser for Java. In this section, we’ll learn how to use this library to parse a YAML document in Ballerina. 
+SnakeYAML is a YAML parser for Java. In this section, we'll learn how to use this library to parse a YAML document in Ballerina. 
 
 We'll develop a Ballerina program that parses the given YAML file and writes the content to the standard out.
 
-Let’s get started.  
+Let's get started.  
 
 ### Step 1: Write the Java code
-We recommend you to always start by writing the logic in Java. It gives you an idea of the set of Java classes required to implement your logic. Once you know the set of classes, we can use the bindgen tool to generate Ballerina bindings for those classes. 
+We recommend you to always start by writing the Java code. It gives you an idea of the set of Java classes required to implement your logic. Then, we can use the `bindgen` tool to generate Ballerina bindings for those classes. 
 
 The following Java code uses the SnakeYAML API to parse the given YAML file. Note that this is not the most idiomatic way of writing the Java code for this scenario. 
 
@@ -71,18 +71,18 @@ public class SnakeYamlSample {
 }
 ```
 
-Here, we’ve used four Java classes. 
-org.yaml.snakeyaml.Yaml
+Here, we've used four Java classes. 
+- org.yaml.snakeyaml.Yaml
 - `java.io.FileInputStream`
 - `java.io.InputStream`
 - `java.util.Map`
 
 You can see them in the imported class list. We encourage you to generate Ballerina bindings for these four classes as a start.  
 
-Now, we’ll create the environment for our Ballerina program. 
+Now, we'll create an environment for our Ballerina program. 
 
 ### Step 2: Setup the Ballerina project
-This section assumes that you have already read the guide “How to Structure Ballerina Code”. 
+This section assumes that you have already read the guide [How to Structure Ballerina Code](https://ballerina.io/v1-1/learn/how-to-structure-ballerina-code/). 
 
 #### Create a Ballerina project
 ```sh
@@ -152,10 +152,10 @@ Hello World!
 Great! You are all set for the next step. 
 
 ### Step 3: Generate Ballerina bindings 
-In this step, we’ll use the bindgen tool to generate the Ballerina bindings for those four classes that talked about in Step 1. If you want more information about the bindgen tool, you can refer to the [The bindgen tool](#the-bindgen-tool) section.
+In this step, we'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer to the [The `bindgen` tool](#the-bindgen-tool) section.
 
 #### Copy the SnakeYAML library to your project
-Download the latest version of the SnakeYAML library and copy it to the project. We need to copy only the SnakeYAML library, but for most cases, you may need to copy more than one JAR file. Make sure that you add all the direct and their transitive dependencies. 
+Download the latest version of the SnakeYAML library and copy it to the project. We need to copy only the SnakeYAML library, but for most cases, you may need to copy more than one JAR files. Make sure that you add all the direct and their transitive dependencies. 
 
 Create a directory in your project root to store all the Java libraries. 
 ```sh
@@ -163,8 +163,8 @@ Create a directory in your project root to store all the Java libraries.
 > cp <path-to-snakeyaml-lib>/snakeyaml-1.25.jar javalibs
 ```
 
-Add SnakeYAML library to the Ballerina.toml file
-Copy and paste the following TOML snippet to the Ballerina.toml file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable jar generated for your Ballerina program. Refer to the “Packaging Java libraries with Ballerina programs” for more details. 
+#### Add SnakeYAML library to the Ballerina.toml file
+Copy and paste the following TOML snippet to the `Ballerina.toml` file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable jar generated for your Ballerina program. Refer to the [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs) for more details. 
 
 ```toml
 [platform]
@@ -194,11 +194,11 @@ Generating dependency bindings for:
 	... 
 	... 
 ```
-- The -cp option specifies the list of Java libraries required to generate bindings. 
-- The -o option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the yamlparser module. 
+- The `-cp` option specifies the list of Java libraries required to generate bindings. 
+- The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
 - The argument list specifies the Java class names. 
 
-The bindgen tool generate bindings for 
+The `bindgen` tool generate bindings for 
 - The specified Java classes 
 - The Java classes exposed in the public APIs of all the specified classes. 
 
@@ -217,9 +217,9 @@ Hello World!
 ```
 
 ### Step 4: Write the Ballerina code
-Note that the bindgen tool is still experimental. We are in the process of improving the generated code.  
+*Note that the `bindgen` tool is still experimental. We are in the process of improving the generated code.*  
 
-Now, we’ll use the generated bindings and write the Ballerina code that uses SnakeYAML library. Here is the Java code. Let’s develop the corresponding Ballerina code step by step. 
+Now, we’ll use the generated bindings and write the Ballerina code that uses the SnakeYAML library. Here is the Java code. Let’s develop the corresponding Ballerina code step by step. 
 ```java
 public class SnakeYamlSample {
 
@@ -237,17 +237,17 @@ public class SnakeYamlSample {
 ```
 
 ### Create the FileInputStream
-Our goal here is to create a new java.io.FileInputStream instance from the filename. In step 3, we generated bindings for required Java classes. Following is the code snippet that does the job. 
+Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. Following is the code snippet that does the job. 
 
 ```ballerina
 FileInputStream | error fileInputStream = newFileInputStream3(filename);
 ```
 
-Here, FileInputStream is the Ballerina object generated for the java.io.FileInputStream class. 
-- You can find functions that start with newFileInputStream in the generated code. Each such function creates a new java.io.FileInputStream instance. Ballerina does not support function overloading. Therefore, the bindgen tool generates a separate Ballerina function for each overloaded method or constructor. This is why you see “3” appended to the function newFileInputStream3. We will improve the functions names of generated bindings in a future release. 
-- All the methods in the java.io.FileInputStream class are mapped to methods in the generated Ballerina object.  
+Here, `FileInputStream` is the Ballerina object generated for the `java.io.FileInputStream` class. 
+- You can find functions that start with newFileInputStream in the generated code. Each such function creates a new `java.io.FileInputStream` instance. Ballerina does not support function overloading. Therefore, the bindgen tool generates a separate Ballerina function for each overloaded method or constructor. We will improve the function names of generated bindings in a future release. 
+- All the methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina object.  
 
-Next, we’ll handle the error using a type guard
+Next, we’ll handle the error using a type guard.
 ```ballerina
 
 if fileInputStream is error {
@@ -258,20 +258,20 @@ if fileInputStream is error {
 }
 ```
 ### Create SnakeYAML entry point
-The org.yaml.snakeyaml.Yaml Class is the entrypoint to the SnakeYAML API.  The corresponding generated Ballerina object is Yaml. The  function newYaml5() is mapped to the default constructor of the Java class.  
+The `org.yaml.snakeyaml.Yaml` Class is the entry point to the SnakeYAML API.  The corresponding generated Ballerina object is Yaml. The function `newYaml5()` is mapped to the default constructor of the Java class.   
 ```ballerina
 Yaml yaml = newYaml5();
 ```
 ###  Loads the YAML Document
-We’ll be using the org.yaml.snakeyaml.Yaml.load(InputStream is) method to get a Java Map instance from the given InputStream. 
+We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given InputStream. 
 ```ballerina
 
 InputStream inputStream = new (fileInputStream.jObj);
 Object mapObj = yaml.load2(inputStream);
 ```
-The generated code does not handle Java subtyping at the moment. Therefore InputStream inputStream = newFileInputStream3(filename) will not compile. We will improve this in a future release. As a workaround, you can create a new java.io.InputStream as above. You can find more details in the “The bindgen tool” section.
+The generated code does not handle Java subtyping at the moment. Therefore `InputStream inputStream = newFileInputStream3(filename) `will not compile. We will improve this in a future release. As a workaround, you can create a new `java.io.InputStream` as above. 
 
-The org.yaml.snakeyaml.Yaml.load(InputStream is) method is a generic method. The bindgen tool does to support Java generics at the moment. That is why the corresponding Ballerina method returns an Object. 
+The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
 
 ###  Print returned the Map instance. 
 You can print the content of the Map instance the standard out as follows. 
@@ -279,7 +279,7 @@ You can print the content of the Map instance the standard out as follows.
 io:println(mapObj);
 ```
 ### Completed code 
-Here is the complete code. You can replace the contents in src/yamlparser/main.bal with the following code.
+Here is the complete code. You can replace the contents in `src/yamlparser/main.bal` with the following code.
 ```ballerina
 import ballerina/io;
  
@@ -297,7 +297,7 @@ public function main(string... args) returns error? {
 }
 ```
 
-Let’s build and run this code. 
+Let's build and run this code. 
 ```sh
 > ballerina build yamlparser 
 Compiling source
@@ -321,7 +321,7 @@ Suite #292
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, product=[{sku=BL394D, quantity=4, description=Basketball, price=450.0}, {sku=BL4438H, quantity=null, description=Super Hoop, price=2392.0}], tax=251.42, total=4443.52, comments=Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.\}
 ```
-In this section we explained how to use the bindgen tool to generate Ballerina bindings for Java classes and how to use those generated ones. 
+In this section, we explained how to use the `bindgen` tool to generate Ballerina bindings for Java classes and how to use those generated ones. 
 
 The next sections provide more details on various aspects related to Java interoperability in Ballerina. 
 

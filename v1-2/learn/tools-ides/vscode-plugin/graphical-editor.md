@@ -5,6 +5,8 @@ permalink: /v1-2/learn/vscode-plugin/graphical-editor
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor/
+  - /learn/tools-ides/vscode-plugin/graphical-editor
+  - /learn/tools-ides/vscode-plugin/graphical-editor/
 ---
 
 # Graphical View

@@ -6,6 +6,9 @@ redirect_from:
   - /v1-2/learn/getting-started
   - /learn/getting-started
   - /learn/getting-started/
+  - /learn/installing-ballerina/
+  - /learn/installing-ballerina
+  - /learn/installing-ballerina/#installing-from-source
 ---
 
 # Installing Ballerina

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Distributed Transactions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/transactions-distributed
+permalink: /v1-2/learn/by-example/transactions-distributed
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -54,7 +54,7 @@ permalink: /v1-1/learn/by-example/transactions-distributed
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">participantEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Got response from bizservice&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_OK</span><span class="p">;</span>
@@ -89,7 +89,7 @@ permalink: /v1-1/learn/by-example/transactions-distributed
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">updateReq</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">updateReq</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Payload error occurred!&quot;</span><span class="p">,</span> <span class="nx">updateReq</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">conn</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -136,9 +136,9 @@ permalink: /v1-1/learn/by-example/transactions-distributed
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="table-queries.html">
+                                    <a class="next" href="jdbc2-init-options.html">
                                         <span>NEXT ></span>
-                                        <p>Select all the fields</p>
+                                        <p>JDBC Client Initialization</p>
                                     </a>
                                 </div>
                                 
@@ -424,7 +424,7 @@ service InitiatorService on new http:Listener(8080) {
     var result = participantEP-&gt;post(&quot;&quot;, req);
     log:printInfo(&quot;Got response from bizservice&quot;);
     if (result is error) {
-        log:printError(&quot;Error when calling the backend: &quot;, err = result);
+        log:printError(&quot;Error when calling the backend: &quot;, result);
         return false;
     } else {
         return result.statusCode == http:STATUS_OK;
@@ -664,7 +664,7 @@ service ParticipantService on new http:Listener(8889) {
         } else {
             res.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
             res.setPayload(updateReq.reason());
-            log:printError(&quot;Payload error occurred!&quot;, err = updateReq);
+            log:printError(&quot;Payload error occurred!&quot;, updateReq);
         }
 </code></pre></div>
 

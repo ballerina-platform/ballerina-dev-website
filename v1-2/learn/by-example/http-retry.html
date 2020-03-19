@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Retry
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-retry
+permalink: /v1-2/learn/by-example/http-retry
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,7 +10,7 @@ permalink: /v1-1/learn/by-example/http-retry
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
             <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
@@ -18,7 +18,8 @@ permalink: /v1-1/learn/by-example/http-retry
             <span class="nx">maxWaitIntervalInMillis</span><span class="p">:</span> <span class="mi">20000</span>
         <span class="p">},</span>
         <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
-    <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="p">}</span>
+<span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/retry&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">retryDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
@@ -36,7 +37,7 @@ permalink: /v1-1/learn/by-example/http-retry
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errCause</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -190,7 +191,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new(&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -289,7 +290,8 @@ import ballerina/runtime;
                                     <div class="highlight"><pre><code class=ballerina>            maxWaitIntervalInMillis: 20000
         },
         timeoutInMillis: 2000
-    });
+    }
+);
 </code></pre></div>
 
                                 </td>
@@ -378,7 +380,7 @@ service retryDemoService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errCause = &lt;string&gt; backendResponse.detail()?.message;
+            string errCause = &lt;string&gt;backendResponse.detail()?.message;
             response.setPayload(errCause);
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {

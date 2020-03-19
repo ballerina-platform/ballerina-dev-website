@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: User-defined Error Types
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/user-defined-error
+permalink: /v1-2/learn/by-example/user-defined-error
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,7 +13,7 @@ permalink: /v1-1/learn/by-example/user-defined-error
     <span class="nx">error</span> <span class="nx">cause</span><span class="err">?</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">accountType</span><span class="p">;</span>
 <span class="p">};</span>
-<span class="nx">type</span> <span class="nx">InvalidAccountTypeError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">INVALID_ACC_TYPE</span><span class="p">,</span> <span class="nx">InvalidAccountTypeErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getTypeId</span><span class="p">(</span><span class="kt">string</span> <span class="nx">accountType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">|</span> <span class="nx">InvalidAccountTypeError</span> <span class="p">{</span>
+<span class="nx">type</span> <span class="nx">InvalidAccountTypeError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">INVALID_ACC_TYPE</span><span class="p">,</span> <span class="nx">InvalidAccountTypeErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getTypeId</span><span class="p">(</span><span class="kt">string</span> <span class="nx">accountType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">InvalidAccountTypeError</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">accountType</span> <span class="p">{</span>
         <span class="s">&quot;checking&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
         <span class="s">&quot;savings&quot;</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">2</span><span class="p">;</span> <span class="p">}</span>
@@ -26,7 +26,7 @@ permalink: /v1-1/learn/by-example/user-defined-error
     <span class="kt">int</span> <span class="nx">accountID</span><span class="p">;</span>
 <span class="p">};</span><span class="kd">const</span> <span class="nx">INVALID_ACCOUNT_ID</span> <span class="p">=</span> <span class="s">&quot;InvalidAccountID&quot;</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">=</span> <span class="s">&quot;AccountNotFound&quot;</span><span class="p">;</span>
-<span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">ACCOUNT_NOT_FOUND</span> <span class="p">|</span> <span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">AccountNotFoundErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountNotFoundError</span> <span class="p">{</span>
+<span class="nx">type</span> <span class="nx">AccountNotFoundError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="nx">ACCOUNT_NOT_FOUND</span><span class="p">|</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">AccountNotFoundErrorData</span><span class="p">&gt;;</span><span class="kd">function</span> <span class="nx">getAccountBalance</span><span class="p">(</span><span class="kt">int</span> <span class="nx">accountID</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">AccountNotFoundError</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">accountID</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">AccountNotFoundError</span> <span class="nx">accountNotFoundError</span> <span class="p">=</span>
                                             <span class="nx">error</span><span class="p">(</span><span class="nx">INVALID_ACCOUNT_ID</span><span class="p">,</span> <span class="nx">accountID</span> <span class="p">=</span> <span class="nx">accountID</span><span class="p">);</span>
@@ -267,7 +267,7 @@ permalink: /v1-1/learn/by-example/user-defined-error
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getTypeId(string accountType) returns int | InvalidAccountTypeError {
+                                    <div class="highlight"><pre><code class=ballerina>function getTypeId(string accountType) returns int|InvalidAccountTypeError {
     match accountType {
         &quot;checking&quot; =&gt; { return 1; }
         &quot;savings&quot; =&gt; { return 2; }
@@ -334,7 +334,7 @@ const ACCOUNT_NOT_FOUND = &quot;AccountNotFound&quot;;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type AccountNotFoundError error&lt;ACCOUNT_NOT_FOUND | INVALID_ACCOUNT_ID, AccountNotFoundErrorData&gt;;
+                                    <div class="highlight"><pre><code class=ballerina>type AccountNotFoundError error&lt;ACCOUNT_NOT_FOUND|INVALID_ACCOUNT_ID, AccountNotFoundErrorData&gt;;
 </code></pre></div>
 
                                 </td>

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: XA Transactions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/xa-transactions
+permalink: /v1-2/learn/by-example/xa-transactions
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -28,7 +28,7 @@ permalink: /v1-1/learn/by-example/xa-transactions
     <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
     <span class="nx">transaction</span> <span class="p">{</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB1</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(NAME) &quot;</span> <span class="o">+</span>
-                               <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
+                              <span class="s">&quot;VALUES (&#39;Anne&#39;)&quot;</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">key</span> <span class="p">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">UpdateResult</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">updatedRowCount</span><span class="p">;</span>
@@ -37,10 +37,10 @@ permalink: /v1-1/learn/by-example/xa-transactions
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Generated key: &quot;</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Insert to student table failed: &quot;</span><span class="p">,</span>
-                        <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">ret</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                       <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">ret</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB2</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY (ID, VALUE) VALUES (?, ?)&quot;</span><span class="p">,</span>
-                                    <span class="nx">key</span><span class="p">,</span> <span class="mi">2500</span><span class="p">);</span>
+                              <span class="nx">key</span><span class="p">,</span> <span class="mi">2500</span><span class="p">);</span>
         <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Insert to SALARY table&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="nx">onretry</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrying transaction&quot;</span><span class="p">);</span>
@@ -297,7 +297,7 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        ret = testDB1-&gt;update(&quot;INSERT INTO CUSTOMER(NAME) &quot; +
-                               &quot;VALUES (&#39;Anne&#39;)&quot;);
+                              &quot;VALUES (&#39;Anne&#39;)&quot;);
         int key = -1;
         if (ret is jdbc:UpdateResult) {
             int count = ret.updatedRowCount;
@@ -306,7 +306,7 @@ import ballerinax/java.jdbc;
             io:println(&quot;Generated key: &quot;, key);
         } else {
             io:println(&quot;Insert to student table failed: &quot;,
-                        &lt;string&gt;ret.detail()?.message);
+                       &lt;string&gt;ret.detail()?.message);
         }
 </code></pre></div>
 
@@ -328,7 +328,7 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        ret = testDB2-&gt;update(&quot;INSERT INTO SALARY (ID, VALUE) VALUES (?, ?)&quot;,
-                                    key, 2500);
+                              key, 2500);
         handleUpdate(ret, &quot;Insert to SALARY table&quot;);
     } onretry {
         io:println(&quot;Retrying transaction&quot;);

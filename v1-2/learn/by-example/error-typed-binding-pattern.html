@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Error-Typed Binding Pattern
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/error-typed-binding-pattern
+permalink: /v1-2/learn/by-example/error-typed-binding-pattern
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -20,7 +20,7 @@ permalink: /v1-1/learn/by-example/error-typed-binding-pattern
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span><span class="p">,</span> <span class="nx">reasonTwo</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonThree</span><span class="p">,</span> <span class="nx">info</span><span class="p">=</span><span class="nx">info2</span><span class="p">,</span> <span class="o">...</span><span class="nx">filteredParams</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonThree</span><span class="p">,</span> <span class="nx">info</span> <span class="p">=</span> <span class="nx">info2</span><span class="p">,</span> <span class="o">...</span><span class="nx">filteredParams</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Detail Mapping: &quot;</span><span class="p">,</span> <span class="nx">filteredParams</span><span class="p">);</span>
     
     <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">detailMsg</span> <span class="p">=</span> <span class="nx">detailMsg</span><span class="p">,</span> <span class="nx">isFatal</span> <span class="p">=</span> <span class="nx">isFatal</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
@@ -232,7 +232,7 @@ permalink: /v1-1/learn/by-example/error-typed-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var error(reasonThree, info=info2, ...filteredParams) = getSampleError();
+                                    <div class="highlight"><pre><code class=ballerina>    var error(reasonThree, info = info2, ...filteredParams) = getSampleError();
     io:println(&quot;Detail Mapping: &quot;, filteredParams);
     
 </code></pre></div>

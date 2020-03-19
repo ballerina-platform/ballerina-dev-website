@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Object Type Reference
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/object-type-reference
+permalink: /v1-2/learn/by-example/object-type-reference
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,7 +14,7 @@ permalink: /v1-1/learn/by-example/object-type-reference
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;};</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>    
+    <span class="o">*</span><span class="nx">Person</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">;</span>
 <span class="p">};</span><span class="nx">type</span> <span class="nx">Owner</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">status</span><span class="p">;</span>
@@ -31,7 +31,7 @@ permalink: /v1-1/learn/by-example/object-type-reference
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">getFullName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span><span class="p">{</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getSalary</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">salary</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -238,7 +238,7 @@ permalink: /v1-1/learn/by-example/object-type-reference
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    *Person;    
+                                    <div class="highlight"><pre><code class=ballerina>    *Person;
     public float salary;
 </code></pre></div>
 
@@ -397,7 +397,7 @@ permalink: /v1-1/learn/by-example/object-type-reference
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function getSalary() returns float{
+                                    <div class="highlight"><pre><code class=ballerina>    function getSalary() returns float {
         return self.salary;
     }
 };

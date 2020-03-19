@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Record Destructure Binding Pattern
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
+permalink: /v1-2/learn/by-example/record-destructure-binding-pattern
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -19,25 +19,29 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
 <span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">personAge</span><span class="p">;</span>
     <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="p">&gt;</span> <span class="nx">otherDetails</span> <span class="p">=</span> <span class="p">{};</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">firstName</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">personAge</span><span class="p">,</span> <span class="o">...</span><span class="nx">otherDetails</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">firstName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">personAge</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Other Details: &quot;</span><span class="p">,</span> <span class="nx">otherDetails</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">age</span> <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
+    <span class="p">{</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="kt">string</span> <span class="nx">countryName</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">capitalName</span><span class="p">;</span>
-    <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span> <span class="p">}}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
+    <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">countryName</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="nx">capitalName</span><span class="p">}}</span> <span class="p">=</span> <span class="nx">getCountry</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Country Name: &quot;</span><span class="p">,</span> <span class="nx">countryName</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Capital Name: &quot;</span><span class="p">,</span> <span class="nx">capitalName</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getPerson</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span>
-                      <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span> <span class="p">};</span>
+    <span class="nx">Person</span> <span class="nx">person</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span>
+        <span class="nx">age</span><span class="p">:</span> <span class="mi">28</span><span class="p">,</span>
+        <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span>
+        <span class="s">&quot;occupation&quot;</span><span class="p">:</span> <span class="s">&quot;Software Engineer&quot;</span>
+    <span class="p">};</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">getCountry</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">Country</span> <span class="p">{</span>
-    <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span> <span class="p">};</span>
-    <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span> <span class="p">};</span>
+    <span class="nx">Capital</span> <span class="nx">capital</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">};</span>
+    <span class="nx">Country</span> <span class="nx">country</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">,</span> <span class="nx">capital</span><span class="p">:</span> <span class="nx">capital</span><span class="p">};</span>
     <span class="k">return</span> <span class="nx">country</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -223,7 +227,7 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    { name: firstName, age: personAge, ...otherDetails } = getPerson();
+                                    <div class="highlight"><pre><code class=ballerina>    {name: firstName, age: personAge, ...otherDetails} = getPerson();
     io:println(&quot;Name: &quot;, firstName);
     io:println(&quot;Age: &quot;, personAge);
     io:println(&quot;Other Details: &quot;, otherDetails);
@@ -264,7 +268,7 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    { name, age } = getPerson();
+                                    <div class="highlight"><pre><code class=ballerina>    {name, age} = getPerson();
     io:println(&quot;Name: &quot;, name);
     io:println(&quot;Age: &quot;, age);
 </code></pre></div>
@@ -301,7 +305,7 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    { name: countryName, capital: { name: capitalName }} = getCountry();
+                                    <div class="highlight"><pre><code class=ballerina>    {name: countryName, capital: {name: capitalName}} = getCountry();
     io:println(&quot;Country Name: &quot;, countryName);
     io:println(&quot;Capital Name: &quot;, capitalName);
 }
@@ -325,8 +329,12 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getPerson() returns Person {
-    Person person = { name: &quot;Peter&quot;, age: 28, country: &quot;Sri Lanka&quot;,
-                      &quot;occupation&quot;: &quot;Software Engineer&quot; };
+    Person person = {
+        name: &quot;Peter&quot;,
+        age: 28,
+        country: &quot;Sri Lanka&quot;,
+        &quot;occupation&quot;: &quot;Software Engineer&quot;
+    };
     return person;
 }
 </code></pre></div>
@@ -341,8 +349,8 @@ permalink: /v1-1/learn/by-example/record-destructure-binding-pattern
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function getCountry() returns Country {
-    Capital capital = { name: &quot;Colombo&quot; };
-    Country country = { name: &quot;Sri Lanka&quot;, capital: capital };
+    Capital capital = {name: &quot;Colombo&quot;};
+    Country country = {name: &quot;Sri Lanka&quot;, capital: capital};
     return country;
 }
 </code></pre></div>

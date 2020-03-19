@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Fork Variable Access
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/fork-variable-access
+permalink: /v1-2/learn/by-example/fork-variable-access
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -11,9 +11,9 @@ permalink: /v1-1/learn/by-example/fork-variable-access
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">100</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">s</span> <span class="p">=</span> <span class="s">&quot;WSO2&quot;</span><span class="p">;</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bert&quot;</span><span class="p">,</span> <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span> <span class="s">&quot;postcode&quot;</span><span class="p">:</span> <span class="s">&quot;10001&quot;</span><span class="p">};</span>    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
-    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
-    <span class="kt">string</span> <span class="nx">postcode</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;postcode&quot;</span><span class="p">];</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] before fork: &quot;</span> <span class="o">+</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Bert&quot;</span><span class="p">,</span> <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;New York&quot;</span><span class="p">,</span> <span class="s">&quot;postcode&quot;</span><span class="p">:</span> <span class="s">&quot;10001&quot;</span><span class="p">};</span>    <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">postcode</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;postcode&quot;</span><span class="p">];</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] before fork: &quot;</span> <span class="o">+</span>
                    <span class="s">&quot;value of integer variable is [&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;] &quot;</span><span class="p">,</span>
                    <span class="s">&quot;value of string variable is [&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[reference type variables] before fork: value &quot;</span> <span class="o">+</span>
       <span class="s">&quot;of name is [&quot;</span><span class="p">,</span> <span class="nx">name</span> <span class="p">,</span> <span class="s">&quot;] value of city is [&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot;] value of &quot;</span> <span class="o">+</span>
@@ -38,9 +38,9 @@ permalink: /v1-1/learn/by-example/fork-variable-access
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[value type variables] after fork: &quot;</span> <span class="o">+</span>
                <span class="s">&quot;value of integer variable is [&quot;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="s">&quot;] &quot;</span><span class="p">,</span>
                <span class="s">&quot;value of string variable is [&quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
-    <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
-    <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
-    <span class="kt">string</span> <span class="nx">street</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">[</span><span class="s">&quot;street&quot;</span><span class="p">];</span>
+    <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">];</span>
+    <span class="nx">city</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;city&quot;</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">street</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;street&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[reference type variables] after fork: &quot;</span> <span class="o">+</span>
                <span class="s">&quot;value of name is [&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span>
                <span class="s">&quot;] value of city is [&quot;</span><span class="p">,</span> <span class="nx">city</span><span class="p">,</span> <span class="s">&quot;] value of street is [&quot;</span><span class="p">,</span> <span class="nx">street</span><span class="p">,</span>
@@ -198,7 +198,7 @@ permalink: /v1-1/learn/by-example/fork-variable-access
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    int i = 100;
     string s = &quot;WSO2&quot;;
-    map&lt;string&gt; m = { &quot;name&quot;: &quot;Bert&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;postcode&quot;: &quot;10001&quot;};
+    map&lt;string&gt; m = {&quot;name&quot;: &quot;Bert&quot;, &quot;city&quot;: &quot;New York&quot;, &quot;postcode&quot;: &quot;10001&quot;};
 </code></pre></div>
 
                                 </td>
@@ -217,9 +217,9 @@ permalink: /v1-1/learn/by-example/fork-variable-access
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string name = &lt;string&gt; m[&quot;name&quot;];
-    string city = &lt;string&gt; m[&quot;city&quot;];
-    string postcode = &lt;string&gt; m[&quot;postcode&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    string name = &lt;string&gt;m[&quot;name&quot;];
+    string city = &lt;string&gt;m[&quot;city&quot;];
+    string postcode = &lt;string&gt;m[&quot;postcode&quot;];
 </code></pre></div>
 
                                 </td>
@@ -503,8 +503,8 @@ permalink: /v1-1/learn/by-example/fork-variable-access
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    name = &lt;string&gt; m[&quot;name&quot;];
-    city = &lt;string&gt; m[&quot;city&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    name = &lt;string&gt;m[&quot;name&quot;];
+    city = &lt;string&gt;m[&quot;city&quot;];
 </code></pre></div>
 
                                 </td>
@@ -524,7 +524,7 @@ permalink: /v1-1/learn/by-example/fork-variable-access
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    string street = &lt;string&gt; m[&quot;street&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    string street = &lt;string&gt;m[&quot;street&quot;];
     io:println(&quot;[reference type variables] after fork: &quot; +
                &quot;value of name is [&quot;, name,
                &quot;] value of city is [&quot;, city, &quot;] value of street is [&quot;, street,

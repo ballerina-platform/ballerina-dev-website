@@ -2,17 +2,14 @@
 layout: ballerina-example-page
 title: HTTP 1.1 to 2.0 Protocol Switch
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-1-1-to-2-0-protocol-switch
-redirect_from:
-  - /v1-1/learn/by-example/http-1.1-to-2.0-protocol-switch
-  - /v1-1/learn/by-example/http-1.1-to-2.0-protocol-switch.html
+permalink: /v1-2/learn/by-example/http-1.1-to-2.0-protocol-switch
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">http2serviceClientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span> <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">http2serviceClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:7090&quot;</span><span class="p">,</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/http11Service&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">http11Service</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -26,7 +23,7 @@ redirect_from:
             <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientResponse</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -34,8 +31,8 @@ redirect_from:
                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">http2serviceEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">7090</span><span class="p">,</span>
-    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span> <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
+<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">http2serviceEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">7090</span><span class="p">,</span>
+    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">httpVersion</span><span class="p">:</span> <span class="s">&quot;2.0&quot;</span><span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/http2service&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">http2service</span> <span class="nx">on</span> <span class="nx">http2serviceEP</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -44,7 +41,7 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">http2Resource</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
                                     <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">clientRequest</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;response from http2 service&quot;</span> <span class="p">}</span> <span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">:</span> <span class="s">&quot;response from http2 service&quot;</span><span class="p">}};</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -167,7 +164,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client http2serviceClientEP = new(&quot;http://localhost:7090&quot;, { httpVersion: &quot;2.0&quot; });
+                                    <div class="highlight"><pre><code class=ballerina>http:Client http2serviceClientEP = new (&quot;http://localhost:7090&quot;, {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
                                 </td>
@@ -253,7 +250,7 @@ service http11Service on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            response.statusCode = 500;
-            response.setPayload(&lt;string&gt;clientResponse.reason());
+            response.setPayload(&lt;string&gt;clientResponse.detail()?.message);
         }
 </code></pre></div>
 
@@ -310,8 +307,8 @@ service http11Service on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener http2serviceEP = new(7090,
-    config = { httpVersion: &quot;2.0&quot; });
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener http2serviceEP = new (7090,
+    config = {httpVersion: &quot;2.0&quot;});
 </code></pre></div>
 
                                 </td>
@@ -362,7 +359,7 @@ service http2service on http2serviceEP {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        http:Response response = new;
-        json msg = { &quot;response&quot;: { &quot;message&quot;: &quot;response from http2 service&quot; } };
+        json msg = {&quot;response&quot;: {&quot;message&quot;: &quot;response from http2 service&quot;}};
         response.setPayload(msg);
 </code></pre></div>
 

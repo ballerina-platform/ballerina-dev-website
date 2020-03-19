@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Chat Application
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/websocket-chat-application
+permalink: /v1-2/learn/by-example/websocket-chat-application
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -30,7 +30,7 @@ permalink: /v1-1/learn/by-example/websocket-chat-application
             <span class="k">return</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">headers</span> <span class="p">=</span> <span class="p">{};</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="p">|</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketError</span> <span class="nx">wsEp</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">acceptWebSocketUpgrade</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">wsEp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">wsEp</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="nx">NAME</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
             <span class="kt">string</span><span class="err">?</span> <span class="nx">ageValue</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getQueryParamValue</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">);</span>
@@ -103,9 +103,9 @@ permalink: /v1-1/learn/by-example/websocket-chat-application
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="header-based-routing.html">
+                                    <a class="next" href="websocket-retry.html">
                                         <span>NEXT ></span>
-                                        <p>Header-Based Routing</p>
+                                        <p>Retry</p>
                                     </a>
                                 </div>
                                 
@@ -273,7 +273,7 @@ service chatAppUpgrader on new http:Listener(9090) {
             return;
         }
         map&lt;string&gt; headers = {};
-        http:WebSocketCaller | http:WebSocketError wsEp = caller-&gt;acceptWebSocketUpgrade(headers);
+        http:WebSocketCaller|http:WebSocketError wsEp = caller-&gt;acceptWebSocketUpgrade(headers);
         if (wsEp is http:WebSocketCaller) {
 </code></pre></div>
 
@@ -487,10 +487,6 @@ returns (string) {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -500,21 +496,8 @@ returns (string) {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and use the `ballerina build` command.
-$ ballerina build websocket_chat_application.bal
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the sample using the `run` command on the jar file generated:
-$ ballerina run websocket_chat_application-executable.jar
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run websocket_chat_application.bal
 </code></pre></div>
 
                                 </td>

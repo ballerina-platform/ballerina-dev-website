@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Length
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/length
+permalink: /v1-2/learn/by-example/length
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,8 +13,8 @@ permalink: /v1-1/learn/by-example/length
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">intArray</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Integer array size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
     <span class="kt">json</span><span class="p">[]</span> <span class="nx">jsonArray</span> <span class="p">=</span> <span class="p">[</span>
-        <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neal&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span> <span class="p">}</span>
+        <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">31</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Neal&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">}</span>
     <span class="p">];</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">jsonArray</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON array size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
@@ -33,12 +33,12 @@ permalink: /v1-1/learn/by-example/length
 <span class="s">                    &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;</span>
 <span class="s">                    &lt;!--Price: $10--&gt;</span>
 <span class="s">                  &lt;/book&gt;`</span><span class="p">;</span>
-    <span class="nx">length</span> <span class="p">=</span> <span class="nx">x1</span><span class="p">.</span><span class="nx">getChildren</span><span class="p">().</span><span class="nx">elements</span><span class="p">().</span><span class="nx">length</span><span class="p">();</span>
+    <span class="nx">length</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x1</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;).</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML child elements size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
     <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">tupleVar</span> <span class="p">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">];</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">tupleVar</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Tuple size: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
-    <span class="nx">Student</span> <span class="nx">stu</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">17</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">stu</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">17</span><span class="p">};</span>
     <span class="nx">length</span> <span class="p">=</span> <span class="nx">stu</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Field size in `Student` record: &quot;</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{|</span>
@@ -221,8 +221,8 @@ permalink: /v1-1/learn/by-example/length
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    json[] jsonArray = [
-        { &quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 31 },
-        { &quot;name&quot;: &quot;Neal&quot;, &quot;age&quot;: 22 }
+        {&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 31},
+        {&quot;name&quot;: &quot;Neal&quot;, &quot;age&quot;: 22}
     ];
 </code></pre></div>
 
@@ -367,7 +367,7 @@ permalink: /v1-1/learn/by-example/length
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    length = x1.getChildren().elements().length();
+                                    <div class="highlight"><pre><code class=ballerina>    length = (x1/&lt;*&gt;).length();
     io:println(&quot;XML child elements size: &quot;, length);
 </code></pre></div>
 
@@ -426,7 +426,7 @@ permalink: /v1-1/learn/by-example/length
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Student stu = { id: 1, fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 17};
+                                    <div class="highlight"><pre><code class=ballerina>    Student stu = {id: 1, fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 17};
 </code></pre></div>
 
                                 </td>

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Record Match
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/record-match-statement
+permalink: /v1-2/learn/by-example/record-match-statement
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -43,19 +43,19 @@ permalink: /v1-1/learn/by-example/record-match-statement
 <span class="kd">function</span> <span class="nx">matchWithTypeGuard</span><span class="p">(</span><span class="kt">any</span> <span class="nx">matchExpr</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">match</span> <span class="nx">matchExpr</span> <span class="p">{</span>
         <span class="k">var</span> <span class="p">{</span><span class="nx">var1</span><span class="p">,</span> <span class="nx">var2</span><span class="p">}</span> <span class="k">if</span> <span class="nx">var2</span> <span class="nx">is</span> <span class="kt">string</span> <span class="p">=&gt;</span> <span class="p">{</span>
-               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string typeguard&quot;</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string typeguard&quot;</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="p">{</span><span class="nx">var1</span><span class="p">,</span> <span class="nx">var2</span><span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="nx">var1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="o">&amp;&amp;</span> <span class="nx">var2</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with int and int typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with int and int typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="p">{</span><span class="nx">var1</span><span class="p">,</span> <span class="nx">var2</span><span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="nx">var1</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">var2</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string and int typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string and int typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="p">{</span><span class="nx">var1</span><span class="p">,</span> <span class="nx">var2</span><span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="nx">var1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="o">&amp;&amp;</span> <span class="nx">var2</span> <span class="nx">is</span> <span class="nx">RecordTwo</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with int and RecordTwo typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with int and RecordTwo typeguard : &quot;</span><span class="p">,</span> <span class="nx">var1</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="p">{</span><span class="nx">var1</span><span class="p">,</span> <span class="nx">var2</span><span class="p">}</span> <span class="k">if</span> <span class="p">(</span><span class="nx">var1</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">var2</span> <span class="nx">is</span> <span class="nx">RecordTwo</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-               <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string and RecordTwo typeguard : &quot;</span><span class="p">,</span> <span class="nx">var2</span><span class="p">.</span><span class="nx">var1</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with string and RecordTwo typeguard : &quot;</span><span class="p">,</span> <span class="nx">var2</span><span class="p">.</span><span class="nx">var1</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">x</span> <span class="p">=&gt;</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with Default&quot;</span><span class="p">);</span>
@@ -424,7 +424,7 @@ permalink: /v1-1/learn/by-example/record-match-statement
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var {var1, var2} if var2 is string =&gt; {
-               io:println(&quot;Matched with string typeguard&quot;);
+            io:println(&quot;Matched with string typeguard&quot;);
         }
 </code></pre></div>
 
@@ -445,7 +445,7 @@ permalink: /v1-1/learn/by-example/record-match-statement
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var {var1, var2} if (var1 is int &amp;&amp; var2 is int) =&gt; {
-               io:println(&quot;Matched with int and int typeguard : &quot;, var1);
+            io:println(&quot;Matched with int and int typeguard : &quot;, var1);
         }
 </code></pre></div>
 
@@ -466,7 +466,7 @@ permalink: /v1-1/learn/by-example/record-match-statement
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var {var1, var2} if (var1 is string &amp;&amp; var2 is int) =&gt; {
-               io:println(&quot;Matched with string and int typeguard : &quot;, var1);
+            io:println(&quot;Matched with string and int typeguard : &quot;, var1);
         }
 </code></pre></div>
 
@@ -487,7 +487,7 @@ permalink: /v1-1/learn/by-example/record-match-statement
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var {var1, var2} if (var1 is int &amp;&amp; var2 is RecordTwo) =&gt; {
-               io:println(&quot;Matched with int and RecordTwo typeguard : &quot;, var1);
+            io:println(&quot;Matched with int and RecordTwo typeguard : &quot;, var1);
         }
 </code></pre></div>
 
@@ -508,7 +508,7 @@ permalink: /v1-1/learn/by-example/record-match-statement
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var {var1, var2} if (var1 is string &amp;&amp; var2 is RecordTwo) =&gt; {
-               io:println(&quot;Matched with string and RecordTwo typeguard : &quot;, var2.var1);
+            io:println(&quot;Matched with string and RecordTwo typeguard : &quot;, var2.var1);
         }
 </code></pre></div>
 

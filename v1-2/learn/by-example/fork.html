@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Fork
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/fork
+permalink: /v1-2/learn/by-example/fork
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -20,7 +20,7 @@ permalink: /v1-1/learn/by-example/fork
             <span class="k">return</span> <span class="nx">f</span><span class="p">;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="nx">record</span><span class="p">{</span> <span class="p">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">float</span> <span class="nx">w2</span><span class="p">;</span> <span class="p">}</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
+    <span class="nx">record</span> <span class="p">{[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="p">]</span> <span class="nx">w1</span><span class="p">;</span> <span class="kt">float</span> <span class="nx">w2</span><span class="p">;}</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">};</span>
     <span class="k">var</span> <span class="p">[</span><span class="nx">iW1</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">]</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w1</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">fW2</span> <span class="p">=</span> <span class="nx">results</span><span class="p">.</span><span class="nx">w2</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;[main] iW1: &quot;</span><span class="p">,</span> <span class="nx">iW1</span><span class="p">,</span> <span class="s">&quot; sW1: &quot;</span><span class="p">,</span> <span class="nx">sW1</span><span class="p">,</span> <span class="s">&quot; fW2: &quot;</span><span class="p">,</span> <span class="nx">fW2</span><span class="p">);</span>
@@ -34,7 +34,7 @@ permalink: /v1-1/learn/by-example/fork
                     <tr>
                         <td class="cLeftTD">
                             <h2>Fork</h2>
-                            <p><p>The <code>fork</code> block allows you to start any number of parallel workers simultaneously. Workers are visible outside the fork block as futures.
+                            <p><p>The <code>fork</code> block allows you to start any number of workers simultaneously. Workers are visible outside the fork block as futures.
  These futures behave similar to the futures returned by asynchronous functions created by <code>start</code>. You may wait until the worker
  finishes by using the <code>wait</code> expression.
  You can only send <code>anydata</code> variables from a worker of one fork to another worker in the same fork.</p>
@@ -219,7 +219,7 @@ permalink: /v1-1/learn/by-example/fork
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    record{ [int, string] w1; float w2; } results = wait {w1, w2};
+                                    <div class="highlight"><pre><code class=ballerina>    record {[int, string] w1; float w2;} results = wait {w1, w2};
 </code></pre></div>
 
                                 </td>

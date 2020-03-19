@@ -2,16 +2,16 @@
 layout: ballerina-example-page
 title: Consumer Service
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/kafka_message_consumer_service
+permalink: /v1-2/learn/by-example/kafka_message_consumer_service
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span> <span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfig</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+<span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
@@ -25,17 +25,21 @@ permalink: /v1-1/learn/by-example/kafka_message_consumer_service
         <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">kafkaConsumer</span><span class="o">-&gt;</span><span class="nx">commit</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while committing the &quot;</span> <span class="o">+</span>
-                    <span class="s">&quot;offsets for the consumer &quot;</span><span class="p">,</span> <span class="nx">commitResult</span><span class="p">);</span>
+                <span class="s">&quot;offsets for the consumer &quot;</span><span class="p">,</span> <span class="nx">commitResult</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMsg</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="p">|</span> <span class="nx">error</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">serializedMsg</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span><span class="p">,</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span> <span class="s">&quot; Partition: &quot;</span><span class="p">,</span>
+    <span class="nx">anydata</span> <span class="nx">serializedMsg</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">serializedMsg</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">serializedMsg</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span><span class="p">,</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span> <span class="s">&quot; Partition: &quot;</span><span class="p">,</span>
                 <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">partition</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot; Received Message: &quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+        <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data; Unexpected type&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -131,7 +135,7 @@ permalink: /v1-1/learn/by-example/kafka_message_consumer_service
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
 import ballerina/kafka;
-import ballerina/lang. &#39;string as strings;
+import ballerina/lang.&#39;string as strings;
 import ballerina/log;
 </code></pre></div>
 
@@ -144,7 +148,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfig consumerConfigs = {
+                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfigs = {
     bootstrapServers: &quot;localhost:9092&quot;,
     groupId: &quot;group-id&quot;,
     topics: [&quot;test-kafka-topic&quot;],
@@ -230,7 +234,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>        var commitResult = kafkaConsumer-&gt;commit();
         if (commitResult is error) {
             log:printError(&quot;Error occurred while committing the &quot; +
-                    &quot;offsets for the consumer &quot;, commitResult);
+                &quot;offsets for the consumer &quot;, commitResult);
         }
     }
 }
@@ -253,9 +257,10 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    byte[] serializedMsg = kafkaRecord.value;
-    string | error msg = strings:fromBytes(serializedMsg);
-    if (msg is string) {
+    anydata serializedMsg = kafkaRecord.value;
+    if (serializedMsg is byte[]) {
+        string|error msg = strings:fromBytes(serializedMsg);
+        if (msg is string) {
 </code></pre></div>
 
                                 </td>
@@ -267,10 +272,13 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Partition: &quot;,
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Partition: &quot;,
                 kafkaRecord.partition.toString(), &quot; Received Message: &quot;, msg);
+        } else {
+            log:printError(&quot;Error occurred while converting message data&quot;, msg);
+        }
     } else {
-        log:printError(&quot;Error occurred while converting message data&quot;, msg);
+        log:printError(&quot;Error occurred while retrieving message data; Unexpected type&quot;);
     }
 }
 </code></pre></div>
@@ -306,7 +314,7 @@ import ballerina/log;
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run kafka_message_consumer_service_advanced.bal
+$ ballerina run kafka_message_consumer_service.bal
 </code></pre></div>
 
                                 </td>

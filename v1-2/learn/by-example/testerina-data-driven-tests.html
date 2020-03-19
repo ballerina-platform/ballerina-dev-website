@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Data Driven Tests
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/testerina-data-driven-tests
+permalink: /v1-2/learn/by-example/testerina-data-driven-tests
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -26,15 +26,15 @@ permalink: /v1-1/learn/by-example/testerina-data-driven-tests
     <span class="nx">dataProvider</span><span class="p">:</span> <span class="s">&quot;jsonDataProvider&quot;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testJsonObjects</span><span class="p">(</span><span class="kt">json</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">json</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span> <span class="p">};</span>
-    <span class="kt">json</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span> <span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span><span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">};</span>
+    <span class="kt">json</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span><span class="p">};</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">fValue</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">sValue</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;json data provider failed&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">jsonDataProvider</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="kt">json</span><span class="p">[][])</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[[{</span> <span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span> <span class="p">},</span> <span class="p">{</span> <span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span> <span class="p">}]];</span>
+    <span class="k">return</span> <span class="p">[[{</span><span class="s">&quot;a&quot;</span><span class="p">:</span> <span class="s">&quot;a&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;b&quot;</span><span class="p">:</span> <span class="s">&quot;b&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">:</span> <span class="s">&quot;c&quot;</span><span class="p">}]];</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -268,9 +268,9 @@ import ballerina/test;
                                     <div class="highlight"><pre><code class=ballerina>    dataProvider: &quot;jsonDataProvider&quot;
 }
 function testJsonObjects(json fValue, json sValue, json result) {
-    json a = { &quot;a&quot;: &quot;a&quot; };
-    json b = { &quot;b&quot;: &quot;b&quot; };
-    json c = { &quot;c&quot;: &quot;c&quot; };
+    json a = {&quot;a&quot;: &quot;a&quot;};
+    json b = {&quot;b&quot;: &quot;b&quot;};
+    json c = {&quot;c&quot;: &quot;c&quot;};
     test:assertEquals(fValue, a, msg = &quot;json data provider failed&quot;);
     test:assertEquals(sValue, b, msg = &quot;json data provider failed&quot;);
     test:assertEquals(result, c, msg = &quot;json data provider failed&quot;);
@@ -294,7 +294,7 @@ function testJsonObjects(json fValue, json sValue, json result) {
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>function jsonDataProvider() returns (json[][]) {
-    return [[{ &quot;a&quot;: &quot;a&quot; }, { &quot;b&quot;: &quot;b&quot; }, { &quot;c&quot;: &quot;c&quot; }]];
+    return [[{&quot;a&quot;: &quot;a&quot;}, {&quot;b&quot;: &quot;b&quot;}, {&quot;c&quot;: &quot;c&quot;}]];
 }
 </code></pre></div>
 
@@ -314,6 +314,14 @@ function testJsonObjects(json fValue, json sValue, json result) {
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -351,7 +359,38 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/test_module-2019r3-any-0.1.0.balo
+        target/balo/test_module-2020r1-any-0.1.0.balo
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Running tests
+        ballerinatest/test_module:0.1.0
+Input : [1,2,3]
+Input : [10,20,30]
+Input : [5,6,11]
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testJsonObjects
+        [pass] testAddingValues
+        [pass] testAddingValues
+        [pass] testAddingValues
 </code></pre></div>
 
                                 </td>
@@ -363,12 +402,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running tests
-    ballerinatest/test_module:0.1.0
-Input : [1,2,3]
-Input : [10,20,30]
-Input : [5,6,11]
-        4 passing
+                                    <div class="highlight"><pre><code class=shell-session>        4 passing
         0 failing
         0 skipped
 </code></pre></div>

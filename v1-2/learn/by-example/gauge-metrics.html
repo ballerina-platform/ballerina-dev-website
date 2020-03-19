@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Gauge-Based Metrics
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/gauge-metrics
+permalink: /v1-2/learn/by-example/gauge-metrics
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -11,7 +11,7 @@ permalink: /v1-1/learn/by-example/gauge-metrics
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
-<span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span>
+<span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
 <span class="p">}</span>
@@ -22,18 +22,18 @@ permalink: /v1-1/learn/by-example/gauge-metrics
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------------------------------------&quot;</span><span class="p">);</span>
         <span class="nx">globalGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">15.0</span><span class="p">);</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">globalGauge</span><span class="p">);</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">localGauge</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">localGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;local_operations&quot;</span><span class="p">);</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mf">20.0</span><span class="p">);</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">();</span>
         <span class="nx">localGauge</span><span class="p">.</span><span class="nx">decrement</span><span class="p">(</span><span class="mf">10.0</span><span class="p">);</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">localGauge</span><span class="p">);</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">registeredGaugeWithTags</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;registered_gauge_with_tags&quot;</span><span class="p">,</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">registeredGaugeWithTags</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;registered_gauge_with_tags&quot;</span><span class="p">,</span>
             <span class="s">&quot;RegisteredGauge&quot;</span><span class="p">,</span>
-            <span class="p">{</span> <span class="nx">property</span><span class="p">:</span> <span class="s">&quot;gaugeProperty&quot;</span><span class="p">,</span> <span class="nx">gaugeType</span><span class="p">:</span> <span class="s">&quot;RegisterType&quot;</span> <span class="p">});</span>
+            <span class="p">{</span><span class="nx">property</span><span class="p">:</span> <span class="s">&quot;gaugeProperty&quot;</span><span class="p">,</span> <span class="nx">gaugeType</span><span class="p">:</span> <span class="s">&quot;RegisterType&quot;</span><span class="p">});</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">register</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering gauge&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in registering gauge&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">increment</span><span class="p">();</span>
         <span class="kt">float</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">getValue</span><span class="p">();</span>
@@ -41,14 +41,17 @@ permalink: /v1-1/learn/by-example/gauge-metrics
         <span class="nx">registeredGaugeWithTags</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">newValue</span><span class="p">);</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">registeredGaugeWithTags</span><span class="p">);</span>
         <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span><span class="p">[]</span> <span class="nx">statsConfigs</span> <span class="p">=</span> <span class="p">[];</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithNoStats</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;gauge_with_no_stats&quot;</span><span class="p">,</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithNoStats</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;gauge_with_no_stats&quot;</span><span class="p">,</span>
                                         <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
         <span class="nx">gaugeWithNoStats</span><span class="p">.</span><span class="nx">setValue</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
         <span class="nx">printGauge</span><span class="p">(</span><span class="nx">gaugeWithNoStats</span><span class="p">);</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">timeWindow</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
-                    <span class="nx">percentiles</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span> <span class="nx">buckets</span><span class="p">:</span> <span class="mi">3</span> <span class="p">};</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">StatisticConfig</span> <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span>
+            <span class="nx">timeWindow</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+            <span class="nx">percentiles</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">],</span>
+            <span class="nx">buckets</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">};</span>
         <span class="nx">statsConfigs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="nx">config</span><span class="p">;</span>
-        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithCustomStats</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;gauge_with_custom_stats&quot;</span><span class="p">,</span>
+        <span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gaugeWithCustomStats</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;gauge_with_custom_stats&quot;</span><span class="p">,</span>
                                         <span class="s">&quot;Some description&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="nx">statsConfigs</span><span class="p">);</span>
         <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
@@ -59,7 +62,7 @@ permalink: /v1-1/learn/by-example/gauge-metrics
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Order Processed!&quot;</span><span class="p">);</span>
         <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printGauge</span><span class="p">(</span><span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gauge</span><span class="p">)</span> <span class="p">{</span>
@@ -218,7 +221,7 @@ import ballerina/observe;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>observe:Gauge globalGauge = new(&quot;global_gauge&quot;, &quot;Global gauge defined&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>observe:Gauge globalGauge = new (&quot;global_gauge&quot;, &quot;Global gauge defined&quot;);
 </code></pre></div>
 
                                 </td>
@@ -315,7 +318,7 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge localGauge = new(&quot;local_operations&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge localGauge = new (&quot;local_operations&quot;);
 </code></pre></div>
 
                                 </td>
@@ -429,9 +432,9 @@ service onlineStoreService on new http:Listener(9090) {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge registeredGaugeWithTags = new(&quot;registered_gauge_with_tags&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>        observe:Gauge registeredGaugeWithTags = new (&quot;registered_gauge_with_tags&quot;,
             &quot;RegisteredGauge&quot;,
-            { property: &quot;gaugeProperty&quot;, gaugeType: &quot;RegisterType&quot; });
+            {property: &quot;gaugeProperty&quot;, gaugeType: &quot;RegisterType&quot;});
 </code></pre></div>
 
                                 </td>
@@ -452,7 +455,7 @@ service onlineStoreService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        error? result = registeredGaugeWithTags.register();
         if (result is error) {
-            log:printError(&quot;Error in registering gauge&quot;, err = result);
+            log:printError(&quot;Error in registering gauge&quot;, result);
         }
 </code></pre></div>
 
@@ -519,7 +522,7 @@ counter instance.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        observe:StatisticConfig[] statsConfigs = [];
-        observe:Gauge gaugeWithNoStats = new(&quot;gauge_with_no_stats&quot;,
+        observe:Gauge gaugeWithNoStats = new (&quot;gauge_with_no_stats&quot;,
                                         &quot;Some description&quot;, (), statsConfigs);
         gaugeWithNoStats.setValue(100);
         printGauge(gaugeWithNoStats);
@@ -541,10 +544,13 @@ counter instance.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        observe:StatisticConfig config = { timeWindow: 30000,
-                    percentiles: [0.33, 0.5, 0.9, 0.99], buckets: 3 };
+                                    <div class="highlight"><pre><code class=ballerina>        observe:StatisticConfig config = {
+            timeWindow: 30000,
+            percentiles: [0.33, 0.5, 0.9, 0.99],
+            buckets: 3
+        };
         statsConfigs[0] = config;
-        observe:Gauge gaugeWithCustomStats = new(&quot;gauge_with_custom_stats&quot;,
+        observe:Gauge gaugeWithCustomStats = new (&quot;gauge_with_custom_stats&quot;,
                                         &quot;Some description&quot;, (), statsConfigs);
         int i = 1;
         while (i &lt; 6) {
@@ -658,7 +664,7 @@ counter instance.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (result is error) {
-            log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, result);
         }
     }
 }

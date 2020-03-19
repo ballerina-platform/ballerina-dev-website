@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Service Integration Sample
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/websub-service-integration-sample
+permalink: /v1-2/learn/by-example/websub-service-integration-sample
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">httpListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
 <span class="nx">final</span> <span class="kt">string</span> <span class="nx">ORDER_TOPIC</span> <span class="p">=</span> <span class="s">&quot;http://localhost:9090/ordermgt/ordertopic&quot;</span><span class="p">;</span>
 <span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">orderMap</span> <span class="p">=</span> <span class="p">{};</span>
 <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">startHubAndRegisterTopic</span><span class="p">();</span><span class="nd">@http:ServiceConfig {</span>
@@ -26,7 +26,7 @@ permalink: /v1-1/learn/by-example/websub-service-integration-sample
         <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -37,12 +37,12 @@ permalink: /v1-1/learn/by-example/websub-service-integration-sample
         <span class="k">var</span> <span class="nx">orderReq</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">orderReq</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">orderId</span> <span class="p">=</span> <span class="nx">orderReq</span><span class="p">.</span><span class="nx">Order</span><span class="p">.</span><span class="nx">ID</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
-            <span class="nx">orderMap</span><span class="p">[</span><span class="nx">orderId</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">orderReq</span><span class="p">;</span>
+            <span class="nx">orderMap</span><span class="p">[</span><span class="nx">orderId</span><span class="p">]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">orderReq</span><span class="p">;</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">202</span><span class="p">;</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-               <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error responding on ordering&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="kt">string</span> <span class="nx">orderCreatedNotification</span> <span class="p">=</span> <span class="s">&quot;New Order Added: &quot;</span> <span class="o">+</span> <span class="nx">orderId</span><span class="p">;</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">orderCreatedNotification</span><span class="p">);</span>
@@ -64,7 +64,7 @@ permalink: /v1-1/learn/by-example/websub-service-integration-sample
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span>
                             <span class="err">?</span> <span class="nx">hubStartUpResult</span><span class="p">.</span><span class="nx">startedUpHub</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
-    <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span> <span class="nx">hubVar</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span><span class="nx">hubVar</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">internalHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error registering topic&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -73,7 +73,7 @@ permalink: /v1-1/learn/by-example/websub-service-integration-sample
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
-<span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/ordereventsubscriber&quot;</span><span class="p">,</span>
     <span class="nx">subscribeOnStartUp</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -224,7 +224,7 @@ import ballerina/websub;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener httpListener = new(9090);
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener httpListener = new (9090);
 </code></pre></div>
 
                                 </td>
@@ -341,7 +341,7 @@ service orderMgt on httpListener {
         response.statusCode = 202;
         var result = caller-&gt;respond(response);
         if (result is error) {
-           log:printError(&quot;Error responding on ordering&quot;, result);
+            log:printError(&quot;Error responding on ordering&quot;, result);
         }
     }
 </code></pre></div>
@@ -370,7 +370,7 @@ service orderMgt on httpListener {
         var orderReq = req.getJsonPayload();
         if (orderReq is json) {
             string orderId = orderReq.Order.ID.toString();
-            orderMap[orderId] = &lt;@untainted&gt; orderReq;
+            orderMap[orderId] = &lt;@untainted&gt;orderReq;
 </code></pre></div>
 
                                 </td>
@@ -393,7 +393,7 @@ service orderMgt on httpListener {
             response.statusCode = 202;
             var result = caller-&gt;respond(response);
             if (result is error) {
-               log:printError(&quot;Error responding on ordering&quot;, result);
+                log:printError(&quot;Error responding on ordering&quot;, result);
             }
 </code></pre></div>
 
@@ -495,7 +495,7 @@ service orderMgt on httpListener {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub internalHub = &lt;websub:Hub&gt; hubVar;
+                                    <div class="highlight"><pre><code class=ballerina>    websub:Hub internalHub = &lt;websub:Hub&gt;hubVar;
     var result = internalHub.registerTopic(ORDER_TOPIC);
     if (result is error) {
         log:printError(&quot;Error registering topic&quot;, result);
@@ -637,7 +637,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new(8181);
+                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new (8181);
 </code></pre></div>
 
                                 </td>

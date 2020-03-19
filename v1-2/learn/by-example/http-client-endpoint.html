@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Client Endpoint
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-client-endpoint
+permalink: /v1-2/learn/by-example/http-client-endpoint
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;GET request:&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">);</span>
     <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nPOST request:&quot;</span><span class="p">);</span>
@@ -23,7 +23,8 @@ permalink: /v1-1/learn/by-example/http-client-endpoint
         <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>        <span class="kt">int</span> <span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span> <span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
+                                    <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
@@ -32,10 +33,11 @@ permalink: /v1-1/learn/by-example/http-client-endpoint
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid payload received:&quot;</span> <span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid payload received:&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
+                                    <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -55,9 +57,9 @@ permalink: /v1-1/learn/by-example/http-client-endpoint
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="awslambda-deployment.html">
+                                    <a class="prev" href="knative-deployment.html">
                                         <span>< PREVIOUS</span>
-                                        <p>AWS Lambda Deployment</p>
+                                        <p>Knative Deployment</p>
                                     </a>
                                 </div>
                                  
@@ -155,7 +157,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://postman-echo.com&quot;);
 </code></pre></div>
 
                                 </td>
@@ -363,7 +365,8 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    } else {
-        io:println(&quot;Error when calling the backend: &quot; , response.reason());
+        io:println(&quot;Error when calling the backend: &quot;,
+                                    response.detail()?.message);
     }
 }
 </code></pre></div>
@@ -401,10 +404,11 @@ import ballerina/io;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>            io:println(msg.toJsonString());
         } else {
-            io:println(&quot;Invalid payload received:&quot; , msg.reason());
+            io:println(&quot;Invalid payload received:&quot;, msg.reason());
         }
     } else {
-        io:println(&quot;Error when calling the backend: &quot;, response.reason());
+        io:println(&quot;Error when calling the backend: &quot;,
+                                    response.detail()?.message);
     }
 }
 </code></pre></div>

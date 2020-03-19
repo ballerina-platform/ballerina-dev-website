@@ -2,15 +2,15 @@
 layout: ballerina-example-page
 title: Function Pointers
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/function-pointers
+permalink: /v1-2/learn/by-example/function-pointers
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="kt">string</span> <span class="nx">s</span><span class="p">,</span> <span class="kt">int</span><span class="o">...</span> <span class="nx">x</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">float</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="p">|</span> <span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">s</span><span class="p">);</span>
     <span class="kt">float</span> <span class="nx">f</span> <span class="p">=</span> <span class="mf">0.0</span><span class="p">;</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">x</span> <span class="p">{</span>
             <span class="nx">f</span> <span class="o">+=</span> <span class="nx">item</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="nx">y</span><span class="p">;</span>
@@ -52,9 +52,9 @@ permalink: /v1-1/learn/by-example/function-pointers
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="quoted-identifiers.html">
+                                    <a class="prev" href="deprecation.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Quoted Identifiers</p>
+                                        <p>Deprecation</p>
                                     </a>
                                 </div>
                                  
@@ -128,7 +128,7 @@ permalink: /v1-1/learn/by-example/function-pointers
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
+import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -141,7 +141,7 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function test(string s, int... x) returns float {
-    int | error y = ints:fromString(s);
+    int|error y = &#39;int:fromString(s);
     float f = 0.0;
 </code></pre></div>
 

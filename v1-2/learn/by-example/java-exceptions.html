@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Java Exceptions
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/java-exceptions
+permalink: /v1-2/learn/by-example/java-exceptions
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">className</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">|</span> <span class="nx">error</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">loadClass</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">className</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span><span class="p">|</span><span class="nx">error</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
     <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;forName&quot;</span><span class="p">,</span>
     <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java.lang.Class&quot;</span>
 <span class="p">}</span> <span class="nx">external</span><span class="p">;</span>
@@ -24,7 +24,7 @@ permalink: /v1-1/learn/by-example/java-exceptions
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">classOrError</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">arrayDeque</span> <span class="p">=</span> <span class="nx">newArrayDeque</span><span class="p">();</span>
-    <span class="kt">boolean</span> <span class="p">|</span> <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">createNull</span><span class="p">());</span>
+    <span class="kt">boolean</span><span class="p">|</span><span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">offer</span><span class="p">(</span><span class="nx">arrayDeque</span><span class="p">,</span> <span class="nx">java</span><span class="p">:</span><span class="nx">createNull</span><span class="p">());</span>
     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
@@ -122,8 +122,8 @@ permalink: /v1-1/learn/by-example/java-exceptions
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerinax/java;
-import ballerina/io;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/java;
 </code></pre></div>
 
                                 </td>
@@ -135,7 +135,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function loadClass(handle className) returns handle | error = @java:Method {
+                                    <div class="highlight"><pre><code class=ballerina>function loadClass(handle className) returns handle|error = @java:Method {
     name: &quot;forName&quot;,
     class: &quot;java.lang.Class&quot;
 } external;
@@ -237,7 +237,7 @@ import ballerina/io;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    var arrayDeque = newArrayDeque();
-    boolean | error e = trap offer(arrayDeque, java:createNull());
+    boolean|error e = trap offer(arrayDeque, java:createNull());
     if e is error {
         io:println(e);
     }
@@ -249,7 +249,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here we are sending a null element to <code>offer</code> function. The <code>createNull</code> function in <code>ballerinax/java</code>
+                                            <p>Here we are sending a null element to <code>offer</code> function. The <code>createNull</code> function in <code>ballerina/java</code>
  module creates a handle value that refers to Java null.</p>
 
                                         </div>

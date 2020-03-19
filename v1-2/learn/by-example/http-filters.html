@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: HTTP Interceptors/Filters
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-filters
+permalink: /v1-2/learn/by-example/http-filters
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -30,7 +30,7 @@ permalink: /v1-1/learn/by-example/http-filters
 <span class="p">};</span>
 <span class="nx">ResponseFilter</span> <span class="nx">responseFilter</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">echoListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">,</span>
-                                            <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">filters</span><span class="p">:</span> <span class="p">[</span><span class="nx">requestFilter</span><span class="p">,</span> <span class="nx">responseFilter</span><span class="p">]});</span><span class="nd">@http:ServiceConfig {</span>
+                    <span class="nx">config</span> <span class="p">=</span> <span class="p">{</span><span class="nx">filters</span><span class="p">:</span> <span class="p">[</span><span class="nx">requestFilter</span><span class="p">,</span> <span class="nx">responseFilter</span><span class="p">]});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">echoListener</span> <span class="p">{</span>
@@ -42,9 +42,9 @@ permalink: /v1-1/learn/by-example/http-filters
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="nx">filter_name_header</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="nx">filter_name_header</span><span class="p">));</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">res</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-           <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -409,7 +409,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>listener http:Listener echoListener = new http:Listener(9090,
-                                            config = { filters: [requestFilter, responseFilter]});
+                    config = {filters: [requestFilter, responseFilter]});
 </code></pre></div>
 
                                 </td>
@@ -469,9 +469,9 @@ service echo on echoListener {
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        res.setHeader(filter_name_header, req.getHeader(filter_name_header));
         res.setPayload(&quot;Hello, World!&quot;);
-        var result = caller-&gt;respond(&lt;@untainted&gt; res);
+        var result = caller-&gt;respond(&lt;@untainted&gt;res);
         if (result is error) {
-           log:printError(&quot;Error sending response&quot;, err = result);
+            log:printError(&quot;Error sending response&quot;, result);
         }
     }
 }

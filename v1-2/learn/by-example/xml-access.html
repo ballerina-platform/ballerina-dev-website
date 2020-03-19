@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: XML Access
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/xml-access
+permalink: /v1-2/learn/by-example/xml-access
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -19,17 +19,16 @@ permalink: /v1-1/learn/by-example/xml-access
 <span class="s">                &lt;!--Price: $10--&gt;</span>
 <span class="s">                &lt;/book&gt;`</span><span class="p">;</span>
     
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">fname</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">ISBN</span><span class="p">.</span><span class="nx">code</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;ISBN&quot;</span><span class="p">][</span><span class="s">&quot;code&quot;</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">fname</span><span class="p">.</span><span class="nx">getTextValue</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">.</span><span class="nx">author</span><span class="p">.</span><span class="nx">fname</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;author&quot;</span><span class="p">][</span><span class="s">&quot;fname&quot;</span><span class="p">]</span><span class="err">@</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">]);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="s">&quot;{http://ballerina.com/a}year&quot;</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
-    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/a&quot;</span> <span class="k">as</span> <span class="nx">foo</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="p">[</span><span class="nx">foo</span><span class="p">:</span><span class="nx">year</span><span class="p">].</span><span class="nx">getTextValue</span><span class="p">());</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">ISBN</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">code</span><span class="p">&gt;);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">author</span><span class="p">&gt;</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;.</span><span class="nx">title</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="cm">/**/</span><span class="p">&lt;</span><span class="nx">fname</span><span class="p">&gt;);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/*</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="o">*</span><span class="p">&gt;);</span>
+    <span class="nx">xmlns</span> <span class="s">&quot;http://ballerina.com/a&quot;</span> <span class="k">as</span> <span class="nx">bar</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookXML</span><span class="o">/</span><span class="p">&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="o">*</span><span class="p">&gt;</span><span class="o">/*</span><span class="p">);</span>    <span class="kt">xml</span> <span class="nx">seq</span> <span class="p">=</span> <span class="nx">bookXML</span><span class="o">/*</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">seq</span><span class="p">.&lt;</span><span class="nx">name</span><span class="p">&gt;);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">seq</span><span class="p">.&lt;</span><span class="nx">bar</span><span class="p">:</span><span class="nx">year</span><span class="p">&gt;);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -41,7 +40,7 @@ permalink: /v1-1/learn/by-example/xml-access
                         <td class="cLeftTD">
                             <h2>XML Access</h2>
                             <p><p>XML elements can contain child XML items. Ballerina allows you to access these
- child elements conveniently using field-access and index-access expressions.</p>
+ child elements conveniently using XML step expressions and XML filter expressions.</p>
 </p>
 
                         </td>
@@ -95,6 +94,14 @@ permalink: /v1-1/learn/by-example/xml-access
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -173,8 +180,7 @@ permalink: /v1-1/learn/by-example/xml-access
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.author.fname);
-    io:println(bookXML[&quot;author&quot;][&quot;fname&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/&lt;author&gt;/&lt;fname&gt;);
 </code></pre></div>
 
                                 </td>
@@ -182,7 +188,7 @@ permalink: /v1-1/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can access child XML items using the field-based or index-based access expressions.</p>
+                                            <p>You can access child XML items using XML step expressions.</p>
 
                                         </div>
                                     </div>
@@ -193,8 +199,7 @@ permalink: /v1-1/learn/by-example/xml-access
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.ISBN.code);
-    io:println(bookXML[&quot;ISBN&quot;][&quot;code&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/&lt;ISBN&gt;/&lt;code&gt;);
 </code></pre></div>
 
                                 </td>
@@ -202,7 +207,7 @@ permalink: /v1-1/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Accessing a non-existing child will return <code>nil</code>.</p>
+                                            <p>Accessing a non-existing child will return an empty <code>xml</code> sequence.</p>
 
                                         </div>
                                     </div>
@@ -213,29 +218,7 @@ permalink: /v1-1/learn/by-example/xml-access
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.author.fname.getTextValue());
-    io:println(bookXML[&quot;author&quot;][&quot;fname&quot;].getTextValue());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The result of the above field-based or index-based access is another XML.
- Any XML function can be invoked on top of the resulting XML.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML.author.fname@[&quot;title&quot;]);
-    io:println(bookXML[&quot;author&quot;][&quot;fname&quot;]@[&quot;title&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/&lt;author&gt;/&lt;fname&gt;.title);
 </code></pre></div>
 
                                 </td>
@@ -253,10 +236,98 @@ permalink: /v1-1/learn/by-example/xml-access
                             
                             <tr class="cTR hover-enable">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/**/&lt;fname&gt;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>You can match descendant elements using the following stepping access syntax.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/*);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Select all the children elements using the below syntax.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML/&lt;*&gt;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Select all children elements using the bellow syntax.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    xmlns &quot;http://ballerina.com/a&quot; as bar;
+    io:println(bookXML/&lt;bar:*&gt;/*);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Select all the children belonging to a specific namespace.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    xml seq = bookXML/*;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(bookXML[&quot;{http://ballerina.com/a}year&quot;].getTextValue());
-    xmlns &quot;http://ballerina.com/a&quot; as foo;
-    io:println(bookXML[foo:year].getTextValue());
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(seq.&lt;name&gt;);
+    io:println(seq.&lt;bar:year&gt;);
 }
 </code></pre></div>
 
@@ -265,7 +336,7 @@ permalink: /v1-1/learn/by-example/xml-access
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>You can access the elements by their namespace-qualified (fully-qualified) name.</p>
+                                            <p>XML sequences can be filtered using XML filter expressions.</p>
 
                                         </div>
                                     </div>
@@ -276,6 +347,14 @@ permalink: /v1-1/learn/by-example/xml-access
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -297,6 +376,18 @@ permalink: /v1-1/learn/by-example/xml-access
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run xml-access.bal
 &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Sir
 &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
 </code></pre></div>
 
@@ -308,13 +399,34 @@ $ ballerina run xml-access.bal
                             
                             <tr class="cTR cOutputTr">
 
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>                &lt;name&gt;Sherlock Holmes&lt;/name&gt;
+                &lt;author&gt;
+                    &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
+                    &lt;mname&gt;Conan&lt;/mname&gt;
+                    &lt;lname&gt;Doyle&lt;/lname&gt;
+                &lt;/author&gt;
+                &lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;
+                &lt;!--Price: $10--&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Arthur
-Arthur
-Sir
-Sir
+                                    <div class="highlight"><pre><code class=shell-session>&lt;name&gt;Sherlock Holmes&lt;/name&gt;&lt;author&gt;
+                    &lt;fname title=&quot;Sir&quot;&gt;Arthur&lt;/fname&gt;
+                    &lt;mname&gt;Conan&lt;/mname&gt;
+                    &lt;lname&gt;Doyle&lt;/lname&gt;
+                &lt;/author&gt;&lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;
 2019
-2019
+&lt;name&gt;Sherlock Holmes&lt;/name&gt;
+&lt;bar:year xmlns:bar=&quot;http://ballerina.com/a&quot;&gt;2019&lt;/bar:year&gt;
 </code></pre></div>
 
                                 </td>

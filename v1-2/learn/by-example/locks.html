@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Lock
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/locks
+permalink: /v1-2/learn/by-example/locks
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -54,7 +54,7 @@ permalink: /v1-1/learn/by-example/locks
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span><span class="nx">w2</span><span class="p">,</span><span class="nx">w3</span><span class="p">,</span><span class="nx">w4</span><span class="p">};</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">wait</span> <span class="p">{</span><span class="nx">w1</span><span class="p">,</span> <span class="nx">w2</span><span class="p">,</span> <span class="nx">w3</span><span class="p">,</span> <span class="nx">w4</span><span class="p">};</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -78,16 +78,16 @@ permalink: /v1-1/learn/by-example/locks
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-client-with-oauth2.html">
+                                    <a class="prev" href="async.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Client with OAuth2</p>
+                                        <p>Async</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="streams.html">
+                                    <a class="next" href="byte-io.html">
                                         <span>NEXT ></span>
-                                        <p>Streams</p>
+                                        <p>Byte I/O</p>
                                     </a>
                                 </div>
                                 
@@ -412,7 +412,7 @@ permalink: /v1-1/learn/by-example/locks
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = wait {w1,w2,w3,w4};
+                                    <div class="highlight"><pre><code class=ballerina>    var result = wait {w1, w2, w3, w4};
 }
 </code></pre></div>
 
@@ -446,8 +446,8 @@ permalink: /v1-1/learn/by-example/locks
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run --experimental locks.bal
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run locks.bal
 final counter value - 4000
 final count field value - 4000
 </code></pre></div>

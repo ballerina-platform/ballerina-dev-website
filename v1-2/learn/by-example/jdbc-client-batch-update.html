@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: JDBC Client Batch Update
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/jdbc-client-batch-update
+permalink: /v1-2/learn/by-example/jdbc-client-batch-update
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -73,7 +73,7 @@ permalink: /v1-1/learn/by-example/jdbc-client-batch-update
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">checkData</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nx">dtReturned</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM student&quot;</span><span class="p">,</span> <span class="nx">Student</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">dtReturned</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Student</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">dtReturned</span> <span class="nx">is</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{}&gt;)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Data in students table:&quot;</span><span class="p">);</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">row</span> <span class="nx">in</span> <span class="nx">dtReturned</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
@@ -471,7 +471,7 @@ import ballerinax/java.jdbc;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function checkData() {
     var dtReturned = testDB-&gt;select(&quot;SELECT * FROM student&quot;, Student);
-    if (dtReturned is table&lt;Student&gt;) {
+    if (dtReturned is table&lt;record{}&gt;) {
 </code></pre></div>
 
                                 </td>

@@ -2,14 +2,14 @@
 layout: ballerina-example-page
 title: Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/rabbitmq-consumer-with-data-binding
+permalink: /v1-2/learn/by-example/rabbitmq-consumer-with-data-binding
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">rabbitmq</span><span class="p">;</span>
-<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span> <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span> <span class="p">});</span><span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span><span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="nx">connection</span><span class="p">);</span><span class="nd">@rabbitmq:ServiceConfig {</span>
+<span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Connection</span> <span class="nx">connection</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">5672</span><span class="p">});</span><span class="nx">listener</span> <span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">channelListener</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">connection</span><span class="p">);</span><span class="nd">@rabbitmq:ServiceConfig {</span>
     <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;MyQueue&quot;</span>
     <span class="p">},</span>
@@ -147,7 +147,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>rabbitmq:Connection connection = new({ host: &quot;localhost&quot;, port: 5672 });
+                                    <div class="highlight"><pre><code class=ballerina>rabbitmq:Connection connection = new ({host: &quot;localhost&quot;, port: 5672});
 </code></pre></div>
 
                                 </td>
@@ -166,7 +166,7 @@ import ballerina/rabbitmq;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener rabbitmq:Listener channelListener= new(connection);
+                                    <div class="highlight"><pre><code class=ballerina>listener rabbitmq:Listener channelListener = new (connection);
 </code></pre></div>
 
                                 </td>

@@ -2,13 +2,13 @@
 layout: ballerina-example-page
 title: Hub Client Sample
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/websub-hub-client-sample
+permalink: /v1-2/learn/by-example/websub-hub-client-sample
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting up the Ballerina Hub Service&quot;</span><span class="p">);</span>
@@ -19,7 +19,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">startedUpHub</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">registrationResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span>
@@ -32,7 +32,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">publishResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
-                            <span class="p">{</span> <span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span> <span class="p">});</span>
+                            <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error notifying hub: &quot;</span> <span class="o">+</span>
                                     <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">publishResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
@@ -41,7 +41,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
     <span class="nx">publishResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
-                            <span class="p">{</span> <span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span> <span class="p">});</span>
+                            <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error notifying hub: &quot;</span> <span class="o">+</span>
                                     <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">publishResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
@@ -52,10 +52,10 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">websub</span><span class="p">;</span>
-<span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
+<span class="nx">listener</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">websubEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8181</span><span class="p">);</span>
 <span class="nd">@websub:SubscriberServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/websub&quot;</span><span class="p">,</span>
-    <span class="nx">target</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">,</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">],</span>
+    <span class="nx">target</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;http://localhost:9191/websub/hub&quot;</span><span class="p">,</span> <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">],</span>
     <span class="nx">secret</span><span class="p">:</span> <span class="s">&quot;Kslk30SNF2AChs2&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">websubSubscriber</span> <span class="nx">on</span> <span class="nx">websubEP</span> <span class="p">{</span>
@@ -64,7 +64,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSub Notification Received: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">payload</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error retrieving payload as string&quot;</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -81,7 +81,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
                     <span class="s">&quot;] for Topic [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">topic</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">;</span>
-        <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred with Subscription Request: &quot;</span> <span class="o">+</span> <span class="nx">errCause</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
@@ -93,7 +93,7 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
                     <span class="s">&quot;] for Topic [&quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">topic</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">response</span><span class="p">;</span>
-        <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+        <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred with Unsubscription Request: &quot;</span> <span class="o">+</span> <span class="nx">errCause</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -198,8 +198,8 @@ permalink: /v1-1/learn/by-example/websub-hub-client-sample
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/http;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/io;
 import ballerina/runtime;
 import ballerina/websub;
 </code></pre></div>
@@ -241,7 +241,7 @@ import ballerina/websub;
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println(&quot;Hub start error:&quot; + &lt;string&gt; result.detail()?.message);
+        io:println(&quot;Hub start error:&quot; + &lt;string&gt;result.detail()?.message);
         return;
     }
 </code></pre></div>
@@ -308,7 +308,7 @@ import ballerina/websub;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var publishResponse = webSubHub.publishUpdate(&quot;http://websubpubtopic.com&quot;,
-                            { &quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot; });
+                            {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot;});
     if (publishResponse is error) {
         io:println(&quot;Error notifying hub: &quot; +
                                     &lt;string&gt;publishResponse.detail()?.message);
@@ -353,7 +353,7 @@ import ballerina/websub;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    publishResponse = webSubHub.publishUpdate(&quot;http://websubpubtopic.com&quot;,
-                            { &quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot; });
+                            {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot;});
     if (publishResponse is error) {
         io:println(&quot;Error notifying hub: &quot; +
                                     &lt;string&gt;publishResponse.detail()?.message);
@@ -500,7 +500,7 @@ import ballerina/websub;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new(8181);
+                                    <div class="highlight"><pre><code class=ballerina>listener websub:Listener websubEP = new (8181);
 </code></pre></div>
 
                                 </td>
@@ -521,7 +521,7 @@ import ballerina/websub;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@websub:SubscriberServiceConfig {
     path: &quot;/websub&quot;,
-    target: [&quot;http://localhost:9191/websub/hub&quot;,&quot;http://websubpubtopic.com&quot;],
+    target: [&quot;http://localhost:9191/websub/hub&quot;, &quot;http://websubpubtopic.com&quot;],
     secret: &quot;Kslk30SNF2AChs2&quot;
 }
 service websubSubscriber on websubEP {
@@ -551,7 +551,7 @@ service websubSubscriber on websubEP {
         if (payload is string) {
             log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
         } else {
-            log:printError(&quot;Error retrieving payload as string&quot;, err = payload);
+            log:printError(&quot;Error retrieving payload as string&quot;, payload);
         }
     }
 }
@@ -753,7 +753,7 @@ import ballerina/websub;
                     &quot;] for Topic [&quot; + response.topic + &quot;]&quot;);
     } else {
         error err = response;
-        string errCause = &lt;string&gt; err.detail()?.message;
+        string errCause = &lt;string&gt;err.detail()?.message;
         io:println(&quot;Error occurred with Subscription Request: &quot; + errCause);
     }
 </code></pre></div>
@@ -825,7 +825,7 @@ import ballerina/websub;
                     &quot;] for Topic [&quot; + response.topic + &quot;]&quot;);
     } else {
         error err = response;
-        string errCause = &lt;string&gt; err.detail()?.message;
+        string errCause = &lt;string&gt;err.detail()?.message;
         io:println(&quot;Error occurred with Unsubscription Request: &quot; + errCause);
     }
 }

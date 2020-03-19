@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Anonymous Objects
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/anonymous-objects
+permalink: /v1-2/learn/by-example/anonymous-objects
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -23,7 +23,7 @@ permalink: /v1-1/learn/by-example/anonymous-objects
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="nx">address</span><span class="p">:</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">)</span>
+        <span class="nx">address</span><span class="p">:</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">)</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">city</span><span class="p">);</span>
     <span class="nx">object</span> <span class="p">{</span>
@@ -34,7 +34,7 @@ permalink: /v1-1/learn/by-example/anonymous-objects
         <span class="p">}</span>        <span class="nx">public</span> <span class="kd">function</span> <span class="nx">value</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nx">self</span><span class="p">.</span><span class="nx">city</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span> <span class="p">};</span>
+    <span class="p">}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">);</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">.</span><span class="nx">address</span><span class="p">.</span><span class="nx">country</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -230,7 +230,7 @@ permalink: /v1-1/learn/by-example/anonymous-objects
                                     <div class="highlight"><pre><code class=ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
-        address: new(&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
+        address: new (&quot;Colombo&quot;, &quot;Sri Lanka&quot;)
     };
     io:println(john.address.city);
 </code></pre></div>
@@ -292,7 +292,7 @@ permalink: /v1-1/learn/by-example/anonymous-objects
                                     <div class="highlight"><pre><code class=ballerina>        public function value() returns string {
             return self.city + &quot;, &quot; + self.country;
         }
-    } adr = new(&quot;London&quot;, &quot;UK&quot;);
+    } adr = new (&quot;London&quot;, &quot;UK&quot;);
 </code></pre></div>
 
                                 </td>
@@ -304,7 +304,7 @@ permalink: /v1-1/learn/by-example/anonymous-objects
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = { name: &quot;Jane Doe&quot;, age: 20, address: adr };
+                                    <div class="highlight"><pre><code class=ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
     io:println(jane.address.country);
 }
 </code></pre></div>

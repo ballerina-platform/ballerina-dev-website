@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Circuit Breaker
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/http-circuit-breaker
+permalink: /v1-2/learn/by-example/http-circuit-breaker
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,7 +10,7 @@ permalink: /v1-1/learn/by-example/http-circuit-breaker
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
         <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">rollingWindow</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">timeWindowInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
@@ -20,7 +20,8 @@ permalink: /v1-1/learn/by-example/http-circuit-breaker
             <span class="nx">resetTimeInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
             <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>        <span class="p">},</span>
         <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
-    <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">);</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cb&quot;</span>
 <span class="p">}</span>
@@ -39,7 +40,7 @@ permalink: /v1-1/learn/by-example/http-circuit-breaker
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
@@ -206,7 +207,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new(&quot;http://localhost:8080&quot;, {
+                                    <div class="highlight"><pre><code class=ballerina>http:Client backendClientEP = new (&quot;http://localhost:8080&quot;, {
 </code></pre></div>
 
                                 </td>
@@ -414,7 +415,8 @@ import ballerina/runtime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        },
         timeoutInMillis: 2000
-    });
+    }
+);
 </code></pre></div>
 
                                 </td>
@@ -499,7 +501,7 @@ service circuitbreaker on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(&lt;string&gt; backendResponse.detail()?.message);
+            response.setPayload(&lt;string&gt;backendResponse.detail()?.message);
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);

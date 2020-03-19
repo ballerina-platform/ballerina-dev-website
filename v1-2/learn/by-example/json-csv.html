@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: JSON to CSV Transform
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/json-csv
+permalink: /v1-2/learn/by-example/json-csv
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -10,9 +10,9 @@ permalink: /v1-1/learn/by-example/json-csv
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">getFields</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="p">&gt;</span> <span class="nx">rec</span><span class="p">)</span> <span class="nx">returns</span> <span class="p">[</span><span class="kt">string</span><span class="p">[],</span> <span class="kt">string</span><span class="p">[]]</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">field</span> <span class="nx">in</span> <span class="nx">rec</span> <span class="p">{</span>
-        <span class="nx">fields</span><span class="p">[</span><span class="nx">fields</span><span class="p">.</span><span class="nx">length</span><span class="p">()]</span> <span class="p">=</span> <span class="nx">field</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">recordField</span> <span class="nx">in</span> <span class="nx">rec</span> <span class="p">{</span>
+        <span class="nx">fields</span><span class="p">[</span><span class="nx">fields</span><span class="p">.</span><span class="nx">length</span><span class="p">()]</span> <span class="p">=</span> <span class="nx">recordField</span><span class="p">.</span><span class="nx">toString</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">rec</span><span class="p">.</span><span class="nx">keys</span><span class="p">(),</span> <span class="nx">fields</span><span class="p">];</span>
 <span class="p">}</span>
@@ -21,7 +21,7 @@ permalink: /v1-1/learn/by-example/json-csv
     <span class="kt">int</span> <span class="nx">recIndex</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="kt">int</span> <span class="nx">recLen</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">length</span><span class="p">();</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">recIndex</span> <span class="p">&lt;</span> <span class="nx">recLen</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="kt">string</span> <span class="p">[],</span> <span class="kt">string</span> <span class="p">[]]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getFields</span><span class="p">(&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span> <span class="nx">content</span><span class="p">[</span><span class="nx">recIndex</span><span class="p">]);</span>
+        <span class="p">[</span><span class="kt">string</span><span class="p">[],</span> <span class="kt">string</span><span class="p">[]]</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">getFields</span><span class="p">(&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">json</span><span class="o">&gt;&gt;</span><span class="nx">content</span><span class="p">[</span><span class="nx">recIndex</span><span class="p">]);</span>
         <span class="k">var</span> <span class="p">[</span><span class="nx">headers</span><span class="p">,</span> <span class="nx">fields</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">recIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">check</span> <span class="nx">csvch</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">headers</span><span class="p">);</span>
@@ -31,30 +31,31 @@ permalink: /v1-1/learn/by-example/json-csv
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">json</span> <span class="nx">sample</span> <span class="p">=</span> <span class="p">{</span>
-            <span class="s">&quot;employees&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s">&quot;employee&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="p">{</span>
-                        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;Tom&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Cruise&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/3737.jpg&quot;</span>
-                    <span class="p">},</span>
-                    <span class="p">{</span>
-                        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;Maria&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Sharapova&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/5676.jpg&quot;</span>
-                    <span class="p">},</span>
-                    <span class="p">{</span>
-                        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;James&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Bond&quot;</span><span class="p">,</span>
-                        <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/6776.jpg&quot;</span>
-                    <span class="p">}</span>
-                <span class="p">]</span>
-            <span class="p">}};</span>
+        <span class="s">&quot;employees&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;employee&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;Tom&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Cruise&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/3737.jpg&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;Maria&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Sharapova&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/5676.jpg&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;firstName&quot;</span><span class="p">:</span> <span class="s">&quot;James&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;lastName&quot;</span><span class="p">:</span> <span class="s">&quot;Bond&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;photo&quot;</span><span class="p">:</span> <span class="s">&quot;https://ballerina-team/profile/6776.jpg&quot;</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
     <span class="kt">string</span> <span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;./files/sample.csv&quot;</span><span class="p">;</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">writeCsv</span><span class="p">(&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span> <span class="nx">sample</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">employee</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">writeCsv</span><span class="p">(&lt;</span><span class="kt">json</span><span class="p">[]&gt;</span><span class="nx">sample</span><span class="p">.</span><span class="nx">employees</span><span class="p">.</span><span class="nx">employee</span><span class="p">,</span> <span class="nx">path</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while writing csv record :&quot;</span><span class="p">,</span>
                         <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
@@ -165,9 +166,9 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function getFields(map&lt;json&gt; rec) returns [string[], string[]] {
-    string [] fields = [];
-    foreach var field in rec {
-        fields[fields.length()] = field.toString();
+    string[] fields = [];
+    foreach var recordField in rec {
+        fields[fields.length()] = recordField.toString();
     }
     return [rec.keys(), fields];
 }
@@ -195,7 +196,7 @@ import ballerina/log;
     int recIndex = 0;
     int recLen = content.length();
     while (recIndex &lt; recLen) {
-        [string [], string []] result = getFields(&lt;map&lt;json&gt;&gt; content[recIndex]);
+        [string[], string[]] result = getFields(&lt;map&lt;json&gt;&gt;content[recIndex]);
         var [headers, fields] = result;
         if (recIndex == 0) {
 </code></pre></div>
@@ -253,28 +254,29 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    json sample = {
-            &quot;employees&quot;: {
-                &quot;employee&quot;: [
-                    {
-                        &quot;id&quot;: &quot;1&quot;,
-                        &quot;firstName&quot;: &quot;Tom&quot;,
-                        &quot;lastName&quot;: &quot;Cruise&quot;,
-                        &quot;photo&quot;: &quot;https://ballerina-team/profile/3737.jpg&quot;
-                    },
-                    {
-                        &quot;id&quot;: &quot;2&quot;,
-                        &quot;firstName&quot;: &quot;Maria&quot;,
-                        &quot;lastName&quot;: &quot;Sharapova&quot;,
-                        &quot;photo&quot;: &quot;https://ballerina-team/profile/5676.jpg&quot;
-                    },
-                    {
-                        &quot;id&quot;: &quot;3&quot;,
-                        &quot;firstName&quot;: &quot;James&quot;,
-                        &quot;lastName&quot;: &quot;Bond&quot;,
-                        &quot;photo&quot;: &quot;https://ballerina-team/profile/6776.jpg&quot;
-                    }
-                ]
-            }};
+        &quot;employees&quot;: {
+            &quot;employee&quot;: [
+                {
+                    &quot;id&quot;: &quot;1&quot;,
+                    &quot;firstName&quot;: &quot;Tom&quot;,
+                    &quot;lastName&quot;: &quot;Cruise&quot;,
+                    &quot;photo&quot;: &quot;https://ballerina-team/profile/3737.jpg&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;2&quot;,
+                    &quot;firstName&quot;: &quot;Maria&quot;,
+                    &quot;lastName&quot;: &quot;Sharapova&quot;,
+                    &quot;photo&quot;: &quot;https://ballerina-team/profile/5676.jpg&quot;
+                },
+                {
+                    &quot;id&quot;: &quot;3&quot;,
+                    &quot;firstName&quot;: &quot;James&quot;,
+                    &quot;lastName&quot;: &quot;Bond&quot;,
+                    &quot;photo&quot;: &quot;https://ballerina-team/profile/6776.jpg&quot;
+                }
+            ]
+        }
+    };
 </code></pre></div>
 
                                 </td>
@@ -312,7 +314,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var result = writeCsv(&lt;json[]&gt; sample.employees.employee, path);
+                                    <div class="highlight"><pre><code class=ballerina>    var result = writeCsv(&lt;json[]&gt;sample.employees.employee, path);
     if (result is error) {
         log:printError(&quot;Error occurred while writing csv record :&quot;,
                         err = result);

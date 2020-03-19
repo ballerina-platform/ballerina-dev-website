@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Basic UDP Client Socket
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/udp-socket-client
+permalink: /v1-2/learn/by-example/udp-socket-client
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,7 +13,7 @@ permalink: /v1-1/learn/by-example/udp-socket-client
     <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Hello from UDP client&quot;</span><span class="p">;</span>
     <span class="nx">byte</span><span class="p">[]</span> <span class="nx">c1</span> <span class="p">=</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
     <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span>
-        <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">sendTo</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="p">{</span> <span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">48826</span> <span class="p">});</span>
+        <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">sendTo</span><span class="p">(</span><span class="nx">c1</span><span class="p">,</span> <span class="p">{</span><span class="nx">host</span><span class="p">:</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span> <span class="mi">48826</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Number of bytes written: &quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -23,14 +23,13 @@ permalink: /v1-1/learn/by-example/udp-socket-client
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">socketClient</span><span class="o">-&gt;</span><span class="nx">receiveFrom</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="p">[</span><span class="nx">byte</span><span class="p">[],</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">socket</span><span class="p">:</span><span class="nx">Address</span><span class="p">])</span> <span class="p">{</span>
         <span class="k">var</span> <span class="p">[</span><span class="nx">content</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">address</span><span class="p">]</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-        <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">byteChannel</span> <span class="p">=</span> <span class="nx">io</span><span class="p">:</span><span class="nx">createReadableChannel</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">byteChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span> <span class="nx">characterChannel</span> <span class="p">=</span>
                 <span class="nx">new</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableCharacterChannel</span><span class="p">(</span><span class="nx">byteChannel</span><span class="p">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">str</span> <span class="p">=</span> <span class="nx">characterChannel</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">str</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">str</span><span class="p">);</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Received: &quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">str</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="p">,</span> <span class="nx">str</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
@@ -70,9 +69,9 @@ permalink: /v1-1/learn/by-example/udp-socket-client
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="secured-service-with-jwt.html">
+                                    <a class="next" href="secured-service-with-basic-auth.html">
                                         <span>NEXT ></span>
-                                        <p>Secured Service with JWT</p>
+                                        <p>Secured Service with Basic Auth</p>
                                     </a>
                                 </div>
                                 
@@ -188,7 +187,7 @@ import ballerina/socket;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var sendResult =
-        socketClient-&gt;sendTo(c1, { host: &quot;localhost&quot;, port: 48826 });
+        socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
     if (sendResult is int) {
         io:println(&quot;Number of bytes written: &quot;, sendResult);
     } else {
@@ -217,14 +216,13 @@ import ballerina/socket;
                                     <div class="highlight"><pre><code class=ballerina>    var result = socketClient-&gt;receiveFrom();
     if (result is [byte[], int, socket:Address]) {
         var [content, length, address] = result;
-        var byteChannel =
-            io:createReadableChannel(content);
+        var byteChannel = io:createReadableChannel(content);
         if (byteChannel is io:ReadableByteChannel) {
             io:ReadableCharacterChannel characterChannel =
                 new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
             var str = characterChannel.read(60);
             if (str is string) {
-                io:println(&quot;Received: &quot;, &lt;@untainted&gt; str);
+                io:println(&quot;Received: &quot;, &lt;@untainted&gt;str);
             } else {
                 io:println(&quot;Error: &quot;, str.detail()?.message);
             }

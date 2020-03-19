@@ -2,15 +2,15 @@
 layout: ballerina-example-page
 title: Check Panic
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/checkpanic
+permalink: /v1-2/learn/by-example/checkpanic
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span> <span class="k">as</span> <span class="nx">ints</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nb">parse</span><span class="p">(</span><span class="kt">string</span> <span class="nx">num</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">ints</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="nx">num</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">&#39;int:fromString(</span><span class="nx">num</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="nx">y</span> <span class="p">=</span> <span class="nx">checkpanic</span> <span class="nb">parse</span><span class="p">(</span><span class="s">&quot;120&quot;</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
@@ -103,7 +103,7 @@ permalink: /v1-1/learn/by-example/checkpanic
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;int as ints;
+import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -116,7 +116,7 @@ import ballerina/lang.&#39;int as ints;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function parse(string num) returns int|error {
-    return ints:fromString(num);
+    return &#39;int:fromString(num);
 }
 </code></pre></div>
 
@@ -212,7 +212,7 @@ import ballerina/lang.&#39;int as ints;
 $ ballerina run checkpanic.bal
 120
 error: {ballerina/lang.int}NumberParsingError message=&#39;string&#39; value &#39;Invalid&#39; cannot be converted to &#39;int&#39;
-        at ballerina.lang_int:fromString(int.bal:53)
+        at ballerina.lang_int:fromString(int.bal:113)
            checkpanic:parse(checkpanic.bal:6)
            checkpanic:main(checkpanic.bal:20)
 </code></pre></div>

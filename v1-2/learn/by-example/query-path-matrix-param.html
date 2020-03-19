@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Query Path Matrix Param
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-1/learn/by-example/query-path-matrix-param
+permalink: /v1-2/learn/by-example/query-path-matrix-param
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -23,13 +23,16 @@ permalink: /v1-1/learn/by-example/query-path-matrix-param
         <span class="k">var</span> <span class="nx">x</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;x&quot;</span><span class="p">];</span>
         <span class="k">var</span> <span class="nx">y</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">fooMParams</span><span class="p">[</span><span class="s">&quot;y&quot;</span><span class="p">];</span>
         <span class="kt">string</span> <span class="nx">fooMatrixStr</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`x=${x}, y=${y}`</span><span class="p">;</span>
-        <span class="kt">json</span> <span class="nx">matrixJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="nx">pathMatrixStr</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="nx">fooMatrixStr</span> <span class="p">};</span>
-        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span> <span class="s">&quot;pathParam&quot;</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="s">&quot;queryParam&quot;</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span>
-                                <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span> <span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">matrixJson</span> <span class="p">=</span> <span class="p">{</span><span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="nx">pathMatrixStr</span><span class="p">,</span> <span class="s">&quot;foo&quot;</span><span class="p">:</span> <span class="nx">fooMatrixStr</span><span class="p">};</span>
+        <span class="kt">json</span> <span class="nx">responseJson</span> <span class="p">=</span> <span class="p">{</span>
+            <span class="s">&quot;pathParam&quot;</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span>
+            <span class="s">&quot;queryParam&quot;</span><span class="p">:</span> <span class="nx">bar</span><span class="p">,</span>
+            <span class="s">&quot;matrix&quot;</span><span class="p">:</span> <span class="nx">matrixJson</span>
+        <span class="p">};</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span> <span class="nx">responseJson</span><span class="p">);</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error when responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -212,7 +215,7 @@ import ballerina/log;
         var x = &lt;string&gt;fooMParams[&quot;x&quot;];
         var y = &lt;string&gt;fooMParams[&quot;y&quot;];
         string fooMatrixStr = string `x=${x}, y=${y}`;
-        json matrixJson = { &quot;path&quot;: pathMatrixStr, &quot;foo&quot;: fooMatrixStr };
+        json matrixJson = {&quot;path&quot;: pathMatrixStr, &quot;foo&quot;: fooMatrixStr};
 </code></pre></div>
 
                                 </td>
@@ -231,8 +234,11 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        json responseJson = { &quot;pathParam&quot;: foo, &quot;queryParam&quot;: bar,
-                                &quot;matrix&quot;: matrixJson };
+                                    <div class="highlight"><pre><code class=ballerina>        json responseJson = {
+            &quot;pathParam&quot;: foo,
+            &quot;queryParam&quot;: bar,
+            &quot;matrix&quot;: matrixJson
+        };
         http:Response res = new;
 </code></pre></div>
 
@@ -252,7 +258,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        res.setJsonPayload(&lt;@untainted&gt; responseJson);
+                                    <div class="highlight"><pre><code class=ballerina>        res.setJsonPayload(&lt;@untainted&gt;responseJson);
 </code></pre></div>
 
                                 </td>
@@ -291,7 +297,7 @@ import ballerina/log;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        if (result is error) {
-            log:printError(&quot;Error when responding&quot;, err = result);
+            log:printError(&quot;Error when responding&quot;, result);
         }
     }
 }

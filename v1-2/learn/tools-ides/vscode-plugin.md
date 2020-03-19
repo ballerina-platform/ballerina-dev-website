@@ -73,5 +73,5 @@ The below sections include information on the various capabilities that are faci
 - [Run and Debug](/v1-2/learn/vscode-plugin/run-and-debug)
 - [Graphical View](/v1-2/learn/vscode-plugin/graphical-editor)
 - [Documentation Viewer](/v1-2/learn/vscode-plugin/documentation-viewer)
-- [Run all Tests](/v1-2/learn/vscode-plugin/run-all-tests)
+- [Run All Tests](/v1-2/learn/vscode-plugin/run-all-tests)
 

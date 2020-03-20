@@ -447,3 +447,493 @@ In Java, you can assign the `null` value to any variable of a reference type. Th
 The following section describes various aspects of Java interoperability in Ballerina. You can copy and paste following examples into a .bal file and run it using the `ballerina run <file_name.bal>` command.
 
 ## Calling Java code from Ballerina
+The following subsections explain how to call Java code from Ballerina. 
+* [Instantiate Java classes]()
+* [Call java methods]()
+* [Java exceptions as Ballerina errors]()
+* [Null safety]()
+* [How Java types are mapped Ballerina types and vice versa]()
+* [Access/Mutate Java fields]()
+
+### Instantiate Java classes
+Let's look at how you can create Java objects in a Ballerina program. The `@java:Constructor` annotation instructs the compiler to link a Ballerina function with a Java constructor.
+
+The `ArrayDeque` class in the `java.util` package has a default constructor. Following Ballerina code creates a new `ArrayDeque` object. As you can see, the`newArrayDeque` function is linked with the default constructor. This function returns a handle value and it is a reference to the constructed `ArrayDeque` instance.
+
+```ballerina
+import ballerinax/java;
+
+public function main() {
+    handle arrayDeque = newArrayDeque(); 
+}
+
+function newArrayDeque() returns handle = @java:Constructor {
+    class: "java.util.ArrayDeque"
+} external;
+```
+
+You can also create a wrapper Ballerina object for Java classes as follows.
+
+```ballerina
+import ballerinax/java;
+
+public function main() {
+    ArrayDeque ad = new; 
+}
+
+type ArrayDeque object {
+    private handle jObj;
+
+    function __init(){
+        self.jObj = newArrayDeque();          
+    }
+};
+
+function newArrayDeque() returns handle = @java:Constructor {
+    class: "java.util.ArrayDeque"
+} external;
+
+```
+
+Note that these `@java:*` annotations cannot be attached to Ballerina object methods at the moment.
+
+#### Dealing with overloaded constructors
+When there are two constructors with the same number of arguments available, you need to specify the exact constructor that you want to link with the Ballerina function. The `ArrayDeque` class contains three constructors and the last two are overloaded ones.
+
+```ballerina
+public ArrayDeque();
+public ArrayDeque(int numElements);
+public ArrayDeque(Collection<? extends E> c);
+```
+
+Here is the updated Ballerina code.
+
+```ballerina
+import ballerinax/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+    class: "java.util.ArrayDeque"
+} external;
+
+function newArrayDequeWithSize(int numElements) returns handle = @java:Constructor {
+    class: "java.util.ArrayDeque",
+    paramTypes: ["int"]
+} external;
+
+function newArrayDequeWithCollection(handle c) returns handle = @java:Constructor {
+    class: "java.util.ArrayDeque",
+    paramTypes: ["java.util.Collection"]
+} external;
+```
+
+##### The paramTypes field
+You can use the `paramTypes` field to resolve the exact overloaded method. This field is defined as follows.
+
+```ballerina
+# The `Class` type represents a Java fully qualified class name.
+public type Class string;
+
+# ArrayType represents a Java array type. It is used to specify parameter
+# types in `Constructor` and `Method` annotations.
+#
+# + class - Element class of the array type
+# + dimensions - Dimensions of the array type
+public type ArrayType record {|
+    Class class;
+    byte dimensions;
+|};
+
+(Class | ArrayType)[] paramTypes?;
+```
+
+As per the above definition, `paramTypes` field takes an array of Java classes or array types. The following table contains more details.
+
+
+Java Type | Description | Example
+--------- | ----------- | -------
+Primitive | The Java class name of a primitive type is the same as the name of the primitive type.  | The expression `boolean.class.getName()` evaluates to “boolean”. Similarly, the expression `int.class.getName()` evaluates to “int”.
+Class | Fully qualified class name | “java.lang.String”
+Array | Use the `ArrayType` record defined above to specify Java array types in overloaded methods. | Method signature: `void append(boolean[] states, long l, String[][] args);` The corresponding value of the `paramField`: `paramField: [{class:”boolean”, dimensions: 1}, “long” {class:”java.lang.String”, dimensions: 2}]`
+
+For more details, look at the following example.
+
+```java
+public Builder(Person[][] list, int index);
+public Builder(Student[][] list, int index);
+```
+
+Here is the corresponding Ballerina code.
+
+```ballerina
+import ballerinax/java;
+
+function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
+    class: "a.b.c.Builder",
+    paramTypes: [{class: "a.b.c.Person", dimensions:2}, "int"]
+} external;
+
+function builderWithStudentList(handle list, int index) returns handle = @java:Constructor {
+    class: "a.b.c.Builder",
+    paramTypes: [{class: "a.b.c.Student", dimensions:2}, "int"]
+} external;
+```
+
+### Call java methods
+You can use the `java:@Method` annotation to link Ballerina functions with Java static and instance methods. There is a small but important difference in calling Java static methods vs calling instance methods. 
+
+#### Static methods
+Let’s first look at how to call a static method. The class “java.util.UUID” has a static method with the signature `static UUID randomString()`. 
+
+```ballerina
+import ballerinax/java;
+import ballerina/io;
+
+function randomUUID() returns handle = @java:Method {
+   name: "randomUUID",
+   class: "java.util.UUID"
+} external;
+
+public function main() {
+   handle uuid = randomUUID();
+   io:println(uuid);
+}
+```
+
+The `name` field is optional here. If the Ballerina function name is the same as the Java method name, you don’t have to specify the `name` field.
+
+```ballerina
+function randomUUID() returns handle = @java:Method {
+   class: "java.util.UUID"
+} external;
+```
+
+#### Instance methods
+Now, let’s look at how to call Java instance methods using the same `ArrayDeque` class in the package `java.util`. It can be used as a stack with its `pop` and `push` instance methods with the following method signatures. 
+
+```java
+E pop();
+void push(E e);
+```
+
+Here are the corresponding Ballerina functions that are linked to these methods. 
+
+```ballerina
+function pop(handle arrayDequeObj) returns handle = @java:Method {
+   class: "java.util.ArrayDeque"
+} external;
+
+function push(handle arrayDequeObj, handle e) = @java:Method {
+   class: "java.util.ArrayDeque"
+} external; 
+```
+
+If you compare these functions with the Java method signatures, you would notice the additional parameter `handle arrayDequeObj` in Ballerina functions. Let’s look at a sample usage to understand the reason. 
+
+```ballerina
+public function main() {
+   // Create a new instance of ArrayDeque
+   handle arrayDequeObj = newArrayDeque();
+
+   // Convert a Ballerina string to a Java string 
+   string str = “Ballerina”
+   handle handleStr = java:fromString(str);
+
+   push(arrayDequeObj, handleStr);
+   handle e = pop(arrayDequeObj);
+}
+```
+
+As you can see, you need to first construct an instance of the `ArrayDeque` class. The variable `arrayDequeObj` refers to an `ArrayDeque` object. Then, you need to pass this variable to both `pop` and `push` functions because the corresponding Java methods are instance methods of the class `ArrayDeque`. Therefore, you need an instance of the `ArrayDeque` class in order to invoke its instance methods. You can think of the variable `arrayDequeObj` as the method receiver.
+
+#### Map Java classes into Ballerina objects
+The following pattern is useful If you want to present a clearer Ballerina API that calls to the underneath Java code. This pattern creates wrapper Ballerina objects for each Java class that you want to expose via your API. 
+
+Imagine that you want to design an API to manipulate a stack of string values by using the Java `ArrayDeque` utility. You can create a Ballerina object type as follows. 
+
+```ballerina
+public type StringStack object {
+   private handle jObj;
+
+   public function __init() {
+       self.jObj = newArrayDeque();
+   }
+
+   public function push(string element) {
+       push(self.jObj, java:fromString(element));
+   }
+
+   public function pop() returns string {
+       handle handleEle = pop(self.jObj);
+       // Let's talk about error handling and null satefy later in this guide
+       // This example uses an empty string for now.
+       return java:toString(handleEle) ?: "";
+
+   }
+};
+
+function newArrayDeque() returns handle = @java:Constructor {
+   class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+   class: "java.util.ArrayDeque"
+} external;
+
+function push(handle receiver, handle element) = @java:Method {
+   class: "java.util.ArrayDeque"
+} external;
+```
+
+This object presents a much clearer API compared to the previous API. Here is a sample usage of this object. 
+
+```ballerina
+public function main() {
+   StringStack stack = new();
+   stack.push("Ballerina");   
+   string element = stack.pop();
+}
+```
+
+#### Overloaded Java methods
+The“Instantiate Java classes” section presented about how to deal with overloaded constructors in the. You need to use the same approach to deal with overloaded Java methods. Let’s try to call the overloaded `append` methods in the `java.lang.StringBuffer class Here is a subset of those methods. 
+
+```java
+StringBuffer append(boolean b);
+StringBuffer append(int i);
+StringBuffer append(String str);
+StringBuffer append(StringBuffer sb);
+StringBuffer append(char[] str);
+```
+
+Here is the set of Ballerina functions that are linked with the above Java methods. Notice the usage of the `paramTypes` annotation field. You can find more details of this field in the “Instantiate Java classes” section. 
+
+```ballerina
+function appendBool(handle sbObj, boolean b) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["boolean"],
+   class: "java.lang.StringBuffer"
+} external;
+
+function appendInt(handle sbObj, int i) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["int"],
+   class: "java.lang.StringBuffer"
+} external;
+
+function appendCharArray(handle sbObj, handle str) returns handle = @java:Method {
+   name: "append",
+   paramTypes: [{class: "char", dimensions: 1}],
+   class: "java.lang.StringBuffer"
+} external;
+
+function appendString(handle sbObj, handle str) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["java.lang.String"],
+   class: "java.lang.StringBuffer"
+} external;
+
+function appendStringBuffer(handle sbObj, handle sb) returns handle = @java:Method {
+   name: "append",
+   paramTypes: ["java.lang.StringBuffer"],
+   class: "java.lang.StringBuffer"
+} external;
+```
+
+### Java exceptions as Ballerina errors
+A function call in Ballerina may complete abruptly by returning an error or by raising a panic. Panics are rare in Ballerina. The best practise is to handle errors in your normal control-flow. Raising a panic is similar to throwing a Java exception. The `trap` action will stop a panic and gives you the control back in Ballerina and the `try-catch` statement does the same in Java. 
+
+Errors in Ballerina belong to the built-int type `error`. The error type can be considered as a distinct type from all other types: The `error` type does not belong to the `any` type, which is the supertype of all other Ballerina types. Therefore, errors are explicit in Ballerina programs and it is almost impossible to ignore them. For more details, see BBEs. 
+
+How do Java exceptions are mapped to Ballerina errors? 
+A Java function call may complete abruptly by throwing either a checked exception or an unchecked exception. Unchecked exceptions are usually not part of the Java method signature unlike the checked exceptions.
+
+Java interoperability layer in Ballerina handles checked exceptions differently from unchecked exceptions as explained below
+Java unchecked exceptions
+If the linked Java method throws an unchecked exception, then the corresponding Ballerina function will complete abruptly by raising a panic.
+ 
+The following example,  tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException`exception in such cases. This exception will cause the Ballerina function `pop` to raise a panic. 
+
+```ballerina
+import ballerinax/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+   class: "java.util.ArrayDeque"
+} external;
+
+function pop(handle receiver) returns handle = @java:Method {
+   class: "java.util.ArrayDeque"
+} external;
+
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = pop(arrayDeque);
+}
+```
+
+Here is the output:
+
+```
+error: java.util.NoSuchElementException 
+	at array_deque:pop(array_deque.bal:65535)
+	   array_deque:main(array_deque.bal:13)
+```
+
+You can use the `trap` action to stop the propagation of the panic and to get an `error` value. 
+
+```ballerina
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle | error element = trap pop(arrayDeque);
+   if element is error {
+       io:println(element.reason());
+       io:println(element.detail());
+       io:println(element.stackTrace().callStack);
+   } else {
+       // .....
+   }
+} 
+```
+#### Java checked exceptions
+Let’s see how you can call a Java method that throws a checked exception. As illustrated in the following example, the corresponding Ballerina function should have the `error` type as part of it’s return type. 
+
+The `java.util.zip.ZipFile` class is used to read entries in a zip file. There are many constructors in this class. Here, the constructor that takes the file name as an argument is used. 
+
+```java
+public ZipFile(String name) throws IOException
+```
+
+Since this Java constructor throws a checked exception,  the `newZipfile` Ballerina function returns `ZipFile` instances or an error. 
+
+```ballerina
+import ballerinax/java;
+
+function newZipFile(handle filename) returns handle | error = @java:Constructor {
+   class: "java.util.zip.ZipFile",
+   paramTypes: ["java.lang.String"]
+} external;
+
+public function main() {
+   handle|error zipFile = newZipFile(java:fromString("some_file.zip"));
+}
+```
+
+#### Mapping a Java exception to a Ballerina error value
+Now, let’s briefly look at how a Java exception is converted to a Ballerina error value at runtime. A Ballerina error value contains three components: a reason, a detail, and stack trace. 
+
+The `reason`:
+	* This is a string identifier for the category of error.
+	* In this case, reason value is set to the fully qualified Java class name of the exception. 
+		* Unchecked: Class name of of the thrown unchecked exception
+		* Checked: Class name of the exception that is declared in the method signature
+The `detail`:
+	* The `message` field is set to `e.getMessage()`.
+	* The `cause` field is set to the Ballerina error that represents this Java exception’s cause.
+
+### Null safety
+Ballerina provides strict null safety compared to Java with optional types.  The Java null reference can be assigned to any reference type. However, in Ballerina, you cannot assign the nil value to a variable unless the variable’s type is an optional type. 
+
+As explained above, Ballerina handle values cannot be created in Ballerina code. They are created and returned by foriegn functions and a variable of the handle type refers to a Java reference value. Since Java null is also a valid reference value, this variable can refer to a Java null value.
+
+Let’s look at an example that deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. Peek retrieves but does not remove the head of the queue or returns null if the queue is empty. 
+
+```ballerina
+import ballerinax/java;
+
+function newArrayDeque() returns handle = @java:Constructor {
+   class: "java.util.ArrayDeque"
+} external;
+
+function peek(handle receiver) returns handle = @java:Method {
+   class: "java.util.ArrayDeque"
+} external;
+
+// Linked with the java.lang.Object.toString() method in Java
+function toString(handle objInstance) returns handle = @java:Method {
+   class: "java.lang.Object"
+} external;
+
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = peek(arrayDeque);
+   Handle str = toString(element);
+}
+```
+
+Since the queue is empty in this case, `peek` should return null. I.e., `element` should refer to Java null.  The output of this program will be as follows.
+
+```ballerina
+ error: org.ballerinalang.jvm.values.ErrorValue message={ballerina}JavaNullReferenceError
+	at array_deque:toString(array_deque.bal:19)
+	    array_deque:main(array_deque.bal:27)
+```
+
+This is equivalent to a Java NPE. In such situations, you should check for null using the `java:isNull()` function. Here is the modified example. 
+
+```ballerina
+public function main() {
+   handle arrayDeque = newArrayDeque();
+   handle element = peek(arrayDeque);   
+  
+   if java:isNull(element) {
+       // handle this case
+   } else {
+       handle str = toString(element);
+   }
+}
+```
+
+There are situations in which you need to pass a Java null to a method or store in a data structure. In such situations, you can create a handle value that refers to a Java null as follows. 
+
+```ballerina
+handle nullValue = java:createNull();
+```
+
+### How Java types are mapped Ballerina types and vice versa
+#### Mapping Java types to Ballerina types
+The following table summarizes how Java types are mapped to corresponding Ballerina types. This is applicable when mapping a return type of a Java method to a Ballerina type. 
+
+Java type | Ballerina type | Notes
+--------- | -------------- | -----
+Any reference type including “null type” | handle |
+boolean | boolean |
+byte | byte, int, float | widening conversion when byte -> int and byte -> float
+short | int, float | widening conversion 
+char  | int, float | widening conversion 
+int | int, float | widening conversion 
+long | int, float | widening conversion when long -> float
+float | float | widening conversion 
+double | float | 
+
+#### Mapping Ballerina types to Java types
+The following table summarizes how Ballerina types are mapped to corresponding Java types. These rules are applicable when mapping a Ballerina function argument to a Java method/constructor parameter.
+
+Ballerina type | Java type | Notes
+-------------- | --------- | -----
+handle | Any reference type | As specified by the Java method/constructor signature
+boolean | boolean | 
+byte | byte, short, char, int, long, float, double | Widening conversion from byte -> short, char, int, long, float, double
+int | byte, char, short, int, long | Narrowing conversion when int -> byte, char, short and int
+float | byte, char, short, int, long, float, double | Narrowing conversion when float -> byte, char, short, int, long, float
+
+
+### Access/Mutate Java fields
+The annotations `@java:FieldGet` and `@java:FieldSet` allow you to read and update the value of a Java static or instance field respectively. The most common use case is to read a value of a Java static constant. 
+
+```ballerina
+import ballerinax/java;
+
+public function pi() returns float = @java:FieldGet {
+   name:"PI",
+   class:"java/lang/Math"
+} external;
+
+public function main() {
+   float r = 4;
+   float l = 2 * pi() * r;
+}
+```
+
+In this example, the function `pi()` returns the value of the static field `java.lang.Math.PI`. This uses the annotation field `name` to specify the name of the field. Likewise, if you want to access an instance field, you need to pass the relevant object instance as discussed in the instance methods section.
+
+The `@java:FieldSet` annotation has the same structure as the above. 
+

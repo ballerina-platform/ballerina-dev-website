@@ -1,29 +1,31 @@
 ---
 layout: ballerina-example-page
-title: Expression-bodied Functions
+title: Query Action
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-2/learn/by-example/expression-bodied-functions
+permalink: /v1-2/learn/by-example/query-action
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">sum</span> <span class="p">=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">sum</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">toEmployee</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">pos</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">Employee</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">name</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">fname</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">lname</span><span class="p">,</span>
-        <span class="nx">designation</span><span class="p">:</span> <span class="nx">pos</span>
-    <span class="p">};</span>    <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span> <span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">johnEmp</span> <span class="p">=</span> <span class="nx">toEmployee</span><span class="p">(</span><span class="nx">john</span><span class="p">,</span> <span class="s">&quot;Software Engineer&quot;</span><span class="p">);</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">johnEmp</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="nx">fname</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">lname</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
-<span class="p">|};</span><span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
-    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="nx">designation</span><span class="p">;</span>
-<span class="p">|};</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">FullName</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>    <span class="nx">FullName</span><span class="p">[]</span> <span class="nx">nameList</span> <span class="p">=</span> <span class="p">[];</span>
+    <span class="k">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+    <span class="nx">do</span> <span class="p">{</span>
+        <span class="nx">FullName</span> <span class="nx">fullName</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span><span class="p">};</span>
+        <span class="nx">nameList</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">fullName</span><span class="p">);</span>
+    <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">name</span> <span class="nx">in</span> <span class="nx">nameList</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -32,9 +34,11 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Expression-bodied Functions</h2>
-                            <p><p>A function body can be a single expression. Such a function is called an expression-bodied function and the
- expression function body takes the form <code>=&gt; E</code>. This is equivalent to the block function body <code>{ return E; }</code>.</p>
+                            <h2>Query Action</h2>
+                            <p><p>Like a query-expression, a query-action can be used with a value that is iterable with any error type.
+ The result of the query-action is the termination value of the iterator.
+ Thus, if the source type is infallibly iterable, the result will be () and can be ignored.
+ This is a preview feature.</p>
 </p>
 
                         </td>
@@ -42,16 +46,16 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="closures.html">
+                                    <a class="prev" href="query-expression.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Closures</p>
+                                        <p>Query Expression</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="functional-iteration.html">
+                                    <a class="next" href="values.html">
                                         <span>NEXT ></span>
-                                        <p>Functional Iteration</p>
+                                        <p>Values</p>
                                     </a>
                                 </div>
                                 
@@ -60,7 +64,7 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                     </tr>
                 </table>
             </div>
-            <div class="example" id="expression-bodied-functions">
+            <div class="example" id="query-action">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -71,7 +75,7 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/expression-bodied-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/query-action/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -124,25 +128,33 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function add(int a, int b) returns int =&gt; a + b;
+                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+    string firstName;
+    string lastName;
+    float score;
+};
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Note the syntactic difference in the function body of an expression-bodied function
- compared to a regular block function body. This is equivalent to
- <code>function add(int a, int b) returns int { return a + b; }</code>. The static type of
- the expression should either be the same or a subtype of the return type
- of the function.</p>
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
-                                        </div>
-                                    </div>
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type FullName record {|
+    string firstName;
+    string lastName;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -151,6 +163,33 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
+    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, score: 1.5};
+    Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, score: 0.9};
+    Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, score: 1.2};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    FullName[] nameList = [];
 </code></pre></div>
 
                                 </td>
@@ -162,8 +201,7 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int sum = add(10, 20);
-    io:println(sum);
+                                    <div class="highlight"><pre><code class=ballerina>    var e = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -171,7 +209,10 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>There is no difference in how you call an expression-bodied function.</p>
+                                            <p><code>query-action</code> works similarly to a <code>foreach</code> statement.
+It can be used to iterate through any iterable value.
+The result of the query-action is the termination value of the iterable value.
+It can be either an error or ().</p>
 
                                         </div>
                                     </div>
@@ -182,9 +223,9 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var toEmployee = function (Person p, string pos) returns Employee =&gt; {
-        name: p.fname + &quot; &quot; + p.lname,
-        designation: pos
+                                    <div class="highlight"><pre><code class=ballerina>    do {
+        FullName fullName = {firstName: student.firstName, lastName: student.lastName};
+        nameList.push(fullName);
     };
 </code></pre></div>
 
@@ -193,9 +234,7 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Anonymous functions can have expression bodies as well.
- Here, an expression bodied anonymous function is used to easily map a
- record to another record type.</p>
+                                            <p>The block inside the <code>do</code> clause is executed for each iteration.</p>
 
                                         </div>
                                     </div>
@@ -205,53 +244,11 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person john = { fname: &quot;John&quot;, lname: &quot;Doe&quot;, age: 25 };
-    Employee johnEmp = toEmployee(john, &quot;Software Engineer&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(johnEmp);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
-    string fname;
-    string lname;
-    int age;
-|};
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
-    string name;
-    string designation;
-|};
+                                    <div class="highlight"><pre><code class=ballerina>    foreach var name in nameList {
+        io:println(name);
+    }
+}
 </code></pre></div>
 
                                 </td>
@@ -268,6 +265,10 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -275,12 +276,24 @@ permalink: /v1-2/learn/by-example/expression-bodied-functions
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run expression_bodied_functions.bal
-30
-name=John Doe designation=Software Engineer
+$ ballerina run query_action.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>firstName=Alex lastName=George
+firstName=Ranjan lastName=Fonseka
+firstName=John lastName=David
 </code></pre></div>
 
                                 </td>

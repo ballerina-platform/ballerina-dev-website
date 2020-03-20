@@ -257,7 +257,7 @@ public function uuid(awslambda:Context ctx, json input) returns json|error {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the AWS Lambda functions
-$ ./ballerina build aws_lambda_deployment.bal
+$ ballerina build aws_lambda_deployment.bal
 Compiling source
 	aws_lambda_deployment.bal
 Generating executables
@@ -314,11 +314,11 @@ Generating executables
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Execute the AWS CLI commands to create and publish the functions, and your AWS &lt;LAMBDA_ROLE_ARN&gt; and the &lt;BALLERINA_LAYER_ARN&gt; for a specific Ballerina release should be used, following values are just examples
-$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
+$ aws lambda create-function --function-name echo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.echo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
  --timeout 10 --memory-size 1024
-$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
+$ aws lambda create-function --function-name uuid --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.uuid --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
  --timeout 10 --memory-size 1024
-$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role --role arn:aws:iam::908363916111:role/lambda-role
+$ aws lambda create-function --function-name ctxinfo --zip-file fileb://aws-ballerina-lambda-functions.zip --handler aws_lambda_deployment.ctxinfo --runtime provided --role arn:aws:iam::908363916111:role/lambda-role
  --timeout 10 --memory-size 1024
 $ aws lambda update-function-configuration --function-name echo --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
 $ aws lambda update-function-configuration --function-name uuid --layers arn:aws:lambda:us-west-2:908363916138:layer:ballerina-x_xxx_x-runtime:1
@@ -335,7 +335,7 @@ $ aws lambda update-function-configuration --function-name ctxinfo --layers arn:
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Invoke the functions
-$ aws lambda invoke --function-name echo --payload &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; response.txt
+$ aws lambda invoke --function-name echo --payload &#39;{&quot;MESSAGE&quot;:&quot;HELLO&quot;}&#39; echo-response.txt
 {
     &quot;ExecutedVersion&quot;: &quot;$LATEST&quot;, 
     &quot;StatusCode&quot;: 200

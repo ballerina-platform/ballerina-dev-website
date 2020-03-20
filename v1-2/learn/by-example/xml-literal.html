@@ -272,14 +272,13 @@ $ ballerina run xml_literal.bal
                   &lt;/book&gt;
 &lt;book xmlns=&quot;http://ballerina.com/&quot; xmlns:ns0=&quot;http://ballerina.com/aa&quot; ns0:status=&quot;available&quot;&gt;
                     &lt;ns0:name&gt;Sherlock Holmes&lt;/ns0:name&gt;
-                    &lt;author&gt;Sir Arthur Conan Doyle&lt;/author&gt;
+                    &lt;author xmlns=&quot;http://ballerina.com/&quot;&gt;Sir Arthur Conan Doyle&lt;/author&gt;
                     &lt;!--Price: $10--&gt;
                   &lt;/book&gt;
-&lt;ns0:newBook xmlns:ns0=&quot;http://ballerina.com/aa&quot; xmlns=&quot;http://ballerina.com/&quot;&gt;
-                    &lt;name&gt;Sherlock Holmes&lt;/name&gt;
-                    &lt;author&gt;(Sir) Arthur Conan Doyle&lt;/author&gt;
+&lt;ns0:newBook xmlns:ns0=&quot;http://ballerina.com/aa&quot;&gt;
+                    &lt;name xmlns=&quot;http://ballerina.com/&quot;&gt;Sherlock Holmes&lt;/name&gt;
+                    &lt;author xmlns=&quot;http://ballerina.com/&quot;&gt;(Sir) Arthur Conan Doyle&lt;/author&gt;
                     &lt;!--Price: $12--&gt;
-                  &lt;/ns0:newBook&gt;
 </code></pre></div>
 
                                 </td>

@@ -150,6 +150,20 @@
         ]
     },
     {
+        "title": "Query",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [{
+            "name": "Query Expression",
+            "url": "query-expression"
+        },
+            {
+                "name": "Query Action",
+                "url": "query-action"
+            }
+        ]
+    },
+    {
         "title": "Values and Types",
         "column": 1,
         "category": "Language concepts",
@@ -316,6 +330,16 @@
                 "name": "Type Conversion",
                 "url": "type-conversion"
             }
+        ]
+    },
+     {
+        "title": "Streams",
+        "column": 1,
+        "category": "Language concepts",
+        "samples": [{
+            "name": "Streams",
+            "url": "streams"
+        }
         ]
     },
     {
@@ -1107,28 +1131,6 @@
         ]
     },
     {
-        "title": "Transactions",
-        "column": 0,
-        "category": "Experimental features",
-        "samples": [{
-                "name": "Local Transactions",
-                "url": "local-transactions"
-            },
-            {
-                "name": "Local Transactions with participants",
-                "url": "local-transactions-with-participants"
-            },
-            {
-                "name": "XA Transactions",
-                "url": "xa-transactions"
-            },
-            {
-                "name": "Distributed Transactions",
-                "url": "transactions-distributed"
-            }
-        ]
-    },
-    {
         "title": "JDBC Database Connector",
         "column": 0,
         "category": "Preview features",
@@ -1171,6 +1173,28 @@
             {
                 "name": "MySQL DDL and DML Operations",
                 "url": "mysql-execute-operation"
+            }
+        ]
+    },
+    {
+        "title": "Transactions",
+        "column": 0,
+        "category": "Experimental features",
+        "samples": [{
+                "name": "Local Transactions",
+                "url": "local-transactions"
+            },
+            {
+                "name": "Local Transactions with participants",
+                "url": "local-transactions-with-participants"
+            },
+            {
+                "name": "XA Transactions",
+                "url": "xa-transactions"
+            },
+            {
+                "name": "Distributed Transactions",
+                "url": "transactions-distributed"
             }
         ]
     }

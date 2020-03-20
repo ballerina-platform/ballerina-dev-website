@@ -1,22 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - http
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/http/types
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Types : http</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -65,6 +95,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                         </li>
                     
                         <li >
+                            <a href="#InboundAuthHandlers">InboundAuthHandlers</a>
+                        </li>
+                    
+                        <li >
                             <a href="#InboundRequestError">InboundRequestError</a>
                         </li>
                     
@@ -109,6 +143,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                         </li>
                     
                         <li >
+                            <a href="#Scopes">Scopes</a>
+                        </li>
+                    
+                        <li >
                             <a href="#WebSocketError">WebSocketError</a>
                         </li>
                     
@@ -118,7 +156,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -200,7 +238,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -228,10 +266,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -256,11 +290,11 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -316,10 +350,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -348,10 +378,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -365,10 +391,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -462,6 +484,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                             </li>
                         
                             <li >
+                                <a href="#InboundAuthHandlers">InboundAuthHandlers</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#InboundRequestError">InboundRequestError</a>
                             </li>
                         
@@ -506,6 +532,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                             </li>
                         
                             <li >
+                                <a href="#Scopes">Scopes</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#WebSocketError">WebSocketError</a>
                             </li>
                         
@@ -515,7 +545,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -597,7 +627,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -625,10 +655,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -653,11 +679,11 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -713,10 +739,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -745,10 +767,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -762,10 +780,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/types
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -881,7 +895,7 @@ in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="ClientError"><b>ClientError</b><span class="type">  <a href="../http/types.html#ResiliencyError">ResiliencyError</a> | <a href="../http/types.html#ClientAuthError">ClientAuthError</a> | <a href="../http/types.html#OutboundRequestError">OutboundRequestError</a> | <a href="../http/types.html#InboundResponseError">InboundResponseError</a> | <a href="../http/errors.html#UnsupportedActionError">UnsupportedActionError</a> | <a href="../http/errors.html#Http2ClientError">Http2ClientError</a> | <a href="../http/errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a> | <a href="../http/errors.html#SslError">SslError</a> | <a href="../http/errors.html#GenericClientError">GenericClientError</a></span></li>
+                                <li id="ClientError"><b>ClientError</b><span class="type">  <a href="../http/types.html#ResiliencyError">ResiliencyError</a> | <a href="../http/types.html#ClientAuthError">ClientAuthError</a> | <a href="../http/types.html#OutboundRequestError">OutboundRequestError</a> | <a href="../http/types.html#InboundResponseError">InboundResponseError</a> | <a href="../http/errors.html#UnsupportedActionError">UnsupportedActionError</a> | <a href="../http/errors.html#Http2ClientError">Http2ClientError</a> | <a href="../http/errors.html#MaximumWaitTimeExceededError">MaximumWaitTimeExceededError</a> | <a href="../http/errors.html#SslError">SslError</a> | <a href="../http/errors.html#GenericClientError">GenericClientError</a> | <a href="../http/errors.html#CookieHandlingError">CookieHandlingError</a></span></li>
                                 <li>
                                     <p>Defines the possible client error types</p>
 
@@ -941,6 +955,16 @@ outbound request/response accept-encoding/content-encoding option
 <p><code>HTTP_1_0</code>: HTTP/1.0 protocol
 <code>HTTP_1_1</code>: HTTP/1.1 protocol
 <code>HTTP_2_0</code>: HTTP/2.0 protocol</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="InboundAuthHandlers"><b>InboundAuthHandlers</b><span class="type">  <span class="array-type"><a href="../http/objects/InboundAuthHandler.html">InboundAuthHandler</a>[]</span> | <span class="array-type"><a href="../http/objects/InboundAuthHandler.html">InboundAuthHandler</a>[][]</span></span></li>
+                                <li>
+                                    <p>Represents inbound auth handler patterns.</p>
 
                                 </li>
                             </ul>
@@ -1010,7 +1034,7 @@ outbound request/response accept-encoding/content-encoding option
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="OutboundResponseError"><b>OutboundResponseError</b><span class="type">  <a href="../http/errors.html#InitializingOutboundResponseError">InitializingOutboundResponseError</a> | <a href="../http/errors.html#WritingOutboundResponseHeadersError">WritingOutboundResponseHeadersError</a> | <a href="../http/errors.html#WritingOutboundResponseBodyError">WritingOutboundResponseBodyError</a> | <a href="../http/errors.html#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a> | <a href="../http/errors.html#Writing100ContinueResponseError">Writing100ContinueResponseError</a></span></li>
+                                <li id="OutboundResponseError"><b>OutboundResponseError</b><span class="type">  <a href="../http/errors.html#InitializingOutboundResponseError">InitializingOutboundResponseError</a> | <a href="../http/errors.html#WritingOutboundResponseHeadersError">WritingOutboundResponseHeadersError</a> | <a href="../http/errors.html#WritingOutboundResponseBodyError">WritingOutboundResponseBodyError</a> | <a href="../http/errors.html#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a> | <a href="../http/errors.html#Writing100ContinueResponseError">Writing100ContinueResponseError</a> | <a href="../http/errors.html#InvalidCookieError">InvalidCookieError</a></span></li>
                                 <li>
                                     <p>Defines the listener error types that returned while sending outbound response</p>
 
@@ -1060,6 +1084,16 @@ outbound request/response accept-encoding/content-encoding option
                     
                         <div class="params-listing">
                             <ul>
+                                <li id="Scopes"><b>Scopes</b><span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span></span></li>
+                                <li>
+                                    <p>Represents scopes patterns.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
                                 <li id="WebSocketError"><b>WebSocketError</b><span class="type">  <a href="../http/errors.html#WsConnectionClosureError">WsConnectionClosureError</a> | <a href="../http/errors.html#WsInvalidHandshakeError">WsInvalidHandshakeError</a> | <a href="../http/errors.html#WsPayloadTooBigError">WsPayloadTooBigError</a> | <a href="../http/errors.html#WsProtocolError">WsProtocolError</a> | <a href="../http/errors.html#WsConnectionError">WsConnectionError</a> | <a href="../http/errors.html#WsInvalidContinuationFrameError">WsInvalidContinuationFrameError</a> | <a href="../http/errors.html#WsGenericError">WsGenericError</a></span></li>
                                 <li>
                                     <p>The union of all the WebSocket related errors</p>
@@ -1074,4 +1108,49 @@ outbound request/response accept-encoding/content-encoding option
         </div>
     </div>
 
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

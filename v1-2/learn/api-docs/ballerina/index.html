@@ -1,23 +1,54 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation
-keywords: Ballerina, ballerinalang
----
-<link rel="stylesheet" href="html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Documentation</title>
+    <script src="html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="html-template-resources/styles/css/font.css">
     <script src="html-template-resources/semantic.min.js"></script>
     <script src="syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
-
     <div class="navi-wrapper" > 
       <div class="navi-wrapper-content">
           <a href="index.html">
@@ -59,7 +90,7 @@ keywords: Ballerina, ballerinalang
               
               <tr>
                 <td class="module-title modules"><a href="cache/index.html">cache</a></td>
-                <td class="module-desc"><p>This module offers a cache that supports time-based eviction, and size-based eviction.</p>
+                <td class="module-desc"><p>The <code>AbstractCache</code> object has the common APIs as follows. Also, there can be &quot;custom implementations&quot; with a different data storage like file, database, etc. with structural equivalency to the abstract object.</p>
 </td>
               </tr>
               
@@ -76,8 +107,8 @@ keywords: Ballerina, ballerinalang
               </tr>
               
               <tr>
-                <td class="module-title modules"><a href="docker/index.html">docker</a></td>
-                <td class="module-desc"><p>This module offers an annotation based docker extension implementation for ballerina.</p>
+                <td class="module-title modules"><a href="email/index.html">email</a></td>
+                <td class="module-desc"><p>This module contains functions to perform email operations such as sending and reading emails using SMTP, POP3, and IMAP4 protocols.</p>
 </td>
               </tr>
               
@@ -122,12 +153,6 @@ or non-blocking manner.</p>
               </tr>
               
               <tr>
-                <td class="module-title modules"><a href="istio/index.html">istio</a></td>
-                <td class="module-desc"><p>This module offers an annotation based Istio extension implementation for ballerina.</p>
-</td>
-              </tr>
-              
-              <tr>
                 <td class="module-title modules"><a href="java/index.html">java</a></td>
                 <td class="module-desc"><p>This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods and fields can provide implementations to Ballerina functions with external function bodies.</p>
 </td>
@@ -167,98 +192,93 @@ This module supports kafka 1.x.x and 2.0.0 versions.</p>
               </tr>
               
               <tr>
-                <td class="module-title modules"><a href="kubernetes/index.html">kubernetes</a></td>
-                <td class="module-desc"><p>This module offers an annotation based Kubernetes extension implementation for ballerina.</p>
+                <td class="module-title modules"><a href="lang.array/index.html">lang.array</a></td>
+                <td class="module-desc"><p>This module provides lang library list operations defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
-                <td class="module-title modules"><a href="lang.array/index.html">lang.array</a></td>
-                <td class="module-desc"><p>This module provides lang library list operations defined by the language specification 2019R3.</p>
+                <td class="module-title modules"><a href="lang.boolean/index.html">lang.boolean</a></td>
+                <td class="module-desc"><p>This module provides lang library operations on <code>boolean</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.decimal/index.html">lang.decimal</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>decimal</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>decimal</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.error/index.html">lang.error</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>error</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>error</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.float/index.html">lang.float</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>float</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>float</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.future/index.html">lang.future</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>future</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>future</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.int/index.html">lang.int</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>int</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>int</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.map/index.html">lang.map</a></td>
-                <td class="module-desc"><p>This module provides lang library map operations defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library map operations defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.object/index.html">lang.object</a></td>
-                <td class="module-desc"><p>This module defines the shape expected from all listeners as defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module defines the shape expected from all listeners as defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.stream/index.html">lang.stream</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>stream</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>stream</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.string/index.html">lang.string</a></td>
-                <td class="module-desc"><p>This module provides lang library string operations defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library string operations defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.table/index.html">lang.table</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>table</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>table</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.typedesc/index.html">lang.typedesc</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>typedesc</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>typedesc</code> values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.value/index.html">lang.value</a></td>
-                <td class="module-desc"><p>This module provides lang library operations common to all values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations common to all values defined by the language specification 2020R1.</p>
 </td>
               </tr>
               
               <tr>
                 <td class="module-title modules"><a href="lang.xml/index.html">lang.xml</a></td>
-                <td class="module-desc"><p>This module provides lang library operations on <code>xml</code> values defined by the language specification 2019R3.</p>
+                <td class="module-desc"><p>This module provides lang library operations on <code>xml</code> values defined by the language specification 2020R1.</p>
 </td>
-              </tr>
-              
-              <tr>
-                <td class="module-title modules"><a href="llvm/index.html">llvm</a></td>
-                <td class="module-desc"></td>
               </tr>
               
               <tr>
@@ -308,12 +328,6 @@ Ballerina supports Observability out of the box. This module provides user api's
               </tr>
               
               <tr>
-                <td class="module-title modules"><a href="openshift/index.html">openshift</a></td>
-                <td class="module-desc"><p>This module offers an annotation based OpenShift extension implementation for ballerina.</p>
-</td>
-              </tr>
-              
-              <tr>
                 <td class="module-title modules"><a href="rabbitmq/index.html">rabbitmq</a></td>
                 <td class="module-desc"><p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.</p>
 </td>
@@ -334,12 +348,6 @@ Ballerina supports Observability out of the box. This module provides user api's
               <tr>
                 <td class="module-title modules"><a href="socket/index.html">socket</a></td>
                 <td class="module-desc"><p>This module provides an implementation for connecting to a remote socket server or acts as a server for an incoming socket request. The module facilitates two types of endpoints called <code>Client</code> and <code>Listener</code>.</p>
-</td>
-              </tr>
-              
-              <tr>
-                <td class="module-title modules"><a href="streams/index.html">streams</a></td>
-                <td class="module-desc"><p>The Streams module provides the stream processing capabilities to Ballerina:</p>
 </td>
               </tr>
               
@@ -406,7 +414,7 @@ It provides APIs to convert a <code>json</code> to an <code>xml</code>, or conve
       </div>
     </div>
   </div>
-
+</body>
 
 <script>
     $(document)

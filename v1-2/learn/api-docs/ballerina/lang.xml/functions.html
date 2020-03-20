@@ -1,22 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - lang.xml
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Functions : lang.xml</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
-    
+
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -29,15 +59,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 <ul>
                     
                         <li >
-                            <a href="#appendChildren">appendChildren</a>
-                        </li>
-                    
-                        <li >
                             <a href="#concat">concat</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#copy">copy</a>
                         </li>
                     
                         <li >
@@ -69,6 +91,10 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                         </li>
                     
                         <li >
+                            <a href="#get">get</a>
+                        </li>
+                    
+                        <li >
                             <a href="#getAttributes">getAttributes</a>
                         </li>
                     
@@ -81,47 +107,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                         </li>
                     
                         <li >
-                            <a href="#getElementName">getElementName</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getItemType">getItemType</a>
-                        </li>
-                    
-                        <li >
                             <a href="#getName">getName</a>
                         </li>
                     
                         <li >
                             <a href="#getTarget">getTarget</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#getTextValue">getTextValue</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isComment">isComment</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isElement">isElement</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isEmpty">isEmpty</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isProcessingInstruction">isProcessingInstruction</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isSingleton">isSingleton</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#isText">isText</a>
                         </li>
                     
                         <li >
@@ -134,26 +124,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                     
                         <li >
                             <a href="#map">map</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#removeAttribute">removeAttribute</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#removeChildren">removeChildren</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#select">select</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#selectDescendants">selectDescendants</a>
-                        </li>
-                    
-                        <li >
-                            <a href="#setAttributes">setAttributes</a>
                         </li>
                     
                         <li >
@@ -178,7 +148,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -209,10 +179,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
         
         
         
-            <li>
-                <a data="types" href="../lang.xml/index.html#types">Types</a>
-            </li>
-        
         
     </ul>
     <div class="ui divider"></div>
@@ -240,7 +206,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -268,10 +234,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -296,11 +258,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -356,10 +318,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -388,10 +346,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -405,10 +359,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -466,15 +416,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                     <ul>
                         
                             <li >
-                                <a href="#appendChildren">appendChildren</a>
-                            </li>
-                        
-                            <li >
                                 <a href="#concat">concat</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#copy">copy</a>
                             </li>
                         
                             <li >
@@ -506,6 +448,10 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                             </li>
                         
                             <li >
+                                <a href="#get">get</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#getAttributes">getAttributes</a>
                             </li>
                         
@@ -518,47 +464,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                             </li>
                         
                             <li >
-                                <a href="#getElementName">getElementName</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getItemType">getItemType</a>
-                            </li>
-                        
-                            <li >
                                 <a href="#getName">getName</a>
                             </li>
                         
                             <li >
                                 <a href="#getTarget">getTarget</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#getTextValue">getTextValue</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isComment">isComment</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isElement">isElement</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isEmpty">isEmpty</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isProcessingInstruction">isProcessingInstruction</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isSingleton">isSingleton</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#isText">isText</a>
                             </li>
                         
                             <li >
@@ -571,26 +481,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                         
                             <li >
                                 <a href="#map">map</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#removeAttribute">removeAttribute</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#removeChildren">removeChildren</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#select">select</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#selectDescendants">selectDescendants</a>
-                            </li>
-                        
-                            <li >
-                                <a href="#setAttributes">setAttributes</a>
                             </li>
                         
                             <li >
@@ -615,7 +505,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -646,10 +536,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
         
         
         
-            <li>
-                <a data="types" href="../lang.xml/index.html#types">Types</a>
-            </li>
-        
         
     </ul>
     <div class="ui divider"></div>
@@ -677,7 +563,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -705,10 +591,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -733,11 +615,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -793,10 +675,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -825,10 +703,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -842,10 +716,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -913,25 +783,8 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.xml/functions
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#appendChildren">appendChildren</a></td>
-                                <td width="70%"><p>Append children to an XML if its an element type XML. Error otherwise.
-New children will be appended at the end of the existing children.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
                                 <td width="30%" ><a class="functions" href="#concat">concat</a></td>
                                 <td width="70%"><p>Concatenates xml and string values.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#copy">copy</a></td>
-                                <td width="70%"><p>Make a deep copy of an XML.</p>
 </td>
                             </tr>
                         </tbody>
@@ -972,7 +825,7 @@ New children will be appended at the end of the existing children.</p>
                             <tr>
                                 <td width="30%" ><a class="functions" href="#filter">filter</a></td>
                                 <td width="70%"><p>Selects the items from an xml sequence for which a function returns true.
-This represents each item in the same way as the <code>iterator</code> function.</p>
+Each item is represented as a singleton value.</p>
 </td>
                             </tr>
                         </tbody>
@@ -981,7 +834,7 @@ This represents each item in the same way as the <code>iterator</code> function.
                             <tr>
                                 <td width="30%" ><a class="functions" href="#forEach">forEach</a></td>
                                 <td width="70%"><p>Applies a function to each item in an xml sequence.
-This represents each item in the same way as the <code>iterator</code> function.</p>
+Each item is represented as a singleton value.</p>
 </td>
                             </tr>
                         </tbody>
@@ -998,11 +851,20 @@ XML 1.0 Recommendation.</p>
                     
                         <tbody>
                             <tr>
+                                <td width="30%" ><a class="functions" href="#get">get</a></td>
+                                <td width="70%"><p>Returns the item of <code>x</code> with index <code>i</code>.
+This differs from <code>x[i]</code> in that it panics if
+<code>x</code> does not have an item with index <code>i</code>.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
                                 <td width="30%" ><a class="functions" href="#getAttributes">getAttributes</a></td>
                                 <td width="70%"><p>Returns the map representing the attributes of <code>elem</code>.
 This includes namespace attributes.
-The keys in the map are the expanded names of the attributes.
-Panics if <code>isElement(elem)</code> is not true.</p>
+The keys in the map are the expanded names of the attributes.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1010,8 +872,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
                         <tbody>
                             <tr>
                                 <td width="30%" ><a class="functions" href="#getChildren">getChildren</a></td>
-                                <td width="70%"><p>Returns the children of <code>elem</code>.
-Panics if <code>isElement(elem)</code> is not true.</p>
+                                <td width="70%"><p>Returns the children of <code>elem</code>.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1020,23 +881,6 @@ Panics if <code>isElement(elem)</code> is not true.</p>
                             <tr>
                                 <td width="30%" ><a class="functions" href="#getContent">getContent</a></td>
                                 <td width="70%"><p>Returns the content of a text or processing instruction or comment item.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#getElementName">getElementName</a></td>
-                                <td width="70%"><p>Get the fully qualified name of the element as a string. Returns an empty string if the XML is not a singleton.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#getItemType">getItemType</a></td>
-                                <td width="70%"><p>Get the type of a XML as a string. If the XML is singleton, type can be one of 'element', 'text', 'comment' or 'pi'.
-Returns an empty string if the XML is not a singleton.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1053,64 +897,6 @@ Returns an empty string if the XML is not a singleton.</p>
                             <tr>
                                 <td width="30%" ><a class="functions" href="#getTarget">getTarget</a></td>
                                 <td width="70%"><p>Returns the target part of the processing instruction.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#getTextValue">getTextValue</a></td>
-                                <td width="70%"><p>Get the text value of a XML. If the XML is a sequence, concatenation of the text values of the members of the
-sequence is returned. If the XML is an element, then the text value of the sequence of children is returned. If
-the XML is a text item, then the text is returned. Otherwise, an empty string is returned.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isComment">isComment</a></td>
-                                <td width="70%"><p>Tests whether an xml value is a singleton consisting of only a comment item.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isElement">isElement</a></td>
-                                <td width="70%"><p>Tests whether an xml value is a singleton consisting of only an element item.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isEmpty">isEmpty</a></td>
-                                <td width="70%"><p>Check whether the XML sequence is empty.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isProcessingInstruction">isProcessingInstruction</a></td>
-                                <td width="70%"><p>Tests whether an xml value is a singleton consisting of only a processing instruction item.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isSingleton">isSingleton</a></td>
-                                <td width="70%"><p>Check whether the XML sequence contains only a single element.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#isText">isText</a></td>
-                                <td width="70%"><p>Tests whether an xml sequence consists of zero or more character items.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1135,49 +921,7 @@ the XML is a text item, then the text is returned. Otherwise, an empty string is
                             <tr>
                                 <td width="30%" ><a class="functions" href="#map">map</a></td>
                                 <td width="70%"><p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
-This represents each item in the same way as the <code>iterator</code> function.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#removeAttribute">removeAttribute</a></td>
-                                <td width="70%"><p>Remove an attribute from an XML.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#removeChildren">removeChildren</a></td>
-                                <td width="70%"><p>Remove children matching the given name from an XML. This operation has no effect
-if the XML is not an element type XML.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#select">select</a></td>
-                                <td width="70%"><p>Get all the items that are of element type, and matches the given qualified name, in an XML sequence.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#selectDescendants">selectDescendants</a></td>
-                                <td width="70%"><p>Searches in children recursively for elements matching the qualified name and returns a sequence containing them
-all. Does not search within a matched result.</p>
-</td>
-                            </tr>
-                        </tbody>
-                    
-                        <tbody>
-                            <tr>
-                                <td width="30%" ><a class="functions" href="#setAttributes">setAttributes</a></td>
-                                <td width="70%"><p>Sets the attributes to the provided attributes map.</p>
+Each item is represented as a singleton value.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1186,7 +930,8 @@ all. Does not search within a matched result.</p>
                             <tr>
                                 <td width="30%" ><a class="functions" href="#setChildren">setChildren</a></td>
                                 <td width="70%"><p>Sets the children of <code>elem</code> to <code>children</code>.
-Panics if <code>isElement(elem)</code> is not true.</p>
+This panics if it would result in the element structure
+becoming cyclic.</p>
 </td>
                             </tr>
                         </tbody>
@@ -1223,53 +968,6 @@ and a chunk is considered insignificant if the entire chunk is whitespace.</p>
                 <div>
                     
                         <div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="appendChildren" title="appendChildren">
-             <a class="url-link" href="#appendChildren">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> appendChildren </h2>
-        
-    </div>
-    <p><p>Append children to an XML if its an element type XML. Error otherwise.
-New children will be appended at the end of the existing children.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        children<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>children</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
                             
                                 <div class="method-content">
     <div class="main-method-title here" id="concat" title="concat">
@@ -1321,54 +1019,6 @@ an empty xml sequence if the <code>xs</code> are empty</p>
 </div>
                             
                                 <div class="method-content">
-    <div class="main-method-title here" id="copy" title="copy">
-             <a class="url-link" href="#copy">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> copy </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">xml</span> 
-        </span>
-        
-    </div>
-    <p><p>Make a deep copy of an XML.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
-                <li><p>A Copy of the XML</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
     <div class="main-method-title here" id="createComment" title="createComment">
              <a class="url-link" href="#createComment">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -1377,7 +1027,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> content)</p>
-            <b> returns </b><span class="builtin-type">Comment</span> 
+            <b> returns </b><a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> 
         </span>
         
     </div>
@@ -1407,7 +1057,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Comment</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/Comment.html">Comment</a></span>)</li>
                 <li><p>an xml sequence consisting of a comment with content <code>content</code></p>
 </li>
             </ul>
@@ -1425,7 +1075,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">xml</span> children)</p>
-            <b> returns </b><span class="builtin-type">Element</span> 
+            <b> returns </b><a href="../lang.xml/UNKNOWN/Element.html">Element</a> 
         </span>
         
     </div>
@@ -1468,7 +1118,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Element</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/Element.html">Element</a></span>)</li>
                 <li><p>an xml sequence consisting of only a new xml element with name <code>name</code>,
 no attributes, and children <code>children</code></p>
 </li>
@@ -1487,7 +1137,7 @@ no attributes, and children <code>children</code></p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> target, <span class="builtin-type">string</span> content)</p>
-            <b> returns </b><span class="builtin-type">ProcessingInstruction</span> 
+            <b> returns </b><a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> 
         </span>
         
     </div>
@@ -1530,7 +1180,7 @@ no attributes, and children <code>children</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">ProcessingInstruction</span></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a></span>)</li>
                 <li><p>an xml sequence consisting of a processing instruction with target <code>target</code>
 and content <code>content</code></p>
 </li>
@@ -1596,13 +1246,13 @@ and content <code>content</code></p>
             <h2> filter </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
+            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
             <b> returns </b><span class="builtin-type">xml</span> 
         </span>
         
     </div>
     <p><p>Selects the items from an xml sequence for which a function returns true.
-This represents each item in the same way as the <code>iterator</code> function.</p>
+Each item is represented as a singleton value.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1624,7 +1274,7 @@ This represents each item in the same way as the <code>iterator</code> function.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
+                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
@@ -1659,7 +1309,7 @@ This represents each item in the same way as the <code>iterator</code> function.
         
     </div>
     <p><p>Applies a function to each item in an xml sequence.
-This represents each item in the same way as the <code>iterator</code> function.</p>
+Each item is represented as a singleton value.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1681,7 +1331,7 @@ This represents each item in the same way as the <code>iterator</code> function.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
+                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
@@ -1748,22 +1398,21 @@ XML 1.0 Recommendation.</p>
 </div>
                             
                                 <div class="method-content">
-    <div class="main-method-title here" id="getAttributes" title="getAttributes">
-             <a class="url-link" href="#getAttributes">
+    <div class="main-method-title here" id="get" title="get">
+             <a class="url-link" href="#get">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAttributes </h2>
+            <h2> get </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">Element</span> x)</p>
-            <b> returns </b><span class="builtin-type">map</span> 
+            <p>(<span class="builtin-type">xml</span> x, <span class="builtin-type">int</span> i)</p>
+            <b> returns </b><span class="builtin-type">xml</span> 
         </span>
         
     </div>
-    <p><p>Returns the map representing the attributes of <code>elem</code>.
-This includes namespace attributes.
-The keys in the map are the expanded names of the attributes.
-Panics if <code>isElement(elem)</code> is not true.</p>
+    <p><p>Returns the item of <code>x</code> with index <code>i</code>.
+This differs from <code>x[i]</code> in that it panics if
+<code>x</code> does not have an item with index <code>i</code>.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1772,7 +1421,70 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">Element</span> </span>
+                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the xml sequence</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        i<span class="type">  <span class="builtin-type">int</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the index</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
+                <li><p>the item with index <code>i</code> in <code>x</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getAttributes" title="getAttributes">
+             <a class="url-link" href="#getAttributes">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> getAttributes </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> x)</p>
+            <b> returns </b><span class="builtin-type">map</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns the map representing the attributes of <code>elem</code>.
+This includes namespace attributes.
+The keys in the map are the expanded names of the attributes.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        x<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
                         
                     </li>
                     <li>
@@ -1806,13 +1518,12 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <h2> getChildren </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">Element</span> elem)</p>
+            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> elem)</p>
             <b> returns </b><span class="builtin-type">xml</span> 
         </span>
         
     </div>
-    <p><p>Returns the children of <code>elem</code>.
-Panics if <code>isElement(elem)</code> is not true.</p>
+    <p><p>Returns the children of <code>elem</code>.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1821,7 +1532,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <span class="builtin-type">Element</span> </span>
+                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
                         
                     </li>
                     <li>
@@ -1855,7 +1566,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <h2> getContent </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> x)</p>
+            <p>(<a href="../lang.xml/UNKNOWN/Text.html">Text</a> | <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> | <a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> x)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -1869,7 +1580,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> </span>
+                        x<span class="type">  <a href="../lang.xml/UNKNOWN/Text.html">Text</a> | <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> | <a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> </span>
                         
                     </li>
                     <li>
@@ -1896,103 +1607,6 @@ Panics if <code>isElement(elem)</code> is not true.</p>
 </div>
                             
                                 <div class="method-content">
-    <div class="main-method-title here" id="getElementName" title="getElementName">
-             <a class="url-link" href="#getElementName">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> getElementName </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
-        </span>
-        
-    </div>
-    <p><p>Get the fully qualified name of the element as a string. Returns an empty string if the XML is not a singleton.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Qualified name of the XML as a string</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="getItemType" title="getItemType">
-             <a class="url-link" href="#getItemType">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> getItemType </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><a href="../lang.xml/types.html#XMLType">XMLType</a> 
-        </span>
-        
-    </div>
-    <p><p>Get the type of a XML as a string. If the XML is singleton, type can be one of 'element', 'text', 'comment' or 'pi'.
-Returns an empty string if the XML is not a singleton.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/types.html#XMLType">XMLType</a></span>)</li>
-                <li><p>Type of the XML as a string</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
     <div class="main-method-title here" id="getName" title="getName">
              <a class="url-link" href="#getName">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -2000,7 +1614,7 @@ Returns an empty string if the XML is not a singleton.</p>
             <h2> getName </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">Element</span> elem)</p>
+            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> elem)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -2014,7 +1628,7 @@ Returns an empty string if the XML is not a singleton.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <span class="builtin-type">Element</span> </span>
+                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
                         
                     </li>
                     <li>
@@ -2048,7 +1662,7 @@ Returns an empty string if the XML is not a singleton.</p>
             <h2> getTarget </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">ProcessingInstruction</span> x)</p>
+            <p>(<a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> x)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -2062,7 +1676,7 @@ Returns an empty string if the XML is not a singleton.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">ProcessingInstruction</span> </span>
+                        x<span class="type">  <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> </span>
                         
                     </li>
                     <li>
@@ -2089,344 +1703,6 @@ Returns an empty string if the XML is not a singleton.</p>
 </div>
                             
                                 <div class="method-content">
-    <div class="main-method-title here" id="getTextValue" title="getTextValue">
-             <a class="url-link" href="#getTextValue">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> getTextValue </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">string</span> 
-        </span>
-        
-    </div>
-    <p><p>Get the text value of a XML. If the XML is a sequence, concatenation of the text values of the members of the
-sequence is returned. If the XML is an element, then the text value of the sequence of children is returned. If
-the XML is a text item, then the text is returned. Otherwise, an empty string is returned.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Text value of the xml</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isComment" title="isComment">
-             <a class="url-link" href="#isComment">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isComment </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Tests whether an xml value is a singleton consisting of only a comment item.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>xml value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true if <code>x</code> consists of only a comment item; false other</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isElement" title="isElement">
-             <a class="url-link" href="#isElement">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isElement </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Tests whether an xml value is a singleton consisting of only an element item.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>xml value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true if <code>x</code> consists of only an element item; false otherwise</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isEmpty" title="isEmpty">
-             <a class="url-link" href="#isEmpty">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isEmpty </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Check whether the XML sequence is empty.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Boolean flag indicating whether the XML sequence is empty</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isProcessingInstruction" title="isProcessingInstruction">
-             <a class="url-link" href="#isProcessingInstruction">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isProcessingInstruction </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Tests whether an xml value is a singleton consisting of only a processing instruction item.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>xml value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true if <code>x</code> consists of only a processing instruction item; false otherwise</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isSingleton" title="isSingleton">
-             <a class="url-link" href="#isSingleton">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isSingleton </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Check whether the XML sequence contains only a single element.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Boolean flag indicating whether the XML sequence contains only a single element</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="isText" title="isText">
-             <a class="url-link" href="#isText">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> isText </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p><p>Tests whether an xml sequence consists of zero or more character items.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>xml value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true if <code>x</code> is a sequence containing only character items; false otherwise</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
     <div class="main-method-title here" id="iterator" title="iterator">
              <a class="url-link" href="#iterator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
@@ -2435,7 +1711,7 @@ the XML is a text item, then the text is returned. Otherwise, an empty string is
         
         <span class="method-types">
             <p>(<span class="builtin-type">xml</span> x)</p>
-            <b> returns </b><a href="../lang.xml/objects/$anonType$9.html">$anonType$9</a> 
+            <b> returns </b><a href="../lang.xml/objects/$anonType$7.html">$anonType$7</a> 
         </span>
         
     </div>
@@ -2452,7 +1728,7 @@ the XML is a text item, then the text is returned. Otherwise, an empty string is
                         
                     </li>
                     <li>
-                        <p><p>xml item to iterate</p>
+                        <p><p>xml sequence to iterate over</p>
 </p>
                     </li>
                 </ul>
@@ -2465,10 +1741,9 @@ the XML is a text item, then the text is returned. Otherwise, an empty string is
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/objects/$anonType$9.html">$anonType$9</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/objects/$anonType$7.html">$anonType$7</a></span>)</li>
                 <li><p>iterator object
-A character item is represented by a string of length 1.
-Other items are represented by xml singletons.</p>
+Each item is represented by an xml singleton.</p>
 </li>
             </ul>
         </div>
@@ -2532,13 +1807,13 @@ Other items are represented by xml singletons.</p>
             <h2> map </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>) </span><span>returns (</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>)</span> </code> func)</p>
+            <p>(<span class="builtin-type">xml</span> x, <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> func)</p>
             <b> returns </b><span class="builtin-type">xml</span> 
         </span>
         
     </div>
     <p><p>Applies a function to each item in an xml sequence, and returns an xml sequence of the results.
-This represents each item in the same way as the <code>iterator</code> function.</p>
+Each item is represented as a singleton value.</p>
 </p>
      
         <div class="data-wrapper">
@@ -2560,7 +1835,7 @@ This represents each item in the same way as the <code>iterator</code> function.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>) </span><span>returns (</span><span class="builtin-type">xml</span> | <span class="builtin-type">string</span><span>)</span> </code> </span>
+                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
@@ -2578,273 +1853,11 @@ This represents each item in the same way as the <code>iterator</code> function.
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
-                <li><p>new xml value containing result of applying paramter <code>func</code> to each child or <code>item</code></p>
+                <li><p>new xml value containing result of applying <code>func</code> to each child or <code>item</code></p>
 </li>
             </ul>
         </div>
         
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="removeAttribute" title="removeAttribute">
-             <a class="url-link" href="#removeAttribute">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> removeAttribute </h2>
-        
-    </div>
-    <p><p>Remove an attribute from an XML.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        qname<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Qualified name of the attribute</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="removeChildren" title="removeChildren">
-             <a class="url-link" href="#removeChildren">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> removeChildren </h2>
-        
-    </div>
-    <p><p>Remove children matching the given name from an XML. This operation has no effect
-if the XML is not an element type XML.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        qname<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Namespace qualified name of the children to be removed</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="select" title="select">
-             <a class="url-link" href="#select">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> select </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x, <span class="builtin-type">string</span> qname)</p>
-            <b> returns </b><span class="builtin-type">xml</span> 
-        </span>
-        
-    </div>
-    <p><p>Get all the items that are of element type, and matches the given qualified name, in an XML sequence.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        qname<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Qualified name of the element</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
-                <li><p>All the elements-type items in the given XML sequence, that matches the qualified name</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="selectDescendants" title="selectDescendants">
-             <a class="url-link" href="#selectDescendants">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> selectDescendants </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">xml</span> x, <span class="builtin-type">string</span> qname)</p>
-            <b> returns </b><span class="builtin-type">xml</span> 
-        </span>
-        
-    </div>
-    <p><p>Searches in children recursively for elements matching the qualified name and returns a sequence containing them
-all. Does not search within a matched result.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        qname<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Qualified name of the element</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span></span>)</li>
-                <li><p>All the descendants that matches the given qualified name, as a sequence</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="setAttributes" title="setAttributes">
-             <a class="url-link" href="#setAttributes">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> setAttributes </h2>
-        
-    </div>
-    <p><p>Sets the attributes to the provided attributes map.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The xml source</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        attributes<span class="type">  <span class="builtin-type">map</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Attributes map</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
     
 </div>
                             
@@ -2857,7 +1870,8 @@ all. Does not search within a matched result.</p>
         
     </div>
     <p><p>Sets the children of <code>elem</code> to <code>children</code>.
-Panics if <code>isElement(elem)</code> is not true.</p>
+This panics if it would result in the element structure
+becoming cyclic.</p>
 </p>
      
         <div class="data-wrapper">
@@ -2866,7 +1880,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <span class="builtin-type">Element</span> </span>
+                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
                         
                     </li>
                     <li>
@@ -2912,7 +1926,7 @@ Panics if <code>isElement(elem)</code> is not true.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <span class="builtin-type">Element</span> </span>
+                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
                         
                     </li>
                     <li>
@@ -3073,5 +2087,49 @@ and a chunk is considered insignificant if the entire chunk is whitespace.</p>
             </div>
         </div>
     </div>
-    
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

@@ -1,21 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - cache
-keywords: Ballerina, ballerinalang
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - ballerina/cache</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -26,7 +57,7 @@ keywords: Ballerina, ballerinalang
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -49,6 +80,10 @@ keywords: Ballerina, ballerinalang
         
         
         
+        
+            <li>
+                <a data="functions" href="../cache/index.html#functions">Functions</a>
+            </li>
         
         
             <li>
@@ -88,7 +123,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -116,10 +151,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -144,11 +175,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -204,10 +235,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -236,10 +263,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -253,10 +276,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -313,7 +332,7 @@ keywords: Ballerina, ballerinalang
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -336,6 +355,10 @@ keywords: Ballerina, ballerinalang
         
         
         
+        
+            <li>
+                <a data="functions" href="../cache/index.html#functions">Functions</a>
+            </li>
         
         
             <li>
@@ -375,7 +398,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -403,10 +426,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -431,11 +450,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -491,10 +510,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -523,10 +538,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -540,10 +551,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -608,23 +615,139 @@ keywords: Ballerina, ballerinalang
                     
                 </h1>
                     <h2>Module Overview</h2>
-<p>This module offers a cache that supports time-based eviction, and size-based eviction.</p>
-<p>This means that entries are removed from the cache once the expiry time has elapsed (i.e., time-based eviction), or when the cache runs out of
-space (i.e., size-based eviction). Caching is useful when a value takes significant cost or time to compute and
-retrieve, and it is therefore useful to cache it for future use.</p>
-<p>The following code snippet creates a cache that can hold a maximum of 10 entries. An entry of this cache expires
-one minute after its last access. When the cache is full, 20% of the entries (i.e., 2 entries) will be evicted to make
-space for new entries.</p>
-<pre><code class="language-ballerina">// The `evictionFactor` specifies the percentage of items
-// that will be evicted when the cache is full.
-cache:Cache cache = new(expiryTimeInMillis = 60000, capacity = 10, evictionFactor = 0.2);
+<p>The <code>AbstractCache</code> object has the common APIs as follows. Also, there can be &quot;custom implementations&quot; with a different data storage like file, database, etc. with structural equivalency to the abstract object.</p>
+<pre><code class="language-ballerina">public type AbstractCache abstract object {
+    public function put(string key, any value, int maxAgeInSeconds) returns Error?;
+    public function get(string key) returns any|Error;
+    public function invalidate(string key) returns Error?;
+    public function invalidateAll() returns Error?;
+    public function hasKey(string key) returns boolean;
+    public function keys() returns string[];
+    public function size() returns int;
+    public function capacity() returns int;
+};
+</code></pre>
+<p>The <code>AbstractEvictionPolicy</code> object has the common APIs as follows. Also, there can be &quot;custom implementations&quot; with different eviction algorithms with structural equivalency to the abstract object. That custom implementation has to maintain the <code>LinkedList</code> data structure according to the eviction algorithm.</p>
+<pre><code class="language-ballerina">public type AbstractEvictionPolicy abstract object {
+    public function get(LinkedList list, Node node);
+    public function put(LinkedList list, Node node);
+    public function remove(LinkedList list, Node node);
+    public function replace(LinkedList list, Node newNode, Node oldNode);
+    public function clear(LinkedList list);
+    public function evict(LinkedList list) returns Node?;
+};
+</code></pre>
+<p>The Ballerina Cache module provides a <code>Cache</code> object, which is a map data structure based implementation of the <code>AbstractCache</code> object. It is not recommended to insert <code>()</code> as the value of the cache since it doesn't make any sense to cache a nil. Also, it provides the <code>LruEvictionPolicy</code> object, which is based on the LRU eviction algorithm.</p>
+<p>While initializing the <code>Cache</code>, the developer has to pass the following parameters as the cache configurations.</p>
+<ul>
+<li><code>capacity</code> - Max number of entries allowed for the cache</li>
+<li><code>evictionPolicy</code> - The policy, which defines the cache eviction algorithm</li>
+<li><code>evictionFactor</code> - The factor of which the entries will be evicted once the cache is full</li>
+<li><code>defaultMaxAgeInSeconds</code> - Freshness time of all the cache entries in seconds. This value can be overwritten by the <code>maxAgeInSeconds</code> property when inserting an entry to the cache. '-1' means, the entries are valid forever.</li>
+<li><code>cleanupIntervalInSeconds</code> - The interval time of the timer task, which cleans the cache entries. This is an optional parameter.</li>
+</ul>
+<p>For a better user experience, the above config is initialized with default values as follows:</p>
+<pre><code class="language-ballerina">public type CacheConfig record {|
+    int capacity = 100;
+    AbstractEvictionPolicy evictionPolicy = new LruEvictionPolicy();
+    float evictionFactor = 0.25;
+    int defaultMaxAgeInSeconds = -1;
+    int cleanupIntervalInSeconds?;
+|};
+</code></pre>
+<p>There are 2 mandatory scenarios and 1 optional scenario, in which a cache entry gets removed from the cache and maintains the freshness of the cache entries. The 2 independent factors (i.e., eviction policy and freshness time of the cache entry) governs the 3 scenarios.</p>
+<ol>
+<li>When using the <code>get</code> API, if the return cache entry has expired, it gets removed.</li>
+<li>When using the <code>put</code> API, if the cache size has reached its capacity, the number of entries get removed based on the 'eviction policy' and 'eviction factor'.</li>
+<li>If <code>cleanupIntervalInSeconds</code> (optional property) is configured, the timer task will remove the expired cache entries based on the configured interval.</li>
+</ol>
+<p>The main benefit of using the <code>cleanupIntervalInSeconds</code> (optional) property is that the developer can optimize the memory usage while adding some additional CPU costs and vice versa. The default behaviour is the CPU-optimized method.</p>
+<p>The concept of the default <code>Cache</code> object is purely based on the Ballerina map data structure and a linked list data structure. The key of the map entry would be a string and the value of the map entry would be a node of the linked list.</p>
+<pre><code class="language-ballerina">public type Node record {|
+    any value;
+    Node? prev = ();
+    Node? next = ();
+|};
+</code></pre>
+<p>While using the cache, a <code>CacheEntry</code> record will be created and added as the value of the <code>Node</code> record. The <code>Node</code> record will be inserted into the map data structure against the provided string key.</p>
+<pre><code class="language-ballerina">type CacheEntry record {|
+    string key;
+    any data;
+    int expTime;
+|};
+</code></pre>
+<p>The linked list data structure is purely used for the eviction of the cache. According to the user configured eviction policy, when inserting / updating / retrieving cache entries, the linked list data structure should get updated. Therefore, when eviction happens, cache entries can be removed efficiently without iterating the complete map data structure.</p>
+<p><strong>Example:</strong> If the eviction policy is LRU, always the MRU item will be the head of the linked list. When eviction happens, nodes from the tail will be deleted without iterating the map.</p>
+<p>Further, developers can implement custom caching implementations based on different cache storage mechanisms (file, database. etc.) and different eviction policies (MRU, FIFO, etc.). Ballerina provides a &quot;map-based cache&quot; as the default cache implementation.</p>
+<h2>Samples</h2>
+<h3>Cache Initialization</h3>
+<p>The following is a basic sample cache of 100 capacity, which uses LRU as the eviction policy and eviction factor as 0.25:</p>
+<pre><code class="language-ballerina">cache:Cache cache = new;
+</code></pre>
+<p>The following is a basic sample with a cache capacity of 1000, the eviction factor as 0.2, cache entry default freshness time as 1 hour, and clean up timer configured with a 5 seconds interval:</p>
+<pre><code class="language-ballerina">cache:Cache cache = new({
+    capacity: 1000,
+    evictionFactor: 0.2,
+    defaultMaxAgeInSeconds: 3600
+    cleanupIntervalInSeconds: 5
+});
+</code></pre>
+<p>The following is an advanced sample cache, which uses a custom eviction policy along with the default capacity, eviction factor, max age, and cleanup interval:</p>
+<pre><code class="language-ballerina">public type CustomEvictionPolicy object {
+    *cache:AbstractEvictionPolicy;
+    public function get(LinkedList list, Node node) { // custom implementation }
+    public function put(LinkedList list, Node node) { // custom implementation }
+    public function remove(LinkedList list, Node node) { // custom implementation }
+    public function replace(LinkedList list, Node newNode, Node oldNode) { // custom implementation }
+    public function clear(LinkedList list) { // custom implementation }
+    public function evict(LinkedList list) returns Node? { // custom implementation }
+}
 
-// Enter a value, and a key to reference that value.
-// This will be a new entry in the cache.
-cache.put(&quot;key-a&quot;, &quot;value-a&quot;);
+cache:Cache cache = new({
+    capacity: 1000,
+    evictionPolicy: new CustomEvictionPolicy()
+});
+</code></pre>
+<h3>Cache Usage</h3>
+<p>The simplest way of using the initialized cache without handling errors is as follows:</p>
+<pre><code class="language-ballerina">_ = check cache.put(&quot;key1&quot;, &quot;value1&quot;);
+string value = &lt;string&gt; check cache.get(&quot;key1&quot;);
+_ = check cache.invalidate(&quot;key1&quot;);
+_ = check cache.invalidateAll();
+boolean hasKey = cache.hasKey(&quot;key1&quot;);
+string[] keys = cache.keys();
+int size = cache.size();
+int capacity = cache.capacity();
+</code></pre>
+<p>The advanced way of using the initialized cache with error handling is as follows:</p>
+<pre><code class="language-ballerina">cache:Error? result = cache.put(&quot;key1&quot;, &quot;value1&quot;);
+if (result is cache:Error) {
+    // Implement what to do if any error happens when inserting an item to the cache.
+}
 
-// Use the same key to retrieve the value.
-string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
+any|cache:Error result = cache.get(&quot;key1&quot;);
+if (result is cache:Error) {
+    // Implement what to do if any error happens when retrieving an item from the cache.
+}
+string value = &lt;string&gt;result;
+
+cache:Error? result = check cache.invalidate(&quot;key1&quot;);
+if (result is cache:Error) {
+    // implement what to do, if any error happen when discarding item from the cache
+}
+
+cache:Error? result = check cache.invalidateAll();
+if (result is cache:Error) {
+    // implement what to do, if any error happen when discarding item from the cache
+}
+
+boolean hasKey = cache.hasKey(&quot;key1&quot;);
+
+string[] keys = cache.keys();
+
+int size = cache.size();
+
+int capacity = cache.capacity();
 </code></pre>
 
 
@@ -640,11 +763,33 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate records" id="CacheConfig" title="CacheConfig">
+                                <a class="records"
+                                   href="records/CacheConfig.html">CacheConfig</a></td>
+                            <td class="module-desc">Represents cache configuration.
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
                                 <a class="records"
                                    href="records/Detail.html">Detail</a></td>
                             <td class="module-desc">Record type to hold the details of an error.
 </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="LinkedList" title="LinkedList">
+                                <a class="records"
+                                   href="records/LinkedList.html">LinkedList</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="Node" title="Node">
+                                <a class="records"
+                                   href="records/Node.html">Node</a></td>
+                            <td class="module-desc"></td>
                         </tr>
                     
                 </table>
@@ -662,13 +807,51 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate objects" id="AbstractCache" title="AbstractCache">
+                                <a class="objects"
+                                   href="objects/AbstractCache.html">
+                                    AbstractCache
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents the Ballerina <code>AbstractCache</code> object and cache-related operations.
+Any custom cache implementation should be object-wise similar.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="AbstractEvictionPolicy" title="AbstractEvictionPolicy">
+                                <a class="objects"
+                                   href="objects/AbstractEvictionPolicy.html">
+                                    AbstractEvictionPolicy
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents the Ballerina <code>AbstractEvictionPolicy</code> object and cache eviction related operations
+based on a linked list data structure.
+Any custom cache implementation should be object-wise similar.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate objects" id="Cache" title="Cache">
                                 <a class="objects"
                                    href="objects/Cache.html">
                                     Cache
                                 </a>
                             </td>
-                            <td class="module-desc"><p>Represents a Ballerina <code>Cache</code> which can hold multiple entries and remove entries based on time and size.</p>
+                            <td class="module-desc"><p>Represents the Ballerina <code>Cache</code> object and cache-related operations. It is not recommended to insert <code>()</code> as the
+value of the cache since it doesn't make any sense to cache a nil.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="LruEvictionPolicy" title="LruEvictionPolicy">
+                                <a class="objects"
+                                   href="objects/LruEvictionPolicy.html">
+                                    LruEvictionPolicy
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents the <code>LruEvictionPolicy</code> object, which has LRU eviction algorithm related operations
+based on a linked list data structure.</p>
 </td>
                         </tr>
                     
@@ -681,6 +864,48 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
             
            
 
+            
+            <section class="method-content" id="functions">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#functions">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                    <h2> Functions </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="addFirst" title="addFirst"><a
+                                    class="functions" href="functions.html#addFirst">addFirst</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="addLast" title="addLast"><a
+                                    class="functions" href="functions.html#addLast">addLast</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="clear" title="clear"><a
+                                    class="functions" href="functions.html#clear">clear</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="remove" title="remove"><a
+                                    class="functions" href="functions.html#remove">remove</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate functions" id="removeLast" title="removeLast"><a
+                                    class="functions" href="functions.html#removeLast">removeLast</a></td>
+                            <td class="module-desc"></td>
+                        </tr>
+                    
+                </table>
+            </section>
             
 
 
@@ -697,7 +922,8 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
                         <tr>
                             <td class="module-title truncate constant" id="CACHE_ERROR" title="CACHE_ERROR"><a
                                     class="constant" href="constants.html#CACHE_ERROR">CACHE_ERROR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Represents the reason for the Cache error.</p>
+</td>
                         </tr>
                     
                 </table>
@@ -723,7 +949,9 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
                             <td class="module-title truncate errors" id="Error" title="Error">
                                 <a class="errors" href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Represents the Cache error type with details. This will be returned if an error occurred while doing the cache
+operations.</p>
+</td>
                         </tr>
                     
                 </table>
@@ -732,4 +960,49 @@ string returnValue = &lt;string&gt;cache.get(&quot;key-a&quot;);
         </div>
     </div>
 
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

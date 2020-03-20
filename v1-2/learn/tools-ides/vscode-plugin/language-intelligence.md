@@ -5,6 +5,8 @@ permalink: /v1-2/learn/vscode-plugin/language-intelligence
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
+  - /learn/tools-ides/vscode-plugin/language-intelligence
+  - /learn/tools-ides/vscode-plugin/language-intelligence/
 ---
 
 # Language intelligence
@@ -61,7 +63,7 @@ For example, you can add documentation for a function as shown below.
 
 ## Go to definition
 
-This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](v1-2/learn/api-docs/ballerina/).
+This option allows you to view the definition of a selected variable, function, an object etc. within the same file, in a separate file, in the same module, or in a file of a different module, of the same project or of the [Standard Library](/v1-2/learn/api-docs/ballerina/).
 
 ![Go to definition](/v1-2/learn/images/go-to-definition-vscode.gif)
 

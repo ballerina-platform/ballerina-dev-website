@@ -7,6 +7,8 @@ redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin
+  - /learn/intellij-plugin/
+  - /learn/intellij-plugin
 ---
 
 # The IntelliJ IDEA Ballerina Plugin

@@ -6,7 +6,7 @@ permalink: /v1-2/learn/how-to-keep-ballerina-up-to-date/
 
 # How to Keep Ballerina up to date
 
-This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. If you haven’t installed Ballerina yet, visit [installation guide](https://ballerina.io/v1-2/learn/installing-ballerina/).
+This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. If you haven’t installed Ballerina yet, visit [installation guide](/v1-2/learn/installing-ballerina/).
 
 - [Terminology](#terminology)
   - [Ballerina tool](#ballerina-tool)
@@ -74,7 +74,7 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 
 Now that you are familiar with the terminology, let’s look at how you can keep your Ballerina distributions up to date.
 
-- The first step is to install Ballerina. Visit our [installation guide](https://ballerina.io/v1-2/learn/installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
+- The first step is to install Ballerina. Visit our [installation guide](/v1-2/learn/installing-ballerina/) guide for details. Once the installation is complete, you would see the following directory structure inside the installation directory.
 
 ```sh
 .

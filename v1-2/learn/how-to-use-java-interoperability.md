@@ -561,7 +561,7 @@ function doSomething(int i) returns string = external;
 Now, let’s see how you can link this function with a foriegn function. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function doSomething(int i) returns string = @java:Method {
 	name: "doSomethingInJava"
@@ -569,7 +569,7 @@ function doSomething(int i) returns string = @java:Method {
 } external;
 ```
 
-The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There exists a set of annotations and other utilities available in the `ballerinax/java` module to make Java interoperability work.  This guide covers most of them.
+The `@java:Method` annotation instructs the jBallerina compiler to link with the `doSomethingInJava` static method in the Java class `a.b.c.Foo`. There exists a set of annotations and other utilities available in the `ballerina/java` module to make Java interoperability work.  This guide covers most of them.
 
 ### The handle type
 The handle type describes a reference to an externally-managed storage. These values can only be created by a Ballerina function with an external function body. Within the context of jBallerina, a `handle` type variable can refer to any Java reference type value: a Java object, an array, or the null value.
@@ -583,7 +583,7 @@ static UUID randomUUID()
 Here is the corresponding Ballerina function that returns a value of the handle type.
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function randomUUID() returns handle = @java:Method {
     name: "randomUUID",
@@ -610,7 +610,7 @@ Let's look at how you can create Java objects in a Ballerina program. The `@java
 The `ArrayDeque` class in the `java.util` package has a default constructor. Following Ballerina code creates a new `ArrayDeque` object. As you can see, the`newArrayDeque` function is linked with the default constructor. This function returns a handle value and it is a reference to the constructed `ArrayDeque` instance.
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 public function main() {
     handle arrayDeque = newArrayDeque(); 
@@ -624,7 +624,7 @@ function newArrayDeque() returns handle = @java:Constructor {
 You can also create a wrapper Ballerina object for Java classes as follows.
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 public function main() {
     ArrayDeque ad = new; 
@@ -658,7 +658,7 @@ public ArrayDeque(Collection<? extends E> c);
 Here is the updated Ballerina code.
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
     class: "java.util.ArrayDeque"
@@ -714,7 +714,7 @@ public Builder(Student[][] list, int index);
 Here is the corresponding Ballerina code.
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function builderWithPersonList(handle list, int index) returns handle = @java:Constructor {
     class: "a.b.c.Builder",
@@ -734,7 +734,7 @@ You can use the `java:@Method` annotation to link Ballerina functions with Java 
 Let’s first look at how to call a static method. The class “java.util.UUID” has a static method with the signature `static UUID randomString()`. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 import ballerina/io;
 
 function randomUUID() returns handle = @java:Method {
@@ -903,7 +903,7 @@ If the linked Java method throws an unchecked exception, then the corresponding 
 The following example,  tries to pop an element out of an empty queue. The `pop` method in the `ArrayDeque` class throws an unchecked  `java.util.NoSuchElementException`exception in such cases. This exception will cause the Ballerina function `pop` to raise a panic. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
    class: "java.util.ArrayDeque"
@@ -954,7 +954,7 @@ public ZipFile(String name) throws IOException
 Since this Java constructor throws a checked exception,  the `newZipfile` Ballerina function returns `ZipFile` instances or an error. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function newZipFile(handle filename) returns handle | error = @java:Constructor {
    class: "java.util.zip.ZipFile",
@@ -986,7 +986,7 @@ As explained above, Ballerina handle values cannot be created in Ballerina code.
 Let’s look at an example that deals with Java null. The following code uses the `peek` method in the `ArrayDeque` class. Peek retrieves but does not remove the head of the queue or returns null if the queue is empty. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 function newArrayDeque() returns handle = @java:Constructor {
    class: "java.util.ArrayDeque"
@@ -1069,7 +1069,7 @@ float | byte, char, short, int, long, float, double | Narrowing conversion when 
 The annotations `@java:FieldGet` and `@java:FieldSet` allow you to read and update the value of a Java static or instance field respectively. The most common use case is to read a value of a Java static constant. 
 
 ```ballerina
-import ballerinax/java;
+import ballerina/java;
 
 public function pi() returns float = @java:FieldGet {
    name:"PI",

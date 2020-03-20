@@ -448,12 +448,12 @@ The following section describes various aspects of Java interoperability in Ball
 
 ## Calling Java code from Ballerina
 The following subsections explain how to call Java code from Ballerina. 
-* [Instantiate Java classes]()
-* [Call java methods]()
-* [Java exceptions as Ballerina errors]()
-* [Null safety]()
-* [How Java types are mapped Ballerina types and vice versa]()
-* [Access/Mutate Java fields]()
+* [Instantiate Java classes](#instantiate-java-classes)
+* [Call java methods](#call-java-methods)
+* [Java exceptions as Ballerina errors](#java-exceptions-as-ballerina-errors)
+* [Null safety](#null-safety)
+* [How Java types are mapped Ballerina types and vice versa](#how-java-types-are-mapped-ballerina-types-and-vice-versa)
+* [Access/Mutate Java fields](#accessmutate-java-fields)
 
 ### Instantiate Java classes
 Let's look at how you can create Java objects in a Ballerina program. The `@java:Constructor` annotation instructs the compiler to link a Ballerina function with a Java constructor.

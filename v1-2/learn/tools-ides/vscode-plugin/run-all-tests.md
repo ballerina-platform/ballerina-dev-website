@@ -20,5 +20,5 @@ This option allows you to run all the tests that belong to multiple modules of y
 
 ## What's next?
 
-- For information on the next capability of the VS Code Ballerina extension, see [Graphical Editor](/v1-2/learn/vscode-plugin/graphical-editor.md).
-- For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v1-2/learn/vscode-plugin/vscode-plugin.md)
+- For information on the next capability of the VS Code Ballerina extension, see [Graphical Editor](/v1-2/learn/vscode-plugin/graphical-editor).
+- For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/v1-2/learn/vscode-plugin/)

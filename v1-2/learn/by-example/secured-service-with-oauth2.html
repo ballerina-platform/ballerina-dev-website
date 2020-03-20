@@ -8,6 +8,7 @@ permalink: /v1-2/learn/by-example/secured-service-with-oauth2
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">InboundOAuth2Provider</span> <span class="nx">oauth2Provider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
@@ -20,7 +21,7 @@ permalink: /v1-2/learn/by-example/secured-service-with-oauth2
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -124,6 +125,7 @@ permalink: /v1-2/learn/by-example/secured-service-with-oauth2
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
 </code></pre></div>
@@ -205,7 +207,7 @@ import ballerina/oauth2;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    secureSocket: {
         keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -260,9 +262,9 @@ import ballerina/oauth2;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run secured_service_with_oauth2.bal
+                                    <div class="highlight"><pre><code class=shell-session># To run the service, execute the below command by passing Ballerina home path
+# as a system property.
+$ ballerina run secured_service_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9090
 </code></pre></div>
 
@@ -288,7 +290,7 @@ $ ballerina run secured_service_with_oauth2.bal
                             <tr class="cTR hover-enable cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl -vk -H &quot;Authorization: Bearer YWRtaW46MTIz&quot; \
+                                    <div class="highlight"><pre><code class=shell-session>$ curl -k -H &quot;Authorization: Bearer YWRtaW46MTIz&quot; \
 https://localhost:9090/hello/sayHello
 Hello, World!!!
 </code></pre></div>
@@ -298,10 +300,10 @@ Hello, World!!!
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Start the introspection server on 9095 with the
- <code>/oauth2/token/introspect</code> resource path and invoke the service using cURL.
- Note that it is required to provide the correct bearer authentication header
- with the cURL command. It will get validated against the introspection server.</p>
+                                            <p>Start the introspection server on 9095 with the <code>/oauth2/token/introspect</code>
+ resource path and invoke the service using cURL. Note that it is required
+ to provide the correct bearer authentication header with the cURL command.
+ It will get validated against the introspection server.</p>
 
                                         </div>
                                     </div>

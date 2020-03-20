@@ -18,12 +18,9 @@ permalink: /v1-2/learn/by-example/knative-deployment
     <span class="nx">registry</span><span class="p">:</span> <span class="s">&quot;index.docker.io/$env{DOCKER_USERNAME}&quot;</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/*&quot;</span>
+    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/helloWorld&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
-        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/*&quot;</span>
-    <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">outboundEP</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Hello, World from service helloWorld ! \n&quot;</span><span class="p">);</span>
@@ -232,12 +229,9 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>    registry: &quot;index.docker.io/$env{DOCKER_USERNAME}&quot;
 }
 @http:ServiceConfig {
-    basePath: &quot;/*&quot;
+    basePath: &quot;/helloWorld&quot;
 }
 service helloWorld on new http:Listener(8080) {
-    @http:ResourceConfig {
-        path: &quot;/*&quot;
-    }
     resource function sayHello(http:Caller outboundEP, http:Request request) {
         http:Response response = new;
         response.setTextPayload(&quot;Hello, World from service helloWorld ! \n&quot;);
@@ -265,6 +259,14 @@ service helloWorld on new http:Listener(8080) {
                         </table>
                     </div>
                     
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
                         
                             
                                 
@@ -385,7 +387,7 @@ Compiling source
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>	Run the following command to install the application using Helm:
-	helm install --name helloworld-svc ./kubernetes/helloworld-svc
+	helm install --name hello-world-knative ./kubernetes/hello-world-knative
 </code></pre></div>
 
                                 </td>
@@ -414,7 +416,7 @@ knative_deployment   latest              85933f1c05b0        3 minutes ago      
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Apply the Knative artifacts.
 $ kubectl apply -f ./kubernetes/
-service.serving.knative.dev/helloworld-svc created
+service.serving.knative.dev/hello-world-knative created
 </code></pre></div>
 
                                 </td>
@@ -427,8 +429,34 @@ service.serving.knative.dev/helloworld-svc created
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># Wait for the `hello-world-knative` route to be ready.
-$ watch -n 1 kubectl get pod,ksvc,configuration,revision,route
-NAME                                            URL                                              READY   REASON
+$ watch -n 1 kubectl get pod,revision,route
+NAME                                                        READY   STATUS        RESTARTS   AGE
+pod/hello-world-knative-dd6nk-deployment-5694769c7d-nzvts   2/2     Running       0          12s
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>NAME                                                     CONFIG NAME           K8S SERVICE NAME            GENERATION   READY   REASON
+revision.serving.knative.dev/hello-world-knative-dd6nk   hello-world-knative   hello-world-knative-dd6nk   1            True
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>NAME                                            URL                                              READY   REASON
 route.serving.knative.dev/hello-world-knative   http://hello-world-knative.default.example.com   True
 </code></pre></div>
 

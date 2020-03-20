@@ -27,7 +27,7 @@ permalink: /v1-2/learn/by-example/let-expression
                     <span class="o">...</span><span class="nx">otherDetails</span>
               <span class="p">}</span> <span class="p">=</span> <span class="nx">getPerson</span><span class="p">()</span>
               <span class="nx">in</span> <span class="nx">personAge</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="kt">boolean</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">let</span> <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">()</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;age: &quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">);</span>    <span class="k">var</span> <span class="nx">fatal</span> <span class="p">=</span> <span class="nx">let</span> <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="o">...</span><span class="nx">params</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">()</span>
                     <span class="nx">in</span> <span class="nx">params</span><span class="p">[</span><span class="s">&quot;fatal&quot;</span><span class="p">];</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;fatal: &quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">);</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">getInt</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">=&gt;</span> <span class="mi">1</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{</span>
@@ -302,7 +302,7 @@ permalink: /v1-2/learn/by-example/let-expression
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    boolean fatal = let var error(reason, ...params) = getSampleError()
+                                    <div class="highlight"><pre><code class=ballerina>    var fatal = let var error(reason, ...params) = getSampleError()
                     in params[&quot;fatal&quot;];
     io:println(&quot;fatal: &quot;, fatal);
 }

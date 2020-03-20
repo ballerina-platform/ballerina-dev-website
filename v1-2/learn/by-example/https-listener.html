@@ -7,12 +7,13 @@ permalink: /v1-2/learn/by-example/https-listener
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerConfiguration</span> <span class="nx">helloWorldEPConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -116,7 +117,8 @@ permalink: /v1-2/learn/by-example/https-listener
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+import ballerina/http;
 import ballerina/log;
 </code></pre></div>
 
@@ -132,7 +134,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>http:ListenerConfiguration helloWorldEPConfig = {
     secureSocket: {
         keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -245,8 +247,8 @@ service helloWorld on helloWorldEP {
 
                                 <td class="code cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run https_listener.bal
+# `.bal` file and execute the `ballerina run` command along with the Ballerina home path as a config.
+$ ballerina run https_listener.bal --b7a.home=&lt;ballerina_home_path&gt;
 [ballerina/http] started HTTPS/WSS listener 0.0.0.0:9095
 </code></pre></div>
 

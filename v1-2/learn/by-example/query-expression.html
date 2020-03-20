@@ -1,32 +1,37 @@
 ---
 layout: ballerina-example-page
-title: XML Functions
+title: Query Expression
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-2/learn/by-example/xml-functions
+permalink: /v1-2/learn/by-example/query-expression
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">xml</span> <span class="k">as</span> <span class="nx">xmllib</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">xml</span> <span class="nx">bookName</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;Book1&lt;/name&gt;`</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">bookComment</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;!--some comment--&gt;`</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">someText</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`Hello, World!`</span><span class="p">;</span>
-    <span class="kt">xml</span> <span class="nx">content</span> <span class="p">=</span> <span class="nx">someText</span> <span class="o">+</span> <span class="nx">bookName</span> <span class="o">+</span> <span class="nx">bookComment</span><span class="p">;</span>    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">book</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="kt">xml</span> <span class="s">`&lt;book/&gt;`</span><span class="p">;</span>
-    <span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span> <span class="nx">bookNameElem</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">xmllib</span><span class="p">:</span><span class="nx">Element</span><span class="p">&gt;</span> <span class="nx">bookName</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">bookNameElem</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
-    <span class="kt">xml</span> <span class="nx">concat</span> <span class="p">=</span> <span class="nx">xmllib</span><span class="p">:</span><span class="nx">concat</span><span class="p">(</span><span class="nx">someText</span><span class="p">,</span> <span class="nx">bookName</span><span class="p">,</span> <span class="nx">bookComment</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">concat</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">content</span> <span class="o">==</span> <span class="nx">concat</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">concat</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
-    <span class="kt">xml</span> <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">elements</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-    <span class="nx">book</span><span class="p">.</span><span class="nx">setChildren</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">book</span><span class="p">);</span>
-    <span class="nx">x</span> <span class="p">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">strip</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">Report</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">degree</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">expectedGradYear</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">];</span>
+    <span class="nx">Report</span><span class="p">[]</span> <span class="nx">reportList</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+       <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+       <span class="nx">let</span> <span class="kt">string</span> <span class="nx">degreeName</span> <span class="p">=</span> <span class="s">&quot;Bachelor of Medicine&quot;</span><span class="p">,</span>
+       <span class="kt">int</span> <span class="nx">graduationYear</span> <span class="p">=</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="nx">student</span><span class="p">.</span><span class="nx">intakeYear</span><span class="p">)</span>
+       <span class="nx">select</span> <span class="p">{</span>
+              <span class="nx">name</span><span class="p">:</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span><span class="p">,</span>
+              <span class="nx">degree</span><span class="p">:</span> <span class="nx">degreeName</span><span class="p">,</span>
+              <span class="nx">expectedGradYear</span><span class="p">:</span> <span class="nx">graduationYear</span>
+       <span class="p">};</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">report</span> <span class="nx">in</span> <span class="nx">reportList</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">calGraduationYear</span><span class="p">(</span><span class="kt">int</span> <span class="nx">year</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">year</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -36,8 +41,12 @@ permalink: /v1-2/learn/by-example/xml-functions
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>XML Functions</h2>
-                            <p><p>Ballerina supports various built-in functions to manipulate XML content.</p>
+                            <h2>Query Expression</h2>
+                            <p><p>A <code>query expression</code> is a list comprehension, which can be used with a value that is iterable with any error type.
+ It consists of four kinds of clauses: <code>from</code>, <code>let</code>, <code>where</code>, and <code>select</code>.
+ The first clause must be a <code>from</code> clause and the last clause must be a <code>select</code>.
+ The result of the query expression is a list.
+ This is a preview feature.</p>
 </p>
 
                         </td>
@@ -45,16 +54,16 @@ permalink: /v1-2/learn/by-example/xml-functions
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="xml-access.html">
+                                    <a class="prev" href="elvis-operator.html">
                                         <span>< PREVIOUS</span>
-                                        <p>XML Access</p>
+                                        <p>Elvis</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="tuple-typed-binding-pattern.html">
+                                    <a class="next" href="query-action.html">
                                         <span>NEXT ></span>
-                                        <p>Tuple-Typed Binding Pattern</p>
+                                        <p>Query Action</p>
                                     </a>
                                 </div>
                                 
@@ -63,7 +72,7 @@ permalink: /v1-2/learn/by-example/xml-functions
                     </tr>
                 </table>
             </div>
-            <div class="example" id="xml-functions">
+            <div class="example" id="query-expression">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -74,7 +83,7 @@ permalink: /v1-2/learn/by-example/xml-functions
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/xml-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/query-expression/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -112,6 +121,10 @@ permalink: /v1-2/learn/by-example/xml-functions
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -121,7 +134,39 @@ permalink: /v1-2/learn/by-example/xml-functions
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/lang.&#39;xml as xmllib;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+    string firstName;
+    string lastName;
+    int intakeYear;
+    float score;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Report record {
+    string name;
+    string degree;
+    int expectedGradYear;
+};
 </code></pre></div>
 
                                 </td>
@@ -134,10 +179,6 @@ import ballerina/lang.&#39;xml as xmllib;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
-    xml bookName = xml `&lt;name&gt;Book1&lt;/name&gt;`;
-    xml bookComment = xml `&lt;!--some comment--&gt;`;
-    xml someText = xml `Hello, World!`;
-    xml content = someText + bookName + bookComment;
 </code></pre></div>
 
                                 </td>
@@ -149,7 +190,21 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element book = &lt;xmllib:Element&gt; xml `&lt;book/&gt;`;
+                                    <div class="highlight"><pre><code class=ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
+    Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2020, score: 0.9};
+    Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, intakeYear: 2022, score: 1.2};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3];
 </code></pre></div>
 
                                 </td>
@@ -161,8 +216,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xmllib:Element bookNameElem = &lt;xmllib:Element&gt; bookName;
-    io:println(bookNameElem.getName());
+                                    <div class="highlight"><pre><code class=ballerina>    Report[] reportList = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -170,7 +224,9 @@ import ballerina/lang.&#39;xml as xmllib;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the name of an XML element.</p>
+                                            <p>The <code>from</code> clause works similarly to a <code>foreach</code> statement.
+It can be used to iterate any iterable value.
+The <code>outputStudentList</code> is the result of the <code>query</code> expression.</p>
 
                                         </div>
                                     </div>
@@ -181,9 +237,7 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml concat = xmllib:concat(someText, bookName, bookComment);
-    io:println(concat);
-    io:println(content == concat);
+                                    <div class="highlight"><pre><code class=ballerina>       where student.score &gt;= 1
 </code></pre></div>
 
                                 </td>
@@ -191,7 +245,9 @@ import ballerina/lang.&#39;xml as xmllib;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Concatenate XML and string values.</p>
+                                            <p>The <code>where</code> clause provides a way to perform conditional execution and works similarly to an <code>if</code> condition.
+It can refer to variables bound by the from clause.
+When the <code>where</code> condition evaluates to false, the iteration skips following the clauses.</p>
 
                                         </div>
                                     </div>
@@ -202,7 +258,8 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(concat.length());
+                                    <div class="highlight"><pre><code class=ballerina>       let string degreeName = &quot;Bachelor of Medicine&quot;,
+       int graduationYear = calGraduationYear(student.intakeYear)
 </code></pre></div>
 
                                 </td>
@@ -210,7 +267,7 @@ import ballerina/lang.&#39;xml as xmllib;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get the number of XML items in a sequence.</p>
+                                            <p>The <code>let</code> clause binds the variables.</p>
 
                                         </div>
                                     </div>
@@ -221,8 +278,11 @@ import ballerina/lang.&#39;xml as xmllib;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml x = content.slice(2, 3);
-    io:println(x);
+                                    <div class="highlight"><pre><code class=ballerina>       select {
+              name: student.firstName,
+              degree: degreeName,
+              expectedGradYear: graduationYear
+       };
 </code></pre></div>
 
                                 </td>
@@ -230,7 +290,8 @@ import ballerina/lang.&#39;xml as xmllib;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get a subsequence of an XML sequence.</p>
+                                            <p>The <code>select</code> clause is evaluated for each iteration.
+The result of the query expression is a list(<code>reportList</code>) whose members are the result of the <code>select</code> clause.</p>
 
                                         </div>
                                     </div>
@@ -238,64 +299,31 @@ import ballerina/lang.&#39;xml as xmllib;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.elements();
-    io:println(x);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Get all the element-type items in an XML sequence.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    book.setChildren(content);
-    io:println(book);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Set the children elements of an XML element.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    x = content.strip();
-    io:println(x);
+                                    <div class="highlight"><pre><code class=ballerina>    foreach var report in reportList {
+        io:println(report);
+    }
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Strip the insignificant parts of an XML value.
- Comment items, processing instruction items are considered insignificant.</p>
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
-                                        </div>
-                                    </div>
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function calGraduationYear(int year) returns int {
+    return year + 5;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -321,8 +349,8 @@ import ballerina/lang.&#39;xml as xmllib;
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command.
-$ ballerina run xml_functions.bal
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run query_expression.bal
 </code></pre></div>
 
                                 </td>
@@ -334,14 +362,8 @@ $ ballerina run xml_functions.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>name
-Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;
-true
-3
-&lt;!--some comment--&gt;
-&lt;name&gt;Book1&lt;/name&gt;
-&lt;book&gt;Hello, World!&lt;name&gt;Book1&lt;/name&gt;&lt;!--some comment--&gt;&lt;/book&gt;
-Hello, World!&lt;name&gt;Book1&lt;/name&gt;
+                                    <div class="highlight"><pre><code class=shell-session>name=Alex degree=Bachelor of Medicine expectedGradYear=2025
+name=John degree=Bachelor of Medicine expectedGradYear=2027
 </code></pre></div>
 
                                 </td>

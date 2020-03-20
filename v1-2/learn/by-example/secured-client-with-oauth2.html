@@ -8,6 +8,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
@@ -17,7 +18,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                      <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -29,7 +31,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -43,7 +46,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                      <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                 <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -53,7 +57,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                          <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -66,7 +71,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -81,7 +87,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
         <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
                 <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                          <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
                     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
                 <span class="p">}</span>
             <span class="p">}</span>
@@ -94,7 +101,8 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -124,10 +132,10 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
     <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP3.&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">kind</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
@@ -236,6 +244,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-oauth2
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/config;
 import ballerina/log;
 import ballerina/oauth2;
 </code></pre></div>
@@ -256,7 +265,8 @@ import ballerina/oauth2;
     clientConfig: {
         secureSocket: {
             trustStore: {
-                path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                      &quot;bre/security/ballerinaTruststore.p12&quot;,
                 password: &quot;ballerina&quot;
             }
         }
@@ -290,7 +300,8 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
     },
     secureSocket: {
         trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) +
+                  &quot;bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -315,7 +326,8 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
     clientConfig: {
         secureSocket: {
             trustStore: {
-                path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                path: config:getAsString(&quot;b7a.home&quot;) +
+                      &quot;bre/security/ballerinaTruststore.p12&quot;,
                 password: &quot;ballerina&quot;
             }
         }
@@ -325,7 +337,8 @@ http:BearerAuthHandler oauth2Handler1 = new (oauth2Provider1);
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                    path: config:getAsString(&quot;b7a.home&quot;) +
+                          &quot;bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
@@ -362,7 +375,8 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
     },
     secureSocket: {
         trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) +
+                  &quot;bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -388,7 +402,8 @@ http:BearerAuthHandler oauth2Handler2 = new (oauth2Provider2);
         clientConfig: {
             secureSocket: {
                 trustStore: {
-                    path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+                    path: config:getAsString(&quot;b7a.home&quot;) +
+                          &quot;bre/security/ballerinaTruststore.p12&quot;,
                     password: &quot;ballerina&quot;
                 }
             }
@@ -424,7 +439,8 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
     },
     secureSocket: {
         trustStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) +
+                  &quot;bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -513,10 +529,10 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                     <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
     if (response3 is http:Response) {
         var result = response3.getJsonPayload();
-        if (result is error) {
-            log:printInfo(&quot;Failed to retrieve payload for clientEP3.&quot;);
+        if (result is json) {
+            log:printInfo(result.toJsonString());
         } else {
-            log:printInfo(&lt;string&gt;result.kind);
+            log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
         }
     } else {
         log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
@@ -545,6 +561,10 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -552,11 +572,22 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             
                             <tr class="cTR cOutputTr">
 
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To test the client, configure the clients with required parameters and
+# execute the below command by passing Ballerina home path as a system property.
+$ ballerina run secured_client_with_oauth2.bal --b7a.home=&lt;ballerina_home_path&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command.
-$ ballerina run secured_client_with_oauth2.bal
-# This should log the JSON output returned by the REST endpoint.
+                                    <div class="highlight"><pre><code class=shell-session># This should log the JSON output returned by the REST endpoints.
 </code></pre></div>
 
                                 </td>

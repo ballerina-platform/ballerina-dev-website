@@ -72,7 +72,7 @@ public class SnakeYamlSample {
 ```
 
 Here, we've used four Java classes. 
-- org.yaml.snakeyaml.Yaml
+- `org.yaml.snakeyaml.Yaml`
 - `java.io.FileInputStream`
 - `java.io.InputStream`
 - `java.util.Map`
@@ -330,7 +330,7 @@ The next sections provide more details on various aspects related to Java intero
 
 *Note that the bindgen tool is still experimental. We are in the process of improving the generated code.*
 
-The `bindgen` is a CLI tool that generates Ballerina bindings for Java classes.
+The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes.
 
 ### The `bindgen` Command
 

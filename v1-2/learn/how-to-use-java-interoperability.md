@@ -328,6 +328,155 @@ The next sections provide more details on various aspects related to Java intero
 
 ## The `bindgen` tool
 
+*Note that the bindgen tool is still experimental. We are in the process of improving the generated code.*
+
+The `bindgen` is a CLI tool that generates Ballerina bindings for Java classes.
+
+### The `bindgen` Command
+
+```sh
+ballerina bindgen [(-cp|--classpath) <classpath>...]
+                  [(-o|--output) <output>]
+                  (<class-name>...)
+```
+
+`(-cp|--classpath) <classpath>...`
+This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma separated paths of jar files or as comma separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library or from a library available inside the Ballerina SDK, then you need not specify the classpath explicitly.
+
+`(-o|--output) <output>`
+This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
+
+`<class-name>...`
+One or more space separated fully qualified Java class names for which the Ballerina bridge code is to be generated. Please note that these class names should be provided at the end of the command.
+
+### Generated Bridge Code
+
+When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina object along with the required Java interoperability mappings. These `.bal` files would reside inside subdirectories representing the package structure. Apart from creating bindings for the Java classes specified, the command would also generate empty Ballerina objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the Ballerina objects generated. A set of additional utility files will also be generated in order to support the auto generated Ballerina bindings. The folder structure of the generated bindings will be as follows.
+
+	<ballerina_bindings>
+		├── <package-name>
+			└── <class-name>.bal
+			└── ...
+		├── ... 
+		└── <dependencies>
+			├── <utils>
+				├── ArrayUtils.bal
+				├── Constants.bal
+				└── JObject.bal
+			├── <package-name>
+				└── <class-name>.bal
+				└── ...
+			└── ...
+
+### Mapping Java code with Ballerina
+
+#### Java Classes
+A Java class will be mapped onto a Ballerina object. This Ballerina object will have the same name as that of the Java class. 
+
+Ex: Generated Ballerina object of `java.utils.ArrayDeque` class will be as follows.
+```ballerina
+public type ArrayDeque object {
+ 
+	...
+};
+```
+* **Note:** If there are multiple classes with the same name you should change the names manually. 
+
+#### Constructors
+Constructors of Java classes will be mapped onto public functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto increment number.
+
+Ex: Generated constructors of `java.utils.ArrayDeque` class will be as follows.
+```ballerina
+public function newArrayDeque1() returns ArrayDeque {
+
+   ...
+}
+public function newArrayDeque2(int arg0) returns ArrayDeque {
+
+   ...
+}
+public function newArrayDeque3(Collection arg0) returns ArrayDeque {
+
+   ...
+}
+```
+
+#### Methods
+All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there exists overloaded methods, a numeric suffix will be appended at the end of the name.
+
+Ex: Some of the generated instance methods of `java.utils.ArrayDeque` class will be as follows.
+```ballerina
+public type ArrayDeque object {
+   ...
+ 
+   public function add(Object arg0) returns boolean {
+   
+       ...
+   }
+   public function isEmpty() returns boolean {
+   
+       ...
+   }
+};
+```
+Static methods would reside outside the Ballerina object as public functions that take the name of the Java method, with the Java class name appended at the beginning as a prefix.
+ 
+Ex: A generated static method of `java.utils.UUID` class will be as follows.
+```ballerina
+public function UUID_randomUUID() returns UUID {
+ 
+   ...
+}
+```
+
+#### Fields
+All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getters and setters inside the Ballerina object, whereas the static fields will have getters and setters outside the Ballerina object as public functions. 
+
+The getters and setters of an instance field will take the name of the field prefixed with a ‘get’ or ‘set’ at the beginning. For a static field, getters and setters (if the field is not final) will take the name of the field with a ‘get’ or ‘set’ prefix along with the Java class name appended at the beginning.
+
+#### External Interop Functions
+These interop functions take the fully qualified Java method name as the function name. However, if there exists overloaded methods, a numeric suffix will be appended at the end.
+
+#### Dependency Objects
+When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina object to represent each one of these classes. These would represent a Java class mapping without the constructor, method or field bindings. If one of these classes are required later, the bindgen tool could be re-run to generate the Ballerina bindings. Please note that if the complete implementation of a dependency object is generated using the bindgen tool, the existing empty Ballerina object should be manually deleted as instructed in the command output.
+
+Ex: Generated dependency object representing `java.util.List` will be as follows.
+```ballerina
+public type List object {
+ 
+   *JObject;
+  
+   public function __init(handle obj) {
+   
+       self.jObj = obj;
+   }
+};
+```
+
+#### Ballerina Object
+A Ballerina object representing a Java class will always store the handle reference of the Java class in it’s `jObj` field. To explain the implementation further, a Ballerina object representing a Java class would always be implemented using the following `JObject` abstract class, hence the handle reference could be accessed when needed.
+
+```ballerina
+public type JObject abstract object {
+ 
+   public handle jObj;
+};
+```
+
+A Ballerina object could be initialized using the `__init` function or by using a constructor. If the first approach is used, you should pass on a handle reference of the Java class to the `__init` function. This could be used if you have already obtained a handle reference through some means other than using the constructor. If not you could use the second approach to create a new object using a constructor.
+
+Ex: Generated `__init` function of a Ballerina object mapping a Java class.
+```ballerina
+public function __init(handle obj) {
+
+   self.jObj = obj;
+}
+
+```
+
+#### Type mappings between Java and Ballerina
+When using the Ballerina bindings, you could use the Ballerina primitive types, Ballerina string type and the Ballerina objects generated. They will be mapped internally onto the respective Java primitives, Java String object and the respective handle references of objects.
+
 ## Packaging Java libraries with Ballerina programs
 This section assumes that you have already read the guide [How to Structure Ballerina Code](https://ballerina.io/v1-1/learn/how-to-structure-ballerina-code/). When you compile a Ballerina program with `ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with `ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.
 

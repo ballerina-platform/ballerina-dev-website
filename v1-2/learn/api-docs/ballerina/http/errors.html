@@ -1,22 +1,51 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - http
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/http/errors
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Errors : http</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -42,6 +71,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                     
                         <li ></li>
                             <a href="#AuthorizationError">AuthorizationError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#CookieHandlingError">CookieHandlingError</a>
                         </li>
                     
                         <li ></li>
@@ -86,6 +119,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                     
                         <li ></li>
                             <a href="#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidCookieError">InvalidCookieError</a>
                         </li>
                     
                         <li ></li>
@@ -178,7 +215,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -260,7 +297,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -288,10 +325,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -316,11 +349,11 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -376,10 +409,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -408,10 +437,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -425,10 +450,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -502,6 +523,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                             </li>
                         
                             <li >
+                                <a href="#CookieHandlingError">CookieHandlingError</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#FailoverActionFailedError">FailoverActionFailedError</a>
                             </li>
                         
@@ -543,6 +568,10 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                         
                             <li >
                                 <a href="#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidCookieError">InvalidCookieError</a>
                             </li>
                         
                             <li >
@@ -635,7 +664,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -717,7 +746,7 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -745,10 +774,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -773,11 +798,11 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -833,10 +858,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -865,10 +886,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -882,10 +899,6 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -986,6 +999,16 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                                 <li> <b>AuthorizationError </b><span class="type"><a href="../http/records/Detail.html">Detail</a></span> </li>
                                 <li>
                                     <p>Represents a listener error that occurred due to inbound request authorization failure</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li> <b>CookieHandlingError </b><span class="type"><a href="../http/records/Detail.html">Detail</a></span> </li>
+                                <li>
+                                    <p>Represents a cookie error that occurred when using the cookies</p>
 
                                 </li>
                             </ul>
@@ -1096,6 +1119,16 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
                                 <li> <b>Initiating100ContinueResponseError </b><span class="type"><a href="../http/records/Detail.html">Detail</a></span> </li>
                                 <li>
                                     <p>Represents an error that occurred due to 100 continue response initialization failure</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li> <b>InvalidCookieError </b><span class="type"><a href="../http/records/Detail.html">Detail</a></span> </li>
+                                <li>
+                                    <p>Represents a cookie error that occurred when sending cookies in the response</p>
 
                                 </li>
                             </ul>
@@ -1314,4 +1347,49 @@ permalink: /v1-1/learn/api-docs/ballerina/http/errors
             </div>
         </div>
     </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

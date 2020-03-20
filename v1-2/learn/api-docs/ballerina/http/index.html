@@ -1,21 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - http
-keywords: Ballerina, ballerinalang
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - ballerina/http</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -26,7 +57,7 @@ keywords: Ballerina, ballerinalang
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -108,7 +139,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -136,10 +167,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -164,11 +191,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -224,10 +251,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -256,10 +279,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -273,10 +292,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -333,7 +348,7 @@ keywords: Ballerina, ballerinalang
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -415,7 +430,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -443,10 +458,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -471,11 +482,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -531,10 +542,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -563,10 +570,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -580,10 +583,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -755,14 +754,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate records" id="AuthzCacheConfig" title="AuthzCacheConfig">
-                                <a class="records"
-                                   href="records/AuthzCacheConfig.html">AuthzCacheConfig</a></td>
-                            <td class="module-desc">Provides a set of configurations for controlling the authorization caching behaviour of the endpoint.
-</td>
-                        </tr>
-                    
-                        <tr>
                             <td class="module-title truncate records" id="Bucket" title="Bucket">
                                 <a class="records"
                                    href="records/Bucket.html">Bucket</a></td>
@@ -807,7 +798,20 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                                 <a class="records"
                                    href="records/ClientConfiguration.html">ClientConfiguration</a></td>
                             <td class="module-desc">Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
-</td>
+
+httpVersion - Copied from CommonClientConfiguration
+http1Settings - Copied from CommonClientConfiguration
+http2Settings - Copied from CommonClientConfiguration
+timeoutInMillis - Copied from CommonClientConfiguration
+forwarded - Copied from CommonClientConfiguration
+followRedirects - Copied from CommonClientConfiguration
+poolConfig - Copied from CommonClientConfiguration
+cache - Copied from CommonClientConfiguration
+compression - Copied from CommonClientConfiguration
+auth - Copied from CommonClientConfiguration
+circuitBreaker - Copied from CommonClientConfiguration
+retryConfig - Copied from CommonClientConfiguration
+cookieConfig - Copied from CommonClientConfiguration</td>
                         </tr>
                     
                         <tr>
@@ -831,6 +835,14 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                                 <a class="records"
                                    href="records/ClientSecureSocket.html">ClientSecureSocket</a></td>
                             <td class="module-desc">Provides configurations for facilitating secure communication with a remote HTTP endpoint.
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="CommonClientConfiguration" title="CommonClientConfiguration">
+                                <a class="records"
+                                   href="records/CommonClientConfiguration.html">CommonClientConfiguration</a></td>
+                            <td class="module-desc">Common client configurations for the next level clients.
 </td>
                         </tr>
                     
@@ -871,7 +883,20 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                                 <a class="records"
                                    href="records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></td>
                             <td class="module-desc">Provides a set of HTTP related configurations and failover related configurations.
-</td>
+
+httpVersion - Copied from CommonClientConfiguration
+http1Settings - Copied from CommonClientConfiguration
+http2Settings - Copied from CommonClientConfiguration
+timeoutInMillis - Copied from CommonClientConfiguration
+forwarded - Copied from CommonClientConfiguration
+followRedirects - Copied from CommonClientConfiguration
+poolConfig - Copied from CommonClientConfiguration
+cache - Copied from CommonClientConfiguration
+compression - Copied from CommonClientConfiguration
+auth - Copied from CommonClientConfiguration
+circuitBreaker - Copied from CommonClientConfiguration
+retryConfig - Copied from CommonClientConfiguration
+cookieConfig - Copied from CommonClientConfiguration</td>
                         </tr>
                     
                         <tr>
@@ -975,7 +1000,20 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                                 <a class="records"
                                    href="records/LoadBalanceClientConfiguration.html">LoadBalanceClientConfiguration</a></td>
                             <td class="module-desc">The configurations related to the load balance client endpoint.
-</td>
+
+httpVersion - Copied from CommonClientConfiguration
+http1Settings - Copied from CommonClientConfiguration
+http2Settings - Copied from CommonClientConfiguration
+timeoutInMillis - Copied from CommonClientConfiguration
+forwarded - Copied from CommonClientConfiguration
+followRedirects - Copied from CommonClientConfiguration
+poolConfig - Copied from CommonClientConfiguration
+cache - Copied from CommonClientConfiguration
+compression - Copied from CommonClientConfiguration
+auth - Copied from CommonClientConfiguration
+circuitBreaker - Copied from CommonClientConfiguration
+retryConfig - Copied from CommonClientConfiguration
+cookieConfig - Copied from CommonClientConfiguration</td>
                         </tr>
                     
                         <tr>
@@ -1115,6 +1153,14 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate records" id="WebSocketRetryConfig" title="WebSocketRetryConfig">
+                                <a class="records"
+                                   href="records/WebSocketRetryConfig.html">WebSocketRetryConfig</a></td>
+                            <td class="module-desc">Retry configurations for WebSocket.
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="WebSocketUpgradeConfig" title="WebSocketUpgradeConfig">
                                 <a class="records"
                                    href="records/WebSocketUpgradeConfig.html">WebSocketUpgradeConfig</a></td>
@@ -1225,6 +1271,17 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate objects" id="CsvPersistentCookieHandler" title="CsvPersistentCookieHandler">
+                                <a class="objects"
+                                   href="objects/CsvPersistentCookieHandler.html">
+                                    CsvPersistentCookieHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>Represents a default persistent cookie handler, which stores persistent cookies in a CSV file.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate objects" id="FilterContext" title="FilterContext">
                                 <a class="objects"
                                    href="objects/FilterContext.html">
@@ -1300,6 +1357,17 @@ This can be used as a reference to fetch the results of the submission.</p>
                                 </a>
                             </td>
                             <td class="module-desc"><p>The representation of an outbound authentication handler for HTTP traffic.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate objects" id="PersistentCookieHandler" title="PersistentCookieHandler">
+                                <a class="objects"
+                                   href="objects/PersistentCookieHandler.html">
+                                    PersistentCookieHandler
+                                </a>
+                            </td>
+                            <td class="module-desc"><p>The representation of a persistent cookie handler for managing persistent cookies.</p>
 </td>
                         </tr>
                     
@@ -2082,6 +2150,13 @@ outbound request/response accept-encoding/content-encoding option.</p>
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate constant" id="INVALID_COOKIE_ERROR" title="INVALID_COOKIE_ERROR"><a
+                                    class="constant" href="constants.html#INVALID_COOKIE_ERROR">INVALID_COOKIE_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:InvalidCookieError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate constant" id="GENERIC_CLIENT_ERROR" title="GENERIC_CLIENT_ERROR"><a
                                     class="constant" href="constants.html#GENERIC_CLIENT_ERROR">GENERIC_CLIENT_ERROR</a></td>
                             <td class="module-desc"><p>Error reason for generic client error</p>
@@ -2120,6 +2195,13 @@ outbound request/response accept-encoding/content-encoding option.</p>
                             <td class="module-title truncate constant" id="SSL_ERROR" title="SSL_ERROR"><a
                                     class="constant" href="constants.html#SSL_ERROR">SSL_ERROR</a></td>
                             <td class="module-desc"><p>Represents the reason string for the <code>http:SslError</code></p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="COOKIE_HANDLING_ERROR" title="COOKIE_HANDLING_ERROR"><a
+                                    class="constant" href="constants.html#COOKIE_HANDLING_ERROR">COOKIE_HANDLING_ERROR</a></td>
+                            <td class="module-desc"><p>Represents the reason string for the <code>http:CookieHandlingError</code></p>
 </td>
                         </tr>
                     
@@ -2863,6 +2945,14 @@ outbound request/response accept-encoding/content-encoding option
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate types" id="InboundAuthHandlers" title="InboundAuthHandlers">
+                                <a class="types" href="types.html#InboundAuthHandlers">InboundAuthHandlers</a>
+                            </td>
+                            <td class="module-desc"><p>Represents inbound auth handler patterns.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate types" id="InboundRequestError" title="InboundRequestError">
                                 <a class="types" href="types.html#InboundRequestError">InboundRequestError</a>
                             </td>
@@ -2953,6 +3043,14 @@ outbound request/response accept-encoding/content-encoding option
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate types" id="Scopes" title="Scopes">
+                                <a class="types" href="types.html#Scopes">Scopes</a>
+                            </td>
+                            <td class="module-desc"><p>Represents scopes patterns.</p>
+</td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate types" id="WebSocketError" title="WebSocketError">
                                 <a class="types" href="types.html#WebSocketError">WebSocketError</a>
                             </td>
@@ -3003,6 +3101,14 @@ outbound request/response accept-encoding/content-encoding option
                                 <a class="errors" href="errors.html#AuthorizationError">AuthorizationError</a>
                             </td>
                             <td class="module-desc"><p>Represents a listener error that occurred due to inbound request authorization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="CookieHandlingError" title="CookieHandlingError">
+                                <a class="errors" href="errors.html#CookieHandlingError">CookieHandlingError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a cookie error that occurred when using the cookies</p>
 </td>
                         </tr>
                     
@@ -3091,6 +3197,14 @@ outbound request/response accept-encoding/content-encoding option
                                 <a class="errors" href="errors.html#Initiating100ContinueResponseError">Initiating100ContinueResponseError</a>
                             </td>
                             <td class="module-desc"><p>Represents an error that occurred due to 100 continue response initialization failure</p>
+</td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate errors" id="InvalidCookieError" title="InvalidCookieError">
+                                <a class="errors" href="errors.html#InvalidCookieError">InvalidCookieError</a>
+                            </td>
+                            <td class="module-desc"><p>Represents a cookie error that occurred when sending cookies in the response</p>
 </td>
                         </tr>
                     
@@ -3267,4 +3381,49 @@ outbound request/response accept-encoding/content-encoding option
         </div>
     </div>
 
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

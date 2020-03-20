@@ -1,22 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - cache
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
----
-<link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Object : Cache</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
     <script src="../../html-template-resources/semantic.min.js"></script>
     <script src="../../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -28,8 +58,20 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 <h3>Objects</h3>
                 <ul>
                     
+                        <li >
+                            <a href="AbstractCache.html">AbstractCache</a>
+                        </li>
+                    
+                        <li >
+                            <a href="AbstractEvictionPolicy.html">AbstractEvictionPolicy</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="Cache.html">Cache</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LruEvictionPolicy.html">LruEvictionPolicy</a>
                         </li>
                     
                 </ul>
@@ -38,7 +80,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -61,6 +103,10 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
         
         
         
+        
+            <li>
+                <a data="functions" href="../../cache/index.html#functions">Functions</a>
+            </li>
         
         
             <li>
@@ -100,7 +146,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../docker/index.html">docker</a>
+                    <a href="../../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -128,10 +174,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../../java/index.html">java</a>
                 </li>
             
@@ -156,11 +198,11 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../kubernetes/index.html">kubernetes</a>
+                    <a href="../../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../../lang.array/index.html">lang.array</a>
+                    <a href="../../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -216,10 +258,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -248,10 +286,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -265,10 +299,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
             
                 <li>
                     <a href="../../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -325,8 +355,20 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                     <h3>Objects</h3>
                     <ul>
                         
+                            <li ></li>>
+                                <a href="AbstractCache.html">AbstractCache</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="AbstractEvictionPolicy.html">AbstractEvictionPolicy</a>
+                            </li>
+                        
                             <li class="active"></li>>
                                 <a href="Cache.html">Cache</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LruEvictionPolicy.html">LruEvictionPolicy</a>
                             </li>
                         
                     </ul>
@@ -335,7 +377,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -358,6 +400,10 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
         
         
         
+        
+            <li>
+                <a data="functions" href="../../cache/index.html#functions">Functions</a>
+            </li>
         
         
             <li>
@@ -397,7 +443,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../docker/index.html">docker</a>
+                    <a href="../../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -425,10 +471,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../../java/index.html">java</a>
                 </li>
             
@@ -453,11 +495,11 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../kubernetes/index.html">kubernetes</a>
+                    <a href="../../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../../lang.array/index.html">lang.array</a>
+                    <a href="../../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -513,10 +555,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -545,10 +583,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </li>
             
                 <li>
-                    <a href="../../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -562,10 +596,6 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
             
                 <li>
                     <a href="../../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -630,7 +660,8 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                  :
                 <span class="objects">Cache</span>
             </h1>
-            <p><p>Represents a Ballerina <code>Cache</code> which can hold multiple entries and remove entries based on time and size.</p>
+            <p><p>Represents the Ballerina <code>Cache</code> object and cache-related operations. It is not recommended to insert <code>()</code> as the
+value of the cache since it doesn't make any sense to cache a nil.</p>
 </p>
 
             <div class="constants">
@@ -638,34 +669,14 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                     
                         
                         <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">int</span> expiryTimeInMillis, <span class="builtin-type">int</span> capacity, <span class="builtin-type">float</span> evictionFactor)</p>
+<h3 >__init</h3><p>(<a href="../../cache/records/CacheConfig.html">CacheConfig</a> cacheConfig)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
             <ul>
-                <li> <b>expiryTimeInMillis</b><span class="type">  <span class="builtin-type">int</span></span> 900000</li>
+                <li> <b>cacheConfig</b><span class="type">  <a href="../../cache/records/CacheConfig.html">CacheConfig</a></span>  {}</li>
                 <li>
-                    <p>Time since its last access in which the cache will be expired.</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>capacity</b><span class="type">  <span class="builtin-type">int</span></span> 100</li>
-                <li>
-                    <p>Maximum number of entries allowed.</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>evictionFactor</b><span class="type">  <span class="builtin-type">float</span></span> 0.25</li>
-                <li>
-                    <p>The factor which the entries will be evicted once the cache full.</p>
+                    <p>Cache configurations</p>
 
                 </li>
             </ul>
@@ -681,12 +692,68 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                         <div class="method-list">
                             
                                 
+<a href="#put">
+    <div class="param-sum">
+        <div class="param-name">
+        put 
+        </div>
+        <div class="param-details"> <p>Add the given key value pair to the cache. If the cache previously contained a value associated with key, the
+old value is replaced by value.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#get">
+    <div class="param-sum">
+        <div class="param-name">
+        get 
+        </div>
+        <div class="param-details"> <p>Return the cached value associated with the given key.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#invalidate">
+    <div class="param-sum">
+        <div class="param-name">
+        invalidate 
+        </div>
+        <div class="param-details"> <p>Discard a cached value from the cache.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#invalidateAll">
+    <div class="param-sum">
+        <div class="param-name">
+        invalidateAll 
+        </div>
+        <div class="param-details"> <p>Discard all the cached values from the cache.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
 <a href="#hasKey">
     <div class="param-sum">
         <div class="param-name">
         hasKey 
         </div>
         <div class="param-details"> <p>Checks whether the given key has an associated cache value.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#keys">
+    <div class="param-sum">
+        <div class="param-name">
+        keys 
+        </div>
+        <div class="param-details"> <p>Returns all keys from the cache.</p>
  </div>
     </div>
 </a>
@@ -703,46 +770,12 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
 </a>
                             
                                 
-<a href="#put">
+<a href="#capacity">
     <div class="param-sum">
         <div class="param-name">
-        put 
+        capacity 
         </div>
-        <div class="param-details"> <p>Adds the given key, value pair to the provided cache.</p>
- </div>
-    </div>
-</a>
-                            
-                                
-<a href="#get">
-    <div class="param-sum">
-        <div class="param-name">
-        get 
-        </div>
-        <div class="param-details"> <p>Returns the cached value associated with the given key. If the provided cache key is not found,
-() will be returned.</p>
- </div>
-    </div>
-</a>
-                            
-                                
-<a href="#remove">
-    <div class="param-sum">
-        <div class="param-name">
-        remove 
-        </div>
-        <div class="param-details"> <p>Removes a cached value from a cache.</p>
- </div>
-    </div>
-</a>
-                            
-                                
-<a href="#keys">
-    <div class="param-sum">
-        <div class="param-name">
-        keys 
-        </div>
-        <div class="param-details"> <p>Returns all keys from current cache.</p>
+        <div class="param-details"> <p>Returns the capacity of the cache.</p>
  </div>
     </div>
 </a>
@@ -754,6 +787,210 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                 </div>
 
                 
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="put" title="put">
+             <a class="url-link" href="#put">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> put </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">any</span> value, <span class="builtin-type">int</span> maxAgeInSeconds)</p>
+            <b> returns </b><a href="../../cache/errors.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <p><p>Add the given key value pair to the cache. If the cache previously contained a value associated with key, the
+old value is replaced by value.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Key of the cached value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        value<span class="type">  <span class="builtin-type">any</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Value to be cached. Value should not be <code>()</code></p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        maxAgeInSeconds<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default -1)</span>
+                    </li>
+                    <li>
+                        <p><p>The value in seconds, which the cache entry is valid. '-1' means, the entry is valid forever.</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
+                <li><p><code>()</code> if successfully added to the cache or <code>Error</code> if a <code>()</code> value is inserted to the cache.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="get" title="get">
+             <a class="url-link" href="#get">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> get </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key)</p>
+            <b> returns </b><span class="builtin-type">any</span> | <a href="../../cache/errors.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <p><p>Return the cached value associated with the given key.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Key which is used to retrieve the cached value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span> | <a href="../../cache/errors.html#Error">Error</a></span>)</li>
+                <li><p>The cached value associated with the given key or
+<code>Error</code> if the provided cache key is not or if any error occurred while retrieving from the cache.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="invalidate" title="invalidate">
+             <a class="url-link" href="#invalidate">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> invalidate </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key)</p>
+            <b> returns </b><a href="../../cache/errors.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <p><p>Discard a cached value from the cache.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Key of the cache entry which needs to be discarded</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
+                <li><p><code>()</code> if successfully discarded or
+<code>Error</code> if the provided cache key is not or if any error occurred while discarding from the cache.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="invalidateAll" title="invalidateAll">
+             <a class="url-link" href="#invalidateAll">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> invalidateAll </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../../cache/errors.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <p><p>Discard all the cached values from the cache.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
+                <li><p><code>()</code> if successfully discarded all or
+<code>Error</code> if any error occurred while discarding all from the cache.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
                     
                         <div class="method-content">
     <div class="main-method-title here" id="hasKey" title="hasKey">
@@ -781,7 +1018,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
                         
                     </li>
                     <li>
-                        <p><p>The key to be checked.</p>
+                        <p><p>The key to be checked</p>
 </p>
                     </li>
                 </ul>
@@ -795,7 +1032,37 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the given key has an associated value, <code>false</code> otherwise.</p>
+                <li><p>Whether the an associated cache value is available in the cache or not</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="keys" title="keys">
+             <a class="url-link" href="#keys">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> keys </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns all keys from the cache.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
+                <li><p>Array of all keys from the cache</p>
 </li>
             </ul>
         </div>
@@ -825,7 +1092,7 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>The size of the cache.</p>
+                <li><p>The size of the cache</p>
 </li>
             </ul>
         </div>
@@ -834,147 +1101,19 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="put" title="put">
-             <a class="url-link" href="#put">
+    <div class="main-method-title here" id="capacity" title="capacity">
+             <a class="url-link" href="#capacity">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
-        
-    </div>
-    <p><p>Adds the given key, value pair to the provided cache.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        key<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Value which should be used as the key.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        value<span class="type">  <span class="builtin-type">any</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Value to be cached.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="get" title="get">
-             <a class="url-link" href="#get">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> get </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> key)</p>
-            <b> returns </b><span class="builtin-type">any?</span> 
-        </span>
-        
-    </div>
-    <p><p>Returns the cached value associated with the given key. If the provided cache key is not found,
-() will be returned.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        key<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Key which is used to retrieve the cached value.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any?</span></span>)</li>
-                <li><p>The cached value associated with the given key.</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="remove" title="remove">
-             <a class="url-link" href="#remove">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> remove </h2>
-        
-    </div>
-    <p><p>Removes a cached value from a cache.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        key<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Key of the cache entry which needs to be removed.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="keys" title="keys">
-             <a class="url-link" href="#keys">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> keys </h2>
+            <h2> capacity </h2>
         
         <span class="method-types">
             <p>()</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">string</span>[]</span> 
+            <b> returns </b><span class="builtin-type">int</span> 
         </span>
         
     </div>
-    <p><p>Returns all keys from current cache.</p>
+    <p><p>Returns the capacity of the cache.</p>
 </p>
      
 
@@ -982,8 +1121,8 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>Array of all keys from the current cache.</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
+                <li><p>The capacity of the cache</p>
 </li>
             </ul>
         </div>
@@ -995,4 +1134,50 @@ permalink: /v1-1/learn/api-docs/ballerina/cache/objects/Cache
             </div>
         </div>
     </div>
+
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

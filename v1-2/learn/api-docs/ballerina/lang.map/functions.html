@@ -1,22 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - lang.map
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Functions : lang.map</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
-    
+
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -76,13 +106,21 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                             <a href="#removeAll">removeAll</a>
                         </li>
                     
+                        <li >
+                            <a href="#removeIfHasKey">removeIfHasKey</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#toArray">toArray</a>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="ui divider"></div>
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -136,7 +174,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -164,10 +202,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -192,11 +226,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -252,10 +286,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -284,10 +314,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -301,10 +327,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -409,13 +431,21 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                                 <a href="#removeAll">removeAll</a>
                             </li>
                         
+                            <li >
+                                <a href="#removeIfHasKey">removeIfHasKey</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#toArray">toArray</a>
+                            </li>
+                        
                     </ul>
                 </div>
                 <div class="ui divider"></div>
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -469,7 +499,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -497,10 +527,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -525,11 +551,11 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -585,10 +611,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -617,10 +639,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -634,10 +652,6 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -723,7 +737,7 @@ permalink: /v1-1/learn/api-docs/ballerina/lang.map/functions
                             <tr>
                                 <td width="30%" ><a class="functions" href="#forEach">forEach</a></td>
                                 <td width="70%"><p>Applies a function to each member of a map.
-The function 'func' is applied to each member of <code>m</code>.</p>
+The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
 </td>
                             </tr>
                         </tbody>
@@ -805,6 +819,22 @@ and returns a new combined value.</p>
                                 <td width="30%" ><a class="functions" href="#removeAll">removeAll</a></td>
                                 <td width="70%"><p>Removes all members of a map.
 This panics if any member cannot be removed.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#removeIfHasKey">removeIfHasKey</a></td>
+                                <td width="70%"><p>Removes a member of a map with a given key, if the map has member with the key.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#toArray">toArray</a></td>
+                                <td width="70%"><p>Returns a list of all the members of a map.</p>
 </td>
                             </tr>
                         </tbody>
@@ -932,7 +962,7 @@ This panics if any member cannot be removed.</p>
         
     </div>
     <p><p>Applies a function to each member of a map.
-The function 'func' is applied to each member of <code>m</code>.</p>
+The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1295,7 +1325,7 @@ The resulting map will have the same keys as the argument map.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span></span>)</li>
-                <li><p>new map containing result of applying function 'func' to each member</p>
+                <li><p>new map containing result of applying parameter <code>func</code> to each member</p>
 </li>
             </ul>
         </div>
@@ -1476,11 +1506,166 @@ This panics if any member cannot be removed.</p>
     
 </div>
                             
+                                <div class="method-content">
+    <div class="main-method-title here" id="removeIfHasKey" title="removeIfHasKey">
+             <a class="url-link" href="#removeIfHasKey">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> removeIfHasKey </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span> m, <span class="builtin-type">string</span> k)</p>
+            <b> returns </b><span class="builtin-type">Type?</span> 
+        </span>
+        
+    </div>
+    <p><p>Removes a member of a map with a given key, if the map has member with the key.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <span class="builtin-type">map</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the map</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        k<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the key</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Type?</span></span>)</li>
+                <li><p>the member of <code>m</code> that had key <code>k</code>, or <code>()</code> if <code>m</code> does not have a key <code>k</code>
+If <code>m</code> has a member with key <code>k</code>, it removes and returns it;
+otherwise it returns <code>()</code>.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="toArray" title="toArray">
+             <a class="url-link" href="#toArray">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> toArray </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">map</span> m)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">Type</span>[]</span> 
+        </span>
+        
+    </div>
+    <p><p>Returns a list of all the members of a map.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        m<span class="type">  <span class="builtin-type">map</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>the map</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">Type</span>[]</span></span>)</li>
+                <li><p>an array whose members are the members of <code>m</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
                         </div>
                     
                 </div>
             </div>
         </div>
     </div>
-    
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

@@ -1,21 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - io
-keywords: Ballerina, ballerinalang
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - ballerina/io</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
 
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -26,7 +57,7 @@ keywords: Ballerina, ballerinalang
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -96,7 +127,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -124,10 +155,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -152,11 +179,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -212,10 +239,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -244,10 +267,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -261,10 +280,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -321,7 +336,7 @@ keywords: Ballerina, ballerinalang
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -391,7 +406,7 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -419,10 +434,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -447,11 +458,11 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -507,10 +518,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -539,10 +546,6 @@ keywords: Ballerina, ballerinalang
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -556,10 +559,6 @@ keywords: Ballerina, ballerinalang
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -853,7 +852,7 @@ function deserialize(io:ReadableByteChannel byteChannel) returns Person {
                                     ReadableCharacterChannel
                                 </a>
                             </td>
-                            <td class="module-desc"><p>Represents a channel which could be used to read characters through a given ReadableByteChannel.</p>
+                            <td class="module-desc"><p>Represents a channel, which could be used to read characters through a given ReadableByteChannel.</p>
 </td>
                         </tr>
                     
@@ -908,7 +907,7 @@ function deserialize(io:ReadableByteChannel byteChannel) returns Person {
                                     WritableCSVChannel
                                 </a>
                             </td>
-                            <td class="module-desc"><p>Represents a WritableCSVChannel which could be used to write records from CSV file.</p>
+                            <td class="module-desc"><p>Represents a WritableCSVChannel, which could be used to write records from the CSV file.</p>
 </td>
                         </tr>
                     
@@ -941,7 +940,7 @@ function deserialize(io:ReadableByteChannel byteChannel) returns Person {
                                     WritableTextRecordChannel
                                 </a>
                             </td>
-                            <td class="module-desc"><p>Represents a channel which will allow to write records through a given WritableCharacterChannel.</p>
+                            <td class="module-desc"><p>Represents a channel, which will allow to write records through a given WritableCharacterChannel.</p>
 </td>
                         </tr>
                     
@@ -1053,21 +1052,21 @@ These values will be converted to their string representation.)</p>
                         <tr>
                             <td class="module-title truncate constant" id="DEFAULT" title="DEFAULT"><a
                                     class="constant" href="constants.html#DEFAULT">DEFAULT</a></td>
-                            <td class="module-desc"><p>Would default to the format specified by CSVChannel. Precedence will be given to field separator and record separator.</p>
+                            <td class="module-desc"><p>Default value is the format specified by the CSVChannel. Precedence will be given to the field separator and record separator.</p>
 </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="CSV" title="CSV"><a
                                     class="constant" href="constants.html#CSV">CSV</a></td>
-                            <td class="module-desc"><p>Field separator would be &quot;,&quot; and the record separator would be new line.</p>
+                            <td class="module-desc"><p>Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
 </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TDF" title="TDF"><a
                                     class="constant" href="constants.html#TDF">TDF</a></td>
-                            <td class="module-desc"><p>Field separator will be tab and record separator will be new line.</p>
+                            <td class="module-desc"><p>Field separator will be a tab and the record separator will be a new line.</p>
 </td>
                         </tr>
                     
@@ -1130,21 +1129,21 @@ These values will be converted to their string representation.)</p>
                         <tr>
                             <td class="module-title truncate constant" id="CSV_RECORD_SEPARATOR" title="CSV_RECORD_SEPARATOR"><a
                                     class="constant" href="constants.html#CSV_RECORD_SEPARATOR">CSV_RECORD_SEPARATOR</a></td>
-                            <td class="module-desc"><p>Represents record separator of the CSV file.</p>
+                            <td class="module-desc"><p>Represents the record separator of the CSV file.</p>
 </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="FS_COLON" title="FS_COLON"><a
                                     class="constant" href="constants.html#FS_COLON">FS_COLON</a></td>
-                            <td class="module-desc"><p>Represents colon separator which should be used to identify colon separated files.</p>
+                            <td class="module-desc"><p>Represents the colon separator, which should be used to identify colon-separated files.</p>
 </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="MINIMUM_HEADER_COUNT" title="MINIMUM_HEADER_COUNT"><a
                                     class="constant" href="constants.html#MINIMUM_HEADER_COUNT">MINIMUM_HEADER_COUNT</a></td>
-                            <td class="module-desc"><p>Represents minimum number of headers which will be included in CSV.</p>
+                            <td class="module-desc"><p>Represents the minimum number of headers, which will be included in the CSV.</p>
 </td>
                         </tr>
                     
@@ -1191,11 +1190,11 @@ These values will be converted to their string representation.)</p>
                             <td class="module-title truncate types" id="Format" title="Format">
                                 <a class="types" href="types.html#Format">Format</a>
                             </td>
-                            <td class="module-desc"><p>Format which will be used to represent the CSV.</p>
-<p>DEFAULT - Would default to the format specified by CSVChannel. Precedence will be given to field
+                            <td class="module-desc"><p>The format, which will be used to represent the CSV.</p>
+<p>DEFAULT - The default value is the format specified by the CSVChannel. Precedence will be given to the field
 separator and record separator.</p>
-<p>CSV - Field separator would be &quot;,&quot; and the record separator would be new line.</p>
-<p>TDF - Field separator will be tab and record separator will be new line.</p>
+<p>CSV - Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
+<p>TDF - Field separator will be a tab and record separator will be a new line.</p>
 </td>
                         </tr>
                     
@@ -1203,10 +1202,10 @@ separator and record separator.</p>
                             <td class="module-title truncate types" id="Separator" title="Separator">
                                 <a class="types" href="types.html#Separator">Separator</a>
                             </td>
-                            <td class="module-desc"><p>Field separators which are supported by DelimitedTextRecordChannel.</p>
-<p>COMMA - Delimited text records would be separated using a comma.</p>
-<p>TAB - Delimited text records would be separated using a tab.</p>
-<p>COLON - Delimited text records would be separated using a colon(:).</p>
+                            <td class="module-desc"><p>Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.</p>
+<p>COMMA - Delimited text records will be separated using a comma.</p>
+<p>TAB - Delimited text records will be separated using a tab.</p>
+<p>COLON - Delimited text records will be separated using a colon(:).</p>
 </td>
                         </tr>
                     
@@ -1270,4 +1269,49 @@ separator and record separator.</p>
         </div>
     </div>
 
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

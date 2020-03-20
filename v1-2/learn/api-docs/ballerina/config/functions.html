@@ -1,22 +1,52 @@
----
-layout: ballerina-api-doc-page
-title: Ballerina API Documentation - config
-keywords: Ballerina, ballerinalang
-permalink: /v1-1/learn/api-docs/ballerina/config/functions
----
-<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>API Docs - Functions : config</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
     <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
     <script src="../html-template-resources/semantic.min.js"></script>
     <script src="../syntax-highlighter/highlighter.js"></script>
-    
+
+</head>
+
+
+<body class="cBallerina-io">
     <div class="row cBallerina-io-top-row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
         <div class="cTopLine"></div>
     </div>
 </div>
-
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
 <div class="clearfix"></div>
     <div class="navi-wrapper">
         <div class="navi-wrapper-content">
@@ -30,6 +60,10 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                     
                         <li >
                             <a href="#contains">contains</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getAsArray">getAsArray</a>
                         </li>
                     
                         <li >
@@ -62,7 +96,7 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
             
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -112,7 +146,7 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -140,10 +174,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -168,11 +198,11 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -228,10 +258,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -260,10 +286,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -277,10 +299,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -342,6 +360,10 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                             </li>
                         
                             <li >
+                                <a href="#getAsArray">getAsArray</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#getAsBoolean">getAsBoolean</a>
                             </li>
                         
@@ -371,7 +393,7 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 
 
     
-        <div class="version">v1.1.0</div>
+        <div class="version">v1.2.0</div>
     
 
 
@@ -421,7 +443,7 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../docker/index.html">docker</a>
+                    <a href="../email/index.html">email</a>
                 </li>
             
                 <li>
@@ -449,10 +471,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../istio/index.html">istio</a>
-                </li>
-            
-                <li>
                     <a href="../java/index.html">java</a>
                 </li>
             
@@ -477,11 +495,11 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../kubernetes/index.html">kubernetes</a>
+                    <a href="../lang.array/index.html">lang.array</a>
                 </li>
             
                 <li>
-                    <a href="../lang.array/index.html">lang.array</a>
+                    <a href="../lang.boolean/index.html">lang.boolean</a>
                 </li>
             
                 <li>
@@ -537,10 +555,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../llvm/index.html">llvm</a>
-                </li>
-            
-                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -569,10 +583,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                 </li>
             
                 <li>
-                    <a href="../openshift/index.html">openshift</a>
-                </li>
-            
-                <li>
                     <a href="../rabbitmq/index.html">rabbitmq</a>
                 </li>
             
@@ -586,10 +596,6 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
             
                 <li>
                     <a href="../socket/index.html">socket</a>
-                </li>
-            
-                <li>
-                    <a href="../streams/index.html">streams</a>
                 </li>
             
                 <li>
@@ -659,6 +665,14 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
                             <tr>
                                 <td width="30%" ><a class="functions" href="#contains">contains</a></td>
                                 <td width="70%"><p>Checks whether the given key is in the configuration registry.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#getAsArray">getAsArray</a></td>
+                                <td width="70%"><p>Retrieves the specified configuration value as an array. If there is no mapping, an empty array will be returned.</p>
 </td>
                             </tr>
                         </tbody>
@@ -757,6 +771,54 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
                 <li><p>Returns true if the key is present; if not returs false</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getAsArray" title="getAsArray">
+             <a class="url-link" href="#getAsArray">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> getAsArray </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> key)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">anydata</span>[]</span> 
+        </span>
+        
+    </div>
+    <p><p>Retrieves the specified configuration value as an array. If there is no mapping, an empty array will be returned.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The configuration to be retrieved</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">anydata</span>[]</span></span>)</li>
+                <li><p>Configuration value mapped by the key</p>
 </li>
             </ul>
         </div>
@@ -1108,5 +1170,49 @@ permalink: /v1-1/learn/api-docs/ballerina/config/functions
             </div>
         </div>
     </div>
-    
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
 

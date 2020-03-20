@@ -290,7 +290,7 @@ public function main(string... args) returns error? {
        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
    } else {
        Yaml yaml = newYaml5();
-	InputStream inputStream = new (fileInputStream.jObj);
+       InputStream inputStream = new (fileInputStream.jObj);
        Object mapObj = yaml.load2(inputStream);
        io:println(mapObj);
    }

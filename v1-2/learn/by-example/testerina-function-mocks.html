@@ -1,34 +1,31 @@
 ---
 layout: ballerina-example-page
-title: Docker Deployment
+title: Function Mocks
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /v1-2/learn/by-example/docker-deployment
+permalink: /v1-2/learn/by-example/testerina-function-mocks
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">docker</span><span class="p">;</span>
-<span class="nd">@docker:Expose {</span><span class="p">}</span>
-<span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">helloWorldEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">9090</span><span class="p">);</span>
-<span class="nd">@docker:Config {</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;helloworld&quot;</span><span class="p">,</span>
-    <span class="nx">tag</span><span class="p">:</span> <span class="s">&quot;v1.0&quot;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+<span class="nd">@test:Mock {</span>
+    <span class="nx">moduleName</span><span class="p">:</span> <span class="s">&quot;.&quot;</span><span class="p">,</span>
+    <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;intAdd&quot;</span>
 <span class="p">}</span>
-<span class="nd">@http:ServiceConfig {</span>
-    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/helloWorld&quot;</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">mockIntAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the mock function!&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">helloWorldEP</span> <span class="p">{</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">sayHello</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">outboundEP</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Hello World from Docker ! \n&quot;</span><span class="p">);</span>
-        <span class="k">var</span> <span class="nx">responseResult</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">responseResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseResult</span><span class="p">;</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="kd">function</span> <span class="nx">testAssertIntEquals</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">answer</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">answer</span> <span class="p">=</span> <span class="nx">intAdd</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Function mocking test&quot;</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">answer</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -38,10 +35,9 @@ permalink: /v1-2/learn/by-example/docker-deployment
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Docker Deployment</h2>
-                            <p><p>Ballerina supports generating Docker images, Dockerfile based on annotations.
-A single Ballerina module is mapped to a single Docker Image.
-Docker should be configured to run the sample.</p>
+                            <h2>Function Mocks</h2>
+                            <p><p>Mock functions allow you to hide the real function and engage your own functions when running tests.
+ This allows you to isolate your test functions from the rest.</p>
 </p>
 
                         </td>
@@ -49,16 +45,16 @@ Docker should be configured to run the sample.</p>
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="testerina-group-tests.html">
+                                    <a class="prev" href="testerina-guarantee-test-execution-order.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Group Tests</p>
+                                        <p>Guarantee Test Execution Order</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kubernetes-deployment.html">
+                                    <a class="next" href="testerina-group-tests.html">
                                         <span>NEXT ></span>
-                                        <p>Kubernetes Deployment</p>
+                                        <p>Group Tests</p>
                                     </a>
                                 </div>
                                 
@@ -67,7 +63,7 @@ Docker should be configured to run the sample.</p>
                     </tr>
                 </table>
             </div>
-            <div class="example" id="docker-deployment">
+            <div class="example" id="testerina-function-mocks">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -78,7 +74,7 @@ Docker should be configured to run the sample.</p>
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/docker-deployment/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/testerina-function-mocks/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -106,6 +102,8 @@ Docker should be configured to run the sample.</p>
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -114,9 +112,8 @@ Docker should be configured to run the sample.</p>
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
-import ballerina/log;
-import ballerina/docker;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/test;
 </code></pre></div>
 
                                 </td>
@@ -128,8 +125,7 @@ import ballerina/docker;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Expose {}
-listener http:Listener helloWorldEP = new(9090);
+                                    <div class="highlight"><pre><code class=ballerina>@test:Mock {
 </code></pre></div>
 
                                 </td>
@@ -137,7 +133,7 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Expose{}</code> annotation to a listener endpoint exposes the endpoint port.</p>
+                                            <p>This is the mock function, which will replace the real function.</p>
 
                                         </div>
                                     </div>
@@ -148,7 +144,9 @@ listener http:Listener helloWorldEP = new(9090);
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@docker:Config {
+                                    <div class="highlight"><pre><code class=ballerina>    moduleName: &quot;.&quot;,
+    functionName: &quot;intAdd&quot;
+}
 </code></pre></div>
 
                                 </td>
@@ -156,8 +154,8 @@ listener http:Listener helloWorldEP = new(9090);
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Adding the <code>@docker:Config{}</code> annotation to a service modifies the generated Docker image and Dockerfile.
-This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
+                                            <p>Since there is no module declaration, <code>.</code> is the current module.
+ You can include any module (e.g., : <code>ballerina/io</code>).</p>
 
                                         </div>
                                     </div>
@@ -168,7 +166,10 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    name: &quot;helloworld&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>public function mockIntAdd(int a, int b) returns int {
+    io:println(&quot;I&#39;m the mock function!&quot;);
+    return (a - b);
+}
 </code></pre></div>
 
                                 </td>
@@ -176,7 +177,32 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image name should be helloworld.</p>
+                                            <p>The mock function&rsquo;s signature should match with the actual function&rsquo;s signature.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
+function testAssertIntEquals() {
+    int answer = 0;
+    answer = intAdd(5, 3);
+    io:println(&quot;Function mocking test&quot;);
+    test:assertEquals(answer, 2, msg = &quot;function mocking failed&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the test function.</p>
 
                                         </div>
                                     </div>
@@ -187,21 +213,8 @@ This sample generates a Docker image as <code>helloworld:v1.0.0</code>.</p>
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    tag: &quot;v1.0&quot;
-}
-@http:ServiceConfig {
-    basePath: &quot;/helloWorld&quot;
-}
-service helloWorld on helloWorldEP {
-    resource function sayHello(http:Caller outboundEP, http:Request request) {
-        http:Response response = new;
-        response.setTextPayload(&quot;Hello World from Docker ! \n&quot;);
-        var responseResult = outboundEP-&gt;respond(response);
-        if (responseResult is error) {
-            error err = responseResult;
-            log:printError(&quot;Error sending response&quot;, err);
-        }
-    }
+                                    <div class="highlight"><pre><code class=ballerina>public function intAdd(int a, int b) returns int {
+    return (a + b);
 }
 </code></pre></div>
 
@@ -210,7 +223,7 @@ service helloWorld on helloWorldEP {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Docker image version should be v1.0.</p>
+                                            <p>The real function, which is mocked above.</p>
 
                                         </div>
                                     </div>
@@ -242,10 +255,6 @@ service helloWorld on helloWorldEP {
                                 
                             
                         
-                            
-                                
-                            
-                        
 
                     <div>
 
@@ -254,12 +263,14 @@ service helloWorld on helloWorldEP {
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Build the Ballerina program to generate the Docker image and Dockerfile.
-$ ballerina build docker_deployment.bal
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina test` command.
+# Note that you need to have the ballerina-tools distribution
+# installed in order to run this command.
+# Function mocking is not supported for testing single BAL files.
+$ ballerina test test_module
 Compiling source
-	docker_deployment.bal
-Generating executables
-	docker_deployment.jar
+    ballerinatest/test_module:0.1.0
 </code></pre></div>
 
                                 </td>
@@ -271,8 +282,8 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Generating docker artifacts...
-	@docker 		 - complete 2/2 
+                                    <div class="highlight"><pre><code class=shell-session>Creating balos
+    target/balo/test_module-2020r1-any-0.1.0.balo
 </code></pre></div>
 
                                 </td>
@@ -284,8 +295,10 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to start a Docker container:
-	docker run -d -p 9090:9090 helloworld:v1.0
+                                    <div class="highlight"><pre><code class=shell-session>Running tests
+    ballerinatest/test_module:0.1.0
+I&#39;m the mock function!
+Function mocking test
 </code></pre></div>
 
                                 </td>
@@ -297,23 +310,7 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Verify if the Docker image is generated
-$ docker images
-REPOSITORY  TAG      IMAGE ID            CREATED             SIZE
-helloworld  v1.0    8d5b2f26145b        2 seconds ago        127MB
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Run the generated Docker image
-$ docker run -d -p 9090:9090 helloworld:v1.0
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testAssertIntEquals
 </code></pre></div>
 
                                 </td>
@@ -325,9 +322,9 @@ $ docker run -d -p 9090:9090 helloworld:v1.0
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Access the service
-$ curl http://localhost:9090/helloWorld/sayHello
-Hello World from Docker!
+                                    <div class="highlight"><pre><code class=shell-session>        1 passing
+        0 failing
+        0 skipped
 </code></pre></div>
 
                                 </td>

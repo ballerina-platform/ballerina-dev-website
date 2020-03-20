@@ -1,0 +1,323 @@
+---
+layout: ballerina-example-page
+title: Simple Durable Topic Subscriber
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /v0-991/learn/by-example/jms-simple-durable-topic-message-subscriber
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jms</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">jms</span><span class="p">:</span><span class="nx">DurableTopicSubscriber</span> <span class="nx">subscriberEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+        <span class="nx">initialContextFactory</span><span class="p">:</span> <span class="s">&quot;bmbInitialContextFactory&quot;</span><span class="p">,</span>
+        <span class="nx">providerUrl</span><span class="p">:</span> <span class="s">&quot;amqp://admin:admin@carbon/carbon&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;?brokerlist=&#39;tcp://localhost:5672&#39;&quot;</span><span class="p">,</span>
+        <span class="nx">acknowledgementMode</span><span class="p">:</span> <span class="s">&quot;AUTO_ACKNOWLEDGE&quot;</span>
+    <span class="p">},</span> <span class="s">&quot;BallerinaTopic&quot;</span><span class="p">,</span> <span class="s">&quot;sub1&quot;</span><span class="p">);</span>
+<span class="kd">service</span> <span class="nx">jmsListener</span> <span class="nx">on</span> <span class="nx">subscriberEndpoint</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">jms</span><span class="p">:</span><span class="nx">TopicSubscriberCaller</span> <span class="nx">consumer</span><span class="p">,</span>
+                                <span class="nx">jms</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">messageText</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextMessageContent</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">messageText</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message : &quot;</span> <span class="o">+</span> <span class="nx">messageText</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while reading message&quot;</span><span class="p">,</span>
+                <span class="nx">err</span> <span class="p">=</span> <span class="nx">messageText</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Simple Durable Topic Subscriber</h2>
+                            <p><p>Ballerina natively supports Java Message Service (JMS). In this example, a simple JMS durable topic
+ subscriber is created.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="jms-simple-topic-message-producer.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Simple Topic Producer</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="jms-queue-message-receiver.html">
+                                        <span>NEXT ></span>
+                                        <p>Queue Receiver</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="jms-simple-durable-topic-message-subscriber">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jms-simple-durable-topic-message-subscriber/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/jms;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener jms:DurableTopicSubscriber subscriberEndpoint = new({
+        initialContextFactory: &quot;bmbInitialContextFactory&quot;,
+        providerUrl: &quot;amqp://admin:admin@carbon/carbon&quot;
+            + &quot;?brokerlist=&#39;tcp://localhost:5672&#39;&quot;,
+        acknowledgementMode: &quot;AUTO_ACKNOWLEDGE&quot;
+    }, &quot;BallerinaTopic&quot;, &quot;sub1&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This creates a simple durable topic subscriber.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service jmsListener on subscriberEndpoint {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This binds the created consumer to the listener service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(jms:TopicSubscriberCaller consumer,
+                                jms:Message message) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource is invoked when a message is received.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        var messageText = message.getTextMessageContent();
+        if (messageText is string) {
+            log:printInfo(&quot;Message : &quot; + messageText);
+        } else {
+            log:printError(&quot;Error occurred while reading message&quot;,
+                err = messageText);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Retrieve the text message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Download Ballerina message broker from [here](https://github.com/ballerina-platform/ballerina-message-broker/releases/download/v0.970.5/message-broker-0.970.5.zip)
+# Extract the zip file and navigate to &lt;BROKER_HOME&gt;/bin
+# Start Ballerina message broker by executing either the `broker` or the `broker.bat` command.
+$ ./broker
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Navigate to the directory that contains the &#39;jms_simple_durable_topic_message_subscriber.bal&#39; file and issue the
+# &#39;ballerina run&#39; command.
+$ ballerina run jms_simple_durable_topic_message_subscriber.bal
+#The JMS subscriber runs as a Ballerina service and listens to the subscribed topic.
+Initiating service(s) in &#39;jms_simple_durable_topic_message_subscriber.bal&#39;
+2018-06-14 15:23:51,825 INFO  [ballerina/jms] - Durable subscriber created for topic BallerinaTopic
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

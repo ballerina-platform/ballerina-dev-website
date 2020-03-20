@@ -163,11 +163,11 @@ Ballerina Central is implemented as a hosted registry service. WSO2 is offering 
 You can override the values in annotations on the command line, enabling the build system to generate different artifacts for different environments. In a future version of Ballerina, we'll also extend the `Ballerina.toml` with environmental overrides so that you can generate artifacts for multiple environments simultaneously.
 
 ### What analytics and monitoring does Ballerina support?
-For details, see the [How to Observe Ballerina Programs](/learn/how-to-observe-ballerina-code/) document.
+For details, see the [How to Observe Ballerina Programs](/v0-991/learn/how-to-observe-ballerina-code/) document.
 
 ### What are the secure coding guidelines?
 
-For details, see the [How to Secure Ballerina Programs](/learn/how-to-write-secure-ballerina-code/) document on [ballerina.io](http://ballerina.io).
+For details, see the [How to Secure Ballerina Programs](/v0-991/learn/how-to-write-secure-ballerina-code/) document on [ballerina.io](http://ballerina.io).
 
 ### How can we integrate legacy code (written on Java or other languages) with Ballerina?
 
@@ -195,7 +195,7 @@ Ballerina ships with Testerina, a built-in mechanism for running unit tests agai
 
 ### How do you write testable and maintainable code with Ballerina?
 
-For details, see [How to Structure Ballerina Code](/learn/how-to-structure-ballerina-code/) and [How to Test Ballerina Code](/learn/how-to-test-ballerina-code/).
+For details, see [How to Structure Ballerina Code](/v0-991/learn/how-to-structure-ballerina-code/) and [How to Test Ballerina Code](/v0-991/learn/how-to-test-ballerina-code/).
 
 ### Can we embed our legacy libraries with Ballerina?
 
@@ -255,7 +255,7 @@ In Ballerina, functions can be defined with required parameters, defaultable par
 
 Ballerina also supports the use of function name as a function pointer. This makes it easy to understand code because there is a single function corresponding to a given function name and is more powerful than the use of function overloading.
 
-For more information on the function pointer syntax, see the [Function Pointer example](/learn/by-example/function-pointers.html).
+For more information on the function pointer syntax, see the [Function Pointer example](/v0-991/learn/by-example/function-pointers.html).
 
 ### What compiler technology is used to build the compiler?
 
@@ -289,7 +289,7 @@ This behavior gives a more natural programming environment for the developer, so
 We do not have any plans. The community can add their own modules through Ballerina Central, and we will work hard to delegate frameworks and projects to the community.
 
 ### Which enterprise patterns and microservices patterns does Ballerina support?
-Ballerina is a language that can be used to implement any pattern. We provide examples of patterns with [Ballerina By Guide](/learn/by-guide/) related to doing lifecycle integration development. Many enterprise patterns are demonstrated with [Ballerina by Example](/learn/by-example/).
+Ballerina is a language that can be used to implement any pattern. We provide examples of patterns with [Ballerina By Guide](/v0-991/learn/by-guide/) related to doing lifecycle integration development. Many enterprise patterns are demonstrated with [Ballerina by Example](/v0-991/learn/by-example/).
 
 ### What is your support for Docker and Kubernetes? What is the plan for supporting other infrastructure environments like CloudFoundry and Mesosphere?
 We provide annotations that activate builder extensions which can generate Dockerfiles, Docker images, and Kubernetes manifests. This makes it simple to target a service for deployment in a cloud-native environment. These annotations and extensions are provided within modules. Modules are shareable units and we will work with the ecosystem to create and push modules to support other environments with custom annotations. 

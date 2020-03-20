@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Tuple Match" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Tuple Match</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a1</span> <span class="p">=</span> <span class="mf">66.6</span><span class="p">;</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a2</span> <span class="p">=</span>
+                                                                 <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a3</span> <span class="p">=</span>
+                                                                   <span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">string</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">a4</span> <span class="p">=</span>
+                                                          <span class="p">(</span><span class="mf">6.7</span><span class="p">,</span> <span class="s">&quot;Test&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>    <span class="nx">foo</span><span class="p">(</span><span class="nx">a1</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">(</span><span class="nx">a3</span><span class="p">);</span>
+    <span class="nx">foo</span><span class="p">(</span><span class="nx">a4</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b1</span> <span class="p">=</span>
+                                                                    <span class="p">(</span><span class="s">&quot;Hello&quot;</span><span class="p">,</span> <span class="mi">45</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b2</span> <span class="p">=</span>
+                                                                    <span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b3</span> <span class="p">=</span>
+                                                                    <span class="p">(</span><span class="kc">false</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">int</span><span class="p">|</span><span class="kt">float</span> <span class="nx">b4</span> <span class="p">=</span>
+                                                                    <span class="p">(</span><span class="mi">455</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+    <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">float</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|(</span><span class="kt">boolean</span><span class="p">,</span> <span class="kt">int</span><span class="p">)|(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">boolean</span><span class="p">)|</span><span class="kt">float</span> <span class="nx">b5</span> <span class="p">=</span> <span class="mf">5.6</span><span class="p">;</span>    <span class="nx">bar</span><span class="p">(</span><span class="nx">b1</span><span class="p">);</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="nx">b2</span><span class="p">);</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="nx">b3</span><span class="p">);</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="nx">b4</span><span class="p">);</span>
+    <span class="nx">bar</span><span class="p">(</span><span class="nx">b5</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="kt">any</span> <span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">match</span> <span class="nx">a</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with three vars : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with two vars : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+        <span class="k">var</span> <span class="nx">s</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Matched with single var : &quot;</span>
+                                    <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">a</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">(</span><span class="kt">any</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">match</span> <span class="nx">b</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nx">s</span> <span class="nx">is</span> <span class="kt">string</span> <span class="o">&amp;&amp;</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;s&#39; is float : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="k">if</span> <span class="nx">i</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Only &#39;i&#39; is int : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;No type guard : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+        <span class="k">var</span> <span class="nx">s</span> <span class="k">if</span> <span class="nx">s</span> <span class="nx">is</span> <span class="kt">float</span> <span class="p">=&gt;</span>
+           <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;&#39;s&#39; is float only : &quot;</span> <span class="o">+</span> <span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">b</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Tuple Match</h2>
+                            <p><p>The match statement in ballerina will support value based match patterns only. There are static and structured
+ based match patterns that can be used with the match clauses. Structured match patterns will take structured
+ binding patterns for matching. Tuple binding pattern is one of the structured binding pattern that can be used
+ with the match. The value will be checked for &ldquo;isLike&rdquo; relationship with the pattern to match at runtime.
+ The match pattern clauses can also have additional type guard conditions as strong match conditions.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="match.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Match</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="record-match-statement.html">
+                                        <span>NEXT ></span>
+                                        <p>Record Match</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="tuple-match-statement">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Tuple Match</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/tuple-match-statement/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    (string, int)|(float, boolean)|(float, string, boolean)|float a1 = 66.6;
+    (string, int)|(float, boolean)|(float, string, boolean)|float a2 =
+                                                                 (&quot;Hello&quot;, 12);
+    (string, int)|(float, boolean)|(float, string, boolean)|float a3 =
+                                                                   (4.5, true);
+    (string, int)|(float, boolean)|(float, string, boolean)|float a4 =
+                                                          (6.7, &quot;Test&quot;, false);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In here there are four different variables created and they will be used with invoking the function &lsquo;foo&rsquo;,
+ which does the match.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    foo(a1);
+    foo(a2);
+    foo(a3);
+    foo(a4);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    (string, int)|(float, boolean)|(boolean, int)|(int, boolean)|int|float b1 =
+                                                                    (&quot;Hello&quot;, 45);
+    (string, int)|(float, boolean)|(boolean, int)|(int, boolean)|int|float b2 =
+                                                                    (4.5, true);
+    (string, int)|(float, boolean)|(boolean, int)|(int, boolean)|int|float b3 =
+                                                                    (false, 4);
+    (string, int)|(float, boolean)|(boolean, int)|(int, boolean)|int|float b4 =
+                                                                    (455, true);
+    (string, int)|(float, boolean)|(boolean, int)|(int, boolean)|float b5 = 5.6;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>In this example, there are five different variables created and they will be used with invoking the function
+ &lsquo;bar&rsquo;, which does the match along with type guard conditions.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    bar(b1);
+    bar(b2);
+    bar(b3);
+    bar(b4);
+    bar(b5);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function foo(any a) {
+    match a {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Following method uses structured tuple match patterns with different sizes. The given match expression
+ will be checked for &ldquo;isLike&rdquo; relationship and will be matched at runtime.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i, b) =&gt; io:println(&quot;Matched with three vars : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of three variables and types can be of any.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) =&gt; io:println(&quot;Matched with two vars : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of two variables and types can be of any.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var s =&gt; io:println(&quot;Matched with single var : &quot;
+                                    + io:sprintf(&quot;%s&quot;, a));
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for single variable and type can be of any. This has to be last pattern.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function bar(any b) {
+    match b {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Following method uses structured tuple match patterns with different sizes along with a type guards. The given
+ match expression will be checked for &ldquo;isLike&rdquo; relationship and also it will check the type guard for the pattern
+ to match at runtime.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if (s is string &amp;&amp; i is int) =&gt;
+           io:println(&quot;&#39;s&#39; is string and &#39;i&#39; is int : &quot; + io:sprintf(&quot;%s&quot;, b));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of two variables and types has to &lsquo;string&rsquo; and &lsquo;int&rsquo;.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if s is float =&gt;
+           io:println(&quot;Only &#39;s&#39; is float : &quot; + io:sprintf(&quot;%s&quot;, b));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of two variables and first variable should be of type &lsquo;float&rsquo;.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) if i is int =&gt;
+           io:println(&quot;Only &#39;i&#39; is int : &quot; + io:sprintf(&quot;%s&quot;, b));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of two variables and second variable should be of type &lsquo;int&rsquo;.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var (s, i) =&gt; io:println(&quot;No type guard : &quot; + io:sprintf(&quot;%s&quot;, b));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for tuple type of two variables without any type guard.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        var s if s is float =&gt;
+           io:println(&quot;&#39;s&#39; is float only : &quot; + io:sprintf(&quot;%s&quot;, b));
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This pattern check for single variable and its type should be &lsquo;float&rsquo;.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and issue the `ballerina run` command.
+$ ballerina run tuple_match_statement.bal
+Matched with single var : 66.6
+Matched with two vars : (&quot;Hello&quot;, 12)
+Matched with two vars : (4.5, true)
+Matched with three vars : (6.7, &quot;Test&quot;, false)
+&#39;s&#39; is string and &#39;i&#39; is int : (&quot;Hello&quot;, 45)
+Only &#39;s&#39; is float : (4.5, true)
+Only &#39;i&#39; is int : (false, 4)
+No type guard : (455, true)
+&#39;s&#39; is float only : 5.6
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

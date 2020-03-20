@@ -180,7 +180,7 @@ Once you have built the module, you can `ballerina push <org-name>/<module-name>
 
 You will need to have an account at Ballerina Central and your CLI token from central placed into your Ballerina settings. The `ballerina deploy` command will initiate an OAuth flow that automates this for you, even if you do not already have an existing account on Ballerina Central.
 
-For more information on how to structure the code you write, see [How to Structure Ballerina Code](/learn/how-to-structure-ballerina-code/).
+For more information on how to structure the code you write, see [How to Structure Ballerina Code](/v0-991/learn/how-to-structure-ballerina-code/).
 
 ### Learn More
 
@@ -934,7 +934,7 @@ This indicator could be one of the following:
 - The payload - the value for a particular key in the JSON payload
 - A request header and the payload (combination of the above)
  
-The [ballerina/websub Module.md](https://ballerina.io/learn/api-docs/ballerina/websub.html) explains the extension points in detail.
+The [ballerina/websub Module.md](https://ballerina.io/v0-991/learn/api-docs/ballerina/websub.html) explains the extension points in detail.
  
 You can create and share your own webhook callback service types as Ballerina modules, which you push into a Ballerina registry (such as Ballerina Central).
 

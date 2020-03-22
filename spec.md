@@ -32,10 +32,6 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 | 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/2019R2/">Read</a> |
 | 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/2019R1/">Read</a> |
 
-### Specification for experimental features
-
-Several features that are currently under development have been implemented already and are available for experimental use. These features are <a target="_blank" href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/ballerina-platform/ballerina-spec/master/lang/experimental.html">documented separately</a>.
-
 ### Proposals for improvements/enhancements
 
 Work in progress proposals for improving Ballerina can be found at the following URL: <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/tree/master/lang/proposals">https://github.com/ballerina-platform/ballerina-spec/tree/master/lang/proposals</a>.

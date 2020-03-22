@@ -21,12 +21,13 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ## Ballerina Language specifications and proposals
 
-### Language specification
+### Language specification 
 
 **Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
 
 | Version | Release Date | Description | Link |
 | ------- | ------------ | ----------- | ---- |
+| 2020R1 | 2020-03-20 | First major release of 2020 including a new set of features and significant improvements to the compiler, runtime, standard library, and developer tooling | <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/releases/tag/v2020R1">Read</a> |
 | 2019R3 | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2 | <a target="_blank" href="/spec/lang/2019R3/">Read</a> |
 | 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/2019R2/">Read</a> |
 | 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/2019R1/">Read</a> |

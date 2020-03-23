@@ -410,7 +410,7 @@ width:100%;
     background-position: left;
     background-repeat: no-repeat;
     padding-left: 28px !important;
-} */
+} 
 
 .fa-github {
     background-image: url("/img/github.svg");
@@ -422,7 +422,7 @@ width:100%;
 
 .icon-github {
     display: none !important;
-} 
+} */
 
 .cBallerina-io-breadcrumbs {
     padding: 15px 0px 5px 0px;

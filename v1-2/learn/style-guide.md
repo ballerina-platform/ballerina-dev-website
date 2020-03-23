@@ -5,6 +5,7 @@ permalink: /v1-2/learn/style-guide/
 redirect_from:
   - /learn/style-guide/
   - /learn/style-guide
+  - /v1-2/learn/style-guide
 ---
 
 # Ballerina Style Guide

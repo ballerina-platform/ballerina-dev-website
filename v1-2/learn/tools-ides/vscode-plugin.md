@@ -9,6 +9,7 @@ redirect_from:
   - /learn/tools-ides/vscode-plugin/
   - /learn/vscode-plugin/
   - /learn/vscode-plugin
+  - /v1-2/learn/vscode-plugin
 ---
 
 # The Visual Studio Code Extension

@@ -123,7 +123,7 @@ The syntax and semantics of Ballerina’s abstractions for concurrency and netwo
 ### Get Started
 The sequence diagram below is generated from a sample Salesforce integration microservice.
 
-IMAGE
+![Salesforce integration microservice Ballerina sequence diagram](/img/why-pages/the-network-in-the-language-1.png)
  
 To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin](https://ballerina.io/learn/vscode-plugin/) and [launch the graphical editor](https://ballerina.io/learn/vscode-plugin/graphical-editor).
 

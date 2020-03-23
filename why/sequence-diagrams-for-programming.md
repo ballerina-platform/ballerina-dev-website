@@ -129,3 +129,9 @@ Sequence diagrams in Ballerina help to easily model and visualize concurrent exe
 
 ### User Quote
 "[With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful," stated Christian Posta, field CTO, solo.io.
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

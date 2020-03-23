@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Network in the Language
-permalink: the-network-in-the-language/
+permalink: /why/the-network-in-the-language/
 ---
 
 # The Network in the Language

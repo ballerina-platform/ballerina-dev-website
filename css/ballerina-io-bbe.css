@@ -421,7 +421,7 @@ width:100%;
 } 
 
 .icon-github {
-    display: none;
+    display: none !important;
 } 
 
 .cBallerina-io-breadcrumbs {

@@ -194,8 +194,8 @@ Identity and access management also plays a critical role in microservice-based 
 
 <table>      
     <tr>
-        <th>Service</th>
-        <th>Client</th>
+        <td style="width:200px"><strong>Service</strong></td>
+        <td style="width:200px"><strong>Client</strong></td>
     </tr>
     <tr>
         <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Sequence Diagrams for Programming
-permalink: sequence-diagrams-for-programming/
+permalink: /why/sequence-diagrams-for-programming/
 ---
 
 # Sequence Diagrams for Programming

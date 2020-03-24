@@ -5,6 +5,7 @@ permalink: /v1-2/learn/cli-commands/
 redirect_from:
   - /learn/cli-commands/
   - /learn/cli-commands
+  - /v1-2/learn/cli-commands
 ---
 
 # CLI Commands

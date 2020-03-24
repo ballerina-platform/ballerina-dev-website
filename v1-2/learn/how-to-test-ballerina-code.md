@@ -2,6 +2,10 @@
 layout: ballerina-inner-page
 title: How to Test Ballerina Code
 permalink: /v1-2/learn/how-to-test-ballerina-code/
+redirect_from:
+  - /learn/how-to-test-ballerina-code/
+  - /learn/how-to-test-ballerina-code
+  - /v1-2/learn/how-to-test-ballerina-code
 ---
 
 # How to Test Ballerina Code

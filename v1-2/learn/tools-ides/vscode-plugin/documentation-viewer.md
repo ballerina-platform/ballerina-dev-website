@@ -5,6 +5,9 @@ permalink: /v1-2/learn/vscode-plugin/documentation-viewer
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
+  - /v1-2/learn/vscode-plugin/documentation-viewer/
+  - /learn/vscode-plugin/documentation-viewer/
+  - /learn/vscode-plugin/documentation-viewer
 ---
 
 # Documentation Viewer

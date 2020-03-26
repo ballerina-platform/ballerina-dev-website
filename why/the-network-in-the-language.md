@@ -50,11 +50,11 @@ Ballerina services come with built-in concurrency. Every request to a resource m
 
 Some protocols supported out-of-the-box include:  
 
-* <a href="https://ballerina.io/v1-1/learn/by-example/https-listener.html">HTTPS</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-1.1-to-2.0-protocol-switch.html">HTTP 2.0</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/grpc-unary-blocking.html">gRPC</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/nats-basic-client.html">NATS</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/https-listener.html">HTTPS</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-1.1-to-2.0-protocol-switch.html">HTTP 2.0</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/grpc-unary-blocking.html">gRPC</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/nats-basic-client.html">NATS</a>
 
 
 ## Async Network Protocol
@@ -125,9 +125,9 @@ The sequence diagram below is generated from a sample Salesforce integration mic
 
 ![Salesforce integration microservice Ballerina sequence diagram](/img/why-pages/the-network-in-the-language-1.png)
  
-To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin](https://ballerina.io/learn/vscode-plugin/) and [launch the graphical editor](https://ballerina.io/learn/vscode-plugin/graphical-editor).
+To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin](https://ballerina.io/learn/vscode-plugin/) and [launch the graphical editor](https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor).
 
-<a href="https://ballerina.io/sequence-diagrams-for-programming">Learn More &gt;</a>
+<a href="https://ballerina.io/why/sequence-diagrams-for-programming">Learn More &gt;</a>
 
 
 ## Resiliency 
@@ -135,11 +135,11 @@ To start generating a sequence diagram from your Ballerina code, download the [V
 _The network is unreliable_. That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.
 
 Ballerina helps developers write resilient, robust programs with out-of-the-box support for techniques such as:
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-load-balancer.html">Load Balancing</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-failover.html">Failover</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-retry.html">Retry</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/http-timeout.html">Timeout</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-load-balancer.html">Load Balancing</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-failover.html">Failover</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-retry.html">Retry</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/http-timeout.html">Timeout</a>
 
 ### Get Started
 
@@ -164,12 +164,12 @@ http:Client backendClientEP = new("http://localhost:8080", {
 ## Error Handling
 
 Due to the inherent unreliability of networks, errors are an expected part of network programming. That’s why in Ballerina errors are explicitly checked rather than thrown as exceptions. It’s impossible to ignore errors by design because of Ballerina’s comprehensive error handling capabilities:
-* <a href="https://ballerina.io/v1-1/learn/by-example/error-handling.html">Error Handling</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/check.html">Check</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/panic.html">Panic</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/checkpanic.html">Check Panic</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/trap.html">Trap</a>
-* <a href="https://ballerina.io/v1-1/learn/by-example/user-defined-error.html">User-defined Error Types</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/error-handling.html">Error Handling</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/check.html">Check</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/panic.html">Panic</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/checkpanic.html">Check Panic</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/trap.html">Trap</a>
+* <a href="https://ballerina.io/v1-2/learn/by-example/user-defined-error.html">User-defined Error Types</a>
 
 ### Get Started
 
@@ -188,7 +188,7 @@ The `tweet` remote method can return the expected `twitter:Status` value or an e
 
 
 ## Network Data Safety
-Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to [implement transport-level security and cryptography to protect data](https://ballerina.io/v1-1/learn/by-example/crypto.html).
+Distributed systems work by sharing data between different components. Network security plays a crucial role because all these communications happen over the network. Ballerina provides built-in libraries to [implement transport-level security and cryptography to protect data](https://ballerina.io/v1-2/learn/by-example/crypto.html).
  
 Identity and access management also plays a critical role in microservice-based applications. Ballerina supports out-of-the-box protection for services as well as clients by using basic-auth, OAuth and JWT. The following BBEs show how to secure services and clients by enforcing authorization.
 
@@ -198,20 +198,20 @@ Identity and access management also plays a critical role in microservice-based 
         <td style="width:200px"><strong>Client</strong></td>
     </tr>
     <tr>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
     </tr>
     <tr>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-service-with-jwt.html">JWT</a></td>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-service-with-jwt.html">JWT</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
     </tr>
     <tr>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
-        <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-service-with-oauth2.html">OAuth2</a></td>
+        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-client-with-oauth2.html">OAuth2</a></td>
     </tr>
 </table>
 
-_Ballerina ensures security by default_. Its built-in <a href="https://ballerina.io/v1-1/learn/by-example/taint-checking.html?utm_source=infoq&utm_medium=article&utm_campaign=network_in_the_language_article_infoq_feb20">taint analyzer</a> makes sure that malicious, untrusted data doesn’t propagate through the system. If untrusted data is passed to a security-sensitive parameter, a compiler error is generated. You can then redesign the program to erect a safe wall around the dangerous input.
+_Ballerina ensures security by default_. Its built-in <a href="https://ballerina.io/v1-2/learn/by-example/taint-checking.html?utm_source=infoq&utm_medium=article&utm_campaign=network_in_the_language_article_infoq_feb20">taint analyzer</a> makes sure that malicious, untrusted data doesn’t propagate through the system. If untrusted data is passed to a security-sensitive parameter, a compiler error is generated. You can then redesign the program to erect a safe wall around the dangerous input.
 
 ## Observability by Default
 

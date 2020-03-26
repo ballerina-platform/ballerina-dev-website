@@ -7,8 +7,6 @@ permalink: /v1-1/learn/
 redirect_from:
   - /v1-1/learn/tools-ides
   - /v1-1/learn/tools-ides/
-  - /learn/
-  - /learn
 ---
 
 <h1>Let’s learn Ballerina!</h1>

@@ -44,7 +44,7 @@ If you produce non-hypertext works, such as books, audio, or video, we ask that 
 ### Ballerina Website Attributions
 In the creation of this website, we used the following Creative Commons Attribution license: 
 
-* [Ballerina by Example](https://ballerina.io/learn/by-example/) sample pages are generated using a [tool](https://github.com/mmcgrana/gobyexample/) developed by [mmcgrana](https://github.com/mmcgrana), licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) and modified from the original.
+* [Ballerina by Example](https://ballerina.io/v1-2/learn/by-example/) sample pages are generated using a [tool](https://github.com/mmcgrana/gobyexample/) developed by [mmcgrana](https://github.com/mmcgrana), licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) and modified from the original.
 
 ## Contact
 If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).

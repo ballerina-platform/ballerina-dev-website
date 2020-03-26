@@ -35,7 +35,7 @@ redirect_from:
 
 <table class="cEventTable cConferencesList" style="width:100%;">      
                     <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 26, 2020</span>
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 25, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
@@ -44,6 +44,16 @@ redirect_from:
                            <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 
+                  </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 26, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>Code to Cloud</h5>
+                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 4 - 5, 2020</span>
@@ -101,7 +111,7 @@ redirect_from:
                           <h5>Ballerinas & Zebras in Kubernetes</h5>
                         <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Kubernetes-for-Developers/events/268523459/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://primetime.bluejeans.com/a2m/events/playback/dc1fb3a9-a03b-48ac-aa56-8314d0b85f79" target="_blank">View Video</a></td> 
                   </tr>
                     <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">February 12 - 16, 2020</span>

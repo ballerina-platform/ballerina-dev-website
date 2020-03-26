@@ -22,7 +22,7 @@ In Ballerina services, the entry point is the service resource function. The act
 
 The Ballerina IDE plugin (for example, the <a href="https://ballerina.io/learn/vscode-plugin/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code.
 
-To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/learn/vscode-plugin/">download the VSCode plugin and launch the graphical editor</a>.
+To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.
 
 ## Client Objects and Remote Methods
 

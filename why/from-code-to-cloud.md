@@ -44,7 +44,7 @@ http:Request request) {
 
 Adding the `@docker:Config {}` annotation to a service generates the Dockerfile and a Docker image and adding the `@docker:Expose {}` annotation to the `listener` object exposes the endpoint port by allowing incoming traffic to the container. 
 
-<a href="https://ballerina.io/v1-1/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) &gt;</a>
+<a href="https://ballerina.io/v1-2/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) &gt;</a>
 
 ## From Code to Kubernetes
 
@@ -83,11 +83,11 @@ http:Request request) {
 
 Adding the `@kubernetes:Deployment{}` annotation to the Ballerina service will generate the Kubernetes Deployment YAML that is required to deploy our hello application into Kubernetes. Adding the `@kubernetes:Service{}` annotation will generate the Kubernetes Service YAML. In this scenario, we have set `serviceType` as `NodePort` to access the hello service via the nodeIP:Port. 
 
-<a href="https://ballerina.io/v1-1/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE &gt;</a>
+<a href="https://ballerina.io/v1-2/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE &gt;</a>
 
 If you are an OpenShift user follow the example below to deploy your application.
 
-<a href="https://ballerina.io/v1-1/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE &gt;</a>
+<a href="https://ballerina.io/v1-2/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE &gt;</a>
 
 ## From Code to Istio
 
@@ -143,55 +143,13 @@ http:Request request) {
 }
 ```
 
-Adding this will generate the following artifacts that are required to deploy our application in serverless mode in a Knative cluster. 
-
-```bash
-$ ballerina build hello.bal
-Compiling source
-    hello.bal
-
-Generating executables
-    hello.jar
-
-Generating Knative artifacts...
-
-    @knative:Service    		  - complete 1/1
-    @knative:Docker    		  - complete 2/2
-
-    Run the following command to deploy the Knative artifacts:
-    kubectl apply -f kubernetes
-
-    Run the following command to install the application using Helm:
-    helm install --name helloworld kubernetes/helloworld
-```
-
-Generated hello.yaml for knative deployment
-
-```bash
----
-apiVersion: "serving.knative.dev/v1alpha1"
-kind: "Service"
-metadata:
-  annotations: {}
-  labels: {}
-  name: "helloworld"
-spec:
-  template:
-	spec:
-  	containerConcurrency: 100
-  	containers:
-  	- image: "hello:latest"
-    	name: "helloworld"
-    	ports:
-    	- containerPort: 9090
-      	protocol: "TCP"
-```
+<a href="https://ballerina.io/v1-2/learn/by-example/knative-deployment.html">Knative Deployment BBE &gt;</a>
 
 ## From Code to AWS Lambda
 
 <a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with `@awslambda:Function`, which should have the function signature `function (awslambda:Context, json) returns json|error`.
  
-<a href="https://en.wikipedia.org/wiki/AWS_Lambda">AWS Lambda Deployment &gt;</a>
+<a href="https://ballerina.io/v1-2/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE &gt;</a>
 
 ## CI/CD with GitHub Action
 

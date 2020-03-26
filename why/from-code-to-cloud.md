@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: From Code to Cloud
-permalink: from-code-to-cloud/
+permalink: /why/from-code-to-cloud/
 ---
 
 # From Code to Cloud
@@ -119,7 +119,7 @@ While compiling the source code, Ballerina can generate the artifacts necessary 
 
 ### Get Started
 
-The code snippet below shows the annotations needed in Ballerin to deploy your code to Knative.
+The code snippet below shows the annotations needed in Ballerina to deploy your code to Knative.
 
 ```ballerina
 import ballerina/http;
@@ -235,3 +235,12 @@ public function main() {
 ```
 
 Ballerina has many out-of-the-box SaaS connectors, which you can find in <a href="https://central.ballerina.io/">Ballerina Central</a>.
+
+### User Quote
+“We were attracted by Ballerina’s cloud native features, such as the automatic generation of Docker, Kubernetes, and Helm artifacts, as well as its small footprint and faster boot times. It is also capable of running as a Lambda function (serverless) in AWS. Together, these capabilities have enabled us to easily run microservices in containers at scale and integrate with CI/CD tools with less effort,” stated Sri Harsha Pulleti, integration architect and senior manager, Motorola.
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

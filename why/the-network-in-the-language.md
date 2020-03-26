@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Network in the Language
-permalink: the-network-in-the-language/
+permalink: /why/the-network-in-the-language/
 ---
 
 # The Network in the Language
@@ -123,7 +123,7 @@ The syntax and semantics of Ballerina’s abstractions for concurrency and netwo
 ### Get Started
 The sequence diagram below is generated from a sample Salesforce integration microservice.
 
-IMAGE
+![Salesforce integration microservice Ballerina sequence diagram](/img/why-pages/the-network-in-the-language-1.png)
  
 To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin](https://ballerina.io/learn/vscode-plugin/) and [launch the graphical editor](https://ballerina.io/learn/vscode-plugin/graphical-editor).
 
@@ -194,8 +194,8 @@ Identity and access management also plays a critical role in microservice-based 
 
 <table>      
     <tr>
-        <th>Service</th>
-        <th>Client</th>
+        <td style="width:200px"><strong>Service</strong></td>
+        <td style="width:200px"><strong>Client</strong></td>
     </tr>
     <tr>
         <td><a href="https://ballerina.io/v1-1/learn/by-example/secured-service-with-basic-auth.html">Basic Auth</a></td>

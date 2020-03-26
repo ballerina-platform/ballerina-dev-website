@@ -2,6 +2,10 @@
 layout: ballerina-inner-page
 title: Ballerina Streaming Reference Guide
 permalink: /v1-2/learn/ballerina-streaming-reference/
+redirect_from:
+  - /learn/ballerina-streaming-reference/
+  - /learn/ballerina-streaming-reference
+  - /v1-2/learn/ballerina-streaming-reference
 ---
 
 # Ballerina Streaming Reference Guide

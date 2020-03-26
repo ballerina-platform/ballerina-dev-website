@@ -1,6 +1,11 @@
 ---
 layout: ballerina-inner-page
 title: Expressions
+permalink: /v1-2/learn/style-guide/expressions/
+redirect_from:
+  - /learn/style-guide/expressions/
+  - /learn/style-guide/expressions
+  - /v1-2/learn/style-guide/expressions
 ---
 
 # Expressions

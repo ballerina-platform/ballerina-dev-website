@@ -7,6 +7,7 @@ redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
   - /learn/tools-ides/vscode-plugin/language-intelligence
   - /learn/tools-ides/vscode-plugin/language-intelligence/
+  - /v1-2/learn/vscode-plugin/language-intelligence/
 ---
 
 # Language intelligence

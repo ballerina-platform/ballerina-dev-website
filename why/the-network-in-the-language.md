@@ -125,7 +125,7 @@ The sequence diagram below is generated from a sample Salesforce integration mic
 
 ![Salesforce integration microservice Ballerina sequence diagram](/img/why-pages/the-network-in-the-language-1.png)
  
-To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin](https://ballerina.io/learn/vscode-plugin/) and [launch the graphical editor](https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor).
+To start generating a sequence diagram from your Ballerina code, download the [VSCode plugin and launch the graphical editor](https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor).
 
 <a href="https://ballerina.io/why/sequence-diagrams-for-programming">Learn More &gt;</a>
 

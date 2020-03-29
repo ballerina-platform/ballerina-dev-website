@@ -151,7 +151,7 @@ http:Request request) {
  
 <a href="https://ballerina.io/v1-2/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE &gt;</a>
 
-## CI/CD with GitHub Action
+## CI/CD with GitHub Actions
 
 In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment for incorporating incremental changes to your system. There are different technologies that provide this CI / CD functionality and very recently GitHub has introduced <a href="https://github.com/features/actions">GitHub Actions</a>, which is now available for general usage. GitHub Actions provides a convenient mechanism for implementing CI/CD pipelines using their workflows concept, right from our GitHub repositories.
 

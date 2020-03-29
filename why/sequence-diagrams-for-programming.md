@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Sequence Diagrams for Programming
-permalink: /why/sequence-diagrams-for-programming/
+permalink: sequence-diagrams-for-programming/
 ---
 
 # Sequence Diagrams for Programming
@@ -22,7 +22,7 @@ In Ballerina services, the entry point is the service resource function. The act
 
 The Ballerina IDE plugin (for example, the <a href="https://ballerina.io/learn/vscode-plugin/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code.
 
-To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.
+To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/learn/vscode-plugin/">download the VSCode plugin and launch the graphical editor</a>.
 
 ## Client Objects and Remote Methods
 
@@ -81,7 +81,7 @@ var result = check caller->respond("Fail: no funds");
 
 The following diagram shows how the HTTP resource definition is visualized, and how its interactions in the resource are shown. 
 
-![Ballerina sequence diagram of HTTP resource definition](/img/why-pages/sequence-diagrams-for-programming-4.png)
+<img src="/img/why-pages/sequence-diagrams-for-programming-4.png" alt="Ballerina sequence diagram of HTTP resource definition" width="700">
 
 The result here represents the response retrieved back from the caller, where for example, if there was an error communicated back to the caller, we can perform further actions in our resource method rather than ignoring it. This pattern encourages a more robust approach to handling errors.
 
@@ -121,7 +121,7 @@ In the code, we are contacting a couple of network endpoints, retrieving informa
 
 This concurrency execution is visualized in the generated sequence diagram below:
 
-![Ballerina sequence diagram visualizing concurrency](/img/why-pages/sequence-diagrams-for-programming-4.png)
+<img src="/img/why-pages/sequence-diagrams-for-programming-5.png" alt="Ballerina sequence diagram visualizing concurrency" width="800">
 
 The workers have become participants in the sequence diagram alongside the HTTP clients. The workers’ activations occur concurrently and communication between them is done using message passing — Ballerina’s send (`->`) and receive (`<-`) actions. The compiler also explicitly verifies that the send and receive actions are in a consistent state in order to avoid any deadlock scenarios in the runtime.
 

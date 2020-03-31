@@ -59,8 +59,8 @@ redirect_from:
                       <p class="cEventLocation">Austin, Texas, USA</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-north-america/"><h4>Open Source Summit + Embedded Linux Conference North America 2020</h4></a>
-                        <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
-                        <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://conferences.oreilly.com/oscon/oscon-or/public/content/about" target="_blank">More Info</a></td> 
                   </tr>
@@ -69,8 +69,8 @@ redirect_from:
                       <p class="cEventLocation">Portland, Oregano, USA</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://conferences.oreilly.com/oscon/oscon-or"><h4>O'Reilly Open Source Software Conference</h4></a>
-                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
-                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                      <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
+                        <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-north-america/program/schedule-at-a-glance/" target="_blank">More Info</a></td> 
                   </tr>

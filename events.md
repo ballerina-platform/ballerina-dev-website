@@ -33,38 +33,7 @@ redirect_from:
 <h2>Upcoming Events</h2>
 
 
-<table class="cEventTable cConferencesList" style="width:100%;">      
-                    <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 25, 2020</span>
-                      <p class="cEventLocation">Vilnius, Lithuania</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
-                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
-                           <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 
-                  </tr>
-                      <tr class="event-expiry" style="display:none" data-expiry="March 26, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 26, 2020</span>
-                      <p class="cEventLocation">Vilnius, Lithuania</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>Code to Cloud</h5>
-                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
-                  </tr>
-                  <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 5, 2020</span>
-                      <p class="cEventLocation">Seattle, Washington, USA</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
-                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
-                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
-                  </tr>
+<table class="cEventTable cConferencesList" style="width:100%;">
                 <tr class="event-expiry" style="display:none" data-expiry="May 06, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 4 - 6, 2020</span>
                       <p class="cEventLocation">São Paulo, Brazil</p>
@@ -85,15 +54,35 @@ redirect_from:
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/San-Diego-Cloud-Native-Computing-Meetup/events/268618473/" target="_blank">More Info</a></td> 
                   </tr>
+                    <tr class="event-expiry" style="display:none" data-expiry="June 24, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">June 22 - 24, 2020</span>
+                      <p class="cEventLocation">Austin, Texas, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://events.linuxfoundation.org/open-source-summit-north-america/"><h4>Open Source Summit + Embedded Linux Conference North America 2020</h4></a>
+                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://conferences.oreilly.com/oscon/oscon-or/public/content/about" target="_blank">More Info</a></td> 
+                  </tr>
                     <tr class="event-expiry" style="display:none" data-expiry="July 16, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">July 13 - 16, 2020</span>
                       <p class="cEventLocation">Portland, Oregano, USA</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://conferences.oreilly.com/oscon/oscon-or"><h4>O'Reilly Open Source Software Conference</h4></a>
-                        <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
+                      <h5>Intensely Simplify Your Microservices Development with Ballerina</h5>
                         <b>Sameera Jayasoma,</b> Senior Director, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://conferences.oreilly.com/oscon/oscon-or/public/content/about" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://events.linuxfoundation.org/open-source-summit-north-america/program/schedule-at-a-glance/" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="May 05, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">September 28 - 29, 2020</span>
+                      <p class="cEventLocation">Seattle, Washington, USA</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
+                        <h5>Code to Kubernetes: Languages of Infrastructure</h5>
+                            <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>
   
                   
@@ -103,6 +92,27 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
+                    <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 25, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
+                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 
+                  </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 26, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>Code to Cloud</h5>
+                           <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
+                  </tr>
                         <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>
                       <p class="cEventLocation">San Jose, California, USA</p>

@@ -92,26 +92,35 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                    <tr class="event-expiry" style="display:none" data-expiry="">
-                    <td class="cEventDateContainer"><span class="cEventDate">March 24 - 25, 2020</span>
-                      <p class="cEventLocation">Vilnius, Lithuania</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
-                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
-                           <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/anjana-fernando/" target="_blank">More Info</a></td> 
-                  </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 26, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>Code to Cloud</h5>
+                          <h5>[Talk] Code to Cloud</h5>
                            <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://devopspro.lt/lakmal-warusawithana/" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/devops-pro-europe-2020-from-code-to-cloud" target="_blank">View Slides</a></td> 
+                  </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 25, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/devops-pro-europe-2020-the-cloudnative-and-devops-friendly-programming-language" target="_blank">View Slides</a></td> 
+                  </tr>
+                      <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">March 24, 2020</span>
+                      <p class="cEventLocation">Vilnius, Lithuania</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
+                          <h5>[Workshop] Ballerina: Cloud Native Middleware as a Programming Language</h5>
+                           <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://github.com/lafernando/ballerina-cloud-native-middleware-workshop" target="_blank">View Code</a></td> 
                   </tr>
                         <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 10, 2020</span>

@@ -97,7 +97,7 @@ redirect_from:
                       <p class="cEventLocation">Vilnius, Lithuania</p>
                       </td>
                       <td class="cEventDetail"><a target="_blank" href="https://devopspro.lt/"><h4>DevOps Pro Europe 2020</h4></a>
-                          <h5>Code to Cloud</h5>
+                          <h5>[Talk] Code to Cloud</h5>
                            <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/devops-pro-europe-2020-from-code-to-cloud" target="_blank">View Slides</a></td> 

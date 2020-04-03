@@ -8,8 +8,7 @@ permalink: /v1-2/learn/by-example/kafka_message_producer_transactional
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
     <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
@@ -17,14 +16,16 @@ permalink: /v1-2/learn/by-example/kafka_message_producer_transactional
     <span class="nx">enableIdempotence</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">transactionalId</span><span class="p">:</span> <span class="s">&quot;test-transactional-id&quot;</span>
 <span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kt">string</span> <span class="nx">msg1</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
-    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMsg</span> <span class="p">=</span> <span class="nx">msg1</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
-    <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMsg</span><span class="p">);</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMessage</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span> <span class="nx">partition</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
+            <span class="nx">partition</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Kafka producer failed to send first message&quot;</span><span class="p">,</span> <span class="nx">sendResult</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Kafka producer failed to send first message&quot;</span><span class="p">,</span>
+                <span class="nx">sendResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
@@ -42,7 +43,7 @@ permalink: /v1-2/learn/by-example/kafka_message_producer_transactional
                         <td class="cLeftTD">
                             <h2>Transactional Producer</h2>
                             <p><p>This example shows you how to do transactional message producing by sending messages
- to multiple topic partitions atomically using the same <code>KafkaProducerClient</code> instance.</p>
+ to kafka brokers atomically using the <code>kafka:Producer</code> object.</p>
 </p>
 
                         </td>
@@ -111,6 +112,10 @@ permalink: /v1-2/learn/by-example/kafka_message_producer_transactional
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -121,7 +126,6 @@ permalink: /v1-2/learn/by-example/kafka_message_producer_transactional
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
 import ballerina/kafka;
-import ballerina/log;
 </code></pre></div>
 
                                 </td>
@@ -149,8 +153,46 @@ import ballerina/log;
     clientId: &quot;basic-producer&quot;,
     acks: &quot;all&quot;,
     retryCount: 3,
-    enableIdempotence: true,
-    transactionalId: &quot;test-transactional-id&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
+ Kafka brokers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    enableIdempotence: true,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>enableIdempotence</code> should set to <code>true</code> to make a producer
+ transactional.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    transactionalId: &quot;test-transactional-id&quot;
 };
 </code></pre></div>
 
@@ -159,11 +201,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here, we create a producer config with optional parameters.
- client.id - used for broker-side logging.
- <code>acks</code> - number of acknowledgments to complete the request.
- <code>noRetries</code> - number of retries if record sending fails.
- <code>bootstrapServers</code> is the list of remote server endpoints of the Kafka brokers</p>
+                                            <p>A <code>transactionalId</code> must be provided to make a producer transactional.</p>
 
                                         </div>
                                     </div>
@@ -187,8 +225,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
-    string msg1 = &quot;Hello World Transaction Message&quot;;
-    byte[] serializedMsg = msg1.toBytes();
+    string message = &quot;Hello World Transaction Message&quot;;
+    byte[] serializedMessage = message.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -200,7 +238,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMsg);
+                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
 }
 </code></pre></div>
 
@@ -221,11 +259,13 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] msg) {
+                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
     transaction {
-        var sendResult = kafkaProducer-&gt;send(msg, &quot;test-kafka-topic&quot;, partition = 0);
+        var sendResult = kafkaProducer-&gt;send(message, &quot;test-kafka-topic&quot;,
+            partition = 0);
         if (sendResult is error) {
-            log:printError(&quot;Kafka producer failed to send first message&quot;, sendResult);
+            io:println(&quot;Kafka producer failed to send first message&quot;,
+                sendResult.toString());
         }
     } committed {
         io:println(&quot;Transaction committed&quot;);
@@ -249,6 +289,10 @@ import ballerina/log;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -256,10 +300,27 @@ import ballerina/log;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
+# To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run --experimental kafka_message_producer_transactional.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># If the producer successfully sent the message, the following will be printed
+# in the Console.
+2020-03-26 13:57:29,129 INFO  [ballerina/transactions] - Created transaction: 6cfac3a7-a8a2-4220-944e-dfbd6d27910f
+2020-03-26 13:57:29,184 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 6cfac3a7-a8a2-4220-944e-dfbd6d27910f:$anon$.$0
+Transaction committed
 </code></pre></div>
 
                                 </td>

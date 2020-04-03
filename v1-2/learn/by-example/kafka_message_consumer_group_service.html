@@ -7,35 +7,29 @@ permalink: /v1-2/learn/by-example/kafka_message_consumer_group_service
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span> <span class="k">as</span> <span class="nx">strings</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
-<span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfigs</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
     <span class="nx">concurrentConsumers</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
     <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
     <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">],</span>
-    <span class="nx">pollingIntervalInMillis</span><span class="p">:</span> <span class="mi">1000</span>
+    <span class="nx">pollingIntervalInMillis</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="nx">valueDeserializerType</span><span class="p">:</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">DES_STRING</span>
 <span class="p">};</span><span class="nx">listener</span> <span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfigs</span><span class="p">);</span><span class="kd">service</span> <span class="nx">kafkaService</span> <span class="nx">on</span> <span class="nx">consumer</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">kafkaConsumer</span><span class="p">,</span>
-            <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
             <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafkaRecord</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">processKafkaRecord</span><span class="p">(</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span> <span class="nx">kafkaRecord</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">anydata</span> <span class="nx">serializedMsg</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">serializedMsg</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
-        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">:</span><span class="nx">fromBytes</span><span class="p">(</span><span class="nx">serializedMsg</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span><span class="p">,</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span> <span class="s">&quot; Partition: &quot;</span><span class="p">,</span>
-                <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">partition</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot; Received Message: &quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">);</span>
-        <span class="p">}</span>
+    <span class="nx">anydata</span> <span class="kt">message</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span> <span class="o">+</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span> <span class="o">+</span> <span class="s">&quot; Partition: &quot;</span> <span class="o">+</span>
+            <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">partition</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; Received Message: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data; Unexpected type&quot;</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while retrieving message data;&quot;</span> <span class="o">+</span>
+            <span class="s">&quot;Unexpected type&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -47,8 +41,10 @@ permalink: /v1-2/learn/by-example/kafka_message_consumer_group_service
                     <tr>
                         <td class="cLeftTD">
                             <h2>Consumer Groups</h2>
-                            <p><p>Here is an example in which we create a Kafka consumer group/group
- of concurrent consumers within a service.</p>
+                            <p><p>Here, is an example of a kafka consumer used as a listener to listen to a
+ given topic/topics. The listener uses a group of concurrent consumers within
+ the service. This consumer uses the builtin <code>string</code> deserializer for the
+ values.</p>
 </p>
 
                         </td>
@@ -117,6 +113,16 @@ permalink: /v1-2/learn/by-example/kafka_message_consumer_group_service
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -125,10 +131,20 @@ permalink: /v1-2/learn/by-example/kafka_message_consumer_group_service
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/kafka;
-import ballerina/lang.&#39;string as strings;
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/kafka;
 import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfigs = {
 </code></pre></div>
 
                                 </td>
@@ -140,12 +156,67 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>kafka:ConsumerConfiguration consumerConfigs = {
-    bootstrapServers: &quot;localhost:9092&quot;,
-    concurrentConsumers: 2,
+                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
+ Kafka brokers.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    concurrentConsumers: 2,
     groupId: &quot;group-id&quot;,
-    topics: [&quot;test-kafka-topic&quot;],
-    pollingIntervalInMillis: 1000
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Using two concurrent consumers to work as a group.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    topics: [&quot;test-kafka-topic&quot;],
+    pollingIntervalInMillis: 1000,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Subscribes to the topic <code>test-kafka-topic</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    valueDeserializerType: kafka:DES_STRING
 };
 </code></pre></div>
 
@@ -154,7 +225,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>bootstrapServers</code> is the list of remote server endpoints of the Kafka brokers.</p>
+                                            <p>Uses the default string deserializer to deserialize the Kafka value.</p>
 
                                         </div>
                                     </div>
@@ -178,12 +249,31 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>service kafkaService on consumer {
-    resource function onMessage(kafka:Consumer kafkaConsumer,
-            kafka:ConsumerRecord[] records) {
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(kafka:Consumer kafkaConsumer,
+        kafka:ConsumerRecord[] records) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource executes when a message or a set of messages are published
+ to the subscribed topic/topics.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -203,7 +293,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The set of Kafka records dispatched to the service processed one by one.</p>
+                                            <p>The set of Kafka records dispatched to the service are processed one
+ by one.</p>
 
                                         </div>
                                     </div>
@@ -215,10 +306,8 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function processKafkaRecord(kafka:ConsumerRecord kafkaRecord) {
-    anydata serializedMsg = kafkaRecord.value;
-    if (serializedMsg is byte[]) {
-        string|error msg = strings:fromBytes(serializedMsg);
-        if (msg is string) {
+    anydata message = kafkaRecord.value;
+    if (message is string) {
 </code></pre></div>
 
                                 </td>
@@ -230,13 +319,11 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Partition: &quot;,
-                kafkaRecord.partition.toString(), &quot; Received Message: &quot;, msg);
-        } else {
-            log:printError(&quot;Error occurred while converting message data&quot;, msg);
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Topic: &quot; + kafkaRecord.topic + &quot; Partition: &quot; +
+            kafkaRecord.partition.toString() + &quot; Received Message: &quot; + message);
     } else {
-        log:printError(&quot;Error occurred while retrieving message data; Unexpected type&quot;);
+        log:printError(&quot;Error occurred while retrieving message data;&quot; +
+            &quot;Unexpected type&quot;);
     }
 }
 </code></pre></div>
@@ -246,7 +333,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the retrieved Kafka record.</p>
+                                            <p>Prints the retrieved Kafka record.</p>
 
                                         </div>
                                     </div>
@@ -262,6 +349,10 @@ import ballerina/log;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -269,10 +360,27 @@ import ballerina/log;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
+# To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run kafka_message_consumer_group_service.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># If the listener started successfully, the following lines will be printed in
+# the Console.
+[ballerina/kafka] kafka servers: localhost:9092
+[ballerina/kafka] subscribed topics: test-kafka-topic
+[ballerina/kafka] started kafka listener
 </code></pre></div>
 
                                 </td>

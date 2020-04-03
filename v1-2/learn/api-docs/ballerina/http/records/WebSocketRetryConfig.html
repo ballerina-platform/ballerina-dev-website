@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -238,6 +237,10 @@
                             <a href="WebSocketClientConfiguration.html">WebSocketClientConfiguration</a>
                         </li>
                     
+                        <li >
+                            <a href="WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="WebSocketRetryConfig.html">WebSocketRetryConfig</a>
                         </li>
@@ -252,7 +255,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -723,6 +726,10 @@
                                 <a href="WebSocketClientConfiguration.html">WebSocketClientConfiguration</a>
                             </li>
                         
+                            <li >
+                                <a href="WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a>
+                            </li>
+                        
                             <li class="active">
                                 <a href="WebSocketRetryConfig.html">WebSocketRetryConfig</a>
                             </li>
@@ -737,7 +744,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1049,7 +1056,7 @@
                 <span class="default"> (default 0)</span>
             </li>
             <li>
-                <p><p>The maximum number of retry attempts. If the count is zero, the client will retry indefinitely.</p>
+                <p><p>The maximum number of retry attempts. If the count is zero, the client will retry indefinitely</p>
 </p>
             </li>
         </ul>
@@ -1061,7 +1068,7 @@
                 <span class="default"> (default 1000)</span>
             </li>
             <li>
-                <p><p>The number of milliseconds to delay before attempting to reconnect.</p>
+                <p><p>The number of milliseconds to delay before attempting to reconnect</p>
 </p>
             </li>
         </ul>
@@ -1074,7 +1081,7 @@
             </li>
             <li>
                 <p><p>The rate of increase of the reconnect delay. Allows reconnect attempts to back off when problems
-persist.</p>
+persist</p>
 </p>
             </li>
         </ul>
@@ -1086,7 +1093,7 @@ persist.</p>
                 <span class="default"> (default 30000)</span>
             </li>
             <li>
-                <p><p>Maximum time of the retry interval in milliseconds.</p>
+                <p><p>Maximum time of the retry interval in milliseconds</p>
 </p>
             </li>
         </ul>

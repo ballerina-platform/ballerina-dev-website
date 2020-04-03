@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -57,7 +56,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -344,7 +343,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -991,43 +990,50 @@ of the corresponding subscription.</p>
                         <tr>
                             <td class="module-title truncate constant" id="DEFAULT_URL" title="DEFAULT_URL"><a
                                     class="constant" href="constants.html#DEFAULT_URL">DEFAULT_URL</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Default URL for NATS connections.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="NATS_ERROR" title="NATS_ERROR"><a
                                     class="constant" href="constants.html#NATS_ERROR">NATS_ERROR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Represents the reason for the NATS module related errors.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="NEW_ONLY" title="NEW_ONLY"><a
                                     class="constant" href="constants.html#NEW_ONLY">NEW_ONLY</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Specifies that message delivery should start with the messages, which are published after the subscription is created.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="LAST_RECEIVED" title="LAST_RECEIVED"><a
                                     class="constant" href="constants.html#LAST_RECEIVED">LAST_RECEIVED</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Specifies that message delivery should start with the last (most recent) message stored for this subject.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="FIRST" title="FIRST"><a
                                     class="constant" href="constants.html#FIRST">FIRST</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Specifies that message delivery should begin at the oldest available message for this subject.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TIME_DELTA_START" title="TIME_DELTA_START"><a
                                     class="constant" href="constants.html#TIME_DELTA_START">TIME_DELTA_START</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>The constant string value for the <code>TimeDeltaStart</code> type.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="SEQUENCE_NUMBER" title="SEQUENCE_NUMBER"><a
                                     class="constant" href="constants.html#SEQUENCE_NUMBER">SEQUENCE_NUMBER</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>The constant string value for the <code>SequenceNumber</code> type.</p>
+</td>
                         </tr>
                     
                 </table>
@@ -1077,21 +1083,15 @@ of the corresponding subscription.</p>
                             <td class="module-title truncate types" id="Content" title="Content">
                                 <a class="types" href="types.html#Content">Content</a>
                             </td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Data types supported when publishing and consuming messages.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="StartPosition" title="StartPosition">
                                 <a class="types" href="types.html#StartPosition">StartPosition</a>
                             </td>
-                            <td class="module-desc"><p>The position to start receiving messages.
-NEW_ONLY - Specifies that message delivery should start with the messages, which are published after the subscription
-is created.
-LAST_RECEIVED - Specifies that message delivery should start with the last (most recent) message stored for
-this subject.
-TimeDeltaStart - Specifies that message delivery should start with a given historical time delta (from now).
-SequenceNumber - Specifies that message delivery should start at the given sequence number.
-FIRST - Specifies that message delivery should begin at the oldest available message for this subject.</p>
+                            <td class="module-desc"><p>The position to start receiving messages.</p>
 </td>
                         </tr>
                     
@@ -1113,7 +1113,8 @@ FIRST - Specifies that message delivery should begin at the oldest available mes
                             <td class="module-title truncate errors" id="Error" title="Error">
                                 <a class="errors" href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Represents NATS module related errors.</p>
+</td>
                         </tr>
                     
                 </table>

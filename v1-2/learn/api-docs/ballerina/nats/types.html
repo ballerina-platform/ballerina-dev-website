@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -72,7 +71,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -373,7 +372,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -673,7 +672,8 @@
                             <ul>
                                 <li id="Content"><b>Content</b><span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">string</span> | <span class="builtin-type">int</span> | <span class="builtin-type">float</span> | <span class="builtin-type">decimal</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <a href="../nats/records/$anonType$1.html">$anonType$1</a></span></li>
                                 <li>
-                                    
+                                    <p>Data types supported when publishing and consuming messages.</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -682,14 +682,7 @@
                             <ul>
                                 <li id="StartPosition"><b>StartPosition</b><span class="type">  <a href="../nats/constants.html#NEW_ONLY">NEW_ONLY</a> | <a href="../nats/constants.html#LAST_RECEIVED">LAST_RECEIVED</a> | <a href="../nats/UNKNOWN/TimeDeltaStart.html">TimeDeltaStart</a> | <a href="../nats/UNKNOWN/SequenceNumber.html">SequenceNumber</a> | <a href="../nats/constants.html#FIRST">FIRST</a></span></li>
                                 <li>
-                                    <p>The position to start receiving messages.
-NEW_ONLY - Specifies that message delivery should start with the messages, which are published after the subscription
-is created.
-LAST_RECEIVED - Specifies that message delivery should start with the last (most recent) message stored for
-this subject.
-TimeDeltaStart - Specifies that message delivery should start with a given historical time delta (from now).
-SequenceNumber - Specifies that message delivery should start at the given sequence number.
-FIRST - Specifies that message delivery should begin at the oldest available message for this subject.</p>
+                                    <p>The position to start receiving messages.</p>
 
                                 </li>
                             </ul>

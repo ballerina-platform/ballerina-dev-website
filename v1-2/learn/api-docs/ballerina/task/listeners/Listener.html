@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -68,7 +67,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -357,7 +356,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -651,14 +650,16 @@
                 
                     
                         <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configs)</p>
+<h3 >__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configurations)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
             <ul>
-                <li> <b>configs</b><span class="type">  <a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a></span> </li>
+                <li> <b>configurations</b><span class="type">  <a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a></span> </li>
                 <li>
-                    
+                    <p>A <code>task:TimerConfiguration</code> or <code>task:AppointmentConfiguration</code> record to define the
+<code>task:Listener</code> behavior</p>
+
                 </li>
             </ul>
         </div>
@@ -677,7 +678,8 @@
         <div class="param-name">
         __detach 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p>
+ </div>
     </div>
 </a>
                         
@@ -687,7 +689,9 @@
         <div class="param-name">
         __gracefulStop 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Gracefully stops the <code>task:Listener</code> and the attached services. It will wait if there are any tasks still to be
+completed. This may panic if the stopping causes any error.</p>
+ </div>
     </div>
 </a>
                         
@@ -697,7 +701,9 @@
         <div class="param-name">
         __immediateStop 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Stops the <code>task:Listener</code> and the attached services immediately. This will cancel any ongoing tasks. This may
+panic if the stopping causes any error.</p>
+ </div>
     </div>
 </a>
                         
@@ -707,7 +713,7 @@
         <div class="param-name">
         pause 
         </div>
-        <div class="param-details"> <p>Pauses the task listener.</p>
+        <div class="param-details"> <p>Pauses the <code>task:Listener</code> and the attached services.</p>
  </div>
     </div>
 </a>
@@ -718,7 +724,7 @@
         <div class="param-name">
         resume 
         </div>
-        <div class="param-details"> <p>Resumes a paused task listener.</p>
+        <div class="param-details"> <p>Resumes a paused <code>task:Listener</code>. Calling this on an already running <code>task:Listener</code> will not cause any error.</p>
  </div>
     </div>
 </a>
@@ -736,7 +742,8 @@
         <div class="param-name">
         __attach 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Attaches the given <code>service</code> to the <code>task:Listener</code>. This may panic if the service attachment is fails.</p>
+ </div>
     </div>
 </a>
                         
@@ -746,7 +753,9 @@
         <div class="param-name">
         __start 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Starts dispatching the services attached to the <code>task:Listener</code>. This may panic if the service dispatching causes
+any error.</p>
+ </div>
     </div>
 </a>
                         
@@ -772,7 +781,8 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Detaches the given <code>service</code> from the <code>task:Listener</code>.</p>
+</p>
      
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
@@ -784,7 +794,8 @@
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Service to be detached from the listener</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -797,7 +808,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Returns nil if detaching the service is successful</p>
+</li>
             </ul>
         </div>
         
@@ -817,7 +829,9 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Gracefully stops the <code>task:Listener</code> and the attached services. It will wait if there are any tasks still to be
+completed. This may panic if the stopping causes any error.</p>
+</p>
      
 
     
@@ -825,7 +839,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Returns nil if stopping the listener is successful</p>
+</li>
             </ul>
         </div>
         
@@ -845,7 +860,9 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Stops the <code>task:Listener</code> and the attached services immediately. This will cancel any ongoing tasks. This may
+panic if the stopping causes any error.</p>
+</p>
      
 
     
@@ -853,7 +870,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Returns nil if the stopping the listener is successful</p>
+</li>
             </ul>
         </div>
         
@@ -873,7 +891,7 @@
         </span>
         
     </div>
-    <p><p>Pauses the task listener.</p>
+    <p><p>Pauses the <code>task:Listener</code> and the attached services.</p>
 </p>
      
 
@@ -882,7 +900,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns <code>task:ListenerError</code> if an error is occurred while resuming, nil Otherwise.</p>
+                <li><p>Returns <code>task:ListenerError</code> if an error is occurred while resuming or nil Otherwise</p>
 </li>
             </ul>
         </div>
@@ -903,7 +921,7 @@
         </span>
         
     </div>
-    <p><p>Resumes a paused task listener.</p>
+    <p><p>Resumes a paused <code>task:Listener</code>. Calling this on an already running <code>task:Listener</code> will not cause any error.</p>
 </p>
      
 
@@ -912,7 +930,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns <code>task:ListenerError</code> when an error occurred while pausing, nil Otherwise.</p>
+                <li><p>Returns <code>task:ListenerError</code> when an error occurred while pausing or nil Otherwise</p>
 </li>
             </ul>
         </div>
@@ -938,7 +956,8 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Attaches the given <code>service</code> to the <code>task:Listener</code>. This may panic if the service attachment is fails.</p>
+</p>
      
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
@@ -950,7 +969,8 @@
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Service to attach to the listener</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -962,7 +982,8 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Name of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -975,7 +996,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Returns nil if attaching the service is successful</p>
+</li>
             </ul>
         </div>
         
@@ -995,7 +1017,9 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Starts dispatching the services attached to the <code>task:Listener</code>. This may panic if the service dispatching causes
+any error.</p>
+</p>
      
 
     
@@ -1003,7 +1027,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Returns nil if strating the services is successful</p>
+</li>
             </ul>
         </div>
         

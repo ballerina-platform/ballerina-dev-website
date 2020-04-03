@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- <script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -57,7 +56,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -332,7 +331,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1043,211 +1042,247 @@ Default values of the fields can be set through the configuration API.
                         <tr>
                             <td class="module-title truncate constant" id="DATABASE_ERROR_REASON" title="DATABASE_ERROR_REASON"><a
                                     class="constant" href="constants.html#DATABASE_ERROR_REASON">DATABASE_ERROR_REASON</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Identifies the issues related to database accessibility, erroneous queries, constraint violations,
+database resource clean-up, and other similar scenarios.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="APPLICATION_ERROR_REASON" title="APPLICATION_ERROR_REASON"><a
                                     class="constant" href="constants.html#APPLICATION_ERROR_REASON">APPLICATION_ERROR_REASON</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Identifies the errors originating from application-level causes.</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_VARCHAR" title="TYPE_VARCHAR"><a
                                     class="constant" href="constants.html#TYPE_VARCHAR">TYPE_VARCHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Small variable-length character string</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_CHAR" title="TYPE_CHAR"><a
                                     class="constant" href="constants.html#TYPE_CHAR">TYPE_CHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Small fixed-length character string</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_LONGVARCHAR" title="TYPE_LONGVARCHAR"><a
                                     class="constant" href="constants.html#TYPE_LONGVARCHAR">TYPE_LONGVARCHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large variable-length character string</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_NCHAR" title="TYPE_NCHAR"><a
                                     class="constant" href="constants.html#TYPE_NCHAR">TYPE_NCHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Small fixed-length character string with Unicode support</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_LONGNVARCHAR" title="TYPE_LONGNVARCHAR"><a
                                     class="constant" href="constants.html#TYPE_LONGNVARCHAR">TYPE_LONGNVARCHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large variable-length character string with Unicode support</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_NVARCHAR" title="TYPE_NVARCHAR"><a
                                     class="constant" href="constants.html#TYPE_NVARCHAR">TYPE_NVARCHAR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large variable-length character string with Unicode support</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_BIT" title="TYPE_BIT"><a
                                     class="constant" href="constants.html#TYPE_BIT">TYPE_BIT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Single bit value, which can be zero, one, or nil</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_BOOLEAN" title="TYPE_BOOLEAN"><a
                                     class="constant" href="constants.html#TYPE_BOOLEAN">TYPE_BOOLEAN</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Boolean value being either True or false</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_TINYINT" title="TYPE_TINYINT"><a
                                     class="constant" href="constants.html#TYPE_TINYINT">TYPE_TINYINT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>8-bit integer value, which may be unsigned or signed</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_SMALLINT" title="TYPE_SMALLINT"><a
                                     class="constant" href="constants.html#TYPE_SMALLINT">TYPE_SMALLINT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>16-bit signed integer value, which may be unsigned or signed</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_INTEGER" title="TYPE_INTEGER"><a
                                     class="constant" href="constants.html#TYPE_INTEGER">TYPE_INTEGER</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>32-bit signed integer value, which may be unsigned or signed</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_BIGINT" title="TYPE_BIGINT"><a
                                     class="constant" href="constants.html#TYPE_BIGINT">TYPE_BIGINT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>64-bit signed integer value, which may be unsigned or signed</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_NUMERIC" title="TYPE_NUMERIC"><a
                                     class="constant" href="constants.html#TYPE_NUMERIC">TYPE_NUMERIC</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Fixed-precision and scaled decimal values</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_DECIMAL" title="TYPE_DECIMAL"><a
                                     class="constant" href="constants.html#TYPE_DECIMAL">TYPE_DECIMAL</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Fixed-precision and scaled decimal values</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_REAL" title="TYPE_REAL"><a
                                     class="constant" href="constants.html#TYPE_REAL">TYPE_REAL</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Single precision floating point number</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_FLOAT" title="TYPE_FLOAT"><a
                                     class="constant" href="constants.html#TYPE_FLOAT">TYPE_FLOAT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Double precision floating point number</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_DOUBLE" title="TYPE_DOUBLE"><a
                                     class="constant" href="constants.html#TYPE_DOUBLE">TYPE_DOUBLE</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Double precision floating point number</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_BINARY" title="TYPE_BINARY"><a
                                     class="constant" href="constants.html#TYPE_BINARY">TYPE_BINARY</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Small fixed-length binary value</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_BLOB" title="TYPE_BLOB"><a
                                     class="constant" href="constants.html#TYPE_BLOB">TYPE_BLOB</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large Binary object</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_LONGVARBINARY" title="TYPE_LONGVARBINARY"><a
                                     class="constant" href="constants.html#TYPE_LONGVARBINARY">TYPE_LONGVARBINARY</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large variable-length binary value</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_VARBINARY" title="TYPE_VARBINARY"><a
                                     class="constant" href="constants.html#TYPE_VARBINARY">TYPE_VARBINARY</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Small variable-length binary value</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_CLOB" title="TYPE_CLOB"><a
                                     class="constant" href="constants.html#TYPE_CLOB">TYPE_CLOB</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large Character object</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_NCLOB" title="TYPE_NCLOB"><a
                                     class="constant" href="constants.html#TYPE_NCLOB">TYPE_NCLOB</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Large Character objects in a multibyte national character set</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_DATE" title="TYPE_DATE"><a
                                     class="constant" href="constants.html#TYPE_DATE">TYPE_DATE</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Both DATE and TIME with an additional nanosecond field</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_TIME" title="TYPE_TIME"><a
                                     class="constant" href="constants.html#TYPE_TIME">TYPE_TIME</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Both DATE and TIME with an additional nanosecond field</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_DATETIME" title="TYPE_DATETIME"><a
                                     class="constant" href="constants.html#TYPE_DATETIME">TYPE_DATETIME</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Both DATE and TIME with an additional nanosecond field</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_TIMESTAMP" title="TYPE_TIMESTAMP"><a
                                     class="constant" href="constants.html#TYPE_TIMESTAMP">TYPE_TIMESTAMP</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Both DATE and TIME with an additional nanosecond field</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_ARRAY" title="TYPE_ARRAY"><a
                                     class="constant" href="constants.html#TYPE_ARRAY">TYPE_ARRAY</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Composite data value, which consists of zero or more elements of a specified data type</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_STRUCT" title="TYPE_STRUCT"><a
                                     class="constant" href="constants.html#TYPE_STRUCT">TYPE_STRUCT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>User-defined structured type, which consists of one or more attributes</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="TYPE_REFCURSOR" title="TYPE_REFCURSOR"><a
                                     class="constant" href="constants.html#TYPE_REFCURSOR">TYPE_REFCURSOR</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p>Cursor value</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="DIRECTION_IN" title="DIRECTION_IN"><a
                                     class="constant" href="constants.html#DIRECTION_IN">DIRECTION_IN</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p><code>IN</code> parameters are used to send values to stored procedures</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="DIRECTION_OUT" title="DIRECTION_OUT"><a
                                     class="constant" href="constants.html#DIRECTION_OUT">DIRECTION_OUT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p><code>OUT</code> parameters are used to get values from stored procedures</p>
+</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate constant" id="DIRECTION_INOUT" title="DIRECTION_INOUT"><a
                                     class="constant" href="constants.html#DIRECTION_INOUT">DIRECTION_INOUT</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc"><p><code>INOUT</code> parameters are used to both send and get values to/from stored procedures</p>
+</td>
                         </tr>
                     
                 </table>

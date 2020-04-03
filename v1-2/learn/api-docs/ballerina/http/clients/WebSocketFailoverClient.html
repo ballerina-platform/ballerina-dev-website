@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <title>API Docs - Client : HttpClient</title>
+    <title>API Docs - Client : WebSocketFailoverClient</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
 
     <!-- BIO THEME START -->
@@ -77,7 +77,7 @@
                             <a href="HttpCachingClient.html">HttpCachingClient</a> 
                         </li>
                     
-                        <li class="active active-item">
+                        <li >
                             <a href="HttpClient.html">HttpClient</a> 
                         </li>
                     
@@ -105,7 +105,7 @@
                             <a href="WebSocketClient.html">WebSocketClient</a> 
                         </li>
                     
-                        <li >
+                        <li class="active active-item">
                             <a href="WebSocketFailoverClient.html">WebSocketFailoverClient</a> 
                         </li>
                     
@@ -426,7 +426,7 @@
                                 <a href="HttpCachingClient.html">HttpCachingClient</a>
                             </li>
                         
-                            <li class="active active-item">
+                            <li >
                                 <a href="HttpClient.html">HttpClient</a>
                             </li>
                         
@@ -454,7 +454,7 @@
                                 <a href="WebSocketClient.html">WebSocketClient</a>
                             </li>
                         
-                            <li >
+                            <li class="active active-item">
                                 <a href="WebSocketFailoverClient.html">WebSocketFailoverClient</a>
                             </li>
                         
@@ -760,11 +760,9 @@
                 
                     <a href="../../http/index.html">http</a> :
                 
-                <span class="clients">HttpClient</span>
+                <span class="clients">WebSocketFailoverClient</span>
             </h1>
-            <p><p>Provides the HTTP actions for interacting with an HTTP server. Apart from the standard HTTP methods,
-<code>HttpClient.forward()</code> and <code>HttpClient.execute()</code> functions are provided. More complex and specific endpoint types
-can be created by wrapping this generic HTTP actions implementation.</p>
+            <p><p>A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.</p>
 </p>
 
             <div class="constants">
@@ -772,24 +770,14 @@ can be created by wrapping this generic HTTP actions implementation.</p>
                     
                         
                             <h2>Constructor</h2>
-<h3 >__init</h3><p>(<span class="builtin-type">string</span> url, <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>? config)</p>
+<h3 >__init</h3><p>(<a href="../../http/records/WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a> config)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
             <ul>
-                <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
+                <li> <b>config</b><span class="type">  <a href="../../http/records/WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a></span> </li>
                 <li>
-                    <p>URL of the target service</p>
-
-                </li>
-            </ul>
-        </div>
-    
-        <div class="params-listing">
-            <ul>
-                <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>?</span> ()</li>
-                <li>
-                    <p>The configurations to be used when initializing the <code>client</code></p>
+                    <p>The <code>WebSocketFailoverClientConfiguration</code> of the endpoint</p>
 
                 </li>
             </ul>
@@ -804,110 +792,48 @@ can be created by wrapping this generic HTTP actions implementation.</p>
                         <table>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="post"><a
-                                            class="functions" href="#post">post</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.post()</code> function can be used to send HTTP POST requests to HTTP endpoints.</p>
+                                    <td class="module-title truncate functions" title="pushText"><a
+                                            class="functions" href="#pushText">pushText</a></td>
+                                    <td class="module-desc"><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="head"><a
-                                            class="functions" href="#head">head</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.head()</code> function can be used to send HTTP HEAD requests to HTTP endpoints.</p>
+                                    <td class="module-title truncate functions" title="pushBinary"><a
+                                            class="functions" href="#pushBinary">pushBinary</a></td>
+                                    <td class="module-desc"><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="put"><a
-                                            class="functions" href="#put">put</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.put()</code> function can be used to send HTTP PUT requests to HTTP endpoints.</p>
+                                    <td class="module-title truncate functions" title="ping"><a
+                                            class="functions" href="#ping">ping</a></td>
+                                    <td class="module-desc"><p>Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="execute"><a
-                                            class="functions" href="#execute">execute</a></td>
-                                    <td class="module-desc"><p>Invokes an HTTP call with the specified HTTP verb.</p>
+                                    <td class="module-title truncate functions" title="pong"><a
+                                            class="functions" href="#pong">pong</a></td>
+                                    <td class="module-desc"><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="patch"><a
-                                            class="functions" href="#patch">patch</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.patch()</code> function can be used to send HTTP PATCH requests to HTTP endpoints.</p>
+                                    <td class="module-title truncate functions" title="close"><a
+                                            class="functions" href="#close">close</a></td>
+                                    <td class="module-desc"><p>Closes the connection.</p>
 </td>
                                 </tr>
                             
                                 <tr>
-                                    <td class="module-title truncate functions" title="delete"><a
-                                            class="functions" href="#delete">delete</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.delete()</code> function can be used to send HTTP DELETE requests to HTTP endpoints.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="get"><a
-                                            class="functions" href="#get">get</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.get()</code> function can be used to send HTTP GET requests to HTTP endpoints.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="options"><a
-                                            class="functions" href="#options">options</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.options()</code> function can be used to send HTTP OPTIONS requests to HTTP endpoints.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="forward"><a
-                                            class="functions" href="#forward">forward</a></td>
-                                    <td class="module-desc"><p>The <code>HttpClient.forward()</code> function can be used to invoke an HTTP call with inbound request's HTTP verb</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="submit"><a
-                                            class="functions" href="#submit">submit</a></td>
-                                    <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>HttpClient.submit()</code> function does not give out a <code>Response</code> as the result,
-rather it returns an <code>HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getResponse"><a
-                                            class="functions" href="#getResponse">getResponse</a></td>
-                                    <td class="module-desc"><p>Retrieves the <code>Response</code> for a previously submitted request.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="hasPromise"><a
-                                            class="functions" href="#hasPromise">hasPromise</a></td>
-                                    <td class="module-desc"><p>Checks whether a <code>PushPromise</code> exists for a previously submitted request.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getNextPromise"><a
-                                            class="functions" href="#getNextPromise">getNextPromise</a></td>
-                                    <td class="module-desc"><p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="getPromisedResponse"><a
-                                            class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                                    <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</p>
-</td>
-                                </tr>
-                            
-                                <tr>
-                                    <td class="module-title truncate functions" title="rejectPromise"><a
-                                            class="functions" href="#rejectPromise">rejectPromise</a></td>
-                                    <td class="module-desc"><p>Rejects a <code>PushPromise</code>. When a <code>PushPromise</code> is rejected, there is no chance of fetching a promised
-response using the rejected promise.</p>
+                                    <td class="module-title truncate functions" title="ready"><a
+                                            class="functions" href="#ready">ready</a></td>
+                                    <td class="module-desc"><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
 </td>
                                 </tr>
                             
@@ -915,102 +841,130 @@ response using the rejected promise.</p>
                     
 
                     
-                
-                    
-                        <h2>Fields</h2>
-                                
-                                <div class="data-wrapper">
-        
-    <div class="params-listing">
-        <ul>
-            <li> config<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
-                <span class="default"> (default  {})</span>
-            </li>
-            <li>
-                <p><p>The configurations associated with the HttpClient</p>
-</p>
-            </li>
-        </ul>
-    </div>
-        
-    <div class="params-listing">
-        <ul>
-            <li> url<span class="type">  <span class="builtin-type">string</span></span>
-                
-            </li>
-            <li>
-                <p><p>The URL of the remote HTTP endpoint</p>
-</p>
-            </li>
-        </ul>
-    </div>
-    
-</div>
-
-<script>
-    $(document)
-    .ready(function() {
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
-
-let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
-let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
-
-let lastId;
-let cur = [];
-
-let contentWrapper = document.querySelector(".content-wrapper");
-contentWrapper.addEventListener("scroll", event => {
-  let fromTop = contentWrapper.scrollTop;
-
-  mainNavLinks.forEach(link => {
-    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
-
-    if (
-      section.offsetTop <= fromTop &&
-      section.offsetTop + section.offsetHeight > fromTop
-    ) {
-      link.classList.add("current");
-    } else {
-      link.classList.remove("current");
-    }
-  });
-});
-
-</script>
-
-<script>
-    window.onload = (event) => {
-        ballerinaHighlighter.highlightSnippets();
-    };
-</script>
-
+                        <h2>Methods</h2>
+                        <div class="method-list">
                             
+                                
+<a href="#init">
+    <div class="param-sum">
+        <div class="param-name">
+        init 
+        </div>
+        <div class="param-details">  </div>
+    </div>
+</a>
+                            
+                                
+<a href="#setAttribute">
+    <div class="param-sum">
+        <div class="param-name">
+        setAttribute 
+        </div>
+        <div class="param-details"> <p>Sets a connection-related attribute.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getAttribute">
+    <div class="param-sum">
+        <div class="param-name">
+        getAttribute 
+        </div>
+        <div class="param-details"> <p>Gets connection-related attributes if any.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#removeAttribute">
+    <div class="param-sum">
+        <div class="param-name">
+        removeAttribute 
+        </div>
+        <div class="param-details"> <p>Removes connection-related attributes if any.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getConnectionId">
+    <div class="param-sum">
+        <div class="param-name">
+        getConnectionId 
+        </div>
+        <div class="param-details"> <p>Gives the connection ID associated with this connection.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getNegotiatedSubProtocol">
+    <div class="param-sum">
+        <div class="param-name">
+        getNegotiatedSubProtocol 
+        </div>
+        <div class="param-details"> <p>Gives the subprotocol if any that is negotiated with the client.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#isSecure">
+    <div class="param-sum">
+        <div class="param-name">
+        isSecure 
+        </div>
+        <div class="param-details"> <p>Gives the secured status of the connection.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#isOpen">
+    <div class="param-sum">
+        <div class="param-name">
+        isOpen 
+        </div>
+        <div class="param-details"> <p>Gives the open or closed status of the connection.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#getHttpResponse">
+    <div class="param-sum">
+        <div class="param-name">
+        getHttpResponse 
+        </div>
+        <div class="param-details"> <p>Gives any HTTP response of     the client handshake request if received.</p>
+ </div>
+    </div>
+</a>
+                            
+                        </div>
+                    
+                
                     
                 </div>
 
                 
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="post" title="post">
-             <a class="url-link" href="#post">
+    <div class="main-method-title here" id="pushText" title="pushText">
+             <a class="url-link" href="#pushText">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> post </h2>
+            <h2> pushText </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>(<span class="builtin-type">string</span> | <span class="builtin-type">json</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">int</span> | <span class="builtin-type">float</span> | <span class="builtin-type">byte</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="builtin-type">boolean</span> finalFrame)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.post()</code> function can be used to send HTTP POST requests to HTTP endpoints.</p>
+    <p><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1019,11 +973,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
+                        data<span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">json</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">int</span> | <span class="builtin-type">float</span> | <span class="builtin-type">byte</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Resource path</p>
+                        <p><p>Data to be sent. If it is a byte[], it is converted to a UTF-8 string for sending</p>
 </p>
                     </li>
                 </ul>
@@ -1032,12 +986,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        
+                        finalFrame<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default true)</span>
                     </li>
                     <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+                        <p><p>Set to <code>true</code> if this is a final frame of a (long) message</p>
 </p>
                     </li>
                 </ul>
@@ -1050,8 +1003,8 @@ contentWrapper.addEventListener("scroll", event => {
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>http:ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
 </li>
             </ul>
         </div>
@@ -1060,19 +1013,20 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="head" title="head">
-             <a class="url-link" href="#head">
+    <div class="main-method-title here" id="pushBinary" title="pushBinary">
+             <a class="url-link" href="#pushBinary">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> head </h2>
+            <h2> pushBinary </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="builtin-type">boolean</span> finalFrame)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.head()</code> function can be used to send HTTP HEAD requests to HTTP endpoints.</p>
+    <p><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1081,11 +1035,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
+                        data<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Resource path</p>
+                        <p><p>Binary data to be sent</p>
 </p>
                     </li>
                 </ul>
@@ -1094,12 +1048,186 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        finalFrame<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default true)</span>
+                    </li>
+                    <li>
+                        <p><p>Set to <code>true</code> if this is a final frame of a (long) message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="ping" title="ping">
+             <a class="url-link" href="#ping">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> ping </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
+        </span>
+        
+    </div>
+    <p><p>Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        data<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Binary data to be sent</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="pong" title="pong">
+             <a class="url-link" href="#pong">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> pong </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
+        </span>
+        
+    </div>
+    <p><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        data<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Binary data to be sent</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="close" title="close">
+             <a class="url-link" href="#close">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> close </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">int?</span> statusCode, <span class="builtin-type">string?</span> reason, <span class="builtin-type">int</span> timeoutInSeconds)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
+        </span>
+        
+    </div>
+    <p><p>Closes the connection.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        statusCode<span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default 1000)</span>
+                    </li>
+                    <li>
+                        <p><p>Status code for closing the connection</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        reason<span class="type">  <span class="builtin-type">string?</span> </span>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+                        <p><p>Reason for closing the connection</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        timeoutInSeconds<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default 60)</span>
+                    </li>
+                    <li>
+                        <p><p>Time to wait for the close frame to be received from the remote endpoint before closing the
+connection. If the timeout exceeds, then the connection is terminated even though a close frame
+is not received from the remote endpoint. If the value is &lt; 0 (e.g., -1), then the connection
+waits until a close frame is received. If the WebSocket frame is received from the remote
+endpoint within the waiting period, the connection is terminated immediately.</p>
 </p>
                     </li>
                 </ul>
@@ -1112,8 +1240,8 @@ contentWrapper.addEventListener("scroll", event => {
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs while closing the webSocket connection</p>
 </li>
             </ul>
         </div>
@@ -1122,19 +1250,63 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="put" title="put">
-             <a class="url-link" href="#put">
+    <div class="main-method-title here" id="ready" title="ready">
+             <a class="url-link" href="#ready">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
+            <h2> ready </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>()</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.put()</code> function can be used to send HTTP PUT requests to HTTP endpoints.</p>
+    <p><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
+</p>
+     
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs while checking the connection state</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="init" title="init">
+             <a class="url-link" href="#init">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> init </h2>
+        
+    </div>
+    <p></p>
+     
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="setAttribute" title="setAttribute">
+             <a class="url-link" href="#setAttribute">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> setAttribute </h2>
+        
+    </div>
+    <p><p>Sets a connection-related attribute.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1143,11 +1315,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Resource path</p>
+                        <p><p>The key to identify the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1156,12 +1328,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
+                        value<span class="type">  <span class="builtin-type">any</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+                        <p><p>The value of the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1171,32 +1342,22 @@ contentWrapper.addEventListener("scroll", event => {
     
 
     
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
-</li>
-            </ul>
-        </div>
-        
-    
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="execute" title="execute">
-             <a class="url-link" href="#execute">
+    <div class="main-method-title here" id="getAttribute" title="getAttribute">
+             <a class="url-link" href="#getAttribute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> execute </h2>
+            <h2> getAttribute </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>(<span class="builtin-type">string</span> key)</p>
+            <b> returns </b><span class="builtin-type">any</span> 
         </span>
         
     </div>
-    <p><p>Invokes an HTTP call with the specified HTTP verb.</p>
+    <p><p>Gets connection-related attributes if any.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1205,38 +1366,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        httpVerb<span class="type">  <span class="builtin-type">string</span> </span>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>HTTP verb value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Resource path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+                        <p><p>The key to identify the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1249,8 +1383,8 @@ contentWrapper.addEventListener("scroll", event => {
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span></span>)</li>
+                <li><p>The attribute related to the given key or <code>nil</code></p>
 </li>
             </ul>
         </div>
@@ -1259,19 +1393,19 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="patch" title="patch">
-             <a class="url-link" href="#patch">
+    <div class="main-method-title here" id="removeAttribute" title="removeAttribute">
+             <a class="url-link" href="#removeAttribute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> patch </h2>
+            <h2> removeAttribute </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>(<span class="builtin-type">string</span> key)</p>
+            <b> returns </b><span class="builtin-type">any</span> 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.patch()</code> function can be used to send HTTP PATCH requests to HTTP endpoints.</p>
+    <p><p>Removes connection-related attributes if any.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1280,25 +1414,11 @@ contentWrapper.addEventListener("scroll", event => {
             <div class="params-listing">
                 <ul>
                     <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
+                        key<span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Resource path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+                        <p><p>The key to identify the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1311,8 +1431,8 @@ contentWrapper.addEventListener("scroll", event => {
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span></span>)</li>
+                <li><p>The attribute related to the given key or <code>nil</code></p>
 </li>
             </ul>
         </div>
@@ -1321,60 +1441,28 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="delete" title="delete">
-             <a class="url-link" href="#delete">
+    <div class="main-method-title here" id="getConnectionId" title="getConnectionId">
+             <a class="url-link" href="#getConnectionId">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> delete </h2>
+            <h2> getConnectionId </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.delete()</code> function can be used to send HTTP DELETE requests to HTTP endpoints.</p>
+    <p><p>Gives the connection ID associated with this connection.</p>
 </p>
      
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Resource path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default ())</span>
-                    </li>
-                    <li>
-                        <p><p>An optional HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
 
     
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>The unique ID associated with the connection</p>
 </li>
             </ul>
         </div>
@@ -1383,60 +1471,28 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="get" title="get">
-             <a class="url-link" href="#get">
+    <div class="main-method-title here" id="getNegotiatedSubProtocol" title="getNegotiatedSubProtocol">
+             <a class="url-link" href="#getNegotiatedSubProtocol">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2> getNegotiatedSubProtocol </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string?</span> 
         </span>
         
     </div>
-    <p><p>The <code>HttpClient.get()</code> function can be used to send HTTP GET requests to HTTP endpoints.</p>
+    <p><p>Gives the subprotocol if any that is negotiated with the client.</p>
 </p>
      
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Request path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default ())</span>
-                    </li>
-                    <li>
-                        <p><p>An optional HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
 
     
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
+                <li><p>Returns the subprotocol if any that is negotiated with the client or <code>nil</code></p>
 </li>
             </ul>
         </div>
@@ -1445,294 +1501,28 @@ contentWrapper.addEventListener("scroll", event => {
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="options" title="options">
-             <a class="url-link" href="#options">
+    <div class="main-method-title here" id="isSecure" title="isSecure">
+             <a class="url-link" href="#isSecure">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> options </h2>
+            <h2> isSecure </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
-        </span>
-        
-    </div>
-    <p><p>The <code>HttpClient.options()</code> function can be used to send HTTP OPTIONS requests to HTTP endpoints.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Request path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        <span class="default"> (default ())</span>
-                    </li>
-                    <li>
-                        <p><p>An optional HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="forward" title="forward">
-             <a class="url-link" href="#forward">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> forward </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
-        </span>
-        
-    </div>
-    <p><p>The <code>HttpClient.forward()</code> function can be used to invoke an HTTP call with inbound request's HTTP verb</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Request path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        request<span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>An HTTP inbound request message</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>The response for the request or an <code>ClientError</code> if failed to establish communication with the upstream server</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="submit" title="submit">
-             <a class="url-link" href="#submit">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> submit </h2>
-        
-        <span class="method-types">
-            <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
-            <b> returns </b><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
-        </span>
-        
-    </div>
-    <p><p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>HttpClient.submit()</code> function does not give out a <code>Response</code> as the result,
-rather it returns an <code>HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        httpVerb<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The HTTP verb value</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        path<span class="type">  <span class="builtin-type">string</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The resource path</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        message<span class="type">  <a href="../../http/types.html#RequestMessage">RequestMessage</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>An HTTP outbound request message or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>HttpFuture</code> that represents an asynchronous service invocation, or an <code>ClientError</code> if the submission fails</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="getResponse" title="getResponse">
-             <a class="url-link" href="#getResponse">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> getResponse </h2>
-        
-        <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
-        </span>
-        
-    </div>
-    <p><p>Retrieves the <code>Response</code> for a previously submitted request.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        httpFuture<span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The <code>HttpFuture</code> related to a previous asynchronous invocation</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP response message, or an <code>ClientError</code> if the invocation fails</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="hasPromise" title="hasPromise">
-             <a class="url-link" href="#hasPromise">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> hasPromise </h2>
-        
-        <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
+            <p>()</p>
             <b> returns </b><span class="builtin-type">boolean</span> 
         </span>
         
     </div>
-    <p><p>Checks whether a <code>PushPromise</code> exists for a previously submitted request.</p>
+    <p><p>Gives the secured status of the connection.</p>
 </p>
      
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        httpFuture<span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>A <code>boolean</code> that represents whether a <code>PushPromise</code> exists</p>
+                <li><p>Returns <code>true</code> if the connection is secure</p>
 </li>
             </ul>
         </div>
@@ -1741,46 +1531,28 @@ rather it returns an <code>HttpFuture</code> which can be used to do further int
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="getNextPromise" title="getNextPromise">
-             <a class="url-link" href="#getNextPromise">
+    <div class="main-method-title here" id="isOpen" title="isOpen">
+             <a class="url-link" href="#isOpen">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNextPromise </h2>
+            <h2> isOpen </h2>
         
         <span class="method-types">
-            <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
-            <b> returns </b><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
         </span>
         
     </div>
-    <p><p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
+    <p><p>Gives the open or closed status of the connection.</p>
 </p>
      
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        httpFuture<span class="type">  <a href="../../http/objects/HttpFuture.html">HttpFuture</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
 
     
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP Push Promise message, or an <code>ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>Returns <code>true</code> if the connection is open</p>
 </li>
             </ul>
         </div>
@@ -1789,46 +1561,28 @@ rather it returns an <code>HttpFuture</code> which can be used to do further int
 </div>
                     
                         <div class="method-content">
-    <div class="main-method-title here" id="getPromisedResponse" title="getPromisedResponse">
-             <a class="url-link" href="#getPromisedResponse">
+    <div class="main-method-title here" id="getHttpResponse" title="getHttpResponse">
+             <a class="url-link" href="#getHttpResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getPromisedResponse </h2>
+            <h2> getHttpResponse </h2>
         
         <span class="method-types">
-            <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
-            <b> returns </b><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a> 
+            <p>()</p>
+            <b> returns </b><a href="../../http/objects/Response.html">Response</a>? 
         </span>
         
     </div>
-    <p><p>Retrieves the promised server push <code>Response</code> message.</p>
+    <p><p>Gives any HTTP response of     the client handshake request if received.</p>
 </p>
      
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        promise<span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The related <code>PushPromise</code></p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
 
     
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>A promised HTTP <code>Response</code> message, or an <code>ClientError</code> if the invocation fails</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a>?</span>)</li>
+                <li><p>Returns the HTTP response received for the client handshake request</p>
 </li>
             </ul>
         </div>
@@ -1836,42 +1590,6 @@ rather it returns an <code>HttpFuture</code> which can be used to do further int
     
 </div>
                     
-                        <div class="method-content">
-    <div class="main-method-title here" id="rejectPromise" title="rejectPromise">
-             <a class="url-link" href="#rejectPromise">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> rejectPromise </h2>
-        
-    </div>
-    <p><p>Rejects a <code>PushPromise</code>. When a <code>PushPromise</code> is rejected, there is no chance of fetching a promised
-response using the rejected promise.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        promise<span class="type">  <a href="../../http/objects/PushPromise.html">PushPromise</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The Push Promise to be rejected</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-</div>
-                    
-                
-
                 
             </div>
         </div>

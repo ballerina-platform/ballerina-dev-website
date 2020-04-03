@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -160,7 +159,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -553,7 +552,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -867,7 +866,8 @@
             <ul>
                 <li> <b>authzHandler</b><span class="type">  <a href="../../http/objects/AuthzHandler.html">AuthzHandler</a></span> </li>
                 <li>
-                    
+                    <p><code>AuthzHandler</code> instance for handling authorization</p>
+
                 </li>
             </ul>
         </div>
@@ -876,7 +876,8 @@
             <ul>
                 <li> <b>scopes</b><span class="type">  <a href="../../http/types.html#Scopes">Scopes</a>?</span> </li>
                 <li>
-                    
+                    <p>An array of scopes or an array consisting of arrays of scopes</p>
+
                 </li>
             </ul>
         </div>
@@ -898,16 +899,6 @@
         </div>
         <div class="param-details"> <p>Filter function implementation which tries to authorize the request.</p>
  </div>
-    </div>
-</a>
-                            
-                                
-<a href="#filterResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        filterResponse 
-        </div>
-        <div class="param-details">  </div>
     </div>
 </a>
                             
@@ -937,7 +928,7 @@
                 
             </li>
             <li>
-                <p><p>Array of scopes</p>
+                <p><p>An array of scopes or an array consisting of arrays of scopes</p>
 </p>
             </li>
         </ul>
@@ -1034,7 +1025,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p><code>Request</code> instance</p>
+                        <p><p>An inbound HTTP request message</p>
 </p>
                     </li>
                 </ul>
@@ -1061,65 +1052,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>A flag to indicate if the request flow should be continued(true) or aborted(false), a code and a message</p>
+                <li><p>A flag to indicate if the request flow should be continued(true) or aborted(false)</p>
 </li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="filterResponse" title="filterResponse">
-             <a class="url-link" href="#filterResponse">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> filterResponse </h2>
-        
-        <span class="method-types">
-            <p>(<a href="../../http/objects/Response.html">Response</a> response, <a href="../../http/objects/FilterContext.html">FilterContext</a> context)</p>
-            <b> returns </b><span class="builtin-type">boolean</span> 
-        </span>
-        
-    </div>
-    <p></p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        response<span class="type">  <a href="../../http/objects/Response.html">Response</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        context<span class="type">  <a href="../../http/objects/FilterContext.html">FilterContext</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li></li>
             </ul>
         </div>
         

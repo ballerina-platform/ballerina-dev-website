@@ -28,3 +28,8 @@ body .content-wrapper .module-title a.functions,  body .content-wrapper .modules
 a.toc.item {
     top: 152px !important;
 }
+
+
+body .content-wrapper .main-wrapper {
+    margin-bottom: 20px !important;
+}

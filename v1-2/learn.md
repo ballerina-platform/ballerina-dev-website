@@ -9,6 +9,7 @@ redirect_from:
   - /v1-2/learn/tools-ides/
   - /learn/
   - /learn
+  - /v1-2/learn
 ---
 
 <h1>Let’s learn Ballerina!</h1>

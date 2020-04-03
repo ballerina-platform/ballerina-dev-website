@@ -2,6 +2,10 @@
 layout: ballerina-inner-page
 title: How to Document Ballerina Code
 permalink: /v1-2/learn/how-to-document-ballerina-code/
+redirect_from:
+  - /learn/how-to-document-ballerina-code/
+  - /learn/how-to-document-ballerina-code
+  - /v1-2/learn/how-to-document-ballerina-code
 
 ---
 

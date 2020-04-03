@@ -1,6 +1,11 @@
 ---
 layout: ballerina-inner-page
 title: FAQs
+permalink: /v1-2/learn/faqs/
+redirect_from:
+  - /learn/faqs/
+  - /learn/faqs
+  - /v1-2/learn/faqs
 ---
 
 # FAQs

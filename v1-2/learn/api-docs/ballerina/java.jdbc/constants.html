@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- <script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -58,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -333,7 +332,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -619,7 +618,9 @@
                             <ul>
                                 <li id="DATABASE_ERROR_REASON"> <b>DATABASE_ERROR_REASON</b><span class="type">  <span class="builtin-type">string</span></span> {ballerinax/java.jdbc}DatabaseError</li>
                                 <li>
-                                    
+                                    <p>Identifies the issues related to database accessibility, erroneous queries, constraint violations,
+database resource clean-up, and other similar scenarios.</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -628,7 +629,8 @@
                             <ul>
                                 <li id="APPLICATION_ERROR_REASON"> <b>APPLICATION_ERROR_REASON</b><span class="type">  <span class="builtin-type">string</span></span> {ballerinax/java.jdbc}ApplicationError</li>
                                 <li>
-                                    
+                                    <p>Identifies the errors originating from application-level causes.</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -637,7 +639,8 @@
                             <ul>
                                 <li id="TYPE_VARCHAR"> <b>TYPE_VARCHAR</b><span class="type">  <span class="builtin-type">string</span></span> VARCHAR</li>
                                 <li>
-                                    
+                                    <p>Small variable-length character string</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -646,7 +649,8 @@
                             <ul>
                                 <li id="TYPE_CHAR"> <b>TYPE_CHAR</b><span class="type">  <span class="builtin-type">string</span></span> CHAR</li>
                                 <li>
-                                    
+                                    <p>Small fixed-length character string</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -655,7 +659,8 @@
                             <ul>
                                 <li id="TYPE_LONGVARCHAR"> <b>TYPE_LONGVARCHAR</b><span class="type">  <span class="builtin-type">string</span></span> LONGVARCHAR</li>
                                 <li>
-                                    
+                                    <p>Large variable-length character string</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -664,7 +669,8 @@
                             <ul>
                                 <li id="TYPE_NCHAR"> <b>TYPE_NCHAR</b><span class="type">  <span class="builtin-type">string</span></span> NCHAR</li>
                                 <li>
-                                    
+                                    <p>Small fixed-length character string with Unicode support</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -673,7 +679,8 @@
                             <ul>
                                 <li id="TYPE_LONGNVARCHAR"> <b>TYPE_LONGNVARCHAR</b><span class="type">  <span class="builtin-type">string</span></span> LONGNVARCHAR</li>
                                 <li>
-                                    
+                                    <p>Large variable-length character string with Unicode support</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -682,7 +689,8 @@
                             <ul>
                                 <li id="TYPE_NVARCHAR"> <b>TYPE_NVARCHAR</b><span class="type">  <span class="builtin-type">string</span></span> NVARCHAR</li>
                                 <li>
-                                    
+                                    <p>Large variable-length character string with Unicode support</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -691,7 +699,8 @@
                             <ul>
                                 <li id="TYPE_BIT"> <b>TYPE_BIT</b><span class="type">  <span class="builtin-type">string</span></span> BIT</li>
                                 <li>
-                                    
+                                    <p>Single bit value, which can be zero, one, or nil</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -700,7 +709,8 @@
                             <ul>
                                 <li id="TYPE_BOOLEAN"> <b>TYPE_BOOLEAN</b><span class="type">  <span class="builtin-type">string</span></span> BOOLEAN</li>
                                 <li>
-                                    
+                                    <p>Boolean value being either True or false</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -709,7 +719,8 @@
                             <ul>
                                 <li id="TYPE_TINYINT"> <b>TYPE_TINYINT</b><span class="type">  <span class="builtin-type">string</span></span> TINYINT</li>
                                 <li>
-                                    
+                                    <p>8-bit integer value, which may be unsigned or signed</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -718,7 +729,8 @@
                             <ul>
                                 <li id="TYPE_SMALLINT"> <b>TYPE_SMALLINT</b><span class="type">  <span class="builtin-type">string</span></span> SMALLINT</li>
                                 <li>
-                                    
+                                    <p>16-bit signed integer value, which may be unsigned or signed</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -727,7 +739,8 @@
                             <ul>
                                 <li id="TYPE_INTEGER"> <b>TYPE_INTEGER</b><span class="type">  <span class="builtin-type">string</span></span> INTEGER</li>
                                 <li>
-                                    
+                                    <p>32-bit signed integer value, which may be unsigned or signed</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -736,7 +749,8 @@
                             <ul>
                                 <li id="TYPE_BIGINT"> <b>TYPE_BIGINT</b><span class="type">  <span class="builtin-type">string</span></span> BIGINT</li>
                                 <li>
-                                    
+                                    <p>64-bit signed integer value, which may be unsigned or signed</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -745,7 +759,8 @@
                             <ul>
                                 <li id="TYPE_NUMERIC"> <b>TYPE_NUMERIC</b><span class="type">  <span class="builtin-type">string</span></span> NUMERIC</li>
                                 <li>
-                                    
+                                    <p>Fixed-precision and scaled decimal values</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -754,7 +769,8 @@
                             <ul>
                                 <li id="TYPE_DECIMAL"> <b>TYPE_DECIMAL</b><span class="type">  <span class="builtin-type">string</span></span> DECIMAL</li>
                                 <li>
-                                    
+                                    <p>Fixed-precision and scaled decimal values</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -763,7 +779,8 @@
                             <ul>
                                 <li id="TYPE_REAL"> <b>TYPE_REAL</b><span class="type">  <span class="builtin-type">string</span></span> REAL</li>
                                 <li>
-                                    
+                                    <p>Single precision floating point number</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -772,7 +789,8 @@
                             <ul>
                                 <li id="TYPE_FLOAT"> <b>TYPE_FLOAT</b><span class="type">  <span class="builtin-type">string</span></span> FLOAT</li>
                                 <li>
-                                    
+                                    <p>Double precision floating point number</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -781,7 +799,8 @@
                             <ul>
                                 <li id="TYPE_DOUBLE"> <b>TYPE_DOUBLE</b><span class="type">  <span class="builtin-type">string</span></span> DOUBLE</li>
                                 <li>
-                                    
+                                    <p>Double precision floating point number</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -790,7 +809,8 @@
                             <ul>
                                 <li id="TYPE_BINARY"> <b>TYPE_BINARY</b><span class="type">  <span class="builtin-type">string</span></span> BINARY</li>
                                 <li>
-                                    
+                                    <p>Small fixed-length binary value</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -799,7 +819,8 @@
                             <ul>
                                 <li id="TYPE_BLOB"> <b>TYPE_BLOB</b><span class="type">  <span class="builtin-type">string</span></span> BLOB</li>
                                 <li>
-                                    
+                                    <p>Large Binary object</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -808,7 +829,8 @@
                             <ul>
                                 <li id="TYPE_LONGVARBINARY"> <b>TYPE_LONGVARBINARY</b><span class="type">  <span class="builtin-type">string</span></span> LONGVARBINARY</li>
                                 <li>
-                                    
+                                    <p>Large variable-length binary value</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -817,7 +839,8 @@
                             <ul>
                                 <li id="TYPE_VARBINARY"> <b>TYPE_VARBINARY</b><span class="type">  <span class="builtin-type">string</span></span> VARBINARY</li>
                                 <li>
-                                    
+                                    <p>Small variable-length binary value</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -826,7 +849,8 @@
                             <ul>
                                 <li id="TYPE_CLOB"> <b>TYPE_CLOB</b><span class="type">  <span class="builtin-type">string</span></span> CLOB</li>
                                 <li>
-                                    
+                                    <p>Large Character object</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -835,7 +859,8 @@
                             <ul>
                                 <li id="TYPE_NCLOB"> <b>TYPE_NCLOB</b><span class="type">  <span class="builtin-type">string</span></span> NCLOB</li>
                                 <li>
-                                    
+                                    <p>Large Character objects in a multibyte national character set</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -844,7 +869,8 @@
                             <ul>
                                 <li id="TYPE_DATE"> <b>TYPE_DATE</b><span class="type">  <span class="builtin-type">string</span></span> DATE</li>
                                 <li>
-                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -853,7 +879,8 @@
                             <ul>
                                 <li id="TYPE_TIME"> <b>TYPE_TIME</b><span class="type">  <span class="builtin-type">string</span></span> TIME</li>
                                 <li>
-                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -862,7 +889,8 @@
                             <ul>
                                 <li id="TYPE_DATETIME"> <b>TYPE_DATETIME</b><span class="type">  <span class="builtin-type">string</span></span> DATETIME</li>
                                 <li>
-                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -871,7 +899,8 @@
                             <ul>
                                 <li id="TYPE_TIMESTAMP"> <b>TYPE_TIMESTAMP</b><span class="type">  <span class="builtin-type">string</span></span> TIMESTAMP</li>
                                 <li>
-                                    
+                                    <p>Both DATE and TIME with an additional nanosecond field</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -880,7 +909,8 @@
                             <ul>
                                 <li id="TYPE_ARRAY"> <b>TYPE_ARRAY</b><span class="type">  <span class="builtin-type">string</span></span> ARRAY</li>
                                 <li>
-                                    
+                                    <p>Composite data value, which consists of zero or more elements of a specified data type</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -889,7 +919,8 @@
                             <ul>
                                 <li id="TYPE_STRUCT"> <b>TYPE_STRUCT</b><span class="type">  <span class="builtin-type">string</span></span> STRUCT</li>
                                 <li>
-                                    
+                                    <p>User-defined structured type, which consists of one or more attributes</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -898,7 +929,8 @@
                             <ul>
                                 <li id="TYPE_REFCURSOR"> <b>TYPE_REFCURSOR</b><span class="type">  <span class="builtin-type">string</span></span> REFCURSOR</li>
                                 <li>
-                                    
+                                    <p>Cursor value</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -907,7 +939,8 @@
                             <ul>
                                 <li id="DIRECTION_IN"> <b>DIRECTION_IN</b><span class="type">  <span class="builtin-type">string</span></span> IN</li>
                                 <li>
-                                    
+                                    <p><code>IN</code> parameters are used to send values to stored procedures</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -916,7 +949,8 @@
                             <ul>
                                 <li id="DIRECTION_OUT"> <b>DIRECTION_OUT</b><span class="type">  <span class="builtin-type">string</span></span> OUT</li>
                                 <li>
-                                    
+                                    <p><code>OUT</code> parameters are used to get values from stored procedures</p>
+
                                 </li>
                             </ul>
                         </div>
@@ -925,7 +959,8 @@
                             <ul>
                                 <li id="DIRECTION_INOUT"> <b>DIRECTION_INOUT</b><span class="type">  <span class="builtin-type">string</span></span> INOUT</li>
                                 <li>
-                                    
+                                    <p><code>INOUT</code> parameters are used to both send and get values to/from stored procedures</p>
+
                                 </li>
                             </ul>
                         </div>

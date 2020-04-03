@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- <script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -160,7 +159,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -553,7 +552,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -867,7 +866,8 @@
             <ul>
                 <li> <b>name</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    
+                    <p>Name of the <code>Cookie</code></p>
+
                 </li>
             </ul>
         </div>
@@ -876,7 +876,8 @@
             <ul>
                 <li> <b>value</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    
+                    <p>Value of the <code>Cookie</code></p>
+
                 </li>
             </ul>
         </div>
@@ -896,7 +897,8 @@
         <div class="param-name">
         isPersistent 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Checks the persistance of the cookie.</p>
+ </div>
     </div>
 </a>
                             
@@ -906,7 +908,8 @@
         <div class="param-name">
         isValid 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Checks the validity of the attributes of the cookie.</p>
+ </div>
     </div>
 </a>
                             
@@ -1115,7 +1118,8 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
+    <p><p>Checks the persistance of the cookie.</p>
+</p>
      
 
     
@@ -1123,7 +1127,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li></li>
+                <li><p>set to <code>false</code> if the cookie will be discarded at the end of the &quot;session&quot;. Else, returns <code>true</code>.</p>
+</li>
             </ul>
         </div>
         
@@ -1143,7 +1148,8 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
+    <p><p>Checks the validity of the attributes of the cookie.</p>
+</p>
      
 
     
@@ -1151,7 +1157,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../http/errors.html#InvalidCookieError">InvalidCookieError</a></span>)</li>
-                <li></li>
+                <li><p>set to <code>true</code> if the attributes of the cookie are in the correct format. Otherwise, returns an <code>error</code>.</p>
+</li>
             </ul>
         </div>
         

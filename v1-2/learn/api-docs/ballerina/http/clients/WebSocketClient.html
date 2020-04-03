@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -106,13 +105,17 @@
                             <a href="WebSocketClient.html">WebSocketClient</a> 
                         </li>
                     
+                        <li >
+                            <a href="WebSocketFailoverClient.html">WebSocketFailoverClient</a> 
+                        </li>
+                    
                 </ul>
             </div>
             <div class="ui divider"></div>
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -451,13 +454,17 @@
                                 <a href="WebSocketClient.html">WebSocketClient</a>
                             </li>
                         
+                            <li >
+                                <a href="WebSocketFailoverClient.html">WebSocketFailoverClient</a>
+                            </li>
+                        
                     </ul>
                 </div>
                 <div class="ui divider"></div>
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -770,7 +777,8 @@
             <ul>
                 <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    
+                    <p>URL of the target service</p>
+
                 </li>
             </ul>
         </div>
@@ -779,7 +787,8 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../http/records/WebSocketClientConfiguration.html">WebSocketClientConfiguration</a>?</span> ()</li>
                 <li>
-                    
+                    <p>The configurations to be used when initializing the client</p>
+
                 </li>
             </ul>
         </div>
@@ -795,42 +804,46 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="pushText"><a
                                             class="functions" href="#pushText">pushText</a></td>
-                                    <td class="module-desc"><p>Push text to the connection.</p>
+                                    <td class="module-desc"><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="pushBinary"><a
                                             class="functions" href="#pushBinary">pushBinary</a></td>
-                                    <td class="module-desc"><p>Push binary data to the connection.</p>
+                                    <td class="module-desc"><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ping"><a
                                             class="functions" href="#ping">ping</a></td>
-                                    <td class="module-desc"><p>Ping the connection.</p>
+                                    <td class="module-desc"><p>Pings the connection. If an error occurs while sending the ping frame to the server, that frame will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="pong"><a
                                             class="functions" href="#pong">pong</a></td>
-                                    <td class="module-desc"><p>Send pong message to the connection.</p>
+                                    <td class="module-desc"><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Close the connection.</p>
+                                    <td class="module-desc"><p>Closes the connection.</p>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ready"><a
                                             class="functions" href="#ready">ready</a></td>
-                                    <td class="module-desc"><p>Called when the client is ready to receive messages. Can be called only once.</p>
+                                    <td class="module-desc"><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
 </td>
                                 </tr>
                             
@@ -858,7 +871,7 @@
         <div class="param-name">
         setAttribute 
         </div>
-        <div class="param-details"> <p>Sets a connection related attribute.</p>
+        <div class="param-details"> <p>Sets a connection-related attribute.</p>
  </div>
     </div>
 </a>
@@ -869,7 +882,7 @@
         <div class="param-name">
         getAttribute 
         </div>
-        <div class="param-details"> <p>Gets connection related attribute if any.</p>
+        <div class="param-details"> <p>Gets connection-related attributes if any.</p>
  </div>
     </div>
 </a>
@@ -961,7 +974,8 @@
         </span>
         
     </div>
-    <p><p>Push text to the connection.</p>
+    <p><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.</p>
 </p>
      
         <div class="data-wrapper">
@@ -974,7 +988,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Data to be sent, if byte[] it is converted to a UTF-8 string for sending</p>
+                        <p><p>Data to be sent. If it is a byte[], it is converted to a UTF-8 string for sending</p>
 </p>
                     </li>
                 </ul>
@@ -1001,7 +1015,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
 </li>
             </ul>
         </div>
@@ -1018,11 +1032,12 @@
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="builtin-type">boolean</span> finalFrame)</p>
-            <b> returns </b><span class="builtin-type">error?</span> 
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
         </span>
         
     </div>
-    <p><p>Push binary data to the connection.</p>
+    <p><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1061,8 +1076,8 @@
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
 </li>
             </ul>
         </div>
@@ -1083,55 +1098,7 @@
         </span>
         
     </div>
-    <p><p>Ping the connection.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        data<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Binary data to be sent.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
-
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                    
-                        <div class="method-content">
-    <div class="main-method-title here" id="pong" title="pong">
-             <a class="url-link" href="#pong">
-                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
-            </a>
-            <h2> pong </h2>
-        
-        <span class="method-types">
-            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
-            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
-        </span>
-        
-    </div>
-    <p><p>Send pong message to the connection.</p>
+    <p><p>Pings the connection. If an error occurs while sending the ping frame to the server, that frame will be lost.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1158,7 +1125,56 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="pong" title="pong">
+             <a class="url-link" href="#pong">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> pong </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
+            <b> returns </b><a href="../../http/types.html#WebSocketError">WebSocketError</a>? 
+        </span>
+        
+    </div>
+    <p><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        data<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Binary data to be sent</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
+                <li><p>An <code>error</code> if an error occurs when sending</p>
 </li>
             </ul>
         </div>
@@ -1179,7 +1195,7 @@
         </span>
         
     </div>
-    <p><p>Close the connection.</p>
+    <p><p>Closes the connection.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1220,9 +1236,9 @@
                     <li>
                         <p><p>Time to wait for the close frame to be received from the remote endpoint before closing the
 connection. If the timeout exceeds, then the connection is terminated even though a close frame
-is not received from the remote endpoint. If the value &lt; 0 (e.g., -1), then the connection waits
-until a close frame is received. If WebSocket frame is received from the remote endpoint,
-within waiting period the connection is terminated immediately.</p>
+is not received from the remote endpoint. If the value is &lt; 0 (e.g., -1), then the connection
+waits until a close frame is received. If the WebSocket frame is received from the remote
+endpoint within the waiting period, the connection is terminated immediately.</p>
 </p>
                     </li>
                 </ul>
@@ -1236,7 +1252,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
+                <li><p>An <code>error</code> if an error occurs while closing the WebSocket connection</p>
 </li>
             </ul>
         </div>
@@ -1257,7 +1273,8 @@ within waiting period the connection is terminated immediately.</p>
         </span>
         
     </div>
-    <p><p>Called when the client is ready to receive messages. Can be called only once.</p>
+    <p><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
 </p>
      
 
@@ -1266,7 +1283,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#WebSocketError">WebSocketError</a>?</span>)</li>
-                <li><p><code>error</code> if an error occurs when sending</p>
+                <li><p>an <code>error</code> if an error occurs while checking the connection state</p>
 </li>
             </ul>
         </div>
@@ -1301,7 +1318,7 @@ within waiting period the connection is terminated immediately.</p>
             <h2> setAttribute </h2>
         
     </div>
-    <p><p>Sets a connection related attribute.</p>
+    <p><p>Sets a connection-related attribute.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1314,7 +1331,7 @@ within waiting period the connection is terminated immediately.</p>
                         
                     </li>
                     <li>
-                        <p><p>key that identifies the attribute</p>
+                        <p><p>The key, which identifies the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1327,7 +1344,7 @@ within waiting period the connection is terminated immediately.</p>
                         
                     </li>
                     <li>
-                        <p><p>value of the attribute</p>
+                        <p><p>The value of the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1352,7 +1369,7 @@ within waiting period the connection is terminated immediately.</p>
         </span>
         
     </div>
-    <p><p>Gets connection related attribute if any.</p>
+    <p><p>Gets connection-related attributes if any.</p>
 </p>
      
         <div class="data-wrapper">
@@ -1365,7 +1382,7 @@ within waiting period the connection is terminated immediately.</p>
                         
                     </li>
                     <li>
-                        <p><p>the key to identify the attribute.</p>
+                        <p><p>The key to identify the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1379,7 +1396,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span></span>)</li>
-                <li><p>the attribute related to the given key or <code>nil</code></p>
+                <li><p>The attribute related to the given key or <code>nil</code></p>
 </li>
             </ul>
         </div>
@@ -1413,7 +1430,7 @@ within waiting period the connection is terminated immediately.</p>
                         
                     </li>
                     <li>
-                        <p><p>the key to identify the attribute.</p>
+                        <p><p>The key to identify the attribute</p>
 </p>
                     </li>
                 </ul>
@@ -1427,7 +1444,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span></span>)</li>
-                <li><p>the attribute related to the given key or <code>nil</code></p>
+                <li><p>The attribute related to the given key or <code>nil</code></p>
 </li>
             </ul>
         </div>
@@ -1457,7 +1474,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>the unique id associated with the connection</p>
+                <li><p>The unique ID associated with the connection</p>
 </li>
             </ul>
         </div>
@@ -1517,7 +1534,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the connection is secure.</p>
+                <li><p><code>true</code> if the connection is secure</p>
 </li>
             </ul>
         </div>
@@ -1577,7 +1594,7 @@ within waiting period the connection is terminated immediately.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a>?</span>)</li>
-                <li><p>the HTTP response received for the client handshake request</p>
+                <li><p>The HTTP response received from the client handshake request</p>
 </li>
             </ul>
         </div>

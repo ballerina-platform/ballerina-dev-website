@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -80,7 +79,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -393,7 +392,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1005,8 +1004,8 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>The first header value for the specified header name. An exception is thrown if no header is found.
-Ideally <code>Notification.hasHeader()</code> needs to be used to check the existence of header initially.</p>
+                <li><p>The first header value for the specified header name. Panic if no header is found. Ideally, the
+<code>Notification.hasHeader()</code> needs to be used to check the existence of a header initially.</p>
 </li>
             </ul>
         </div>
@@ -1054,8 +1053,8 @@ Ideally <code>Notification.hasHeader()</code> needs to be used to check the exis
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>The header values the specified header key maps to. An exception is thrown if no header is found.
-Ideally <code>Notification.hasHeader()</code> needs to be used to check the existence of header initially.</p>
+                <li><p>The header values the specified header key maps to. Panic if no header is found. Ideally, the
+<code>Notification.hasHeader()</code> needs to be used to check the existence of a header initially.</p>
 </li>
             </ul>
         </div>

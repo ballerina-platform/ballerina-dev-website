@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- <script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -76,7 +75,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -373,7 +372,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1937,7 +1936,8 @@ by passing the content type as an optional parameter.</p>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1952,8 +1952,8 @@ by passing the content type as an optional parameter.</p>
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
                 <li><p>Header value associated with the given header name as a <code>string</code>. If multiple header values are
-present, then the first value is returned. An exception is thrown if no header is found. Use
-<code>Entity.hasHeader()</code> beforehand to check the existence of header.</p>
+present, then the first value is returned. Panic if no header is found. Use the <code>Entity.hasHeader()</code>
+beforehand to check the existence of a header.</p>
 </li>
             </ul>
         </div>
@@ -2000,7 +2000,8 @@ present, then the first value is returned. An exception is thrown if no header i
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2014,8 +2015,8 @@ present, then the first value is returned. An exception is thrown if no header i
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>All the header values associated with the given header name as a <code>string[]</code>. An exception is thrown
-if no header is found. Use <code>Entity.hasHeader()</code> beforehand to check the existence of header.</p>
+                <li><p>All the header values associated with the given header name as a <code>string[]</code>. Panic if no header is
+found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence of a header.</p>
 </li>
             </ul>
         </div>
@@ -2049,7 +2050,8 @@ if no header is found. Use <code>Entity.hasHeader()</code> beforehand to check t
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2118,7 +2120,8 @@ if no header is found. Use <code>Entity.hasHeader()</code> beforehand to check t
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2178,7 +2181,8 @@ with the given header value.</p>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2224,7 +2228,8 @@ with the given header value.</p>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2257,7 +2262,8 @@ with the given header value.</p>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -2308,7 +2314,8 @@ with the given header value.</p>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the body of the <code>Entity</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>

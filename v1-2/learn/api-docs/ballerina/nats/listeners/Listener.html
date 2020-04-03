@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -72,7 +71,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -373,7 +372,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -702,7 +701,8 @@
         <div class="param-name">
         __detach 
         </div>
-        <div class="param-details">  </div>
+        <div class="param-details"> <p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
+ </div>
     </div>
 </a>
                         
@@ -779,7 +779,8 @@
         </span>
         
     </div>
-    <p></p>
+    <p><p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
+</p>
      
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
@@ -791,7 +792,8 @@
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -804,7 +806,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>Nil or error upon failure to detach the service</p>
+</li>
             </ul>
         </div>
         

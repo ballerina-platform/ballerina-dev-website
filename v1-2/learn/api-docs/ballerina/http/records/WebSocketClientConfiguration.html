@@ -16,7 +16,6 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/api-doc-template.js"></script>
 <script type="text/javascript" src="/js/ballerina-common.js"></script>
 <link rel="stylesheet" href="/css/ballerina-io.css">
 <link rel="stylesheet" href="/css/ballerina-io-docs.css">
@@ -239,6 +238,10 @@
                         </li>
                     
                         <li >
+                            <a href="WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a>
+                        </li>
+                    
+                        <li >
                             <a href="WebSocketRetryConfig.html">WebSocketRetryConfig</a>
                         </li>
                     
@@ -252,7 +255,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -724,6 +727,10 @@
                             </li>
                         
                             <li >
+                                <a href="WebSocketFailoverClientConfiguration.html">WebSocketFailoverClientConfiguration</a>
+                            </li>
+                        
+                            <li >
                                 <a href="WebSocketRetryConfig.html">WebSocketRetryConfig</a>
                             </li>
                         
@@ -737,7 +744,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1035,7 +1042,7 @@
                 
                  : <span class="records">WebSocketClientConfiguration</span>
             </h1>
-            <p>Configuration for the WebSocket client endpoint.
+            <p>Configurations for the WebSocket client endpoint.
 </p>
             <div class="constants">
                 
@@ -1049,8 +1056,8 @@
                 <span class="default"> (default ())</span>
             </li>
             <li>
-                <p><p>The callback service for the client. Resources in this service gets called on receipt of messages
-from the server.</p>
+                <p><p>The callback service of the client. Resources in this service gets called on the
+receipt of messages from the server</p>
 </p>
             </li>
         </ul>
@@ -1062,7 +1069,7 @@ from the server.</p>
                 <span class="default"> (default [])</span>
             </li>
             <li>
-                <p><p>Negotiable sub protocols for the client</p>
+                <p><p>Negotiable sub protocols of the client</p>
 </p>
             </li>
         </ul>
@@ -1074,7 +1081,7 @@ from the server.</p>
                 <span class="default"> (default  {})</span>
             </li>
             <li>
-                <p><p>Custom headers which should be sent to the server</p>
+                <p><p>Custom headers, which should be sent to the server</p>
 </p>
             </li>
         </ul>
@@ -1086,8 +1093,8 @@ from the server.</p>
                 <span class="default"> (default -1)</span>
             </li>
             <li>
-                <p><p>Idle timeout of the client. Upon timeout, <code>onIdleTimeout</code> resource (if defined) in the client
-service will be triggered.</p>
+                <p><p>Idle timeout of the client. Upon timeout, the <code>onIdleTimeout</code> resource (if defined)
+of the client service will be triggered</p>
 </p>
             </li>
         </ul>
@@ -1099,9 +1106,9 @@ service will be triggered.</p>
                 <span class="default"> (default true)</span>
             </li>
             <li>
-                <p><p><code>true</code> if the client is ready to receive messages as soon as the connection is established.
-This is true by default. If changed to false the function ready() of the
-<code>WebSocketClient</code>needs to be called once to start receiving messages.</p>
+                <p><p>Set to <code>true</code> if the client is ready to receive messages as soon as the connection is established.
+This is set to <code>true</code> by default. If changed to <code>false</code>, the ready() function of the
+<code>WebSocketClient</code> needs to be called once to start receiving messages</p>
 </p>
             </li>
         </ul>
@@ -1113,7 +1120,7 @@ This is true by default. If changed to false the function ready() of the
                 <span class="default"> (default ())</span>
             </li>
             <li>
-                <p><p>SSL/TLS related options</p>
+                <p><p>SSL/TLS-related options</p>
 </p>
             </li>
         </ul>
@@ -1125,7 +1132,7 @@ This is true by default. If changed to false the function ready() of the
                 <span class="default"> (default 0)</span>
             </li>
             <li>
-                <p><p>The maximum payload size of a WebSocket frame in bytes.
+                <p><p>The maximum payload size of a WebSocket frame in bytes
 If this is not set, is negative, or is zero, the default frame size of 65536 will be used.</p>
 </p>
             </li>
@@ -1138,7 +1145,7 @@ If this is not set, is negative, or is zero, the default frame size of 65536 wil
                 <span class="default"> (default true)</span>
             </li>
             <li>
-                <p><p>Enable support for compression in the WebSocket.</p>
+                <p><p>Enable support for compression in the WebSocket</p>
 </p>
             </li>
         </ul>
@@ -1164,7 +1171,7 @@ an error.If the value &lt; 0, then the value sets to the default value(300).</p>
                 
             </li>
             <li>
-                <p><p>Retry related configurations.</p>
+                <p><p>Retry related configurations</p>
 </p>
             </li>
         </ul>

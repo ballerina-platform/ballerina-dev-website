@@ -100,7 +100,7 @@ redirect_from:
                           <h5>[Talk] Code to Cloud</h5>
                            <b>Lakmal Warusawithana,</b> Senior Director of Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/devops-pro-europe-2020-from-code-to-cloud" target="_blank">View Slides</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=5IXPMlAUqrU&list=PLqYhGsQ9iSEpaZPFQwT4AJNXvp0id4NSo&index=26&t=0s" target="_blank">View Video</a></td> 
                   </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 25, 2020</span>
@@ -110,7 +110,7 @@ redirect_from:
                           <h5>[Talk] Ballerina: The Cloud-Native and DevOps Friendly Programming Language</h5>
                            <b>Anjana Fernando,</b> Director of Developer Relations, WSO2
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/devops-pro-europe-2020-the-cloudnative-and-devops-friendly-programming-language" target="_blank">View Slides</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.youtube.com/watch?v=RezJDgTaZSg&list=PLqYhGsQ9iSEpaZPFQwT4AJNXvp0id4NSo&index=12&t=0s" target="_blank">View Video</a></td> 
                   </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 24, 2020</span>

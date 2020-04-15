@@ -38,12 +38,10 @@ permalink: /why/sequence-diagrams-for-programming/
                            <div class="section">
                               <h2 id="sequence-diagrams-in-ballerina">Sequence Diagrams in Ballerina</h2>
                               <p>In Ballerina, there is a bidirectional mapping between the textual representation of code in Ballerina syntax and the visual representation as a sequence diagram.</p>
-                              <p>In Ballerina, there is a bidirectional mapping between the textual representation of code in Ballerina syntax and the visual representation as a sequence diagram.</p>
                               <p><img src="/img/why-pages/sequence-diagrams-for-programming-1.png" alt="Sequence Diagrams for Programming"></p>
                               <p>In Ballerina services, the entry point is the service resource function. The actor who invokes the service resource is shown as the “caller”. The “Default” participant is the resource function itself, showing the operations in its lifeline. From the resource function, further function calls are shown in its lifeline and their internal operations are expanded and merged to the same sequence diagram to show their operations as well.</p>
                               <h3 id="get-started">Get Started</h3>
-                              <p>The Ballerina IDE plugin (for example, the <a href="https://ballerina.io/learn/vscode-plugin/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code.</p>
-                              <p>To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.</p>
+                              <p>The Ballerina IDE plugin (for example, the <a href="https://ballerina.io/learn/vscode-plugin/">VSCode plugin</a>) can generate a sequence diagram dynamically from the source code. To start generating a sequence diagram from your Ballerina code, <a href="https://ballerina.io/v1-2/learn/vscode-plugin/graphical-editor">download the VSCode plugin and launch the graphical editor</a>.</p>
                            </div>
                         </div>
                      </div>
@@ -102,7 +100,7 @@ public function execute(http:Client lkSvc, http:Client rpSvc) {
 </code></pre>
                               <p>The following diagram shows how the HTTP resource definition is visualized, and how its interactions in the resource are shown.</p>
                               <p><img src="/img/why-pages/sequence-diagrams-for-programming-4.png" alt="Ballerina sequence diagram of HTTP resource definition" width="700"></p>
-                              <p>The result here represents the response retrieved back from the caller, where for example, if there was an error communicated back to the caller, we can perform further actions in our resource method rather than ignoring it. This pattern encourages a more robust approach to handling errors.</p>
+                              <p>The <code class="highlighter-rouge cBasicCode">result</code> here represents the response retrieved back from the caller, where for example, if there was an error communicated back to the caller, we can perform further actions in our resource method rather than ignoring it. This pattern encourages a more robust approach to handling errors.</p>
                            </div>
                         </div>
                      </div>

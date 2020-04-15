@@ -216,7 +216,7 @@ public function main() {
                         <div role="main">
                            <div class="section">
                               <h2 id="services">Resiliency</h2>
-                              <p>The network is unreliable. That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.</p>
+                              <p><i>The network is unreliable</i>. That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>Ballerina helps developers write resilient, robust programs with out-of-the-box support for techniques such as:</p>
                               <ul>

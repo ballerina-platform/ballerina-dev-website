@@ -154,7 +154,11 @@ public function execute(http:Client lkSvc, http:Client rpSvc) {
                               <p>This concurrency execution is visualized in the generated sequence diagram below:</p>
                               <p><img src="/img/why-pages/sequence-diagrams-for-programming-5.png" alt="Ballerina sequence diagram visualizing concurrency" width="800"></p>
                               <p>The workers have become participants in the sequence diagram alongside the HTTP clients. The workers’ activations occur concurrently and communication between them is done using message passing — Ballerina’s send (<code class="highlighter-rouge cBasicCode">-&gt;</code>) and receive (<code class="highlighter-rouge cBasicCode">&lt;-</code>) actions. The compiler also explicitly verifies that the send and receive actions are in a consistent state in order to avoid any deadlock scenarios in the runtime.</p>
-                           </div>
+                                <p>Ballerina has many out-of-the-box SaaS connectors, which you can find in <a href="https://central.ballerina.io/">Ballerina Central</a>.</p>
+                           <div class="cQUOTE">
+                              <p>"With Ballerina] you can get sequence diagrams automatically. When things start to get complicated and you need to understand and socialize with the rest of your team what it is that you're building, these diagrams become very helpful,"</p>
+                              <p class="cName">Christian Posta, field CTO, solo.io</p>
+</div>
                         </div>
                      </div>
                   </div>

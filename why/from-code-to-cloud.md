@@ -64,7 +64,7 @@ http:Request request) {
 }
 </code></pre>
                               <p>Adding the <code class="highlighter-rouge cBasicCode">@docker:Config {}</code> annotation to a service generates the Dockerfile and a Docker image and adding the <code class="highlighter-rouge cBasicCode">@docker:Expose {}</code> annotation to the <code class="highlighter-rouge cBasicCode">listener</code> object exposes the endpoint port by allowing incoming traffic to the container.</p>
-                              <p><a href="https://ballerina.io/v1-2/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) &gt;</a></p>
+                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/v1-2/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) </a></p>
                            </div>
                         </div>
                      </div>

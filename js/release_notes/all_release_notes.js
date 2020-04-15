@@ -49,5 +49,5 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_download_url + "/" + version + "/" + releaseNoteFilename;
+    return base_releasenote_url + "/" + version + "/" + releaseNoteFilename;
 }

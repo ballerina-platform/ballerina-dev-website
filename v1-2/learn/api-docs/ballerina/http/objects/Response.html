@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -553,7 +553,7 @@
                 
 
     
-        <div class="version">v1.2.0</div>
+        <div class="version">v1.2.1</div>
     
 
 
@@ -1494,7 +1494,8 @@ these values is returned.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1508,8 +1509,8 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>The first header value for the specified header name. An exception is thrown if no header is found. Use
-<code>Response.hasHeader()</code> beforehand to check the existence of header.</p>
+                <li><p>The first header value for the specified header name. Panic if the header is not found. Use the
+<code>Response.hasHeader()</code> beforehand to check the existence of a header.</p>
 </li>
             </ul>
         </div>
@@ -1564,7 +1565,8 @@ these values is returned.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1615,7 +1617,8 @@ these values is returned.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1629,8 +1632,8 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>The header values the specified header key maps to. An exception is thrown if no header is found. Use
-<code>Response.hasHeader()</code> beforehand to check the existence of header.</p>
+                <li><p>The header values the specified header key maps to. Panic if the header is not found. Use the
+<code>Response.hasHeader()</code> beforehand to check the existence of a header.</p>
 </li>
             </ul>
         </div>
@@ -1686,7 +1689,8 @@ existing header value is replaced with the specified header value.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1732,7 +1736,8 @@ existing header value is replaced with the specified header value.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1765,7 +1770,8 @@ existing header value is replaced with the specified header value.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>
@@ -1803,7 +1809,8 @@ existing header value is replaced with the specified header value.</p>
                         <span class="default"> (default mime:LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Represents the position of the header as an optional parameter</p>
+                        <p><p>Represents the position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+the entity-body of the <code>Response</code> must be accessed initially.</p>
 </p>
                     </li>
                 </ul>

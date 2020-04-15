@@ -151,7 +151,7 @@ http:Request request) {
 listener http:Listener helloWorldEP = new(9090);
 
 </code></pre>
-                              <p><a class="cBallerinaLearnButtons" href="https://github.com/ballerinax/kubernetes/blob/master/samples/sample16">Istio Gateway and Virtual Service Generation &gt;</a></p>
+                              <p><a class="cBallerinaLearnButtons" href="https://github.com/ballerinax/kubernetes/blob/master/samples/sample16">Istio Gateway and Virtual Service Generation </a></p>
                            </div>
                         </div>
                      </div>
@@ -197,7 +197,7 @@ http:Request request) {
   }
 }
 </code></pre>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/v1-2/learn/by-example/knative-deployment.html">Knative Deployment BBE &gt;</a></p>
+                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/v1-2/learn/by-example/knative-deployment.html">Knative Deployment BBE </a></p>
                            </div>
                         </div>
                      </div>
@@ -220,7 +220,7 @@ http:Request request) {
                            <div class="section">
                               <h2 id="async-network-protocol">From Code to AWS Lambda</h2>
                               <p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@awslambda:Function</code>, which should have the function signature <code class="highlighter-rouge cBasicCode">function (awslambda:Context, json) returns json|error</code>.</p>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/v1-2/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE &gt;</a></p>
+                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/v1-2/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE </a></p>
                            </div>
                         </div>
                      </div>

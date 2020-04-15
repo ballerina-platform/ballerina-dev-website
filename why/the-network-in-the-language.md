@@ -115,6 +115,7 @@ public function main() {
    }
 }
                               </code></pre>
+                              <p>The above “get” operation is seemingly a blocking operation for the developer, but internally it does an asynchronous execution using non-blocking I/O, where the current execution thread is released to the operating system to be used by others. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives the developer a much more convenient programming model than handling non-blocking I/O manually while providing maximum performance efficiency. </p>
                            </div>
                         </div>
                      </div>
@@ -215,7 +216,7 @@ public function main() {
                         <div role="main">
                            <div class="section">
                               <h2 id="services">Resiliency</h2>
-                              <p>That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.</p>
+                              <p><i>The network is unreliable</i>. That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>Ballerina helps developers write resilient, robust programs with out-of-the-box support for techniques such as:</p>
                               <ul>

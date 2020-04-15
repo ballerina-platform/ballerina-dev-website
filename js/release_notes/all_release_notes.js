@@ -1,3 +1,5 @@
+---
+---
 $(document).ready(function() {
     $("#iGitEdit").hide();
     Handlebars.registerHelper('releasenotesdiv', function(version) {
@@ -6,12 +8,14 @@ $(document).ready(function() {
     Handlebars.registerHelper('formatdate', function(date) {
         return formatDate(date);
     });
-    $.getJSON(release_notes_versions_json, function(data) {
-	    data.sort(function(a, b) {
-	       return new Date(b["release-date"]) - new Date(a["release-date"]);
-            });
-        updateReleaseTable(data);
+
+    // Get it from Liquid variables. To do so I have added a front-matter at the top
+    // of this file.
+    var data = {{ site.data.release_notes_versions | jsonify }};
+    data.sort(function(a, b) {
+        return new Date(b["release-date"]) - new Date(a["release-date"]);
     });
+    updateReleaseTable(data);
 });
 
 function updateReleaseTable(allData) {

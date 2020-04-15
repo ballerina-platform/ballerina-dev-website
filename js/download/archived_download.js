@@ -1,3 +1,5 @@
+---
+---
 $(document).ready(function() {
     Handlebars.registerHelper('basedownloadurl', function(version, artifact, extension) {
         if (isIdeaPlugin(artifact)) {
@@ -45,25 +47,24 @@ $(document).ready(function() {
     Handlebars.registerHelper('formatdate', function(date) {
         return formatDate(date);
     });
-    $.getJSON(latest_versions_json, function(latest_pack) {
-        var latestVersion = latest_pack['version'];
-        $.getJSON(archived_versions_json, function(data) {
 
-            // remove latest version
-            var ltestIndex = data.findIndex(function(element) {
-                return element["version"].replace(/ /g, "-").toLowerCase() == latestVersion.replace(/ /g, "-").toLowerCase();
-            });
-
-            if (ltestIndex !== -1) {
-                data.splice(ltestIndex, 1);
-            }
-
-	    data.sort(function(a, b) {
-	       return new Date(b["release-date"]) - new Date(a["release-date"]);
-            });
-            updateReleasearchiveTable(data);
-        });
+    // Get it from Liquid variables. To do so I have added a front-matter at the top
+    // of this file.
+    var latestVersion = "{{ site.data.metadata.version }}";
+    var data = {{ site.data.release_notes_versions | jsonify }};
+    // remove latest version
+    var ltestIndex = data.findIndex(function(element) {
+        return element["version"].replace(/ /g, "-").toLowerCase() == latestVersion.replace(/ /g, "-").toLowerCase();
     });
+
+    if (ltestIndex !== -1) {
+        data.splice(ltestIndex, 1);
+    }
+
+    data.sort(function(a, b) {
+        return new Date(b["release-date"]) - new Date(a["release-date"]);
+    });
+    updateReleasearchiveTable(data);
 });
 
 function updateReleasearchiveTable(allData) {
@@ -85,7 +86,7 @@ function updateReleasearchiveTable(allData) {
                 allArtifact = allArtifact.concat(item["other-artefacts"]);
             }
 
-            // temporary adding idea plugin. THis needs to be retrieve from archived_versions_json
+            // temporary adding idea plugin. This needs to be retrieve from release_notes_versions json
             allArtifact.push("ballerina-intellij-idea-plugin");
 
             var halfWayThough = Math.ceil(allArtifact.length / 2);

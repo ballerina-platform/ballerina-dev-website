@@ -6,7 +6,7 @@ $(document).ready(function() {
     });
 
     // Getting latest release information
-    $.getJSON(latest_versions_json, function(latest_pack) {
+    // $.getJSON(latest_versions_json, function(latest_pack) {
 
       /*
 
@@ -107,7 +107,7 @@ $(document).ready(function() {
         }
         $("#insPackages" + row_id).append(release_content);
         */
-    });
+    // });
 
     //Nightly Packages
     var nightly_pack = "";

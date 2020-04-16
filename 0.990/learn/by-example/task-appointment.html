@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Task Appointment" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Task Appointment</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">task</span><span class="p">;</span><span class="kt">int</span> <span class="nx">app1Count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="err">?</span> <span class="nx">appointment1</span> <span class="p">=</span> <span class="p">();</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">worker</span> <span class="nx">w1</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------------- Scheduling Appointments -------------&quot;</span><span class="p">);</span>        <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment1Cleanup</span><span class="p">;</span>
+        <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">))</span> <span class="nx">onErrorFunction</span> <span class="p">=</span> <span class="nx">cleanupError</span><span class="p">;</span>
+        <span class="nx">appointment1</span> <span class="p">=</span> <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                            <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                            <span class="s">&quot;0/20 * * * * ?&quot;</span><span class="p">);</span>        <span class="nx">appointment1</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment2Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment2</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;15 0/2 * * * ?&quot;</span><span class="p">);</span>        <span class="nx">appointment2</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment3Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment3</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;0 0/2 8-17 * * ?&quot;</span><span class="p">);</span>        <span class="nx">appointment3</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment4Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment4</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;0 0/3 17-23 * * ?&quot;</span><span class="p">);</span>        <span class="nx">appointment4</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment5Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment5</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;0 0 10am 1,15 * ?&quot;</span><span class="p">);</span>        <span class="nx">appointment5</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment6Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment6</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;0,30 * * ? * MON-FRI&quot;</span><span class="p">);</span>        <span class="nx">appointment6</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>
+        <span class="nx">onTriggerFunction</span> <span class="p">=</span> <span class="nx">appointment7Cleanup</span><span class="p">;</span>
+        <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span> <span class="nx">appointment7</span> <span class="p">=</span>
+                  <span class="nx">new</span> <span class="nx">task</span><span class="p">:</span><span class="nx">Appointment</span><span class="p">(</span><span class="nx">onTriggerFunction</span><span class="p">,</span>
+                                       <span class="nx">onErrorFunction</span><span class="p">,</span>
+                                       <span class="s">&quot;0,30 * * ? * SAT,SUN&quot;</span><span class="p">);</span>        <span class="nx">appointment7</span><span class="p">.</span><span class="nx">schedule</span><span class="p">();</span>        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">60000</span><span class="p">);</span> <span class="c1">// Sleep thread to avoid exiting</span>
+    <span class="p">}</span>
+    <span class="nx">wait</span> <span class="nx">w1</span><span class="p">;</span> <span class="c1">// Wait for the worker to finish.</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment1Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#1 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="nx">app1Count</span> <span class="p">=</span> <span class="nx">app1Count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">app1Count</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stopping Appointment#1 cleanup task since it</span>
+<span class="s">                       has run 5 times&quot;</span><span class="p">);</span>
+        <span class="nx">appointment1</span><span class="p">.</span><span class="nx">cancel</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment2Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#2 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment3Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#3 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment4Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#4 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment5Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#5 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment6Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#6 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">appointment7Cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Appointment#7 cleanup running...&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">cleanup</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">cleanup</span><span class="p">()</span> <span class="nx">returns</span> <span class="p">(</span><span class="nx">error</span><span class="err">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Cleaning up&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">math</span><span class="p">:</span><span class="nx">randomInRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Cleanup error&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">cleanupError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;[ERROR] cleanup failed&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Task Appointment</h2>
+                            <p><p>An appointment is a task that is executed on clock time. Cron syntax is used to define the time, and in
+ case of recurring appointments, the frequency of the appointment.
+ A trigger function is called when an appointment is due. If a failure occurs during
+ the execution of the trigger function, it returns an error, which is passed to the &lsquo;onError&rsquo; function.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="task-timer.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Task Timer</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="taint-checking.html">
+                                        <span>NEXT ></span>
+                                        <p>Taint Checking</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="task-appointment">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Task Appointment</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/task-appointment/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/math;
+import ballerina/runtime;
+import ballerina/task;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>int app1Count = 0;
+task:Appointment? appointment1 = ();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+    worker w1 {
+        io:println(&quot;------------- Scheduling Appointments -------------&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        (function() returns error?) onTriggerFunction = appointment1Cleanup;
+        (function(error)) onErrorFunction = cleanupError;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment1 = new task:Appointment(onTriggerFunction,
+                                            onErrorFunction,
+                                            &quot;0/20 * * * * ?&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 1 runs every 20 seconds.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment1.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment2Cleanup;
+        task:Appointment appointment2 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;15 0/2 * * * ?&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 2 runs every other minute (at 15 seconds past the minute).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment2.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment3Cleanup;
+        task:Appointment appointment3 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;0 0/2 8-17 * * ?&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 3 runs every other minute but only between 8am and 5pm.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment3.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment4Cleanup;
+        task:Appointment appointment4 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;0 0/3 17-23 * * ?&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 4 runs every three minutes but only between 5pm and 11pm.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment4.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment5Cleanup;
+        task:Appointment appointment5 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;0 0 10am 1,15 * ?&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 5 runs at 10am on the 1st and the 15th days of the month.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment5.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment6Cleanup;
+        task:Appointment appointment6 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;0,30 * * ? * MON-FRI&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 6 runs every 30 seconds but only on weekdays
+ (i.e., Monday through Friday).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment6.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        onTriggerFunction = appointment7Cleanup;
+        task:Appointment appointment7 =
+                  new task:Appointment(onTriggerFunction,
+                                       onErrorFunction,
+                                       &quot;0,30 * * ? * SAT,SUN&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>job 7 runs every 30 seconds but only on weekends
+ (i.e., Saturday and Sunday).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment7.schedule();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        runtime:sleep(60000); // Sleep thread to avoid exiting
+    }
+    wait w1; // Wait for the worker to finish.
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment1Cleanup() returns (error?) {
+    io:println(&quot;Appointment#1 cleanup running...&quot;);
+    app1Count = app1Count + 1;
+    if (app1Count == 5) {
+        io:println(&quot;Stopping Appointment#1 cleanup task since it
+                       has run 5 times&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        appointment1.cancel();
+    }
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is how you cancel an appointment.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment2Cleanup() returns (error?) {
+    io:println(&quot;Appointment#2 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment3Cleanup() returns (error?) {
+    io:println(&quot;Appointment#3 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment4Cleanup() returns (error?) {
+    io:println(&quot;Appointment#4 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment5Cleanup() returns (error?) {
+    io:println(&quot;Appointment#5 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment6Cleanup() returns (error?) {
+    io:println(&quot;Appointment#6 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function appointment7Cleanup() returns (error?) {
+    io:println(&quot;Appointment#7 cleanup running...&quot;);
+    return cleanup();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function cleanup() returns (error?) {
+    io:println(&quot;Cleaning up&quot;);
+    if (math:randomInRange(0, 10) == 5) {
+        error e = error(&quot;Cleanup error&quot;);
+        return e;
+    }
+    return ();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function cleanupError(error e) {
+    io:print(&quot;[ERROR] cleanup failed&quot;);
+    io:println(e);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and issue the `ballerina run` command.
+$ ballerina run task_appointment.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Appointment#6 cleanup running...
+Cleaning up
+Appointment#1 cleanup running...
+Cleaning up
+[ERROR] cleanup failedCleanup error {}
+Appointment#4 cleanup running...
+Cleaning up
+Appointment#6 cleanup running...
+Cleaning up
+Appointment#1 cleanup running...
+Cleaning up
+...
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

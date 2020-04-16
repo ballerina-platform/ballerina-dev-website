@@ -1,0 +1,529 @@
+---
+layout: ballerina-example-page
+title: Send JMS Message to HTTP Endpoint
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /v0-991/learn/by-example/send-jms-message-to-http-endpoint
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jms</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="nx">listener</span> <span class="nx">jms</span><span class="p">:</span><span class="nx">QueueReceiver</span> <span class="nx">consumerEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+        <span class="nx">initialContextFactory</span><span class="p">:</span> <span class="s">&quot;bmbInitialContextFactory&quot;</span><span class="p">,</span>
+        <span class="nx">providerUrl</span><span class="p">:</span> <span class="s">&quot;amqp://admin:admin@carbon/carbon&quot;</span>
+            <span class="o">+</span> <span class="s">&quot;?brokerlist=&#39;tcp://localhost:5672&#39;&quot;</span><span class="p">,</span>
+        <span class="nx">acknowledgementMode</span><span class="p">:</span> <span class="s">&quot;AUTO_ACKNOWLEDGE&quot;</span>
+    <span class="p">},</span> <span class="nx">queueName</span> <span class="p">=</span> <span class="s">&quot;MyQueue&quot;</span><span class="p">);</span>
+<span class="kd">service</span> <span class="nx">jmsListener</span> <span class="nx">on</span> <span class="nx">consumerEndpoint</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">jms</span><span class="p">:</span><span class="nx">QueueReceiverCaller</span> <span class="nx">consumer</span><span class="p">,</span>
+                                <span class="nx">jms</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">textContent</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getTextMessageContent</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">textContent</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message received from broker. Payload: &quot;</span> <span class="o">+</span>
+                    <span class="nx">textContent</span><span class="p">);</span>
+            <span class="nx">forwardToBakend</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">textContent</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while reading message&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">textContent</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">forwardToBakend</span><span class="p">(</span><span class="kt">string</span> <span class="nx">textContent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9090/&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">textContent</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/backend/jms&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">responseMessage</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">responseMessage</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Response from backend service: &quot;</span>
+                    <span class="o">+</span> <span class="nx">responseMessage</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while reading response&quot;</span><span class="p">,</span>
+                            <span class="nx">err</span> <span class="p">=</span> <span class="nx">responseMessage</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while sending payload&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">backend</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/jms&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">jmsPayloadReceiver</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>        <span class="k">var</span> <span class="nx">stringPayload</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">stringPayload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Message received from backend service. &quot;</span>
+                    <span class="o">+</span> <span class="s">&quot;Payload: &quot;</span> <span class="o">+</span> <span class="nx">stringPayload</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="s">&quot;Message Received.&quot;</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while acknowledging message&quot;</span><span class="p">,</span>
+                                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error while reading payload&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">stringPayload</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Send JMS Message to HTTP Endpoint</h2>
+                            <p><p>This example shows how to send a JMS message, consumed by the JMS listener service,
+ to an HTTP endpoint. A text payload from the JMS broker is expected and that payload is then
+ forwarded to an HTTP endpoint.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="jms-headers-and-properties.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>JMS Headers and Properties</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="nats-basic-client.html">
+                                        <span>NEXT ></span>
+                                        <p>NATS Basic Example</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="send-jms-message-to-http-endpoint">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/send-jms-message-to-http-endpoint/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/jms;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener jms:QueueReceiver consumerEndpoint = new({
+        initialContextFactory: &quot;bmbInitialContextFactory&quot;,
+        providerUrl: &quot;amqp://admin:admin@carbon/carbon&quot;
+            + &quot;?brokerlist=&#39;tcp://localhost:5672&#39;&quot;,
+        acknowledgementMode: &quot;AUTO_ACKNOWLEDGE&quot;
+    }, queueName = &quot;MyQueue&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a simple queue receiver.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service jmsListener on consumerEndpoint {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Bind the created JMS consumer to the listener service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(jms:QueueReceiverCaller consumer,
+                                jms:Message message) {
+        var textContent = message.getTextMessageContent();
+        if (textContent is string) {
+            log:printInfo(&quot;Message received from broker. Payload: &quot; +
+                    textContent);
+            forwardToBakend(untaint textContent);
+        } else {
+            log:printError(&quot;Error while reading message&quot;, err = textContent);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function forwardToBakend(string textContent) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    http:Client clientEP = new(&quot;http://localhost:9090/&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create an HTTP client endpoint.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    http:Request req = new;
+    req.setPayload(textContent);
+    var result = clientEP-&gt;post(&quot;/backend/jms&quot;, req);
+    if (result is http:Response) {
+        var responseMessage = result.getTextPayload();
+        if (responseMessage is string) {
+            log:printInfo(&quot;Response from backend service: &quot;
+                    + responseMessage);
+        } else {
+            log:printError(&quot;Error while reading response&quot;,
+                            err = responseMessage);
+        }
+    } else {
+        log:printError(&quot;Error while sending payload&quot;, err = result);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Forward the received text content of the JMS message to the backend Service
+ using the HTTP client endpoint.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service backend on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Backend service that receive the forwarded message from the broker.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;POST&quot;],
+        path: &quot;/jms&quot;
+    }
+    resource function jmsPayloadReceiver(http:Caller caller, http:Request req) {
+        http:Response res = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var stringPayload = req.getTextPayload();
+        if (stringPayload is string) {
+            log:printInfo(&quot;Message received from backend service. &quot;
+                    + &quot;Payload: &quot; + stringPayload);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            res.setPayload(&quot;Message Received.&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A util method that can be used to set <code>string</code> payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(res);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Sends the response back to the client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>            if (result is error) {
+                log:printError(&quot;Error occurred while acknowledging message&quot;,
+                                err = result);
+            }
+        } else {
+            log:printError(&quot;Error while reading payload&quot;, err = stringPayload);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Download Ballerina message broker from [here](https://github.com/ballerina-platform/ballerina-message-broker/releases/download/v0.970.5/message-broker-0.970.5.zip)
+# Extract the zip file and navigate to &lt;BROKER_HOME&gt;/bin
+# Start Ballerina message broker by executing either the `broker` or the `broker.bat` command.
+$ ./broker
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and use the `ballerina run` command.
+$ ballerina run send_jms_message_to_http_endpoint.bal
+Initiating service(s) in &#39;send_jms_message_to_http_endpoint.bal&#39;
+2018-06-14 15:43:04,283 INFO  [ballerina/jms] - Message receiver created for queue MyQueue
+ballerina: started HTTP/WS endpoint 0.0.0.0:9090
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

@@ -7,6 +7,7 @@ permalink: /0.991/learn/
 redirect_from:
   - /0.991/learn/tools-ides
   - /0.991/learn/tools-ides/
+  - /v0-991/learn/
 ---
 
 # Learn Ballerina

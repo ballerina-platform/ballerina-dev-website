@@ -29,10 +29,10 @@ $(document).ready(function () {
         '                                <div class="cVersionContainer">\n' +
         '                                    <lable class="cVlable">Version</lable>\n' +
         '                                    <select name="versions" id="versions" class="select-css">\n' +
-        '                                        <option value="v1-2">1.2</option>\n' +
-        '                                        <option value="v1-1">1.1</option>\n' +
-        '                                        <option value="v1-0">1.0</option>\n' +
-        '                                        <option value="v0-991">0.991</option>\n' +
+        '                                        <option value="1.2" data-value="latest">1.2</option>\n' +
+        '                                        <option value="1.1">1.1</option>\n' +
+        '                                        <option value="1.0">1.0</option>\n' +
+        '                                        <option value="0.991">0.991</option>\n' +
         '                                    </select>\n' +
         '                                </div>\n' +
         '                            </li>\n' +

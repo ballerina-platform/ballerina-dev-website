@@ -2,6 +2,9 @@
 layout: ballerina-inner-page
 title: CLI Commands
 permalink: /1.0/learn/cli-commands/
+redirect_from:
+  - /v1-0/learn/cli-commands/
+  - /v1-0/learn/cli-commands
 ---
 
 # CLI Commands

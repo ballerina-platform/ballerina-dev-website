@@ -161,7 +161,8 @@ function versionSelectorValue(){
     let options = $("#versions").find("option");
     $.each(options, function (key, option) {
         let optionText = $(option).text();
-        if(pathValue.indexOf(optionText) > -1) {
+        //let ver = "v" + optionText.replace(".", "-");
+        if(pathValue.indexOf(optionText) > -1){
             $(option).attr("selected", "selected");
         }
     });
@@ -458,7 +459,7 @@ $(document).ready(function() {
         if(isLatest) {
             newPath =  "/learn/" + splitedPath[1];
         } else {
-            let selectedValue = this.options[this.selectedIndex].value;
+            let selectedValue = selectedOption.value;
             newPath = "/" + selectedValue + "/learn/" + splitedPath[1];
         }
         window.open( newPath , "_self" );

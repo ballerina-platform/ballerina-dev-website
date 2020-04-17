@@ -5,6 +5,10 @@ permalink: /1.1/learn/vscode-plugin/
 redirect_from:
   - /1.1/learn/tools-ides/vscode-plugin
   - /1.1/learn/tools-ides/vscode-plugin/
+  - /v1-1/learn/tools-ides/vscode-plugin
+  - /v1-1/learn/tools-ides/vscode-plugin/
+  - /v1-1/learn/vscode-plugin/
+  - /v1-1/learn/vscode-plugin
 ---
 
 # The Visual Studio Code Extension

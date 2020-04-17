@@ -5,6 +5,10 @@ permalink: /1.1/learn/intellij-plugin/using-intellij-plugin-features
 redirect_from:
   - /1.1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
   - /1.1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
+  - /v1-1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
+  - /v1-1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
+  - /v1-1/learn/intellij-plugin/using-intellij-plugin-features
+  - /v1-1/learn/intellij-plugin/using-intellij-plugin-features/
 ---
 
 # Using the features of the IntelliJ plugin

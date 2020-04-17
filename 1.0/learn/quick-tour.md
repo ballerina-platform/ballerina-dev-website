@@ -2,6 +2,9 @@
 layout: ballerina-inner-page
 title: Quick Tour
 permalink: /1.0/learn/quick-tour/
+redirect_from:
+  - /v1-0/learn/quick-tour/
+  - /v1-0/learn/quick-tour
 ---
 
 # Quick Tour

@@ -162,7 +162,7 @@ function versionSelectorValue(){
     $.each(options, function (key, option) {
         let optionText = $(option).text();
         //let ver = "v" + optionText.replace(".", "-");
-        if(pathValue.indexOf(ver) > -1){
+        if(pathValue.indexOf(optionText) > -1){
             $(option).attr("selected", "selected");
         }
     });

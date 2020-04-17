@@ -2,6 +2,9 @@
 layout: ballerina-inner-page
 title: Ballerina OpenAPI Tools
 permalink: /1.1/learn/how-to-use-openapi-tools/
+redirect_from:
+- /v1-1/learn/how-to-use-openapi-tools/
+- /v1-1/learn/how-to-use-openapi-tools
 ---
 
 ## Ballerina OpenAPI Tools

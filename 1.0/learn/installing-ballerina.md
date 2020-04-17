@@ -4,6 +4,8 @@ title: Installing Ballerina
 permalink: /1.0/learn/installing-ballerina/
 redirect_from:
   - /v1-0/learn/getting-started
+  - /v1-0/learn/installing-ballerina/
+  - /v1-0/learn/installing-ballerina
 ---
 
 # Installing Ballerina

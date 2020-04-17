@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: The Visual Studio Code Plugin
-permalink: /v1-0/learn/vscode-plugin/
+permalink: /1.0/learn/vscode-plugin/
 redirect_from:
   - /v1-0/learn/tools-ides/vscode-plugin
   - /v1-0/learn/tools-ides/vscode-plugin/

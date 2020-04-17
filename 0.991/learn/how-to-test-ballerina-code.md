@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-permalink: /v0-991/learn/how-to-test-ballerina-code/
+permalink: /0.991/learn/how-to-test-ballerina-code/
 
 ---
 

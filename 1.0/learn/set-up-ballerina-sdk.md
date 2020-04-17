@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Setting up Ballerina SDK
-permalink: /v1-0/learn/set-up-ballerina-sdk
+permalink: /1.0/learn/set-up-ballerina-sdk
 ---
 
 # Setting up Ballerina SDK

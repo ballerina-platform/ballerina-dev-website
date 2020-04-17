@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Structure Ballerina Code
-permalink: /v1-0/learn/how-to-structure-ballerina-code/
+permalink: /1.0/learn/how-to-structure-ballerina-code/
 ---
 
 # How to Structure Ballerina Code

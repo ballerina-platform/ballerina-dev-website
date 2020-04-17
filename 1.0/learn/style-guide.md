@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina Style Guide
-permalink: /v1-0/learn/style-guide/
+permalink: /1.0/learn/style-guide/
 ---
 
 # Ballerina Style Guide

@@ -2,7 +2,7 @@
 layout: ballerina-inner-page
 title: FAQs
 permalink: /1.0/learn/faq/
-redirectfrom:
+redirect_from:
   - /v1-0/learn/faq/
   - /v1-0/learn/faq
 ---

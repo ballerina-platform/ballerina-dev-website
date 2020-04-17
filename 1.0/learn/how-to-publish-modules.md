@@ -2,7 +2,7 @@
 layout: ballerina-inner-page
 title: How to Publish a Module
 permalink: /1.0/learn/how-to-publish-modules/
-redirectfrom:
+redirect_from:
   - /v1-0/learn/how-to-publish-modules/
   - /v1-0/learn/how-to-publish-modules
 ---

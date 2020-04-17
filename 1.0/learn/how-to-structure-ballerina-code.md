@@ -2,7 +2,7 @@
 layout: ballerina-inner-page
 title: How to Structure Ballerina Code
 permalink: /1.0/learn/how-to-structure-ballerina-code/
-redirectfrom:
+redirect_from:
   - /v1-0/learn/how-to-structure-ballerina-code/
   - /v1-0/learn/how-to-structure-ballerina-code
 ---

@@ -2,7 +2,7 @@
 layout: ballerina-inner-page
 title: How to Extend Ballerina
 permalink: /1.0/learn/how-to-extend-ballerina/
-redirectfrom:
+redirect_from:
   - /v1-0/learn/how-to-extend-ballerina/
   - /v1-0/learn/how-to-extend-ballerina
 ---

@@ -3,8 +3,8 @@ layout: ballerina-inner-page
 title: How to Observe Ballerina Services
 permalink: /1.1/learn/how-to-observe-ballerina-code/
 redirect_from:
-- /v1-1/learn/how-to-observe-ballerina-code/
-- /v1-1/learn/how-to-observe-ballerina-code
+  - /v1-1/learn/how-to-observe-ballerina-code/
+  - /v1-1/learn/how-to-observe-ballerina-code
 ---
 
 # How to Observe Ballerina Services

@@ -1,0 +1,398 @@
+---
+layout: ballerina-example-page
+title: Artemis Simple MULTICAST Consumer
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /v0-991/learn/by-example/artemis-multicast-consumer
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">artemis</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="nd">@artemis:ServiceConfig {</span>
+    <span class="nx">queueConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">queueName</span><span class="p">:</span> <span class="s">&quot;my_queue&quot;</span><span class="p">,</span>
+        <span class="nx">addressName</span><span class="p">:</span> <span class="s">&quot;my_address&quot;</span><span class="p">,</span>
+        <span class="nx">routingType</span><span class="p">:</span> <span class="nx">artemis</span><span class="p">:</span><span class="nx">MULTICAST</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">service</span> <span class="nx">artemisConsumer</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">artemis</span><span class="p">:</span><span class="nx">Listener</span><span class="p">({</span><span class="nx">host</span><span class="p">:</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="nx">port</span><span class="p">:</span><span class="mi">61616</span><span class="p">})</span> <span class="p">{</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onMessage</span><span class="p">(</span><span class="nx">artemis</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">getPayload</span><span class="p">();</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Payload is &quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;string&gt;&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int map&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;byte[]&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">byte</span><span class="p">[]&gt;)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;byte[]&gt;&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">boolean</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;boolean&gt;&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;float&gt;&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">ActiveMQ</span> <span class="nx">Artemis</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Artemis Simple MULTICAST Consumer</h2>
+                            <p><p>Message reception by an ActiveMQ Artemis consumer.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="artemis-anycast-session-producer.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Artemis ANYCAST producer</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="artemis-multicast-producer.html">
+                                        <span>NEXT ></span>
+                                        <p>Artemis Simple MULTICAST Producer</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="artemis-multicast-consumer">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/artemis-multicast-consumer/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/artemis;
+import ballerina/log;
+import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@artemis:ServiceConfig {
+    queueConfig: {
+        queueName: &quot;my_queue&quot;,
+        addressName: &quot;my_address&quot;,
+        routingType: artemis:MULTICAST
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Consumer listens to the queue (i.e., &ldquo;my_queue&rdquo;) with the address
+ (i.e., &ldquo;my_address&rdquo;).</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service artemisConsumer on new artemis:Listener({host:&quot;localhost&quot;, port:61616}) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attaches the service to the listener.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function onMessage(artemis:Message message) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This resource is triggered when a message is received.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var payload = message.getPayload();
+        io:print(&quot;Payload is &quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Retrieves the message payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (payload is map&lt;string&gt;) {
+            io:println(&quot;map&lt;string&gt;&quot;);
+        } else if (payload is map&lt;int&gt;) {
+            io:println(&quot;int map&quot;);
+        } else if (payload is string) {
+            io:println(&quot;string&quot;);
+        } else if (payload is byte[]) {
+            io:println(&quot;byte[]&quot;);
+        } else if (payload is map&lt;byte[]&gt;) {
+            io:println(&quot;map&lt;byte[]&gt;&quot;);
+        } else if (payload is map&lt;boolean&gt;) {
+            io:println(&quot;map&lt;boolean&gt;&quot;);
+        } else if (payload is map&lt;float&gt;) {
+            io:println(&quot;map&lt;float&gt;&quot;);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Checks for the type of the payload and prints the type.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(payload);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Prints the payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Make sure to have the ActiveMQ Artemis broker running.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Navigate to the directory that contains the &#39;artemis_multicast_consumer.bal&#39; file and issue the
+# &#39;ballerina run&#39; command.
+$ ballerina run artemis_multicast_consumer.bal as follows.
+# The ActiveMQ Artemis consumer runs as a Ballerina service and listens to the subscribed queue.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Initiating service(s) in &#39;artemis_multicast_consumer.bal&#39;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Streaming a Big Dataset" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Streaming a Big Dataset</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+        <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/StreamTestDB&quot;</span><span class="p">,</span>
+        <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+        <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+    <span class="p">});</span>
+<span class="kd">service</span> <span class="nx">dataService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="k">var</span> <span class="nx">selectRet</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">select</span><span class="p">(</span><span class="s">&quot;SELECT * FROM Data&quot;</span><span class="p">,</span> <span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">selectRet</span> <span class="nx">is</span> <span class="nx">table</span> <span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;)</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">jsonConversionRet</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">selectRet</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">jsonConversionRet</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">untaint</span> <span class="nx">jsonConversionRet</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while converting the data to JSON&quot;</span> <span class="p">});</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">INTERNAL_SERVER_ERROR_500</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">INTERNAL_SERVER_ERROR_500</span><span class="p">;</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span> <span class="s">&quot;Error&quot;</span><span class="p">:</span> <span class="s">&quot;Error occured while retrieving data from the database&quot;</span> <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">respondRet</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">respondRet</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Sending response failed&quot;</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">respondRet</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerinax</span><span class="o">/</span><span class="nx">jdbc</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">testDB</span> <span class="p">=</span> <span class="nx">new</span><span class="p">({</span>
+            <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;jdbc:mysql://localhost:3306/StreamTestDB&quot;</span><span class="p">,</span>
+            <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+            <span class="nx">poolOptions</span><span class="p">:</span> <span class="p">{</span> <span class="nx">maximumPoolSize</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE TABLE Data (id INT, field1</span>
+<span class="s">        VARCHAR(1024), field2 VARCHAR(1024));&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create Data table&quot;</span><span class="p">);</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">update</span><span class="p">(</span><span class="s">&quot;CREATE PROCEDURE PopulateData(IN row_count INT)</span>
+<span class="s">       BEGIN</span>
+<span class="s">           DECLARE count INT;</span>
+<span class="s">           DECLARE strDataEntry VARCHAR(1024);</span>
+<span class="s">           SET count = 1;</span>
+<span class="s">           SET strDataEntry =  &#39;&#39;;</span>
+<span class="s">           WHILE count &lt;= 1024 DO</span>
+<span class="s">                       SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;);</span>
+<span class="s">                       SET count = count + 1;</span>
+<span class="s">           END WHILE;</span>
+<span class="s">           SET count = 1;</span>
+<span class="s">           WHILE count &lt;= row_count DO</span>
+<span class="s">                       INSERT INTO Data VALUES (count, strDataEntry, strDataEntry);</span>
+<span class="s">                       SET count = count + 1;</span>
+<span class="s">           END WHILE;</span>
+<span class="s">           SELECT strDataEntry;</span>
+<span class="s">       END&quot;</span><span class="p">);</span>
+    <span class="nx">handleUpdate</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Stored procedure with IN param creation&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">retCall</span> <span class="p">=</span> <span class="nx">testDB</span><span class="o">-&gt;</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;CALL PopulateData(?)&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="mi">100000</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">retCall</span> <span class="nx">is</span> <span class="p">()|</span><span class="nx">table</span><span class="p">&lt;</span><span class="nx">record</span> <span class="p">{}&gt;[])</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Call operation is successful&quot;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stored procedure call failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">retCall</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">handleUpdate</span><span class="p">(</span><span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span> <span class="o">+</span> <span class="nx">returned</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returned</span><span class="p">.</span><span class="nx">detail</span><span class="p">().</span><span class="kt">message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Streaming a Big Dataset</h2>
+                            <p><p>Ballerina inherently supports streaming large datasets. For example,
+ retrieving a large amount of data, converting it to a preferred data format
+ (e.g., JSON, XML) and sending it across the network on HTTP, does not require loading
+ the entire dataset to memory at once. Data is fetched on demand from the database
+ and incrementally converted to JSON/XML and sent to the client.
+ This example demonstrates streaming a large amount of data through an HTTP service.
+ Please run data_setup.bal file to setup a database with sufficient amount of data.
+ It creates a sample database with a table that contains an id field,
+ and two text fields each having 1KB of data. Here, the row_count parameter of the
+ PopulateData stored procedure is set to 100000, which would add up to around 200MB
+ of textual data. You can increase the value of row_count parameter to increase the
+ amount of data.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="jdbc-client-call-procedures.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>JDBC Client Call Procedures</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="grpc-unary-blocking.html">
+                                        <span>NEXT ></span>
+                                        <p>Unary Blocking</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="streaming-big-dataset">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Streaming a Big Dataset</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/streaming-big-dataset/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/log;
+import ballerinax/jdbc;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>jdbc:Client testDB = new({
+        url: &quot;jdbc:mysql://localhost:3306/StreamTestDB&quot;,
+        username: &quot;test&quot;,
+        password: &quot;test&quot;,
+        poolOptions: { maximumPoolSize: 5 }
+    });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create MySQL client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service dataService on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a HTTP service and bind to a listener on port 9090</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    resource function getData(http:Caller caller, http:Request req) {
+        http:Response res = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var selectRet = testDB-&gt;select(&quot;SELECT * FROM Data&quot;, ());
+        if (selectRet is table &lt;record {}&gt;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invoke <code>select</code> remote function on the MySQL database client and obtain a large amount of data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var jsonConversionRet = json.convert(selectRet);
+            if (jsonConversionRet is json) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Convert the obtained data to JSON. Note that this conversion does not load
+ all the data into memory.
+ The table can be converted to XML in a similar manner.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                res.setPayload(untaint jsonConversionRet);
+            } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set the JSON payload to the response. This is streamed to the client once the service is
+ invoked.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                res.setPayload({ &quot;Error&quot;: &quot;Error occured while converting the data to JSON&quot; });
+                res.statusCode = http:INTERNAL_SERVER_ERROR_500;
+            }
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set a payload indicating an error in case the JSON conversion fails.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            res.statusCode = http:INTERNAL_SERVER_ERROR_500;
+            res.setPayload({ &quot;Error&quot;: &quot;Error occured while retrieving data from the database&quot; });
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set a payload indicating an error in case the data retrieval fails.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        var respondRet = caller-&gt;respond(res);
+        if (respondRet is error) {
+            log:printError(&quot;Sending response failed&quot;, err = respondRet);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Respond to the client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/dataService/getData &gt; /tmp/response-data.txt
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  199M    0  199M    0     0  90.0M      0 --:--:--  0:00:02 --:--:-- 90.0M
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerinax/jdbc;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+    jdbc:Client testDB = new({
+            url: &quot;jdbc:mysql://localhost:3306/StreamTestDB&quot;,
+            username: &quot;test&quot;,
+            password: &quot;test&quot;,
+            poolOptions: { maximumPoolSize: 5 }
+        });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = testDB-&gt;update(&quot;CREATE TABLE Data (id INT, field1
+        VARCHAR(1024), field2 VARCHAR(1024));&quot;);
+    handleUpdate(ret, &quot;Create Data table&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create table for data insertion.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = testDB-&gt;update(&quot;CREATE PROCEDURE PopulateData(IN row_count INT)
+       BEGIN
+           DECLARE count INT;
+           DECLARE strDataEntry VARCHAR(1024);
+           SET count = 1;
+           SET strDataEntry =  &#39;&#39;;
+           WHILE count &lt;= 1024 DO
+                       SET strDataEntry = CONCAT(strDataEntry, &#39;x&#39;);
+                       SET count = count + 1;
+           END WHILE;
+           SET count = 1;
+           WHILE count &lt;= row_count DO
+                       INSERT INTO Data VALUES (count, strDataEntry, strDataEntry);
+                       SET count = count + 1;
+           END WHILE;
+           SELECT strDataEntry;
+       END&quot;);
+    handleUpdate(ret, &quot;Stored procedure with IN param creation&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create the stored procedure with row_count IN parameter.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var retCall = testDB-&gt;call(&quot;CALL PopulateData(?)&quot;, (), 100000);
+    if (retCall is ()|table&lt;record {}&gt;[]) {
+        io:println(&quot;Call operation is successful&quot;);
+    } else {
+        io:println(&quot;Stored procedure call failed: &quot; + &lt;string&gt;retCall.detail().message);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Call stored procedure. This inserts around 200MB of textual data.
+ You can increment the row_count to increase the amount of data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function handleUpdate(int|error returned, string message) {
+    if (returned is int) {
+        io:println(message + &quot; status: &quot; + returned);
+    } else {
+        io:println(message + &quot; failed: &quot; + &lt;string&gt;returned.detail().message);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Function to handle return values of the update operation.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

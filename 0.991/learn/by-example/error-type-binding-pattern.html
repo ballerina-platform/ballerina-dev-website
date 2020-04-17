@@ -1,0 +1,429 @@
+---
+layout: ballerina-example-page
+title: Error Type Binding Pattern
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /v0-991/learn/by-example/error-type-binding-pattern
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">|</span><span class="nx">error</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reason</span><span class="p">,</span> <span class="nx">detail</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reason</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping: %s&quot;</span><span class="p">,</span> <span class="nx">detail</span><span class="p">));</span>
+    <span class="nx">SampleError</span> <span class="nx">error</span><span class="p">(</span><span class="nx">reasonTwo</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detail</span><span class="p">:</span> <span class="nx">detailTwo</span><span class="p">,</span> <span class="nx">fatal</span> <span class="p">})</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">reasonTwo</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping Field One: %s&quot;</span><span class="p">,</span> <span class="nx">detailTwo</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping Field Two: %s&quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">));</span>
+    <span class="k">var</span> <span class="nx">error</span><span class="p">(</span><span class="nx">vReason</span><span class="p">,</span> <span class="nx">vDetail</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getSampleError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Reason String: &quot;</span> <span class="o">+</span> <span class="nx">vReason</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping: %s&quot;</span><span class="p">,</span> <span class="nx">vDetail</span><span class="p">));</span>
+    <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">error</span><span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">fooRec</span><span class="p">)</span> <span class="p">=</span> <span class="nx">getRecordConstrainedError</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">sprintf</span><span class="p">(</span><span class="s">&quot;Detail Mapping: %s&quot;</span><span class="p">,</span> <span class="p">&lt;</span><span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">fooRec</span><span class="p">));</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getSampleError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">SampleError</span> <span class="p">{</span>
+    <span class="nx">SampleError</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Sample Error&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detail</span><span class="p">:</span> <span class="s">&quot;Detail Msg&quot;</span><span class="p">,</span> <span class="nx">fatal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+<span class="p">}</span><span class="nx">type</span> <span class="nx">Foo</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">detailMsg</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nx">isFatal</span><span class="p">;</span>
+<span class="p">|};</span><span class="kd">function</span> <span class="nx">getRecordConstrainedError</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="nx">error</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="nx">Foo</span><span class="p">&gt;</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Some Error&quot;</span><span class="p">,</span> <span class="p">{</span> <span class="nx">detailMsg</span><span class="p">:</span> <span class="s">&quot;Failed Message&quot;</span><span class="p">,</span> <span class="nx">isFatal</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">e</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Error Type Binding Pattern</h2>
+                            <p><p>Error typed binding patterns are used in declaring and defining new variables by destructuring an <code>error</code> value.
+ The error type binding pattern statement must have an assignment expression on the right hand side.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="record-type-binding-pattern.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Record Type Binding Pattern</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="tuple-destructure-binding-pattern.html">
+                                        <span>NEXT ></span>
+                                        <p>Tuple Destructure Binding Pattern</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="error-type-binding-pattern">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/error-type-binding-pattern/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type SampleError error&lt;string, map&lt;anydata|error&gt;&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    SampleError error(reason, detail) = getSampleError();
+    io:println(&quot;Reason String: &quot; + reason);
+    io:println(io:sprintf(&quot;Detail Mapping: %s&quot;, detail));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This error type binding pattern will destructure an <code>error</code> of type <code>SampleError</code> and create two variables as follows:
+ The value of the reason string in <code>SampleError</code> will be set to a new <code>string</code> variable <code>reason</code>.
+ The value of the detail mapping will be set to a new <code>map&lt;anydata|error&gt;</code> variable <code>detail</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    SampleError error(reasonTwo, { detail: detailTwo, fatal }) = getSampleError();
+    io:println(&quot;Reason String: &quot; + reasonTwo);
+    io:println(io:sprintf(&quot;Detail Mapping Field One: %s&quot;, detailTwo));
+    io:println(io:sprintf(&quot;Detail Mapping Field Two: %s&quot;, fatal));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The detail mapping value can further be destructured using a record binding pattern.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var error(vReason, vDetail) = getSampleError();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Error type binding patterns can be used with <code>var</code> to infer the type from the right hand side.
+ Since the types of the new variables are based on the type of the type binding pattern, using <code>var</code> will
+ infer the types from the right hand side.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Reason String: &quot; + vReason);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Type of <code>vReason</code> is inferred as <code>string</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(io:sprintf(&quot;Detail Mapping: %s&quot;, vDetail));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Type of <code>vDetail</code> is inferred as <code>map&lt;anydata|error&gt;</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    error&lt;string, Foo&gt; error(_, fooRec) = getRecordConstrainedError();
+    io:println(io:sprintf(&quot;Detail Mapping: %s&quot;, &lt;Foo&gt; fooRec));
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Underscore &lsquo;_&rsquo; can be used to ignore either the reason string or the detail mapping.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getSampleError() returns SampleError {
+    SampleError e = error(&quot;Sample Error&quot;, { detail: &quot;Detail Msg&quot;, fatal: true });
+    return e;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Foo record {|
+    string detailMsg;
+    boolean isFatal;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function getRecordConstrainedError() returns error&lt;string, Foo&gt; {
+    error&lt;string, Foo&gt; e = error(&quot;Some Error&quot;, { detailMsg: &quot;Failed Message&quot;, isFatal: true });
+    return e;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run error_type_binding_pattern.bal
+Reason String: Sample Error
+Detail Mapping: {&quot;detail&quot;:&quot;Detail Msg&quot;, &quot;fatal&quot;:true}
+Reason String: Sample Error
+Detail Mapping Field One: Detail Msg
+Detail Mapping Field Two: true
+Reason String: Sample Error
+Detail Mapping: {&quot;detail&quot;:&quot;Detail Msg&quot;, &quot;fatal&quot;:true}
+Detail Mapping: {detailMsg:&quot;Failed Message&quot;, isFatal:true}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

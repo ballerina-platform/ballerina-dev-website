@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta property="og:url" content="https://ballerina.io" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Ballerina - Cloud Native Programming Language - Ballerina by Example: Identify Patterns" />
+    <meta property="og:description" content="Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below. " />
+    <meta property="og:image" content="/img/ballerina-sm.jpg" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <title>Ballerina by Example: Identify Patterns</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-92163714-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Hotjar Tracking Code for https://ballerinalang.org/ -->
+    <script>
+        (function(h, o, t, j, a, r) {
+            h.hj = h.hj || function() {
+                (h.hj.q = h.hj.q || []).push(arguments)
+            };
+            h._hjSettings = {
+                hjid: 442732,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <!--copy to clipboard lib-->
+    <script src="/js/clipboard.js-2.0.0/clipboard.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var base_url = "";
+    </script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+
+    <script type="text/javascript" src="/js/highlight.pack.js"></script>
+
+    <script src="/js/ballerina-common.js"></script>
+    <link rel=stylesheet href="/css/ballerina-io.css">
+    <link rel=stylesheet href="/css/ballerina-io-bbe.css">
+    <script src="/search/require.js"></script>
+</head>
+
+<body class="cBallerina-io">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSL2TX4"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="row cBallerina-io-Nav" id="iMainNavigation">
+
+    </div>
+ 
+    <div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="kt">int</span> <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">type</span> <span class="nx">RegulatorState</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">deviceId</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">roomNo</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">tempSet</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">userAction</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">RoomKeyAction</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">roomNo</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">userAction</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">RoomKeyAction</span><span class="p">[]</span> <span class="nx">roomActions</span> <span class="p">=</span> <span class="p">[];</span><span class="nx">stream</span><span class="p">&lt;</span><span class="nx">RegulatorState</span><span class="p">&gt;</span> <span class="nx">regulatorStateChangeStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="nx">stream</span><span class="p">&lt;</span><span class="nx">RoomKeyAction</span><span class="p">&gt;</span> <span class="nx">roomKeyStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="nx">stream</span><span class="p">&lt;</span><span class="nx">RoomKeyAction</span><span class="p">&gt;</span> <span class="nx">regulatorActionStream</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">deployRegulatorActionDecisionRules</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">forever</span> <span class="p">{</span>
+        <span class="nx">from</span> <span class="nx">every</span> <span class="nx">regulatorStateChangeStream</span>
+            <span class="nx">where</span> <span class="nx">userAction</span> <span class="o">==</span> <span class="s">&quot;on&quot;</span> <span class="k">as</span> <span class="nx">e1</span>
+        <span class="nx">followed</span> <span class="nx">by</span> <span class="nx">roomKeyStream</span>
+            <span class="nx">where</span> <span class="nx">e1</span><span class="p">.</span><span class="nx">roomNo</span> <span class="o">==</span> <span class="nx">roomNo</span> <span class="o">&amp;&amp;</span> <span class="nx">userAction</span> <span class="o">==</span> <span class="s">&quot;removed&quot;</span> <span class="k">as</span> <span class="nx">e2</span>
+        <span class="o">||</span> <span class="nx">regulatorStateChangeStream</span>
+            <span class="nx">where</span> <span class="nx">e1</span><span class="p">.</span><span class="nx">roomNo</span> <span class="o">==</span> <span class="nx">roomNo</span> <span class="o">&amp;&amp;</span> <span class="nx">userAction</span> <span class="o">==</span> <span class="s">&quot;off&quot;</span> <span class="k">as</span> <span class="nx">e3</span>
+        <span class="nx">select</span> <span class="nx">e1</span><span class="p">.</span><span class="nx">roomNo</span> <span class="k">as</span> <span class="nx">roomNo</span><span class="p">,</span>
+            <span class="nx">e2</span> <span class="o">==</span> <span class="kc">null</span> <span class="err">?</span> <span class="s">&quot;none&quot;</span> <span class="p">:</span> <span class="s">&quot;stop&quot;</span> <span class="k">as</span> <span class="nx">userAction</span>
+        <span class="nx">having</span> <span class="nx">userAction</span> <span class="o">!=</span> <span class="s">&quot;none&quot;</span>
+        <span class="p">=&gt;</span> <span class="p">(</span><span class="nx">RoomKeyAction</span><span class="p">[]</span> <span class="nx">keyAction</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">k</span> <span class="nx">in</span> <span class="nx">keyAction</span> <span class="p">{</span>
+                <span class="nx">regulatorActionStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">k</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">index</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">deployRegulatorActionDecisionRules</span><span class="p">();</span>
+    <span class="nx">RegulatorState</span> <span class="nx">regulatorState1</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deviceId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">roomNo</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">tempSet</span><span class="p">:</span> <span class="mf">23.56</span><span class="p">,</span> <span class="nx">userAction</span><span class="p">:</span> <span class="s">&quot;on&quot;</span> <span class="p">};</span>
+    <span class="nx">RegulatorState</span> <span class="nx">regulatorState2</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">deviceId</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">roomNo</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">tempSet</span><span class="p">:</span> <span class="mf">23.56</span><span class="p">,</span> <span class="nx">userAction</span><span class="p">:</span> <span class="s">&quot;off&quot;</span> <span class="p">};</span>
+    <span class="nx">RoomKeyAction</span> <span class="nx">roomKeyAction</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">roomNo</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                    <span class="nx">userAction</span><span class="p">:</span> <span class="s">&quot;removed&quot;</span> <span class="p">};</span>
+    <span class="nx">regulatorActionStream</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">alertRoomAction</span><span class="p">);</span>
+    <span class="nx">regulatorStateChangeStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">regulatorState1</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="nx">roomKeyStream</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">roomKeyAction</span><span class="p">);</span>
+    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="nx">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">((</span><span class="nx">roomActions</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">count</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}}</span><span class="kd">function</span> <span class="nx">alertRoomAction</span><span class="p">(</span><span class="nx">RoomKeyAction</span> <span class="kd">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;alertRoomAction function invoked for Room : &quot;</span> <span class="o">+</span>
+            <span class="kd">action</span><span class="p">.</span><span class="nx">roomNo</span> <span class="o">+</span> <span class="s">&quot; and the action : &quot;</span> <span class="o">+</span>
+            <span class="kd">action</span><span class="p">.</span><span class="nx">userAction</span><span class="p">);</span>
+    <span class="nx">addToGlobalRoomActions</span><span class="p">(</span><span class="kd">action</span><span class="p">);</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">addToGlobalRoomActions</span><span class="p">(</span><span class="nx">RoomKeyAction</span> <span class="nx">roomAction</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">roomActions</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="p">=</span> <span class="nx">roomAction</span><span class="p">;</span>
+    <span class="nx">index</span> <span class="p">=</span> <span class="nx">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+
+
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Identify Patterns</h2>
+                            <p><p>Streaming patterns are state machine implementations that allow you to detect patterns in the events that arrive
+ over time. These can correlate events within a single stream or between multiple streams.
+ In this example, streaming rules send the <code>stop</code> control action to the regulator when the key is removed from the hotel
+ room given that the regulator is switched on prior to removing the hotel key.
+ Ballerina Streams is an experimental feature. Please use <code>--experimental</code> flag when compiling Ballerina files
+ which have streaming constructs.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="temporal-aggregations-and-windows.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Temporal Aggregations</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="identify-trends.html">
+                                        <span>NEXT ></span>
+                                        <p>Identify Trends</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="identify-patterns">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBreadcrums">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn">Learn</a></li>
+                                        <li>»</li>
+                                        <li><a href="/learn/by-example">By Example</a></li>
+                                        <li>»</li>
+                                        <li>Identify Patterns</li>
+                                    </ul>
+                                </div>
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/identify-patterns/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/runtime;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>int index = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type RegulatorState record {
+    int deviceId;
+    int roomNo;
+    float tempSet;
+    string userAction;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a record type that represents the regulator state.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type RoomKeyAction record {
+    int roomNo;
+    string userAction;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a record type that represents the user actions on the hotel key.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>RoomKeyAction[] roomActions = [];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>stream&lt;RegulatorState&gt; regulatorStateChangeStream = new;
+stream&lt;RoomKeyAction&gt; roomKeyStream = new;
+stream&lt;RoomKeyAction&gt; regulatorActionStream = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function deployRegulatorActionDecisionRules() {
+    forever {
+        from every regulatorStateChangeStream
+            where userAction == &quot;on&quot; as e1
+        followed by roomKeyStream
+            where e1.roomNo == roomNo &amp;&amp; userAction == &quot;removed&quot; as e2
+        || regulatorStateChangeStream
+            where e1.roomNo == roomNo &amp;&amp; userAction == &quot;off&quot; as e3
+        select e1.roomNo as roomNo,
+            e2 == null ? &quot;none&quot; : &quot;stop&quot; as userAction
+        having userAction != &quot;none&quot;
+        =&gt; (RoomKeyAction[] keyAction) {
+            foreach var k in keyAction {
+                regulatorActionStream.publish(k);
+            }
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Deploy the decision rules for the regulator&rsquo;s next action based on the current regulator state and the user action on
+ the hotel key. If the regulator was on before and is still on after the user has removed the hotel key from the
+ room, the <code>stop</code> control action is called.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+    index = 0;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    deployRegulatorActionDecisionRules();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Deploys the streaming pattern rules that define how the regulator is controlled based on received events.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    RegulatorState regulatorState1 = { deviceId: 1, roomNo: 2,
+        tempSet: 23.56, userAction: &quot;on&quot; };
+    RegulatorState regulatorState2 = { deviceId: 1, roomNo: 2,
+        tempSet: 23.56, userAction: &quot;off&quot; };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Sample events that represent the different regulator states.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    RoomKeyAction roomKeyAction = { roomNo: 2,
+                                    userAction: &quot;removed&quot; };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A sample event that represents the user action on the door of the room. &lsquo;removed&rsquo; indicates that the owner has left the room.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    regulatorActionStream.subscribe(alertRoomAction);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>RegulatorActionStream</code> subscribes to the <code>alertRoomAction</code> function. Whenever the
+ &lsquo;RegulatorActionStream&rsquo; stream receives a valid event, this function is called.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    regulatorStateChangeStream.publish(regulatorState1);
+    runtime:sleep(200);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Publish/simulate the sample event that represents the regulator <code>switch on</code> event.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    roomKeyStream.publish(roomKeyAction);
+    runtime:sleep(500);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Simulate the sample event that represents the door/room closed event.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    int count = 0;
+    while (true) {
+        runtime:sleep(500);
+        count += 1;
+        if ((roomActions.length()) &gt; 0 || count == 10) {
+            break;
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function alertRoomAction(RoomKeyAction action) {
+    io:println(&quot;alertRoomAction function invoked for Room : &quot; +
+            action.roomNo + &quot; and the action : &quot; +
+            action.userAction);
+    addToGlobalRoomActions(action);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function addToGlobalRoomActions(RoomKeyAction roomAction) {
+    roomActions[index] = roomAction;
+    index = index + 1;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and issue the `ballerina run` command.
+$ ballerina run --experimental identify_patterns.bal
+alertRoomAction function invoked for Room : 2 and the action : stop
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    </div>
+    <script>
+        $(document).ready(function() {
+
+            hljs.initHighlightingOnLoad();
+
+            $(".switch").click(function() {
+                $(".cCodeRight").toggleClass('cShow');
+                $(".cCodeLeft").toggleClass('cHide');
+            });
+
+            // register "copy to clipboard" event to elements with "copy" class
+            var clipboard = new ClipboardJS('.copy', {
+                text: function(trigger) {
+                    return $('.FullCode').find('pre').text();
+                }
+            });
+
+            // Register events show hide tooltip on click event
+            clipboard.on('success', function(e) {
+                setTooltip(e.trigger, 'Copied!');
+                hideTooltip(e.trigger);
+            });
+
+            clipboard.on('error', function(e) {
+                setTooltip(e.trigger, 'Failed!');
+                hideTooltip(e.trigger);
+            });
+
+            $('.copy').tooltip({
+                trigger: 'click',
+                placement: 'bottom'
+            });
+            $("a.copy").unbind("click");
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).attr('data-original-title', message)
+                .tooltip('show');
+        }
+
+        function hideTooltip(btn) {
+            setTimeout(function() {
+                $(btn).tooltip('hide').removeAttr('data-original-title');
+            }, 1000);
+        }
+    </script>
+
+    <script src="/search/search.js"></script>
+</body>
+
+</html>

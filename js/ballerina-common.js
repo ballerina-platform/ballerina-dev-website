@@ -161,7 +161,7 @@ function versionSelectorValue(){
     let options = $("#versions").find("option");
     $.each(options, function (key, option) {
         let optionText = $(option).text();
-        let ver = "v" + optionText.replace(".", "-");
+        //let ver = "v" + optionText.replace(".", "-");
         if(pathValue.indexOf(ver) > -1){
             $(option).attr("selected", "selected");
         }

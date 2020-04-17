@@ -124,7 +124,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -318,6 +318,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -481,7 +485,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -675,6 +679,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -777,10 +785,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                 
-                 : <span class="records">ListenerConfiguration</span>
+                 : <span class="records ">ListenerConfiguration</span>
             </h1>
-            <p>Represents the gRPC server endpoint configuration.
-</p>
+            <p>
+                
+                Represents the gRPC server endpoint configuration.
+
+            </p>
             <div class="constants">
                 
                     
@@ -789,37 +800,52 @@
         
     <div class="params-listing">
         <ul>
-            <li> host<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default 0.0.0.0)</span>
+            <li> 
+                <span >host</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default 0.0.0.0)</span> 
             </li>
             <li>
-                <p><p>The server hostname.</p>
-</p>
+                <p>
+                    
+                    <p>The server hostname</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../grpc/records/ListenerSecureSocket.html">ListenerSecureSocket</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../grpc/records/ListenerSecureSocket.html">ListenerSecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The SSL configurations for the client endpoint.</p>
-</p>
+                <p>
+                    
+                    <p>The SSL configurations for the client endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> timeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default DEFAULT_LISTENER_TIMEOUT)</span>
+            <li> 
+                <span >timeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default DEFAULT_LISTENER_TIMEOUT)</span> 
             </li>
             <li>
-                <p><p>Period of time in milliseconds that a connection waits for a read/write operation. Use value 0 to
-disable timeout.</p>
-</p>
+                <p>
+                    
+                    <p>Period of time in milliseconds that a connection waits for a read/write operation. Use value 0 to
+disable the timeout</p>
+
+                </p>
             </li>
         </ul>
     </div>

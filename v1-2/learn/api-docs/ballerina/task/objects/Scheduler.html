@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -357,7 +361,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -642,24 +650,27 @@
                 
                     <a href="../../task/index.html">task</a>
                  :
-                <span class="objects">Scheduler</span>
+                <span class="objects ">Scheduler</span>
             </h1>
-            <p><p>Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.</p>
-</p>
+            <p>
+                
+                Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
                     
                         
                         <h2>Constructor</h2>
-<h3 >__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configurations)</p>
+<h3 >__init</h3><p>(<a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a> configuration)</p>
 <div class="data-wrapper">
     
         <div class="params-listing">
             <ul>
-                <li> <b>configurations</b><span class="type">  <a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a></span> </li>
+                <li> <b>configuration</b><span class="type">  <a href="../../task/records/TimerConfiguration.html">TimerConfiguration</a> | <a href="../../task/records/AppointmentConfiguration.html">AppointmentConfiguration</a></span> </li>
                 <li>
-                    <p>A <code>task:TimerConfiguration</code> or <code>task:AppointmentConfiguration</code> record to define the
+                    <p>The <code>task:TimerConfiguration</code> or <code>task:AppointmentConfiguration</code> record to define the
 <code>task:Sceduler</code> behavior</p>
 
                 </li>
@@ -676,81 +687,95 @@
                         <div class="method-list">
                             
                                 
-<a href="#attach">
-    <div class="param-sum">
-        <div class="param-name">
-        attach 
-        </div>
-        <div class="param-details"> <p>Attaches the provided <code>service</code> to the task.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="attach">
+        <a href="#attach">attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Attaches the provided <code>service</code> to the task.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#detach">
-    <div class="param-sum">
-        <div class="param-name">
-        detach 
-        </div>
-        <div class="param-details"> <p>Detach the provided <code>service</code> from the task.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="detach">
+        <a href="#detach">detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Detaches the provided <code>service</code> from the task.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#start">
-    <div class="param-sum">
-        <div class="param-name">
-        start 
-        </div>
-        <div class="param-details"> <p>Starts running the task. Task Scheduler will not run until this has been called.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="start">
+        <a href="#start">start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts running the task. Task Scheduler will not run until this has been called.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#stop">
-    <div class="param-sum">
-        <div class="param-name">
-        stop 
-        </div>
-        <div class="param-details"> <p>Stops the task. This will stop, after finish running the existing jobs.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="stop">
+        <a href="#stop">stop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the task. This will stop after running the existing jobs.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#pause">
-    <div class="param-sum">
-        <div class="param-name">
-        pause 
-        </div>
-        <div class="param-details"> <p>Pauses the task.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="pause">
+        <a href="#pause">pause </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Pauses the task.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#resume">
-    <div class="param-sum">
-        <div class="param-name">
-        resume 
-        </div>
-        <div class="param-details"> <p>Resumes a paused task.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="resume">
+        <a href="#resume">resume </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Resumes a paused task.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#isStarted">
-    <div class="param-sum">
-        <div class="param-name">
-        isStarted 
-        </div>
-        <div class="param-details"> <p>Checks whether the task listener is started or not.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="isStarted">
+        <a href="#isStarted">isStarted </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the task listener is started or not.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -765,7 +790,7 @@
              <a class="url-link" href="#attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> attach </h2>
+            <h2 > attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> serviceToAttach, <span class="array-type"><span class="builtin-type">any</span>[]</span> attachments)</p>
@@ -773,9 +798,12 @@
         </span>
         
     </div>
-    <p><p>Attaches the provided <code>service</code> to the task.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Attaches the provided <code>service</code> to the task.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -786,7 +814,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Ballerina <code>service</code> object which needs to be attached to the task.</p>
+                        <p><p>Ballerina <code>service</code> object, which needs to be attached to the task</p>
 </p>
                     </li>
                 </ul>
@@ -799,7 +827,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Set of optional parameters which needs to passed inside the resources.</p>
+                        <p><p>Set of optional parameters, which need to be passed inside the resources</p>
 </p>
                     </li>
                 </ul>
@@ -813,7 +841,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> if the process failed due to any reason, nil otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> if the process failed due to any reason or else ()</p>
 </li>
             </ul>
         </div>
@@ -826,7 +854,7 @@
              <a class="url-link" href="#detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> detach </h2>
+            <h2 > detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> attachedService)</p>
@@ -834,9 +862,12 @@
         </span>
         
     </div>
-    <p><p>Detach the provided <code>service</code> from the task.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Detaches the provided <code>service</code> from the task.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -847,7 +878,7 @@
                         
                     </li>
                     <li>
-                        <p><p>ballerina <code>service</code> object which needs to be detached from the task.</p>
+                        <p><p>Ballerina <code>service</code> object, which needs to be detached from the task</p>
 </p>
                     </li>
                 </ul>
@@ -861,7 +892,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> if the process failed due to any reason, nil otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> if the process failed due to any reason or else ()</p>
 </li>
             </ul>
         </div>
@@ -874,7 +905,7 @@
              <a class="url-link" href="#start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> start </h2>
+            <h2 > start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -882,16 +913,19 @@
         </span>
         
     </div>
-    <p><p>Starts running the task. Task Scheduler will not run until this has been called.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Starts running the task. Task Scheduler will not run until this has been called.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> if the process failed due to any reason, nil otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> if the process failed due to any reason or else ()</p>
 </li>
             </ul>
         </div>
@@ -904,7 +938,7 @@
              <a class="url-link" href="#stop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> stop </h2>
+            <h2 > stop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -912,16 +946,19 @@
         </span>
         
     </div>
-    <p><p>Stops the task. This will stop, after finish running the existing jobs.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops the task. This will stop after running the existing jobs.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> if the process failed due to any reason, nil otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> if the process failed due to any reason or else ()</p>
 </li>
             </ul>
         </div>
@@ -934,7 +971,7 @@
              <a class="url-link" href="#pause">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pause </h2>
+            <h2 > pause </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -942,16 +979,19 @@
         </span>
         
     </div>
-    <p><p>Pauses the task.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pauses the task.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> if an error is occurred while resuming, nil Otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> if an error is occurred while pausing or else ()</p>
 </li>
             </ul>
         </div>
@@ -964,7 +1004,7 @@
              <a class="url-link" href="#resume">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> resume </h2>
+            <h2 > resume </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -972,16 +1012,19 @@
         </span>
         
     </div>
-    <p><p>Resumes a paused task.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Resumes a paused task.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../task/errors.html#SchedulerError">SchedulerError</a>?</span>)</li>
-                <li><p>Returns <code>task:SchedulerError</code> when an error occurred while pausing, nil Otherwise.</p>
+                <li><p>A <code>task:SchedulerError</code> when an error occurred while resuming or else ()</p>
 </li>
             </ul>
         </div>
@@ -994,7 +1037,7 @@
              <a class="url-link" href="#isStarted">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> isStarted </h2>
+            <h2 > isStarted </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1002,17 +1045,20 @@
         </span>
         
     </div>
-    <p><p>Checks whether the task listener is started or not.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the task listener is started or not.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns <code>true</code> if the Scheduler is already started, <code>false</code> if the Scheduler is
-not started yet or stopped calling the <code>Scheduler.stop()</code> function.</p>
+                <li><p><code>true</code> if the <code>Scheduler</code> is already started or else <code>false</code> if the <code>Scheduler</code> is
+not started yet or stopped calling the <code>Scheduler.stop()</code> function</p>
 </li>
             </ul>
         </div>

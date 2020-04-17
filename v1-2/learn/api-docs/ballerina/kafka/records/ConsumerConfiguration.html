@@ -112,7 +112,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -294,6 +294,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -445,7 +449,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -627,6 +631,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -729,10 +737,13 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records">ConsumerConfiguration</span>
+                 : <span class="records ">ConsumerConfiguration</span>
             </h1>
-            <p>Configuration related to consumer endpoint.
-</p>
+            <p>
+                
+                Configurations related to consumer endpoint.
+
+            </p>
             <div class="constants">
                 
                     
@@ -741,535 +752,753 @@
         
     <div class="params-listing">
         <ul>
-            <li> bootstrapServers<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >bootstrapServers</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>List of remote server endpoints of kafka brokers.</p>
-</p>
+                <p>
+                    
+                    <p>List of remote server endpoints of kafka brokers</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> groupId<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >groupId</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Unique string that identifies the consumer.</p>
-</p>
+                <p>
+                    
+                    <p>Unique string that identifies the consumer</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> offsetReset<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >offsetReset</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Offset reset strategy if no initial offset.</p>
-</p>
+                <p>
+                    
+                    <p>Offset reset strategy if no initial offset</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> partitionAssignmentStrategy<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >partitionAssignmentStrategy</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Strategy class for handling the partition assignment among consumers.</p>
-</p>
+                <p>
+                    
+                    <p>Strategy class for handling the partition assignment among consumers</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metricsRecordingLevel<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >metricsRecordingLevel</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Metrics recording level.</p>
-</p>
+                <p>
+                    
+                    <p>Metrics recording level</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metricsReporterClasses<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >metricsReporterClasses</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Metrics reporter classes.</p>
-</p>
+                <p>
+                    
+                    <p>Metrics reporter classes</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientId<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >clientId</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Identifier to be used for server side logging.</p>
-</p>
+                <p>
+                    
+                    <p>Identifier to be used for server side logging</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> interceptorClasses<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >interceptorClasses</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Interceptor classes to be used before sending records.</p>
-</p>
+                <p>
+                    
+                    <p>Interceptor classes to be used before sending records</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> isolationLevel<span class="type">  <a href="../../kafka/types.html#IsolationLevel">IsolationLevel</a></span>
+            <li> 
+                <span >isolationLevel</span>
+                <span class="type">  <a href="../../kafka/types.html#IsolationLevel">IsolationLevel</a></span>
                 
             </li>
             <li>
-                <p><p>Transactional message reading method. Use &quot;read_committed&quot; to read the committed messages
-only in transactional mode when poll() is called. Use &quot;read_uncommitted&quot; to read all the messages,
-even the aborted ones.</p>
-</p>
+                <p>
+                    
+                    <p>Transactional message reading method</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyDeserializerType<span class="type">  <a href="../../kafka/types.html#DeserializerType">DeserializerType</a></span>
-                <span class="default"> (default DES_BYTE_ARRAY)</span>
+            <li> 
+                <span >keyDeserializerType</span>
+                <span class="type">  <a href="../../kafka/types.html#DeserializerType">DeserializerType</a></span>
+                 <span class="default">(default DES_BYTE_ARRAY)</span> 
             </li>
             <li>
-                <p><p>Deserializer used for the Kafka record key. This should be a <code>kafka:DeserializerType</code></p>
-</p>
+                <p>
+                    
+                    <p>Deserializer used for the Kafka record key. This should be a <code>kafka:DeserializerType</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> valueDeserializerType<span class="type">  <a href="../../kafka/types.html#DeserializerType">DeserializerType</a></span>
-                <span class="default"> (default DES_BYTE_ARRAY)</span>
+            <li> 
+                <span >valueDeserializerType</span>
+                <span class="type">  <a href="../../kafka/types.html#DeserializerType">DeserializerType</a></span>
+                 <span class="default">(default DES_BYTE_ARRAY)</span> 
             </li>
             <li>
-                <p><p>Deserializer used for the Kafka record value. This should be a <code>kafka:DeserializerType</code></p>
-</p>
+                <p>
+                    
+                    <p>Deserializer used for the Kafka record value. This should be a <code>kafka:DeserializerType</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyDeserializer<span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
+            <li> 
+                <span >keyDeserializer</span>
+                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
                 
             </li>
             <li>
-                <p><p>Custom deserializer object to deserialize kafka keys. This should be implement the
-<code>kafka:Deserializer</code> object.</p>
-</p>
+                <p>
+                    
+                    <p>Custom deserializer object to deserialize kafka keys. This should be implement the
+<code>kafka:Deserializer</code> object</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> valueDeserializer<span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
+            <li> 
+                <span >valueDeserializer</span>
+                <span class="type">  <a href="../../kafka/objects/Deserializer.html">Deserializer</a></span>
                 
             </li>
             <li>
-                <p><p>Custom deserializer object to deserialize kafka values. This should implement the
-<code>kafka:Deserializer</code> object.</p>
-</p>
+                <p>
+                    
+                    <p>Custom deserializer object to deserialize kafka values. This should implement the
+<code>kafka:Deserializer</code> object</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> schemaRegistryUrl<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >schemaRegistryUrl</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Avro schema registry url. Use this field to specify schema registry url, if Avro serializer
-is used.</p>
-</p>
+                <p>
+                    
+                    <p>Avro schema registry url. Use this field to specify schema registry url, if Avro serializer
+is used</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> topics<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+            <li> 
+                <span >topics</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
                 
             </li>
             <li>
-                <p><p>Topics to be subscribed by the consumer.</p>
-</p>
+                <p>
+                    
+                    <p>Topics to be subscribed by the consumer</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> properties<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+            <li> 
+                <span >properties</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
                 
             </li>
             <li>
-                <p><p>Additional properties if required.</p>
-</p>
+                <p>
+                    
+                    <p>Additional properties if required</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sessionTimeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >sessionTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Timeout used to detect consumer failures when heartbeat threshold is reached.</p>
-</p>
+                <p>
+                    
+                    <p>Timeout used to detect consumer failures when heartbeat threshold is reached</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> heartBeatIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >heartBeatIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Expected time between heartbeats.</p>
-</p>
+                <p>
+                    
+                    <p>Expected time between heartbeats</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metadataMaxAgeInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >metadataMaxAgeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum time to force a refresh of metadata.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum time to force a refresh of metadata</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> autoCommitIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >autoCommitIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Auto committing interval for commit offset, when auto-commit is enabled.</p>
-</p>
+                <p>
+                    
+                    <p>Auto committing interval for commit offset, when auto-commit is enabled</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPartitionFetchBytes<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxPartitionFetchBytes</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>The maximum amount of data per-partition the server returns.</p>
-</p>
+                <p>
+                    
+                    <p>The maximum amount of data per-partition the server returns</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sendBuffer<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >sendBuffer</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Size of the TCP send buffer (SO_SNDBUF).</p>
-</p>
+                <p>
+                    
+                    <p>Size of the TCP send buffer (SO_SNDBUF)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> receiveBuffer<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >receiveBuffer</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Size of the TCP receive buffer (SO_RCVBUF).</p>
-</p>
+                <p>
+                    
+                    <p>Size of the TCP receive buffer (SO_RCVBUF)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> fetchMinBytes<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >fetchMinBytes</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Minimum amount of data the server should return for a fetch request.</p>
-</p>
+                <p>
+                    
+                    <p>Minimum amount of data the server should return for a fetch request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> fetchMaxBytes<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >fetchMaxBytes</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum amount of data the server should return for a fetch request.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum amount of data the server should return for a fetch request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> fetchMaxWaitTimeInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >fetchMaxWaitTimeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum amount of time the server will block before answering the fetch request.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum amount of time the server will block before answering the fetch request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> reconnectBackoffTimeMaxInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >reconnectBackoffTimeMaxInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum amount of time in milliseconds to wait when reconnecting.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum amount of time in milliseconds to wait when reconnecting</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> retryBackoffInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >retryBackoffInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Time to wait before attempting to retry a failed request.</p>
-</p>
+                <p>
+                    
+                    <p>Time to wait before attempting to retry a failed request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metricsSampleWindowInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >metricsSampleWindowInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Window of time a metrics sample is computed over.</p>
-</p>
+                <p>
+                    
+                    <p>Window of time a metrics sample is computed over</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metricsNumSamples<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >metricsNumSamples</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Number of samples maintained to compute metrics.</p>
-</p>
+                <p>
+                    
+                    <p>Number of samples maintained to compute metrics</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> requestTimeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >requestTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Wait time for response of a request.</p>
-</p>
+                <p>
+                    
+                    <p>Wait time for response of a request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> connectionMaxIdleTimeInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >connectionMaxIdleTimeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Close idle connections after the number of milliseconds.</p>
-</p>
+                <p>
+                    
+                    <p>Close idle connections after the number of milliseconds</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPollRecords<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxPollRecords</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum number of records returned in a single call to poll.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of records returned in a single call to poll</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPollInterval<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxPollInterval</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum delay between invocations of poll.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum delay between invocations of poll</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> reconnectBackoffTimeInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >reconnectBackoffTimeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Time to wait before attempting to reconnect.</p>
-</p>
+                <p>
+                    
+                    <p>Time to wait before attempting to reconnect</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> pollingTimeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >pollingTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Timeout interval for polling.</p>
-</p>
+                <p>
+                    
+                    <p>Timeout interval for polling</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> pollingIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >pollingIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Polling interval for the consumer.</p>
-</p>
+                <p>
+                    
+                    <p>Polling interval for the consumer</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> concurrentConsumers<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >concurrentConsumers</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Number of concurrent consumers.</p>
-</p>
+                <p>
+                    
+                    <p>Number of concurrent consumers</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> defaultApiTimeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >defaultApiTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Default API timeout value for APIs with duration.</p>
-</p>
+                <p>
+                    
+                    <p>Default API timeout value for APIs with duration</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> autoCommit<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >autoCommit</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enables auto committing offsets.</p>
-</p>
+                <p>
+                    
+                    <p>Enables auto committing offsets</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> checkCRCS<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >checkCRCS</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Check the CRC32 of the records consumed. This ensures that no on-the-wire or on-disk corruption to
-the messages occurred. This may add some overhead, and might needed set to <code>false</code> if an extreme performance is
-required.</p>
-</p>
+                <p>
+                    
+                    <p>Check the CRC32 of the records consumed. This ensures that no on-the-wire or on-disk corruption to
+the messages occurred. This may add some overhead, and might needed set to <code>false</code> if extreme
+performance is required</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> excludeInternalTopics<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >excludeInternalTopics</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Whether records from internal topics should be exposed to the consumer.</p>
-</p>
+                <p>
+                    
+                    <p>Whether records from internal topics should be exposed to the consumer</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> decoupleProcessing<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >decoupleProcessing</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Decouples processing.</p>
-</p>
+                <p>
+                    
+                    <p>Decouples processing</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../kafka/records/SecureSocket.html">SecureSocket</a></span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../kafka/records/SecureSocket.html">SecureSocket</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations related to SSL/TLS.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to SSL/TLS</p>
+
+                </p>
             </li>
         </ul>
     </div>

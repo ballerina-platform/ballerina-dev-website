@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -274,6 +274,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -393,7 +397,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -587,6 +591,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -690,10 +698,13 @@
                 
                     <a href="../../websub/index.html">websub</a>
                  :
-                <span class="objects">HubPersistenceStore</span>
+                <span class="objects ">HubPersistenceStore</span>
             </h1>
-            <p><p>Represents the hub persistence configuration and functions.</p>
-</p>
+            <p>
+                
+                Represents the hub persistence configuration and functions.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -705,70 +716,94 @@
                         <div class="method-list">
                             
                                 
-<a href="#addSubscription">
-    <div class="param-sum">
-        <div class="param-name">
-        addSubscription 
-        </div>
-        <div class="param-details"> <p>Function to add or update subscription details.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="addSubscription">
+        <a href="#addSubscription">addSubscription </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds or updates subscription details.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addSubscription(subscriptionDetails);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeSubscription">
-    <div class="param-sum">
-        <div class="param-name">
-        removeSubscription 
-        </div>
-        <div class="param-details"> <p>Function to remove subscription details.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeSubscription">
+        <a href="#removeSubscription">removeSubscription </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes subscription details.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeSubscription(subscriptionDetails);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#addTopic">
-    <div class="param-sum">
-        <div class="param-name">
-        addTopic 
-        </div>
-        <div class="param-details"> <p>Function to add a topic.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="addTopic">
+        <a href="#addTopic">addTopic </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Function to add a topic.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addTopic(&quot;topic&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeTopic">
-    <div class="param-sum">
-        <div class="param-name">
-        removeTopic 
-        </div>
-        <div class="param-details"> <p>Function to remove a topic.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeTopic">
+        <a href="#removeTopic">removeTopic </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Function to remove a topic.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeTopic(&quot;topic&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#retrieveAllSubscribers">
-    <div class="param-sum">
-        <div class="param-name">
-        retrieveAllSubscribers 
-        </div>
-        <div class="param-details"> <p>Function to retrieve subscription details of all subscribers.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="retrieveAllSubscribers">
+        <a href="#retrieveAllSubscribers">retrieveAllSubscribers </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Function to retrieve subscription details of all subscribers.
+<pre><code class="language-ballerina"> SubscriptionDetails[]|error result = hubPersistenceStore.retrieveAllSubscribers();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#retrieveTopics">
-    <div class="param-sum">
-        <div class="param-name">
-        retrieveTopics 
-        </div>
-        <div class="param-details"> <p>Function to retrieve all registered topics.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="retrieveTopics">
+        <a href="#retrieveTopics">retrieveTopics </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Function to retrieve all registered topics.
+<pre><code class="language-ballerina"> string[]|error result = hubPersistenceStore.retrieveTopics();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -783,7 +818,7 @@
              <a class="url-link" href="#addSubscription">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> addSubscription </h2>
+            <h2 > addSubscription </h2>
         
         <span class="method-types">
             <p>(<a href="../../websub/records/SubscriptionDetails.html">SubscriptionDetails</a> subscriptionDetails)</p>
@@ -791,9 +826,14 @@
         </span>
         
     </div>
-    <p><p>Function to add or update subscription details.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds or updates subscription details.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addSubscription(subscriptionDetails);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -818,7 +858,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while adding the subscription, <code>()</code> otherwise</p>
+                <li><p>An <code>error</code> if an error occurred while adding the subscription or else <code>()</code> otherwise</p>
 </li>
             </ul>
         </div>
@@ -831,7 +871,7 @@
              <a class="url-link" href="#removeSubscription">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeSubscription </h2>
+            <h2 > removeSubscription </h2>
         
         <span class="method-types">
             <p>(<a href="../../websub/records/SubscriptionDetails.html">SubscriptionDetails</a> subscriptionDetails)</p>
@@ -839,9 +879,14 @@
         </span>
         
     </div>
-    <p><p>Function to remove subscription details.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes subscription details.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeSubscription(subscriptionDetails);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -866,7 +911,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while removing the subscription, <code>()</code> otherwise</p>
+                <li><p>An <code>error</code> if an error occurred while removing the subscription or else <code>()</code> otherwise</p>
 </li>
             </ul>
         </div>
@@ -879,7 +924,7 @@
              <a class="url-link" href="#addTopic">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> addTopic </h2>
+            <h2 > addTopic </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic)</p>
@@ -887,9 +932,14 @@
         </span>
         
     </div>
-    <p><p>Function to add a topic.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Function to add a topic.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.addTopic(&quot;topic&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -914,7 +964,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while adding the topic, <code>()</code> otherwise</p>
+                <li><p>An <code>error</code> if an error occurred while adding the topic or else <code>()</code> otherwise</p>
 </li>
             </ul>
         </div>
@@ -927,7 +977,7 @@
              <a class="url-link" href="#removeTopic">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeTopic </h2>
+            <h2 > removeTopic </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic)</p>
@@ -935,9 +985,14 @@
         </span>
         
     </div>
-    <p><p>Function to remove a topic.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Function to remove a topic.
+<pre><code class="language-ballerina"> error? result = hubPersistenceStore.removeTopic(&quot;topic&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -962,7 +1017,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while removing the topic, <code>()</code> otherwise</p>
+                <li><p>An <code>error</code> if an error occurred while removing the topic or else <code>()</code> otherwise</p>
 </li>
             </ul>
         </div>
@@ -975,7 +1030,7 @@
              <a class="url-link" href="#retrieveAllSubscribers">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> retrieveAllSubscribers </h2>
+            <h2 > retrieveAllSubscribers </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -983,17 +1038,22 @@
         </span>
         
     </div>
-    <p><p>Function to retrieve subscription details of all subscribers.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Function to retrieve subscription details of all subscribers.
+<pre><code class="language-ballerina"> SubscriptionDetails[]|error result = hubPersistenceStore.retrieveAllSubscribers();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../websub/records/SubscriptionDetails.html">SubscriptionDetails</a>[]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while retrieving the subscriptions, an array of subscriber details
-otherwise</p>
+                <li><p>An array of subscriber details or else an <code>error</code> if an error occurred while retrieving
+the subscriptions</p>
 </li>
             </ul>
         </div>
@@ -1006,7 +1066,7 @@ otherwise</p>
              <a class="url-link" href="#retrieveTopics">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> retrieveTopics </h2>
+            <h2 > retrieveTopics </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1014,16 +1074,21 @@ otherwise</p>
         </span>
         
     </div>
-    <p><p>Function to retrieve all registered topics.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Function to retrieve all registered topics.
+<pre><code class="language-ballerina"> string[]|error result = hubPersistenceStore.retrieveTopics();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p><code>error</code> if an error occurred while retrieving the topics, an array of topics otherwise</p>
+                <li><p>An array of topics or else <code>error</code> if an error occurred while retrieving the topics</p>
 </li>
             </ul>
         </div>

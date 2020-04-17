@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -219,6 +219,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -316,7 +320,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -478,6 +482,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -582,8 +590,7 @@
                         Module : <span class="modules">log</span>
                     
                 </h1>
-                    <h2>Module Overview</h2>
-<p>This module provides a basic API for logging.</p>
+                    <p>This module provides a basic API for logging.</p>
 <h2>Loggers</h2>
 <p>Each module in Ballerina has its own dedicated logger. A log record contains the timestamp, log level, module name, and the log message. The <code>printError()</code> function takes an optional <code>error</code> record apart from the log message. A sample log record logged from the <code>foo</code> module would look as follows:</p>
 <pre><code class="language-bash">2018-04-09 11:33:21,300 ERROR [foo] - This is an error log.
@@ -602,27 +609,7 @@
 <pre><code class="language-bash">$ ballerina run program.bal --b7a.log.level=&lt;LOG_LEVEL&gt;
 </code></pre>
 <p>Log levels can be configured for modules either through a configuration file as <code>&lt;MODULE_NAME&gt;.loglevel=&quot;&lt;LOG_LEVEL&gt;&quot;</code> or through a CLI parameter as <code>&lt;MODULE_NAME&gt;.loglevel=&lt;LOG_LEVEL&gt;</code>.</p>
-<p>The following code snippet depicts the usage of all the functions in the log API.</p>
-<pre><code class="language-ballerina">// Logs the message at ERROR level
-log:printError(&quot;error log&quot;);
-
-// Logs the message at ERROR level, along with an error record
-error e = error(&quot;error occurred&quot;);
-log:printError(&quot;error log with cause&quot;, err = e);
-
-// Logs the message at WARN level
-log:printWarn(&quot;warn log&quot;);
-
-// Logs the message at INFO level
-log:printInfo(&quot;info log&quot;);
-
-// Logs the message at DEBUG level
-log:printDebug(&quot;debug log&quot;);
-
-// Logs the message at TRACE level
-log:printTrace(&quot;trace log&quot;);
-</code></pre>
-<p>Suppose that the above code snippet resides in a module named <code>foo</code>. We can set the log level of <code>foo</code> to <code>DEBUG</code> in a configuration file by placing the following entry in it:</p>
+<p>Suppose there is a module named <code>foo</code>. We can set the log level of <code>foo</code> to <code>DEBUG</code> in a configuration file by placing the following entry in it:</p>
 <pre><code class="language-toml">[&quot;&lt;org-name&gt;/foo&quot;]
 loglevel=&quot;DEBUG&quot;
 </code></pre>
@@ -632,6 +619,7 @@ loglevel=&quot;DEBUG&quot;
 <p>The log level of <code>foo</code> can also be configured through the CLI as follows:</p>
 <pre><code class="language-bash">$ ballerina run foo --\&quot;&lt;org-name&gt;/foo.loglevel\&quot;=DEBUG
 </code></pre>
+<p>For information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see <a href="https://ballerina.io/learn/by-example/log-api.html">Log Api</a>.</p>
 
 
             
@@ -654,38 +642,69 @@ loglevel=&quot;DEBUG&quot;
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="printDebug" title="printDebug"><a
-                                    class="functions" href="functions.html#printDebug">printDebug</a></td>
-                            <td class="module-desc"><p>Logs the specified value at DEBUG level.</p>
-</td>
+                            <td class="module-title truncate functions" id="printDebug" title="printDebug">
+                                <a class="functions " href="functions.html#printDebug">printDebug</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Logs the specified value at DEBUG level.
+<pre><code class="language-ballerina"> log:printDebug(&quot;debug log&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="printError" title="printError"><a
-                                    class="functions" href="functions.html#printError">printError</a></td>
-                            <td class="module-desc"><p>Logs the specified message at ERROR level.</p>
-</td>
+                            <td class="module-title truncate functions" id="printError" title="printError">
+                                <a class="functions " href="functions.html#printError">printError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Logs the specified message at ERROR level.
+<pre><code class="language-ballerina"> error e = error(&quot;error occurred&quot;);
+ log:printError(&quot;error log with cause&quot;, err = e);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="printInfo" title="printInfo"><a
-                                    class="functions" href="functions.html#printInfo">printInfo</a></td>
-                            <td class="module-desc"><p>Logs the specified message at INFO level.</p>
-</td>
+                            <td class="module-title truncate functions" id="printInfo" title="printInfo">
+                                <a class="functions " href="functions.html#printInfo">printInfo</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Logs the specified message at INFO level.
+<pre><code class="language-ballerina"> log:printInfo(&quot;info log&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="printTrace" title="printTrace"><a
-                                    class="functions" href="functions.html#printTrace">printTrace</a></td>
-                            <td class="module-desc"><p>Logs the specified message at TRACE level.</p>
-</td>
+                            <td class="module-title truncate functions" id="printTrace" title="printTrace">
+                                <a class="functions " href="functions.html#printTrace">printTrace</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Logs the specified message at TRACE level.
+<pre><code class="language-ballerina"> log:printTrace(&quot;trace log&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="printWarn" title="printWarn"><a
-                                    class="functions" href="functions.html#printWarn">printWarn</a></td>
-                            <td class="module-desc"><p>Logs the specified message at WARN level.</p>
-</td>
+                            <td class="module-title truncate functions" id="printWarn" title="printWarn">
+                                <a class="functions " href="functions.html#printWarn">printWarn</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Logs the specified message at WARN level.
+<pre><code class="language-ballerina"> log:printWarn(&quot;warn log&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>

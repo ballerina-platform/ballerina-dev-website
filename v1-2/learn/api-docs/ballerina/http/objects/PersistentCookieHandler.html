@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">PersistentCookieHandler</span>
+                <span class="objects ">PersistentCookieHandler</span>
             </h1>
-            <p><p>The representation of a persistent cookie handler for managing persistent cookies.</p>
-</p>
+            <p>
+                
+                The representation of a persistent cookie handler for managing persistent cookies.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -865,48 +876,56 @@
                         <div class="method-list">
                             
                                 
-<a href="#storeCookie">
-    <div class="param-sum">
-        <div class="param-name">
-        storeCookie 
-        </div>
-        <div class="param-details"> <p>Adds a persistent cookie to the cookie store.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="storeCookie">
+        <a href="#storeCookie">storeCookie </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds a persistent cookie to the cookie store.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getAllCookies">
-    <div class="param-sum">
-        <div class="param-name">
-        getAllCookies 
-        </div>
-        <div class="param-details"> <p>Gets all persistent cookies.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getAllCookies">
+        <a href="#getAllCookies">getAllCookies </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets all persistent cookies.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeCookie">
-    <div class="param-sum">
-        <div class="param-name">
-        removeCookie 
-        </div>
-        <div class="param-details"> <p>Removes a specific persistent cookie.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeCookie">
+        <a href="#removeCookie">removeCookie </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes a specific persistent cookie.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeAllCookies">
-    <div class="param-sum">
-        <div class="param-name">
-        removeAllCookies 
-        </div>
-        <div class="param-details"> <p>Removes all persistent cookies.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeAllCookies">
+        <a href="#removeAllCookies">removeAllCookies </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes all persistent cookies.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -921,7 +940,7 @@
              <a class="url-link" href="#storeCookie">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> storeCookie </h2>
+            <h2 > storeCookie </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Cookie.html">Cookie</a> cookie)</p>
@@ -929,9 +948,12 @@
         </span>
         
     </div>
-    <p><p>Adds a persistent cookie to the cookie store.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds a persistent cookie to the cookie store.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -956,7 +978,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/errors.html#CookieHandlingError">CookieHandlingError</a>?</span>)</li>
-                <li><p>An error will be returned if there is any error occurred during the storing process of the cookie or else nil is returned</p>
+                <li><p>An <code>http:CookieHandlingError</code> if there is any error occurred during the storing process of the cookie or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -969,7 +991,7 @@
              <a class="url-link" href="#getAllCookies">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getAllCookies </h2>
+            <h2 > getAllCookies </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -977,16 +999,19 @@
         </span>
         
     </div>
-    <p><p>Gets all persistent cookies.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets all persistent cookies.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../http/objects/Cookie.html">Cookie</a>[]</span> | <a href="../../http/errors.html#CookieHandlingError">CookieHandlingError</a></span>)</li>
-                <li><p>Array of persistent cookies stored in the cookie store or else error is returned if occurred during the retrieval of the cookies</p>
+                <li><p>Array of persistent cookies stored in the cookie store or else an <code>http:CookieHandlingError</code> if one occurred during the retrieval of the cookies</p>
 </li>
             </ul>
         </div>
@@ -999,7 +1024,7 @@
              <a class="url-link" href="#removeCookie">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeCookie </h2>
+            <h2 > removeCookie </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">string</span> domain, <span class="builtin-type">string</span> path)</p>
@@ -1007,9 +1032,12 @@
         </span>
         
     </div>
-    <p><p>Removes a specific persistent cookie.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes a specific persistent cookie.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1060,7 +1088,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/errors.html#CookieHandlingError">CookieHandlingError</a>?</span>)</li>
-                <li><p>An error will be returned if there is any error occurred during the removal of the cookie or else nil is returned</p>
+                <li><p>An <code>http:CookieHandlingError</code> if there is one occurred during the removal of the cookie or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1073,7 +1101,7 @@
              <a class="url-link" href="#removeAllCookies">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeAllCookies </h2>
+            <h2 > removeAllCookies </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1081,16 +1109,19 @@
         </span>
         
     </div>
-    <p><p>Removes all persistent cookies.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes all persistent cookies.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/errors.html#CookieHandlingError">CookieHandlingError</a>?</span>)</li>
-                <li><p>An error will be returned if there is any error occurred during the removal of all the cookies or else nil is returned</p>
+                <li><p>An <code>http:CookieHandlingError</code> if there is one occurred during the removal of all the cookies or else <code>()</code></p>
 </li>
             </ul>
         </div>

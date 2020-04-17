@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -227,6 +227,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -324,7 +328,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -491,6 +495,10 @@
             
                 <li>
                     <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -840,34 +848,46 @@ if metric is observe:Counter {
                     
                         <tr>
                             <td class="module-title truncate records" id="Metric" title="Metric">
-                                <a class="records"
-                                   href="records/Metric.html">Metric</a></td>
-                            <td class="module-desc">This represents the generic metric record that can represent both counter and gauge.
-</td>
+                                <a class="records " href="records/Metric.html">Metric</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This represents the generic metric record that can represent both counter and gauge.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="PercentileValue" title="PercentileValue">
-                                <a class="records"
-                                   href="records/PercentileValue.html">PercentileValue</a></td>
-                            <td class="module-desc">This represents the percentile value record.
-</td>
+                                <a class="records " href="records/PercentileValue.html">PercentileValue</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This represents the percentile value record.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Snapshot" title="Snapshot">
-                                <a class="records"
-                                   href="records/Snapshot.html">Snapshot</a></td>
-                            <td class="module-desc">This represents the snapshot of the statistics calculation of the gauge.
-</td>
+                                <a class="records " href="records/Snapshot.html">Snapshot</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This represents the snapshot of the statistics calculation of the gauge.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="StatisticConfig" title="StatisticConfig">
-                                <a class="records"
-                                   href="records/StatisticConfig.html">StatisticConfig</a></td>
-                            <td class="module-desc">This represents the statistic configuration that can be used to instatiate gauge metric.
-</td>
+                                <a class="records " href="records/StatisticConfig.html">StatisticConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This represents the statistic configuration that can be used to instatiate gauge metric.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -886,25 +906,25 @@ if metric is observe:Counter {
                     
                         <tr>
                             <td class="module-title truncate objects" id="Counter" title="Counter">
-                                <a class="objects"
-                                   href="objects/Counter.html">
-                                    Counter
-                                </a>
+                                <a class="objects " href="objects/Counter.html">Counter</a>
                             </td>
-                            <td class="module-desc"><p>This represents the metric type - counter, that can be only increased by an integer number.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                This represents the metric type - counter, that can be only increased by an integer number.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="Gauge" title="Gauge">
-                                <a class="objects"
-                                   href="objects/Gauge.html">
-                                    Gauge
-                                </a>
+                                <a class="objects " href="objects/Gauge.html">Gauge</a>
                             </td>
-                            <td class="module-desc"><p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
-during the usage.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+during the usage.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -927,45 +947,69 @@ during the usage.</p>
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="addTagToSpan" title="addTagToSpan"><a
-                                    class="functions" href="functions.html#addTagToSpan">addTagToSpan</a></td>
-                            <td class="module-desc"><p>Add a key value pair as a tag to the span.</p>
-</td>
+                            <td class="module-title truncate functions" id="addTagToSpan" title="addTagToSpan">
+                                <a class="functions " href="functions.html#addTagToSpan">addTagToSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Add a key value pair as a tag to the span.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="finishSpan" title="finishSpan"><a
-                                    class="functions" href="functions.html#finishSpan">finishSpan</a></td>
-                            <td class="module-desc"><p>Finish the current span.</p>
-</td>
+                            <td class="module-title truncate functions" id="finishSpan" title="finishSpan">
+                                <a class="functions " href="functions.html#finishSpan">finishSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Finish the current span.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getAllMetrics" title="getAllMetrics"><a
-                                    class="functions" href="functions.html#getAllMetrics">getAllMetrics</a></td>
-                            <td class="module-desc"><p>Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.</p>
-</td>
+                            <td class="module-title truncate functions" id="getAllMetrics" title="getAllMetrics">
+                                <a class="functions " href="functions.html#getAllMetrics">getAllMetrics</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="lookupMetric" title="lookupMetric"><a
-                                    class="functions" href="functions.html#lookupMetric">lookupMetric</a></td>
-                            <td class="module-desc"><p>Retrieves the specific metric that is described by the given name and tags.</p>
-</td>
+                            <td class="module-title truncate functions" id="lookupMetric" title="lookupMetric">
+                                <a class="functions " href="functions.html#lookupMetric">lookupMetric</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves the specific metric that is described by the given name and tags.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="startRootSpan" title="startRootSpan"><a
-                                    class="functions" href="functions.html#startRootSpan">startRootSpan</a></td>
-                            <td class="module-desc"><p>Start a span with no parent span.</p>
-</td>
+                            <td class="module-title truncate functions" id="startRootSpan" title="startRootSpan">
+                                <a class="functions " href="functions.html#startRootSpan">startRootSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Start a span with no parent span.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="startSpan" title="startSpan"><a
-                                    class="functions" href="functions.html#startSpan">startSpan</a></td>
-                            <td class="module-desc"><p>Start a span and create child relationship to current active span or user specified span.</p>
-</td>
+                            <td class="module-title truncate functions" id="startSpan" title="startSpan">
+                                <a class="functions " href="functions.html#startSpan">startSpan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Start a span and create child relationship to current active span or user specified span.
+
+                            </td>
                         </tr>
                     
                 </table>

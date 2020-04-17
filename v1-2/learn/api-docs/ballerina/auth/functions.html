@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -663,33 +671,57 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#checkForScopeMatch">checkForScopeMatch</a></td>
-                                <td width="70%"><p>Check whether the scopes of the user and scopes of resource matches.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#checkForScopeMatch">checkForScopeMatch</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks whether the scopes of the user match the scopes of the resource.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#extractUsernameAndPassword">extractUsernameAndPassword</a></td>
-                                <td width="70%"><p>Extracts the username and password from the credential values.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#extractUsernameAndPassword">extractUsernameAndPassword</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Extracts the username and the password from the base64-encoded <code>username:password</code> value.
+<pre><code class="language-ballerina"> [string, string]|auth:Error [username, password] = auth:extractUsernameAndPassword(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#setAuthenticationContext">setAuthenticationContext</a></td>
-                                <td width="70%"><p>Set the authentication related values (scheme, auth token) to the authentication context of the invocation context.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#setAuthenticationContext">setAuthenticationContext</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Sets the authentication-related values (scheme, auth token) to the authentication context of the invocation context.
+<pre><code class="language-ballerina"> auth:setAuthenticationContext(&quot;jwt&quot;, &quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#setPrincipal">setPrincipal</a></td>
-                                <td width="70%"><p>Set the authentication related values (user id, username, scopes, claims) to the principal of the invocation context.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#setPrincipal">setPrincipal</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Sets the authentication-related values (user ID, username, scopes, claims) to the principal of the invocation context.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -703,7 +735,7 @@
              <a class="url-link" href="#checkForScopeMatch">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> checkForScopeMatch </h2>
+            <h2 > checkForScopeMatch </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> resourceScopes, <span class="array-type"><span class="builtin-type">string</span>[]</span> userScopes, <span class="builtin-type">string</span> authzCacheKey, <a href="../cache/objects/Cache.html">Cache</a>? positiveAuthzCache, <a href="../cache/objects/Cache.html">Cache</a>? negativeAuthzCache)</p>
@@ -711,9 +743,12 @@
         </span>
         
     </div>
-    <p><p>Check whether the scopes of the user and scopes of resource matches.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the scopes of the user match the scopes of the resource.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -724,7 +759,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Scopes of resource</p>
+                        <p><p>Scopes of the resource</p>
 </p>
                     </li>
                 </ul>
@@ -737,7 +772,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Scopes of user</p>
+                        <p><p>Scopes of the user</p>
 </p>
                     </li>
                 </ul>
@@ -763,7 +798,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The cache for positive authorizations</p>
+                        <p><p>The <code>cache:Cache</code> for positive authorizations</p>
 </p>
                     </li>
                 </ul>
@@ -776,7 +811,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The cache for negative authorizations</p>
+                        <p><p>The <code>cache:Cache</code> for negative authorizations</p>
 </p>
                     </li>
                 </ul>
@@ -790,7 +825,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true if there is a match between resource and user scopes, else false</p>
+                <li><p><code>true</code> if there is a match between the resource and user scopes or else <code>false</code> otherwise</p>
 </li>
             </ul>
         </div>
@@ -803,7 +838,7 @@
              <a class="url-link" href="#extractUsernameAndPassword">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> extractUsernameAndPassword </h2>
+            <h2 > extractUsernameAndPassword </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> credential)</p>
@@ -811,9 +846,14 @@
         </span>
         
     </div>
-    <p><p>Extracts the username and password from the credential values.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts the username and the password from the base64-encoded <code>username:password</code> value.
+<pre><code class="language-ballerina"> [string, string]|auth:Error [username, password] = auth:extractUsernameAndPassword(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -824,7 +864,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The credential values.</p>
+                        <p><p>Base64-encoded <code>username:password</code> value</p>
 </p>
                     </li>
                 </ul>
@@ -838,7 +878,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span><span>]</span> | <a href="../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p>A <code>string</code> tuple with the extracted username and password or <code>Error</code> occurred while extracting credentials</p>
+                <li><p>A <code>string</code> tuple with the extracted username and password or else an <code>auth:Error</code> occurred while
+extracting credentials</p>
 </li>
             </ul>
         </div>
@@ -851,12 +892,17 @@
              <a class="url-link" href="#setAuthenticationContext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> setAuthenticationContext </h2>
+            <h2 > setAuthenticationContext </h2>
         
     </div>
-    <p><p>Set the authentication related values (scheme, auth token) to the authentication context of the invocation context.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the authentication-related values (scheme, auth token) to the authentication context of the invocation context.
+<pre><code class="language-ballerina"> auth:setAuthenticationContext(&quot;jwt&quot;, &quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -867,7 +913,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Auth scheme (JWT, LDAP, OAuth2, Basic etc.)</p>
+                        <p><p>Auth scheme (<code>JWT</code>, <code>LDAP</code>, <code>OAuth2</code>, <code>Basic</code>, etc.)</p>
 </p>
                     </li>
                 </ul>
@@ -897,12 +943,15 @@
              <a class="url-link" href="#setPrincipal">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> setPrincipal </h2>
+            <h2 > setPrincipal </h2>
         
     </div>
-    <p><p>Set the authentication related values (user id, username, scopes, claims) to the principal of the invocation context.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the authentication-related values (user ID, username, scopes, claims) to the principal of the invocation context.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -913,7 +962,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>User Id of the authenticated user.</p>
+                        <p><p>User ID of the authenticated user</p>
 </p>
                     </li>
                 </ul>
@@ -926,7 +975,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Username of the authenticated user.</p>
+                        <p><p>Username of the authenticated user</p>
 </p>
                     </li>
                 </ul>
@@ -939,7 +988,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Authenticated user scopes.</p>
+                        <p><p>Authenticated user scopes</p>
 </p>
                     </li>
                 </ul>
@@ -952,7 +1001,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Claims of the authenticated user.</p>
+                        <p><p>Claims of the authenticated user</p>
 </p>
                     </li>
                 </ul>

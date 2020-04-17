@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -650,11 +658,14 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                  :
-                <span class="objects">Serializer</span>
+                <span class="objects ">Serializer</span>
             </h1>
-            <p><p>Represents a Kafka serializer object. This object can be used to create custom serializers for Ballerina Kafka
-producers.</p>
-</p>
+            <p>
+                
+                Represents a Kafka serializer object. This object can be used to create custom serializers for the Ballerina Kafka
+producers.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -666,27 +677,31 @@ producers.</p>
                         <div class="method-list">
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Close the serialization process. This function runs after the serialization process is done.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes the serialization process. This function runs after the serialization process is done.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#serialize">
-    <div class="param-sum">
-        <div class="param-name">
-        serialize 
-        </div>
-        <div class="param-details"> <p>Serialize the provided data. Implement this to serialize any data type, and return the <code>byte[]</code> value to use in
-Kafka producer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="serialize">
+        <a href="#serialize">serialize </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Serializes the provided data. Implement this to serialize any data type and return the <code>byte[]</code> value to use in
+the Kafka producer.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -701,12 +716,15 @@ Kafka producer.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
     </div>
-    <p><p>Close the serialization process. This function runs after the serialization process is done.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the serialization process. This function runs after the serialization process is done.
+
+    </div>
+    
 
     
 </div>
@@ -716,7 +734,7 @@ Kafka producer.</p>
              <a class="url-link" href="#serialize">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> serialize </h2>
+            <h2 > serialize </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">any</span> data)</p>
@@ -724,10 +742,13 @@ Kafka producer.</p>
         </span>
         
     </div>
-    <p><p>Serialize the provided data. Implement this to serialize any data type, and return the <code>byte[]</code> value to use in
-Kafka producer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Serializes the provided data. Implement this to serialize any data type and return the <code>byte[]</code> value to use in
+the Kafka producer.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -738,7 +759,7 @@ Kafka producer.</p>
                         
                     </li>
                     <li>
-                        <p><p>Data which should be serialized.</p>
+                        <p><p>Data, which should be serialized</p>
 </p>
                     </li>
                 </ul>
@@ -752,7 +773,7 @@ Kafka producer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span></span>)</li>
-                <li><p>Serialized <code>byte[]</code> value.</p>
+                <li><p>Serialized <code>byte[]</code> value</p>
 </li>
             </ul>
         </div>

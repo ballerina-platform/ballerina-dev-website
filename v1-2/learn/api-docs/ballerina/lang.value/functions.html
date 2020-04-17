@@ -92,7 +92,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -655,69 +663,104 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#clone">clone</a></td>
-                                <td width="70%"><p>Returns a clone of <code>v</code>.
+                                <td width="30%"><a class="functions " href="#clone">clone</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a clone of <code>v</code>.
 A clone is a deep copy that does not copy immutable subtrees.
 A clone can therefore safely be used concurrently with the original.
 It corresponds to the Clone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</td>
+defined in the Ballerina Language Specification.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#cloneReadOnly">cloneReadOnly</a></td>
-                                <td width="70%"><p>Returns a clone of <code>v</code> that is read-only, i.e. immutable.
+                                <td width="30%"><a class="functions " href="#cloneReadOnly">cloneReadOnly</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a clone of <code>v</code> that is read-only, i.e. immutable.
 It corresponds to the ImmutableClone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</td>
+defined in the Ballerina Language Specification.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#fromJsonString">fromJsonString</a></td>
-                                <td width="70%"><p>Parses a string in JSON format and returns the the value that it represents.
+                                <td width="30%"><a class="functions " href="#fromJsonString">fromJsonString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Parses a string in JSON format and returns the the value that it represents.
 All numbers in the JSON will be represented as float values.
-Returns an error if the string cannot be parsed.</p>
-</td>
+Returns an error if the string cannot be parsed.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#isReadOnly">isReadOnly</a></td>
-                                <td width="70%"><p>Tests whether <code>v</code> is read-only, i.e. immutable
-Returns true if read-only, false otherwise.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#isReadOnly">isReadOnly</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Tests whether <code>v</code> is read-only, i.e. immutable
+Returns true if read-only, false otherwise.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#mergeJson">mergeJson</a></td>
-                                <td width="70%"><p>Merges two json values.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#mergeJson">mergeJson</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Merges two json values.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toJsonString">toJsonString</a></td>
-                                <td width="70%"><p>Returns the string that represents <code>v</code> in JSON format.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toJsonString">toJsonString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the string that represents <code>v</code> in JSON format.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toString">toString</a></td>
-                                <td width="70%"><p>Performs a minimal conversion of a value to a string.
+                                <td width="30%"><a class="functions " href="#toString">toString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Performs a minimal conversion of a value to a string.
 The conversion is minimal in particular in the sense
 that the conversion applied to a value that is already
-a string does nothing.</p>
-</td>
+a string does nothing.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -731,7 +774,7 @@ a string does nothing.</p>
              <a class="url-link" href="#clone">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> clone </h2>
+            <h2 > clone </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">null</span> v)</p>
@@ -739,13 +782,16 @@ a string does nothing.</p>
         </span>
         
     </div>
-    <p><p>Returns a clone of <code>v</code>.
+    <div class="function-desc">
+        
+        Returns a clone of <code>v</code>.
 A clone is a deep copy that does not copy immutable subtrees.
 A clone can therefore safely be used concurrently with the original.
 It corresponds to the Clone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</p>
-     
+defined in the Ballerina Language Specification.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -783,7 +829,7 @@ defined in the Ballerina Language Specification.</p>
              <a class="url-link" href="#cloneReadOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> cloneReadOnly </h2>
+            <h2 > cloneReadOnly </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">null</span> v)</p>
@@ -791,11 +837,14 @@ defined in the Ballerina Language Specification.</p>
         </span>
         
     </div>
-    <p><p>Returns a clone of <code>v</code> that is read-only, i.e. immutable.
+    <div class="function-desc">
+        
+        Returns a clone of <code>v</code> that is read-only, i.e. immutable.
 It corresponds to the ImmutableClone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</p>
-     
+defined in the Ballerina Language Specification.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -833,7 +882,7 @@ defined in the Ballerina Language Specification.</p>
              <a class="url-link" href="#fromJsonString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> fromJsonString </h2>
+            <h2 > fromJsonString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> str)</p>
@@ -841,11 +890,14 @@ defined in the Ballerina Language Specification.</p>
         </span>
         
     </div>
-    <p><p>Parses a string in JSON format and returns the the value that it represents.
+    <div class="function-desc">
+        
+        Parses a string in JSON format and returns the the value that it represents.
 All numbers in the JSON will be represented as float values.
-Returns an error if the string cannot be parsed.</p>
-</p>
-     
+Returns an error if the string cannot be parsed.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -883,7 +935,7 @@ Returns an error if the string cannot be parsed.</p>
              <a class="url-link" href="#isReadOnly">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> isReadOnly </h2>
+            <h2 > isReadOnly </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> v)</p>
@@ -891,10 +943,13 @@ Returns an error if the string cannot be parsed.</p>
         </span>
         
     </div>
-    <p><p>Tests whether <code>v</code> is read-only, i.e. immutable
-Returns true if read-only, false otherwise.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Tests whether <code>v</code> is read-only, i.e. immutable
+Returns true if read-only, false otherwise.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -932,7 +987,7 @@ Returns true if read-only, false otherwise.</p>
              <a class="url-link" href="#mergeJson">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> mergeJson </h2>
+            <h2 > mergeJson </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">json</span> j1, <span class="builtin-type">json</span> j2)</p>
@@ -940,9 +995,12 @@ Returns true if read-only, false otherwise.</p>
         </span>
         
     </div>
-    <p><p>Merges two json values.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Merges two json values.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1008,7 +1066,7 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
              <a class="url-link" href="#toJsonString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toJsonString </h2>
+            <h2 > toJsonString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">json</span> v)</p>
@@ -1016,9 +1074,12 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
         </span>
         
     </div>
-    <p><p>Returns the string that represents <code>v</code> in JSON format.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the string that represents <code>v</code> in JSON format.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1056,7 +1117,7 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toString </h2>
+            <h2 > toString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">any</span> | <span class="builtin-type">error</span> v)</p>
@@ -1064,12 +1125,15 @@ If the merge fails, then <code>j1</code> is unchanged.</li>
         </span>
         
     </div>
-    <p><p>Performs a minimal conversion of a value to a string.
+    <div class="function-desc">
+        
+        Performs a minimal conversion of a value to a string.
 The conversion is minimal in particular in the sense
 that the conversion applied to a value that is already
-a string does nothing.</p>
-</p>
-     
+a string does nothing.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

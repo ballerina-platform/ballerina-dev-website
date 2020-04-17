@@ -84,7 +84,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -389,7 +393,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -673,10 +681,13 @@
                 
                     <a href="../../socket/index.html">socket</a>
                 
-                 : <span class="records">ListenerConfig</span>
+                 : <span class="records ">ListenerConfig</span>
             </h1>
-            <p>Represents the socket server configuration.
-</p>
+            <p>
+                
+                Represents the socket server configuration.
+
+            </p>
             <div class="constants">
                 
                     
@@ -685,24 +696,35 @@
         
     <div class="params-listing">
         <ul>
-            <li> interface<span class="type">  <span class="builtin-type">string?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >interface</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>the interface that server with to bind</p>
-</p>
+                <p>
+                    
+                    <p>The interface for the server to be bound</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> readTimeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 300000)</span>
+            <li> 
+                <span >readTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 300000)</span> 
             </li>
             <li>
-                <p><p>Socket read timeout value to be used in milliseconds. Default is 300000 milliseconds (5 minutes)</p>
-</p>
+                <p>
+                    
+                    <p>The socket reading timeout value to be used in milliseconds. If this is not set,
+the default value of 300000 milliseconds (5 minutes) will be used.</p>
+
+                </p>
             </li>
         </ul>
     </div>

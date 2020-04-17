@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -665,10 +673,14 @@
                 
                     <a href="../../task/index.html">task</a>
                 
-                 : <span class="records">TimerConfiguration</span>
+                 : <span class="records ">TimerConfiguration</span>
             </h1>
-            <p>Configurations related to a Timer
-</p>
+            <p>
+                
+                Configurations related to a timer, which are used to define the behavior of a timer when initializing the
+<code>task:Listener</code>.
+
+            </p>
             <div class="constants">
                 
                     
@@ -677,36 +689,51 @@
         
     <div class="params-listing">
         <ul>
-            <li> intervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >intervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Timer interval (in Milliseconds), which triggers the <code>onTrigger</code> resource.</p>
-</p>
+                <p>
+                    
+                    <p>Timer interval (in milliseconds), which triggers the <code>onTrigger</code> resource</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> initialDelayInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >initialDelayInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Delay (in Milliseconds) after which the timer will run.</p>
-</p>
+                <p>
+                    
+                    <p>Delay (in milliseconds) after which the timer will run</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noOfRecurrences<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >noOfRecurrences</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Number of times to trigger the task, after which the task stops running.</p>
-</p>
+                <p>
+                    
+                    <p>Number of times to trigger the task after which the task stops running</p>
+
+                </p>
             </li>
         </ul>
     </div>

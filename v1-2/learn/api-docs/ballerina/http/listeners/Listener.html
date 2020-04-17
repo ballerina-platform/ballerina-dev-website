@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -675,8 +683,8 @@
                 
                  : <span class="listeners">Listener</span> 
             </h1>
-            <p><p>This is used for creating HTTP server endpoints. An HTTP server endpoint is capable of responding to
-remote callers. The <code>Listener</code> is responsible for initializing the endpoint using the provided configurations.</p>
+            <p>This is used for creating HTTP server endpoints. An HTTP server endpoint is capable of responding to
+remote callers. The <code>Listener</code> is responsible for initializing the endpoint using the provided configurations.
 </p>
 
             <div class="constants">
@@ -715,59 +723,69 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                     <div class="method-list">
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details"> <p>Stops the service listener gracefully. Already-accepted requests will be served before connection closure.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the service listener gracefully. Already-accepted requests will be served before connection closure.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details"> <p>Stops the service listener immediately. It is not implemented yet.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the service listener immediately. It is not implemented yet.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details"> <p>Detaches a Http or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
-the functionality of the existing connections.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Detaches a Http or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
+The functionality of the existing connections.
+
+    </div>
+</div>
+
                         
                             
-<a href="#init">
-    <div class="param-sum">
-        <div class="param-name">
-        init 
-        </div>
-        <div class="param-details"> <p>Gets invoked during module initialization to initialize the endpoint.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="init">
+        <a href="#init">init </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets invoked during module initialization to initialize the endpoint.
+
+    </div>
+</div>
+
                         
                             
-<a href="#initEndpoint">
-    <div class="param-sum">
-        <div class="param-name">
-        initEndpoint 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="initEndpoint">
+        <a href="#initEndpoint">initEndpoint </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -777,26 +795,30 @@ the functionality of the existing connections.</p>
                     <div class="method-list">
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details"> <p>Starts the registered service programmatically.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts the registered service programmatically.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details"> <p>Attach a service to the listener.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Attaches a service to the listener.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -812,7 +834,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -820,9 +842,12 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p><p>Stops the service listener gracefully. Already-accepted requests will be served before connection closure.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops the service listener gracefully. Already-accepted requests will be served before connection closure.
+
+    </div>
+    
 
     
         
@@ -842,7 +867,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -850,9 +875,12 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p><p>Stops the service listener immediately. It is not implemented yet.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops the service listener immediately. It is not implemented yet.
+
+    </div>
+    
 
     
         
@@ -872,7 +900,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -880,10 +908,13 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p><p>Detaches a Http or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
-the functionality of the existing connections.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Detaches a Http or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
+The functionality of the existing connections.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -908,7 +939,7 @@ the functionality of the existing connections.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>error if occurred during detaching of a service or <code>nil</code></p>
+                <li><p>An <code>error</code> if one occurred during detaching of a service or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -921,12 +952,15 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#init">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> init </h2>
+            <h2 > init </h2>
         
     </div>
-    <p><p>Gets invoked during module initialization to initialize the endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets invoked during module initialization to initialize the endpoint.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -954,7 +988,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#initEndpoint">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> initEndpoint </h2>
+            <h2 > initEndpoint </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -962,8 +996,11 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        
+    </div>
+    
 
     
         
@@ -987,7 +1024,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -995,9 +1032,12 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p><p>Starts the registered service programmatically.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Starts the registered service programmatically.
+
+    </div>
+    
 
     
         
@@ -1017,7 +1057,7 @@ the functionality of the existing connections.</p>
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -1025,9 +1065,12 @@ the functionality of the existing connections.</p>
         </span>
         
     </div>
-    <p><p>Attach a service to the listener.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Attaches a service to the listener.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

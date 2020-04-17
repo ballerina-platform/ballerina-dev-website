@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">CookieConfig</span>
+                 : <span class="records ">CookieConfig</span>
             </h1>
-            <p>Client configuration for cookies.
-</p>
+            <p>
+                
+                Client configuration for cookies.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,61 +1064,86 @@
         
     <div class="params-listing">
         <ul>
-            <li> enabled<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >enabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>User agents provide users with a mechanism for disabling or enabling cookies</p>
-</p>
+                <p>
+                    
+                    <p>User agents provide users with a mechanism for disabling or enabling cookies</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxCookiesPerDomain<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 50)</span>
+            <li> 
+                <span >maxCookiesPerDomain</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 50)</span> 
             </li>
             <li>
-                <p><p>Maximum number of cookies per domain, which is 50</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of cookies per domain, which is 50</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxTotalCookieCount<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 3000)</span>
+            <li> 
+                <span >maxTotalCookieCount</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 3000)</span> 
             </li>
             <li>
-                <p><p>Maximum number of total cookies allowed to be stored in cookie store, which is 3000</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of total cookies allowed to be stored in cookie store, which is 3000</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> blockThirdPartyCookies<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >blockThirdPartyCookies</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>User can block cookies from third party responses and refuse to send cookies for third party requests, if needed</p>
-</p>
+                <p>
+                    
+                    <p>User can block cookies from third party responses and refuse to send cookies for third party requests, if needed</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> persistentCookieHandler<span class="type">  <a href="../../http/objects/PersistentCookieHandler.html">PersistentCookieHandler</a></span>
+            <li> 
+                <span >persistentCookieHandler</span>
+                <span class="type">  <a href="../../http/objects/PersistentCookieHandler.html">PersistentCookieHandler</a></span>
                 
             </li>
             <li>
-                <p><p>To manage persistent cookies, users are provided with a mechanism for specifying a persistent cookie store with their own mechanism
+                <p>
+                    
+                    <p>To manage persistent cookies, users are provided with a mechanism for specifying a persistent cookie store with their own mechanism
 which references the persistent cookie handler or specifying the CSV persistent cookie handler. If not specified any, only the session cookies are used</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

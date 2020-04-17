@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">RollingWindow</span>
+                 : <span class="records ">RollingWindow</span>
             </h1>
-            <p>Represents a rolling window in the Circuit Breaker.
-</p>
+            <p>
+                
+                Represents a rolling window in the Circuit Breaker.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,36 +1064,51 @@
         
     <div class="params-listing">
         <ul>
-            <li> requestVolumeThreshold<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 10)</span>
+            <li> 
+                <span >requestVolumeThreshold</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 10)</span> 
             </li>
             <li>
-                <p><p>Minimum number of requests in a <code>RollingWindow</code> that will trip the circuit.</p>
-</p>
+                <p>
+                    
+                    <p>Minimum number of requests in a <code>RollingWindow</code> that will trip the circuit.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> timeWindowInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 60000)</span>
+            <li> 
+                <span >timeWindowInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 60000)</span> 
             </li>
             <li>
-                <p><p>Time period in milliseconds for which the failure threshold is calculated</p>
-</p>
+                <p>
+                    
+                    <p>Time period in milliseconds for which the failure threshold is calculated</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> bucketSizeInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 10000)</span>
+            <li> 
+                <span >bucketSizeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 10000)</span> 
             </li>
             <li>
-                <p><p>The granularity at which the time window slides. This is measured in milliseconds.</p>
-</p>
+                <p>
+                    
+                    <p>The granularity at which the time window slides. This is measured in milliseconds.</p>
+
+                </p>
             </li>
         </ul>
     </div>

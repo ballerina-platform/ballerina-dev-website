@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">Request</span>
+                <span class="objects ">Request</span>
             </h1>
-            <p><p>Represents an HTTP request.</p>
-</p>
+            <p>
+                
+                Represents an HTTP request.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -865,383 +876,451 @@
                         <div class="method-list">
                             
                                 
-<a href="#setEntity">
-    <div class="param-sum">
-        <div class="param-name">
-        setEntity 
-        </div>
-        <div class="param-details"> <p>Sets the provided <code>Entity</code> to the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setEntity">
+        <a href="#setEntity">setEntity </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the provided <code>Entity</code> to the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getQueryParams">
-    <div class="param-sum">
-        <div class="param-name">
-        getQueryParams 
-        </div>
-        <div class="param-details"> <p>Gets the query parameters of the request as a map consisting of a string array.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getQueryParams">
+        <a href="#getQueryParams">getQueryParams </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the query parameters of the request as a map consisting of a string array.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getQueryParamValue">
-    <div class="param-sum">
-        <div class="param-name">
-        getQueryParamValue 
-        </div>
-        <div class="param-details"> <p>Gets the query param value associated with the given key.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getQueryParamValue">
+        <a href="#getQueryParamValue">getQueryParamValue </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the query param value associated with the given key.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getQueryParamValues">
-    <div class="param-sum">
-        <div class="param-name">
-        getQueryParamValues 
-        </div>
-        <div class="param-details"> <p>Gets all the query param values associated with the given key.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getQueryParamValues">
+        <a href="#getQueryParamValues">getQueryParamValues </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets all the query param values associated with the given key.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getMatrixParams">
-    <div class="param-sum">
-        <div class="param-name">
-        getMatrixParams 
-        </div>
-        <div class="param-details"> <p>Gets the matrix parameters of the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getMatrixParams">
+        <a href="#getMatrixParams">getMatrixParams </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the matrix parameters of the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getEntity">
-    <div class="param-sum">
-        <div class="param-name">
-        getEntity 
-        </div>
-        <div class="param-details"> <p>Gets the <code>Entity</code> associated with the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getEntity">
+        <a href="#getEntity">getEntity </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the <code>Entity</code> associated with the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#hasHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        hasHeader 
-        </div>
-        <div class="param-details"> <p>Checks whether the requested header key exists in the header map.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasHeader">
+        <a href="#hasHeader">hasHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the requested header key exists in the header map.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeader 
-        </div>
-        <div class="param-details"> <p>Returns the value of the specified header. If the specified header key maps to multiple values, the first of
-these values is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeader">
+        <a href="#getHeader">getHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
+these values is returned.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeaders">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeaders 
-        </div>
-        <div class="param-details"> <p>Gets all the header values to which the specified header key maps to.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeaders">
+        <a href="#getHeaders">getHeaders </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets all the header values to which the specified header key maps to.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        setHeader 
-        </div>
-        <div class="param-details"> <p>Sets the specified header to the request. If a mapping already exists for the specified header key, the existing
-header value is replaced with the specified header value.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setHeader">
+        <a href="#setHeader">setHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the specified header to the request. If a mapping already exists for the specified header key, the existing
+header value is replaced with the specified header value.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#addHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        addHeader 
-        </div>
-        <div class="param-details"> <p>Adds the specified header to the request. Existing header values are not replaced.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="addHeader">
+        <a href="#addHeader">addHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds the specified header to the request. Existing header values are not replaced.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        removeHeader 
-        </div>
-        <div class="param-details"> <p>Removes the specified header from the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeHeader">
+        <a href="#removeHeader">removeHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes the specified header from the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeAllHeaders">
-    <div class="param-sum">
-        <div class="param-name">
-        removeAllHeaders 
-        </div>
-        <div class="param-details"> <p>Removes all the headers from the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeAllHeaders">
+        <a href="#removeAllHeaders">removeAllHeaders </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes all the headers from the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeaderNames">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeaderNames 
-        </div>
-        <div class="param-details"> <p>Gets all the names of the headers of the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeaderNames">
+        <a href="#getHeaderNames">getHeaderNames </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets all the names of the headers of the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#expects100Continue">
-    <div class="param-sum">
-        <div class="param-name">
-        expects100Continue 
-        </div>
-        <div class="param-details"> <p>Checks whether the client expects a <code>100-continue</code> response.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="expects100Continue">
+        <a href="#expects100Continue">expects100Continue </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the client expects a <code>100-continue</code> response.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setContentType">
-    <div class="param-sum">
-        <div class="param-name">
-        setContentType 
-        </div>
-        <div class="param-details"> <p>Sets the <code>content-type</code> header to the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setContentType">
+        <a href="#setContentType">setContentType </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the <code>content-type</code> header to the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getContentType">
-    <div class="param-sum">
-        <div class="param-name">
-        getContentType 
-        </div>
-        <div class="param-details"> <p>Gets the type of the payload of the request (i.e: the <code>content-type</code> header value).</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getContentType">
+        <a href="#getContentType">getContentType </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the type of the payload of the request (i.e: the <code>content-type</code> header value).
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getJsonPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getJsonPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>json</code> payload from the request. If the content type is not JSON, an <code>http:ClientError</code> is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getJsonPayload">
+        <a href="#getJsonPayload">getJsonPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>json</code> payload from the request. If the content type is not JSON, an <code>http:ClientError</code> is returned.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getXmlPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getXmlPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>xml</code> payload from the request. If the content type is not XML, an <code>http:ClientError</code> is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getXmlPayload">
+        <a href="#getXmlPayload">getXmlPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>xml</code> payload from the request. If the content type is not XML, an <code>http:ClientError</code> is returned.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getTextPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getTextPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>text</code> payload from the request. If the content type is not of type text, an <code>http:ClientError</code> is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getTextPayload">
+        <a href="#getTextPayload">getTextPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>text</code> payload from the request. If the content type is not of type text, an <code>http:ClientError</code> is returned.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getByteChannel">
-    <div class="param-sum">
-        <div class="param-name">
-        getByteChannel 
-        </div>
-        <div class="param-details"> <p>Gets the request payload as a <code>ByteChannel</code> except in the case of multiparts. To retrieve multiparts, use
-<code>Request.getBodyParts()</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getByteChannel">
+        <a href="#getByteChannel">getByteChannel </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the request payload as a <code>ByteChannel</code> except in the case of multiparts. To retrieve multiparts, use
+<code>Request.getBodyParts()</code>.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getBinaryPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getBinaryPayload 
-        </div>
-        <div class="param-details"> <p>Gets the request payload as a <code>byte[]</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getBinaryPayload">
+        <a href="#getBinaryPayload">getBinaryPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the request payload as a <code>byte[]</code>.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getFormParams">
-    <div class="param-sum">
-        <div class="param-name">
-        getFormParams 
-        </div>
-        <div class="param-details"> <p>Gets the form parameters from the HTTP request as a <code>map</code> when content type is application/x-www-form-urlencoded.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getFormParams">
+        <a href="#getFormParams">getFormParams </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the form parameters from the HTTP request as a <code>map</code> when content type is application/x-www-form-urlencoded.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getBodyParts">
-    <div class="param-sum">
-        <div class="param-name">
-        getBodyParts 
-        </div>
-        <div class="param-details"> <p>Extracts body parts from the request. If the content type is not a composite media type, an error
-is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getBodyParts">
+        <a href="#getBodyParts">getBodyParts </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts body parts from the request. If the content type is not a composite media type, an error
+is returned.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setJsonPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setJsonPayload 
-        </div>
-        <div class="param-details"> <p>Sets a <code>json</code> as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setJsonPayload">
+        <a href="#setJsonPayload">setJsonPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets a <code>json</code> as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setXmlPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setXmlPayload 
-        </div>
-        <div class="param-details"> <p>Sets an <code>xml</code> as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setXmlPayload">
+        <a href="#setXmlPayload">setXmlPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets an <code>xml</code> as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setTextPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setTextPayload 
-        </div>
-        <div class="param-details"> <p>Sets a <code>string</code> as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setTextPayload">
+        <a href="#setTextPayload">setTextPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets a <code>string</code> as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setBinaryPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setBinaryPayload 
-        </div>
-        <div class="param-details"> <p>Sets a <code>byte[]</code> as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setBinaryPayload">
+        <a href="#setBinaryPayload">setBinaryPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets a <code>byte[]</code> as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setBodyParts">
-    <div class="param-sum">
-        <div class="param-name">
-        setBodyParts 
-        </div>
-        <div class="param-details"> <p>Set multiparts as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setBodyParts">
+        <a href="#setBodyParts">setBodyParts </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Set multiparts as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setFileAsPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setFileAsPayload 
-        </div>
-        <div class="param-details"> <p>Sets the content of the specified file as the entity body of the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setFileAsPayload">
+        <a href="#setFileAsPayload">setFileAsPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the content of the specified file as the entity body of the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setByteChannel">
-    <div class="param-sum">
-        <div class="param-name">
-        setByteChannel 
-        </div>
-        <div class="param-details"> <p>Sets a <code>ByteChannel</code> as the payload.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setByteChannel">
+        <a href="#setByteChannel">setByteChannel </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets a <code>ByteChannel</code> as the payload.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        setPayload 
-        </div>
-        <div class="param-details"> <p>Sets the request payload. Note that any string value is set as <code>text/plain</code>. To send a JSON-compatible string,
-set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setPayload">
+        <a href="#setPayload">setPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the request payload. Note that any string value is set as <code>text/plain</code>. To send a JSON-compatible string,
+set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#addCookies">
-    <div class="param-sum">
-        <div class="param-name">
-        addCookies 
-        </div>
-        <div class="param-details"> <p>Adds cookies to the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="addCookies">
+        <a href="#addCookies">addCookies </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds cookies to the request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getCookies">
-    <div class="param-sum">
-        <div class="param-name">
-        getCookies 
-        </div>
-        <div class="param-details"> <p>Gets cookies from the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getCookies">
+        <a href="#getCookies">getCookies </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets cookies from the request.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -1253,85 +1332,120 @@ set the content-type header to <code>application/json</code> or use the <code>se
         
     <div class="params-listing">
         <ul>
-            <li> rawPath<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >rawPath</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Resource path of the request URL</p>
-</p>
+                <p>
+                    
+                    <p>Resource path of the request URL</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> method<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >method</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The HTTP request method</p>
-</p>
+                <p>
+                    
+                    <p>The HTTP request method</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> httpVersion<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >httpVersion</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The HTTP version supported by the client</p>
-</p>
+                <p>
+                    
+                    <p>The HTTP version supported by the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> userAgent<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >userAgent</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The user-agent. This value is used when setting the <code>user-agent</code> header</p>
-</p>
+                <p>
+                    
+                    <p>The user-agent. This value is used when setting the <code>user-agent</code> header</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> extraPathInfo<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >extraPathInfo</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The part of the URL, which matched to '*' if the request is dispatched to a wildcard resource</p>
-</p>
+                <p>
+                    
+                    <p>The part of the URL, which matched to '*' if the request is dispatched to a wildcard resource</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> cacheControl<span class="type">  <a href="../../http/objects/RequestCacheControl.html">RequestCacheControl</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >cacheControl</span>
+                <span class="type">  <a href="../../http/objects/RequestCacheControl.html">RequestCacheControl</a>?</span>
+                 <span class="default">(default</span> <span class="type"><a href="../../http/objects/().html">()</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>The cache-control directives for the request. This needs to be explicitly initialized if intending
+                <p>
+                    
+                    <p>The cache-control directives for the request. This needs to be explicitly initialized if intending
 on utilizing HTTP caching.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> mutualSslHandshake<span class="type">  <a href="../../http/records/MutualSslHandshake.html">MutualSslHandshake</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >mutualSslHandshake</span>
+                <span class="type">  <a href="../../http/records/MutualSslHandshake.html">MutualSslHandshake</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>A record providing mutual ssl handshake results.</p>
-</p>
+                <p>
+                    
+                    <p>A record providing mutual ssl handshake results.</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -1393,12 +1507,15 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#setEntity">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setEntity </h2>
+            <h2 > setEntity </h2>
         
     </div>
-    <p><p>Sets the provided <code>Entity</code> to the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the provided <code>Entity</code> to the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1426,7 +1543,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#getQueryParams">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getQueryParams </h2>
+            <h2 > getQueryParams </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1434,9 +1551,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Gets the query parameters of the request as a map consisting of a string array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the query parameters of the request as a map consisting of a string array.
+
+    </div>
+    
 
     
         
@@ -1456,7 +1576,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#getQueryParamValue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getQueryParamValue </h2>
+            <h2 > getQueryParamValue </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -1464,9 +1584,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Gets the query param value associated with the given key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the query param value associated with the given key.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1491,8 +1614,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
-                <li><p>Returns the query param value associated with the given key as a string. If multiple param values are
-present, then the first value is returned. Nil is returned if no key is found.</p>
+                <li><p>The query param value associated with the given key as a string. If multiple param values are
+present, then the first value is returned. <code>()</code> is returned if no key is found.</p>
 </li>
             </ul>
         </div>
@@ -1505,7 +1628,7 @@ present, then the first value is returned. Nil is returned if no key is found.</
              <a class="url-link" href="#getQueryParamValues">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getQueryParamValues </h2>
+            <h2 > getQueryParamValues </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -1513,9 +1636,12 @@ present, then the first value is returned. Nil is returned if no key is found.</
         </span>
         
     </div>
-    <p><p>Gets all the query param values associated with the given key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets all the query param values associated with the given key.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1540,7 +1666,7 @@ present, then the first value is returned. Nil is returned if no key is found.</
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]?</span></span>)</li>
-                <li><p>Returns all the query param values associated with the given key as a <code>string[]</code>. Nil is returned if no key
+                <li><p>All the query param values associated with the given key as a <code>string[]</code>. <code>()</code> is returned if no key
 is found.</p>
 </li>
             </ul>
@@ -1554,7 +1680,7 @@ is found.</p>
              <a class="url-link" href="#getMatrixParams">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getMatrixParams </h2>
+            <h2 > getMatrixParams </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1562,9 +1688,12 @@ is found.</p>
         </span>
         
     </div>
-    <p><p>Gets the matrix parameters of the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the matrix parameters of the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1602,7 +1731,7 @@ is found.</p>
              <a class="url-link" href="#getEntity">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getEntity </h2>
+            <h2 > getEntity </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1610,9 +1739,12 @@ is found.</p>
         </span>
         
     </div>
-    <p><p>Gets the <code>Entity</code> associated with the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the <code>Entity</code> associated with the request.
+
+    </div>
+    
 
     
         
@@ -1632,7 +1764,7 @@ is found.</p>
              <a class="url-link" href="#hasHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasHeader </h2>
+            <h2 > hasHeader </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -1640,9 +1772,12 @@ is found.</p>
         </span>
         
     </div>
-    <p><p>Checks whether the requested header key exists in the header map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the requested header key exists in the header map.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1680,7 +1815,7 @@ is found.</p>
              <a class="url-link" href="#getHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeader </h2>
+            <h2 > getHeader </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -1688,10 +1823,13 @@ is found.</p>
         </span>
         
     </div>
-    <p><p>Returns the value of the specified header. If the specified header key maps to multiple values, the first of
-these values is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
+these values is returned.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1730,7 +1868,7 @@ these values is returned.</p>
              <a class="url-link" href="#getHeaders">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeaders </h2>
+            <h2 > getHeaders </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -1738,9 +1876,12 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Gets all the header values to which the specified header key maps to.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets all the header values to which the specified header key maps to.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1779,13 +1920,16 @@ these values is returned.</p>
              <a class="url-link" href="#setHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setHeader </h2>
+            <h2 > setHeader </h2>
         
     </div>
-    <p><p>Sets the specified header to the request. If a mapping already exists for the specified header key, the existing
-header value is replaced with the specified header value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the specified header to the request. If a mapping already exists for the specified header key, the existing
+header value is replaced with the specified header value.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1826,12 +1970,15 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#addHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> addHeader </h2>
+            <h2 > addHeader </h2>
         
     </div>
-    <p><p>Adds the specified header to the request. Existing header values are not replaced.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds the specified header to the request. Existing header values are not replaced.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1872,12 +2019,15 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#removeHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeHeader </h2>
+            <h2 > removeHeader </h2>
         
     </div>
-    <p><p>Removes the specified header from the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes the specified header from the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1905,12 +2055,15 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#removeAllHeaders">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeAllHeaders </h2>
+            <h2 > removeAllHeaders </h2>
         
     </div>
-    <p><p>Removes all the headers from the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes all the headers from the request.
+
+    </div>
+    
 
     
 </div>
@@ -1920,7 +2073,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getHeaderNames">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeaderNames </h2>
+            <h2 > getHeaderNames </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1928,9 +2081,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Gets all the names of the headers of the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets all the names of the headers of the request.
+
+    </div>
+    
 
     
         
@@ -1950,7 +2106,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#expects100Continue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> expects100Continue </h2>
+            <h2 > expects100Continue </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1958,9 +2114,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Checks whether the client expects a <code>100-continue</code> response.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the client expects a <code>100-continue</code> response.
+
+    </div>
+    
 
     
         
@@ -1980,7 +2139,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#setContentType">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setContentType </h2>
+            <h2 > setContentType </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> contentType)</p>
@@ -1988,9 +2147,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Sets the <code>content-type</code> header to the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the <code>content-type</code> header to the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2028,7 +2190,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getContentType">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getContentType </h2>
+            <h2 > getContentType </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2036,16 +2198,19 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Gets the type of the payload of the request (i.e: the <code>content-type</code> header value).</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the type of the payload of the request (i.e: the <code>content-type</code> header value).
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Returns the <code>content-type</code> header value as a string</p>
+                <li><p>The <code>content-type</code> header value as a string</p>
 </li>
             </ul>
         </div>
@@ -2058,7 +2223,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getJsonPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getJsonPayload </h2>
+            <h2 > getJsonPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2066,9 +2231,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>json</code> payload from the request. If the content type is not JSON, an <code>http:ClientError</code> is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>json</code> payload from the request. If the content type is not JSON, an <code>http:ClientError</code> is returned.
+
+    </div>
+    
 
     
         
@@ -2088,7 +2256,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getXmlPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getXmlPayload </h2>
+            <h2 > getXmlPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2096,9 +2264,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>xml</code> payload from the request. If the content type is not XML, an <code>http:ClientError</code> is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>xml</code> payload from the request. If the content type is not XML, an <code>http:ClientError</code> is returned.
+
+    </div>
+    
 
     
         
@@ -2118,7 +2289,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getTextPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getTextPayload </h2>
+            <h2 > getTextPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2126,9 +2297,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>text</code> payload from the request. If the content type is not of type text, an <code>http:ClientError</code> is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>text</code> payload from the request. If the content type is not of type text, an <code>http:ClientError</code> is returned.
+
+    </div>
+    
 
     
         
@@ -2148,7 +2322,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getByteChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getByteChannel </h2>
+            <h2 > getByteChannel </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2156,10 +2330,13 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Gets the request payload as a <code>ByteChannel</code> except in the case of multiparts. To retrieve multiparts, use
-<code>Request.getBodyParts()</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the request payload as a <code>ByteChannel</code> except in the case of multiparts. To retrieve multiparts, use
+<code>Request.getBodyParts()</code>.
+
+    </div>
+    
 
     
         
@@ -2179,7 +2356,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getBinaryPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getBinaryPayload </h2>
+            <h2 > getBinaryPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2187,9 +2364,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Gets the request payload as a <code>byte[]</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the request payload as a <code>byte[]</code>.
+
+    </div>
+    
 
     
         
@@ -2209,7 +2389,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getFormParams">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getFormParams </h2>
+            <h2 > getFormParams </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2217,9 +2397,12 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Gets the form parameters from the HTTP request as a <code>map</code> when content type is application/x-www-form-urlencoded.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the form parameters from the HTTP request as a <code>map</code> when content type is application/x-www-form-urlencoded.
+
+    </div>
+    
 
     
         
@@ -2239,7 +2422,7 @@ header value is replaced with the specified header value.</p>
              <a class="url-link" href="#getBodyParts">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getBodyParts </h2>
+            <h2 > getBodyParts </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2247,17 +2430,20 @@ header value is replaced with the specified header value.</p>
         </span>
         
     </div>
-    <p><p>Extracts body parts from the request. If the content type is not a composite media type, an error
-is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts body parts from the request. If the content type is not a composite media type, an error
+is returned.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>Returns the body parts as an array of entities or an <code>http:ClientError</code> if there were any errors in
+                <li><p>The body parts as an array of entities or else an <code>http:ClientError</code> if there were any errors
 constructing the body parts from the request</p>
 </li>
             </ul>
@@ -2271,12 +2457,15 @@ constructing the body parts from the request</p>
              <a class="url-link" href="#setJsonPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setJsonPayload </h2>
+            <h2 > setJsonPayload </h2>
         
     </div>
-    <p><p>Sets a <code>json</code> as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets a <code>json</code> as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2318,12 +2507,15 @@ for <code>json</code></p>
              <a class="url-link" href="#setXmlPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setXmlPayload </h2>
+            <h2 > setXmlPayload </h2>
         
     </div>
-    <p><p>Sets an <code>xml</code> as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets an <code>xml</code> as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2365,12 +2557,15 @@ for <code>xml</code></p>
              <a class="url-link" href="#setTextPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setTextPayload </h2>
+            <h2 > setTextPayload </h2>
         
     </div>
-    <p><p>Sets a <code>string</code> as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets a <code>string</code> as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2412,12 +2607,15 @@ for <code>string</code></p>
              <a class="url-link" href="#setBinaryPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setBinaryPayload </h2>
+            <h2 > setBinaryPayload </h2>
         
     </div>
-    <p><p>Sets a <code>byte[]</code> as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets a <code>byte[]</code> as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2459,12 +2657,15 @@ for <code>byte[]</code></p>
              <a class="url-link" href="#setBodyParts">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setBodyParts </h2>
+            <h2 > setBodyParts </h2>
         
     </div>
-    <p><p>Set multiparts as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Set multiparts as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2506,12 +2707,15 @@ for <code>byte[]</code></p>
              <a class="url-link" href="#setFileAsPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setFileAsPayload </h2>
+            <h2 > setFileAsPayload </h2>
         
     </div>
-    <p><p>Sets the content of the specified file as the entity body of the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the content of the specified file as the entity body of the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2553,12 +2757,15 @@ header value</p>
              <a class="url-link" href="#setByteChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setByteChannel </h2>
+            <h2 > setByteChannel </h2>
         
     </div>
-    <p><p>Sets a <code>ByteChannel</code> as the payload.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets a <code>ByteChannel</code> as the payload.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2600,13 +2807,16 @@ header value</p>
              <a class="url-link" href="#setPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setPayload </h2>
+            <h2 > setPayload </h2>
         
     </div>
-    <p><p>Sets the request payload. Note that any string value is set as <code>text/plain</code>. To send a JSON-compatible string,
-set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the request payload. Note that any string value is set as <code>text/plain</code>. To send a JSON-compatible string,
+set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2635,12 +2845,15 @@ of body parts).</p>
              <a class="url-link" href="#addCookies">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> addCookies </h2>
+            <h2 > addCookies </h2>
         
     </div>
-    <p><p>Adds cookies to the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds cookies to the request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2668,7 +2881,7 @@ of body parts).</p>
              <a class="url-link" href="#getCookies">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getCookies </h2>
+            <h2 > getCookies </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2676,9 +2889,12 @@ of body parts).</p>
         </span>
         
     </div>
-    <p><p>Gets cookies from the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets cookies from the request.
+
+    </div>
+    
 
     
         

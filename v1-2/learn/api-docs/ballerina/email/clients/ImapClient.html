@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -369,7 +373,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -651,7 +659,7 @@
                 
                 <span class="clients">ImapClient</span>
             </h1>
-            <p><p>Represents an IMAP Client, which interacts with an IMAP Server.</p>
+            <p>Represents an IMAP Client, which interacts with an IMAP Server.
 </p>
 
             <div class="constants">
@@ -713,7 +721,9 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="read"><a
                                             class="functions" href="#read">read</a></td>
-                                    <td class="module-desc"><p>Reads a message.</p>
+                                    <td class="module-desc">Reads a message.
+<pre><code class="language-ballerina"> email:Email|email:Error emailResponse = imapClient-&gt;read();
+</code></pre>
 </td>
                                 </tr>
                             
@@ -732,7 +742,7 @@
              <a class="url-link" href="#read">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> read </h2>
+            <h2 > read </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> folder)</p>
@@ -740,9 +750,14 @@
         </span>
         
     </div>
-    <p><p>Reads a message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a message.
+<pre><code class="language-ballerina"> email:Email|email:Error emailResponse = imapClient-&gt;read();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -753,7 +768,7 @@
                         <span class="default"> (default DEFAULT_FOLDER)</span>
                     </li>
                     <li>
-                        <p><p>Folder to read emails</p>
+                        <p><p>Folder to read emails. The default value is <code>INBOX</code></p>
 </p>
                     </li>
                 </ul>
@@ -767,7 +782,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../email/records/Email.html">Email</a> | <a href="../../email/types.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>An<code>Email</code> in success and <code>Error</code> if failed to receive the message to the recipient</p>
+                <li><p>An<code>email:Email</code> if reading the message is successful, <code>()</code> if there are no emails in the specified folder,
+or else an <code>email:Error</code> if the recipient failed to receive the message</p>
 </li>
             </ul>
         </div>

@@ -88,7 +88,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -99,6 +99,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.table/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -254,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -381,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -392,6 +400,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.table/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -547,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -655,51 +671,81 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#add">add</a></td>
-                                <td width="70%"><p>Add record to the table.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#add">add</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Add record to the table.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#close">close</a></td>
-                                <td width="70%"><p>Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
-close is required only if it is not fully iterated.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#close">close</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
+close is required only if it is not fully iterated.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getNext">getNext</a></td>
-                                <td width="70%"><p>Retrives the current row and return a record with the data in the columns.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getNext">getNext</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrives the current row and return a record with the data in the columns.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hasNext">hasNext</a></td>
-                                <td width="70%"><p>Checks for a new row in the given table. If a new row is found, moves the cursor to it.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hasNext">hasNext</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks for a new row in the given table. If a new row is found, moves the cursor to it.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#iterator">iterator</a></td>
-                                <td width="70%"><p>Returns an iterator over the members of <code>tbl</code>.
-The iterator will iterate over the rows of the table in order.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns an iterator over the members of <code>tbl</code>.
+The iterator will iterate over the rows of the table in order.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#remove">remove</a></td>
-                                <td width="70%"><p>Remove data from the table.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#remove">remove</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Remove data from the table.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -713,7 +759,7 @@ The iterator will iterate over the rows of the table in order.</p>
              <a class="url-link" href="#add">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> add </h2>
+            <h2 > add </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl, <span class="builtin-type">RowType</span> data)</p>
@@ -721,9 +767,12 @@ The iterator will iterate over the rows of the table in order.</p>
         </span>
         
     </div>
-    <p><p>Add record to the table.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Add record to the table.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -774,13 +823,16 @@ The iterator will iterate over the rows of the table in order.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
     </div>
-    <p><p>Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
-close is required only if it is not fully iterated.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
+close is required only if it is not fully iterated.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -808,7 +860,7 @@ close is required only if it is not fully iterated.</p>
              <a class="url-link" href="#getNext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getNext </h2>
+            <h2 > getNext </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl)</p>
@@ -816,9 +868,12 @@ close is required only if it is not fully iterated.</p>
         </span>
         
     </div>
-    <p><p>Retrives the current row and return a record with the data in the columns.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrives the current row and return a record with the data in the columns.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -856,7 +911,7 @@ close is required only if it is not fully iterated.</p>
              <a class="url-link" href="#hasNext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hasNext </h2>
+            <h2 > hasNext </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl)</p>
@@ -864,9 +919,12 @@ close is required only if it is not fully iterated.</p>
         </span>
         
     </div>
-    <p><p>Checks for a new row in the given table. If a new row is found, moves the cursor to it.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks for a new row in the given table. If a new row is found, moves the cursor to it.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -904,18 +962,21 @@ close is required only if it is not fully iterated.</p>
              <a class="url-link" href="#iterator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> iterator </h2>
+            <h2 > iterator </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl)</p>
-            <b> returns </b><a href="../lang.table/objects/$anonType$2.html">$anonType$2</a> 
+            <b> returns </b><a href="../lang.table/objects/T2.html">T2</a> 
         </span>
         
     </div>
-    <p><p>Returns an iterator over the members of <code>tbl</code>.
-The iterator will iterate over the rows of the table in order.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns an iterator over the members of <code>tbl</code>.
+The iterator will iterate over the rows of the table in order.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -939,7 +1000,7 @@ The iterator will iterate over the rows of the table in order.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.table/objects/$anonType$2.html">$anonType$2</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.table/objects/T2.html">T2</a></span>)</li>
                 <li><p>an iterator over <code>tbl</code></p>
 </li>
             </ul>
@@ -953,7 +1014,7 @@ The iterator will iterate over the rows of the table in order.</p>
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> remove </h2>
+            <h2 > remove </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">table</span> tbl, <code> <span>function(</span><span class="builtin-type">RowType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
@@ -961,9 +1022,12 @@ The iterator will iterate over the rows of the table in order.</p>
         </span>
         
     </div>
-    <p><p>Remove data from the table.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Remove data from the table.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

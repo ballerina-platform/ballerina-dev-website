@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -239,6 +239,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -336,7 +340,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -518,6 +522,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -622,10 +630,8 @@
                         Module : <span class="modules">task</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides the functionality to configure and manage Task Listeners and Task Schedulers.
+                    <p>This module provides the functionality to configure and manage Task Listeners and Task Schedulers.
 Task Listeners and Task Schedulers can be used to perform tasks periodically.</p>
-<h2>Examples</h2>
 <h3>Task Listeners</h3>
 <p>A Task <code>Listener</code> can be used to create a service listener, which will be triggered at specified times.</p>
 <p>Below are the two types of configurations that can be used to configure a Task Listener, either as a timer or as an appointment.</p>
@@ -635,142 +641,72 @@ Task Listeners and Task Schedulers can be used to perform tasks periodically.</p
 </ul>
 <h4>Task Listener as a Timer</h4>
 <p>The <code>TimerConfiguration</code> can be used to configure a task that needs to be executed periodically.</p>
-<p>The following example creates a listener, which registers a task with an initial delay of 3000 milliseconds and is executed every 1000 milliseconds for 10 times. The <code>onTrigger</code> resource function is triggered when the clock goes off. The <code>count</code> variable is incremented by the task.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/task;
-
-// Task Timer configuration record to configure a Task Listener.
-task:TimerConfiguration timerConfiguration = {
+<p>The following code snippet shows how to create a listener, which registers a task with an initial delay of 3000 milliseconds and is executed every 1000 milliseconds for 10 times.</p>
+<pre><code class="language-ballerina">task:TimerConfiguration timerConfiguration = {
     intervalInMillis: 1000,
     initialDelayInMillis: 3000,
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 10
 };
 
-// Initialize the listener using pre defined configurations.
 listener task:Listener timer = new(timerConfiguration);
 
-int count = 0;
-
-// Creating a service on the task Listener.
+// Creating a service on the `timer` task Listener.
 service timerService on timer {
     // This resource triggers when the timer goes off.
     resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
-        count = count + 1;
     }
 }
 </code></pre>
+<p>For an example on the usage of the <code>task:Listener</code> as a timer, see the <a href="https://ballerina.io/learn/by-example/task-service-timer.html">Task Service Timer Example</a>.</p>
 <h4>Task Listener as an Appointment</h4>
 <p>The <code>AppointmentConfiguration</code> can be used to schedule an appointment.</p>
-<p>The following example creates a task appointment, which registers a service using a CRON expression to execute the task every second for 10 times. The <code>count</code> variable is incremented by the task.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/task;
-
-// Task Appointment configuration record to task Listener.
-task:AppointmentConfiguration appointmentConfiguration = {
+<p>The following code snippet shows how to create a task appointment, which registers a service using a CRON expression to execute the task every second for 10 times.</p>
+<pre><code class="language-ballerina">task:AppointmentConfiguration appointmentConfiguration = {
     // This cron expression will schedule the appointment once every second.
     appointmentDetails: &quot;* * * * * ?&quot;,
     // Number of recurrences will limit the number of times the timer runs.
     noOfRecurrences: 10
 };
 
-// Initialize the listener using pre defined configurations.
 listener task:Listener appointment = new(appointmentConfiguration);
 
-int count = 0;
-
-// Creating a service on the task Listener.
+// Creating a service on the `appointment` task Listener.
 service appointmentService on appointment {
     // This resource triggers when the appointment is due.
     resource function onTrigger() {
-        log:printInfo(&quot;Cleaning up...&quot;);
-        log:printInfo(count.toString());
-        count = count + 1;
     }
 }
 </code></pre>
+<p>For an example on the usage of the <code>task:Listener</code> as an appointment, see the <a href="https://ballerina.io/learn/by-example/task-service-appointment.html">Task Service Appointment Example</a>.</p>
 <h3>Task Schedulers</h3>
-<p>A Task <code>Scheduler</code> can be used to create timers/appointments dynamically. Service(s) can be attached to the <code>Scheduler</code>, so that they can be invoked when the Scheduler is triggered.</p>
-<p>Similar to Task Listeners, below are the two types of configurations that an be used to configure a Task Scheduler, either as a timer or as an appointment.</p>
+<p>A Task <code>Scheduler</code> can be used to create timers/appointments dynamically. Service(s) can be attached to the <code>Scheduler</code> so that they can be invoked when the Scheduler is triggered.</p>
+<p>Similar to Task Listeners, below are the two types of configurations that can be used to configure a Task Scheduler either as a timer or as an appointment.</p>
 <ul>
 <li><code>TimerConfiguration</code></li>
 <li><code>AppointmentConfiguration</code></li>
 </ul>
 <h4>Task Scheduler as a Timer</h4>
 <p>A <code>Scheduler</code> can be used to create timers via its <code>TimerConfiguration</code>.</p>
-<p>The following example creates a <code>task:Scheduler</code> as a timer. The <code>createTimer()</code> function uses its input values to create a Task Scheduler dynamically. It attaches the <code>timerService</code> to the <code>timer</code> Scheduler it created. Calling the <code>timer.start()</code> function starts the <code>timer</code> Scheduler.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/log;
-import ballerina/task;
-
-public function main() {
-    createTimer(1000, 0, 10);
-}
-
-function createTimer(int interval, int delay, int recurrences) {
-    task:TimerConfiguration timerConfiguration = {
-            intervalInMillis: interval,
-            initialDelayInMillis: delay,
-            noOfRecurrences: recurrences
-    };
-    task:Scheduler timer = new(timerConfiguration);
-    
-    var result  = timer.attach(timerService);
-    if (result is error) {
-        log:printError(&quot;Error attaching service: &quot;, result);
-        return;
-    }
-    result = timer.start();
-    if (result is error) {
-        log:printError(&quot;Error attaching service: &quot;, result);
-        return;
-    }
-}
-
-service timerService = service {
-    resource function onTrigger() {
-        io:println(&quot;Task Triggered&quot;);
-    }
+<p>The following code snippet shows how to create a <code>task:Scheduler</code> as a timer.</p>
+<pre><code class="language-ballerina">task:TimerConfiguration timerConfiguration = {
+        intervalInMillis: 1000,
+        initialDelayInMillis: 0,
+        noOfRecurrences: 10
 };
+task:Scheduler timer = new(timerConfiguration);
 </code></pre>
+<p>For an example on the usage of the <code>task:Scheduler</code> as a timer, see the <a href="https://ballerina.io/learn/by-example/task-scheduler-timer.html">Task Scheduler Timer Example</a>.</p>
 <h3>Task Scheduler as an Appointment</h3>
 <p>A <code>Scheduler</code> can also be used to create appointments via its <code>AppointmentConfiguration</code>.</p>
-<p>The following example creates a Task Scheduler as an appointment. The <code>createAppointment()</code> function creates an appointment using the CRON expression provided as the input parameter. A service can be attached to the Scheduler using the <code>attach()</code> function. Calling the <code>appointment.start()</code> function starts the <code>appointment</code> Scheduler.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/log;
-import ballerina/task;
-
-public function main() {
-    createAppointment(&quot;* * * * * ?&quot;, 10);
-}
-
-function createAppointment(string cronExpression, int recurrences) {
-    task:AppointmentConfiguration appointmentConfiguration = {
-            appointmentDetails: cronExpression,
-            noOfRecurrences: recurrences
-    };
-    task:Scheduler appointment = new(appointmentConfiguration);
-    
-    var result  = appointment.attach(appointmentService);
-    if (result is error) {
-        log:printError(&quot;Error attaching service: &quot;, result);
-        return;
-    }
-    result = appointment.start();
-    if (result is error) {
-        log:printError(&quot;Error attaching service: &quot;, result);
-        return;
-    }
-}
-
-service appointmentService = service {
-    resource function onTrigger() {
-        io:println(&quot;Appointment Triggered&quot;);
-    }
+<p>The following code snippet shows how to create a Task Scheduler as an appointment.</p>
+<pre><code class="language-ballerina">task:AppointmentConfiguration appointmentConfiguration = {
+        appointmentDetails: &quot;* * * * * ?&quot;,
+        noOfRecurrences: 10
 };
+task:Scheduler appointment = new(appointmentConfiguration);
 </code></pre>
+<p>For an example on the usage of the <code>task:Scheduler</code> as an appointment, see the <a href="https://ballerina.io/learn/by-example/task-scheduler-appointment.html">Task Scheduler Appointment Example</a>.</p>
 
 
             
@@ -786,34 +722,48 @@ service appointmentService = service {
                     
                         <tr>
                             <td class="module-title truncate records" id="AppointmentConfiguration" title="AppointmentConfiguration">
-                                <a class="records"
-                                   href="records/AppointmentConfiguration.html">AppointmentConfiguration</a></td>
-                            <td class="module-desc">Configurations related to an Appointment
-</td>
+                                <a class="records " href="records/AppointmentConfiguration.html">AppointmentConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configurations related to an appointment, which are used to define the behavior of an appointment when initializing
+the <code>task:Listener</code>.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="AppointmentData" title="AppointmentData">
-                                <a class="records"
-                                   href="records/AppointmentData.html">AppointmentData</a></td>
-                            <td class="module-desc">Details for schedule an Appointment.
-</td>
+                                <a class="records " href="records/AppointmentData.html">AppointmentData</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The CRON expression required for scheduling an appointment.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="TimerConfiguration" title="TimerConfiguration">
-                                <a class="records"
-                                   href="records/TimerConfiguration.html">TimerConfiguration</a></td>
-                            <td class="module-desc">Configurations related to a Timer
-</td>
+                                <a class="records " href="records/TimerConfiguration.html">TimerConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configurations related to a timer, which are used to define the behavior of a timer when initializing the
+<code>task:Listener</code>.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -832,13 +782,13 @@ service appointmentService = service {
                     
                         <tr>
                             <td class="module-title truncate objects" id="Scheduler" title="Scheduler">
-                                <a class="objects"
-                                   href="objects/Scheduler.html">
-                                    Scheduler
-                                </a>
+                                <a class="objects " href="objects/Scheduler.html">Scheduler</a>
                             </td>
-                            <td class="module-desc"><p>Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a ballerina task Scheduler, which can be used to run jobs periodically, using the given configurations.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -859,10 +809,13 @@ service appointmentService = service {
                     
                         <tr>
                             <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners"
-                                   href="listeners/Listener.html">Listener</a></td>
-                            <td class="module-desc"><p>Represents a ballerina task listener, which can be used to schedule and execute tasks periodically.</p>
-</td>
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents a ballerina task listener, which can be used to schedule and execute tasks periodically.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -884,17 +837,25 @@ service appointmentService = service {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="SCHEDULER_ERROR_REASON" title="SCHEDULER_ERROR_REASON"><a
-                                    class="constant" href="constants.html#SCHEDULER_ERROR_REASON">SCHEDULER_ERROR_REASON</a></td>
-                            <td class="module-desc"><p>Error reason type for the <code>task:SchedulerError</code> type.</p>
-</td>
+                            <td class="module-title truncate constant" id="SCHEDULER_ERROR_REASON" title="SCHEDULER_ERROR_REASON">
+                                <a class="constant " href="constants.html#SCHEDULER_ERROR_REASON">SCHEDULER_ERROR_REASON</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Used as the error reason for the <code>task:SchedulerError</code> type.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="LISTENER_ERROR_REASON" title="LISTENER_ERROR_REASON"><a
-                                    class="constant" href="constants.html#LISTENER_ERROR_REASON">LISTENER_ERROR_REASON</a></td>
-                            <td class="module-desc"><p>Error reason type for the <code>task:ListenerError</code> type.</p>
-</td>
+                            <td class="module-title truncate constant" id="LISTENER_ERROR_REASON" title="LISTENER_ERROR_REASON">
+                                <a class="constant " href="constants.html#LISTENER_ERROR_REASON">LISTENER_ERROR_REASON</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Used as the error reason for the <code>task:ListenerError</code> type.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -916,11 +877,14 @@ service appointmentService = service {
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents Union error type of ballerina/task module. This error type represents any error that can occur during the
-execution of task APIs.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the Union error type of the ballerina/task module. This error type represents any error that can occur during the
+execution of task APIs.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -939,18 +903,24 @@ execution of task APIs.</p>
                     
                         <tr>
                             <td class="module-title truncate errors" id="ListenerError" title="ListenerError">
-                                <a class="errors" href="errors.html#ListenerError">ListenerError</a>
+                                <a class="errors " href="errors.html#ListenerError">ListenerError</a>
                             </td>
-                            <td class="module-desc"><p>Errors occurred in <code>task:Listener</code> object functions.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Error type specific to the <code>task:Listener</code> object functions.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="SchedulerError" title="SchedulerError">
-                                <a class="errors" href="errors.html#SchedulerError">SchedulerError</a>
+                                <a class="errors " href="errors.html#SchedulerError">SchedulerError</a>
                             </td>
-                            <td class="module-desc"><p>Error occurred in <code>task:Scheduler</code> object functions.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Error type specific to the <code>task:Scheduler</code> object functions.
+
+                            </td>
                         </tr>
                     
                 </table>

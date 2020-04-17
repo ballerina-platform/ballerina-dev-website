@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -361,7 +365,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -642,10 +650,20 @@
                 
                     <a href="../../oauth2/index.html">oauth2</a>
                  :
-                <span class="objects">InboundOAuth2Provider</span>
+                <span class="objects ">InboundOAuth2Provider</span>
             </h1>
-            <p><p>Represents inbound OAuth2 provider, which calls the introspection server and validate the received credentials.</p>
-</p>
+            <p>
+                
+                Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,
+and performs authentication and authorization. The <code>oauth2:InboundOAuth2Provider</code> is an implementation of the
+<code>auth:InboundAuthProvider</code> interface.
+<pre><code class="language-ballerina"> oauth2:IntrospectionServerConfig introspectionServerConfig = {
+     url: &quot;https://localhost:9196/oauth2/token/introspect&quot;
+ };
+ oauth2:InboundOAuth2Provider inboundOAuth2Provider = new(introspectionServerConfig);
+</code></pre>
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -659,7 +677,7 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../oauth2/records/IntrospectionServerConfig.html">IntrospectionServerConfig</a></span> </li>
                 <li>
-                    <p>OAuth2 introspection configurations</p>
+                    <p>OAuth2 introspection server configurations</p>
 
                 </li>
             </ul>
@@ -675,15 +693,19 @@
                         <div class="method-list">
                             
                                 
-<a href="#authenticate">
-    <div class="param-sum">
-        <div class="param-name">
-        authenticate 
-        </div>
-        <div class="param-details"> <p>Attempts to authenticate with credential.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="authenticate">
+        <a href="#authenticate">authenticate </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Authenticates the provider OAuth2 tokens with an introspection endpoint.
+<pre><code class="language-ballerina"> boolean|auth:Error result = inboundOAuth2Provider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -695,24 +717,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> introspectionClient<span class="type">  <a href="../../http/clients/Client.html">Client</a></span>
+            <li> 
+                <span >introspectionClient</span>
+                <span class="type">  <a href="../../http/clients/Client.html">Client</a></span>
                 
             </li>
             <li>
-                <p><p>Introspection client endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Introspection client endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> tokenTypeHint<span class="type">  <span class="builtin-type">string?</span></span>
+            <li> 
+                <span >tokenTypeHint</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
                 
             </li>
             <li>
-                <p><p>A hint about the type of the token submitted for introspection</p>
-</p>
+                <p>
+                    
+                    <p>A hint about the type of the token submitted for introspection</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -774,7 +806,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#authenticate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> authenticate </h2>
+            <h2 > authenticate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> credential)</p>
@@ -782,9 +814,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Attempts to authenticate with credential.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Authenticates the provider OAuth2 tokens with an introspection endpoint.
+<pre><code class="language-ballerina"> boolean|auth:Error result = inboundOAuth2Provider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -795,7 +832,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Credential to be authenticated</p>
+                        <p><p>OAuth2 token to be authenticated</p>
 </p>
                     </li>
                 </ul>
@@ -809,7 +846,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p><code>true</code> if authentication is successful, otherwise <code>false</code> or <code>auth:Error</code> if an error occurred</p>
+                <li><p><code>true</code> if authentication is successful, <code>false</code> otherwise, or else an <code>auth:Error</code> if an error occurred</p>
 </li>
             </ul>
         </div>

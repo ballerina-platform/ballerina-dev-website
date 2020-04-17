@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -219,6 +219,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -316,7 +320,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -478,6 +482,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -606,64 +614,92 @@
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="clone" title="clone"><a
-                                    class="functions" href="functions.html#clone">clone</a></td>
-                            <td class="module-desc"><p>Returns a clone of <code>v</code>.
+                            <td class="module-title truncate functions" id="clone" title="clone">
+                                <a class="functions " href="functions.html#clone">clone</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a clone of <code>v</code>.
 A clone is a deep copy that does not copy immutable subtrees.
 A clone can therefore safely be used concurrently with the original.
 It corresponds to the Clone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</td>
+defined in the Ballerina Language Specification.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="cloneReadOnly" title="cloneReadOnly"><a
-                                    class="functions" href="functions.html#cloneReadOnly">cloneReadOnly</a></td>
-                            <td class="module-desc"><p>Returns a clone of <code>v</code> that is read-only, i.e. immutable.
+                            <td class="module-title truncate functions" id="cloneReadOnly" title="cloneReadOnly">
+                                <a class="functions " href="functions.html#cloneReadOnly">cloneReadOnly</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a clone of <code>v</code> that is read-only, i.e. immutable.
 It corresponds to the ImmutableClone(v) abstract operation,
-defined in the Ballerina Language Specification.</p>
-</td>
+defined in the Ballerina Language Specification.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="fromJsonString" title="fromJsonString"><a
-                                    class="functions" href="functions.html#fromJsonString">fromJsonString</a></td>
-                            <td class="module-desc"><p>Parses a string in JSON format and returns the the value that it represents.
+                            <td class="module-title truncate functions" id="fromJsonString" title="fromJsonString">
+                                <a class="functions " href="functions.html#fromJsonString">fromJsonString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Parses a string in JSON format and returns the the value that it represents.
 All numbers in the JSON will be represented as float values.
-Returns an error if the string cannot be parsed.</p>
-</td>
+Returns an error if the string cannot be parsed.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="isReadOnly" title="isReadOnly"><a
-                                    class="functions" href="functions.html#isReadOnly">isReadOnly</a></td>
-                            <td class="module-desc"><p>Tests whether <code>v</code> is read-only, i.e. immutable
-Returns true if read-only, false otherwise.</p>
-</td>
+                            <td class="module-title truncate functions" id="isReadOnly" title="isReadOnly">
+                                <a class="functions " href="functions.html#isReadOnly">isReadOnly</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Tests whether <code>v</code> is read-only, i.e. immutable
+Returns true if read-only, false otherwise.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="mergeJson" title="mergeJson"><a
-                                    class="functions" href="functions.html#mergeJson">mergeJson</a></td>
-                            <td class="module-desc"><p>Merges two json values.</p>
-</td>
+                            <td class="module-title truncate functions" id="mergeJson" title="mergeJson">
+                                <a class="functions " href="functions.html#mergeJson">mergeJson</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Merges two json values.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="toJsonString" title="toJsonString"><a
-                                    class="functions" href="functions.html#toJsonString">toJsonString</a></td>
-                            <td class="module-desc"><p>Returns the string that represents <code>v</code> in JSON format.</p>
-</td>
+                            <td class="module-title truncate functions" id="toJsonString" title="toJsonString">
+                                <a class="functions " href="functions.html#toJsonString">toJsonString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the string that represents <code>v</code> in JSON format.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="toString" title="toString"><a
-                                    class="functions" href="functions.html#toString">toString</a></td>
-                            <td class="module-desc"><p>Performs a minimal conversion of a value to a string.
+                            <td class="module-title truncate functions" id="toString" title="toString">
+                                <a class="functions " href="functions.html#toString">toString</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Performs a minimal conversion of a value to a string.
 The conversion is minimal in particular in the sense
 that the conversion applied to a value that is already
-a string does nothing.</p>
-</td>
+a string does nothing.
+
+                            </td>
                         </tr>
                     
                 </table>

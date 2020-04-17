@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -235,6 +235,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -332,7 +336,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -510,6 +514,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -614,99 +622,101 @@
                         Module : <span class="modules">email</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module contains functions to perform email operations such as sending and reading emails using SMTP, POP3, and IMAP4 protocols.</p>
-<h1>Sample</h1>
-<p>The below sample uses the functions in the module to send an email using the SMTP protocol.</p>
-<pre><code class="language-ballerina">import ballerina/email;
-import ballerina/io;
-
-public function main() {
-    email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;, &quot;sender@email.com&quot;, &quot;pass123&quot;);
-    email:Email email = {
-        to: [&quot;receiver1@email.com&quot;, &quot;receiver2@email.com&quot;],
-        cc: [&quot;receiver3@email.com&quot;, &quot;receiver4@email.com&quot;],
-        bcc: [&quot;receiver5@email.com&quot;],
-        subject: &quot;Sample Email&quot;,
-        body: &quot;This is a sample email.&quot;,
-        'from: &quot;author@email.com&quot;,
-        sender: &quot;sender@email.com&quot;,
-        replyTo: [&quot;replyTo1@email.com&quot;, &quot;replyTo2@email.com&quot;]
-    };
-
-    email:Error? response = smtpClient-&gt;send(email);
-    if (response is email:Error) {
-        io:println(&quot;Error while sending the email: &quot; + response.toString());
-    }
-
-}
+                    <p>This module contains functions to perform email operations such as sending and reading emails using the SMTP, POP3, and IMAP4 protocols.</p>
+<h2>Client</h2>
+<p>This module supports the following three client types.</p>
+<ul>
+<li><code>email:SmtpClient</code> - The client, which supports sending an email using the SMTP protocol.</li>
+<li><code>email:PopClient</code> - The client, which supports receiving an email using the POP3 protocol.</li>
+<li><code>email:ImapClient</code> - The client, which supports receiving an email using the IMAP4 protocol.</li>
+</ul>
+<h3>SMTP Client</h3>
+<p>To send an email using the SMTP protocol, you must first create an <code>email:SmtpClient</code> object. The code for creating an <code>email:SmtpClient</code> can be found
+below.</p>
+<h4>Creating a client</h4>
+<p>The following code creates an SMTP client, which connects to the default port(465) and enables SSL.</p>
+<pre><code class="language-ballerina">email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;,
+                                   &quot;sender@email.com&quot;,
+                                   &quot;pass123&quot;);
 </code></pre>
-<p>Port number of the server and/or the SSL support can be also configured with a configuration as follows.</p>
+<p>The port number of the server and/or the SSL support can also be configured by passing the following configurations.</p>
 <pre><code class="language-ballerina">email:SmtpConfig smtpConfig = {
     port: 465, // Can use ports, 465, 587 or 25
     enableSsl: true // Set true to enable SSL (SMTPS connections)
 };
 
-email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;, &quot;sender@email.com&quot;, &quot;pass123&quot;, smtpConfig);
+email:SmtpClient smtpClient = new (&quot;smtp.email.com&quot;,
+                                   &quot;sender@email.com&quot;,
+                                   &quot;pass123&quot;,
+                                    smtpConfig);
 </code></pre>
-<p>The below sample uses the functions in the module to receive an email using the POP3 protocol.</p>
-<pre><code class="language-ballerina">import ballerina/email;
-import ballerina/io;
+<h4>Sending an email</h4>
+<p>Once the <code>email:SmtpClient</code> is created, an email can be sent using the SMTP protocol through that client.
+Samples for this operation can be found below.</p>
+<pre><code class="language-ballerina">email:Email email = {
+    to: [&quot;receiver1@email.com&quot;, &quot;receiver2@email.com&quot;],
+    cc: [&quot;receiver3@email.com&quot;, &quot;receiver4@email.com&quot;],
+    bcc: [&quot;receiver5@email.com&quot;],
+    subject: &quot;Sample Email&quot;,
+    body: &quot;This is a sample email.&quot;,
+    'from: &quot;author@email.com&quot;,
+    sender: &quot;sender@email.com&quot;,
+    replyTo: [&quot;replyTo1@email.com&quot;, &quot;replyTo2@email.com&quot;]
+};
 
-public function main() {
-    email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;, &quot;reader@email.com&quot;, &quot;pass456&quot;);
-    if (popClient is email:PopClient) {
-        email:Email|email:Error? emailResponse = popClient-&gt;read();
-        if(emailResponse is email:Email) {
-            io:println(&quot;Email Subject: &quot;, emailResponse.subject);
-            io:println(&quot;Email Body: &quot;, emailResponse.body);
-        } else if (emailResponse is ()) {
-            io:println(&quot;There are no emails in the INBOX.&quot;);
-        } else {
-            io:println(&quot;Error while getting getting response: &quot; + emailResponse.toString());
-        }
-    } else {
-        io:println(&quot;Error while creating client: &quot; + popClient.toString());
-    }
-}
+email:Error? response = smtpClient-&gt;send(email);
 </code></pre>
-<p>Port number of the server and/or the SSL support can be also configured with a configuration as follows.</p>
+<h3>POP3 Client</h3>
+<p>To receive an email using the POP3 protocol, you must first create an <code>email:PopClient</code> object. The code for creating an
+<code>email:PopClient</code> can be found below.</p>
+<h4>Creating a client</h4>
+<p>The following code creates a POP3 client, which connects to the default port(995) and enables SSL.</p>
+<pre><code class="language-ballerina">email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
+                                             &quot;reader@email.com&quot;,
+                                             &quot;pass456&quot;);
+</code></pre>
+<p>The port number of the server and/or the SSL support can also be configured by passing the following configurations.</p>
 <pre><code class="language-ballerina">email:PopConfig popConfig = {
     port: 995,
     enableSsl: true
 };
 
-email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;, &quot;reader@email.com&quot;, &quot;pass456&quot;, popConfig);
+email:PopClient|email:Error popClient = new (&quot;pop.email.com&quot;,
+                                             &quot;reader@email.com&quot;,
+                                             &quot;pass456&quot;,
+                                              popConfig);
 </code></pre>
-<p>The below sample uses the functions in the module to receive an email using the IMAP4 protocol.</p>
-<pre><code class="language-ballerina">import ballerina/email;
-import ballerina/io;
-
-public function main() {
-    email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot;reader@email.com&quot;, &quot;pass456&quot;);
-    if (imapClient is email:ImapClient) {
-            email:Email|email:Error emailResponse = imapClient-&gt;read();
-        if(emailResponse is email:Email) {
-            io:println(&quot;Email Subject: &quot;, emailResponse.subject);
-            io:println(&quot;Email Body: &quot;, emailResponse.body);
-        } else if (emailResponse is ()) {
-            io:println(&quot;There are no emails in the INBOX.&quot;);
-        } else {
-            io:println(&quot;Error while getting getting response: &quot; + emailResponse.toString());
-        }
-    } else {
-        io:println(&quot;Error while creating client: &quot; + imapClient.toString());
-    }
-}
+<h4>Receiving an email</h4>
+<p>Once the <code>email:PopClient</code> is created, emails can be received using the POP3 protocol through that client.
+Samples for this operation can be found below.</p>
+<pre><code class="language-ballerina">email:Email|email:Error? emailResponse = popClient-&gt;read();
 </code></pre>
-<p>Port number of the server and/or the SSL support can be also configured with a configuration as follows.</p>
+<h3>IMAP4 Client</h3>
+<p>To receive an email using the IMAP4 protocol, you must first create an <code>email:ImapClient</code> object. The code for creating an
+<code>email:ImapClient</code> can be found below.</p>
+<h4>Creating a client</h4>
+<p>The following code creates an IMAP4 client, which connects to the default port(993) and enables SSL.</p>
+<pre><code class="language-ballerina">email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
+                                               &quot;reader@email.com&quot;,
+                                               &quot;pass456&quot;);
+</code></pre>
+<p>The port number of the server and/or the SSL support can also be configured by passing the following configurations.</p>
 <pre><code class="language-ballerina">email:ImapConfig imapConfig = {
     port: 993,
     enableSsl: true
 };
 
-email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot;reader@email.com&quot;, &quot;pass456&quot;, imapConfig);
+email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;,
+                                               &quot;reader@email.com&quot;,
+                                               &quot;pass456&quot;,
+                                                imapConfig);
 </code></pre>
+<h4>Receiving an email</h4>
+<p>Once the <code>email:ImapClient</code> is created, emails can be received using the IMAP4 protocol through that client.
+Samples for this operation can be found below.</p>
+<pre><code class="language-ballerina">email:Email|email:Error emailResponse = imapClient-&gt;read();
+</code></pre>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operation, see the <a href="https://ballerina.io/learn/by-example/send-and-receive-emails.html">Send and Receive Emails Example</a>.</p>
 
 
             
@@ -722,42 +732,57 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Email" title="Email">
-                                <a class="records"
-                                   href="records/Email.html">Email</a></td>
-                            <td class="module-desc">Email message sending and receiving configurations.
-</td>
+                                <a class="records " href="records/Email.html">Email</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Email message properties.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="ImapConfig" title="ImapConfig">
-                                <a class="records"
-                                   href="records/ImapConfig.html">ImapConfig</a></td>
-                            <td class="module-desc">Configuration of the IMAP Endpoint.
-</td>
+                                <a class="records " href="records/ImapConfig.html">ImapConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configuration of the IMAP Endpoint.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="PopConfig" title="PopConfig">
-                                <a class="records"
-                                   href="records/PopConfig.html">PopConfig</a></td>
-                            <td class="module-desc">Configuration of the POP Endpoint.
-</td>
+                                <a class="records " href="records/PopConfig.html">PopConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configuration of the POP Endpoint.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SmtpConfig" title="SmtpConfig">
-                                <a class="records"
-                                   href="records/SmtpConfig.html">SmtpConfig</a></td>
-                            <td class="module-desc">Configuration of the SMTP Endpoint.
-</td>
+                                <a class="records " href="records/SmtpConfig.html">SmtpConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configuration of the SMTP Endpoint.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -778,26 +803,35 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot
                     
                         <tr>
                             <td class="module-title truncate clients" id="ImapClient" title="ImapClient">
-                                <a class="clients"
-                                   href="clients/ImapClient.html">ImapClient</a></td>
-                            <td class="module-desc"><p>Represents an IMAP Client, which interacts with an IMAP Server.</p>
-</td>
+                                <a class="clients " href="clients/ImapClient.html">ImapClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents an IMAP Client, which interacts with an IMAP Server.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate clients" id="PopClient" title="PopClient">
-                                <a class="clients"
-                                   href="clients/PopClient.html">PopClient</a></td>
-                            <td class="module-desc"><p>Represents a POP Client, which interacts with a POP Server.</p>
-</td>
+                                <a class="clients " href="clients/PopClient.html">PopClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents a POP Client, which interacts with a POP Server.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate clients" id="SmtpClient" title="SmtpClient">
-                                <a class="clients"
-                                   href="clients/SmtpClient.html">SmtpClient</a></td>
-                            <td class="module-desc"><p>Represents an SMTP Client, which interacts with an SMTP Server.</p>
-</td>
+                                <a class="clients " href="clients/SmtpClient.html">SmtpClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents an SMTP Client, which interacts with an SMTP Server.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -821,31 +855,47 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="DEFAULT_FOLDER" title="DEFAULT_FOLDER"><a
-                                    class="constant" href="constants.html#DEFAULT_FOLDER">DEFAULT_FOLDER</a></td>
-                            <td class="module-desc"><p>Default email folder to read emails.</p>
-</td>
+                            <td class="module-title truncate constant" id="DEFAULT_FOLDER" title="DEFAULT_FOLDER">
+                                <a class="constant " href="constants.html#DEFAULT_FOLDER">DEFAULT_FOLDER</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Default folder to read emails.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="SEND_ERROR" title="SEND_ERROR"><a
-                                    class="constant" href="constants.html#SEND_ERROR">SEND_ERROR</a></td>
-                            <td class="module-desc"><p>SMTP email send error.</p>
-</td>
+                            <td class="module-title truncate constant" id="SEND_ERROR" title="SEND_ERROR">
+                                <a class="constant " href="constants.html#SEND_ERROR">SEND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason for the email sending related errors.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="READ_CLIENT_INIT_ERROR" title="READ_CLIENT_INIT_ERROR"><a
-                                    class="constant" href="constants.html#READ_CLIENT_INIT_ERROR">READ_CLIENT_INIT_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies an email server store access failure error.</p>
-</td>
+                            <td class="module-title truncate constant" id="READ_CLIENT_INIT_ERROR" title="READ_CLIENT_INIT_ERROR">
+                                <a class="constant " href="constants.html#READ_CLIENT_INIT_ERROR">READ_CLIENT_INIT_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason for the server access failure errors.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="READ_ERROR" title="READ_ERROR"><a
-                                    class="constant" href="constants.html#READ_ERROR">READ_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies email receive error.</p>
-</td>
+                            <td class="module-title truncate constant" id="READ_ERROR" title="READ_ERROR">
+                                <a class="constant " href="constants.html#READ_ERROR">READ_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason for the email receipt related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -867,10 +917,13 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents email related errors.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents email related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -889,26 +942,35 @@ email:ImapClient|email:Error imapClient = new (&quot;imap.email.com&quot;, &quot
                     
                         <tr>
                             <td class="module-title truncate errors" id="ReadClientInitError" title="ReadClientInitError">
-                                <a class="errors" href="errors.html#ReadClientInitError">ReadClientInitError</a>
+                                <a class="errors " href="errors.html#ReadClientInitError">ReadClientInitError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when the email store access fails.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when the email store access fails.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="ReadError" title="ReadError">
-                                <a class="errors" href="errors.html#ReadError">ReadError</a>
+                                <a class="errors " href="errors.html#ReadError">ReadError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs an email read operation fails.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs an email read operation fails.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="SendError" title="SendError">
-                                <a class="errors" href="errors.html#SendError">SendError</a>
+                                <a class="errors " href="errors.html#SendError">SendError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when sending an email fails.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when sending an email fails.
+
+                            </td>
                         </tr>
                     
                 </table>

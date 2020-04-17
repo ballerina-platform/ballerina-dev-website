@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -239,6 +239,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -336,7 +340,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -518,6 +522,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -622,150 +630,50 @@
                         Module : <span class="modules">socket</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides an implementation for connecting to a remote socket server or acts as a server for an incoming socket request. The module facilitates two types of endpoints called <code>Client</code> and <code>Listener</code>.</p>
-<h1>Samples</h1>
-<h2>TCP Listener endpoints</h2>
-<p>The sample given below shows how a listener is used to listen to the incoming socket request. The <code>onConnect(socket:Caller)</code> resource function gets invoked when a new client is connected. The new client is represented using the <code>socket:Caller</code>.
-<code>onReadReady(socket:Caller)</code> resource gets invoked once the remote client sends some data.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/socket;
-
-listener socket:Listener server = new(61598);
-
-service echoServer on server {
+                    <p>This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.</p>
+<h3>TCP Client</h3>
+<p>The <code>socket:Client</code> is used to connect to a socket server and interact with it. The client can only send the data to the server and the client's call-back service can retrieve the data from the server and do multiple requests/responses between the client and the server.</p>
+<p>A Client can be defined by providing the host, port, and callbackService as follows.</p>
+<pre><code class="language-ballerina">socket:Client socketClient = new ({host: &quot;localhost&quot;, port: 61598, callbackService: ClientService});
+string msg = &quot;Hello Ballerina\n&quot;;
+byte[] message = msg.toBytes();
+var writeResult = socketClient-&gt;write(message);
+</code></pre>
+<p>A client's call-back service can be defined as follows:</p>
+<pre><code class="language-ballerina">service ClientService = service {
     resource function onConnect(socket:Caller caller) {
-        log:printInfo(&quot;Join: &quot; + caller.remotePort.toString());
-    }
-
-    resource function onReadReady(socket:Caller caller) {
-        var result = caller-&gt;read();
-        if (result is [byte[], int]) {
-            var [content, length] = result;
-            if (length &gt; 0) {
-                var writeResult = caller-&gt;write(content);
-                if (writeResult is int) {
-                    log:printInfo(&quot;Number of bytes written: &quot; 
-                                    + writeResult.toString());
-                } else {
-                    log:printError(&quot;Unable to written the content&quot;, writeResult);
-                }
-            } else {
-                log:printInfo(&quot;Client close: &quot; + caller.remotePort.toString());
-            }
-        } else {
-            log:printError(&quot;Unable to read the content&quot;, result);
-        }
-    }
-
-    resource function onError(socket:Caller caller, error er) {
-        log:printError(&quot;An error occurred&quot;, er);
+        io:println(&quot;connect: &quot;, caller.remotePort);
     }
 }
 </code></pre>
-<h2>TCP Client endpoints</h2>
-<p>The client endpoint is used to connect to and interact with a socket server. The client can only send the data to the
-server. The client's <code>callbackService</code> needs to retrieve the data from the server and do multiple requests/responses between the client and the server.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/socket;
-
-public function main() {
-    socket:Client socketClient = new({ host: &quot;localhost&quot;, 
-                                       port: 61598, 
-                                       callbackService: ClientService });
-    string msg = &quot;Hello Ballerina\n&quot;;
-    byte[] c1 = msg.toBytes();
-    var writeResult = socketClient-&gt;write(c1);
-    if (writeResult is int) {
-        io:println(&quot;Number of bytes written: &quot; , writeResult);
-    } else {
-        io:println(&quot;Unable to written the content&quot;, 
-                        writeResult.detail()[&quot;message&quot;]);
-    }
-}
-
-service ClientService = service {
+<h3>UDP Client</h3>
+<p>The <code>socket:UdpClient</code> is used to interact with the remote UDP host and it can be defined as follows:</p>
+<pre><code class="language-ballerina">socket:UdpClient socketClient = new;
+string msg = &quot;Hello from UDP client&quot;;
+byte[] message = msg.toBytes();
+int|socket:Error sendResult = socketClient-&gt;sendTo(message, { host: &quot;localhost&quot;, port: 48826 });
+</code></pre>
+<h3>Listener</h3>
+<p>The <code>socket:Listener</code> is used to listen to the incoming socket request. The <code>onConnect(socket:Caller)</code> resource function gets invoked when a new client is connected. The new client is represented using the <code>socket:Caller</code>.
+The <code>onReadReady(socket:Caller)</code> resource gets invoked once the remote client sends some data.</p>
+<p>A <code>socket:Listener</code> can be defined as follows:</p>
+<pre><code class="language-ballerina">listener socket:Listener server = new(61598);
+service echoServer on server {
 
     resource function onConnect(socket:Caller caller) {
         io:println(&quot;connect: &quot;, caller.remotePort);
     }
-    
+
     resource function onReadReady(socket:Caller caller) {
-        var result = caller-&gt;read();
-        if (result is [byte[], int]) {
-            var [content, length] = result;
-            if (length &gt; 0) {
-                var str = getString(content);
-                if (str is string) {
-                    io:println(&lt;@untainted&gt; str);
-                } else {
-                    io:println(str.reason());
-                }
-                var closeResult = caller-&gt;close();
-                if (closeResult is error) {
-                    io:println(closeResult.detail()[&quot;message&quot;]);
-                } else {
-                    io:println(&quot;Client connection closed successfully.&quot;);
-                }
-            } else {
-                io:println(&quot;Client close: &quot;, caller.remotePort);
-            }
-        } else {
-            io:println(result);
-        }
-    }
-    
-    resource function onError(socket:Caller caller, error er) {
-        io:println(er.reason());
-    }
-};
-
-function getString(byte[] content) returns @tainted string | error {
-    io:ReadableByteChannel byteChannel = check io:createReadableChannel(content);
-    io:ReadableCharacterChannel 
-         characterChannel = new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
-    return characterChannel.read(50);
-}
-</code></pre>
-<h2>UDP Client endpoints</h2>
-<p>UDP client endpoint is used to interact with the remote UDP host.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/socket;
-
-public function main() {
-    socket:UdpClient socketClient = new;
-    string msg = &quot;Hello from UDP client&quot;;
-    byte[] c1 = msg.toBytes();
-    var sendResult =
-        socketClient-&gt;sendTo(c1, { host: &quot;localhost&quot;, port: 48826 });
-    if (sendResult is int) {
-        io:println(&quot;Number of bytes written: &quot;, sendResult);
-    } else {
-        panic sendResult;
-    }
-    var result = socketClient-&gt;receiveFrom();
-    if (result is [byte[], int, socket:Address]) {
-        var [content, length, address] = result;
-        io:ReadableByteChannel byteChannel 
-                = checkpanic io:createReadableChannel(content);
-        io:ReadableCharacterChannel characterChannel 
-                = new io:ReadableCharacterChannel(byteChannel, &quot;UTF-8&quot;);
-        var str = characterChannel.read(60);
-        if (str is string) {
-            io:println(&quot;Received: &quot;, &lt;@untainted&gt; str);
-        } else {
-            io:println(str.detail()[&quot;message&quot;]);
-        }
-    } else {
-        io:println(&quot;An error occurred while receiving the data &quot;, result);
-    }
-    var closeResult = socketClient-&gt;close();
-    if (closeResult is error) {
-        io:println(&quot;An error occurred while closing the connection &quot;, 
-                    closeResult);
+        [byte[], int]|socket:ReadTimedOutError result = caller-&gt;read();
     }
 }
 </code></pre>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
+<ul>
+<li><a href="https://ballerina.io/learn/by-example/tcp-socket-listener-client.html">Basic TCP Socket Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/udp-socket-client.html">Basic UDP Client Socket Example</a></li>
+</ul>
 
 
             
@@ -781,42 +689,57 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate records" id="Address" title="Address">
-                                <a class="records"
-                                   href="records/Address.html">Address</a></td>
-                            <td class="module-desc">This represent the IP socket address.
-</td>
+                                <a class="records " href="records/Address.html">Address</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This represent the IP socket address.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientConfig" title="ClientConfig">
-                                <a class="records"
-                                   href="records/ClientConfig.html">ClientConfig</a></td>
-                            <td class="module-desc">Configuration for socket client endpoint.
-</td>
+                                <a class="records " href="records/ClientConfig.html">ClientConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configurations for the socket client.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerConfig" title="ListenerConfig">
-                                <a class="records"
-                                   href="records/ListenerConfig.html">ListenerConfig</a></td>
-                            <td class="module-desc">Represents the socket server configuration.
-</td>
+                                <a class="records " href="records/ListenerConfig.html">ListenerConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the socket server configuration.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="UdpClientConfig" title="UdpClientConfig">
-                                <a class="records"
-                                   href="records/UdpClientConfig.html">UdpClientConfig</a></td>
-                            <td class="module-desc">Configuration for UDP client.
-</td>
+                                <a class="records " href="records/UdpClientConfig.html">UdpClientConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configurations for the UDP client.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -837,18 +760,24 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate clients" id="Client" title="Client">
-                                <a class="clients"
-                                   href="clients/Client.html">Client</a></td>
-                            <td class="module-desc"><p>Represents socket client and related remote functions.</p>
-</td>
+                                <a class="clients " href="clients/Client.html">Client</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the socket client and related remote functions.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate clients" id="UdpClient" title="UdpClient">
-                                <a class="clients"
-                                   href="clients/UdpClient.html">UdpClient</a></td>
-                            <td class="module-desc"><p>Represents UDP socket client and related remote functions.</p>
-</td>
+                                <a class="clients " href="clients/UdpClient.html">UdpClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Initializes the UDP client based on the provided configurations.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -867,10 +796,13 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners"
-                                   href="listeners/Listener.html">Listener</a></td>
-                            <td class="module-desc"><p>Represents service endpoint where socket server service registered and start.</p>
-</td>
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the socket listener on which the socket listener service is registered and started.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -892,17 +824,25 @@ public function main() {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="READ_TIMED_OUT" title="READ_TIMED_OUT"><a
-                                    class="constant" href="constants.html#READ_TIMED_OUT">READ_TIMED_OUT</a></td>
-                            <td class="module-desc"><p>This will used to construct a ReadTimedOutError.</p>
-</td>
+                            <td class="module-title truncate constant" id="READ_TIMED_OUT" title="READ_TIMED_OUT">
+                                <a class="constant " href="constants.html#READ_TIMED_OUT">READ_TIMED_OUT</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This will used to construct a ReadTimedOutError.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR"><a
-                                    class="constant" href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a></td>
-                            <td class="module-desc"><p>This will used to construct a GENERIC_ERROR.</p>
-</td>
+                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR">
+                                <a class="constant " href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                This will used to construct a GENERIC_ERROR.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -924,19 +864,25 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate types" id="Caller" title="Caller">
-                                <a class="types" href="types.html#Caller">Caller</a>
+                                <a class="types " href="types.html#Caller">Caller</a>
                             </td>
-                            <td class="module-desc"><p>Represents caller object in socket service resources and client callback service resources.
-This has all the remote functions expose by socket:Client.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents caller object in socket service resources and client callback service resources.
+This has all the remote functions expose by socket:Client.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents socket module related errors.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents socket module related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -955,18 +901,24 @@ This has all the remote functions expose by socket:Client.</p>
                     
                         <tr>
                             <td class="module-title truncate errors" id="GenericError" title="GenericError">
-                                <a class="errors" href="errors.html#GenericError">GenericError</a>
+                                <a class="errors " href="errors.html#GenericError">GenericError</a>
                             </td>
-                            <td class="module-desc"><p>Represents generic socket error. The detail record contains the information related to the error.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents generic socket error. The detail record contains the information related to the error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="ReadTimedOutError" title="ReadTimedOutError">
-                                <a class="errors" href="errors.html#ReadTimedOutError">ReadTimedOutError</a>
+                                <a class="errors " href="errors.html#ReadTimedOutError">ReadTimedOutError</a>
                             </td>
-                            <td class="module-desc"><p>This will returns once the given read timed out time exceed for socket reads.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                This will returns once the given read timed out time exceed for socket reads.
+
+                            </td>
                         </tr>
                     
                 </table>

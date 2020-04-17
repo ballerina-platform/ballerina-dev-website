@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,7 +691,7 @@
                 
                 <span class="clients">Caller</span>
             </h1>
-            <p><p>Provides the gRPC remote functions for interacting with caller.</p>
+            <p>Provides the gRPC remote functions for interacting with caller.
 </p>
 
             <div class="constants">
@@ -697,21 +705,27 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="send"><a
                                             class="functions" href="#send">send</a></td>
-                                    <td class="module-desc"><p>Sends outbound response to the caller.</p>
+                                    <td class="module-desc">Sends the outbound response to the caller.
+<pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message, headers);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="complete"><a
                                             class="functions" href="#complete">complete</a></td>
-                                    <td class="module-desc"><p>Informs the caller, server finished sending messages.</p>
+                                    <td class="module-desc">Informs the caller, when the server has sent all the messages.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="sendError"><a
                                             class="functions" href="#sendError">sendError</a></td>
-                                    <td class="module-desc"><p>Sends server error to the caller.</p>
+                                    <td class="module-desc">Sends a server error to the caller.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;, headers);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -723,26 +737,34 @@
                         <div class="method-list">
                             
                                 
-<a href="#getId">
-    <div class="param-sum">
-        <div class="param-name">
-        getId 
-        </div>
-        <div class="param-details"> <p>Returns the unique identification of the caller.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getId">
+        <a href="#getId">getId </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the unique identification of the caller.
+<pre><code class="language-ballerina"> int result = caller.getId();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#isCancelled">
-    <div class="param-sum">
-        <div class="param-name">
-        isCancelled 
-        </div>
-        <div class="param-details"> <p>Checks whether the connection is closed by the caller.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="isCancelled">
+        <a href="#isCancelled">isCancelled </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the connection is closed by the caller.
+<pre><code class="language-ballerina"> boolean result = caller.isCancelled();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -754,24 +776,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> remoteDetails<span class="type">  <a href="../../grpc/records/Remote.html">Remote</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >remoteDetails</span>
+                <span class="type">  <a href="../../grpc/records/Remote.html">Remote</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>The remote details</p>
-</p>
+                <p>
+                    
+                    <p>The remote details</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> local<span class="type">  <a href="../../grpc/records/Local.html">Local</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >local</span>
+                <span class="type">  <a href="../../grpc/records/Local.html">Local</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>The local details</p>
-</p>
+                <p>
+                    
+                    <p>The local details</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -833,7 +865,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#send">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> send </h2>
+            <h2 > send </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> res, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
@@ -841,9 +873,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Sends outbound response to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller.
+<pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message, headers);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -855,7 +892,7 @@ contentWrapper.addEventListener("scroll", event => {
                     </li>
                     <li>
                         <p><ul>
-<li>The outbound response message.</li>
+<li>The outbound response message</li>
 </ul>
 </p>
                     </li>
@@ -870,7 +907,7 @@ contentWrapper.addEventListener("scroll", event => {
                     </li>
                     <li>
                         <p><ul>
-<li>Optional headers parameter. Passes header value if needed. Default sets to nil.</li>
+<li>Optional headers parameter. The header values are passed only if needed. The default value is <code>()</code></li>
 </ul>
 </p>
                     </li>
@@ -886,7 +923,7 @@ contentWrapper.addEventListener("scroll", event => {
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
                 <li><ul>
-<li>Returns an error if encounters an error while sending the response, returns nil otherwise.</li>
+<li>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></li>
 </ul>
 </li>
             </ul>
@@ -900,7 +937,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#complete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> complete </h2>
+            <h2 > complete </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -908,16 +945,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Informs the caller, server finished sending messages.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Informs the caller, when the server has sent all the messages.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the response, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -930,7 +972,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#sendError">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> sendError </h2>
+            <h2 > sendError </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> statusCode, <span class="builtin-type">string</span> message, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
@@ -938,9 +980,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Sends server error to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a server error to the caller.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;, headers);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -951,7 +998,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Error status code.</p>
+                        <p><p>Error status code</p>
 </p>
                     </li>
                 </ul>
@@ -964,7 +1011,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Error message.</p>
+                        <p><p>Error message</p>
 </p>
                     </li>
                 </ul>
@@ -977,7 +1024,7 @@ contentWrapper.addEventListener("scroll", event => {
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Optional headers parameter. Passes header value if needed. Default sets to nil.</p>
+                        <p><p>Optional headers parameter. The header values are passed only if needed. The default value is <code>()</code></p>
 </p>
                     </li>
                 </ul>
@@ -991,7 +1038,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the response, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1008,7 +1055,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#getId">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getId </h2>
+            <h2 > getId </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1016,9 +1063,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Returns the unique identification of the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the unique identification of the caller.
+<pre><code class="language-ballerina"> int result = caller.getId();
+</code></pre>
+
+    </div>
+    
 
     
         
@@ -1038,7 +1090,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#isCancelled">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> isCancelled </h2>
+            <h2 > isCancelled </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1046,16 +1098,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Checks whether the connection is closed by the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the connection is closed by the caller.
+<pre><code class="language-ballerina"> boolean result = caller.isCancelled();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns true, if caller already closed the connection. false otherwise.</p>
+                <li><p>True if the caller has already closed the connection or else false</p>
 </li>
             </ul>
         </div>

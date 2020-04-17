@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -239,6 +239,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -336,7 +340,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -518,6 +522,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -623,26 +631,8 @@
                     
                 </h1>
                     <h2>Module overview</h2>
-<p>This module provides functions to retrieve information about the system and the current users of the system.</p>
-<h1>Sample</h1>
-<p>The sample given below uses the functions in the module to get the system-level information.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/system;
-
-public function main() {
-    // Get environment variables.
-    io:println(&quot;Envirionment variable: &quot; + system:getEnv(&quot;HTTP_PORT&quot;)); // E.g. “80”
-
-    // Get the user account name.
-    io:println(&quot;Username: &quot; + system:getUsername());  // E.g. “john”
-
-    // Get the user home path.
-    io:println(&quot;User home: &quot; + system:getUserHome());  // E.g. “/home/john”
-
-    // Execute an OS command as a subprocess.
-    system:Process|system:Error proc = checkpanic system:exec(&quot;ls&quot;, {}, &quot;/&quot;, &quot;-la&quot;);
-}
-</code></pre>
+<p>This module provides functions to retrieve information about the system and the current users of the system. The <code>system:exec</code> method creates the <code>system:Process</code> object, which can control and obtain information about a Ballerina process.</p>
+<p>For information on the operations, which you can perform with the system module, see the below <strong>Functions</strong>.</p>
 
 
             
@@ -658,10 +648,13 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -680,14 +673,14 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate objects" id="Process" title="Process">
-                                <a class="objects"
-                                   href="objects/Process.html">
-                                    Process
-                                </a>
+                                <a class="objects " href="objects/Process.html">Process</a>
                             </td>
-                            <td class="module-desc"><p>This object contains information on a process being created from Ballerina.
-This is returned from the <code>exec</code> function in the <code>system</code> module.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                This object contains information on a process being created from Ballerina.
+This is returned from the <code>exec</code> function in the <code>system</code> module.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -710,38 +703,68 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="exec" title="exec"><a
-                                    class="functions" href="functions.html#exec">exec</a></td>
-                            <td class="module-desc"><p>Executes an operating system command as a subprocess of the current process.</p>
-</td>
+                            <td class="module-title truncate functions" id="exec" title="exec">
+                                <a class="functions " href="functions.html#exec">exec</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Executes an operating system command as a subprocess of the current process.
+<pre><code class="language-ballerina"> system:Process|system:Error proc = system:exec(&quot;ls&quot;, {}, &quot;/&quot;, &quot;-la&quot;)
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getEnv" title="getEnv"><a
-                                    class="functions" href="functions.html#getEnv">getEnv</a></td>
-                            <td class="module-desc"><p>Returns the environment variable value associated with the provided name.</p>
-</td>
+                            <td class="module-title truncate functions" id="getEnv" title="getEnv">
+                                <a class="functions " href="functions.html#getEnv">getEnv</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the environment variable value associated with the provided name.
+<pre><code class="language-ballerina"> string port = system:getEnv(&quot;HTTP_PORT&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getUserHome" title="getUserHome"><a
-                                    class="functions" href="functions.html#getUserHome">getUserHome</a></td>
-                            <td class="module-desc"><p>Returns the current user's home directory path.</p>
-</td>
+                            <td class="module-title truncate functions" id="getUserHome" title="getUserHome">
+                                <a class="functions " href="functions.html#getUserHome">getUserHome</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the current user's home directory path.
+<pre><code class="language-ballerina"> string userHome = system:getUserHome();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getUsername" title="getUsername"><a
-                                    class="functions" href="functions.html#getUsername">getUsername</a></td>
-                            <td class="module-desc"><p>Returns the current user's name.</p>
-</td>
+                            <td class="module-title truncate functions" id="getUsername" title="getUsername">
+                                <a class="functions " href="functions.html#getUsername">getUsername</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the current user's name.
+<pre><code class="language-ballerina"> string username = system:getUsername();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="uuid" title="uuid"><a
-                                    class="functions" href="functions.html#uuid">uuid</a></td>
-                            <td class="module-desc"><p>Returns a random UUID string.</p>
-</td>
+                            <td class="module-title truncate functions" id="uuid" title="uuid">
+                                <a class="functions " href="functions.html#uuid">uuid</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a random UUID string.
+<pre><code class="language-ballerina"> string providerId = system:uuid();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -760,31 +783,47 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="INVALID_OPERATION_ERROR" title="INVALID_OPERATION_ERROR"><a
-                                    class="constant" href="constants.html#INVALID_OPERATION_ERROR">INVALID_OPERATION_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the error code for invalid operations</p>
-</td>
+                            <td class="module-title truncate constant" id="INVALID_OPERATION_ERROR" title="INVALID_OPERATION_ERROR">
+                                <a class="constant " href="constants.html#INVALID_OPERATION_ERROR">INVALID_OPERATION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the error code for invalid operations.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PERMISSION_ERROR" title="PERMISSION_ERROR"><a
-                                    class="constant" href="constants.html#PERMISSION_ERROR">PERMISSION_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the error code for permission errors</p>
-</td>
+                            <td class="module-title truncate constant" id="PERMISSION_ERROR" title="PERMISSION_ERROR">
+                                <a class="constant " href="constants.html#PERMISSION_ERROR">PERMISSION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the error code for permission errors.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="FILE_SYSTEM_ERROR" title="FILE_SYSTEM_ERROR"><a
-                                    class="constant" href="constants.html#FILE_SYSTEM_ERROR">FILE_SYSTEM_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the error code for file system errors</p>
-</td>
+                            <td class="module-title truncate constant" id="FILE_SYSTEM_ERROR" title="FILE_SYSTEM_ERROR">
+                                <a class="constant " href="constants.html#FILE_SYSTEM_ERROR">FILE_SYSTEM_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the error code for file system errors.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR"><a
-                                    class="constant" href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the error code for file not found</p>
-</td>
+                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR">
+                                <a class="constant " href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the error code for file not found.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -806,10 +845,13 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents System related errors.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents System related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -828,34 +870,46 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                     
                         <tr>
                             <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
-                                <a class="errors" href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                                <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an <code>FileNotFoundError</code> with a detailed message.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a <code>FileNotFoundError</code> with a detailed message.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="FileSystemError" title="FileSystemError">
-                                <a class="errors" href="errors.html#FileSystemError">FileSystemError</a>
+                                <a class="errors " href="errors.html#FileSystemError">FileSystemError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an <code>FileSystemError</code> with a detailed message.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a <code>FileSystemError</code> with a detailed message.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="InvalidOperationError" title="InvalidOperationError">
-                                <a class="errors" href="errors.html#InvalidOperationError">InvalidOperationError</a>
+                                <a class="errors " href="errors.html#InvalidOperationError">InvalidOperationError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an <code>InvalidOperationError</code> with a detailed message.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an <code>InvalidOperationError</code> with a detailed message.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="PermissionError" title="PermissionError">
-                                <a class="errors" href="errors.html#PermissionError">PermissionError</a>
+                                <a class="errors " href="errors.html#PermissionError">PermissionError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an <code>PermissionError</code> with a detailed message.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a <code>PermissionError</code> with a detailed message.
+
+                            </td>
                         </tr>
                     
                 </table>

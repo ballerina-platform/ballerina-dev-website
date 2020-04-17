@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,7 +691,7 @@
                 
                 <span class="clients">Caller</span>
             </h1>
-            <p><p>The caller remote functions to respond to client requests.</p>
+            <p>The caller remote functions to respond to client requests.
 </p>
 
             <div class="constants">
@@ -697,21 +705,27 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="respond"><a
                                             class="functions" href="#respond">respond</a></td>
-                                    <td class="module-desc"><p>Sends the response to the caller.</p>
+                                    <td class="module-desc">Sends the response to the caller.
+<pre><code class="language-ballerina"> error? response = caller-&gt;respond();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ok"><a
                                             class="functions" href="#ok">ok</a></td>
-                                    <td class="module-desc"><p>Sends the response to the caller with the status 200 OK.</p>
+                                    <td class="module-desc">Sends the response to the caller with the &quot;200 OK&quot; status.
+<pre><code class="language-ballerina"> error? response = caller-&gt;ok();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="accepted"><a
                                             class="functions" href="#accepted">accepted</a></td>
-                                    <td class="module-desc"><p>Sends the response to the caller with the status 202 Accepted.</p>
+                                    <td class="module-desc">Sends the response to the caller with the &quot;202 Accepted&quot; status.
+<pre><code class="language-ballerina"> error? response = caller-&gt;accepted();
+</code></pre>
 </td>
                                 </tr>
                             
@@ -730,7 +744,7 @@
              <a class="url-link" href="#respond">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> respond </h2>
+            <h2 > respond </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -738,9 +752,14 @@
         </span>
         
     </div>
-    <p><p>Sends the response to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the response to the caller.
+<pre><code class="language-ballerina"> error? response = caller-&gt;respond();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -751,7 +770,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+                        <p><p>The response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>,
 or <code>mime:Entity[]</code></p>
 </p>
                     </li>
@@ -766,7 +785,7 @@ or <code>mime:Entity[]</code></p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Returns an <code>error</code> on failure</p>
+                <li><p>An <code>error</code> on failure or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -779,7 +798,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#ok">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> ok </h2>
+            <h2 > ok </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -787,9 +806,14 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Sends the response to the caller with the status 200 OK.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the response to the caller with the &quot;200 OK&quot; status.
+<pre><code class="language-ballerina"> error? response = caller-&gt;ok();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -800,7 +824,7 @@ or <code>mime:Entity[]</code></p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>
+                        <p><p>The response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ReadableByteChannel</code>,
 or <code>mime:Entity[]</code></p>
 </p>
                     </li>
@@ -815,7 +839,7 @@ or <code>mime:Entity[]</code></p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Returns an <code>error</code> on failure</p>
+                <li><p>An <code>error</code> on failure or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -828,7 +852,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#accepted">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> accepted </h2>
+            <h2 > accepted </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -836,9 +860,14 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Sends the response to the caller with the status 202 Accepted.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the response to the caller with the &quot;202 Accepted&quot; status.
+<pre><code class="language-ballerina"> error? response = caller-&gt;accepted();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -849,7 +878,7 @@ or <code>mime:Entity[]</code></p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The response or any payload of type <code>http:ResponseMessage</code></p>
+                        <p><p>The response or any payload of the <code>http:ResponseMessage</code> type</p>
 </p>
                     </li>
                 </ul>
@@ -863,7 +892,7 @@ or <code>mime:Entity[]</code></p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Returns an <code>error</code> on failure</p>
+                <li><p>An <code>error</code> on failure or else <code>()</code></p>
 </li>
             </ul>
         </div>

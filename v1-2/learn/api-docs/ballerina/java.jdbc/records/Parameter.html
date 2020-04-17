@@ -59,6 +59,42 @@
                 <ul>
                     
                         <li >
+                            <a href="T0.html">T0</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T2.html">T2</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T3.html">T3</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T4.html">T4</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T43.html">T43</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T5.html">T5</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T6.html">T6</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T7.html">T7</a>
+                        </li>
+                    
+                        <li >
                             <a href="ApplicationErrorData.html">ApplicationErrorData</a>
                         </li>
                     
@@ -92,7 +128,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +306,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -368,6 +408,42 @@
                     <ul>
                         
                             <li >
+                                <a href="T0.html">T0</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T2.html">T2</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T3.html">T3</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T4.html">T4</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T43.html">T43</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T5.html">T5</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T6.html">T6</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T7.html">T7</a>
+                            </li>
+                        
+                            <li >
                                 <a href="ApplicationErrorData.html">ApplicationErrorData</a>
                             </li>
                         
@@ -401,7 +477,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +655,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -681,11 +761,16 @@
                 
                     <a href="../../java.jdbc/index.html">java.jdbc</a>
                 
-                 : <span class="records">Parameter</span>
+                 : <span class="records strike">Parameter</span>
             </h1>
-            <p>Represents a parameter for the JDBC Client remote functions when a variable needs to be passed
+            <p>
+                
+                    <span class="stab">Deprecated</span>
+                
+                Represents a parameter for the JDBC Client remote functions when a variable needs to be passed
 to the remote function.
-</p>
+
+            </p>
             <div class="constants">
                 
                     
@@ -694,49 +779,69 @@ to the remote function.
         
     <div class="params-listing">
         <ul>
-            <li> sqlType<span class="type">  <a href="../../java.jdbc/types.html#SQLType">SQLType</a></span>
+            <li> 
+                <span >sqlType</span>
+                <span class="type">  <a href="../../java.jdbc/types.html#SQLType">SQLType</a></span>
                 
             </li>
             <li>
-                <p><p>The data type of the corresponding SQL parameter</p>
-</p>
+                <p>
+                    
+                    <p>The data type of the corresponding SQL parameter</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> value<span class="type">  <span class="builtin-type">anydata</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >value</span>
+                <span class="type">  <span class="builtin-type">anydata</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Value of paramter passed into the SQL statement</p>
-</p>
+                <p>
+                    
+                    <p>Value of paramter passed into the SQL statement</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> direction<span class="type">  <a href="../../java.jdbc/types.html#Direction">Direction</a></span>
-                <span class="default"> (default DIRECTION_IN)</span>
+            <li> 
+                <span >direction</span>
+                <span class="type">  <a href="../../java.jdbc/types.html#Direction">Direction</a></span>
+                 <span class="default">(default DIRECTION_IN)</span> 
             </li>
             <li>
-                <p><p>Direction of the SQL Parameter IN, OUT, or INOUT - Default value is IN</p>
-</p>
+                <p>
+                    
+                    <p>Direction of the SQL Parameter IN, OUT, or INOUT - Default value is IN</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> recordType<span class="type">  <span class="builtin-type">typedesc</span></span>
+            <li> 
+                <span >recordType</span>
+                <span class="type">  <span class="builtin-type">typedesc</span></span>
                 
             </li>
             <li>
-                <p><p>In case of OUT direction, if the sqlType is REFCURSOR, this represents the record type to map a
+                <p>
+                    
+                    <p>In case of OUT direction, if the sqlType is REFCURSOR, this represents the record type to map a
 result row</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

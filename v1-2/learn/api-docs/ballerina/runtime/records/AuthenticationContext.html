@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -246,6 +246,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -531,6 +535,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -633,10 +641,13 @@
                 
                     <a href="../../runtime/index.html">runtime</a>
                 
-                 : <span class="records">AuthenticationContext</span>
+                 : <span class="records ">AuthenticationContext</span>
             </h1>
-            <p>Represents the AuthenticationContext, populated with authenticated information.
-</p>
+            <p>
+                
+                Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
+
+            </p>
             <div class="constants">
                 
                     
@@ -645,24 +656,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> scheme<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >scheme</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Authentication token type. e.g: JWT etc.</p>
-</p>
+                <p>
+                    
+                    <p>Authentication scheme</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> authToken<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >authToken</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Relevant token for the schema.</p>
-</p>
+                <p>
+                    
+                    <p>Token for the provided <code>scheme</code></p>
+
+                </p>
             </li>
         </ul>
     </div>

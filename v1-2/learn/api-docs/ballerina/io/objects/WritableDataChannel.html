@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">WritableDataChannel</span>
+                <span class="objects ">WritableDataChannel</span>
             </h1>
-            <p><p>Represents a WritableDataChannel for writing data.</p>
-</p>
+            <p>
+                
+                Represents a WritableDataChannel for writing data.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -765,103 +776,139 @@
                         <div class="method-list">
                             
                                 
-<a href="#writeInt16">
-    <div class="param-sum">
-        <div class="param-name">
-        writeInt16 
-        </div>
-        <div class="param-details"> <p>Writes 16 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeInt16">
+        <a href="#writeInt16">writeInt16 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a 16 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt16(length);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeInt32">
-    <div class="param-sum">
-        <div class="param-name">
-        writeInt32 
-        </div>
-        <div class="param-details"> <p>Writes 32 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeInt32">
+        <a href="#writeInt32">writeInt32 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a 32 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt32(length);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeInt64">
-    <div class="param-sum">
-        <div class="param-name">
-        writeInt64 
-        </div>
-        <div class="param-details"> <p>Writes 64 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeInt64">
+        <a href="#writeInt64">writeInt64 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a 64 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt64(length);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeFloat32">
-    <div class="param-sum">
-        <div class="param-name">
-        writeFloat32 
-        </div>
-        <div class="param-details"> <p>Writes 32 bit float.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeFloat32">
+        <a href="#writeFloat32">writeFloat32 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a 32 bit float.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeFloat32(3.12);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeFloat64">
-    <div class="param-sum">
-        <div class="param-name">
-        writeFloat64 
-        </div>
-        <div class="param-details"> <p>Writes 64 bit float.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeFloat64">
+        <a href="#writeFloat64">writeFloat64 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a 64 bit float.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeFloat32(3.12);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeBool">
-    <div class="param-sum">
-        <div class="param-name">
-        writeBool 
-        </div>
-        <div class="param-details"> <p>Writes boolean.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeBool">
+        <a href="#writeBool">writeBool </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a boolean.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt64(length);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeString">
-    <div class="param-sum">
-        <div class="param-name">
-        writeString 
-        </div>
-        <div class="param-details"> <p>Writes a given string value to the respective channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeString">
+        <a href="#writeString">writeString </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a given string value to the respective channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeString(record);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#writeVarInt">
-    <div class="param-sum">
-        <div class="param-name">
-        writeVarInt 
-        </div>
-        <div class="param-details"> <p>Writes a variable length integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="writeVarInt">
+        <a href="#writeVarInt">writeVarInt </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes a variable-length integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeVarInt(length);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes the data channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes the data channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -876,7 +923,7 @@
              <a class="url-link" href="#writeInt16">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeInt16 </h2>
+            <h2 > writeInt16 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> value)</p>
@@ -884,9 +931,14 @@
         </span>
         
     </div>
-    <p><p>Writes 16 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a 16 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt16(length);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -897,7 +949,7 @@
                         
                     </li>
                     <li>
-                        <p><p>integer which will be written</p>
+                        <p><p>The integer, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -911,7 +963,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the content is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the content is written successfully or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -924,7 +976,7 @@
              <a class="url-link" href="#writeInt32">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeInt32 </h2>
+            <h2 > writeInt32 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> value)</p>
@@ -932,9 +984,14 @@
         </span>
         
     </div>
-    <p><p>Writes 32 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a 32 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt32(length);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -945,7 +1002,7 @@
                         
                     </li>
                     <li>
-                        <p><p>integer which will be written</p>
+                        <p><p>The integer, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -959,7 +1016,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the content is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the content is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -972,7 +1029,7 @@
              <a class="url-link" href="#writeInt64">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeInt64 </h2>
+            <h2 > writeInt64 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> value)</p>
@@ -980,9 +1037,14 @@
         </span>
         
     </div>
-    <p><p>Writes 64 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a 64 bit integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt64(length);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -993,7 +1055,7 @@
                         
                     </li>
                     <li>
-                        <p><p>integer which will be written</p>
+                        <p><p>The integer, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -1007,7 +1069,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the content is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the content is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1020,7 +1082,7 @@
              <a class="url-link" href="#writeFloat32">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeFloat32 </h2>
+            <h2 > writeFloat32 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> value)</p>
@@ -1028,9 +1090,14 @@
         </span>
         
     </div>
-    <p><p>Writes 32 bit float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a 32 bit float.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeFloat32(3.12);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1041,7 +1108,7 @@
                         
                     </li>
                     <li>
-                        <p><p>float which will be written</p>
+                        <p><p>The float, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -1055,7 +1122,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the float is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the float is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1068,7 +1135,7 @@
              <a class="url-link" href="#writeFloat64">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeFloat64 </h2>
+            <h2 > writeFloat64 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> value)</p>
@@ -1076,9 +1143,14 @@
         </span>
         
     </div>
-    <p><p>Writes 64 bit float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a 64 bit float.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeFloat32(3.12);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1089,7 +1161,7 @@
                         
                     </li>
                     <li>
-                        <p><p>float which will be written</p>
+                        <p><p>The float, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -1103,7 +1175,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the float is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the float is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1116,7 +1188,7 @@
              <a class="url-link" href="#writeBool">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeBool </h2>
+            <h2 > writeBool </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> value)</p>
@@ -1124,9 +1196,14 @@
         </span>
         
     </div>
-    <p><p>Writes boolean.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a boolean.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeInt64(length);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1137,7 +1214,7 @@
                         
                     </li>
                     <li>
-                        <p><p>boolean which will be written</p>
+                        <p><p>The boolean, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -1151,7 +1228,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the content is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the content is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1164,7 +1241,7 @@
              <a class="url-link" href="#writeString">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeString </h2>
+            <h2 > writeString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> value, <span class="builtin-type">string</span> encoding)</p>
@@ -1172,9 +1249,14 @@
         </span>
         
     </div>
-    <p><p>Writes a given string value to the respective channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a given string value to the respective channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeString(record);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1185,7 +1267,7 @@
                         
                     </li>
                     <li>
-                        <p><p>the value which should be written</p>
+                        <p><p>The value, which should be written</p>
 </p>
                     </li>
                 </ul>
@@ -1198,7 +1280,7 @@
                         
                     </li>
                     <li>
-                        <p><p>the encoding which will represent the value string</p>
+                        <p><p>The encoding, which will represent the value string</p>
 </p>
                     </li>
                 </ul>
@@ -1212,7 +1294,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the content is written successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the content is written successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1225,7 +1307,7 @@
              <a class="url-link" href="#writeVarInt">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> writeVarInt </h2>
+            <h2 > writeVarInt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> value)</p>
@@ -1233,9 +1315,14 @@
         </span>
         
     </div>
-    <p><p>Writes a variable length integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes a variable-length integer.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.writeVarInt(length);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1246,7 +1333,7 @@
                         
                     </li>
                     <li>
-                        <p><p>int which will be written</p>
+                        <p><p>The int, which will be written</p>
 </p>
                     </li>
                 </ul>
@@ -1260,7 +1347,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>value of the integer which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the integer, which is written or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1273,7 +1360,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1281,16 +1368,21 @@
         </span>
         
     </div>
-    <p><p>Closes the data channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the data channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the channel is closed successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the channel is closed successfully or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>

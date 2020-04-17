@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">ListenerConfiguration</span>
+                 : <span class="records ">ListenerConfiguration</span>
             </h1>
-            <p>Provides a set of configurations for HTTP service endpoints.
-</p>
+            <p>
+                
+                Provides a set of configurations for HTTP service endpoints.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,111 +1064,156 @@
         
     <div class="params-listing">
         <ul>
-            <li> host<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default 0.0.0.0)</span>
+            <li> 
+                <span >host</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default 0.0.0.0)</span> 
             </li>
             <li>
-                <p><p>The host name/IP of the endpoint</p>
-</p>
+                <p>
+                    
+                    <p>The host name/IP of the endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> http1Settings<span class="type">  <a href="../../http/records/ListenerHttp1Settings.html">ListenerHttp1Settings</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >http1Settings</span>
+                <span class="type">  <a href="../../http/records/ListenerHttp1Settings.html">ListenerHttp1Settings</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>Configurations related to HTTP/1.x protocol</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to HTTP/1.x protocol</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../http/records/ListenerSecureSocket.html">ListenerSecureSocket</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../http/records/ListenerSecureSocket.html">ListenerSecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The SSL configurations for the service endpoint. This needs to be configured in order to
+                <p>
+                    
+                    <p>The SSL configurations for the service endpoint. This needs to be configured in order to
 communicate through HTTPS.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> httpVersion<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default 1.1)</span>
+            <li> 
+                <span >httpVersion</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default 1.1)</span> 
             </li>
             <li>
-                <p><p>Highest HTTP version supported by the endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Highest HTTP version supported by the endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> filters<span class="type">  <span class="array-type"><a href="../../http/objects/RequestFilter.html">RequestFilter</a> | <a href="../../http/objects/ResponseFilter.html">ResponseFilter</a>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >filters</span>
+                <span class="type">  <span class="array-type"><a href="../../http/objects/RequestFilter.html">RequestFilter</a> | <a href="../../http/objects/ResponseFilter.html">ResponseFilter</a>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>If any pre-processing needs to be done to the request before dispatching the request to the
+                <p>
+                    
+                    <p>If any pre-processing needs to be done to the request before dispatching the request to the
 resource, filters can applied</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> timeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default DEFAULT_LISTENER_TIMEOUT)</span>
+            <li> 
+                <span >timeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default DEFAULT_LISTENER_TIMEOUT)</span> 
             </li>
             <li>
-                <p><p>Period of time in milliseconds that a connection waits for a read/write operation. Use value 0 to
+                <p>
+                    
+                    <p>Period of time in milliseconds that a connection waits for a read/write operation. Use value 0 to
 disable timeout</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> auth<span class="type">  <a href="../../http/records/ListenerAuth.html">ListenerAuth</a></span>
+            <li> 
+                <span >auth</span>
+                <span class="type">  <a href="../../http/records/ListenerAuth.html">ListenerAuth</a></span>
                 
             </li>
             <li>
-                <p><p>Listener authenticaton configurations</p>
-</p>
+                <p>
+                    
+                    <p>Listener authenticaton configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> server<span class="type">  <span class="builtin-type">string?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >server</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The server name which should appear as a response header</p>
-</p>
+                <p>
+                    
+                    <p>The server name which should appear as a response header</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> webSocketCompressionEnabled<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >webSocketCompressionEnabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enable support for compression in WebSocket</p>
-</p>
+                <p>
+                    
+                    <p>Enable support for compression in WebSocket</p>
+
+                </p>
             </li>
         </ul>
     </div>

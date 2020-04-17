@@ -92,7 +92,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +282,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -413,7 +417,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +607,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,10 +713,13 @@
                 
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                 
-                 : <span class="records">ExchangeConfiguration</span>
+                 : <span class="records ">ExchangeConfiguration</span>
             </h1>
-            <p>Holds the parameters used to declare an exchange.
-</p>
+            <p>
+                
+                Configurations used to declare an exchange.
+
+            </p>
             <div class="constants">
                 
                     
@@ -717,60 +728,85 @@
         
     <div class="params-listing">
         <ul>
-            <li> exchangeName<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >exchangeName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The name of the exchange.</p>
-</p>
+                <p>
+                    
+                    <p>The name of the exchange</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> exchangeType<span class="type">  <a href="../../rabbitmq/types.html#ExchangeType">ExchangeType</a></span>
-                <span class="default"> (default DIRECT_EXCHANGE)</span>
+            <li> 
+                <span >exchangeType</span>
+                <span class="type">  <a href="../../rabbitmq/types.html#ExchangeType">ExchangeType</a></span>
+                 <span class="default">(default DIRECT_EXCHANGE)</span> 
             </li>
             <li>
-                <p><p>The type of exchange.</p>
-</p>
+                <p>
+                    
+                    <p>The type of the exchange</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> durable<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >durable</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>True if declaring a durable exchange (the exchange will survive a server restart).</p>
-</p>
+                <p>
+                    
+                    <p>True if declaring a durable exchange (the exchange will survive in a server restart)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> autoDelete<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >autoDelete</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>True if we are declaring an autodelete exchange (server will delete it when it is no longer in use).</p>
-</p>
+                <p>
+                    
+                    <p>True if an autodelete exchange is declared (the server will delete it when it is no longer in use)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> arguments<span class="type">  <span class="builtin-type">map?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >arguments</span>
+                <span class="type">  <span class="builtin-type">map?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Other properties (construction arguments) for the queue.</p>
-</p>
+                <p>
+                    
+                    <p>Other properties (construction arguments) for the queue</p>
+
+                </p>
             </li>
         </ul>
     </div>

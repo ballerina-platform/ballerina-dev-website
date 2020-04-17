@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -219,6 +219,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -316,7 +320,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -478,6 +482,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -582,73 +590,8 @@
                         Module : <span class="modules">xslt</span>
                     
                 </h1>
-                    <h2>Module Overview</h2>
-<p>This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.</p>
-<h1>Sample</h1>
-<h2>Transform XML using a given XSL</h2>
-<p>The following program depicts how the XSL transformation can be done for a given single-rooted XML, using a XSL.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/xslt;
-
-public function main() {
-    xml sourceXml = getXml();
-    xml xsl = getXsl();
-
-    xml | error target = xslt:transform(sourceXml, xsl);
-    if (target is xml) {
-        io:println(&quot;Transformed xml : &quot;);
-        io:println(target);
-    } else {
-        io:print(&quot;Error : &quot;);
-        io:println(target);
-    }
-}
-
-function getXml() returns xml {
-    return xml `&lt;samples&gt;
-                    &lt;song&gt;
-                        &lt;title&gt;Summer of 69&lt;/title&gt;
-                        &lt;artist&gt;Bryan Adams&lt;/artist&gt;
-                        &lt;country&gt;Canada&lt;/country&gt;
-                        &lt;year&gt;1984&lt;/year&gt;
-                    &lt;/song&gt;
-                    &lt;song&gt;
-                        &lt;title&gt;Zombie&lt;/title&gt;
-                        &lt;artist&gt;Bad Wolves&lt;/artist&gt;
-                        &lt;country&gt;USA&lt;/country&gt;
-                        &lt;year&gt;2018&lt;/year&gt;
-                    &lt;/song&gt;
-                &lt;/samples&gt;`;
-}
-
-function getXsl() returns xml {
-    return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
-                    &lt;xsl:template match=&quot;/&quot;&gt;
-                        &lt;html&gt;
-                            &lt;body&gt;
-                                &lt;h2&gt;All time favourites&lt;/h2&gt;
-                                &lt;table border=&quot;1&quot;&gt;
-                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
-                                        &lt;th&gt;Title&lt;/th&gt;
-                                        &lt;th&gt;Artist&lt;/th&gt;
-                                    &lt;/tr&gt;
-                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
-                                    &lt;tr&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;
-                                        &lt;/td&gt;
-                                        &lt;td&gt;
-                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;
-                                        &lt;/td&gt;
-                                    &lt;/tr&gt;
-                                &lt;/xsl:for-each&gt;
-                                &lt;/table&gt;
-                            &lt;/body&gt;
-                        &lt;/html&gt;
-                    &lt;/xsl:template&gt;
-                &lt;/xsl:stylesheet&gt;`;
-}
-</code></pre>
+                    <p>This module provides a function to transform the XML content to another XML/HTML/plain text using XSL transformations.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/xslt-transformation.html">XSLT Transformation Example</a>.</p>
 
 
             
@@ -671,10 +614,16 @@ function getXsl() returns xml {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="transform" title="transform"><a
-                                    class="functions" href="functions.html#transform">transform</a></td>
-                            <td class="module-desc"><p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>
-</td>
+                            <td class="module-title truncate functions" id="transform" title="transform">
+                                <a class="functions " href="functions.html#transform">transform</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
+<pre><code class="language-ballerina"> xml|error target = xslt:transform(sourceXml, xsl);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>

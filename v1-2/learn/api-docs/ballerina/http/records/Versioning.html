@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">Versioning</span>
+                 : <span class="records ">Versioning</span>
             </h1>
-            <p>Configurations for service versioning.
-</p>
+            <p>
+                
+                Configurations for service versioning.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,36 +1064,51 @@
         
     <div class="params-listing">
         <ul>
-            <li> pattern<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default v{major}.{minor})</span>
+            <li> 
+                <span >pattern</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default v{major}.{minor})</span> 
             </li>
             <li>
-                <p><p>Expected version pattern in the request URL</p>
-</p>
+                <p>
+                    
+                    <p>Expected version pattern in the request URL</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> allowNoVersion<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >allowNoVersion</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Allow requests with missing version path segment in the URL to be dispatched</p>
-</p>
+                <p>
+                    
+                    <p>Allow requests with missing version path segment in the URL to be dispatched</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> matchMajorVersion<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >matchMajorVersion</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Allow requests with only the major version specified in the URL to be dispatched</p>
-</p>
+                <p>
+                    
+                    <p>Allow requests with only the major version specified in the URL to be dispatched</p>
+
+                </p>
             </li>
         </ul>
     </div>

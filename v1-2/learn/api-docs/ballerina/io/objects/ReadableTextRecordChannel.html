@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">ReadableTextRecordChannel</span>
+                <span class="objects ">ReadableTextRecordChannel</span>
             </h1>
-            <p><p>Represents a channel which will allow to read</p>
-</p>
+            <p>
+                
+                Represents a channel which will allow to read
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -784,37 +795,49 @@
                         <div class="method-list">
                             
                                 
-<a href="#hasNext">
-    <div class="param-sum">
-        <div class="param-name">
-        hasNext 
-        </div>
-        <div class="param-details"> <p>Checks whether there's a record left to be read.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasNext">
+        <a href="#hasNext">hasNext </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether there's a record left to be read.
+<pre><code class="language-ballerina"> boolean hasNext = readableRecChannel.hasNext();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getNext">
-    <div class="param-sum">
-        <div class="param-name">
-        getNext 
-        </div>
-        <div class="param-details"> <p>Get next record from the input/output resource.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getNext">
+        <a href="#getNext">getNext </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Get the next record from the input/output resource.
+<pre><code class="language-ballerina"> string[]|io:Error record = readableRecChannel.getNext();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given record channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given record channel.
+<pre><code class="language-ballerina"> io:Error err = readableRecChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -829,7 +852,7 @@
              <a class="url-link" href="#hasNext">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasNext </h2>
+            <h2 > hasNext </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -837,9 +860,14 @@
         </span>
         
     </div>
-    <p><p>Checks whether there's a record left to be read.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether there's a record left to be read.
+<pre><code class="language-ballerina"> boolean hasNext = readableRecChannel.hasNext();
+</code></pre>
+
+    </div>
+    
 
     
         
@@ -859,7 +887,7 @@
              <a class="url-link" href="#getNext">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNext </h2>
+            <h2 > getNext </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -867,16 +895,21 @@
         </span>
         
     </div>
-    <p><p>Get next record from the input/output resource.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Get the next record from the input/output resource.
+<pre><code class="language-ballerina"> string[]|io:Error record = readableRecChannel.getNext();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Set of fields included in the record or <code>Error</code> if any error occurred</p>
+                <li><p>Set of fields included in the record or else <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -889,7 +922,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -897,16 +930,21 @@
         </span>
         
     </div>
-    <p><p>Closes a given record channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given record channel.
+<pre><code class="language-ballerina"> io:Error err = readableRecChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>An <code>Error</code> if the record channel could not be closed properly</p>
+                <li><p>An <code>io:Error</code> if the record channel could not be closed properly</p>
 </li>
             </ul>
         </div>

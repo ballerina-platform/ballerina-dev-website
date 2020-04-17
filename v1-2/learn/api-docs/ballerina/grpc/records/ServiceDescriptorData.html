@@ -124,7 +124,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -318,6 +318,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -481,7 +485,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -675,6 +679,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -777,10 +785,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                 
-                 : <span class="records">ServiceDescriptorData</span>
+                 : <span class="records ">ServiceDescriptorData</span>
             </h1>
-            <p>Service descriptor data. This is for internal use.
-</p>
+            <p>
+                
+                Service descriptor data generated at the compile time. This is for internal use.
+
+            </p>
             <div class="constants">
                 
                     
@@ -789,24 +800,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> descriptor<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >descriptor</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Service descriptor sets at compile time.</p>
-</p>
+                <p>
+                    
+                    <p>Service descriptor, which should be set at the compile time</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> descMap<span class="type">  <span class="builtin-type">map</span></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >descMap</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>Service dependent descriptor map sets at compile time.</p>
-</p>
+                <p>
+                    
+                    <p>Service dependent descriptor map, which should be set at the compile time</p>
+
+                </p>
             </li>
         </ul>
     </div>

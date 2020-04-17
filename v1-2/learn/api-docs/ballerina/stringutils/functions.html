@@ -104,7 +104,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -409,7 +413,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -679,83 +687,156 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#contains">contains</a></td>
-                                <td width="70%"><p>Checks whether the given string contains a particular substring.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#contains">contains</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks whether the given string contains a particular substring.
+<pre><code class="language-ballerina"> boolean contains = stringutils:contains(&quot;Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#equalsIgnoreCase">equalsIgnoreCase</a></td>
-                                <td width="70%"><p>Checks if two strings are equal, ignoring the case of the strings.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#equalsIgnoreCase">equalsIgnoreCase</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks if two strings are equal ignoring the case of the strings.
+<pre><code class="language-ballerina"> boolean isEqual = stringutils:equalsIgnoreCase(&quot;BaLLerinA&quot;, &quot;ballERina&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashCode">hashCode</a></td>
-                                <td width="70%"><p>Returns a hash code for a given string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashCode">hashCode</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a hash code for a given string.
+<pre><code class="language-ballerina"> int hashCode = stringutils:hashCode(&quot;Ballerina&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#lastIndexOf">lastIndexOf</a></td>
-                                <td width="70%"><p>Returns the last index of the provided substring within a string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#lastIndexOf">lastIndexOf</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the last index of the provided substring within a string.
+<pre><code class="language-ballerina"> int lastIndex = stringutils:lastIndexOf(&quot;int values in Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#matches">matches</a></td>
-                                <td width="70%"><p>Checks whether the given string matches with the provided regex.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#matches">matches</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks whether the given string matches the provided regex.
+<pre><code class="language-ballerina"> boolean isMatched = stringutils:matches(&quot;Ballerina is great&quot;, &quot;Ba[a-z ]+&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#replace">replace</a></td>
-                                <td width="70%"><p>Replaces each substring of the provided string, that matches the provided substring, with the specified replacement
-string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#replace">replace</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Replaces each occurrence of the provided <code>substring</code> inside the provided
+<code>originalString</code> with the specified <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replace(&quot;Ballerina is great&quot;, &quot; &quot;, &quot;_&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#replaceAll">replaceAll</a></td>
-                                <td width="70%"><p>Replaces each substring which matches the given regular expression, from the given original string value, with the
-specified replacement string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#replaceAll">replaceAll</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Replaces each occurrence of the substrings, which matches the provided
+regular expression from the given original string value with the
+provided replacement string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceAll(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#replaceFirst">replaceFirst</a></td>
-                                <td width="70%"><p>Replaces the first substring that matches the given regular expression, with the specified replacement string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#replaceFirst">replaceFirst</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Replaces the first substring that matches the given regular expression with
+the provided <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceFirst(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#split">split</a></td>
-                                <td width="70%"><p>Splits a string using the given delimiter.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#split">split</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns an array of strings by splitting a string using the provided
+delimiter.
+<pre><code class="language-ballerina"> string[] result = stringutils:split(&quot;Ballerina is great&quot;, &quot; &quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toBoolean">toBoolean</a></td>
-                                <td width="70%"><p>Returns a boolean value of a given string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toBoolean">toBoolean</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a boolean value of a given string.
+<pre><code class="language-ballerina"> boolean result = stringutils:toBoolean(&quot;true&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -769,7 +850,7 @@ specified replacement string.</p>
              <a class="url-link" href="#contains">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> contains </h2>
+            <h2 > contains </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> substring)</p>
@@ -777,9 +858,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Checks whether the given string contains a particular substring.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the given string contains a particular substring.
+<pre><code class="language-ballerina"> boolean contains = stringutils:contains(&quot;Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -790,7 +876,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the original string</p>
+                        <p><p>The string to check whether it contains the <code>substring</code></p>
 </p>
                     </li>
                 </ul>
@@ -803,7 +889,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>string to match</p>
+                        <p><p>The substring to find within the <code>originalString</code></p>
 </p>
                     </li>
                 </ul>
@@ -817,7 +903,8 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the original string contains the substring or <code>false</code> otherwise</p>
+                <li><p><code>true</code> if the <code>originalString</code> contains the provided <code>substring</code>
+or else <code>false</code></p>
 </li>
             </ul>
         </div>
@@ -830,7 +917,7 @@ specified replacement string.</p>
              <a class="url-link" href="#equalsIgnoreCase">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> equalsIgnoreCase </h2>
+            <h2 > equalsIgnoreCase </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> firstString, <span class="builtin-type">string</span> secondString)</p>
@@ -838,9 +925,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Checks if two strings are equal, ignoring the case of the strings.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks if two strings are equal ignoring the case of the strings.
+<pre><code class="language-ballerina"> boolean isEqual = stringutils:equalsIgnoreCase(&quot;BaLLerinA&quot;, &quot;ballERina&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -851,7 +943,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>first string to compare</p>
+                        <p><p>The first string to compare</p>
 </p>
                     </li>
                 </ul>
@@ -864,7 +956,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>second string to compare</p>
+                        <p><p>The second string to compare</p>
 </p>
                     </li>
                 </ul>
@@ -878,7 +970,7 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the two strings are the same or <code>false</code> if the strings do not match</p>
+                <li><p><code>true</code> if the two strings are equal or else <code>false</code></p>
 </li>
             </ul>
         </div>
@@ -891,7 +983,7 @@ specified replacement string.</p>
              <a class="url-link" href="#hashCode">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashCode </h2>
+            <h2 > hashCode </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringValue)</p>
@@ -899,9 +991,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Returns a hash code for a given string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a hash code for a given string.
+<pre><code class="language-ballerina"> int hashCode = stringutils:hashCode(&quot;Ballerina&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -912,7 +1009,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>string to generate the hash code</p>
+                        <p><p>The string to generate the hash code</p>
 </p>
                     </li>
                 </ul>
@@ -926,7 +1023,7 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>hash code for the given string</p>
+                <li><p>The hash code for the given string</p>
 </li>
             </ul>
         </div>
@@ -939,7 +1036,7 @@ specified replacement string.</p>
              <a class="url-link" href="#lastIndexOf">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> lastIndexOf </h2>
+            <h2 > lastIndexOf </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> substring)</p>
@@ -947,9 +1044,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Returns the last index of the provided substring within a string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the last index of the provided substring within a string.
+<pre><code class="language-ballerina"> int lastIndex = stringutils:lastIndexOf(&quot;int values in Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -960,7 +1062,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the original string to search in</p>
+                        <p><p>The string to search for the index of the <code>substring</code></p>
 </p>
                     </li>
                 </ul>
@@ -973,7 +1075,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>string to look for</p>
+                        <p><p>The string to search in the <code>originalString</code></p>
 </p>
                     </li>
                 </ul>
@@ -987,7 +1089,8 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>starting point of the last appearance of the provided substring</p>
+                <li><p>Starting index of the last appearance of the provided substring
+if the <code>originalString</code> contains the <code>substring</code> or else <code>-1</code></p>
 </li>
             </ul>
         </div>
@@ -1000,7 +1103,7 @@ specified replacement string.</p>
              <a class="url-link" href="#matches">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> matches </h2>
+            <h2 > matches </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringToMatch, <span class="builtin-type">string</span> regex)</p>
@@ -1008,9 +1111,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Checks whether the given string matches with the provided regex.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the given string matches the provided regex.
+<pre><code class="language-ballerina"> boolean isMatched = stringutils:matches(&quot;Ballerina is great&quot;, &quot;Ba[a-z ]+&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1021,7 +1129,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>string to match with the regex</p>
+                        <p><p>The string to match the regex</p>
 </p>
                     </li>
                 </ul>
@@ -1034,7 +1142,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>regex to match with the string</p>
+                        <p><p>The regex to match the string</p>
 </p>
                     </li>
                 </ul>
@@ -1048,7 +1156,8 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> if the provided string is matched with the regex, <code>false</code> otherwise</p>
+                <li><p><code>true</code> if the provided string matches the regex or else
+<code>false</code></p>
 </li>
             </ul>
         </div>
@@ -1061,7 +1170,7 @@ specified replacement string.</p>
              <a class="url-link" href="#replace">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> replace </h2>
+            <h2 > replace </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> stringToReplace, <span class="builtin-type">string</span> replacement)</p>
@@ -1069,10 +1178,15 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Replaces each substring of the provided string, that matches the provided substring, with the specified replacement
-string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Replaces each occurrence of the provided <code>substring</code> inside the provided
+<code>originalString</code> with the specified <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replace(&quot;Ballerina is great&quot;, &quot; &quot;, &quot;_&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1083,7 +1197,7 @@ string.</p>
                         
                     </li>
                     <li>
-                        <p><p>original string</p>
+                        <p><p>The original string to replace the substrings</p>
 </p>
                     </li>
                 </ul>
@@ -1096,7 +1210,7 @@ string.</p>
                         
                     </li>
                     <li>
-                        <p><p>string to replace</p>
+                        <p><p>The string to replace within the <code>originalString</code></p>
 </p>
                     </li>
                 </ul>
@@ -1109,7 +1223,8 @@ string.</p>
                         
                     </li>
                     <li>
-                        <p><p>replacement string</p>
+                        <p><p>The <code>replacement</code> string to replace the occurrences of
+the <code>stringToReplace</code></p>
 </p>
                     </li>
                 </ul>
@@ -1123,7 +1238,7 @@ string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>the resultant string</p>
+                <li><p>The string with the replaced substrings</p>
 </li>
             </ul>
         </div>
@@ -1136,7 +1251,7 @@ string.</p>
              <a class="url-link" href="#replaceAll">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> replaceAll </h2>
+            <h2 > replaceAll </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> regex, <span class="builtin-type">string</span> replacement)</p>
@@ -1144,10 +1259,16 @@ string.</p>
         </span>
         
     </div>
-    <p><p>Replaces each substring which matches the given regular expression, from the given original string value, with the
-specified replacement string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Replaces each occurrence of the substrings, which matches the provided
+regular expression from the given original string value with the
+provided replacement string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceAll(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1158,7 +1279,8 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>original string</p>
+                        <p><p>The original string to replace the occurrences of the
+substrings that match the provided <code>regex</code></p>
 </p>
                     </li>
                 </ul>
@@ -1171,7 +1293,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>Regex to find substrings to replace</p>
+                        <p><p>The regex to match the substrings in the <code>originalString</code> to be replaced</p>
 </p>
                     </li>
                 </ul>
@@ -1184,7 +1306,8 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the replacement string</p>
+                        <p><p>The <code>replacement</code> string to replace the subsgrings, which
+match the <code>regex</code></p>
 </p>
                     </li>
                 </ul>
@@ -1198,7 +1321,7 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>the resultant string</p>
+                <li><p>The resultant string with the replaced substrings</p>
 </li>
             </ul>
         </div>
@@ -1211,7 +1334,7 @@ specified replacement string.</p>
              <a class="url-link" href="#replaceFirst">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> replaceFirst </h2>
+            <h2 > replaceFirst </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> originalString, <span class="builtin-type">string</span> regex, <span class="builtin-type">string</span> replacement)</p>
@@ -1219,9 +1342,15 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Replaces the first substring that matches the given regular expression, with the specified replacement string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Replaces the first substring that matches the given regular expression with
+the provided <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceFirst(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1232,7 +1361,8 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the original string</p>
+                        <p><p>The original string to replace the occurrences of the
+substrings that match the provided <code>regex</code></p>
 </p>
                     </li>
                 </ul>
@@ -1245,7 +1375,8 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>Regex to find substring to replace</p>
+                        <p><p>The regex to match the first substring in the <code>originalString</code> to
+be replaced</p>
 </p>
                     </li>
                 </ul>
@@ -1258,7 +1389,8 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the replacement string</p>
+                        <p><p>The <code>replacement</code> string to replace the first substring, which
+matches the <code>regex</code></p>
 </p>
                     </li>
                 </ul>
@@ -1272,7 +1404,7 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>the resultant string</p>
+                <li><p>The resultant string with the replaced substring</p>
 </li>
             </ul>
         </div>
@@ -1285,7 +1417,7 @@ specified replacement string.</p>
              <a class="url-link" href="#split">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> split </h2>
+            <h2 > split </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> receiver, <span class="builtin-type">string</span> delimiter)</p>
@@ -1293,9 +1425,15 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Splits a string using the given delimiter.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns an array of strings by splitting a string using the provided
+delimiter.
+<pre><code class="language-ballerina"> string[] result = stringutils:split(&quot;Ballerina is great&quot;, &quot; &quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1306,7 +1444,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>the original string</p>
+                        <p><p>The string to split</p>
 </p>
                     </li>
                 </ul>
@@ -1319,7 +1457,7 @@ specified replacement string.</p>
                         
                     </li>
                     <li>
-                        <p><p>delimiter to split by</p>
+                        <p><p>The delimiter to split by</p>
 </p>
                     </li>
                 </ul>
@@ -1333,7 +1471,7 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>array of strings containing the split individual strings</p>
+                <li><p>An array of strings containing the individual strings that are split</p>
 </li>
             </ul>
         </div>
@@ -1346,7 +1484,7 @@ specified replacement string.</p>
              <a class="url-link" href="#toBoolean">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toBoolean </h2>
+            <h2 > toBoolean </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> stringValue)</p>
@@ -1354,9 +1492,14 @@ specified replacement string.</p>
         </span>
         
     </div>
-    <p><p>Returns a boolean value of a given string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a boolean value of a given string.
+<pre><code class="language-ballerina"> boolean result = stringutils:toBoolean(&quot;true&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1381,7 +1524,8 @@ specified replacement string.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p><code>true</code> is the string is <code>&quot;true&quot;</code> (without considering the case), returns <code>false</code> otherwise</p>
+                <li><p><code>true</code> if the string is <code>&quot;true&quot;</code> (without considering the case)
+or else <code>false</code></p>
 </li>
             </ul>
         </div>

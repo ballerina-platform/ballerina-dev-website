@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,10 +666,13 @@
                 
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                  :
-                <span class="objects">Connection</span>
+                <span class="objects ">Connection</span>
             </h1>
-            <p><p>Represents a single network connection to the RabbitMQ broker.</p>
-</p>
+            <p>
+                
+                Represents a single network connection to the RabbitMQ broker.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -675,7 +686,7 @@
             <ul>
                 <li> <b>connectionConfiguration</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a></span> </li>
                 <li>
-                    <p>Holds connection parameters required to initialize the <code>Connection</code>.</p>
+                    <p>Configurations required to initialize the <code>rabbitmq:Connection</code></p>
 
                 </li>
             </ul>
@@ -691,41 +702,53 @@
                         <div class="method-list">
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes the RabbitMQ <code>Connection</code> and all it's <code>Channel</code>s.
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
+    </div>
+    <div class="param-details"> 
+            
+        Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
 It waits with a provided timeout for all the close operations to complete.
-When timeout is reached the socket is forced to close.</p>
- </div>
+When the timeout is reached, the socket is forced to close.
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newConnection.close();
+</code></pre>
+
     </div>
-</a>
+</div>
+
                             
                                 
-<a href="#abortConnection">
-    <div class="param-sum">
-        <div class="param-name">
-        abortConnection 
-        </div>
-        <div class="param-details"> <p>Aborts the RabbitMQ <code>Connection</code> and all its <code>Channel</code>s.
-Forces the <code>Connection</code> to close and waits for all the close operations to complete. When timeout is reached
-the socket is forced to close. Any encountered exceptions in the close operations are silently discarded.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="abortConnection">
+        <a href="#abortConnection">abortConnection </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete. When the timeout is reached,
+the socket is forced to close. Any encountered exceptions in the close operations are discarded silently.
+<pre><code class="language-ballerina"> connection.abortConnection(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#isClosed">
-    <div class="param-sum">
-        <div class="param-name">
-        isClosed 
-        </div>
-        <div class="param-details"> <p>Checks whether <code>close</code> was already called.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="isClosed">
+        <a href="#isClosed">isClosed </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether <code>close</code> was already called.
+<pre><code class="language-ballerina"> boolean closed = newConnection.isClosed();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -740,7 +763,7 @@ the socket is forced to close. Any encountered exceptions in the close operation
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage, <span class="builtin-type">int?</span> timeoutInMillis)</p>
@@ -748,11 +771,16 @@ the socket is forced to close. Any encountered exceptions in the close operation
         </span>
         
     </div>
-    <p><p>Closes the RabbitMQ <code>Connection</code> and all it's <code>Channel</code>s.
+    <div class="function-desc">
+        
+        Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
 It waits with a provided timeout for all the close operations to complete.
-When timeout is reached the socket is forced to close.</p>
-</p>
-     
+When the timeout is reached, the socket is forced to close.
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newConnection.close();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -763,8 +791,8 @@ When timeout is reached the socket is forced to close.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The close code (For information, go to the &quot;Reply Codes&quot; section in the
-[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf)).</p>
+                        <p><p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
 </p>
                     </li>
                 </ul>
@@ -777,7 +805,7 @@ When timeout is reached the socket is forced to close.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>A message indicating the reason for closing the connection.</p>
+                        <p><p>A message indicating the reason for closing the connection</p>
 </p>
                     </li>
                 </ul>
@@ -791,7 +819,7 @@ When timeout is reached the socket is forced to close.</p>
                     </li>
                     <li>
                         <p><p>Timeout (in milliseconds) for completing all the close-related operations.
-Use -1 for infinity.</p>
+Use -1 for infinity</p>
 </p>
                     </li>
                 </ul>
@@ -805,7 +833,7 @@ Use -1 for infinity.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -818,14 +846,19 @@ Use -1 for infinity.</p>
              <a class="url-link" href="#abortConnection">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> abortConnection </h2>
+            <h2 > abortConnection </h2>
         
     </div>
-    <p><p>Aborts the RabbitMQ <code>Connection</code> and all its <code>Channel</code>s.
-Forces the <code>Connection</code> to close and waits for all the close operations to complete. When timeout is reached
-the socket is forced to close. Any encountered exceptions in the close operations are silently discarded.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete. When the timeout is reached,
+the socket is forced to close. Any encountered exceptions in the close operations are discarded silently.
+<pre><code class="language-ballerina"> connection.abortConnection(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -836,8 +869,8 @@ the socket is forced to close. Any encountered exceptions in the close operation
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The close code (For information, go to the &quot;Reply Codes&quot; section in the
-[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf)).</p>
+                        <p><p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
 </p>
                     </li>
                 </ul>
@@ -850,7 +883,7 @@ the socket is forced to close. Any encountered exceptions in the close operation
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>A message indicating the reason for closing the connection.</p>
+                        <p><p>A message indicating the reason for closing the connection</p>
 </p>
                     </li>
                 </ul>
@@ -864,7 +897,7 @@ the socket is forced to close. Any encountered exceptions in the close operation
                     </li>
                     <li>
                         <p><p>Timeout (in milliseconds) for completing all the close-related operations.
-Use -1 for infinity.</p>
+Use -1 for infinity</p>
 </p>
                     </li>
                 </ul>
@@ -881,7 +914,7 @@ Use -1 for infinity.</p>
              <a class="url-link" href="#isClosed">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> isClosed </h2>
+            <h2 > isClosed </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -889,16 +922,21 @@ Use -1 for infinity.</p>
         </span>
         
     </div>
-    <p><p>Checks whether <code>close</code> was already called.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether <code>close</code> was already called.
+<pre><code class="language-ballerina"> boolean closed = newConnection.isClosed();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>The value <code>true</code> if the <code>Connection</code> is already closed and <code>false</code> otherwise.</p>
+                <li><p>The value <code>true</code> if the <code>rabbitmq:Connection</code> is already closed or else <code>false</code></p>
 </li>
             </ul>
         </div>

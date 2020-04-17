@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -674,10 +682,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                  :
-                <span class="objects">Headers</span>
+                <span class="objects ">Headers</span>
             </h1>
-            <p><p>Provides actions to read/write header values in gRPC request/response message.</p>
-</p>
+            <p>
+                
+                Provides the actions to read/write header values in a gRPC request/response message.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -689,82 +700,110 @@
                         <div class="method-list">
                             
                                 
-<a href="#exists">
-    <div class="param-sum">
-        <div class="param-name">
-        exists 
-        </div>
-        <div class="param-details"> <p>Check whether the requested header exists.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="exists">
+        <a href="#exists">exists </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the requested header exists.
+<pre><code class="language-ballerina"> boolean result = headers.exists(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#get">
-    <div class="param-sum">
-        <div class="param-name">
-        get 
-        </div>
-        <div class="param-details"> <p>Returns the header value with the specified header name. If there are more than one header value for the
-specified header name, the first value is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="get">
+        <a href="#get">get </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the header value with the specified header name. If there are more than one header values for the
+specified header name, the first value is returned.
+<pre><code class="language-ballerina"> string? result = headers.get(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getAll">
-    <div class="param-sum">
-        <div class="param-name">
-        getAll 
-        </div>
-        <div class="param-details"> <p>Gets all transport headers with the specified header name.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getAll">
+        <a href="#getAll">getAll </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets all the transport headers with the specified header name.
+<pre><code class="language-ballerina"> string[] result = headers.getAll(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setEntry">
-    <div class="param-sum">
-        <div class="param-name">
-        setEntry 
-        </div>
-        <div class="param-details"> <p>Sets the value of a transport header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setEntry">
+        <a href="#setEntry">setEntry </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the value of a transport header.
+<pre><code class="language-ballerina"> headers.setEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#addEntry">
-    <div class="param-sum">
-        <div class="param-name">
-        addEntry 
-        </div>
-        <div class="param-details"> <p>Adds the specified key/value pair as an HTTP header to the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="addEntry">
+        <a href="#addEntry">addEntry </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds the specified key/value pair as an HTTP header to the request.
+<pre><code class="language-ballerina"> headers.addEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#remove">
-    <div class="param-sum">
-        <div class="param-name">
-        remove 
-        </div>
-        <div class="param-details"> <p>Removes a transport header from the request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="remove">
+        <a href="#remove">remove </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes a transport header from the request.
+<pre><code class="language-ballerina"> headers.remove(&quot;content-type&quot;)
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeAll">
-    <div class="param-sum">
-        <div class="param-name">
-        removeAll 
-        </div>
-        <div class="param-details"> <p>Removes all transport headers from the message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeAll">
+        <a href="#removeAll">removeAll </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes all the transport headers from the message.
+<pre><code class="language-ballerina"> headers.removeAll()
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -779,7 +818,7 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#exists">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> exists </h2>
+            <h2 > exists </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -787,9 +826,14 @@ specified header name, the first value is returned.</p>
         </span>
         
     </div>
-    <p><p>Check whether the requested header exists.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the requested header exists.
+<pre><code class="language-ballerina"> boolean result = headers.exists(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -800,7 +844,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -814,7 +858,7 @@ specified header name, the first value is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns true if header exists, false otherwise.</p>
+                <li><p>True if header exists or else false</p>
 </li>
             </ul>
         </div>
@@ -827,7 +871,7 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -835,10 +879,15 @@ specified header name, the first value is returned.</p>
         </span>
         
     </div>
-    <p><p>Returns the header value with the specified header name. If there are more than one header value for the
-specified header name, the first value is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the header value with the specified header name. If there are more than one header values for the
+specified header name, the first value is returned.
+<pre><code class="language-ballerina"> string? result = headers.get(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -849,7 +898,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -863,7 +912,7 @@ specified header name, the first value is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
-                <li><p>Returns first header value if exists, nil otherwise.</p>
+                <li><p>First header value if exists or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -876,7 +925,7 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#getAll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getAll </h2>
+            <h2 > getAll </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -884,9 +933,14 @@ specified header name, the first value is returned.</p>
         </span>
         
     </div>
-    <p><p>Gets all transport headers with the specified header name.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets all the transport headers with the specified header name.
+<pre><code class="language-ballerina"> string[] result = headers.getAll(&quot;content-type&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -897,7 +951,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -911,7 +965,7 @@ specified header name, the first value is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>Returns header value array.</p>
+                <li><p>Header value array</p>
 </li>
             </ul>
         </div>
@@ -924,12 +978,17 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#setEntry">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setEntry </h2>
+            <h2 > setEntry </h2>
         
     </div>
-    <p><p>Sets the value of a transport header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the value of a transport header.
+<pre><code class="language-ballerina"> headers.setEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -940,7 +999,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -953,7 +1012,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header value.</p>
+                        <p><p>The header value</p>
 </p>
                     </li>
                 </ul>
@@ -970,12 +1029,17 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#addEntry">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> addEntry </h2>
+            <h2 > addEntry </h2>
         
     </div>
-    <p><p>Adds the specified key/value pair as an HTTP header to the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds the specified key/value pair as an HTTP header to the request.
+<pre><code class="language-ballerina"> headers.addEntry(&quot;content-type&quot;, &quot;application/grpc&quot;)
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -986,7 +1050,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -999,7 +1063,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header value.</p>
+                        <p><p>The header value</p>
 </p>
                     </li>
                 </ul>
@@ -1016,12 +1080,17 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> remove </h2>
+            <h2 > remove </h2>
         
     </div>
-    <p><p>Removes a transport header from the request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes a transport header from the request.
+<pre><code class="language-ballerina"> headers.remove(&quot;content-type&quot;)
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1032,7 +1101,7 @@ specified header name, the first value is returned.</p>
                         
                     </li>
                     <li>
-                        <p><p>The header name.</p>
+                        <p><p>The header name</p>
 </p>
                     </li>
                 </ul>
@@ -1049,12 +1118,17 @@ specified header name, the first value is returned.</p>
              <a class="url-link" href="#removeAll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeAll </h2>
+            <h2 > removeAll </h2>
         
     </div>
-    <p><p>Removes all transport headers from the message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes all the transport headers from the message.
+<pre><code class="language-ballerina"> headers.removeAll()
+</code></pre>
+
+    </div>
+    
 
     
 </div>

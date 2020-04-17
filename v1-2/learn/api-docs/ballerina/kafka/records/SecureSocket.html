@@ -112,7 +112,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -294,6 +294,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -445,7 +449,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -627,6 +631,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -729,10 +737,13 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records">SecureSocket</span>
+                 : <span class="records ">SecureSocket</span>
             </h1>
-            <p>Provides configurations for facilitating secure communication with the Kafka server.
-</p>
+            <p>
+                
+                Configurations for facilitating secure communication with the Kafka server.
+
+            </p>
             <div class="constants">
                 
                     
@@ -741,100 +752,140 @@
         
     <div class="params-listing">
         <ul>
-            <li> keyStore<span class="type">  <a href="../../kafka/records/KeyStore.html">KeyStore</a></span>
+            <li> 
+                <span >keyStore</span>
+                <span class="type">  <a href="../../kafka/records/KeyStore.html">KeyStore</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations associated with KeyStore.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with the KeyStore</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> trustStore<span class="type">  <a href="../../kafka/records/TrustStore.html">TrustStore</a></span>
+            <li> 
+                <span >trustStore</span>
+                <span class="type">  <a href="../../kafka/records/TrustStore.html">TrustStore</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations associated with TrustStore.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with the TrustStore</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> protocol<span class="type">  <a href="../../kafka/records/Protocols.html">Protocols</a></span>
+            <li> 
+                <span >protocol</span>
+                <span class="type">  <a href="../../kafka/records/Protocols.html">Protocols</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations related to SSL/TLS protocol and version to be used.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to the SSL/TLS protocol and the version to be used</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslProvider<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslProvider</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The name of the security provider used for SSL connections. Default value is the default security
-provider of the JVM.</p>
-</p>
+                <p>
+                    
+                    <p>The name of the security provider used for SSL connections. Default value is the default security
+provider of the JVM</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslKeyPassword<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslKeyPassword</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The password of the private key in the key store file. This is optional for client.</p>
-</p>
+                <p>
+                    
+                    <p>The password of the private key in the key store file. This is optional for the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslCipherSuites<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslCipherSuites</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A list of cipher suites. This is a named combination of authentication, encryption, MAC and key
-exchange algorithm used to negotiate the security settings for a network connection using TLS or SSL
-network protocol. By default all the available cipher suites are supported.</p>
-</p>
+                <p>
+                    
+                    <p>A list of Cipher suites. This is a named combination of the authentication, encryption, MAC, and key
+exchange algorithms used to negotiate the security settings for a network connection using the TLS
+or SSL network protocols. By default, all the available Cipher suites are supported</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslEndpointIdentificationAlgorithm<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslEndpointIdentificationAlgorithm</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The endpoint identification algorithm to validate server hostname using server
-certificate.</p>
-</p>
+                <p>
+                    
+                    <p>The endpoint identification algorithm to validate the server hostname using
+the server certificate</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslSecureRandomImplementation<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslSecureRandomImplementation</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The SecureRandom PRNG implementation to use for SSL cryptography operations.</p>
-</p>
+                <p>
+                    
+                    <p>The <code>SecureRandom</code> PRNG implementation to use for the SSL cryptography operations</p>
+
+                </p>
             </li>
         </ul>
     </div>

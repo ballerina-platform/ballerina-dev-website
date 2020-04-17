@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">WebSocketFailoverClientConfiguration</span>
+                 : <span class="records ">WebSocketFailoverClientConfiguration</span>
             </h1>
-            <p>Configurations for the WebSocket client endpoint.
-</p>
+            <p>
+                
+                Configurations for the WebSocket client endpoint.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,139 +1064,194 @@
         
     <div class="params-listing">
         <ul>
-            <li> callbackService<span class="type">  <span class="builtin-type">service?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >callbackService</span>
+                <span class="type">  <span class="builtin-type">service?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The callback service of the client. Resources in this service gets called on the
+                <p>
+                    
+                    <p>The callback service of the client. Resources in this service gets called on the
 receipt of messages from the server</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> subProtocols<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >subProtocols</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>Negotiable sub protocols of   the client</p>
-</p>
+                <p>
+                    
+                    <p>Negotiable sub protocols of   the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> customHeaders<span class="type">  <span class="builtin-type">map</span></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >customHeaders</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>Custom headers, which should be sent to the server</p>
-</p>
+                <p>
+                    
+                    <p>Custom headers, which should be sent to the server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> idleTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default -1)</span>
+            <li> 
+                <span >idleTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
             </li>
             <li>
-                <p><p>Idle timeout of the client. Upon timeout, the <code>onIdleTimeout</code> resource (if defined)
+                <p>
+                    
+                    <p>Idle timeout of the client. Upon timeout, the <code>onIdleTimeout</code> resource (if defined)
 of the client service will be triggered</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> readyOnConnect<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >readyOnConnect</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Set to <code>true</code> if the client is ready to receive messages as soon as the connection is established
+                <p>
+                    
+                    <p>Set to <code>true</code> if the client is ready to receive messages as soon as the connection is established
 This is set to <code>true</code> by default. If changed to <code>false</code>, the ready() function of the
 <code>WebSocketFailoverClient</code> needs to be called once to start receiving messages</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../http/records/ClientSecureSocket.html">ClientSecureSocket</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../http/records/ClientSecureSocket.html">ClientSecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>SSL/TLS-related options</p>
-</p>
+                <p>
+                    
+                    <p>SSL/TLS-related options</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxFrameSize<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >maxFrameSize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The maximum payload size of a WebSocket frame in bytes
+                <p>
+                    
+                    <p>The maximum payload size of a WebSocket frame in bytes
 If this is not set, is negative, or is zero, the default frame size of 65536 will be used.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> targetUrls<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >targetUrls</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The set of URLs, which are used to connect to the server</p>
-</p>
+                <p>
+                    
+                    <p>The set of URLs, which are used to connect to the server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> failoverIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 1000)</span>
+            <li> 
+                <span >failoverIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 1000)</span> 
             </li>
             <li>
-                <p><p>The maximum number of milliseconds to delay a failover attempt</p>
-</p>
+                <p>
+                    
+                    <p>The maximum number of milliseconds to delay a failover attempt</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> webSocketCompressionEnabled<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >webSocketCompressionEnabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enable support for compression in the             WebSocket</p>
-</p>
+                <p>
+                    
+                    <p>Enable support for compression in the             WebSocket</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> handShakeTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 300)</span>
+            <li> 
+                <span >handShakeTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 300)</span> 
             </li>
             <li>
-                <p><p>Time (in seconds) that a connection waits to get the response of
+                <p>
+                    
+                    <p>Time (in seconds) that a connection waits to get the response of
 the webSocket handshake. If the timeout exceeds, then the connection is terminated with
 an error. If the value &lt; 0, then the value sets to the default value(300)</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

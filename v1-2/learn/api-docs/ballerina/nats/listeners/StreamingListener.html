@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -667,8 +675,8 @@
                 
                  : <span class="listeners">StreamingListener</span> 
             </h1>
-            <p><p>Represents the NATS Streaming Server connection, to which a subscription service should be bound to in order to receive messages
-of the corresponding subscription.</p>
+            <p>Represents the NATS streaming server connection to which a subscription service should be bound in order to
+receive messages of the corresponding subscription.
 </p>
 
             <div class="constants">
@@ -683,7 +691,7 @@ of the corresponding subscription.</p>
             <ul>
                 <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>An established NATS connection.</p>
+                    <p>An established NATS connection</p>
 
                 </li>
             </ul>
@@ -693,8 +701,8 @@ of the corresponding subscription.</p>
             <ul>
                 <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> ()</li>
                 <li>
-                    <p>A unique identifier representing the client. The <code>clientId</code> should be unique across subscriptions. Therefore,
-multilpe subscription services cannot be bound to a single listener.</p>
+                    <p>The unique identifier of the client. The <code>clientId</code> should be unique across all the subscriptions.
+Therefore, multilpe subscription services cannot be bound to a single listener</p>
 
                 </li>
             </ul>
@@ -704,7 +712,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
             <ul>
                 <li> <b>clusterId</b><span class="type">  <span class="builtin-type">string</span></span> test-cluster</li>
                 <li>
-                    <p>The ID of the cluster configured in the NATS server. Default value is <code>test-cluster</code>.</p>
+                    <p>The unique identifier of the cluster configured in the NATS server. The default value is <code>test-cluster</code></p>
 
                 </li>
             </ul>
@@ -714,7 +722,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
             <ul>
                 <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> ()</li>
                 <li>
-                    <p>The configuration related to the NATS streaming connectivity.</p>
+                    <p>The configuration related to the NATS streaming connectivity</p>
 
                 </li>
             </ul>
@@ -729,34 +737,43 @@ multilpe subscription services cannot be bound to a single listener.</p>
                     <div class="method-list">
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages and detaches the service from the <code>nats:StreamingListener</code>.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>nats:StreamingListener</code> gracefully.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>nats:StreamingListener</code> forcefully.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -766,24 +783,30 @@ multilpe subscription services cannot be bound to a single listener.</p>
                     <div class="method-list">
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Binds a service to the <code>nats:StreamingListener</code>.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts the <code>nats:StreamingListener</code>.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -799,7 +822,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -807,8 +830,12 @@ multilpe subscription services cannot be bound to a single listener.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages and detaches the service from the <code>nats:StreamingListener</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -819,7 +846,8 @@ multilpe subscription services cannot be bound to a single listener.</p>
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -832,7 +860,8 @@ multilpe subscription services cannot be bound to a single listener.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to detach the service</p>
+</li>
             </ul>
         </div>
         
@@ -844,7 +873,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -852,15 +881,20 @@ multilpe subscription services cannot be bound to a single listener.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>nats:StreamingListener</code> gracefully.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -872,7 +906,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -880,15 +914,20 @@ multilpe subscription services cannot be bound to a single listener.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>nats:StreamingListener</code> forcefully.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -905,7 +944,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -913,8 +952,12 @@ multilpe subscription services cannot be bound to a single listener.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Binds a service to the <code>nats:StreamingListener</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -925,7 +968,8 @@ multilpe subscription services cannot be bound to a single listener.</p>
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -937,7 +981,8 @@ multilpe subscription services cannot be bound to a single listener.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Name of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -950,7 +995,8 @@ multilpe subscription services cannot be bound to a single listener.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to register the listener</p>
+</li>
             </ul>
         </div>
         
@@ -962,7 +1008,7 @@ multilpe subscription services cannot be bound to a single listener.</p>
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -970,15 +1016,20 @@ multilpe subscription services cannot be bound to a single listener.</p>
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Starts the <code>nats:StreamingListener</code>.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to start the listener</p>
+</li>
             </ul>
         </div>
         

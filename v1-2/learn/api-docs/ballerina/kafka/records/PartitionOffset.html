@@ -112,7 +112,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -294,6 +294,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -445,7 +449,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -627,6 +631,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -729,10 +737,13 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records">PartitionOffset</span>
+                 : <span class="records ">PartitionOffset</span>
             </h1>
-            <p>This type represents topic partition position in which consumed record is stored.
-</p>
+            <p>
+                
+                Represents the topic partition position in which the consumed record is stored.
+
+            </p>
             <div class="constants">
                 
                     
@@ -741,24 +752,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> partition<span class="type">  <a href="../../kafka/records/TopicPartition.html">TopicPartition</a></span>
+            <li> 
+                <span >partition</span>
+                <span class="type">  <a href="../../kafka/records/TopicPartition.html">TopicPartition</a></span>
                 
             </li>
             <li>
-                <p><p>TopicPartition which record is related.</p>
-</p>
+                <p>
+                    
+                    <p>The <code>kafka:TopicPartition</code> to which the record is related</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> offset<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >offset</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Offset in which record is stored in partition.</p>
-</p>
+                <p>
+                    
+                    <p>Offset in which the record is stored in the partition</p>
+
+                </p>
             </li>
         </ul>
     </div>

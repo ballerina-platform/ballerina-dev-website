@@ -84,7 +84,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -655,53 +663,94 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#createNull">createNull</a></td>
-                                <td width="70%"><p>Returns a <code>handle</code> that refers to Java null.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#createNull">createNull</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a <code>handle</code>, which refers to Java null.
+<pre><code class="language-ballerina"> handle nullHandle = java:createNull();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#fromString">fromString</a></td>
-                                <td width="70%"><p>Returns a <code>handle</code> that refers to the Java string representation of the Ballerina <code>string</code>.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#fromString">fromString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
+<pre><code class="language-ballerina"> handle header = java:fromString(&quot;Content-Type&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getClass">getClass</a></td>
-                                <td width="70%"><p>Returns a <code>handle</code> that refers to the Java Class object associated
-with the class or interface with the given string name.</p>
-<p>This function performs a Java <code>class.forName(name)</code> except for following cases:</p>
-<p>name        output
-boolean     the Java Class instance representing the Java primitive type boolean
-byte        the Java Class instance representing the Java primitive type byte
-char        the Java Class instance representing the Java primitive type char
-short       the Java Class instance representing the Java primitive type short
-int         the Java Class instance representing the Java primitive type int
-long        the Java Class instance representing the Java primitive type long
-float       the Java Class instance representing the Java primitive type float
-double      the Java Class instance representing the Java primitive type double</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getClass">getClass</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
+string name.
+<pre><code class="language-ballerina"> handle|error intClass = java:getClass(&quot;int&quot;);
+</code></pre>
+This function performs a Java <code>class.forName(name)</code> except for the following cases:
+<table>
+<thead>
+<tr><th align="center">Name</th><th align="center">Output</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">boolean</td><td align="center">Java Class instance representing the primitive type boolean</td></tr>
+<tr><td align="center">byte</td><td align="center">Java Class instance representing the primitive type byte</td></tr>
+<tr><td align="center">char</td><td align="center">Java Class instance representing the primitive type char</td></tr>
+<tr><td align="center">short</td><td align="center">Java Class instance representing the primitive type short</td></tr>
+<tr><td align="center">int</td><td align="center">Java Class instance representing the primitive type int</td></tr>
+<tr><td align="center">long</td><td align="center">Java Class instance representing the primitive type long</td></tr>
+<tr><td align="center">float</td><td align="center">Java Class instance representing the primitive type float</td></tr>
+<tr><td align="center">double</td><td align="center">Java Class instance representing the primitive type double</td></tr>
+</tbody>
+</table>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#isNull">isNull</a></td>
-                                <td width="70%"><p>Returns <code>true</code> if this handle refers to Java null.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#isNull">isNull</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns <code>true</code> if this handle refers to Java null.
+<pre><code class="language-ballerina"> boolean status = java:isNull(value);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toString">toString</a></td>
-                                <td width="70%"><p>Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.</p>
-<p>If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toString">toString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
+If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.
+<pre><code class="language-ballerina"> string? version = java:toString(versionProperty);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -715,7 +764,7 @@ double      the Java Class instance representing the Java primitive type double<
              <a class="url-link" href="#createNull">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> createNull </h2>
+            <h2 > createNull </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -723,16 +772,21 @@ double      the Java Class instance representing the Java primitive type double<
         </span>
         
     </div>
-    <p><p>Returns a <code>handle</code> that refers to Java null.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a <code>handle</code>, which refers to Java null.
+<pre><code class="language-ballerina"> handle nullHandle = java:createNull();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span></span>)</li>
-                <li><p>the <code>handle</code> that refers to Java null</p>
+                <li><p>The <code>handle</code>, which refers to Java null</p>
 </li>
             </ul>
         </div>
@@ -745,7 +799,7 @@ double      the Java Class instance representing the Java primitive type double<
              <a class="url-link" href="#fromString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> fromString </h2>
+            <h2 > fromString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> value)</p>
@@ -753,9 +807,14 @@ double      the Java Class instance representing the Java primitive type double<
         </span>
         
     </div>
-    <p><p>Returns a <code>handle</code> that refers to the Java string representation of the Ballerina <code>string</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
+<pre><code class="language-ballerina"> handle header = java:fromString(&quot;Content-Type&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -766,7 +825,7 @@ double      the Java Class instance representing the Java primitive type double<
                         
                     </li>
                     <li>
-                        <p><p>the Ballerina <code>string</code> with which the <code>handle</code> is created</p>
+                        <p><p>The Ballerina <code>string</code> with which the <code>handle</code> is created</p>
 </p>
                     </li>
                 </ul>
@@ -780,7 +839,7 @@ double      the Java Class instance representing the Java primitive type double<
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span></span>)</li>
-                <li><p>the <code>handle</code> that refers to the Java String representation of the Ballerina <code>string</code></p>
+                <li><p>The <code>handle</code>, which refers to the Java String representation of the Ballerina <code>string</code></p>
 </li>
             </ul>
         </div>
@@ -793,7 +852,7 @@ double      the Java Class instance representing the Java primitive type double<
              <a class="url-link" href="#getClass">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getClass </h2>
+            <h2 > getClass </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name)</p>
@@ -801,20 +860,31 @@ double      the Java Class instance representing the Java primitive type double<
         </span>
         
     </div>
-    <p><p>Returns a <code>handle</code> that refers to the Java Class object associated
-with the class or interface with the given string name.</p>
-<p>This function performs a Java <code>class.forName(name)</code> except for following cases:</p>
-<p>name        output
-boolean     the Java Class instance representing the Java primitive type boolean
-byte        the Java Class instance representing the Java primitive type byte
-char        the Java Class instance representing the Java primitive type char
-short       the Java Class instance representing the Java primitive type short
-int         the Java Class instance representing the Java primitive type int
-long        the Java Class instance representing the Java primitive type long
-float       the Java Class instance representing the Java primitive type float
-double      the Java Class instance representing the Java primitive type double</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
+string name.
+<pre><code class="language-ballerina"> handle|error intClass = java:getClass(&quot;int&quot;);
+</code></pre>
+This function performs a Java <code>class.forName(name)</code> except for the following cases:
+<table>
+<thead>
+<tr><th align="center">Name</th><th align="center">Output</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">boolean</td><td align="center">Java Class instance representing the primitive type boolean</td></tr>
+<tr><td align="center">byte</td><td align="center">Java Class instance representing the primitive type byte</td></tr>
+<tr><td align="center">char</td><td align="center">Java Class instance representing the primitive type char</td></tr>
+<tr><td align="center">short</td><td align="center">Java Class instance representing the primitive type short</td></tr>
+<tr><td align="center">int</td><td align="center">Java Class instance representing the primitive type int</td></tr>
+<tr><td align="center">long</td><td align="center">Java Class instance representing the primitive type long</td></tr>
+<tr><td align="center">float</td><td align="center">Java Class instance representing the primitive type float</td></tr>
+<tr><td align="center">double</td><td align="center">Java Class instance representing the primitive type double</td></tr>
+</tbody>
+</table>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -825,7 +895,7 @@ double      the Java Class instance representing the Java primitive type double<
                         
                     </li>
                     <li>
-                        <p><p>the name of the Java class</p>
+                        <p><p>The name of the Java class</p>
 </p>
                     </li>
                 </ul>
@@ -839,7 +909,7 @@ double      the Java Class instance representing the Java primitive type double<
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>the Java Class object for the class with the given name.</p>
+                <li><p>The Java Class object for the class with the given name</p>
 </li>
             </ul>
         </div>
@@ -852,7 +922,7 @@ double      the Java Class instance representing the Java primitive type double<
              <a class="url-link" href="#isNull">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> isNull </h2>
+            <h2 > isNull </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> value)</p>
@@ -860,9 +930,14 @@ double      the Java Class instance representing the Java primitive type double<
         </span>
         
     </div>
-    <p><p>Returns <code>true</code> if this handle refers to Java null.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns <code>true</code> if this handle refers to Java null.
+<pre><code class="language-ballerina"> boolean status = java:isNull(value);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -873,7 +948,7 @@ double      the Java Class instance representing the Java primitive type double<
                         
                     </li>
                     <li>
-                        <p><p>the <code>handle</code> whose referred value to be tested with Java null</p>
+                        <p><p>The <code>handle</code> of which the referred value is to be tested with Java null</p>
 </p>
                     </li>
                 </ul>
@@ -900,7 +975,7 @@ double      the Java Class instance representing the Java primitive type double<
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toString </h2>
+            <h2 > toString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> value)</p>
@@ -908,10 +983,15 @@ double      the Java Class instance representing the Java primitive type double<
         </span>
         
     </div>
-    <p><p>Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.</p>
-<p>If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
+If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.
+<pre><code class="language-ballerina"> string? version = java:toString(versionProperty);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -922,7 +1002,7 @@ double      the Java Class instance representing the Java primitive type double<
                         
                     </li>
                     <li>
-                        <p><p>the <code>handle</code> whose referred value to be converted to Ballerina <code>string</code></p>
+                        <p><p>The <code>handle</code> of which the referred value is to be converted to a Ballerina <code>string</code></p>
 </p>
                     </li>
                 </ul>
@@ -936,8 +1016,8 @@ double      the Java Class instance representing the Java primitive type double<
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
-                <li><p>the Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code> or
-returns <code>nil</code> of the <code>handle</code> refers to Java null</p>
+                <li><p>The Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code> or else
+returns <code>()</code> if the <code>handle</code> refers to Java null</p>
 </li>
             </ul>
         </div>

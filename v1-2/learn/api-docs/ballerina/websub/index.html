@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -251,6 +251,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -348,7 +352,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -542,6 +546,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -646,9 +654,8 @@
                         Module : <span class="modules">websub</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
-<p>This implementation supports introducing all WebSub components: subscribers, publishers, and hubs.</p>
+                    <p>This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.</p>
+<p>This implementation supports introducing all WebSub components:</p>
 <ul>
 <li>Subscriber - A party interested in receiving update notifications for particular topics.</li>
 <li>Publisher - A party that advertises topics to which interested parties subscribe in order to receive notifications
@@ -691,6 +698,24 @@ hub.</p>
 <li>If <code>onIntentVerification</code> is not specified, intent verification will be done automatically against the topic specified as an annotation or discovered based on the resource URL specified as an annotation.</li>
 <li>If a secret is specified for the subscription, signature validation will be done for authenticated content distribution.</li>
 </ul>
+<p><strong>Sends subscription request on service startup and explicit intent verification</strong></p>
+<blockquote>
+<p>When the <code>subscribeOnStartUp</code> is set to true in the Subscriber Service, it will result in a subscription request being sent to the specified hub for the specified topic, with the specified lease seconds value and the specified secret for authenticated content distribution.</p>
+</blockquote>
+<blockquote>
+<p>Since an <code>onIntentVerification</code> resource function is not included, intent verification for subscription and unsubscription requests would happen automatically.</p>
+</blockquote>
+<p><code>ballerina @websub:SubscriberServiceConfig { path: &quot;/websub&quot;, subscribeOnStartUp: true, target: [&quot;&lt;HUB_URL&gt;&quot;, &quot;&lt;TOPIC_URL&gt;&quot;], leaseSeconds: 3600, secret: &quot;&lt;SECRET&gt;&quot; } service websubSubscriber on websubEP { resource function onNotification(websub:Notification notification) { //... } }</code></p>
+<blockquote>
+<p>Explicit intent verification can be done by introducing an <code>onIntentVerification</code> resource function.</p>
+</blockquote>
+<p><code>ballerina resource function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest request) { http:Response response = new; // Insert logic to build subscription/unsubscription intent verification response. error? result = caller-&gt;respond(response); }</code></p>
+<p>Functions are made available on the <code>websub:IntentVerificationRequest</code> to build a subscription or unsubscription
+verification response, specifying the topic to verify intent against:</p>
+<pre><code class="language-ballerina">http:Response response = request.buildSubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+<pre><code class="language-ballerina">http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
 <h3>Hub</h3>
 <p>A WebSub compliant hub based on the Ballerina Message Broker is also available. This can be used as a remote hub or to be used by publishers who want to have their own internal hub. Ballerina's WebSub hub honors specified lease periods and supports authenticated content distribution.</p>
 <h4>Enabling Basic Auth support for the hub</h4>
@@ -706,7 +731,7 @@ http:ServiceEndpointConfiguration hubListenerConfig = {
     },
     secureSocket: {
         keyStore: {
-            path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -754,193 +779,51 @@ in the <code>HubConfiguration</code> record, which is passed to the <code>websub
 URLs, which facilitates WebSub discovery.</p>
 <p>A hub client endpoint is also made available to publishers and subscribers to perform the following:</p>
 <ul>
-<li>Publishers
+<li>
+<p>Publishers</p>
 <ul>
-<li>Register a topic at the Hub</li>
-<li>Publish to the hub indicating an update of the topic</li>
+<li>
+<p>Register a topic at the Hub</p>
+<pre><code class="language-ballerina">websub:PublisherClient websubHubClientEP = new (&quot;http://localhost:9191/websub/publish&quot;);
+error? registrationResponse = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
+</li>
+<li>
+<p>Publish to the hub indicating an update of the topic</p>
+<pre><code class="language-ballerina">websub:PublisherClient websubHubClientEP = new (&quot;http://localhost:9191/websub/publish&quot;);
+error? publishResponse = websubHubClientEP.publishUpdate(&quot;http://websubpubtopic.com&quot;,
+                            {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot;});   
+</code></pre>
+</li>
 </ul>
 </li>
-<li>Subscribers
+<li>
+<p>Subscribers</p>
 <ul>
-<li>Subscribe/Unsubscribe to/from topics at a hub</li>
+<li>
+<p>Subscribe/Unsubscribe to/from topics at a hub</p>
+<pre><code class="language-ballerina">websub:SubscriptionClient websubHubClientEP = new(&quot;&lt;HUB_URL&gt;&quot;);
+
+// Send subscription request for a subscriber service.
+websub:SubscriptionChangeRequest subscriptionRequest = {
+    topic: &quot;&lt;TOPIC_URL&gt;&quot;, 
+    callback: &quot;&lt;CALLBACK_URL&gt;&quot;,
+    secret: &quot;&lt;SECRET&gt;&quot;
+};
+websub:SubscriptionChangeResponse|error subscriptionChangeResponse = websubHubClientEP-&gt;subscribe(subscriptionRequest);
+
+// Send unsubscription request for the subscriber service.
+websub:SubscriptionChangeRequest unsubscriptionRequest = {
+    topic: &quot;&lt;TOPIC_URL&gt;&quot;,
+    callback: &quot;&lt;CALLBACK_URL&gt;&quot;
+};
+websub:SubscriptionChangeResponse|error subscriptionChangeResponse = websubHubClientEP-&gt;unsubscribe(unsubscriptionRequest);
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
-<h1>Samples</h1>
-<p>This sample demonstrates a Subscriber Service with <code>subscribeOnStartUp</code> set to true. This will result in a
-subscription request being sent to the specified hub for the specified topic, with the specified lease seconds value
-and the specified secret for authenticated content distribution.
-Since an <code>onIntentVerification</code> resource function is not included, intent verification for subscription and unsubscription
-requests would happen automatically, if the topic specified in the request matches that specified as an annotation or
-that discovered for the annotated resource URL.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/websub;
-
-listener websub:Listener websubEP = new(8181);
-
-@websub:SubscriberServiceConfig {
-    path: &quot;/websub&quot;,
-    subscribeOnStartUp: true,
-    target: [&quot;&lt;HUB_URL&gt;&quot;, &quot;&lt;TOPIC_URL&gt;&quot;],
-    leaseSeconds: 3600,
-    secret: &quot;&lt;SECRET&gt;&quot;
-}
-service websubSubscriber on websubEP {
-
-    resource function onNotification(websub:Notification notification) {
-        var payload = notification.getTextPayload();
-        if (payload is string) {
-            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
-        } else {
-            log:printError(&quot;Error retrieving payload as string&quot;, payload);
-        }
-    }
-}
-</code></pre>
-<p>Explicit intent verification can be done by introducing an <code>onIntentVerification</code> resource function.</p>
-<pre><code class="language-ballerina">import ballerina/http;
-import ballerina/log;
-import ballerina/websub;
-
-listener websub:Listener websubEP = new(8181);
-
-@websub:SubscriberServiceConfig {
-    path: &quot;/websub&quot;,
-    subscribeOnStartUp: true,
-    target: [&quot;&lt;HUB_URL&gt;&quot;, &quot;&lt;TOPIC_URL&gt;&quot;],
-    leaseSeconds: 3600,
-    secret: &quot;&lt;SECRET&gt;&quot;
-}
-service websubSubscriber on websubEP {
-
-    resource function onIntentVerification(websub:Caller caller, websub:IntentVerificationRequest request) {
-        http:Response response = new;
-        // Insert logic to build subscription/unsubscription intent verification response.
-        var result = caller-&gt;respond(response);
-        if (result is error) { 
-            log:printError(&quot;Error responding to intent verification request&quot;, result);
-        }
-    }
-
-    resource function onNotification(websub:Notification notification) {
-        var payload = notification.getTextPayload();
-        if (payload is string) {
-            log:printInfo(&quot;WebSub Notification Received: &quot; + payload);
-        } else {
-            log:printError(&quot;Error retrieving payload as string&quot;, payload);
-        }
-    }
-}
-</code></pre>
-<p>Functions are made available on the <code>websub:IntentVerificationRequest</code> to build a subscription or unsubscription
-verification response, specifying the topic to verify intent against:</p>
-<pre><code class="language-ballerina">http:Response response = request.buildSubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
-</code></pre>
-<pre><code class="language-ballerina">http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
-</code></pre>
-<p>Ballerina publishers can start up and publish directly to the Ballerina WebSub hub.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/http;
-import ballerina/runtime;
-import ballerina/websub;
-
-public function main() {
-
-    log:printInfo(&quot;Starting up the Ballerina Hub Service&quot;);
-    var result = websub:startHub(new http:Listener(9191));
-    websub:Hub webSubHub = result is websub:Hub ? result : result.startedUpHub;
-
-    var registrationResponse = webSubHub.registerTopic(&quot;&lt;TOPIC_URL&gt;&quot;);
-    if (registrationResponse is error) {
-        log:printError(&quot;Error occurred registering topic: &quot; + &lt;string&gt;registrationResponse.detail()?.message);
-    } else {
-        log:printInfo(&quot;Topic registration successful!&quot;);
-    }
-
-    // Make the publisher wait until the subscriber subscribes at the hub.
-    runtime:sleep(20000);
-
-    log:printInfo(&quot;Publishing update to internal Hub&quot;);
-    var publishResponse = webSubHub.publishUpdate(&quot;&lt;TOPIC_URL&gt;&quot;, {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;internal-hub&quot;});
-    if (publishResponse is error) {
-        log:printError(&quot;Error notifying hub: &quot; + &lt;string&gt;publishResponse.detail()?.message);
-    } else {
-        log:printInfo(&quot;Update notification successful!&quot;);
-    }
-
-    // Make sure the service is running until the subscriber receives the update notification.
-    runtime:sleep(5000);
-}
-</code></pre>
-<p>Ballerina publishers can also use the <code>websub:PublisherClient</code> to register topics at Ballerina WebSub hubs
-and publish/notify updates to the remote hubs.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/runtime;
-import ballerina/websub;
-
-websub:PublisherClient websubHubClientEP = new (&quot;https://localhost:9191/websub/hub&quot;);
-
-public function main() {
-
-    var registrationResponse = websubHubClientEP-&gt;registerTopic(&quot;&lt;TOPIC_URL&gt;&quot;);
-    if (registrationResponse is error) {
-        log:printError(&quot;Error occurred registering topic: &quot; + &lt;string&gt;registrationResponse.detail()?.message);
-    } else {
-        log:printInfo(&quot;Topic registration successful!&quot;);
-    }
-
-    // Make the publisher wait until the subscriber subscribes at the hub.
-    runtime:sleep(10000);
-
-    log:printInfo(&quot;Publishing update to remote Hub&quot;);
-    var publishResponse = websubHubClientEP-&gt;publishUpdate(&quot;&lt;TOPIC_URL&gt;&quot;, { &quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;remote-hub&quot; });
-    if (publishResponse is error) {
-        log:printError(&quot;Error notifying hub: &quot; + &lt;string&gt;publishResponse.detail()?.message);
-    } else {
-        log:printInfo(&quot;Update notification successful!&quot;);
-    }
-
-}
-</code></pre>
-<p>The <code>websub:SubscriptionClient</code> can be used by subscribers to send subscription and unsubscription requests explicitly.</p>
-<pre><code class="language-ballerina">import ballerina/log;
-import ballerina/websub;
-
-websub:SubscriptionClient websubHubClientEP = new(&quot;&lt;HUB_URL&gt;&quot;);
-
-public function main() {
-
-    // Send subscription request for a subscriber service.
-    websub:SubscriptionChangeRequest subscriptionRequest = {
-        topic: &quot;&lt;TOPIC_URL&gt;&quot;, 
-        callback: &quot;&lt;CALLBACK_URL&gt;&quot;,
-        secret: &quot;&lt;SECRET&gt;&quot;
-    };
-
-    var subscriptionChangeResponse = websubHubClientEP-&gt;subscribe(subscriptionRequest);
-    if (subscriptionChangeResponse is websub:SubscriptionChangeResponse) {
-        log:printInfo(&quot;Subscription Request successful at Hub [&quot; + subscriptionChangeResponse.hub 
-                        + &quot;] for Topic [&quot; + subscriptionChangeResponse.topic + &quot;]&quot;);
-    } else {
-        log:printError(&quot;Error occurred with Subscription Request&quot;, err = subscriptionChangeResponse);
-    }
-
-    // Send unsubscription request for the subscriber service.
-    websub:SubscriptionChangeRequest unsubscriptionRequest = {
-        topic: &quot;&lt;TOPIC_URL&gt;&quot;,
-        callback: &quot;&lt;CALLBACK_URL&gt;&quot;
-    };
-
-    subscriptionChangeResponse = websubHubClientEP-&gt;unsubscribe(unsubscriptionRequest);
-    if (subscriptionChangeResponse is websub:SubscriptionChangeResponse) {
-        log:printInfo(&quot;Unsubscription Request successful at Hub [&quot; + subscriptionChangeResponse.hub
-                + &quot;] for Topic [&quot; + subscriptionChangeResponse.topic + &quot;]&quot;);
-    } else {
-        log:printError(&quot;Error occurred with Unsubscription Request&quot;, err = subscriptionChangeResponse);
-    }
-}
-</code></pre>
-<h1>Introducing Specific Subscriber Services (Webhook Callback Services)</h1>
+<h2>Introducing Specific Subscriber Services (Webhook Callback Services)</h2>
 <p>Ballerina's WebSub subscriber service listener can be extended to introduce specific Webhooks.</p>
 <p>Instead of the single <code>onNotification</code> resource, you can introduce multiple resources to accept content delivery requests using specific subscriber services. These resources will correspond to the content delivery requests that will
 be delivered with respect to a particular topic.</p>
@@ -957,12 +840,8 @@ mapping between the expected notifications and the resources that requests need 
 <p>The mapping can be based on one of the following indicators of a notification request.
 (Requests will then be dispatched based on the value of the indicator in the request and a pre-defined mapping.)</p>
 <ul>
-<li>A request header</li>
-<li>The payload: the value of a particular key in the JSON payload</li>
-<li>A request header and the payload (combination of the above two)</li>
-</ul>
-<h3>Samples for Resource Mapping</h3>
-<p><strong>Based on a request header</strong></p>
+<li>
+<p>A request header</p>
 <p>Dispatching will be based on the value of the request header specified as <code>topicHeader</code>.</p>
 <pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
     topicIdentifier: websub:TOPIC_ID_HEADER,
@@ -977,7 +856,9 @@ mapping between the expected notifications and the resources that requests need 
 <code>&lt;HEADER_TO_CONSIDER&gt;</code> header is <code>issueOpened</code>, dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
 <p>The first parameter of this resource will be the generic <code>websub:Notification</code> record, and the second parameter will
 be a custom <code>IssueOpenedEvent</code> record mapping the JSON payload received when an issue is created.</p>
-<p><strong>Based on the payload</strong></p>
+</li>
+<li>
+<p>The payload: the value of a particular key in the JSON payload</p>
 <p>Dispatching will be based on the value in the request payload of one of the map keys specified in the
 <code>payloadKeyResourceMap</code> map.</p>
 <pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
@@ -994,7 +875,9 @@ be a custom <code>IssueOpenedEvent</code> record mapping the JSON payload receiv
 key <code>&lt;PAYLOAD_KEY_TO_CONSIDER&gt;</code> is <code>issueOpened</code>, dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
 <p>The first parameter of this resource will be the generic <code>websub:Notification</code> record, and the second parameter will
 be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
-<p><strong>Based on a request header and the payload</strong></p>
+</li>
+<li>
+<p>A request header and the payload (combination of the above two)</p>
 <p>Dispatching will be based on both a request header and the payload as specified in the <code>headerAndPayloadKeyResourceMap</code>.
 Also, you can introduce a <code>headerResourceMap</code> and/or a <code>payloadKeyResourceMap</code> as additional mappings.</p>
 <pre><code class="language-ballerina">websub:ExtensionConfig extensionConfig = {
@@ -1015,7 +898,9 @@ Also, you can introduce a <code>headerResourceMap</code> and/or a <code>payloadK
 dispatching should happen to a resource named <code>onIssueOpened</code>.</p>
 <p>The first parameter of this resource will be the generic <code>websub:Notification</code> record and the second parameter will
 be a custom <code>IssueOpenedEvent</code> record, mapping the JSON payload received when an issue is created.</p>
-<h3>Sample Specific Subscriber Service</h3>
+</li>
+</ul>
+<h3>The Specific Subscriber Service</h3>
 <p>In order to introduce a specific subscriber service, a new Ballerina <code>listener</code> needs to be introduced. This <code>listener</code> should wrap the generic <code>ballerina/websub:Listener</code> and include the extension configuration described above.</p>
 <p>The following example is for a service provider that</p>
 <ul>
@@ -1087,7 +972,7 @@ public type WebhookListener object {
     }
 };    
 </code></pre>
-<p>A service can now be introduced for the above service provider as follows.</p>
+<p>A service can be introduced for the above service provider as follows.</p>
 <pre><code class="language-ballerina">import ballerina/io;
 import ballerina/log;
 import ballerina/websub;
@@ -1106,7 +991,14 @@ service specificSubscriber on new WebhookListener(8080) {
     }
 }
 </code></pre>
-<p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/v1-2/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
+<p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
+<ul>
+<li><a href="hhttps://ballerina.io/learn/by-example/websub-internal-hub-sample.html">Internal Hub Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-remote-hub-sample.html">Remote Hub Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-hub-client-sample.html">Hub Client Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-service-integration-sample.html">Service Integration Sample Example</a></li>
+</ul>
 
 
             
@@ -1121,91 +1013,154 @@ service specificSubscriber on new WebhookListener(8080) {
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate records" id="T41" title="T41">
+                                <a class="records " href="records/T41.html">T41</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T42" title="T42">
+                                <a class="records " href="records/T42.html">T42</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T43" title="T43">
+                                <a class="records " href="records/T43.html">T43</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Holds the details of a WebSub error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Holds the details of a WebSub error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="ExtensionConfig" title="ExtensionConfig">
-                                <a class="records"
-                                   href="records/ExtensionConfig.html">ExtensionConfig</a></td>
-                            <td class="module-desc">The extension configuration to introduce custom subscriber services.
-</td>
+                                <a class="records " href="records/ExtensionConfig.html">ExtensionConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The extension configuration to introduce custom subscriber services.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="HubConfiguration" title="HubConfiguration">
-                                <a class="records"
-                                   href="records/HubConfiguration.html">HubConfiguration</a></td>
-                            <td class="module-desc">Record representing hub specific configurations.
-</td>
+                                <a class="records " href="records/HubConfiguration.html">HubConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record representing hub specific configurations.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="HubStartedUpError" title="HubStartedUpError">
-                                <a class="records"
-                                   href="records/HubStartedUpError.html">HubStartedUpError</a></td>
-                            <td class="module-desc">Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
-</td>
+                                <a class="records " href="records/HubStartedUpError.html">HubStartedUpError</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Error to represent that a WebSubHub is already started up, encapsulating the started up Hub.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="RemotePublishConfig" title="RemotePublishConfig">
-                                <a class="records"
-                                   href="records/RemotePublishConfig.html">RemotePublishConfig</a></td>
-                            <td class="module-desc">Record representing remote publishing allowance.
-</td>
+                                <a class="records " href="records/RemotePublishConfig.html">RemotePublishConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record representing remote publishing allowance.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberDetails" title="SubscriberDetails">
-                                <a class="records"
-                                   href="records/SubscriberDetails.html">SubscriberDetails</a></td>
-                            <td class="module-desc">Record to represent Subscriber Details.
-</td>
+                                <a class="records " href="records/SubscriberDetails.html">SubscriberDetails</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record to represent Subscriber Details.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberListenerConfiguration" title="SubscriberListenerConfiguration">
-                                <a class="records"
-                                   href="records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a></td>
-                            <td class="module-desc">Object representing the configuration for the WebSub Subscriber Service Endpoint.
-</td>
+                                <a class="records " href="records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the configuration for the WebSub Subscriber Service Listener.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriberServiceConfiguration" title="SubscriberServiceConfiguration">
-                                <a class="records"
-                                   href="records/SubscriberServiceConfiguration.html">SubscriberServiceConfiguration</a></td>
-                            <td class="module-desc">Configuration for a WebSubSubscriber service.
-</td>
+                                <a class="records " href="records/SubscriberServiceConfiguration.html">SubscriberServiceConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configuration for a WebSubSubscriber service.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionChangeRequest" title="SubscriptionChangeRequest">
-                                <a class="records"
-                                   href="records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a></td>
-                            <td class="module-desc">Record representing a WebSub subscription change request.
-</td>
+                                <a class="records " href="records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record representing a WebSub subscription change request.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionChangeResponse" title="SubscriptionChangeResponse">
-                                <a class="records"
-                                   href="records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a></td>
-                            <td class="module-desc">Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
-</td>
+                                <a class="records " href="records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record representing subscription/unsubscription details if a subscription/unsubscription request is successful.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="SubscriptionDetails" title="SubscriptionDetails">
-                                <a class="records"
-                                   href="records/SubscriptionDetails.html">SubscriptionDetails</a></td>
-                            <td class="module-desc">Record to represent persisted Subscription Details retrieved.
-</td>
+                                <a class="records " href="records/SubscriptionDetails.html">SubscriptionDetails</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record to represent persisted Subscription Details retrieved.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1224,46 +1179,46 @@ service specificSubscriber on new WebhookListener(8080) {
                     
                         <tr>
                             <td class="module-title truncate objects" id="Hub" title="Hub">
-                                <a class="objects"
-                                   href="objects/Hub.html">
-                                    Hub
-                                </a>
+                                <a class="objects " href="objects/Hub.html">Hub</a>
                             </td>
-                            <td class="module-desc"><p>Object representing a Ballerina WebSub Hub.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the Ballerina WebSub Hub.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="HubPersistenceStore" title="HubPersistenceStore">
-                                <a class="objects"
-                                   href="objects/HubPersistenceStore.html">
-                                    HubPersistenceStore
-                                </a>
+                                <a class="objects " href="objects/HubPersistenceStore.html">HubPersistenceStore</a>
                             </td>
-                            <td class="module-desc"><p>Represents the hub persistence configuration and functions.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the hub persistence configuration and functions.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="IntentVerificationRequest" title="IntentVerificationRequest">
-                                <a class="objects"
-                                   href="objects/IntentVerificationRequest.html">
-                                    IntentVerificationRequest
-                                </a>
+                                <a class="objects " href="objects/IntentVerificationRequest.html">IntentVerificationRequest</a>
                             </td>
-                            <td class="module-desc"><p>Object representing an intent verification request received.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Object representing an intent verification request received.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="Notification" title="Notification">
-                                <a class="objects"
-                                   href="objects/Notification.html">
-                                    Notification
-                                </a>
+                                <a class="objects " href="objects/Notification.html">Notification</a>
                             </td>
-                            <td class="module-desc"><p>Object representing the WebSub Content Delivery Request received.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the WebSub Content Delivery Request received.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1282,26 +1237,35 @@ service specificSubscriber on new WebhookListener(8080) {
                     
                         <tr>
                             <td class="module-title truncate clients" id="Caller" title="Caller">
-                                <a class="clients"
-                                   href="clients/Caller.html">Caller</a></td>
-                            <td class="module-desc"><p>The caller remote functions to respond to client requests.</p>
-</td>
+                                <a class="clients " href="clients/Caller.html">Caller</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The caller remote functions to respond to client requests.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate clients" id="PublisherClient" title="PublisherClient">
-                                <a class="clients"
-                                   href="clients/PublisherClient.html">PublisherClient</a></td>
-                            <td class="module-desc"><p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.</p>
-</td>
+                                <a class="clients " href="clients/PublisherClient.html">PublisherClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate clients" id="SubscriptionClient" title="SubscriptionClient">
-                                <a class="clients"
-                                   href="clients/SubscriptionClient.html">SubscriptionClient</a></td>
-                            <td class="module-desc"><p>The HTTP based client for WebSub subscription and unsubscription.</p>
-</td>
+                                <a class="clients " href="clients/SubscriptionClient.html">SubscriptionClient</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The HTTP based client for WebSub subscription and unsubscription.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1320,10 +1284,13 @@ service specificSubscriber on new WebhookListener(8080) {
                     
                         <tr>
                             <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners"
-                                   href="listeners/Listener.html">Listener</a></td>
-                            <td class="module-desc"><p>Object representing the WebSubSubscriber Service Endpoint.</p>
-</td>
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the WebSubSubscriber Service Listener.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1342,24 +1309,39 @@ service specificSubscriber on new WebhookListener(8080) {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="addWebSubLinkHeader" title="addWebSubLinkHeader"><a
-                                    class="functions" href="functions.html#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
-                            <td class="module-desc"><p>Function to add link headers to a response to allow WebSub discovery.</p>
-</td>
+                            <td class="module-title truncate functions" id="addWebSubLinkHeader" title="addWebSubLinkHeader">
+                                <a class="functions " href="functions.html#addWebSubLinkHeader">addWebSubLinkHeader</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Function to add link headers to a response to allow WebSub discovery.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls"><a
-                                    class="functions" href="functions.html#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
-                            <td class="module-desc"><p>Function to retrieve hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
-</td>
+                            <td class="module-title truncate functions" id="extractTopicAndHubUrls" title="extractTopicAndHubUrls">
+                                <a class="functions " href="functions.html#extractTopicAndHubUrls">extractTopicAndHubUrls</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="startHub" title="startHub"><a
-                                    class="functions" href="functions.html#startHub">startHub</a></td>
-                            <td class="module-desc"><p>Starts up the Ballerina Hub.</p>
-</td>
+                            <td class="module-title truncate functions" id="startHub" title="startHub">
+                                <a class="functions " href="functions.html#startHub">startHub</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Starts up the Ballerina Hub.
+<pre><code class="language-ballerina">  websub:Hub|websub:HubStartedUpError|websub:HubStartupError webSubHub = websub:startHub(new http:Listener(9191),
+ &quot;/websub&quot;, &quot;/hub&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1378,76 +1360,116 @@ service specificSubscriber on new WebhookListener(8080) {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="WEBSUB_ERROR_CODE" title="WEBSUB_ERROR_CODE"><a
-                                    class="constant" href="constants.html#WEBSUB_ERROR_CODE">WEBSUB_ERROR_CODE</a></td>
-                            <td class="module-desc"><p>The constant used to represent error code of WebSub module.</p>
-</td>
+                            <td class="module-title truncate constant" id="WEBSUB_ERROR_CODE" title="WEBSUB_ERROR_CODE">
+                                <a class="constant " href="constants.html#WEBSUB_ERROR_CODE">WEBSUB_ERROR_CODE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The constant used to represent error code of WebSub module.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PUBLISH_MODE_DIRECT" title="PUBLISH_MODE_DIRECT"><a
-                                    class="constant" href="constants.html#PUBLISH_MODE_DIRECT">PUBLISH_MODE_DIRECT</a></td>
-                            <td class="module-desc"><p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping). The payload of the update
-notification request from the publisher to the hub would include be the update content.</p>
-</td>
+                            <td class="module-title truncate constant" id="PUBLISH_MODE_DIRECT" title="PUBLISH_MODE_DIRECT">
+                                <a class="constant " href="constants.html#PUBLISH_MODE_DIRECT">PUBLISH_MODE_DIRECT</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <code>RemotePublishMode</code> indicating direct update content notification (fat-ping). The payload of the update
+notification request from the publisher to the hub would include be the update content.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PUBLISH_MODE_FETCH" title="PUBLISH_MODE_FETCH"><a
-                                    class="constant" href="constants.html#PUBLISH_MODE_FETCH">PUBLISH_MODE_FETCH</a></td>
-                            <td class="module-desc"><p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
-needs to fetch the topic URL to identify the update content.</p>
-</td>
+                            <td class="module-title truncate constant" id="PUBLISH_MODE_FETCH" title="PUBLISH_MODE_FETCH">
+                                <a class="constant " href="constants.html#PUBLISH_MODE_FETCH">PUBLISH_MODE_FETCH</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
+needs to fetch the topic URL to identify the update content.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="SHA1" title="SHA1"><a
-                                    class="constant" href="constants.html#SHA1">SHA1</a></td>
-                            <td class="module-desc"><p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
-</td>
+                            <td class="module-title truncate constant" id="SHA1" title="SHA1">
+                                <a class="constant " href="constants.html#SHA1">SHA1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The constant used to represent SHA-1 cryptographic hash algorithm
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="SHA256" title="SHA256"><a
-                                    class="constant" href="constants.html#SHA256">SHA256</a></td>
-                            <td class="module-desc"><p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
-</td>
+                            <td class="module-title truncate constant" id="SHA256" title="SHA256">
+                                <a class="constant " href="constants.html#SHA256">SHA256</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The constant used to represent SHA-256 cryptographic hash algorithm
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER" title="TOPIC_ID_HEADER"><a
-                                    class="constant" href="constants.html#TOPIC_ID_HEADER">TOPIC_ID_HEADER</a></td>
-                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.</p>
-</td>
+                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER" title="TOPIC_ID_HEADER">
+                                <a class="constant " href="constants.html#TOPIC_ID_HEADER">TOPIC_ID_HEADER</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_PAYLOAD_KEY" title="TOPIC_ID_PAYLOAD_KEY"><a
-                                    class="constant" href="constants.html#TOPIC_ID_PAYLOAD_KEY">TOPIC_ID_PAYLOAD_KEY</a></td>
-                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.</p>
-</td>
+                            <td class="module-title truncate constant" id="TOPIC_ID_PAYLOAD_KEY" title="TOPIC_ID_PAYLOAD_KEY">
+                                <a class="constant " href="constants.html#TOPIC_ID_PAYLOAD_KEY">TOPIC_ID_PAYLOAD_KEY</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER_AND_PAYLOAD" title="TOPIC_ID_HEADER_AND_PAYLOAD"><a
-                                    class="constant" href="constants.html#TOPIC_ID_HEADER_AND_PAYLOAD">TOPIC_ID_HEADER_AND_PAYLOAD</a></td>
-                            <td class="module-desc"><p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
-the JSON payload of the request.</p>
-</td>
+                            <td class="module-title truncate constant" id="TOPIC_ID_HEADER_AND_PAYLOAD" title="TOPIC_ID_HEADER_AND_PAYLOAD">
+                                <a class="constant " href="constants.html#TOPIC_ID_HEADER_AND_PAYLOAD">TOPIC_ID_HEADER_AND_PAYLOAD</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                <code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
+the JSON payload of the request.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="LISTENER_STARTUP_ERROR" title="LISTENER_STARTUP_ERROR"><a
-                                    class="constant" href="constants.html#LISTENER_STARTUP_ERROR">LISTENER_STARTUP_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the reason string for the <code>websub:ListenerStartupError</code>.</p>
-</td>
+                            <td class="module-title truncate constant" id="LISTENER_STARTUP_ERROR" title="LISTENER_STARTUP_ERROR">
+                                <a class="constant " href="constants.html#LISTENER_STARTUP_ERROR">LISTENER_STARTUP_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason string for the <code>websub:ListenerStartupError</code>.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="HUB_STARTUP_ERROR_REASON" title="HUB_STARTUP_ERROR_REASON"><a
-                                    class="constant" href="constants.html#HUB_STARTUP_ERROR_REASON">HUB_STARTUP_ERROR_REASON</a></td>
-                            <td class="module-desc"><p>Represents the reason string for the <code>websub:HubStartupError</code>.</p>
-</td>
+                            <td class="module-title truncate constant" id="HUB_STARTUP_ERROR_REASON" title="HUB_STARTUP_ERROR_REASON">
+                                <a class="constant " href="constants.html#HUB_STARTUP_ERROR_REASON">HUB_STARTUP_ERROR_REASON</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason string for the <code>websub:HubStartupError</code>.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1468,16 +1490,16 @@ the JSON payload of the request.</p>
                         <tr>
                             <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber"><a
                                     class="annotations" href="annotations.html#SpecificSubscriber">SpecificSubscriber</a></td>
-                            <td class="module-desc"><p>Annotation to declare that the service represents a specific webhook.
+                            <td class="module-desc">Annotation to declare that the service represents a specific webhook.
 Generic WebSub Subscriber service validation is not done for
-service variables annotated as <code>@websub:SpecificSubscriber</code>.</p>
+service variables annotated as <code>@websub:SpecificSubscriber</code>.
 </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig"><a
                                     class="annotations" href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a></td>
-                            <td class="module-desc"><p>WebSub Subscriber Configuration for the service, indicating subscription related parameters.</p>
+                            <td class="module-desc">WebSub Subscriber Configuration for the service, indicating subscription related parameters.
 </td>
                         </tr>
                     
@@ -1497,26 +1519,35 @@ service variables annotated as <code>@websub:SpecificSubscriber</code>.</p>
                     
                         <tr>
                             <td class="module-title truncate types" id="RemotePublishMode" title="RemotePublishMode">
-                                <a class="types" href="types.html#RemotePublishMode">RemotePublishMode</a>
+                                <a class="types " href="types.html#RemotePublishMode">RemotePublishMode</a>
                             </td>
-                            <td class="module-desc"><p>The identifier to be used to identify the mode in which update content should be identified.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                The identifier to be used to identify the mode in which update content should be identified.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="SignatureMethod" title="SignatureMethod">
-                                <a class="types" href="types.html#SignatureMethod">SignatureMethod</a>
+                                <a class="types " href="types.html#SignatureMethod">SignatureMethod</a>
                             </td>
-                            <td class="module-desc"><p>The identifier to be used to identify the cryptographic hash algorithm.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                The identifier to be used to identify the cryptographic hash algorithm.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="TopicIdentifier" title="TopicIdentifier">
-                                <a class="types" href="types.html#TopicIdentifier">TopicIdentifier</a>
+                                <a class="types " href="types.html#TopicIdentifier">TopicIdentifier</a>
                             </td>
-                            <td class="module-desc"><p>The identifier to be used to identify the topic for dispatching with custom subscriber services.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                The identifier to be used to identify the topic for dispatching with custom subscriber services.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1535,18 +1566,24 @@ service variables annotated as <code>@websub:SpecificSubscriber</code>.</p>
                     
                         <tr>
                             <td class="module-title truncate errors" id="HubStartupError" title="HubStartupError">
-                                <a class="errors" href="errors.html#HubStartupError">HubStartupError</a>
+                                <a class="errors " href="errors.html#HubStartupError">HubStartupError</a>
                             </td>
-                            <td class="module-desc"><p>Represents a hub startup error.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a hub startup error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="ListenerStartupError" title="ListenerStartupError">
-                                <a class="errors" href="errors.html#ListenerStartupError">ListenerStartupError</a>
+                                <a class="errors " href="errors.html#ListenerStartupError">ListenerStartupError</a>
                             </td>
-                            <td class="module-desc"><p>Represents a listener startup error.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents a listener startup error.
+
+                            </td>
                         </tr>
                     
                 </table>

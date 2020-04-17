@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">AuthzHandler</span>
+                <span class="objects ">AuthzHandler</span>
             </h1>
-            <p><p>Representation of Authorization Handler for HTTP.</p>
-</p>
+            <p>
+                
+                Representation of Authorization Handler for HTTP.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -867,7 +878,7 @@
             <ul>
                 <li> <b>positiveAuthzCache</b><span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span> </li>
                 <li>
-                    <p><code>Cache</code> instance, which keeps positive authorizations</p>
+                    <p>The <code>cache:Cache</code> instance, which holds positive authorizations</p>
 
                 </li>
             </ul>
@@ -877,7 +888,7 @@
             <ul>
                 <li> <b>negativeAuthzCache</b><span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span> </li>
                 <li>
-                    <p><code>Cache</code> instance, which keeps negative authorizations</p>
+                    <p>The <code>cache:Cache</code> instance, which holds negative authorizations</p>
 
                 </li>
             </ul>
@@ -897,24 +908,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> positiveAuthzCache<span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
+            <li> 
+                <span >positiveAuthzCache</span>
+                <span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
                 
             </li>
             <li>
-                <p><p><code>Cache</code> instance, which is cache positive authorizations</p>
-</p>
+                <p>
+                    
+                    <p>The <code>cache:Cache</code> instance, which holds positive authorizations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> negativeAuthzCache<span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
+            <li> 
+                <span >negativeAuthzCache</span>
+                <span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
                 
             </li>
             <li>
-                <p><p><code>Cache</code> instance, which is cache negative authorizations</p>
-</p>
+                <p>
+                    
+                    <p>The <code>cache:Cache</code> instance, which holds negative authorizations</p>
+
+                </p>
             </li>
         </ul>
     </div>

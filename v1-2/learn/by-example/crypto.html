@@ -80,13 +80,17 @@ permalink: /v1-2/learn/by-example/crypto
      <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptAesEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaKeyArr</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">NONE</span><span class="p">);</span>
      <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;AES ECB no padding decrypted value: &quot;</span> <span class="o">+</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">output</span><span class="p">));</span>
      <span class="nx">crypto</span><span class="p">:</span><span class="nx">PublicKey</span> <span class="nx">rsaPublicKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePublicKey</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
-     <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">rsaPrivateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePrivateKey</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
+     <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span> <span class="nx">rsaPrivateKey</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePrivateKey</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+                                                                    <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>
      <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaPublicKey</span><span class="p">);</span>
      <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptRsaEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaPrivateKey</span><span class="p">);</span>
      <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB PKCS1 decrypted value: &quot;</span> <span class="o">+</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">output</span><span class="p">));</span>
-     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaPublicKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
-     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptRsaEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaPrivateKey</span><span class="p">,</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
-     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot;</span> <span class="o">+</span> <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">output</span><span class="p">));</span>
+     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">encryptRsaEcb</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">rsaPublicKey</span><span class="p">,</span>
+                                         <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
+     <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decryptRsaEcb</span><span class="p">(</span><span class="nx">output</span><span class="p">,</span> <span class="nx">rsaPrivateKey</span><span class="p">,</span>
+                                         <span class="nx">crypto</span><span class="p">:</span><span class="nx">OAEPwithSHA512andMGF1</span><span class="p">);</span>
+     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot;</span> <span class="o">+</span>
+                <span class="nx">check</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">output</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -113,9 +117,9 @@ permalink: /v1-2/learn/by-example/crypto
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="testerina-assertions.html">
+                                    <a class="next" href="url-encode-decode.html">
                                         <span>NEXT ></span>
-                                        <p>Assertions</p>
+                                        <p>URL Encode/Decode Operations</p>
                                     </a>
                                 </div>
                                 
@@ -861,7 +865,8 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>     crypto:PrivateKey rsaPrivateKey = check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>     crypto:PrivateKey rsaPrivateKey = check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;,
+                                                                    &quot;ballerina&quot;);
 </code></pre></div>
 
                                 </td>
@@ -901,9 +906,12 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey, crypto:OAEPwithSHA512andMGF1);
-     output = check crypto:decryptRsaEcb(output, rsaPrivateKey, crypto:OAEPwithSHA512andMGF1);
-     io:println(&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot; + check &#39;string:fromBytes(output));
+                                    <div class="highlight"><pre><code class=ballerina>     output = check crypto:encryptRsaEcb(inputArr, rsaPublicKey,
+                                         crypto:OAEPwithSHA512andMGF1);
+     output = check crypto:decryptRsaEcb(output, rsaPrivateKey,
+                                         crypto:OAEPwithSHA512andMGF1);
+     io:println(&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot; +
+                check &#39;string:fromBytes(output));
 }
 </code></pre></div>
 

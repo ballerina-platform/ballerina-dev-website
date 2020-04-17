@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Installing Ballerina
-permalink: /v1-0/learn/installing-ballerina/
+permalink: /1.0/learn/installing-ballerina/
 redirect_from:
   - /v1-0/learn/getting-started
 ---

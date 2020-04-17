@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-permalink: /v0-991/learn/set-up-ballerina-sdk/
+permalink: /0.991/learn/set-up-ballerina-sdk/
 
 ---
 

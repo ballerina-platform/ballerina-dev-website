@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Run and debug
-permalink: /v1-0/learn/vscode-plugin/run-and-debug
+permalink: /1.0/learn/vscode-plugin/run-and-debug
 redirect_from:
   - /v1-0/learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-0/learn/tools-ides/vscode-plugin/run-and-debug/

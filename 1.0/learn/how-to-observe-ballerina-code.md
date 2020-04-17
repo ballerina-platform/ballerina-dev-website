@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: How to Observe Ballerina Services
-permalink: /v1-0/learn/how-to-observe-ballerina-code/
+permalink: /1.0/learn/how-to-observe-ballerina-code/
 ---
 
 # How to Observe Ballerina Services

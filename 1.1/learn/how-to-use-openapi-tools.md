@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Ballerina OpenAPI Tools
-permalink: /v1-1/learn/how-to-use-openapi-tools/
+permalink: /1.1/learn/how-to-use-openapi-tools/
 ---
 
 ## Ballerina OpenAPI Tools

@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">StringReader</span>
+                <span class="objects ">StringReader</span>
             </h1>
-            <p><p>Represents a reader which will wrap string content as a channel.</p>
-</p>
+            <p>
+                
+                Represents a reader which will wrap string content as a channel.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -739,7 +750,7 @@
             <ul>
                 <li> <b>content</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    <p>content which should be written</p>
+                    <p>The content, which should be written</p>
 
                 </li>
             </ul>
@@ -749,7 +760,7 @@
             <ul>
                 <li> <b>encoding</b><span class="type">  <span class="builtin-type">string</span></span> UTF-8</li>
                 <li>
-                    <p>encoding of the characters of the content</p>
+                    <p>Encoding of the characters of the content</p>
 
                 </li>
             </ul>
@@ -765,48 +776,67 @@
                         <div class="method-list">
                             
                                 
-<a href="#readJson">
-    <div class="param-sum">
-        <div class="param-name">
-        readJson 
-        </div>
-        <div class="param-details"> <p>Reads string as json from reader.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readJson">
+        <a href="#readJson">readJson </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads string as JSON using the reader.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;{\&quot;name\&quot;: \&quot;Alice\&quot;}&quot;);
+ json|io:Error? person = reader.readJson();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readXml">
-    <div class="param-sum">
-        <div class="param-name">
-        readXml 
-        </div>
-        <div class="param-details"> <p>Reads string as XML from reader</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readXml">
+        <a href="#readXml">readXml </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a string as XML using the reader.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;&lt;Person&gt;&lt;Name&gt;Alice&lt;/Name&gt;&lt;/Person&gt;&quot;);
+ xml|io:Error? person = reader.readXml();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readChar">
-    <div class="param-sum">
-        <div class="param-name">
-        readChar 
-        </div>
-        <div class="param-details"> <p>Reads characters from the given string.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readChar">
+        <a href="#readChar">readChar </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads the characters from the given string.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;Some text&quot;);
+ string|io:Error? person = reader.readChar(4);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes reader.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes the reader.
+<pre><code class="language-ballerina"> io:Error? err = reader.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -821,7 +851,7 @@
              <a class="url-link" href="#readJson">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readJson </h2>
+            <h2 > readJson </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -829,16 +859,22 @@
         </span>
         
     </div>
-    <p><p>Reads string as json from reader.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads string as JSON using the reader.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;{\&quot;name\&quot;: \&quot;Alice\&quot;}&quot;);
+ json|io:Error? person = reader.readJson();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>json or <code>Error</code> if any error occurred</p>
+                <li><p>JSON or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -851,7 +887,7 @@
              <a class="url-link" href="#readXml">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readXml </h2>
+            <h2 > readXml </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -859,16 +895,23 @@
         </span>
         
     </div>
-    <p><p>Reads string as XML from reader</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a string as XML using the reader.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;&lt;Person&gt;&lt;Name&gt;Alice&lt;/Name&gt;&lt;/Person&gt;&quot;);
+ xml|io:Error? person = reader.readXml();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <a href="../../io/types.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li></li>
+                <li><p>XML or else <code>io:Error</code> if any error occurred</p>
+</li>
             </ul>
         </div>
         
@@ -880,7 +923,7 @@
              <a class="url-link" href="#readChar">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readChar </h2>
+            <h2 > readChar </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> nCharacters)</p>
@@ -888,9 +931,15 @@
         </span>
         
     </div>
-    <p><p>Reads characters from the given string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads the characters from the given string.
+<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;Some text&quot;);
+ string|io:Error? person = reader.readChar(4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -901,7 +950,7 @@
                         
                     </li>
                     <li>
-                        <p><p>read specific number of characters</p>
+                        <p><p>Number of characters to be read</p>
 </p>
                     </li>
                 </ul>
@@ -915,7 +964,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../io/types.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>string or <code>Error</code> if any error occurred</p>
+                <li><p>String or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -928,7 +977,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -936,16 +985,21 @@
         </span>
         
     </div>
-    <p><p>Closes reader.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the reader.
+<pre><code class="language-ballerina"> io:Error? err = reader.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>An <code>Error</code> if could not close the channel.</p>
+                <li><p>An <code>io:Error</code> if could not close the channel or else <code>()</code>.</p>
 </li>
             </ul>
         </div>

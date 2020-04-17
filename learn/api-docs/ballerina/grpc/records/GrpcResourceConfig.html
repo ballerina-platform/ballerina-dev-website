@@ -124,7 +124,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -318,6 +318,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -481,7 +485,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -675,6 +679,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -777,10 +785,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                 
-                 : <span class="records">GrpcResourceConfig</span>
+                 : <span class="records ">GrpcResourceConfig</span>
             </h1>
-            <p>Service resource configuration. Sets only for server streaming service.
-</p>
+            <p>
+                
+                Service resource configuration. This should be set only for server streaming services.
+
+            </p>
             <div class="constants">
                 
                     
@@ -789,39 +800,54 @@
         
     <div class="params-listing">
         <ul>
-            <li> streaming<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >streaming</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Server streaming flag. This flag sets to true to specify that the resource is capable of sending
+                <p>
+                    
+                    <p>Server streaming flag. This flag should be set to true to specify that the resource is capable of sending
 multiple responses per request.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> requestType<span class="type">  <span class="builtin-type">typedesc</span></span>
+            <li> 
+                <span >requestType</span>
+                <span class="type">  <span class="builtin-type">typedesc</span></span>
                 
             </li>
             <li>
-                <p><p>Request message type of the resource. This is an optional field. If it is not specified, request
+                <p>
+                    
+                    <p>Request message type of the resource. This is an optional field. If it is not specified, request
 type is derived from input argument of the resource.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> responseType<span class="type">  <span class="builtin-type">typedesc</span></span>
+            <li> 
+                <span >responseType</span>
+                <span class="type">  <span class="builtin-type">typedesc</span></span>
                 
             </li>
             <li>
-                <p><p>Response message type of the resource. This is an optional field. If it is not specified, response
+                <p>
+                    
+                    <p>Response message type of the resource. This is an optional field. If it is not specified, response
 type is derived from the value passed to the send() expression.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

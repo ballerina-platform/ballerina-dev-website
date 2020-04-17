@@ -100,7 +100,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -278,6 +278,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -417,7 +421,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -595,6 +599,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -697,11 +705,13 @@
                 
                     <a href="../../oauth2/index.html">oauth2</a>
                 
-                 : <span class="records">DirectTokenRefreshConfig</span>
+                 : <span class="records ">DirectTokenRefreshConfig</span>
             </h1>
-            <p>The `DirectTokenRefreshConfig` record passes the configurations for refreshing the access token for
-the grant type of the direct token grant type.
-</p>
+            <p>
+                
+                The data structure, which can be used to pass the configurations for refreshing the access token directly.
+
+            </p>
             <div class="constants">
                 
                     
@@ -710,84 +720,119 @@ the grant type of the direct token grant type.
         
     <div class="params-listing">
         <ul>
-            <li> refreshUrl<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >refreshUrl</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Refresh token URL for the refresh token server</p>
-</p>
+                <p>
+                    
+                    <p>Refresh token URL for the refresh token server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> refreshToken<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >refreshToken</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Refresh token for the refresh token server</p>
-</p>
+                <p>
+                    
+                    <p>Refresh token for the refresh token server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientId<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >clientId</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Client ID for authentication with the authorization endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Client ID for authentication with the authorization endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientSecret<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >clientSecret</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Client secret for authentication with the authorization endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Client secret for authentication with the authorization endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> scopes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+            <li> 
+                <span >scopes</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
                 
             </li>
             <li>
-                <p><p>Scope of the access request</p>
-</p>
+                <p>
+                    
+                    <p>Scope(s) of the access request</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> credentialBearer<span class="type">  <a href="../../http/types.html#CredentialBearer">CredentialBearer</a></span>
-                <span class="default"> (default http:AUTH_HEADER_BEARER)</span>
+            <li> 
+                <span >credentialBearer</span>
+                <span class="type">  <a href="../../http/types.html#CredentialBearer">CredentialBearer</a></span>
+                 <span class="default">(default http:AUTH_HEADER_BEARER)</span> 
             </li>
             <li>
-                <p><p>How authentication credentials are sent to the authorization endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Bearer of authentication credentials, which is sent to the authorization endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientConfig<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >clientConfig</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>HTTP client configurations which calls the authorization endpoint</p>
-</p>
+                <p>
+                    
+                    <p>HTTP client configurations, which are used to call the authorization endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>

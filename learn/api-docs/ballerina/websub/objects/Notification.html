@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -274,6 +274,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -393,7 +397,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -587,6 +591,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -690,10 +698,13 @@
                 
                     <a href="../../websub/index.html">websub</a>
                  :
-                <span class="objects">Notification</span>
+                <span class="objects ">Notification</span>
             </h1>
-            <p><p>Object representing the WebSub Content Delivery Request received.</p>
-</p>
+            <p>
+                
+                Represents the WebSub Content Delivery Request received.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -705,148 +716,200 @@
                         <div class="method-list">
                             
                                 
-<a href="#getQueryParams">
-    <div class="param-sum">
-        <div class="param-name">
-        getQueryParams 
-        </div>
-        <div class="param-details"> <p>Retrieves the query parameters of the content delivery request as a map.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getQueryParams">
+        <a href="#getQueryParams">getQueryParams </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the query parameters of the content delivery request as a map.
+<pre><code class="language-ballerina"> map&lt;string[]&gt; payload = notification.getTextPayload();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getEntity">
-    <div class="param-sum">
-        <div class="param-name">
-        getEntity 
-        </div>
-        <div class="param-details"> <p>Retrieves the <code>Entity</code> associated with the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getEntity">
+        <a href="#getEntity">getEntity </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the <code>mime:Entity</code> associated with the content delivery request.
+<pre><code class="language-ballerina"> mime:Entity|error payload = notification.getEntity();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#hasHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        hasHeader 
-        </div>
-        <div class="param-details"> <p>Returns whether the requested header key exists in the header map of the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasHeader">
+        <a href="#hasHeader">hasHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns whether the requested header key exists in the header map of the content delivery request.
+<pre><code class="language-ballerina"> boolean payload = notification.hasHeader(&quot;name&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeader">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeader 
-        </div>
-        <div class="param-details"> <p>Returns the value of the specified header. If the specified header key maps to multiple values, the first of
-these values is returned.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeader">
+        <a href="#getHeader">getHeader </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
+these values is returned.
+<pre><code class="language-ballerina"> string payload = notification.getHeader(&quot;name&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeaders">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeaders 
-        </div>
-        <div class="param-details"> <p>Retrieves all the header values to which the specified header key maps to.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeaders">
+        <a href="#getHeaders">getHeaders </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves all the header values to which the specified header key maps to.
+<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaders(&quot;name&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHeaderNames">
-    <div class="param-sum">
-        <div class="param-name">
-        getHeaderNames 
-        </div>
-        <div class="param-details"> <p>Retrieves all the names of the headers present in the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHeaderNames">
+        <a href="#getHeaderNames">getHeaderNames </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves all the names of the headers present in the content delivery request.
+<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaderNames();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getContentType">
-    <div class="param-sum">
-        <div class="param-name">
-        getContentType 
-        </div>
-        <div class="param-details"> <p>Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getContentType">
+        <a href="#getContentType">getContentType </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).
+<pre><code class="language-ballerina"> string contentType = notification.getContentType();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getJsonPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getJsonPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>json</code> payload from the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getJsonPayload">
+        <a href="#getJsonPayload">getJsonPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>json</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> json|error payload = notification.getJsonPayload();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getXmlPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getXmlPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>xml</code> payload from the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getXmlPayload">
+        <a href="#getXmlPayload">getXmlPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>xml</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> xml|error result = notification.getXmlPayload();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getTextPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getTextPayload 
-        </div>
-        <div class="param-details"> <p>Extracts <code>text</code> payload from the content delivery request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getTextPayload">
+        <a href="#getTextPayload">getTextPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Extracts <code>text</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> string|error result = notification.getTextPayload();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getByteChannel">
-    <div class="param-sum">
-        <div class="param-name">
-        getByteChannel 
-        </div>
-        <div class="param-details"> <p>Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getByteChannel">
+        <a href="#getByteChannel">getByteChannel </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.
+<pre><code class="language-ballerina"> io:ReadableByteChannel|error result = notification.getByteChannel();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getBinaryPayload">
-    <div class="param-sum">
-        <div class="param-name">
-        getBinaryPayload 
-        </div>
-        <div class="param-details"> <p>Retrieves the request payload as a <code>byte[]</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getBinaryPayload">
+        <a href="#getBinaryPayload">getBinaryPayload </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the request payload as a <code>byte[]</code>.
+<pre><code class="language-ballerina"> byte[]|error payload = notification.getBinaryPayload();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getFormParams">
-    <div class="param-sum">
-        <div class="param-name">
-        getFormParams 
-        </div>
-        <div class="param-details"> <p>Retrieves the form parameters from the content delivery request as a <code>map</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getFormParams">
+        <a href="#getFormParams">getFormParams </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the form parameters from the content delivery request as a <code>map</code>.
+<pre><code class="language-ballerina"> map&lt;string&gt;|error result = notification.getFormParams();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -861,7 +924,7 @@ these values is returned.</p>
              <a class="url-link" href="#getQueryParams">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getQueryParams </h2>
+            <h2 > getQueryParams </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -869,9 +932,14 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the query parameters of the content delivery request as a map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the query parameters of the content delivery request as a map.
+<pre><code class="language-ballerina"> map&lt;string[]&gt; payload = notification.getTextPayload();
+</code></pre>
+
+    </div>
+    
 
     
         
@@ -891,7 +959,7 @@ these values is returned.</p>
              <a class="url-link" href="#getEntity">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getEntity </h2>
+            <h2 > getEntity </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -899,16 +967,21 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the <code>Entity</code> associated with the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the <code>mime:Entity</code> associated with the content delivery request.
+<pre><code class="language-ballerina"> mime:Entity|error payload = notification.getEntity();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../mime/objects/Entity.html">Entity</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The <code>Entity</code> of the request. An <code>error</code> is returned, if entity construction fails</p>
+                <li><p>The <code>mime:Entity</code> of the request or else an <code>error</code> if entity construction fails</p>
 </li>
             </ul>
         </div>
@@ -921,7 +994,7 @@ these values is returned.</p>
              <a class="url-link" href="#hasHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasHeader </h2>
+            <h2 > hasHeader </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -929,9 +1002,14 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Returns whether the requested header key exists in the header map of the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns whether the requested header key exists in the header map of the content delivery request.
+<pre><code class="language-ballerina"> boolean payload = notification.hasHeader(&quot;name&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -956,7 +1034,7 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns true if the specified header key exists</p>
+                <li><p><code>true</code> if the specified header key exists or else <code>false</code></p>
 </li>
             </ul>
         </div>
@@ -969,7 +1047,7 @@ these values is returned.</p>
              <a class="url-link" href="#getHeader">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeader </h2>
+            <h2 > getHeader </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -977,10 +1055,15 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Returns the value of the specified header. If the specified header key maps to multiple values, the first of
-these values is returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
+these values is returned.
+<pre><code class="language-ballerina"> string payload = notification.getHeader(&quot;name&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1005,7 +1088,7 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>The first header value for the specified header name. Panic if no header is found. Ideally, the
+                <li><p>The first header value for the specified header name or else panic if no header is found. Ideally, the
 <code>Notification.hasHeader()</code> needs to be used to check the existence of a header initially.</p>
 </li>
             </ul>
@@ -1019,7 +1102,7 @@ these values is returned.</p>
              <a class="url-link" href="#getHeaders">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeaders </h2>
+            <h2 > getHeaders </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> headerName)</p>
@@ -1027,9 +1110,14 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves all the header values to which the specified header key maps to.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves all the header values to which the specified header key maps to.
+<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaders(&quot;name&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1054,7 +1142,7 @@ these values is returned.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>The header values the specified header key maps to. Panic if no header is found. Ideally, the
+                <li><p>The header values the specified header key maps to or else panic if no header is found. Ideally, the
 <code>Notification.hasHeader()</code> needs to be used to check the existence of a header initially.</p>
 </li>
             </ul>
@@ -1068,7 +1156,7 @@ these values is returned.</p>
              <a class="url-link" href="#getHeaderNames">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHeaderNames </h2>
+            <h2 > getHeaderNames </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1076,9 +1164,14 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves all the names of the headers present in the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves all the names of the headers present in the content delivery request.
+<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaderNames();
+</code></pre>
+
+    </div>
+    
 
     
         
@@ -1098,7 +1191,7 @@ these values is returned.</p>
              <a class="url-link" href="#getContentType">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getContentType </h2>
+            <h2 > getContentType </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1106,16 +1199,21 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).
+<pre><code class="language-ballerina"> string contentType = notification.getContentType();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Returns the <code>content-type</code> header value as a string</p>
+                <li><p>The <code>content-type</code> header value as a <code>string</code></p>
 </li>
             </ul>
         </div>
@@ -1128,7 +1226,7 @@ these values is returned.</p>
              <a class="url-link" href="#getJsonPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getJsonPayload </h2>
+            <h2 > getJsonPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1136,16 +1234,22 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>json</code> payload from the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>json</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> json|error payload = notification.getJsonPayload();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The <code>json</code> payload or <code>error</code> in case of errors. If the content type is not JSON, an <code>error</code> is returned.</p>
+                <li><p>The <code>json</code> payload or else an <code>error</code> in case of errors.
+If the content; type is not JSON, an <code>error</code> is returned.</p>
 </li>
             </ul>
         </div>
@@ -1158,7 +1262,7 @@ these values is returned.</p>
              <a class="url-link" href="#getXmlPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getXmlPayload </h2>
+            <h2 > getXmlPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1166,16 +1270,22 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>xml</code> payload from the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>xml</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> xml|error result = notification.getXmlPayload();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The <code>xml</code> payload or <code>error</code> in case of errors. If the content type is not XML, an <code>error</code> is returned.</p>
+                <li><p>The <code>xml</code> payload or else an <code>error</code> in case of errors.
+If the content; type is not XML, an <code>error</code> is returned.</p>
 </li>
             </ul>
         </div>
@@ -1188,7 +1298,7 @@ these values is returned.</p>
              <a class="url-link" href="#getTextPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getTextPayload </h2>
+            <h2 > getTextPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1196,16 +1306,21 @@ these values is returned.</p>
         </span>
         
     </div>
-    <p><p>Extracts <code>text</code> payload from the content delivery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Extracts <code>text</code> payload from the content delivery request.
+<pre><code class="language-ballerina"> string|error result = notification.getTextPayload();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The <code>text</code> payload or <code>error</code> in case of errors.
+                <li><p>The payload as a <code>text</code> or else  an <code>error</code> in case of errors.
 If the content type is not of type text, an <code>error</code> is returned.</p>
 </li>
             </ul>
@@ -1219,7 +1334,7 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
              <a class="url-link" href="#getByteChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getByteChannel </h2>
+            <h2 > getByteChannel </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1227,16 +1342,21 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.
+<pre><code class="language-ballerina"> io:ReadableByteChannel|error result = notification.getByteChannel();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>A byte channel from which the message payload can be read or <code>error</code> in case of errors</p>
+                <li><p>A byte channel from which the message payload can be read or esle an <code>error</code> in case of errors</p>
 </li>
             </ul>
         </div>
@@ -1249,7 +1369,7 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
              <a class="url-link" href="#getBinaryPayload">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getBinaryPayload </h2>
+            <h2 > getBinaryPayload </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1257,16 +1377,21 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the request payload as a <code>byte[]</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the request payload as a <code>byte[]</code>.
+<pre><code class="language-ballerina"> byte[]|error payload = notification.getBinaryPayload();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The byte[] representation of the message payload or <code>error</code> in case of errors</p>
+                <li><p>The message payload as a <code>byte[]</code> or else an <code>error</code> in case of errors</p>
 </li>
             </ul>
         </div>
@@ -1279,7 +1404,7 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
              <a class="url-link" href="#getFormParams">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getFormParams </h2>
+            <h2 > getFormParams </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1287,16 +1412,21 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the form parameters from the content delivery request as a <code>map</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the form parameters from the content delivery request as a <code>map</code>.
+<pre><code class="language-ballerina"> map&lt;string&gt;|error result = notification.getFormParams();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The map of form params or <code>error</code> in case of errors</p>
+                <li><p>The form params as a <code>map</code> or else an <code>error</code> in case of errors</p>
 </li>
             </ul>
         </div>

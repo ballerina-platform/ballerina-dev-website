@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -235,6 +235,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -332,7 +336,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -510,6 +514,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -614,224 +622,8 @@
                         Module : <span class="modules">crypto</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.</p>
-<h1>Samples</h1>
-<h2>Hashing</h2>
-<p>The sample given below shows how to use hashing functions such as <code>hashSha512</code> to calculate the hash value of a byte array and then encode the byte array using a common encoding algorithm.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-
-public function main() {
-     // Input value for crypto operations.
-     string input = &quot;Hello Ballerina&quot;;
-     byte[] inputArr = input.toBytes();
-
-     // Hashing input value using different hashing algorithms, 
-     // and printing hash value using Hex encoding.
-     byte[] output = crypto:hashMd5(inputArr);
-     io:println(&quot;Hash with MD5: &quot; + output.toBase16());
-
-     output = crypto:hashSha1(inputArr);
-     io:println(&quot;Hash with SHA1: &quot; + output.toBase16());
-
-     output = crypto:hashSha256(inputArr);
-     io:println(&quot;Hash with SHA256: &quot; + output.toBase16());
-
-     output = crypto:hashSha384(inputArr);
-     io:println(&quot;Hash with SHA384: &quot; + output.toBase16());
-
-     output = crypto:hashSha512(inputArr);
-     io:println(&quot;Hash with SHA512: &quot; + output.toBase16());
-}
-</code></pre>
-<h2>HMAC Generation</h2>
-<p>The sample given below shows how to use HMAC functions such as <code>hmacSha512</code> to calculate the HMAC value of a byte array and then encode the byte array using a common encoding algorithm.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-
-public function main() {
-     // Input value for crypto operations.
-     string input = &quot;Hello Ballerina&quot;;
-     byte[] inputArr = input.toBytes();
-
-     // The key used for HMAC generation.
-     string key = &quot;some-secret&quot;;
-     byte[] keyArr = key.toBytes();
-
-     // HMAC generation for input value using different HMAC algorithms, and printing HMAC value using Hex encoding.
-     byte[] output = crypto:hmacMd5(inputArr, keyArr);
-     io:println(&quot;HMAC with MD5: &quot; + output.toBase16());
-
-     output = crypto:hmacSha1(inputArr, keyArr);
-     io:println(&quot;HMAC with SHA1: &quot; + output.toBase16());
-
-     output = crypto:hmacSha256(inputArr, keyArr);
-     io:println(&quot;HMAC with SHA256: &quot; + output.toBase16());
-
-     output = crypto:hmacSha384(inputArr, keyArr);
-     io:println(&quot;HMAC with SHA384: &quot; + output.toBase16());
-
-     output = crypto:hmacSha512(inputArr, keyArr);
-     io:println(&quot;HMAC with SHA512: &quot; + output.toBase16());
-}
-</code></pre>
-<h2>Calculating CRC32B Checksum</h2>
-<p>The sample given below shows how to use <code>crc32b</code> function to calculate the CRC32B checksum.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-
-public function main() {
-    // Input value for crypto operations.
-    string input = &quot;Hello Ballerina&quot;;
-    byte[] inputArr = input.toBytes();
-
-    // Hex encoded CRC32B checksum generation for input value.
-    io:println(&quot;CRC32B for text: &quot; + crypto:crc32b(inputArr));
-
-    // The XML content to be hashed.
-    xml xmlContent = xml `&lt;foo&gt;Hello Ballerina&lt;/foo&gt;`;
-    byte[] xmlContentArr = xmlContent.toString().toBytes();
-    io:println(&quot;CRC32 for xml content: &quot; + crypto:crc32b(xmlContentArr));
-}
-</code></pre>
-<h2>Signing</h2>
-<p>The sample given below shows how to use signing functions such as <code>signRsaSha512</code> to get the signature value of a byte array and then encode the byte array using a common encoding algorithm.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-
-public function main() returns error? {
-     // Input value for crypto operations.
-     string input = &quot;Hello Ballerina&quot;;
-     byte[] inputArr = input.toBytes();
-
-     // PrivateKey used for signing operations.
-     crypto:KeyStore keyStore = { 
-         path: &quot;/home/ballerina/keystore.p12&quot;,
-         password: &quot;ballerina&quot;
-     };
-     crypto:PrivateKey privateKey = 
-        check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
-
-     // Signing input value using different signature algorithms, 
-     // and printing the signature value using Hex encoding.
-     byte[] output = check crypto:signRsaMd5(inputArr, privateKey);
-     io:println(&quot;RSA-MD5 signature: &quot; + output.toBase16());
-
-     output = check crypto:signRsaSha1(inputArr, privateKey);
-     io:println(&quot;RSA-SHA1 signature: &quot; + output.toBase16());
-
-     output = check crypto:signRsaSha256(inputArr, privateKey);
-     io:println(&quot;RSA-SHA256 signature: &quot; + output.toBase16());
-
-     output = check crypto:signRsaSha384(inputArr, privateKey);
-     io:println(&quot;RSA-SHA384 signature: &quot; + output.toBase16());
-
-     output = check crypto:signRsaSha512(inputArr, privateKey);
-     io:println(&quot;RSA-SHA512 signature: &quot; + output.toBase16());
-}
-</code></pre>
-<h2>RSA Encryption</h2>
-<p>The sample given below shows how to use encryption function <code>encryptRsaEcb</code> and decryption function <code>decryptRsaEcb</code> to perform RSA encryption and decryption.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-import ballerina/lang.'string as str;
-
-public function main() returns error? {
-    // Input value for crypto operations.
-    string input = &quot;Hello Ballerina&quot;;
-    byte[] inputArr = input.toBytes();
-
-    crypto:KeyStore keyStore = {
-        path: &quot;/home/ballerina/keystore.p12&quot;,
-        password: &quot;ballerina&quot;
-    };
-
-    // Public key used for encryption.
-    crypto:PublicKey publicKey = 
-        check crypto:decodePublicKey(keyStore, &quot;ballerina&quot;);
-
-    // Private key used for decryption.
-    crypto:PrivateKey privateKey = 
-        check crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
-
-    // Encrypt and decrypt input value using RSA ECB PKCS1 padding.
-    byte[] output = check crypto:encryptRsaEcb(inputArr, publicKey);
-    output = check crypto:decryptRsaEcb(output, privateKey);
-    io:println(&quot;RSA ECB PKCS1 decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using 
-    // RSA ECB OAEPwithSHA512andMGF1 padding.
-    output = check crypto:encryptRsaEcb(inputArr, publicKey, 
-        crypto:OAEPwithSHA512andMGF1);
-    output = check crypto:decryptRsaEcb(output, privateKey, 
-        crypto:OAEPwithSHA512andMGF1);
-    io:println(&quot;RSA ECB OAEPwithSHA512andMGF1 decrypted value: &quot; + 
-        check str:fromBytes(output));
-}
-</code></pre>
-<h2>AES Encryption</h2>
-<p>The sample given below shows how to use encryption function <code>encryptAesCbc</code> and decryption function <code>decryptAesCbc</code> to perform AES encryption and decryption.</p>
-<pre><code class="language-ballerina">import ballerina/crypto;
-import ballerina/io;
-import ballerina/lang.'string as str;
-import ballerina/math;
-
-public function main() returns error? {
-    // Input value for crypto operations.
-    string input = &quot;Hello Ballerina!&quot;;
-    byte[] inputArr = input.toBytes();
-
-    // Randomly generate a 128 bit key.
-    byte[16] keyArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    foreach var i in 0...15 {
-        keyArr[i] = &lt;byte&gt;math:randomInRange(0, 255);
-    }
-
-    // Randomly generate a 128 bit IV.
-    byte[16] ivArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    foreach var i in 0...15 {
-        ivArr[i] = &lt;byte&gt;math:randomInRange(0, 255);
-    }
-
-    // Encrypt and decrypt input value using AES CBC PKCS5 padding.
-    byte[] output = check crypto:encryptAesCbc(inputArr, keyArr, ivArr);
-    output = check crypto:decryptAesCbc(output, keyArr, ivArr);
-    io:println(&quot;AES CBC PKCS5 decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using AES CBC no padding.
-    output = check crypto:encryptAesCbc(inputArr, keyArr, ivArr, crypto:NONE);
-    output = check crypto:decryptAesCbc(output, keyArr, ivArr, crypto:NONE);
-    io:println(&quot;AES CBC no padding decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using AES GCM PKCS5 padding.
-    output = check crypto:encryptAesGcm(inputArr, keyArr, ivArr);
-    output = check crypto:decryptAesGcm(output, keyArr, ivArr);
-    io:println(&quot;AES GCM PKCS5 decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using AES GCM no padding.
-    output = check crypto:encryptAesGcm(inputArr, keyArr, ivArr, crypto:NONE);
-    output = check crypto:decryptAesGcm(output, keyArr, ivArr, crypto:NONE);
-    io:println(&quot;AES GCM no padding decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using AES ECB PKCS5 padding.
-    output = check crypto:encryptAesEcb(inputArr, keyArr);
-    output = check crypto:decryptAesEcb(output, keyArr);
-    io:println(&quot;AES ECB PKCS5 decrypted value: &quot; + 
-        check str:fromBytes(output));
-
-    // Encrypt and decrypt input value using AES ECB no padding.
-    output = check crypto:encryptAesEcb(inputArr, keyArr, crypto:NONE);
-    output = check crypto:decryptAesEcb(output, keyArr, crypto:NONE);
-    io:println(&quot;AES ECB no padding decrypted value: &quot; + 
-        check str:fromBytes(output));
-}
-</code></pre>
+                    <p>This module provides the necessary utilities that are required to hash content using different hashing mechanisms and algorithms.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/crypto.html">Cryptographic Operations Example</a>.</p>
 
 
             
@@ -847,50 +639,68 @@ public function main() returns error? {
                     
                         <tr>
                             <td class="module-title truncate records" id="Certificate" title="Certificate">
-                                <a class="records"
-                                   href="records/Certificate.html">Certificate</a></td>
-                            <td class="module-desc">X509 public key certificate information.
-</td>
+                                <a class="records " href="records/Certificate.html">Certificate</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                X509 public key certificate information.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="KeyStore" title="KeyStore">
-                                <a class="records"
-                                   href="records/KeyStore.html">KeyStore</a></td>
-                            <td class="module-desc">Key store related configurations.
-</td>
+                                <a class="records " href="records/KeyStore.html">KeyStore</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Key store related configurations.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="PrivateKey" title="PrivateKey">
-                                <a class="records"
-                                   href="records/PrivateKey.html">PrivateKey</a></td>
-                            <td class="module-desc">Private key used in cryptographic operations.
-</td>
+                                <a class="records " href="records/PrivateKey.html">PrivateKey</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Private key used in cryptographic operations.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="PublicKey" title="PublicKey">
-                                <a class="records"
-                                   href="records/PublicKey.html">PublicKey</a></td>
-                            <td class="module-desc">Public key used in cryptographic operations.
-</td>
+                                <a class="records " href="records/PublicKey.html">PublicKey</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Public key used in cryptographic operations.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="TrustStore" title="TrustStore">
-                                <a class="records"
-                                   href="records/TrustStore.html">TrustStore</a></td>
-                            <td class="module-desc">Trust store related configurations.
-</td>
+                                <a class="records " href="records/TrustStore.html">TrustStore</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Trust store related configurations.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -915,220 +725,602 @@ public function main() returns error? {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="crc32b" title="crc32b"><a
-                                    class="functions" href="functions.html#crc32b">crc32b</a></td>
-                            <td class="module-desc"><p>Returns Hex encoded CRC32B value for the provided element.</p>
-</td>
+                            <td class="module-title truncate functions" id="crc32b" title="crc32b">
+                                <a class="functions " href="functions.html#crc32b">crc32b</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the Hex-encoded CRC32B value for the provided element.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string checksum = crypto:crc32b(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decodePrivateKey" title="decodePrivateKey"><a
-                                    class="functions" href="functions.html#decodePrivateKey">decodePrivateKey</a></td>
-                            <td class="module-desc"><p>Read a private key from the provided PKCS#12 archive file.</p>
-</td>
+                            <td class="module-title truncate functions" id="decodePrivateKey" title="decodePrivateKey">
+                                <a class="functions " href="functions.html#decodePrivateKey">decodePrivateKey</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reads a private key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey|crypto:Error privateKey = crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decodePublicKey" title="decodePublicKey"><a
-                                    class="functions" href="functions.html#decodePublicKey">decodePublicKey</a></td>
-                            <td class="module-desc"><p>Read a public key from the provided PKCS#12 archive file.</p>
-</td>
+                            <td class="module-title truncate functions" id="decodePublicKey" title="decodePublicKey">
+                                <a class="functions " href="functions.html#decodePublicKey">decodePublicKey</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reads a public key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey|crypto:Error publicKey = crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decryptAesCbc" title="decryptAesCbc"><a
-                                    class="functions" href="functions.html#decryptAesCbc">decryptAesCbc</a></td>
-                            <td class="module-desc"><p>Returns AES CBC decrypted value for the given AES CBC encrypted data.</p>
-</td>
+                            <td class="module-title truncate functions" id="decryptAesCbc" title="decryptAesCbc">
+                                <a class="functions " href="functions.html#decryptAesCbc">decryptAesCbc</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesCbc(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesCbc(cipherText, key, initialVector);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decryptAesEcb" title="decryptAesEcb"><a
-                                    class="functions" href="functions.html#decryptAesEcb">decryptAesEcb</a></td>
-                            <td class="module-desc"><p>Returns AES ECB decrypted value for the given AES ECB encrypted data.</p>
-</td>
+                            <td class="module-title truncate functions" id="decryptAesEcb" title="decryptAesEcb">
+                                <a class="functions " href="functions.html#decryptAesEcb">decryptAesEcb</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesEcb(data, key);
+  byte[]|crypto:Error plainText = crypto:decryptAesEcb(cipherText, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decryptAesGcm" title="decryptAesGcm"><a
-                                    class="functions" href="functions.html#decryptAesGcm">decryptAesGcm</a></td>
-                            <td class="module-desc"><p>Returns AES GCM decrypted value for the given AES GCM encrypted data.</p>
-</td>
+                            <td class="module-title truncate functions" id="decryptAesGcm" title="decryptAesGcm">
+                                <a class="functions " href="functions.html#decryptAesGcm">decryptAesGcm</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesGcm(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesGcm(cipherText, key, initialVector);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decryptRsaEcb" title="decryptRsaEcb"><a
-                                    class="functions" href="functions.html#decryptRsaEcb">decryptRsaEcb</a></td>
-                            <td class="module-desc"><p>Returns RSA decrypted value for the given RSA encrypted data.</p>
-</td>
+                            <td class="module-title truncate functions" id="decryptRsaEcb" title="decryptRsaEcb">
+                                <a class="functions " href="functions.html#decryptRsaEcb">decryptRsaEcb</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-decrypted value for the given RSA-encrypted data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] cipherText = checkpanic crypto:encryptRsaEcb(data, publicKey);
+  byte[]|crypto:Error plainText = checkpanic crypto:decryptRsaEcb(cipherText, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encryptAesCbc" title="encryptAesCbc"><a
-                                    class="functions" href="functions.html#encryptAesCbc">encryptAesCbc</a></td>
-                            <td class="module-desc"><p>Returns AES CBC encrypted value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="encryptAesCbc" title="encryptAesCbc">
+                                <a class="functions " href="functions.html#encryptAesCbc">encryptAesCbc</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-CBC-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesCbc(data, key, initialVector);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encryptAesEcb" title="encryptAesEcb"><a
-                                    class="functions" href="functions.html#encryptAesEcb">encryptAesEcb</a></td>
-                            <td class="module-desc"><p>Returns AES ECB encrypted value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="encryptAesEcb" title="encryptAesEcb">
+                                <a class="functions " href="functions.html#encryptAesEcb">encryptAesEcb</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-ECB-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesEcb(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encryptAesGcm" title="encryptAesGcm"><a
-                                    class="functions" href="functions.html#encryptAesGcm">encryptAesGcm</a></td>
-                            <td class="module-desc"><p>Returns AES GCM encrypted value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="encryptAesGcm" title="encryptAesGcm">
+                                <a class="functions " href="functions.html#encryptAesGcm">encryptAesGcm</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the AES-GCM-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesGcm(data, key, initialVector);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encryptRsaEcb" title="encryptRsaEcb"><a
-                                    class="functions" href="functions.html#encryptRsaEcb">encryptRsaEcb</a></td>
-                            <td class="module-desc"><p>Returns RSA encrypted value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="encryptRsaEcb" title="encryptRsaEcb">
+                                <a class="functions " href="functions.html#encryptRsaEcb">encryptRsaEcb</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-encrypted value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  byte[]|crypto:Error cipherText = crypto:encryptRsaEcb(data, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashMd5" title="hashMd5"><a
-                                    class="functions" href="functions.html#hashMd5">hashMd5</a></td>
-                            <td class="module-desc"><p>Returns the MD5 hash of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashMd5" title="hashMd5">
+                                <a class="functions " href="functions.html#hashMd5">hashMd5</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the MD5 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashMd5(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashSha1" title="hashSha1"><a
-                                    class="functions" href="functions.html#hashSha1">hashSha1</a></td>
-                            <td class="module-desc"><p>Returns the SHA-1 hash of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashSha1" title="hashSha1">
+                                <a class="functions " href="functions.html#hashSha1">hashSha1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the SHA-1 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha1(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashSha256" title="hashSha256"><a
-                                    class="functions" href="functions.html#hashSha256">hashSha256</a></td>
-                            <td class="module-desc"><p>Returns the SHA-256 hash of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashSha256" title="hashSha256">
+                                <a class="functions " href="functions.html#hashSha256">hashSha256</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the SHA-256 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha256(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashSha384" title="hashSha384"><a
-                                    class="functions" href="functions.html#hashSha384">hashSha384</a></td>
-                            <td class="module-desc"><p>Returns the SHA-384 hash of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashSha384" title="hashSha384">
+                                <a class="functions " href="functions.html#hashSha384">hashSha384</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the SHA-384 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha384(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashSha512" title="hashSha512"><a
-                                    class="functions" href="functions.html#hashSha512">hashSha512</a></td>
-                            <td class="module-desc"><p>Returns the SHA-512 hash of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashSha512" title="hashSha512">
+                                <a class="functions " href="functions.html#hashSha512">hashSha512</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the SHA-512 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha512(data);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hmacMd5" title="hmacMd5"><a
-                                    class="functions" href="functions.html#hmacMd5">hmacMd5</a></td>
-                            <td class="module-desc"><p>Returns the HMAC using MD-5 hash function of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hmacMd5" title="hmacMd5">
+                                <a class="functions " href="functions.html#hmacMd5">hmacMd5</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the HMAC using the MD-5 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacMd5(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hmacSha1" title="hmacSha1"><a
-                                    class="functions" href="functions.html#hmacSha1">hmacSha1</a></td>
-                            <td class="module-desc"><p>Returns the HMAC using SHA-1 hash function of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hmacSha1" title="hmacSha1">
+                                <a class="functions " href="functions.html#hmacSha1">hmacSha1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the HMAC using the SHA-1 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha1(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hmacSha256" title="hmacSha256"><a
-                                    class="functions" href="functions.html#hmacSha256">hmacSha256</a></td>
-                            <td class="module-desc"><p>Returns the HMAC using SHA-256 hash function of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hmacSha256" title="hmacSha256">
+                                <a class="functions " href="functions.html#hmacSha256">hmacSha256</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the HMAC using the SHA-256 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha256(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hmacSha384" title="hmacSha384"><a
-                                    class="functions" href="functions.html#hmacSha384">hmacSha384</a></td>
-                            <td class="module-desc"><p>Returns the HMAC using SHA-384 hash function of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hmacSha384" title="hmacSha384">
+                                <a class="functions " href="functions.html#hmacSha384">hmacSha384</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the HMAC using the SHA-384 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha384(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hmacSha512" title="hmacSha512"><a
-                                    class="functions" href="functions.html#hmacSha512">hmacSha512</a></td>
-                            <td class="module-desc"><p>Returns the HMAC using SHA-512 hash function of the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="hmacSha512" title="hmacSha512">
+                                <a class="functions " href="functions.html#hmacSha512">hmacSha512</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the HMAC using the SHA-512 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha512(data, key);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signRsaMd5" title="signRsaMd5"><a
-                                    class="functions" href="functions.html#signRsaMd5">signRsaMd5</a></td>
-                            <td class="module-desc"><p>Returns RSA-MD5 based signature value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="signRsaMd5" title="signRsaMd5">
+                                <a class="functions " href="functions.html#signRsaMd5">signRsaMd5</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-MD5-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaMd5(data, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signRsaSha1" title="signRsaSha1"><a
-                                    class="functions" href="functions.html#signRsaSha1">signRsaSha1</a></td>
-                            <td class="module-desc"><p>Returns RSA-SHA1 based signature value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="signRsaSha1" title="signRsaSha1">
+                                <a class="functions " href="functions.html#signRsaSha1">signRsaSha1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-SHA1-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha1(data, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signRsaSha256" title="signRsaSha256"><a
-                                    class="functions" href="functions.html#signRsaSha256">signRsaSha256</a></td>
-                            <td class="module-desc"><p>Returns RSA-SHA256 based signature value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="signRsaSha256" title="signRsaSha256">
+                                <a class="functions " href="functions.html#signRsaSha256">signRsaSha256</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-SHA256-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha256(data, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signRsaSha384" title="signRsaSha384"><a
-                                    class="functions" href="functions.html#signRsaSha384">signRsaSha384</a></td>
-                            <td class="module-desc"><p>Returns RSA-SHA384 based signature value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="signRsaSha384" title="signRsaSha384">
+                                <a class="functions " href="functions.html#signRsaSha384">signRsaSha384</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-SHA384-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha384(data, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signRsaSha512" title="signRsaSha512"><a
-                                    class="functions" href="functions.html#signRsaSha512">signRsaSha512</a></td>
-                            <td class="module-desc"><p>Returns RSA-SHA512 based signature value for the given data.</p>
-</td>
+                            <td class="module-title truncate functions" id="signRsaSha512" title="signRsaSha512">
+                                <a class="functions " href="functions.html#signRsaSha512">signRsaSha512</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the RSA-SHA512-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha512(data, privateKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="verifyRsaMd5Signature" title="verifyRsaMd5Signature"><a
-                                    class="functions" href="functions.html#verifyRsaMd5Signature">verifyRsaMd5Signature</a></td>
-                            <td class="module-desc"><p>Verify RSA-MD5 based signature.</p>
-</td>
+                            <td class="module-title truncate functions" id="verifyRsaMd5Signature" title="verifyRsaMd5Signature">
+                                <a class="functions " href="functions.html#verifyRsaMd5Signature">verifyRsaMd5Signature</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Verifies the RSA-MD5-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaMd5Signature(data, signature, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="verifyRsaSha1Signature" title="verifyRsaSha1Signature"><a
-                                    class="functions" href="functions.html#verifyRsaSha1Signature">verifyRsaSha1Signature</a></td>
-                            <td class="module-desc"><p>Verify RSA-SHA1 based signature.</p>
-</td>
+                            <td class="module-title truncate functions" id="verifyRsaSha1Signature" title="verifyRsaSha1Signature">
+                                <a class="functions " href="functions.html#verifyRsaSha1Signature">verifyRsaSha1Signature</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Verifies the RSA-SHA1-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha1Signature(data, signature, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="verifyRsaSha256Signature" title="verifyRsaSha256Signature"><a
-                                    class="functions" href="functions.html#verifyRsaSha256Signature">verifyRsaSha256Signature</a></td>
-                            <td class="module-desc"><p>Verify RSA-SHA256 based signature.</p>
-</td>
+                            <td class="module-title truncate functions" id="verifyRsaSha256Signature" title="verifyRsaSha256Signature">
+                                <a class="functions " href="functions.html#verifyRsaSha256Signature">verifyRsaSha256Signature</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Verifies the RSA-SHA256-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha256Signature(data, signature, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="verifyRsaSha384Signature" title="verifyRsaSha384Signature"><a
-                                    class="functions" href="functions.html#verifyRsaSha384Signature">verifyRsaSha384Signature</a></td>
-                            <td class="module-desc"><p>Verify RSA-SHA384 based signature.</p>
-</td>
+                            <td class="module-title truncate functions" id="verifyRsaSha384Signature" title="verifyRsaSha384Signature">
+                                <a class="functions " href="functions.html#verifyRsaSha384Signature">verifyRsaSha384Signature</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Verifies the RSA-SHA384-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha384Signature(data, signature, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="verifyRsaSha512Signature" title="verifyRsaSha512Signature"><a
-                                    class="functions" href="functions.html#verifyRsaSha512Signature">verifyRsaSha512Signature</a></td>
-                            <td class="module-desc"><p>Verify RSA-SHA512 based signature.</p>
-</td>
+                            <td class="module-title truncate functions" id="verifyRsaSha512Signature" title="verifyRsaSha512Signature">
+                                <a class="functions " href="functions.html#verifyRsaSha512Signature">verifyRsaSha512Signature</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Verifies the RSA-SHA512-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha512Signature(data, signature, publicKey);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1147,73 +1339,113 @@ public function main() returns error? {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="RSA" title="RSA"><a
-                                    class="constant" href="constants.html#RSA">RSA</a></td>
-                            <td class="module-desc"><p>The <code>RSA</code> algorithm</p>
-</td>
+                            <td class="module-title truncate constant" id="RSA" title="RSA">
+                                <a class="constant " href="constants.html#RSA">RSA</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>RSA</code> algorithm.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="NONE" title="NONE"><a
-                                    class="constant" href="constants.html#NONE">NONE</a></td>
-                            <td class="module-desc"><p>Represents no padding.</p>
-</td>
+                            <td class="module-title truncate constant" id="NONE" title="NONE">
+                                <a class="constant " href="constants.html#NONE">NONE</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                No padding.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PKCS1" title="PKCS1"><a
-                                    class="constant" href="constants.html#PKCS1">PKCS1</a></td>
-                            <td class="module-desc"><p>The <code>PKCS1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="PKCS1" title="PKCS1">
+                                <a class="constant " href="constants.html#PKCS1">PKCS1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>PKCS1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PKCS5" title="PKCS5"><a
-                                    class="constant" href="constants.html#PKCS5">PKCS5</a></td>
-                            <td class="module-desc"><p>The <code>PKCS5</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="PKCS5" title="PKCS5">
+                                <a class="constant " href="constants.html#PKCS5">PKCS5</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>PKCS5</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAEPwithMD5andMGF1" title="OAEPwithMD5andMGF1"><a
-                                    class="constant" href="constants.html#OAEPwithMD5andMGF1">OAEPwithMD5andMGF1</a></td>
-                            <td class="module-desc"><p>The <code>OAEPwithMD5andMGF1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="OAEPwithMD5andMGF1" title="OAEPwithMD5andMGF1">
+                                <a class="constant " href="constants.html#OAEPwithMD5andMGF1">OAEPwithMD5andMGF1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>OAEPwithMD5andMGF1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAEPWithSHA1AndMGF1" title="OAEPWithSHA1AndMGF1"><a
-                                    class="constant" href="constants.html#OAEPWithSHA1AndMGF1">OAEPWithSHA1AndMGF1</a></td>
-                            <td class="module-desc"><p>The <code>OAEPWithSHA1AndMGF1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="OAEPWithSHA1AndMGF1" title="OAEPWithSHA1AndMGF1">
+                                <a class="constant " href="constants.html#OAEPWithSHA1AndMGF1">OAEPWithSHA1AndMGF1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>OAEPWithSHA1AndMGF1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAEPWithSHA256AndMGF1" title="OAEPWithSHA256AndMGF1"><a
-                                    class="constant" href="constants.html#OAEPWithSHA256AndMGF1">OAEPWithSHA256AndMGF1</a></td>
-                            <td class="module-desc"><p>The <code>OAEPWithSHA256AndMGF1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="OAEPWithSHA256AndMGF1" title="OAEPWithSHA256AndMGF1">
+                                <a class="constant " href="constants.html#OAEPWithSHA256AndMGF1">OAEPWithSHA256AndMGF1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>OAEPWithSHA256AndMGF1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAEPwithSHA384andMGF1" title="OAEPwithSHA384andMGF1"><a
-                                    class="constant" href="constants.html#OAEPwithSHA384andMGF1">OAEPwithSHA384andMGF1</a></td>
-                            <td class="module-desc"><p>The <code>OAEPwithSHA384andMGF1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="OAEPwithSHA384andMGF1" title="OAEPwithSHA384andMGF1">
+                                <a class="constant " href="constants.html#OAEPwithSHA384andMGF1">OAEPwithSHA384andMGF1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>OAEPwithSHA384andMGF1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAEPwithSHA512andMGF1" title="OAEPwithSHA512andMGF1"><a
-                                    class="constant" href="constants.html#OAEPwithSHA512andMGF1">OAEPwithSHA512andMGF1</a></td>
-                            <td class="module-desc"><p>The <code>OAEPwithSHA512andMGF1</code> padding mode</p>
-</td>
+                            <td class="module-title truncate constant" id="OAEPwithSHA512andMGF1" title="OAEPwithSHA512andMGF1">
+                                <a class="constant " href="constants.html#OAEPwithSHA512andMGF1">OAEPwithSHA512andMGF1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The <code>OAEPwithSHA512andMGF1</code> padding mode.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="CRYPTO_ERROR" title="CRYPTO_ERROR"><a
-                                    class="constant" href="constants.html#CRYPTO_ERROR">CRYPTO_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the Crypto error reason.</p>
-</td>
+                            <td class="module-title truncate constant" id="CRYPTO_ERROR" title="CRYPTO_ERROR">
+                                <a class="constant " href="constants.html#CRYPTO_ERROR">CRYPTO_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The Crypto error reason.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1235,26 +1467,35 @@ public function main() returns error? {
                     
                         <tr>
                             <td class="module-title truncate types" id="AesPadding" title="AesPadding">
-                                <a class="types" href="types.html#AesPadding">AesPadding</a>
+                                <a class="types " href="types.html#AesPadding">AesPadding</a>
                             </td>
-                            <td class="module-desc"><p>Padding algorithms supported with AES encryption and decryption.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Padding algorithms supported by AES encryption and decryption.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="KeyAlgorithm" title="KeyAlgorithm">
-                                <a class="types" href="types.html#KeyAlgorithm">KeyAlgorithm</a>
+                                <a class="types " href="types.html#KeyAlgorithm">KeyAlgorithm</a>
                             </td>
-                            <td class="module-desc"><p>The key algorithms supported by crypto module.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                The key algorithms supported by the Crypto module.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate types" id="RsaPadding" title="RsaPadding">
-                                <a class="types" href="types.html#RsaPadding">RsaPadding</a>
+                                <a class="types " href="types.html#RsaPadding">RsaPadding</a>
                             </td>
-                            <td class="module-desc"><p>Padding algorithms supported with RSA encryption and decryption.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Padding algorithms supported with RSA encryption and decryption.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1273,10 +1514,13 @@ public function main() returns error? {
                     
                         <tr>
                             <td class="module-title truncate errors" id="Error" title="Error">
-                                <a class="errors" href="errors.html#Error">Error</a>
+                                <a class="errors " href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents the Crypto error type with details.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                The Crypto error type with details.
+
+                            </td>
                         </tr>
                     
                 </table>

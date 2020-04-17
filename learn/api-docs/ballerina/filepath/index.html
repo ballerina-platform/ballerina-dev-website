@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -235,6 +235,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -332,7 +336,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -510,6 +514,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -614,53 +622,11 @@
                         Module : <span class="modules">filepath</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides the utility functions for manipulating the file path in a way that is compatible with
-the target operating system.</p>
-<h1>Sample</h1>
-<p>The sample given below uses a few functions that are in the <code>ballerina/filepath</code> module.</p>
-<pre><code class="language-ballerina">import ballerina/filepath;
-import ballerina/io;
-
-public function main() {
-    // Get the absolute representation of the path.
-    string absValue = checkpanic filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
-    io:println(absValue);
-
-    // Check whether the path is absolute.
-    boolean isAbs = checkpanic filepath:isAbsolute(&quot;/A/B/C&quot;);
-    io:println(isAbs); // On Unix : returns true
-    
-    // Get the base name of the path.
-    string name = checkpanic filepath:filename(&quot;/A/B/C&quot;);
-    io:println(name); // returns C
-
-    // Get the enclosing parent directory.
-    string parentPath = checkpanic filepath:parent(&quot;/A/B/C&quot;);
-    io:println(parentPath); // returns B
-    
-    // Get the shortest path name equivalent to path purely via lexical processing.
-    string normalizedPath = checkpanic filepath:normalize(&quot;foo/../bar&quot;);
-    io:println(normalizedPath); // returns bar
-    
-    // Get the list of path elements joined by the OS-specific Path Separator.
-    string[] parts = checkpanic filepath:split(&quot;/A/B/C&quot;);
-    io:println(parts); // returns {&quot;A&quot;, &quot;B&quot;, &quot;C&quot;} 
-    
-    // Join any number of path elements into a single path.
-    string path = checkpanic filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
-    io:println(path); // On Unix : returns /foo/bar
-    
-    // Get the extension of the file path.
-    string ext = checkpanic filepath:extension(&quot;path.bal&quot;);
-    io:println(ext); // returns bal
-    
-    // Returns a relative path that is logically equivalent to the target path when joined to the base path.
-    string relPath = checkpanic filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
-    io:println(relPath); // On Unix : returns ../../c/d
-    
-}
-</code></pre>
+                    <p>This module provides a platform-independent API for working with file paths.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
+<ul>
+<li>For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/filepath.html">File Path Example</a>.</li>
+</ul>
 
 
             
@@ -676,10 +642,13 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                A record type defined to be used as the &quot;error detail&quot; in the errors defined in this module.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -704,120 +673,204 @@ public function main() {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="absolute" title="absolute"><a
-                                    class="functions" href="functions.html#absolute">absolute</a></td>
-                            <td class="module-desc"><p>Retrieves the absolute path from the provided location.</p>
-</td>
+                            <td class="module-title truncate functions" id="absolute" title="absolute">
+                                <a class="functions " href="functions.html#absolute">absolute</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves the absolute path from the provided location.
+<pre><code class="language-ballerina">  string|filepath:Error absolutePath = filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="build" title="build"><a
-                                    class="functions" href="functions.html#build">build</a></td>
-                            <td class="module-desc"><p>Joins any number of path elements into a single path</p>
-</td>
+                            <td class="module-title truncate functions" id="build" title="build">
+                                <a class="functions " href="functions.html#build">build</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Joins any number of path elements into a single path.
+<pre><code class="language-ballerina">  string|filepath:Error path = filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="extension" title="extension"><a
-                                    class="functions" href="functions.html#extension">extension</a></td>
-                            <td class="module-desc"><p>Retrieves the extension of the file path.
-The extension is the suffix beginning at the final dot in the final element of path.
-it is empty if there is no dot.</p>
-</td>
+                            <td class="module-title truncate functions" id="extension" title="extension">
+                                <a class="functions " href="functions.html#extension">extension</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves the extension of the file path.
+The extension is the suffix beginning at the final dot in the final element of the path.
+It is empty if there is no dot.
+<pre><code class="language-ballerina">  string|filepath:Error extension = filepath:extension(&quot;path.bal&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="filename" title="filename"><a
-                                    class="functions" href="functions.html#filename">filename</a></td>
-                            <td class="module-desc"><p>Retrieves the base name of the file from the provided location.
-The last element of path.
-Trailing path separators are removed before extracting the last element.</p>
-</td>
+                            <td class="module-title truncate functions" id="filename" title="filename">
+                                <a class="functions " href="functions.html#filename">filename</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves the base name of the file from the provided location,
+which is the last element of the path.
+Trailing path separators are removed before extracting the last element.
+<pre><code class="language-ballerina">  string|filepath:Error name = filepath:filename(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getPathListSeparator" title="getPathListSeparator"><a
-                                    class="functions" href="functions.html#getPathListSeparator">getPathListSeparator</a></td>
-                            <td class="module-desc"><p>Returns path list separator of underline operating system.</p>
-</td>
+                            <td class="module-title truncate functions" id="getPathListSeparator" title="getPathListSeparator">
+                                <a class="functions " href="functions.html#getPathListSeparator">getPathListSeparator</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the path variable's separating character for paths of the underlying operating system.
+<pre><code class="language-ballerina">  string pathListSeparator = filepath:getPathListSeparator();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getPathSeparator" title="getPathSeparator"><a
-                                    class="functions" href="functions.html#getPathSeparator">getPathSeparator</a></td>
-                            <td class="module-desc"><p>Returns path separator of underline operating system.</p>
-</td>
+                            <td class="module-title truncate functions" id="getPathSeparator" title="getPathSeparator">
+                                <a class="functions " href="functions.html#getPathSeparator">getPathSeparator</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the path separator of the underlying operating system.
+<pre><code class="language-ballerina">  string pathSeparator = filepath:getPathSeparator();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="isAbsolute" title="isAbsolute"><a
-                                    class="functions" href="functions.html#isAbsolute">isAbsolute</a></td>
-                            <td class="module-desc"><p>Reports whether the path is absolute.
+                            <td class="module-title truncate functions" id="isAbsolute" title="isAbsolute">
+                                <a class="functions " href="functions.html#isAbsolute">isAbsolute</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reports whether the path is absolute.
 A path is absolute if it is independent of the current directory.
 On Unix, a path is absolute if it starts with the root.
-On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows is absolute</p>
-</td>
+On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error isAbsolute = filepath:isAbsolute(&quot;/A/B/C&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="isReservedName" title="isReservedName"><a
-                                    class="functions" href="functions.html#isReservedName">isReservedName</a></td>
-                            <td class="module-desc"><p>Reports whether the filename is reserved.
-Reserved words only exist in windows.</p>
-</td>
+                            <td class="module-title truncate functions" id="isReservedName" title="isReservedName">
+                                <a class="functions " href="functions.html#isReservedName">isReservedName</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reports whether the filename is reserved.
+Reserved words only exist in Windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error path = filepath:isReservedName(&quot;abc.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="matches" title="matches"><a
-                                    class="functions" href="functions.html#matches">matches</a></td>
-                            <td class="module-desc"><p>Reports whether all of filename matches the provided pattern, not just a substring.
-An error is returned if the pattern is malformed.</p>
-</td>
+                            <td class="module-title truncate functions" id="matches" title="matches">
+                                <a class="functions " href="functions.html#matches">matches</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+An error is returned if the pattern is malformed.
+<pre><code class="language-ballerina">  boolean|filepath:Error matches = filepath:matches(&quot;a/b/c.java&quot;, &quot;glob:*.{java,class}&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="normalize" title="normalize"><a
-                                    class="functions" href="functions.html#normalize">normalize</a></td>
-                            <td class="module-desc"><p>Returns the shortest path name equivalent to path by purely lexical processing.
-Replace multiple Separator elements with a single one.
-Eliminate each . path name element (the current directory).
-Eliminate each inner .. path name element (the parent directory)</p>
-</td>
+                            <td class="module-title truncate functions" id="normalize" title="normalize">
+                                <a class="functions " href="functions.html#normalize">normalize</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the shortest path name equivalent to the given path.
+Replace the multiple separator elements with a single one.
+Eliminate each &quot;.&quot; path name element (the current directory).
+Eliminate each inner &quot;..&quot; path name element (the parent directory).
+<pre><code class="language-ballerina">  string|filepath:Error normalizedPath = filepath:normalize(&quot;foo/../bar&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="parent" title="parent"><a
-                                    class="functions" href="functions.html#parent">parent</a></td>
-                            <td class="module-desc"><p>Returns the enclosing parent directory.
+                            <td class="module-title truncate functions" id="parent" title="parent">
+                                <a class="functions " href="functions.html#parent">parent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the enclosing parent directory.
 If the path is empty, parent returns &quot;.&quot;.
-The returned path does not end in a separator unless it is the root directory.</p>
-</td>
+The returned path does not end in a separator unless it is the root directory.
+<pre><code class="language-ballerina">  string|filepath:Error parentPath = filepath:parent(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="relative" title="relative"><a
-                                    class="functions" href="functions.html#relative">relative</a></td>
-                            <td class="module-desc"><p>Returns a relative path that is logically equivalent to target path when joined to base path with an intervening
-separator.
-An error is returned if target path can't be made relative to base path.</p>
-</td>
+                            <td class="module-title truncate functions" id="relative" title="relative">
+                                <a class="functions " href="functions.html#relative">relative</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
+intervening separator.
+An error is returned if the target path cannot be made relative to the base path.
+<pre><code class="language-ballerina">  string|filepath:Error relativePath = filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="resolve" title="resolve"><a
-                                    class="functions" href="functions.html#resolve">resolve</a></td>
-                            <td class="module-desc"><p>Returns the filepath after the evaluation of any symbolic links.
-If path is relative, the result will be relative to the current directory,
+                            <td class="module-title truncate functions" id="resolve" title="resolve">
+                                <a class="functions " href="functions.html#resolve">resolve</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the filepath after the evaluation of any symbolic links.
+If the path is relative, the result will be relative to the current directory
 unless one of the components is an absolute symbolic link.
-Resolve calls normalize on the result.</p>
-</td>
+Resolves normalising the calls on the result.
+<pre><code class="language-ballerina">  string|filepath:Error resolvedPath = filepath:resolve(&quot;a/b/c&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="split" title="split"><a
-                                    class="functions" href="functions.html#split">split</a></td>
-                            <td class="module-desc"><p>Splits a list of paths joined by the OS-specific Path Separator.</p>
-</td>
+                            <td class="module-title truncate functions" id="split" title="split">
+                                <a class="functions " href="functions.html#split">split</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Splits a list of paths joined by the OS-specific path separator.
+<pre><code class="language-ballerina">  string[]|filepath:Error parts = filepath:split(&quot;/A/B/C&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -836,66 +889,102 @@ Resolve calls normalize on the result.</p>
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR"><a
-                                    class="constant" href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies file not found error.</p>
-</td>
+                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR">
+                                <a class="constant " href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies file not found error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="NOT_LINK_ERROR" title="NOT_LINK_ERROR"><a
-                                    class="constant" href="constants.html#NOT_LINK_ERROR">NOT_LINK_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies no link error.</p>
-</td>
+                            <td class="module-title truncate constant" id="NOT_LINK_ERROR" title="NOT_LINK_ERROR">
+                                <a class="constant " href="constants.html#NOT_LINK_ERROR">NOT_LINK_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies no link error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="IO_ERROR" title="IO_ERROR"><a
-                                    class="constant" href="constants.html#IO_ERROR">IO_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies io error.</p>
-</td>
+                            <td class="module-title truncate constant" id="IO_ERROR" title="IO_ERROR">
+                                <a class="constant " href="constants.html#IO_ERROR">IO_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies io error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="SECURITY_ERROR" title="SECURITY_ERROR"><a
-                                    class="constant" href="constants.html#SECURITY_ERROR">SECURITY_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies security error.</p>
-</td>
+                            <td class="module-title truncate constant" id="SECURITY_ERROR" title="SECURITY_ERROR">
+                                <a class="constant " href="constants.html#SECURITY_ERROR">SECURITY_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies security error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="INVALID_PATH_ERROR" title="INVALID_PATH_ERROR"><a
-                                    class="constant" href="constants.html#INVALID_PATH_ERROR">INVALID_PATH_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies invalid path error.</p>
-</td>
+                            <td class="module-title truncate constant" id="INVALID_PATH_ERROR" title="INVALID_PATH_ERROR">
+                                <a class="constant " href="constants.html#INVALID_PATH_ERROR">INVALID_PATH_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies invalid path error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="INVALID_PATTERN_ERROR" title="INVALID_PATTERN_ERROR"><a
-                                    class="constant" href="constants.html#INVALID_PATTERN_ERROR">INVALID_PATTERN_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies invalid pattern error.</p>
-</td>
+                            <td class="module-title truncate constant" id="INVALID_PATTERN_ERROR" title="INVALID_PATTERN_ERROR">
+                                <a class="constant " href="constants.html#INVALID_PATTERN_ERROR">INVALID_PATTERN_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies invalid pattern error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="RELATIVE_PATH_ERROR" title="RELATIVE_PATH_ERROR"><a
-                                    class="constant" href="constants.html#RELATIVE_PATH_ERROR">RELATIVE_PATH_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies relative path error.</p>
-</td>
+                            <td class="module-title truncate constant" id="RELATIVE_PATH_ERROR" title="RELATIVE_PATH_ERROR">
+                                <a class="constant " href="constants.html#RELATIVE_PATH_ERROR">RELATIVE_PATH_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies relative path error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="UNC_PATH_ERROR" title="UNC_PATH_ERROR"><a
-                                    class="constant" href="constants.html#UNC_PATH_ERROR">UNC_PATH_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies unc path error.</p>
-</td>
+                            <td class="module-title truncate constant" id="UNC_PATH_ERROR" title="UNC_PATH_ERROR">
+                                <a class="constant " href="constants.html#UNC_PATH_ERROR">UNC_PATH_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies unc path error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR"><a
-                                    class="constant" href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies generic error.</p>
-</td>
+                            <td class="module-title truncate constant" id="GENERIC_ERROR" title="GENERIC_ERROR">
+                                <a class="constant " href="constants.html#GENERIC_ERROR">GENERIC_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies generic error.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -917,10 +1006,13 @@ Resolve calls normalize on the result.</p>
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents filepath related errors.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents filepath related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -939,74 +1031,101 @@ Resolve calls normalize on the result.</p>
                     
                         <tr>
                             <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
-                                <a class="errors" href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                                <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
                             </td>
-                            <td class="module-desc"><p>Represents error occur when the file/directory does not exist at the given filepath.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents error occur when the file/directory does not exist at the given filepath.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="GenericError" title="GenericError">
-                                <a class="errors" href="errors.html#GenericError">GenericError</a>
+                                <a class="errors " href="errors.html#GenericError">GenericError</a>
                             </td>
-                            <td class="module-desc"><p>Represents generic error for filepath</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents generic error for filepath
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="IOError" title="IOError">
-                                <a class="errors" href="errors.html#IOError">IOError</a>
+                                <a class="errors " href="errors.html#IOError">IOError</a>
                             </td>
-                            <td class="module-desc"><p>Represents IO error occur when trying to access the file at the given filepath.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents IO error occur when trying to access the file at the given filepath.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="InvalidPathError" title="InvalidPathError">
-                                <a class="errors" href="errors.html#InvalidPathError">InvalidPathError</a>
+                                <a class="errors " href="errors.html#InvalidPathError">InvalidPathError</a>
                             </td>
-                            <td class="module-desc"><p>Represents error occur when the given file path is invalid.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents error occur when the given file path is invalid.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="InvalidPatternError" title="InvalidPatternError">
-                                <a class="errors" href="errors.html#InvalidPatternError">InvalidPatternError</a>
+                                <a class="errors " href="errors.html#InvalidPatternError">InvalidPatternError</a>
                             </td>
-                            <td class="module-desc"><p>Represent error occur when the given pattern is not a valid filepath pattern.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represent error occur when the given pattern is not a valid filepath pattern.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="NotLinkError" title="NotLinkError">
-                                <a class="errors" href="errors.html#NotLinkError">NotLinkError</a>
+                                <a class="errors " href="errors.html#NotLinkError">NotLinkError</a>
                             </td>
-                            <td class="module-desc"><p>Represents error occur when the file at the given filepath is not a symbolic link.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents error occur when the file at the given filepath is not a symbolic link.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="RelativePathError" title="RelativePathError">
-                                <a class="errors" href="errors.html#RelativePathError">RelativePathError</a>
+                                <a class="errors " href="errors.html#RelativePathError">RelativePathError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="SecurityError" title="SecurityError">
-                                <a class="errors" href="errors.html#SecurityError">SecurityError</a>
+                                <a class="errors " href="errors.html#SecurityError">SecurityError</a>
                             </td>
-                            <td class="module-desc"><p>Represents security error occur when trying to access the file at the given filepath.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents security error occur when trying to access the file at the given filepath.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="UNCPathError" title="UNCPathError">
-                                <a class="errors" href="errors.html#UNCPathError">UNCPathError</a>
+                                <a class="errors " href="errors.html#UNCPathError">UNCPathError</a>
                             </td>
-                            <td class="module-desc"><p>Represents error occur in the UNC path.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents error occur in the UNC path.
+
+                            </td>
                         </tr>
                     
                 </table>

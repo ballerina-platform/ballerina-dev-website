@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -657,10 +665,13 @@
                 
                     <a href="../../cache/index.html">cache</a>
                 
-                 : <span class="records">CacheConfig</span>
+                 : <span class="records ">CacheConfig</span>
             </h1>
-            <p>Represents cache configuration.
-</p>
+            <p>
+                
+                Represents configurations for the <code>cache:Cache</code> object.
+
+            </p>
             <div class="constants">
                 
                     
@@ -669,62 +680,87 @@
         
     <div class="params-listing">
         <ul>
-            <li> capacity<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 100)</span>
+            <li> 
+                <span >capacity</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 100)</span> 
             </li>
             <li>
-                <p><p>Maximum number of entries allowed</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of entries allowed in the cache</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> evictionPolicy<span class="type">  <a href="../../cache/objects/AbstractEvictionPolicy.html">AbstractEvictionPolicy</a></span>
-                <span class="default"> (default BLangTypeInit: new LruEvictionPolicy ([]) )</span>
+            <li> 
+                <span >evictionPolicy</span>
+                <span class="type">  <a href="../../cache/objects/AbstractEvictionPolicy.html">AbstractEvictionPolicy</a></span>
+                 <span class="default">(default</span> <span class="type"><a href="../../cache/objects/LruEvictionPolicy.html">LruEvictionPolicy</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>The policy which defines the cache eviction algorithm</p>
-</p>
+                <p>
+                    
+                    <p>The policy, which defines the cache eviction algorithm</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> evictionFactor<span class="type">  <span class="builtin-type">float</span></span>
-                <span class="default"> (default 0.25)</span>
+            <li> 
+                <span >evictionFactor</span>
+                <span class="type">  <span class="builtin-type">float</span></span>
+                 <span class="default">(default 0.25)</span> 
             </li>
             <li>
-                <p><p>The factor which the entries will be evicted once the cache full</p>
-</p>
+                <p>
+                    
+                    <p>The factor by which the entries will be evicted once the cache is full</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> defaultMaxAgeInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default -1)</span>
+            <li> 
+                <span >defaultMaxAgeInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
             </li>
             <li>
-                <p><p>The default value in seconds which all the cache entries are valid.
+                <p>
+                    
+                    <p>The default value in seconds which all the cache entries are valid.
 '-1' means, the entries are valid forever. This will be overwritten by the the
 <code>maxAgeInSeconds</code> property set when inserting item to the cache</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> cleanupIntervalInSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >cleanupIntervalInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Interval of the timer task which clean up the cache</p>
-</p>
+                <p>
+                    
+                    <p>Interval of the timer task, which will clean up the cache</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -116,7 +116,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -310,6 +310,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -465,7 +469,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -659,6 +663,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -763,7 +771,7 @@
                 
                 <span class="clients">CircuitBreakerClient</span>
             </h1>
-            <p><p>A Circuit Breaker implementation which can be used to gracefully handle network failures.</p>
+            <p>A Circuit Breaker implementation which can be used to gracefully handle network failures.
 </p>
 
             <div class="constants">
@@ -798,7 +806,7 @@
             <ul>
                 <li> <b>circuitBreakerInferredConfig</b><span class="type">  <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a></span> </li>
                 <li>
-                    <p>Configurations derived from <code>CircuitBreakerConfig</code></p>
+                    <p>Configurations derived from the <code>http:CircuitBreakerConfig</code></p>
 
                 </li>
             </ul>
@@ -808,7 +816,7 @@
             <ul>
                 <li> <b>httpClient</b><span class="type">  <a href="../../http/clients/HttpClient.html">HttpClient</a></span> </li>
                 <li>
-                    <p>The underlying <code>HttpActions</code> instance which will be making the actual network calls</p>
+                    <p>The underlying <code>HttpActions</code> instance, which will be making the actual network calls</p>
 
                 </li>
             </ul>
@@ -835,217 +843,253 @@
                         <div class="method-list">
                             
                                 
-<a href="#post">
-    <div class="param-sum">
-        <div class="param-name">
-        post 
-        </div>
-        <div class="param-details"> <p>The POST remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.post()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="post">
+        <a href="#post">post </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The POST remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.post()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#head">
-    <div class="param-sum">
-        <div class="param-name">
-        head 
-        </div>
-        <div class="param-details"> <p>The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.head()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="head">
+        <a href="#head">head </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.head()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#put">
-    <div class="param-sum">
-        <div class="param-name">
-        put 
-        </div>
-        <div class="param-details"> <p>The PUT remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.put()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="put">
+        <a href="#put">put </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The PUT remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.put()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#execute">
-    <div class="param-sum">
-        <div class="param-name">
-        execute 
-        </div>
-        <div class="param-details"> <p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
-The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="execute">
+        <a href="#execute">execute </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
+The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#patch">
-    <div class="param-sum">
-        <div class="param-name">
-        patch 
-        </div>
-        <div class="param-details"> <p>The PATCH remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.patch()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="patch">
+        <a href="#patch">patch </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The PATCH remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.patch()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#delete">
-    <div class="param-sum">
-        <div class="param-name">
-        delete 
-        </div>
-        <div class="param-details"> <p>The DELETE remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.delete()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="delete">
+        <a href="#delete">delete </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The DELETE remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.delete()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#get">
-    <div class="param-sum">
-        <div class="param-name">
-        get 
-        </div>
-        <div class="param-details"> <p>The GET remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.get()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="get">
+        <a href="#get">get </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The GET remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.get()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#options">
-    <div class="param-sum">
-        <div class="param-name">
-        options 
-        </div>
-        <div class="param-details"> <p>The OPTIONS remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.options()</code>
-function of the underlying HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="options">
+        <a href="#options">options </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        The OPTIONS remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.options()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#forward">
-    <div class="param-sum">
-        <div class="param-name">
-        forward 
-        </div>
-        <div class="param-details"> <p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
-The Forward remote function can be used to forward an incoming request to an upstream service as it is.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="forward">
+        <a href="#forward">forward </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
+The Forward remote function can be used to forward an incoming request to an upstream service as it is.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#submit">
-    <div class="param-sum">
-        <div class="param-name">
-        submit 
-        </div>
-        <div class="param-details"> <p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result,
-rather it returns an <code>HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="submit">
+        <a href="#submit">submit </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Submits an HTTP request to a service with the specified HTTP verb.
+The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result.
+Rather it returns an <code>http:HttpFuture</code> which can be used to do further interactions with the endpoint.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        getResponse 
-        </div>
-        <div class="param-details"> <p>Retrieves the <code>Response</code> for a previously submitted request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getResponse">
+        <a href="#getResponse">getResponse </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the <code>http:Response</code> for a previously-submitted request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#hasPromise">
-    <div class="param-sum">
-        <div class="param-name">
-        hasPromise 
-        </div>
-        <div class="param-details"> <p>Circuit breaking not supported. Defaults to the <code>CircuitBreakerClient.hasPromise()</code> function of the underlying
-HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasPromise">
+        <a href="#hasPromise">hasPromise </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.hasPromise()</code> function of the underlying
+HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getNextPromise">
-    <div class="param-sum">
-        <div class="param-name">
-        getNextPromise 
-        </div>
-        <div class="param-details"> <p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getNextPromise">
+        <a href="#getNextPromise">getNextPromise </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getPromisedResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        getPromisedResponse 
-        </div>
-        <div class="param-details"> <p>Retrieves the promised server push <code>Response</code> message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getPromisedResponse">
+        <a href="#getPromisedResponse">getPromisedResponse </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the promised server push <code>Response</code> message.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#rejectPromise">
-    <div class="param-sum">
-        <div class="param-name">
-        rejectPromise 
-        </div>
-        <div class="param-details"> <p>Circuit breaking not supported. Defaults to the <code>CircuitBreakerClient.rejectPromise()</code> function of the underlying
-HTTP remote functions provider.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="rejectPromise">
+        <a href="#rejectPromise">rejectPromise </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.rejectPromise()</code> function of the underlying
+HTTP remote functions provider.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#forceClose">
-    <div class="param-sum">
-        <div class="param-name">
-        forceClose 
-        </div>
-        <div class="param-details"> <p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage
-until the failure threshold exceeds.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="forceClose">
+        <a href="#forceClose">forceClose </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Force the circuit into a closed state in which it will allow requests regardless of the error percentage
+until the failure threshold exceeds.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#forceOpen">
-    <div class="param-sum">
-        <div class="param-name">
-        forceOpen 
-        </div>
-        <div class="param-details"> <p>Force the circuit into a open state in which it will suspend all requests
-until <code>resetTimeInMillis</code> interval exceeds.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="forceOpen">
+        <a href="#forceOpen">forceOpen </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Force the circuit into a open state in which it will suspend all requests
+until <code>resetTimeInMillis</code> interval exceeds.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getCurrentState">
-    <div class="param-sum">
-        <div class="param-name">
-        getCurrentState 
-        </div>
-        <div class="param-details"> <p>Provides <code>CircuitState</code> of the circuit breaker.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getCurrentState">
+        <a href="#getCurrentState">getCurrentState </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Provides the <code>http:CircuitState</code> of the circuit breaker.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -1057,72 +1101,102 @@ until <code>resetTimeInMillis</code> interval exceeds.</p>
         
     <div class="params-listing">
         <ul>
-            <li> url<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >url</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The URL of the target service</p>
-</p>
+                <p>
+                    
+                    <p>The URL of the target service</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> config<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+            <li> 
+                <span >config</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>The configurations of the client endpoint associated with this <code>CircuitBreaker</code> instance</p>
-</p>
+                <p>
+                    
+                    <p>The configurations of the client endpoint associated with this <code>CircuitBreaker</code> instance</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> circuitBreakerInferredConfig<span class="type">  <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a></span>
+            <li> 
+                <span >circuitBreakerInferredConfig</span>
+                <span class="type">  <a href="../../http/records/CircuitBreakerInferredConfig.html">CircuitBreakerInferredConfig</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations derived from <code>CircuitBreakerConfig</code></p>
-</p>
+                <p>
+                    
+                    <p>Configurations derived from <code>CircuitBreakerConfig</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> httpClient<span class="type">  <a href="../../http/clients/HttpClient.html">HttpClient</a></span>
+            <li> 
+                <span >httpClient</span>
+                <span class="type">  <a href="../../http/clients/HttpClient.html">HttpClient</a></span>
                 
             </li>
             <li>
-                <p><p>The underlying <code>HttpActions</code> instance which will be making the actual network calls</p>
-</p>
+                <p>
+                    
+                    <p>The underlying <code>HttpActions</code> instance which will be making the actual network calls</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> circuitHealth<span class="type">  <a href="../../http/records/CircuitHealth.html">CircuitHealth</a></span>
+            <li> 
+                <span >circuitHealth</span>
+                <span class="type">  <a href="../../http/records/CircuitHealth.html">CircuitHealth</a></span>
                 
             </li>
             <li>
-                <p><p>The circuit health monitor</p>
-</p>
+                <p>
+                    
+                    <p>The circuit health monitor</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> currentCircuitState<span class="type">  <a href="../../http/types.html#CircuitState">CircuitState</a></span>
-                <span class="default"> (default CB_CLOSED_STATE)</span>
+            <li> 
+                <span >currentCircuitState</span>
+                <span class="type">  <a href="../../http/types.html#CircuitState">CircuitState</a></span>
+                 <span class="default">(default CB_CLOSED_STATE)</span> 
             </li>
             <li>
-                <p><p>The current state the circuit is in</p>
-</p>
+                <p>
+                    
+                    <p>The current state the circuit is in</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -1186,7 +1260,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#post">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> post </h2>
+            <h2 > post </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1194,10 +1268,13 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>The POST remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.post()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The POST remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.post()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1250,7 +1327,7 @@ server</p>
              <a class="url-link" href="#head">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> head </h2>
+            <h2 > head </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1258,10 +1335,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.head()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.head()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1314,7 +1394,7 @@ server</p>
              <a class="url-link" href="#put">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
+            <h2 > put </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1322,10 +1402,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The PUT remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.put()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The PUT remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.put()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1378,7 +1461,7 @@ server</p>
              <a class="url-link" href="#execute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> execute </h2>
+            <h2 > execute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1386,10 +1469,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
-The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        This wraps the <code>CircuitBreakerClient.post()</code> function of the underlying HTTP remote functions provider.
+The <code>CircuitBreakerClient.execute()</code> function can be used to invoke an HTTP call with the given HTTP verb.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1455,7 +1541,7 @@ server</p>
              <a class="url-link" href="#patch">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> patch </h2>
+            <h2 > patch </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1463,10 +1549,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The PATCH remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.patch()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The PATCH remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.patch()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1519,7 +1608,7 @@ server</p>
              <a class="url-link" href="#delete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> delete </h2>
+            <h2 > delete </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1527,10 +1616,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The DELETE remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.delete()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The DELETE remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.delete()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1583,7 +1675,7 @@ server</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1591,10 +1683,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The GET remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.get()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The GET remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.get()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1647,7 +1742,7 @@ server</p>
              <a class="url-link" href="#options">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> options </h2>
+            <h2 > options </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1655,10 +1750,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>The OPTIONS remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.options()</code>
-function of the underlying HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The OPTIONS remote function implementation of the Circuit Breaker. This wraps the <code>CircuitBreakerClient.options()</code>
+function of the underlying HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1711,7 +1809,7 @@ server</p>
              <a class="url-link" href="#forward">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> forward </h2>
+            <h2 > forward </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
@@ -1719,10 +1817,13 @@ server</p>
         </span>
         
     </div>
-    <p><p>This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
-The Forward remote function can be used to forward an incoming request to an upstream service as it is.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        This wraps the <code>CircuitBreakerClient.forward()</code> function of the underlying HTTP remote functions provider.
+The Forward remote function can be used to forward an incoming request to an upstream service as it is.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1774,7 +1875,7 @@ server</p>
              <a class="url-link" href="#submit">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> submit </h2>
+            <h2 > submit </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1782,11 +1883,14 @@ server</p>
         </span>
         
     </div>
-    <p><p>Submits an HTTP request to a service with the specified HTTP verb.
-The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result,
-rather it returns an <code>HttpFuture</code> which can be used to do further interactions with the endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Submits an HTTP request to a service with the specified HTTP verb.
+The <code>CircuitBreakerClient.submit()</code> function does not give out a <code>Response</code> as the result.
+Rather it returns an <code>http:HttpFuture</code> which can be used to do further interactions with the endpoint.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1838,7 +1942,7 @@ rather it returns an <code>HttpFuture</code> which can be used to do further int
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>HttpFuture</code> that represents an asynchronous service invocation, or an <code>http:ClientError</code> if the submission
+                <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission
 fails</p>
 </li>
             </ul>
@@ -1852,7 +1956,7 @@ fails</p>
              <a class="url-link" href="#getResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getResponse </h2>
+            <h2 > getResponse </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1860,9 +1964,12 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Retrieves the <code>Response</code> for a previously submitted request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the <code>http:Response</code> for a previously-submitted request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1873,7 +1980,7 @@ fails</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> related to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1887,7 +1994,7 @@ fails</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP response message, or an <code>http:ClientError</code> if the invocation fails</p>
+                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -1900,7 +2007,7 @@ fails</p>
              <a class="url-link" href="#hasPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasPromise </h2>
+            <h2 > hasPromise </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1908,10 +2015,13 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Circuit breaking not supported. Defaults to the <code>CircuitBreakerClient.hasPromise()</code> function of the underlying
-HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.hasPromise()</code> function of the underlying
+HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1922,7 +2032,7 @@ HTTP remote functions provider.</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1936,7 +2046,7 @@ HTTP remote functions provider.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>A <code>boolean</code> that represents whether a <code>PushPromise</code> exists</p>
+                <li><p>A <code>boolean</code>, which represents whether an <code>http:PushPromise</code> exists</p>
 </li>
             </ul>
         </div>
@@ -1949,7 +2059,7 @@ HTTP remote functions provider.</p>
              <a class="url-link" href="#getNextPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNextPromise </h2>
+            <h2 > getNextPromise </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1957,9 +2067,12 @@ HTTP remote functions provider.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1970,7 +2083,7 @@ HTTP remote functions provider.</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1984,7 +2097,7 @@ HTTP remote functions provider.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP <code>PushPromise</code> message, or an <code>http:ClientError</code> if the invocation fails</p>
+                <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -1997,7 +2110,7 @@ HTTP remote functions provider.</p>
              <a class="url-link" href="#getPromisedResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getPromisedResponse </h2>
+            <h2 > getPromisedResponse </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
@@ -2005,9 +2118,12 @@ HTTP remote functions provider.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the promised server push <code>Response</code> message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the promised server push <code>Response</code> message.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2018,7 +2134,7 @@ HTTP remote functions provider.</p>
                         
                     </li>
                     <li>
-                        <p><p>The related <code>PushPromise</code></p>
+                        <p><p>The related <code>http:PushPromise</code></p>
 </p>
                     </li>
                 </ul>
@@ -2032,7 +2148,7 @@ HTTP remote functions provider.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>A promised HTTP <code>Response</code> message, or an <code>http:ClientError</code> if the invocation fails</p>
+                <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -2045,13 +2161,16 @@ HTTP remote functions provider.</p>
              <a class="url-link" href="#rejectPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> rejectPromise </h2>
+            <h2 > rejectPromise </h2>
         
     </div>
-    <p><p>Circuit breaking not supported. Defaults to the <code>CircuitBreakerClient.rejectPromise()</code> function of the underlying
-HTTP remote functions provider.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Circuit breaking is not supported. The default value is the <code>CircuitBreakerClient.rejectPromise()</code> function of the underlying
+HTTP remote functions provider.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2062,7 +2181,7 @@ HTTP remote functions provider.</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>PushPromise</code> to be rejected</p>
+                        <p><p>The <code>http:PushPromise</code> to be rejected</p>
 </p>
                     </li>
                 </ul>
@@ -2079,13 +2198,16 @@ HTTP remote functions provider.</p>
              <a class="url-link" href="#forceClose">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> forceClose </h2>
+            <h2 > forceClose </h2>
         
     </div>
-    <p><p>Force the circuit into a closed state in which it will allow requests regardless of the error percentage
-until the failure threshold exceeds.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Force the circuit into a closed state in which it will allow requests regardless of the error percentage
+until the failure threshold exceeds.
+
+    </div>
+    
 
     
 </div>
@@ -2095,13 +2217,16 @@ until the failure threshold exceeds.</p>
              <a class="url-link" href="#forceOpen">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> forceOpen </h2>
+            <h2 > forceOpen </h2>
         
     </div>
-    <p><p>Force the circuit into a open state in which it will suspend all requests
-until <code>resetTimeInMillis</code> interval exceeds.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Force the circuit into a open state in which it will suspend all requests
+until <code>resetTimeInMillis</code> interval exceeds.
+
+    </div>
+    
 
     
 </div>
@@ -2111,7 +2236,7 @@ until <code>resetTimeInMillis</code> interval exceeds.</p>
              <a class="url-link" href="#getCurrentState">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getCurrentState </h2>
+            <h2 > getCurrentState </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2119,16 +2244,19 @@ until <code>resetTimeInMillis</code> interval exceeds.</p>
         </span>
         
     </div>
-    <p><p>Provides <code>CircuitState</code> of the circuit breaker.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Provides the <code>http:CircuitState</code> of the circuit breaker.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#CircuitState">CircuitState</a></span>)</li>
-                <li><p>The current <code>CircuitState</code> of circuit breaker</p>
+                <li><p>The current <code>http:CircuitState</code> of the circuit breaker</p>
 </li>
             </ul>
         </div>

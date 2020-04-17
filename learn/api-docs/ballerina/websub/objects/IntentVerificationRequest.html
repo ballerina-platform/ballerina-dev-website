@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -274,6 +274,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -393,7 +397,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -587,6 +591,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -690,10 +698,13 @@
                 
                     <a href="../../websub/index.html">websub</a>
                  :
-                <span class="objects">IntentVerificationRequest</span>
+                <span class="objects ">IntentVerificationRequest</span>
             </h1>
-            <p><p>Object representing an intent verification request received.</p>
-</p>
+            <p>
+                
+                Object representing an intent verification request received.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -705,26 +716,34 @@
                         <div class="method-list">
                             
                                 
-<a href="#buildSubscriptionVerificationResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        buildSubscriptionVerificationResponse 
-        </div>
-        <div class="param-details"> <p>Builds the response for the request, verifying intention to subscribe, if the topic matches that expected.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="buildSubscriptionVerificationResponse">
+        <a href="#buildSubscriptionVerificationResponse">buildSubscriptionVerificationResponse </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Builds the response for the request, verifying intention to subscribe, if the topic matches that expected.
+<pre><code class="language-ballerina">  http:Response response = request.buildSubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#buildUnsubscriptionVerificationResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        buildUnsubscriptionVerificationResponse 
-        </div>
-        <div class="param-details"> <p>Builds the response for the request, verifying intention to unsubscribe, if the topic matches that expected.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="buildUnsubscriptionVerificationResponse">
+        <a href="#buildUnsubscriptionVerificationResponse">buildUnsubscriptionVerificationResponse </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Builds the response for the request, verifying intention to unsubscribe, if the topic matches that expected.
+<pre><code class="language-ballerina"> http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -736,61 +755,86 @@
         
     <div class="params-listing">
         <ul>
-            <li> mode<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >mode</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The mode specified in the intent verification request, subscription or unsubscription</p>
-</p>
+                <p>
+                    
+                    <p>The mode specified in the intent verification request, subscription or unsubscription</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> topic<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >topic</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The topic for which intent is verified to subscribe/unsubscribe</p>
-</p>
+                <p>
+                    
+                    <p>The topic for which intent is verified to subscribe/unsubscribe</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> challenge<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >challenge</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The challenge to be echoed to verify intent to subscribe/unsubscribe</p>
-</p>
+                <p>
+                    
+                    <p>The challenge to be echoed to verify intent to subscribe/unsubscribe</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> leaseSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >leaseSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The lease seconds period for which a subscription will be active if intent verification
+                <p>
+                    
+                    <p>The lease seconds period for which a subscription will be active if intent verification
 is being done for subscription</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> request<span class="type">  <a href="../../http/objects/Request.html">Request</a></span>
-                <span class="default"> (default BLangTypeInit: new null ([]) )</span>
+            <li> 
+                <span >request</span>
+                <span class="type">  <a href="../../http/objects/Request.html">Request</a></span>
+                 <span class="default">(default</span> <span class="type"><a href="../../http/objects/Request.html">Request</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>The HTTP request received for intent verification</p>
-</p>
+                <p>
+                    
+                    <p>An <code>http:Request</code> received for intent verification</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -852,7 +896,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#buildSubscriptionVerificationResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> buildSubscriptionVerificationResponse </h2>
+            <h2 > buildSubscriptionVerificationResponse </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> expectedTopic)</p>
@@ -860,9 +904,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Builds the response for the request, verifying intention to subscribe, if the topic matches that expected.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Builds the response for the request, verifying intention to subscribe, if the topic matches that expected.
+<pre><code class="language-ballerina">  http:Response response = request.buildSubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -887,7 +936,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a></span>)</li>
-                <li><p><code>http:Response</code> The response to the hub verifying/denying intent to subscribe</p>
+                <li><p>An <code>http:Response</code>, which to the hub verifying/denying intent to subscribe</p>
 </li>
             </ul>
         </div>
@@ -900,7 +949,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#buildUnsubscriptionVerificationResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> buildUnsubscriptionVerificationResponse </h2>
+            <h2 > buildUnsubscriptionVerificationResponse </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> expectedTopic)</p>
@@ -908,9 +957,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Builds the response for the request, verifying intention to unsubscribe, if the topic matches that expected.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Builds the response for the request, verifying intention to unsubscribe, if the topic matches that expected.
+<pre><code class="language-ballerina"> http:Response response = request.buildUnsubscriptionVerificationResponse(&quot;&lt;TOPIC_TO_VERIFY_FOR&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -935,7 +989,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a></span>)</li>
-                <li><p><code>http:Response</code> The response to the hub verifying/denying intent to unsubscribe</p>
+                <li><p>An <code>http:Response</code>, which to for the hub verifying/denying intent to unsubscribe</p>
 </li>
             </ul>
         </div>

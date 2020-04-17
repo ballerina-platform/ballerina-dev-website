@@ -5,7 +5,7 @@ permalink: /learn/style-guide/expressions/
 redirect_from:
   - /learn/style-guide/expressions/
   - /learn/style-guide/expressions
-  - /learn/style-guide/expressions
+  - /v1-2/learn/style-guide/expressions
 ---
 
 # Expressions
@@ -88,7 +88,7 @@ Person p = {
 
 ## Map literal
 
-* For Map literals, follow the same formatting guidelines as [record literals](/learn/style-guide/expressions#record-literal). 
+* For Map literals, follow the same formatting guidelines as [record literals](/v1-2/learn/style-guide/expressions#record-literal). 
   
 **Example,**
 
@@ -178,7 +178,7 @@ string name = <string>json.name;
 
 ## Table literal
 
-* Follow [record literals](/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
+* Follow [record literals](/v1-2/learn/style-guide/expressions#record-literal) formatting when formatting a table block.
   
 **Example,**
   

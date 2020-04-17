@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">CircuitBreakerInferredConfig</span>
+                 : <span class="records ">CircuitBreakerInferredConfig</span>
             </h1>
-            <p>Derived set of configurations from the `CircuitBreakerConfig`.
-</p>
+            <p>
+                
+                Derived set of configurations from the <code>CircuitBreakerConfig</code>.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,62 +1064,87 @@
         
     <div class="params-listing">
         <ul>
-            <li> failureThreshold<span class="type">  <span class="builtin-type">float</span></span>
-                <span class="default"> (default 0.0)</span>
+            <li> 
+                <span >failureThreshold</span>
+                <span class="type">  <span class="builtin-type">float</span></span>
+                 <span class="default">(default 0.0)</span> 
             </li>
             <li>
-                <p><p>The threshold for request failures. When this threshold exceeds, the circuit trips.
+                <p>
+                    
+                    <p>The threshold for request failures. When this threshold exceeds, the circuit trips.
 The threshold should be a value between 0 and 1</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> resetTimeInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >resetTimeInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The time period(in milliseconds) to wait before attempting to make another request to
+                <p>
+                    
+                    <p>The time period(in milliseconds) to wait before attempting to make another request to
 the upstream service</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> statusCodes<span class="type">  <span class="array-type"><span class="builtin-type">boolean</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >statusCodes</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">boolean</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>Array of HTTP response status codes which are considered as failures</p>
-</p>
+                <p>
+                    
+                    <p>Array of HTTP response status codes which are considered as failures</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noOfBuckets<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >noOfBuckets</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>Number of buckets derived from the <code>RollingWindow</code></p>
-</p>
+                <p>
+                    
+                    <p>Number of buckets derived from the <code>RollingWindow</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> rollingWindow<span class="type">  <a href="../../http/records/RollingWindow.html">RollingWindow</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >rollingWindow</span>
+                <span class="type">  <a href="../../http/records/RollingWindow.html">RollingWindow</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p><code>RollingWindow</code> options provided in the <code>CircuitBreakerConfig</code></p>
-</p>
+                <p>
+                    
+                    <p>The <code>http:RollingWindow</code> options provided in the <code>http:CircuitBreakerConfig</code></p>
+
+                </p>
             </li>
         </ul>
     </div>

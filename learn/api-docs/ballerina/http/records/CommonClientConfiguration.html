@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">CommonClientConfiguration</span>
+                 : <span class="records ">CommonClientConfiguration</span>
             </h1>
-            <p>Common client configurations for the next level clients.
-</p>
+            <p>
+                
+                Common client configurations for the next level clients.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,156 +1064,221 @@
         
     <div class="params-listing">
         <ul>
-            <li> httpVersion<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default HTTP_1_1)</span>
+            <li> 
+                <span >httpVersion</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default HTTP_1_1)</span> 
             </li>
             <li>
-                <p><p>The HTTP version understood by the client</p>
-</p>
+                <p>
+                    
+                    <p>The HTTP version understood by the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> http1Settings<span class="type">  <a href="../../http/records/ClientHttp1Settings.html">ClientHttp1Settings</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >http1Settings</span>
+                <span class="type">  <a href="../../http/records/ClientHttp1Settings.html">ClientHttp1Settings</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>Configurations related to HTTP/1.x protocol</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to HTTP/1.x protocol</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> http2Settings<span class="type">  <a href="../../http/records/ClientHttp2Settings.html">ClientHttp2Settings</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >http2Settings</span>
+                <span class="type">  <a href="../../http/records/ClientHttp2Settings.html">ClientHttp2Settings</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>Configurations related to HTTP/2 protocol</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to HTTP/2 protocol</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> timeoutInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 60000)</span>
+            <li> 
+                <span >timeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 60000)</span> 
             </li>
             <li>
-                <p><p>The maximum time to wait (in milliseconds) for a response before closing the connection</p>
-</p>
+                <p>
+                    
+                    <p>The maximum time to wait (in milliseconds) for a response before closing the connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> forwarded<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default disable)</span>
+            <li> 
+                <span >forwarded</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default disable)</span> 
             </li>
             <li>
-                <p><p>The choice of setting <code>forwarded</code>/<code>x-forwarded</code> header</p>
-</p>
+                <p>
+                    
+                    <p>The choice of setting <code>forwarded</code>/<code>x-forwarded</code> header</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> followRedirects<span class="type">  <a href="../../http/records/FollowRedirects.html">FollowRedirects</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >followRedirects</span>
+                <span class="type">  <a href="../../http/records/FollowRedirects.html">FollowRedirects</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with Redirection</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with Redirection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> poolConfig<span class="type">  <a href="../../http/records/PoolConfiguration.html">PoolConfiguration</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >poolConfig</span>
+                <span class="type">  <a href="../../http/records/PoolConfiguration.html">PoolConfiguration</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with request pooling</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with request pooling</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> cache<span class="type">  <a href="../../http/records/CacheConfig.html">CacheConfig</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >cache</span>
+                <span class="type">  <a href="../../http/records/CacheConfig.html">CacheConfig</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>HTTP caching related configurations</p>
-</p>
+                <p>
+                    
+                    <p>HTTP caching related configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> compression<span class="type">  <a href="../../http/types.html#Compression">Compression</a></span>
-                <span class="default"> (default COMPRESSION_AUTO)</span>
+            <li> 
+                <span >compression</span>
+                <span class="type">  <a href="../../http/types.html#Compression">Compression</a></span>
+                 <span class="default">(default COMPRESSION_AUTO)</span> 
             </li>
             <li>
-                <p><p>Specifies the way of handling compression (<code>accept-encoding</code>) header</p>
-</p>
+                <p>
+                    
+                    <p>Specifies the way of handling compression (<code>accept-encoding</code>) header</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> auth<span class="type">  <a href="../../http/records/OutboundAuthConfig.html">OutboundAuthConfig</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >auth</span>
+                <span class="type">  <a href="../../http/records/OutboundAuthConfig.html">OutboundAuthConfig</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>HTTP authentication-related configurations</p>
-</p>
+                <p>
+                    
+                    <p>HTTP authentication-related configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> circuitBreaker<span class="type">  <a href="../../http/records/CircuitBreakerConfig.html">CircuitBreakerConfig</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >circuitBreaker</span>
+                <span class="type">  <a href="../../http/records/CircuitBreakerConfig.html">CircuitBreakerConfig</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with the behaviour of the Circuit Breaker</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with the behaviour of the Circuit Breaker</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> retryConfig<span class="type">  <a href="../../http/records/RetryConfig.html">RetryConfig</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >retryConfig</span>
+                <span class="type">  <a href="../../http/records/RetryConfig.html">RetryConfig</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with retrying</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with retrying</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> cookieConfig<span class="type">  <a href="../../http/records/CookieConfig.html">CookieConfig</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >cookieConfig</span>
+                <span class="type">  <a href="../../http/records/CookieConfig.html">CookieConfig</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with cookies</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with cookies</p>
+
+                </p>
             </li>
         </ul>
     </div>

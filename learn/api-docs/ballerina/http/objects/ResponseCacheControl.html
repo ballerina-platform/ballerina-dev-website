@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">ResponseCacheControl</span>
+                <span class="objects ">ResponseCacheControl</span>
             </h1>
-            <p><p>Configures cache control directives for a <code>Response</code>.</p>
-</p>
+            <p>
+                
+                Configures cache control directives for an <code>http:Response</code>.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -865,15 +876,17 @@
                         <div class="method-list">
                             
                                 
-<a href="#buildCacheControlDirectives">
-    <div class="param-sum">
-        <div class="param-name">
-        buildCacheControlDirectives 
-        </div>
-        <div class="param-details"> <p>Builds the cache control directives string from the current <code>ResponseCacheControl</code> configurations.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="buildCacheControlDirectives">
+        <a href="#buildCacheControlDirectives">buildCacheControlDirectives </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Builds the cache control directives string from the current <code>http:ResponseCacheControl</code> configurations.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -885,122 +898,172 @@
         
     <div class="params-listing">
         <ul>
-            <li> mustRevalidate<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >mustRevalidate</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>must-revalidate</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>must-revalidate</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noCache<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >noCache</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>no-cache</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>no-cache</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noStore<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >noStore</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>no-store</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>no-store</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noTransform<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >noTransform</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>no-transform</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>no-transform</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> isPrivate<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >isPrivate</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>private</code> and <code>public</code> directives</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>private</code> and <code>public</code> directives</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> proxyRevalidate<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >proxyRevalidate</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>proxy-revalidate</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>proxy-revalidate</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxAge<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default -1)</span>
+            <li> 
+                <span >maxAge</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>max-age</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>max-age</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sMaxAge<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default -1)</span>
+            <li> 
+                <span >sMaxAge</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
             </li>
             <li>
-                <p><p>Sets the <code>s-maxage</code> directive</p>
-</p>
+                <p>
+                    
+                    <p>Sets the <code>s-maxage</code> directive</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noCacheFields<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >noCacheFields</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>Optional fields for the <code>no-cache</code> directive. Before sending a listed field in a response, it
+                <p>
+                    
+                    <p>Optional fields for the <code>no-cache</code> directive. Before sending a listed field in a response, it
 must be validated with the origin server.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> privateFields<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >privateFields</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>Optional fields for the <code>private</code> directive. A cache can omit the fields specified and store
+                <p>
+                    
+                    <p>Optional fields for the <code>private</code> directive. A cache can omit the fields specified and store
 the rest of the response.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -1062,7 +1125,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#buildCacheControlDirectives">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> buildCacheControlDirectives </h2>
+            <h2 > buildCacheControlDirectives </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1070,9 +1133,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Builds the cache control directives string from the current <code>ResponseCacheControl</code> configurations.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Builds the cache control directives string from the current <code>http:ResponseCacheControl</code> configurations.
+
+    </div>
+    
 
     
         

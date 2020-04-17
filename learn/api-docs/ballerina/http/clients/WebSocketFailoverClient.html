@@ -116,7 +116,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -310,6 +310,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -465,7 +469,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -659,6 +663,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -763,7 +771,7 @@
                 
                 <span class="clients">WebSocketFailoverClient</span>
             </h1>
-            <p><p>A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.</p>
+            <p>A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.
 </p>
 
             <div class="constants">
@@ -795,46 +803,46 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="pushText"><a
                                             class="functions" href="#pushText">pushText</a></td>
-                                    <td class="module-desc"><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
-will be lost.</p>
+                                    <td class="module-desc">Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="pushBinary"><a
                                             class="functions" href="#pushBinary">pushBinary</a></td>
-                                    <td class="module-desc"><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
-that message will be lost.</p>
+                                    <td class="module-desc">Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ping"><a
                                             class="functions" href="#ping">ping</a></td>
-                                    <td class="module-desc"><p>Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.</p>
+                                    <td class="module-desc">Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="pong"><a
                                             class="functions" href="#pong">pong</a></td>
-                                    <td class="module-desc"><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
-frame will be lost.</p>
+                                    <td class="module-desc">Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Closes the connection.</p>
+                                    <td class="module-desc">Closes the connection.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ready"><a
                                             class="functions" href="#ready">ready</a></td>
-                                    <td class="module-desc"><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
-WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
+                                    <td class="module-desc">Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.
 </td>
                                 </tr>
                             
@@ -846,102 +854,120 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
                         <div class="method-list">
                             
                                 
-<a href="#init">
-    <div class="param-sum">
-        <div class="param-name">
-        init 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="init">
+        <a href="#init">init </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        
+    </div>
+</div>
+
                             
                                 
-<a href="#setAttribute">
-    <div class="param-sum">
-        <div class="param-name">
-        setAttribute 
-        </div>
-        <div class="param-details"> <p>Sets a connection-related attribute.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setAttribute">
+        <a href="#setAttribute">setAttribute </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets a connection-related attribute.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getAttribute">
-    <div class="param-sum">
-        <div class="param-name">
-        getAttribute 
-        </div>
-        <div class="param-details"> <p>Gets connection-related attributes if any.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getAttribute">
+        <a href="#getAttribute">getAttribute </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets connection-related attributes if any.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#removeAttribute">
-    <div class="param-sum">
-        <div class="param-name">
-        removeAttribute 
-        </div>
-        <div class="param-details"> <p>Removes connection-related attributes if any.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="removeAttribute">
+        <a href="#removeAttribute">removeAttribute </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Removes connection-related attributes if any.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getConnectionId">
-    <div class="param-sum">
-        <div class="param-name">
-        getConnectionId 
-        </div>
-        <div class="param-details"> <p>Gives the connection ID associated with this connection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getConnectionId">
+        <a href="#getConnectionId">getConnectionId </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gives the connection ID associated with this connection.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getNegotiatedSubProtocol">
-    <div class="param-sum">
-        <div class="param-name">
-        getNegotiatedSubProtocol 
-        </div>
-        <div class="param-details"> <p>Gives the subprotocol if any that is negotiated with the client.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getNegotiatedSubProtocol">
+        <a href="#getNegotiatedSubProtocol">getNegotiatedSubProtocol </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gives the subprotocol if any that is negotiated with the client.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#isSecure">
-    <div class="param-sum">
-        <div class="param-name">
-        isSecure 
-        </div>
-        <div class="param-details"> <p>Gives the secured status of the connection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="isSecure">
+        <a href="#isSecure">isSecure </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gives the secured status of the connection.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#isOpen">
-    <div class="param-sum">
-        <div class="param-name">
-        isOpen 
-        </div>
-        <div class="param-details"> <p>Gives the open or closed status of the connection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="isOpen">
+        <a href="#isOpen">isOpen </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gives the open or closed status of the connection.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getHttpResponse">
-    <div class="param-sum">
-        <div class="param-name">
-        getHttpResponse 
-        </div>
-        <div class="param-details"> <p>Gives any HTTP response of     the client handshake request if received.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getHttpResponse">
+        <a href="#getHttpResponse">getHttpResponse </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gives any HTTP response of     the client handshake request if received.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -956,7 +982,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#pushText">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pushText </h2>
+            <h2 > pushText </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> | <span class="builtin-type">json</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">boolean</span> | <span class="builtin-type">int</span> | <span class="builtin-type">float</span> | <span class="builtin-type">byte</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="builtin-type">boolean</span> finalFrame)</p>
@@ -964,10 +990,13 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
-will be lost.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pushes text to the connection. If an error occurs while sending the text message to the connection, that message
+will be lost.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1018,7 +1047,7 @@ will be lost.</p>
              <a class="url-link" href="#pushBinary">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pushBinary </h2>
+            <h2 > pushBinary </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="builtin-type">boolean</span> finalFrame)</p>
@@ -1026,10 +1055,13 @@ will be lost.</p>
         </span>
         
     </div>
-    <p><p>Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
-that message will be lost.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pushes binary data to the connection. If an error occurs while sending the binary message to the connection,
+that message will be lost.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1080,7 +1112,7 @@ that message will be lost.</p>
              <a class="url-link" href="#ping">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> ping </h2>
+            <h2 > ping </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
@@ -1088,9 +1120,12 @@ that message will be lost.</p>
         </span>
         
     </div>
-    <p><p>Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pings the connection. If an error occurs while sending the ping frame to the connection, that frame will be lost.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1128,7 +1163,7 @@ that message will be lost.</p>
              <a class="url-link" href="#pong">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pong </h2>
+            <h2 > pong </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data)</p>
@@ -1136,10 +1171,13 @@ that message will be lost.</p>
         </span>
         
     </div>
-    <p><p>Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
-frame will be lost.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a pong message to the connection. If an error occurs while sending the pong frame to the connection, that
+frame will be lost.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1177,7 +1215,7 @@ frame will be lost.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int?</span> statusCode, <span class="builtin-type">string?</span> reason, <span class="builtin-type">int</span> timeoutInSeconds)</p>
@@ -1185,9 +1223,12 @@ frame will be lost.</p>
         </span>
         
     </div>
-    <p><p>Closes the connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the connection.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1255,7 +1296,7 @@ endpoint within the waiting period, the connection is terminated immediately.</p
              <a class="url-link" href="#ready">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> ready </h2>
+            <h2 > ready </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1263,10 +1304,13 @@ endpoint within the waiting period, the connection is terminated immediately.</p
         </span>
         
     </div>
-    <p><p>Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
-WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calls when the endpoint is ready to receive messages. It can be called only once per endpoint. For the
+WebSocketListener, it can be called only in the <code>upgrade</code> or <code>onOpen</code> resources.
+
+    </div>
+    
 
     
         
@@ -1290,11 +1334,14 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#init">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> init </h2>
+            <h2 > init </h2>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        
+    </div>
+    
 
     
 </div>
@@ -1304,12 +1351,15 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#setAttribute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setAttribute </h2>
+            <h2 > setAttribute </h2>
         
     </div>
-    <p><p>Sets a connection-related attribute.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets a connection-related attribute.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1350,7 +1400,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#getAttribute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getAttribute </h2>
+            <h2 > getAttribute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -1358,9 +1408,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gets connection-related attributes if any.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets connection-related attributes if any.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1398,7 +1451,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#removeAttribute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> removeAttribute </h2>
+            <h2 > removeAttribute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -1406,9 +1459,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Removes connection-related attributes if any.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes connection-related attributes if any.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1446,7 +1502,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#getConnectionId">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getConnectionId </h2>
+            <h2 > getConnectionId </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1454,9 +1510,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gives the connection ID associated with this connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives the connection ID associated with this connection.
+
+    </div>
+    
 
     
         
@@ -1476,7 +1535,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#getNegotiatedSubProtocol">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNegotiatedSubProtocol </h2>
+            <h2 > getNegotiatedSubProtocol </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1484,9 +1543,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gives the subprotocol if any that is negotiated with the client.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives the subprotocol if any that is negotiated with the client.
+
+    </div>
+    
 
     
         
@@ -1506,7 +1568,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#isSecure">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> isSecure </h2>
+            <h2 > isSecure </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1514,9 +1576,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gives the secured status of the connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives the secured status of the connection.
+
+    </div>
+    
 
     
         
@@ -1536,7 +1601,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#isOpen">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> isOpen </h2>
+            <h2 > isOpen </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1544,9 +1609,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gives the open or closed status of the connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives the open or closed status of the connection.
+
+    </div>
+    
 
     
         
@@ -1566,7 +1634,7 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
              <a class="url-link" href="#getHttpResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getHttpResponse </h2>
+            <h2 > getHttpResponse </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1574,9 +1642,12 @@ WebSocketListener, it can be called only in the <code>upgrade</code> or <code>on
         </span>
         
     </div>
-    <p><p>Gives any HTTP response of     the client handshake request if received.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives any HTTP response of     the client handshake request if received.
+
+    </div>
+    
 
     
         

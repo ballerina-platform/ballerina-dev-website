@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -675,8 +683,8 @@
                 
                 <span class="clients">StreamingProducer</span>
             </h1>
-            <p><p>NATS <code>StreamingProducer</code> would act as a client allowing to publish messages to the
-NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Connection</code> to be initialized.</p>
+            <p>The streaming producer provides the capability to publish messages to the NATS streaming server.
+The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> to be initialized.
 </p>
 
             <div class="constants">
@@ -691,7 +699,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
             <ul>
                 <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>An established NATS connection.</p>
+                    <p>An established NATS connection</p>
 
                 </li>
             </ul>
@@ -701,7 +709,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
             <ul>
                 <li> <b>clientId</b><span class="type">  <span class="builtin-type">string?</span></span> ()</li>
                 <li>
-                    <p>A unique identifier representing the client.</p>
+                    <p>A unique identifier of the client</p>
 
                 </li>
             </ul>
@@ -711,7 +719,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
             <ul>
                 <li> <b>clusterId</b><span class="type">  <span class="builtin-type">string</span></span> test-cluster</li>
                 <li>
-                    <p>The ID of the cluster configured in the NATS server.</p>
+                    <p>The unique identifier of the cluster configured in the NATS server</p>
 
                 </li>
             </ul>
@@ -721,7 +729,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
             <ul>
                 <li> <b>streamingConfig</b><span class="type">  <a href="../../nats/records/StreamingConfig.html">StreamingConfig</a>?</span> ()</li>
                 <li>
-                    <p>The configuration related to the NATS streaming connectivity.</p>
+                    <p>The configuration related to the NATS streaming connectivity</p>
 
                 </li>
             </ul>
@@ -738,7 +746,8 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
                                 <tr>
                                     <td class="module-title truncate functions" title="publish"><a
                                             class="functions" href="#publish">publish</a></td>
-                                    <td class="module-desc"><p>Publishes data to a given subject.</p>
+                                    <td class="module-desc">Publishes data to a given subject.
+<code>ballerina string|error result = producer-&gt;publish(subject, &lt;@untainted&gt;message);</code>
 </td>
                                 </tr>
                             
@@ -750,15 +759,17 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
                         <div class="method-list">
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Close the producer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Close the producer.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -773,7 +784,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
              <a class="url-link" href="#publish">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> publish </h2>
+            <h2 > publish </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> subject, <a href="../../nats/types.html#Content">Content</a> data)</p>
@@ -781,9 +792,13 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
         </span>
         
     </div>
-    <p><p>Publishes data to a given subject.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Publishes data to a given subject.
+<code>ballerina string|error result = producer-&gt;publish(subject, &lt;@untainted&gt;message);</code>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -794,7 +809,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
                         
                     </li>
                     <li>
-                        <p><p>The subject to send the message to.</p>
+                        <p><p>The subject to send the message</p>
 </p>
                     </li>
                 </ul>
@@ -807,7 +822,7 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
                         
                     </li>
                     <li>
-                        <p><p>Data to publish.</p>
+                        <p><p>Data to publish</p>
 </p>
                     </li>
                 </ul>
@@ -821,11 +836,11 @@ NATS streaming server. <code>StreamingProducer</code> needs the NATS <code>Conne
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../nats/errors.html#Error">Error</a></span>)</li>
-                <li><p><code>string</code> value representing the NUID (NATS Unique Identifier) of the published message, if the
-message gets successfully published and acknowledged by the NATS server OR
-<code>nats/Error</code> with NUID and <code>message</code> fields in case an error occurs in publishing, the timeout
-elapses while waiting for the acknowledgement OR
-<code>nats/Error</code> only with the <code>message</code> field in case an error occurs even before publishing
+                <li><p>The <code>string</code> value representing the NUID (NATS Unique Identifier) of the published message if the
+message gets successfully published and acknowledged by the NATS server,
+a <code>nats:Error</code> with NUID and <code>message</code> fields in case an error occurs in publishing, the timeout
+elapses while waiting for the acknowledgement, or else
+a <code>nats:Error</code> only with the <code>message</code> field in case an error occurs even before publishing
 is completed</p>
 </li>
             </ul>
@@ -843,7 +858,7 @@ is completed</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -851,16 +866,19 @@ is completed</p>
         </span>
         
     </div>
-    <p><p>Close the producer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Close the producer.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Returns () or the error if unable to complete the close operation.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> if unable to complete the close operation.</p>
 </li>
             </ul>
         </div>

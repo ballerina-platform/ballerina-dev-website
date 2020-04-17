@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -651,7 +659,7 @@
                 
                 <span class="clients">Producer</span>
             </h1>
-            <p><p>Represent a Kafka producer endpoint.</p>
+            <p>Represents a Kafka producer endpoint.
 </p>
 
             <div class="constants">
@@ -666,7 +674,7 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a></span> </li>
                 <li>
-                    <p>Configurations related to initializing a Kafka <code>Producer</code>.</p>
+                    <p>Configurations related to initializing a Kafka <code>Producer</code></p>
 
                 </li>
             </ul>
@@ -683,42 +691,50 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Closes producer connection to the external Kafka broker.</p>
+                                    <td class="module-desc">Closes the producer connection to the external Kafka broker.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;close();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="commitConsumer"><a
                                             class="functions" href="#commitConsumer">commitConsumer</a></td>
-                                    <td class="module-desc"><p>Commits consumer action which commits consumer consumed offsets to offset topic.</p>
+                                    <td class="module-desc">Commits the offsets consumed by the provided consumer.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="commitConsumerOffsets"><a
                                             class="functions" href="#commitConsumerOffsets">commitConsumerOffsets</a></td>
-                                    <td class="module-desc"><p>CommitConsumerOffsets action which commits consumer offsets in given transaction.</p>
+                                    <td class="module-desc">Commits the consumer offsets in a given transaction.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="flushRecords"><a
                                             class="functions" href="#flushRecords">flushRecords</a></td>
-                                    <td class="module-desc"><p>Flush action which flush batch of records.</p>
+                                    <td class="module-desc">Flushes the batch of records already sent to the broker by the producer.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;flushRecords();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="getTopicPartitions"><a
                                             class="functions" href="#getTopicPartitions">getTopicPartitions</a></td>
-                                    <td class="module-desc"><p>GetTopicPartitions action which returns given topic partition information.</p>
+                                    <td class="module-desc">Retrieves the topic partition information for the provided topic.
+<pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ProducerError result = producer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="send"><a
                                             class="functions" href="#send">send</a></td>
-                                    <td class="module-desc"><p>Simple Send action which produce records to Kafka server.</p>
+                                    <td class="module-desc">Produces records to the Kafka server.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;send(&quot;Hello World, Ballerina&quot;, &quot;kafka-topic&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -734,24 +750,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> producerConfig<span class="type">  <a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >producerConfig</span>
+                <span class="type">  <a href="../../kafka/records/ProducerConfiguration.html">ProducerConfiguration</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Used to store configurations related to a Kafka connection.</p>
-</p>
+                <p>
+                    
+                    <p>Used to store configurations related to a Kafka connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> connectorId<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default system:uuid())</span>
+            <li> 
+                <span >connectorId</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default system:uuid())</span> 
             </li>
             <li>
-                <p><p>Unique ID for a particular connector.</p>
-</p>
+                <p>
+                    
+                    <p>Unique ID for a particular connector</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -813,7 +839,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -821,16 +847,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Closes producer connection to the external Kafka broker.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the producer connection to the external Kafka broker.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/errors.html#ProducerError">ProducerError</a>?</span>)</li>
-                <li><p><code>kafka:ProducerError</code> if closing the producer failed, nil otherwise.</p>
+                <li><p>A <code>kafka:ProducerError</code> if closing the producer is failed or else ()</p>
 </li>
             </ul>
         </div>
@@ -843,7 +874,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#commitConsumer">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> commitConsumer </h2>
+            <h2 > commitConsumer </h2>
         
         <span class="method-types">
             <p>(<a href="../../kafka/clients/Consumer.html">Consumer</a> consumer)</p>
@@ -851,9 +882,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Commits consumer action which commits consumer consumed offsets to offset topic.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Commits the offsets consumed by the provided consumer.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -864,7 +898,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Consumer which needs offsets to be committed.</p>
+                        <p><p>Consumer, which needs offsets to be committed</p>
 </p>
                     </li>
                 </ul>
@@ -878,7 +912,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/errors.html#ProducerError">ProducerError</a>?</span>)</li>
-                <li><p><code>kafka:ProducerError</code> if committing the consumer failed, nil otherwise.</p>
+                <li><p>A<code>kafka:ProducerError</code> if committing the consumer failed or else ()</p>
 </li>
             </ul>
         </div>
@@ -891,7 +925,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#commitConsumerOffsets">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> commitConsumerOffsets </h2>
+            <h2 > commitConsumerOffsets </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><a href="../../kafka/records/PartitionOffset.html">PartitionOffset</a>[]</span> offsets, <span class="builtin-type">string</span> groupID)</p>
@@ -899,9 +933,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>CommitConsumerOffsets action which commits consumer offsets in given transaction.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Commits the consumer offsets in a given transaction.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -912,7 +949,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Consumer offsets to commit for given transaction.</p>
+                        <p><p>Consumer offsets to commit for a given transaction</p>
 </p>
                     </li>
                 </ul>
@@ -925,7 +962,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Consumer group id.</p>
+                        <p><p>Consumer group ID</p>
 </p>
                     </li>
                 </ul>
@@ -939,7 +976,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/errors.html#ProducerError">ProducerError</a>?</span>)</li>
-                <li><p><code>kafka:ProducerError</code> if committing consumer offsets failed, nil otherwise.</p>
+                <li><p>A <code>kafka:ProducerError</code> if committing consumer offsets failed or else ()</p>
 </li>
             </ul>
         </div>
@@ -952,7 +989,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#flushRecords">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> flushRecords </h2>
+            <h2 > flushRecords </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -960,16 +997,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Flush action which flush batch of records.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Flushes the batch of records already sent to the broker by the producer.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;flushRecords();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/errors.html#ProducerError">ProducerError</a>?</span>)</li>
-                <li><p><code>kafka:ProducerError</code> if records couldn't be flushed, nil otherwise.</p>
+                <li><p>A <code>kafka:ProducerError</code> if records couldn't be flushed or else ()</p>
 </li>
             </ul>
         </div>
@@ -982,7 +1024,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#getTopicPartitions">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getTopicPartitions </h2>
+            <h2 > getTopicPartitions </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic)</p>
@@ -990,9 +1032,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>GetTopicPartitions action which returns given topic partition information.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the topic partition information for the provided topic.
+<pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ProducerError result = producer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1003,7 +1050,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Topic which the partition information is given.</p>
+                        <p><p>Topic of which the partition information is given</p>
 </p>
                     </li>
                 </ul>
@@ -1017,7 +1064,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../../kafka/records/TopicPartition.html">TopicPartition</a>[]</span> | <a href="../../kafka/errors.html#ProducerError">ProducerError</a></span>)</li>
-                <li><p><code>kafka:TopicPartition</code> array for the given topic, returns <code>kafka:ProducerError</code> if operation fails.</p>
+                <li><p>A <code>kafka:TopicPartition</code> array for the given topic or else a <code>kafka:ProducerError</code> if the operation fails</p>
 </li>
             </ul>
         </div>
@@ -1030,7 +1077,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#send">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> send </h2>
+            <h2 > send </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> value, <span class="builtin-type">string</span> topic, <span class="builtin-type">anydata?</span> key, <span class="builtin-type">int?</span> partition, <span class="builtin-type">int?</span> timestamp)</p>
@@ -1038,9 +1085,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Simple Send action which produce records to Kafka server.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Produces records to the Kafka server.
+<pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;send(&quot;Hello World, Ballerina&quot;, &quot;kafka-topic&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1051,7 +1103,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Record contents.</p>
+                        <p><p>Record contents</p>
 </p>
                     </li>
                 </ul>
@@ -1064,7 +1116,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Topic to which the record will be appended to.</p>
+                        <p><p>Topic to which the record will be appended</p>
 </p>
                     </li>
                 </ul>
@@ -1077,7 +1129,7 @@ contentWrapper.addEventListener("scroll", event => {
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Key that will be included in the record.</p>
+                        <p><p>Key that will be included in the record</p>
 </p>
                     </li>
                 </ul>
@@ -1090,7 +1142,7 @@ contentWrapper.addEventListener("scroll", event => {
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Partition to which the record should be sent.</p>
+                        <p><p>Partition to which the record should be sent</p>
 </p>
                     </li>
                 </ul>
@@ -1103,7 +1155,7 @@ contentWrapper.addEventListener("scroll", event => {
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Timestamp of the record, in milliseconds since epoch.</p>
+                        <p><p>Timestamp of the record in milliseconds since epoch</p>
 </p>
                     </li>
                 </ul>
@@ -1117,7 +1169,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../kafka/errors.html#ProducerError">ProducerError</a>?</span>)</li>
-                <li><p>Returns <code>kafka:ProducerError</code> if send action fails to send data, nil otherwise.</p>
+                <li><p>A <code>kafka:ProducerError</code> if send action fails to send data or else ()</p>
 </li>
             </ul>
         </div>

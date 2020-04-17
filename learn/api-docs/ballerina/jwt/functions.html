@@ -84,7 +84,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -389,7 +393,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -679,42 +687,77 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#buildHeaderString">buildHeaderString</a></td>
-                                <td width="70%"><p>Build the header string from the <code>JwtHeader</code> record.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#buildHeaderString">buildHeaderString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Builds the header string from the <code>jwt:JwtHeader</code> record.
+<pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#buildPayloadString">buildPayloadString</a></td>
-                                <td width="70%"><p>Build the payload string from the <code>JwtPayload</code> record.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#buildPayloadString">buildPayloadString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Builds the payload string from the <code>jwt:JwtPayload</code> record.
+<pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decodeJwt">decodeJwt</a></td>
-                                <td width="70%"><p>Decode the given JWT string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decodeJwt">decodeJwt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Decodes the given JWT string.
+<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#issueJwt">issueJwt</a></td>
-                                <td width="70%"><p>Issue a JWT token based on provided header and payload. JWT will be signed (JWS) if <code>keyStore</code> information is provided
-in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>JwtHeader</code> is not <code>NONE</code>.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#issueJwt">issueJwt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
+provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
+<pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#validateJwt">validateJwt</a></td>
-                                <td width="70%"><p>Validate the given JWT string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#validateJwt">validateJwt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Validates the given JWT string.
+<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -728,7 +771,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
              <a class="url-link" href="#buildHeaderString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> buildHeaderString </h2>
+            <h2 > buildHeaderString </h2>
         
         <span class="method-types">
             <p>(<a href="../jwt/records/JwtHeader.html">JwtHeader</a> header)</p>
@@ -736,9 +779,14 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         </span>
         
     </div>
-    <p><p>Build the header string from the <code>JwtHeader</code> record.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Builds the header string from the <code>jwt:JwtHeader</code> record.
+<pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -763,7 +811,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../jwt/errors.html#Error">Error</a></span>)</li>
-                <li><p>The header string or an <code>Error</code> if building the string fails</p>
+                <li><p>The header string or else a <code>jwt:Error</code> if building the string fails</p>
 </li>
             </ul>
         </div>
@@ -776,7 +824,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
              <a class="url-link" href="#buildPayloadString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> buildPayloadString </h2>
+            <h2 > buildPayloadString </h2>
         
         <span class="method-types">
             <p>(<a href="../jwt/records/JwtPayload.html">JwtPayload</a> payload)</p>
@@ -784,9 +832,14 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         </span>
         
     </div>
-    <p><p>Build the payload string from the <code>JwtPayload</code> record.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Builds the payload string from the <code>jwt:JwtPayload</code> record.
+<pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -811,7 +864,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../jwt/errors.html#Error">Error</a></span>)</li>
-                <li><p>The payload string or an <code>Error</code> if building the string fails</p>
+                <li><p>The payload string or else a <code>jwt:Error</code> if building the string fails</p>
 </li>
             </ul>
         </div>
@@ -824,7 +877,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
              <a class="url-link" href="#decodeJwt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decodeJwt </h2>
+            <h2 > decodeJwt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> jwtToken)</p>
@@ -832,9 +885,14 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         </span>
         
     </div>
-    <p><p>Decode the given JWT string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Decodes the given JWT string.
+<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -845,7 +903,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
                         
                     </li>
                     <li>
-                        <p><p>JWT token that needs to be decoded</p>
+                        <p><p>JWT that needs to be decoded</p>
 </p>
                     </li>
                 </ul>
@@ -859,7 +917,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><a href="../jwt/records/JwtHeader.html">JwtHeader</a>, <a href="../jwt/records/JwtPayload.html">JwtPayload</a><span>]</span> | <a href="../jwt/errors.html#Error">Error</a></span>)</li>
-                <li><p>The JWT header and payload tuple or an <code>Error</code> if token decoding fails</p>
+                <li><p>The JWT header and payload tuple or else a <code>jwt:Error</code> if token decoding fails</p>
 </li>
             </ul>
         </div>
@@ -872,7 +930,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
              <a class="url-link" href="#issueJwt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> issueJwt </h2>
+            <h2 > issueJwt </h2>
         
         <span class="method-types">
             <p>(<a href="../jwt/records/JwtHeader.html">JwtHeader</a> header, <a href="../jwt/records/JwtPayload.html">JwtPayload</a> payload, <a href="../jwt/records/JwtKeyStoreConfig.html">JwtKeyStoreConfig</a>? config)</p>
@@ -880,10 +938,15 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         </span>
         
     </div>
-    <p><p>Issue a JWT token based on provided header and payload. JWT will be signed (JWS) if <code>keyStore</code> information is provided
-in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>JwtHeader</code> is not <code>NONE</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
+provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
+<pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -934,7 +997,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../jwt/errors.html#Error">Error</a></span>)</li>
-                <li><p>JWT token string or an <code>Error</code> if token validation fails</p>
+                <li><p>JWT as a <code>string</code> or else a <code>jwt:Error</code> if token validation fails</p>
 </li>
             </ul>
         </div>
@@ -947,7 +1010,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
              <a class="url-link" href="#validateJwt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> validateJwt </h2>
+            <h2 > validateJwt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> jwtToken, <a href="../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a> config)</p>
@@ -955,9 +1018,14 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         </span>
         
     </div>
-    <p><p>Validate the given JWT string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Validates the given JWT string.
+<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -968,7 +1036,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
                         
                     </li>
                     <li>
-                        <p><p>JWT token that needs to be validated</p>
+                        <p><p>JWT that needs to be validated</p>
 </p>
                     </li>
                 </ul>
@@ -995,7 +1063,7 @@ in the <code>JwtKeyStoreConfig</code> and the <code>alg</code> field of <code>Jw
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../jwt/records/JwtPayload.html">JwtPayload</a> | <a href="../jwt/errors.html#Error">Error</a></span>)</li>
-                <li><p>If the JWT token is valid, return the JWT payload. Else, return an <code>Error</code> if token validation fails.</p>
+                <li><p>JWT payload or else a <code>jwt:Error</code> if token validation fails</p>
 </li>
             </ul>
         </div>

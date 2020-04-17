@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -357,7 +361,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -642,11 +650,14 @@
                 
                     <a href="../../system/index.html">system</a>
                  :
-                <span class="objects">Process</span>
+                <span class="objects ">Process</span>
             </h1>
-            <p><p>This object contains information on a process being created from Ballerina.
-This is returned from the <code>exec</code> function in the <code>system</code> module.</p>
-</p>
+            <p>
+                
+                This object contains information on a process being created from Ballerina.
+This is returned from the <code>exec</code> function in the <code>system</code> module.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -658,82 +669,110 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                         <div class="method-list">
                             
                                 
-<a href="#waitForExit">
-    <div class="param-sum">
-        <div class="param-name">
-        waitForExit 
-        </div>
-        <div class="param-details"> <p>Waits for the process to finish it's work and exit.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="waitForExit">
+        <a href="#waitForExit">waitForExit </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Waits for the process to finish its work and exit.
+<pre><code class="language-ballerina"> int|error exitCode = process.waitForExit();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#exitCode">
-    <div class="param-sum">
-        <div class="param-name">
-        exitCode 
-        </div>
-        <div class="param-details"> <p>Returns the exit code of the process when it has finished the execution.
-Error if the process has not exited yet.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="exitCode">
+        <a href="#exitCode">exitCode </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the exit code of the process when it has finished the execution.
+Error if the process has not exited yet.
+<pre><code class="language-ballerina"> int|error exitCode = process.exitCode();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#destroy">
-    <div class="param-sum">
-        <div class="param-name">
-        destroy 
-        </div>
-        <div class="param-details"> <p>Destroys the process.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="destroy">
+        <a href="#destroy">destroy </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Destroys the process.
+<pre><code class="language-ballerina"> process.destroy();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#stdin">
-    <div class="param-sum">
-        <div class="param-name">
-        stdin 
-        </div>
-        <div class="param-details"> <p>Provides a channel (to write into), which is made available as the 'standard input' for the process.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="stdin">
+        <a href="#stdin">stdin </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Provides a channel (to write into), which is made available as the 'standard input' for the process.
+<pre><code class="language-ballerina"> io:WritableByteChannel output = process.stdin();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#stdout">
-    <div class="param-sum">
-        <div class="param-name">
-        stdout 
-        </div>
-        <div class="param-details"> <p>Provides a channel (to read from), which is made available as the 'standard output' of the process.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="stdout">
+        <a href="#stdout">stdout </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Provides a channel (to read from), which is made available as the 'standard output' of the process.
+<pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stdout();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#stderr">
-    <div class="param-sum">
-        <div class="param-name">
-        stderr 
-        </div>
-        <div class="param-details"> <p>Provides a channel (to read from), which is made available as the 'standard error' of the process.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="stderr">
+        <a href="#stderr">stderr </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Provides a channel (to read from), which is made available as the 'standard error' of the process.
+<pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stderr();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#pipe">
-    <div class="param-sum">
-        <div class="param-name">
-        pipe 
-        </div>
-        <div class="param-details"> <p>Pipes the standard output of the current process to the standard input of the given process.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="pipe">
+        <a href="#pipe">pipe </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Pipes the standard output of the current process to the standard input of the given process.
+<pre><code class="language-ballerina"> var x3out = x1.pipe(x2).pipe(x3).stdout();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -748,7 +787,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#waitForExit">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> waitForExit </h2>
+            <h2 > waitForExit </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -756,16 +795,21 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Waits for the process to finish it's work and exit.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Waits for the process to finish its work and exit.
+<pre><code class="language-ballerina"> int|error exitCode = process.waitForExit();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../system/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns the exit code for the process, or an <code>Error</code> if a failure occurs</p>
+                <li><p>Returns the exit code for the process or else an <code>Error</code> if a failure occurs</p>
 </li>
             </ul>
         </div>
@@ -778,7 +822,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#exitCode">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> exitCode </h2>
+            <h2 > exitCode </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -786,17 +830,22 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Returns the exit code of the process when it has finished the execution.
-Error if the process has not exited yet.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the exit code of the process when it has finished the execution.
+Error if the process has not exited yet.
+<pre><code class="language-ballerina"> int|error exitCode = process.exitCode();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../system/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns the exit code of the process, or an <code>Error</code> if the process hasn't exited yet</p>
+                <li><p>Returns the exit code of the process or else an <code>Error</code> if the process hasn't exited yet</p>
 </li>
             </ul>
         </div>
@@ -809,12 +858,17 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#destroy">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> destroy </h2>
+            <h2 > destroy </h2>
         
     </div>
-    <p><p>Destroys the process.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Destroys the process.
+<pre><code class="language-ballerina"> process.destroy();
+</code></pre>
+
+    </div>
+    
 
     
 </div>
@@ -824,7 +878,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#stdin">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> stdin </h2>
+            <h2 > stdin </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -832,16 +886,21 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Provides a channel (to write into), which is made available as the 'standard input' for the process.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Provides a channel (to write into), which is made available as the 'standard input' for the process.
+<pre><code class="language-ballerina"> io:WritableByteChannel output = process.stdin();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/WritableByteChannel.html">WritableByteChannel</a></span>)</li>
-                <li><p>The <code>io:WritableByteChannel</code> which represents the process's 'standard input'</p>
+                <li><p>The <code>io:WritableByteChannel</code>, which represents the process's 'standard input'</p>
 </li>
             </ul>
         </div>
@@ -854,7 +913,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#stdout">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> stdout </h2>
+            <h2 > stdout </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -862,16 +921,21 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Provides a channel (to read from), which is made available as the 'standard output' of the process.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Provides a channel (to read from), which is made available as the 'standard output' of the process.
+<pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stdout();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a></span>)</li>
-                <li><p>The <code>io:ReadableByteChannel</code> which represents the process's 'standard output'</p>
+                <li><p>The <code>io:ReadableByteChannel</code>, which represents the process's 'standard output'</p>
 </li>
             </ul>
         </div>
@@ -884,7 +948,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#stderr">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> stderr </h2>
+            <h2 > stderr </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -892,16 +956,21 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Provides a channel (to read from), which is made available as the 'standard error' of the process.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Provides a channel (to read from), which is made available as the 'standard error' of the process.
+<pre><code class="language-ballerina"> io:ReadableByteChannel input = process.stderr();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a></span>)</li>
-                <li><p>The <code>io:ReadableByteChannel</code> which represents the process's 'standard error'</p>
+                <li><p>The <code>io:ReadableByteChannel</code>, which represents the process's 'standard error'</p>
 </li>
             </ul>
         </div>
@@ -914,7 +983,7 @@ Error if the process has not exited yet.</p>
              <a class="url-link" href="#pipe">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pipe </h2>
+            <h2 > pipe </h2>
         
         <span class="method-types">
             <p>(<a href="../../system/objects/Process.html">Process</a> process)</p>
@@ -922,9 +991,14 @@ Error if the process has not exited yet.</p>
         </span>
         
     </div>
-    <p><p>Pipes the standard output of the current process to the standard input of the given process.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pipes the standard output of the current process to the standard input of the given process.
+<pre><code class="language-ballerina"> var x3out = x1.pipe(x2).pipe(x3).stdout();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -949,7 +1023,7 @@ Error if the process has not exited yet.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../system/objects/Process.html">Process</a></span>)</li>
-                <li><p>The process that is passed in, which is used to help chain pipe operations</p>
+                <li><p>The process that is passed to be used to help the chain pipe operations</p>
 </li>
             </ul>
         </div>

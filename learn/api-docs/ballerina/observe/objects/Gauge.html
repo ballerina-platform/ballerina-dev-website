@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -242,6 +242,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -353,7 +357,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -523,6 +527,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -626,11 +634,14 @@
                 
                     <a href="../../observe/index.html">observe</a>
                  :
-                <span class="objects">Gauge</span>
+                <span class="objects ">Gauge</span>
             </h1>
-            <p><p>This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
-during the usage.</p>
-</p>
+            <p>
+                
+                This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
+during the usage.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -694,81 +705,95 @@ calculation.</p>
                         <div class="method-list">
                             
                                 
-<a href="#register">
-    <div class="param-sum">
-        <div class="param-name">
-        register 
-        </div>
-        <div class="param-details"> <p>Register the gauge metric instance with the Metric Registry.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="register">
+        <a href="#register">register </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Register the gauge metric instance with the Metric Registry.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#unregister">
-    <div class="param-sum">
-        <div class="param-name">
-        unregister 
-        </div>
-        <div class="param-details"> <p>Unregister the counter metric instance with the Metric Registry.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="unregister">
+        <a href="#unregister">unregister </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Unregister the counter metric instance with the Metric Registry.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#increment">
-    <div class="param-sum">
-        <div class="param-name">
-        increment 
-        </div>
-        <div class="param-details"> <p>Increment the gauge's value by an amount.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="increment">
+        <a href="#increment">increment </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Increment the gauge's value by an amount.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#decrement">
-    <div class="param-sum">
-        <div class="param-name">
-        decrement 
-        </div>
-        <div class="param-details"> <p>Decrement the gauge's value by an amount.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="decrement">
+        <a href="#decrement">decrement </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Decrement the gauge's value by an amount.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#setValue">
-    <div class="param-sum">
-        <div class="param-name">
-        setValue 
-        </div>
-        <div class="param-details"> <p>Sets the instantaneous value for gauge.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="setValue">
+        <a href="#setValue">setValue </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sets the instantaneous value for gauge.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getValue">
-    <div class="param-sum">
-        <div class="param-name">
-        getValue 
-        </div>
-        <div class="param-details"> <p>Retrieves the gauge's current value.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getValue">
+        <a href="#getValue">getValue </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the gauge's current value.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getSnapshot">
-    <div class="param-sum">
-        <div class="param-name">
-        getSnapshot 
-        </div>
-        <div class="param-details"> <p>Retrieves statistics snapshots based on the statistics configs of the gauge.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getSnapshot">
+        <a href="#getSnapshot">getSnapshot </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves statistics snapshots based on the statistics configs of the gauge.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -780,49 +805,69 @@ calculation.</p>
         
     <div class="params-listing">
         <ul>
-            <li> name<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >name</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Name of the counter metric.</p>
-</p>
+                <p>
+                    
+                    <p>Name of the counter metric.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> description<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >description</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Description of the counter metric.</p>
-</p>
+                <p>
+                    
+                    <p>Description of the counter metric.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> metricTags<span class="type">  <span class="builtin-type">map</span></span>
+            <li> 
+                <span >metricTags</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
                 
             </li>
             <li>
-                <p><p>Tags associated with the counter metric.</p>
-</p>
+                <p>
+                    
+                    <p>Tags associated with the counter metric.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> statisticConfigs<span class="type">  <span class="array-type"><a href="../../observe/records/StatisticConfig.html">StatisticConfig</a>[]</span></span>
+            <li> 
+                <span >statisticConfigs</span>
+                <span class="type">  <span class="array-type"><a href="../../observe/records/StatisticConfig.html">StatisticConfig</a>[]</span></span>
                 
             </li>
             <li>
-                <p><p>Array of StatisticConfig objects which defines about the statistical calculation
+                <p>
+                    
+                    <p>Array of StatisticConfig objects which defines about the statistical calculation
 of the gauge during its usage.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -884,7 +929,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#register">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> register </h2>
+            <h2 > register </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -892,9 +937,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Register the gauge metric instance with the Metric Registry.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Register the gauge metric instance with the Metric Registry.
+
+    </div>
+    
 
     
         
@@ -915,12 +963,15 @@ but different parameters or in a different kind.</p>
              <a class="url-link" href="#unregister">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> unregister </h2>
+            <h2 > unregister </h2>
         
     </div>
-    <p><p>Unregister the counter metric instance with the Metric Registry.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Unregister the counter metric instance with the Metric Registry.
+
+    </div>
+    
 
     
 </div>
@@ -930,12 +981,15 @@ but different parameters or in a different kind.</p>
              <a class="url-link" href="#increment">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> increment </h2>
+            <h2 > increment </h2>
         
     </div>
-    <p><p>Increment the gauge's value by an amount.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Increment the gauge's value by an amount.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -964,12 +1018,15 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
              <a class="url-link" href="#decrement">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> decrement </h2>
+            <h2 > decrement </h2>
         
     </div>
-    <p><p>Decrement the gauge's value by an amount.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Decrement the gauge's value by an amount.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -998,12 +1055,15 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
              <a class="url-link" href="#setValue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> setValue </h2>
+            <h2 > setValue </h2>
         
     </div>
-    <p><p>Sets the instantaneous value for gauge.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the instantaneous value for gauge.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1031,7 +1091,7 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
              <a class="url-link" href="#getValue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getValue </h2>
+            <h2 > getValue </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1039,9 +1099,12 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
         </span>
         
     </div>
-    <p><p>Retrieves the gauge's current value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the gauge's current value.
+
+    </div>
+    
 
     
         
@@ -1061,7 +1124,7 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
              <a class="url-link" href="#getSnapshot">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getSnapshot </h2>
+            <h2 > getSnapshot </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1069,9 +1132,12 @@ The amount is defaulted as 1.0 and will be used if there is no amount passed in.
         </span>
         
     </div>
-    <p><p>Retrieves statistics snapshots based on the statistics configs of the gauge.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves statistics snapshots based on the statistics configs of the gauge.
+
+    </div>
+    
 
     
         

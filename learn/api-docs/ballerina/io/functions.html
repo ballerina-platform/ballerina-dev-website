@@ -100,7 +100,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +282,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -421,7 +425,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +607,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -711,81 +719,144 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#createReadableChannel">createReadableChannel</a></td>
-                                <td width="70%"><p>Creates an in-memory channel which will reference stream of bytes.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#createReadableChannel">createReadableChannel</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Creates an in-memory channel, which will be a reference stream of bytes.
+<pre><code class="language-ballerina"> var byteChannel = io:createReadableChannel(content);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#openReadableCsvFile">openReadableCsvFile</a></td>
-                                <td width="70%"><p>Retrieves a readable CSV channel from a give file path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#openReadableCsvFile">openReadableCsvFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves a readable CSV channel from a given file path.
+<pre><code class="language-ballerina"> io:ReadableCSVChannel rCsvChannel = check io:openReadableCsvFile(srcFileName);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#openReadableFile">openReadableFile</a></td>
-                                <td width="70%"><p>Retrieves a ReadableByteChannel from a given file path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#openReadableFile">openReadableFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves a <code>ReadableByteChannel</code> from a given file path.
+<pre><code class="language-ballerina"> io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#openWritableCsvFile">openWritableCsvFile</a></td>
-                                <td width="70%"><p>Retrieves a writable CSV channel from a give file path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#openWritableCsvFile">openWritableCsvFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves a writable CSV channel from a given file path.
+<pre><code class="language-ballerina"> io:WritableCSVChannel wCsvChannel = check io:openWritableCsvFile(srcFileName);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#openWritableFile">openWritableFile</a></td>
-                                <td width="70%"><p>Retrieves a WritableByteChannel from a given file path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#openWritableFile">openWritableFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves a <code>WritableByteChannel</code> from a given file path.
+<pre><code class="language-ballerina"> io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#print">print</a></td>
-                                <td width="70%"><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#print">print</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.
+<pre><code class="language-ballerina">io:print(&quot;Start processing the CSV file from &quot;, srcFileName);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#println">println</a></td>
-                                <td width="70%"><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#println">println</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.
+<pre><code class="language-ballerina">io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#readln">readln</a></td>
-                                <td width="70%"><p>Returns the input read from STDIN.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#readln">readln</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the input read from the STDIN.
+<pre><code class="language-ballerina"> string choice = io:readln(&quot;Enter choice 1 - 5: &quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#sprintf">sprintf</a></td>
-                                <td width="70%"><p>Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.</p>
-<p>b - boolean</p>
-<p>B - boolean (ALL_CAPS)</p>
-<p>d - int</p>
-<p>f - float</p>
-<p>x - hex</p>
-<p>X - HEX (ALL_CAPS)</p>
-<p>s - string (This specifier is applicable for any of the supported types in Ballerina.
-These values will be converted to their string representation.)</p>
-</td>
+                                <td width="30%"><a class="functions " href="#sprintf">sprintf</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.
+b - boolean
+B - boolean (ALL_CAPS)
+d - int
+f - float
+x - hex
+X - HEX (ALL_CAPS)
+s - string (This specifier is applicable for any of the supported types in Ballerina.
+These values will be converted to their string representation.)
+<pre><code class="language-ballerina"> string s8 = io:sprintf(&quot;%s scored %d for %s and has an average of %.2f.&quot;, name, marks, subjects[0], average);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -799,7 +870,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#createReadableChannel">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> createReadableChannel </h2>
+            <h2 > createReadableChannel </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content)</p>
@@ -807,9 +878,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Creates an in-memory channel which will reference stream of bytes.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Creates an in-memory channel, which will be a reference stream of bytes.
+<pre><code class="language-ballerina"> var byteChannel = io:createReadableChannel(content);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -820,7 +896,7 @@ These values will be converted to their string representation.)</p>
                         
                     </li>
                     <li>
-                        <p><p>Content which should be exposed as channel</p>
+                        <p><p>Content, which should be exposed as a channel</p>
 </p>
                     </li>
                 </ul>
@@ -834,7 +910,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
-                <li><p>ByteChannel representation to read the memory content or <code>Error</code> if any error occurred</p>
+                <li><p>The <code>ByteChannel</code> representation to read the memory content or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -847,7 +923,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#openReadableCsvFile">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> openReadableCsvFile </h2>
+            <h2 > openReadableCsvFile </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../io/types.html#Separator">Separator</a> fieldSeparator, <span class="builtin-type">string</span> charset, <span class="builtin-type">int</span> skipHeaders)</p>
@@ -855,9 +931,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Retrieves a readable CSV channel from a give file path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves a readable CSV channel from a given file path.
+<pre><code class="language-ballerina"> io:ReadableCSVChannel rCsvChannel = check io:openReadableCsvFile(srcFileName);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -868,7 +949,7 @@ These values will be converted to their string representation.)</p>
                         
                     </li>
                     <li>
-                        <p><p>File path which describes the location of the CSV</p>
+                        <p><p>File path, which describes the location of the CSV</p>
 </p>
                     </li>
                 </ul>
@@ -881,7 +962,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default ,)</span>
                     </li>
                     <li>
-                        <p><p>CSV record separator (i.e comma or tab)</p>
+                        <p><p>CSV record separator (i.e., comma or tab)</p>
 </p>
                     </li>
                 </ul>
@@ -894,7 +975,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default UTF-8)</span>
                     </li>
                     <li>
-                        <p><p>Encoding characters in the file represents</p>
+                        <p><p>Representation of the encoding characters in the file</p>
 </p>
                     </li>
                 </ul>
@@ -907,7 +988,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default 0)</span>
                     </li>
                     <li>
-                        <p><p>Number of headers which should be skipped</p>
+                        <p><p>Number of headers, which should be skipped</p>
 </p>
                     </li>
                 </ul>
@@ -921,7 +1002,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableCSVChannel.html">ReadableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
-                <li><p>ReadableCSVChannel which could be used to iterate through the CSV records</p>
+                <li><p>The <code>ReadableCSVChannel</code>, which could be used to iterate through the CSV records or else an <code>io:Error</code> if any error occurred.</p>
 </li>
             </ul>
         </div>
@@ -934,7 +1015,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#openReadableFile">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> openReadableFile </h2>
+            <h2 > openReadableFile </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -942,9 +1023,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Retrieves a ReadableByteChannel from a given file path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves a <code>ReadableByteChannel</code> from a given file path.
+<pre><code class="language-ballerina"> io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -969,7 +1055,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
-                <li><p>ByteChannel representation of the file resource or <code>Error</code> if any error occurred</p>
+                <li><p>The <code>ByteChannel</code> representation of the file resource or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -982,7 +1068,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#openWritableCsvFile">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> openWritableCsvFile </h2>
+            <h2 > openWritableCsvFile </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../io/types.html#Separator">Separator</a> fieldSeparator, <span class="builtin-type">string</span> charset, <span class="builtin-type">int</span> skipHeaders)</p>
@@ -990,9 +1076,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Retrieves a writable CSV channel from a give file path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves a writable CSV channel from a given file path.
+<pre><code class="language-ballerina"> io:WritableCSVChannel wCsvChannel = check io:openWritableCsvFile(srcFileName);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1003,7 +1094,7 @@ These values will be converted to their string representation.)</p>
                         
                     </li>
                     <li>
-                        <p><p>File path which describes the location of the CSV</p>
+                        <p><p>File path, which describes the location of the CSV</p>
 </p>
                     </li>
                 </ul>
@@ -1016,7 +1107,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default ,)</span>
                     </li>
                     <li>
-                        <p><p>CSV record separator (i.e comma or tab)</p>
+                        <p><p>CSV record separator (i.e., comma or tab)</p>
 </p>
                     </li>
                 </ul>
@@ -1029,7 +1120,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default UTF-8)</span>
                     </li>
                     <li>
-                        <p><p>Encoding characters in the file represents</p>
+                        <p><p>Representation of the encoding characters in the file</p>
 </p>
                     </li>
                 </ul>
@@ -1042,7 +1133,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default 0)</span>
                     </li>
                     <li>
-                        <p><p>Number of headers which should be skipped</p>
+                        <p><p>Number of headers, which should be skipped</p>
 </p>
                     </li>
                 </ul>
@@ -1056,7 +1147,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/WritableCSVChannel.html">WritableCSVChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
-                <li><p>WritableCSVChannel which could be used to write CSV records or <code>Error</code> if any error occurred</p>
+                <li><p>The <code>WritableCSVChannel</code>, which could be used to write the CSV records or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1069,7 +1160,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#openWritableFile">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> openWritableFile </h2>
+            <h2 > openWritableFile </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">boolean</span> append)</p>
@@ -1077,9 +1168,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Retrieves a WritableByteChannel from a given file path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves a <code>WritableByteChannel</code> from a given file path.
+<pre><code class="language-ballerina"> io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1103,7 +1199,7 @@ These values will be converted to their string representation.)</p>
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>Append to end of file.</p>
+                        <p><p>Whether to append to the end of file</p>
 </p>
                     </li>
                 </ul>
@@ -1117,7 +1213,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../io/objects/WritableByteChannel.html">WritableByteChannel</a> | <a href="../io/types.html#Error">Error</a></span>)</li>
-                <li><p>ByteChannel representation of the file resource or <code>Error</code> if any error occurred</p>
+                <li><p>The <code>ByteChannel</code> representation of the file resource or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1130,12 +1226,17 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#print">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> print </h2>
+            <h2 > print </h2>
         
     </div>
-    <p><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.
+<pre><code class="language-ballerina">io:print(&quot;Start processing the CSV file from &quot;, srcFileName);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1163,12 +1264,17 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#println">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> println </h2>
+            <h2 > println </h2>
         
     </div>
-    <p><p>Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.
+<pre><code class="language-ballerina">io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1196,7 +1302,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#readln">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> readln </h2>
+            <h2 > readln </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">any</span> a)</p>
@@ -1204,9 +1310,14 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Returns the input read from STDIN.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the input read from the STDIN.
+<pre><code class="language-ballerina"> string choice = io:readln(&quot;Enter choice 1 - 5: &quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1231,7 +1342,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Input read from STDIN</p>
+                <li><p>Input read from the STDIN</p>
 </li>
             </ul>
         </div>
@@ -1244,7 +1355,7 @@ These values will be converted to their string representation.)</p>
              <a class="url-link" href="#sprintf">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> sprintf </h2>
+            <h2 > sprintf </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> format, <span class="array-type"><span class="builtin-type">any</span> | <span class="builtin-type">error</span>[]</span> args)</p>
@@ -1252,17 +1363,22 @@ These values will be converted to their string representation.)</p>
         </span>
         
     </div>
-    <p><p>Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.</p>
-<p>b - boolean</p>
-<p>B - boolean (ALL_CAPS)</p>
-<p>d - int</p>
-<p>f - float</p>
-<p>x - hex</p>
-<p>X - HEX (ALL_CAPS)</p>
-<p>s - string (This specifier is applicable for any of the supported types in Ballerina.
-These values will be converted to their string representation.)</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.
+b - boolean
+B - boolean (ALL_CAPS)
+d - int
+f - float
+x - hex
+X - HEX (ALL_CAPS)
+s - string (This specifier is applicable for any of the supported types in Ballerina.
+These values will be converted to their string representation.)
+<pre><code class="language-ballerina"> string s8 = io:sprintf(&quot;%s scored %d for %s and has an average of %.2f.&quot;, name, marks, subjects[0], average);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1286,7 +1402,7 @@ These values will be converted to their string representation.)</p>
                         
                     </li>
                     <li>
-                        <p><p>Arguments referenced by the format specifiers in the format string.</p>
+                        <p><p>Arguments referred by the format specifiers in the format string</p>
 </p>
                     </li>
                 </ul>
@@ -1300,7 +1416,7 @@ These values will be converted to their string representation.)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Formatted string</p>
+                <li><p>The formatted string</p>
 </li>
             </ul>
         </div>

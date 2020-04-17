@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -665,10 +673,14 @@
                 
                     <a href="../../task/index.html">task</a>
                 
-                 : <span class="records">AppointmentConfiguration</span>
+                 : <span class="records ">AppointmentConfiguration</span>
             </h1>
-            <p>Configurations related to an Appointment
-</p>
+            <p>
+                
+                Configurations related to an appointment, which are used to define the behavior of an appointment when initializing
+the <code>task:Listener</code>.
+
+            </p>
             <div class="constants">
                 
                     
@@ -677,24 +689,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> appointmentDetails<span class="type">  <span class="builtin-type">string</span> | <a href="../../task/records/AppointmentData.html">AppointmentData</a></span>
+            <li> 
+                <span >appointmentDetails</span>
+                <span class="type">  <span class="builtin-type">string</span> | <a href="../../task/records/AppointmentData.html">AppointmentData</a></span>
                 
             </li>
             <li>
-                <p><p>A CronExpression (as a string) or <code>task:AppointmentDetails</code> for scheduling an Appointment.</p>
-</p>
+                <p>
+                    
+                    <p>A CRON expression as a string or <code>task:AppointmentData</code> for scheduling an appointment</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noOfRecurrences<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >noOfRecurrences</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Number of times to trigger the task, after which the task stops running.</p>
-</p>
+                <p>
+                    
+                    <p>Number of times to trigger the task after which the task stops running</p>
+
+                </p>
             </li>
         </ul>
     </div>

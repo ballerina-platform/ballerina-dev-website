@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -361,7 +365,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -642,10 +650,51 @@
                 
                     <a href="../../oauth2/index.html">oauth2</a>
                  :
-                <span class="objects">OutboundOAuth2Provider</span>
+                <span class="objects ">OutboundOAuth2Provider</span>
             </h1>
-            <p><p>Represents outbound OAuth2 provider.</p>
-</p>
+            <p>
+                
+                Represents the outbound OAuth2 provider, which generates OAtuh2 tokens. This supports the client credentials grant type,
+password grant type, and the direct token mode, which sends the access token directly.
+The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
+<ol>
+<li>Client Credentials Grant Type</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
+     tokenUrl: &quot;https://localhost:9196/oauth2/token&quot;,
+     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+     clientSecret: &quot;9205371918321623741&quot;,
+     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+ });
+</code></pre>
+<ol start="2">
+<li>Password Grant Type</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider5 = new({
+     tokenUrl: &quot;https://localhost:9196/oauth2/token/authorize/header&quot;,
+     username: &quot;johndoe&quot;,
+     password: &quot;A3ddj3w&quot;,
+     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+     clientSecret: &quot;9205371918321623741&quot;,
+     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+ });
+</code></pre>
+<ol start="3">
+<li>Direct Token Mode</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider13 = new({
+     accessToken: &quot;2YotnFZFEjr1zCsicMWpAA&quot;,
+     refreshConfig: {
+         refreshUrl: &quot;https://localhost:9196/oauth2/token/refresh&quot;,
+         refreshToken: &quot;XlfBs91yquexJqDaKEMzVg==&quot;,
+         clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+         clientSecret: &quot;9205371918321623741&quot;,
+         scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+     }
+ });
+</code></pre>
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -659,7 +708,7 @@
             <ul>
                 <li> <b>oauth2ProviderConfig</b><span class="type">  <span class="builtin-type">GrantTypeConfig?</span></span> ()</li>
                 <li>
-                    <p>Outbound OAuth2 authentication configurations</p>
+                    <p>Outbound OAuth2 provider configurations</p>
 
                 </li>
             </ul>
@@ -675,26 +724,34 @@
                         <div class="method-list">
                             
                                 
-<a href="#generateToken">
-    <div class="param-sum">
-        <div class="param-name">
-        generateToken 
-        </div>
-        <div class="param-details"> <p>Generate token for OAuth2 authentication.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="generateToken">
+        <a href="#generateToken">generateToken </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Generate a token for the OAuth2 authentication.
+<pre><code class="language-ballerina"> string:auth:Error token = outboundOAuth2Provider.generateToken();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#inspect">
-    <div class="param-sum">
-        <div class="param-name">
-        inspect 
-        </div>
-        <div class="param-details"> <p>Inspect the incoming data and generate the token for OAuth2 authentication.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="inspect">
+        <a href="#inspect">inspect </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Inspects the incoming data and generates the token for the OAuth2 authentication.
+<pre><code class="language-ballerina"> string:auth:Error? token = outboundOAuth2Provider.inspect(data);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -706,24 +763,34 @@
         
     <div class="params-listing">
         <ul>
-            <li> oauth2ProviderConfig<span class="type">  <span class="builtin-type">GrantTypeConfig?</span></span>
+            <li> 
+                <span >oauth2ProviderConfig</span>
+                <span class="type">  <span class="builtin-type">GrantTypeConfig?</span></span>
                 
             </li>
             <li>
-                <p><p>Outbound OAuth2 provider configurations</p>
-</p>
+                <p>
+                    
+                    <p>Outbound OAuth2 provider configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> oauth2CacheEntry<span class="type">  <a href="../../oauth2/records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a></span>
+            <li> 
+                <span >oauth2CacheEntry</span>
+                <span class="type">  <a href="../../oauth2/records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a></span>
                 
             </li>
             <li>
-                <p><p>Outbound OAuth2 cache entry</p>
-</p>
+                <p>
+                    
+                    <p>Outbound OAuth2 cache entry</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -785,7 +852,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#generateToken">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> generateToken </h2>
+            <h2 > generateToken </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -793,16 +860,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Generate token for OAuth2 authentication.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Generate a token for the OAuth2 authentication.
+<pre><code class="language-ballerina"> string:auth:Error token = outboundOAuth2Provider.generateToken();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p>Generated token or <code>auth:Error</code> if an error occurred</p>
+                <li><p>Generated <code>string</code> token or else an <code>auth:Error</code> if an error occurred</p>
 </li>
             </ul>
         </div>
@@ -815,7 +887,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#inspect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> inspect </h2>
+            <h2 > inspect </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> data)</p>
@@ -823,9 +895,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Inspect the incoming data and generate the token for OAuth2 authentication.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Inspects the incoming data and generates the token for the OAuth2 authentication.
+<pre><code class="language-ballerina"> string:auth:Error? token = outboundOAuth2Provider.inspect(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -836,7 +913,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Map of data which is extracted from the HTTP response</p>
+                        <p><p>Map of data, which is extracted from the HTTP response</p>
 </p>
                     </li>
                 </ul>
@@ -850,7 +927,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>String token, or <code>auth:Error</code> occurred when generating token or <code>()</code> if nothing to be returned</p>
+                <li><p>Generated <code>string</code> token, an <code>auth:Error</code> occurred while generating the token, or else
+<code>()</code> if nothing is to be returned</p>
 </li>
             </ul>
         </div>

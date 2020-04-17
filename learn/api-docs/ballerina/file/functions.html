@@ -104,7 +104,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -433,7 +437,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -727,86 +735,157 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#copy">copy</a></td>
-                                <td width="70%"><p>Copy file/directory in old path to new path.
-If new path already exists, this replaces the file.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#copy">copy</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.
+<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#createDir">createDir</a></td>
-                                <td width="70%"><p>Creates a new directory with the specified file name.
-If parentDirs flag is true, Creates a directory in specified path with any necessary parents.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#createDir">createDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
+<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#createFile">createFile</a></td>
-                                <td width="70%"><p>Creates a file in specified file path.
-Truncates if file already exists in the given path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#createFile">createFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Creates a file in the specified file path.
+Truncates if the file already exists in the given path.
+<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#exists">exists</a></td>
-                                <td width="70%"><p>Reports whether file or directory exists for the given the path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#exists">exists</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reports whether the file or directory exists in the given the path.
+<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getCurrentDirectory">getCurrentDirectory</a></td>
-                                <td width="70%"><p>Returns the current working directory.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getCurrentDirectory">getCurrentDirectory</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the current working directory.
+<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getFileInfo">getFileInfo</a></td>
-                                <td width="70%"><p>Returns metadata information of the file specified in file path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getFileInfo">getFileInfo</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the metadata information of the file specified in the file path.
+<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#readDir">readDir</a></td>
-                                <td width="70%"><p>Reads the directory and returns a list of files and directories # inside the specified directory</p>
-</td>
+                                <td width="30%"><a class="functions " href="#readDir">readDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reads the directory and returns a list of files and directories
+inside the specified directory.
+<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#remove">remove</a></td>
-                                <td width="70%"><p>Removes the specified file or directory.
-If recursive flag is true, Removes the path and any children it contains.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#remove">remove</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.
+<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#rename">rename</a></td>
-                                <td width="70%"><p>Renames(Moves) old path to new path.
-If new path already exists and it is not a directory, this replaces the file.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#rename">rename</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.
+<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#tempDir">tempDir</a></td>
-                                <td width="70%"><p>Returns the default directory to use for temporary files.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#tempDir">tempDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the default directory to use for temporary files.
+<pre><code class="language-ballerina"> string results = file:tempDir();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -820,7 +899,7 @@ If new path already exists and it is not a directory, this replaces the file.</p
              <a class="url-link" href="#copy">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> copy </h2>
+            <h2 > copy </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> sourcePath, <span class="builtin-type">string</span> destinationPath, <span class="builtin-type">boolean</span> replaceExisting)</p>
@@ -828,10 +907,15 @@ If new path already exists and it is not a directory, this replaces the file.</p
         </span>
         
     </div>
-    <p><p>Copy file/directory in old path to new path.
-If new path already exists, this replaces the file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.
+<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -842,7 +926,7 @@ If new path already exists, this replaces the file.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of old file path.</p>
+                        <p><p>String value of the old file path</p>
 </p>
                     </li>
                 </ul>
@@ -855,7 +939,7 @@ If new path already exists, this replaces the file.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of new file path.</p>
+                        <p><p>String value of the new file path</p>
 </p>
                     </li>
                 </ul>
@@ -868,7 +952,7 @@ If new path already exists, this replaces the file.</p>
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>Flag to allow replace if file already exists in destination path.</p>
+                        <p><p>Flag to replace if the file already exists in the destination path</p>
 </p>
                     </li>
                 </ul>
@@ -882,7 +966,7 @@ If new path already exists, this replaces the file.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an <code>Error</code> if failed to rename.</p>
+                <li><p>An <code>file:Error</code> if failed to rename</p>
 </li>
             </ul>
         </div>
@@ -895,7 +979,7 @@ If new path already exists, this replaces the file.</p>
              <a class="url-link" href="#createDir">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> createDir </h2>
+            <h2 > createDir </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> dir, <span class="builtin-type">boolean</span> parentDirs)</p>
@@ -903,10 +987,15 @@ If new path already exists, this replaces the file.</p>
         </span>
         
     </div>
-    <p><p>Creates a new directory with the specified file name.
-If parentDirs flag is true, Creates a directory in specified path with any necessary parents.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
+<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -917,7 +1006,7 @@ If parentDirs flag is true, Creates a directory in specified path with any neces
                         
                     </li>
                     <li>
-                        <p><p>directory name.</p>
+                        <p><p>Directory name</p>
 </p>
                     </li>
                 </ul>
@@ -930,7 +1019,7 @@ If parentDirs flag is true, Creates a directory in specified path with any neces
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>Indicates whether the <code>createDir</code> should create non-existing parent directories.</p>
+                        <p><p>Indicates whether the <code>createDir</code> should create non-existing parent directories</p>
 </p>
                     </li>
                 </ul>
@@ -944,7 +1033,7 @@ If parentDirs flag is true, Creates a directory in specified path with any neces
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns absolute path value of the created directory or an <code>Error</code> if failed</p>
+                <li><p>Absolute path value of the created directory or else an <code>file:Error</code> if failed</p>
 </li>
             </ul>
         </div>
@@ -957,7 +1046,7 @@ If parentDirs flag is true, Creates a directory in specified path with any neces
              <a class="url-link" href="#createFile">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> createFile </h2>
+            <h2 > createFile </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -965,10 +1054,15 @@ If parentDirs flag is true, Creates a directory in specified path with any neces
         </span>
         
     </div>
-    <p><p>Creates a file in specified file path.
-Truncates if file already exists in the given path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Creates a file in the specified file path.
+Truncates if the file already exists in the given path.
+<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -979,7 +1073,7 @@ Truncates if file already exists in the given path.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -993,7 +1087,7 @@ Truncates if file already exists in the given path.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns absolute path value of the created file or an <code>Error</code> if failed</p>
+                <li><p>Absolute path value of the created file or else an <code>file:Error</code> if failed</p>
 </li>
             </ul>
         </div>
@@ -1006,7 +1100,7 @@ Truncates if file already exists in the given path.</p>
              <a class="url-link" href="#exists">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> exists </h2>
+            <h2 > exists </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1014,9 +1108,14 @@ Truncates if file already exists in the given path.</p>
         </span>
         
     </div>
-    <p><p>Reports whether file or directory exists for the given the path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reports whether the file or directory exists in the given the path.
+<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1027,7 +1126,7 @@ Truncates if file already exists in the given path.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1041,7 +1140,7 @@ Truncates if file already exists in the given path.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>True if path is absolute, else false</p>
+                <li><p>True if the path is absolute or else false</p>
 </li>
             </ul>
         </div>
@@ -1054,7 +1153,7 @@ Truncates if file already exists in the given path.</p>
              <a class="url-link" href="#getCurrentDirectory">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getCurrentDirectory </h2>
+            <h2 > getCurrentDirectory </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1062,16 +1161,21 @@ Truncates if file already exists in the given path.</p>
         </span>
         
     </div>
-    <p><p>Returns the current working directory.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the current working directory.
+<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Current working directory or an empty string if the current working directory cannot be determined</p>
+                <li><p>Current working directory or else an empty string if the current working directory cannot be determined</p>
 </li>
             </ul>
         </div>
@@ -1084,7 +1188,7 @@ Truncates if file already exists in the given path.</p>
              <a class="url-link" href="#getFileInfo">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getFileInfo </h2>
+            <h2 > getFileInfo </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1092,9 +1196,14 @@ Truncates if file already exists in the given path.</p>
         </span>
         
     </div>
-    <p><p>Returns metadata information of the file specified in file path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the metadata information of the file specified in the file path.
+<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1119,7 +1228,7 @@ Truncates if file already exists in the given path.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/objects/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns FileInfo instance with file metadata or an <code>Error</code></p>
+                <li><p>The <code>FileInfo</code> instance with the file metadata or else an <code>file:Error</code></p>
 </li>
             </ul>
         </div>
@@ -1132,7 +1241,7 @@ Truncates if file already exists in the given path.</p>
              <a class="url-link" href="#readDir">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> readDir </h2>
+            <h2 > readDir </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">int</span> maxDepth)</p>
@@ -1140,9 +1249,15 @@ Truncates if file already exists in the given path.</p>
         </span>
         
     </div>
-    <p><p>Reads the directory and returns a list of files and directories # inside the specified directory</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads the directory and returns a list of files and directories
+inside the specified directory.
+<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1153,7 +1268,7 @@ Truncates if file already exists in the given path.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of directory path.</p>
+                        <p><p>String value of the directory path.</p>
 </p>
                     </li>
                 </ul>
@@ -1166,7 +1281,7 @@ Truncates if file already exists in the given path.</p>
                         <span class="default"> (default -1)</span>
                     </li>
                     <li>
-                        <p><p>The maximum number of directory levels to visit. -1 to indicate that all levels should be visited.</p>
+                        <p><p>The maximum number of directory levels to visit. -1 to indicate that all levels should be visited</p>
 </p>
                     </li>
                 </ul>
@@ -1180,7 +1295,7 @@ Truncates if file already exists in the given path.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../file/objects/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns FileInfo array or an <code>Error</code> if there is an error while changing the mode.</p>
+                <li><p>The <code>FileInfo</code> array or else an <code>file:Error</code> if there is an error while changing the mode.</p>
 </li>
             </ul>
         </div>
@@ -1193,7 +1308,7 @@ Truncates if file already exists in the given path.</p>
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> remove </h2>
+            <h2 > remove </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">boolean</span> recursive)</p>
@@ -1201,10 +1316,15 @@ Truncates if file already exists in the given path.</p>
         </span>
         
     </div>
-    <p><p>Removes the specified file or directory.
-If recursive flag is true, Removes the path and any children it contains.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.
+<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1215,7 +1335,7 @@ If recursive flag is true, Removes the path and any children it contains.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file/directory path.</p>
+                        <p><p>String value of the file/directory path</p>
 </p>
                     </li>
                 </ul>
@@ -1228,7 +1348,7 @@ If recursive flag is true, Removes the path and any children it contains.</p>
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>Indicates whether the <code>remove</code> should recursively remove all the file inside the given directory.</p>
+                        <p><p>Indicates whether the <code>remove</code> should recursively remove all the files inside the given directory</p>
 </p>
                     </li>
                 </ul>
@@ -1242,7 +1362,7 @@ If recursive flag is true, Removes the path and any children it contains.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an <code>Error</code> if failed to remove.</p>
+                <li><p>An <code>file:Error</code> if failed to remove</p>
 </li>
             </ul>
         </div>
@@ -1255,7 +1375,7 @@ If recursive flag is true, Removes the path and any children it contains.</p>
              <a class="url-link" href="#rename">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> rename </h2>
+            <h2 > rename </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> oldPath, <span class="builtin-type">string</span> newPath)</p>
@@ -1263,10 +1383,15 @@ If recursive flag is true, Removes the path and any children it contains.</p>
         </span>
         
     </div>
-    <p><p>Renames(Moves) old path to new path.
-If new path already exists and it is not a directory, this replaces the file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.
+<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1277,7 +1402,7 @@ If new path already exists and it is not a directory, this replaces the file.</p
                         
                     </li>
                     <li>
-                        <p><p>String value of old file path.</p>
+                        <p><p>String value of the old file path</p>
 </p>
                     </li>
                 </ul>
@@ -1290,7 +1415,7 @@ If new path already exists and it is not a directory, this replaces the file.</p
                         
                     </li>
                     <li>
-                        <p><p>String value of new file path.</p>
+                        <p><p>String value of the new file path</p>
 </p>
                     </li>
                 </ul>
@@ -1304,7 +1429,7 @@ If new path already exists and it is not a directory, this replaces the file.</p
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an <code>Error</code> if failed to rename.</p>
+                <li><p>An <code>file:Error</code> if failed to rename</p>
 </li>
             </ul>
         </div>
@@ -1317,7 +1442,7 @@ If new path already exists and it is not a directory, this replaces the file.</p
              <a class="url-link" href="#tempDir">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> tempDir </h2>
+            <h2 > tempDir </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1325,16 +1450,21 @@ If new path already exists and it is not a directory, this replaces the file.</p
         </span>
         
     </div>
-    <p><p>Returns the default directory to use for temporary files.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the default directory to use for temporary files.
+<pre><code class="language-ballerina"> string results = file:tempDir();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Temporary directory location.</p>
+                <li><p>Temporary directory location</p>
 </li>
             </ul>
         </div>

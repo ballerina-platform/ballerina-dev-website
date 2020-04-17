@@ -4,8 +4,8 @@ title: How to Write Secure Ballerina Programs
 permalink: /learn/how-to-write-secure-ballerina-code/
 redirect_from:
   - /learn/how-to-write-secure-ballerina-code
-  - /learn/how-to-write-secure-ballerina-code
-  - /learn/how-to-write-secure-ballerina-code/
+  - /v1-2/learn/how-to-write-secure-ballerina-code
+  - /v1-2/learn/how-to-write-secure-ballerina-code/
 ---
 
 # How to Write Secure Ballerina Programs
@@ -183,7 +183,7 @@ function sanitizeSortColumn (string columnName) returns @untainted string {
 
 ## Securing Passwords and Secrets
 
-Ballerina provides an API to access configuration values from different sources. For more information, see [Config Ballerina by Example](/learn/by-example/config-api.html).
+Ballerina provides an API to access configuration values from different sources. For more information, see [Config Ballerina by Example](/v1-2/learn/by-example/config-api.html).
 
 Configuration values containing passwords or secrets should be encrypted. The Ballerina Config API will decrypt such configuration values when being accessed.
 

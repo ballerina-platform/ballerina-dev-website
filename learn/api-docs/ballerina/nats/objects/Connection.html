@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -666,10 +674,13 @@
                 
                     <a href="../../nats/index.html">nats</a>
                  :
-                <span class="objects">Connection</span>
+                <span class="objects ">Connection</span>
             </h1>
-            <p><p>Represents a single network connection to the NATS server.</p>
-</p>
+            <p>
+                
+                Represents a single network connection to the NATS server.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -683,7 +694,7 @@
             <ul>
                 <li> <b>url</b><span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span> [DEFAULT_URL]</li>
                 <li>
-                    <p>NATS Broker URL. For a clustered use case, pass the URLs as a string array.</p>
+                    <p>The NATS Broker URL. For a clustered use case, pass the URLs as a string array</p>
 
                 </li>
             </ul>
@@ -693,7 +704,7 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../nats/records/ConnectionConfig.html">ConnectionConfig</a>?</span> ()</li>
                 <li>
-                    <p>Information necessary for the NATS client to establish a connection with the server.</p>
+                    <p>Configurations associated with the NATS client to establish a connection with the server</p>
 
                 </li>
             </ul>
@@ -709,15 +720,17 @@
                         <div class="method-list">
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given connection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given connection.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -732,7 +745,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> forceful)</p>
@@ -740,9 +753,12 @@
         </span>
         
     </div>
-    <p><p>Closes a given connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given connection.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -754,7 +770,7 @@
                     </li>
                     <li>
                         <p><p>The graceful shutdown flag. If <code>true</code>, the connection closes immediately.
-By default, this is set to false.</p>
+The default value is <code>false</code>.</p>
 </p>
                     </li>
                 </ul>
@@ -768,7 +784,7 @@ By default, this is set to false.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns () or the error if unable to complete the close operation.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> if unable to complete the close operation.</p>
 </li>
             </ul>
         </div>

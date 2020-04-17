@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,10 +666,22 @@
                 
                     <a href="../../auth/index.html">auth</a>
                  :
-                <span class="objects">InboundBasicAuthProvider</span>
+                <span class="objects ">InboundBasicAuthProvider</span>
             </h1>
-            <p><p>Represents the inbound basic Auth provider, which is a configuration-file-based Auth provider.</p>
-</p>
+            <p>
+                
+                Represents the configuration file based inbound Basic Auth provider, which is an implementation of the
+<code>auth:InboundAuthProvider</code> interface.
+<pre><code class="language-ballerina">  auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
+</code></pre>
+A user is denoted by a section in the Ballerina configuration file. The password and the scopes assigned to the user
+are denoted as keys under the relevant user section as shown below.
+<pre><code> [b7a.users.&lt;username&gt;]
+ password=&quot;&lt;password&gt;&quot;
+ scopes=&quot;&lt;comma_separated_scopes&gt;&quot;
+</code></pre>
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -675,7 +695,7 @@
             <ul>
                 <li> <b>basicAuthConfig</b><span class="type">  <a href="../../auth/records/BasicAuthConfig.html">BasicAuthConfig</a>?</span> ()</li>
                 <li>
-                    <p>The Basic Auth provider configurations.</p>
+                    <p>Basic Auth provider configurations</p>
 
                 </li>
             </ul>
@@ -691,15 +711,19 @@
                         <div class="method-list">
                             
                                 
-<a href="#authenticate">
-    <div class="param-sum">
-        <div class="param-name">
-        authenticate 
-        </div>
-        <div class="param-details"> <p>Attempts to authenticate with credentials.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="authenticate">
+        <a href="#authenticate">authenticate </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Attempts to authenticate the base64-encoded <code>username:password</code> credentials.
+<pre><code class="language-ballerina"> boolean|auth:Error authenticationResult = inboundBasicAuthProvider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -711,12 +735,17 @@
         
     <div class="params-listing">
         <ul>
-            <li> basicAuthConfig<span class="type">  <a href="../../auth/records/BasicAuthConfig.html">BasicAuthConfig</a></span>
+            <li> 
+                <span >basicAuthConfig</span>
+                <span class="type">  <a href="../../auth/records/BasicAuthConfig.html">BasicAuthConfig</a></span>
                 
             </li>
             <li>
-                <p><p>The Basic Auth provider configurations.</p>
-</p>
+                <p>
+                    
+                    <p>The Basic Auth provider configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -778,7 +807,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#authenticate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> authenticate </h2>
+            <h2 > authenticate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> credential)</p>
@@ -786,9 +815,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Attempts to authenticate with credentials.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Attempts to authenticate the base64-encoded <code>username:password</code> credentials.
+<pre><code class="language-ballerina"> boolean|auth:Error authenticationResult = inboundBasicAuthProvider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -799,7 +833,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Credential</p>
+                        <p><p>Base64-encoded <code>username:password</code> value</p>
 </p>
                     </li>
                 </ul>
@@ -813,7 +847,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p><code>true</code> if authentication is successful, otherwise <code>false</code> or <code>Error</code> occurred while extracting credentials</p>
+                <li><p><code>true</code> if the authentication is successful, <code>false</code> otherwise, or else an <code>auth:Error</code> occurred
+while authenticating the credentials</p>
 </li>
             </ul>
         </div>

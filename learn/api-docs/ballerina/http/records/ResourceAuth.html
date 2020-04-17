@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">ResourceAuth</span>
+                 : <span class="records ">ResourceAuth</span>
             </h1>
-            <p>Configures the authentication scheme for a resource.
-</p>
+            <p>
+                
+                Configures the authentication scheme for a resource.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,40 +1064,55 @@
         
     <div class="params-listing">
         <ul>
-            <li> enabled<span class="type">  <span class="builtin-type">boolean</span></span>
+            <li> 
+                <span >enabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
                 
             </li>
             <li>
-                <p><p>Specifies whether authentication is enabled</p>
-</p>
+                <p>
+                    
+                    <p>Specifies whether authentication is enabled</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> authHandlers<span class="type">  <a href="../../http/types.html#InboundAuthHandlers">InboundAuthHandlers</a></span>
+            <li> 
+                <span >authHandlers</span>
+                <span class="type">  <a href="../../http/types.html#InboundAuthHandlers">InboundAuthHandlers</a></span>
                 
             </li>
             <li>
-                <p><p>An array of inbound authentication handlers or an array consisting of arrays of inbound authentication handlers.
+                <p>
+                    
+                    <p>An array of inbound authentication handlers or an array consisting of arrays of inbound authentication handlers.
 An array is used to indicate that at least one of the authentication handlers should be successfully authenticated. An array consisting of arrays
 is used to indicate that at least one authentication handler from the sub-arrays should be successfully authenticated.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> scopes<span class="type">  <a href="../../http/types.html#Scopes">Scopes</a></span>
+            <li> 
+                <span >scopes</span>
+                <span class="type">  <a href="../../http/types.html#Scopes">Scopes</a></span>
                 
             </li>
             <li>
-                <p><p>An array of scopes or an array consisting of arrays of scopes. An array is used to indicate that at least one of the scopes should
+                <p>
+                    
+                    <p>An array of scopes or an array consisting of arrays of scopes. An array is used to indicate that at least one of the scopes should
 be successfully authorized. An array consisting of arrays is used to indicate that at least one scope from the sub-arrays
 should be successfully authorized.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

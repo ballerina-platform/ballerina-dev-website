@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">ReadableDataChannel</span>
+                <span class="objects ">ReadableDataChannel</span>
             </h1>
-            <p><p>Represents a data channel for reading data.</p>
-</p>
+            <p>
+                
+                Represents a data channel for reading data.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -739,7 +750,7 @@
             <ul>
                 <li> <b>byteChannel</b><span class="type">  <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a></span> </li>
                 <li>
-                    <p>channel which would represent the source to read/write data</p>
+                    <p>The channel, which would represent the source to read/write data</p>
 
                 </li>
             </ul>
@@ -765,103 +776,139 @@
                         <div class="method-list">
                             
                                 
-<a href="#readInt16">
-    <div class="param-sum">
-        <div class="param-name">
-        readInt16 
-        </div>
-        <div class="param-details"> <p>Reads a 16 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readInt16">
+        <a href="#readInt16">readInt16 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a 16 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt16();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readInt32">
-    <div class="param-sum">
-        <div class="param-name">
-        readInt32 
-        </div>
-        <div class="param-details"> <p>Reads a 32 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readInt32">
+        <a href="#readInt32">readInt32 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a 32 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt32();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readInt64">
-    <div class="param-sum">
-        <div class="param-name">
-        readInt64 
-        </div>
-        <div class="param-details"> <p>Reads a 64 bit integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readInt64">
+        <a href="#readInt64">readInt64 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a 64 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt64();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readFloat32">
-    <div class="param-sum">
-        <div class="param-name">
-        readFloat32 
-        </div>
-        <div class="param-details"> <p>Reads 32 bit float.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readFloat32">
+        <a href="#readFloat32">readFloat32 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a 32 bit float.
+<pre><code class="language-ballerina"> float|io:Error result = dataChannel.readFloat32();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readFloat64">
-    <div class="param-sum">
-        <div class="param-name">
-        readFloat64 
-        </div>
-        <div class="param-details"> <p>Reads 64 bit float.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readFloat64">
+        <a href="#readFloat64">readFloat64 </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a 64 bit float.
+<pre><code class="language-ballerina"> float|io:Error result = dataChannel.readFloat64();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readBool">
-    <div class="param-sum">
-        <div class="param-name">
-        readBool 
-        </div>
-        <div class="param-details"> <p>Reads 1 byte and convert it's value to boolean.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readBool">
+        <a href="#readBool">readBool </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a byte and convert its value to boolean.
+<pre><code class="language-ballerina"> boolean|io:Error result = dataChannel.readBool();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readString">
-    <div class="param-sum">
-        <div class="param-name">
-        readString 
-        </div>
-        <div class="param-details"> <p>Reads string value represented through the provided number of bytes.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readString">
+        <a href="#readString">readString </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads the string value represented through the provided number of bytes.
+<pre><code class="language-ballerina"> string|io:Error string = dataChannel.readString(10, &quot;UTF-8&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readVarInt">
-    <div class="param-sum">
-        <div class="param-name">
-        readVarInt 
-        </div>
-        <div class="param-details"> <p>Reads a variable length integer.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readVarInt">
+        <a href="#readVarInt">readVarInt </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a variable length integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readVarInt();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes the data channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes the data channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -876,7 +923,7 @@
              <a class="url-link" href="#readInt16">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readInt16 </h2>
+            <h2 > readInt16 </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -884,16 +931,21 @@
         </span>
         
     </div>
-    <p><p>Reads a 16 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a 16 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt16();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the integer which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the integer, which is read or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -906,7 +958,7 @@
              <a class="url-link" href="#readInt32">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readInt32 </h2>
+            <h2 > readInt32 </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -914,16 +966,21 @@
         </span>
         
     </div>
-    <p><p>Reads a 32 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a 32 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt32();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the integer which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the integer, which is read or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -936,7 +993,7 @@
              <a class="url-link" href="#readInt64">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readInt64 </h2>
+            <h2 > readInt64 </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -944,16 +1001,21 @@
         </span>
         
     </div>
-    <p><p>Reads a 64 bit integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a 64 bit integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readInt64();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the integer which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the integer, which is read or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -966,7 +1028,7 @@
              <a class="url-link" href="#readFloat32">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readFloat32 </h2>
+            <h2 > readFloat32 </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -974,16 +1036,21 @@
         </span>
         
     </div>
-    <p><p>Reads 32 bit float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a 32 bit float.
+<pre><code class="language-ballerina"> float|io:Error result = dataChannel.readFloat32();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the float which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the float which is read or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -996,7 +1063,7 @@
              <a class="url-link" href="#readFloat64">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readFloat64 </h2>
+            <h2 > readFloat64 </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1004,16 +1071,21 @@
         </span>
         
     </div>
-    <p><p>Reads 64 bit float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a 64 bit float.
+<pre><code class="language-ballerina"> float|io:Error result = dataChannel.readFloat64();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the float which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the float which is read or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1026,7 +1098,7 @@
              <a class="url-link" href="#readBool">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readBool </h2>
+            <h2 > readBool </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1034,16 +1106,21 @@
         </span>
         
     </div>
-    <p><p>Reads 1 byte and convert it's value to boolean.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a byte and convert its value to boolean.
+<pre><code class="language-ballerina"> boolean|io:Error result = dataChannel.readBool();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>boolean value which is read or <code>Error</code> if any error occurred</p>
+                <li><p>boolean value which is read or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1056,7 +1133,7 @@
              <a class="url-link" href="#readString">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readString </h2>
+            <h2 > readString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> nBytes, <span class="builtin-type">string</span> encoding)</p>
@@ -1064,9 +1141,14 @@
         </span>
         
     </div>
-    <p><p>Reads string value represented through the provided number of bytes.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads the string value represented through the provided number of bytes.
+<pre><code class="language-ballerina"> string|io:Error string = dataChannel.readString(10, &quot;UTF-8&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1077,7 +1159,7 @@
                         
                     </li>
                     <li>
-                        <p><p>specifies the number of bytes which represents the string</p>
+                        <p><p>Specifies the number of bytes, which represents the string</p>
 </p>
                     </li>
                 </ul>
@@ -1090,7 +1172,7 @@
                         
                     </li>
                     <li>
-                        <p><p>specifies the char-set encoding of the string</p>
+                        <p><p>Specifies the char-set encoding of the string</p>
 </p>
                     </li>
                 </ul>
@@ -1104,7 +1186,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the string or an error</p>
+                <li><p>The value of the string or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1117,7 +1199,7 @@
              <a class="url-link" href="#readVarInt">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readVarInt </h2>
+            <h2 > readVarInt </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1125,16 +1207,21 @@
         </span>
         
     </div>
-    <p><p>Reads a variable length integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a variable length integer.
+<pre><code class="language-ballerina"> int|io:Error result = dataChannel.readVarInt();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>value of the integer which is read or <code>Error</code> if any error occurred</p>
+                <li><p>The value of the integer which is read or else <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -1147,7 +1234,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1155,16 +1242,21 @@
         </span>
         
     </div>
-    <p><p>Closes the data channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the data channel.
+<pre><code class="language-ballerina"> io:Error? err = dataChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>nill if the channel is closed successfully or <code>Error</code> if any error occurred</p>
+                <li><p><code>()</code> if the channel is closed successfully or else an <code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>

@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">ListenerHttp1Settings</span>
+                 : <span class="records ">ListenerHttp1Settings</span>
             </h1>
-            <p>Provides settings related to HTTP/1.x protocol.
-</p>
+            <p>
+                
+                Provides settings related to HTTP/1.x protocol.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,67 +1064,92 @@
         
     <div class="params-listing">
         <ul>
-            <li> keepAlive<span class="type">  <a href="../../http/types.html#KeepAlive">KeepAlive</a></span>
-                <span class="default"> (default KEEPALIVE_AUTO)</span>
+            <li> 
+                <span >keepAlive</span>
+                <span class="type">  <a href="../../http/types.html#KeepAlive">KeepAlive</a></span>
+                 <span class="default">(default KEEPALIVE_AUTO)</span> 
             </li>
             <li>
-                <p><p>Can be set to either <code>KEEPALIVE_AUTO</code>, which respects the <code>connection</code> header, or <code>KEEPALIVE_ALWAYS</code>,
+                <p>
+                    
+                    <p>Can be set to either <code>KEEPALIVE_AUTO</code>, which respects the <code>connection</code> header, or <code>KEEPALIVE_ALWAYS</code>,
 which always keeps the connection alive, or <code>KEEPALIVE_NEVER</code>, which always closes the connection</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPipelinedRequests<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default MAX_PIPELINED_REQUESTS)</span>
+            <li> 
+                <span >maxPipelinedRequests</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default MAX_PIPELINED_REQUESTS)</span> 
             </li>
             <li>
-                <p><p>Defines the maximum number of requests that can be processed at a given time on a single
+                <p>
+                    
+                    <p>Defines the maximum number of requests that can be processed at a given time on a single
 connection. By default 10 requests can be pipelined on a single cinnection and user can
 change this limit appropriately.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxUriLength<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 4096)</span>
+            <li> 
+                <span >maxUriLength</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 4096)</span> 
             </li>
             <li>
-                <p><p>Maximum allowed length for a URI. Exceeding this limit will result in a
+                <p>
+                    
+                    <p>Maximum allowed length for a URI. Exceeding this limit will result in a
 <code>414 - URI Too Long</code> response.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxHeaderSize<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 8192)</span>
+            <li> 
+                <span >maxHeaderSize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 8192)</span> 
             </li>
             <li>
-                <p><p>Maximum allowed size for headers. Exceeding this limit will result in a
+                <p>
+                    
+                    <p>Maximum allowed size for headers. Exceeding this limit will result in a
 <code>413 - Payload Too Large</code> response.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxEntityBodySize<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default -1)</span>
+            <li> 
+                <span >maxEntityBodySize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default -1)</span> 
             </li>
             <li>
-                <p><p>Maximum allowed size for the entity body. By default it is set to -1 which means there
+                <p>
+                    
+                    <p>Maximum allowed size for the entity body. By default it is set to -1 which means there
 is no restriction <code>maxEntityBodySize</code>, On the Exceeding this limit will result in a
 <code>413 - Payload Too Large</code> response.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

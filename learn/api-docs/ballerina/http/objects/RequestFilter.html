@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,12 +858,15 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">RequestFilter</span>
+                <span class="objects ">RequestFilter</span>
             </h1>
-            <p><p>Abstract Representation of a HTTP Request Filter.
+            <p>
+                
+                Abstract Representation of a HTTP Request Filter.
 This filter will be applied before the request is dispatched to the relevant resource.
-Any RequestFilter implementation should be structurally similar to or implement the RequestFilter object.</p>
-</p>
+Any RequestFilter implementation should be structurally similar to or implement the RequestFilter object.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -867,16 +878,18 @@ Any RequestFilter implementation should be structurally similar to or implement 
                         <div class="method-list">
                             
                                 
-<a href="#filterRequest">
-    <div class="param-sum">
-        <div class="param-name">
-        filterRequest 
-        </div>
-        <div class="param-details"> <p>Request filter function. If a false is returned the response should have been sent from this function as it will
-not be dispatched to the next filter or the resource.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="filterRequest">
+        <a href="#filterRequest">filterRequest </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Request filter function. If a false is returned the response should have been sent from this function as it will
+not be dispatched to the next filter or the resource.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -891,7 +904,7 @@ not be dispatched to the next filter or the resource.</p>
              <a class="url-link" href="#filterRequest">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> filterRequest </h2>
+            <h2 > filterRequest </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/clients/Caller.html">Caller</a> caller, <a href="../../http/objects/Request.html">Request</a> request, <a href="../../http/objects/FilterContext.html">FilterContext</a> context)</p>
@@ -899,10 +912,13 @@ not be dispatched to the next filter or the resource.</p>
         </span>
         
     </div>
-    <p><p>Request filter function. If a false is returned the response should have been sent from this function as it will
-not be dispatched to the next filter or the resource.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Request filter function. If a false is returned the response should have been sent from this function as it will
+not be dispatched to the next filter or the resource.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

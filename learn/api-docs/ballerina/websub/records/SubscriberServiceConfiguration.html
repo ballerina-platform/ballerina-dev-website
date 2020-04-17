@@ -59,6 +59,18 @@
                 <ul>
                     
                         <li >
+                            <a href="T41.html">T41</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T42.html">T42</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T43.html">T43</a>
+                        </li>
+                    
+                        <li >
                             <a href="Detail.html">Detail</a>
                         </li>
                     
@@ -108,7 +120,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -302,6 +314,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -400,6 +416,18 @@
                     <ul>
                         
                             <li >
+                                <a href="T41.html">T41</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T42.html">T42</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T43.html">T43</a>
+                            </li>
+                        
+                            <li >
                                 <a href="Detail.html">Detail</a>
                             </li>
                         
@@ -449,7 +477,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -643,6 +671,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -745,10 +777,13 @@
                 
                     <a href="../../websub/index.html">websub</a>
                 
-                 : <span class="records">SubscriberServiceConfiguration</span>
+                 : <span class="records ">SubscriberServiceConfiguration</span>
             </h1>
-            <p>Configuration for a WebSubSubscriber service.
-</p>
+            <p>
+                
+                Configuration for a WebSubSubscriber service.
+
+            </p>
             <div class="constants">
                 
                     
@@ -757,109 +792,154 @@
         
     <div class="params-listing">
         <ul>
-            <li> path<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >path</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Path of the WebSubSubscriber service</p>
-</p>
+                <p>
+                    
+                    <p>Path of the WebSubSubscriber service</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> subscribeOnStartUp<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >subscribeOnStartUp</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>A <code>boolean</code> indicating whether a subscription request is expected to be sent on start up</p>
-</p>
+                <p>
+                    
+                    <p>A <code>boolean</code> indicating whether a subscription request is expected to be sent on start up</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> target<span class="type">  <span class="builtin-type">string</span> | <span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span><span>]</span></span>
+            <li> 
+                <span >target</span>
+                <span class="type">  <span class="builtin-type">string</span> | <span>[</span><span class="builtin-type">string</span>, <span class="builtin-type">string</span><span>]</span></span>
                 
             </li>
             <li>
-                <p><p>The <code>string</code> resource URL for which discovery will be initiated to identify the hub and topic,
+                <p>
+                    
+                    <p>The <code>string</code> resource URL for which discovery will be initiated to identify the hub and topic,
 or a tuple <code>[hub, topic]</code> representing a discovered hub and a topic</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> leaseSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >leaseSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>The period for which the subscription is expected to be active</p>
-</p>
+                <p>
+                    
+                    <p>The period for which the subscription is expected to be active</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secret<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >secret</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The secret to be used for authenticated content distribution</p>
-</p>
+                <p>
+                    
+                    <p>The secret to be used for authenticated content distribution</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> callback<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >callback</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The callback to use when registering, if unspecified host:port/path will be used</p>
-</p>
+                <p>
+                    
+                    <p>The callback to use when registering, if unspecified host:port/path will be used</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> expectIntentVerification<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >expectIntentVerification</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>A <code>boolean</code> indicating whether an intent verification is expected from the hub</p>
-</p>
+                <p>
+                    
+                    <p>A <code>boolean</code> indicating whether an intent verification is expected from the hub</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> publisherClientConfig<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+            <li> 
+                <span >publisherClientConfig</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>The configuration for the discovery client, to use if a resource URL is specified</p>
-</p>
+                <p>
+                    
+                    <p>The configuration for the discovery client, to use if a resource URL is specified</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> hubClientConfig<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+            <li> 
+                <span >hubClientConfig</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>The configuration for the hub client used to interact with the discovered/specified hub</p>
-</p>
+                <p>
+                    
+                    <p>The configuration for the hub client used to interact with the discovered/specified hub</p>
+
+                </p>
             </li>
         </ul>
     </div>

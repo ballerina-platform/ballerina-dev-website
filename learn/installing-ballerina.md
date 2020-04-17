@@ -3,13 +3,13 @@ layout: ballerina-inner-page
 title: Installing Ballerina
 permalink: /learn/installing-ballerina/
 redirect_from:
-  - /learn/getting-started
+  - /v1-2/learn/getting-started
   - /learn/getting-started
   - /learn/getting-started/
   - /learn/installing-ballerina
   - /learn/installing-ballerina/#installing-from-source
-  - /learn/installing-ballerina
-  - /learn/installing-ballerina/
+  - /v1-2/learn/installing-ballerina
+  - /v1-2/learn/installing-ballerina/
 ---
 
 # Installing Ballerina
@@ -121,4 +121,4 @@ To get help when you work with Ballerina, see [Community](/community).
 
 ## What's next
 
-Once you have successfully installed Ballerina, try out the [Quick Tour](/learn/quick-tour) and take Ballerina for its first spin.
+Once you have successfully installed Ballerina, try out the [Quick Tour](/v1-2/learn/quick-tour) and take Ballerina for its first spin.

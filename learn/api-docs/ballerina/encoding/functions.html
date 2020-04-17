@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -655,33 +663,64 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decodeBase64Url">decodeBase64Url</a></td>
-                                <td width="70%"><p>Decodes the Base64 URL encoded <code>string</code> into a byte array.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decodeBase64Url">decodeBase64Url</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Decodes the Base64 URL encoded <code>string</code> into a byte array.
+<pre><code class="language-ballerina"> byte[]|encoding:Error urlDecodedValue = encoding:decodeBase64Url(&quot;SGVsbMO2IFfDtnJsZEBCYWxsZXJpbmE&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decodeUriComponent">decodeUriComponent</a></td>
-                                <td width="70%"><p>Decodes the given URI component.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decodeUriComponent">decodeUriComponent</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Decodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string encodedUrl = &quot;http://www.domain.com/?param1=http%3A%2F%2Fxyz.com%2F%3Fa%3D12%26b%3D55¶m2=99&quot;;
+ string|encoding:Error decodedUriComponent = encoding:decodeUriComponent(encodedUrl, &quot;UTF-8&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encodeBase64Url">encodeBase64Url</a></td>
-                                <td width="70%"><p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encodeBase64Url">encodeBase64Url</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the Base64 URL encoded <code>string</code> value of the given byte array.
+<pre><code class="language-ballerina"> string query = &quot;Hellö Wörld@Ballerina&quot;;
+ string urlEncodedValue = encoding:encodeBase64Url(query.toBytes());
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encodeUriComponent">encodeUriComponent</a></td>
-                                <td width="70%"><p>Encodes the given URI component.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encodeUriComponent">encodeUriComponent</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Encodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string urlValue = &quot;param1=http://xyz.com/?a=12&amp;b=55¶m2=99&quot;;
+ string|encoding:Error encodedUriComponent = encoding:encodeUriComponent(urlValue, &quot;UTF-8&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -695,7 +734,7 @@
              <a class="url-link" href="#decodeBase64Url">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decodeBase64Url </h2>
+            <h2 > decodeBase64Url </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> input)</p>
@@ -703,9 +742,14 @@
         </span>
         
     </div>
-    <p><p>Decodes the Base64 URL encoded <code>string</code> into a byte array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Decodes the Base64 URL encoded <code>string</code> into a byte array.
+<pre><code class="language-ballerina"> byte[]|encoding:Error urlDecodedValue = encoding:decodeBase64Url(&quot;SGVsbMO2IFfDtnJsZEBCYWxsZXJpbmE&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -730,7 +774,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../encoding/errors.html#Error">Error</a></span>)</li>
-                <li><p>Decoded output or <code>Error</code> if input is not a valid Base64 URL encoded value</p>
+                <li><p>Decoded output or else a <code>mime:Error</code> if the input is not a valid Base64 URL encoded value</p>
 </li>
             </ul>
         </div>
@@ -743,7 +787,7 @@
              <a class="url-link" href="#decodeUriComponent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decodeUriComponent </h2>
+            <h2 > decodeUriComponent </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> uriComponent, <span class="builtin-type">string</span> charset)</p>
@@ -751,9 +795,15 @@
         </span>
         
     </div>
-    <p><p>Decodes the given URI component.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Decodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string encodedUrl = &quot;http://www.domain.com/?param1=http%3A%2F%2Fxyz.com%2F%3Fa%3D12%26b%3D55¶m2=99&quot;;
+ string|encoding:Error decodedUriComponent = encoding:decodeUriComponent(encodedUrl, &quot;UTF-8&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -804,7 +854,7 @@
              <a class="url-link" href="#encodeBase64Url">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encodeBase64Url </h2>
+            <h2 > encodeBase64Url </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -812,9 +862,15 @@
         </span>
         
     </div>
-    <p><p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the Base64 URL encoded <code>string</code> value of the given byte array.
+<pre><code class="language-ballerina"> string query = &quot;Hellö Wörld@Ballerina&quot;;
+ string urlEncodedValue = encoding:encodeBase64Url(query.toBytes());
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -825,7 +881,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Value to be encoded</p>
+                        <p><p>Byte array to be encoded</p>
 </p>
                     </li>
                 </ul>
@@ -852,7 +908,7 @@
              <a class="url-link" href="#encodeUriComponent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encodeUriComponent </h2>
+            <h2 > encodeUriComponent </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> uriComponent, <span class="builtin-type">string</span> charset)</p>
@@ -860,9 +916,15 @@
         </span>
         
     </div>
-    <p><p>Encodes the given URI component.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Encodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string urlValue = &quot;param1=http://xyz.com/?a=12&amp;b=55¶m2=99&quot;;
+ string|encoding:Error encodedUriComponent = encoding:encodeUriComponent(urlValue, &quot;UTF-8&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

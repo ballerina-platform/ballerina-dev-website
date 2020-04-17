@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,11 +666,14 @@
                 
                     <a href="../../cache/index.html">cache</a>
                  :
-                <span class="objects">AbstractCache</span>
+                <span class="objects ">AbstractCache</span>
             </h1>
-            <p><p>Represents the Ballerina <code>AbstractCache</code> object and cache-related operations.
-Any custom cache implementation should be object-wise similar.</p>
-</p>
+            <p>
+                
+                The <code>cache:AbstractCache</code> object is used for custom implementations of the Ballerina cache.
+Any custom cache implementation should be object-wise similar.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -674,93 +685,109 @@ Any custom cache implementation should be object-wise similar.</p>
                         <div class="method-list">
                             
                                 
-<a href="#put">
-    <div class="param-sum">
-        <div class="param-name">
-        put 
-        </div>
-        <div class="param-details"> <p>Add the given key value pair to the cache. If the cache previously contained a value associated with the key, the
-old value is replaced by the new value.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="put">
+        <a href="#put">put </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Adds the given key value pair to the cache. If the cache previously contained a value associated with the key, the
+old value is replaced by the new value.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#get">
-    <div class="param-sum">
-        <div class="param-name">
-        get 
-        </div>
-        <div class="param-details"> <p>Return the cached value associated with the given key.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="get">
+        <a href="#get">get </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the cached value associated with the provided key.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#invalidate">
-    <div class="param-sum">
-        <div class="param-name">
-        invalidate 
-        </div>
-        <div class="param-details"> <p>Discard a cached value from the cache.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="invalidate">
+        <a href="#invalidate">invalidate </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Discards a cached value from the cache.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#invalidateAll">
-    <div class="param-sum">
-        <div class="param-name">
-        invalidateAll 
-        </div>
-        <div class="param-details"> <p>Discard all the cached values from the cache.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="invalidateAll">
+        <a href="#invalidateAll">invalidateAll </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Discards all the cached values from the cache.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#hasKey">
-    <div class="param-sum">
-        <div class="param-name">
-        hasKey 
-        </div>
-        <div class="param-details"> <p>Checks whether the given key has an associated cache value.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasKey">
+        <a href="#hasKey">hasKey </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks whether the given key has an associated cache value.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#keys">
-    <div class="param-sum">
-        <div class="param-name">
-        keys 
-        </div>
-        <div class="param-details"> <p>Returns all keys from the cache.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="keys">
+        <a href="#keys">keys </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns all keys from the cache.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#size">
-    <div class="param-sum">
-        <div class="param-name">
-        size 
-        </div>
-        <div class="param-details"> <p>Returns the size of the cache.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="size">
+        <a href="#size">size </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the current size of the cache.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#capacity">
-    <div class="param-sum">
-        <div class="param-name">
-        capacity 
-        </div>
-        <div class="param-details"> <p>Returns the capacity of the cache.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="capacity">
+        <a href="#capacity">capacity </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns the capacity of the cache.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -775,7 +802,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#put">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
+            <h2 > put </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">any</span> value, <span class="builtin-type">int</span> maxAgeInSeconds)</p>
@@ -783,10 +810,13 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Add the given key value pair to the cache. If the cache previously contained a value associated with the key, the
-old value is replaced by the new value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Adds the given key value pair to the cache. If the cache previously contained a value associated with the key, the
+old value is replaced by the new value.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -797,7 +827,7 @@ old value is replaced by the new value.</p>
                         
                     </li>
                     <li>
-                        <p><p>Key of the cached value</p>
+                        <p><p>Key of the value to be cached</p>
 </p>
                     </li>
                 </ul>
@@ -823,7 +853,8 @@ old value is replaced by the new value.</p>
                         <span class="default"> (default -1)</span>
                     </li>
                     <li>
-                        <p><p>The time in seconds during which the cache entry is valid. '-1' means, the entry is valid forever.</p>
+                        <p><p>The time in seconds during which the cache entry is valid. '-1' means, the entry is valid
+forever</p>
 </p>
                     </li>
                 </ul>
@@ -837,8 +868,8 @@ old value is replaced by the new value.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
-                <li><p><code>()</code> if successfully added to the cache or
-<code>Error</code> if any error occurred while inserting the entry to the cache.</p>
+                <li><p><code>()</code> if successfully added to the cache or <code>Error</code> if any error occurred while inserting the entry
+to the cache</p>
 </li>
             </ul>
         </div>
@@ -851,7 +882,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -859,9 +890,12 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Return the cached value associated with the given key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the cached value associated with the provided key.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -872,7 +906,7 @@ old value is replaced by the new value.</p>
                         
                     </li>
                     <li>
-                        <p><p>Key, which is used to retrieve the cached value</p>
+                        <p><p>The key used to retrieve the cached value</p>
 </p>
                     </li>
                 </ul>
@@ -886,8 +920,8 @@ old value is replaced by the new value.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">any</span> | <a href="../../cache/errors.html#Error">Error</a></span>)</li>
-                <li><p>The cached value associated with the given key,
-<code>Error</code> if the provided cache key is not available, or if any error occurred while retrieving from the cache.</p>
+                <li><p>The cached value associated with the given key or an <code>Error</code> if the provided cache key is not
+available or if any error occurred while retrieving from the cache</p>
 </li>
             </ul>
         </div>
@@ -900,7 +934,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#invalidate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> invalidate </h2>
+            <h2 > invalidate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -908,9 +942,12 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Discard a cached value from the cache.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Discards a cached value from the cache.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -921,7 +958,7 @@ old value is replaced by the new value.</p>
                         
                     </li>
                     <li>
-                        <p><p>Key of the cache entry, which needs to be discarded</p>
+                        <p><p>Key of the cache entry which needs to be discarded</p>
 </p>
                     </li>
                 </ul>
@@ -935,8 +972,8 @@ old value is replaced by the new value.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
-                <li><p><code>()</code> if successfully discarded,
-<code>Error</code> if the provided cache key is not available, or if any error occurred while discarding from the cache.</p>
+                <li><p><code>()</code> if successfully discarded or an <code>Error</code> if the provided cache key is not available or if any
+error occurred while discarding from the cache</p>
 </li>
             </ul>
         </div>
@@ -949,7 +986,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#invalidateAll">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> invalidateAll </h2>
+            <h2 > invalidateAll </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -957,17 +994,20 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Discard all the cached values from the cache.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Discards all the cached values from the cache.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/errors.html#Error">Error</a>?</span>)</li>
-                <li><p><code>()</code> if successfully discarded all or
-<code>Error</code> if any error occurred while discarding all from the cache.</p>
+                <li><p><code>()</code> if successfully discarded all or  an <code>Error</code> if any error occurred while discarding all from the
+cache</p>
 </li>
             </ul>
         </div>
@@ -980,7 +1020,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#hasKey">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasKey </h2>
+            <h2 > hasKey </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -988,9 +1028,12 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Checks whether the given key has an associated cache value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the given key has an associated cache value.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1015,7 +1058,8 @@ old value is replaced by the new value.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Whether an associated cache value is available in the cache or not</p>
+                <li><p><code>true</code> if an associated cache value is available for the provided key or <code>false</code> if there is not a
+cache value associated with the provided key</p>
 </li>
             </ul>
         </div>
@@ -1028,7 +1072,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#keys">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> keys </h2>
+            <h2 > keys </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1036,16 +1080,19 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Returns all keys from the cache.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns all keys from the cache.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span></span>)</li>
-                <li><p>Array of all keys from the cache</p>
+                <li><p>Array of all the keys from the cache</p>
 </li>
             </ul>
         </div>
@@ -1058,7 +1105,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#size">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> size </h2>
+            <h2 > size </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1066,9 +1113,12 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Returns the size of the cache.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the current size of the cache.
+
+    </div>
+    
 
     
         
@@ -1088,7 +1138,7 @@ old value is replaced by the new value.</p>
              <a class="url-link" href="#capacity">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> capacity </h2>
+            <h2 > capacity </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1096,9 +1146,12 @@ old value is replaced by the new value.</p>
         </span>
         
     </div>
-    <p><p>Returns the capacity of the cache.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the capacity of the cache.
+
+    </div>
+    
 
     
         

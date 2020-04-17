@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -242,6 +242,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -361,7 +365,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -523,6 +527,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -631,39 +639,70 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#get">get</a></td>
-                                <td width="70%"><p>Returns a <code>handle</code> that refers to the element at the specified index in the given Java array.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if the handle does not refer to a Java array.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#get">get</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
+completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
+to a Java array.
+<pre><code class="language-ballerina"> handle words = getSortedArray();
+ handle firstWord = java.arrays:get(words, 0);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getLength">getLength</a></td>
-                                <td width="70%"><p>Returns the length of the given Java array.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getLength">getLength</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the length of the given Java array.
+<pre><code class="language-ballerina"> handle array = getArray();
+ int length = java.arrays:getLength(array);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#newInstance">newInstance</a></td>
-                                <td width="70%"><p>Returns a new Java array instance with the specified element type and dimensions.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if zero dimensions have been provided.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#newInstance">newInstance</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
+with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
+<pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
+ handle StrArray = java.arrays:newInstance(stringClass, 4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#set">set</a></td>
-                                <td width="70%"><p>Replaces the indexed element at the specified index in the given Java array with the specified element.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if the handle does not refer to a Java array.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#set">set</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Replaces the indexed element at the specified index in the given Java array with the specified element. This
+function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
+not refer to a Java array.
+<pre><code class="language-ballerina"> handle strArray = getStringArray();
+ java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -677,7 +716,7 @@ or if the handle does not refer to a Java array.</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> array, <span class="builtin-type">int</span> index)</p>
@@ -685,11 +724,17 @@ or if the handle does not refer to a Java array.</p>
         </span>
         
     </div>
-    <p><p>Returns a <code>handle</code> that refers to the element at the specified index in the given Java array.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if the handle does not refer to a Java array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
+completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
+to a Java array.
+<pre><code class="language-ballerina"> handle words = getSortedArray();
+ handle firstWord = java.arrays:get(words, 0);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -700,7 +745,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the <code>handle</code> which referes to the Java array</p>
+                        <p><p>The <code>handle</code>, which refers to the Java array</p>
 </p>
                     </li>
                 </ul>
@@ -713,7 +758,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the index of the element to be returned</p>
+                        <p><p>The index of the element to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -727,7 +772,7 @@ or if the handle does not refer to a Java array.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span></span>)</li>
-                <li><p>the <code>handle</code> that refers to the element at the specified position in the Java array</p>
+                <li><p>The <code>handle</code>, which refers to the element at the specified position in the Java array</p>
 </li>
             </ul>
         </div>
@@ -740,7 +785,7 @@ or if the handle does not refer to a Java array.</p>
              <a class="url-link" href="#getLength">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getLength </h2>
+            <h2 > getLength </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> array)</p>
@@ -748,9 +793,15 @@ or if the handle does not refer to a Java array.</p>
         </span>
         
     </div>
-    <p><p>Returns the length of the given Java array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the length of the given Java array.
+<pre><code class="language-ballerina"> handle array = getArray();
+ int length = java.arrays:getLength(array);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -761,7 +812,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the <code>handle</code> which referes to the Java array</p>
+                        <p><p>The <code>handle</code>, which refers to the Java array</p>
 </p>
                     </li>
                 </ul>
@@ -775,7 +826,7 @@ or if the handle does not refer to a Java array.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>the length of the given Java array</p>
+                <li><p>The length of the given Java array</p>
 </li>
             </ul>
         </div>
@@ -788,7 +839,7 @@ or if the handle does not refer to a Java array.</p>
              <a class="url-link" href="#newInstance">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> newInstance </h2>
+            <h2 > newInstance </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> class, <span class="array-type"><span class="builtin-type">int</span>[]</span> dimensions)</p>
@@ -796,11 +847,16 @@ or if the handle does not refer to a Java array.</p>
         </span>
         
     </div>
-    <p><p>Returns a new Java array instance with the specified element type and dimensions.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if zero dimensions have been provided.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
+with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
+<pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
+ handle StrArray = java.arrays:newInstance(stringClass, 4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -811,7 +867,7 @@ or if zero dimensions have been provided.</p>
                         
                     </li>
                     <li>
-                        <p><p>the element type of the array</p>
+                        <p><p>The element type of the array</p>
 </p>
                     </li>
                 </ul>
@@ -824,7 +880,7 @@ or if zero dimensions have been provided.</p>
                         
                     </li>
                     <li>
-                        <p><p>the dimentions of the array</p>
+                        <p><p>The dimensions of the array</p>
 </p>
                     </li>
                 </ul>
@@ -838,7 +894,7 @@ or if zero dimensions have been provided.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">handle</span></span>)</li>
-                <li><p>the new Java array instance</p>
+                <li><p>The new Java array instance</p>
 </li>
             </ul>
         </div>
@@ -851,14 +907,20 @@ or if zero dimensions have been provided.</p>
              <a class="url-link" href="#set">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> set </h2>
+            <h2 > set </h2>
         
     </div>
-    <p><p>Replaces the indexed element at the specified index in the given Java array with the specified element.</p>
-<p>This function completes abruptly with a <code>panic</code>, if the specified handle refers to a Java null,
-or if the handle does not refer to a Java array.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Replaces the indexed element at the specified index in the given Java array with the specified element. This
+function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
+not refer to a Java array.
+<pre><code class="language-ballerina"> handle strArray = getStringArray();
+ java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -869,7 +931,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the <code>handle</code> which referes to the Java array</p>
+                        <p><p>The <code>handle</code>, which refers to the Java array</p>
 </p>
                     </li>
                 </ul>
@@ -882,7 +944,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the index of the element to be replaced</p>
+                        <p><p>The index of the element to be replaced</p>
 </p>
                     </li>
                 </ul>
@@ -895,7 +957,7 @@ or if the handle does not refer to a Java array.</p>
                         
                     </li>
                     <li>
-                        <p><p>the element to be stored at the specified index</p>
+                        <p><p>The element to be stored at the specified index</p>
 </p>
                     </li>
                 </ul>

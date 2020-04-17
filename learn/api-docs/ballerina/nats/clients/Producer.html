@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -675,8 +683,8 @@
                 
                 <span class="clients">Producer</span>
             </h1>
-            <p><p>NATS <code>Producer</code> would act as a basic client allowing to publish messages to the NATS server.
-Producer needs the NATS <code>Connection</code> to be initialized.</p>
+            <p>The producer provides the capability to publish messages to the NATS server.
+The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be initialized.
 </p>
 
             <div class="constants">
@@ -691,7 +699,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
             <ul>
                 <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>An already-established connection.</p>
+                    <p>An established NATS connection</p>
 
                 </li>
             </ul>
@@ -708,14 +716,18 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                                 <tr>
                                     <td class="module-title truncate functions" title="publish"><a
                                             class="functions" href="#publish">publish</a></td>
-                                    <td class="module-desc"><p>Produces a message to a NATS basic server for the given subject.</p>
+                                    <td class="module-desc">Publishes data to a given subject.
+<pre><code class="language-ballerina"> nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="request"><a
                                             class="functions" href="#request">request</a></td>
-                                    <td class="module-desc"><p>Produces a message and would wait for a response.</p>
+                                    <td class="module-desc">Publishes data to a given subject and waits for a response.
+<pre><code class="language-ballerina"> nats:Message|nats:Error reqReply = producer-&gt;request(subject, &lt;@untainted&gt;message, 5000);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -727,15 +739,17 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         <div class="method-list">
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Close a given connection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given connection.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -750,7 +764,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
              <a class="url-link" href="#publish">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> publish </h2>
+            <h2 > publish </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> subject, <a href="../../nats/types.html#Content">Content</a> data, <span class="builtin-type">string</span> | <span class="builtin-type">service</span> | <span class="builtin-type">()</span> replyTo)</p>
@@ -758,9 +772,14 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
         </span>
         
     </div>
-    <p><p>Produces a message to a NATS basic server for the given subject.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Publishes data to a given subject.
+<pre><code class="language-ballerina"> nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -771,7 +790,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         
                     </li>
                     <li>
-                        <p><p>The subject to send the message to.</p>
+                        <p><p>The subject to send the message</p>
 </p>
                     </li>
                 </ul>
@@ -784,7 +803,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         
                     </li>
                     <li>
-                        <p><p>Data to publish.</p>
+                        <p><p>Data to publish</p>
 </p>
                     </li>
                 </ul>
@@ -797,7 +816,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The subject or the callback service the receiver should send the response to.</p>
+                        <p><p>The subject or the callback service to which the receiver should send the response</p>
 </p>
                     </li>
                 </ul>
@@ -811,7 +830,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>A specific error if there is a problem when publishing the message. Returns () otherwise.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> if there is a problem when publishing the message</p>
 </li>
             </ul>
         </div>
@@ -824,7 +843,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
              <a class="url-link" href="#request">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> request </h2>
+            <h2 > request </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> subject, <a href="../../nats/types.html#Content">Content</a> data, <span class="builtin-type">int?</span> duration)</p>
@@ -832,9 +851,14 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
         </span>
         
     </div>
-    <p><p>Produces a message and would wait for a response.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Publishes data to a given subject and waits for a response.
+<pre><code class="language-ballerina"> nats:Message|nats:Error reqReply = producer-&gt;request(subject, &lt;@untainted&gt;message, 5000);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -845,7 +869,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         
                     </li>
                     <li>
-                        <p><p>Would represent the topic/queue name.</p>
+                        <p><p>The subject to send the message</p>
 </p>
                     </li>
                 </ul>
@@ -858,7 +882,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         
                     </li>
                     <li>
-                        <p><p>The message body to publish.</p>
+                        <p><p>Data to publish</p>
 </p>
                     </li>
                 </ul>
@@ -871,7 +895,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The time to wait for a response measured in milliseconds.</p>
+                        <p><p>The time (in milliseconds) to wait for the response</p>
 </p>
                     </li>
                 </ul>
@@ -885,7 +909,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/objects/Message.html">Message</a> | <a href="../../nats/errors.html#Error">Error</a></span>)</li>
-                <li><p>The response message or an error.</p>
+                <li><p>The <code>nats:Message</code> response or else a <code>nats:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -902,7 +926,7 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -910,16 +934,19 @@ Producer needs the NATS <code>Connection</code> to be initialized.</p>
         </span>
         
     </div>
-    <p><p>Close a given connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given connection.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>Retruns () or the error if unable to complete the close operation.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> if unable to complete the close the operation</p>
 </li>
             </ul>
         </div>

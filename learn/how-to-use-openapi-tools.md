@@ -4,8 +4,8 @@ title: Ballerina OpenAPI Tools
 permalink: /learn/how-to-use-openapi-tools/
 redirect_from:
   - /learn/how-to-use-openapi-tools
-  - /learn/how-to-use-openapi-tools
-  - /learn/how-to-use-openapi-tools/
+  - /v1-2/learn/how-to-use-openapi-tools
+  - /v1-2/learn/how-to-use-openapi-tools/
 ---
 
 ## Ballerina OpenAPI Tools

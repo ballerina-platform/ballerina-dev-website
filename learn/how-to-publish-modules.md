@@ -4,8 +4,8 @@ title: How to Publish a Module
 permalink: /learn/how-to-publish-modules/
 redirect_from:
   - /learn/how-to-publish-modules
-  - /learn/how-to-publish-modules
-  - /learn/how-to-publish-modules/
+  - /v1-2/learn/how-to-publish-modules
+  - /v1-2/learn/how-to-publish-modules/
 ---
 
 # How to Publish a Module

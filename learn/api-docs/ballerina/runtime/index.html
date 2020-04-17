@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -223,6 +223,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -320,7 +324,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -486,6 +490,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -590,113 +598,39 @@
                         Module : <span class="modules">runtime</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides functions to interact with the runtime, the invocation context and to manage errors.</p>
-<h1>Samples</h1>
+                    <p>This module provides functions to interact with the runtime, the invocation context, and to manage errors.</p>
 <h2>Invocation Context</h2>
-<p>The Invocation Context is a data holder that is created per request and preserved for a single request-response flow
-. It comprises of a unique ID, a <code>Principal</code> instance that includes user details, attribute map to hold context
-information and an <code>AuthenticationContext</code> instance that has the authentication related details if available.</p>
-<p>The following sample shows how to access the Invocation Context, set data to it and access the same.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/runtime;
+<p>The Invocation Context is a data holder, which is created per request and preserved for a single request-response flow. It comprises of a unique ID, a <code>runtime:Principal</code> instance, which includes user details, a <code>runtime:AuthenticationContext</code>, which has the authentication-related details if available, and an attribute map to hold context information.</p>
+<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and the set of data for the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>.</p>
+<pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
 
-public function main() {
-
-    // Set data to the Invocation Context.
-    runtime:InvocationContext invocationContext = runtime:getInvocationContext();
-    runtime:Principal? principal = invocationContext[&quot;principal&quot;];
-    if (principal is runtime:Principal) {
-        // Set the username as ‘tom’.
-        principal[&quot;username&quot;] = &quot;tom&quot;;
-
-        // Set claims.
-        map&lt;any&gt; claims = { email: &quot;tom@ballerina.com&quot;, org: &quot;wso2&quot; };
-        principal.claims = claims;
-
-        // Set scopes.
-        string[] scopes = [&quot;email&quot;, &quot;profile&quot;];
-        principal.scopes = scopes;
-    }
-
-    runtime:AuthenticationContext? authContext = 
-                            invocationContext[&quot;authenticationContext&quot;];
-    if (authContext is runtime:AuthenticationContext) {
-        // Set auth scheme.
-        authContext.scheme = &quot;jwt&quot;;
-
-        // Set auth token.
-        authContext.authToken = &quot;abc.pqr.xyz&quot;;
-    }
-
-    // Retrieve data from the invocation context.
-    runtime:InvocationContext invocationContext1 = runtime:getInvocationContext();
-    runtime:Principal? principal1 = invocationContext1[&quot;principal&quot;];
-    if (principal1 is runtime:Principal) {
-        // Retrieve user name.
-        string? userName = principal1[&quot;username&quot;];
-        io:println(userName);
-
-        // Retrieve claims.
-        map&lt;any&gt;? retrievedClaims = principal1[&quot;claims&quot;];
-        io:println(retrievedClaims);
-
-        // Retrieve scopes.
-        string[]? retrievedScopes = principal1[&quot;scopes&quot;];
-        io:println(retrievedScopes);
-    }
-
-    runtime:AuthenticationContext? authContext1 = 
-                            invocationContext1[&quot;authenticationContext&quot;];
-    if (authContext1 is runtime:AuthenticationContext) {
-        // Retrieve auth scheme.
-        string? authScheme = authContext1[&quot;scheme&quot;];
-        io:println(authScheme);
-
-        // Retrieve auth token.
-        string? token = authContext1[&quot;authToken&quot;];
-        io:println(token);
-    }
-}
-</code></pre>
-<p>The following sample shows how to halt the current <code>worker</code> for a given time period.</p>
-<pre><code class="language-ballerina">import ballerina/runtime;
-
-// Sleep the current worker for 5 seconds.
-runtime:sleep(5000);
-</code></pre>
-<p>The following sample shows how to access properties from the runtime.</p>
-<pre><code class="language-ballerina">import ballerina/runtime;
-
-// Retrieve the property ‘ballerina version’ from the runtime.
-runtime:getProperty(&quot;ballerina.version&quot;);
-</code></pre>
-<h2>CallStack Element</h2>
-<p>The runtime module includes a utility method to retrieve the current call stack and the particular call stack frame for
-an error.</p>
-<p>The following sample shows how to access the call stack and how to trap an error.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/runtime;
-
-public function main() {
-    // Print the current call stack.
-    io:println(runtime:getCallStack());
-    var errorMessage = trap getError();
-    if (errorMessage is error) {
-        io:println(errorMessage.reason());
-    }
+runtime:Principal? principal = invocationContext[&quot;principal&quot;];
+if (principal is runtime:Principal) {
+    // Set the username as ‘tom’.
+    principal[&quot;username&quot;] = &quot;tom&quot;;
 }
 
-function getError() {
-    panicWithError();
-}
-
-function panicWithError() {
-    // Create an error with a reason.
-    error e = error(&quot;error occurred&quot;);
-    panic e;
+runtime:AuthenticationContext? authContext = invocationContext[&quot;authenticationContext&quot;];
+if (authContext is runtime:AuthenticationContext) {
+    // Set the auth scheme.
+    authContext.scheme = &quot;jwt&quot;;
 }
 </code></pre>
+<p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and get the data from the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>,</p>
+<pre><code class="language-ballerina">runtime:InvocationContext invocationContext = runtime:getInvocationContext();
+runtime:Principal? principal = invocationContext[&quot;principal&quot;];
+if (principal is runtime:Principal) {
+    // Retrieve the user name.
+    string? userName = principal[&quot;username&quot;];
+}
+
+runtime:AuthenticationContext? authContext = invocationContext[&quot;authenticationContext&quot;];
+if (authContext is runtime:AuthenticationContext) {
+    // Retrieve the auth scheme.
+    string? authScheme = authContext[&quot;scheme&quot;];
+}
+</code></pre>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 
 
             
@@ -712,34 +646,46 @@ function panicWithError() {
                     
                         <tr>
                             <td class="module-title truncate records" id="AuthenticationContext" title="AuthenticationContext">
-                                <a class="records"
-                                   href="records/AuthenticationContext.html">AuthenticationContext</a></td>
-                            <td class="module-desc">Represents the AuthenticationContext, populated with authenticated information.
-</td>
+                                <a class="records " href="records/AuthenticationContext.html">AuthenticationContext</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="CallStackElement" title="CallStackElement">
-                                <a class="records"
-                                   href="records/CallStackElement.html">CallStackElement</a></td>
-                            <td class="module-desc">Representation of `CallStackElement`
-</td>
+                                <a class="records " href="records/CallStackElement.html">CallStackElement</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents a data holder of the current call stack element.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="InvocationContext" title="InvocationContext">
-                                <a class="records"
-                                   href="records/InvocationContext.html">InvocationContext</a></td>
-                            <td class="module-desc">Represents the InvocationContext.
-</td>
+                                <a class="records " href="records/InvocationContext.html">InvocationContext</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the <code>runtime:InvocationContext</code>.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Principal" title="Principal">
-                                <a class="records"
-                                   href="records/Principal.html">Principal</a></td>
-                            <td class="module-desc">Represents the Principal, populated with authenticated user information.
-</td>
+                                <a class="records " href="records/Principal.html">Principal</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the <code>runtime:Principal</code> populated with the authenticated user information.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -764,44 +710,78 @@ function panicWithError() {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="externGetProperty" title="externGetProperty"><a
-                                    class="functions" href="functions.html#externGetProperty">externGetProperty</a></td>
-                            <td class="module-desc"></td>
+                            <td class="module-title truncate functions" id="externGetProperty" title="externGetProperty">
+                                <a class="functions " href="functions.html#externGetProperty">externGetProperty</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getCallStack" title="getCallStack"><a
-                                    class="functions" href="functions.html#getCallStack">getCallStack</a></td>
-                            <td class="module-desc"><p>Retrieves the Call Stack</p>
-</td>
+                            <td class="module-title truncate functions" id="getCallStack" title="getCallStack">
+                                <a class="functions " href="functions.html#getCallStack">getCallStack</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrieves the array of <code>runtime:CallStackElement</code> instances.
+<pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getInvocationContext" title="getInvocationContext"><a
-                                    class="functions" href="functions.html#getInvocationContext">getInvocationContext</a></td>
-                            <td class="module-desc"><p>Creates a InvocationContext instance.</p>
-</td>
+                            <td class="module-title truncate functions" id="getInvocationContext" title="getInvocationContext">
+                                <a class="functions " href="functions.html#getInvocationContext">getInvocationContext</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the <code>runtime:InvocationContext</code> instance.
+<pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getProperty" title="getProperty"><a
-                                    class="functions" href="functions.html#getProperty">getProperty</a></td>
-                            <td class="module-desc"><p>Returns the value associated with the specified property name.</p>
-</td>
+                            <td class="module-title truncate functions" id="getProperty" title="getProperty">
+                                <a class="functions " href="functions.html#getProperty">getProperty</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the system property value associated with the specified property name.
+<pre><code class="language-ballerina"> string userHome = runtime:getProperty(&quot;user.home&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="sleep" title="sleep"><a
-                                    class="functions" href="functions.html#sleep">sleep</a></td>
-                            <td class="module-desc"><p>Halts the current worker for a predefined amount of time.</p>
-</td>
+                            <td class="module-title truncate functions" id="sleep" title="sleep">
+                                <a class="functions " href="functions.html#sleep">sleep</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Halts the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> runtime:sleep(1000);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="timeout" title="timeout"><a
-                                    class="functions" href="functions.html#timeout">timeout</a></td>
-                            <td class="module-desc"><p>Gives a timeout to the current worker for a predefined amount of time.</p>
-</td>
+                            <td class="module-title truncate functions" id="timeout" title="timeout">
+                                <a class="functions " href="functions.html#timeout">timeout</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Gives a timeout to the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> future&lt;()&gt; f1 = runtime:timeout(2000);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>

@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">ReadableByteChannel</span>
+                <span class="objects ">ReadableByteChannel</span>
             </h1>
-            <p><p>ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.</p>
-</p>
+            <p>
+                
+                ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -737,52 +748,66 @@
                         <div class="method-list">
                             
                                 
-<a href="#read">
-    <div class="param-sum">
-        <div class="param-name">
-        read 
-        </div>
-        <div class="param-details"> <p>Source bytes from a given input/output resource.</p>
-<p>Number of bytes returned will be &lt; 0 if the file reached its end.</p>
-<p>This operation will be asynchronous, where the total number of required bytes might not be returned at a given
-time.</p>
-<p><code>io:EofError</code> will return once channel reach to it end.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="read">
+        <a href="#read">read </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
+This operation will be asynchronous in which the total number of required bytes might not be returned at a given
+time. An <code>io:EofError</code> will return once the channel reaches the end.
+<pre><code class="language-ballerina"> byte[]|io:Error result = readableByteChannel.read(1000);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#base64Encode">
-    <div class="param-sum">
-        <div class="param-name">
-        base64Encode 
-        </div>
-        <div class="param-details"> <p>Encodes a given ReadableByteChannel with Base64 encoding scheme.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="base64Encode">
+        <a href="#base64Encode">base64Encode </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Encode();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#base64Decode">
-    <div class="param-sum">
-        <div class="param-name">
-        base64Decode 
-        </div>
-        <div class="param-details"> <p>Decodes a given ReadableByteChannel with Base64 encoding scheme.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="base64Decode">
+        <a href="#base64Decode">base64Decode </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Decode();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given ReadableByteChannel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given <code>ReadableByteChannel</code>.
+<pre><code class="language-ballerina"> io:Error? err = readableByteChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -797,7 +822,7 @@ time.</p>
              <a class="url-link" href="#read">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> read </h2>
+            <h2 > read </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> nBytes)</p>
@@ -805,13 +830,16 @@ time.</p>
         </span>
         
     </div>
-    <p><p>Source bytes from a given input/output resource.</p>
-<p>Number of bytes returned will be &lt; 0 if the file reached its end.</p>
-<p>This operation will be asynchronous, where the total number of required bytes might not be returned at a given
-time.</p>
-<p><code>io:EofError</code> will return once channel reach to it end.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
+This operation will be asynchronous in which the total number of required bytes might not be returned at a given
+time. An <code>io:EofError</code> will return once the channel reaches the end.
+<pre><code class="language-ballerina"> byte[]|io:Error result = readableByteChannel.read(1000);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -822,7 +850,7 @@ time.</p>
                         
                     </li>
                     <li>
-                        <p><p>Positive integer. Represents the number of bytes which should be read</p>
+                        <p><p>A positive integer. Represents the number of bytes, which should be read</p>
 </p>
                     </li>
                 </ul>
@@ -836,8 +864,7 @@ time.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Content, the number of bytes read or <code>EofError</code> once channel reach to it end.
-<code>Error</code> if any error occurred.</p>
+                <li><p>Content (the number of bytes) read, an <code>EofError</code> once the channel reaches the end or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -850,7 +877,7 @@ time.</p>
              <a class="url-link" href="#base64Encode">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> base64Encode </h2>
+            <h2 > base64Encode </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -858,16 +885,21 @@ time.</p>
         </span>
         
     </div>
-    <p><p>Encodes a given ReadableByteChannel with Base64 encoding scheme.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Encode();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Return an encoded ReadableByteChannel or <code>Error</code> if any error occurred</p>
+                <li><p>An encoded <code>ReadableByteChannel</code> or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -880,7 +912,7 @@ time.</p>
              <a class="url-link" href="#base64Decode">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> base64Decode </h2>
+            <h2 > base64Decode </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -888,16 +920,21 @@ time.</p>
         </span>
         
     </div>
-    <p><p>Decodes a given ReadableByteChannel with Base64 encoding scheme.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Decode();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Return a decoded ReadableByteChannel or <code>Error</code> if any error occurred</p>
+                <li><p>A decoded <code>ReadableByteChannel</code> or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -910,7 +947,7 @@ time.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -918,16 +955,21 @@ time.</p>
         </span>
         
     </div>
-    <p><p>Closes a given ReadableByteChannel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given <code>ReadableByteChannel</code>.
+<pre><code class="language-ballerina"> io:Error? err = readableByteChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Will return () if there's no error</p>
+                <li><p>Will return <code>()</code> if there is no error</p>
 </li>
             </ul>
         </div>

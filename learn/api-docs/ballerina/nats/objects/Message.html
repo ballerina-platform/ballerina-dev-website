@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -666,10 +674,13 @@
                 
                     <a href="../../nats/index.html">nats</a>
                  :
-                <span class="objects">Message</span>
+                <span class="objects ">Message</span>
             </h1>
-            <p><p>Represents a message, which will be pushed from the NATS server to the consumer.</p>
-</p>
+            <p>
+                
+                Represents the message, which a NATS server sends to its subscribed services.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -681,37 +692,43 @@
                         <div class="method-list">
                             
                                 
-<a href="#getData">
-    <div class="param-sum">
-        <div class="param-name">
-        getData 
-        </div>
-        <div class="param-details"> <p>Get the message content.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getData">
+        <a href="#getData">getData </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the message content.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getReplyTo">
-    <div class="param-sum">
-        <div class="param-name">
-        getReplyTo 
-        </div>
-        <div class="param-details"> <p>Get the replyTo subject of the message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getReplyTo">
+        <a href="#getReplyTo">getReplyTo </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the <code>replyTo</code> subject of the message.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getSubject">
-    <div class="param-sum">
-        <div class="param-name">
-        getSubject 
-        </div>
-        <div class="param-details"> <p>Get the subject of the message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getSubject">
+        <a href="#getSubject">getSubject </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the subject to which the message was sent to.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -726,7 +743,7 @@
              <a class="url-link" href="#getData">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getData </h2>
+            <h2 > getData </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -734,16 +751,19 @@
         </span>
         
     </div>
-    <p><p>Get the message content.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the message content.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span></span>)</li>
-                <li><p>The data returned from the message as a 'byte[]'.</p>
+                <li><p>The data returned from the message as a 'byte[]'</p>
 </li>
             </ul>
         </div>
@@ -756,7 +776,7 @@
              <a class="url-link" href="#getReplyTo">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getReplyTo </h2>
+            <h2 > getReplyTo </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -764,16 +784,19 @@
         </span>
         
     </div>
-    <p><p>Get the replyTo subject of the message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the <code>replyTo</code> subject of the message.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
-                <li><p>The subject the client is expected to send a reply message on.</p>
+                <li><p>The subject to which the client is expected to send a reply message</p>
 </li>
             </ul>
         </div>
@@ -786,7 +809,7 @@
              <a class="url-link" href="#getSubject">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getSubject </h2>
+            <h2 > getSubject </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -794,9 +817,12 @@
         </span>
         
     </div>
-    <p><p>Get the subject of the message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the subject to which the message was sent to.
+
+    </div>
+    
 
     
         

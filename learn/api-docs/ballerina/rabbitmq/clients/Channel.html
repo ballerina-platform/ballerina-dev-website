@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -667,7 +675,7 @@
                 
                 <span class="clients">Channel</span>
             </h1>
-            <p><p>Ballerina interface to provide AMQP <code>Channel</code> related functionality.</p>
+            <p>The Ballerina interface to provide AMQP Channel related functionality.
 </p>
 
             <div class="constants">
@@ -682,7 +690,7 @@
             <ul>
                 <li> <b>connectionOrConnectionConfig</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>Holds a Ballerina RabbitMQ <code>Connection</code> object or the connection parameters.</p>
+                    <p>A <code>rabbitmq:Connection</code> object or a connection configuration</p>
 
                 </li>
             </ul>
@@ -699,59 +707,79 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="queueDeclare"><a
                                             class="functions" href="#queueDeclare">queueDeclare</a></td>
-                                    <td class="module-desc"><p>Actively declare a non-exclusive, auto-delete, non-durable queue, or queue with the given configurations.</p>
+                                    <td class="module-desc">Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.
+<pre><code class="language-ballerina"> string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="exchangeDeclare"><a
                                             class="functions" href="#exchangeDeclare">exchangeDeclare</a></td>
-                                    <td class="module-desc"><p>Actively declare a non-auto-delete, non-durable exchange with no extra arguments,
-If the arguments are specified, then the exchange is declared accordingly.</p>
+                                    <td class="module-desc">Declares a non-auto-delete, non-durable exchange with no extra arguments.
+If the arguments are specified, then the exchange is declared accordingly.
+<pre><code class="language-ballerina"> rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({
+                                               exchangeName: &quot;MyExchange&quot;,
+                                               exchangeType: rabbitmq:DIRECT_EXCHANGE,
+                                               durable: true,
+                                               autoDelete: true });
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="queueBind"><a
                                             class="functions" href="#queueBind">queueBind</a></td>
-                                    <td class="module-desc"><p>Binds a queue to an exchange with the given binding key.</p>
+                                    <td class="module-desc">Binds a queue to an exchange with the given binding key.
+<pre><code class="language-ballerina"> rabbitmq:Error? bindResult = newChannel.queueBind(&quot;MyQueue&quot;, &quot;MyExchange&quot;, &quot;routing-key&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="basicPublish"><a
                                             class="functions" href="#basicPublish">basicPublish</a></td>
-                                    <td class="module-desc"><p>Publishes a message. Publishing to a non-existent exchange will result in a channel-level
-protocol error, which closes the channel.</p>
+                                    <td class="module-desc">Publishes a message. Publishing to a non-existent exchange will result in a channel-level
+protocol error, which closes the channel.
+<pre><code class="language-ballerina"> rabbitmq:Error? sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;, &quot;MyQueue&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="queueDelete"><a
                                             class="functions" href="#queueDelete">queueDelete</a></td>
-                                    <td class="module-desc"><p>Deletes the queue with the given name although it is in use or has messages on it.
-If the parameters ifUnused or ifEmpty is given, the queue is checked before deleting.</p>
+                                    <td class="module-desc">Deletes the queue with the given name although it is in use or has messages in it.
+If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="exchangeDelete"><a
                                             class="functions" href="#exchangeDelete">exchangeDelete</a></td>
-                                    <td class="module-desc"><p>Deletes the exchange with the given name.</p>
+                                    <td class="module-desc">Deletes the exchange with the given name.
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;exchangeDelete(&quot;MyExchange&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="queuePurge"><a
                                             class="functions" href="#queuePurge">queuePurge</a></td>
-                                    <td class="module-desc"><p>Purges the contents of the given queue.</p>
+                                    <td class="module-desc">Purges the content of the given queue.
+<pre><code class="language-ballerina"> rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="basicGet"><a
                                             class="functions" href="#basicGet">basicGet</a></td>
-                                    <td class="module-desc"><p>Retrieves a message synchronously from the given queue, providing direct access to the messages in the queue.</p>
+                                    <td class="module-desc">Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.
+<pre><code class="language-ballerina"> rabbitmq:Message|rabbitmq:Error getResult = newChannel-&gt;basicGet(&quot;MyQueue&quot;, rabbitmq:AUTO_ACK);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -763,38 +791,50 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         <div class="method-list">
                             
                                 
-<a href="#getConnection">
-    <div class="param-sum">
-        <div class="param-name">
-        getConnection 
-        </div>
-        <div class="param-details"> <p>Retrieve the Connection which carries this channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getConnection">
+        <a href="#getConnection">getConnection </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the connection, which carries this channel.
+<pre><code class="language-ballerina"> rabbitmq:Connection|rabbitmq:Error connResult = newChannel.getConnection();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes the RabbitMQ <code>Channel</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes the <code>rabbitmq:Channel</code>.
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#abortChannel">
-    <div class="param-sum">
-        <div class="param-name">
-        abortChannel 
-        </div>
-        <div class="param-details"> <p>Aborts the RabbitMQ <code>Channel</code>. Forces the <code>Channel</code> to close and waits for all the close operations
-to complete. Any encountered exceptions in the close operations are silently discarded.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="abortChannel">
+        <a href="#abortChannel">abortChannel </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Aborts the RabbitMQ <code>rabbitmq:Channel</code>. Forces the <code>rabbitmq:Channel</code> to close and waits for all the close operations
+to complete. Any encountered exceptions in the close operations are discarded silently.
+<pre><code class="language-ballerina"> rabbitmq:Error? abortResult = newChannel.abortChannel(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -809,7 +849,7 @@ to complete. Any encountered exceptions in the close operations are silently dis
              <a class="url-link" href="#queueDeclare">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> queueDeclare </h2>
+            <h2 > queueDeclare </h2>
         
         <span class="method-types">
             <p>(<a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a>? queueConfig)</p>
@@ -817,9 +857,14 @@ to complete. Any encountered exceptions in the close operations are silently dis
         </span>
         
     </div>
-    <p><p>Actively declare a non-exclusive, auto-delete, non-durable queue, or queue with the given configurations.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Declares a non-exclusive, auto-delete, or non-durable queue with the given configurations.
+<pre><code class="language-ballerina"> string|rabbitmq:Error? queueResult = newChannel-&gt;queueDeclare();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -830,7 +875,7 @@ to complete. Any encountered exceptions in the close operations are silently dis
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Holds the parameters required to declare a queue.</p>
+                        <p><p>Configurations required to declare a queue</p>
 </p>
                     </li>
                 </ul>
@@ -844,8 +889,8 @@ to complete. Any encountered exceptions in the close operations are silently dis
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>The name of the queue if autogenerated or nil if the queue was successfully
-generated with the given parameters. An error is returned if an I/O error is encountered.</p>
+                <li><p>The name of the queue if autogenerated, <code>()</code> if the queue was successfully
+generated with the given parameters, or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
 </li>
             </ul>
         </div>
@@ -858,7 +903,7 @@ generated with the given parameters. An error is returned if an I/O error is enc
              <a class="url-link" href="#exchangeDeclare">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> exchangeDeclare </h2>
+            <h2 > exchangeDeclare </h2>
         
         <span class="method-types">
             <p>(<a href="../../rabbitmq/records/ExchangeConfiguration.html">ExchangeConfiguration</a> exchangeConfig)</p>
@@ -866,10 +911,19 @@ generated with the given parameters. An error is returned if an I/O error is enc
         </span>
         
     </div>
-    <p><p>Actively declare a non-auto-delete, non-durable exchange with no extra arguments,
-If the arguments are specified, then the exchange is declared accordingly.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Declares a non-auto-delete, non-durable exchange with no extra arguments.
+If the arguments are specified, then the exchange is declared accordingly.
+<pre><code class="language-ballerina"> rabbitmq:Error? exchangeResult = newChannel-&gt;exchangeDeclare({
+                                               exchangeName: &quot;MyExchange&quot;,
+                                               exchangeType: rabbitmq:DIRECT_EXCHANGE,
+                                               durable: true,
+                                               autoDelete: true });
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -880,7 +934,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
                         
                     </li>
                     <li>
-                        <p><p>Holds parameters required to declare an exchange.</p>
+                        <p><p>Configurations required to declare an exchange</p>
 </p>
                     </li>
                 </ul>
@@ -894,7 +948,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -907,7 +961,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
              <a class="url-link" href="#queueBind">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> queueBind </h2>
+            <h2 > queueBind </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> queueName, <span class="builtin-type">string</span> exchangeName, <span class="builtin-type">string</span> bindingKey)</p>
@@ -915,9 +969,14 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         </span>
         
     </div>
-    <p><p>Binds a queue to an exchange with the given binding key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Binds a queue to an exchange with the given binding key.
+<pre><code class="language-ballerina"> rabbitmq:Error? bindResult = newChannel.queueBind(&quot;MyQueue&quot;, &quot;MyExchange&quot;, &quot;routing-key&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -928,7 +987,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
                         
                     </li>
                     <li>
-                        <p><p>Name of the queue.</p>
+                        <p><p>Name of the queue</p>
 </p>
                     </li>
                 </ul>
@@ -941,7 +1000,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
                         
                     </li>
                     <li>
-                        <p><p>Name of the exchange.</p>
+                        <p><p>Name of the exchange</p>
 </p>
                     </li>
                 </ul>
@@ -954,7 +1013,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
                         
                     </li>
                     <li>
-                        <p><p>Binding key used to bind the queue to the exchange.</p>
+                        <p><p>Binding key used to bind the queue to the exchange</p>
 </p>
                     </li>
                 </ul>
@@ -968,7 +1027,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -981,7 +1040,7 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
              <a class="url-link" href="#basicPublish">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> basicPublish </h2>
+            <h2 > basicPublish </h2>
         
         <span class="method-types">
             <p>(<a href="../../rabbitmq/types.html#MessageContent">MessageContent</a> messageContent, <span class="builtin-type">string</span> routingKey, <span class="builtin-type">string</span> exchangeName, <a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a>? properties)</p>
@@ -989,10 +1048,15 @@ If the arguments are specified, then the exchange is declared accordingly.</p>
         </span>
         
     </div>
-    <p><p>Publishes a message. Publishing to a non-existent exchange will result in a channel-level
-protocol error, which closes the channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Publishes a message. Publishing to a non-existent exchange will result in a channel-level
+protocol error, which closes the channel.
+<pre><code class="language-ballerina"> rabbitmq:Error? sendResult = newChannel-&gt;basicPublish(&quot;Hello from Ballerina&quot;, &quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1003,7 +1067,7 @@ protocol error, which closes the channel.</p>
                         
                     </li>
                     <li>
-                        <p><p>The message body.</p>
+                        <p><p>The message body</p>
 </p>
                     </li>
                 </ul>
@@ -1016,7 +1080,7 @@ protocol error, which closes the channel.</p>
                         
                     </li>
                     <li>
-                        <p><p>The routing key.</p>
+                        <p><p>The routing key</p>
 </p>
                     </li>
                 </ul>
@@ -1029,7 +1093,7 @@ protocol error, which closes the channel.</p>
                         
                     </li>
                     <li>
-                        <p><p>The name of the exchange to which the message is published.</p>
+                        <p><p>The name of the exchange to which the message is published</p>
 </p>
                     </li>
                 </ul>
@@ -1042,7 +1106,7 @@ protocol error, which closes the channel.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Other properties for the message - routing headers etc.</p>
+                        <p><p>Other properties for the message (routing headers, etc.)</p>
 </p>
                     </li>
                 </ul>
@@ -1056,7 +1120,7 @@ protocol error, which closes the channel.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1069,7 +1133,7 @@ protocol error, which closes the channel.</p>
              <a class="url-link" href="#queueDelete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> queueDelete </h2>
+            <h2 > queueDelete </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> queueName, <span class="builtin-type">boolean</span> ifUnused, <span class="builtin-type">boolean</span> ifEmpty)</p>
@@ -1077,10 +1141,15 @@ protocol error, which closes the channel.</p>
         </span>
         
     </div>
-    <p><p>Deletes the queue with the given name although it is in use or has messages on it.
-If the parameters ifUnused or ifEmpty is given, the queue is checked before deleting.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Deletes the queue with the given name although it is in use or has messages in it.
+If the <code>ifUnused</code> or <code>ifEmpty</code> parameters are given, the queue is checked before deleting.
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;queueDelete(&quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1091,7 +1160,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         
                     </li>
                     <li>
-                        <p><p>Name of the queue to be deleted.</p>
+                        <p><p>Name of the queue to be deleted</p>
 </p>
                     </li>
                 </ul>
@@ -1104,7 +1173,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>True if the queue should be deleted only if not in use.</p>
+                        <p><p>True if the queue should be deleted only if it's not in use</p>
 </p>
                     </li>
                 </ul>
@@ -1117,7 +1186,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>True if the queue should be deleted only if empty.</p>
+                        <p><p>True if the queue should be deleted only if it's empty</p>
 </p>
                     </li>
                 </ul>
@@ -1131,7 +1200,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1144,7 +1213,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
              <a class="url-link" href="#exchangeDelete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> exchangeDelete </h2>
+            <h2 > exchangeDelete </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> exchangeName)</p>
@@ -1152,9 +1221,14 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         </span>
         
     </div>
-    <p><p>Deletes the exchange with the given name.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Deletes the exchange with the given name.
+<pre><code class="language-ballerina"> rabbitmq:Error? deleteResult = newChannel-&gt;exchangeDelete(&quot;MyExchange&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1165,7 +1239,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         
                     </li>
                     <li>
-                        <p><p>The name of the exchange.</p>
+                        <p><p>The name of the exchange</p>
 </p>
                     </li>
                 </ul>
@@ -1179,7 +1253,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An I/O error if an error is encountered or nil otherwise.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1192,7 +1266,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
              <a class="url-link" href="#queuePurge">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> queuePurge </h2>
+            <h2 > queuePurge </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> queueName)</p>
@@ -1200,9 +1274,14 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         </span>
         
     </div>
-    <p><p>Purges the contents of the given queue.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Purges the content of the given queue.
+<pre><code class="language-ballerina"> rabbitmq:Error? purgeResult = newChannel-&gt;queuePurge(&quot;MyQueue&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1213,7 +1292,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         
                     </li>
                     <li>
-                        <p><p>The name of the queue.</p>
+                        <p><p>The name of the queue</p>
 </p>
                     </li>
                 </ul>
@@ -1227,7 +1306,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1240,7 +1319,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
              <a class="url-link" href="#basicGet">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> basicGet </h2>
+            <h2 > basicGet </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> queueName, <a href="../../rabbitmq/types.html#AcknowledgementMode">AcknowledgementMode</a> ackMode)</p>
@@ -1248,9 +1327,14 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         </span>
         
     </div>
-    <p><p>Retrieves a message synchronously from the given queue, providing direct access to the messages in the queue.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves a message synchronously from the given queue providing direct access to the messages in the queue.
+<pre><code class="language-ballerina"> rabbitmq:Message|rabbitmq:Error getResult = newChannel-&gt;basicGet(&quot;MyQueue&quot;, rabbitmq:AUTO_ACK);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1261,7 +1345,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         
                     </li>
                     <li>
-                        <p><p>The name of the queue.</p>
+                        <p><p>The name of the queue</p>
 </p>
                     </li>
                 </ul>
@@ -1274,7 +1358,7 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
                         
                     </li>
                     <li>
-                        <p><p>Type of acknowledgement mode.</p>
+                        <p><p>Type of the acknowledgement mode</p>
 </p>
                     </li>
                 </ul>
@@ -1288,8 +1372,8 @@ If the parameters ifUnused or ifEmpty is given, the queue is checked before dele
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/clients/Message.html">Message</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p><code>Message</code> object containing the retrieved message data or an <code>Error</code> if an
-I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Message</code> object containing the retrieved message data or else a<code>rabbitmq:Error</code> if an
+I/O error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1306,7 +1390,7 @@ I/O problem is encountered.</p>
              <a class="url-link" href="#getConnection">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getConnection </h2>
+            <h2 > getConnection </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1314,16 +1398,21 @@ I/O problem is encountered.</p>
         </span>
         
     </div>
-    <p><p>Retrieve the Connection which carries this channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the connection, which carries this channel.
+<pre><code class="language-ballerina"> rabbitmq:Connection|rabbitmq:Error connResult = newChannel.getConnection();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/objects/Connection.html">Connection</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>RabbitMQ Connection object or error if an I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Connection</code> object or else a <code>rabbitmq:Error</code> if an I/O error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1336,7 +1425,7 @@ I/O problem is encountered.</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage)</p>
@@ -1344,9 +1433,14 @@ I/O problem is encountered.</p>
         </span>
         
     </div>
-    <p><p>Closes the RabbitMQ <code>Channel</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the <code>rabbitmq:Channel</code>.
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newChannel.close();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1357,8 +1451,8 @@ I/O problem is encountered.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The close code (For information, go to the &quot;Reply Codes&quot; section in the
-[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf)).</p>
+                        <p><p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
 </p>
                     </li>
                 </ul>
@@ -1371,7 +1465,7 @@ I/O problem is encountered.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>A message indicating the reason for closing the channel.</p>
+                        <p><p>A message indicating the reason for closing the channel</p>
 </p>
                     </li>
                 </ul>
@@ -1385,7 +1479,7 @@ I/O problem is encountered.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1398,7 +1492,7 @@ I/O problem is encountered.</p>
              <a class="url-link" href="#abortChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> abortChannel </h2>
+            <h2 > abortChannel </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage)</p>
@@ -1406,10 +1500,15 @@ I/O problem is encountered.</p>
         </span>
         
     </div>
-    <p><p>Aborts the RabbitMQ <code>Channel</code>. Forces the <code>Channel</code> to close and waits for all the close operations
-to complete. Any encountered exceptions in the close operations are silently discarded.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Aborts the RabbitMQ <code>rabbitmq:Channel</code>. Forces the <code>rabbitmq:Channel</code> to close and waits for all the close operations
+to complete. Any encountered exceptions in the close operations are discarded silently.
+<pre><code class="language-ballerina"> rabbitmq:Error? abortResult = newChannel.abortChannel(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1420,8 +1519,8 @@ to complete. Any encountered exceptions in the close operations are silently dis
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The close code (For information, go to the &quot;Reply Codes&quot; section in the
-[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf)).</p>
+                        <p><p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
 </p>
                     </li>
                 </ul>
@@ -1434,7 +1533,7 @@ to complete. Any encountered exceptions in the close operations are silently dis
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>A message indicating the reason for closing the channel.</p>
+                        <p><p>A message indicating the reason for closing the channel</p>
 </p>
                     </li>
                 </ul>
@@ -1448,7 +1547,7 @@ to complete. Any encountered exceptions in the close operations are silently dis
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>

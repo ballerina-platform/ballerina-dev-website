@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,8 +691,8 @@
                 
                 <span class="clients">Client</span>
             </h1>
-            <p><p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service. The API it
-provides includes functions to send request/error messages.</p>
+            <p>The gRPC client endpoint provides the capability for initiating contact with a remote gRPC service. The API it
+provides includes functions to send request/error messages.
 </p>
 
             <div class="constants">
@@ -699,7 +707,7 @@ provides includes functions to send request/error messages.</p>
             <ul>
                 <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    <p>The server url.</p>
+                    <p>The server URL</p>
 
                 </li>
             </ul>
@@ -710,7 +718,7 @@ provides includes functions to send request/error messages.</p>
                 <li> <b>config</b><span class="type">  <a href="../../grpc/records/ClientConfiguration.html">ClientConfiguration</a>?</span> ()</li>
                 <li>
                     <ul>
-<li>The ClientConfiguration of the endpoint.</li>
+<li>The <code>grpc:ClientConfiguration</code> of the endpoint</li>
 </ul>
 
                 </li>
@@ -728,21 +736,27 @@ provides includes functions to send request/error messages.</p>
                                 <tr>
                                     <td class="module-title truncate functions" title="blockingExecute"><a
                                             class="functions" href="#blockingExecute">blockingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing blocking call with gRPC service.</p>
+                                    <td class="module-desc">Calls when executing a blocking call with a gRPC service.
+<pre><code class="language-ballerina"> [anydata, grpc:Headers]|grpc:Error result = grpcClient-&gt;blockingExecute(&quot;HelloWorld/hello&quot;, req, headers);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="nonBlockingExecute"><a
                                             class="functions" href="#nonBlockingExecute">nonBlockingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing non-blocking call with gRPC service.</p>
+                                    <td class="module-desc">Calls when executing a non-blocking call with a gRPC service.
+<pre><code class="language-ballerina"> grpc:Error? result = grpcClient-&gt;nonBlockingExecute(&quot;HelloWorld/hello&quot;, req, msgListener, headers);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="streamingExecute"><a
                                             class="functions" href="#streamingExecute">streamingExecute</a></td>
-                                    <td class="module-desc"><p>Calls when executing streaming call with gRPC service.</p>
+                                    <td class="module-desc">Calls when executing  a streaming call with a gRPC service.
+<pre><code class="language-ballerina"> grpc:StreamingClient|grpc:Error result = grpcClient-&gt;streamingExecute(&quot;HelloWorld/lotsOfGreetings&quot;, msgListener, headers);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -754,15 +768,19 @@ provides includes functions to send request/error messages.</p>
                         <div class="method-list">
                             
                                 
-<a href="#initStub">
-    <div class="param-sum">
-        <div class="param-name">
-        initStub 
-        </div>
-        <div class="param-details"> <p>Calls when initializing client endpoint with service descriptor data extracted from proto file.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="initStub">
+        <a href="#initStub">initStub </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
+<pre><code class="language-ballerina"> grpc:Error? result = grpcClient.initStub(self, &quot;blocking&quot;, ROOT_DESCRIPTOR, getDescriptorMap());
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -777,7 +795,7 @@ provides includes functions to send request/error messages.</p>
              <a class="url-link" href="#blockingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> blockingExecute </h2>
+            <h2 > blockingExecute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">anydata</span> payload, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
@@ -785,9 +803,14 @@ provides includes functions to send request/error messages.</p>
         </span>
         
     </div>
-    <p><p>Calls when executing blocking call with gRPC service.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calls when executing a blocking call with a gRPC service.
+<pre><code class="language-ballerina"> [anydata, grpc:Headers]|grpc:Error result = grpcClient-&gt;blockingExecute(&quot;HelloWorld/hello&quot;, req, headers);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -798,7 +821,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Remote service method id.</p>
+                        <p><p>Remote service method ID</p>
 </p>
                     </li>
                 </ul>
@@ -811,7 +834,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Request message. Message type varies with remote service method parameter.</p>
+                        <p><p>Request message. The message type varies with the remote service method parameter</p>
 </p>
                     </li>
                 </ul>
@@ -824,7 +847,7 @@ provides includes functions to send request/error messages.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Optional headers parameter. Passes header value if needed. Default sets to nil.</p>
+                        <p><p>Optional headers parameter. The header value are passed only if needed. The default value is <code>()</code></p>
 </p>
                     </li>
                 </ul>
@@ -838,7 +861,7 @@ provides includes functions to send request/error messages.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="builtin-type">anydata</span>, <a href="../../grpc/objects/Headers.html">Headers</a><span>]</span> | <a href="../../grpc/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns response message and headers if executes successfully, error otherwise.</p>
+                <li><p>The response message and headers if executed successfully or else a <code>grpc:Error</code></p>
 </li>
             </ul>
         </div>
@@ -851,7 +874,7 @@ provides includes functions to send request/error messages.</p>
              <a class="url-link" href="#nonBlockingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> nonBlockingExecute </h2>
+            <h2 > nonBlockingExecute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">anydata</span> payload, <span class="builtin-type">service</span> listenerService, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
@@ -859,9 +882,14 @@ provides includes functions to send request/error messages.</p>
         </span>
         
     </div>
-    <p><p>Calls when executing non-blocking call with gRPC service.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calls when executing a non-blocking call with a gRPC service.
+<pre><code class="language-ballerina"> grpc:Error? result = grpcClient-&gt;nonBlockingExecute(&quot;HelloWorld/hello&quot;, req, msgListener, headers);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -872,7 +900,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Remote service method id.</p>
+                        <p><p>Remote service method ID</p>
 </p>
                     </li>
                 </ul>
@@ -885,7 +913,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Request message. Message type varies with remote service method parameter..</p>
+                        <p><p>Request message. The message type varies with the remote service method parameter</p>
 </p>
                     </li>
                 </ul>
@@ -898,7 +926,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Call back listener service. This service listens the response message from service.</p>
+                        <p><p>Call back listener service. This service listens to the response message from the service</p>
 </p>
                     </li>
                 </ul>
@@ -911,7 +939,7 @@ provides includes functions to send request/error messages.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Optional headers parameter. Passes header value if needed. Default sets to nil.</p>
+                        <p><p>Optional headers parameter. The header values are passed only if needed. The default value is <code>()</code></p>
 </p>
                     </li>
                 </ul>
@@ -925,7 +953,7 @@ provides includes functions to send request/error messages.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the request, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the request or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -938,7 +966,7 @@ provides includes functions to send request/error messages.</p>
              <a class="url-link" href="#streamingExecute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> streamingExecute </h2>
+            <h2 > streamingExecute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> methodID, <span class="builtin-type">service</span> listenerService, <a href="../../grpc/objects/Headers.html">Headers</a>? headers)</p>
@@ -946,9 +974,14 @@ provides includes functions to send request/error messages.</p>
         </span>
         
     </div>
-    <p><p>Calls when executing streaming call with gRPC service.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calls when executing  a streaming call with a gRPC service.
+<pre><code class="language-ballerina"> grpc:StreamingClient|grpc:Error result = grpcClient-&gt;streamingExecute(&quot;HelloWorld/lotsOfGreetings&quot;, msgListener, headers);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -959,7 +992,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Remote service method id.</p>
+                        <p><p>Remote service method ID</p>
 </p>
                     </li>
                 </ul>
@@ -972,7 +1005,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Call back listener service. This service listens the response message from service.</p>
+                        <p><p>Call back listener service. This service listens to the response message from the service</p>
 </p>
                     </li>
                 </ul>
@@ -985,7 +1018,7 @@ provides includes functions to send request/error messages.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Optional headers parameter. Passes header value if needed. Default sets to nil.</p>
+                        <p><p>Optional headers parameter. The header values are passed only if needed. The default value is <code>()</code></p>
 </p>
                     </li>
                 </ul>
@@ -999,7 +1032,7 @@ provides includes functions to send request/error messages.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/clients/StreamingClient.html">StreamingClient</a> | <a href="../../grpc/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns client connection if executes successfully, error otherwise.</p>
+                <li><p>A <code>grpc:StreamingClient</code> object if executed successfully or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1016,7 +1049,7 @@ provides includes functions to send request/error messages.</p>
              <a class="url-link" href="#initStub">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> initStub </h2>
+            <h2 > initStub </h2>
         
         <span class="method-types">
             <p>(<a href="../../grpc/objects/AbstractClientEndpoint.html">AbstractClientEndpoint</a> clientEndpoint, <span class="builtin-type">string</span> stubType, <span class="builtin-type">string</span> descriptorKey, <span class="builtin-type">map</span> descriptorMap)</p>
@@ -1024,9 +1057,14 @@ provides includes functions to send request/error messages.</p>
         </span>
         
     </div>
-    <p><p>Calls when initializing client endpoint with service descriptor data extracted from proto file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
+<pre><code class="language-ballerina"> grpc:Error? result = grpcClient.initStub(self, &quot;blocking&quot;, ROOT_DESCRIPTOR, getDescriptorMap());
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1050,7 +1088,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Service Stub type. possible values: blocking, nonblocking.</p>
+                        <p><p>Service Stub type. Possible values: blocking, nonblocking</p>
 </p>
                     </li>
                 </ul>
@@ -1063,7 +1101,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Proto descriptor key. Key of proto descriptor.</p>
+                        <p><p>Key of the proto descriptor</p>
 </p>
                     </li>
                 </ul>
@@ -1076,7 +1114,7 @@ provides includes functions to send request/error messages.</p>
                         
                     </li>
                     <li>
-                        <p><p>Proto descriptor map. descriptor map with all dependent descriptors.</p>
+                        <p><p>Proto descriptor map with all the dependent descriptors</p>
 </p>
                     </li>
                 </ul>
@@ -1090,7 +1128,7 @@ provides includes functions to send request/error messages.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while initializing the stub, returns nill otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while initializing the stub or else <code>()</code></p>
 </li>
             </ul>
         </div>

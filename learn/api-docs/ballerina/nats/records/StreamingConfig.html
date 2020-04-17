@@ -59,6 +59,10 @@
                 <ul>
                     
                         <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
+                        <li >
                             <a href="ConnectionConfig.html">ConnectionConfig</a>
                         </li>
                     
@@ -92,7 +96,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +286,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -380,6 +388,10 @@
                     <ul>
                         
                             <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
+                            <li >
                                 <a href="ConnectionConfig.html">ConnectionConfig</a>
                             </li>
                         
@@ -413,7 +425,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +615,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,10 +721,13 @@
                 
                     <a href="../../nats/index.html">nats</a>
                 
-                 : <span class="records">StreamingConfig</span>
+                 : <span class="records ">StreamingConfig</span>
             </h1>
-            <p>Configuration related to establishing a streaming connection.
-</p>
+            <p>
+                
+                Configuration related to establishing a streaming connection.
+
+            </p>
             <div class="constants">
                 
                     
@@ -717,48 +736,68 @@
         
     <div class="params-listing">
         <ul>
-            <li> ackTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 30)</span>
+            <li> 
+                <span >ackTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 30)</span> 
             </li>
             <li>
-                <p><p>Timeout in seconds to wait for an acknowledgement for the corresponding subscription.</p>
-</p>
+                <p>
+                    
+                    <p>Timeout (in seconds) to wait for an acknowledgement for the corresponding subscription</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> connectionTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 5)</span>
+            <li> 
+                <span >connectionTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 5)</span> 
             </li>
             <li>
-                <p><p>Timeout in seconds to wait for a connection.</p>
-</p>
+                <p>
+                    
+                    <p>Timeout (in seconds) to wait for a connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPubAcksInFlight<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 16384)</span>
+            <li> 
+                <span >maxPubAcksInFlight</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 16384)</span> 
             </li>
             <li>
-                <p><p>The maximum number of publish ACKs that may be in flight at any point in time.</p>
-</p>
+                <p>
+                    
+                    <p>The maximum number of publish ACKs that may be in flight at any point of time</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> discoverPrefix<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default _STAN.discover)</span>
+            <li> 
+                <span >discoverPrefix</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default _STAN.discover)</span> 
             </li>
             <li>
-                <p><p>Subject prefix used for server discovery.</p>
-</p>
+                <p>
+                    
+                    <p>Subject prefix used for server discovery</p>
+
+                </p>
             </li>
         </ul>
     </div>

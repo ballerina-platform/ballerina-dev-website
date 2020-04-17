@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -246,6 +246,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -353,7 +357,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -531,6 +535,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -635,7 +643,7 @@
                 
                 <span class="clients">Client</span>
             </h1>
-            <p><p>Represents a JDBC client endpoint.</p>
+            <p>Represents a JDBC client endpoint.
 </p>
 
             <div class="constants">
@@ -666,28 +674,28 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="call"><a
                                             class="functions" href="#call">call</a></td>
-                                    <td class="module-desc"><p>The call remote function implementation for JDBC Client to invoke stored procedures/functions.</p>
+                                    <td class="module-desc">The call remote function implementation for JDBC Client to invoke stored procedures/functions.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="select"><a
                                             class="functions" href="#select">select</a></td>
-                                    <td class="module-desc"><p>The select remote function implementation for JDBC Client to select data from tables.</p>
+                                    <td class="module-desc">The select remote function implementation for JDBC Client to select data from tables.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="update"><a
                                             class="functions" href="#update">update</a></td>
-                                    <td class="module-desc"><p>The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.</p>
+                                    <td class="module-desc">The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="batchUpdate"><a
                                             class="functions" href="#batchUpdate">batchUpdate</a></td>
-                                    <td class="module-desc"><p>The batchUpdate remote function implementation for JDBC Client to execute batch operations.</p>
+                                    <td class="module-desc">The batchUpdate remote function implementation for JDBC Client to execute batch operations.
 </td>
                                 </tr>
                             
@@ -699,15 +707,19 @@
                         <div class="method-list">
                             
                                 
-<a href="#stop">
-    <div class="param-sum">
-        <div class="param-name">
-        stop 
-        </div>
-        <div class="param-details"> <p>Stops the JDBC client.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name strike" title="stop">
+        <a href="#stop">stop </a>
     </div>
-</a>
+    <div class="param-details"> 
+        
+            <span class="stab">Deprecated</span>
+            
+        Stops the JDBC client.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -722,7 +734,7 @@
              <a class="url-link" href="#call">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> call </h2>
+            <h2 class="strike"> call </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> sqlQuery, <span class="array-type"><span class="builtin-type">typedesc</span>[]?</span> recordType, <span class="array-type"><a href="../../java.jdbc/types.html#Param">Param</a>[]</span> parameters)</p>
@@ -730,9 +742,14 @@
         </span>
         
     </div>
-    <p><p>The call remote function implementation for JDBC Client to invoke stored procedures/functions.</p>
-</p>
-     
+    <div class="function-desc">
+        
+            <span class="stab">Deprecated</span>
+        
+        The call remote function implementation for JDBC Client to invoke stored procedures/functions.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -797,7 +814,7 @@
              <a class="url-link" href="#select">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> select </h2>
+            <h2 class="strike"> select </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> sqlQuery, <span class="builtin-type">typedesc?</span> recordType, <span class="array-type"><a href="../../java.jdbc/types.html#Param">Param</a>[]</span> parameters)</p>
@@ -805,9 +822,14 @@
         </span>
         
     </div>
-    <p><p>The select remote function implementation for JDBC Client to select data from tables.</p>
-</p>
-     
+    <div class="function-desc">
+        
+            <span class="stab">Deprecated</span>
+        
+        The select remote function implementation for JDBC Client to select data from tables.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -871,7 +893,7 @@
              <a class="url-link" href="#update">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> update </h2>
+            <h2 class="strike"> update </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> sqlQuery, <span class="array-type"><a href="../../java.jdbc/types.html#Param">Param</a>[]</span> parameters)</p>
@@ -879,9 +901,14 @@
         </span>
         
     </div>
-    <p><p>The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.</p>
-</p>
-     
+    <div class="function-desc">
+        
+            <span class="stab">Deprecated</span>
+        
+        The update remote function implementation for JDBC Client to insert/delete/modify data and schema of the database.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -933,7 +960,7 @@ else <code>Error</code> will be returned if there is an error</p>
              <a class="url-link" href="#batchUpdate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> batchUpdate </h2>
+            <h2 class="strike"> batchUpdate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> sqlQuery, <span class="builtin-type">boolean</span> rollbackAllInFailure, <span class="array-type"><span class="array-type"><a href="../../java.jdbc/types.html#Param">Param</a>?[]</span>[]</span> parameters)</p>
@@ -941,9 +968,14 @@ else <code>Error</code> will be returned if there is an error</p>
         </span>
         
     </div>
-    <p><p>The batchUpdate remote function implementation for JDBC Client to execute batch operations.</p>
-</p>
-     
+    <div class="function-desc">
+        
+            <span class="stab">Deprecated</span>
+        
+        The batchUpdate remote function implementation for JDBC Client to execute batch operations.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1019,7 +1051,7 @@ contains updated row count or the status returned from each command in the batch
              <a class="url-link" href="#stop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> stop </h2>
+            <h2 class="strike"> stop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1027,9 +1059,14 @@ contains updated row count or the status returned from each command in the batch
         </span>
         
     </div>
-    <p><p>Stops the JDBC client.</p>
-</p>
-     
+    <div class="function-desc">
+        
+            <span class="stab">Deprecated</span>
+        
+        Stops the JDBC client.
+
+    </div>
+    
 
     
         

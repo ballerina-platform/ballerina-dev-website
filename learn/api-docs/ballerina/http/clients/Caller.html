@@ -116,7 +116,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -310,6 +310,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -465,7 +469,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -659,6 +663,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -763,7 +771,7 @@
                 
                 <span class="clients">Caller</span>
             </h1>
-            <p><p>The caller actions for responding to client requests.</p>
+            <p>The caller actions for responding to client requests.
 </p>
 
             <div class="constants">
@@ -777,76 +785,134 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="respond"><a
                                             class="functions" href="#respond">respond</a></td>
-                                    <td class="module-desc"><p>Sends the outbound response to the caller.</p>
+                                    <td class="module-desc">Sends the outbound response to the caller.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="promise"><a
                                             class="functions" href="#promise">promise</a></td>
-                                    <td class="module-desc"><p>Pushes a promise to the caller.</p>
+                                    <td class="module-desc">Pushes a promise to the caller.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="pushPromisedResponse"><a
                                             class="functions" href="#pushPromisedResponse">pushPromisedResponse</a></td>
-                                    <td class="module-desc"><p>Sends a promised push response to the caller.</p>
+                                    <td class="module-desc">Sends a promised push response to the caller.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="acceptWebSocketUpgrade"><a
                                             class="functions" href="#acceptWebSocketUpgrade">acceptWebSocketUpgrade</a></td>
-                                    <td class="module-desc"><p>Sends an upgrade request with custom headers.</p>
+                                    <td class="module-desc">Sends an upgrade request with custom headers.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="cancelWebSocketUpgrade"><a
                                             class="functions" href="#cancelWebSocketUpgrade">cancelWebSocketUpgrade</a></td>
-                                    <td class="module-desc"><p>Cancels the handshake.</p>
+                                    <td class="module-desc">Cancels the handshake.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="continue"><a
                                             class="functions" href="#continue">continue</a></td>
-                                    <td class="module-desc"><p>Sends a <code>100-continue</code> response to the caller.</p>
+                                    <td class="module-desc">Sends a <code>100-continue</code> response to the caller.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="redirect"><a
                                             class="functions" href="#redirect">redirect</a></td>
-                                    <td class="module-desc"><p>Sends a redirect response to the user with the specified redirection status code.</p>
+                                    <td class="module-desc">Sends a redirect response to the user with the specified redirection status code.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="ok"><a
                                             class="functions" href="#ok">ok</a></td>
-                                    <td class="module-desc"><p>Sends the outbound response to the caller with the status 200 OK.</p>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 200 OK.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="created"><a
                                             class="functions" href="#created">created</a></td>
-                                    <td class="module-desc"><p>Sends the outbound response to the caller with the status 201 Created.</p>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 201 Created.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="accepted"><a
                                             class="functions" href="#accepted">accepted</a></td>
-                                    <td class="module-desc"><p>Sends the outbound response to the caller with the status 202 Accepted.</p>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 202 Accepted.
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="noContent"><a
+                                            class="functions" href="#noContent">noContent</a></td>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 204 No Content. If the given response contains a body
+that will be removed.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;noContent();
+</code></pre>
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="badRequest"><a
+                                            class="functions" href="#badRequest">badRequest</a></td>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 400 Bad Request.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;badRequest();
+</code></pre>
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="notFound"><a
+                                            class="functions" href="#notFound">notFound</a></td>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 404 Not Found.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;notFound();
+</code></pre>
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="internalServerError"><a
+                                            class="functions" href="#internalServerError">internalServerError</a></td>
+                                    <td class="module-desc">Sends the outbound response to the caller with the status 500 Internal Server Error.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;internalServerError();
+</code></pre>
 </td>
                                 </tr>
                             
                         </table>
                     
 
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="getRemoteHostName">
+        <a href="#getRemoteHostName">getRemoteHostName </a>
+    </div>
+    <div class="param-details"> 
+            
+        Gets the hostname from the remote address. This method may trigger a DNS reverse lookup if the address was created
+with a literal IP address.
+<pre><code class="language-ballerina"> string? remoteHost = caller.getRemoteHostName();
+</code></pre>
+
+    </div>
+</div>
+
+                            
+                        </div>
                     
                 
                     
@@ -856,36 +922,51 @@
         
     <div class="params-listing">
         <ul>
-            <li> remoteAddress<span class="type">  <a href="../../http/records/Remote.html">Remote</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >remoteAddress</span>
+                <span class="type">  <a href="../../http/records/Remote.html">Remote</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>The remote address</p>
-</p>
+                <p>
+                    
+                    <p>The remote address</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> localAddress<span class="type">  <a href="../../http/records/Local.html">Local</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >localAddress</span>
+                <span class="type">  <a href="../../http/records/Local.html">Local</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>The local address</p>
-</p>
+                <p>
+                    
+                    <p>The local address</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> protocol<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >protocol</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The protocol associated with the service endpoint</p>
-</p>
+                <p>
+                    
+                    <p>The protocol associated with the service endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -947,7 +1028,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#respond">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> respond </h2>
+            <h2 > respond </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -955,9 +1036,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Sends the outbound response to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -969,7 +1053,7 @@ contentWrapper.addEventListener("scroll", event => {
                     </li>
                     <li>
                         <p><p>The outbound response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>,
-<code>io:ReadableByteChannel</code> or <code>mime:Entity[]</code></p>
+<code>io:ReadableByteChannel</code>, or <code>mime:Entity[]</code></p>
 </p>
                     </li>
                 </ul>
@@ -983,7 +1067,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to respond</p>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -996,7 +1080,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#promise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> promise </h2>
+            <h2 > promise </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
@@ -1004,9 +1088,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Pushes a promise to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Pushes a promise to the caller.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1044,7 +1131,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#pushPromisedResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> pushPromisedResponse </h2>
+            <h2 > pushPromisedResponse </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise, <a href="../../http/objects/Response.html">Response</a> response)</p>
@@ -1052,9 +1139,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Sends a promised push response to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a promised push response to the caller.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1105,7 +1195,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#acceptWebSocketUpgrade">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> acceptWebSocketUpgrade </h2>
+            <h2 > acceptWebSocketUpgrade </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> headers)</p>
@@ -1113,9 +1203,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Sends an upgrade request with custom headers.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends an upgrade request with custom headers.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1140,7 +1233,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/clients/WebSocketCaller.html">WebSocketCaller</a> | <a href="../../http/types.html#WebSocketError">WebSocketError</a></span>)</li>
-                <li><p><code>WebSocketCaller</code> or error on failure to upgrade</p>
+                <li><p>An <code>http:WebSocketCaller</code> instance or else an <code>http:WebSocketError</code> on failure to upgrade</p>
 </li>
             </ul>
         </div>
@@ -1153,7 +1246,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#cancelWebSocketUpgrade">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> cancelWebSocketUpgrade </h2>
+            <h2 > cancelWebSocketUpgrade </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> status, <span class="builtin-type">string</span> reason)</p>
@@ -1161,9 +1254,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Cancels the handshake.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Cancels the handshake.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1215,7 +1311,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
              <a class="url-link" href="#continue">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> continue </h2>
+            <h2 > continue </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1223,16 +1319,19 @@ This error status code need to be 4xx or 5xx else the default status code would 
         </span>
         
     </div>
-    <p><p>Sends a <code>100-continue</code> response to the caller.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a <code>100-continue</code> response to the caller.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to send the <code>100-continue</code> response</p>
+                <li><p>An <code>http:ListenerError</code> if failed to send the <code>100-continue</code> response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1245,7 +1344,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
              <a class="url-link" href="#redirect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> redirect </h2>
+            <h2 > redirect </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Response.html">Response</a> response, <a href="../../http/types.html#RedirectCode">RedirectCode</a> code, <span class="array-type"><span class="builtin-type">string</span>[]</span> locations)</p>
@@ -1253,9 +1352,12 @@ This error status code need to be 4xx or 5xx else the default status code would 
         </span>
         
     </div>
-    <p><p>Sends a redirect response to the user with the specified redirection status code.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a redirect response to the user with the specified redirection status code.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1306,7 +1408,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to send the redirect response</p>
+                <li><p>An <code>http:ListenerError</code> if failed to send the redirect response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1319,7 +1421,7 @@ This error status code need to be 4xx or 5xx else the default status code would 
              <a class="url-link" href="#ok">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> ok </h2>
+            <h2 > ok </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -1327,9 +1429,12 @@ This error status code need to be 4xx or 5xx else the default status code would 
         </span>
         
     </div>
-    <p><p>Sends the outbound response to the caller with the status 200 OK.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 200 OK.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1355,7 +1460,7 @@ or <code>mime:Entity[]</code></p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to respond</p>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1368,7 +1473,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#created">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> created </h2>
+            <h2 > created </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> uri, <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -1376,9 +1481,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Sends the outbound response to the caller with the status 201 Created.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 201 Created.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1417,7 +1525,7 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to respond</p>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1430,7 +1538,7 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
              <a class="url-link" href="#accepted">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> accepted </h2>
+            <h2 > accepted </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
@@ -1438,9 +1546,12 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
         </span>
         
     </div>
-    <p><p>Sends the outbound response to the caller with the status 202 Accepted.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 202 Accepted.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1466,7 +1577,223 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
-                <li><p>Returns an <code>http:ListenerError</code> if failed to respond</p>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="noContent" title="noContent">
+             <a class="url-link" href="#noContent">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > noContent </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/objects/Response.html">Response</a>? message)</p>
+            <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 204 No Content. If the given response contains a body
+that will be removed.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;noContent();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        message<span class="type">  <a href="../../http/objects/Response.html">Response</a>? </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p><p>The outbound response, which is optional</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="badRequest" title="badRequest">
+             <a class="url-link" href="#badRequest">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > badRequest </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
+            <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 400 Bad Request.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;badRequest();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        message<span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p><p>The outbound response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ByteChannel</code>,
+or <code>mime:Entity[]</code></p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="notFound" title="notFound">
+             <a class="url-link" href="#notFound">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > notFound </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
+            <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 404 Not Found.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;notFound();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        message<span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p><p>The outbound response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ByteChannel</code>,
+or <code>mime:Entity[]</code></p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="internalServerError" title="internalServerError">
+             <a class="url-link" href="#internalServerError">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > internalServerError </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/types.html#ResponseMessage">ResponseMessage</a> message)</p>
+            <b> returns </b><a href="../../http/types.html#ListenerError">ListenerError</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Sends the outbound response to the caller with the status 500 Internal Server Error.
+<pre><code class="language-ballerina"> http:ListenerError? err = caller-&gt;internalServerError();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        message<span class="type">  <a href="../../http/types.html#ResponseMessage">ResponseMessage</a> </span>
+                        <span class="default"> (default ())</span>
+                    </li>
+                    <li>
+                        <p><p>The outbound response or any payload of type <code>string</code>, <code>xml</code>, <code>json</code>, <code>byte[]</code>, <code>io:ByteChannel</code>,
+or <code>mime:Entity[]</code></p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/types.html#ListenerError">ListenerError</a>?</span>)</li>
+                <li><p>An <code>http:ListenerError</code> if failed to respond or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -1476,6 +1803,44 @@ or <code>mime:Entity[]</code>. This message is optional.</p>
                     
                 
 
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="getRemoteHostName" title="getRemoteHostName">
+             <a class="url-link" href="#getRemoteHostName">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getRemoteHostName </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string?</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Gets the hostname from the remote address. This method may trigger a DNS reverse lookup if the address was created
+with a literal IP address.
+<pre><code class="language-ballerina"> string? remoteHost = caller.getRemoteHostName();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string?</span></span>)</li>
+                <li><p>The hostname of the address or else <code>()</code> if it is unresolved</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
                 
             </div>
         </div>

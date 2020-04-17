@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -659,8 +667,8 @@
                 
                  : <span class="listeners">Listener</span> 
             </h1>
-            <p><p>Ballerina RabbitMQ Message Listener.
-Provides a listener to consume messages from the RabbitMQ server.</p>
+            <p>Ballerina RabbitMQ Message Listener.
+Provides a listener to consume messages from the RabbitMQ server.
 </p>
 
             <div class="constants">
@@ -675,7 +683,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
             <ul>
                 <li> <b>connectionOrConnectionConfig</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> | <a href="../../rabbitmq/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>Holds a Ballerina RabbitMQ <code>Connection</code> object or the connection parameters.</p>
+                    <p>A <code>rabbitmq:Connection</code> object or the connection configurations.</p>
 
                 </li>
             </ul>
@@ -685,7 +693,7 @@ Provides a listener to consume messages from the RabbitMQ server.</p>
             <ul>
                 <li> <b>prefetchCount</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
                 <li>
-                    <p>Maximum number of messages that the server will deliver, 0 if unlimited.
+                    <p>Maximum number of messages that the server will deliver. Give the value as 0 if unlimited.
 Unless explicitly given, this value is 10 by default.</p>
 
                 </li>
@@ -696,7 +704,7 @@ Unless explicitly given, this value is 10 by default.</p>
             <ul>
                 <li> <b>prefetchSize</b><span class="type">  <span class="builtin-type">int?</span></span> ()</li>
                 <li>
-                    <p>Maximum amount of content (measured in octets) that the server will deliver, 0 if unlimited.</p>
+                    <p>Maximum amount of content (measured in octets) that the server will deliver and 0 if unlimited</p>
 
                 </li>
             </ul>
@@ -711,49 +719,57 @@ Unless explicitly given, this value is 10 by default.</p>
                     <div class="method-list">
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details"> <p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages and detaches the service from the <code>rabbitmq:Listener</code> endpoint.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details"> <p>Stops consuming messages through all consumer services by terminating the connection and all its channels.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages through all consumer services by terminating the connection and all its channels.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details"> <p>Stops consuming messages through all consumer services and terminate the connection
-with the server.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages through all the consumer services and terminates the connection
+with the server.
+
+    </div>
+</div>
+
                         
                             
-<a href="#getChannel">
-    <div class="param-sum">
-        <div class="param-name">
-        getChannel 
-        </div>
-        <div class="param-details"> <p>Retrieve the <code>Channel</code> which initializes this <code>Listener</code>.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getChannel">
+        <a href="#getChannel">getChannel </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieve the <code>rabbitmq:Channel</code>, which initializes this <code>rabbitmq:Listener</code>.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -763,26 +779,30 @@ with the server.</p>
                     <div class="method-list">
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details"> <p>Attaches the service to the <code>Listener</code> endpoint.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Attaches the service to the <code>rabbitmq:Listener</code> endpoint.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details"> <p>Starts the consuming messages on all attached services.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts consuming the messages on all the attached services.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -798,7 +818,7 @@ with the server.</p>
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -806,9 +826,12 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages and detaches the service from the <code>rabbitmq:Listener</code> endpoint.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -819,7 +842,7 @@ with the server.</p>
                         
                     </li>
                     <li>
-                        <p><p>Type descriptor of the service to bind to.</p>
+                        <p><p>Type descriptor of the service</p>
 </p>
                     </li>
                 </ul>
@@ -833,7 +856,7 @@ with the server.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to detach service.</p>
+                <li><p><code>()</code> or else  a <code>rabbitmq:Error</code> upon failure to detach the service</p>
 </li>
             </ul>
         </div>
@@ -846,7 +869,7 @@ with the server.</p>
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -854,16 +877,19 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Stops consuming messages through all consumer services by terminating the connection and all its channels.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages through all consumer services by terminating the connection and all its channels.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to close the <code>ChannelListener</code></p>
+                <li><p><code>()</code> or else  a <code>rabbitmq:Error</code> upon failure to close the <code>ChannelListener</code></p>
 </li>
             </ul>
         </div>
@@ -876,7 +902,7 @@ with the server.</p>
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -884,17 +910,20 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Stops consuming messages through all consumer services and terminate the connection
-with the server.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages through all the consumer services and terminates the connection
+with the server.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to close ChannelListener.</p>
+                <li><p><code>()</code> or else  a <code>rabbitmq:Error</code> upon failure to close ChannelListener.</p>
 </li>
             </ul>
         </div>
@@ -907,7 +936,7 @@ with the server.</p>
              <a class="url-link" href="#getChannel">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getChannel </h2>
+            <h2 > getChannel </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -915,16 +944,19 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Retrieve the <code>Channel</code> which initializes this <code>Listener</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieve the <code>rabbitmq:Channel</code>, which initializes this <code>rabbitmq:Listener</code>.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/clients/Channel.html">Channel</a></span>)</li>
-                <li><p>RabbitMQ Channel object or error if an I/O problem is encountered.</p>
+                <li><p>A <code>rabbitmq:Channel</code> object or else  a <code>rabbitmq:Error</code> if an I/O problem is encountered.</p>
 </li>
             </ul>
         </div>
@@ -942,7 +974,7 @@ with the server.</p>
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -950,9 +982,12 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Attaches the service to the <code>Listener</code> endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Attaches the service to the <code>rabbitmq:Listener</code> endpoint.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -963,7 +998,7 @@ with the server.</p>
                         
                     </li>
                     <li>
-                        <p><p>Type descriptor of the service to bind to.</p>
+                        <p><p>Type descriptor of the service</p>
 </p>
                     </li>
                 </ul>
@@ -976,7 +1011,7 @@ with the server.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Name of the service.</p>
+                        <p><p>Name of the service</p>
 </p>
                     </li>
                 </ul>
@@ -990,7 +1025,7 @@ with the server.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to register service.</p>
+                <li><p><code>()</code> or else a <code>rabbitmq:Error</code> upon failure to register the service</p>
 </li>
             </ul>
         </div>
@@ -1003,7 +1038,7 @@ with the server.</p>
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1011,16 +1046,19 @@ with the server.</p>
         </span>
         
     </div>
-    <p><p>Starts the consuming messages on all attached services.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Starts consuming the messages on all the attached services.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to start.</p>
+                <li><p><code>()</code> or else a <code>rabbitmq:Error</code> upon failure to start</p>
 </li>
             </ul>
         </div>

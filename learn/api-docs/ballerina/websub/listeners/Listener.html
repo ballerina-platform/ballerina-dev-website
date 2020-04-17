@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -369,7 +373,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -667,7 +675,7 @@
                 
                  : <span class="listeners">Listener</span> 
             </h1>
-            <p><p>Object representing the WebSubSubscriber Service Endpoint.</p>
+            <p>Represents the WebSubSubscriber Service Listener.
 </p>
 
             <div class="constants">
@@ -682,7 +690,8 @@
             <ul>
                 <li> <b>port</b><span class="type">  <span class="builtin-type">int</span></span> </li>
                 <li>
-                    
+                    <p>The port number of the remote service</p>
+
                 </li>
             </ul>
         </div>
@@ -691,7 +700,8 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../websub/records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>?</span> ()</li>
                 <li>
-                    
+                    <p>The configurations related to the <code>websub:Listener</code></p>
+
                 </li>
             </ul>
         </div>
@@ -705,34 +715,49 @@
                     <div class="method-list">
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages and detaches the service from the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__detach(helloService);
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>websub:Listener</code> gracefully.
+<pre><code class="language-ballerina"> error? result = websubListener.__gracefulStop();
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>websub:Listener</code> forcefully.
+<pre><code class="language-ballerina"> error? result = websubListener.__immediateStop();
+</code></pre>
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -742,24 +767,34 @@
                     <div class="method-list">
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Binds a service to the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__attach(helloService);
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__start();
+</code></pre>
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -772,12 +807,17 @@
         
     <div class="params-listing">
         <ul>
-            <li> config<span class="type">  <a href="../../websub/records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >config</span>
+                <span class="type">  <a href="../../websub/records/SubscriberListenerConfiguration.html">SubscriberListenerConfiguration</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The configuration for the endpoint</p>
-</p>
+                <p>
+                    
+                    <p>The configurations for the <code>websub:Listener</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -839,7 +879,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -847,8 +887,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages and detaches the service from the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__detach(helloService);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -859,7 +905,8 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -872,7 +919,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else an <code>error</code> upon failure to detach the service</p>
+</li>
             </ul>
         </div>
         
@@ -884,7 +932,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -892,15 +940,22 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>websub:Listener</code> gracefully.
+<pre><code class="language-ballerina"> error? result = websubListener.__gracefulStop();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else an <code>error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -912,7 +967,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -920,15 +975,22 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>websub:Listener</code> forcefully.
+<pre><code class="language-ballerina"> error? result = websubListener.__immediateStop();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p>() or else an <code>error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -945,7 +1007,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -953,8 +1015,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Binds a service to the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__attach(helloService);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -965,7 +1033,8 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -977,7 +1046,8 @@ contentWrapper.addEventListener("scroll", event => {
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Name of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -990,7 +1060,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else an <code>error</code> upon failure to register the listener</p>
+</li>
             </ul>
         </div>
         
@@ -1002,7 +1073,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1010,15 +1081,22 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Starts the <code>websub:Listener</code>.
+<pre><code class="language-ballerina"> error? result = websubListener.__start();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else an <code>error</code> upon failure to start the listener</p>
+</li>
             </ul>
         </div>
         

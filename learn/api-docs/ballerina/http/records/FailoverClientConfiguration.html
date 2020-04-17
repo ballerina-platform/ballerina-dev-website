@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,11 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">FailoverClientConfiguration</span>
+                 : <span class="records ">FailoverClientConfiguration</span>
             </h1>
-            <p>Provides a set of HTTP related configurations and failover related configurations.
-
+            <p>
+                
+                Provides a set of HTTP related configurations and failover related configurations.
 httpVersion - Copied from CommonClientConfiguration
 http1Settings - Copied from CommonClientConfiguration
 http2Settings - Copied from CommonClientConfiguration
@@ -1057,7 +1066,9 @@ compression - Copied from CommonClientConfiguration
 auth - Copied from CommonClientConfiguration
 circuitBreaker - Copied from CommonClientConfiguration
 retryConfig - Copied from CommonClientConfiguration
-cookieConfig - Copied from CommonClientConfiguration</p>
+cookieConfig - Copied from CommonClientConfiguration
+
+            </p>
             <div class="constants">
                 
                     
@@ -1066,36 +1077,51 @@ cookieConfig - Copied from CommonClientConfiguration</p>
         
     <div class="params-listing">
         <ul>
-            <li> targets<span class="type">  <span class="array-type"><a href="../../http/records/TargetService.html">TargetService</a>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >targets</span>
+                <span class="type">  <span class="array-type"><a href="../../http/records/TargetService.html">TargetService</a>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The upstream HTTP endpoints among which the incoming HTTP traffic load should be sent on failover</p>
-</p>
+                <p>
+                    
+                    <p>The upstream HTTP endpoints among which the incoming HTTP traffic load should be sent on failover</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> failoverCodes<span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span></span>
-                <span class="default"> (default [501, 502, 503, 504])</span>
+            <li> 
+                <span >failoverCodes</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span></span>
+                 <span class="default">(default [501, 502, 503, 504])</span> 
             </li>
             <li>
-                <p><p>Array of HTTP response status codes for which the failover behaviour should be triggered</p>
-</p>
+                <p>
+                    
+                    <p>Array of HTTP response status codes for which the failover behaviour should be triggered</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> intervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >intervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>Failover delay interval in milliseconds</p>
-</p>
+                <p>
+                    
+                    <p>Failover delay interval in milliseconds</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -3,13 +3,13 @@ layout: ballerina-inner-page
 title: The Visual Studio Code Plugin
 permalink: /learn/vscode-plugin/
 redirect_from:
-  - /learn/tools-ides/vscode-plugin
-  - /learn/tools-ides/vscode-plugin/
+  - /v1-2/learn/tools-ides/vscode-plugin
+  - /v1-2/learn/tools-ides/vscode-plugin/
   - /learn/tools-ides/vscode-plugin
   - /learn/tools-ides/vscode-plugin/
   - /learn/vscode-plugin/
   - /learn/vscode-plugin
-  - /learn/vscode-plugin
+  - /v1-2/learn/vscode-plugin
 ---
 
 # The Visual Studio Code Extension
@@ -38,7 +38,7 @@ Click **Extensions** on the left-most menu of the editor, search for the Balleri
 
 > **Tip**: Click **Reload** to reload the editor to apply the change.
 
-![Install the extension via VS Code](/learn/images/install-via-editor.gif)
+![Install the extension via VS Code](/v1-2/learn/images/install-via-editor.gif)
 
 This downloads the extension and installs it.
 
@@ -55,7 +55,7 @@ This downloads the extension and installs it.
 2. In the search bar, type "vsix" and click **Extensions: Install from VSIX...**.
 3. Browse and select the VSIX file of the extension you downloaded.
 
-![Install using the Command Palette of the editor.](/learn/images/install-via-palette.gif)
+![Install using the Command Palette of the editor.](/v1-2/learn/images/install-via-palette.gif)
 
 #### Using the Command Line
 In a new Command Line tab, execute the below command.
@@ -72,9 +72,9 @@ $ code --install-extension <BALLERINA-EXTENSION-DIRECTORY>
 
 The below sections include information on the various capabilities that are facilitated by the VS Code Ballerina Extension for the development process.
 
-- [Language Intelligence](/learn/vscode-plugin/language-intelligence)
-- [Run and Debug](/learn/vscode-plugin/run-and-debug)
-- [Graphical View](/learn/vscode-plugin/graphical-editor)
-- [Documentation Viewer](/learn/vscode-plugin/documentation-viewer)
-- [Run All Tests](/learn/vscode-plugin/run-all-tests)
+- [Language Intelligence](/v1-2/learn/vscode-plugin/language-intelligence)
+- [Run and Debug](/v1-2/learn/vscode-plugin/run-and-debug)
+- [Graphical View](/v1-2/learn/vscode-plugin/graphical-editor)
+- [Documentation Viewer](/v1-2/learn/vscode-plugin/documentation-viewer)
+- [Run All Tests](/v1-2/learn/vscode-plugin/run-all-tests)
 

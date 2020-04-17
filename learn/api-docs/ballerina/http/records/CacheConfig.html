@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">CacheConfig</span>
+                 : <span class="records ">CacheConfig</span>
             </h1>
-            <p>Provides a set of configurations for controlling the caching behaviour of the endpoint.
-</p>
+            <p>
+                
+                Provides a set of configurations for controlling the caching behaviour of the endpoint.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,63 +1064,88 @@
         
     <div class="params-listing">
         <ul>
-            <li> enabled<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >enabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Specifies whether HTTP caching is enabled. Caching is disabled by default.</p>
-</p>
+                <p>
+                    
+                    <p>Specifies whether HTTP caching is enabled. Caching is disabled by default.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> isShared<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >isShared</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Specifies whether the HTTP caching layer should behave as a public cache or a private cache</p>
-</p>
+                <p>
+                    
+                    <p>Specifies whether the HTTP caching layer should behave as a public cache or a private cache</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> capacity<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 8388608)</span>
+            <li> 
+                <span >capacity</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 8388608)</span> 
             </li>
             <li>
-                <p><p>The capacity of the cache</p>
-</p>
+                <p>
+                    
+                    <p>The capacity of the cache</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> evictionFactor<span class="type">  <span class="builtin-type">float</span></span>
-                <span class="default"> (default 0.2)</span>
+            <li> 
+                <span >evictionFactor</span>
+                <span class="type">  <span class="builtin-type">float</span></span>
+                 <span class="default">(default 0.2)</span> 
             </li>
             <li>
-                <p><p>The fraction of entries to be removed when the cache is full. The value should be
+                <p>
+                    
+                    <p>The fraction of entries to be removed when the cache is full. The value should be
 between 0 (exclusive) and 1 (inclusive).</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> policy<span class="type">  <a href="../../http/types.html#CachingPolicy">CachingPolicy</a></span>
-                <span class="default"> (default CACHE_CONTROL_AND_VALIDATORS)</span>
+            <li> 
+                <span >policy</span>
+                <span class="type">  <a href="../../http/types.html#CachingPolicy">CachingPolicy</a></span>
+                 <span class="default">(default CACHE_CONTROL_AND_VALIDATORS)</span> 
             </li>
             <li>
-                <p><p>Gives the user some control over the caching behaviour. By default, this is set to
+                <p>
+                    
+                    <p>Gives the user some control over the caching behaviour. By default, this is set to
 <code>CACHE_CONTROL_AND_VALIDATORS</code>. The default behaviour is to allow caching only when the <code>cache-control</code>
 header and either the <code>etag</code> or <code>last-modified</code> header are present.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -231,6 +231,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -328,7 +332,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -502,6 +506,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -606,46 +614,8 @@
                         Module : <span class="modules">math</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.</p>
-<h1>Sample</h1>
-<p>The sample given below uses a few functions that are in the <code>ballerina/math</code> module.</p>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/math;
-
-public function main(string... args) {
-
-   // Get the value of Pi from the ‘ballerina/math module’.
-   io:println(&quot;Value of Pi : &quot;, math:PI.toString());
-
-   // Get the value of E from the ‘ballerina/math module’.
-   io:println(&quot;Value of E  : &quot;, math:E.toString());
-
-   // Get the absolute value of the given floating point number. 
-   float absoluteFloatValue = math:absFloat(-152.2544);
-   io:println(&quot;Absolute value of -152.2544 : &quot;, absoluteFloatValue.toString());
-
-   // Get the absolute value of an integer.
-   int absoluteIntValue = math:absInt(-152);
-   io:println(&quot;Absolute value of -152 : &quot;, absoluteIntValue.toString());
-
-   // Get the Arc cosine of a given value.
-   float acosValue = math:acos(0.027415567780803774);
-   io:println(&quot;Arc cosine of 0.027415567780803774 : &quot;, acosValue.toString());
-
-   // Get the Arc Sine value of a given value.
-   float arcSineValue = math:asin(0.027415567780803774);
-   io:println(&quot;Arc sine of 0.027415567780803774 : &quot;, arcSineValue.toString());
-
-   // Get the Arc Tangent value of a given value.
-   float arcTangent = math:atan(0.027415567780803774);
-   io:println(&quot;Arc tangent of 0.027415567780803774 : &quot;, arcTangent.toString());
-
-   // Calculate the cubic root of a given value.
-   float cubeRoot = math:cbrt(-27);
-   io:println(&quot;Cube root of -27 : &quot;, cubeRoot.toString());
-}
-</code></pre>
+                    <p>This module provides functions to perform fixed-precision integer arithmetic and fixed-precision decimal arithmetic. It includes functions to get the absolute, cosine, sine, root, tangent, and more for a given value.</p>
+<p>For information on the operation, which you can perform with this module, see the below Function. For examples on the usage of the operation, see <a href="https://ballerina.io/learn/by-example/math-functions.html">Math Api</a>.</p>
 
 
             
@@ -661,10 +631,13 @@ public function main(string... args) {
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -689,293 +662,539 @@ public function main(string... args) {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="absFloat" title="absFloat"><a
-                                    class="functions" href="functions.html#absFloat">absFloat</a></td>
-                            <td class="module-desc"><p>Returns the absolute value of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="absFloat" title="absFloat">
+                                <a class="functions " href="functions.html#absFloat">absFloat</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the absolute value of a float value.
+<pre><code class="language-ballerina"> float absoluteFloatValue = math:absFloat(-152.2544);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="absInt" title="absInt"><a
-                                    class="functions" href="functions.html#absInt">absInt</a></td>
-                            <td class="module-desc"><p>Returns the absolute value of an int value.</p>
-</td>
+                            <td class="module-title truncate functions" id="absInt" title="absInt">
+                                <a class="functions " href="functions.html#absInt">absInt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the absolute value of an int value.
+<pre><code class="language-ballerina"> int absoluteIntValue = math:absInt(-152);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="acos" title="acos"><a
-                                    class="functions" href="functions.html#acos">acos</a></td>
-                            <td class="module-desc"><p>Returns the arc cosine of a value; the returned angle is in the range 0.0 through pi.</p>
-</td>
+                            <td class="module-title truncate functions" id="acos" title="acos">
+                                <a class="functions " href="functions.html#acos">acos</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the arc cosine of a value; the returned angle is in the range 0.0 through pi.
+<pre><code class="language-ballerina"> float acosValue = math:acos(0.027415567780803774);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="asin" title="asin"><a
-                                    class="functions" href="functions.html#asin">asin</a></td>
-                            <td class="module-desc"><p>Returns the arc sine of a value.</p>
-</td>
+                            <td class="module-title truncate functions" id="asin" title="asin">
+                                <a class="functions " href="functions.html#asin">asin</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the arc sine of a value.
+<pre><code class="language-ballerina"> float arcSineValue = math:asin(0.027415567780803774);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="atan" title="atan"><a
-                                    class="functions" href="functions.html#atan">atan</a></td>
-                            <td class="module-desc"><p>Returns the arc tangent of a value.</p>
-</td>
+                            <td class="module-title truncate functions" id="atan" title="atan">
+                                <a class="functions " href="functions.html#atan">atan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the arc tangent of a value.
+<pre><code class="language-ballerina"> float arcTangent = math:atan(0.027415567780803774);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="atan2" title="atan2"><a
-                                    class="functions" href="functions.html#atan2">atan2</a></td>
-                            <td class="module-desc"><p>Returns the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).</p>
-</td>
+                            <td class="module-title truncate functions" id="atan2" title="atan2">
+                                <a class="functions " href="functions.html#atan2">atan2</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).
+<pre><code class="language-ballerina"> float arcTangentFromCoordinates = math:atan2(6.4, 3.2);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="cbrt" title="cbrt"><a
-                                    class="functions" href="functions.html#cbrt">cbrt</a></td>
-                            <td class="module-desc"><p>Returns the cube root of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="cbrt" title="cbrt">
+                                <a class="functions " href="functions.html#cbrt">cbrt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the cube root of a float value.
+<pre><code class="language-ballerina"> float cubeRoot = math:cbrt(-27.0);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="ceil" title="ceil"><a
-                                    class="functions" href="functions.html#ceil">ceil</a></td>
-                            <td class="module-desc"><p>Returns the smallest (closest to negative infinity) double value that is greater than orequal to the argument and
-is equal to a mathematical integer.</p>
-</td>
+                            <td class="module-title truncate functions" id="ceil" title="ceil">
+                                <a class="functions " href="functions.html#ceil">ceil</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the smallest (closest to negative infinity) double value that is greater than or equal to the argument and
+is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float ceilingValue = math:ceil(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="copySign" title="copySign"><a
-                                    class="functions" href="functions.html#copySign">copySign</a></td>
-                            <td class="module-desc"><p>Returns the first floating-point argument with the sign of the second floating-point argument.</p>
-</td>
+                            <td class="module-title truncate functions" id="copySign" title="copySign">
+                                <a class="functions " href="functions.html#copySign">copySign</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the first floating-point argument with the sign of the second floating-point argument.
+<pre><code class="language-ballerina"> float copySignValue = math:copySign(6.4, 2.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="cos" title="cos"><a
-                                    class="functions" href="functions.html#cos">cos</a></td>
-                            <td class="module-desc"><p>Returns the trigonometric cosine of an angle.</p>
-</td>
+                            <td class="module-title truncate functions" id="cos" title="cos">
+                                <a class="functions " href="functions.html#cos">cos</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the trigonometric cosine of an angle.
+<pre><code class="language-ballerina"> float cosineValue = math:cos(0.3124);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="cosh" title="cosh"><a
-                                    class="functions" href="functions.html#cosh">cosh</a></td>
-                            <td class="module-desc"><p>Returns the hyperbolic cosine of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="cosh" title="cosh">
+                                <a class="functions " href="functions.html#cosh">cosh</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the hyperbolic cosine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicCosineValue = math:cosh(0.3124);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="exp" title="exp"><a
-                                    class="functions" href="functions.html#exp">exp</a></td>
-                            <td class="module-desc"><p>Returns Euler's number, that is 'e' raised to the power of exponent.</p>
-</td>
+                            <td class="module-title truncate functions" id="exp" title="exp">
+                                <a class="functions " href="functions.html#exp">exp</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates Euler's number, that is 'e' raised to the power of exponent.
+<pre><code class="language-ballerina"> float euler = math:exp(3.2);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="expm1" title="expm1"><a
-                                    class="functions" href="functions.html#expm1">expm1</a></td>
-                            <td class="module-desc"><p>Returns (e to the power of x) -1.</p>
-</td>
+                            <td class="module-title truncate functions" id="expm1" title="expm1">
+                                <a class="functions " href="functions.html#expm1">expm1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates (e to the power of x) -1.
+<pre><code class="language-ballerina"> float exponentValue = math:expm1(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="floor" title="floor"><a
-                                    class="functions" href="functions.html#floor">floor</a></td>
-                            <td class="module-desc"><p>Returns the largest (closest to positive infinity) float value that is less than or equal to the argument and is
-equal to a mathematical integer.</p>
-</td>
+                            <td class="module-title truncate functions" id="floor" title="floor">
+                                <a class="functions " href="functions.html#floor">floor</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the largest (closest to positive infinity) float value that is less than or equal to the argument and is
+equal to a mathematical integer.
+<pre><code class="language-ballerina"> float floorValue = math:floor(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="floorDiv" title="floorDiv"><a
-                                    class="functions" href="functions.html#floorDiv">floorDiv</a></td>
-                            <td class="module-desc"><p>Returns the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.</p>
-</td>
+                            <td class="module-title truncate functions" id="floorDiv" title="floorDiv">
+                                <a class="functions " href="functions.html#floorDiv">floorDiv</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
+<pre><code class="language-ballerina"> int|error floorDivValue = math:floorDiv(6, 4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="floorMod" title="floorMod"><a
-                                    class="functions" href="functions.html#floorMod">floorMod</a></td>
-                            <td class="module-desc"><p>Returns the floor modulus of the long arguments.</p>
-</td>
+                            <td class="module-title truncate functions" id="floorMod" title="floorMod">
+                                <a class="functions " href="functions.html#floorMod">floorMod</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the floor modulus of the long arguments.
+<pre><code class="language-ballerina"> int|error floorModulesValue = math:floorMod(6, 4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getExponent" title="getExponent"><a
-                                    class="functions" href="functions.html#getExponent">getExponent</a></td>
-                            <td class="module-desc"><p>Returns the unbiased exponent used in the representation of a float.</p>
-</td>
+                            <td class="module-title truncate functions" id="getExponent" title="getExponent">
+                                <a class="functions " href="functions.html#getExponent">getExponent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the unbiased exponent used in the representation of a float.
+<pre><code class="language-ballerina"> int unbiasedExponentValue = math:getExponent(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hypot" title="hypot"><a
-                                    class="functions" href="functions.html#hypot">hypot</a></td>
-                            <td class="module-desc"><p>Returns sqrt(a squared +b squared) without intermediate overflow or underflow.</p>
-</td>
+                            <td class="module-title truncate functions" id="hypot" title="hypot">
+                                <a class="functions " href="functions.html#hypot">hypot</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates sqrt(a squared +b squared) without intermediate overflow or underflow.
+<pre><code class="language-ballerina"> float pythogarusValue = math:hypot(6.4, 3.6);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="log" title="log"><a
-                                    class="functions" href="functions.html#log">log</a></td>
-                            <td class="module-desc"><p>Returns the natural logarithm (base e) of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="log" title="log">
+                                <a class="functions " href="functions.html#log">log</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the natural logarithm (base e) of a float value.
+<pre><code class="language-ballerina"> float logarithmValue = math:log(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="log10" title="log10"><a
-                                    class="functions" href="functions.html#log10">log10</a></td>
-                            <td class="module-desc"><p>Returns the base 10 logarithm of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="log10" title="log10">
+                                <a class="functions " href="functions.html#log10">log10</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the base 10 logarithm of a float value.
+<pre><code class="language-ballerina"> float logarithmValueBaseTen = math:log10(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="log1p" title="log1p"><a
-                                    class="functions" href="functions.html#log1p">log1p</a></td>
-                            <td class="module-desc"><p>Returns the natural logarithm of the sum of the argument and 1.</p>
-</td>
+                            <td class="module-title truncate functions" id="log1p" title="log1p">
+                                <a class="functions " href="functions.html#log1p">log1p</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the natural logarithm of the sum of the argument and 1.
+<pre><code class="language-ballerina"> float naturalLogarithmValue = math:log1p(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="negateExact" title="negateExact"><a
-                                    class="functions" href="functions.html#negateExact">negateExact</a></td>
-                            <td class="module-desc"><p>Returns the negation of the argument.</p>
-</td>
+                            <td class="module-title truncate functions" id="negateExact" title="negateExact">
+                                <a class="functions " href="functions.html#negateExact">negateExact</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the negation of the argument.
+<pre><code class="language-ballerina"> int|error negationValue = math:negateExact(6);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="nextAfter" title="nextAfter"><a
-                                    class="functions" href="functions.html#nextAfter">nextAfter</a></td>
-                            <td class="module-desc"><p>Returns the floating-point number adjacent to the first argument in the direction of the second argument.</p>
-</td>
+                            <td class="module-title truncate functions" id="nextAfter" title="nextAfter">
+                                <a class="functions " href="functions.html#nextAfter">nextAfter</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the floating-point number adjacent to the first argument in the direction of the second argument.
+<pre><code class="language-ballerina"> float nextAfterValue = math:nextAfter(6.4, 3.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="nextDown" title="nextDown"><a
-                                    class="functions" href="functions.html#nextDown">nextDown</a></td>
-                            <td class="module-desc"><p>Returns the adjacent floating-point value closer to negative infinity.</p>
-</td>
+                            <td class="module-title truncate functions" id="nextDown" title="nextDown">
+                                <a class="functions " href="functions.html#nextDown">nextDown</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the adjacent floating-point value closer to negative infinity.
+<pre><code class="language-ballerina"> float nextDownValue = math:nextDown(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="nextUp" title="nextUp"><a
-                                    class="functions" href="functions.html#nextUp">nextUp</a></td>
-                            <td class="module-desc"><p>Returns the adjacent floating-point value closer to positive infinity.</p>
-</td>
+                            <td class="module-title truncate functions" id="nextUp" title="nextUp">
+                                <a class="functions " href="functions.html#nextUp">nextUp</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the adjacent floating-point value closer to positive infinity.
+<pre><code class="language-ballerina"> float nextUpValue = math:nextUp(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="pow" title="pow"><a
-                                    class="functions" href="functions.html#pow">pow</a></td>
-                            <td class="module-desc"><p>Returns the value of the 'a' raised to the power of 'b'.</p>
-</td>
+                            <td class="module-title truncate functions" id="pow" title="pow">
+                                <a class="functions " href="functions.html#pow">pow</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the value of the 'a' raised to the power of 'b'.
+<pre><code class="language-ballerina"> float aPowerB = math:pow(3.2, 2.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="random" title="random"><a
-                                    class="functions" href="functions.html#random">random</a></td>
-                            <td class="module-desc"><p>Returns a random number between 0.0 and 1.0.</p>
-</td>
+                            <td class="module-title truncate functions" id="random" title="random">
+                                <a class="functions " href="functions.html#random">random</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Selects a random number between 0.0 and 1.0.
+<pre><code class="language-ballerina"> float randomValue = math:random();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="randomInRange" title="randomInRange"><a
-                                    class="functions" href="functions.html#randomInRange">randomInRange</a></td>
-                            <td class="module-desc"><p>Returns a random number between given start(inclusive) and end(exclusive) values.</p>
-</td>
+                            <td class="module-title truncate functions" id="randomInRange" title="randomInRange">
+                                <a class="functions " href="functions.html#randomInRange">randomInRange</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Selects a random number between the given start(inclusive) and end(exclusive) values.
+<pre><code class="language-ballerina"> int|error randomInteger = math:randomInRange(1, 100);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="remainder" title="remainder"><a
-                                    class="functions" href="functions.html#remainder">remainder</a></td>
-                            <td class="module-desc"><p>Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.</p>
-</td>
+                            <td class="module-title truncate functions" id="remainder" title="remainder">
+                                <a class="functions " href="functions.html#remainder">remainder</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
+<pre><code class="language-ballerina"> float remainderValue = math:remainder(6.4, 3.6);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="rint" title="rint"><a
-                                    class="functions" href="functions.html#rint">rint</a></td>
-                            <td class="module-desc"><p>Returns the double value that is closest in value to the argument and is equal to a mathematical integer.</p>
-</td>
+                            <td class="module-title truncate functions" id="rint" title="rint">
+                                <a class="functions " href="functions.html#rint">rint</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the double value that is closest in value to the argument and is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float roundedValue = math:rint(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="round" title="round"><a
-                                    class="functions" href="functions.html#round">round</a></td>
-                            <td class="module-desc"><p>Returns the closest int to the argument, with ties rounding to positive infinity.</p>
-</td>
+                            <td class="module-title truncate functions" id="round" title="round">
+                                <a class="functions " href="functions.html#round">round</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the closest int to the argument, with ties rounding to positive infinity.
+<pre><code class="language-ballerina"> int roundedIntegerValue = math:round(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="scalb" title="scalb"><a
-                                    class="functions" href="functions.html#scalb">scalb</a></td>
-                            <td class="module-desc"><p>Returns a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
-multiply to a member of the float value set.</p>
-</td>
+                            <td class="module-title truncate functions" id="scalb" title="scalb">
+                                <a class="functions " href="functions.html#scalb">scalb</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
+multiply to a member of the float value set.
+<pre><code class="language-ballerina"> float scalbValue = math:scalb(6.4, 2);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="signum" title="signum"><a
-                                    class="functions" href="functions.html#signum">signum</a></td>
-                            <td class="module-desc"><p>Returns the signum function of the argument.</p>
-</td>
+                            <td class="module-title truncate functions" id="signum" title="signum">
+                                <a class="functions " href="functions.html#signum">signum</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the signum function of the argument.
+<pre><code class="language-ballerina"> float signumValue = math:signum(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="sin" title="sin"><a
-                                    class="functions" href="functions.html#sin">sin</a></td>
-                            <td class="module-desc"><p>Returns the trigonometric sine of an angle.</p>
-</td>
+                            <td class="module-title truncate functions" id="sin" title="sin">
+                                <a class="functions " href="functions.html#sin">sin</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the trigonometric sine of an angle.
+<pre><code class="language-ballerina"> float sineValue = math:sin(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="sinh" title="sinh"><a
-                                    class="functions" href="functions.html#sinh">sinh</a></td>
-                            <td class="module-desc"><p>Returns the hyperbolic sine of a float value.</p>
-</td>
+                            <td class="module-title truncate functions" id="sinh" title="sinh">
+                                <a class="functions " href="functions.html#sinh">sinh</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the hyperbolic sine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicSineValue = math:sinh(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="sqrt" title="sqrt"><a
-                                    class="functions" href="functions.html#sqrt">sqrt</a></td>
-                            <td class="module-desc"><p>Returns rounded positive square root of the given value.</p>
-</td>
+                            <td class="module-title truncate functions" id="sqrt" title="sqrt">
+                                <a class="functions " href="functions.html#sqrt">sqrt</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates rounded positive square root of the given value.
+<pre><code class="language-ballerina"> float squareRoot = math:sqrt(6.4);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="tan" title="tan"><a
-                                    class="functions" href="functions.html#tan">tan</a></td>
-                            <td class="module-desc"><p>Returns the trigonometric tangent of an angle.</p>
-</td>
+                            <td class="module-title truncate functions" id="tan" title="tan">
+                                <a class="functions " href="functions.html#tan">tan</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the trigonometric tangent of an angle.
+<pre><code class="language-ballerina"> float tanValue = math:tan(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="tanh" title="tanh"><a
-                                    class="functions" href="functions.html#tanh">tanh</a></td>
-                            <td class="module-desc"><p>Returns the hyperbolic tangent of a double value.</p>
-</td>
+                            <td class="module-title truncate functions" id="tanh" title="tanh">
+                                <a class="functions " href="functions.html#tanh">tanh</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Calculates the hyperbolic tangent of a double value.
+<pre><code class="language-ballerina"> float hyperbolicTanValue = math:tanh(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="toDegrees" title="toDegrees"><a
-                                    class="functions" href="functions.html#toDegrees">toDegrees</a></td>
-                            <td class="module-desc"><p>Converts an angle measured in radians to an approximately equivalent angle measured in degrees.</p>
-</td>
+                            <td class="module-title truncate functions" id="toDegrees" title="toDegrees">
+                                <a class="functions " href="functions.html#toDegrees">toDegrees</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
+<pre><code class="language-ballerina"> float angleValueInDegrees = math:toDegrees(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="toRadians" title="toRadians"><a
-                                    class="functions" href="functions.html#toRadians">toRadians</a></td>
-                            <td class="module-desc"><p>Converts an angle measured in degrees to an approximately equivalent angle measured in radians.</p>
-</td>
+                            <td class="module-title truncate functions" id="toRadians" title="toRadians">
+                                <a class="functions " href="functions.html#toRadians">toRadians</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
+<pre><code class="language-ballerina"> float angleValueInRadians = math:toRadians(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="ulp" title="ulp"><a
-                                    class="functions" href="functions.html#ulp">ulp</a></td>
-                            <td class="module-desc"><p>Returns the size of an ulp of the argument.</p>
-</td>
+                            <td class="module-title truncate functions" id="ulp" title="ulp">
+                                <a class="functions " href="functions.html#ulp">ulp</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the size of an ulp of the argument.
+<pre><code class="language-ballerina"> float ulpValue = math:ulp(0.96);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -994,24 +1213,36 @@ multiply to a member of the float value set.</p>
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="ARITHMETIC_ERROR" title="ARITHMETIC_ERROR"><a
-                                    class="constant" href="constants.html#ARITHMETIC_ERROR">ARITHMETIC_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the reason string for the <code>math:Error</code>.</p>
-</td>
+                            <td class="module-title truncate constant" id="ARITHMETIC_ERROR" title="ARITHMETIC_ERROR">
+                                <a class="constant " href="constants.html#ARITHMETIC_ERROR">ARITHMETIC_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the reason string for the <code>math:Error</code>.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PI" title="PI"><a
-                                    class="constant" href="constants.html#PI">PI</a></td>
-                            <td class="module-desc"><p>The ratio of the circumference of a circle to its diameter.</p>
-</td>
+                            <td class="module-title truncate constant" id="PI" title="PI">
+                                <a class="constant " href="constants.html#PI">PI</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Ratio of the circumference of a circle to its diameter.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="E" title="E"><a
-                                    class="constant" href="constants.html#E">E</a></td>
-                            <td class="module-desc"><p>The base of the natural logarithms.</p>
-</td>
+                            <td class="module-title truncate constant" id="E" title="E">
+                                <a class="constant " href="constants.html#E">E</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Base of the natural logarithms.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -1035,10 +1266,13 @@ multiply to a member of the float value set.</p>
                     
                         <tr>
                             <td class="module-title truncate errors" id="Error" title="Error">
-                                <a class="errors" href="errors.html#Error">Error</a>
+                                <a class="errors " href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error occurred in the <code>math</code> operation.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error occurred in the <code>math</code> operation.
+
+                            </td>
                         </tr>
                     
                 </table>

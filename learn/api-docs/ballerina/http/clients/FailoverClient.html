@@ -116,7 +116,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -310,6 +310,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -465,7 +469,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -659,6 +663,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -763,7 +771,7 @@
                 
                 <span class="clients">FailoverClient</span>
             </h1>
-            <p><p>An HTTP client endpoint which provides failover support over multiple HTTP clients.</p>
+            <p>An HTTP client endpoint which provides failover support over multiple HTTP clients.
 </p>
 
             <div class="constants">
@@ -795,108 +803,108 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="post"><a
                                             class="functions" href="#post">post</a></td>
-                                    <td class="module-desc"><p>The POST remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The POST remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="head"><a
                                             class="functions" href="#head">head</a></td>
-                                    <td class="module-desc"><p>The HEAD remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The HEAD remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="patch"><a
                                             class="functions" href="#patch">patch</a></td>
-                                    <td class="module-desc"><p>The PATCH remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The PATCH remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="put"><a
                                             class="functions" href="#put">put</a></td>
-                                    <td class="module-desc"><p>The PUT remote function  implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The PUT remote function  implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="options"><a
                                             class="functions" href="#options">options</a></td>
-                                    <td class="module-desc"><p>The OPTIONS remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The OPTIONS remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="forward"><a
                                             class="functions" href="#forward">forward</a></td>
-                                    <td class="module-desc"><p>Invokes an HTTP call using the incoming request's HTTP method.</p>
+                                    <td class="module-desc">Invokes an HTTP call using the incoming request's HTTP method.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="execute"><a
                                             class="functions" href="#execute">execute</a></td>
-                                    <td class="module-desc"><p>Invokes an HTTP call with the specified HTTP method.</p>
+                                    <td class="module-desc">Invokes an HTTP call with the specified HTTP method.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="delete"><a
                                             class="functions" href="#delete">delete</a></td>
-                                    <td class="module-desc"><p>The DELETE remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The DELETE remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="get"><a
                                             class="functions" href="#get">get</a></td>
-                                    <td class="module-desc"><p>The GET remote function implementation of the Failover Connector.</p>
+                                    <td class="module-desc">The GET remote function implementation of the Failover Connector.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="submit"><a
                                             class="functions" href="#submit">submit</a></td>
-                                    <td class="module-desc"><p>Submits an HTTP request to a service with the specified HTTP verb. The <code>FailoverClient.submit()</code> function does not
-return a <code>Response</code> as the result, rather it returns an <code>HttpFuture</code> which can be used for subsequent interactions
-with the HTTP endpoint.</p>
+                                    <td class="module-desc">Submits an HTTP request to a service with the specified HTTP verb. The <code>FailoverClient.submit()</code> function does not
+return an <code>http:Response</code> as the result. Rather it returns an <code>http:HttpFuture</code> which can be used for subsequent interactions
+with the HTTP endpoint.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="getResponse"><a
                                             class="functions" href="#getResponse">getResponse</a></td>
-                                    <td class="module-desc"><p>Retrieves the <code>Response</code> for a previously submitted request.</p>
+                                    <td class="module-desc">Retrieves the <code>http:Response</code> for a previously-submitted request.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="hasPromise"><a
                                             class="functions" href="#hasPromise">hasPromise</a></td>
-                                    <td class="module-desc"><p>Checks whether a <code>PushPromise</code> exists for a previously submitted request.</p>
+                                    <td class="module-desc">Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="getNextPromise"><a
                                             class="functions" href="#getNextPromise">getNextPromise</a></td>
-                                    <td class="module-desc"><p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
+                                    <td class="module-desc">Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="getPromisedResponse"><a
                                             class="functions" href="#getPromisedResponse">getPromisedResponse</a></td>
-                                    <td class="module-desc"><p>Retrieves the promised server push <code>Response</code> message.</p>
+                                    <td class="module-desc">Retrieves the promised server push <code>http:Response</code> message.
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="rejectPromise"><a
                                             class="functions" href="#rejectPromise">rejectPromise</a></td>
-                                    <td class="module-desc"><p>Rejects a <code>PushPromise</code>. When a <code>PushPromise</code> is rejected, there is no chance of fetching a promised
-response using the rejected promise.</p>
+                                    <td class="module-desc">Rejects an <code>http:PushPromise</code>. When an <code>http:PushPromise</code> is rejected, there is no chance of fetching a promised
+response using the rejected promise.
 </td>
                                 </tr>
                             
@@ -912,36 +920,51 @@ response using the rejected promise.</p>
         
     <div class="params-listing">
         <ul>
-            <li> failoverClientConfig<span class="type">  <a href="../../http/records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></span>
+            <li> 
+                <span >failoverClientConfig</span>
+                <span class="type">  <a href="../../http/records/FailoverClientConfiguration.html">FailoverClientConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>The configurations for the failover client endpoint</p>
-</p>
+                <p>
+                    
+                    <p>The configurations for the failover client endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> failoverInferredConfig<span class="type">  <a href="../../http/records/FailoverInferredConfig.html">FailoverInferredConfig</a></span>
+            <li> 
+                <span >failoverInferredConfig</span>
+                <span class="type">  <a href="../../http/records/FailoverInferredConfig.html">FailoverInferredConfig</a></span>
                 
             </li>
             <li>
-                <p><p>Configurations derived from <code>FailoverConfig</code></p>
-</p>
+                <p>
+                    
+                    <p>Configurations derived from <code>FailoverConfig</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> succeededEndpointIndex<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >succeededEndpointIndex</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Index of the <code>CallerActions[]</code> array which given a successful response</p>
-</p>
+                <p>
+                    
+                    <p>Index of the <code>CallerActions[]</code> array which given a successful response</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -1003,7 +1026,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#post">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> post </h2>
+            <h2 > post </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1011,9 +1034,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>The POST remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The POST remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1065,7 +1091,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#head">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> head </h2>
+            <h2 > head </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1073,9 +1099,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The HEAD remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The HEAD remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1127,7 +1156,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#patch">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> patch </h2>
+            <h2 > patch </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1135,9 +1164,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The PATCH remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The PATCH remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1189,7 +1221,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#put">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
+            <h2 > put </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1197,9 +1229,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The PUT remote function  implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The PUT remote function  implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1251,7 +1286,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#options">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> options </h2>
+            <h2 > options </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1259,9 +1294,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The OPTIONS remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The OPTIONS remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1313,7 +1351,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#forward">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> forward </h2>
+            <h2 > forward </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/objects/Request.html">Request</a> request)</p>
@@ -1321,9 +1359,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Invokes an HTTP call using the incoming request's HTTP method.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Invokes an HTTP call using the incoming request's HTTP method.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1374,7 +1415,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#execute">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> execute </h2>
+            <h2 > execute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1382,9 +1423,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Invokes an HTTP call with the specified HTTP method.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Invokes an HTTP call with the specified HTTP method.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1449,7 +1493,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#delete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> delete </h2>
+            <h2 > delete </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1457,9 +1501,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The DELETE remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The DELETE remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1511,7 +1558,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1519,9 +1566,12 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>The GET remote function implementation of the Failover Connector.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        The GET remote function implementation of the Failover Connector.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1573,7 +1623,7 @@ or <code>mime:Entity[]</code></p>
              <a class="url-link" href="#submit">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> submit </h2>
+            <h2 > submit </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> httpVerb, <span class="builtin-type">string</span> path, <a href="../../http/types.html#RequestMessage">RequestMessage</a> message)</p>
@@ -1581,11 +1631,14 @@ or <code>mime:Entity[]</code></p>
         </span>
         
     </div>
-    <p><p>Submits an HTTP request to a service with the specified HTTP verb. The <code>FailoverClient.submit()</code> function does not
-return a <code>Response</code> as the result, rather it returns an <code>HttpFuture</code> which can be used for subsequent interactions
-with the HTTP endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Submits an HTTP request to a service with the specified HTTP verb. The <code>FailoverClient.submit()</code> function does not
+return an <code>http:Response</code> as the result. Rather it returns an <code>http:HttpFuture</code> which can be used for subsequent interactions
+with the HTTP endpoint.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1637,7 +1690,7 @@ with the HTTP endpoint.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/HttpFuture.html">HttpFuture</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An <code>HttpFuture</code> that represents an asynchronous service invocation, or an <code>http:ClientError</code> if the submission
+                <li><p>An <code>http:HttpFuture</code> that represents an asynchronous service invocation or else an <code>http:ClientError</code> if the submission
 fails</p>
 </li>
             </ul>
@@ -1651,7 +1704,7 @@ fails</p>
              <a class="url-link" href="#getResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getResponse </h2>
+            <h2 > getResponse </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1659,9 +1712,12 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Retrieves the <code>Response</code> for a previously submitted request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the <code>http:Response</code> for a previously-submitted request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1672,7 +1728,7 @@ fails</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> related to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1686,7 +1742,7 @@ fails</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP response message, or an <code>ClientError</code> if the invocation fails</p>
+                <li><p>An <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -1699,7 +1755,7 @@ fails</p>
              <a class="url-link" href="#hasPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasPromise </h2>
+            <h2 > hasPromise </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1707,9 +1763,12 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Checks whether a <code>PushPromise</code> exists for a previously submitted request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether an <code>http:PushPromise</code> exists for a previously-submitted request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1720,7 +1779,7 @@ fails</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1734,7 +1793,7 @@ fails</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>A <code>boolean</code> that represents whether a <code>PushPromise</code> exists</p>
+                <li><p>A <code>boolean</code>, which represents whether an <code>http:PushPromise</code> exists</p>
 </li>
             </ul>
         </div>
@@ -1747,7 +1806,7 @@ fails</p>
              <a class="url-link" href="#getNextPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNextPromise </h2>
+            <h2 > getNextPromise </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/HttpFuture.html">HttpFuture</a> httpFuture)</p>
@@ -1755,9 +1814,12 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Retrieves the next available <code>PushPromise</code> for a previously submitted request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the next available <code>http:PushPromise</code> for a previously-submitted request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1768,7 +1830,7 @@ fails</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>HttpFuture</code> relates to a previous asynchronous invocation</p>
+                        <p><p>The <code>http:HttpFuture</code> related to a previous asynchronous invocation</p>
 </p>
                     </li>
                 </ul>
@@ -1782,7 +1844,7 @@ fails</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/PushPromise.html">PushPromise</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>An HTTP Push Promise message, or an <code>ClientError</code> if the invocation fails</p>
+                <li><p>An <code>http:PushPromise</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -1795,7 +1857,7 @@ fails</p>
              <a class="url-link" href="#getPromisedResponse">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getPromisedResponse </h2>
+            <h2 > getPromisedResponse </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/PushPromise.html">PushPromise</a> promise)</p>
@@ -1803,9 +1865,12 @@ fails</p>
         </span>
         
     </div>
-    <p><p>Retrieves the promised server push <code>Response</code> message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the promised server push <code>http:Response</code> message.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1816,7 +1881,7 @@ fails</p>
                         
                     </li>
                     <li>
-                        <p><p>The related <code>PushPromise</code></p>
+                        <p><p>The related <code>http:PushPromise</code></p>
 </p>
                     </li>
                 </ul>
@@ -1830,7 +1895,7 @@ fails</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Response.html">Response</a> | <a href="../../http/types.html#ClientError">ClientError</a></span>)</li>
-                <li><p>A promised HTTP <code>Response</code> message, or an <code>ClientError</code> if the invocation fails</p>
+                <li><p>A promised <code>http:Response</code> message or else an <code>http:ClientError</code> if the invocation fails</p>
 </li>
             </ul>
         </div>
@@ -1843,13 +1908,16 @@ fails</p>
              <a class="url-link" href="#rejectPromise">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> rejectPromise </h2>
+            <h2 > rejectPromise </h2>
         
     </div>
-    <p><p>Rejects a <code>PushPromise</code>. When a <code>PushPromise</code> is rejected, there is no chance of fetching a promised
-response using the rejected promise.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Rejects an <code>http:PushPromise</code>. When an <code>http:PushPromise</code> is rejected, there is no chance of fetching a promised
+response using the rejected promise.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

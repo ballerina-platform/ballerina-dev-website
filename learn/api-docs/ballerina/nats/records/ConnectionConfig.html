@@ -58,6 +58,10 @@
                 <h3>Records</h3>
                 <ul>
                     
+                        <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
                         <li class="active">
                             <a href="ConnectionConfig.html">ConnectionConfig</a>
                         </li>
@@ -92,7 +96,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +286,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -379,6 +387,10 @@
                     <h3>Records</h3>
                     <ul>
                         
+                            <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
                             <li class="active">
                                 <a href="ConnectionConfig.html">ConnectionConfig</a>
                             </li>
@@ -413,7 +425,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +615,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,10 +721,13 @@
                 
                     <a href="../../nats/index.html">nats</a>
                 
-                 : <span class="records">ConnectionConfig</span>
+                 : <span class="records ">ConnectionConfig</span>
             </h1>
-            <p>The parameters used to create a NATS streaming subscription.
-</p>
+            <p>
+                
+                Configurations related to creating a NATS streaming subscription.
+
+            </p>
             <div class="constants">
                 
                     
@@ -717,161 +736,226 @@
         
     <div class="params-listing">
         <ul>
-            <li> connectionName<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default ballerina-nats)</span>
+            <li> 
+                <span >connectionName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default ballerina-nats)</span> 
             </li>
             <li>
-                <p><p>Name of the connection. This is optional.</p>
-</p>
+                <p>
+                    
+                    <p>Name of the connection (this is optional)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxReconnect<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 60)</span>
+            <li> 
+                <span >maxReconnect</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 60)</span> 
             </li>
             <li>
-                <p><p>Maximum number of reconnect attempts. Use 0 to turn off auto reconnect.
-Use -1 to turn on infinite reconnects. The reconnect state is entered when the connection is connected and when
-that connection is lost. During the initial connection attempt, the client will cycle over
-its server list one time regardless of the maxReconnects value that is set.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of reconnect attempts. The reconnect state is triggered when an already established
+connection is lost. During the initial connection attempt, the client will cycle
+over its server list one time regardless of the <code>maxReconnects</code> value that is set.
+Use 0 to turn off auto reconnecting.
+Use -1 to turn on infinite reconnects.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> reconnectWaitInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 2)</span>
+            <li> 
+                <span >reconnectWaitInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 2)</span> 
             </li>
             <li>
-                <p><p>The time to wait between reconnect attempts to reconnect to the same server.
-This is measured in seconds.</p>
-</p>
+                <p>
+                    
+                    <p>The time(in seconds) to wait between the reconnect attempts to reconnect to the same server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> connectionTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 2)</span>
+            <li> 
+                <span >connectionTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 2)</span> 
             </li>
             <li>
-                <p><p>The timeout for connection attempts measured in seconds.</p>
-</p>
+                <p>
+                    
+                    <p>The timeout (in seconds) for the connection attempts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> pingIntervalInMinutes<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 2)</span>
+            <li> 
+                <span >pingIntervalInMinutes</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 2)</span> 
             </li>
             <li>
-                <p><p>The interval between the attempts of pinging the server. This is measured in minutes.</p>
-</p>
+                <p>
+                    
+                    <p>The interval (in minutes) between the attempts of pinging the server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxPingsOut<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 2)</span>
+            <li> 
+                <span >maxPingsOut</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 2)</span> 
             </li>
             <li>
-                <p><p>The maximum number of pings the client can have in flight. The default value will be a small number.</p>
-</p>
+                <p>
+                    
+                    <p>The maximum number of pings the client can have in flight. The default value is two</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> username<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >username</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The username for basic authentication.</p>
-</p>
+                <p>
+                    
+                    <p>The username for basic authentication</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> password<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >password</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The password for basic authentication.</p>
-</p>
+                <p>
+                    
+                    <p>The password for basic authentication</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> token<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >token</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The token for token-based authentication.</p>
-</p>
+                <p>
+                    
+                    <p>The token for token-based authentication</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> inboxPrefix<span class="type">  <span class="builtin-type">string</span></span>
-                <span class="default"> (default _INBOX.)</span>
+            <li> 
+                <span >inboxPrefix</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                 <span class="default">(default _INBOX.)</span> 
             </li>
             <li>
-                <p><p>The connection's inbox prefix. All inboxes will start with this string.</p>
-</p>
+                <p>
+                    
+                    <p>The connection's inbox prefix, which all inboxes will start with</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> noEcho<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >noEcho</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Turns off echo. This prevents the server from echoing messages back to the connection if it
-has subscriptions on the subject being published to.</p>
-</p>
+                <p>
+                    
+                    <p>Turns off echoing. This prevents the server from echoing messages back to the connection if it
+has subscriptions on the subject being published to</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> enableErrorListener<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >enableErrorListener</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Enables Connection Error listener.</p>
-</p>
+                <p>
+                    
+                    <p>Enables the connection to the error listener</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../nats/records/SecureSocket.html">SecureSocket</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../nats/records/SecureSocket.html">SecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations related to SSL/TLS.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations related to SSL/TLS</p>
+
+                </p>
             </li>
         </ul>
     </div>

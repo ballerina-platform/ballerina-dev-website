@@ -124,7 +124,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -318,6 +318,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -481,7 +485,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -675,6 +679,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -777,10 +785,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                 
-                 : <span class="records">RetryConfiguration</span>
+                 : <span class="records ">RetryConfiguration</span>
             </h1>
-            <p>Represents grpc client retry functionality configurations.
-</p>
+            <p>
+                
+                Represents grpc client retry functionality configurations.
+
+            </p>
             <div class="constants">
                 
                     
@@ -789,60 +800,85 @@
         
     <div class="params-listing">
         <ul>
-            <li> retryCount<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >retryCount</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum number of retry attempts in an failure scenario</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of retry attempts in an failure scenario</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> intervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >intervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Initial interval between retry attempts</p>
-</p>
+                <p>
+                    
+                    <p>Initial interval between retry attempts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum interval between two retry attempts</p>
-</p>
+                <p>
+                    
+                    <p>Maximum interval between two retry attempts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> backoffFactor<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >backoffFactor</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Retry interval will be multiplied by this factor, in between retry attempts</p>
-</p>
+                <p>
+                    
+                    <p>Retry interval will be multiplied by this factor, in between retry attempts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> errorTypes<span class="type">  <span class="array-type"><a href="../../grpc/types.html#ErrorType">ErrorType</a>[]</span></span>
-                <span class="default"> (default [INTERNAL_ERROR])</span>
+            <li> 
+                <span >errorTypes</span>
+                <span class="type">  <span class="array-type"><a href="../../grpc/types.html#ErrorType">ErrorType</a>[]</span></span>
+                 <span class="default">(default [INTERNAL_ERROR])</span> 
             </li>
             <li>
-                <p><p>Error reasons which should be considered as failure scenarios to retry</p>
-</p>
+                <p>
+                    
+                    <p>Error reasons which should be considered as failure scenarios to retry</p>
+
+                </p>
             </li>
         </ul>
     </div>

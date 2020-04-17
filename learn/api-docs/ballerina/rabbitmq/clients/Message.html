@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -667,7 +675,7 @@
                 
                 <span class="clients">Message</span>
             </h1>
-            <p><p>Provides the functionality to manipulate the messages received by the consumer services.</p>
+            <p>Provides the functionality to manipulate the messages received by the consumer services.
 </p>
 
             <div class="constants">
@@ -681,14 +689,18 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="basicAck"><a
                                             class="functions" href="#basicAck">basicAck</a></td>
-                                    <td class="module-desc"><p>Acknowledge one or several received messages.</p>
+                                    <td class="module-desc">Acknowledges one or several received messages.
+<pre><code class="language-ballerina"> rabbitmq:Error? ackResult = message-&gt;basicAck(true);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="basicNack"><a
                                             class="functions" href="#basicNack">basicNack</a></td>
-                                    <td class="module-desc"><p>Reject one or several received messages.</p>
+                                    <td class="module-desc">Rejects one or several received messages.
+<pre><code class="language-ballerina"> rabbitmq:Error? nackResult = message-&gt;basicNack(true, requeue = false);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -700,92 +712,124 @@
                         <div class="method-list">
                             
                                 
-<a href="#getDeliveryTag">
-    <div class="param-sum">
-        <div class="param-name">
-        getDeliveryTag 
-        </div>
-        <div class="param-details"> <p>Retrieves the delivery tag of the message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getDeliveryTag">
+        <a href="#getDeliveryTag">getDeliveryTag </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the delivery tag of the message.
+<pre><code class="language-ballerina"> int deliveryTag = message.getDeliveryTag();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getProperties">
-    <div class="param-sum">
-        <div class="param-name">
-        getProperties 
-        </div>
-        <div class="param-details"> <p>Retrieves the properties of the message (i.e., routing headers etc.).</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getProperties">
+        <a href="#getProperties">getProperties </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the properties of the message (i.e., routing headers etc.).
+<pre><code class="language-ballerina"> rabbitmq:BasicProperties|rabbitmq:Error properties = message.getProperties();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getTextContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getTextContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the text content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getTextContent">
+        <a href="#getTextContent">getTextContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the text content of the RabbitMQ message.
+<pre><code class="language-ballerina"> string|rabbitmq:Error msgContent = message.getTextContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getFloatContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getFloatContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the float content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getFloatContent">
+        <a href="#getFloatContent">getFloatContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the float content of the RabbitMQ message.
+<pre><code class="language-ballerina"> float|rabbitmq:Error msgContent = message.getFloatContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getIntContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getIntContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the int content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getIntContent">
+        <a href="#getIntContent">getIntContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the int content of the RabbitMQ message.
+<pre><code class="language-ballerina"> int|rabbitmq:Error msgContent = message.getIntContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getByteArrayContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getByteArrayContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the byte array content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getByteArrayContent">
+        <a href="#getByteArrayContent">getByteArrayContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the byte array content of the RabbitMQ message.
+<pre><code class="language-ballerina"> byte[] msgContent = message.getIntContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getJSONContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getJSONContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the json content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getJSONContent">
+        <a href="#getJSONContent">getJSONContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the JSON content of the RabbitMQ message.
+<pre><code class="language-ballerina"> json|rabbitmq:Error msgContent = message.getJSONContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getXMLContent">
-    <div class="param-sum">
-        <div class="param-name">
-        getXMLContent 
-        </div>
-        <div class="param-details"> <p>Retrieves the xml content of the RabbitMQ message.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getXMLContent">
+        <a href="#getXMLContent">getXMLContent </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Retrieves the XML content of the RabbitMQ message.
+<pre><code class="language-ballerina"> xml|rabbitmq:Error msgContent = message.getXMLContent();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -800,7 +844,7 @@
              <a class="url-link" href="#basicAck">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> basicAck </h2>
+            <h2 > basicAck </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> multiple)</p>
@@ -808,9 +852,14 @@
         </span>
         
     </div>
-    <p><p>Acknowledge one or several received messages.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Acknowledges one or several received messages.
+<pre><code class="language-ballerina"> rabbitmq:Error? ackResult = message-&gt;basicAck(true);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -821,8 +870,8 @@
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p><code>true</code> to acknowledge all messages up to and including the message called on,
-<code>false</code> to acknowledge just the message called on.</p>
+                        <p><p><code>true</code> to acknowledge all messages up to and including the called on message and
+<code>false</code> to acknowledge just the called on message</p>
 </p>
                     </li>
                 </ul>
@@ -836,7 +885,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -849,7 +898,7 @@
              <a class="url-link" href="#basicNack">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> basicNack </h2>
+            <h2 > basicNack </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">boolean</span> multiple, <span class="builtin-type">boolean</span> requeue)</p>
@@ -857,9 +906,14 @@
         </span>
         
     </div>
-    <p><p>Reject one or several received messages.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Rejects one or several received messages.
+<pre><code class="language-ballerina"> rabbitmq:Error? nackResult = message-&gt;basicNack(true, requeue = false);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -870,8 +924,8 @@
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p><code>true</code> to reject all messages up to and including the message called on;
-<code>false</code> to reject just the message called on.</p>
+                        <p><p><code>true</code> to reject all messages up to and including the called on message and
+<code>false</code> to reject just the called on message</p>
 </p>
                     </li>
                 </ul>
@@ -884,7 +938,7 @@
                         <span class="default"> (default true)</span>
                     </li>
                     <li>
-                        <p><p><code>true</code> if the rejected message(s) should be re-queued rather than discarded/dead-lettered.</p>
+                        <p><p><code>true</code> if the rejected message(s) should be re-queued rather than discarded/dead-lettered</p>
 </p>
                     </li>
                 </ul>
@@ -898,7 +952,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>An error if an I/O error is encountered or nil if successful.</p>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -915,7 +969,7 @@
              <a class="url-link" href="#getDeliveryTag">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getDeliveryTag </h2>
+            <h2 > getDeliveryTag </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -923,16 +977,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the delivery tag of the message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the delivery tag of the message.
+<pre><code class="language-ballerina"> int deliveryTag = message.getDeliveryTag();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>int containing the delivery tag of the message.</p>
+                <li><p>The delivery tag of the message</p>
 </li>
             </ul>
         </div>
@@ -945,7 +1004,7 @@
              <a class="url-link" href="#getProperties">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getProperties </h2>
+            <h2 > getProperties </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -953,16 +1012,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the properties of the message (i.e., routing headers etc.).</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the properties of the message (i.e., routing headers etc.).
+<pre><code class="language-ballerina"> rabbitmq:BasicProperties|rabbitmq:Error properties = message.getProperties();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/records/BasicProperties.html">BasicProperties</a> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>Properties of the message or error if an error is encountered.</p>
+                <li><p>Properties of the message or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -975,7 +1039,7 @@
              <a class="url-link" href="#getTextContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getTextContent </h2>
+            <h2 > getTextContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -983,16 +1047,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the text content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the text content of the RabbitMQ message.
+<pre><code class="language-ballerina"> string|rabbitmq:Error msgContent = message.getTextContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>string containing message data or error if an error is encountered.</p>
+                <li><p>Message data as string value or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1005,7 +1074,7 @@
              <a class="url-link" href="#getFloatContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getFloatContent </h2>
+            <h2 > getFloatContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1013,16 +1082,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the float content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the float content of the RabbitMQ message.
+<pre><code class="language-ballerina"> float|rabbitmq:Error msgContent = message.getFloatContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>float containing message data or error if an error is encountered.</p>
+                <li><p>Message data as a float value or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1035,7 +1109,7 @@
              <a class="url-link" href="#getIntContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getIntContent </h2>
+            <h2 > getIntContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1043,16 +1117,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the int content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the int content of the RabbitMQ message.
+<pre><code class="language-ballerina"> int|rabbitmq:Error msgContent = message.getIntContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>int containing message data or error if an error is encountered.</p>
+                <li><p>Message data as an int value or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1065,7 +1144,7 @@
              <a class="url-link" href="#getByteArrayContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getByteArrayContent </h2>
+            <h2 > getByteArrayContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1073,16 +1152,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the byte array content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the byte array content of the RabbitMQ message.
+<pre><code class="language-ballerina"> byte[] msgContent = message.getIntContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span></span>)</li>
-                <li><p>byte array containing message data or error if an error is encountered.</p>
+                <li><p>Message data as a byte array</p>
 </li>
             </ul>
         </div>
@@ -1095,7 +1179,7 @@
              <a class="url-link" href="#getJSONContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getJSONContent </h2>
+            <h2 > getJSONContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1103,16 +1187,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the json content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the JSON content of the RabbitMQ message.
+<pre><code class="language-ballerina"> json|rabbitmq:Error msgContent = message.getJSONContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>json containing message data or error if an error is encountered.</p>
+                <li><p>Message data as a JSON value or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>
@@ -1125,7 +1214,7 @@
              <a class="url-link" href="#getXMLContent">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getXMLContent </h2>
+            <h2 > getXMLContent </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1133,16 +1222,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the xml content of the RabbitMQ message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the XML content of the RabbitMQ message.
+<pre><code class="language-ballerina"> xml|rabbitmq:Error msgContent = message.getXMLContent();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <a href="../../rabbitmq/errors.html#Error">Error</a></span>)</li>
-                <li><p>xml containing message data or error if an error is encountered.</p>
+                <li><p>Message data as an XML value or else a <code>rabbitmq:Error</code> if an error is encountered</p>
 </li>
             </ul>
         </div>

@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">WritableByteChannel</span>
+                <span class="objects ">WritableByteChannel</span>
             </h1>
-            <p><p>WritableByteChannel represents an output resource (i.e file). which could be used to sink bytes.</p>
-</p>
+            <p>
+                
+                WritableByteChannel represents an output resource (i.e file). which could be used to sink bytes.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -737,27 +748,35 @@
                         <div class="method-list">
                             
                                 
-<a href="#write">
-    <div class="param-sum">
-        <div class="param-name">
-        write 
-        </div>
-        <div class="param-details"> <p>Sink bytes from a given input/output resource.</p>
-<p>This operation will be asynchronous, write might return without writing all the content.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="write">
+        <a href="#write">write </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Sinks bytes from a given input/output resource.
+This operation will be asynchronous. Writing might return without writing all the content.
+<pre><code class="language-ballerina"> int|io:Error result = writableByteChannel.write(record, 0);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given byte channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given byte channel.
+<pre><code class="language-ballerina"> io:Error err = writableByteChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -772,7 +791,7 @@
              <a class="url-link" href="#write">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> write </h2>
+            <h2 > write </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content, <span class="builtin-type">int</span> offset)</p>
@@ -780,10 +799,15 @@
         </span>
         
     </div>
-    <p><p>Sink bytes from a given input/output resource.</p>
-<p>This operation will be asynchronous, write might return without writing all the content.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sinks bytes from a given input/output resource.
+This operation will be asynchronous. Writing might return without writing all the content.
+<pre><code class="language-ballerina"> int|io:Error result = writableByteChannel.write(record, 0);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -794,7 +818,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Block of bytes which should be written</p>
+                        <p><p>Block of bytes, which should be written</p>
 </p>
                     </li>
                 </ul>
@@ -807,7 +831,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Start offset</p>
+                        <p><p>Offset, which should be kept when writing bytes.</p>
 </p>
                     </li>
                 </ul>
@@ -821,8 +845,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Offset which should be kept when writing bytes.
-Number of bytes written or <code>Error</code> if any error occurred</p>
+                <li><p>Number of bytes written or else <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -835,7 +858,7 @@ Number of bytes written or <code>Error</code> if any error occurred</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -843,16 +866,21 @@ Number of bytes written or <code>Error</code> if any error occurred</p>
         </span>
         
     </div>
-    <p><p>Closes a given byte channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given byte channel.
+<pre><code class="language-ballerina"> io:Error err = writableByteChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Will return () if there's no error</p>
+                <li><p><code>io:Error</code> or else <code>()</code></p>
 </li>
             </ul>
         </div>

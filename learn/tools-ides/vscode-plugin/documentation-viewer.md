@@ -3,9 +3,9 @@ layout: ballerina-inner-page
 title: Documentation Viewer
 permalink: /learn/vscode-plugin/documentation-viewer
 redirect_from:
-  - /learn/tools-ides/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/vscode-plugin/documentation-viewer/
-  - /learn/vscode-plugin/documentation-viewer/
+  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
+  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
+  - /v1-2/learn/vscode-plugin/documentation-viewer/
   - /learn/vscode-plugin/documentation-viewer/
   - /learn/vscode-plugin/documentation-viewer
 ---
@@ -19,10 +19,10 @@ The Documentation Viewer represents the documented entities in a file in an orga
 1. Click **View** in the top menu and click **Command Palette**.
 2. In the search box, type "Show" and click **Ballerina: Show Documentation Preview**.
 
-![Documentation Viewer](/learn/images/documentation-viewer.gif)
+![Documentation Viewer](/v1-2/learn/images/documentation-viewer.gif)
 
 ## What's next?
 
-- For information on the Ballerina VSCode extension, see [VSCode Extension](/learn/vscode-plugin)
+- For information on the Ballerina VSCode extension, see [VSCode Extension](/v1-2/learn/vscode-plugin)
 - For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v1-2/learn).
 

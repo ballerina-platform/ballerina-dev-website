@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -262,6 +262,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -563,6 +567,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -667,7 +675,8 @@
                 
                  : <span class="listeners">Listener</span> 
             </h1>
-            <p><p>Represents a connection which will be used for subscription.</p>
+            <p>Represents the NATS server connection to which a subscription service should be bound in order to
+receive messages of the corresponding subscription.
 </p>
 
             <div class="constants">
@@ -682,7 +691,7 @@
             <ul>
                 <li> <b>connection</b><span class="type">  <a href="../../nats/objects/Connection.html">Connection</a></span> </li>
                 <li>
-                    <p>An already-established connection or configuration to create a new connection.</p>
+                    <p>An established NATS connection.</p>
 
                 </li>
             </ul>
@@ -697,37 +706,43 @@
                     <div class="method-list">
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details"> <p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages and detaches the service from the <code>nats:Listener</code>.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details"> <p>Gracefully stops the listener in the lifecycle.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>nats:Listener</code> gracefully.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details"> <p>Forcefully stops the listener in the lifecycle.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>nats:Listener</code> forcefully.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -737,26 +752,30 @@
                     <div class="method-list">
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details"> <p>Binds the NATS consumer to a service.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Binds a service to the <code>nats:Listener</code>.
+
+    </div>
+</div>
+
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details"> <p>Starts the listener in the lifecycle.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts the <code>nats:Listener</code>.
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -772,7 +791,7 @@
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -780,9 +799,12 @@
         </span>
         
     </div>
-    <p><p>Stops consuming messages and detaches the service from the <code>Listener</code> endpoint.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages and detaches the service from the <code>nats:Listener</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -807,7 +829,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Nil or error upon failure to detach the service</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to detach the service</p>
 </li>
             </ul>
         </div>
@@ -820,7 +842,7 @@
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -828,16 +850,19 @@
         </span>
         
     </div>
-    <p><p>Gracefully stops the listener in the lifecycle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>nats:Listener</code> gracefully.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Error or ().</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to stop the listener</p>
 </li>
             </ul>
         </div>
@@ -850,7 +875,7 @@
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -858,16 +883,19 @@
         </span>
         
     </div>
-    <p><p>Forcefully stops the listener in the lifecycle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>nats:Listener</code> forcefully.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Error or ().</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to stop the listener</p>
 </li>
             </ul>
         </div>
@@ -885,7 +913,7 @@
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -893,9 +921,12 @@
         </span>
         
     </div>
-    <p><p>Binds the NATS consumer to a service.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Binds a service to the <code>nats:Listener</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -906,7 +937,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Type descriptor of the service.</p>
+                        <p><p>Type descriptor of the service</p>
 </p>
                     </li>
                 </ul>
@@ -919,7 +950,7 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Name of the service.</p>
+                        <p><p>Name of the service</p>
 </p>
                     </li>
                 </ul>
@@ -933,7 +964,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Returns nil or the error upon failure to register the listener.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to register the listener</p>
 </li>
             </ul>
         </div>
@@ -946,7 +977,7 @@
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -954,16 +985,19 @@
         </span>
         
     </div>
-    <p><p>Starts the listener in the lifecycle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Starts the <code>nats:Listener</code>.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p>Error or ().</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to start the listener</p>
 </li>
             </ul>
         </div>

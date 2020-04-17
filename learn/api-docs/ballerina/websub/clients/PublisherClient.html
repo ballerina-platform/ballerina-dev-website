@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,7 +691,7 @@
                 
                 <span class="clients">PublisherClient</span>
             </h1>
-            <p><p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.</p>
+            <p>The HTTP based client for WebSub topic registration and unregistration, and notifying the hub of new updates.
 </p>
 
             <div class="constants">
@@ -698,7 +706,7 @@
             <ul>
                 <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    <p>The URL to publish/notify updates to</p>
+                    <p>The URL to publish/notify updates</p>
 
                 </li>
             </ul>
@@ -708,7 +716,7 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a>?</span> ()</li>
                 <li>
-                    <p>The <code>http:ClientConfiguration</code> for the underlying client or <code>()</code></p>
+                    <p>The <code>http:ClientConfiguration</code> for the underlying client or else <code>()</code></p>
 
                 </li>
             </ul>
@@ -725,30 +733,39 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="registerTopic"><a
                                             class="functions" href="#registerTopic">registerTopic</a></td>
-                                    <td class="module-desc"><p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
-publish updates.</p>
+                                    <td class="module-desc">Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
+publish updates.
+<pre><code class="language-ballerina"> error? registerTopic = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="unregisterTopic"><a
                                             class="functions" href="#unregisterTopic">unregisterTopic</a></td>
-                                    <td class="module-desc"><p>Unregisters a topic in a Ballerina WebSub Hub.</p>
+                                    <td class="module-desc">Unregisters a topic in a Ballerina WebSub Hub.
+<pre><code class="language-ballerina"> error? unregisterTopic = websubHubClientEP-&gt;unregisterTopic(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="publishUpdate"><a
                                             class="functions" href="#publishUpdate">publishUpdate</a></td>
-                                    <td class="module-desc"><p>Publishes an update to a remote Ballerina WebSub Hub.</p>
+                                    <td class="module-desc">Publishes an update to a remote Ballerina WebSub Hub.
+<pre><code class="language-ballerina"> error? publishUpdate = websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
+ &quot;mode&quot;: &quot;remote-hub&quot;});
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="notifyUpdate"><a
                                             class="functions" href="#notifyUpdate">notifyUpdate</a></td>
-                                    <td class="module-desc"><p>Notifies a remote WebSub Hub that an update is available to fetch, for hubs that require publishing to
-happen as such.</p>
+                                    <td class="module-desc">Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
+happen as such.
+<pre><code class="language-ballerina">  error? notifyUpdate = websubHubClientEP-&gt;notifyUpdate(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -767,7 +784,7 @@ happen as such.</p>
              <a class="url-link" href="#registerTopic">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> registerTopic </h2>
+            <h2 > registerTopic </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic)</p>
@@ -775,10 +792,15 @@ happen as such.</p>
         </span>
         
     </div>
-    <p><p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
-publish updates.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
+publish updates.
+<pre><code class="language-ballerina"> error? registerTopic = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -803,7 +825,7 @@ publish updates.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred registering the topic</p>
+                <li><p>An <code>error</code> if an error occurred registering the topic or esle <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -816,7 +838,7 @@ publish updates.</p>
              <a class="url-link" href="#unregisterTopic">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> unregisterTopic </h2>
+            <h2 > unregisterTopic </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic)</p>
@@ -824,9 +846,14 @@ publish updates.</p>
         </span>
         
     </div>
-    <p><p>Unregisters a topic in a Ballerina WebSub Hub.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Unregisters a topic in a Ballerina WebSub Hub.
+<pre><code class="language-ballerina"> error? unregisterTopic = websubHubClientEP-&gt;unregisterTopic(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -851,7 +878,7 @@ publish updates.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred unregistering the topic</p>
+                <li><p>An <code>error</code>if an error occurred unregistering the topic or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -864,7 +891,7 @@ publish updates.</p>
              <a class="url-link" href="#publishUpdate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> publishUpdate </h2>
+            <h2 > publishUpdate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic, <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> payload, <span class="builtin-type">string?</span> contentType, <span class="builtin-type">map?</span> headers)</p>
@@ -872,9 +899,15 @@ publish updates.</p>
         </span>
         
     </div>
-    <p><p>Publishes an update to a remote Ballerina WebSub Hub.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Publishes an update to a remote Ballerina WebSub Hub.
+<pre><code class="language-ballerina"> error? publishUpdate = websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
+ &quot;mode&quot;: &quot;remote-hub&quot;});
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -911,7 +944,7 @@ publish updates.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The type of the update content, to set as the <code>ContentType</code> header</p>
+                        <p><p>The type of the update content to set as the <code>ContentType</code> header</p>
 </p>
                     </li>
                 </ul>
@@ -924,7 +957,7 @@ publish updates.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The headers, if any, that need to be set</p>
+                        <p><p>The headers that need to be set (if any)</p>
 </p>
                     </li>
                 </ul>
@@ -938,7 +971,7 @@ publish updates.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred with the update</p>
+                <li><p>An <code>error</code>if an error occurred with the update or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -951,7 +984,7 @@ publish updates.</p>
              <a class="url-link" href="#notifyUpdate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> notifyUpdate </h2>
+            <h2 > notifyUpdate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> topic, <span class="builtin-type">map?</span> headers)</p>
@@ -959,10 +992,15 @@ publish updates.</p>
         </span>
         
     </div>
-    <p><p>Notifies a remote WebSub Hub that an update is available to fetch, for hubs that require publishing to
-happen as such.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
+happen as such.
+<pre><code class="language-ballerina">  error? notifyUpdate = websubHubClientEP-&gt;notifyUpdate(&quot;http://websubpubtopic.com&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -986,7 +1024,7 @@ happen as such.</p>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>The headers, if any, that need to be set</p>
+                        <p><p>The headers that need to be set (if any)</p>
 </p>
                     </li>
                 </ul>
@@ -1000,7 +1038,7 @@ happen as such.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li><p><code>error</code> if an error occurred with the notification</p>
+                <li><p>An <code>error</code>if an error occurred with the notification or else <code>()</code></p>
 </li>
             </ul>
         </div>

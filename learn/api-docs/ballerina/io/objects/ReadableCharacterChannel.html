@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">ReadableCharacterChannel</span>
+                <span class="objects ">ReadableCharacterChannel</span>
             </h1>
-            <p><p>Represents a channel, which could be used to read characters through a given ReadableByteChannel.</p>
-</p>
+            <p>
+                
+                Represents a channel, which could be used to read characters through a given ReadableByteChannel.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -739,7 +750,7 @@
             <ul>
                 <li> <b>byteChannel</b><span class="type">  <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a></span> </li>
                 <li>
-                    <p>ReadableByteChannel, which would be used to read the characters</p>
+                    <p>The <code>ReadableByteChannel</code>, which would be used to read the characters</p>
 
                 </li>
             </ul>
@@ -749,7 +760,7 @@
             <ul>
                 <li> <b>charset</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    <p>Character-Set which would be used to encode/decode the given bytes to characters</p>
+                    <p>The character set, which would be used to encode/decode the given bytes to characters</p>
 
                 </li>
             </ul>
@@ -765,49 +776,65 @@
                         <div class="method-list">
                             
                                 
-<a href="#read">
-    <div class="param-sum">
-        <div class="param-name">
-        read 
-        </div>
-        <div class="param-details"> <p>Reads a given number of characters. This will attempt to read up to <code>numberOfChars</code> characters of the channel.
-<code>io:EofError</code> will return once the channel reaches the end.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="read">
+        <a href="#read">read </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a given number of characters. This will attempt to read up to the <code>numberOfChars</code> characters of the channel.
+An <code>io:EofError</code> will return once the channel reaches the end.
+<pre><code class="language-ballerina"> string|io:Error result = readableCharChannel.read(1000);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readJson">
-    <div class="param-sum">
-        <div class="param-name">
-        readJson 
-        </div>
-        <div class="param-details"> <p>Reads a JSON from the given channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readJson">
+        <a href="#readJson">readJson </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads a JSON from the given channel.
+<pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readJson();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#readXml">
-    <div class="param-sum">
-        <div class="param-name">
-        readXml 
-        </div>
-        <div class="param-details"> <p>Reads an XML from the given channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="readXml">
+        <a href="#readXml">readXml </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Reads an XML from the given channel.
+<pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readXml();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given character channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given character channel.
+<pre><code class="language-ballerina"> io:Error? err = readableCharChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -822,7 +849,7 @@
              <a class="url-link" href="#read">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> read </h2>
+            <h2 > read </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> numberOfChars)</p>
@@ -830,10 +857,15 @@
         </span>
         
     </div>
-    <p><p>Reads a given number of characters. This will attempt to read up to <code>numberOfChars</code> characters of the channel.
-<code>io:EofError</code> will return once the channel reaches the end.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a given number of characters. This will attempt to read up to the <code>numberOfChars</code> characters of the channel.
+An <code>io:EofError</code> will return once the channel reaches the end.
+<pre><code class="language-ballerina"> string|io:Error result = readableCharChannel.read(1000);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -858,7 +890,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Content, which is read or <code>EofError</code> once channel reaches the end. <code>Error</code> if any error occurred.</p>
+                <li><p>Content, which is read, an <code>EofError</code> once the channel reaches the end or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -871,7 +903,7 @@
              <a class="url-link" href="#readJson">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readJson </h2>
+            <h2 > readJson </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -879,16 +911,21 @@
         </span>
         
     </div>
-    <p><p>Reads a JSON from the given channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a JSON from the given channel.
+<pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readJson();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">json</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>the read JSON string or <code>Error</code> if any error occurred</p>
+                <li><p>The read JSON string or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -901,7 +938,7 @@
              <a class="url-link" href="#readXml">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> readXml </h2>
+            <h2 > readXml </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -909,16 +946,21 @@
         </span>
         
     </div>
-    <p><p>Reads an XML from the given channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads an XML from the given channel.
+<pre><code class="language-ballerina"> json|io:Error result = readableCharChannel.readXml();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>The read XML or <code>Error</code> if any error occurred</p>
+                <li><p>The read XML or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -931,7 +973,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -939,9 +981,14 @@
         </span>
         
     </div>
-    <p><p>Closes a given character channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given character channel.
+<pre><code class="language-ballerina"> io:Error? err = readableCharChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         

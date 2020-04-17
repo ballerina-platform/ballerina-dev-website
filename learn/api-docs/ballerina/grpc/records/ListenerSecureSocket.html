@@ -124,7 +124,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -318,6 +318,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -481,7 +485,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -675,6 +679,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -777,10 +785,13 @@
                 
                     <a href="../../grpc/index.html">grpc</a>
                 
-                 : <span class="records">ListenerSecureSocket</span>
+                 : <span class="records ">ListenerSecureSocket</span>
             </h1>
-            <p>Configures the SSL/TLS options to be used for HTTP service.
-</p>
+            <p>
+                
+                Configures the SSL/TLS options to be used for HTTP service.
+
+            </p>
             <div class="constants">
                 
                     
@@ -789,169 +800,239 @@
         
     <div class="params-listing">
         <ul>
-            <li> trustStore<span class="type">  <a href="../../crypto/records/TrustStore.html">TrustStore</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >trustStore</span>
+                <span class="type">  <a href="../../crypto/records/TrustStore.html">TrustStore</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configures the trust store to be used</p>
-</p>
+                <p>
+                    
+                    <p>Configures the trust store to be used</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyStore<span class="type">  <a href="../../crypto/records/KeyStore.html">KeyStore</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >keyStore</span>
+                <span class="type">  <a href="../../crypto/records/KeyStore.html">KeyStore</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configures the key store to be used</p>
-</p>
+                <p>
+                    
+                    <p>Configures the key store to be used</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> certFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >certFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing the certificate of the server</p>
-</p>
+                <p>
+                    
+                    <p>A file containing the certificate of the server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >keyFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing the private key of the server</p>
-</p>
+                <p>
+                    
+                    <p>A file containing the private key of the server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyPassword<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >keyPassword</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Password of the private key if it is encrypted</p>
-</p>
+                <p>
+                    
+                    <p>Password of the private key if it is encrypted</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> trustedCertFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >trustedCertFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing a list of certificates or a single certificate that the server trusts</p>
-</p>
+                <p>
+                    
+                    <p>A file containing a list of certificates or a single certificate that the server trusts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> protocol<span class="type">  <a href="../../grpc/records/Protocols.html">Protocols</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >protocol</span>
+                <span class="type">  <a href="../../grpc/records/Protocols.html">Protocols</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>SSL/TLS protocol related options</p>
-</p>
+                <p>
+                    
+                    <p>SSL/TLS protocol related options</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> certValidation<span class="type">  <a href="../../grpc/records/ValidateCert.html">ValidateCert</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >certValidation</span>
+                <span class="type">  <a href="../../grpc/records/ValidateCert.html">ValidateCert</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Certificate validation against CRL or OCSP related options</p>
-</p>
+                <p>
+                    
+                    <p>Certificate validation against CRL or OCSP related options</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> ciphers<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256])</span>
+            <li> 
+                <span >ciphers</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256, TLS_DHE_RSA_WITH_AES_128_CBC_SHA256, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_DHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_DHE_RSA_WITH_AES_128_GCM_SHA256])</span> 
             </li>
             <li>
-                <p><p>List of ciphers to be used (e.g.: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
+                <p>
+                    
+                    <p>List of ciphers to be used (e.g.: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA)</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslVerifyClient<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslVerifyClient</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The type of client certificate verification. (e.g.: &quot;require&quot; or &quot;optional&quot;)</p>
-</p>
+                <p>
+                    
+                    <p>The type of client certificate verification. (e.g.: &quot;require&quot; or &quot;optional&quot;)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> shareSession<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >shareSession</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enable/disable new SSL session creation</p>
-</p>
+                <p>
+                    
+                    <p>Enable/disable new SSL session creation</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> ocspStapling<span class="type">  <a href="../../grpc/records/ListenerOcspStapling.html">ListenerOcspStapling</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >ocspStapling</span>
+                <span class="type">  <a href="../../grpc/records/ListenerOcspStapling.html">ListenerOcspStapling</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Enable/disable OCSP stapling</p>
-</p>
+                <p>
+                    
+                    <p>Enable/disable OCSP stapling</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> handshakeTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >handshakeTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>SSL handshake time out</p>
-</p>
+                <p>
+                    
+                    <p>SSL handshake time out</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sessionTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >sessionTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>SSL session time out</p>
-</p>
+                <p>
+                    
+                    <p>SSL session time out</p>
+
+                </p>
             </li>
         </ul>
     </div>

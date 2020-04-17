@@ -59,6 +59,42 @@
                 <ul>
                     
                         <li >
+                            <a href="T0.html">T0</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T2.html">T2</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T3.html">T3</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T4.html">T4</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T43.html">T43</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T5.html">T5</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T6.html">T6</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T7.html">T7</a>
+                        </li>
+                    
+                        <li >
                             <a href="ApplicationErrorData.html">ApplicationErrorData</a>
                         </li>
                     
@@ -92,7 +128,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +306,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -368,6 +408,42 @@
                     <ul>
                         
                             <li >
+                                <a href="T0.html">T0</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T2.html">T2</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T3.html">T3</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T4.html">T4</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T43.html">T43</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T5.html">T5</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T6.html">T6</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T7.html">T7</a>
+                            </li>
+                        
+                            <li >
                                 <a href="ApplicationErrorData.html">ApplicationErrorData</a>
                             </li>
                         
@@ -401,7 +477,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +655,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -681,10 +761,15 @@
                 
                     <a href="../../java.jdbc/index.html">java.jdbc</a>
                 
-                 : <span class="records">BatchUpdateResult</span>
+                 : <span class="records strike">BatchUpdateResult</span>
             </h1>
-            <p>Represents the output of the `batchUpdate` remote function.
-</p>
+            <p>
+                
+                    <span class="stab">Deprecated</span>
+                
+                Represents the output of the <code>batchUpdate</code> remote function.
+
+            </p>
             <div class="constants">
                 
                     
@@ -693,42 +778,57 @@
         
     <div class="params-listing">
         <ul>
-            <li> updatedRowCount<span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span></span>
+            <li> 
+                <span >updatedRowCount</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">int</span>[]</span></span>
                 
             </li>
             <li>
-                <p><p>The updated row count during the sql statement exectuion
+                <p>
+                    
+                    <p>The updated row count during the sql statement exectuion
 A number greater than or equal to zero - indicates that the command was processed successfully
 and is an update count giving the number of rows
 A value of -2 - Indicates that the command was processed successfully but that the number of rows
 affected is unknown
 A value of -3 - Indicates that the command failed to execute successfully and occurs only if a driver
 continues to process remaining commands after a command fails</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> generatedKeys<span class="type">  <span class="builtin-type">map</span></span>
+            <li> 
+                <span >generatedKeys</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
                 
             </li>
             <li>
-                <p><p>A map of auto generated key values during the batch update execution</p>
-</p>
+                <p>
+                    
+                    <p>A map of auto generated key values during the batch update execution</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> returnedError<span class="type">  <a href="../../java.jdbc/types.html#Error">Error</a>?</span>
+            <li> 
+                <span >returnedError</span>
+                <span class="type">  <a href="../../java.jdbc/types.html#Error">Error</a>?</span>
                 
             </li>
             <li>
-                <p><p>The <code>Error</code> returned from the remote function in case of a failure</p>
-</p>
+                <p>
+                    
+                    <p>The <code>Error</code> returned from the remote function in case of a failure</p>
+
+                </p>
             </li>
         </ul>
     </div>

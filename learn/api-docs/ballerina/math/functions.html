@@ -228,7 +228,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -399,6 +399,10 @@
             
                 <li>
                     <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -669,7 +673,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -843,6 +847,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -951,332 +959,619 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#absFloat">absFloat</a></td>
-                                <td width="70%"><p>Returns the absolute value of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#absFloat">absFloat</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the absolute value of a float value.
+<pre><code class="language-ballerina"> float absoluteFloatValue = math:absFloat(-152.2544);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#absInt">absInt</a></td>
-                                <td width="70%"><p>Returns the absolute value of an int value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#absInt">absInt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the absolute value of an int value.
+<pre><code class="language-ballerina"> int absoluteIntValue = math:absInt(-152);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#acos">acos</a></td>
-                                <td width="70%"><p>Returns the arc cosine of a value; the returned angle is in the range 0.0 through pi.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#acos">acos</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the arc cosine of a value; the returned angle is in the range 0.0 through pi.
+<pre><code class="language-ballerina"> float acosValue = math:acos(0.027415567780803774);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#asin">asin</a></td>
-                                <td width="70%"><p>Returns the arc sine of a value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#asin">asin</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the arc sine of a value.
+<pre><code class="language-ballerina"> float arcSineValue = math:asin(0.027415567780803774);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#atan">atan</a></td>
-                                <td width="70%"><p>Returns the arc tangent of a value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#atan">atan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the arc tangent of a value.
+<pre><code class="language-ballerina"> float arcTangent = math:atan(0.027415567780803774);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#atan2">atan2</a></td>
-                                <td width="70%"><p>Returns the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).</p>
-</td>
+                                <td width="30%"><a class="functions " href="#atan2">atan2</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).
+<pre><code class="language-ballerina"> float arcTangentFromCoordinates = math:atan2(6.4, 3.2);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#cbrt">cbrt</a></td>
-                                <td width="70%"><p>Returns the cube root of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#cbrt">cbrt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the cube root of a float value.
+<pre><code class="language-ballerina"> float cubeRoot = math:cbrt(-27.0);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#ceil">ceil</a></td>
-                                <td width="70%"><p>Returns the smallest (closest to negative infinity) double value that is greater than orequal to the argument and
-is equal to a mathematical integer.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#ceil">ceil</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the smallest (closest to negative infinity) double value that is greater than or equal to the argument and
+is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float ceilingValue = math:ceil(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#copySign">copySign</a></td>
-                                <td width="70%"><p>Returns the first floating-point argument with the sign of the second floating-point argument.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#copySign">copySign</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the first floating-point argument with the sign of the second floating-point argument.
+<pre><code class="language-ballerina"> float copySignValue = math:copySign(6.4, 2.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#cos">cos</a></td>
-                                <td width="70%"><p>Returns the trigonometric cosine of an angle.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#cos">cos</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the trigonometric cosine of an angle.
+<pre><code class="language-ballerina"> float cosineValue = math:cos(0.3124);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#cosh">cosh</a></td>
-                                <td width="70%"><p>Returns the hyperbolic cosine of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#cosh">cosh</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the hyperbolic cosine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicCosineValue = math:cosh(0.3124);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#exp">exp</a></td>
-                                <td width="70%"><p>Returns Euler's number, that is 'e' raised to the power of exponent.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#exp">exp</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates Euler's number, that is 'e' raised to the power of exponent.
+<pre><code class="language-ballerina"> float euler = math:exp(3.2);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#expm1">expm1</a></td>
-                                <td width="70%"><p>Returns (e to the power of x) -1.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#expm1">expm1</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates (e to the power of x) -1.
+<pre><code class="language-ballerina"> float exponentValue = math:expm1(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#floor">floor</a></td>
-                                <td width="70%"><p>Returns the largest (closest to positive infinity) float value that is less than or equal to the argument and is
-equal to a mathematical integer.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#floor">floor</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the largest (closest to positive infinity) float value that is less than or equal to the argument and is
+equal to a mathematical integer.
+<pre><code class="language-ballerina"> float floorValue = math:floor(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#floorDiv">floorDiv</a></td>
-                                <td width="70%"><p>Returns the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#floorDiv">floorDiv</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
+<pre><code class="language-ballerina"> int|error floorDivValue = math:floorDiv(6, 4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#floorMod">floorMod</a></td>
-                                <td width="70%"><p>Returns the floor modulus of the long arguments.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#floorMod">floorMod</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the floor modulus of the long arguments.
+<pre><code class="language-ballerina"> int|error floorModulesValue = math:floorMod(6, 4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getExponent">getExponent</a></td>
-                                <td width="70%"><p>Returns the unbiased exponent used in the representation of a float.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getExponent">getExponent</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the unbiased exponent used in the representation of a float.
+<pre><code class="language-ballerina"> int unbiasedExponentValue = math:getExponent(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hypot">hypot</a></td>
-                                <td width="70%"><p>Returns sqrt(a squared +b squared) without intermediate overflow or underflow.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hypot">hypot</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates sqrt(a squared +b squared) without intermediate overflow or underflow.
+<pre><code class="language-ballerina"> float pythogarusValue = math:hypot(6.4, 3.6);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#log">log</a></td>
-                                <td width="70%"><p>Returns the natural logarithm (base e) of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#log">log</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the natural logarithm (base e) of a float value.
+<pre><code class="language-ballerina"> float logarithmValue = math:log(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#log10">log10</a></td>
-                                <td width="70%"><p>Returns the base 10 logarithm of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#log10">log10</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the base 10 logarithm of a float value.
+<pre><code class="language-ballerina"> float logarithmValueBaseTen = math:log10(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#log1p">log1p</a></td>
-                                <td width="70%"><p>Returns the natural logarithm of the sum of the argument and 1.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#log1p">log1p</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the natural logarithm of the sum of the argument and 1.
+<pre><code class="language-ballerina"> float naturalLogarithmValue = math:log1p(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#negateExact">negateExact</a></td>
-                                <td width="70%"><p>Returns the negation of the argument.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#negateExact">negateExact</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the negation of the argument.
+<pre><code class="language-ballerina"> int|error negationValue = math:negateExact(6);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#nextAfter">nextAfter</a></td>
-                                <td width="70%"><p>Returns the floating-point number adjacent to the first argument in the direction of the second argument.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#nextAfter">nextAfter</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the floating-point number adjacent to the first argument in the direction of the second argument.
+<pre><code class="language-ballerina"> float nextAfterValue = math:nextAfter(6.4, 3.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#nextDown">nextDown</a></td>
-                                <td width="70%"><p>Returns the adjacent floating-point value closer to negative infinity.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#nextDown">nextDown</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the adjacent floating-point value closer to negative infinity.
+<pre><code class="language-ballerina"> float nextDownValue = math:nextDown(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#nextUp">nextUp</a></td>
-                                <td width="70%"><p>Returns the adjacent floating-point value closer to positive infinity.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#nextUp">nextUp</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the adjacent floating-point value closer to positive infinity.
+<pre><code class="language-ballerina"> float nextUpValue = math:nextUp(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#pow">pow</a></td>
-                                <td width="70%"><p>Returns the value of the 'a' raised to the power of 'b'.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#pow">pow</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the value of the 'a' raised to the power of 'b'.
+<pre><code class="language-ballerina"> float aPowerB = math:pow(3.2, 2.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#random">random</a></td>
-                                <td width="70%"><p>Returns a random number between 0.0 and 1.0.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#random">random</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Selects a random number between 0.0 and 1.0.
+<pre><code class="language-ballerina"> float randomValue = math:random();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#randomInRange">randomInRange</a></td>
-                                <td width="70%"><p>Returns a random number between given start(inclusive) and end(exclusive) values.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#randomInRange">randomInRange</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Selects a random number between the given start(inclusive) and end(exclusive) values.
+<pre><code class="language-ballerina"> int|error randomInteger = math:randomInRange(1, 100);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#remainder">remainder</a></td>
-                                <td width="70%"><p>Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#remainder">remainder</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
+<pre><code class="language-ballerina"> float remainderValue = math:remainder(6.4, 3.6);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#rint">rint</a></td>
-                                <td width="70%"><p>Returns the double value that is closest in value to the argument and is equal to a mathematical integer.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#rint">rint</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the double value that is closest in value to the argument and is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float roundedValue = math:rint(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#round">round</a></td>
-                                <td width="70%"><p>Returns the closest int to the argument, with ties rounding to positive infinity.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#round">round</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the closest int to the argument, with ties rounding to positive infinity.
+<pre><code class="language-ballerina"> int roundedIntegerValue = math:round(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#scalb">scalb</a></td>
-                                <td width="70%"><p>Returns a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
-multiply to a member of the float value set.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#scalb">scalb</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
+multiply to a member of the float value set.
+<pre><code class="language-ballerina"> float scalbValue = math:scalb(6.4, 2);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signum">signum</a></td>
-                                <td width="70%"><p>Returns the signum function of the argument.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signum">signum</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the signum function of the argument.
+<pre><code class="language-ballerina"> float signumValue = math:signum(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#sin">sin</a></td>
-                                <td width="70%"><p>Returns the trigonometric sine of an angle.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#sin">sin</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the trigonometric sine of an angle.
+<pre><code class="language-ballerina"> float sineValue = math:sin(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#sinh">sinh</a></td>
-                                <td width="70%"><p>Returns the hyperbolic sine of a float value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#sinh">sinh</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the hyperbolic sine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicSineValue = math:sinh(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#sqrt">sqrt</a></td>
-                                <td width="70%"><p>Returns rounded positive square root of the given value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#sqrt">sqrt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates rounded positive square root of the given value.
+<pre><code class="language-ballerina"> float squareRoot = math:sqrt(6.4);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#tan">tan</a></td>
-                                <td width="70%"><p>Returns the trigonometric tangent of an angle.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#tan">tan</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the trigonometric tangent of an angle.
+<pre><code class="language-ballerina"> float tanValue = math:tan(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#tanh">tanh</a></td>
-                                <td width="70%"><p>Returns the hyperbolic tangent of a double value.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#tanh">tanh</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Calculates the hyperbolic tangent of a double value.
+<pre><code class="language-ballerina"> float hyperbolicTanValue = math:tanh(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toDegrees">toDegrees</a></td>
-                                <td width="70%"><p>Converts an angle measured in radians to an approximately equivalent angle measured in degrees.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toDegrees">toDegrees</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
+<pre><code class="language-ballerina"> float angleValueInDegrees = math:toDegrees(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toRadians">toRadians</a></td>
-                                <td width="70%"><p>Converts an angle measured in degrees to an approximately equivalent angle measured in radians.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toRadians">toRadians</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
+<pre><code class="language-ballerina"> float angleValueInRadians = math:toRadians(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#ulp">ulp</a></td>
-                                <td width="70%"><p>Returns the size of an ulp of the argument.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#ulp">ulp</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the size of an ulp of the argument.
+<pre><code class="language-ballerina"> float ulpValue = math:ulp(0.96);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -1290,7 +1585,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#absFloat">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> absFloat </h2>
+            <h2 > absFloat </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1298,9 +1593,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the absolute value of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the absolute value of a float value.
+<pre><code class="language-ballerina"> float absoluteFloatValue = math:absFloat(-152.2544);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1325,7 +1625,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Absolute value</p>
+                <li><p>Calculated absolute value</p>
 </li>
             </ul>
         </div>
@@ -1338,7 +1638,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#absInt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> absInt </h2>
+            <h2 > absInt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> val)</p>
@@ -1346,9 +1646,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the absolute value of an int value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the absolute value of an int value.
+<pre><code class="language-ballerina"> int absoluteIntValue = math:absInt(-152);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1373,7 +1678,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>Absolute value</p>
+                <li><p>Calculated absolute value</p>
 </li>
             </ul>
         </div>
@@ -1386,7 +1691,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#acos">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> acos </h2>
+            <h2 > acos </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1394,9 +1699,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the arc cosine of a value; the returned angle is in the range 0.0 through pi.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the arc cosine of a value; the returned angle is in the range 0.0 through pi.
+<pre><code class="language-ballerina"> float acosValue = math:acos(0.027415567780803774);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1421,7 +1731,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Arc cosine value</p>
+                <li><p>Calculated arc cosine value</p>
 </li>
             </ul>
         </div>
@@ -1434,7 +1744,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#asin">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> asin </h2>
+            <h2 > asin </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1442,9 +1752,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the arc sine of a value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the arc sine of a value.
+<pre><code class="language-ballerina"> float arcSineValue = math:asin(0.027415567780803774);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1469,7 +1784,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Arc sine value</p>
+                <li><p>Calculates arc sine value</p>
 </li>
             </ul>
         </div>
@@ -1482,7 +1797,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#atan">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> atan </h2>
+            <h2 > atan </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1490,9 +1805,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the arc tangent of a value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the arc tangent of a value.
+<pre><code class="language-ballerina"> float arcTangent = math:atan(0.027415567780803774);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1517,7 +1837,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Arc tangent value</p>
+                <li><p>Calculated arc tangent value</p>
 </li>
             </ul>
         </div>
@@ -1530,7 +1850,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#atan2">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> atan2 </h2>
+            <h2 > atan2 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -1538,9 +1858,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the angle theta from the conversion of rectangular coordinates (a, b) to polar coordinates (r, theta).
+<pre><code class="language-ballerina"> float arcTangentFromCoordinates = math:atan2(6.4, 3.2);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1551,7 +1876,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The ordinate coordinate</p>
+                        <p><p>Ordinate coordinate</p>
 </p>
                     </li>
                 </ul>
@@ -1564,7 +1889,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The abscissa coordinate</p>
+                        <p><p>Abscissa coordinate</p>
 </p>
                     </li>
                 </ul>
@@ -1578,7 +1903,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated angle theta</p>
 </li>
             </ul>
         </div>
@@ -1591,7 +1916,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#cbrt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> cbrt </h2>
+            <h2 > cbrt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1599,9 +1924,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the cube root of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the cube root of a float value.
+<pre><code class="language-ballerina"> float cubeRoot = math:cbrt(-27.0);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1626,7 +1956,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Cube root value</p>
+                <li><p>Calculated cube root value</p>
 </li>
             </ul>
         </div>
@@ -1639,7 +1969,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#ceil">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> ceil </h2>
+            <h2 > ceil </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1647,10 +1977,15 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the smallest (closest to negative infinity) double value that is greater than orequal to the argument and
-is equal to a mathematical integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the smallest (closest to negative infinity) double value that is greater than or equal to the argument and
+is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float ceilingValue = math:ceil(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1675,7 +2010,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated smallest double value</p>
 </li>
             </ul>
         </div>
@@ -1688,7 +2023,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#copySign">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> copySign </h2>
+            <h2 > copySign </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -1696,9 +2031,14 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the first floating-point argument with the sign of the second floating-point argument.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the first floating-point argument with the sign of the second floating-point argument.
+<pre><code class="language-ballerina"> float copySignValue = math:copySign(6.4, 2.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1709,7 +2049,7 @@ is equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The parameter providing the magnitude of the result</p>
+                        <p><p>Parameter providing the magnitude of the result</p>
 </p>
                     </li>
                 </ul>
@@ -1722,7 +2062,7 @@ is equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The parameter providing the sign of the result</p>
+                        <p><p>Parameter providing the sign of the result</p>
 </p>
                     </li>
                 </ul>
@@ -1736,7 +2076,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated floating-point argument</p>
 </li>
             </ul>
         </div>
@@ -1749,7 +2089,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#cos">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> cos </h2>
+            <h2 > cos </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1757,9 +2097,14 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the trigonometric cosine of an angle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the trigonometric cosine of an angle.
+<pre><code class="language-ballerina"> float cosineValue = math:cos(0.3124);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1784,7 +2129,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated cosine value</p>
 </li>
             </ul>
         </div>
@@ -1797,7 +2142,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#cosh">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> cosh </h2>
+            <h2 > cosh </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1805,9 +2150,14 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the hyperbolic cosine of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the hyperbolic cosine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicCosineValue = math:cosh(0.3124);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1818,7 +2168,7 @@ is equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The number whose hyperbolic cosine is to be returned</p>
+                        <p><p>Number whose hyperbolic cosine is to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -1832,7 +2182,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The hyperbolic cosine of given float value</p>
+                <li><p>Calculated hyperbolic cosine of given float value</p>
 </li>
             </ul>
         </div>
@@ -1845,7 +2195,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#exp">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> exp </h2>
+            <h2 > exp </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1853,9 +2203,14 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns Euler's number, that is 'e' raised to the power of exponent.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates Euler's number, that is 'e' raised to the power of exponent.
+<pre><code class="language-ballerina"> float euler = math:exp(3.2);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1866,7 +2221,7 @@ is equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>Exponent value to raise</p>
+                        <p><p>Exponential value to raise</p>
 </p>
                     </li>
                 </ul>
@@ -1880,7 +2235,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Exp value</p>
+                <li><p>Calculated exponential value</p>
 </li>
             </ul>
         </div>
@@ -1893,7 +2248,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#expm1">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> expm1 </h2>
+            <h2 > expm1 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1901,9 +2256,14 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns (e to the power of x) -1.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates (e to the power of x) -1.
+<pre><code class="language-ballerina"> float exponentValue = math:expm1(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1914,7 +2274,7 @@ is equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The exponent to raise e to in the computation</p>
+                        <p><p>Exponent to raise e to in the computation</p>
 </p>
                     </li>
                 </ul>
@@ -1928,7 +2288,7 @@ is equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated result</p>
 </li>
             </ul>
         </div>
@@ -1941,7 +2301,7 @@ is equal to a mathematical integer.</p>
              <a class="url-link" href="#floor">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> floor </h2>
+            <h2 > floor </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -1949,10 +2309,15 @@ is equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the largest (closest to positive infinity) float value that is less than or equal to the argument and is
-equal to a mathematical integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the largest (closest to positive infinity) float value that is less than or equal to the argument and is
+equal to a mathematical integer.
+<pre><code class="language-ballerina"> float floorValue = math:floor(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1977,7 +2342,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated float value</p>
 </li>
             </ul>
         </div>
@@ -1990,7 +2355,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#floorDiv">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> floorDiv </h2>
+            <h2 > floorDiv </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> a, <span class="builtin-type">int</span> b)</p>
@@ -1998,9 +2363,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the largest (closest to positive infinity) int value that is less than or equal to the algebraic quotient.
+<pre><code class="language-ballerina"> int|error floorDivValue = math:floorDiv(6, 4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2011,7 +2381,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The dividend</p>
+                        <p><p>Dividend</p>
 </p>
                     </li>
                 </ul>
@@ -2024,7 +2394,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The divisor</p>
+                        <p><p>Divisor</p>
 </p>
                     </li>
                 </ul>
@@ -2038,7 +2408,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../math/errors.html#Error">Error</a></span>)</li>
-                <li><p>The result or <code>Error</code> if b is 0</p>
+                <li><p>Calculated int value or else <code>Error</code> if b is 0</p>
 </li>
             </ul>
         </div>
@@ -2051,7 +2421,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#floorMod">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> floorMod </h2>
+            <h2 > floorMod </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> a, <span class="builtin-type">int</span> b)</p>
@@ -2059,9 +2429,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the floor modulus of the long arguments.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the floor modulus of the long arguments.
+<pre><code class="language-ballerina"> int|error floorModulesValue = math:floorMod(6, 4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2072,7 +2447,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The dividend</p>
+                        <p><p>dividend</p>
 </p>
                     </li>
                 </ul>
@@ -2085,7 +2460,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The divisor</p>
+                        <p><p>divisor</p>
 </p>
                     </li>
                 </ul>
@@ -2099,7 +2474,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../math/errors.html#Error">Error</a></span>)</li>
-                <li><p>The result or <code>Error</code> if b is 0</p>
+                <li><p>Calculated floor modulus or else <code>Error</code> if b is 0</p>
 </li>
             </ul>
         </div>
@@ -2112,7 +2487,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#getExponent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getExponent </h2>
+            <h2 > getExponent </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2120,9 +2495,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the unbiased exponent used in the representation of a float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the unbiased exponent used in the representation of a float.
+<pre><code class="language-ballerina"> int unbiasedExponentValue = math:getExponent(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2147,7 +2527,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>The unbiased exponent of the argument</p>
+                <li><p>Calculated unbiased exponent of the argument</p>
 </li>
             </ul>
         </div>
@@ -2160,7 +2540,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#hypot">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hypot </h2>
+            <h2 > hypot </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -2168,9 +2548,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns sqrt(a squared +b squared) without intermediate overflow or underflow.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates sqrt(a squared +b squared) without intermediate overflow or underflow.
+<pre><code class="language-ballerina"> float pythogarusValue = math:hypot(6.4, 3.6);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2208,7 +2593,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated square root value</p>
 </li>
             </ul>
         </div>
@@ -2221,7 +2606,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#log">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> log </h2>
+            <h2 > log </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2229,9 +2614,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the natural logarithm (base e) of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the natural logarithm (base e) of a float value.
+<pre><code class="language-ballerina"> float logarithmValue = math:log(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2256,7 +2646,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated natural logarithm value</p>
 </li>
             </ul>
         </div>
@@ -2269,7 +2659,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#log10">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> log10 </h2>
+            <h2 > log10 </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2277,9 +2667,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the base 10 logarithm of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the base 10 logarithm of a float value.
+<pre><code class="language-ballerina"> float logarithmValueBaseTen = math:log10(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2304,7 +2699,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The base 10 logarithm of a given float value</p>
+                <li><p>Calculated base 10 logarithm of a given float value</p>
 </li>
             </ul>
         </div>
@@ -2317,7 +2712,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#log1p">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> log1p </h2>
+            <h2 > log1p </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2325,9 +2720,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the natural logarithm of the sum of the argument and 1.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the natural logarithm of the sum of the argument and 1.
+<pre><code class="language-ballerina"> float naturalLogarithmValue = math:log1p(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2352,7 +2752,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The natural log of x + 1</p>
+                <li><p>Calculated natural log of x + 1</p>
 </li>
             </ul>
         </div>
@@ -2365,7 +2765,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#negateExact">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> negateExact </h2>
+            <h2 > negateExact </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> val)</p>
@@ -2373,9 +2773,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the negation of the argument.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the negation of the argument.
+<pre><code class="language-ballerina"> int|error negationValue = math:negateExact(6);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2386,7 +2791,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The value to negate</p>
+                        <p><p>value to negate</p>
 </p>
                     </li>
                 </ul>
@@ -2400,7 +2805,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../math/errors.html#Error">Error</a></span>)</li>
-                <li><p>The result or <code>Error</code> if overflow occurred</p>
+                <li><p>Calculated negation value or else <code>Error</code> if overflow occurred</p>
 </li>
             </ul>
         </div>
@@ -2413,7 +2818,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#nextAfter">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> nextAfter </h2>
+            <h2 > nextAfter </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -2421,9 +2826,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the floating-point number adjacent to the first argument in the direction of the second argument.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the floating-point number adjacent to the first argument in the direction of the second argument.
+<pre><code class="language-ballerina"> float nextAfterValue = math:nextAfter(6.4, 3.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2461,7 +2871,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated floating-point number</p>
 </li>
             </ul>
         </div>
@@ -2474,7 +2884,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#nextDown">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> nextDown </h2>
+            <h2 > nextDown </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2482,9 +2892,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the adjacent floating-point value closer to negative infinity.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the adjacent floating-point value closer to negative infinity.
+<pre><code class="language-ballerina"> float nextDownValue = math:nextDown(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2509,7 +2924,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated floating-point value</p>
 </li>
             </ul>
         </div>
@@ -2522,7 +2937,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#nextUp">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> nextUp </h2>
+            <h2 > nextUp </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2530,9 +2945,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the adjacent floating-point value closer to positive infinity.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the adjacent floating-point value closer to positive infinity.
+<pre><code class="language-ballerina"> float nextUpValue = math:nextUp(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2557,7 +2977,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculates floating-point value</p>
 </li>
             </ul>
         </div>
@@ -2570,7 +2990,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#pow">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> pow </h2>
+            <h2 > pow </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -2578,9 +2998,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the value of the 'a' raised to the power of 'b'.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the value of the 'a' raised to the power of 'b'.
+<pre><code class="language-ballerina"> float aPowerB = math:pow(3.2, 2.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2591,7 +3016,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The base value</p>
+                        <p><p>Base value</p>
 </p>
                     </li>
                 </ul>
@@ -2604,7 +3029,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The exponent value</p>
+                        <p><p>Exponential value</p>
 </p>
                     </li>
                 </ul>
@@ -2618,7 +3043,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Result value</p>
+                <li><p>Calculated exponential value</p>
 </li>
             </ul>
         </div>
@@ -2631,7 +3056,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#random">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> random </h2>
+            <h2 > random </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -2639,16 +3064,21 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns a random number between 0.0 and 1.0.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Selects a random number between 0.0 and 1.0.
+<pre><code class="language-ballerina"> float randomValue = math:random();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Random value</p>
+                <li><p>Selected random value</p>
 </li>
             </ul>
         </div>
@@ -2661,7 +3091,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#randomInRange">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> randomInRange </h2>
+            <h2 > randomInRange </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> startRange, <span class="builtin-type">int</span> endRange)</p>
@@ -2669,9 +3099,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns a random number between given start(inclusive) and end(exclusive) values.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Selects a random number between the given start(inclusive) and end(exclusive) values.
+<pre><code class="language-ballerina"> int|error randomInteger = math:randomInRange(1, 100);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2709,7 +3144,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../math/errors.html#Error">Error</a></span>)</li>
-                <li><p>Random value or <code>Error</code> if start range is greater than the end range</p>
+                <li><p>Selected random value or else <code>Error</code> if start range is greater than the end range</p>
 </li>
             </ul>
         </div>
@@ -2722,7 +3157,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#remainder">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> remainder </h2>
+            <h2 > remainder </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">float</span> b)</p>
@@ -2730,9 +3165,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Computes the remainder operation on two arguments as prescribed by the IEEE 754 standard.
+<pre><code class="language-ballerina"> float remainderValue = math:remainder(6.4, 3.6);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2743,7 +3183,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The dividend</p>
+                        <p><p>dividend</p>
 </p>
                     </li>
                 </ul>
@@ -2756,7 +3196,7 @@ equal to a mathematical integer.</p>
                         
                     </li>
                     <li>
-                        <p><p>The divisor</p>
+                        <p><p>divisor</p>
 </p>
                     </li>
                 </ul>
@@ -2770,7 +3210,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The remainder when a is divided by b</p>
+                <li><p>Computed remainder when a is divided by b</p>
 </li>
             </ul>
         </div>
@@ -2783,7 +3223,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#rint">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> rint </h2>
+            <h2 > rint </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2791,9 +3231,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the double value that is closest in value to the argument and is equal to a mathematical integer.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the double value that is closest in value to the argument and is equal to a mathematical integer.
+<pre><code class="language-ballerina"> float roundedValue = math:rint(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2818,7 +3263,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated double value</p>
 </li>
             </ul>
         </div>
@@ -2831,7 +3276,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#round">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> round </h2>
+            <h2 > round </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2839,9 +3284,14 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns the closest int to the argument, with ties rounding to positive infinity.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the closest int to the argument, with ties rounding to positive infinity.
+<pre><code class="language-ballerina"> int roundedIntegerValue = math:round(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2866,7 +3316,7 @@ equal to a mathematical integer.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>The value of the argument rounded to the nearest int value</p>
+                <li><p>Calculated value of the argument rounded to the nearest int value</p>
 </li>
             </ul>
         </div>
@@ -2879,7 +3329,7 @@ equal to a mathematical integer.</p>
              <a class="url-link" href="#scalb">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> scalb </h2>
+            <h2 > scalb </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> a, <span class="builtin-type">int</span> b)</p>
@@ -2887,10 +3337,15 @@ equal to a mathematical integer.</p>
         </span>
         
     </div>
-    <p><p>Returns a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
-multiply to a member of the float value set.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates a × (2 to the power of b) rounded as if performed by a single correctly rounded floating-point
+multiply to a member of the float value set.
+<pre><code class="language-ballerina"> float scalbValue = math:scalb(6.4, 2);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2928,7 +3383,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The result</p>
+                <li><p>Calculated result</p>
 </li>
             </ul>
         </div>
@@ -2941,7 +3396,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#signum">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> signum </h2>
+            <h2 > signum </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2949,9 +3404,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the signum function of the argument.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the signum function of the argument.
+<pre><code class="language-ballerina"> float signumValue = math:signum(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2962,7 +3422,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The floating-point value whose signum is to be returned</p>
+                        <p><p>floating-point value whose signum is to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -2976,7 +3436,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The signum function of the argument</p>
+                <li><p>Calculated signum function of the argument</p>
 </li>
             </ul>
         </div>
@@ -2989,7 +3449,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#sin">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> sin </h2>
+            <h2 > sin </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -2997,9 +3457,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the trigonometric sine of an angle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the trigonometric sine of an angle.
+<pre><code class="language-ballerina"> float sineValue = math:sin(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3024,7 +3489,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The sine of the argument</p>
+                <li><p>Calculated sine of the argument</p>
 </li>
             </ul>
         </div>
@@ -3037,7 +3502,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#sinh">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> sinh </h2>
+            <h2 > sinh </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3045,9 +3510,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the hyperbolic sine of a float value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the hyperbolic sine of a float value.
+<pre><code class="language-ballerina"> float hyperbolicSineValue = math:sinh(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3058,7 +3528,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The number whose hyperbolic sine is to be returned</p>
+                        <p><p>Number whose hyperbolic sine is to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -3072,7 +3542,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The hyperbolic sine of a given float</p>
+                <li><p>Calculated hyperbolic sine of a given float</p>
 </li>
             </ul>
         </div>
@@ -3085,7 +3555,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#sqrt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> sqrt </h2>
+            <h2 > sqrt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3093,9 +3563,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns rounded positive square root of the given value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates rounded positive square root of the given value.
+<pre><code class="language-ballerina"> float squareRoot = math:sqrt(6.4);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3120,7 +3595,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Square root value</p>
+                <li><p>Calculated square root value</p>
 </li>
             </ul>
         </div>
@@ -3133,7 +3608,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#tan">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> tan </h2>
+            <h2 > tan </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3141,9 +3616,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the trigonometric tangent of an angle.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the trigonometric tangent of an angle.
+<pre><code class="language-ballerina"> float tanValue = math:tan(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3168,7 +3648,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The tangent of the argument</p>
+                <li><p>Calculated tangent of the argument</p>
 </li>
             </ul>
         </div>
@@ -3181,7 +3661,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#tanh">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> tanh </h2>
+            <h2 > tanh </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3189,9 +3669,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the hyperbolic tangent of a double value.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Calculates the hyperbolic tangent of a double value.
+<pre><code class="language-ballerina"> float hyperbolicTanValue = math:tanh(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3202,7 +3687,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The number whose hyperbolic tangent is to be returned</p>
+                        <p><p>Number whose hyperbolic tangent is to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -3216,7 +3701,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The hyperbolic tangent of x</p>
+                <li><p>Calculated hyperbolic tangent of x</p>
 </li>
             </ul>
         </div>
@@ -3229,7 +3714,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#toDegrees">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toDegrees </h2>
+            <h2 > toDegrees </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3237,9 +3722,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Converts an angle measured in radians to an approximately equivalent angle measured in degrees.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Converts an angle measured in radians to an approximately equivalent angle measured in degrees.
+<pre><code class="language-ballerina"> float angleValueInDegrees = math:toDegrees(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3264,7 +3754,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The measurement of the angle angrad in degrees</p>
+                <li><p>Measurement of the angle angrad in degrees</p>
 </li>
             </ul>
         </div>
@@ -3277,7 +3767,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#toRadians">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toRadians </h2>
+            <h2 > toRadians </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3285,9 +3775,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Converts an angle measured in degrees to an approximately equivalent angle measured in radians.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Converts an angle measured in degrees to an approximately equivalent angle measured in radians.
+<pre><code class="language-ballerina"> float angleValueInRadians = math:toRadians(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3312,7 +3807,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The measurement of the angle angdeg in radians</p>
+                <li><p>Measurement of the angle angdeg in radians</p>
 </li>
             </ul>
         </div>
@@ -3325,7 +3820,7 @@ multiply to a member of the float value set.</p>
              <a class="url-link" href="#ulp">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> ulp </h2>
+            <h2 > ulp </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">float</span> val)</p>
@@ -3333,9 +3828,14 @@ multiply to a member of the float value set.</p>
         </span>
         
     </div>
-    <p><p>Returns the size of an ulp of the argument.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the size of an ulp of the argument.
+<pre><code class="language-ballerina"> float ulpValue = math:ulp(0.96);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3346,7 +3846,7 @@ multiply to a member of the float value set.</p>
                         
                     </li>
                     <li>
-                        <p><p>The floating-point value whose ulp is to be returned</p>
+                        <p><p>Floating-point value whose ulp is to be returned</p>
 </p>
                     </li>
                 </ul>
@@ -3360,7 +3860,7 @@ multiply to a member of the float value set.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>The size of an ulp of the argument</p>
+                <li><p>Size of an ulp of the argument</p>
 </li>
             </ul>
         </div>

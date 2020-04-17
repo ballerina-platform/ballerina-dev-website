@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -223,6 +223,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -320,7 +324,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -486,6 +490,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -590,49 +598,7 @@
                         Module : <span class="modules">jsonutils</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides utility functions to manipulate built-in <code>json</code> data type.
-It provides APIs to convert an <code>xml</code> to a <code>json</code>, or convert a <code>table</code> to a <code>json</code>.</p>
-<h2>Samples</h2>
-<h3>Convert an <code>xml</code> to its <code>json</code> representation</h3>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/jsonutils;
-
-public function main() {
-    var xmlSubElement1 = xml `&lt;!-- outer comment --&gt;`;
-    var xmlSubElement2 = xml `&lt;name&gt;Sam&lt;/name&gt;`;
-    xml xmlElement = xmlSubElement1 + xmlSubElement2;
-
-    json | error jsonObject = jsonutils:fromXML(xmlElement);
-    if (jsonObject is error) {
-        io:println(&quot;An error occurred: &quot;, jsonObject);
-    } else {
-        io:println(jsonObject.toJsonString());
-    }
-}
-</code></pre>
-<h3>Convert a <code>table</code> to its <code>json</code> representation</h3>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/jsonutils;
-
-type Person record {
-    int id;
-    string name;
-};
-
-public function main() {
-    table&lt;Person&gt; peopleTable = table {
-        {key id, name},
-        [
-            { 1, &quot;Sam&quot;},
-            { 2, &quot;John&quot;}
-        ]
-    };
-
-    json peopleJson = jsonutils:fromTable(peopleTable);
-    io:println(peopleJson.toJsonString());
-}
-</code></pre>
+                    <p>This module provides utility functions to manipulate the built-in <code>json</code> data type. It provides APIs to convert an <code>xml</code> to a <code>json</code> or convert a <code>table</code> to a <code>json</code>.</p>
 
 
             
@@ -647,11 +613,34 @@ public function main() {
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate records" id="T0" title="T0">
+                                <a class="records " href="records/T0.html">T0</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T1" title="T1">
+                                <a class="records " href="records/T1.html">T1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="XmlOptions" title="XmlOptions">
-                                <a class="records"
-                                   href="records/XmlOptions.html">XmlOptions</a></td>
-                            <td class="module-desc">Type for XML options.
-</td>
+                                <a class="records " href="records/XmlOptions.html">XmlOptions</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Provides configurations for converting XML to JSON.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -676,17 +665,36 @@ public function main() {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="fromTable" title="fromTable"><a
-                                    class="functions" href="functions.html#fromTable">fromTable</a></td>
-                            <td class="module-desc"><p>Converts a table to its json representation.</p>
-</td>
+                            <td class="module-title truncate functions" id="fromTable" title="fromTable">
+                                <a class="functions " href="functions.html#fromTable">fromTable</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Converts a table to its JSON representation.
+<pre><code class="language-ballerina"> table&lt;Person&gt; tableValue = table{
+     { key id, age, salary, name, married },
+     [ { 1, 30,  300.5, &quot;Mary&quot;, true },
+         { 2, 20,  300.5, &quot;John&quot;, true }
+     ]
+ };
+ json jsonValue = jsonutils:fromTable(tableValue);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="fromXML" title="fromXML"><a
-                                    class="functions" href="functions.html#fromXML">fromXML</a></td>
-                            <td class="module-desc"><p>Converts an XML object to its JSON representation.</p>
-</td>
+                            <td class="module-title truncate functions" id="fromXML" title="fromXML">
+                                <a class="functions " href="functions.html#fromXML">fromXML</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Converts an XML object to its JSON representation.
+<pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;
+ json|error jsonValue = fromXML(mxlValue);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>

@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -369,7 +373,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -651,14 +659,12 @@
                                     <b>Constructor</b><span class="type"> <a href="../java/records/ConstructorData.html">ConstructorData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
-                                    <p>The <code>Constructor</code> annotation describes a Java constructor that provides an implementation of a Ballerina function
-whose body is marked as <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the
-implementation of the function is not provided in the Ballerina source module.</p>
-<p>The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
-implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.</p>
-<pre><code class="language-ballerina"> import ballerina/java;
-
- function newJavaLinkedList() returns handle = @java:Constructor {
+                                    Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
+function is not provided in the Ballerina source module.
+The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
+implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.
+<pre><code class="language-ballerina"> function newJavaLinkedList() returns handle = @java:Constructor {
       class: &quot;java.util.LinkedList&quot;
  } external;
 </code></pre>
@@ -673,8 +679,13 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                                     <b>FieldGet</b><span class="type"> <a href="../java/records/FieldData.html">FieldData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
-                                    <p>The <code>FieldGet</code> annotation describes a Java Field access that provides an implementation of a Ballerina function
-whose body is marked as <code>external</code>.</p>
+                                    Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+<pre><code class="language-ballerina"> function getError() returns handle = @java:FieldGet {
+     name:&quot;err&quot;,
+     class:&quot;java/lang/System&quot;
+ } external;
+</code></pre>
 
                                 </li>
                             </ul>
@@ -686,8 +697,13 @@ whose body is marked as <code>external</code>.</p>
                                     <b>FieldSet</b><span class="type"> <a href="../java/records/FieldData.html">FieldData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
-                                    <p>The <code>FieldSet</code> annotation describes a Java Field mutate that provides an implementation of a Ballerina function
-whose body is marked as <code>external</code>.</p>
+                                    Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>.
+<pre><code class="language-ballerina"> function setContractId(handle contractId) = @java:FieldSet {
+   name:&quot;contractId&quot;,
+   class:&quot;org/lang/impl/JavaFieldAccessMutate&quot;
+ } external;
+</code></pre>
 
                                 </li>
                             </ul>
@@ -699,20 +715,18 @@ whose body is marked as <code>external</code>.</p>
                                     <b>Method</b><span class="type"> <a href="../java/records/MethodData.html">MethodData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
-                                    <p>The <code>Method</code> annotation describes a Java method that provides an implementation of a Ballerina function
-whose body is marked as <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the
-implementation of the function is not provided in the Ballerina source module.</p>
-<p>The following code snippet shows an example usage of this annotation. Here, the <code>getUUID</code> Ballerina function's
-implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.</p>
-<pre><code class="language-ballerina"> import ballerina/java;
-
- function getUUID() returns handle = @java:Method {
+                                    Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
+<code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
+function is not provided in the Ballerina source module.
+The following code snippet shows an example usage of this annotation. Here, the <code>getUUID</code> Ballerina function's
+implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.
+<pre><code class="language-ballerina"> function getUUID() returns handle = @java:Method {
      name: &quot;randomUUID&quot;,
      class: &quot;java.util.UUID&quot;
  } external;
 </code></pre>
-<p>The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred
-from the Ballerina function.</p>
+The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred
+from the Ballerina function.
 
                                 </li>
                             </ul>

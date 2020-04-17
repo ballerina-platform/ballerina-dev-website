@@ -120,7 +120,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -131,6 +131,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.map/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -283,6 +287,10 @@
             
                 <li>
                     <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -445,7 +453,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -456,6 +464,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.map/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -611,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -719,123 +735,193 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#entries">entries</a></td>
-                                <td width="70%"><p>Returns a map containing [key, member] pair as the value for each key.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#entries">entries</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a map containing [key, member] pair as the value for each key.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#filter">filter</a></td>
-                                <td width="70%"><p>Selects the members from a map for which a function returns true.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#filter">filter</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Selects the members from a map for which a function returns true.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#forEach">forEach</a></td>
-                                <td width="70%"><p>Applies a function to each member of a map.
-The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#forEach">forEach</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Applies a function to each member of a map.
+The parameter <code>func</code> is applied to each member of <code>m</code>.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#get">get</a></td>
-                                <td width="70%"><p>Returns the member of map <code>m</code> with key <code>k</code>.
+                                <td width="30%"><a class="functions " href="#get">get</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the member of map <code>m</code> with key <code>k</code>.
 This for use in a case where it is known that the map has a specific key,
-and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.</p>
-</td>
+and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hasKey">hasKey</a></td>
-                                <td width="70%"><p>Tests whether m has a member with key <code>k</code>.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hasKey">hasKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Tests whether m has a member with key <code>k</code>.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#iterator">iterator</a></td>
-                                <td width="70%"><p>Returns an iterator over a map.
+                                <td width="30%"><a class="functions " href="#iterator">iterator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns an iterator over a map.
 The iterator will iterate over the members of the map not the keys.
 The <code>entries</code> function can be used to iterate over the keys and members together.
-The <code>keys</code> function can be used to iterator over just the keys.</p>
-</td>
+The <code>keys</code> function can be used to iterator over just the keys.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#keys">keys</a></td>
-                                <td width="70%"><p>Returns a list of all the keys of map <code>m</code>.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#keys">keys</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a list of all the keys of map <code>m</code>.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#length">length</a></td>
-                                <td width="70%"><p>Returns number of members of a map.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#length">length</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns number of members of a map.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#map">map</a></td>
-                                <td width="70%"><p>Applies a function each member of a map and returns a map of the result.
-The resulting map will have the same keys as the argument map.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#map">map</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Applies a function each member of a map and returns a map of the result.
+The resulting map will have the same keys as the argument map.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#reduce">reduce</a></td>
-                                <td width="70%"><p>Combines the members of a map using a combining function.
+                                <td width="30%"><a class="functions " href="#reduce">reduce</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Combines the members of a map using a combining function.
 The combining function takes the combined value so far and a member of the map,
-and returns a new combined value.</p>
-</td>
+and returns a new combined value.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#remove">remove</a></td>
-                                <td width="70%"><p>Removes a member of a map.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#remove">remove</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Removes a member of a map.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#removeAll">removeAll</a></td>
-                                <td width="70%"><p>Removes all members of a map.
-This panics if any member cannot be removed.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#removeAll">removeAll</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Removes all members of a map.
+This panics if any member cannot be removed.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#removeIfHasKey">removeIfHasKey</a></td>
-                                <td width="70%"><p>Removes a member of a map with a given key, if the map has member with the key.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#removeIfHasKey">removeIfHasKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Removes a member of a map with a given key, if the map has member with the key.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#toArray">toArray</a></td>
-                                <td width="70%"><p>Returns a list of all the members of a map.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#toArray">toArray</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a list of all the members of a map.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -849,7 +935,7 @@ This panics if any member cannot be removed.</p>
              <a class="url-link" href="#entries">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> entries </h2>
+            <h2 > entries </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m)</p>
@@ -857,9 +943,12 @@ This panics if any member cannot be removed.</p>
         </span>
         
     </div>
-    <p><p>Returns a map containing [key, member] pair as the value for each key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a map containing [key, member] pair as the value for each key.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -897,7 +986,7 @@ This panics if any member cannot be removed.</p>
              <a class="url-link" href="#filter">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> filter </h2>
+            <h2 > filter </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> func)</p>
@@ -905,9 +994,12 @@ This panics if any member cannot be removed.</p>
         </span>
         
     </div>
-    <p><p>Selects the members from a map for which a function returns true.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Selects the members from a map for which a function returns true.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -958,13 +1050,16 @@ This panics if any member cannot be removed.</p>
              <a class="url-link" href="#forEach">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> forEach </h2>
+            <h2 > forEach </h2>
         
     </div>
-    <p><p>Applies a function to each member of a map.
-The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Applies a function to each member of a map.
+The parameter <code>func</code> is applied to each member of <code>m</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1005,7 +1100,7 @@ The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <span class="builtin-type">string</span> k)</p>
@@ -1013,11 +1108,14 @@ The parameter <code>func</code> is applied to each member of <code>m</code>.</p>
         </span>
         
     </div>
-    <p><p>Returns the member of map <code>m</code> with key <code>k</code>.
+    <div class="function-desc">
+        
+        Returns the member of map <code>m</code> with key <code>k</code>.
 This for use in a case where it is known that the map has a specific key,
-and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.</p>
-</p>
-     
+and accordingly panics if <code>m</code> does not have a member with key <code>k</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1068,7 +1166,7 @@ and accordingly panics if <code>m</code> does not have a member with key <code>k
              <a class="url-link" href="#hasKey">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hasKey </h2>
+            <h2 > hasKey </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <span class="builtin-type">string</span> k)</p>
@@ -1076,9 +1174,12 @@ and accordingly panics if <code>m</code> does not have a member with key <code>k
         </span>
         
     </div>
-    <p><p>Tests whether m has a member with key <code>k</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Tests whether m has a member with key <code>k</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1129,20 +1230,23 @@ and accordingly panics if <code>m</code> does not have a member with key <code>k
              <a class="url-link" href="#iterator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> iterator </h2>
+            <h2 > iterator </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m)</p>
-            <b> returns </b><a href="../lang.map/objects/$anonType$2.html">$anonType$2</a> 
+            <b> returns </b><a href="../lang.map/objects/T2.html">T2</a> 
         </span>
         
     </div>
-    <p><p>Returns an iterator over a map.
+    <div class="function-desc">
+        
+        Returns an iterator over a map.
 The iterator will iterate over the members of the map not the keys.
 The <code>entries</code> function can be used to iterate over the keys and members together.
-The <code>keys</code> function can be used to iterator over just the keys.</p>
-</p>
-     
+The <code>keys</code> function can be used to iterator over just the keys.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1166,7 +1270,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.map/objects/$anonType$2.html">$anonType$2</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.map/objects/T2.html">T2</a></span>)</li>
                 <li><p>a new iterator object that will iterate over the members of <code>m</code></p>
 </li>
             </ul>
@@ -1180,7 +1284,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
              <a class="url-link" href="#keys">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> keys </h2>
+            <h2 > keys </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m)</p>
@@ -1188,9 +1292,12 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         </span>
         
     </div>
-    <p><p>Returns a list of all the keys of map <code>m</code>.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a list of all the keys of map <code>m</code>.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1228,7 +1335,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
              <a class="url-link" href="#length">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> length </h2>
+            <h2 > length </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m)</p>
@@ -1236,9 +1343,12 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         </span>
         
     </div>
-    <p><p>Returns number of members of a map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns number of members of a map.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1276,7 +1386,7 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
              <a class="url-link" href="#map">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> map </h2>
+            <h2 > map </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <code> <span>function(</span><span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func)</p>
@@ -1284,10 +1394,13 @@ The <code>keys</code> function can be used to iterator over just the keys.</p>
         </span>
         
     </div>
-    <p><p>Applies a function each member of a map and returns a map of the result.
-The resulting map will have the same keys as the argument map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Applies a function each member of a map and returns a map of the result.
+The resulting map will have the same keys as the argument map.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1338,7 +1451,7 @@ The resulting map will have the same keys as the argument map.</p>
              <a class="url-link" href="#reduce">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> reduce </h2>
+            <h2 > reduce </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <code> <span>function(</span><span class="builtin-type">Type1</span>, <span class="builtin-type">Type</span><span>) </span><span>returns (</span><span class="builtin-type">Type1</span><span>)</span> </code> func, <span class="builtin-type">Type1</span> initial)</p>
@@ -1346,11 +1459,14 @@ The resulting map will have the same keys as the argument map.</p>
         </span>
         
     </div>
-    <p><p>Combines the members of a map using a combining function.
+    <div class="function-desc">
+        
+        Combines the members of a map using a combining function.
 The combining function takes the combined value so far and a member of the map,
-and returns a new combined value.</p>
-</p>
-     
+and returns a new combined value.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1414,7 +1530,7 @@ and returns a new combined value.</p>
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> remove </h2>
+            <h2 > remove </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <span class="builtin-type">string</span> k)</p>
@@ -1422,9 +1538,12 @@ and returns a new combined value.</p>
         </span>
         
     </div>
-    <p><p>Removes a member of a map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes a member of a map.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1477,13 +1596,16 @@ It panics if there is no such member.</p>
              <a class="url-link" href="#removeAll">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> removeAll </h2>
+            <h2 > removeAll </h2>
         
     </div>
-    <p><p>Removes all members of a map.
-This panics if any member cannot be removed.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes all members of a map.
+This panics if any member cannot be removed.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1511,7 +1633,7 @@ This panics if any member cannot be removed.</p>
              <a class="url-link" href="#removeIfHasKey">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> removeIfHasKey </h2>
+            <h2 > removeIfHasKey </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m, <span class="builtin-type">string</span> k)</p>
@@ -1519,9 +1641,12 @@ This panics if any member cannot be removed.</p>
         </span>
         
     </div>
-    <p><p>Removes a member of a map with a given key, if the map has member with the key.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Removes a member of a map with a given key, if the map has member with the key.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1574,7 +1699,7 @@ otherwise it returns <code>()</code>.</p>
              <a class="url-link" href="#toArray">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> toArray </h2>
+            <h2 > toArray </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> m)</p>
@@ -1582,9 +1707,12 @@ otherwise it returns <code>()</code>.</p>
         </span>
         
     </div>
-    <p><p>Returns a list of all the members of a map.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a list of all the members of a map.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

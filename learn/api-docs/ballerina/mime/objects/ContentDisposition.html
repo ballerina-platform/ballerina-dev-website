@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,10 +666,13 @@
                 
                     <a href="../../mime/index.html">mime</a>
                  :
-                <span class="objects">ContentDisposition</span>
+                <span class="objects ">ContentDisposition</span>
             </h1>
-            <p><p>Represents values in <code>Content-Disposition</code> header.</p>
-</p>
+            <p>
+                
+                Represents values in <code>Content-Disposition</code> header.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -673,15 +684,19 @@
                         <div class="method-list">
                             
                                 
-<a href="#toString">
-    <div class="param-sum">
-        <div class="param-name">
-        toString 
-        </div>
-        <div class="param-details"> <p>Converts the <code>ContentDisposition</code> type to a string suitable for use as the value of a corresponding MIME header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="toString">
+        <a href="#toString">toString </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Converts the <code>ContentDisposition</code> type to a string suitable to use as the value of a corresponding MIME header.
+<pre><code class="language-ballerina"> string contDisposition = contentDisposition.toString();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -693,49 +708,69 @@
         
     <div class="params-listing">
         <ul>
-            <li> fileName<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >fileName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Default filename for storing the bodypart, if the receiving agent wishes to store it in an external
+                <p>
+                    
+                    <p>Default filename for storing the body part if the receiving agent wishes to store it in an external
 file</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> disposition<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >disposition</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Indicates how the body part should be presented (inline, attachment or as form-data)</p>
-</p>
+                <p>
+                    
+                    <p>Indicates how the body part should be presented (<code>inline</code>, <code>attachment</code>, or as <code>form-data</code>)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> name<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >name</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Represents the field name in case of <code>multipart/form-data</code></p>
-</p>
+                <p>
+                    
+                    <p>Represents the field name in case of <code>multipart/form-data</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> parameters<span class="type">  <span class="builtin-type">map</span></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >parameters</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>A set of parameters, specified in attribute=value notation</p>
-</p>
+                <p>
+                    
+                    <p>A set of parameters specified in the <code>attribute=value</code> notation</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -797,7 +832,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> toString </h2>
+            <h2 > toString </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -805,16 +840,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Converts the <code>ContentDisposition</code> type to a string suitable for use as the value of a corresponding MIME header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Converts the <code>ContentDisposition</code> type to a string suitable to use as the value of a corresponding MIME header.
+<pre><code class="language-ballerina"> string contDisposition = contentDisposition.toString();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>The <code>string</code> represnetation of the <code>ContentDisposition</code> object</p>
+                <li><p>The <code>string</code> representation of the <code>ContentDisposition</code> object</p>
 </li>
             </ul>
         </div>

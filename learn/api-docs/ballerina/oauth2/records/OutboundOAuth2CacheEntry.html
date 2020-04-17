@@ -100,7 +100,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -278,6 +278,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -417,7 +421,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -595,6 +599,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -697,11 +705,14 @@
                 
                     <a href="../../oauth2/index.html">oauth2</a>
                 
-                 : <span class="records">OutboundOAuth2CacheEntry</span>
+                 : <span class="records ">OutboundOAuth2CacheEntry</span>
             </h1>
-            <p>The `OutboundOAuth2CacheEntry` stores the values received from the authorization/token server to use them
+            <p>
+                
+                The data structure, which stores the values received from the authorization/token server to use them
 for the latter requests without requesting tokens again.
-</p>
+
+            </p>
             <div class="constants">
                 
                     
@@ -710,36 +721,51 @@ for the latter requests without requesting tokens again.
         
     <div class="params-listing">
         <ul>
-            <li> accessToken<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >accessToken</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Access token for the  authorization endpoint</p>
-</p>
+                <p>
+                    
+                    <p>Access token received from the authorization endpoint</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> refreshToken<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >refreshToken</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Refresh token for the refresh token server</p>
-</p>
+                <p>
+                    
+                    <p>Refresh token for the refresh token server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> expTime<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >expTime</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Expiry time (milliseconds since the Epoch) of the access token</p>
-</p>
+                <p>
+                    
+                    <p>Expiry time (milliseconds since the Epoch) of the access token</p>
+
+                </p>
             </li>
         </ul>
     </div>

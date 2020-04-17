@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -231,6 +231,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -328,7 +332,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -502,6 +506,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -606,54 +614,8 @@
                         Module : <span class="modules">encoding</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module provides the necessary utilities that are required to encode and decode content using different encoding mechanisms and algorithms.</p>
-<h2>Samples</h2>
-<h3>Encoding a URL into a Base64 encoded string</h3>
-<p>The <code>encodeBase64Url</code> function encodes the provided URL to a base64 <code>string</code>.</p>
-<pre><code class="language-ballerina">import ballerina/encoding;
-import ballerina/io;
-
-public function main() {
-    string data = &quot;abc123!?$*&amp;()'-=@~&quot;;
-    string urlEncodedValue = encoding:encodeBase64Url(data.toBytes());
-    io:println(&quot;Base64 URL encode value: &quot; + urlEncodedValue);
-}
-</code></pre>
-<h3>Decoding a Base64 URL encoded string into a byte array.</h3>
-<p>The <code>decodeBase64Url</code> function decodes a base64 encoded <code>string</code> to a byte array.</p>
-<pre><code class="language-ballerina">import ballerina/encoding;
-import ballerina/io;
-import ballerina/lang.'string as str;
-
-public function main() returns error? {
-    string data = &quot;YWJjMTIzIT8kKiYoKSctPUB-&quot;;
-    byte[] urlDecodedValue = check encoding:decodeBase64Url(data);
-    io:println(&quot;Base64 URL decode value: &quot; + check str:fromBytes(urlDecodedValue));
-}
-</code></pre>
-<h3>Encoding a URI component into a string</h3>
-<p>The <code>encodeUriComponent</code> function can be used to encode a URI into a string using a provided charset.</p>
-<pre><code class="language-ballerina">import ballerina/encoding;
-import ballerina/io;
-
-public function main() returns error? {
-    string data = &quot;data=value&quot;;
-    string encodedUriComponent = check encoding:encodeUriComponent(data, &quot;UTF-8&quot;);
-    io:println(&quot;URI encoded value: &quot; + encodedUriComponent);
-}
-</code></pre>
-<h3>Decoding an encoded URI component into a string</h3>
-<p>The <code>decodeUriComponent</code> function can be used to decode a URI into a string using a provided charset.</p>
-<pre><code class="language-ballerina">import ballerina/encoding;
-import ballerina/io;
-
-public function main() returns error? {
-    string data = &quot;data%3Dvalue&quot;;
-    string decodedUriComponent = check encoding:decodeUriComponent(data, &quot;UTF-8&quot;);
-    io:println(&quot;URI decoded value: &quot; + decodedUriComponent);
-}
-</code></pre>
+                    <p>This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 
 
             
@@ -669,10 +631,13 @@ public function main() returns error? {
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -697,31 +662,58 @@ public function main() returns error? {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decodeBase64Url" title="decodeBase64Url"><a
-                                    class="functions" href="functions.html#decodeBase64Url">decodeBase64Url</a></td>
-                            <td class="module-desc"><p>Decodes the Base64 URL encoded <code>string</code> into a byte array.</p>
-</td>
+                            <td class="module-title truncate functions" id="decodeBase64Url" title="decodeBase64Url">
+                                <a class="functions " href="functions.html#decodeBase64Url">decodeBase64Url</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Decodes the Base64 URL encoded <code>string</code> into a byte array.
+<pre><code class="language-ballerina"> byte[]|encoding:Error urlDecodedValue = encoding:decodeBase64Url(&quot;SGVsbMO2IFfDtnJsZEBCYWxsZXJpbmE&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="decodeUriComponent" title="decodeUriComponent"><a
-                                    class="functions" href="functions.html#decodeUriComponent">decodeUriComponent</a></td>
-                            <td class="module-desc"><p>Decodes the given URI component.</p>
-</td>
+                            <td class="module-title truncate functions" id="decodeUriComponent" title="decodeUriComponent">
+                                <a class="functions " href="functions.html#decodeUriComponent">decodeUriComponent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Decodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string encodedUrl = &quot;http://www.domain.com/?param1=http%3A%2F%2Fxyz.com%2F%3Fa%3D12%26b%3D55¶m2=99&quot;;
+ string|encoding:Error decodedUriComponent = encoding:decodeUriComponent(encodedUrl, &quot;UTF-8&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encodeBase64Url" title="encodeBase64Url"><a
-                                    class="functions" href="functions.html#encodeBase64Url">encodeBase64Url</a></td>
-                            <td class="module-desc"><p>Returns the Base64 URL encoded <code>string</code> value of the given byte array.</p>
-</td>
+                            <td class="module-title truncate functions" id="encodeBase64Url" title="encodeBase64Url">
+                                <a class="functions " href="functions.html#encodeBase64Url">encodeBase64Url</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the Base64 URL encoded <code>string</code> value of the given byte array.
+<pre><code class="language-ballerina"> string query = &quot;Hellö Wörld@Ballerina&quot;;
+ string urlEncodedValue = encoding:encodeBase64Url(query.toBytes());
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="encodeUriComponent" title="encodeUriComponent"><a
-                                    class="functions" href="functions.html#encodeUriComponent">encodeUriComponent</a></td>
-                            <td class="module-desc"><p>Encodes the given URI component.</p>
-</td>
+                            <td class="module-title truncate functions" id="encodeUriComponent" title="encodeUriComponent">
+                                <a class="functions " href="functions.html#encodeUriComponent">encodeUriComponent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Encodes the given URI component into a <code>string</code> using the provided charset.
+<pre><code class="language-ballerina"> string urlValue = &quot;param1=http://xyz.com/?a=12&amp;b=55¶m2=99&quot;;
+ string|encoding:Error encodedUriComponent = encoding:encodeUriComponent(urlValue, &quot;UTF-8&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -740,10 +732,14 @@ public function main() returns error? {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="ENCODING_ERROR" title="ENCODING_ERROR"><a
-                                    class="constant" href="constants.html#ENCODING_ERROR">ENCODING_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the Encoding error code.</p>
-</td>
+                            <td class="module-title truncate constant" id="ENCODING_ERROR" title="ENCODING_ERROR">
+                                <a class="constant " href="constants.html#ENCODING_ERROR">ENCODING_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the Encoding error code.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -767,10 +763,13 @@ public function main() returns error? {
                     
                         <tr>
                             <td class="module-title truncate errors" id="Error" title="Error">
-                                <a class="errors" href="errors.html#Error">Error</a>
+                                <a class="errors " href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents the Encoding error type with details.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the Encoding error type with details.
+
+                            </td>
                         </tr>
                     
                 </table>

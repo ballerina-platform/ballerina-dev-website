@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -243,6 +243,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -340,7 +344,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -526,6 +530,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -630,53 +638,12 @@
                         Module : <span class="modules">file</span>
                     
                 </h1>
-                    <h2>Module overview</h2>
-<p>This module contains functions to perform file system based operations such as create, delete, rename the
-file/directory and retrieve metadata of the file.</p>
-<h1>Sample</h1>
-<p>The sample given below uses the functions in the module to get the system-level information.</p>
-<pre><code class="language-ballerina">import ballerina/file;
-import ballerina/io;
-
-public function main() {
-
-    // Get the current directory path.
-    io:println(&quot;Current directory: &quot; + file:getCurrentDirectory());
-
-    // Check whether file or directory of the provided path exists.
-    boolean result = file:exists(&quot;foo/bar.txt&quot;);
-
-    // Create a new directory.
-    string | error results = file:createDir(&quot;foo/bar&quot;);
-
-    // Create a directory with any non-existent parents.
-    string | error results = file:createDir(&quot;foo/bar&quot;, true);
-
-    // Remove the file or directory in the specified file path.
-    error? results = file:remove(&quot;foo/bar.txt&quot;);
-
-    // Remove the directory in the specified file path with all its children.
-    error? results = file:remove(&quot;foo/bar&quot;, true);
-
-    // Rename(Move) the file or directory to the new path.
-    error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
-
-    // Get default directory use for temporary files.
-    string results = file:tempDir();
-
-    // Create a file in given file path.
-    string | error results = file:createFile(&quot;bar.txt&quot;);
-
-    // Get metadata information of the file.
-    file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
-
-    // Get the list of files in the directory.
-    file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
-
-    // Copy the file or directory to the new path.
-    error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
-}
-</code></pre>
+                    <p>This module contains functions to perform file system based operations such as create, delete, rename the
+file/directory, and retrieve metadata of the file.</p>
+<p>For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/file.html">File Example</a>.</p>
+<h1>Directory Listener</h1>
+<p>The <code>Directory Listener</code> is used to listen to a directory in the local file system. It notifies when new files are created in the directory or when the existing files are deleted or modified.</p>
+<p>For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/directory-listener.html">Directory Listener Example</a>.</p>
 
 
             
@@ -692,26 +659,35 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="FileEvent" title="FileEvent">
-                                <a class="records"
-                                   href="records/FileEvent.html">FileEvent</a></td>
-                            <td class="module-desc">Represents an event which will trigger when there is a changes to listining direcotry.
-</td>
+                                <a class="records " href="records/FileEvent.html">FileEvent</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents an event which will trigger when there is a changes to listining direcotry.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="ListenerConfig" title="ListenerConfig">
-                                <a class="records"
-                                   href="records/ListenerConfig.html">ListenerConfig</a></td>
-                            <td class="module-desc">Represents configurations that required for directory listener.
-</td>
+                                <a class="records " href="records/ListenerConfig.html">ListenerConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents configurations that required for directory listener.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -730,14 +706,14 @@ public function main() {
                     
                         <tr>
                             <td class="module-title truncate objects" id="FileInfo" title="FileInfo">
-                                <a class="objects"
-                                   href="objects/FileInfo.html">
-                                    FileInfo
-                                </a>
+                                <a class="objects " href="objects/FileInfo.html">FileInfo</a>
                             </td>
-                            <td class="module-desc"><p>FileInfo record contains metadata information of a file.
-This record is returned by getFileInfo function is os module.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                FileInfo record contains metadata information of a file.
+This record is returned by getFileInfo function is os module.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -758,10 +734,13 @@ This record is returned by getFileInfo function is os module.</p>
                     
                         <tr>
                             <td class="module-title truncate listeners" id="Listener" title="Listener">
-                                <a class="listeners"
-                                   href="listeners/Listener.html">Listener</a></td>
-                            <td class="module-desc"><p>Represents directory listener endpoint where used to listen to a directory in the local file system.</p>
-</td>
+                                <a class="listeners " href="listeners/Listener.html">Listener</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the directory listener endpoint, which is used to listen to a directory in the local file system.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -780,78 +759,139 @@ This record is returned by getFileInfo function is os module.</p>
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="copy" title="copy"><a
-                                    class="functions" href="functions.html#copy">copy</a></td>
-                            <td class="module-desc"><p>Copy file/directory in old path to new path.
-If new path already exists, this replaces the file.</p>
-</td>
+                            <td class="module-title truncate functions" id="copy" title="copy">
+                                <a class="functions " href="functions.html#copy">copy</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.
+<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="createDir" title="createDir"><a
-                                    class="functions" href="functions.html#createDir">createDir</a></td>
-                            <td class="module-desc"><p>Creates a new directory with the specified file name.
-If parentDirs flag is true, Creates a directory in specified path with any necessary parents.</p>
-</td>
+                            <td class="module-title truncate functions" id="createDir" title="createDir">
+                                <a class="functions " href="functions.html#createDir">createDir</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
+<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="createFile" title="createFile"><a
-                                    class="functions" href="functions.html#createFile">createFile</a></td>
-                            <td class="module-desc"><p>Creates a file in specified file path.
-Truncates if file already exists in the given path.</p>
-</td>
+                            <td class="module-title truncate functions" id="createFile" title="createFile">
+                                <a class="functions " href="functions.html#createFile">createFile</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Creates a file in the specified file path.
+Truncates if the file already exists in the given path.
+<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="exists" title="exists"><a
-                                    class="functions" href="functions.html#exists">exists</a></td>
-                            <td class="module-desc"><p>Reports whether file or directory exists for the given the path.</p>
-</td>
+                            <td class="module-title truncate functions" id="exists" title="exists">
+                                <a class="functions " href="functions.html#exists">exists</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reports whether the file or directory exists in the given the path.
+<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getCurrentDirectory" title="getCurrentDirectory"><a
-                                    class="functions" href="functions.html#getCurrentDirectory">getCurrentDirectory</a></td>
-                            <td class="module-desc"><p>Returns the current working directory.</p>
-</td>
+                            <td class="module-title truncate functions" id="getCurrentDirectory" title="getCurrentDirectory">
+                                <a class="functions " href="functions.html#getCurrentDirectory">getCurrentDirectory</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the current working directory.
+<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getFileInfo" title="getFileInfo"><a
-                                    class="functions" href="functions.html#getFileInfo">getFileInfo</a></td>
-                            <td class="module-desc"><p>Returns metadata information of the file specified in file path.</p>
-</td>
+                            <td class="module-title truncate functions" id="getFileInfo" title="getFileInfo">
+                                <a class="functions " href="functions.html#getFileInfo">getFileInfo</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the metadata information of the file specified in the file path.
+<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="readDir" title="readDir"><a
-                                    class="functions" href="functions.html#readDir">readDir</a></td>
-                            <td class="module-desc"><p>Reads the directory and returns a list of files and directories # inside the specified directory</p>
-</td>
+                            <td class="module-title truncate functions" id="readDir" title="readDir">
+                                <a class="functions " href="functions.html#readDir">readDir</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reads the directory and returns a list of files and directories
+inside the specified directory.
+<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="remove" title="remove"><a
-                                    class="functions" href="functions.html#remove">remove</a></td>
-                            <td class="module-desc"><p>Removes the specified file or directory.
-If recursive flag is true, Removes the path and any children it contains.</p>
-</td>
+                            <td class="module-title truncate functions" id="remove" title="remove">
+                                <a class="functions " href="functions.html#remove">remove</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.
+<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="rename" title="rename"><a
-                                    class="functions" href="functions.html#rename">rename</a></td>
-                            <td class="module-desc"><p>Renames(Moves) old path to new path.
-If new path already exists and it is not a directory, this replaces the file.</p>
-</td>
+                            <td class="module-title truncate functions" id="rename" title="rename">
+                                <a class="functions " href="functions.html#rename">rename</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.
+<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="tempDir" title="tempDir"><a
-                                    class="functions" href="functions.html#tempDir">tempDir</a></td>
-                            <td class="module-desc"><p>Returns the default directory to use for temporary files.</p>
-</td>
+                            <td class="module-title truncate functions" id="tempDir" title="tempDir">
+                                <a class="functions " href="functions.html#tempDir">tempDir</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the default directory to use for temporary files.
+<pre><code class="language-ballerina"> string results = file:tempDir();
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -870,31 +910,47 @@ If new path already exists and it is not a directory, this replaces the file.</p
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="INVALID_OPERATION_ERROR" title="INVALID_OPERATION_ERROR"><a
-                                    class="constant" href="constants.html#INVALID_OPERATION_ERROR">INVALID_OPERATION_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies invalid operation error.</p>
-</td>
+                            <td class="module-title truncate constant" id="INVALID_OPERATION_ERROR" title="INVALID_OPERATION_ERROR">
+                                <a class="constant " href="constants.html#INVALID_OPERATION_ERROR">INVALID_OPERATION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies invalid operation error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="PERMISSION_ERROR" title="PERMISSION_ERROR"><a
-                                    class="constant" href="constants.html#PERMISSION_ERROR">PERMISSION_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies permission error.</p>
-</td>
+                            <td class="module-title truncate constant" id="PERMISSION_ERROR" title="PERMISSION_ERROR">
+                                <a class="constant " href="constants.html#PERMISSION_ERROR">PERMISSION_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies permission error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="FILE_SYSTEM_ERROR" title="FILE_SYSTEM_ERROR"><a
-                                    class="constant" href="constants.html#FILE_SYSTEM_ERROR">FILE_SYSTEM_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies file system error.</p>
-</td>
+                            <td class="module-title truncate constant" id="FILE_SYSTEM_ERROR" title="FILE_SYSTEM_ERROR">
+                                <a class="constant " href="constants.html#FILE_SYSTEM_ERROR">FILE_SYSTEM_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies file system error.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR"><a
-                                    class="constant" href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a></td>
-                            <td class="module-desc"><p>Identifies file not found error.</p>
-</td>
+                            <td class="module-title truncate constant" id="FILE_NOT_FOUND_ERROR" title="FILE_NOT_FOUND_ERROR">
+                                <a class="constant " href="constants.html#FILE_NOT_FOUND_ERROR">FILE_NOT_FOUND_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Identifies file not found error.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -916,10 +972,13 @@ If new path already exists and it is not a directory, this replaces the file.</p
                     
                         <tr>
                             <td class="module-title truncate types" id="Error" title="Error">
-                                <a class="types" href="types.html#Error">Error</a>
+                                <a class="types " href="types.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents file system related errors.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents file system related errors.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -938,34 +997,46 @@ If new path already exists and it is not a directory, this replaces the file.</p
                     
                         <tr>
                             <td class="module-title truncate errors" id="FileNotFoundError" title="FileNotFoundError">
-                                <a class="errors" href="errors.html#FileNotFoundError">FileNotFoundError</a>
+                                <a class="errors " href="errors.html#FileNotFoundError">FileNotFoundError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when the file/directory does not exist at the given filepath.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when the file/directory does not exist at the given filepath.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="FileSystemError" title="FileSystemError">
-                                <a class="errors" href="errors.html#FileSystemError">FileSystemError</a>
+                                <a class="errors " href="errors.html#FileSystemError">FileSystemError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when a file system operation fails.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when a file system operation fails.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="InvalidOperationError" title="InvalidOperationError">
-                                <a class="errors" href="errors.html#InvalidOperationError">InvalidOperationError</a>
+                                <a class="errors " href="errors.html#InvalidOperationError">InvalidOperationError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when a file system operation is denied due to invalidity.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when a file system operation is denied due to invalidity.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate errors" id="PermissionError" title="PermissionError">
-                                <a class="errors" href="errors.html#PermissionError">PermissionError</a>
+                                <a class="errors " href="errors.html#PermissionError">PermissionError</a>
                             </td>
-                            <td class="module-desc"><p>Represents an error that occurs when a file system operation is denied, due to the absence of file permission.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents an error that occurs when a file system operation is denied, due to the absence of file permission.
+
+                            </td>
                         </tr>
                     
                 </table>

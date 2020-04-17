@@ -23,7 +23,7 @@ permalink: /learn/by-example/secured-client-with-basic-auth
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -48,7 +48,8 @@ permalink: /learn/by-example/secured-client-with-basic-auth
     <span class="p">},</span>
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -85,9 +86,9 @@ permalink: /learn/by-example/secured-client-with-basic-auth
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="secured-service-with-oauth2.html">
+                                    <a class="prev" href="secured-service-with-ldap.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Secured Service with OAuth2</p>
+                                        <p>Secured Service with LDAP</p>
                                     </a>
                                 </div>
                                  
@@ -219,7 +220,7 @@ import ballerina/log;
     secureSocket: {
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;bre/security/ballerinaTruststore.p12&quot;,
+                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -400,7 +401,8 @@ http:BasicAuthHandler inboundBasicAuthHandler = new (inboundBasicAuthProvider);
     },
     secureSocket: {
         keyStore: {
-            path: config:getAsString(&quot;b7a.home&quot;) + &quot;bre/security/ballerinaKeystore.p12&quot;,
+            path: config:getAsString(&quot;b7a.home&quot;) +
+                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }

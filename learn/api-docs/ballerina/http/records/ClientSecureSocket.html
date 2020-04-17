@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">ClientSecureSocket</span>
+                 : <span class="records ">ClientSecureSocket</span>
             </h1>
-            <p>Provides configurations for facilitating secure communication with a remote HTTP endpoint.
-</p>
+            <p>
+                
+                Provides configurations for facilitating secure communication with a remote HTTP endpoint.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,181 +1064,256 @@
         
     <div class="params-listing">
         <ul>
-            <li> disable<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >disable</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Disable ssl validation.</p>
-</p>
+                <p>
+                    
+                    <p>Disable ssl validation.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> trustStore<span class="type">  <a href="../../crypto/records/TrustStore.html">TrustStore</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >trustStore</span>
+                <span class="type">  <a href="../../crypto/records/TrustStore.html">TrustStore</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with TrustStore</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with TrustStore</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyStore<span class="type">  <a href="../../crypto/records/KeyStore.html">KeyStore</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >keyStore</span>
+                <span class="type">  <a href="../../crypto/records/KeyStore.html">KeyStore</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations associated with KeyStore</p>
-</p>
+                <p>
+                    
+                    <p>Configurations associated with KeyStore</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> certFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >certFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing the certificate of the client</p>
-</p>
+                <p>
+                    
+                    <p>A file containing the certificate of the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >keyFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing the private key of the client</p>
-</p>
+                <p>
+                    
+                    <p>A file containing the private key of the client</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> keyPassword<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >keyPassword</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Password of the private key if it is encrypted</p>
-</p>
+                <p>
+                    
+                    <p>Password of the private key if it is encrypted</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> trustedCertFile<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >trustedCertFile</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A file containing a list of certificates or a single certificate that the client trusts</p>
-</p>
+                <p>
+                    
+                    <p>A file containing a list of certificates or a single certificate that the client trusts</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> protocol<span class="type">  <a href="../../http/records/Protocols.html">Protocols</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >protocol</span>
+                <span class="type">  <a href="../../http/records/Protocols.html">Protocols</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>SSL/TLS protocol related options</p>
-</p>
+                <p>
+                    
+                    <p>SSL/TLS protocol related options</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> certValidation<span class="type">  <a href="../../http/records/ValidateCert.html">ValidateCert</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >certValidation</span>
+                <span class="type">  <a href="../../http/records/ValidateCert.html">ValidateCert</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Certificate validation against CRL or OCSP related options</p>
-</p>
+                <p>
+                    
+                    <p>Certificate validation against CRL or OCSP related options</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> ciphers<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >ciphers</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>List of ciphers to be used
+                <p>
+                    
+                    <p>List of ciphers to be used
 eg: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> verifyHostname<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >verifyHostname</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enable/disable host name verification</p>
-</p>
+                <p>
+                    
+                    <p>Enable/disable host name verification</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> shareSession<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >shareSession</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Enable/disable new SSL session creation</p>
-</p>
+                <p>
+                    
+                    <p>Enable/disable new SSL session creation</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> ocspStapling<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >ocspStapling</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Enable/disable OCSP stapling</p>
-</p>
+                <p>
+                    
+                    <p>Enable/disable OCSP stapling</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> handshakeTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >handshakeTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>SSL handshake time out</p>
-</p>
+                <p>
+                    
+                    <p>SSL handshake time out</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sessionTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >sessionTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>SSL session time out</p>
-</p>
+                <p>
+                    
+                    <p>SSL session time out</p>
+
+                </p>
             </li>
         </ul>
     </div>

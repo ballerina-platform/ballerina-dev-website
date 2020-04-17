@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -227,6 +227,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -324,7 +328,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -494,6 +498,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -642,11 +650,34 @@ transaction {
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate records" id="T0" title="T0">
+                                <a class="records " href="records/T0.html">T0</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T1" title="T1">
+                                <a class="records " href="records/T1.html">T1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="TransactionParticipantConfig" title="TransactionParticipantConfig">
-                                <a class="records"
-                                   href="records/TransactionParticipantConfig.html">TransactionParticipantConfig</a></td>
-                            <td class="module-desc">Contains the configurations for local transaction participant function.
-</td>
+                                <a class="records " href="records/TransactionParticipantConfig.html">TransactionParticipantConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Contains the configurations for local transaction participant function.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -671,12 +702,16 @@ transaction {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getCurrentTransactionId" title="getCurrentTransactionId"><a
-                                    class="functions" href="functions.html#getCurrentTransactionId">getCurrentTransactionId</a></td>
-                            <td class="module-desc"><p>Get the current transaction id. This function is useful for user code to save state against a transaction ID,
+                            <td class="module-title truncate functions" id="getCurrentTransactionId" title="getCurrentTransactionId">
+                                <a class="functions " href="functions.html#getCurrentTransactionId">getCurrentTransactionId</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Get the current transaction id. This function is useful for user code to save state against a transaction ID,
 so that when the <code>oncommit</code> or <code>onabort</code> functions registered for a transaction can retrieve that state using the
-transaction  that is passed in to those functions.</p>
-</td>
+transaction  that is passed in to those functions.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -700,7 +735,7 @@ transaction  that is passed in to those functions.</p>
                         <tr>
                             <td class="module-title truncate annotations" id="Participant" title="Participant"><a
                                     class="annotations" href="annotations.html#Participant">Participant</a></td>
-                            <td class="module-desc"><p>The annotation which is used to configure local transaction participant function.</p>
+                            <td class="module-desc">The annotation which is used to configure local transaction participant function.
 </td>
                         </tr>
                     

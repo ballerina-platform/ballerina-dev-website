@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -230,6 +230,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -337,7 +341,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -499,6 +503,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -607,9 +615,16 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#transform">transform</a></td>
-                                <td width="70%"><p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#transform">transform</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
+<pre><code class="language-ballerina"> xml|error target = xslt:transform(sourceXml, xsl);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -623,7 +638,7 @@
              <a class="url-link" href="#transform">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> transform </h2>
+            <h2 > transform </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">xml</span> input, <span class="builtin-type">xml</span> xsl)</p>
@@ -631,9 +646,14 @@
         </span>
         
     </div>
-    <p><p>Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Transforms the single-rooted XML content to another XML/HTML/plain text using XSL transformations.
+<pre><code class="language-ballerina"> xml|error target = xslt:transform(sourceXml, xsl);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -671,7 +691,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">xml</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p>The transformed result represented in an XML object or the <code>error</code> in case of an error</p>
+                <li><p>The transformed result represented in an XML object or else an <code>error</code> if the given <code>XML</code> object
+can't be transformed</p>
 </li>
             </ul>
         </div>

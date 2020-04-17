@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">ListenerAuth</span>
+                 : <span class="records ">ListenerAuth</span>
             </h1>
-            <p>Authentication configurations for the listener.
-</p>
+            <p>
+                
+                Authentication configurations for the listener.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,88 +1064,123 @@
         
     <div class="params-listing">
         <ul>
-            <li> authHandlers<span class="type">  <a href="../../http/types.html#InboundAuthHandlers">InboundAuthHandlers</a></span>
+            <li> 
+                <span >authHandlers</span>
+                <span class="type">  <a href="../../http/types.html#InboundAuthHandlers">InboundAuthHandlers</a></span>
                 
             </li>
             <li>
-                <p><p>An array of inbound authentication handlers or an array consisting of arrays of inbound authentication handlers
+                <p>
+                    
+                    <p>An array of inbound authentication handlers or an array consisting of arrays of inbound authentication handlers
 An array is used to indicate that at least one of the authentication handlers should be successfully authenticated. An array consisting of arrays
 is used to indicate that at least one authentication handler from the sub-arrays should be successfully authenticated.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> scopes<span class="type">  <a href="../../http/types.html#Scopes">Scopes</a></span>
+            <li> 
+                <span >scopes</span>
+                <span class="type">  <a href="../../http/types.html#Scopes">Scopes</a></span>
                 
             </li>
             <li>
-                <p><p>An array of scopes or an array consisting of arrays of scopes. An array is used to indicate that at least one of the scopes should
+                <p>
+                    
+                    <p>An array of scopes or an array consisting of arrays of scopes. An array is used to indicate that at least one of the scopes should
 be successfully authorized. An array consisting of arrays is used to indicate that at least one scope from the sub-arrays
 should successfully be authorized</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> positiveAuthzCache<span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
-                <span class="default"> (default BLangTypeInit: new null ([]) )</span>
+            <li> 
+                <span >positiveAuthzCache</span>
+                <span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
+                 <span class="default">(default</span> <span class="type"><a href="../../cache/objects/Cache.html">Cache</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>The <code>cache:Cache</code> object for positive authorizations</p>
-</p>
+                <p>
+                    
+                    <p>The <code>cache:Cache</code> object for positive authorizations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> negativeAuthzCache<span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
-                <span class="default"> (default BLangTypeInit: new null ([]) )</span>
+            <li> 
+                <span >negativeAuthzCache</span>
+                <span class="type">  <a href="../../cache/objects/Cache.html">Cache</a>?</span>
+                 <span class="default">(default</span> <span class="type"><a href="../../cache/objects/Cache.html">Cache</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>The <code>cache:Cache</code> object for negative authorizations</p>
-</p>
+                <p>
+                    
+                    <p>The <code>cache:Cache</code> object for negative authorizations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> mandateSecureSocket<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >mandateSecureSocket</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Specify whether secure socket configurations are mandatory or not</p>
-</p>
+                <p>
+                    
+                    <p>Specify whether secure socket configurations are mandatory or not</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> position<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >position</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The authn/authz filter position of the filter array. The position values starts from 0 and it is set to 0 implicitly</p>
-</p>
+                <p>
+                    
+                    <p>The authn/authz filter position of the filter array. The position values starts from 0 and it is set to 0 implicitly</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> enableAuthzFilter<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >enableAuthzFilter</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Specify whether authz filter engagement is needed or not</p>
-</p>
+                <p>
+                    
+                    <p>Specify whether authz filter engagement is needed or not</p>
+
+                </p>
             </li>
         </ul>
     </div>

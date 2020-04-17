@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,11 +666,14 @@
                 
                     <a href="../../auth/index.html">auth</a>
                  :
-                <span class="objects">OutboundAuthProvider</span>
+                <span class="objects ">OutboundAuthProvider</span>
             </h1>
-            <p><p>Represents the outbound Auth provider. Any type of implementation such as JWT and OAuth2 should be object-wise similar
-to the <code>OutboundAuthProvider</code> object.</p>
-</p>
+            <p>
+                
+                Represents the outbound Auth provider, which could be used to authenticate external endpoints. Any type of
+implementation such as JWT, OAuth2, LDAP, JDBC, file-based etc. should be object-wise similar to the <code>auth:OutboundAuthProvider</code> object.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -674,26 +685,32 @@ to the <code>OutboundAuthProvider</code> object.</p>
                         <div class="method-list">
                             
                                 
-<a href="#generateToken">
-    <div class="param-sum">
-        <div class="param-name">
-        generateToken 
-        </div>
-        <div class="param-details"> <p>Generates a token for the outbound request.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="generateToken">
+        <a href="#generateToken">generateToken </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Generates an authentication token for the outbound request with outbound Auth providers such as JWT and OAuth2.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#inspect">
-    <div class="param-sum">
-        <div class="param-name">
-        inspect 
-        </div>
-        <div class="param-details"> <p>Inspects the incoming data and generates the token as needed.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="inspect">
+        <a href="#inspect">inspect </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Inspects the incoming data and generates the authentication token as needed. For example, if the incoming data
+indicates that it needs to regenerate the token because the previously-generated token is invalid, this method
+will generate it.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -708,7 +725,7 @@ to the <code>OutboundAuthProvider</code> object.</p>
              <a class="url-link" href="#generateToken">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> generateToken </h2>
+            <h2 > generateToken </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -716,16 +733,19 @@ to the <code>OutboundAuthProvider</code> object.</p>
         </span>
         
     </div>
-    <p><p>Generates a token for the outbound request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Generates an authentication token for the outbound request with outbound Auth providers such as JWT and OAuth2.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p>The String token or the <code>Error</code> occurred when generating the token.</p>
+                <li><p>The token as a <code>string</code> or else an <code>auth:Error</code> occurred when generating the token</p>
 </li>
             </ul>
         </div>
@@ -738,7 +758,7 @@ to the <code>OutboundAuthProvider</code> object.</p>
              <a class="url-link" href="#inspect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> inspect </h2>
+            <h2 > inspect </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">map</span> data)</p>
@@ -746,9 +766,14 @@ to the <code>OutboundAuthProvider</code> object.</p>
         </span>
         
     </div>
-    <p><p>Inspects the incoming data and generates the token as needed.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Inspects the incoming data and generates the authentication token as needed. For example, if the incoming data
+indicates that it needs to regenerate the token because the previously-generated token is invalid, this method
+will generate it.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -759,7 +784,7 @@ to the <code>OutboundAuthProvider</code> object.</p>
                         
                     </li>
                     <li>
-                        <p><p>Map of the data, which is extracted from the HTTP response.</p>
+                        <p><p>Map of data, which is extracted from the HTTP response</p>
 </p>
                     </li>
                 </ul>
@@ -773,7 +798,8 @@ to the <code>OutboundAuthProvider</code> object.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../../auth/errors.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>The String token, the <code>Error</code> occurred when generating the token, or <code>()</code> if nothing is to be returned.</p>
+                <li><p>The token as a <code>string</code>, an <code>auth:Error</code> occurred when generating the token,
+or else <code>()</code> if nothing is to be returned</p>
 </li>
             </ul>
         </div>

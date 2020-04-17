@@ -188,7 +188,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -363,6 +363,10 @@
             
                 <li>
                     <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -593,7 +597,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -771,6 +775,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -879,249 +887,662 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#crc32b">crc32b</a></td>
-                                <td width="70%"><p>Returns Hex encoded CRC32B value for the provided element.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#crc32b">crc32b</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the Hex-encoded CRC32B value for the provided element.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string checksum = crypto:crc32b(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decodePrivateKey">decodePrivateKey</a></td>
-                                <td width="70%"><p>Read a private key from the provided PKCS#12 archive file.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decodePrivateKey">decodePrivateKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reads a private key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey|crypto:Error privateKey = crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decodePublicKey">decodePublicKey</a></td>
-                                <td width="70%"><p>Read a public key from the provided PKCS#12 archive file.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decodePublicKey">decodePublicKey</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reads a public key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey|crypto:Error publicKey = crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decryptAesCbc">decryptAesCbc</a></td>
-                                <td width="70%"><p>Returns AES CBC decrypted value for the given AES CBC encrypted data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decryptAesCbc">decryptAesCbc</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesCbc(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesCbc(cipherText, key, initialVector);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decryptAesEcb">decryptAesEcb</a></td>
-                                <td width="70%"><p>Returns AES ECB decrypted value for the given AES ECB encrypted data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decryptAesEcb">decryptAesEcb</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesEcb(data, key);
+  byte[]|crypto:Error plainText = crypto:decryptAesEcb(cipherText, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decryptAesGcm">decryptAesGcm</a></td>
-                                <td width="70%"><p>Returns AES GCM decrypted value for the given AES GCM encrypted data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decryptAesGcm">decryptAesGcm</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesGcm(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesGcm(cipherText, key, initialVector);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#decryptRsaEcb">decryptRsaEcb</a></td>
-                                <td width="70%"><p>Returns RSA decrypted value for the given RSA encrypted data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#decryptRsaEcb">decryptRsaEcb</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-decrypted value for the given RSA-encrypted data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] cipherText = checkpanic crypto:encryptRsaEcb(data, publicKey);
+  byte[]|crypto:Error plainText = checkpanic crypto:decryptRsaEcb(cipherText, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encryptAesCbc">encryptAesCbc</a></td>
-                                <td width="70%"><p>Returns AES CBC encrypted value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encryptAesCbc">encryptAesCbc</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-CBC-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesCbc(data, key, initialVector);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encryptAesEcb">encryptAesEcb</a></td>
-                                <td width="70%"><p>Returns AES ECB encrypted value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encryptAesEcb">encryptAesEcb</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-ECB-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesEcb(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encryptAesGcm">encryptAesGcm</a></td>
-                                <td width="70%"><p>Returns AES GCM encrypted value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encryptAesGcm">encryptAesGcm</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the AES-GCM-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesGcm(data, key, initialVector);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#encryptRsaEcb">encryptRsaEcb</a></td>
-                                <td width="70%"><p>Returns RSA encrypted value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#encryptRsaEcb">encryptRsaEcb</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-encrypted value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  byte[]|crypto:Error cipherText = crypto:encryptRsaEcb(data, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashMd5">hashMd5</a></td>
-                                <td width="70%"><p>Returns the MD5 hash of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashMd5">hashMd5</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the MD5 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashMd5(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashSha1">hashSha1</a></td>
-                                <td width="70%"><p>Returns the SHA-1 hash of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashSha1">hashSha1</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the SHA-1 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha1(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashSha256">hashSha256</a></td>
-                                <td width="70%"><p>Returns the SHA-256 hash of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashSha256">hashSha256</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the SHA-256 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha256(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashSha384">hashSha384</a></td>
-                                <td width="70%"><p>Returns the SHA-384 hash of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashSha384">hashSha384</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the SHA-384 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha384(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hashSha512">hashSha512</a></td>
-                                <td width="70%"><p>Returns the SHA-512 hash of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hashSha512">hashSha512</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the SHA-512 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha512(data);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hmacMd5">hmacMd5</a></td>
-                                <td width="70%"><p>Returns the HMAC using MD-5 hash function of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hmacMd5">hmacMd5</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the HMAC using the MD-5 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacMd5(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hmacSha1">hmacSha1</a></td>
-                                <td width="70%"><p>Returns the HMAC using SHA-1 hash function of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hmacSha1">hmacSha1</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the HMAC using the SHA-1 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha1(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hmacSha256">hmacSha256</a></td>
-                                <td width="70%"><p>Returns the HMAC using SHA-256 hash function of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hmacSha256">hmacSha256</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the HMAC using the SHA-256 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha256(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hmacSha384">hmacSha384</a></td>
-                                <td width="70%"><p>Returns the HMAC using SHA-384 hash function of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hmacSha384">hmacSha384</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the HMAC using the SHA-384 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha384(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#hmacSha512">hmacSha512</a></td>
-                                <td width="70%"><p>Returns the HMAC using SHA-512 hash function of the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#hmacSha512">hmacSha512</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the HMAC using the SHA-512 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha512(data, key);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signRsaMd5">signRsaMd5</a></td>
-                                <td width="70%"><p>Returns RSA-MD5 based signature value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signRsaMd5">signRsaMd5</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-MD5-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaMd5(data, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signRsaSha1">signRsaSha1</a></td>
-                                <td width="70%"><p>Returns RSA-SHA1 based signature value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signRsaSha1">signRsaSha1</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-SHA1-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha1(data, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signRsaSha256">signRsaSha256</a></td>
-                                <td width="70%"><p>Returns RSA-SHA256 based signature value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signRsaSha256">signRsaSha256</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-SHA256-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha256(data, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signRsaSha384">signRsaSha384</a></td>
-                                <td width="70%"><p>Returns RSA-SHA384 based signature value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signRsaSha384">signRsaSha384</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-SHA384-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha384(data, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#signRsaSha512">signRsaSha512</a></td>
-                                <td width="70%"><p>Returns RSA-SHA512 based signature value for the given data.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#signRsaSha512">signRsaSha512</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the RSA-SHA512-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha512(data, privateKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#verifyRsaMd5Signature">verifyRsaMd5Signature</a></td>
-                                <td width="70%"><p>Verify RSA-MD5 based signature.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#verifyRsaMd5Signature">verifyRsaMd5Signature</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Verifies the RSA-MD5-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaMd5Signature(data, signature, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#verifyRsaSha1Signature">verifyRsaSha1Signature</a></td>
-                                <td width="70%"><p>Verify RSA-SHA1 based signature.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#verifyRsaSha1Signature">verifyRsaSha1Signature</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Verifies the RSA-SHA1-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha1Signature(data, signature, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#verifyRsaSha256Signature">verifyRsaSha256Signature</a></td>
-                                <td width="70%"><p>Verify RSA-SHA256 based signature.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#verifyRsaSha256Signature">verifyRsaSha256Signature</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Verifies the RSA-SHA256-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha256Signature(data, signature, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#verifyRsaSha384Signature">verifyRsaSha384Signature</a></td>
-                                <td width="70%"><p>Verify RSA-SHA384 based signature.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#verifyRsaSha384Signature">verifyRsaSha384Signature</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Verifies the RSA-SHA384-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha384Signature(data, signature, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#verifyRsaSha512Signature">verifyRsaSha512Signature</a></td>
-                                <td width="70%"><p>Verify RSA-SHA512 based signature.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#verifyRsaSha512Signature">verifyRsaSha512Signature</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Verifies the RSA-SHA512-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha512Signature(data, signature, publicKey);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -1135,7 +1556,7 @@
              <a class="url-link" href="#crc32b">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> crc32b </h2>
+            <h2 > crc32b </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -1143,9 +1564,16 @@
         </span>
         
     </div>
-    <p><p>Returns Hex encoded CRC32B value for the provided element.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the Hex-encoded CRC32B value for the provided element.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string checksum = crypto:crc32b(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1183,7 +1611,7 @@
              <a class="url-link" href="#decodePrivateKey">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decodePrivateKey </h2>
+            <h2 > decodePrivateKey </h2>
         
         <span class="method-types">
             <p>(<a href="../crypto/records/KeyStore.html">KeyStore</a> | <a href="../crypto/records/TrustStore.html">TrustStore</a> keyStore, <span class="builtin-type">string</span> keyAlias, <span class="builtin-type">string</span> keyPassword)</p>
@@ -1191,9 +1619,18 @@
         </span>
         
     </div>
-    <p><p>Read a private key from the provided PKCS#12 archive file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a private key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey|crypto:Error privateKey = crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1244,7 +1681,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../crypto/records/PrivateKey.html">PrivateKey</a> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Reference to the private key or <code>Error</code> if private key was unreadable</p>
+                <li><p>Reference to the private key or else a <code>crypto:Error</code> if the private key was unreadable</p>
 </li>
             </ul>
         </div>
@@ -1257,7 +1694,7 @@
              <a class="url-link" href="#decodePublicKey">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decodePublicKey </h2>
+            <h2 > decodePublicKey </h2>
         
         <span class="method-types">
             <p>(<a href="../crypto/records/KeyStore.html">KeyStore</a> | <a href="../crypto/records/TrustStore.html">TrustStore</a> keyStore, <span class="builtin-type">string</span> keyAlias)</p>
@@ -1265,9 +1702,18 @@
         </span>
         
     </div>
-    <p><p>Read a public key from the provided PKCS#12 archive file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads a public key from the provided PKCS#12 archive file.
+<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey|crypto:Error publicKey = crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1305,7 +1751,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../crypto/records/PublicKey.html">PublicKey</a> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Reference to the public key or <code>Error</code> if private key was unreadable</p>
+                <li><p>Reference to the public key or else a <code>crypto:Error</code> if the private key was unreadable</p>
 </li>
             </ul>
         </div>
@@ -1318,7 +1764,7 @@
              <a class="url-link" href="#decryptAesCbc">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decryptAesCbc </h2>
+            <h2 > decryptAesCbc </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <span class="array-type"><span class="builtin-type">byte</span>[]</span> iv, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding)</p>
@@ -1326,9 +1772,25 @@
         </span>
         
     </div>
-    <p><p>Returns AES CBC decrypted value for the given AES CBC encrypted data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesCbc(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesCbc(cipherText, key, initialVector);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1392,7 +1854,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Decrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Decrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1405,7 +1867,7 @@
              <a class="url-link" href="#decryptAesEcb">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decryptAesEcb </h2>
+            <h2 > decryptAesEcb </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding)</p>
@@ -1413,9 +1875,21 @@
         </span>
         
     </div>
-    <p><p>Returns AES ECB decrypted value for the given AES ECB encrypted data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesEcb(data, key);
+  byte[]|crypto:Error plainText = crypto:decryptAesEcb(cipherText, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1466,7 +1940,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Decrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Decrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1479,7 +1953,7 @@
              <a class="url-link" href="#decryptAesGcm">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decryptAesGcm </h2>
+            <h2 > decryptAesGcm </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <span class="array-type"><span class="builtin-type">byte</span>[]</span> iv, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding, <span class="builtin-type">int</span> tagSize)</p>
@@ -1487,9 +1961,25 @@
         </span>
         
     </div>
-    <p><p>Returns AES GCM decrypted value for the given AES GCM encrypted data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[] cipherText = checkpanic crypto:encryptAesGcm(data, key, initialVector);
+  byte[]|crypto:Error plainText = crypto:decryptAesGcm(cipherText, key, initialVector);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1566,7 +2056,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Decrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Decrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1579,7 +2069,7 @@
              <a class="url-link" href="#decryptRsaEcb">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> decryptRsaEcb </h2>
+            <h2 > decryptRsaEcb </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> | <a href="../crypto/records/PublicKey.html">PublicKey</a> key, <a href="../crypto/types.html#RsaPadding">RsaPadding</a> padding)</p>
@@ -1587,9 +2077,23 @@
         </span>
         
     </div>
-    <p><p>Returns RSA decrypted value for the given RSA encrypted data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the RSA-decrypted value for the given RSA-encrypted data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] cipherText = checkpanic crypto:encryptRsaEcb(data, publicKey);
+  byte[]|crypto:Error plainText = checkpanic crypto:decryptRsaEcb(cipherText, privateKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1640,7 +2144,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Decrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Decrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1653,7 +2157,7 @@
              <a class="url-link" href="#encryptAesCbc">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encryptAesCbc </h2>
+            <h2 > encryptAesCbc </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <span class="array-type"><span class="builtin-type">byte</span>[]</span> iv, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding)</p>
@@ -1661,9 +2165,24 @@
         </span>
         
     </div>
-    <p><p>Returns AES CBC encrypted value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-CBC-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesCbc(data, key, initialVector);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1727,7 +2246,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Encrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Encrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1740,7 +2259,7 @@
              <a class="url-link" href="#encryptAesEcb">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encryptAesEcb </h2>
+            <h2 > encryptAesEcb </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding)</p>
@@ -1748,9 +2267,20 @@
         </span>
         
     </div>
-    <p><p>Returns AES ECB encrypted value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-ECB-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesEcb(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1801,7 +2331,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Encrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Encrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1814,7 +2344,7 @@
              <a class="url-link" href="#encryptAesGcm">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encryptAesGcm </h2>
+            <h2 > encryptAesGcm </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key, <span class="array-type"><span class="builtin-type">byte</span>[]</span> iv, <a href="../crypto/types.html#AesPadding">AesPadding</a> padding, <span class="builtin-type">int</span> tagSize)</p>
@@ -1822,9 +2352,24 @@
         </span>
         
     </div>
-    <p><p>Returns AES GCM encrypted value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the AES-GCM-encrypted value for the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
+  byte[] data = dataString.toBytes();
+  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  foreach var i in 0...15 {
+      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
+  }
+  byte[]|crypto:Error cipherText = crypto:encryptAesGcm(data, key, initialVector);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1901,7 +2446,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Encrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Encrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1914,7 +2459,7 @@
              <a class="url-link" href="#encryptRsaEcb">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> encryptRsaEcb </h2>
+            <h2 > encryptRsaEcb </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> | <a href="../crypto/records/PublicKey.html">PublicKey</a> key, <a href="../crypto/types.html#RsaPadding">RsaPadding</a> padding)</p>
@@ -1922,9 +2467,21 @@
         </span>
         
     </div>
-    <p><p>Returns RSA encrypted value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the RSA-encrypted value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  byte[]|crypto:Error cipherText = crypto:encryptRsaEcb(data, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1975,7 +2532,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Encrypted data or <code>Error</code> if key is invalid</p>
+                <li><p>Encrypted data or else a <code>crypto:Error</code> if the key is invalid</p>
 </li>
             </ul>
         </div>
@@ -1988,7 +2545,7 @@
              <a class="url-link" href="#hashMd5">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashMd5 </h2>
+            <h2 > hashMd5 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -1996,9 +2553,16 @@
         </span>
         
     </div>
-    <p><p>Returns the MD5 hash of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the MD5 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashMd5(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2036,7 +2600,7 @@
              <a class="url-link" href="#hashSha1">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashSha1 </h2>
+            <h2 > hashSha1 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -2044,9 +2608,16 @@
         </span>
         
     </div>
-    <p><p>Returns the SHA-1 hash of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the SHA-1 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha1(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2084,7 +2655,7 @@
              <a class="url-link" href="#hashSha256">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashSha256 </h2>
+            <h2 > hashSha256 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -2092,9 +2663,16 @@
         </span>
         
     </div>
-    <p><p>Returns the SHA-256 hash of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the SHA-256 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha256(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2132,7 +2710,7 @@
              <a class="url-link" href="#hashSha384">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashSha384 </h2>
+            <h2 > hashSha384 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -2140,9 +2718,16 @@
         </span>
         
     </div>
-    <p><p>Returns the SHA-384 hash of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the SHA-384 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha384(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2180,7 +2765,7 @@
              <a class="url-link" href="#hashSha512">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hashSha512 </h2>
+            <h2 > hashSha512 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input)</p>
@@ -2188,9 +2773,16 @@
         </span>
         
     </div>
-    <p><p>Returns the SHA-512 hash of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the SHA-512 hash of the given data.
+<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
+  byte[] data = dataString.toBytes();
+  byte[] hash = crypto:hashSha512(data);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2228,7 +2820,7 @@
              <a class="url-link" href="#hmacMd5">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hmacMd5 </h2>
+            <h2 > hmacMd5 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key)</p>
@@ -2236,9 +2828,18 @@
         </span>
         
     </div>
-    <p><p>Returns the HMAC using MD-5 hash function of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the HMAC using the MD-5 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacMd5(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2289,7 +2890,7 @@
              <a class="url-link" href="#hmacSha1">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hmacSha1 </h2>
+            <h2 > hmacSha1 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key)</p>
@@ -2297,9 +2898,18 @@
         </span>
         
     </div>
-    <p><p>Returns the HMAC using SHA-1 hash function of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the HMAC using the SHA-1 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha1(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2350,7 +2960,7 @@
              <a class="url-link" href="#hmacSha256">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hmacSha256 </h2>
+            <h2 > hmacSha256 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key)</p>
@@ -2358,9 +2968,18 @@
         </span>
         
     </div>
-    <p><p>Returns the HMAC using SHA-256 hash function of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the HMAC using the SHA-256 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha256(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2411,7 +3030,7 @@
              <a class="url-link" href="#hmacSha384">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hmacSha384 </h2>
+            <h2 > hmacSha384 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key)</p>
@@ -2419,9 +3038,18 @@
         </span>
         
     </div>
-    <p><p>Returns the HMAC using SHA-384 hash function of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the HMAC using the SHA-384 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha384(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2472,7 +3100,7 @@
              <a class="url-link" href="#hmacSha512">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> hmacSha512 </h2>
+            <h2 > hmacSha512 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <span class="array-type"><span class="builtin-type">byte</span>[]</span> key)</p>
@@ -2480,9 +3108,18 @@
         </span>
         
     </div>
-    <p><p>Returns the HMAC using SHA-512 hash function of the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the HMAC using the SHA-512 hash function of the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  string keyString = &quot;some-secret&quot;;
+  byte[] key = keyString.toBytes();
+  byte[] hmac = crypto:hmacSha512(data, key);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2533,7 +3170,7 @@
              <a class="url-link" href="#signRsaMd5">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> signRsaMd5 </h2>
+            <h2 > signRsaMd5 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
@@ -2541,9 +3178,22 @@
         </span>
         
     </div>
-    <p><p>Returns RSA-MD5 based signature value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the RSA-MD5-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaMd5(data, privateKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2581,7 +3231,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>The generated signature or <code>Error</code> if private key is invalid</p>
+                <li><p>The generated signature or else a <code>crypto:Error</code> if the private key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2594,7 +3244,7 @@
              <a class="url-link" href="#signRsaSha1">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> signRsaSha1 </h2>
+            <h2 > signRsaSha1 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
@@ -2602,9 +3252,22 @@
         </span>
         
     </div>
-    <p><p>Returns RSA-SHA1 based signature value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the RSA-SHA1-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha1(data, privateKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2642,7 +3305,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>The generated signature or <code>Error</code> if private key is invalid</p>
+                <li><p>The generated signature or else a <code>crypto:Error</code> if the private key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2655,7 +3318,7 @@
              <a class="url-link" href="#signRsaSha256">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> signRsaSha256 </h2>
+            <h2 > signRsaSha256 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
@@ -2663,9 +3326,22 @@
         </span>
         
     </div>
-    <p><p>Returns RSA-SHA256 based signature value for the given data.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the RSA-SHA256-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha256(data, privateKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2703,7 +3379,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>The generated signature or <code>Error</code> if private key is invalid</p>
+                <li><p>The generated signature or else a <code>crypto:Error</code> if the private key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2716,7 +3392,7 @@
              <a class="url-link" href="#signRsaSha384">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> signRsaSha384 </h2>
+            <h2 > signRsaSha384 </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
@@ -2724,70 +3400,22 @@
         </span>
         
     </div>
-    <p><p>Returns RSA-SHA384 based signature value for the given data.</p>
-</p>
-     
-        <div class="data-wrapper">
-            <h3 class="param-title">Parameters</h3>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        input<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>The content to be signed</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-                
-            <div class="params-listing">
-                <ul>
-                    <li>
-                        privateKey<span class="type">  <a href="../crypto/records/PrivateKey.html">PrivateKey</a> </span>
-                        
-                    </li>
-                    <li>
-                        <p><p>Private key used for signing.</p>
-</p>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
-    
+    <div class="function-desc">
+        
+        Returns the RSA-SHA384-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha384(data, privateKey);
+</code></pre>
 
-    
-        
-        <div class="returns-listing">
-            <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>The generated signature or <code>Error</code> if private key is invalid</p>
-</li>
-            </ul>
-        </div>
-        
-    
-</div>
-                            
-                                <div class="method-content">
-    <div class="main-method-title here" id="signRsaSha512" title="signRsaSha512">
-             <a class="url-link" href="#signRsaSha512">
-                <img class="url-link-img" src="../html-template-resources/images/link.svg">
-            </a>
-            <h2> signRsaSha512 </h2>
-        
-        <span class="method-types">
-            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
-            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a> 
-        </span>
-        
     </div>
-    <p><p>Returns RSA-SHA512 based signature value for the given data.</p>
-</p>
-     
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2825,7 +3453,81 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>The generated signature or <code>Error</code> if private key is invalid</p>
+                <li><p>The generated signature or else a <code>crypto:Error</code> if the private key is invalid</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="signRsaSha512" title="signRsaSha512">
+             <a class="url-link" href="#signRsaSha512">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > signRsaSha512 </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> input, <a href="../crypto/records/PrivateKey.html">PrivateKey</a> privateKey)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        Returns the RSA-SHA512-based signature value for the given data.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey =
+      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[]|crypto:Error signature = crypto:signRsaSha512(data, privateKey);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        input<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>The content to be signed</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        privateKey<span class="type">  <a href="../crypto/records/PrivateKey.html">PrivateKey</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Private key used for signing</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
+                <li><p>The generated signature or else a <code>crypto:Error</code> if the private key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2838,7 +3540,7 @@
              <a class="url-link" href="#verifyRsaMd5Signature">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> verifyRsaMd5Signature </h2>
+            <h2 > verifyRsaMd5Signature </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="array-type"><span class="builtin-type">byte</span>[]</span> signature, <a href="../crypto/records/PublicKey.html">PublicKey</a> publicKey)</p>
@@ -2846,9 +3548,23 @@
         </span>
         
     </div>
-    <p><p>Verify RSA-MD5 based signature.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Verifies the RSA-MD5-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaMd5Signature(data, signature, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2899,7 +3615,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Validity of the signature or <code>Error</code> if public key is invalid</p>
+                <li><p>Validity of the signature or else a <code>crypto:Error</code> if the public key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2912,7 +3628,7 @@
              <a class="url-link" href="#verifyRsaSha1Signature">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> verifyRsaSha1Signature </h2>
+            <h2 > verifyRsaSha1Signature </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="array-type"><span class="builtin-type">byte</span>[]</span> signature, <a href="../crypto/records/PublicKey.html">PublicKey</a> publicKey)</p>
@@ -2920,9 +3636,23 @@
         </span>
         
     </div>
-    <p><p>Verify RSA-SHA1 based signature.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Verifies the RSA-SHA1-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha1Signature(data, signature, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -2973,7 +3703,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Validity of the signature or <code>Error</code> if public key is invalid</p>
+                <li><p>Validity of the signature or else a <code>crypto:Error</code> if the public key is invalid</p>
 </li>
             </ul>
         </div>
@@ -2986,7 +3716,7 @@
              <a class="url-link" href="#verifyRsaSha256Signature">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> verifyRsaSha256Signature </h2>
+            <h2 > verifyRsaSha256Signature </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="array-type"><span class="builtin-type">byte</span>[]</span> signature, <a href="../crypto/records/PublicKey.html">PublicKey</a> publicKey)</p>
@@ -2994,9 +3724,23 @@
         </span>
         
     </div>
-    <p><p>Verify RSA-SHA256 based signature.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Verifies the RSA-SHA256-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha256Signature(data, signature, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3047,7 +3791,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Validity of the signature or <code>Error</code> if public key is invalid</p>
+                <li><p>Validity of the signature or else a <code>crypto:Error</code> if the public key is invalid</p>
 </li>
             </ul>
         </div>
@@ -3060,7 +3804,7 @@
              <a class="url-link" href="#verifyRsaSha384Signature">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> verifyRsaSha384Signature </h2>
+            <h2 > verifyRsaSha384Signature </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="array-type"><span class="builtin-type">byte</span>[]</span> signature, <a href="../crypto/records/PublicKey.html">PublicKey</a> publicKey)</p>
@@ -3068,9 +3812,23 @@
         </span>
         
     </div>
-    <p><p>Verify RSA-SHA384 based signature.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Verifies the RSA-SHA384-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha384Signature(data, signature, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3121,7 +3879,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Validity of the signature or <code>Error</code> if public key is invalid</p>
+                <li><p>Validity of the signature or else a <code>crypto:Error</code> if the public key is invalid</p>
 </li>
             </ul>
         </div>
@@ -3134,7 +3892,7 @@
              <a class="url-link" href="#verifyRsaSha512Signature">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> verifyRsaSha512Signature </h2>
+            <h2 > verifyRsaSha512Signature </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> data, <span class="array-type"><span class="builtin-type">byte</span>[]</span> signature, <a href="../crypto/records/PublicKey.html">PublicKey</a> publicKey)</p>
@@ -3142,9 +3900,23 @@
         </span>
         
     </div>
-    <p><p>Verify RSA-SHA512 based signature.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Verifies the RSA-SHA512-based signature.
+<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
+  byte[] data = stringData.toBytes();
+  crypto:KeyStore keyStore = {
+      path: &quot;/home/ballerina/keystore.p12&quot;,
+      password: &quot;keystorePassword&quot;
+  };
+  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
+  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
+  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
+  boolean|crypto:Error validity = crypto:verifyRsaSha512Signature(data, signature, publicKey);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -3195,7 +3967,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../crypto/errors.html#Error">Error</a></span>)</li>
-                <li><p>Validity of the signature or <code>Error</code> if public key is invalid</p>
+                <li><p>Validity of the signature or else a <code>crypto:Error</code> if the public key is invalid</p>
 </li>
             </ul>
         </div>

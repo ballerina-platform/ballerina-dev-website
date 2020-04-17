@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,7 +691,7 @@
                 
                 <span class="clients">StreamingClient</span>
             </h1>
-            <p><p>Provides the gRPC streaming client actions for interacting with gRPC server.</p>
+            <p>Provides the gRPC streaming client actions for interacting with the gRPC server.
 </p>
 
             <div class="constants">
@@ -697,21 +705,27 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="send"><a
                                             class="functions" href="#send">send</a></td>
-                                    <td class="module-desc"><p>Sends request message to the server.</p>
+                                    <td class="module-desc">Sends the request message to the server.
+<pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="complete"><a
                                             class="functions" href="#complete">complete</a></td>
-                                    <td class="module-desc"><p>Informs the server, caller finished sending messages.</p>
+                                    <td class="module-desc">Informs the server when the caller has sent all the messages.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="sendError"><a
                                             class="functions" href="#sendError">sendError</a></td>
-                                    <td class="module-desc"><p>Sends error message to the server.</p>
+                                    <td class="module-desc">Sends an error message to the server.
+<pre><code class="language-ballerina"> grpc:Error? result = streamingClient-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -730,7 +744,7 @@
              <a class="url-link" href="#send">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> send </h2>
+            <h2 > send </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">anydata</span> res)</p>
@@ -738,9 +752,14 @@
         </span>
         
     </div>
-    <p><p>Sends request message to the server.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the request message to the server.
+<pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -751,7 +770,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The inbound request message.</p>
+                        <p><p>The inbound request message</p>
 </p>
                     </li>
                 </ul>
@@ -765,7 +784,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the response, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -778,7 +797,7 @@
              <a class="url-link" href="#complete">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> complete </h2>
+            <h2 > complete </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -786,16 +805,21 @@
         </span>
         
     </div>
-    <p><p>Informs the server, caller finished sending messages.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Informs the server when the caller has sent all the messages.
+<pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the response, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -808,7 +832,7 @@
              <a class="url-link" href="#sendError">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> sendError </h2>
+            <h2 > sendError </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> statusCode, <span class="builtin-type">string</span> message)</p>
@@ -816,9 +840,14 @@
         </span>
         
     </div>
-    <p><p>Sends error message to the server.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends an error message to the server.
+<pre><code class="language-ballerina"> grpc:Error? result = streamingClient-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -829,7 +858,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Error status code.</p>
+                        <p><p>Error status code</p>
 </p>
                     </li>
                 </ul>
@@ -842,7 +871,7 @@
                         
                     </li>
                     <li>
-                        <p><p>Error message.</p>
+                        <p><p>Error message</p>
 </p>
                     </li>
                 </ul>
@@ -856,7 +885,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../grpc/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns an error if encounters an error while sending the response, returns nil otherwise.</p>
+                <li><p>A <code>grpc:Error</code> if an error occurs while sending the response or else <code>()</code></p>
 </li>
             </ul>
         </div>

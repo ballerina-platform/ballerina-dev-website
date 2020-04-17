@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -651,7 +659,7 @@
                 
                 <span class="clients">UdpClient</span>
             </h1>
-            <p><p>Represents UDP socket client and related remote functions.</p>
+            <p>Initializes the UDP client based on the provided configurations.
 </p>
 
             <div class="constants">
@@ -666,7 +674,7 @@
             <ul>
                 <li> <b>localAddress</b><span class="type">  <a href="../../socket/records/Address.html">Address</a>?</span> ()</li>
                 <li>
-                    <p>Locally binding interface and port</p>
+                    <p>Local binding of the interface and port</p>
 
                 </li>
             </ul>
@@ -676,7 +684,7 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>?</span> ()</li>
                 <li>
-                    <p>Configure additional details like read timeout etc.</p>
+                    <p>The configurations for the UDP client</p>
 
                 </li>
             </ul>
@@ -693,23 +701,29 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="sendTo"><a
                                             class="functions" href="#sendTo">sendTo</a></td>
-                                    <td class="module-desc"><p>Send given data to the specified remote client.</p>
+                                    <td class="module-desc">Sends the given data to the specified remote client.
+<pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="receiveFrom"><a
                                             class="functions" href="#receiveFrom">receiveFrom</a></td>
-                                    <td class="module-desc"><p>Reads data from the remote client. If the data has the specified length, then wait until that number of bytes
-are received from the client. Else, return the data available in the OS buffer or wait until data receive.
-If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
+                                    <td class="module-desc">Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.
+<pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="close"><a
                                             class="functions" href="#close">close</a></td>
-                                    <td class="module-desc"><p>Closes the client socket connection.</p>
+                                    <td class="module-desc">Closes the client socket connection.
+<pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
+</code></pre>
 </td>
                                 </tr>
                             
@@ -725,36 +739,51 @@ If the request length is lesser than the data in the buffer, then the rest will 
         
     <div class="params-listing">
         <ul>
-            <li> localPort<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >localPort</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>the local port number to which this socket is bound</p>
-</p>
+                <p>
+                    
+                    <p>The local port number to which this socket is bound</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> interface<span class="type">  <span class="builtin-type">string?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >interface</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>network interface to bind to</p>
-</p>
+                <p>
+                    
+                    <p>The network interface to bind</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> id<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >id</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>a unique identifier to identify each client</p>
-</p>
+                <p>
+                    
+                    <p>A unique identifier to identify each client</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -816,7 +845,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#sendTo">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> sendTo </h2>
+            <h2 > sendTo </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content, <a href="../../socket/records/Address.html">Address</a> address)</p>
@@ -824,9 +853,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Send given data to the specified remote client.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends the given data to the specified remote client.
+<pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -837,7 +871,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>the content that wish to send to the client socket</p>
+                        <p><p>The content to be sent to the client socket</p>
 </p>
                     </li>
                 </ul>
@@ -850,7 +884,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>the address of the remote client socket</p>
+                        <p><p>The address of the remote client socket</p>
 </p>
                     </li>
                 </ul>
@@ -864,7 +898,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../socket/types.html#Error">Error</a></span>)</li>
-                <li><p>number of bytes got written or an error if encounters an error while writing</p>
+                <li><p>The number of bytes got written or else a <code>socket:Error</code> if the given data can't be sent</p>
 </li>
             </ul>
         </div>
@@ -877,7 +911,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#receiveFrom">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> receiveFrom </h2>
+            <h2 > receiveFrom </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> length)</p>
@@ -885,11 +919,16 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Reads data from the remote client. If the data has the specified length, then wait until that number of bytes
-are received from the client. Else, return the data available in the OS buffer or wait until data receive.
-If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.
+<pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -900,7 +939,7 @@ If the request length is lesser than the data in the buffer, then the rest will 
                         <span class="default"> (default -100)</span>
                     </li>
                     <li>
-                        <p><p>Positive integer. Represents the number of bytes which should be read</p>
+                        <p><p>Represents the number of bytes, which should be read</p>
 </p>
                     </li>
                 </ul>
@@ -914,8 +953,8 @@ If the request length is lesser than the data in the buffer, then the rest will 
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="array-type"><span class="builtin-type">byte</span>[]</span>, <span class="builtin-type">int</span>, <a href="../../socket/records/Address.html">Address</a><span>]</span> | <a href="../../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a></span>)</li>
-                <li><p>Content as a byte array, the number of bytes read and the address of the sender
-or an error if encounters an error while reading</p>
+                <li><p>The content as a byte array, the number of bytes read, the address of the sender,
+or else a <code>socket:Error</code> if the data can't be read from the client</p>
 </li>
             </ul>
         </div>
@@ -928,7 +967,7 @@ or an error if encounters an error while reading</p>
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -936,18 +975,21 @@ or an error if encounters an error while reading</p>
         </span>
         
     </div>
-    <p><p>Closes the client socket connection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes the client socket connection.
+<pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../socket/types.html#Error">Error</a>?</span>)</li>
-                <li><ul>
-<li>an error if encounters an error while closing the connection or returns nil otherwise</li>
-</ul>
+                <li><p>A <code>socket:Error</code> if it can't close the connection or else <code>()</code></p>
 </li>
             </ul>
         </div>

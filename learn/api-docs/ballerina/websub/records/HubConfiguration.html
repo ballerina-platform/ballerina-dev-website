@@ -59,6 +59,18 @@
                 <ul>
                     
                         <li >
+                            <a href="T41.html">T41</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T42.html">T42</a>
+                        </li>
+                    
+                        <li >
+                            <a href="T43.html">T43</a>
+                        </li>
+                    
+                        <li >
                             <a href="Detail.html">Detail</a>
                         </li>
                     
@@ -108,7 +120,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -302,6 +314,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -400,6 +416,18 @@
                     <ul>
                         
                             <li >
+                                <a href="T41.html">T41</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T42.html">T42</a>
+                            </li>
+                        
+                            <li >
+                                <a href="T43.html">T43</a>
+                            </li>
+                        
+                            <li >
                                 <a href="Detail.html">Detail</a>
                             </li>
                         
@@ -449,7 +477,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -643,6 +671,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -745,10 +777,13 @@
                 
                     <a href="../../websub/index.html">websub</a>
                 
-                 : <span class="records">HubConfiguration</span>
+                 : <span class="records ">HubConfiguration</span>
             </h1>
-            <p>Record representing hub specific configurations.
-</p>
+            <p>
+                
+                Record representing hub specific configurations.
+
+            </p>
             <div class="constants">
                 
                     
@@ -757,73 +792,103 @@
         
     <div class="params-listing">
         <ul>
-            <li> leaseSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 86400)</span>
+            <li> 
+                <span >leaseSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 86400)</span> 
             </li>
             <li>
-                <p><p>The default lease seconds value to honour if not specified in subscription requests</p>
-</p>
+                <p>
+                    
+                    <p>The default lease seconds value to honour if not specified in subscription requests</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> signatureMethod<span class="type">  <a href="../../websub/types.html#SignatureMethod">SignatureMethod</a></span>
-                <span class="default"> (default SHA256)</span>
+            <li> 
+                <span >signatureMethod</span>
+                <span class="type">  <a href="../../websub/types.html#SignatureMethod">SignatureMethod</a></span>
+                 <span class="default">(default SHA256)</span> 
             </li>
             <li>
-                <p><p>The signature method to use for authenticated content delivery (<code>SHA1</code>|<code>SHA256</code>)</p>
-</p>
+                <p>
+                    
+                    <p>The signature method to use for authenticated content delivery (<code>SHA1</code>|<code>SHA256</code>)</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> remotePublish<span class="type">  <a href="../../websub/records/RemotePublishConfig.html">RemotePublishConfig</a></span>
+            <li> 
+                <span >remotePublish</span>
+                <span class="type">  <a href="../../websub/records/RemotePublishConfig.html">RemotePublishConfig</a></span>
                 
             </li>
             <li>
-                <p><p>The record representing configuration related to remote publishing allowance</p>
-</p>
+                <p>
+                    
+                    <p>The record representing configuration related to remote publishing allowance</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> topicRegistrationRequired<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >topicRegistrationRequired</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Whether a topic needs to be registered at the hub prior to publishing/subscribing
+                <p>
+                    
+                    <p>Whether a topic needs to be registered at the hub prior to publishing/subscribing
 to the topic</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientConfig<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+            <li> 
+                <span >clientConfig</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>The configuration for the hub to communicate with remote HTTP endpoints</p>
-</p>
+                <p>
+                    
+                    <p>The configuration for the hub to communicate with remote HTTP endpoints</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> hubPersistenceStore<span class="type">  <a href="../../websub/objects/HubPersistenceStore.html">HubPersistenceStore</a></span>
+            <li> 
+                <span >hubPersistenceStore</span>
+                <span class="type">  <a href="../../websub/objects/HubPersistenceStore.html">HubPersistenceStore</a></span>
                 
             </li>
             <li>
-                <p><p>The <code>HubPersistenceStore</code> to use to persist hub data</p>
-</p>
+                <p>
+                    
+                    <p>The <code>HubPersistenceStore</code> to use to persist hub data</p>
+
+                </p>
             </li>
         </ul>
     </div>

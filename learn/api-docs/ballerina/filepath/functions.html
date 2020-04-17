@@ -120,7 +120,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -298,6 +298,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -457,7 +461,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -635,6 +639,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -743,132 +751,230 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#absolute">absolute</a></td>
-                                <td width="70%"><p>Retrieves the absolute path from the provided location.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#absolute">absolute</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the absolute path from the provided location.
+<pre><code class="language-ballerina">  string|filepath:Error absolutePath = filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#build">build</a></td>
-                                <td width="70%"><p>Joins any number of path elements into a single path</p>
-</td>
+                                <td width="30%"><a class="functions " href="#build">build</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Joins any number of path elements into a single path.
+<pre><code class="language-ballerina">  string|filepath:Error path = filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#extension">extension</a></td>
-                                <td width="70%"><p>Retrieves the extension of the file path.
-The extension is the suffix beginning at the final dot in the final element of path.
-it is empty if there is no dot.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#extension">extension</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the extension of the file path.
+The extension is the suffix beginning at the final dot in the final element of the path.
+It is empty if there is no dot.
+<pre><code class="language-ballerina">  string|filepath:Error extension = filepath:extension(&quot;path.bal&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#filename">filename</a></td>
-                                <td width="70%"><p>Retrieves the base name of the file from the provided location.
-The last element of path.
-Trailing path separators are removed before extracting the last element.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#filename">filename</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the base name of the file from the provided location,
+which is the last element of the path.
+Trailing path separators are removed before extracting the last element.
+<pre><code class="language-ballerina">  string|filepath:Error name = filepath:filename(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getPathListSeparator">getPathListSeparator</a></td>
-                                <td width="70%"><p>Returns path list separator of underline operating system.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getPathListSeparator">getPathListSeparator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the path variable's separating character for paths of the underlying operating system.
+<pre><code class="language-ballerina">  string pathListSeparator = filepath:getPathListSeparator();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getPathSeparator">getPathSeparator</a></td>
-                                <td width="70%"><p>Returns path separator of underline operating system.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getPathSeparator">getPathSeparator</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the path separator of the underlying operating system.
+<pre><code class="language-ballerina">  string pathSeparator = filepath:getPathSeparator();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#isAbsolute">isAbsolute</a></td>
-                                <td width="70%"><p>Reports whether the path is absolute.
+                                <td width="30%"><a class="functions " href="#isAbsolute">isAbsolute</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reports whether the path is absolute.
 A path is absolute if it is independent of the current directory.
 On Unix, a path is absolute if it starts with the root.
-On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows is absolute</p>
-</td>
+On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error isAbsolute = filepath:isAbsolute(&quot;/A/B/C&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#isReservedName">isReservedName</a></td>
-                                <td width="70%"><p>Reports whether the filename is reserved.
-Reserved words only exist in windows.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#isReservedName">isReservedName</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reports whether the filename is reserved.
+Reserved words only exist in Windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error path = filepath:isReservedName(&quot;abc.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#matches">matches</a></td>
-                                <td width="70%"><p>Reports whether all of filename matches the provided pattern, not just a substring.
-An error is returned if the pattern is malformed.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#matches">matches</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+An error is returned if the pattern is malformed.
+<pre><code class="language-ballerina">  boolean|filepath:Error matches = filepath:matches(&quot;a/b/c.java&quot;, &quot;glob:*.{java,class}&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#normalize">normalize</a></td>
-                                <td width="70%"><p>Returns the shortest path name equivalent to path by purely lexical processing.
-Replace multiple Separator elements with a single one.
-Eliminate each . path name element (the current directory).
-Eliminate each inner .. path name element (the parent directory)</p>
-</td>
+                                <td width="30%"><a class="functions " href="#normalize">normalize</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the shortest path name equivalent to the given path.
+Replace the multiple separator elements with a single one.
+Eliminate each &quot;.&quot; path name element (the current directory).
+Eliminate each inner &quot;..&quot; path name element (the parent directory).
+<pre><code class="language-ballerina">  string|filepath:Error normalizedPath = filepath:normalize(&quot;foo/../bar&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#parent">parent</a></td>
-                                <td width="70%"><p>Returns the enclosing parent directory.
+                                <td width="30%"><a class="functions " href="#parent">parent</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the enclosing parent directory.
 If the path is empty, parent returns &quot;.&quot;.
-The returned path does not end in a separator unless it is the root directory.</p>
-</td>
+The returned path does not end in a separator unless it is the root directory.
+<pre><code class="language-ballerina">  string|filepath:Error parentPath = filepath:parent(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#relative">relative</a></td>
-                                <td width="70%"><p>Returns a relative path that is logically equivalent to target path when joined to base path with an intervening
-separator.
-An error is returned if target path can't be made relative to base path.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#relative">relative</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
+intervening separator.
+An error is returned if the target path cannot be made relative to the base path.
+<pre><code class="language-ballerina">  string|filepath:Error relativePath = filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#resolve">resolve</a></td>
-                                <td width="70%"><p>Returns the filepath after the evaluation of any symbolic links.
-If path is relative, the result will be relative to the current directory,
+                                <td width="30%"><a class="functions " href="#resolve">resolve</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the filepath after the evaluation of any symbolic links.
+If the path is relative, the result will be relative to the current directory
 unless one of the components is an absolute symbolic link.
-Resolve calls normalize on the result.</p>
-</td>
+Resolves normalising the calls on the result.
+<pre><code class="language-ballerina">  string|filepath:Error resolvedPath = filepath:resolve(&quot;a/b/c&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#split">split</a></td>
-                                <td width="70%"><p>Splits a list of paths joined by the OS-specific Path Separator.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#split">split</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Splits a list of paths joined by the OS-specific path separator.
+<pre><code class="language-ballerina">  string[]|filepath:Error parts = filepath:split(&quot;/A/B/C&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -882,7 +988,7 @@ Resolve calls normalize on the result.</p>
              <a class="url-link" href="#absolute">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> absolute </h2>
+            <h2 > absolute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -890,9 +996,14 @@ Resolve calls normalize on the result.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the absolute path from the provided location.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the absolute path from the provided location.
+<pre><code class="language-ballerina">  string|filepath:Error absolutePath = filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -903,7 +1014,7 @@ Resolve calls normalize on the result.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path free from potential malicious codes</p>
 </p>
                     </li>
                 </ul>
@@ -917,7 +1028,7 @@ Resolve calls normalize on the result.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>The absolute path reference or an error if the path cannot be derived</p>
+                <li><p>The absolute path reference or else a <code>filepath:Error</code> if the path cannot be derived</p>
 </li>
             </ul>
         </div>
@@ -930,7 +1041,7 @@ Resolve calls normalize on the result.</p>
              <a class="url-link" href="#build">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> build </h2>
+            <h2 > build </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> parts)</p>
@@ -938,9 +1049,14 @@ Resolve calls normalize on the result.</p>
         </span>
         
     </div>
-    <p><p>Joins any number of path elements into a single path</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Joins any number of path elements into a single path.
+<pre><code class="language-ballerina">  string|filepath:Error path = filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -951,7 +1067,7 @@ Resolve calls normalize on the result.</p>
                         
                     </li>
                     <li>
-                        <p><p>String values of file path parts.</p>
+                        <p><p>String values of the file path parts</p>
 </p>
                     </li>
                 </ul>
@@ -965,7 +1081,7 @@ Resolve calls normalize on the result.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>String value of file path.</p>
+                <li><p>String value of the file path or else a <code>filepath:Error</code> if the parts are invalid</p>
 </li>
             </ul>
         </div>
@@ -978,7 +1094,7 @@ Resolve calls normalize on the result.</p>
              <a class="url-link" href="#extension">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> extension </h2>
+            <h2 > extension </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -986,11 +1102,16 @@ Resolve calls normalize on the result.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the extension of the file path.
-The extension is the suffix beginning at the final dot in the final element of path.
-it is empty if there is no dot.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the extension of the file path.
+The extension is the suffix beginning at the final dot in the final element of the path.
+It is empty if there is no dot.
+<pre><code class="language-ballerina">  string|filepath:Error extension = filepath:extension(&quot;path.bal&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1001,7 +1122,7 @@ it is empty if there is no dot.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1015,7 +1136,8 @@ it is empty if there is no dot.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns the extension of the file. Empty string if no extension.</p>
+                <li><p>The extension of the file, an empty string if there is no extension,
+or else a <code>filepath:Error</code> if the path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1028,7 +1150,7 @@ it is empty if there is no dot.</p>
              <a class="url-link" href="#filename">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> filename </h2>
+            <h2 > filename </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1036,11 +1158,16 @@ it is empty if there is no dot.</p>
         </span>
         
     </div>
-    <p><p>Retrieves the base name of the file from the provided location.
-The last element of path.
-Trailing path separators are removed before extracting the last element.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the base name of the file from the provided location,
+which is the last element of the path.
+Trailing path separators are removed before extracting the last element.
+<pre><code class="language-ballerina">  string|filepath:Error name = filepath:filename(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1051,7 +1178,7 @@ Trailing path separators are removed before extracting the last element.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of file path</p>
 </p>
                     </li>
                 </ul>
@@ -1065,7 +1192,7 @@ Trailing path separators are removed before extracting the last element.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns the name of the file</p>
+                <li><p>The name of the file or else a <code>filepath:Error</code> if the path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1078,7 +1205,7 @@ Trailing path separators are removed before extracting the last element.</p>
              <a class="url-link" href="#getPathListSeparator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getPathListSeparator </h2>
+            <h2 > getPathListSeparator </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1086,16 +1213,21 @@ Trailing path separators are removed before extracting the last element.</p>
         </span>
         
     </div>
-    <p><p>Returns path list separator of underline operating system.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the path variable's separating character for paths of the underlying operating system.
+<pre><code class="language-ballerina">  string pathListSeparator = filepath:getPathListSeparator();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>String value of path list separator</p>
+                <li><p>String value of the path list separator</p>
 </li>
             </ul>
         </div>
@@ -1108,7 +1240,7 @@ Trailing path separators are removed before extracting the last element.</p>
              <a class="url-link" href="#getPathSeparator">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getPathSeparator </h2>
+            <h2 > getPathSeparator </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -1116,16 +1248,21 @@ Trailing path separators are removed before extracting the last element.</p>
         </span>
         
     </div>
-    <p><p>Returns path separator of underline operating system.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the path separator of the underlying operating system.
+<pre><code class="language-ballerina">  string pathSeparator = filepath:getPathSeparator();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>String value of path separator</p>
+                <li><p>String value of the path separator</p>
 </li>
             </ul>
         </div>
@@ -1138,7 +1275,7 @@ Trailing path separators are removed before extracting the last element.</p>
              <a class="url-link" href="#isAbsolute">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> isAbsolute </h2>
+            <h2 > isAbsolute </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1146,12 +1283,17 @@ Trailing path separators are removed before extracting the last element.</p>
         </span>
         
     </div>
-    <p><p>Reports whether the path is absolute.
+    <div class="function-desc">
+        
+        Reports whether the path is absolute.
 A path is absolute if it is independent of the current directory.
 On Unix, a path is absolute if it starts with the root.
-On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows is absolute</p>
-</p>
-     
+On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error isAbsolute = filepath:isAbsolute(&quot;/A/B/C&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1162,7 +1304,7 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1176,7 +1318,8 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>True if path is absolute, else false</p>
+                <li><p><code>true</code> if path is absolute, <code>false</code> otherwise, or else an <code>filepath:Error</code>
+occurred if the path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1189,7 +1332,7 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
              <a class="url-link" href="#isReservedName">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> isReservedName </h2>
+            <h2 > isReservedName </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name)</p>
@@ -1197,10 +1340,15 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
         </span>
         
     </div>
-    <p><p>Reports whether the filename is reserved.
-Reserved words only exist in windows.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reports whether the filename is reserved.
+Reserved words only exist in Windows.
+<pre><code class="language-ballerina">  boolean|filepath:Error path = filepath:isReservedName(&quot;abc.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1211,7 +1359,7 @@ Reserved words only exist in windows.</p>
                         
                     </li>
                     <li>
-                        <p><p>filename</p>
+                        <p><p>Filename</p>
 </p>
                     </li>
                 </ul>
@@ -1225,7 +1373,7 @@ Reserved words only exist in windows.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>true, if path is Windows reserved name.</p>
+                <li><p>True if the path is a Windows reserved name or else false otherwise</p>
 </li>
             </ul>
         </div>
@@ -1238,7 +1386,7 @@ Reserved words only exist in windows.</p>
              <a class="url-link" href="#matches">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> matches </h2>
+            <h2 > matches </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">string</span> pattern)</p>
@@ -1246,10 +1394,15 @@ Reserved words only exist in windows.</p>
         </span>
         
     </div>
-    <p><p>Reports whether all of filename matches the provided pattern, not just a substring.
-An error is returned if the pattern is malformed.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
+An error is returned if the pattern is malformed.
+<pre><code class="language-ballerina">  boolean|filepath:Error matches = filepath:matches(&quot;a/b/c.java&quot;, &quot;glob:*.{java,class}&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1260,7 +1413,7 @@ An error is returned if the pattern is malformed.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of the file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1273,7 +1426,7 @@ An error is returned if the pattern is malformed.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of the target file path.</p>
+                        <p><p>String value of the target file path</p>
 </p>
                     </li>
                 </ul>
@@ -1287,7 +1440,8 @@ An error is returned if the pattern is malformed.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>True if filename of the path matches with the pattern, else false</p>
+                <li><p><code>true</code> if the filename of the path matches with the pattern, <code>false</code> otherwise,
+or else an <code>filepath:Error</code> if the path or pattern is invalid</p>
 </li>
             </ul>
         </div>
@@ -1300,7 +1454,7 @@ An error is returned if the pattern is malformed.</p>
              <a class="url-link" href="#normalize">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> normalize </h2>
+            <h2 > normalize </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1308,12 +1462,17 @@ An error is returned if the pattern is malformed.</p>
         </span>
         
     </div>
-    <p><p>Returns the shortest path name equivalent to path by purely lexical processing.
-Replace multiple Separator elements with a single one.
-Eliminate each . path name element (the current directory).
-Eliminate each inner .. path name element (the parent directory)</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the shortest path name equivalent to the given path.
+Replace the multiple separator elements with a single one.
+Eliminate each &quot;.&quot; path name element (the current directory).
+Eliminate each inner &quot;..&quot; path name element (the parent directory).
+<pre><code class="language-ballerina">  string|filepath:Error normalizedPath = filepath:normalize(&quot;foo/../bar&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1324,7 +1483,7 @@ Eliminate each inner .. path name element (the parent directory)</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1338,7 +1497,7 @@ Eliminate each inner .. path name element (the parent directory)</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Normalized file path</p>
+                <li><p>Normalized file path or else a <code>filepath:Error</code> if the path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1351,7 +1510,7 @@ Eliminate each inner .. path name element (the parent directory)</p>
              <a class="url-link" href="#parent">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> parent </h2>
+            <h2 > parent </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1359,11 +1518,16 @@ Eliminate each inner .. path name element (the parent directory)</p>
         </span>
         
     </div>
-    <p><p>Returns the enclosing parent directory.
+    <div class="function-desc">
+        
+        Returns the enclosing parent directory.
 If the path is empty, parent returns &quot;.&quot;.
-The returned path does not end in a separator unless it is the root directory.</p>
-</p>
-     
+The returned path does not end in a separator unless it is the root directory.
+<pre><code class="language-ballerina">  string|filepath:Error parentPath = filepath:parent(&quot;/A/B/C.txt&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1374,7 +1538,7 @@ The returned path does not end in a separator unless it is the root directory.</
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file/directory path</p>
 </p>
                     </li>
                 </ul>
@@ -1388,7 +1552,8 @@ The returned path does not end in a separator unless it is the root directory.</
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Path of parent folder or error occurred while getting parent directory</p>
+                <li><p>Path of the parent directory or else a <code>filepath:Error</code>
+if an error occurred while getting the parent directory</p>
 </li>
             </ul>
         </div>
@@ -1401,7 +1566,7 @@ The returned path does not end in a separator unless it is the root directory.</
              <a class="url-link" href="#relative">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> relative </h2>
+            <h2 > relative </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> base, <span class="builtin-type">string</span> target)</p>
@@ -1409,11 +1574,16 @@ The returned path does not end in a separator unless it is the root directory.</
         </span>
         
     </div>
-    <p><p>Returns a relative path that is logically equivalent to target path when joined to base path with an intervening
-separator.
-An error is returned if target path can't be made relative to base path.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
+intervening separator.
+An error is returned if the target path cannot be made relative to the base path.
+<pre><code class="language-ballerina">  string|filepath:Error relativePath = filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1424,7 +1594,7 @@ An error is returned if target path can't be made relative to base path.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of the base file path.</p>
+                        <p><p>String value of the base file path</p>
 </p>
                     </li>
                 </ul>
@@ -1437,7 +1607,7 @@ An error is returned if target path can't be made relative to base path.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of the target file path.</p>
+                        <p><p>String value of the target file path</p>
 </p>
                     </li>
                 </ul>
@@ -1451,7 +1621,8 @@ An error is returned if target path can't be made relative to base path.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Returns the extension of the file. Empty string if no extension.</p>
+                <li><p>The extension of the file, empty string otherwise, or else an
+<code>filepath:Error</code> occurred if at least one path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1464,7 +1635,7 @@ An error is returned if target path can't be made relative to base path.</p>
              <a class="url-link" href="#resolve">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> resolve </h2>
+            <h2 > resolve </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1472,12 +1643,17 @@ An error is returned if target path can't be made relative to base path.</p>
         </span>
         
     </div>
-    <p><p>Returns the filepath after the evaluation of any symbolic links.
-If path is relative, the result will be relative to the current directory,
+    <div class="function-desc">
+        
+        Returns the filepath after the evaluation of any symbolic links.
+If the path is relative, the result will be relative to the current directory
 unless one of the components is an absolute symbolic link.
-Resolve calls normalize on the result.</p>
-</p>
-     
+Resolves normalising the calls on the result.
+<pre><code class="language-ballerina">  string|filepath:Error resolvedPath = filepath:resolve(&quot;a/b/c&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1488,7 +1664,7 @@ Resolve calls normalize on the result.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>Security-validated string value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1502,7 +1678,7 @@ Resolve calls normalize on the result.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>Resolved file path</p>
+                <li><p>Resolved file path or else a <code>filepath:Error</code> if the path is invalid</p>
 </li>
             </ul>
         </div>
@@ -1515,7 +1691,7 @@ Resolve calls normalize on the result.</p>
              <a class="url-link" href="#split">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> split </h2>
+            <h2 > split </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> path)</p>
@@ -1523,9 +1699,14 @@ Resolve calls normalize on the result.</p>
         </span>
         
     </div>
-    <p><p>Splits a list of paths joined by the OS-specific Path Separator.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Splits a list of paths joined by the OS-specific path separator.
+<pre><code class="language-ballerina">  string[]|filepath:Error parts = filepath:split(&quot;/A/B/C&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1536,7 +1717,7 @@ Resolve calls normalize on the result.</p>
                         
                     </li>
                     <li>
-                        <p><p>String value of file path.</p>
+                        <p><p>String value of the file path</p>
 </p>
                     </li>
                 </ul>
@@ -1550,7 +1731,7 @@ Resolve calls normalize on the result.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../filepath/types.html#Error">Error</a></span>)</li>
-                <li><p>String array of part components</p>
+                <li><p>String array of the part components or else a <code>filepath:Error</code> if the path is invalid</p>
 </li>
             </ul>
         </div>

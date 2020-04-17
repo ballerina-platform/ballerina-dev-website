@@ -92,7 +92,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +282,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -413,7 +417,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +607,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,10 +713,13 @@
                 
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                 
-                 : <span class="records">RabbitMQServiceConfig</span>
+                 : <span class="records ">RabbitMQServiceConfig</span>
             </h1>
-            <p>Represents the list of parameters required to create a subscription.
-</p>
+            <p>
+                
+                Configurations required to create a subscription.
+
+            </p>
             <div class="constants">
                 
                     
@@ -717,49 +728,69 @@
         
     <div class="params-listing">
         <ul>
-            <li> queueConfig<span class="type">  <a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a></span>
+            <li> 
+                <span >queueConfig</span>
+                <span class="type">  <a href="../../rabbitmq/records/QueueConfiguration.html">QueueConfiguration</a></span>
                 
             </li>
             <li>
-                <p><p>Specifies configuration details about the queue to be subscribed to.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations of the queue to be subscribed</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> ackMode<span class="type">  <a href="../../rabbitmq/types.html#AcknowledgementMode">AcknowledgementMode</a></span>
-                <span class="default"> (default AUTO_ACK)</span>
+            <li> 
+                <span >ackMode</span>
+                <span class="type">  <a href="../../rabbitmq/types.html#AcknowledgementMode">AcknowledgementMode</a></span>
+                 <span class="default">(default AUTO_ACK)</span> 
             </li>
             <li>
-                <p><p>Type of acknowledgement mode.</p>
-</p>
+                <p>
+                    
+                    <p>Type of the acknowledgement mode</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> prefetchCount<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >prefetchCount</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum number of messages that the server will deliver, 0 if unlimited.
+                <p>
+                    
+                    <p>Maximum number of messages that the server will deliver and 0 if unlimited.
 Unless explicitly given, this value is 10 by default.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> prefetchSize<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >prefetchSize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum amount of content (measured in octets) that the server will deliver, 0 if unlimited.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum amount of content (measured in octets) that the server will deliver and 0 if unlimited</p>
+
+                </p>
             </li>
         </ul>
     </div>

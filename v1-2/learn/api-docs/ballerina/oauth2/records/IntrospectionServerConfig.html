@@ -100,7 +100,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -278,6 +278,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -417,7 +421,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -595,6 +599,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -697,10 +705,13 @@
                 
                     <a href="../../oauth2/index.html">oauth2</a>
                 
-                 : <span class="records">IntrospectionServerConfig</span>
+                 : <span class="records ">IntrospectionServerConfig</span>
             </h1>
-            <p>Represents introspection server onfigurations.
-</p>
+            <p>
+                
+                Represents introspection server onfigurations.
+
+            </p>
             <div class="constants">
                 
                     
@@ -709,60 +720,85 @@
         
     <div class="params-listing">
         <ul>
-            <li> url<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >url</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>URL of the introspection server</p>
-</p>
+                <p>
+                    
+                    <p>URL of the introspection server</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> tokenTypeHint<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >tokenTypeHint</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A hint about the type of the token submitted for introspection</p>
-</p>
+                <p>
+                    
+                    <p>A hint about the type of the token submitted for introspection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> oauth2Cache<span class="type">  <a href="../../cache/objects/Cache.html">Cache</a></span>
+            <li> 
+                <span >oauth2Cache</span>
+                <span class="type">  <a href="../../cache/objects/Cache.html">Cache</a></span>
                 
             </li>
             <li>
-                <p><p>Cache used to store the OAuth2 token and other related information</p>
-</p>
+                <p>
+                    
+                    <p>Cache used to store the OAuth2 token and other related information</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> defaultTokenExpTimeInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 3600)</span>
+            <li> 
+                <span >defaultTokenExpTimeInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 3600)</span> 
             </li>
             <li>
-                <p><p>Expiration time of the tokens if introspection response does not contain an <code>exp</code> field</p>
-</p>
+                <p>
+                    
+                    <p>Expiration time of the tokens if introspection response does not contain an <code>exp</code> field</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> clientConfig<span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >clientConfig</span>
+                <span class="type">  <a href="../../http/records/ClientConfiguration.html">ClientConfiguration</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>HTTP client configurations which calls the introspection server</p>
-</p>
+                <p>
+                    
+                    <p>HTTP client configurations which calls the introspection server</p>
+
+                </p>
             </li>
         </ul>
     </div>

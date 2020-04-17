@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">HttpResourceConfig</span>
+                 : <span class="records ">HttpResourceConfig</span>
             </h1>
-            <p>Configuration for an HTTP resource.
-</p>
+            <p>
+                
+                Configuration for an HTTP resource.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,108 +1064,153 @@
         
     <div class="params-listing">
         <ul>
-            <li> methods<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >methods</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The array of allowed HTTP methods</p>
-</p>
+                <p>
+                    
+                    <p>The array of allowed HTTP methods</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> path<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >path</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The path of resource</p>
-</p>
+                <p>
+                    
+                    <p>The path of resource</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> body<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >body</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Inbound request entity body name which declared in signature</p>
-</p>
+                <p>
+                    
+                    <p>Inbound request entity body name which declared in signature</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> consumes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >consumes</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The media types which are accepted by resource</p>
-</p>
+                <p>
+                    
+                    <p>The media types which are accepted by resource</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> produces<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >produces</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The media types which are produced by resource</p>
-</p>
+                <p>
+                    
+                    <p>The media types which are produced by resource</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> cors<span class="type">  <a href="../../http/records/CorsConfig.html">CorsConfig</a></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >cors</span>
+                <span class="type">  <a href="../../http/records/CorsConfig.html">CorsConfig</a></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>The cross origin resource sharing configurations for the resource. If not set, the resource will inherit the CORS behaviour of the enclosing service.</p>
-</p>
+                <p>
+                    
+                    <p>The cross origin resource sharing configurations for the resource. If not set, the resource will inherit the CORS behaviour of the enclosing service.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> transactionInfectable<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >transactionInfectable</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Allow to participate in the distributed transactions if value is true</p>
-</p>
+                <p>
+                    
+                    <p>Allow to participate in the distributed transactions if value is true</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> webSocketUpgrade<span class="type">  <a href="../../http/records/WebSocketUpgradeConfig.html">WebSocketUpgradeConfig</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >webSocketUpgrade</span>
+                <span class="type">  <a href="../../http/records/WebSocketUpgradeConfig.html">WebSocketUpgradeConfig</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Annotation to define HTTP to WebSocket upgrade</p>
-</p>
+                <p>
+                    
+                    <p>Annotation to define HTTP to WebSocket upgrade</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> auth<span class="type">  <a href="../../http/records/ResourceAuth.html">ResourceAuth</a></span>
+            <li> 
+                <span >auth</span>
+                <span class="type">  <a href="../../http/records/ResourceAuth.html">ResourceAuth</a></span>
                 
             </li>
             <li>
-                <p><p>Authentication Configs to secure the resource</p>
-</p>
+                <p>
+                    
+                    <p>Authentication Configs to secure the resource</p>
+
+                </p>
             </li>
         </ul>
     </div>

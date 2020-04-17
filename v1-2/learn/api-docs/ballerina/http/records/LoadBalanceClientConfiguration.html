@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,11 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">LoadBalanceClientConfiguration</span>
+                 : <span class="records ">LoadBalanceClientConfiguration</span>
             </h1>
-            <p>The configurations related to the load balance client endpoint.
-
+            <p>
+                
+                The configurations related to the load balance client endpoint.
 httpVersion - Copied from CommonClientConfiguration
 http1Settings - Copied from CommonClientConfiguration
 http2Settings - Copied from CommonClientConfiguration
@@ -1057,7 +1066,9 @@ compression - Copied from CommonClientConfiguration
 auth - Copied from CommonClientConfiguration
 circuitBreaker - Copied from CommonClientConfiguration
 retryConfig - Copied from CommonClientConfiguration
-cookieConfig - Copied from CommonClientConfiguration</p>
+cookieConfig - Copied from CommonClientConfiguration
+
+            </p>
             <div class="constants">
                 
                     
@@ -1066,36 +1077,51 @@ cookieConfig - Copied from CommonClientConfiguration</p>
         
     <div class="params-listing">
         <ul>
-            <li> targets<span class="type">  <span class="array-type"><a href="../../http/records/TargetService.html">TargetService</a>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >targets</span>
+                <span class="type">  <span class="array-type"><a href="../../http/records/TargetService.html">TargetService</a>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The upstream HTTP endpoints among which the incoming HTTP traffic load should be distributed</p>
-</p>
+                <p>
+                    
+                    <p>The upstream HTTP endpoints among which the incoming HTTP traffic load should be distributed</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> lbRule<span class="type">  <a href="../../http/objects/LoadBalancerRule.html">LoadBalancerRule</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >lbRule</span>
+                <span class="type">  <a href="../../http/objects/LoadBalancerRule.html">LoadBalancerRule</a>?</span>
+                 <span class="default">(default</span> <span class="type"><a href="../../http/objects/().html">()</a></span><span class="default">)</span> 
             </li>
             <li>
-                <p><p>LoadBalancing rule</p>
-</p>
+                <p>
+                    
+                    <p>LoadBalancing rule</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> failover<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default true)</span>
+            <li> 
+                <span >failover</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
             </li>
             <li>
-                <p><p>Configuration for load balancer whether to fail over in case of a failure</p>
-</p>
+                <p>
+                    
+                    <p>Configuration for load balancer whether to fail over in case of a failure</p>
+
+                </p>
             </li>
         </ul>
     </div>

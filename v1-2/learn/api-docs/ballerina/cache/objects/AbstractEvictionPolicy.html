@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,12 +666,14 @@
                 
                     <a href="../../cache/index.html">cache</a>
                  :
-                <span class="objects">AbstractEvictionPolicy</span>
+                <span class="objects ">AbstractEvictionPolicy</span>
             </h1>
-            <p><p>Represents the Ballerina <code>AbstractEvictionPolicy</code> object and cache eviction related operations
-based on a linked list data structure.
-Any custom cache implementation should be object-wise similar.</p>
-</p>
+            <p>
+                
+                The <code>cache:AbstractEvictionPolicy</code> Ballerina  object is used for custom implementations of the eviction policy for a
+Ballerina cache object. Any custom eviction policy implementation should be object-wise similar.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -675,70 +685,82 @@ Any custom cache implementation should be object-wise similar.</p>
                         <div class="method-list">
                             
                                 
-<a href="#get">
-    <div class="param-sum">
-        <div class="param-name">
-        get 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the get operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="get">
+        <a href="#get">get </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the get operation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#put">
-    <div class="param-sum">
-        <div class="param-name">
-        put 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the put operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="put">
+        <a href="#put">put </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the put operation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#remove">
-    <div class="param-sum">
-        <div class="param-name">
-        remove 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the remove operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="remove">
+        <a href="#remove">remove </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the remove operation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#replace">
-    <div class="param-sum">
-        <div class="param-name">
-        replace 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the replace operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="replace">
+        <a href="#replace">replace </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the replace operation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#clear">
-    <div class="param-sum">
-        <div class="param-name">
-        clear 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the clear operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="clear">
+        <a href="#clear">clear </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the clear operation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#evict">
-    <div class="param-sum">
-        <div class="param-name">
-        evict 
-        </div>
-        <div class="param-details"> <p>Update the linked list based on the evict operation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="evict">
+        <a href="#evict">evict </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Updates the linked list based on the evict operation.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -753,12 +775,15 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#get">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> get </h2>
+            <h2 > get </h2>
         
     </div>
-    <p><p>Update the linked list based on the get operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the get operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -769,7 +794,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -799,12 +824,15 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#put">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> put </h2>
+            <h2 > put </h2>
         
     </div>
-    <p><p>Update the linked list based on the put operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the put operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -815,7 +843,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -845,12 +873,15 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#remove">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> remove </h2>
+            <h2 > remove </h2>
         
     </div>
-    <p><p>Update the linked list based on the remove operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the remove operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -861,7 +892,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -891,12 +922,15 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#replace">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> replace </h2>
+            <h2 > replace </h2>
         
     </div>
-    <p><p>Update the linked list based on the replace operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the replace operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -907,7 +941,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -920,7 +954,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Node of the linked list, which is used for replacing</p>
+                        <p><p>Node of the linked list, which will be replacing the <code>oldNode</code></p>
 </p>
                     </li>
                 </ul>
@@ -933,7 +967,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Node of the linked list, which will be replaced</p>
+                        <p><p>Node of the linked list, which will be replaced by the <code>newNode</code></p>
 </p>
                     </li>
                 </ul>
@@ -950,12 +984,15 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#clear">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> clear </h2>
+            <h2 > clear </h2>
         
     </div>
-    <p><p>Update the linked list based on the clear operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the clear operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -966,7 +1003,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -983,7 +1020,7 @@ Any custom cache implementation should be object-wise similar.</p>
              <a class="url-link" href="#evict">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> evict </h2>
+            <h2 > evict </h2>
         
         <span class="method-types">
             <p>(<a href="../../cache/records/LinkedList.html">LinkedList</a> list)</p>
@@ -991,9 +1028,12 @@ Any custom cache implementation should be object-wise similar.</p>
         </span>
         
     </div>
-    <p><p>Update the linked list based on the evict operation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Updates the linked list based on the evict operation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1004,7 +1044,7 @@ Any custom cache implementation should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Linked list data structure</p>
+                        <p><p>Linked list data structure, which is used to govern the eviction policy</p>
 </p>
                     </li>
                 </ul>
@@ -1018,7 +1058,7 @@ Any custom cache implementation should be object-wise similar.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../cache/records/Node.html">Node</a>?</span>)</li>
-                <li><p>The Node, which should evict from the linked list or <code>()</code> if nothing to be evicted</p>
+                <li><p>The Node, which is evicted from the linked list or <code>()</code> if nothing to be evicted</p>
 </li>
             </ul>
         </div>

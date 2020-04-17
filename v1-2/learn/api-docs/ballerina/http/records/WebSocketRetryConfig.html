@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">WebSocketRetryConfig</span>
+                 : <span class="records ">WebSocketRetryConfig</span>
             </h1>
-            <p>Retry configurations for WebSocket.
-</p>
+            <p>
+                
+                Retry configurations for WebSocket.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,49 +1064,69 @@
         
     <div class="params-listing">
         <ul>
-            <li> maxCount<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >maxCount</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The maximum number of retry attempts. If the count is zero, the client will retry indefinitely</p>
-</p>
+                <p>
+                    
+                    <p>The maximum number of retry attempts. If the count is zero, the client will retry indefinitely</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> intervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 1000)</span>
+            <li> 
+                <span >intervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 1000)</span> 
             </li>
             <li>
-                <p><p>The number of milliseconds to delay before attempting to reconnect</p>
-</p>
+                <p>
+                    
+                    <p>The number of milliseconds to delay before attempting to reconnect</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> backOffFactor<span class="type">  <span class="builtin-type">float</span></span>
-                <span class="default"> (default 1.0)</span>
+            <li> 
+                <span >backOffFactor</span>
+                <span class="type">  <span class="builtin-type">float</span></span>
+                 <span class="default">(default 1.0)</span> 
             </li>
             <li>
-                <p><p>The rate of increase of the reconnect delay. Allows reconnect attempts to back off when problems
+                <p>
+                    
+                    <p>The rate of increase of the reconnect delay. Allows reconnect attempts to back off when problems
 persist</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxWaitIntervalInMillis<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 30000)</span>
+            <li> 
+                <span >maxWaitIntervalInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 30000)</span> 
             </li>
             <li>
-                <p><p>Maximum time of the retry interval in milliseconds</p>
-</p>
+                <p>
+                    
+                    <p>Maximum time of the retry interval in milliseconds</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">WritableTextRecordChannel</span>
+                <span class="objects ">WritableTextRecordChannel</span>
             </h1>
-            <p><p>Represents a channel, which will allow to write records through a given WritableCharacterChannel.</p>
-</p>
+            <p>
+                
+                Represents a channel, which will allow to write records through a given WritableCharacterChannel.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -739,7 +750,7 @@
             <ul>
                 <li> <b>characterChannel</b><span class="type">  <a href="../../io/objects/WritableCharacterChannel.html">WritableCharacterChannel</a></span> </li>
                 <li>
-                    <p>WritableCharacterChannel, which will point to the input/output resource</p>
+                    <p>The <code>WritableCharacterChannel</code>, which will point to the input/output resource</p>
 
                 </li>
             </ul>
@@ -769,9 +780,10 @@
             <ul>
                 <li> <b>fmt</b><span class="type">  <span class="builtin-type">string</span></span> default</li>
                 <li>
-                    <p>The format, which will be used to represent the CSV (this could be &quot;DEFAULT&quot; (the format specified by the CSVChannel),
-&quot;CSV&quot; (Field separator would be &quot;,&quot; and record separator would be a new line),
-or TDF (Field separator will be a tab and record separator will be a new line).</p>
+                    <p>The format, which will be used to represent the CSV (this could be
+&quot;DEFAULT&quot; (the format specified by the CSVChannel),
+&quot;CSV&quot; (Field separator would be &quot;,&quot; and record separator would be a new line) or else
+&quot;TDF&quot; (Field separator will be a tab and record separator will be a new line).</p>
 
                 </li>
             </ul>
@@ -787,26 +799,34 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
                         <div class="method-list">
                             
                                 
-<a href="#write">
-    <div class="param-sum">
-        <div class="param-name">
-        write 
-        </div>
-        <div class="param-details"> <p>Writes records to a given output resource.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="write">
+        <a href="#write">write </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Writes records to a given output resource.
+<pre><code class="language-ballerina"> io:Error? err = writableChannel.write(records);
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given record channel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given record channel.
+<pre><code class="language-ballerina"> io:Error? err = writableChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -821,7 +841,7 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
              <a class="url-link" href="#write">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> write </h2>
+            <h2 > write </h2>
         
         <span class="method-types">
             <p>(<span class="array-type"><span class="builtin-type">string</span>[]</span> textRecord)</p>
@@ -829,9 +849,14 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
         </span>
         
     </div>
-    <p><p>Writes records to a given output resource.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Writes records to a given output resource.
+<pre><code class="language-ballerina"> io:Error? err = writableChannel.write(records);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -856,7 +881,7 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>An <code>Error</code> if the records could not be written properly</p>
+                <li><p>An <code>io:Error</code> if the records could not be written properly or else <code>()</code></p>
 </li>
             </ul>
         </div>
@@ -869,7 +894,7 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -877,16 +902,21 @@ or TDF (Field separator will be a tab and record separator will be a new line).<
         </span>
         
     </div>
-    <p><p>Closes a given record channel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given record channel.
+<pre><code class="language-ballerina"> io:Error? err = writableChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>An <code>Error</code> if the record channel could not be closed properly</p>
+                <li><p>An <code>io:Error</code> if the record channel could not be closed properly or else <code>()</code></p>
 </li>
             </ul>
         </div>

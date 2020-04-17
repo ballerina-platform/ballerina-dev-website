@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -266,6 +266,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -571,6 +575,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -675,7 +683,7 @@
                 
                 <span class="clients">StreamingMessage</span>
             </h1>
-            <p><p>Represents the message a NATS Streaming Server sends to a subscription service.</p>
+            <p>Represents the message a NATS Streaming Server sends to its subscribed services.
 </p>
 
             <div class="constants">
@@ -689,7 +697,7 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="ack"><a
                                             class="functions" href="#ack">ack</a></td>
-                                    <td class="module-desc"><p>Acknowledge the NATS Streaming server upon the receipt of the message.</p>
+                                    <td class="module-desc">Acknowledges the NATS streaming server upon the receipt of the message.
 </td>
                                 </tr>
                             
@@ -701,26 +709,30 @@
                         <div class="method-list">
                             
                                 
-<a href="#getData">
-    <div class="param-sum">
-        <div class="param-name">
-        getData 
-        </div>
-        <div class="param-details"> <p>Get the message content.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getData">
+        <a href="#getData">getData </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the message content.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getSubject">
-    <div class="param-sum">
-        <div class="param-name">
-        getSubject 
-        </div>
-        <div class="param-details"> <p>Get the subject.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getSubject">
+        <a href="#getSubject">getSubject </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the subject that the message was sent to.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -735,7 +747,7 @@
              <a class="url-link" href="#ack">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> ack </h2>
+            <h2 > ack </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -743,16 +755,19 @@
         </span>
         
     </div>
-    <p><p>Acknowledge the NATS Streaming server upon the receipt of the message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Acknowledges the NATS streaming server upon the receipt of the message.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../nats/errors.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns () if the acknowledgment completes successfully or an error.</p>
+                <li><p><code>()</code> or else a <code>nats:Error</code> upon failure to acknowledge the server</p>
 </li>
             </ul>
         </div>
@@ -769,7 +784,7 @@
              <a class="url-link" href="#getData">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getData </h2>
+            <h2 > getData </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -777,16 +792,19 @@
         </span>
         
     </div>
-    <p><p>Get the message content.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the message content.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span></span>)</li>
-                <li><p>The data from the message as a 'byte[]'.</p>
+                <li><p>The data from the message as a 'byte[]'</p>
 </li>
             </ul>
         </div>
@@ -799,7 +817,7 @@
              <a class="url-link" href="#getSubject">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getSubject </h2>
+            <h2 > getSubject </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -807,16 +825,19 @@
         </span>
         
     </div>
-    <p><p>Get the subject.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the subject that the message was sent to.
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>The subject that this message was sent to.</p>
+                <li><p>The subject, to which the message was sent</p>
 </li>
             </ul>
         </div>

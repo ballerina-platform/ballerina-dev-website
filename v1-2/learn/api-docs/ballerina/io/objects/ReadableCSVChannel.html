@@ -108,7 +108,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -290,6 +290,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -437,7 +441,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -619,6 +623,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -722,10 +730,13 @@
                 
                     <a href="../../io/index.html">io</a>
                  :
-                <span class="objects">ReadableCSVChannel</span>
+                <span class="objects ">ReadableCSVChannel</span>
             </h1>
-            <p><p>Represents a ReadableCSVChannel which could be used to read records from CSV file.</p>
-</p>
+            <p>
+                
+                Represents a ReadableCSVChannel which could be used to read records from CSV file.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -775,48 +786,64 @@
                         <div class="method-list">
                             
                                 
-<a href="#hasNext">
-    <div class="param-sum">
-        <div class="param-name">
-        hasNext 
-        </div>
-        <div class="param-details"> <p>Indicates whether there's another record which could be read.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="hasNext">
+        <a href="#hasNext">hasNext </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Indicates whether there's another record, which could be read.
+<pre><code class="language-ballerina"> boolean hasNext = readableCSVChannel.hasNext();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getNext">
-    <div class="param-sum">
-        <div class="param-name">
-        getNext 
-        </div>
-        <div class="param-details"> <p>Gets the next record from the CSV file.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getNext">
+        <a href="#getNext">getNext </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the next record from the CSV file.
+<pre><code class="language-ballerina"> string[]|io:Error record = readableCSVChannel.getNext();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#close">
-    <div class="param-sum">
-        <div class="param-name">
-        close 
-        </div>
-        <div class="param-details"> <p>Closes a given CSVChannel.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Closes a given <code>CSVChannel</code>.
+<pre><code class="language-ballerina"> io:Error? err = readableCSVChannel.close();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#getTable">
-    <div class="param-sum">
-        <div class="param-name">
-        getTable 
-        </div>
-        <div class="param-details"> <p>Returns a table which corresponds to the CSV records.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getTable">
+        <a href="#getTable">getTable </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Returns a table, which corresponds to the CSV records.
+<pre><code class="language-ballerina"> var tblResult = readableCSVChannel.getTable(Employee);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -831,7 +858,7 @@
              <a class="url-link" href="#hasNext">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> hasNext </h2>
+            <h2 > hasNext </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -839,9 +866,14 @@
         </span>
         
     </div>
-    <p><p>Indicates whether there's another record which could be read.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Indicates whether there's another record, which could be read.
+<pre><code class="language-ballerina"> boolean hasNext = readableCSVChannel.hasNext();
+</code></pre>
+
+    </div>
+    
 
     
         
@@ -861,7 +893,7 @@
              <a class="url-link" href="#getNext">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getNext </h2>
+            <h2 > getNext </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -869,16 +901,21 @@
         </span>
         
     </div>
-    <p><p>Gets the next record from the CSV file.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the next record from the CSV file.
+<pre><code class="language-ballerina"> string[]|io:Error record = readableCSVChannel.getNext();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">string</span>[]</span> | <a href="../../io/types.html#Error">Error</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>List of fields in the CSV or <code>Error</code> if any error occurred</p>
+                <li><p>List of fields in the CSV or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>
@@ -891,7 +928,7 @@
              <a class="url-link" href="#close">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> close </h2>
+            <h2 > close </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -899,16 +936,21 @@
         </span>
         
     </div>
-    <p><p>Closes a given CSVChannel.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Closes a given <code>CSVChannel</code>.
+<pre><code class="language-ballerina"> io:Error? err = readableCSVChannel.close();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../io/types.html#Error">Error</a>?</span>)</li>
-                <li><p>Returns <code>Error</code> if any error occurred</p>
+                <li><p><code>io:Error</code> if any error occurred</p>
 </li>
             </ul>
         </div>
@@ -921,7 +963,7 @@
              <a class="url-link" href="#getTable">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getTable </h2>
+            <h2 > getTable </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">typedesc</span> structType)</p>
@@ -929,9 +971,14 @@
         </span>
         
     </div>
-    <p><p>Returns a table which corresponds to the CSV records.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns a table, which corresponds to the CSV records.
+<pre><code class="language-ballerina"> var tblResult = readableCSVChannel.getTable(Employee);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -942,7 +989,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The object the CSV records should be deserialized</p>
+                        <p><p>The object in which the CSV records should be deserialized</p>
 </p>
                     </li>
                 </ul>
@@ -956,7 +1003,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">table</span> | <a href="../../io/types.html#Error">Error</a></span>)</li>
-                <li><p>Table which represents CSV records or <code>Error</code> if any error occurred</p>
+                <li><p>Table, which represents the CSV records or else an <code>io:Error</code></p>
 </li>
             </ul>
         </div>

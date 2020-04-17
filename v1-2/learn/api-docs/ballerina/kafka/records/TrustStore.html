@@ -112,7 +112,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -294,6 +294,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -445,7 +449,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -627,6 +631,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -729,10 +737,13 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records">TrustStore</span>
+                 : <span class="records ">TrustStore</span>
             </h1>
-            <p>Record for providing trust-store related configurations.
-</p>
+            <p>
+                
+                Configurations related to the TrustStore.
+
+            </p>
             <div class="constants">
                 
                     
@@ -741,50 +752,70 @@
         
     <div class="params-listing">
         <ul>
-            <li> trustStoreType<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >trustStoreType</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The file format of the trust store file.</p>
-</p>
+                <p>
+                    
+                    <p>The file format of the TrustStore file</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> location<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >location</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The location of the trust store file.</p>
-</p>
+                <p>
+                    
+                    <p>The location of the TrustStore file</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> password<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >password</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The password for the trust store file. If a password is not set access to the trust-store is still
-available, but integrity checking is disabled.</p>
-</p>
+                <p>
+                    
+                    <p>The password for the TrustStore file. If a password is not set, access to the TrustStore is still
+available but integrity checking is disabled</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> trustManagerAlgorithm<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >trustManagerAlgorithm</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The algorithm used by trust manager factory for SSL connections. Default value is the trust
-manager factory algorithm configured for the Java Virtual Machine.</p>
-</p>
+                <p>
+                    
+                    <p>The algorithm used by the trust manager factory for SSL connections. The default value is
+the trust manager factory algorithm configured for the JVM</p>
+
+                </p>
             </li>
         </ul>
     </div>

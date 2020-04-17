@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -219,6 +219,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -316,7 +320,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -478,6 +482,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -583,48 +591,7 @@
                     
                 </h1>
                     <h2>Module overview</h2>
-<p>This module provides utility functions to manipulate built-in <code>string</code> data type.</p>
-<h2>Samples</h2>
-<h3>Compare two strings ignoring the case</h3>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/stringutils;
-
-public function main() {
-    string str1 = &quot;Comparing String&quot;;
-    string str2 = &quot;cOmpaRinG sTrinG&quot;;
-    io:print(&quot;String '&quot; + str1 + &quot;' and '&quot; + str2 + &quot;' are&quot;);
-    if (stringutils:equalsIgnoreCase(str1, str2)) {
-        io:println(&quot; equal&quot;);
-    } else {
-        io:println(&quot; not equal&quot;);
-    }
-}
-</code></pre>
-<h3>Replace a substring in a string, using a regex</h3>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/stringutils;
- 
-public function main() {
-    string str = &quot;OriginalPPPString&quot;;
-    string regex = &quot;P+&quot;;
-    string newString = stringutils:replaceAll(str, regex, &quot; &quot;);
-    // newString will be 'Original String'
-    io:println(newString);
-}
-</code></pre>
-<h3>Split a string</h3>
-<pre><code class="language-ballerina">import ballerina/io;
-import ballerina/stringutils;
-
-public function main() {
-    string stringsArray = &quot;Sam,Ru,Supun&quot;;
-    string[] result = stringutils:split(stringsArray, &quot;,&quot;);
-    // result will be {&quot;Sam&quot;, &quot;Ru&quot;, &quot;Supun&quot;}
-    foreach var str in result {
-        io:println(str);
-    }
-}
-</code></pre>
+<p>This module provides utility functions to manipulate the built-in <code>string</code> data type.</p>
 
 
             
@@ -647,75 +614,138 @@ public function main() {
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="contains" title="contains"><a
-                                    class="functions" href="functions.html#contains">contains</a></td>
-                            <td class="module-desc"><p>Checks whether the given string contains a particular substring.</p>
-</td>
+                            <td class="module-title truncate functions" id="contains" title="contains">
+                                <a class="functions " href="functions.html#contains">contains</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Checks whether the given string contains a particular substring.
+<pre><code class="language-ballerina"> boolean contains = stringutils:contains(&quot;Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="equalsIgnoreCase" title="equalsIgnoreCase"><a
-                                    class="functions" href="functions.html#equalsIgnoreCase">equalsIgnoreCase</a></td>
-                            <td class="module-desc"><p>Checks if two strings are equal, ignoring the case of the strings.</p>
-</td>
+                            <td class="module-title truncate functions" id="equalsIgnoreCase" title="equalsIgnoreCase">
+                                <a class="functions " href="functions.html#equalsIgnoreCase">equalsIgnoreCase</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Checks if two strings are equal ignoring the case of the strings.
+<pre><code class="language-ballerina"> boolean isEqual = stringutils:equalsIgnoreCase(&quot;BaLLerinA&quot;, &quot;ballERina&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hashCode" title="hashCode"><a
-                                    class="functions" href="functions.html#hashCode">hashCode</a></td>
-                            <td class="module-desc"><p>Returns a hash code for a given string.</p>
-</td>
+                            <td class="module-title truncate functions" id="hashCode" title="hashCode">
+                                <a class="functions " href="functions.html#hashCode">hashCode</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a hash code for a given string.
+<pre><code class="language-ballerina"> int hashCode = stringutils:hashCode(&quot;Ballerina&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf"><a
-                                    class="functions" href="functions.html#lastIndexOf">lastIndexOf</a></td>
-                            <td class="module-desc"><p>Returns the last index of the provided substring within a string.</p>
-</td>
+                            <td class="module-title truncate functions" id="lastIndexOf" title="lastIndexOf">
+                                <a class="functions " href="functions.html#lastIndexOf">lastIndexOf</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns the last index of the provided substring within a string.
+<pre><code class="language-ballerina"> int lastIndex = stringutils:lastIndexOf(&quot;int values in Ballerina&quot;, &quot;in&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="matches" title="matches"><a
-                                    class="functions" href="functions.html#matches">matches</a></td>
-                            <td class="module-desc"><p>Checks whether the given string matches with the provided regex.</p>
-</td>
+                            <td class="module-title truncate functions" id="matches" title="matches">
+                                <a class="functions " href="functions.html#matches">matches</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Checks whether the given string matches the provided regex.
+<pre><code class="language-ballerina"> boolean isMatched = stringutils:matches(&quot;Ballerina is great&quot;, &quot;Ba[a-z ]+&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="replace" title="replace"><a
-                                    class="functions" href="functions.html#replace">replace</a></td>
-                            <td class="module-desc"><p>Replaces each substring of the provided string, that matches the provided substring, with the specified replacement
-string.</p>
-</td>
+                            <td class="module-title truncate functions" id="replace" title="replace">
+                                <a class="functions " href="functions.html#replace">replace</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Replaces each occurrence of the provided <code>substring</code> inside the provided
+<code>originalString</code> with the specified <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replace(&quot;Ballerina is great&quot;, &quot; &quot;, &quot;_&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="replaceAll" title="replaceAll"><a
-                                    class="functions" href="functions.html#replaceAll">replaceAll</a></td>
-                            <td class="module-desc"><p>Replaces each substring which matches the given regular expression, from the given original string value, with the
-specified replacement string.</p>
-</td>
+                            <td class="module-title truncate functions" id="replaceAll" title="replaceAll">
+                                <a class="functions " href="functions.html#replaceAll">replaceAll</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Replaces each occurrence of the substrings, which matches the provided
+regular expression from the given original string value with the
+provided replacement string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceAll(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="replaceFirst" title="replaceFirst"><a
-                                    class="functions" href="functions.html#replaceFirst">replaceFirst</a></td>
-                            <td class="module-desc"><p>Replaces the first substring that matches the given regular expression, with the specified replacement string.</p>
-</td>
+                            <td class="module-title truncate functions" id="replaceFirst" title="replaceFirst">
+                                <a class="functions " href="functions.html#replaceFirst">replaceFirst</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Replaces the first substring that matches the given regular expression with
+the provided <code>replacement</code> string.
+<pre><code class="language-ballerina"> string result = stringutils:replaceFirst(&quot;Ballerina is great&quot;, &quot;\s+&quot;, &quot;_&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="split" title="split"><a
-                                    class="functions" href="functions.html#split">split</a></td>
-                            <td class="module-desc"><p>Splits a string using the given delimiter.</p>
-</td>
+                            <td class="module-title truncate functions" id="split" title="split">
+                                <a class="functions " href="functions.html#split">split</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns an array of strings by splitting a string using the provided
+delimiter.
+<pre><code class="language-ballerina"> string[] result = stringutils:split(&quot;Ballerina is great&quot;, &quot; &quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="toBoolean" title="toBoolean"><a
-                                    class="functions" href="functions.html#toBoolean">toBoolean</a></td>
-                            <td class="module-desc"><p>Returns a boolean value of a given string.</p>
-</td>
+                            <td class="module-title truncate functions" id="toBoolean" title="toBoolean">
+                                <a class="functions " href="functions.html#toBoolean">toBoolean</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns a boolean value of a given string.
+<pre><code class="language-ballerina"> boolean result = stringutils:toBoolean(&quot;true&quot;);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>

@@ -59,6 +59,10 @@
                 <ul>
                     
                         <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
+                        <li >
                             <a href="ConnectionConfig.html">ConnectionConfig</a>
                         </li>
                     
@@ -92,7 +96,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +286,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -380,6 +388,10 @@
                     <ul>
                         
                             <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
+                            <li >
                                 <a href="ConnectionConfig.html">ConnectionConfig</a>
                             </li>
                         
@@ -413,7 +425,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +615,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,12 +721,15 @@
                 
                     <a href="../../nats/index.html">nats</a>
                 
-                 : <span class="records">PendingLimits</span>
+                 : <span class="records ">PendingLimits</span>
             </h1>
-            <p>Parameters to set limits on the maximum number of messages, or maximum size of messages this consumer will
+            <p>
+                
+                The configurations to set limits on the maximum number of messages or maximum size of messages this consumer will
 hold before it starts to drop new messages waiting for the resource functions to drain the queue.
-Setting a value to anything less than or equal to 0 will disable this check.
-</p>
+Setting a value less than or equal to 0 will disable this check.
+
+            </p>
             <div class="constants">
                 
                     
@@ -719,26 +738,36 @@ Setting a value to anything less than or equal to 0 will disable this check.
         
     <div class="params-listing">
         <ul>
-            <li> maxMessages<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxMessages</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Maximum number of pending messages retrieved and held by the consumer service,
-defaults to 65536.</p>
-</p>
+                <p>
+                    
+                    <p>Maximum number of pending messages retrieved and held by the consumer service.
+The default value is 65536</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxBytes<span class="type">  <span class="builtin-type">int</span></span>
+            <li> 
+                <span >maxBytes</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
                 
             </li>
             <li>
-                <p><p>Total size of pending messages in bytes retrieved and held by the consumer service,
-defaults to 67108864.</p>
-</p>
+                <p>
+                    
+                    <p>Total size of pending messages in bytes retrieved and held by the consumer service.
+The default value is 67108864</p>
+
+                </p>
             </li>
         </ul>
     </div>

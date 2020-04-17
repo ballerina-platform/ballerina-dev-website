@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">WSServiceConfig</span>
+                 : <span class="records ">WSServiceConfig</span>
             </h1>
-            <p>Configurations for a WebSocket service.
-</p>
+            <p>
+                
+                Configurations for a WebSocket service.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,51 +1064,71 @@
         
     <div class="params-listing">
         <ul>
-            <li> path<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >path</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Path of the WebSocket service</p>
-</p>
+                <p>
+                    
+                    <p>Path of the WebSocket service</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> subProtocols<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >subProtocols</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>Negotiable sub protocol by the service</p>
-</p>
+                <p>
+                    
+                    <p>Negotiable sub protocol by the service</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> idleTimeoutInSeconds<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >idleTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>Idle timeout for the client connection. Upon timeout, <code>onIdleTimeout</code> resource (if defined)
+                <p>
+                    
+                    <p>Idle timeout for the client connection. Upon timeout, <code>onIdleTimeout</code> resource (if defined)
 in the server service will be triggered. Note that this overrides the <code>timeoutInMillis</code> config
 in the <code>http:Listener</code>.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> maxFrameSize<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >maxFrameSize</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>The maximum payload size of a WebSocket frame in bytes.
+                <p>
+                    
+                    <p>The maximum payload size of a WebSocket frame in bytes.
 If this is not set or is negative or zero, the default frame size will be used.</p>
-</p>
+
+                </p>
             </li>
         </ul>
     </div>

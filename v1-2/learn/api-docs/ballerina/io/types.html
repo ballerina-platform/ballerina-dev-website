@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -663,9 +671,12 @@
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="Error"><b>Error</b><span class="type">  <a href="../io/errors.html#GenericError">GenericError</a> | <a href="../io/errors.html#ConnectionTimedOutError">ConnectionTimedOutError</a> | <a href="../io/errors.html#AccessDeniedError">AccessDeniedError</a> | <a href="../io/errors.html#FileNotFoundError">FileNotFoundError</a> | <a href="../io/errors.html#EofError">EofError</a></span></li>
+                                <li id="Error">
+                                    <b >Error</b>
+                                    <span class="type">  <a href="../io/errors.html#GenericError">GenericError</a> | <a href="../io/errors.html#ConnectionTimedOutError">ConnectionTimedOutError</a> | <a href="../io/errors.html#AccessDeniedError">AccessDeniedError</a> | <a href="../io/errors.html#FileNotFoundError">FileNotFoundError</a> | <a href="../io/errors.html#EofError">EofError</a></span></li>
                                 <li>
-                                    <p>Represents IO module related errors.</p>
+                                    
+                                    Represents IO module related errors.
 
                                 </li>
                             </ul>
@@ -673,13 +684,16 @@
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="Format"><b>Format</b><span class="type">  <a href="../io/constants.html#DEFAULT">DEFAULT</a> | <a href="../io/constants.html#CSV">CSV</a> | <a href="../io/constants.html#TDF">TDF</a></span></li>
+                                <li id="Format">
+                                    <b >Format</b>
+                                    <span class="type">  <a href="../io/constants.html#DEFAULT">DEFAULT</a> | <a href="../io/constants.html#CSV">CSV</a> | <a href="../io/constants.html#TDF">TDF</a></span></li>
                                 <li>
-                                    <p>The format, which will be used to represent the CSV.</p>
-<p>DEFAULT - The default value is the format specified by the CSVChannel. Precedence will be given to the field
-separator and record separator.</p>
-<p>CSV - Field separator will be &quot;,&quot; and the record separator will be a new line.</p>
-<p>TDF - Field separator will be a tab and record separator will be a new line.</p>
+                                    
+                                    The format, which will be used to represent the CSV.
+DEFAULT - The default value is the format specified by the CSVChannel. Precedence will be given to the field
+separator and record separator.
+CSV - Field separator will be &quot;,&quot; and the record separator will be a new line.
+TDF - Field separator will be a tab and record separator will be a new line.
 
                                 </li>
                             </ul>
@@ -687,12 +701,15 @@ separator and record separator.</p>
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="Separator"><b>Separator</b><span class="type">  <a href="../io/constants.html#COMMA">COMMA</a> | <a href="../io/constants.html#TAB">TAB</a> | <a href="../io/constants.html#COLON">COLON</a> | <span class="builtin-type">string</span></span></li>
+                                <li id="Separator">
+                                    <b >Separator</b>
+                                    <span class="type">  <a href="../io/constants.html#COMMA">COMMA</a> | <a href="../io/constants.html#TAB">TAB</a> | <a href="../io/constants.html#COLON">COLON</a> | <span class="builtin-type">string</span></span></li>
                                 <li>
-                                    <p>Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.</p>
-<p>COMMA - Delimited text records will be separated using a comma.</p>
-<p>TAB - Delimited text records will be separated using a tab.</p>
-<p>COLON - Delimited text records will be separated using a colon(:).</p>
+                                    
+                                    Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.
+COMMA - Delimited text records will be separated using a comma.
+TAB - Delimited text records will be separated using a tab.
+COLON - Delimited text records will be separated using a colon(:).
 
                                 </li>
                             </ul>
@@ -701,11 +718,14 @@ separator and record separator.</p>
                     
                         <div class="params-listing">
                             <ul>
-                                <li id="ByteOrder"><b>ByteOrder</b><span class="type">  BE | LE</span></li>
+                                <li id="ByteOrder">
+                                    <b >ByteOrder</b>
+                                    <span class="type">BE | LE</span></li>
                                 <li>
-                                    <p>Represents network byte order.</p>
-<p>BIG_ENDIAN - specifies the bytes to be in the order of most significant byte first</p>
-<p>LITTLE_ENDIAN - specifies the byte order to be the least significant byte first</p>
+                                    
+                                    Represents network byte order.
+BIG_ENDIAN - specifies the bytes to be in the order of most significant byte first
+LITTLE_ENDIAN - specifies the byte order to be the least significant byte first
 
                                 </li>
                             </ul>

@@ -92,7 +92,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -282,6 +282,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -413,7 +417,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -603,6 +607,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -705,10 +713,13 @@
                 
                     <a href="../../rabbitmq/index.html">rabbitmq</a>
                 
-                 : <span class="records">ConnectionConfiguration</span>
+                 : <span class="records ">ConnectionConfiguration</span>
             </h1>
-            <p>Holds the parameters used to create a RabbitMQ `Connection`.
-</p>
+            <p>
+                
+                Configurations used to create a <code>rabbitmq:Connection</code>.
+
+            </p>
             <div class="constants">
                 
                     
@@ -717,109 +728,154 @@
         
     <div class="params-listing">
         <ul>
-            <li> host<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >host</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The host used for establishing the connection.</p>
-</p>
+                <p>
+                    
+                    <p>The host used for establishing the connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> port<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 5672)</span>
+            <li> 
+                <span >port</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 5672)</span> 
             </li>
             <li>
-                <p><p>The port used for establishing the connection.</p>
-</p>
+                <p>
+                    
+                    <p>The port used for establishing the connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> username<span class="type">  <span class="builtin-type">string?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >username</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The username used for establishing the connection.</p>
-</p>
+                <p>
+                    
+                    <p>The username used for establishing the connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> password<span class="type">  <span class="builtin-type">string?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >password</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The password used for establishing the connection.</p>
-</p>
+                <p>
+                    
+                    <p>The password used for establishing the connection</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> connectionTimeoutInMillis<span class="type">  <span class="builtin-type">int?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >connectionTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Connection TCP establishment timeout in milliseconds; zero for infinite.</p>
-</p>
+                <p>
+                    
+                    <p>Connection TCP establishment timeout in milliseconds and zero for infinite</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> handshakeTimeoutMillis<span class="type">  <span class="builtin-type">int?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >handshakeTimeoutMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The AMQP 0-9-1 protocol handshake timeout in milliseconds.</p>
-</p>
+                <p>
+                    
+                    <p>The AMQP 0-9-1 protocol handshake timeout in milliseconds</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> shutdownTimeoutInMillis<span class="type">  <span class="builtin-type">int?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >shutdownTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Shutdown timeout in milliseconds; zero for infinite; default 10000. If consumers exceed
-this timeout then any remaining queued deliveries (and other Consumer callbacks) will be lost.</p>
-</p>
+                <p>
+                    
+                    <p>Shutdown timeout in milliseconds, zero for infinite, and the default value is 10000. If the consumers exceed
+this timeout, then any remaining queued deliveries (and other Consumer callbacks) will be lost</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> heartbeatInSeconds<span class="type">  <span class="builtin-type">int?</span></span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >heartbeatInSeconds</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>The initially requested heartbeat timeout in seconds; zero for none.</p>
-</p>
+                <p>
+                    
+                    <p>The initially-requested heartbeat timeout in seconds and zero for none</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> secureSocket<span class="type">  <a href="../../rabbitmq/records/SecureSocket.html">SecureSocket</a>?</span>
-                <span class="default"> (default ())</span>
+            <li> 
+                <span >secureSocket</span>
+                <span class="type">  <a href="../../rabbitmq/records/SecureSocket.html">SecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
             </li>
             <li>
-                <p><p>Configurations for facilitating secure connections.</p>
-</p>
+                <p>
+                    
+                    <p>Configurations for facilitating secure connections</p>
+
+                </p>
             </li>
         </ul>
     </div>

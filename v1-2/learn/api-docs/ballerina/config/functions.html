@@ -96,7 +96,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -393,7 +397,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -663,65 +671,121 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#contains">contains</a></td>
-                                <td width="70%"><p>Checks whether the given key is in the configuration registry.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#contains">contains</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Checks whether the given key is in the configuration registry.
+<pre><code class="language-ballerina"> boolean configAvailable = config:contains(&quot;host&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsArray">getAsArray</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as an array. If there is no mapping, an empty array will be returned.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsArray">getAsArray</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as an array.
+<pre><code class="language-ballerina"> int[]|error ports = int[].constructFrom(config:getAsArray(&quot;ports&quot;));
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsBoolean">getAsBoolean</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as a boolean.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsBoolean">getAsBoolean</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as a boolean.
+<pre><code class="language-ballerina"> boolean cachingEnabled = config:getAsBoolean(&quot;http.caching_enabled&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsFloat">getAsFloat</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as a float.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsFloat">getAsFloat</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as a float.
+<pre><code class="language-ballerina"> float evictionFactor = config:getAsFloat(&quot;http.eviction_factor&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsInt">getAsInt</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as an int.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsInt">getAsInt</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as an int.
+<pre><code class="language-ballerina"> int port = config:getAsInt(&quot;http.port&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsMap">getAsMap</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as a map. If there is no mapping, an empty map will be returned.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsMap">getAsMap</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as a map.
+<pre><code class="language-ballerina"> map&lt;anydata&gt; configValue = config:getAsMap(&quot;http.listenerConfig&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getAsString">getAsString</a></td>
-                                <td width="70%"><p>Retrieves the specified configuration value as a string.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getAsString">getAsString</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the specified configuration value as a string.
+<pre><code class="language-ballerina"> string host = config:getAsString(&quot;http.host&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#setConfig">setConfig</a></td>
-                                <td width="70%"><p>Sets the specified key/value pair as a configuration.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#setConfig">setConfig</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Sets the specified key/value pair as a configuration.
+<pre><code class="language-ballerina"> config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -735,7 +799,7 @@
              <a class="url-link" href="#contains">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> contains </h2>
+            <h2 > contains </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -743,9 +807,14 @@
         </span>
         
     </div>
-    <p><p>Checks whether the given key is in the configuration registry.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks whether the given key is in the configuration registry.
+<pre><code class="language-ballerina"> boolean configAvailable = config:contains(&quot;host&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -783,7 +852,7 @@
              <a class="url-link" href="#getAsArray">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsArray </h2>
+            <h2 > getAsArray </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -791,9 +860,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as an array. If there is no mapping, an empty array will be returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as an array.
+<pre><code class="language-ballerina"> int[]|error ports = int[].constructFrom(config:getAsArray(&quot;ports&quot;));
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -804,7 +878,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -818,7 +892,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">anydata</span>[]</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key. If there is no mapping, an empty array will be returned</p>
 </li>
             </ul>
         </div>
@@ -831,7 +905,7 @@
              <a class="url-link" href="#getAsBoolean">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsBoolean </h2>
+            <h2 > getAsBoolean </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">boolean</span> defaultValue)</p>
@@ -839,9 +913,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as a boolean.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as a boolean.
+<pre><code class="language-ballerina"> boolean cachingEnabled = config:getAsBoolean(&quot;http.caching_enabled&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -852,7 +931,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -865,7 +944,7 @@
                         <span class="default"> (default false)</span>
                     </li>
                     <li>
-                        <p><p>The default value to be use in case there is no mapping for the provided key</p>
+                        <p><p>The default value to be used in case there is no mapping for the provided key</p>
 </p>
                     </li>
                 </ul>
@@ -879,7 +958,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key</p>
 </li>
             </ul>
         </div>
@@ -892,7 +971,7 @@
              <a class="url-link" href="#getAsFloat">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsFloat </h2>
+            <h2 > getAsFloat </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">float</span> defaultVal)</p>
@@ -900,9 +979,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as a float.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as a float.
+<pre><code class="language-ballerina"> float evictionFactor = config:getAsFloat(&quot;http.eviction_factor&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -913,7 +997,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -926,7 +1010,7 @@
                         <span class="default"> (default 0.0)</span>
                     </li>
                     <li>
-                        <p><p>The default value to be use in case there is no mapping for the provided key</p>
+                        <p><p>The default value to be used in case there is no mapping for the provided key</p>
 </p>
                     </li>
                 </ul>
@@ -940,7 +1024,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">float</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key</p>
 </li>
             </ul>
         </div>
@@ -953,7 +1037,7 @@
              <a class="url-link" href="#getAsInt">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsInt </h2>
+            <h2 > getAsInt </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">int</span> defaultValue)</p>
@@ -961,9 +1045,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as an int.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as an int.
+<pre><code class="language-ballerina"> int port = config:getAsInt(&quot;http.port&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -974,7 +1063,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -987,7 +1076,7 @@
                         <span class="default"> (default 0)</span>
                     </li>
                     <li>
-                        <p><p>The default value to be use in case there is no mapping for the provided key</p>
+                        <p><p>The default value to be used in case there is no mapping for the provided key</p>
 </p>
                     </li>
                 </ul>
@@ -1001,7 +1090,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key</p>
 </li>
             </ul>
         </div>
@@ -1014,7 +1103,7 @@
              <a class="url-link" href="#getAsMap">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsMap </h2>
+            <h2 > getAsMap </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key)</p>
@@ -1022,9 +1111,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as a map. If there is no mapping, an empty map will be returned.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as a map.
+<pre><code class="language-ballerina"> map&lt;anydata&gt; configValue = config:getAsMap(&quot;http.listenerConfig&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1035,7 +1129,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -1049,7 +1143,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">map</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key. If there is no mapping, an empty map will be returned</p>
 </li>
             </ul>
         </div>
@@ -1062,7 +1156,7 @@
              <a class="url-link" href="#getAsString">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getAsString </h2>
+            <h2 > getAsString </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> key, <span class="builtin-type">string</span> defaultValue)</p>
@@ -1070,9 +1164,14 @@
         </span>
         
     </div>
-    <p><p>Retrieves the specified configuration value as a string.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the specified configuration value as a string.
+<pre><code class="language-ballerina"> string host = config:getAsString(&quot;http.host&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1083,7 +1182,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The configuration to be retrieved</p>
+                        <p><p>The key of the configuration to be retrieved</p>
 </p>
                     </li>
                 </ul>
@@ -1096,7 +1195,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The default value to be use in case there is no mapping for the provided key</p>
+                        <p><p>The default value to be used in case there is no mapping for the provided key</p>
 </p>
                     </li>
                 </ul>
@@ -1110,7 +1209,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Configuration value mapped by the key</p>
+                <li><p>Configuration value mapped with the given key</p>
 </li>
             </ul>
         </div>
@@ -1123,12 +1222,17 @@
              <a class="url-link" href="#setConfig">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> setConfig </h2>
+            <h2 > setConfig </h2>
         
     </div>
-    <p><p>Sets the specified key/value pair as a configuration.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sets the specified key/value pair as a configuration.
+<pre><code class="language-ballerina"> config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

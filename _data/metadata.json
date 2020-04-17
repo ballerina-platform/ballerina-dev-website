@@ -1,18 +1,18 @@
 {
-	"version":"1.2.14",
-	"release-date":"2020-04-02",
-	"windows-installer":"ballerina-windows-installer-x64-1.2.99.msi",
-	"windows-installer-size":"13011mb",
-	"linux-installer":"ballerina-linux-installer-x64-1.2.99.deb",
-	"linux-installer-size":"12511mb",
-	"macos-installer":"ballerina-macos-installer-x64-1.2.99.pkg",
-	"macos-installer-size":"14011mb",
+	"version":"1.2.2",
+	"release-date":"2020-04-16",
+	"windows-installer":"ballerina-windows-installer-x64-1.2.2.msi",
+	"windows-installer-size":"130mb",
+	"linux-installer":"ballerina-linux-installer-x64-1.2.2.deb",
+	"linux-installer-size":"126mb",
+	"macos-installer":"ballerina-macos-installer-x64-1.2.2.pkg",
+	"macos-installer-size":"140mb",
 	"other-artefacts":[  
-		"ballerina-1.2.1.zip",
-		"ballerina-linux-installer-x64-1.2.1.rpm",
-		"ballerina-vscode-plugin-1.2.1.vsix",
+		"ballerina-1.2.2.zip",
+		"ballerina-linux-installer-x64-1.2.2.rpm",
+		"ballerina-vscode-plugin-1.2.2.vsix",
 		"ballerina-metrics-grafana-dashboard-prometheus.json"
  	],
-	"api-docs":"ballerina-api-docs-1.2.1.zip",
-	"release-notes":"ballerina-release-notes-1.2.1.md"
+	"api-docs":"ballerina-api-docs-1.2.2.zip",
+	"release-notes":"ballerina-release-notes-1.2.2.md"
 }

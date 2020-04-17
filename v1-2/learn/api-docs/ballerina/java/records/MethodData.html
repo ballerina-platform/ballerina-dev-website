@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -369,7 +373,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -641,11 +649,14 @@
                 
                     <a href="../../java/index.html">java</a>
                 
-                 : <span class="records">MethodData</span>
+                 : <span class="records ">MethodData</span>
             </h1>
-            <p>The `MethodData` type describes a Java method. If the `paramTypes` field is not specified,
-then parameter types are inferred from the corresponding Ballerina function.
-</p>
+            <p>
+                
+                Describes a Java method. If the <code>paramTypes</code> field is not specified, then the parameter types are inferred from the
+corresponding Ballerina function.
+
+            </p>
             <div class="constants">
                 
                     
@@ -654,37 +665,52 @@ then parameter types are inferred from the corresponding Ballerina function.
         
     <div class="params-listing">
         <ul>
-            <li> name<span class="type">  <span class="builtin-type">Identifier</span></span>
+            <li> 
+                <span >name</span>
+                <span class="type">  <span class="builtin-type">Identifier</span></span>
                 
             </li>
             <li>
-                <p><p>An optional field that describes name of the Java method. If this field is not provided,
-then the name is inferred from the Ballerina function name</p>
-</p>
+                <p>
+                    
+                    <p>An optional field, which describes the name of the Java method. If this field is not provided, then the name
+is inferred from the Ballerina function name</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> class<span class="type">  <span class="builtin-type">Class</span></span>
+            <li> 
+                <span >class</span>
+                <span class="type">  <span class="builtin-type">Class</span></span>
                 
             </li>
             <li>
-                <p><p>The class in which the method exists</p>
-</p>
+                <p>
+                    
+                    <p>The class in which the method exists</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> paramTypes<span class="type">  <span class="array-type"><span class="builtin-type">Class</span> | <a href="../../java/records/ArrayType.html">ArrayType</a>[]</span></span>
+            <li> 
+                <span >paramTypes</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">Class</span> | <a href="../../java/records/ArrayType.html">ArrayType</a>[]</span></span>
                 
             </li>
             <li>
-                <p><p>An optional field that describes parameter types of the method</p>
-</p>
+                <p>
+                    
+                    <p>An optional field, which describes the parameter types of the method</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">InboundAuthHandler</span>
+                <span class="objects ">InboundAuthHandler</span>
             </h1>
-            <p><p>The representation of an inbound authentication handler for HTTP traffic.</p>
-</p>
+            <p>
+                
+                The representation of an inbound authentication handler for HTTP traffic.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -865,26 +876,30 @@
                         <div class="method-list">
                             
                                 
-<a href="#canProcess">
-    <div class="param-sum">
-        <div class="param-name">
-        canProcess 
-        </div>
-        <div class="param-details"> <p>Checks if the request can be authenticated with the relevant <code>InboundAuthHandler</code> implementation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="canProcess">
+        <a href="#canProcess">canProcess </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks if the request can be authenticated with the relevant <code>InboundAuthHandler</code> implementation.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#process">
-    <div class="param-sum">
-        <div class="param-name">
-        process 
-        </div>
-        <div class="param-details"> <p>Tries to authenticate the request with the relevant <code>InboundAuthHandler</code> implementation.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="process">
+        <a href="#process">process </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Tries to authenticate the request with the relevant <code>InboundAuthHandler</code> implementation.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -899,7 +914,7 @@
              <a class="url-link" href="#canProcess">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> canProcess </h2>
+            <h2 > canProcess </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req)</p>
@@ -907,9 +922,12 @@
         </span>
         
     </div>
-    <p><p>Checks if the request can be authenticated with the relevant <code>InboundAuthHandler</code> implementation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks if the request can be authenticated with the relevant <code>InboundAuthHandler</code> implementation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -920,7 +938,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The <code>Request</code> instance</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -934,7 +952,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns <code>true</code> if can be authenticated. Else, returns <code>false</code></p>
+                <li><p><code>true</code> if it can be authenticated or else <code>false</code></p>
 </li>
             </ul>
         </div>
@@ -947,7 +965,7 @@
              <a class="url-link" href="#process">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> process </h2>
+            <h2 > process </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req)</p>
@@ -955,9 +973,12 @@
         </span>
         
     </div>
-    <p><p>Tries to authenticate the request with the relevant <code>InboundAuthHandler</code> implementation.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Tries to authenticate the request with the relevant <code>InboundAuthHandler</code> implementation.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -968,7 +989,7 @@
                         
                     </li>
                     <li>
-                        <p><p><code>Request</code> instance</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -982,7 +1003,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../http/errors.html#AuthenticationError">AuthenticationError</a></span>)</li>
-                <li><p><code>true</code> if authenticated successfully, else <code>false</code> or, <code>AuthenticationError</code> in case of errors</p>
+                <li><p><code>true</code> if it authenticated successfully, <code>false</code> otherwise, or else an <code>http:AuthenticationError</code> in case of errors</p>
 </li>
             </ul>
         </div>

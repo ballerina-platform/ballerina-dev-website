@@ -112,7 +112,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -294,6 +294,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -445,7 +449,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -627,6 +631,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -729,10 +737,13 @@
                 
                     <a href="../../kafka/index.html">kafka</a>
                 
-                 : <span class="records">Protocols</span>
+                 : <span class="records ">Protocols</span>
             </h1>
-            <p>A record for configuring SSL/TLS protocol and version to be used.
-</p>
+            <p>
+                
+                Configurations related to the SSL/TLS protocol and the versions to be used.
+
+            </p>
             <div class="constants">
                 
                     
@@ -741,38 +752,53 @@
         
     <div class="params-listing">
         <ul>
-            <li> securityProtocol<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >securityProtocol</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Protocol used to communicate with brokers.</p>
-</p>
+                <p>
+                    
+                    <p>The protocol used to communicate with brokers.</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslProtocol<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslProtocol</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The SSL protocol used to generate the SSLContext. Default setting is TLS, which is fine for most
-cases. Allowed values in recent JVMs are TLS, TLSv1.1 and TLSv1.2. SSL, SSLv2 and SSLv3 may be supported
-in older JVMs, but their usage is discouraged due to known security vulnerabilities.</p>
-</p>
+                <p>
+                    
+                    <p>The SSL protocol used to generate the SSLContext. The default setting is TLS, which is fine for most
+cases. Allowed values in recent JVMs are TLS, TLSv1.1, and TLSv1.2. Also, SSL, SSLv2 and SSLv3 may be
+supported in older JVMs but their usage is discouraged due to known security vulnerabilities</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> sslProtocolVersions<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >sslProtocolVersions</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>The list of protocols enabled for SSL connections.</p>
-</p>
+                <p>
+                    
+                    <p>The list of protocols enabled for SSL connections</p>
+
+                </p>
             </li>
         </ul>
     </div>

@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -687,25 +695,43 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
-                                <td width="70%"><p>Function to add link headers to a response to allow WebSub discovery.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#addWebSubLinkHeader">addWebSubLinkHeader</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Function to add link headers to a response to allow WebSub discovery.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
-                                <td width="70%"><p>Function to retrieve hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#extractTopicAndHubUrls">extractTopicAndHubUrls</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#startHub">startHub</a></td>
-                                <td width="70%"><p>Starts up the Ballerina Hub.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#startHub">startHub</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Starts up the Ballerina Hub.
+<pre><code class="language-ballerina">  websub:Hub|websub:HubStartedUpError|websub:HubStartupError webSubHub = websub:startHub(new http:Listener(9191),
+ &quot;/websub&quot;, &quot;/hub&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -719,12 +745,15 @@
              <a class="url-link" href="#addWebSubLinkHeader">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> addWebSubLinkHeader </h2>
+            <h2 > addWebSubLinkHeader </h2>
         
     </div>
-    <p><p>Function to add link headers to a response to allow WebSub discovery.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Function to add link headers to a response to allow WebSub discovery.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -778,7 +807,7 @@
              <a class="url-link" href="#extractTopicAndHubUrls">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> extractTopicAndHubUrls </h2>
+            <h2 > extractTopicAndHubUrls </h2>
         
         <span class="method-types">
             <p>(<a href="../http/objects/Response.html">Response</a> response)</p>
@@ -786,9 +815,12 @@
         </span>
         
     </div>
-    <p><p>Function to retrieve hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves hub and topic URLs from the <code>http:response</code> from a publisher to a discovery request.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -799,7 +831,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The <code>http:Response</code> received</p>
+                        <p><p>An <code>http:Response</code> received</p>
 </p>
                     </li>
                 </ul>
@@ -813,7 +845,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="builtin-type">string</span>, <span class="array-type"><span class="builtin-type">string</span>[]</span><span>]</span> | <span class="builtin-type">error</span></span>)</li>
-                <li><p><code>(topic, hubs)</code> if parsing and extraction is successful, <code>error</code> if not</p>
+                <li><p>A <code>(topic, hubs)</code> if parsing and extraction is successful or else an <code>error</code> if not</p>
 </li>
             </ul>
         </div>
@@ -826,7 +858,7 @@
              <a class="url-link" href="#startHub">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> startHub </h2>
+            <h2 > startHub </h2>
         
         <span class="method-types">
             <p>(<a href="../http/listeners/Listener.html">Listener</a> hubServiceListener, <span class="builtin-type">string</span> basePath, <span class="builtin-type">string</span> subscriptionResourcePath, <span class="builtin-type">string</span> publishResourcePath, <a href="../http/records/ServiceAuth.html">ServiceAuth</a> serviceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> subscriptionResourceAuth, <a href="../http/records/ResourceAuth.html">ResourceAuth</a> publisherResourceAuth, <span class="builtin-type">string?</span> publicUrl, <a href="../websub/records/HubConfiguration.html">HubConfiguration</a> hubConfiguration)</p>
@@ -834,9 +866,15 @@
         </span>
         
     </div>
-    <p><p>Starts up the Ballerina Hub.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Starts up the Ballerina Hub.
+<pre><code class="language-ballerina">  websub:Hub|websub:HubStartedUpError|websub:HubStartupError webSubHub = websub:startHub(new http:Listener(9191),
+ &quot;/websub&quot;, &quot;/hub&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -969,7 +1007,7 @@ specified, defaults to <code>http(s)://localhost:{port}/{basePath}/{publishResou
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../websub/objects/Hub.html">Hub</a> | <a href="../websub/records/HubStartedUpError.html">HubStartedUpError</a> | <a href="../websub/errors.html#HubStartupError">HubStartupError</a></span>)</li>
-                <li><p><code>Hub</code> The WebSub Hub object representing the newly started up hub, or <code>HubStartedUpError</code> indicating
+                <li><p>A newly started WebSub Hub or else a <code>websub:HubStartedUpError</code> indicating
 that the hub is already started, and including the <code>websub:Hub</code> object representing the
 already started up hub</p>
 </li>

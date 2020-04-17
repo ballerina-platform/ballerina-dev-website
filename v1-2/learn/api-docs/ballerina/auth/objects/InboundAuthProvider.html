@@ -80,7 +80,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -377,7 +381,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,11 +666,15 @@
                 
                     <a href="../../auth/index.html">auth</a>
                  :
-                <span class="objects">InboundAuthProvider</span>
+                <span class="objects ">InboundAuthProvider</span>
             </h1>
-            <p><p>Represents the inbound Auth provider. Any type of implementation such as JWT, OAuth2, LDAP, JDBC, file-based etc.
-should be object-wise similar.</p>
-</p>
+            <p>
+                
+                Represents the inbound Auth provider, which could be used to authenticate endpoints. The <code>auth:InboundAuthProvider</code> acts
+as the interface for all the inbound authentication providers. Any type of implementation such as JWT, OAuth2,
+LDAP, JDBC, file-based etc. should be object-wise similar.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -674,15 +686,18 @@ should be object-wise similar.</p>
                         <div class="method-list">
                             
                                 
-<a href="#authenticate">
-    <div class="param-sum">
-        <div class="param-name">
-        authenticate 
-        </div>
-        <div class="param-details"> <p>Authenticate with credential value passed.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="authenticate">
+        <a href="#authenticate">authenticate </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Authenticates the user based on the user credentials (i.e., the username/password) or a token such as JWT or
+OAuth2.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -697,7 +712,7 @@ should be object-wise similar.</p>
              <a class="url-link" href="#authenticate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> authenticate </h2>
+            <h2 > authenticate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> credential)</p>
@@ -705,9 +720,13 @@ should be object-wise similar.</p>
         </span>
         
     </div>
-    <p><p>Authenticate with credential value passed.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Authenticates the user based on the user credentials (i.e., the username/password) or a token such as JWT or
+OAuth2.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -718,7 +737,7 @@ should be object-wise similar.</p>
                         
                     </li>
                     <li>
-                        <p><p>Credential value</p>
+                        <p><p>The <code>string</code> credential value</p>
 </p>
                     </li>
                 </ul>
@@ -732,7 +751,7 @@ should be object-wise similar.</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p>True if authentication is a success, else false or <code>Error</code> if any error occurred</p>
+                <li><p><code>true</code> if the authentication is successful, <code>false</code> otherwise, or else an <code>auth:Error</code> in case of an error</p>
 </li>
             </ul>
         </div>

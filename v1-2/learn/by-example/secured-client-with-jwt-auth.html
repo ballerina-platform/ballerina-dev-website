@@ -21,7 +21,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-jwt-auth
         <span class="nx">keyPassword</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -33,7 +33,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-jwt-auth
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -57,7 +57,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-jwt-auth
         <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -71,7 +71,7 @@ permalink: /v1-2/learn/by-example/secured-client-with-jwt-auth
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -205,7 +205,7 @@ import ballerina/log;
         keyPassword: &quot;ballerina&quot;,
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;bre/security/ballerinaKeystore.p12&quot;,
+                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -259,7 +259,7 @@ import ballerina/log;
     secureSocket: {
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;bre/security/ballerinaTruststore.p12&quot;,
+                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -414,7 +414,7 @@ import ballerina/log;
         certificateAlias: &quot;ballerina&quot;,
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;bre/security/ballerinaTruststore.p12&quot;,
+                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }
@@ -428,7 +428,7 @@ listener http:Listener ep = new (9090, config = {
     secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;bre/security/ballerinaKeystore.p12&quot;,
+                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }

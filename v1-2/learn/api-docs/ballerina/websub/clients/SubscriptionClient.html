@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -270,6 +270,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -385,7 +389,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -579,6 +583,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -683,7 +691,7 @@
                 
                 <span class="clients">SubscriptionClient</span>
             </h1>
-            <p><p>The HTTP based client for WebSub subscription and unsubscription.</p>
+            <p>The HTTP based client for WebSub subscription and unsubscription.
 </p>
 
             <div class="constants">
@@ -698,7 +706,7 @@
             <ul>
                 <li> <b>url</b><span class="type">  <span class="builtin-type">string</span></span> </li>
                 <li>
-                    <p>The URL to change subscription at</p>
+                    <p>The URL at which the subscription should be changed</p>
 
                 </li>
             </ul>
@@ -725,14 +733,18 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="subscribe"><a
                                             class="functions" href="#subscribe">subscribe</a></td>
-                                    <td class="module-desc"><p>Sends a subscription request to a WebSub Hub.</p>
+                                    <td class="module-desc">Sends a subscription request to a WebSub Hub.
+<pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;subscribe(subscriptionRequest);
+</code></pre>
 </td>
                                 </tr>
                             
                                 <tr>
                                     <td class="module-title truncate functions" title="unsubscribe"><a
                                             class="functions" href="#unsubscribe">unsubscribe</a></td>
-                                    <td class="module-desc"><p>Sends an unsubscription request to a WebSub Hub.</p>
+                                    <td class="module-desc">Sends an unsubscription request to a WebSub Hub.
+<pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;unsubscribe(subscriptionRequest);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -751,7 +763,7 @@
              <a class="url-link" href="#subscribe">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> subscribe </h2>
+            <h2 > subscribe </h2>
         
         <span class="method-types">
             <p>(<a href="../../websub/records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a> subscriptionRequest)</p>
@@ -759,9 +771,14 @@
         </span>
         
     </div>
-    <p><p>Sends a subscription request to a WebSub Hub.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a subscription request to a WebSub Hub.
+<pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;subscribe(subscriptionRequest);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -772,7 +789,7 @@
                         
                     </li>
                     <li>
-                        <p><p>The <code>SubscriptionChangeRequest</code> containing subscription details</p>
+                        <p><p>The <code>SubscriptionChangeRequest</code> containing the subscription details</p>
 </p>
                     </li>
                 </ul>
@@ -786,8 +803,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../websub/records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p><code>SubscriptionChangeResponse</code> indicating subscription details, if the request was successful else
-<code>error</code> if an error occurred with the subscription request</p>
+                <li><p>The <code>SubscriptionChangeResponse</code> indicating subscription details if the request was successful
+or else an <code>error</code> if an error occurred with the subscription request</p>
 </li>
             </ul>
         </div>
@@ -800,7 +817,7 @@
              <a class="url-link" href="#unsubscribe">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> unsubscribe </h2>
+            <h2 > unsubscribe </h2>
         
         <span class="method-types">
             <p>(<a href="../../websub/records/SubscriptionChangeRequest.html">SubscriptionChangeRequest</a> unsubscriptionRequest)</p>
@@ -808,9 +825,14 @@
         </span>
         
     </div>
-    <p><p>Sends an unsubscription request to a WebSub Hub.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends an unsubscription request to a WebSub Hub.
+<pre><code class="language-ballerina"> websub:SubscriptionChangeResponse|error response = websubHubClientEP-&gt;unsubscribe(subscriptionRequest);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -835,8 +857,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../websub/records/SubscriptionChangeResponse.html">SubscriptionChangeResponse</a> | <span class="builtin-type">error</span></span>)</li>
-                <li><p><code>SubscriptionChangeResponse</code> indicating unsubscription details, if the request was successful else
-<code>error</code> if an error occurred with the unsubscription request</p>
+                <li><p>An unsubscription details if the request was successful or else an <code>error</code> if an error occurred
+with the unsubscription request</p>
 </li>
             </ul>
         </div>

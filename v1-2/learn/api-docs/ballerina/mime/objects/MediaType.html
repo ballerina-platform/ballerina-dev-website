@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -258,6 +258,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -373,7 +377,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -555,6 +559,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -658,10 +666,13 @@
                 
                     <a href="../../mime/index.html">mime</a>
                  :
-                <span class="objects">MediaType</span>
+                <span class="objects ">MediaType</span>
             </h1>
-            <p><p>Describes the nature of the data in the body of a MIME entity.</p>
-</p>
+            <p>
+                
+                Describes the nature of the data in the body of a MIME entity.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -673,26 +684,34 @@
                         <div class="method-list">
                             
                                 
-<a href="#getBaseType">
-    <div class="param-sum">
-        <div class="param-name">
-        getBaseType 
-        </div>
-        <div class="param-details"> <p>Gets “primaryType/subtype+suffix” combination in string format.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="getBaseType">
+        <a href="#getBaseType">getBaseType </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Gets the “primaryType/subtype+suffix” combination in a <code>string</code> format.
+<pre><code class="language-ballerina"> string baseType = mediaType.getBaseType();
+</code></pre>
+
+    </div>
+</div>
+
                             
                                 
-<a href="#toString">
-    <div class="param-sum">
-        <div class="param-name">
-        toString 
-        </div>
-        <div class="param-details"> <p>Converts the media type to a string, suitable to be used as the value of a corresponding HTTP header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="toString">
+        <a href="#toString">toString </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Converts the media type to a <code>string</code>, which is suitable to be used as the value of a corresponding HTTP header.
+<pre><code class="language-ballerina"> string mediaTypeString = mediaType.toString();
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -704,48 +723,68 @@
         
     <div class="params-listing">
         <ul>
-            <li> primaryType<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >primaryType</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Declares the general type of data</p>
-</p>
+                <p>
+                    
+                    <p>Declares the general type of data</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> subType<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >subType</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>A specific format of the primary type data</p>
-</p>
+                <p>
+                    
+                    <p>A specific format of the primary-type data</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> suffix<span class="type">  <span class="builtin-type">string</span></span>
+            <li> 
+                <span >suffix</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
                 
             </li>
             <li>
-                <p><p>Identify the semantics of a specific media type</p>
-</p>
+                <p>
+                    
+                    <p>Identifies the semantics of a specific media type</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> parameters<span class="type">  <span class="builtin-type">map</span></span>
-                <span class="default"> (default  {})</span>
+            <li> 
+                <span >parameters</span>
+                <span class="type">  <span class="builtin-type">map</span></span>
+                 <span class="default">(default  {})</span> 
             </li>
             <li>
-                <p><p>A set of parameters, specified in an attribute=value notation</p>
-</p>
+                <p>
+                    
+                    <p>A set of parameters specified in an <code>attribute=value</code> notation</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -807,7 +846,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#getBaseType">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> getBaseType </h2>
+            <h2 > getBaseType </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -815,16 +854,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Gets “primaryType/subtype+suffix” combination in string format.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gets the “primaryType/subtype+suffix” combination in a <code>string</code> format.
+<pre><code class="language-ballerina"> string baseType = mediaType.getBaseType();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Base type as a string from MediaType struct</p>
+                <li><p>Base type as a <code>string</code> from the <code>MediaType</code> struct</p>
 </li>
             </ul>
         </div>
@@ -837,7 +881,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#toString">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> toString </h2>
+            <h2 > toString </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -845,16 +889,21 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Converts the media type to a string, suitable to be used as the value of a corresponding HTTP header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Converts the media type to a <code>string</code>, which is suitable to be used as the value of a corresponding HTTP header.
+<pre><code class="language-ballerina"> string mediaTypeString = mediaType.toString();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Content type with parameters as a string</p>
+                <li><p>Content type with parameters as a <code>string</code></p>
 </li>
             </ul>
         </div>

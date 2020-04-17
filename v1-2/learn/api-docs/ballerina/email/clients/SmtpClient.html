@@ -76,7 +76,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -369,7 +373,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -651,7 +659,7 @@
                 
                 <span class="clients">SmtpClient</span>
             </h1>
-            <p><p>Represents an SMTP Client, which interacts with an SMTP Server.</p>
+            <p>Represents an SMTP Client, which interacts with an SMTP Server.
 </p>
 
             <div class="constants">
@@ -713,7 +721,9 @@
                                 <tr>
                                     <td class="module-title truncate functions" title="send"><a
                                             class="functions" href="#send">send</a></td>
-                                    <td class="module-desc"><p>Send a message.</p>
+                                    <td class="module-desc">Sends a message.
+<pre><code class="language-ballerina"> email:Error? response = smtpClient-&gt;send(email);
+</code></pre>
 </td>
                                 </tr>
                             
@@ -732,7 +742,7 @@
              <a class="url-link" href="#send">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> send </h2>
+            <h2 > send </h2>
         
         <span class="method-types">
             <p>(<a href="../../email/records/Email.html">Email</a> email)</p>
@@ -740,9 +750,14 @@
         </span>
         
     </div>
-    <p><p>Send a message.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Sends a message.
+<pre><code class="language-ballerina"> email:Error? response = smtpClient-&gt;send(email);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -753,7 +768,7 @@
                         
                     </li>
                     <li>
-                        <p><p>String message</p>
+                        <p><p>An <code>email:Email</code> message, which needs to be sent to the recipient</p>
 </p>
                     </li>
                 </ul>
@@ -767,7 +782,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../email/types.html#Error">Error</a>?</span>)</li>
-                <li><p>An <code>SendError</code> if failed to send the message to the recipient</p>
+                <li><p>An <code>email:SendError</code> if failed to send the message to the recipient or else <code>()</code></p>
 </li>
             </ul>
         </div>

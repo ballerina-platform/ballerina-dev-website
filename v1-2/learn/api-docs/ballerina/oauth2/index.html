@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -235,6 +235,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -332,7 +336,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -510,6 +514,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -614,49 +622,8 @@
                         Module : <span class="modules">oauth2</span>
                     
                 </h1>
-                    <h2>Module Overview</h2>
-<p>This module provides an inbound and outbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and authenticate with an external endpoint.</p>
-<h2>Inbound OAuth2 Provider</h2>
-<p>The <code>oauth2:InboundOAuth2Provider</code> is an implementation of the <code>auth:InboundAuthProvider</code> interface. This calls an
-introspection endpoint, validate the token, and performs authentication and authorization.</p>
-<pre><code class="language-ballerina">oauth2:IntrospectionServerConfig introspectionServerConfig = {
-    url: &quot;https://localhost:9196/oauth2/token/introspect&quot;
-};
-oauth2:InboundOAuth2Provider oauth2Provider = new(introspectionServerConfig);
-</code></pre>
-<h2>Outbound OAuth2 Provider</h2>
-<p>The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code>auth:OutboundAuthProvider</code> interface. This is used to
-call an external endpoint with authentication.</p>
-<h3>Client Credentials Grant Type</h3>
-<pre><code class="language-ballerina">oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
-    tokenUrl: &quot;https://localhost:9196/oauth2/token&quot;,
-    clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-    clientSecret: &quot;9205371918321623741&quot;,
-    scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
-});
-</code></pre>
-<h3>Password Grant Type</h3>
-<pre><code class="language-ballerina">oauth2:OutboundOAuth2Provider oauth2Provider5 = new({
-    tokenUrl: &quot;https://localhost:9196/oauth2/token/authorize/header&quot;,
-    username: &quot;johndoe&quot;,
-    password: &quot;A3ddj3w&quot;,
-    clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-    clientSecret: &quot;9205371918321623741&quot;,
-    scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
-});
-</code></pre>
-<h3>Direct Token Mode</h3>
-<pre><code class="language-ballerina">oauth2:OutboundOAuth2Provider oauth2Provider13 = new({
-    accessToken: &quot;2YotnFZFEjr1zCsicMWpAA&quot;,
-    refreshConfig: {
-        refreshUrl: &quot;https://localhost:9196/oauth2/token/refresh&quot;,
-        refreshToken: &quot;XlfBs91yquexJqDaKEMzVg==&quot;,
-        clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-        clientSecret: &quot;9205371918321623741&quot;,
-        scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
-    }
-});
-</code></pre>
+                    <p>This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.</p>
+<p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/secured-service-with-oauth2.html">Secured Service with OAuth2 Example</a> and <a href="https://ballerina.io/learn/by-example/secured-client-with-oauth2.html">Secured Client with OAuth2 Example</a>.</p>
 
 
             
@@ -672,76 +639,103 @@ call an external endpoint with authentication.</p>
                     
                         <tr>
                             <td class="module-title truncate records" id="ClientCredentialsGrantConfig" title="ClientCredentialsGrantConfig">
-                                <a class="records"
-                                   href="records/ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a></td>
-                            <td class="module-desc">The `ClientCredentialsGrantConfig` record can be used to configue OAuth2 client credentials grant type.
-</td>
+                                <a class="records " href="records/ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which is used to configure the OAuth2 client credentials grant type.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="Detail" title="Detail">
-                                <a class="records"
-                                   href="records/Detail.html">Detail</a></td>
-                            <td class="module-desc">Record type to hold the details of an error.
-</td>
+                                <a class="records " href="records/Detail.html">Detail</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Record type to hold the details of an error.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="DirectTokenConfig" title="DirectTokenConfig">
-                                <a class="records"
-                                   href="records/DirectTokenConfig.html">DirectTokenConfig</a></td>
-                            <td class="module-desc">The `DirectTokenConfig` record configures the access token directly.
-</td>
+                                <a class="records " href="records/DirectTokenConfig.html">DirectTokenConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which is used to configure the OAuth2 access token directly.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="DirectTokenRefreshConfig" title="DirectTokenRefreshConfig">
-                                <a class="records"
-                                   href="records/DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a></td>
-                            <td class="module-desc">The `DirectTokenRefreshConfig` record passes the configurations for refreshing the access token for
-the grant type of the direct token grant type.
-</td>
+                                <a class="records " href="records/DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which can be used to pass the configurations for refreshing the access token directly.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="InboundOAuth2CacheEntry" title="InboundOAuth2CacheEntry">
-                                <a class="records"
-                                   href="records/InboundOAuth2CacheEntry.html">InboundOAuth2CacheEntry</a></td>
-                            <td class="module-desc">Represents cached OAuth2 information.
-</td>
+                                <a class="records " href="records/InboundOAuth2CacheEntry.html">InboundOAuth2CacheEntry</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents cached OAuth2 information.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="IntrospectionServerConfig" title="IntrospectionServerConfig">
-                                <a class="records"
-                                   href="records/IntrospectionServerConfig.html">IntrospectionServerConfig</a></td>
-                            <td class="module-desc">Represents introspection server onfigurations.
-</td>
+                                <a class="records " href="records/IntrospectionServerConfig.html">IntrospectionServerConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents introspection server onfigurations.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="OutboundOAuth2CacheEntry" title="OutboundOAuth2CacheEntry">
-                                <a class="records"
-                                   href="records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a></td>
-                            <td class="module-desc">The `OutboundOAuth2CacheEntry` stores the values received from the authorization/token server to use them
+                                <a class="records " href="records/OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which stores the values received from the authorization/token server to use them
 for the latter requests without requesting tokens again.
-</td>
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="PasswordGrantConfig" title="PasswordGrantConfig">
-                                <a class="records"
-                                   href="records/PasswordGrantConfig.html">PasswordGrantConfig</a></td>
-                            <td class="module-desc">The `PasswordGrantConfig` record can be used to configue OAuth2 password grant type
-</td>
+                                <a class="records " href="records/PasswordGrantConfig.html">PasswordGrantConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which is used to configure the OAuth2 password grant type.
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate records" id="RefreshConfig" title="RefreshConfig">
-                                <a class="records"
-                                   href="records/RefreshConfig.html">RefreshConfig</a></td>
-                            <td class="module-desc">The `RefreshConfig` record can be used to pass the configurations for refreshing the access token of password grant type.
-</td>
+                                <a class="records " href="records/RefreshConfig.html">RefreshConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                The data structure, which can be used to pass the configurations for refreshing the access token of
+the password grant type.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -760,24 +754,69 @@ for the latter requests without requesting tokens again.
                     
                         <tr>
                             <td class="module-title truncate objects" id="InboundOAuth2Provider" title="InboundOAuth2Provider">
-                                <a class="objects"
-                                   href="objects/InboundOAuth2Provider.html">
-                                    InboundOAuth2Provider
-                                </a>
+                                <a class="objects " href="objects/InboundOAuth2Provider.html">InboundOAuth2Provider</a>
                             </td>
-                            <td class="module-desc"><p>Represents inbound OAuth2 provider, which calls the introspection server and validate the received credentials.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,
+and performs authentication and authorization. The <code>oauth2:InboundOAuth2Provider</code> is an implementation of the
+<code>auth:InboundAuthProvider</code> interface.
+<pre><code class="language-ballerina"> oauth2:IntrospectionServerConfig introspectionServerConfig = {
+     url: &quot;https://localhost:9196/oauth2/token/introspect&quot;
+ };
+ oauth2:InboundOAuth2Provider inboundOAuth2Provider = new(introspectionServerConfig);
+</code></pre>
+
+                            </td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate objects" id="OutboundOAuth2Provider" title="OutboundOAuth2Provider">
-                                <a class="objects"
-                                   href="objects/OutboundOAuth2Provider.html">
-                                    OutboundOAuth2Provider
-                                </a>
+                                <a class="objects " href="objects/OutboundOAuth2Provider.html">OutboundOAuth2Provider</a>
                             </td>
-                            <td class="module-desc"><p>Represents outbound OAuth2 provider.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the outbound OAuth2 provider, which generates OAtuh2 tokens. This supports the client credentials grant type,
+password grant type, and the direct token mode, which sends the access token directly.
+The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
+<ol>
+<li>Client Credentials Grant Type</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
+     tokenUrl: &quot;https://localhost:9196/oauth2/token&quot;,
+     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+     clientSecret: &quot;9205371918321623741&quot;,
+     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+ });
+</code></pre>
+<ol start="2">
+<li>Password Grant Type</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider5 = new({
+     tokenUrl: &quot;https://localhost:9196/oauth2/token/authorize/header&quot;,
+     username: &quot;johndoe&quot;,
+     password: &quot;A3ddj3w&quot;,
+     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+     clientSecret: &quot;9205371918321623741&quot;,
+     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+ });
+</code></pre>
+<ol start="3">
+<li>Direct Token Mode</li>
+</ol>
+<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider13 = new({
+     accessToken: &quot;2YotnFZFEjr1zCsicMWpAA&quot;,
+     refreshConfig: {
+         refreshUrl: &quot;https://localhost:9196/oauth2/token/refresh&quot;,
+         refreshToken: &quot;XlfBs91yquexJqDaKEMzVg==&quot;,
+         clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
+         clientSecret: &quot;9205371918321623741&quot;,
+         scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
+     }
+ });
+</code></pre>
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -800,10 +839,14 @@ for the latter requests without requesting tokens again.
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getScopes" title="getScopes"><a
-                                    class="functions" href="functions.html#getScopes">getScopes</a></td>
-                            <td class="module-desc"><p>Reads the scope(s) for the user with the given username.</p>
-</td>
+                            <td class="module-title truncate functions" id="getScopes" title="getScopes">
+                                <a class="functions " href="functions.html#getScopes">getScopes</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Reads the scope(s) for the user with the given username.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -822,10 +865,14 @@ for the latter requests without requesting tokens again.
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate constant" id="OAUTH2_ERROR" title="OAUTH2_ERROR"><a
-                                    class="constant" href="constants.html#OAUTH2_ERROR">OAUTH2_ERROR</a></td>
-                            <td class="module-desc"><p>Represents the OAuth2 error reason.</p>
-</td>
+                            <td class="module-title truncate constant" id="OAUTH2_ERROR" title="OAUTH2_ERROR">
+                                <a class="constant " href="constants.html#OAUTH2_ERROR">OAUTH2_ERROR</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the OAuth2 error reason.
+
+                            </td>
                         </tr>
                     
                 </table>
@@ -849,10 +896,13 @@ for the latter requests without requesting tokens again.
                     
                         <tr>
                             <td class="module-title truncate errors" id="Error" title="Error">
-                                <a class="errors" href="errors.html#Error">Error</a>
+                                <a class="errors " href="errors.html#Error">Error</a>
                             </td>
-                            <td class="module-desc"><p>Represents the OAuth2 error type with details.</p>
-</td>
+                            <td class="module-desc">
+                                
+                                Represents the OAuth2 error type with details.
+
+                            </td>
                         </tr>
                     
                 </table>

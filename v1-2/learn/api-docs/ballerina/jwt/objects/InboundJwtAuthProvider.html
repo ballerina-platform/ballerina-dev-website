@@ -72,7 +72,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -365,7 +369,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -650,10 +658,26 @@
                 
                     <a href="../../jwt/index.html">jwt</a>
                  :
-                <span class="objects">InboundJwtAuthProvider</span>
+                <span class="objects ">InboundJwtAuthProvider</span>
             </h1>
-            <p><p>Represents inbound JWT auth provider.</p>
-</p>
+            <p>
+                
+                Represents the inbound JWT auth provider, which authenticates by validating a JWT.
+The <code>jwt:InboundJwtAuthProvider</code> is another implementation of the <code>auth:InboundAuthProvider</code> interface.
+<pre><code class="language-ballerina"> jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new({
+     issuer: &quot;example&quot;,
+     audience: &quot;ballerina&quot;,
+     trustStoreConfig: {
+         certificateAlias: &quot;ballerina&quot;,
+         trustStore: {
+             path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
+             password: &quot;ballerina&quot;
+         }
+     }
+ });
+</code></pre>
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -683,15 +707,19 @@
                         <div class="method-list">
                             
                                 
-<a href="#authenticate">
-    <div class="param-sum">
-        <div class="param-name">
-        authenticate 
-        </div>
-        <div class="param-details"> <p>Authenticate with a JWT token.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="authenticate">
+        <a href="#authenticate">authenticate </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Authenticates provided JWT against <code>jwt:JwtValidatorConfig</code>.
+<pre><code class="language-ballerina"> boolean|auth:Error result = inboundJwtAuthProvider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -703,12 +731,17 @@
         
     <div class="params-listing">
         <ul>
-            <li> jwtValidatorConfig<span class="type">  <a href="../../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a></span>
+            <li> 
+                <span >jwtValidatorConfig</span>
+                <span class="type">  <a href="../../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a></span>
                 
             </li>
             <li>
-                <p><p>JWT validator configurations</p>
-</p>
+                <p>
+                    
+                    <p>JWT validator configurations</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -770,7 +803,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#authenticate">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> authenticate </h2>
+            <h2 > authenticate </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> credential)</p>
@@ -778,9 +811,14 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Authenticate with a JWT token.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Authenticates provided JWT against <code>jwt:JwtValidatorConfig</code>.
+<pre><code class="language-ballerina"> boolean|auth:Error result = inboundJwtAuthProvider.authenticate(&quot;&lt;credential&gt;&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -791,7 +829,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>Jwt token extracted from the authentication header</p>
+                        <p><p>JWT to be authenticated</p>
 </p>
                     </li>
                 </ul>
@@ -805,7 +843,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../auth/errors.html#Error">Error</a></span>)</li>
-                <li><p><code>true</code> if authentication is successful, othewise <code>false</code> or <code>auth:Error</code> occurred during JWT validation</p>
+                <li><p><code>true</code> if authentication is successful, <code>false</code> otherwise or else an <code>auth:Error</code> if JWT validation failed</p>
 </li>
             </ul>
         </div>

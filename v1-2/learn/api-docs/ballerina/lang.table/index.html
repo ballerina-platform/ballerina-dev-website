@@ -57,7 +57,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -68,6 +68,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.table/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -223,6 +227,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -320,7 +328,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -331,6 +339,10 @@
         </a>
     
     <ul>
+        
+        <li>
+            <a data="records" href="../lang.table/index.html#records">Records</a>
+        </li>
         
         
             <li>
@@ -486,6 +498,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -596,6 +612,39 @@
 
             
 
+            <section class="method-content" id="records">
+                <div class="main-method-title here">
+                    <a class="url-link" href="#records">
+                        <img class="url-link-img" src="../html-template-resources/images/link.svg">
+                    </a>
+                <h2> Records </h2>
+                </div>
+                <table>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T0" title="T0">
+                                <a class="records " href="records/T0.html">T0</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate records" id="T1" title="T1">
+                                <a class="records " href="records/T1.html">T1</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Anonymous record
+                            </td>
+                        </tr>
+                    
+                </table>
+            </section>
+            
+
             
             <section class="method-content" id="objects">
                 <div class="main-method-title here">
@@ -607,13 +656,13 @@
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate objects" id="$anonType$2" title="$anonType$2">
-                                <a class="objects"
-                                   href="objects/$anonType$2.html">
-                                    $anonType$2
-                                </a>
+                            <td class="module-title truncate objects" id="T2" title="T2">
+                                <a class="objects " href="objects/T2.html">T2</a>
                             </td>
-                            <td class="module-desc"></td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
                         </tr>
                     
                 </table>
@@ -636,47 +685,71 @@
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="add" title="add"><a
-                                    class="functions" href="functions.html#add">add</a></td>
-                            <td class="module-desc"><p>Add record to the table.</p>
-</td>
+                            <td class="module-title truncate functions" id="add" title="add">
+                                <a class="functions " href="functions.html#add">add</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Add record to the table.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="close" title="close"><a
-                                    class="functions" href="functions.html#close">close</a></td>
-                            <td class="module-desc"><p>Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
-close is required only if it is not fully iterated.</p>
-</td>
+                            <td class="module-title truncate functions" id="close" title="close">
+                                <a class="functions " href="functions.html#close">close</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Releases the database connection. If the table data is fully iterated, it will be automatically closed. This explicit
+close is required only if it is not fully iterated.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="getNext" title="getNext"><a
-                                    class="functions" href="functions.html#getNext">getNext</a></td>
-                            <td class="module-desc"><p>Retrives the current row and return a record with the data in the columns.</p>
-</td>
+                            <td class="module-title truncate functions" id="getNext" title="getNext">
+                                <a class="functions " href="functions.html#getNext">getNext</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Retrives the current row and return a record with the data in the columns.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="hasNext" title="hasNext"><a
-                                    class="functions" href="functions.html#hasNext">hasNext</a></td>
-                            <td class="module-desc"><p>Checks for a new row in the given table. If a new row is found, moves the cursor to it.</p>
-</td>
+                            <td class="module-title truncate functions" id="hasNext" title="hasNext">
+                                <a class="functions " href="functions.html#hasNext">hasNext</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Checks for a new row in the given table. If a new row is found, moves the cursor to it.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="iterator" title="iterator"><a
-                                    class="functions" href="functions.html#iterator">iterator</a></td>
-                            <td class="module-desc"><p>Returns an iterator over the members of <code>tbl</code>.
-The iterator will iterate over the rows of the table in order.</p>
-</td>
+                            <td class="module-title truncate functions" id="iterator" title="iterator">
+                                <a class="functions " href="functions.html#iterator">iterator</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Returns an iterator over the members of <code>tbl</code>.
+The iterator will iterate over the rows of the table in order.
+
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate functions" id="remove" title="remove"><a
-                                    class="functions" href="functions.html#remove">remove</a></td>
-                            <td class="module-desc"><p>Remove data from the table.</p>
-</td>
+                            <td class="module-title truncate functions" id="remove" title="remove">
+                                <a class="functions " href="functions.html#remove">remove</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Remove data from the table.
+
+                            </td>
                         </tr>
                     
                 </table>

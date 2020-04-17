@@ -88,7 +88,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -254,6 +254,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -381,7 +385,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -547,6 +551,10 @@
                 </li>
             
                 <li>
+                    <a href="../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../log/index.html">log</a>
                 </li>
             
@@ -655,48 +663,88 @@
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#externGetProperty">externGetProperty</a></td>
-                                <td width="70%"></td>
+                                <td width="30%"><a class="functions " href="#externGetProperty">externGetProperty</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getCallStack">getCallStack</a></td>
-                                <td width="70%"><p>Retrieves the Call Stack</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getCallStack">getCallStack</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Retrieves the array of <code>runtime:CallStackElement</code> instances.
+<pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getInvocationContext">getInvocationContext</a></td>
-                                <td width="70%"><p>Creates a InvocationContext instance.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getInvocationContext">getInvocationContext</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the <code>runtime:InvocationContext</code> instance.
+<pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#getProperty">getProperty</a></td>
-                                <td width="70%"><p>Returns the value associated with the specified property name.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#getProperty">getProperty</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Returns the system property value associated with the specified property name.
+<pre><code class="language-ballerina"> string userHome = runtime:getProperty(&quot;user.home&quot;);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#sleep">sleep</a></td>
-                                <td width="70%"><p>Halts the current worker for a predefined amount of time.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#sleep">sleep</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Halts the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> runtime:sleep(1000);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
                         <tbody>
                             <tr>
-                                <td width="30%" ><a class="functions" href="#timeout">timeout</a></td>
-                                <td width="70%"><p>Gives a timeout to the current worker for a predefined amount of time.</p>
-</td>
+                                <td width="30%"><a class="functions " href="#timeout">timeout</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        Gives a timeout to the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> future&lt;()&gt; f1 = runtime:timeout(2000);
+</code></pre>
+
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     
@@ -710,7 +758,7 @@
              <a class="url-link" href="#externGetProperty">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> externGetProperty </h2>
+            <h2 > externGetProperty </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">handle</span> name)</p>
@@ -718,8 +766,11 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -755,7 +806,7 @@
              <a class="url-link" href="#getCallStack">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getCallStack </h2>
+            <h2 > getCallStack </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -763,16 +814,21 @@
         </span>
         
     </div>
-    <p><p>Retrieves the Call Stack</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Retrieves the array of <code>runtime:CallStackElement</code> instances.
+<pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../runtime/records/CallStackElement.html">CallStackElement</a>[]</span></span>)</li>
-                <li><p>Array of <code>CallStackElement</code> elements</p>
+                <li><p>Array of <code>runtime:CallStackElement</code> records</p>
 </li>
             </ul>
         </div>
@@ -785,7 +841,7 @@
              <a class="url-link" href="#getInvocationContext">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getInvocationContext </h2>
+            <h2 > getInvocationContext </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -793,16 +849,21 @@
         </span>
         
     </div>
-    <p><p>Creates a InvocationContext instance.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the <code>runtime:InvocationContext</code> instance.
+<pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../runtime/records/InvocationContext.html">InvocationContext</a></span>)</li>
-                <li><p>InvocationContext instance</p>
+                <li><p>The <code>runtime:InvocationContext</code> instance</p>
 </li>
             </ul>
         </div>
@@ -815,7 +876,7 @@
              <a class="url-link" href="#getProperty">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> getProperty </h2>
+            <h2 > getProperty </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name)</p>
@@ -823,9 +884,14 @@
         </span>
         
     </div>
-    <p><p>Returns the value associated with the specified property name.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Returns the system property value associated with the specified property name.
+<pre><code class="language-ballerina"> string userHome = runtime:getProperty(&quot;user.home&quot;);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -850,7 +916,7 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
-                <li><p>Value of the property if the property exists, an empty string otherwise</p>
+                <li><p>Value of the property if the property exists or else an empty string otherwise</p>
 </li>
             </ul>
         </div>
@@ -863,12 +929,17 @@
              <a class="url-link" href="#sleep">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> sleep </h2>
+            <h2 > sleep </h2>
         
     </div>
-    <p><p>Halts the current worker for a predefined amount of time.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Halts the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> runtime:sleep(1000);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -896,7 +967,7 @@
              <a class="url-link" href="#timeout">
                 <img class="url-link-img" src="../html-template-resources/images/link.svg">
             </a>
-            <h2> timeout </h2>
+            <h2 > timeout </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">int</span> millis)</p>
@@ -904,9 +975,14 @@
         </span>
         
     </div>
-    <p><p>Gives a timeout to the current worker for a predefined amount of time.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Gives a timeout to the current worker for a predefined amount of time.
+<pre><code class="language-ballerina"> future&lt;()&gt; f1 = runtime:timeout(2000);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 

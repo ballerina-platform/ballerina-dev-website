@@ -256,7 +256,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -447,6 +447,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -745,7 +749,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -939,6 +943,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -1041,10 +1049,13 @@
                 
                     <a href="../../http/index.html">http</a>
                 
-                 : <span class="records">CircuitHealth</span>
+                 : <span class="records ">CircuitHealth</span>
             </h1>
-            <p>Maintains the health of the Circuit Breaker.
-</p>
+            <p>
+                
+                Maintains the health of the Circuit Breaker.
+
+            </p>
             <div class="constants">
                 
                     
@@ -1053,96 +1064,136 @@
         
     <div class="params-listing">
         <ul>
-            <li> lastRequestSuccess<span class="type">  <span class="builtin-type">boolean</span></span>
-                <span class="default"> (default false)</span>
+            <li> 
+                <span >lastRequestSuccess</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
             </li>
             <li>
-                <p><p>Whether last request is success or not</p>
-</p>
+                <p>
+                    
+                    <p>Whether last request is success or not</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> totalRequestCount<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >totalRequestCount</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>Total request count received within the <code>RollingWindow</code></p>
-</p>
+                <p>
+                    
+                    <p>Total request count received within the <code>RollingWindow</code></p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> lastUsedBucketId<span class="type">  <span class="builtin-type">int</span></span>
-                <span class="default"> (default 0)</span>
+            <li> 
+                <span >lastUsedBucketId</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
             </li>
             <li>
-                <p><p>ID of the last bucket used in Circuit Breaker calculations</p>
-</p>
+                <p>
+                    
+                    <p>ID of the last bucket used in Circuit Breaker calculations</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> startTime<span class="type">  <a href="../../time/records/Time.html">Time</a></span>
-                <span class="default"> (default time:currentTime())</span>
+            <li> 
+                <span >startTime</span>
+                <span class="type">  <a href="../../time/records/Time.html">Time</a></span>
+                 <span class="default">(default time:currentTime())</span> 
             </li>
             <li>
-                <p><p>Circuit Breaker start time</p>
-</p>
+                <p>
+                    
+                    <p>Circuit Breaker start time</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> lastRequestTime<span class="type">  <a href="../../time/records/Time.html">Time</a></span>
+            <li> 
+                <span >lastRequestTime</span>
+                <span class="type">  <a href="../../time/records/Time.html">Time</a></span>
                 
             </li>
             <li>
-                <p><p>The time that the last request received</p>
-</p>
+                <p>
+                    
+                    <p>The time that the last request received</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> lastErrorTime<span class="type">  <a href="../../time/records/Time.html">Time</a></span>
+            <li> 
+                <span >lastErrorTime</span>
+                <span class="type">  <a href="../../time/records/Time.html">Time</a></span>
                 
             </li>
             <li>
-                <p><p>The time that the last error occurred</p>
-</p>
+                <p>
+                    
+                    <p>The time that the last error occurred</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> lastForcedOpenTime<span class="type">  <a href="../../time/records/Time.html">Time</a></span>
+            <li> 
+                <span >lastForcedOpenTime</span>
+                <span class="type">  <a href="../../time/records/Time.html">Time</a></span>
                 
             </li>
             <li>
-                <p><p>The time that circuit forcefully opened at last</p>
-</p>
+                <p>
+                    
+                    <p>The time that circuit forcefully opened at last</p>
+
+                </p>
             </li>
         </ul>
     </div>
         
     <div class="params-listing">
         <ul>
-            <li> totalBuckets<span class="type">  <span class="array-type"><a href="../../http/records/Bucket.html">Bucket</a>?[]</span></span>
-                <span class="default"> (default [])</span>
+            <li> 
+                <span >totalBuckets</span>
+                <span class="type">  <span class="array-type"><a href="../../http/records/Bucket.html">Bucket</a>?[]</span></span>
+                 <span class="default">(default [])</span> 
             </li>
             <li>
-                <p><p>The discrete time buckets into which the time window is divided</p>
-</p>
+                <p>
+                    
+                    <p>The discrete time buckets into which the time window is divided</p>
+
+                </p>
             </li>
         </ul>
     </div>

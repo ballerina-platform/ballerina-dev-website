@@ -160,7 +160,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -351,6 +351,10 @@
             
                 <li>
                     <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../ldap/index.html">ldap</a>
                 </li>
             
                 <li>
@@ -553,7 +557,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -747,6 +751,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -850,10 +858,13 @@
                 
                     <a href="../../http/index.html">http</a>
                  :
-                <span class="objects">BasicAuthHandler</span>
+                <span class="objects ">BasicAuthHandler</span>
             </h1>
-            <p><p>Defines the Basic Auth header handler for inbound and outbound HTTP traffic.</p>
-</p>
+            <p>
+                
+                Defines the Basic Auth header handler for inbound and outbound HTTP traffic.
+
+            </p>
 
             <div class="constants">
                 <div class="method-sum">
@@ -867,7 +878,7 @@
             <ul>
                 <li> <b>authProvider</b><span class="type">  <a href="../../auth/objects/InboundAuthProvider.html">InboundAuthProvider</a> | <a href="../../auth/objects/OutboundAuthProvider.html">OutboundAuthProvider</a></span> </li>
                 <li>
-                    <p>The <code>InboundAuthProvider</code> instance or the <code>OutboundAuthProvider</code> instance</p>
+                    <p>The <code>auth:InboundAuthProvider</code> instance or the <code>auth:OutboundAuthProvider</code> instance</p>
 
                 </li>
             </ul>
@@ -883,48 +894,56 @@
                         <div class="method-list">
                             
                                 
-<a href="#canProcess">
-    <div class="param-sum">
-        <div class="param-name">
-        canProcess 
-        </div>
-        <div class="param-details"> <p>Checks if the provided request can be authenticated with the Basic Auth header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="canProcess">
+        <a href="#canProcess">canProcess </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Checks if the provided request can be authenticated with the Basic Auth header.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#process">
-    <div class="param-sum">
-        <div class="param-name">
-        process 
-        </div>
-        <div class="param-details"> <p>Authenticates the incoming request with the use of the credentials passed as the Basic Auth header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="process">
+        <a href="#process">process </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Authenticates the incoming request with the use of the credentials passed as the Basic Auth header.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#prepare">
-    <div class="param-sum">
-        <div class="param-name">
-        prepare 
-        </div>
-        <div class="param-details"> <p>Prepares the request with the Basic Auth header.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="prepare">
+        <a href="#prepare">prepare </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Prepares the request with the Basic Auth header.
+
+    </div>
+</div>
+
                             
                                 
-<a href="#inspect">
-    <div class="param-sum">
-        <div class="param-name">
-        inspect 
-        </div>
-        <div class="param-details"> <p>Inspects the request and response and calls the Auth provider for inspection.</p>
- </div>
+<div class="param-sum">
+    <div class="param-name " title="inspect">
+        <a href="#inspect">inspect </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Inspects the request and response and calls the Auth provider for inspection.
+
+    </div>
+</div>
+
                             
                         </div>
                     
@@ -936,12 +955,17 @@
         
     <div class="params-listing">
         <ul>
-            <li> authProvider<span class="type">  <a href="../../auth/objects/InboundAuthProvider.html">InboundAuthProvider</a> | <a href="../../auth/objects/OutboundAuthProvider.html">OutboundAuthProvider</a></span>
+            <li> 
+                <span >authProvider</span>
+                <span class="type">  <a href="../../auth/objects/InboundAuthProvider.html">InboundAuthProvider</a> | <a href="../../auth/objects/OutboundAuthProvider.html">OutboundAuthProvider</a></span>
                 
             </li>
             <li>
-                <p><p>The AuthProvider instance</p>
-</p>
+                <p>
+                    
+                    <p>The AuthProvider instance</p>
+
+                </p>
             </li>
         </ul>
     </div>
@@ -1003,7 +1027,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#canProcess">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> canProcess </h2>
+            <h2 > canProcess </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req)</p>
@@ -1011,9 +1035,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Checks if the provided request can be authenticated with the Basic Auth header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Checks if the provided request can be authenticated with the Basic Auth header.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1024,7 +1051,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>The request object</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -1038,7 +1065,7 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
-                <li><p>Returns <code>true</code> if authentication is successful. Else, returns <code>false</code></p>
+                <li><p><code>true</code> if authentication is successful or else <code>false</code></p>
 </li>
             </ul>
         </div>
@@ -1051,7 +1078,7 @@ contentWrapper.addEventListener("scroll", event => {
              <a class="url-link" href="#process">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> process </h2>
+            <h2 > process </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req)</p>
@@ -1059,9 +1086,12 @@ contentWrapper.addEventListener("scroll", event => {
         </span>
         
     </div>
-    <p><p>Authenticates the incoming request with the use of the credentials passed as the Basic Auth header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Authenticates the incoming request with the use of the credentials passed as the Basic Auth header.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1072,7 +1102,7 @@ contentWrapper.addEventListener("scroll", event => {
                         
                     </li>
                     <li>
-                        <p><p>The request object</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -1086,8 +1116,8 @@ contentWrapper.addEventListener("scroll", event => {
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span> | <a href="../../http/errors.html#AuthenticationError">AuthenticationError</a></span>)</li>
-                <li><p>Returns <code>true</code> if it is possible to authenticate with Basic Auth. Else, returns <code>false</code> or
-the <code>AuthenticationError</code> in case of an error</p>
+                <li><p><code>true</code> if it is possible to authenticate with Basic Auth, <code>false</code> otherwise, or else
+an <code>http:AuthenticationError</code> in case of an error</p>
 </li>
             </ul>
         </div>
@@ -1100,7 +1130,7 @@ the <code>AuthenticationError</code> in case of an error</p>
              <a class="url-link" href="#prepare">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> prepare </h2>
+            <h2 > prepare </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req)</p>
@@ -1108,9 +1138,12 @@ the <code>AuthenticationError</code> in case of an error</p>
         </span>
         
     </div>
-    <p><p>Prepares the request with the Basic Auth header.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Prepares the request with the Basic Auth header.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1121,7 +1154,7 @@ the <code>AuthenticationError</code> in case of an error</p>
                         
                     </li>
                     <li>
-                        <p><p>The<code>Request</code> instance</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -1135,7 +1168,7 @@ the <code>AuthenticationError</code> in case of an error</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Request.html">Request</a> | <a href="../../http/errors.html#AuthenticationError">AuthenticationError</a></span>)</li>
-                <li><p>Returns the updated <code>Request</code> instance or the <code>AuthenticationError</code> in case of an error</p>
+                <li><p>The updated <code>http:Request</code> instance or else an <code>http:AuthenticationError</code> in case of an error</p>
 </li>
             </ul>
         </div>
@@ -1148,7 +1181,7 @@ the <code>AuthenticationError</code> in case of an error</p>
              <a class="url-link" href="#inspect">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> inspect </h2>
+            <h2 > inspect </h2>
         
         <span class="method-types">
             <p>(<a href="../../http/objects/Request.html">Request</a> req, <a href="../../http/objects/Response.html">Response</a> resp)</p>
@@ -1156,9 +1189,12 @@ the <code>AuthenticationError</code> in case of an error</p>
         </span>
         
     </div>
-    <p><p>Inspects the request and response and calls the Auth provider for inspection.</p>
-</p>
-     
+    <div class="function-desc">
+        
+        Inspects the request and response and calls the Auth provider for inspection.
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -1169,7 +1205,7 @@ the <code>AuthenticationError</code> in case of an error</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>Request</code> instance</p>
+                        <p><p>The <code>http:Request</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -1182,7 +1218,7 @@ the <code>AuthenticationError</code> in case of an error</p>
                         
                     </li>
                     <li>
-                        <p><p>The <code>Response</code> instance</p>
+                        <p><p>The <code>http:Response</code> instance</p>
 </p>
                     </li>
                 </ul>
@@ -1196,8 +1232,8 @@ the <code>AuthenticationError</code> in case of an error</p>
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../http/objects/Request.html">Request</a> | <a href="../../http/errors.html#AuthenticationError">AuthenticationError</a> | <span class="builtin-type">()</span></span>)</li>
-                <li><p>Returns the updated <code>Request</code> instance, the <code>AuthenticationError</code> in case of an error,
-or <code>()</code> if nothing is to be returned</p>
+                <li><p>The updated <code>http:Request</code> instance or the <code>http:AuthenticationError</code> in case of an error
+or else <code>()</code> if nothing is to be returned</p>
 </li>
             </ul>
         </div>

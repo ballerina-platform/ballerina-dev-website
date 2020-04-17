@@ -68,7 +68,7 @@
             
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -250,6 +250,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -357,7 +361,7 @@
                 
 
     
-        <div class="version">v1.2.1</div>
+        <div class="version">v1.2.2</div>
     
 
 
@@ -539,6 +543,10 @@
                 </li>
             
                 <li>
+                    <a href="../../ldap/index.html">ldap</a>
+                </li>
+            
+                <li>
                     <a href="../../log/index.html">log</a>
                 </li>
             
@@ -643,7 +651,7 @@
                 
                  : <span class="listeners">Listener</span> 
             </h1>
-            <p><p>Represents service endpoint where socket server service registered and start.</p>
+            <p>Represents the socket listener on which the socket listener service is registered and started.
 </p>
 
             <div class="constants">
@@ -658,7 +666,8 @@
             <ul>
                 <li> <b>port</b><span class="type">  <span class="builtin-type">int</span></span> </li>
                 <li>
-                    
+                    <p>The port number of the remote service</p>
+
                 </li>
             </ul>
         </div>
@@ -667,7 +676,8 @@
             <ul>
                 <li> <b>config</b><span class="type">  <a href="../../socket/records/ListenerConfig.html">ListenerConfig</a>?</span> ()</li>
                 <li>
-                    
+                    <p>Configurations related to the <code>socket:Listener</code></p>
+
                 </li>
             </ul>
         </div>
@@ -681,34 +691,49 @@
                     <div class="method-list">
                         
                             
-<a href="#__gracefulStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __gracefulStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__gracefulStop">
+        <a href="#__gracefulStop">__gracefulStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>socket:Listener</code> gracefully.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__gracefulStop();
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__immediateStop">
-    <div class="param-sum">
-        <div class="param-name">
-        __immediateStop 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__immediateStop">
+        <a href="#__immediateStop">__immediateStop </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops the <code>socket:Listener</code> forcefully.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__immediateStop();
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__detach">
-    <div class="param-sum">
-        <div class="param-name">
-        __detach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__detach">
+        <a href="#__detach">__detach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Stops consuming messages and detaches the service from the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__detach(helloService);
+</code></pre>
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -718,24 +743,34 @@
                     <div class="method-list">
                         
                             
-<a href="#__start">
-    <div class="param-sum">
-        <div class="param-name">
-        __start 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__start">
+        <a href="#__start">__start </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Starts the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__start();
+</code></pre>
+
+    </div>
+</div>
+
                         
                             
-<a href="#__attach">
-    <div class="param-sum">
-        <div class="param-name">
-        __attach 
-        </div>
-        <div class="param-details">  </div>
+<div class="param-sum">
+    <div class="param-name " title="__attach">
+        <a href="#__attach">__attach </a>
     </div>
-</a>
+    <div class="param-details"> 
+            
+        Binds a service to the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__attach(helloService);
+</code></pre>
+
+    </div>
+</div>
+
                         
                     </div>
                 
@@ -751,7 +786,7 @@
              <a class="url-link" href="#__gracefulStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __gracefulStop </h2>
+            <h2 > __gracefulStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -759,15 +794,22 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>socket:Listener</code> gracefully.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__gracefulStop();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>socket:Error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -779,7 +821,7 @@
              <a class="url-link" href="#__immediateStop">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __immediateStop </h2>
+            <h2 > __immediateStop </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -787,15 +829,22 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops the <code>socket:Listener</code> forcefully.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__immediateStop();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>socket:Error</code> upon failure to stop the listener</p>
+</li>
             </ul>
         </div>
         
@@ -807,7 +856,7 @@
              <a class="url-link" href="#__detach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __detach </h2>
+            <h2 > __detach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s)</p>
@@ -815,8 +864,14 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Stops consuming messages and detaches the service from the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__detach(helloService);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -827,7 +882,8 @@
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -840,7 +896,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>socket:Error</code> upon failure to detach the service</p>
+</li>
             </ul>
         </div>
         
@@ -857,7 +914,7 @@
              <a class="url-link" href="#__start">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __start </h2>
+            <h2 > __start </h2>
         
         <span class="method-types">
             <p>()</p>
@@ -865,15 +922,22 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Starts the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__start();
+</code></pre>
+
+    </div>
+    
 
     
         
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>socket:Error</code> upon failure to start the listener</p>
+</li>
             </ul>
         </div>
         
@@ -885,7 +949,7 @@
              <a class="url-link" href="#__attach">
                 <img class="url-link-img" src="../../html-template-resources/images/link.svg">
             </a>
-            <h2> __attach </h2>
+            <h2 > __attach </h2>
         
         <span class="method-types">
             <p>(<span class="builtin-type">service</span> s, <span class="builtin-type">string?</span> name)</p>
@@ -893,8 +957,14 @@
         </span>
         
     </div>
-    <p></p>
-     
+    <div class="function-desc">
+        
+        Binds a service to the <code>socket:Listener</code>.
+<pre><code class="language-ballerina"> socket:error? result = socketListener.__attach(helloService);
+</code></pre>
+
+    </div>
+    
         <div class="data-wrapper">
             <h3 class="param-title">Parameters</h3>
                 
@@ -905,7 +975,8 @@
                         
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Type descriptor of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -917,7 +988,8 @@
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p></p>
+                        <p><p>Name of the service</p>
+</p>
                     </li>
                 </ul>
             </div>
@@ -930,7 +1002,8 @@
         <div class="returns-listing">
             <ul>
                 <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error?</span></span>)</li>
-                <li></li>
+                <li><p><code>()</code> or else a <code>socket:Error</code> upon failure to register the listener</p>
+</li>
             </ul>
         </div>
         

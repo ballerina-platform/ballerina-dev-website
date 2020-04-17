@@ -5,6 +5,10 @@ permalink: /1.1/learn/vscode-plugin/run-all-tests
 redirect_from:
   - /1.1/learn/tools-ides/vscode-plugin/run-all-tests
   - /1.1/learn/tools-ides/vscode-plugin/run-all-tests/
+  - /v1-1/learn/tools-ides/vscode-plugin/run-all-tests/
+  - /v1-1/learn/tools-ides/vscode-plugin/run-all-tests
+  - /v1-1/learn/vscode-plugin/run-all-tests/
+  - /v1-1/learn/vscode-plugin/run-all-tests
 ---
 
 # Run all tests

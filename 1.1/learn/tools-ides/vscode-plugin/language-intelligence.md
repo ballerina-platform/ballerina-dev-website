@@ -5,6 +5,10 @@ permalink: /1.1/learn/vscode-plugin/language-intelligence
 redirect_from:
   - /1.1/learn/tools-ides/vscode-plugin/language-intelligence
   - /1.1/learn/tools-ides/vscode-plugin/language-intelligence/
+  - /v1-1/learn/tools-ides/vscode-plugin/language-intelligence
+  - /v1-1/learn/tools-ides/vscode-plugin/language-intelligence/
+  - /v1-1/learn/vscode-plugin/language-intelligence
+  - /v1-1/learn/vscode-plugin/language-intelligence
 ---
 
 # Language intelligence

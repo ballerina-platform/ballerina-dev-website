@@ -794,11 +794,11 @@ happen as such.
     </div>
     <div class="function-desc">
         
-        Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
+        <p>Registers a topic in a Ballerina WebSub Hub against which subscribers can subscribe and the publisher will
 publish updates.
 <pre><code class="language-ballerina"> error? registerTopic = websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -848,10 +848,10 @@ publish updates.
     </div>
     <div class="function-desc">
         
-        Unregisters a topic in a Ballerina WebSub Hub.
+        <p>Unregisters a topic in a Ballerina WebSub Hub.
 <pre><code class="language-ballerina"> error? unregisterTopic = websubHubClientEP-&gt;unregisterTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -901,11 +901,11 @@ publish updates.
     </div>
     <div class="function-desc">
         
-        Publishes an update to a remote Ballerina WebSub Hub.
+        <p>Publishes an update to a remote Ballerina WebSub Hub.
 <pre><code class="language-ballerina"> error? publishUpdate = websubHubClientEP-&gt;publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
  &quot;mode&quot;: &quot;remote-hub&quot;});
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -994,11 +994,11 @@ publish updates.
     </div>
     <div class="function-desc">
         
-        Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
+        <p>Notifies a remote WebSub Hub from which an update is available to fetch for hubs that require publishing to
 happen as such.
 <pre><code class="language-ballerina">  error? notifyUpdate = websubHubClientEP-&gt;notifyUpdate(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

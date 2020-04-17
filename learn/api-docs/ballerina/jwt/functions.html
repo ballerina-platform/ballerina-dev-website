@@ -692,9 +692,6 @@
                                     <div class="function-desc">
                                         
                                         Builds the header string from the <code>jwt:JwtHeader</code> record.
-<pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -707,9 +704,6 @@
                                     <div class="function-desc">
                                         
                                         Builds the payload string from the <code>jwt:JwtPayload</code> record.
-<pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -722,9 +716,6 @@
                                     <div class="function-desc">
                                         
                                         Decodes the given JWT string.
-<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -736,11 +727,7 @@
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
-provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
-<pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
-</code></pre>
-
+                                        Issues a JWT based on the provided header and payload.
                                     </div>
                                 </td>
                             </tr>
@@ -753,9 +740,6 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
                                     <div class="function-desc">
                                         
                                         Validates the given JWT string.
-<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -781,10 +765,10 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     </div>
     <div class="function-desc">
         
-        Builds the header string from the <code>jwt:JwtHeader</code> record.
+        <p>Builds the header string from the <code>jwt:JwtHeader</code> record.
 <pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -834,10 +818,10 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     </div>
     <div class="function-desc">
         
-        Builds the payload string from the <code>jwt:JwtPayload</code> record.
+        <p>Builds the payload string from the <code>jwt:JwtPayload</code> record.
 <pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -887,10 +871,10 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     </div>
     <div class="function-desc">
         
-        Decodes the given JWT string.
+        <p>Decodes the given JWT string.
 <pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -940,11 +924,11 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     </div>
     <div class="function-desc">
         
-        Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
+        <p>Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
 provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
 <pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1020,10 +1004,10 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     </div>
     <div class="function-desc">
         
-        Validates the given JWT string.
+        <p>Validates the given JWT string.
 <pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

@@ -622,7 +622,8 @@
                         Module : <span class="modules">cache</span>
                     
                 </h1>
-                    <p>This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides APIs for handle caching in Ballerina. It consists of a default implementation based on the map data structure. It also provides a default cache eviction policy object, which is based on the LRU eviction algorithm.</p>
 <p>The <code>cache:AbstractCache</code> object has the common APIs for the caching functionalities. Custom implementations of the cache can be done with different data storages like file, database, etc. with the structural equivalency to the <code>cache:AbstractCacheObject</code> object.</p>
 <pre><code class="language-ballerina">public type AbstractCache abstract object {
     public function put(string key, any value, int maxAgeInSeconds) returns Error?;
@@ -710,7 +711,6 @@ This is an optional parameter.</li>
                             <td class="module-desc">
                                 
                                 Represents configurations for the <code>cache:Cache</code> object.
-
                             </td>
                         </tr>
                     
@@ -721,7 +721,6 @@ This is an optional parameter.</li>
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -732,7 +731,6 @@ This is an optional parameter.</li>
                             <td class="module-desc">
                                 
                                 Represents a linked list, which is used to govern the cache eviction policy.
-
                             </td>
                         </tr>
                     
@@ -743,7 +741,6 @@ This is an optional parameter.</li>
                             <td class="module-desc">
                                 
                                 Represents a structure to keep data and references to the adjacent nodes of the linked list.
-
                             </td>
                         </tr>
                     
@@ -768,8 +765,6 @@ This is an optional parameter.</li>
                             <td class="module-desc">
                                 
                                 The <code>cache:AbstractCache</code> object is used for custom implementations of the Ballerina cache.
-Any custom cache implementation should be object-wise similar.
-
                             </td>
                         </tr>
                     
@@ -780,8 +775,7 @@ Any custom cache implementation should be object-wise similar.
                             <td class="module-desc">
                                 
                                 The <code>cache:AbstractEvictionPolicy</code> Ballerina  object is used for custom implementations of the eviction policy for a
-Ballerina cache object. Any custom eviction policy implementation should be object-wise similar.
-
+Ballerina cache object.
                             </td>
                         </tr>
                     
@@ -791,9 +785,7 @@ Ballerina cache object. Any custom eviction policy implementation should be obje
                             </td>
                             <td class="module-desc">
                                 
-                                The <code>cache:Cache</code> object, which is used for all the cache-related operations. It is not recommended to insert <code>()</code>
-as the value of the cache since it doesn't make any sense to cache a nil.
-
+                                The <code>cache:Cache</code> object, which is used for all the cache-related operations.
                             </td>
                         </tr>
                     
@@ -805,7 +797,6 @@ as the value of the cache since it doesn't make any sense to cache a nil.
                                 
                                 The <code>cache:LruEvictionPolicy</code> object consists of the LRU eviction algorithm related operations based on a linked
 list data structure.
-
                             </td>
                         </tr>
                     
@@ -835,7 +826,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Adds a node to the start of the provided linked list.
-
                             </td>
                         </tr>
                     
@@ -846,7 +836,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Adds a node to the end of the provided linked list.
-
                             </td>
                         </tr>
                     
@@ -857,7 +846,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Clears the provided linked list.
-
                             </td>
                         </tr>
                     
@@ -868,7 +856,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Removes a node from the provided linked list.
-
                             </td>
                         </tr>
                     
@@ -879,7 +866,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Removes the last node from the provided linked list.
-
                             </td>
                         </tr>
                     
@@ -905,7 +891,6 @@ list data structure.
                             <td class="module-desc">
                                 
                                 Represents the reason for the <code>cache:Error</code>.
-
                             </td>
                         </tr>
                     
@@ -934,9 +919,7 @@ list data structure.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the Cache error type with details. This will be returned if an error occurred while doing any of the cache
-operations.
-
+                                Represents the Cache error type with details.
                             </td>
                         </tr>
                     

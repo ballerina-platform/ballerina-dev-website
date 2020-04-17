@@ -590,7 +590,8 @@
                         Module : <span class="modules">java.arrays</span>
                     
                 </h1>
-                    <p>This module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides APIs to create new Java array instances, get elements from arrays, set elements, etc.</p>
 <p>For information on the operations, which you can perform with the java.arrays module, see the below <strong>Functions</strong>. For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/java-arrays.html">Java Arrays Example</a>.</p>
 
 
@@ -619,13 +620,7 @@
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
-completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
-to a Java array.
-<pre><code class="language-ballerina"> handle words = getSortedArray();
- handle firstWord = java.arrays:get(words, 0);
-</code></pre>
-
+                                Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
                             </td>
                         </tr>
                     
@@ -636,10 +631,6 @@ to a Java array.
                             <td class="module-desc">
                                 
                                 Returns the length of the given Java array.
-<pre><code class="language-ballerina"> handle array = getArray();
- int length = java.arrays:getLength(array);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -649,12 +640,7 @@ to a Java array.
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
-with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
-<pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
- handle StrArray = java.arrays:newInstance(stringClass, 4);
-</code></pre>
-
+                                Returns a new Java array instance with the specified element type and dimensions.
                             </td>
                         </tr>
                     
@@ -664,13 +650,7 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
                             </td>
                             <td class="module-desc">
                                 
-                                Replaces the indexed element at the specified index in the given Java array with the specified element. This
-function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
-not refer to a Java array.
-<pre><code class="language-ballerina"> handle strArray = getStringArray();
- java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
-</code></pre>
-
+                                Replaces the indexed element at the specified index in the given Java array with the specified element.
                             </td>
                         </tr>
                     

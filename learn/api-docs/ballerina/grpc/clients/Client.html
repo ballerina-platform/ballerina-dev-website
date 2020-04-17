@@ -775,9 +775,6 @@ provides includes functions to send request/error messages.
     <div class="param-details"> 
             
         Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
-<pre><code class="language-ballerina"> grpc:Error? result = grpcClient.initStub(self, &quot;blocking&quot;, ROOT_DESCRIPTOR, getDescriptorMap());
-</code></pre>
-
     </div>
 </div>
 
@@ -805,10 +802,10 @@ provides includes functions to send request/error messages.
     </div>
     <div class="function-desc">
         
-        Calls when executing a blocking call with a gRPC service.
+        <p>Calls when executing a blocking call with a gRPC service.
 <pre><code class="language-ballerina"> [anydata, grpc:Headers]|grpc:Error result = grpcClient-&gt;blockingExecute(&quot;HelloWorld/hello&quot;, req, headers);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -884,10 +881,10 @@ provides includes functions to send request/error messages.
     </div>
     <div class="function-desc">
         
-        Calls when executing a non-blocking call with a gRPC service.
+        <p>Calls when executing a non-blocking call with a gRPC service.
 <pre><code class="language-ballerina"> grpc:Error? result = grpcClient-&gt;nonBlockingExecute(&quot;HelloWorld/hello&quot;, req, msgListener, headers);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -976,10 +973,10 @@ provides includes functions to send request/error messages.
     </div>
     <div class="function-desc">
         
-        Calls when executing  a streaming call with a gRPC service.
+        <p>Calls when executing  a streaming call with a gRPC service.
 <pre><code class="language-ballerina"> grpc:StreamingClient|grpc:Error result = grpcClient-&gt;streamingExecute(&quot;HelloWorld/lotsOfGreetings&quot;, msgListener, headers);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1059,10 +1056,10 @@ provides includes functions to send request/error messages.
     </div>
     <div class="function-desc">
         
-        Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
+        <p>Calls when initializing the client endpoint with the service descriptor data extracted from the proto file.
 <pre><code class="language-ballerina"> grpc:Error? result = grpcClient.initStub(self, &quot;blocking&quot;, ROOT_DESCRIPTOR, getDescriptorMap());
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

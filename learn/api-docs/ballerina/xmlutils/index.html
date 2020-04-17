@@ -642,7 +642,6 @@ It provides APIs to convert a <code>json</code> to an <code>xml</code> or conver
                                 
                                 Represents a record type to provide configurations for the JSON to XML
 conversion.
-
                             </td>
                         </tr>
                     
@@ -674,13 +673,6 @@ conversion.
                             <td class="module-desc">
                                 
                                 Converts a JSON object to an XML representation.
-<pre><code class="language-ballerina"> json data = {
-     name: &quot;John&quot;,
-     age: 30
- };
- xml|error xmlValue = xmlutils:fromJSON(data);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -691,15 +683,6 @@ conversion.
                             <td class="module-desc">
                                 
                                 Converts a table to its XML representation.
-<pre><code class="language-ballerina"> table&lt;Person&gt; personTable = table{
-     { key id, age, salary, name, married },
-     [ { 1, 30,  300.5, &quot;Mary&quot;, true },
-         { 2, 20,  300.5, &quot;John&quot;, true }
-     ]
- };
- xml xmlValue = xmlutils:fromTable(personTable).toString();
-</code></pre>
-
                             </td>
                         </tr>
                     

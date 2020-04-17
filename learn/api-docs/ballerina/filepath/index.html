@@ -622,7 +622,8 @@
                         Module : <span class="modules">filepath</span>
                     
                 </h1>
-                    <p>This module provides a platform-independent API for working with file paths.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides a platform-independent API for working with file paths.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 <ul>
 <li>For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/filepath.html">File Path Example</a>.</li>
@@ -647,7 +648,6 @@
                             <td class="module-desc">
                                 
                                 A record type defined to be used as the &quot;error detail&quot; in the errors defined in this module.
-
                             </td>
                         </tr>
                     
@@ -679,9 +679,6 @@
                             <td class="module-desc">
                                 
                                 Retrieves the absolute path from the provided location.
-<pre><code class="language-ballerina">  string|filepath:Error absolutePath = filepath:absolute(&lt;@untainted&gt; &quot;test.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -692,9 +689,6 @@
                             <td class="module-desc">
                                 
                                 Joins any number of path elements into a single path.
-<pre><code class="language-ballerina">  string|filepath:Error path = filepath:build(&quot;/&quot;, &quot;foo&quot;, &quot;bar&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -705,11 +699,6 @@
                             <td class="module-desc">
                                 
                                 Retrieves the extension of the file path.
-The extension is the suffix beginning at the final dot in the final element of the path.
-It is empty if there is no dot.
-<pre><code class="language-ballerina">  string|filepath:Error extension = filepath:extension(&quot;path.bal&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -721,10 +710,6 @@ It is empty if there is no dot.
                                 
                                 Retrieves the base name of the file from the provided location,
 which is the last element of the path.
-Trailing path separators are removed before extracting the last element.
-<pre><code class="language-ballerina">  string|filepath:Error name = filepath:filename(&quot;/A/B/C.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -735,9 +720,6 @@ Trailing path separators are removed before extracting the last element.
                             <td class="module-desc">
                                 
                                 Returns the path variable's separating character for paths of the underlying operating system.
-<pre><code class="language-ballerina">  string pathListSeparator = filepath:getPathListSeparator();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -748,9 +730,6 @@ Trailing path separators are removed before extracting the last element.
                             <td class="module-desc">
                                 
                                 Returns the path separator of the underlying operating system.
-<pre><code class="language-ballerina">  string pathSeparator = filepath:getPathSeparator();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -761,12 +740,6 @@ Trailing path separators are removed before extracting the last element.
                             <td class="module-desc">
                                 
                                 Reports whether the path is absolute.
-A path is absolute if it is independent of the current directory.
-On Unix, a path is absolute if it starts with the root.
-On Windows, a path is absolute if it has a prefix and starts with the root: c:\windows.
-<pre><code class="language-ballerina">  boolean|filepath:Error isAbsolute = filepath:isAbsolute(&quot;/A/B/C&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -777,10 +750,6 @@ On Windows, a path is absolute if it has a prefix and starts with the root: c:\w
                             <td class="module-desc">
                                 
                                 Reports whether the filename is reserved.
-Reserved words only exist in Windows.
-<pre><code class="language-ballerina">  boolean|filepath:Error path = filepath:isReservedName(&quot;abc.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -791,10 +760,6 @@ Reserved words only exist in Windows.
                             <td class="module-desc">
                                 
                                 Reports whether the complete filename (not just a substring of it) matches the provided Glob pattern.
-An error is returned if the pattern is malformed.
-<pre><code class="language-ballerina">  boolean|filepath:Error matches = filepath:matches(&quot;a/b/c.java&quot;, &quot;glob:*.{java,class}&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -805,12 +770,6 @@ An error is returned if the pattern is malformed.
                             <td class="module-desc">
                                 
                                 Returns the shortest path name equivalent to the given path.
-Replace the multiple separator elements with a single one.
-Eliminate each &quot;.&quot; path name element (the current directory).
-Eliminate each inner &quot;..&quot; path name element (the parent directory).
-<pre><code class="language-ballerina">  string|filepath:Error normalizedPath = filepath:normalize(&quot;foo/../bar&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -821,11 +780,6 @@ Eliminate each inner &quot;..&quot; path name element (the parent directory).
                             <td class="module-desc">
                                 
                                 Returns the enclosing parent directory.
-If the path is empty, parent returns &quot;.&quot;.
-The returned path does not end in a separator unless it is the root directory.
-<pre><code class="language-ballerina">  string|filepath:Error parentPath = filepath:parent(&quot;/A/B/C.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -837,10 +791,6 @@ The returned path does not end in a separator unless it is the root directory.
                                 
                                 Returns a relative path, which is logically equivalent to the target path when joined to the base path with an
 intervening separator.
-An error is returned if the target path cannot be made relative to the base path.
-<pre><code class="language-ballerina">  string|filepath:Error relativePath = filepath:relative(&quot;a/b/c&quot;, &quot;a/c/d&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -851,12 +801,6 @@ An error is returned if the target path cannot be made relative to the base path
                             <td class="module-desc">
                                 
                                 Returns the filepath after the evaluation of any symbolic links.
-If the path is relative, the result will be relative to the current directory
-unless one of the components is an absolute symbolic link.
-Resolves normalising the calls on the result.
-<pre><code class="language-ballerina">  string|filepath:Error resolvedPath = filepath:resolve(&quot;a/b/c&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -867,9 +811,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Splits a list of paths joined by the OS-specific path separator.
-<pre><code class="language-ballerina">  string[]|filepath:Error parts = filepath:split(&quot;/A/B/C&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -895,7 +836,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies file not found error.
-
                             </td>
                         </tr>
                     
@@ -906,7 +846,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies no link error.
-
                             </td>
                         </tr>
                     
@@ -917,7 +856,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies io error.
-
                             </td>
                         </tr>
                     
@@ -928,7 +866,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies security error.
-
                             </td>
                         </tr>
                     
@@ -939,7 +876,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies invalid path error.
-
                             </td>
                         </tr>
                     
@@ -950,7 +886,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies invalid pattern error.
-
                             </td>
                         </tr>
                     
@@ -961,7 +896,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies relative path error.
-
                             </td>
                         </tr>
                     
@@ -972,7 +906,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies unc path error.
-
                             </td>
                         </tr>
                     
@@ -983,7 +916,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Identifies generic error.
-
                             </td>
                         </tr>
                     
@@ -1011,7 +943,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents filepath related errors.
-
                             </td>
                         </tr>
                     
@@ -1036,7 +967,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents error occur when the file/directory does not exist at the given filepath.
-
                             </td>
                         </tr>
                     
@@ -1058,7 +988,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents IO error occur when trying to access the file at the given filepath.
-
                             </td>
                         </tr>
                     
@@ -1069,7 +998,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents error occur when the given file path is invalid.
-
                             </td>
                         </tr>
                     
@@ -1080,7 +1008,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represent error occur when the given pattern is not a valid filepath pattern.
-
                             </td>
                         </tr>
                     
@@ -1091,7 +1018,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents error occur when the file at the given filepath is not a symbolic link.
-
                             </td>
                         </tr>
                     
@@ -1102,7 +1028,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents an error that occurs when the given target filepath cannot be derived relative to the base filepath.
-
                             </td>
                         </tr>
                     
@@ -1113,7 +1038,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents security error occur when trying to access the file at the given filepath.
-
                             </td>
                         </tr>
                     
@@ -1124,7 +1048,6 @@ Resolves normalising the calls on the result.
                             <td class="module-desc">
                                 
                                 Represents error occur in the UNC path.
-
                             </td>
                         </tr>
                     

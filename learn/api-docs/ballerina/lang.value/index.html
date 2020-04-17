@@ -620,11 +620,6 @@
                             <td class="module-desc">
                                 
                                 Returns a clone of <code>v</code>.
-A clone is a deep copy that does not copy immutable subtrees.
-A clone can therefore safely be used concurrently with the original.
-It corresponds to the Clone(v) abstract operation,
-defined in the Ballerina Language Specification.
-
                             </td>
                         </tr>
                     
@@ -634,10 +629,7 @@ defined in the Ballerina Language Specification.
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a clone of <code>v</code> that is read-only, i.e. immutable.
-It corresponds to the ImmutableClone(v) abstract operation,
-defined in the Ballerina Language Specification.
-
+                                Returns a clone of <code>v</code> that is read-only, i.
                             </td>
                         </tr>
                     
@@ -648,9 +640,6 @@ defined in the Ballerina Language Specification.
                             <td class="module-desc">
                                 
                                 Parses a string in JSON format and returns the the value that it represents.
-All numbers in the JSON will be represented as float values.
-Returns an error if the string cannot be parsed.
-
                             </td>
                         </tr>
                     
@@ -660,9 +649,7 @@ Returns an error if the string cannot be parsed.
                             </td>
                             <td class="module-desc">
                                 
-                                Tests whether <code>v</code> is read-only, i.e. immutable
-Returns true if read-only, false otherwise.
-
+                                Tests whether <code>v</code> is read-only, i.
                             </td>
                         </tr>
                     
@@ -673,7 +660,6 @@ Returns true if read-only, false otherwise.
                             <td class="module-desc">
                                 
                                 Merges two json values.
-
                             </td>
                         </tr>
                     
@@ -684,7 +670,6 @@ Returns true if read-only, false otherwise.
                             <td class="module-desc">
                                 
                                 Returns the string that represents <code>v</code> in JSON format.
-
                             </td>
                         </tr>
                     
@@ -695,10 +680,6 @@ Returns true if read-only, false otherwise.
                             <td class="module-desc">
                                 
                                 Performs a minimal conversion of a value to a string.
-The conversion is minimal in particular in the sense
-that the conversion applied to a value that is already
-a string does nothing.
-
                             </td>
                         </tr>
                     

@@ -628,7 +628,6 @@
                             <td class="module-desc">
                                 
                                 IEEE abs operation.
-
                             </td>
                         </tr>
                     
@@ -639,8 +638,6 @@
                             <td class="module-desc">
                                 
                                 Returns the arccosine of a float value.
-Corresponds to IEEE acos operation
-
                             </td>
                         </tr>
                     
@@ -651,8 +648,6 @@ Corresponds to IEEE acos operation
                             <td class="module-desc">
                                 
                                 Returns the arcsine of a float value.
-Corresponds to IEEE asin operation.
-
                             </td>
                         </tr>
                     
@@ -663,8 +658,6 @@ Corresponds to IEEE asin operation.
                             <td class="module-desc">
                                 
                                 Returns the arctangent of a float value.
-Corresponds to IEEE atan operation.
-
                             </td>
                         </tr>
                     
@@ -675,8 +668,6 @@ Corresponds to IEEE atan operation.
                             <td class="module-desc">
                                 
                                 Performs the 2-argument arctangent operation.
-Corresponds IEEE atan2(y, x) operation.
-
                             </td>
                         </tr>
                     
@@ -687,8 +678,6 @@ Corresponds IEEE atan2(y, x) operation.
                             <td class="module-desc">
                                 
                                 Returns the cube root of a float value.
-Corresponds to IEEE rootn(x, 3) operation.
-
                             </td>
                         </tr>
                     
@@ -699,7 +688,6 @@ Corresponds to IEEE rootn(x, 3) operation.
                             <td class="module-desc">
                                 
                                 Rounds a float up to the closest integral value.
-
                             </td>
                         </tr>
                     
@@ -710,8 +698,6 @@ Corresponds to IEEE rootn(x, 3) operation.
                             <td class="module-desc">
                                 
                                 Returns the cosine of a float value.
-Corresponds to IEEE cos operation.
-
                             </td>
                         </tr>
                     
@@ -722,8 +708,6 @@ Corresponds to IEEE cos operation.
                             <td class="module-desc">
                                 
                                 Returns the hyperbolic cosine of a float value.
-Corresponds to IEEE cosh operation.
-
                             </td>
                         </tr>
                     
@@ -734,8 +718,6 @@ Corresponds to IEEE cosh operation.
                             <td class="module-desc">
                                 
                                 Raises Euler's number to a power.
-Corresponds to IEEE exp operation.
-
                             </td>
                         </tr>
                     
@@ -746,7 +728,6 @@ Corresponds to IEEE exp operation.
                             <td class="module-desc">
                                 
                                 Rounds a float down to the closest integral value.
-
                             </td>
                         </tr>
                     
@@ -757,8 +738,6 @@ Corresponds to IEEE exp operation.
                             <td class="module-desc">
                                 
                                 Returns the float that is represented in IEEE 64-bit floating point by <code>x</code>.
-All bit patterns that IEEE defines to be NaNs will all be mapped to the single float NaN value.
-
                             </td>
                         </tr>
                     
@@ -769,14 +748,6 @@ All bit patterns that IEEE defines to be NaNs will all be mapped to the single f
                             <td class="module-desc">
                                 
                                 Return the float value represented by <code>s</code>.
-<code>s</code> must follow the syntax of HexFloatingPointLiteral as defined by the Ballerina specification
-with the following modifications
-<ul>
-<li>the HexFloatingPointLiteral may have a leading <code>+</code> or <code>-</code> sign</li>
-<li><code>NaN</code> is allowed</li>
-<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
-</ul>
-
                             </td>
                         </tr>
                     
@@ -787,16 +758,6 @@ with the following modifications
                             <td class="module-desc">
                                 
                                 Return the float value represented by <code>s</code>.
-<code>s</code> must follow the syntax of DecimalFloatingPointNumber as defined by the Ballerina specification
-with the following modifications
-<ul>
-<li>the DecimalFloatingPointNumber may have a leading <code>+</code> or <code>-</code> sign</li>
-<li><code>NaN</code> is allowed</li>
-<li><code>Infinity</code> is allowed with an optional leading <code>+</code> or <code>-</code> sign</li>
-<li>a FloatingPointTypeSuffix is not allowed
-This is the inverse of <code>value:toString</code> applied to an <code>float</code>.</li>
-</ul>
-
                             </td>
                         </tr>
                     
@@ -807,8 +768,6 @@ This is the inverse of <code>value:toString</code> applied to an <code>float</co
                             <td class="module-desc">
                                 
                                 Tests whether a float is finite.
-Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
-
                             </td>
                         </tr>
                     
@@ -819,8 +778,6 @@ Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
                             <td class="module-desc">
                                 
                                 Tests whether a float is infinite.
-Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
-
                             </td>
                         </tr>
                     
@@ -831,8 +788,6 @@ Exactly one of isFinite, isInfinite and IsNaN will be true for any float value
                             <td class="module-desc">
                                 
                                 Tests whether a float is NaN.
-Exactly one of isFinite, isInfinite and IsNaN will be true for any float value.
-
                             </td>
                         </tr>
                     
@@ -844,7 +799,6 @@ Exactly one of isFinite, isInfinite and IsNaN will be true for any float value.
                                 
                                 Returns the natural logarithm of a float value
 Corresponds to IEEE log operation.
-
                             </td>
                         </tr>
                     
@@ -855,8 +809,6 @@ Corresponds to IEEE log operation.
                             <td class="module-desc">
                                 
                                 Returns the base 10 logarithm of a float value.
-Corresponds to IEEE log10 operation.
-
                             </td>
                         </tr>
                     
@@ -867,9 +819,6 @@ Corresponds to IEEE log10 operation.
                             <td class="module-desc">
                                 
                                 Maximum of zero or more float values.
-Result is -∞ if no args
-NaN if any arg is NaN
-
                             </td>
                         </tr>
                     
@@ -880,9 +829,6 @@ NaN if any arg is NaN
                             <td class="module-desc">
                                 
                                 Minimum of zero or more float values.
-Result is +∞ if no args
-Result is NaN if any arg is NaN
-
                             </td>
                         </tr>
                     
@@ -893,8 +839,6 @@ Result is NaN if any arg is NaN
                             <td class="module-desc">
                                 
                                 Raises one float value to the power of another float values.
-Corresponds to IEEE pow(x, y) operation.
-
                             </td>
                         </tr>
                     
@@ -905,14 +849,6 @@ Corresponds to IEEE pow(x, y) operation.
                             <td class="module-desc">
                                 
                                 Round a float value to the closest integral value.
-Returns the float value that is a mathematical integer and closest to <code>x</code>.
-If there are two such values, choose the one that is even
-(this is the round-to-nearest rounding mode, which is the default for IEEE and for Ballerina).
-Same as Java Math.rint method
-Same as .NET Math.Round method
-IEEE roundToIntegralTiesToEven operation
-Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</code>
-
                             </td>
                         </tr>
                     
@@ -923,8 +859,6 @@ Note that <code>&lt;int&gt;x</code> is the same as <code>&lt;int&gt;x.round()</c
                             <td class="module-desc">
                                 
                                 Returns the sine of a float value.
-Corresponds to IEEE sin operation.
-
                             </td>
                         </tr>
                     
@@ -935,8 +869,6 @@ Corresponds to IEEE sin operation.
                             <td class="module-desc">
                                 
                                 Returns the hyperbolic sine of a float value.
-Corresponds to IEEE sinh operation.
-
                             </td>
                         </tr>
                     
@@ -947,8 +879,6 @@ Corresponds to IEEE sinh operation.
                             <td class="module-desc">
                                 
                                 Returns the square root of a float value.
-Corresponds to IEEE squareRoot operation.
-
                             </td>
                         </tr>
                     
@@ -959,8 +889,6 @@ Corresponds to IEEE squareRoot operation.
                             <td class="module-desc">
                                 
                                 Sum of zero or more float values.
-Result is NaN if any arg is NaN
-
                             </td>
                         </tr>
                     
@@ -971,8 +899,6 @@ Result is NaN if any arg is NaN
                             <td class="module-desc">
                                 
                                 Returns the tangent of a float value.
-Corresponds to IEEE tan operation
-
                             </td>
                         </tr>
                     
@@ -983,8 +909,6 @@ Corresponds to IEEE tan operation
                             <td class="module-desc">
                                 
                                 Returns the hyperbolic tangent of a float value.
-Corresponds to IEEE tanh operation.
-
                             </td>
                         </tr>
                     
@@ -995,7 +919,6 @@ Corresponds to IEEE tanh operation.
                             <td class="module-desc">
                                 
                                 Returns IEEE 64-bit binary floating point format representation of <code>x</code> as an int.
-
                             </td>
                         </tr>
                     
@@ -1006,16 +929,6 @@ Corresponds to IEEE tanh operation.
                             <td class="module-desc">
                                 
                                 Returns a string that represents <code>x</code> as a hexadecimal floating point number.
-The returned string will comply to the grammar of HexFloatingPointLiteral
-in the Ballerina spec with the following modifications:
-<ul>
-<li>it will have a leading <code>-</code> sign if negative</li>
-<li>positive infinity will be represented by <code>Infinity</code></li>
-<li>negative infinity will be represented by <code>-Infinity</code></li>
-<li>NaN will be represented by <code>NaN</code>
-The representation includes <code>0x</code> for finite numbers.</li>
-</ul>
-
                             </td>
                         </tr>
                     

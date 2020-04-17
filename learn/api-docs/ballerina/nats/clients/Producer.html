@@ -746,7 +746,6 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     <div class="param-details"> 
             
         Closes a given connection.
-
     </div>
 </div>
 
@@ -774,10 +773,10 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     </div>
     <div class="function-desc">
         
-        Publishes data to a given subject.
+        <p>Publishes data to a given subject.
 <pre><code class="language-ballerina"> nats:Error? result = producer-&gt;publish(subject, &lt;@untainted&gt;message);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -853,10 +852,10 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     </div>
     <div class="function-desc">
         
-        Publishes data to a given subject and waits for a response.
+        <p>Publishes data to a given subject and waits for a response.
 <pre><code class="language-ballerina"> nats:Message|nats:Error reqReply = producer-&gt;request(subject, &lt;@untainted&gt;message, 5000);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -936,8 +935,8 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
     </div>
     <div class="function-desc">
         
-        Closes a given connection.
-
+        <p>Closes a given connection.
+</p>
     </div>
     
 

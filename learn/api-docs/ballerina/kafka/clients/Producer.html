@@ -849,10 +849,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Closes the producer connection to the external Kafka broker.
+        <p>Closes the producer connection to the external Kafka broker.
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;close();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -884,8 +884,8 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Commits the offsets consumed by the provided consumer.
-
+        <p>Commits the offsets consumed by the provided consumer.
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -935,8 +935,8 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Commits the consumer offsets in a given transaction.
-
+        <p>Commits the consumer offsets in a given transaction.
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -999,10 +999,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Flushes the batch of records already sent to the broker by the producer.
+        <p>Flushes the batch of records already sent to the broker by the producer.
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;flushRecords();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1034,10 +1034,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Retrieves the topic partition information for the provided topic.
+        <p>Retrieves the topic partition information for the provided topic.
 <pre><code class="language-ballerina"> kafka:TopicPartition[]|kafka:ProducerError result = producer-&gt;getTopicPartitions(&quot;kafka-topic&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1087,10 +1087,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Produces records to the Kafka server.
+        <p>Produces records to the Kafka server.
 <pre><code class="language-ballerina"> kafka:ProducerError? result = producer-&gt;send(&quot;Hello World, Ballerina&quot;, &quot;kafka-topic&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

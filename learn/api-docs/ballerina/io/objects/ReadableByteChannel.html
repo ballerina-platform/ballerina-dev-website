@@ -754,12 +754,7 @@
     </div>
     <div class="param-details"> 
             
-        Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
-This operation will be asynchronous in which the total number of required bytes might not be returned at a given
-time. An <code>io:EofError</code> will return once the channel reaches the end.
-<pre><code class="language-ballerina"> byte[]|io:Error result = readableByteChannel.read(1000);
-</code></pre>
-
+        Source bytes from a given input/output resource.
     </div>
 </div>
 
@@ -772,9 +767,6 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     <div class="param-details"> 
             
         Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
-<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Encode();
-</code></pre>
-
     </div>
 </div>
 
@@ -787,9 +779,6 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     <div class="param-details"> 
             
         Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
-<pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Decode();
-</code></pre>
-
     </div>
 </div>
 
@@ -802,9 +791,6 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     <div class="param-details"> 
             
         Closes a given <code>ReadableByteChannel</code>.
-<pre><code class="language-ballerina"> io:Error? err = readableByteChannel.close();
-</code></pre>
-
     </div>
 </div>
 
@@ -832,12 +818,12 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
+        <p>Source bytes from a given input/output resource. The number of bytes returned will be &lt; 0 if the file reached its end.
 This operation will be asynchronous in which the total number of required bytes might not be returned at a given
 time. An <code>io:EofError</code> will return once the channel reaches the end.
 <pre><code class="language-ballerina"> byte[]|io:Error result = readableByteChannel.read(1000);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -887,10 +873,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Encodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
 <pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Encode();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -922,10 +908,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
+        <p>Decodes a given <code>ReadableByteChannel</code> using the Base64 encoding scheme.
 <pre><code class="language-ballerina"> ReadableByteChannel|Error encodedChannel = readableByteChannel.base64Decode();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -957,10 +943,10 @@ time. An <code>io:EofError</code> will return once the channel reaches the end.
     </div>
     <div class="function-desc">
         
-        Closes a given <code>ReadableByteChannel</code>.
+        <p>Closes a given <code>ReadableByteChannel</code>.
 <pre><code class="language-ballerina"> io:Error? err = readableByteChannel.close();
 </code></pre>
-
+</p>
     </div>
     
 

@@ -590,7 +590,8 @@
                         Module : <span class="modules">log</span>
                     
                 </h1>
-                    <p>This module provides a basic API for logging.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides a basic API for logging.</p>
 <h2>Loggers</h2>
 <p>Each module in Ballerina has its own dedicated logger. A log record contains the timestamp, log level, module name, and the log message. The <code>printError()</code> function takes an optional <code>error</code> record apart from the log message. A sample log record logged from the <code>foo</code> module would look as follows:</p>
 <pre><code class="language-bash">2018-04-09 11:33:21,300 ERROR [foo] - This is an error log.
@@ -648,9 +649,6 @@ loglevel=&quot;DEBUG&quot;
                             <td class="module-desc">
                                 
                                 Logs the specified value at DEBUG level.
-<pre><code class="language-ballerina"> log:printDebug(&quot;debug log&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -661,10 +659,6 @@ loglevel=&quot;DEBUG&quot;
                             <td class="module-desc">
                                 
                                 Logs the specified message at ERROR level.
-<pre><code class="language-ballerina"> error e = error(&quot;error occurred&quot;);
- log:printError(&quot;error log with cause&quot;, err = e);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -675,9 +669,6 @@ loglevel=&quot;DEBUG&quot;
                             <td class="module-desc">
                                 
                                 Logs the specified message at INFO level.
-<pre><code class="language-ballerina"> log:printInfo(&quot;info log&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -688,9 +679,6 @@ loglevel=&quot;DEBUG&quot;
                             <td class="module-desc">
                                 
                                 Logs the specified message at TRACE level.
-<pre><code class="language-ballerina"> log:printTrace(&quot;trace log&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -701,9 +689,6 @@ loglevel=&quot;DEBUG&quot;
                             <td class="module-desc">
                                 
                                 Logs the specified message at WARN level.
-<pre><code class="language-ballerina"> log:printWarn(&quot;warn log&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     

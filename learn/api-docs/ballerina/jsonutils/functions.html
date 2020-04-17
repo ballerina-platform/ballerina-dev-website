@@ -636,15 +636,6 @@
                                     <div class="function-desc">
                                         
                                         Converts a table to its JSON representation.
-<pre><code class="language-ballerina"> table&lt;Person&gt; tableValue = table{
-     { key id, age, salary, name, married },
-     [ { 1, 30,  300.5, &quot;Mary&quot;, true },
-         { 2, 20,  300.5, &quot;John&quot;, true }
-     ]
- };
- json jsonValue = jsonutils:fromTable(tableValue);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -657,10 +648,6 @@
                                     <div class="function-desc">
                                         
                                         Converts an XML object to its JSON representation.
-<pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;
- json|error jsonValue = fromXML(mxlValue);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -686,7 +673,7 @@
     </div>
     <div class="function-desc">
         
-        Converts a table to its JSON representation.
+        <p>Converts a table to its JSON representation.
 <pre><code class="language-ballerina"> table&lt;Person&gt; tableValue = table{
      { key id, age, salary, name, married },
      [ { 1, 30,  300.5, &quot;Mary&quot;, true },
@@ -695,7 +682,7 @@
  };
  json jsonValue = jsonutils:fromTable(tableValue);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -745,11 +732,11 @@
     </div>
     <div class="function-desc">
         
-        Converts an XML object to its JSON representation.
+        <p>Converts an XML object to its JSON representation.
 <pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;
  json|error jsonValue = fromXML(mxlValue);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

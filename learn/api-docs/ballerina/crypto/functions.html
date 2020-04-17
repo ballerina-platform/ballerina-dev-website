@@ -892,11 +892,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the Hex-encoded CRC32B value for the provided element.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string checksum = crypto:crc32b(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -909,13 +904,6 @@
                                     <div class="function-desc">
                                         
                                         Reads a private key from the provided PKCS#12 archive file.
-<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey|crypto:Error privateKey = crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -928,13 +916,6 @@
                                     <div class="function-desc">
                                         
                                         Reads a public key from the provided PKCS#12 archive file.
-<pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PublicKey|crypto:Error publicKey = crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -947,20 +928,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[] cipherText = checkpanic crypto:encryptAesCbc(data, key, initialVector);
-  byte[]|crypto:Error plainText = crypto:decryptAesCbc(cipherText, key, initialVector);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -973,16 +940,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[] cipherText = checkpanic crypto:encryptAesEcb(data, key);
-  byte[]|crypto:Error plainText = crypto:decryptAesEcb(cipherText, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -995,20 +952,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[] cipherText = checkpanic crypto:encryptAesGcm(data, key, initialVector);
-  byte[]|crypto:Error plainText = crypto:decryptAesGcm(cipherText, key, initialVector);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1021,18 +964,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-decrypted value for the given RSA-encrypted data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] cipherText = checkpanic crypto:encryptRsaEcb(data, publicKey);
-  byte[]|crypto:Error plainText = checkpanic crypto:decryptRsaEcb(cipherText, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1045,19 +976,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-CBC-encrypted value for the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[]|crypto:Error cipherText = crypto:encryptAesCbc(data, key, initialVector);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1070,15 +988,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-ECB-encrypted value for the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[]|crypto:Error cipherText = crypto:encryptAesEcb(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1091,19 +1000,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the AES-GCM-encrypted value for the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
-  byte[] data = dataString.toBytes();
-  byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      key[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[16] initialVector = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  foreach var i in 0...15 {
-      initialVector[i] = &lt;byte&gt;math:randomInRange(0, 255);
-  }
-  byte[]|crypto:Error cipherText = crypto:encryptAesGcm(data, key, initialVector);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1116,16 +1012,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-encrypted value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  byte[]|crypto:Error cipherText = crypto:encryptRsaEcb(data, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1138,11 +1024,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the MD5 hash of the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
-  byte[] data = dataString.toBytes();
-  byte[] hash = crypto:hashMd5(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1155,11 +1036,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the SHA-1 hash of the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
-  byte[] data = dataString.toBytes();
-  byte[] hash = crypto:hashSha1(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1172,11 +1048,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the SHA-256 hash of the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
-  byte[] data = dataString.toBytes();
-  byte[] hash = crypto:hashSha256(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1189,11 +1060,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the SHA-384 hash of the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
-  byte[] data = dataString.toBytes();
-  byte[] hash = crypto:hashSha384(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1206,11 +1072,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the SHA-512 hash of the given data.
-<pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
-  byte[] data = dataString.toBytes();
-  byte[] hash = crypto:hashSha512(data);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1223,13 +1084,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the HMAC using the MD-5 hash function of the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string keyString = &quot;some-secret&quot;;
-  byte[] key = keyString.toBytes();
-  byte[] hmac = crypto:hmacMd5(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1242,13 +1096,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the HMAC using the SHA-1 hash function of the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string keyString = &quot;some-secret&quot;;
-  byte[] key = keyString.toBytes();
-  byte[] hmac = crypto:hmacSha1(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1261,13 +1108,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the HMAC using the SHA-256 hash function of the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string keyString = &quot;some-secret&quot;;
-  byte[] key = keyString.toBytes();
-  byte[] hmac = crypto:hmacSha256(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1280,13 +1120,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the HMAC using the SHA-384 hash function of the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string keyString = &quot;some-secret&quot;;
-  byte[] key = keyString.toBytes();
-  byte[] hmac = crypto:hmacSha384(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1299,13 +1132,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the HMAC using the SHA-512 hash function of the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  string keyString = &quot;some-secret&quot;;
-  byte[] key = keyString.toBytes();
-  byte[] hmac = crypto:hmacSha512(data, key);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1318,17 +1144,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-MD5-based signature value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey =
-      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[]|crypto:Error signature = crypto:signRsaMd5(data, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1341,17 +1156,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-SHA1-based signature value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey =
-      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[]|crypto:Error signature = crypto:signRsaSha1(data, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1364,17 +1168,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-SHA256-based signature value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey =
-      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[]|crypto:Error signature = crypto:signRsaSha256(data, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1387,17 +1180,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-SHA384-based signature value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey =
-      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[]|crypto:Error signature = crypto:signRsaSha384(data, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1410,17 +1192,6 @@
                                     <div class="function-desc">
                                         
                                         Returns the RSA-SHA512-based signature value for the given data.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey =
-      checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[]|crypto:Error signature = crypto:signRsaSha512(data, privateKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1433,18 +1204,6 @@
                                     <div class="function-desc">
                                         
                                         Verifies the RSA-MD5-based signature.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
-  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  boolean|crypto:Error validity = crypto:verifyRsaMd5Signature(data, signature, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1457,18 +1216,6 @@
                                     <div class="function-desc">
                                         
                                         Verifies the RSA-SHA1-based signature.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
-  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  boolean|crypto:Error validity = crypto:verifyRsaSha1Signature(data, signature, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1481,18 +1228,6 @@
                                     <div class="function-desc">
                                         
                                         Verifies the RSA-SHA256-based signature.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
-  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  boolean|crypto:Error validity = crypto:verifyRsaSha256Signature(data, signature, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1505,18 +1240,6 @@
                                     <div class="function-desc">
                                         
                                         Verifies the RSA-SHA384-based signature.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
-  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  boolean|crypto:Error validity = crypto:verifyRsaSha384Signature(data, signature, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1529,18 +1252,6 @@
                                     <div class="function-desc">
                                         
                                         Verifies the RSA-SHA512-based signature.
-<pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
-  byte[] data = stringData.toBytes();
-  crypto:KeyStore keyStore = {
-      path: &quot;/home/ballerina/keystore.p12&quot;,
-      password: &quot;keystorePassword&quot;
-  };
-  crypto:PrivateKey privateKey = checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
-  byte[] signature = checkpanic crypto:signRsaMd5(data, privateKey);
-  crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
-  boolean|crypto:Error validity = crypto:verifyRsaSha512Signature(data, signature, publicKey);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -1566,12 +1277,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the Hex-encoded CRC32B value for the provided element.
+        <p>Returns the Hex-encoded CRC32B value for the provided element.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string checksum = crypto:crc32b(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1621,14 +1332,14 @@
     </div>
     <div class="function-desc">
         
-        Reads a private key from the provided PKCS#12 archive file.
+        <p>Reads a private key from the provided PKCS#12 archive file.
 <pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
       path: &quot;/home/ballerina/keystore.p12&quot;,
       password: &quot;keystorePassword&quot;
   };
   crypto:PrivateKey|crypto:Error privateKey = crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1704,14 +1415,14 @@
     </div>
     <div class="function-desc">
         
-        Reads a public key from the provided PKCS#12 archive file.
+        <p>Reads a public key from the provided PKCS#12 archive file.
 <pre><code class="language-ballerina">  crypto:KeyStore keyStore = {
       path: &quot;/home/ballerina/keystore.p12&quot;,
       password: &quot;keystorePassword&quot;
   };
   crypto:PublicKey|crypto:Error publicKey = crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1774,7 +1485,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
+        <p>Returns the AES-CBC-decrypted value for the given AES-CBC-encrypted data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -1788,7 +1499,7 @@
   byte[] cipherText = checkpanic crypto:encryptAesCbc(data, key, initialVector);
   byte[]|crypto:Error plainText = crypto:decryptAesCbc(cipherText, key, initialVector);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1877,7 +1588,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
+        <p>Returns the AES-ECB-decrypted value for the given AES-ECB-encrypted data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -1887,7 +1598,7 @@
   byte[] cipherText = checkpanic crypto:encryptAesEcb(data, key);
   byte[]|crypto:Error plainText = crypto:decryptAesEcb(cipherText, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1963,7 +1674,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
+        <p>Returns the AES-GCM-decrypted value for the given AES-GCM-encrypted data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -1977,7 +1688,7 @@
   byte[] cipherText = checkpanic crypto:encryptAesGcm(data, key, initialVector);
   byte[]|crypto:Error plainText = crypto:decryptAesGcm(cipherText, key, initialVector);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2079,7 +1790,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-decrypted value for the given RSA-encrypted data.
+        <p>Returns the RSA-decrypted value for the given RSA-encrypted data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -2091,7 +1802,7 @@
   byte[] cipherText = checkpanic crypto:encryptRsaEcb(data, publicKey);
   byte[]|crypto:Error plainText = checkpanic crypto:decryptRsaEcb(cipherText, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2167,7 +1878,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-CBC-encrypted value for the given data.
+        <p>Returns the AES-CBC-encrypted value for the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -2180,7 +1891,7 @@
   }
   byte[]|crypto:Error cipherText = crypto:encryptAesCbc(data, key, initialVector);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2269,7 +1980,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-ECB-encrypted value for the given data.
+        <p>Returns the AES-ECB-encrypted value for the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -2278,7 +1989,7 @@
   }
   byte[]|crypto:Error cipherText = crypto:encryptAesEcb(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2354,7 +2065,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the AES-GCM-encrypted value for the given data.
+        <p>Returns the AES-GCM-encrypted value for the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina!&quot;;
   byte[] data = dataString.toBytes();
   byte[16] key = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -2367,7 +2078,7 @@
   }
   byte[]|crypto:Error cipherText = crypto:encryptAesGcm(data, key, initialVector);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2469,7 +2180,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-encrypted value for the given data.
+        <p>Returns the RSA-encrypted value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -2479,7 +2190,7 @@
   crypto:PublicKey publicKey = checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   byte[]|crypto:Error cipherText = crypto:encryptRsaEcb(data, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2555,12 +2266,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the MD5 hash of the given data.
+        <p>Returns the MD5 hash of the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
   byte[] data = dataString.toBytes();
   byte[] hash = crypto:hashMd5(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2610,12 +2321,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the SHA-1 hash of the given data.
+        <p>Returns the SHA-1 hash of the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
   byte[] data = dataString.toBytes();
   byte[] hash = crypto:hashSha1(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2665,12 +2376,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the SHA-256 hash of the given data.
+        <p>Returns the SHA-256 hash of the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
   byte[] data = dataString.toBytes();
   byte[] hash = crypto:hashSha256(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2720,12 +2431,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the SHA-384 hash of the given data.
+        <p>Returns the SHA-384 hash of the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
   byte[] data = dataString.toBytes();
   byte[] hash = crypto:hashSha384(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2775,12 +2486,12 @@
     </div>
     <div class="function-desc">
         
-        Returns the SHA-512 hash of the given data.
+        <p>Returns the SHA-512 hash of the given data.
 <pre><code class="language-ballerina">  string dataString = &quot;Hello Ballerina&quot;;
   byte[] data = dataString.toBytes();
   byte[] hash = crypto:hashSha512(data);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2830,14 +2541,14 @@
     </div>
     <div class="function-desc">
         
-        Returns the HMAC using the MD-5 hash function of the given data.
+        <p>Returns the HMAC using the MD-5 hash function of the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string keyString = &quot;some-secret&quot;;
   byte[] key = keyString.toBytes();
   byte[] hmac = crypto:hmacMd5(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2900,14 +2611,14 @@
     </div>
     <div class="function-desc">
         
-        Returns the HMAC using the SHA-1 hash function of the given data.
+        <p>Returns the HMAC using the SHA-1 hash function of the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string keyString = &quot;some-secret&quot;;
   byte[] key = keyString.toBytes();
   byte[] hmac = crypto:hmacSha1(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2970,14 +2681,14 @@
     </div>
     <div class="function-desc">
         
-        Returns the HMAC using the SHA-256 hash function of the given data.
+        <p>Returns the HMAC using the SHA-256 hash function of the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string keyString = &quot;some-secret&quot;;
   byte[] key = keyString.toBytes();
   byte[] hmac = crypto:hmacSha256(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3040,14 +2751,14 @@
     </div>
     <div class="function-desc">
         
-        Returns the HMAC using the SHA-384 hash function of the given data.
+        <p>Returns the HMAC using the SHA-384 hash function of the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string keyString = &quot;some-secret&quot;;
   byte[] key = keyString.toBytes();
   byte[] hmac = crypto:hmacSha384(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3110,14 +2821,14 @@
     </div>
     <div class="function-desc">
         
-        Returns the HMAC using the SHA-512 hash function of the given data.
+        <p>Returns the HMAC using the SHA-512 hash function of the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   string keyString = &quot;some-secret&quot;;
   byte[] key = keyString.toBytes();
   byte[] hmac = crypto:hmacSha512(data, key);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3180,7 +2891,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-MD5-based signature value for the given data.
+        <p>Returns the RSA-MD5-based signature value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3191,7 +2902,7 @@
       checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
   byte[]|crypto:Error signature = crypto:signRsaMd5(data, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3254,7 +2965,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-SHA1-based signature value for the given data.
+        <p>Returns the RSA-SHA1-based signature value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3265,7 +2976,7 @@
       checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
   byte[]|crypto:Error signature = crypto:signRsaSha1(data, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3328,7 +3039,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-SHA256-based signature value for the given data.
+        <p>Returns the RSA-SHA256-based signature value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3339,7 +3050,7 @@
       checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
   byte[]|crypto:Error signature = crypto:signRsaSha256(data, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3402,7 +3113,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-SHA384-based signature value for the given data.
+        <p>Returns the RSA-SHA384-based signature value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3413,7 +3124,7 @@
       checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
   byte[]|crypto:Error signature = crypto:signRsaSha384(data, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3476,7 +3187,7 @@
     </div>
     <div class="function-desc">
         
-        Returns the RSA-SHA512-based signature value for the given data.
+        <p>Returns the RSA-SHA512-based signature value for the given data.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3487,7 +3198,7 @@
       checkpanic crypto:decodePrivateKey(keyStore, &quot;keyAlias&quot;, &quot;keyPassword&quot;);
   byte[]|crypto:Error signature = crypto:signRsaSha512(data, privateKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3550,7 +3261,7 @@
     </div>
     <div class="function-desc">
         
-        Verifies the RSA-MD5-based signature.
+        <p>Verifies the RSA-MD5-based signature.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3562,7 +3273,7 @@
   crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   boolean|crypto:Error validity = crypto:verifyRsaMd5Signature(data, signature, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3638,7 +3349,7 @@
     </div>
     <div class="function-desc">
         
-        Verifies the RSA-SHA1-based signature.
+        <p>Verifies the RSA-SHA1-based signature.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3650,7 +3361,7 @@
   crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   boolean|crypto:Error validity = crypto:verifyRsaSha1Signature(data, signature, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3726,7 +3437,7 @@
     </div>
     <div class="function-desc">
         
-        Verifies the RSA-SHA256-based signature.
+        <p>Verifies the RSA-SHA256-based signature.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3738,7 +3449,7 @@
   crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   boolean|crypto:Error validity = crypto:verifyRsaSha256Signature(data, signature, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3814,7 +3525,7 @@
     </div>
     <div class="function-desc">
         
-        Verifies the RSA-SHA384-based signature.
+        <p>Verifies the RSA-SHA384-based signature.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3826,7 +3537,7 @@
   crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   boolean|crypto:Error validity = crypto:verifyRsaSha384Signature(data, signature, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -3902,7 +3613,7 @@
     </div>
     <div class="function-desc">
         
-        Verifies the RSA-SHA512-based signature.
+        <p>Verifies the RSA-SHA512-based signature.
 <pre><code class="language-ballerina">  string stringData = &quot;Hello Ballerina&quot;;
   byte[] data = stringData.toBytes();
   crypto:KeyStore keyStore = {
@@ -3914,7 +3625,7 @@
   crypto:PublicKey publicKey =  checkpanic crypto:decodePublicKey(keyStore, &quot;keyAlias&quot;);
   boolean|crypto:Error validity = crypto:verifyRsaSha512Signature(data, signature, publicKey);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

@@ -630,7 +630,8 @@
                         Module : <span class="modules">kafka</span>
                     
                 </h1>
-                    <p>This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+                    <h2>Module Overview</h2>
+<p>This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
 This module supports Kafka 1.x.x and 2.0.0 versions.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.
 For examples on the usage of the operations, see the following.</p>
@@ -896,8 +897,7 @@ name=Lahiru Perera age=28
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a generic Avro record. This is the type of the value returned from an Avro deserializer consumer.
-
+                                Represents a generic Avro record.
                             </td>
                         </tr>
                     
@@ -908,7 +908,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Defines a records to send data using Avro serialization.
-
                             </td>
                         </tr>
                     
@@ -919,7 +918,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Configurations related to consumer endpoint.
-
                             </td>
                         </tr>
                     
@@ -930,7 +928,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Type related to consumer record.
-
                             </td>
                         </tr>
                     
@@ -941,7 +938,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Represents the details of an error.
-
                             </td>
                         </tr>
                     
@@ -952,7 +948,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Configurations related to the KeyStore.
-
                             </td>
                         </tr>
                     
@@ -963,7 +958,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Represents the topic partition position in which the consumed record is stored.
-
                             </td>
                         </tr>
                     
@@ -974,7 +968,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Represents the Kafka Producer configuration.
-
                             </td>
                         </tr>
                     
@@ -985,7 +978,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Configurations related to the SSL/TLS protocol and the versions to be used.
-
                             </td>
                         </tr>
                     
@@ -996,7 +988,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Configurations for facilitating secure communication with the Kafka server.
-
                             </td>
                         </tr>
                     
@@ -1007,7 +998,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Represents a topic partition.
-
                             </td>
                         </tr>
                     
@@ -1018,7 +1008,6 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Configurations related to the TrustStore.
-
                             </td>
                         </tr>
                     
@@ -1042,9 +1031,7 @@ name=Lahiru Perera age=28
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a Kafka deserializer object. This object can be used to create custom deserializers for Ballerina Kafka
-consumers.
-
+                                Represents a Kafka deserializer object.
                             </td>
                         </tr>
                     
@@ -1054,9 +1041,7 @@ consumers.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a Kafka serializer object. This object can be used to create custom serializers for the Ballerina Kafka
-producers.
-
+                                Represents a Kafka serializer object.
                             </td>
                         </tr>
                     
@@ -1081,7 +1066,6 @@ producers.
                             <td class="module-desc">
                                 
                                 Represents a Kafka consumer endpoint.
-
                             </td>
                         </tr>
                     
@@ -1092,7 +1076,6 @@ producers.
                             <td class="module-desc">
                                 
                                 Represents a Kafka producer endpoint.
-
                             </td>
                         </tr>
                     
@@ -1123,7 +1106,6 @@ producers.
                             <td class="module-desc">
                                 
                                 In-built Kafka byte array deserializer.
-
                             </td>
                         </tr>
                     
@@ -1134,7 +1116,6 @@ producers.
                             <td class="module-desc">
                                 
                                 In-built Kafka string deserializer.
-
                             </td>
                         </tr>
                     
@@ -1145,7 +1126,6 @@ producers.
                             <td class="module-desc">
                                 
                                 In-built Kafka int deserializer.
-
                             </td>
                         </tr>
                     
@@ -1156,7 +1136,6 @@ producers.
                             <td class="module-desc">
                                 
                                 In-built Kafka float deserializer.
-
                             </td>
                         </tr>
                     
@@ -1167,7 +1146,6 @@ producers.
                             <td class="module-desc">
                                 
                                 User-defined deserializer.
-
                             </td>
                         </tr>
                     
@@ -1178,7 +1156,6 @@ producers.
                             <td class="module-desc">
                                 
                                 Apache Avro deserializer.
-
                             </td>
                         </tr>
                     
@@ -1189,7 +1166,6 @@ producers.
                             <td class="module-desc">
                                 
                                 Configures the consumer to read the committed messages only in the transactional mode when poll() is called.
-
                             </td>
                         </tr>
                     
@@ -1200,7 +1176,6 @@ producers.
                             <td class="module-desc">
                                 
                                 Configures the consumer to read all the messages even the aborted ones.
-
                             </td>
                         </tr>
                     
@@ -1210,9 +1185,7 @@ producers.
                             </td>
                             <td class="module-desc">
                                 
-                                Producer acknowledgement type is 'all'. This will guarantee that the record will not be lost as long as at least one
-in-sync replica is alive.
-
+                                Producer acknowledgement type is 'all'.
                             </td>
                         </tr>
                     
@@ -1222,9 +1195,7 @@ in-sync replica is alive.
                             </td>
                             <td class="module-desc">
                                 
-                                Producer acknowledgement type '0'. If the acknowledgement type set to this, the producer will not wait for any
-acknowledgement from the server.
-
+                                Producer acknowledgement type '0'.
                             </td>
                         </tr>
                     
@@ -1234,9 +1205,7 @@ acknowledgement from the server.
                             </td>
                             <td class="module-desc">
                                 
-                                Producer acknowledgement type '1'. If the acknowledgement type set to this, the leader will write the record to its
-A local log will respond without waiting FOR full acknowledgement from all the followers.
-
+                                Producer acknowledgement type '1'.
                             </td>
                         </tr>
                     
@@ -1247,7 +1216,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 In-built Kafka Byte Array serializer.
-
                             </td>
                         </tr>
                     
@@ -1258,7 +1226,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 In-built Kafka string serializer.
-
                             </td>
                         </tr>
                     
@@ -1269,7 +1236,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 In-built Kafka int serializer.
-
                             </td>
                         </tr>
                     
@@ -1280,7 +1246,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 In-built Kafka float serializer.
-
                             </td>
                         </tr>
                     
@@ -1291,7 +1256,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 User-defined serializer.
-
                             </td>
                         </tr>
                     
@@ -1302,7 +1266,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Apache Avro serializer.
-
                             </td>
                         </tr>
                     
@@ -1313,7 +1276,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 No compression.
-
                             </td>
                         </tr>
                     
@@ -1324,7 +1286,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka GZIP compression type.
-
                             </td>
                         </tr>
                     
@@ -1335,7 +1296,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka Snappy compression type.
-
                             </td>
                         </tr>
                     
@@ -1346,7 +1306,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka LZ4 compression type.
-
                             </td>
                         </tr>
                     
@@ -1357,7 +1316,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka ZSTD compression type.
-
                             </td>
                         </tr>
                     
@@ -1368,7 +1326,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Used as the error reason for the <code>kafka:ConsumerError</code> type.
-
                             </td>
                         </tr>
                     
@@ -1379,7 +1336,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Used as the error reason for the <code>kafka:ProducerError</code> type.
-
                             </td>
                         </tr>
                     
@@ -1390,7 +1346,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Used as the error reason for the <code>kafka:AvroError</code> type.
-
                             </td>
                         </tr>
                     
@@ -1418,7 +1373,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka compression types to compress the messages.
-
                             </td>
                         </tr>
                     
@@ -1429,7 +1383,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka in-built deserializer type.
-
                             </td>
                         </tr>
                     
@@ -1440,7 +1393,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka consumer isolation level type.
-
                             </td>
                         </tr>
                     
@@ -1451,7 +1403,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka producer acknowledgement types.
-
                             </td>
                         </tr>
                     
@@ -1462,7 +1413,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Kafka in-built serializer types.
-
                             </td>
                         </tr>
                     
@@ -1487,7 +1437,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Represents a Kafka Avro related error.
-
                             </td>
                         </tr>
                     
@@ -1498,7 +1447,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Error type specific to the <code>kafka:Consumer</code> object functions.
-
                             </td>
                         </tr>
                     
@@ -1509,7 +1457,6 @@ A local log will respond without waiting FOR full acknowledgement from all the f
                             <td class="module-desc">
                                 
                                 Error type specific to the <code>kafka:Producer</code> object functions.
-
                             </td>
                         </tr>
                     

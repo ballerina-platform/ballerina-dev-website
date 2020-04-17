@@ -723,9 +723,6 @@
     <div class="param-details"> 
             
         Retrieves the query parameters of the content delivery request as a map.
-<pre><code class="language-ballerina"> map&lt;string[]&gt; payload = notification.getTextPayload();
-</code></pre>
-
     </div>
 </div>
 
@@ -738,9 +735,6 @@
     <div class="param-details"> 
             
         Retrieves the <code>mime:Entity</code> associated with the content delivery request.
-<pre><code class="language-ballerina"> mime:Entity|error payload = notification.getEntity();
-</code></pre>
-
     </div>
 </div>
 
@@ -753,9 +747,6 @@
     <div class="param-details"> 
             
         Returns whether the requested header key exists in the header map of the content delivery request.
-<pre><code class="language-ballerina"> boolean payload = notification.hasHeader(&quot;name&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -767,11 +758,7 @@
     </div>
     <div class="param-details"> 
             
-        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
-these values is returned.
-<pre><code class="language-ballerina"> string payload = notification.getHeader(&quot;name&quot;);
-</code></pre>
-
+        Returns the value of the specified header.
     </div>
 </div>
 
@@ -784,9 +771,6 @@ these values is returned.
     <div class="param-details"> 
             
         Retrieves all the header values to which the specified header key maps to.
-<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaders(&quot;name&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -799,9 +783,6 @@ these values is returned.
     <div class="param-details"> 
             
         Retrieves all the names of the headers present in the content delivery request.
-<pre><code class="language-ballerina"> string[] headersNames = notification.getHeaderNames();
-</code></pre>
-
     </div>
 </div>
 
@@ -813,10 +794,7 @@ these values is returned.
     </div>
     <div class="param-details"> 
             
-        Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).
-<pre><code class="language-ballerina"> string contentType = notification.getContentType();
-</code></pre>
-
+        Retrieves the type of the payload of the content delivery request (i.
     </div>
 </div>
 
@@ -829,9 +807,6 @@ these values is returned.
     <div class="param-details"> 
             
         Extracts <code>json</code> payload from the content delivery request.
-<pre><code class="language-ballerina"> json|error payload = notification.getJsonPayload();
-</code></pre>
-
     </div>
 </div>
 
@@ -844,9 +819,6 @@ these values is returned.
     <div class="param-details"> 
             
         Extracts <code>xml</code> payload from the content delivery request.
-<pre><code class="language-ballerina"> xml|error result = notification.getXmlPayload();
-</code></pre>
-
     </div>
 </div>
 
@@ -859,9 +831,6 @@ these values is returned.
     <div class="param-details"> 
             
         Extracts <code>text</code> payload from the content delivery request.
-<pre><code class="language-ballerina"> string|error result = notification.getTextPayload();
-</code></pre>
-
     </div>
 </div>
 
@@ -874,9 +843,6 @@ these values is returned.
     <div class="param-details"> 
             
         Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.
-<pre><code class="language-ballerina"> io:ReadableByteChannel|error result = notification.getByteChannel();
-</code></pre>
-
     </div>
 </div>
 
@@ -889,9 +855,6 @@ these values is returned.
     <div class="param-details"> 
             
         Retrieves the request payload as a <code>byte[]</code>.
-<pre><code class="language-ballerina"> byte[]|error payload = notification.getBinaryPayload();
-</code></pre>
-
     </div>
 </div>
 
@@ -904,9 +867,6 @@ these values is returned.
     <div class="param-details"> 
             
         Retrieves the form parameters from the content delivery request as a <code>map</code>.
-<pre><code class="language-ballerina"> map&lt;string&gt;|error result = notification.getFormParams();
-</code></pre>
-
     </div>
 </div>
 
@@ -934,10 +894,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Retrieves the query parameters of the content delivery request as a map.
+        <p>Retrieves the query parameters of the content delivery request as a map.
 <pre><code class="language-ballerina"> map&lt;string[]&gt; payload = notification.getTextPayload();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -969,10 +929,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Retrieves the <code>mime:Entity</code> associated with the content delivery request.
+        <p>Retrieves the <code>mime:Entity</code> associated with the content delivery request.
 <pre><code class="language-ballerina"> mime:Entity|error payload = notification.getEntity();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1004,10 +964,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Returns whether the requested header key exists in the header map of the content delivery request.
+        <p>Returns whether the requested header key exists in the header map of the content delivery request.
 <pre><code class="language-ballerina"> boolean payload = notification.hasHeader(&quot;name&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1057,11 +1017,11 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Returns the value of the specified header. If the specified header key maps to multiple values, the first of
+        <p>Returns the value of the specified header. If the specified header key maps to multiple values, the first of
 these values is returned.
 <pre><code class="language-ballerina"> string payload = notification.getHeader(&quot;name&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1112,10 +1072,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Retrieves all the header values to which the specified header key maps to.
+        <p>Retrieves all the header values to which the specified header key maps to.
 <pre><code class="language-ballerina"> string[] headersNames = notification.getHeaders(&quot;name&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1166,10 +1126,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Retrieves all the names of the headers present in the content delivery request.
+        <p>Retrieves all the names of the headers present in the content delivery request.
 <pre><code class="language-ballerina"> string[] headersNames = notification.getHeaderNames();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1201,10 +1161,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).
+        <p>Retrieves the type of the payload of the content delivery request (i.e: the <code>content-type</code> header value).
 <pre><code class="language-ballerina"> string contentType = notification.getContentType();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1236,10 +1196,10 @@ these values is returned.
     </div>
     <div class="function-desc">
         
-        Extracts <code>json</code> payload from the content delivery request.
+        <p>Extracts <code>json</code> payload from the content delivery request.
 <pre><code class="language-ballerina"> json|error payload = notification.getJsonPayload();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1272,10 +1232,10 @@ If the content; type is not JSON, an <code>error</code> is returned.</p>
     </div>
     <div class="function-desc">
         
-        Extracts <code>xml</code> payload from the content delivery request.
+        <p>Extracts <code>xml</code> payload from the content delivery request.
 <pre><code class="language-ballerina"> xml|error result = notification.getXmlPayload();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1308,10 +1268,10 @@ If the content; type is not XML, an <code>error</code> is returned.</p>
     </div>
     <div class="function-desc">
         
-        Extracts <code>text</code> payload from the content delivery request.
+        <p>Extracts <code>text</code> payload from the content delivery request.
 <pre><code class="language-ballerina"> string|error result = notification.getTextPayload();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1344,10 +1304,10 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
     </div>
     <div class="function-desc">
         
-        Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.
+        <p>Retrieves the request payload as a <code>ByteChannel</code> except in the case of multiparts.
 <pre><code class="language-ballerina"> io:ReadableByteChannel|error result = notification.getByteChannel();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1379,10 +1339,10 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
     </div>
     <div class="function-desc">
         
-        Retrieves the request payload as a <code>byte[]</code>.
+        <p>Retrieves the request payload as a <code>byte[]</code>.
 <pre><code class="language-ballerina"> byte[]|error payload = notification.getBinaryPayload();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1414,10 +1374,10 @@ If the content type is not of type text, an <code>error</code> is returned.</p>
     </div>
     <div class="function-desc">
         
-        Retrieves the form parameters from the content delivery request as a <code>map</code>.
+        <p>Retrieves the form parameters from the content delivery request as a <code>map</code>.
 <pre><code class="language-ballerina"> map&lt;string&gt;|error result = notification.getFormParams();
 </code></pre>
-
+</p>
     </div>
     
 

@@ -1,0 +1,1119 @@
+---
+layout: ballerina-api-doc-page
+title: Ballerina API Documentation - http
+keywords: Ballerina, ballerinalang
+permalink: /1.1/learn/api-docs/ballerina/http/objects/AuthzFilter
+---
+<link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Objects</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="AuthnFilter.html">AuthnFilter</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="AuthzFilter.html">AuthzFilter</a>
+                        </li>
+                    
+                        <li >
+                            <a href="AuthzHandler.html">AuthzHandler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BasicAuthHandler.html">BasicAuthHandler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BearerAuthHandler.html">BearerAuthHandler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Cookie.html">Cookie</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CookieClient.html">CookieClient</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CookieStore.html">CookieStore</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FilterContext.html">FilterContext</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpCache.html">HttpCache</a>
+                        </li>
+                    
+                        <li >
+                            <a href="HttpFuture.html">HttpFuture</a>
+                        </li>
+                    
+                        <li >
+                            <a href="InboundAuthHandler.html">InboundAuthHandler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LoadBalancerRoundRobinRule.html">LoadBalancerRoundRobinRule</a>
+                        </li>
+                    
+                        <li >
+                            <a href="LoadBalancerRule.html">LoadBalancerRule</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OutboundAuthHandler.html">OutboundAuthHandler</a>
+                        </li>
+                    
+                        <li >
+                            <a href="PushPromise.html">PushPromise</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Request.html">Request</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RequestCacheControl.html">RequestCacheControl</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RequestFilter.html">RequestFilter</a>
+                        </li>
+                    
+                        <li >
+                            <a href="Response.html">Response</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ResponseCacheControl.html">ResponseCacheControl</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ResponseFilter.html">ResponseFilter</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Objects</h3>
+                    <ul>
+                        
+                            <li ></li>>
+                                <a href="AuthnFilter.html">AuthnFilter</a>
+                            </li>
+                        
+                            <li class="active"></li>>
+                                <a href="AuthzFilter.html">AuthzFilter</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="AuthzHandler.html">AuthzHandler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BasicAuthHandler.html">BasicAuthHandler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BearerAuthHandler.html">BearerAuthHandler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Cookie.html">Cookie</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="CookieClient.html">CookieClient</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="CookieStore.html">CookieStore</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="FilterContext.html">FilterContext</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="HttpCache.html">HttpCache</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="HttpFuture.html">HttpFuture</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="InboundAuthHandler.html">InboundAuthHandler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LoadBalancerRoundRobinRule.html">LoadBalancerRoundRobinRule</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="LoadBalancerRule.html">LoadBalancerRule</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="OutboundAuthHandler.html">OutboundAuthHandler</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="PushPromise.html">PushPromise</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Request.html">Request</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="RequestCacheControl.html">RequestCacheControl</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="RequestFilter.html">RequestFilter</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="Response.html">Response</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ResponseCacheControl.html">ResponseCacheControl</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ResponseFilter.html">ResponseFilter</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                
+
+    
+        <div class="version">v1.1.0</div>
+    
+
+
+<div class="primary-list module">
+    
+        <a href="../../http/index.html">
+            <h3>http</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../http/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../http/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../http/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../http/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../../http/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../http/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../http/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../http/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../http/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../../llvm/index.html">llvm</a>
+                </li>
+            
+                <li>
+                    <a href="../../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Object - </span>
+                
+                    <a href="../../http/index.html">http</a>
+                 :
+                <span class="objects">AuthzFilter</span>
+            </h1>
+            <p><p>Representation of the Authorization filter.</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                        <h2>Constructor</h2>
+<h3 >__init</h3><p>(<a href="../../http/objects/AuthzHandler.html">AuthzHandler</a> authzHandler, <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> | <span class="builtin-type">()</span> scopes)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>authzHandler</b><span class="type">  <a href="../../http/objects/AuthzHandler.html">AuthzHandler</a></span> </li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>scopes</b><span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> | <span class="builtin-type">()</span></span> </li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<a href="#filterRequest">
+    <div class="param-sum">
+        <div class="param-name">
+        filterRequest 
+        </div>
+        <div class="param-details"> <p>Filter function implementation which tries to authorize the request.</p>
+ </div>
+    </div>
+</a>
+                            
+                                
+<a href="#filterResponse">
+    <div class="param-sum">
+        <div class="param-name">
+        filterResponse 
+        </div>
+        <div class="param-details">  </div>
+    </div>
+</a>
+                            
+                        </div>
+                    
+
+                    
+                        
+                            <h2>Fields</h2>
+                                <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> authzHandler<span class="type">  <a href="../../http/objects/AuthzHandler.html">AuthzHandler</a></span>
+                
+            </li>
+            <li>
+                <p><p><code>AuthzHandler</code> instance for handling authorization</p>
+</p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> scopes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> | <span class="builtin-type">()</span></span>
+                
+            </li>
+            <li>
+                <p><p>Array of scopes</p>
+</p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                        
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="filterRequest" title="filterRequest">
+             <a class="url-link" href="#filterRequest">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> filterRequest </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/clients/Caller.html">Caller</a> caller, <a href="../../http/objects/Request.html">Request</a> request, <a href="../../http/objects/FilterContext.html">FilterContext</a> context)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Filter function implementation which tries to authorize the request.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        caller<span class="type">  <a href="../../http/clients/Caller.html">Caller</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Caller for outbound HTTP responses</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        request<span class="type">  <a href="../../http/objects/Request.html">Request</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p><code>Request</code> instance</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        context<span class="type">  <a href="../../http/objects/FilterContext.html">FilterContext</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p><code>FilterContext</code> instance</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>A flag to indicate if the request flow should be continued(true) or aborted(false), a code and a message</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="filterResponse" title="filterResponse">
+             <a class="url-link" href="#filterResponse">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2> filterResponse </h2>
+        
+        <span class="method-types">
+            <p>(<a href="../../http/objects/Response.html">Response</a> response, <a href="../../http/objects/FilterContext.html">FilterContext</a> context)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p></p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        response<span class="type">  <a href="../../http/objects/Response.html">Response</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        context<span class="type">  <a href="../../http/objects/FilterContext.html">FilterContext</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li></li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+            </div>
+        </div>
+    </div>
+

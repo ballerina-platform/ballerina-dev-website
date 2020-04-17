@@ -1,3 +1,5 @@
+---
+---
 $(document).ready(function() {
 
     $("#iReleseNotes").click(function() {
@@ -6,7 +8,7 @@ $(document).ready(function() {
     });
 
     // Getting latest release information
-    $.getJSON(latest_versions_json, function(latest_pack) {
+    // $.getJSON(latest_versions_json, function(latest_pack) {
 
       /*
 
@@ -107,174 +109,163 @@ $(document).ready(function() {
         }
         $("#insPackages" + row_id).append(release_content);
         */
-    });
+    // });
 
     //Nightly Packages
-    var nightly_pack = "";
     $("#nightlyPackContainer").hide();
 
-    $.getJSON(nightly_versions_json, function(nightly_pack) {
+    var nightly_pack = {{ site.data.nightly_versions }};
+    var version = nightly_pack['version'];
+    var version_pack = version.replace(/ /g, "-").toLowerCase();
+    var released_date = nightly_pack['release-date'];
 
-        $("#nightlyPackContainer").show();
-        var version = nightly_pack['version'];
-        var version_pack = version.replace(/ /g, "-").toLowerCase();
-        var released_date = nightly_pack['release-date'];
+    $("#nightlyInfo").html(version + " (" + formatDate(released_date) + ")");
+    var nightly_packs = $.merge([nightly_pack['windows-installer'], nightly_pack['linux-installer'], nightly_pack['macos-installer']], nightly_pack['other-artefacts']);
+    var i = 0;
+    var product_dist_path = nightly_download_url + "/"+version+"/";
 
-        $("#nightlyInfo").html(version + " (" + formatDate(released_date) + ")");
-        var nightly_packs = $.merge([nightly_pack['windows-installer'], nightly_pack['linux-installer'], nightly_pack['macos-installer']], nightly_pack['other-artefacts']);
-        var i = 0;
-        var product_dist_path = nightly_download_url + "/"+version+"/";
+    if (nightly_packs.length == 0) {
+        $("#nightlyPackContainer").hide();
+    }
 
-        if (nightly_packs.length == 0) {
-            $("#nightlyPackContainer").hide();
-        }
+    $.each(nightly_packs, function(key, value) {
 
-        $.each(nightly_packs, function(key, value) {
-
-          if(value.indexOf(".json") === -1){
-            release_content = "<tr>";
-            release_content += '<td style="width: 96%">' + value + '</td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.md5">md5</a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.sha1">SHA-1</a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.asc">asc</a></td>';
-            release_content += "</tr>";
-
-            if (i < nightly_packs.length / 2) {
-                var row_id = 0;
-            } else {
-                var row_id = 1;
-            }
-            $("#nightlyPackages" + row_id).append(release_content);
-            i++;
-
-          }else{
-
-            var data;
-            $.getJSON(product_dist_path + value, function(obj) {
-              var obj = obj;
-              jsondata = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-
-              release_content = "<tr>";
-              release_content += '<td style="width: 96%">' + value + '</td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"><a href="data:' + jsondata + '" download="'+value+'" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+"-"+version+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += "</tr>";
-
-              if (i < nightly_packs.length / 2) {
-                  var row_id = 0;
-              } else {
-                  var row_id = 1;
-              }
-              $("#nightlyPackages" + row_id).append(release_content);
-              i++;
-            });
-          }
-        });
-
-        //IDEA plugin URL
+      if(value.indexOf(".json") === -1){
         release_content = "<tr>";
-        release_content += '<td style="width: 96%">ballerina-intellij-idea-plugin</td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank" class="cDownloadLinkIcon" data-pack="ballerina-intellij-idea-plugin-'+version+'"><img src="../img/right-bg-green-fill.svg"></a></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+        release_content += '<td style="width: 96%">' + value + '</td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.md5">md5</a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.sha1">SHA-1</a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.asc">asc</a></td>';
         release_content += "</tr>";
+
         if (i < nightly_packs.length / 2) {
+            var row_id = 0;
+        } else {
+            var row_id = 1;
+        }
+        $("#nightlyPackages" + row_id).append(release_content);
+        i++;
+
+      }else{
+
+        var data;
+        $.getJSON(product_dist_path + value, function(obj) {
+          var obj = obj;
+          jsondata = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+          release_content = "<tr>";
+          release_content += '<td style="width: 96%">' + value + '</td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"><a href="data:' + jsondata + '" download="'+value+'" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+"-"+version+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += "</tr>";
+
+          if (i < nightly_packs.length / 2) {
               var row_id = 0;
           } else {
               var row_id = 1;
-        }
-        $("#nightlyPackages" + row_id).append(release_content);
+          }
+          $("#nightlyPackages" + row_id).append(release_content);
+          i++;
+        });
+      }
+    });
 
-    }).fail(function() {$("#nightlyPackContainer").hide();});
-
+    //IDEA plugin URL
+    release_content = "<tr>";
+    release_content += '<td style="width: 96%">ballerina-intellij-idea-plugin</td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank" class="cDownloadLinkIcon" data-pack="ballerina-intellij-idea-plugin-'+version+'"><img src="../img/right-bg-green-fill.svg"></a></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += "</tr>";
+    if (i < nightly_packs.length / 2) {
+          var row_id = 0;
+      } else {
+          var row_id = 1;
+    }
+    $("#nightlyPackages" + row_id).append(release_content);
 
 
     //dev Packages
     var dev_pack = "";
     $("#devPackContainer").hide();
 
-    $.getJSON(dev_versions_json, function(dev_pack) {
+    var dev_pack = {{ site.data.dev_release | jsonify }};
+    $("#devPackContainer").show();
+    var version = dev_pack['version'];
+    var version_pack = version.replace(/ /g, "-").toLowerCase();
+    var released_date = dev_pack['release-date'];
 
-        $("#devPackContainer").show();
-        var version = dev_pack['version'];
-        var version_pack = version.replace(/ /g, "-").toLowerCase();
-        var released_date = dev_pack['release-date'];
+    $("#devInfo").html(version + " (" + formatDate(released_date) + ")");
+    var dev_packs = $.merge([dev_pack['windows-installer'], dev_pack['linux-installer'], dev_pack['macos-installer']], dev_pack['other-artefacts']);
+    var i = 0;
+    var product_dist_path = dev_download_url + "/"+version+"/";
 
-        $("#devInfo").html(version + " (" + formatDate(released_date) + ")");
-        var dev_packs = $.merge([dev_pack['windows-installer'], dev_pack['linux-installer'], dev_pack['macos-installer']], dev_pack['other-artefacts']);
-        var i = 0;
-        var product_dist_path = dev_download_url + "/"+version+"/";
+    if (dev_packs.length == 0) {
+        $("#devPackContainer").hide();
+    }
 
-        if (dev_packs.length == 0) {
-            $("#devPackContainer").hide();
-        }
+    $.each(dev_packs, function(key, value) {
 
-        $.each(dev_packs, function(key, value) {
-
-          if(value.indexOf(".json") === -1){
-            release_content = "<tr>";
-            release_content += '<td style="width: 96%">' + value + '</td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.md5">md5</a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.sha1">SHA-1</a></td>';
-            release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.asc">asc</a></td>';
-            release_content += "</tr>";
-
-            if (i < dev_packs.length / 2) {
-                var row_id = 0;
-            } else {
-                var row_id = 1;
-            }
-            $("#devPackages" + row_id).append(release_content);
-            i++;
-
-          }else{
-
-            var data;
-            $.getJSON(product_dist_path + value, function(obj) {
-              var obj = obj;
-              jsondata = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-
-              release_content = "<tr>";
-              release_content += '<td style="width: 96%">' + value + '</td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"><a href="data:' + jsondata + '" download="'+value+'" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+"-"+version+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-              release_content += "</tr>";
-
-              if (i < dev_packs.length / 2) {
-                  var row_id = 0;
-              } else {
-                  var row_id = 1;
-              }
-              $("#devPackages" + row_id).append(release_content);
-              i++;
-            });
-          }
-        });
-
-        //IDEA plugin URL
+      if(value.indexOf(".json") === -1){
         release_content = "<tr>";
-        release_content += '<td style="width: 96%">ballerina-intellij-idea-plugin</td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank" class="cDownloadLinkIcon" data-pack="ballerina-intellij-idea-plugin-'+version+'"><img src="../img/right-bg-green-fill.svg"></a></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
-        release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+        release_content += '<td style="width: 96%">' + value + '</td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.md5">md5</a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.sha1">SHA-1</a></td>';
+        release_content += '<td style="width: 1%; white-space: nowrap;"><a href="' + product_dist_path + value + '.asc">asc</a></td>';
         release_content += "</tr>";
+
         if (i < dev_packs.length / 2) {
+            var row_id = 0;
+        } else {
+            var row_id = 1;
+        }
+        $("#devPackages" + row_id).append(release_content);
+        i++;
+
+      }else{
+
+        var data;
+        $.getJSON(product_dist_path + value, function(obj) {
+          var obj = obj;
+          jsondata = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+          release_content = "<tr>";
+          release_content += '<td style="width: 96%">' + value + '</td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"><a href="data:' + jsondata + '" download="'+value+'" class="cDownloadLinkIcon" data-download="downloads" data-pack="'+value+"-"+version+'"><img src="../img/download-bg-green-fill.svg"></a></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+          release_content += "</tr>";
+
+          if (i < dev_packs.length / 2) {
               var row_id = 0;
           } else {
               var row_id = 1;
-        }
-        $("#devPackages" + row_id).append(release_content);
+          }
+          $("#devPackages" + row_id).append(release_content);
+          i++;
+        });
+      }
+    });
 
-    }).fail(function() {$("#devPackContainer").hide();});
-
-
+    //IDEA plugin URL
+    release_content = "<tr>";
+    release_content += '<td style="width: 96%">ballerina-intellij-idea-plugin</td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" target="_blank" class="cDownloadLinkIcon" data-pack="ballerina-intellij-idea-plugin-'+version+'"><img src="../img/right-bg-green-fill.svg"></a></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += '<td style="width: 1%; white-space: nowrap;"></td>';
+    release_content += "</tr>";
+    if (i < dev_packs.length / 2) {
+          var row_id = 0;
+      } else {
+          var row_id = 1;
+    }
+    $("#devPackages" + row_id).append(release_content);
 
 });

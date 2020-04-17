@@ -1,0 +1,1249 @@
+---
+layout: ballerina-api-doc-page
+title: Ballerina API Documentation - test
+keywords: Ballerina, ballerinalang
+permalink: /1.0/learn/api-docs/ballerina/test/functions
+---
+<link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+    
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#assertEquals">assertEquals</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#assertFail">assertFail</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#assertFalse">assertFalse</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#assertNotEquals">assertNotEquals</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#assertTrue">assertTrue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createBallerinaError">createBallerinaError</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#startServiceSkeleton">startServiceSkeleton</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#startServices">startServices</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#stopServiceSkeleton">stopServiceSkeleton</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#stopServices">stopServices</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../test/index.html">
+            <h3>test</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../test/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../test/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="annotations" href="../test/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+<div class="version">v1.0.5</div>
+
+                <div class="primary-list">
+                    <h3>Functions</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#assertEquals">assertEquals</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#assertFail">assertFail</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#assertFalse">assertFalse</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#assertNotEquals">assertNotEquals</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#assertTrue">assertTrue</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#createBallerinaError">createBallerinaError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#startServiceSkeleton">startServiceSkeleton</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#startServices">startServices</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#stopServiceSkeleton">stopServiceSkeleton</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#stopServices">stopServices</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../test/index.html">
+            <h3>test</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../test/index.html#records">Records</a>
+        </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../test/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="annotations" href="../test/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+                <div class="primary-list module-list">
+    
+        <h3>All Modules</h3>
+        <ul>
+            
+                <li>
+                    <a href="../auth/index.html">auth</a>
+                </li>
+            
+                <li>
+                    <a href="../cache/index.html">cache</a>
+                </li>
+            
+                <li>
+                    <a href="../config/index.html">config</a>
+                </li>
+            
+                <li>
+                    <a href="../crypto/index.html">crypto</a>
+                </li>
+            
+                <li>
+                    <a href="../docker/index.html">docker</a>
+                </li>
+            
+                <li>
+                    <a href="../encoding/index.html">encoding</a>
+                </li>
+            
+                <li>
+                    <a href="../file/index.html">file</a>
+                </li>
+            
+                <li>
+                    <a href="../filepath/index.html">filepath</a>
+                </li>
+            
+                <li>
+                    <a href="../grpc/index.html">grpc</a>
+                </li>
+            
+                <li>
+                    <a href="../http/index.html">http</a>
+                </li>
+            
+                <li>
+                    <a href="../io/index.html">io</a>
+                </li>
+            
+                <li>
+                    <a href="../istio/index.html">istio</a>
+                </li>
+            
+                <li>
+                    <a href="../java/index.html">java</a>
+                </li>
+            
+                <li>
+                    <a href="../java.arrays/index.html">java.arrays</a>
+                </li>
+            
+                <li>
+                    <a href="../java.jdbc/index.html">java.jdbc</a>
+                </li>
+            
+                <li>
+                    <a href="../jsonutils/index.html">jsonutils</a>
+                </li>
+            
+                <li>
+                    <a href="../jwt/index.html">jwt</a>
+                </li>
+            
+                <li>
+                    <a href="../kafka/index.html">kafka</a>
+                </li>
+            
+                <li>
+                    <a href="../kubernetes/index.html">kubernetes</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.array/index.html">lang.array</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.decimal/index.html">lang.decimal</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.error/index.html">lang.error</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.float/index.html">lang.float</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.future/index.html">lang.future</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.int/index.html">lang.int</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.map/index.html">lang.map</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.object/index.html">lang.object</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.stream/index.html">lang.stream</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.string/index.html">lang.string</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.table/index.html">lang.table</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.typedesc/index.html">lang.typedesc</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.value/index.html">lang.value</a>
+                </li>
+            
+                <li>
+                    <a href="../lang.xml/index.html">lang.xml</a>
+                </li>
+            
+                <li>
+                    <a href="../log/index.html">log</a>
+                </li>
+            
+                <li>
+                    <a href="../math/index.html">math</a>
+                </li>
+            
+                <li>
+                    <a href="../mime/index.html">mime</a>
+                </li>
+            
+                <li>
+                    <a href="../nats/index.html">nats</a>
+                </li>
+            
+                <li>
+                    <a href="../oauth2/index.html">oauth2</a>
+                </li>
+            
+                <li>
+                    <a href="../observe/index.html">observe</a>
+                </li>
+            
+                <li>
+                    <a href="../openapi/index.html">openapi</a>
+                </li>
+            
+                <li>
+                    <a href="../openshift/index.html">openshift</a>
+                </li>
+            
+                <li>
+                    <a href="../rabbitmq/index.html">rabbitmq</a>
+                </li>
+            
+                <li>
+                    <a href="../reflect/index.html">reflect</a>
+                </li>
+            
+                <li>
+                    <a href="../runtime/index.html">runtime</a>
+                </li>
+            
+                <li>
+                    <a href="../socket/index.html">socket</a>
+                </li>
+            
+                <li>
+                    <a href="../streams/index.html">streams</a>
+                </li>
+            
+                <li>
+                    <a href="../stringutils/index.html">stringutils</a>
+                </li>
+            
+                <li>
+                    <a href="../system/index.html">system</a>
+                </li>
+            
+                <li>
+                    <a href="../task/index.html">task</a>
+                </li>
+            
+                <li>
+                    <a href="../test/index.html">test</a>
+                </li>
+            
+                <li>
+                    <a href="../time/index.html">time</a>
+                </li>
+            
+                <li>
+                    <a href="../transactions/index.html">transactions</a>
+                </li>
+            
+                <li>
+                    <a href="../websub/index.html">websub</a>
+                </li>
+            
+                <li>
+                    <a href="../xmlutils/index.html">xmlutils</a>
+                </li>
+            
+                <li>
+                    <a href="../xslt/index.html">xslt</a>
+                </li>
+            
+        </ul>
+        <div class="ui divider"></div>
+    
+</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <h1>
+                <a class="breadcrumb-home" href="../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../test/index.html">test</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table details-table">
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#assertEquals">assertEquals</a></td>
+                                <td width="70%"><p>Asserts whether the given values are equal. If it is not, an AssertError is thrown with the given errorMessage.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#assertFail">assertFail</a></td>
+                                <td width="70%"><p>Assert failure is triggered based on user discretion. AssertError is thrown with the given errorMessage.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#assertFalse">assertFalse</a></td>
+                                <td width="70%"><p>Asserts whether the given condition is false. If it is not, a AssertError is thrown with the given errorMessage.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#assertNotEquals">assertNotEquals</a></td>
+                                <td width="70%"><p>Asserts whether the given values are not equal. If it is equal, an AssertError is thrown with the given errorMessage.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#assertTrue">assertTrue</a></td>
+                                <td width="70%"><p>Asserts whether the given condition is true. If it is not, a AssertError is thrown with the given errorMessage.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#createBallerinaError">createBallerinaError</a></td>
+                                <td width="70%"><p>Creates an AssertError with custom message and category.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#startServiceSkeleton">startServiceSkeleton</a></td>
+                                <td width="70%"><p>Start a service skeleton from a given OpenApi definition in the given ballerina module.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#startServices">startServices</a></td>
+                                <td width="70%"><p>Starts all the services defined in the module specified in the 'moduleName' argument.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#stopServiceSkeleton">stopServiceSkeleton</a></td>
+                                <td width="70%"><p>Stop a service skeleton and cleanup created directories of a given ballerina module.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                        <tbody>
+                            <tr>
+                                <td width="30%" ><a class="functions" href="#stopServices">stopServices</a></td>
+                                <td width="70%"><p>Stops all the services defined in the module specified in the 'moduleName' argument.</p>
+</td>
+                            </tr>
+                        </tbody>
+                    
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="assertEquals" title="assertEquals">
+             <a class="url-link" href="#assertEquals">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> assertEquals </h2>
+        
+    </div>
+    <p><p>Asserts whether the given values are equal. If it is not, an AssertError is thrown with the given errorMessage.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        actual<span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Actual value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        expected<span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Expected value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        msg<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p><p>Assertion error message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="assertFail" title="assertFail">
+             <a class="url-link" href="#assertFail">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> assertFail </h2>
+        
+    </div>
+    <p><p>Assert failure is triggered based on user discretion. AssertError is thrown with the given errorMessage.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        msg<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Test Failed!)</span>
+                    </li>
+                    <li>
+                        <p><p>Assertion error message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="assertFalse" title="assertFalse">
+             <a class="url-link" href="#assertFalse">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> assertFalse </h2>
+        
+    </div>
+    <p><p>Asserts whether the given condition is false. If it is not, a AssertError is thrown with the given errorMessage.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        condition<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Boolean condition to evaluate</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        msg<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p><p>Assertion error message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="assertNotEquals" title="assertNotEquals">
+             <a class="url-link" href="#assertNotEquals">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> assertNotEquals </h2>
+        
+    </div>
+    <p><p>Asserts whether the given values are not equal. If it is equal, an AssertError is thrown with the given errorMessage.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        actual<span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Actual value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        expected<span class="type">  <span class="builtin-type">any</span> | <span class="builtin-type">error</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Expected value</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        msg<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p><p>Assertion error message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="assertTrue" title="assertTrue">
+             <a class="url-link" href="#assertTrue">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> assertTrue </h2>
+        
+    </div>
+    <p><p>Asserts whether the given condition is true. If it is not, a AssertError is thrown with the given errorMessage.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        condition<span class="type">  <span class="builtin-type">boolean</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Boolean condition to evaluate</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        msg<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default Assertion Failed!)</span>
+                    </li>
+                    <li>
+                        <p><p>Assertion error message</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createBallerinaError" title="createBallerinaError">
+             <a class="url-link" href="#createBallerinaError">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> createBallerinaError </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> errorMessage, <span class="builtin-type">string</span> category)</p>
+            <b> returns </b><span class="builtin-type">error</span> 
+        </span>
+        
+    </div>
+    <p><p>Creates an AssertError with custom message and category.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        errorMessage<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Custom message for the ballerina error</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        category<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>error category</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">error</span></span>)</li>
+                <li><p>an AssertError with custom message and category</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="startServiceSkeleton" title="startServiceSkeleton">
+             <a class="url-link" href="#startServiceSkeleton">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> startServiceSkeleton </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> moduleName, <span class="builtin-type">string</span> openApiFilePath)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Start a service skeleton from a given OpenApi definition in the given ballerina module.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        moduleName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Name of the module</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        openApiFilePath<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Path to the OpenApi definition</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p><code>true</code> if the service skeleton was started successfully, <code>false</code> otherwise</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="startServices" title="startServices">
+             <a class="url-link" href="#startServices">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> startServices </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> moduleName)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <p><p>Starts all the services defined in the module specified in the 'moduleName' argument.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        moduleName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Name of the module</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p><code>true</code> if the services were started successfully, <code>false</code> otherwise</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="stopServiceSkeleton" title="stopServiceSkeleton">
+             <a class="url-link" href="#stopServiceSkeleton">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> stopServiceSkeleton </h2>
+        
+    </div>
+    <p><p>Stop a service skeleton and cleanup created directories of a given ballerina module.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        moduleName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Name of the module</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="stopServices" title="stopServices">
+             <a class="url-link" href="#stopServices">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2> stopServices </h2>
+        
+    </div>
+    <p><p>Stops all the services defined in the module specified in the 'moduleName' argument.</p>
+</p>
+     
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        moduleName<span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p><p>Name of the module</p>
+</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+

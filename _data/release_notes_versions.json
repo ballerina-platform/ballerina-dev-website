@@ -1,0 +1,559 @@
+[
+   {
+      "release-date": "2018-08-20",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.981.1.msi",
+      "other-artefacts": [
+         "ballerina-platform-windows-installer-x64-0.981.1.msi",
+         "ballerina-platform-linux-installer-x64-0.981.1.deb",
+         "ballerina-platform-macos-installer-x64-0.981.1.pkg",
+         "ballerina-platform-0.981.1.zip",
+         "ballerina-platform-linux-installer-x64-0.981.1.rpm",
+         "ballerina-vscode-plugin-0.981.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "183mb",
+      "release-notes": "ballerina-release-notes-0.981.1.md",
+      "version": "0.981.1",
+      "linux-installer-size": "176mb",
+      "macos-installer-size": "218mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.981.1.pkg",
+      "api-docs": "ballerina-api-docs-0.981.1.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.981.1.deb"
+   },
+   {
+      "release-date": "2019-09-09",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.0.msi",
+      "other-artefacts": [
+         "ballerina-1.0.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "125mb",
+      "release-notes": "ballerina-release-notes-1.0.0.md",
+      "version": "1.0.0",
+      "linux-installer-size": "120mb",
+      "macos-installer-size": "135mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.0.pkg",
+      "api-docs": "ballerina-api-docs-1.0.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.0.deb"
+   },
+   {
+      "release-date": "2020-02-20",
+      "windows-installer": "ballerina-windows-installer-x64-1.1.3.msi",
+      "other-artefacts": [
+         "ballerina-1.1.3.zip",
+         "ballerina-linux-installer-x64-1.1.3.rpm",
+         "ballerina-vscode-plugin-1.1.3.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "128mb",
+      "release-notes": "ballerina-release-notes-1.1.3.md",
+      "version": "1.1.3",
+      "linux-installer-size": "123mb",
+      "macos-installer-size": "139mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.1.3.pkg",
+      "api-docs": "ballerina-api-docs-1.1.3.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.1.3.deb"
+   },
+   {
+      "release-date": "2018-07-16",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.980.0.msi",
+      "other-artefacts": [
+         "ballerina-platform-0.980.0.zip",
+         "ballerina-platform-linux-installer-x64-0.980.0.rpm",
+         "ballerina-vscode-plugin-0.980.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "183mb",
+      "release-notes": "ballerina-release-notes-0.980.0.md",
+      "version": "0.980.0",
+      "linux-installer-size": "179mb",
+      "macos-installer-size": "217mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.980.0.pkg",
+      "api-docs": "ballerina-api-docs-0.980.0.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.980.0.deb"
+   },
+   {
+      "release-date": "2020-01-31",
+      "windows-installer": "ballerina-windows-installer-x64-1.1.1.msi",
+      "other-artefacts": [
+         "ballerina-1.1.1.zip",
+         "ballerina-linux-installer-x64-1.1.1.rpm",
+         "ballerina-vscode-plugin-1.1.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "128mb",
+      "release-notes": "ballerina-release-notes-1.1.1.md",
+      "version": "1.1.1",
+      "linux-installer-size": "124mb",
+      "macos-installer-size": "139mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.1.1.pkg",
+      "api-docs": "ballerina-api-docs-1.1.1.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.1.1.deb"
+   },
+   {
+      "release-date": "2019-10-25",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.2.msi",
+      "other-artefacts": [
+         "ballerina-1.0.2.zip",
+         "ballerina-linux-installer-x64-1.0.2.rpm",
+         "ballerina-1.0.2.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "120mb",
+      "release-notes": "ballerina-release-notes-1.0.2.md",
+      "version": "1.0.2",
+      "linux-installer-size": "116mb",
+      "macos-installer-size": "131mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.2.pkg",
+      "api-docs": "ballerina-api-docs-1.0.2.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.2.deb"
+   },
+   {
+      "release-date": "2018-07-18",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.980.1.msi",
+      "other-artefacts": [
+         "ballerina-platform-windows-installer-x64-0.980.1.msi",
+         "ballerina-platform-linux-installer-x64-0.980.1.deb",
+         "ballerina-platform-macos-installer-x64-0.980.1.pkg",
+         "ballerina-platform-0.980.1.zip",
+         "ballerina-platform-linux-installer-x64-0.980.1.rpm",
+         "ballerina-vscode-plugin-0.980.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "183mb",
+      "release-notes": "ballerina-release-notes-0.980.1.md",
+      "version": "0.980.1",
+      "linux-installer-size": "179mb",
+      "macos-installer-size": "217mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.980.1.pkg",
+      "api-docs": "ballerina-api-docs-0.980.1.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.980.1.deb"
+   },
+   {
+      "release-date": "2018-12-10",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.0.msi",
+      "other-artefacts": [
+         "ballerina-0.990.0.zip",
+         "ballerina-linux-installer-x64-0.990.0.rpm",
+         "ballerina-vscode-plugin-0.990.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "209mb",
+      "release-notes": "ballerina-release-notes-0.990.0.md",
+      "version": "0.990.0",
+      "linux-installer-size": "210mb",
+      "macos-installer-size": "230mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.0.pkg",
+      "api-docs": "ballerina-api-docs-0.990.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.0.deb"
+   },
+   {
+      "release-date": "2018-06-15",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.975.0.msi",
+      "other-artefacts": [
+         "ballerina-platform-windows-installer-x64-0.975.0.msi",
+         "ballerina-platform-linux-installer-x64-0.975.0.deb",
+         "ballerina-platform-macos-installer-x64-0.975.0.pkg",
+         "ballerina-platform-0.975.0.zip",
+         "ballerina-platform-linux-installer-x64-0.975.0.rpm",
+         "ballerina-vscode-plugin-0.975.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "154mb",
+      "release-notes": "ballerina-release-notes-0.975.0.md",
+      "version": "0.975.0",
+      "linux-installer-size": "153mb",
+      "macos-installer-size": "179mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.975.0.pkg",
+      "api-docs": "ballerina-api-docs-0.975.0.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.975.0.deb"
+   },
+   {
+      "release-date": "2018-08-09",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.981.0.msi",
+      "other-artefacts": [
+         "ballerina-platform-0.981.0.zip",
+         "ballerina-platform-linux-installer-x64-0.981.0.rpm",
+         "ballerina-vscode-plugin-0.981.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "184mb",
+      "release-notes": "ballerina-release-notes-0.981.0.md",
+      "version": "0.981.0",
+      "linux-installer-size": "180mb",
+      "macos-installer-size": "218mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.981.0.pkg",
+      "api-docs": "ballerina-api-docs-0.981.0.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.981.0.deb"
+   },
+   {
+      "release-date": "2020-02-14",
+      "windows-installer": "ballerina-windows-installer-x64-1.1.2.msi",
+      "other-artefacts": [
+         "ballerina-1.1.2.zip",
+         "ballerina-linux-installer-x64-1.1.2.rpm",
+         "ballerina-vscode-plugin-1.1.2.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "128mb",
+      "release-notes": "ballerina-release-notes-1.1.2.md",
+      "version": "1.1.2",
+      "linux-installer-size": "124mb",
+      "macos-installer-size": "139mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.1.2.pkg",
+      "api-docs": "ballerina-api-docs-1.1.2.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.1.2.deb"
+   },
+   {
+      "release-date": "2019-11-30",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.5.msi",
+      "other-artefacts": [
+         "ballerina-1.0.5.zip",
+         "ballerina-linux-installer-x64-1.0.5.rpm",
+         "ballerina-vscode-plugin-1.0.5.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "122mb",
+      "release-notes": "ballerina-release-notes-1.0.5.md",
+      "version": "1.0.5",
+      "linux-installer-size": "117mb",
+      "macos-installer-size": "132mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.5.pkg",
+      "api-docs": "ballerina-api-docs-1.0.5.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.5.deb"
+   },
+   {
+      "release-date": "2018-11-09",
+      "windows-installer": "ballerina-windows-installer-x64-0.983.0.msi",
+      "other-artefacts": [
+         "ballerina-0.983.0.zip",
+         "ballerina-linux-installer-x64-0.983.0.rpm",
+         "ballerina-vscode-plugin-0.983.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "209mb",
+      "release-notes": "ballerina-release-notes-0.983.0.md",
+      "version": "0.983.0",
+      "linux-installer-size": "208mb",
+      "macos-installer-size": "230mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.983.0.pkg",
+      "api-docs": "ballerina-api-docs-0.983.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.983.0.deb"
+   },
+   {
+      "release-date": "2018-09-29",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.982.0.msi",
+      "other-artefacts": [
+         "ballerina-platform-0.982.0.zip",
+         "ballerina-platform-linux-installer-x64-0.982.0.rpm",
+         "ballerina-vscode-plugin-0.982.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "289mb",
+      "release-notes": "ballerina-release-notes-0.982.0.md",
+      "version": "0.982.0",
+      "linux-installer-size": "282mb",
+      "macos-installer-size": "320mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.982.0.pkg",
+      "api-docs": "ballerina-api-docs-0.982.0.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.982.0.deb"
+   },
+   {
+      "release-date": "2019-12-09",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.7.msi",
+      "other-artefacts": [
+         "ballerina-0.990.7.zip",
+         "ballerina-linux-installer-x64-0.990.7.rpm",
+         "ballerina-vscode-plugin-0.990.7.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "216mb",
+      "release-notes": "ballerina-release-notes-0.990.7.md",
+      "version": "0.990.7",
+      "linux-installer-size": "217mb",
+      "macos-installer-size": "237mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.7.pkg",
+      "api-docs": "ballerina-api-docs-0.990.7.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.7.deb"
+   },
+   {
+      "release-date": "2019-12-20",
+      "windows-installer": "ballerina-windows-installer-x64-1.1.0.msi",
+      "other-artefacts": [
+         "ballerina-1.1.0.zip",
+         "ballerina-linux-installer-x64-1.1.0.rpm",
+         "ballerina-1.1.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "125mb",
+      "release-notes": "ballerina-release-notes-1.1.0.md",
+      "version": "1.1.0",
+      "linux-installer-size": "120mb",
+      "macos-installer-size": "135mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.1.0.pkg",
+      "api-docs": "ballerina-api-docs-1.1.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.1.0.deb"
+   },
+   {
+      "release-date": "2019-06-06",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.5.msi",
+      "other-artefacts": [
+         "ballerina-0.990.5.zip",
+         "ballerina-linux-installer-x64-0.990.5.rpm",
+         "ballerina-vscode-plugin-0.990.5.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "216mb",
+      "release-notes": "ballerina-release-notes-0.990.5.md",
+      "version": "0.990.5",
+      "linux-installer-size": "216mb",
+      "macos-installer-size": "237mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.5.pkg",
+      "api-docs": "ballerina-api-docs-0.990.5.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.5.deb"
+   },
+   {
+      "release-date": "2020-02-27",
+      "windows-installer": "ballerina-windows-installer-x64-1.1.4.msi",
+      "other-artefacts": [
+         "ballerina-1.1.4.zip",
+         "ballerina-linux-installer-x64-1.1.4.rpm",
+         "ballerina-vscode-plugin-1.1.4.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "128mb",
+      "release-notes": "ballerina-release-notes-1.1.4.md",
+      "version": "1.1.4",
+      "linux-installer-size": "124mb",
+      "macos-installer-size": "139mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.1.4.pkg",
+      "api-docs": "ballerina-api-docs-1.1.4.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.1.4.deb"
+   },
+   {
+      "release-date": "2019-01-29",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.3.msi",
+      "other-artefacts": [
+         "ballerina-0.990.3.zip",
+         "ballerina-linux-installer-x64-0.990.3.rpm",
+         "ballerina-vscode-plugin-0.990.3.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "215mb",
+      "release-notes": "ballerina-release-notes-0.990.3.md",
+      "version": "0.990.3",
+      "linux-installer-size": "216mb",
+      "macos-installer-size": "236mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.3.pkg",
+      "api-docs": "ballerina-api-docs-0.990.3.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.3.deb"
+   },
+   {
+      "release-date": "2019-04-23",
+      "windows-installer": "ballerina-windows-installer-x64-0.991.0.msi",
+      "other-artefacts": [
+         "ballerina-0.991.0.zip",
+         "ballerina-linux-installer-x64-0.991.0.rpm",
+         "ballerina-vscode-plugin-0.991.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "89mb",
+      "release-notes": "ballerina-release-notes-0.991.0.md",
+      "version": "0.991.0",
+      "linux-installer-size": "88mb",
+      "macos-installer-size": "102mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.991.0.pkg",
+      "api-docs": "ballerina-api-docs-0.991.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.991.0.deb"
+   },
+   {
+      "release-date": "2019-11-19",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.4.msi",
+      "other-artefacts": [
+         "ballerina-1.0.4.zip",
+         "ballerina-linux-installer-x64-1.0.4.rpm",
+         "ballerina-1.0.4.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "122mb",
+      "release-notes": "ballerina-release-notes-1.0.4.md",
+      "version": "1.0.4",
+      "linux-installer-size": "118mb",
+      "macos-installer-size": "132mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.4.pkg",
+      "api-docs": "ballerina-api-docs-1.0.4.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.4.deb"
+   },
+   {
+      "release-date": "2020-03-20",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.0.msi",
+      "other-artefacts": [
+         "ballerina-1.2.0.zip",
+         "ballerina-linux-installer-x64-1.2.0.rpm",
+         "ballerina-vscode-plugin-1.2.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "130mb",
+      "release-notes": "ballerina-release-notes-1.2.0.md",
+      "version": "1.2.0",
+      "linux-installer-size": "125mb",
+      "macos-installer-size": "140mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.0.pkg",
+      "api-docs": "ballerina-api-docs-1.2.0.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.0.deb"
+   },
+   {
+      "release-date": "2019-11-04",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.3.msi",
+      "other-artefacts": [
+         "ballerina-1.0.3.zip",
+         "ballerina-linux-installer-x64-1.0.3.rpm",
+         "ballerina-1.0.3.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "122mb",
+      "release-notes": "ballerina-release-notes-1.0.3.md",
+      "version": "1.0.3",
+      "linux-installer-size": "117mb",
+      "macos-installer-size": "132mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.3.pkg",
+      "api-docs": "ballerina-api-docs-1.0.3.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.3.deb"
+   },
+   {
+      "release-date": "2018-12-21",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.1.msi",
+      "other-artefacts": [
+         "ballerina-0.990.1.zip",
+         "ballerina-linux-installer-x64-0.990.1.rpm",
+         "ballerina-vscode-plugin-0.990.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "210mb",
+      "release-notes": "ballerina-release-notes-0.990.1.md",
+      "version": "0.990.1",
+      "linux-installer-size": "210mb",
+      "macos-installer-size": "230mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.1.pkg",
+      "api-docs": "ballerina-api-docs-0.990.1.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.1.deb"
+   },
+   {
+      "release-date": "2018-05-11",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.970.1.msi",
+      "other-artefacts": [
+         "ballerina-runtime-0.970.1.zip",
+         "ballerina-platform-0.970.1.zip",
+         "ballerina-platform-linux-installer-x64-0.970.1.rpm",
+         "ballerina-runtime-linux-installer-x64-0.970.1.rpm",
+         "ballerina-runtime-linux-installer-x64-0.970.1.deb",
+         "ballerina-runtime-macos-installer-x64-0.970.1.pkg",
+         "ballerina-runtime-windows-installer-x64-0.970.1.msi",
+         "ballerina-vscode-plugin-0.970.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "145mb",
+      "release-notes": "ballerina-release-notes-0.970.1.md",
+      "version": "0.970.1",
+      "linux-installer-size": "145mb",
+      "macos-installer-size": "169mb",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.970.1.pkg",
+      "api-docs": "ballerina-api-docs-0.970.1.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.970.1.deb"
+   },
+   {
+      "release-date": "2018-12-30",
+      "windows-installer": "ballerina-windows-installer-x64-0.990.2.msi",
+      "other-artefacts": [
+         "ballerina-0.990.2.zip",
+         "ballerina-linux-installer-x64-0.990.2.rpm",
+         "ballerina-vscode-plugin-0.990.2.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "210mb",
+      "release-notes": "ballerina-release-notes-0.990.2.md",
+      "version": "0.990.2",
+      "linux-installer-size": "210mb",
+      "macos-installer-size": "230mb",
+      "macos-installer": "ballerina-macos-installer-x64-0.990.2.pkg",
+      "api-docs": "ballerina-api-docs-0.990.2.zip",
+      "linux-installer": "ballerina-linux-installer-x64-0.990.2.deb"
+   },
+   {
+      "release-date": "2019-09-26",
+      "windows-installer": "ballerina-windows-installer-x64-1.0.1.msi",
+      "other-artefacts": [
+         "ballerina-1.0.1.zip",
+         "ballerina-linux-installer-x64-1.0.1.rpm",
+         "ballerina-1.0.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "125mb",
+      "release-notes": "ballerina-release-notes-1.0.1.md",
+      "version": "1.0.1",
+      "linux-installer-size": "120mb",
+      "macos-installer-size": "135mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.0.1.pkg",
+      "api-docs": "ballerina-api-docs-1.0.1.zip",
+      "linux-installer": "ballerina-linux-installer-x64-1.0.1.deb"
+   },
+   {
+      "release-date": "2018-04-27",
+      "windows-installer": "ballerina-platform-windows-installer-x64-0.970.0.msi",
+      "other-artefacts": [
+         "ballerina-runtime-0.970.0.zip",
+         "ballerina-platform-0.970.0.zip",
+         "ballerina-platform-linux-installer-x64-0.970.0.rpm",
+         "ballerina-runtime-linux-installer-x64-0.970.0.rpm",
+         "ballerina-runtime-linux-installer-x64-0.970.0.deb",
+         "ballerina-runtime-macos-installer-x64-0.970.0.pkg",
+         "ballerina-runtime-windows-installer-x64-0.970.0.msi",
+         "ballerina-vscode-plugin-0.970.0.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "windows-installer-size": "Apr",
+      "release-notes": "ballerina-release-notes-0.970.0.md",
+      "version": "0.970.0",
+      "linux-installer-size": "Apr",
+      "macos-installer-size": "Apr",
+      "macos-installer": "ballerina-platform-macos-installer-x64-0.970.0.pkg",
+      "api-docs": "ballerina-api-docs-0.970.0.zip",
+      "linux-installer": "ballerina-platform-linux-installer-x64-0.970.0.deb"
+   },
+   {
+      "version": "1.2.1",
+      "release-date": "2020-04-02",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.1.msi",
+      "windows-installer-size": "130mb",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.1.deb",
+      "linux-installer-size": "125mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.1.pkg",
+      "macos-installer-size": "140mb",
+      "other-artefacts": [
+         "ballerina-1.2.1.zip",
+         "ballerina-linux-installer-x64-1.2.1.rpm",
+         "ballerina-vscode-plugin-1.2.1.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-1.2.1.zip",
+      "release-notes": "ballerina-release-notes-1.2.1.md"
+   },
+   {
+      "version": "1.2.2",
+      "release-date": "2020-04-16",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.2.msi",
+      "windows-installer-size": "130mb",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.2.deb",
+      "linux-installer-size": "126mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.2.pkg",
+      "macos-installer-size": "140mb",
+      "other-artefacts": [
+         "ballerina-1.2.2.zip",
+         "ballerina-linux-installer-x64-1.2.2.rpm",
+         "ballerina-vscode-plugin-1.2.2.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-1.2.2.zip",
+      "release-notes": "ballerina-release-notes-1.2.2.md"
+   }
+]

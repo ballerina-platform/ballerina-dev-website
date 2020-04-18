@@ -7,7 +7,6 @@ redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/
   - /learn/tools-ides/vscode-plugin
   - /learn/tools-ides/vscode-plugin/
-  - /learn/vscode-plugin/
   - /learn/vscode-plugin
   - /v1-2/learn/vscode-plugin
 ---

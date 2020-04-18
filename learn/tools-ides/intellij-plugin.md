@@ -7,7 +7,6 @@ redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin
-  - /learn/intellij-plugin/
   - /learn/intellij-plugin
   - /v1-2/learn/intellij-plugin
 ---

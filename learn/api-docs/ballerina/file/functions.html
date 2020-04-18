@@ -740,10 +740,6 @@
                                     <div class="function-desc">
                                         
                                         Copy the file/directory in the old path to the new path.
-If a file already exists in the new path, this replaces that file.
-<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -756,10 +752,6 @@ If a file already exists in the new path, this replaces that file.
                                     <div class="function-desc">
                                         
                                         Creates a new directory with the specified file name.
-If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
-<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -772,10 +764,6 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
                                     <div class="function-desc">
                                         
                                         Creates a file in the specified file path.
-Truncates if the file already exists in the given path.
-<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -788,9 +776,6 @@ Truncates if the file already exists in the given path.
                                     <div class="function-desc">
                                         
                                         Reports whether the file or directory exists in the given the path.
-<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -803,9 +788,6 @@ Truncates if the file already exists in the given path.
                                     <div class="function-desc">
                                         
                                         Returns the current working directory.
-<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -818,9 +800,6 @@ Truncates if the file already exists in the given path.
                                     <div class="function-desc">
                                         
                                         Returns the metadata information of the file specified in the file path.
-<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -834,9 +813,6 @@ Truncates if the file already exists in the given path.
                                         
                                         Reads the directory and returns a list of files and directories
 inside the specified directory.
-<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -849,10 +825,6 @@ inside the specified directory.
                                     <div class="function-desc">
                                         
                                         Removes the specified file or directory.
-If the recursive flag is true, it removes the path and any children it contains.
-<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -865,10 +837,6 @@ If the recursive flag is true, it removes the path and any children it contains.
                                     <div class="function-desc">
                                         
                                         Renames(Moves) the old path with the new path.
-If the new path already exists and it is not a directory, this replaces the file.
-<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -881,9 +849,6 @@ If the new path already exists and it is not a directory, this replaces the file
                                     <div class="function-desc">
                                         
                                         Returns the default directory to use for temporary files.
-<pre><code class="language-ballerina"> string results = file:tempDir();
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -909,11 +874,11 @@ If the new path already exists and it is not a directory, this replaces the file
     </div>
     <div class="function-desc">
         
-        Copy the file/directory in the old path to the new path.
+        <p>Copy the file/directory in the old path to the new path.
 If a file already exists in the new path, this replaces that file.
 <pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -989,11 +954,11 @@ If a file already exists in the new path, this replaces that file.
     </div>
     <div class="function-desc">
         
-        Creates a new directory with the specified file name.
+        <p>Creates a new directory with the specified file name.
 If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
 <pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1056,11 +1021,11 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
     </div>
     <div class="function-desc">
         
-        Creates a file in the specified file path.
+        <p>Creates a file in the specified file path.
 Truncates if the file already exists in the given path.
 <pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1110,10 +1075,10 @@ Truncates if the file already exists in the given path.
     </div>
     <div class="function-desc">
         
-        Reports whether the file or directory exists in the given the path.
+        <p>Reports whether the file or directory exists in the given the path.
 <pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1163,10 +1128,10 @@ Truncates if the file already exists in the given path.
     </div>
     <div class="function-desc">
         
-        Returns the current working directory.
+        <p>Returns the current working directory.
 <pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1198,10 +1163,10 @@ Truncates if the file already exists in the given path.
     </div>
     <div class="function-desc">
         
-        Returns the metadata information of the file specified in the file path.
+        <p>Returns the metadata information of the file specified in the file path.
 <pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1251,11 +1216,11 @@ Truncates if the file already exists in the given path.
     </div>
     <div class="function-desc">
         
-        Reads the directory and returns a list of files and directories
+        <p>Reads the directory and returns a list of files and directories
 inside the specified directory.
 <pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1318,11 +1283,11 @@ inside the specified directory.
     </div>
     <div class="function-desc">
         
-        Removes the specified file or directory.
+        <p>Removes the specified file or directory.
 If the recursive flag is true, it removes the path and any children it contains.
 <pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1385,11 +1350,11 @@ If the recursive flag is true, it removes the path and any children it contains.
     </div>
     <div class="function-desc">
         
-        Renames(Moves) the old path with the new path.
+        <p>Renames(Moves) the old path with the new path.
 If the new path already exists and it is not a directory, this replaces the file.
 <pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1452,10 +1417,10 @@ If the new path already exists and it is not a directory, this replaces the file
     </div>
     <div class="function-desc">
         
-        Returns the default directory to use for temporary files.
+        <p>Returns the default directory to use for temporary files.
 <pre><code class="language-ballerina"> string results = file:tempDir();
 </code></pre>
-
+</p>
     </div>
     
 

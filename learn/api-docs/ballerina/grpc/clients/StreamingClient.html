@@ -754,10 +754,10 @@
     </div>
     <div class="function-desc">
         
-        Sends the request message to the server.
+        <p>Sends the request message to the server.
 <pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -807,10 +807,10 @@
     </div>
     <div class="function-desc">
         
-        Informs the server when the caller has sent all the messages.
+        <p>Informs the server when the caller has sent all the messages.
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -842,10 +842,10 @@
     </div>
     <div class="function-desc">
         
-        Sends an error message to the server.
+        <p>Sends an error message to the server.
 <pre><code class="language-ballerina"> grpc:Error? result = streamingClient-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

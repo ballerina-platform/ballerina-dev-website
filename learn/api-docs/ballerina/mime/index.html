@@ -630,7 +630,8 @@
                         Module : <span class="modules">mime</span>
                     
                 </h1>
-                    <p>This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
+                    <h2>Module Overview</h2>
+<p>This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
 communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
 the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
 <blockquote>
@@ -659,7 +660,6 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                             <td class="module-desc">
                                 
                                 Holds the details of the entity header and body-related errors.
-
                             </td>
                         </tr>
                     
@@ -684,7 +684,6 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                             <td class="module-desc">
                                 
                                 Represents values in <code>Content-Disposition</code> header.
-
                             </td>
                         </tr>
                     
@@ -694,9 +693,7 @@ the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.</p>
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the headers and body of a message. This can be used to represent both the entity of a top level message
-and an entity(body part) inside of a multipart entity.
-
+                                Represents the headers and body of a message.
                             </td>
                         </tr>
                     
@@ -707,7 +704,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Describes the nature of the data in the body of a MIME entity.
-
                             </td>
                         </tr>
                     
@@ -736,8 +732,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                <strong>Deprecated API</strong>. Decodes a given input with MIME specific Base64 encoding scheme.
-
+                                <strong>Deprecated API</strong>.
                             </td>
                         </tr>
                     
@@ -747,8 +742,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                <strong>Deprecated API</strong>. Decodes a given byte[] using the Base64 encoding scheme.
-
+                                <strong>Deprecated API</strong>.
                             </td>
                         </tr>
                     
@@ -758,8 +752,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                <strong>Deprecated API</strong>. Encodes a given input with MIME specific Base64 encoding scheme.
-
+                                <strong>Deprecated API</strong>.
                             </td>
                         </tr>
                     
@@ -769,8 +762,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                <strong>Deprecated API</strong>. Encodes a given byte[] using the Base64 encoding scheme.
-
+                                <strong>Deprecated API</strong>.
                             </td>
                         </tr>
                     
@@ -781,7 +773,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Given the Content-Disposition as a string, gets the ContentDisposition object with it.
-
                             </td>
                         </tr>
                     
@@ -792,7 +783,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.
-
                             </td>
                         </tr>
                     
@@ -803,7 +793,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Constructs a <code>DecodeError</code> with the given details.
-
                             </td>
                         </tr>
                     
@@ -814,7 +803,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Constructs an <code>EncodeError</code> with the given details.
-
                             </td>
                         </tr>
                     
@@ -840,7 +828,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Header is placed before the payload of the request/response.
-
                             </td>
                         </tr>
                     
@@ -851,7 +838,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Header is placed after the payload of the request/response.
-
                             </td>
                         </tr>
                     
@@ -862,7 +848,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/octet-stream</code> media type.
-
                             </td>
                         </tr>
                     
@@ -873,7 +858,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/json</code> media type.
-
                             </td>
                         </tr>
                     
@@ -884,7 +868,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/xml</code> media type.
-
                             </td>
                         </tr>
                     
@@ -895,7 +878,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/svg+xml</code> media type.
-
                             </td>
                         </tr>
                     
@@ -906,7 +888,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/xhtml+xml</code> media type.
-
                             </td>
                         </tr>
                     
@@ -917,7 +898,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/soap+xml</code> media type.
-
                             </td>
                         </tr>
                     
@@ -928,7 +908,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/x-www-form-urlencoded</code> media type.
-
                             </td>
                         </tr>
                     
@@ -939,7 +918,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>application/pdf</code> media type.
-
                             </td>
                         </tr>
                     
@@ -950,7 +928,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>image/jpeg</code> media type.
-
                             </td>
                         </tr>
                     
@@ -961,7 +938,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>image/gif</code> media type.
-
                             </td>
                         </tr>
                     
@@ -972,7 +948,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>image/png</code> media type.
-
                             </td>
                         </tr>
                     
@@ -983,7 +958,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>multipart/form-data</code> media type.
-
                             </td>
                         </tr>
                     
@@ -994,7 +968,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>multipart/mixed</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1005,7 +978,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>multipart/alternative</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1016,7 +988,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>multipart/related</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1027,7 +998,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>multipart/parallel</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1038,7 +1008,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>text/plain</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1049,7 +1018,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>text/html</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1060,7 +1028,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Represents the <code>text/xml</code> media type.
-
                             </td>
                         </tr>
                     
@@ -1071,7 +1038,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies encoding errors.
-
                             </td>
                         </tr>
                     
@@ -1082,7 +1048,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies decoding errors.
-
                             </td>
                         </tr>
                     
@@ -1093,7 +1058,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies generic errors related to MIME.
-
                             </td>
                         </tr>
                     
@@ -1104,7 +1068,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies the set header errors.
-
                             </td>
                         </tr>
                     
@@ -1115,7 +1078,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies header parsing errors.
-
                             </td>
                         </tr>
                     
@@ -1126,7 +1088,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies entity body parsing errors.
-
                             </td>
                         </tr>
                     
@@ -1137,7 +1098,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies errors related to content-type header.
-
                             </td>
                         </tr>
                     
@@ -1148,7 +1108,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies errors related to header unavailability.
-
                             </td>
                         </tr>
                     
@@ -1159,7 +1118,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies errors related to read/write timeouts.
-
                             </td>
                         </tr>
                     
@@ -1170,7 +1128,6 @@ and an entity(body part) inside of a multipart entity.
                             <td class="module-desc">
                                 
                                 Identifies the errors occurred due to payloads with no content.
-
                             </td>
                         </tr>
                     
@@ -1180,8 +1137,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                Key name for <code>boundary</code> parameter in MediaType. This is needed for composite type media types.
-
+                                Key name for <code>boundary</code> parameter in MediaType.
                             </td>
                         </tr>
                     
@@ -1191,9 +1147,7 @@ and an entity(body part) inside of a multipart entity.
                             </td>
                             <td class="module-desc">
                                 
-                                Key name for <code>start</code> parameter in MediaType. This determines which part in the multipart message contains the
-payload.
-
+                                Key name for <code>start</code> parameter in MediaType.
                             </td>
                         </tr>
                     
@@ -1203,8 +1157,7 @@ payload.
                             </td>
                             <td class="module-desc">
                                 
-                                Key name for <code>type</code> parameter in MediaType. This indicates the MIME media type of the <code>root</code> body part.
-
+                                Key name for <code>type</code> parameter in MediaType.
                             </td>
                         </tr>
                     
@@ -1214,8 +1167,7 @@ payload.
                             </td>
                             <td class="module-desc">
                                 
-                                Key name for <code>charset</code> parameter in MediaType. This indicates the character set of the body text.
-
+                                Key name for <code>charset</code> parameter in MediaType.
                             </td>
                         </tr>
                     
@@ -1226,7 +1178,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Default charset to be used with MIME encoding and decoding.
-
                             </td>
                         </tr>
                     
@@ -1237,7 +1188,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents <code>content-id</code> header name.
-
                             </td>
                         </tr>
                     
@@ -1248,7 +1198,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents <code>content-length</code> header name.
-
                             </td>
                         </tr>
                     
@@ -1259,7 +1208,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents <code>content-type</code> header name.
-
                             </td>
                         </tr>
                     
@@ -1270,7 +1218,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents <code>content-disposition</code> header name.
-
                             </td>
                         </tr>
                     
@@ -1298,7 +1245,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents MIME related errors.
-
                             </td>
                         </tr>
                     
@@ -1309,9 +1255,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Defines the position of the headers in the request/response.
-<code>LEADING</code>: Header is placed before the payload of the request/response
-<code>TRAILING</code>: Header is placed after the payload of the request/response
-
                             </td>
                         </tr>
                     
@@ -1336,7 +1279,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>DecodeError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1347,7 +1289,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents an <code>EncodeError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1358,7 +1299,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>GenericMimeError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1369,7 +1309,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>HeaderUnavailableError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1380,7 +1319,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents an <code>IdleTimeoutTriggeredError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1391,7 +1329,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents an <code>InvalidContentTypeError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1402,7 +1339,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>NoContentError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1413,7 +1349,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>ParserError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1424,7 +1359,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>ReadingHeaderFailed</code> error with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -1435,7 +1369,6 @@ payload.
                             <td class="module-desc">
                                 
                                 Represents a <code>SetHeaderError</code> with a detailed message.
-
                             </td>
                         </tr>
                     

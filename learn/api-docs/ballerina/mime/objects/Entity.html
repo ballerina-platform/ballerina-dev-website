@@ -692,9 +692,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Sets the content-type to the entity.
-<pre><code class="language-ballerina"> mime:InvalidContentTypeError? contentType = mimeEntity.setContentType(&quot;application/json&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -707,9 +704,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Gets the content type of the entity.
-<pre><code class="language-ballerina"> string contentType = mimeEntity.getContentType();
-</code></pre>
-
     </div>
 </div>
 
@@ -722,9 +716,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Sets the content ID of the entity.
-<pre><code class="language-ballerina"> mimeEntity.setContentId(&quot;test-id&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -737,9 +728,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Gets the content ID of the entity.
-<pre><code class="language-ballerina"> string contentId = mimeEntity.getContentId();
-</code></pre>
-
     </div>
 </div>
 
@@ -752,9 +740,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Sets the content length of the entity.
-<pre><code class="language-ballerina"> mimeEntity.setContentLength(45555);
-</code></pre>
-
     </div>
 </div>
 
@@ -767,9 +752,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Gets the content length of the entity.
-<pre><code class="language-ballerina"> int|error contentLength = mimeEntity.getContentLength();
-</code></pre>
-
     </div>
 </div>
 
@@ -782,9 +764,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Sets the content disposition of the entity.
-<pre><code class="language-ballerina"> mimeEntity.setContentDisposition(contentDisposition);
-</code></pre>
-
     </div>
 </div>
 
@@ -797,7 +776,6 @@ and an entity(body part) inside of a multipart entity.
     <div class="param-details"> 
             
         Gets the content disposition of the entity.
-
     </div>
 </div>
 
@@ -809,11 +787,7 @@ and an entity(body part) inside of a multipart entity.
     </div>
     <div class="param-details"> 
             
-        Sets the body of the entity with the given content. Note that any string value is set as <code>text/plain</code>. To send a
-JSON-compatible string, set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.
-<pre><code class="language-ballerina"> mimeEntity.setBody(&quot;body string&quot;);
-</code></pre>
-
+        Sets the body of the entity with the given content.
     </div>
 </div>
 
@@ -825,12 +799,7 @@ JSON-compatible string, set the content-type header to <code>application/json</c
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with a given file. This method overrides any existing <code>content-type</code> headers
-with the default content-type, which is <code>application/octet-stream</code>. This default value
-can be overridden by passing the content type as an optional parameter.
-<pre><code class="language-ballerina"> mimeEntity.setFileAsEntityBody(&quot;&lt;file path&gt;&quot;);
-</code></pre>
-
+        Sets the entity body with a given file.
     </div>
 </div>
 
@@ -842,12 +811,7 @@ can be overridden by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with the given <code>json</code> content. This method overrides any existing <code>content-type</code> headers
-with the default content-type, which is <code>application/json</code>. This default value can be overridden
-by passing the content type as an optional parameter.
-<pre><code class="language-ballerina"> mimeEntity.setJson({ &quot;Hello&quot;: &quot;World&quot; });
-</code></pre>
-
+        Sets the entity body with the given <code>json</code> content.
     </div>
 </div>
 
@@ -860,7 +824,6 @@ by passing the content type as an optional parameter.
     <div class="param-details"> 
             
         Extracts the JSON body from the entity.
-
     </div>
 </div>
 
@@ -872,12 +835,7 @@ by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with the given XML content. This method overrides any existing content-type headers
-with the default content-type, which is <code>application/xml</code>. This default value can be overridden
-by passing the content-type as an optional parameter.
-<pre><code class="language-ballerina"> mimeEntity.setXml(xml `&lt;hello&gt; world &lt;/hello&gt;`);
-</code></pre>
-
+        Sets the entity body with the given XML content.
     </div>
 </div>
 
@@ -890,7 +848,6 @@ by passing the content-type as an optional parameter.
     <div class="param-details"> 
             
         Extracts the <code>xml</code> body from the entity.
-
     </div>
 </div>
 
@@ -902,12 +859,7 @@ by passing the content-type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with the given text content. This method overrides any existing content-type headers
-with the default content-type, which is <code>text/plain</code>. This default value can be overridden
-by passing the content type as an optional parameter.
-<pre><code class="language-ballerina"> mimeEntity.setText(&quot;Hello World&quot;);
-</code></pre>
-
+        Sets the entity body with the given text content.
     </div>
 </div>
 
@@ -919,8 +871,7 @@ by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Extracts the text body from the entity. If the entity body is not text compatible, an error is returned.
-
+        Extracts the text body from the entity.
     </div>
 </div>
 
@@ -932,10 +883,7 @@ by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with the given byte[] content. This method overrides any existing <code>content-type</code> headers
-with the default content-type, which is <code>application/octet-stream</code>. This default value
-can be overridden by passing the content type as an optional parameter.
-
+        Sets the entity body with the given byte[] content.
     </div>
 </div>
 
@@ -947,9 +895,7 @@ can be overridden by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Gets the entity body as a <code>byte[]</code> from a given entity. If the entity size is considerably large, consider
-using the getByteChannel() method instead.
-
+        Gets the entity body as a <code>byte[]</code> from a given entity.
     </div>
 </div>
 
@@ -961,10 +907,7 @@ using the getByteChannel() method instead.
     </div>
     <div class="param-details"> 
             
-        Sets the entity body with the given byte channel content. This method overrides any existing content-type headers
-with the default content-type, which is <code>application/octet-stream</code>. This default value
-can be overridden by passing the content-type as an optional parameter.
-
+        Sets the entity body with the given byte channel content.
     </div>
 </div>
 
@@ -977,7 +920,6 @@ can be overridden by passing the content-type as an optional parameter.
     <div class="param-details"> 
             
         Gets the entity body as a byte channel from a given entity.
-
     </div>
 </div>
 
@@ -990,7 +932,6 @@ can be overridden by passing the content-type as an optional parameter.
     <div class="param-details"> 
             
         Gets the body parts from a given entity.
-
     </div>
 </div>
 
@@ -1003,7 +944,6 @@ can be overridden by passing the content-type as an optional parameter.
     <div class="param-details"> 
             
         Gets the body parts as a byte channel from a given entity.
-
     </div>
 </div>
 
@@ -1015,10 +955,7 @@ can be overridden by passing the content-type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets body parts to entity. This method overrides any existing <code>content-type</code> headers
-with the default <code>multipart/form-data</code> content-type. The default <code>multipart/form-data</code> value can be overridden
-by passing the content type as an optional parameter.
-
+        Sets body parts to entity.
     </div>
 </div>
 
@@ -1031,9 +968,6 @@ by passing the content type as an optional parameter.
     <div class="param-details"> 
             
         Gets the header value associated with the given header name.
-<pre><code class="language-ballerina"> string headerName = mimeEntity.getHeader(mime:CONTENT_LENGTH);
-</code></pre>
-
     </div>
 </div>
 
@@ -1046,7 +980,6 @@ by passing the content type as an optional parameter.
     <div class="param-details"> 
             
         Gets all the header values associated with the given header name.
-
     </div>
 </div>
 
@@ -1059,9 +992,6 @@ by passing the content type as an optional parameter.
     <div class="param-details"> 
             
         Gets all the header names.
-<pre><code class="language-ballerina"> string[] headerNames = mimeEntity.getHeaderNames();
-</code></pre>
-
     </div>
 </div>
 
@@ -1074,9 +1004,6 @@ by passing the content type as an optional parameter.
     <div class="param-details"> 
             
         Adds the given header value against the given header.
-<pre><code class="language-ballerina"> mimeEntity.addHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -1088,11 +1015,7 @@ by passing the content type as an optional parameter.
     </div>
     <div class="param-details"> 
             
-        Sets the given header value against the existing header. If a header already exists, its value is replaced
-with the given header value.
-<pre><code class="language-ballerina"> mimeEntity.setHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
-</code></pre>
-
+        Sets the given header value against the existing header.
     </div>
 </div>
 
@@ -1105,7 +1028,6 @@ with the given header value.
     <div class="param-details"> 
             
         Removes the given header from the entity.
-
     </div>
 </div>
 
@@ -1118,7 +1040,6 @@ with the given header value.
     <div class="param-details"> 
             
         Removes all headers associated with the entity.
-
     </div>
 </div>
 
@@ -1131,7 +1052,6 @@ with the given header value.
     <div class="param-details"> 
             
         Checks whether the requested header key exists in the header map.
-
     </div>
 </div>
 
@@ -1159,10 +1079,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Sets the content-type to the entity.
+        <p>Sets the content-type to the entity.
 <pre><code class="language-ballerina"> mime:InvalidContentTypeError? contentType = mimeEntity.setContentType(&quot;application/json&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1212,10 +1132,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Gets the content type of the entity.
+        <p>Gets the content type of the entity.
 <pre><code class="language-ballerina"> string contentType = mimeEntity.getContentType();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1242,10 +1162,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Sets the content ID of the entity.
+        <p>Sets the content ID of the entity.
 <pre><code class="language-ballerina"> mimeEntity.setContentId(&quot;test-id&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1285,10 +1205,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Gets the content ID of the entity.
+        <p>Gets the content ID of the entity.
 <pre><code class="language-ballerina"> string contentId = mimeEntity.getContentId();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1315,10 +1235,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Sets the content length of the entity.
+        <p>Sets the content length of the entity.
 <pre><code class="language-ballerina"> mimeEntity.setContentLength(45555);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1358,10 +1278,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Gets the content length of the entity.
+        <p>Gets the content length of the entity.
 <pre><code class="language-ballerina"> int|error contentLength = mimeEntity.getContentLength();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1388,10 +1308,10 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Sets the content disposition of the entity.
+        <p>Sets the content disposition of the entity.
 <pre><code class="language-ballerina"> mimeEntity.setContentDisposition(contentDisposition);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1431,8 +1351,8 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Gets the content disposition of the entity.
-
+        <p>Gets the content disposition of the entity.
+</p>
     </div>
     
 
@@ -1459,11 +1379,11 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Sets the body of the entity with the given content. Note that any string value is set as <code>text/plain</code>. To send a
+        <p>Sets the body of the entity with the given content. Note that any string value is set as <code>text/plain</code>. To send a
 JSON-compatible string, set the content-type header to <code>application/json</code> or use the <code>setJsonPayload</code> method instead.
 <pre><code class="language-ballerina"> mimeEntity.setBody(&quot;body string&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1498,12 +1418,12 @@ JSON-compatible string, set the content-type header to <code>application/json</c
     </div>
     <div class="function-desc">
         
-        Sets the entity body with a given file. This method overrides any existing <code>content-type</code> headers
+        <p>Sets the entity body with a given file. This method overrides any existing <code>content-type</code> headers
 with the default content-type, which is <code>application/octet-stream</code>. This default value
 can be overridden by passing the content type as an optional parameter.
 <pre><code class="language-ballerina"> mimeEntity.setFileAsEntityBody(&quot;&lt;file path&gt;&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1552,12 +1472,12 @@ The default value is <code>application/octet-stream</code></p>
     </div>
     <div class="function-desc">
         
-        Sets the entity body with the given <code>json</code> content. This method overrides any existing <code>content-type</code> headers
+        <p>Sets the entity body with the given <code>json</code> content. This method overrides any existing <code>content-type</code> headers
 with the default content-type, which is <code>application/json</code>. This default value can be overridden
 by passing the content type as an optional parameter.
 <pre><code class="language-ballerina"> mimeEntity.setJson({ &quot;Hello&quot;: &quot;World&quot; });
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1611,8 +1531,8 @@ The default value is <code>application/json</code></p>
     </div>
     <div class="function-desc">
         
-        Extracts the JSON body from the entity.
-
+        <p>Extracts the JSON body from the entity.
+</p>
     </div>
     
 
@@ -1639,12 +1559,12 @@ The default value is <code>application/json</code></p>
     </div>
     <div class="function-desc">
         
-        Sets the entity body with the given XML content. This method overrides any existing content-type headers
+        <p>Sets the entity body with the given XML content. This method overrides any existing content-type headers
 with the default content-type, which is <code>application/xml</code>. This default value can be overridden
 by passing the content-type as an optional parameter.
 <pre><code class="language-ballerina"> mimeEntity.setXml(xml `&lt;hello&gt; world &lt;/hello&gt;`);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1698,8 +1618,8 @@ The default value is <code>application/xml</code></p>
     </div>
     <div class="function-desc">
         
-        Extracts the <code>xml</code> body from the entity.
-
+        <p>Extracts the <code>xml</code> body from the entity.
+</p>
     </div>
     
 
@@ -1726,12 +1646,12 @@ The default value is <code>application/xml</code></p>
     </div>
     <div class="function-desc">
         
-        Sets the entity body with the given text content. This method overrides any existing content-type headers
+        <p>Sets the entity body with the given text content. This method overrides any existing content-type headers
 with the default content-type, which is <code>text/plain</code>. This default value can be overridden
 by passing the content type as an optional parameter.
 <pre><code class="language-ballerina"> mimeEntity.setText(&quot;Hello World&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1785,8 +1705,8 @@ The default value is <code>text/plain</code></p>
     </div>
     <div class="function-desc">
         
-        Extracts the text body from the entity. If the entity body is not text compatible, an error is returned.
-
+        <p>Extracts the text body from the entity. If the entity body is not text compatible, an error is returned.
+</p>
     </div>
     
 
@@ -1814,10 +1734,10 @@ text compatible</p>
     </div>
     <div class="function-desc">
         
-        Sets the entity body with the given byte[] content. This method overrides any existing <code>content-type</code> headers
+        <p>Sets the entity body with the given byte[] content. This method overrides any existing <code>content-type</code> headers
 with the default content-type, which is <code>application/octet-stream</code>. This default value
 can be overridden by passing the content type as an optional parameter.
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1871,9 +1791,9 @@ The default value is <code>application/octet-stream</code></p>
     </div>
     <div class="function-desc">
         
-        Gets the entity body as a <code>byte[]</code> from a given entity. If the entity size is considerably large, consider
+        <p>Gets the entity body as a <code>byte[]</code> from a given entity. If the entity size is considerably large, consider
 using the getByteChannel() method instead.
-
+</p>
     </div>
     
 
@@ -1901,10 +1821,10 @@ errors</p>
     </div>
     <div class="function-desc">
         
-        Sets the entity body with the given byte channel content. This method overrides any existing content-type headers
+        <p>Sets the entity body with the given byte channel content. This method overrides any existing content-type headers
 with the default content-type, which is <code>application/octet-stream</code>. This default value
 can be overridden by passing the content-type as an optional parameter.
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1958,8 +1878,8 @@ The <code>application/octet-stream</code> is the default value</p>
     </div>
     <div class="function-desc">
         
-        Gets the entity body as a byte channel from a given entity.
-
+        <p>Gets the entity body as a byte channel from a given entity.
+</p>
     </div>
     
 
@@ -1991,8 +1911,8 @@ The <code>application/octet-stream</code> is the default value</p>
     </div>
     <div class="function-desc">
         
-        Gets the body parts from a given entity.
-
+        <p>Gets the body parts from a given entity.
+</p>
     </div>
     
 
@@ -2025,8 +1945,8 @@ entity body is not a set of the body parts</p>
     </div>
     <div class="function-desc">
         
-        Gets the body parts as a byte channel from a given entity.
-
+        <p>Gets the body parts as a byte channel from a given entity.
+</p>
     </div>
     
 
@@ -2053,10 +1973,10 @@ entity body is not a set of the body parts</p>
     </div>
     <div class="function-desc">
         
-        Sets body parts to entity. This method overrides any existing <code>content-type</code> headers
+        <p>Sets body parts to entity. This method overrides any existing <code>content-type</code> headers
 with the default <code>multipart/form-data</code> content-type. The default <code>multipart/form-data</code> value can be overridden
 by passing the content type as an optional parameter.
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2110,10 +2030,10 @@ The default value is <code>multipart/form-data</code>.</p>
     </div>
     <div class="function-desc">
         
-        Gets the header value associated with the given header name.
+        <p>Gets the header value associated with the given header name.
 <pre><code class="language-ballerina"> string headerName = mimeEntity.getHeader(mime:CONTENT_LENGTH);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2178,8 +2098,8 @@ present, then the first value is returned. An exception is thrown if no header i
     </div>
     <div class="function-desc">
         
-        Gets all the header values associated with the given header name.
-
+        <p>Gets all the header values associated with the given header name.
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2244,10 +2164,10 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
     </div>
     <div class="function-desc">
         
-        Gets all the header names.
+        <p>Gets all the header names.
 <pre><code class="language-ballerina"> string[] headerNames = mimeEntity.getHeaderNames();
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2292,10 +2212,10 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
     </div>
     <div class="function-desc">
         
-        Adds the given header value against the given header.
+        <p>Adds the given header value against the given header.
 <pre><code class="language-ballerina"> mimeEntity.addHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2356,11 +2276,11 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
     </div>
     <div class="function-desc">
         
-        Sets the given header value against the existing header. If a header already exists, its value is replaced
+        <p>Sets the given header value against the existing header. If a header already exists, its value is replaced
 with the given header value.
 <pre><code class="language-ballerina"> mimeEntity.setHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2421,8 +2341,8 @@ with the given header value.
     </div>
     <div class="function-desc">
         
-        Removes the given header from the entity.
-
+        <p>Removes the given header from the entity.
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2471,8 +2391,8 @@ the body of the <code>Entity</code> must be accessed initially.</p>
     </div>
     <div class="function-desc">
         
-        Removes all headers associated with the entity.
-
+        <p>Removes all headers associated with the entity.
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -2513,8 +2433,8 @@ the body of the <code>Entity</code> must be accessed initially.</p>
     </div>
     <div class="function-desc">
         
-        Checks whether the requested header key exists in the header map.
-
+        <p>Checks whether the requested header key exists in the header map.
+</p>
     </div>
     
         <div class="data-wrapper">

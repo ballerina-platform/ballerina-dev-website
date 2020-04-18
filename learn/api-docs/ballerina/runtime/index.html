@@ -598,7 +598,8 @@
                         Module : <span class="modules">runtime</span>
                     
                 </h1>
-                    <p>This module provides functions to interact with the runtime, the invocation context, and to manage errors.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides functions to interact with the runtime, the invocation context, and to manage errors.</p>
 <h2>Invocation Context</h2>
 <p>The Invocation Context is a data holder, which is created per request and preserved for a single request-response flow. It comprises of a unique ID, a <code>runtime:Principal</code> instance, which includes user details, a <code>runtime:AuthenticationContext</code>, which has the authentication-related details if available, and an attribute map to hold context information.</p>
 <p>The following code snippet shows how to access the <code>runtime:InvocationContext</code> and the set of data for the <code>runtime:Principal</code> and <code>runtime:AuthenticationContext</code>.</p>
@@ -651,7 +652,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Represents the <code>runtime:AuthenticationContext</code> populated with the authenticated information.
-
                             </td>
                         </tr>
                     
@@ -662,7 +662,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Represents a data holder of the current call stack element.
-
                             </td>
                         </tr>
                     
@@ -673,7 +672,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Represents the <code>runtime:InvocationContext</code>.
-
                             </td>
                         </tr>
                     
@@ -684,7 +682,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Represents the <code>runtime:Principal</code> populated with the authenticated user information.
-
                             </td>
                         </tr>
                     
@@ -726,9 +723,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Retrieves the array of <code>runtime:CallStackElement</code> instances.
-<pre><code class="language-ballerina"> runtime:CallStackElement[] callStackElements = runtime:getCallStack();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -739,9 +733,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Returns the <code>runtime:InvocationContext</code> instance.
-<pre><code class="language-ballerina"> runtime:InvocationContext invocationContext = runtime:getInvocationContext();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -752,9 +743,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Returns the system property value associated with the specified property name.
-<pre><code class="language-ballerina"> string userHome = runtime:getProperty(&quot;user.home&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -765,9 +753,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Halts the current worker for a predefined amount of time.
-<pre><code class="language-ballerina"> runtime:sleep(1000);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -778,9 +763,6 @@ if (authContext is runtime:AuthenticationContext) {
                             <td class="module-desc">
                                 
                                 Gives a timeout to the current worker for a predefined amount of time.
-<pre><code class="language-ballerina"> future&lt;()&gt; f1 = runtime:timeout(2000);
-</code></pre>
-
                             </td>
                         </tr>
                     

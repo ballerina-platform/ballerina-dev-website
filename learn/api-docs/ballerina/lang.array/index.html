@@ -691,7 +691,6 @@
                             <td class="module-desc">
                                 
                                 Returns a new array consisting of index and member pairs.
-
                             </td>
                         </tr>
                     
@@ -702,7 +701,6 @@
                             <td class="module-desc">
                                 
                                 Selects the members from an array for which a function returns true.
-
                             </td>
                         </tr>
                     
@@ -713,8 +711,6 @@
                             <td class="module-desc">
                                 
                                 Applies a function to each member of an array.
-The parameter <code>func</code> is applied to each member of array <code>arr</code> in order.
-
                             </td>
                         </tr>
                     
@@ -725,9 +721,6 @@ The parameter <code>func</code> is applied to each member of array <code>arr</co
                             <td class="module-desc">
                                 
                                 Returns the byte array that a string represents in Base16.
-<code>str</code> must consist of the characters <code>0..9</code>, <code>A..F</code>, <code>a..f</code>
-and whitespace as allowed by a Ballerina Base16Literal.
-
                             </td>
                         </tr>
                     
@@ -738,9 +731,6 @@ and whitespace as allowed by a Ballerina Base16Literal.
                             <td class="module-desc">
                                 
                                 Returns the byte array that a string represents in Base64.
-<code>str</code> must consist of the characters <code>A..Z</code>, <code>a..z</code>, <code>0..9</code>, <code>+</code>, <code>/</code>, <code>=</code>
-and whitespace as allowed by a Ballerina Base64Literal.
-
                             </td>
                         </tr>
                     
@@ -751,9 +741,6 @@ and whitespace as allowed by a Ballerina Base64Literal.
                             <td class="module-desc">
                                 
                                 Returns the index of first member of <code>arr</code> that is equal to <code>val</code> if there is one.
-Returns <code>()</code> if not found.
-Equality is tested using <code>==</code>.
-
                             </td>
                         </tr>
                     
@@ -764,7 +751,6 @@ Equality is tested using <code>==</code>.
                             <td class="module-desc">
                                 
                                 Returns an iterator over an array.
-
                             </td>
                         </tr>
                     
@@ -775,9 +761,6 @@ Equality is tested using <code>==</code>.
                             <td class="module-desc">
                                 
                                 Returns the index of last member of <code>arr</code> that is equal to <code>val</code> if there is one.
-Returns <code>()</code> if not found.
-Equality is tested using <code>==</code>.
-
                             </td>
                         </tr>
                     
@@ -788,7 +771,6 @@ Equality is tested using <code>==</code>.
                             <td class="module-desc">
                                 
                                 Returns the number of members of an array.
-
                             </td>
                         </tr>
                     
@@ -799,7 +781,6 @@ Equality is tested using <code>==</code>.
                             <td class="module-desc">
                                 
                                 Applies a function to each member of an array and returns an array of the results.
-
                             </td>
                         </tr>
                     
@@ -810,8 +791,6 @@ Equality is tested using <code>==</code>.
                             <td class="module-desc">
                                 
                                 Removes and returns the last member of an array.
-The array must not be empty.
-
                             </td>
                         </tr>
                     
@@ -822,7 +801,6 @@ The array must not be empty.
                             <td class="module-desc">
                                 
                                 Adds values to the end of an array.
-
                             </td>
                         </tr>
                     
@@ -833,9 +811,6 @@ The array must not be empty.
                             <td class="module-desc">
                                 
                                 Combines the members of an array using a combining function.
-The combining function takes the combined value so far and a member of the array,
-and returns a new combined value.
-
                             </td>
                         </tr>
                     
@@ -846,7 +821,6 @@ and returns a new combined value.
                             <td class="module-desc">
                                 
                                 Removes a member of an array.
-
                             </td>
                         </tr>
                     
@@ -857,7 +831,6 @@ and returns a new combined value.
                             <td class="module-desc">
                                 
                                 Removes all members of an array.
-
                             </td>
                         </tr>
                     
@@ -868,7 +841,6 @@ and returns a new combined value.
                             <td class="module-desc">
                                 
                                 Reverses the order of the members of an array.
-
                             </td>
                         </tr>
                     
@@ -879,7 +851,6 @@ and returns a new combined value.
                             <td class="module-desc">
                                 
                                 Changes the length of an array.
-
                             </td>
                         </tr>
                     
@@ -890,8 +861,6 @@ and returns a new combined value.
                             <td class="module-desc">
                                 
                                 Removes and returns first member of an array.
-The array must not be empty.
-
                             </td>
                         </tr>
                     
@@ -902,7 +871,6 @@ The array must not be empty.
                             <td class="module-desc">
                                 
                                 Returns a subarray starting from <code>startIndex</code> (inclusive) to <code>endIndex</code> (exclusive).
-
                             </td>
                         </tr>
                     
@@ -913,9 +881,6 @@ The array must not be empty.
                             <td class="module-desc">
                                 
                                 Sorts an array using a comparator function.
-The comparator function must return a value less than, equal to or greater than zero
-according as its first argument is to be ordered before, equal to or after its second argument.
-
                             </td>
                         </tr>
                     
@@ -926,10 +891,6 @@ according as its first argument is to be ordered before, equal to or after its s
                             <td class="module-desc">
                                 
                                 Returns the string that is the Base16 representation of an array of bytes.
-The representation is the same as used by a Ballerina Base16Literal.
-The result will contain only characters  <code>0..9</code>, <code>a..f</code>.
-There will be no whitespace in the returned string.
-
                             </td>
                         </tr>
                     
@@ -940,10 +901,6 @@ There will be no whitespace in the returned string.
                             <td class="module-desc">
                                 
                                 Returns the string that is the Base64 representation of an array of bytes.
-The representation is the same as used by a Ballerina Base64Literal.
-The result will contain only characters  <code>A..Z</code>, <code>a..z</code>, <code>0..9</code>, <code>+</code>, <code>/</code> and <code>=</code>.
-There will be no whitespace in the returned string.
-
                             </td>
                         </tr>
                     
@@ -954,7 +911,6 @@ There will be no whitespace in the returned string.
                             <td class="module-desc">
                                 
                                 Returns a stream from the given array.
-
                             </td>
                         </tr>
                     
@@ -965,9 +921,6 @@ There will be no whitespace in the returned string.
                             <td class="module-desc">
                                 
                                 Adds values to the start of an array.
-The values newly added to the array will be in the same order
-as they are in <code>vals</code>.
-
                             </td>
                         </tr>
                     

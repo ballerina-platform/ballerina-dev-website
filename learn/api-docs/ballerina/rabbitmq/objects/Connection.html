@@ -709,11 +709,6 @@
     <div class="param-details"> 
             
         Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
-It waits with a provided timeout for all the close operations to complete.
-When the timeout is reached, the socket is forced to close.
-<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newConnection.close();
-</code></pre>
-
     </div>
 </div>
 
@@ -726,11 +721,6 @@ When the timeout is reached, the socket is forced to close.
     <div class="param-details"> 
             
         Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
-Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete. When the timeout is reached,
-the socket is forced to close. Any encountered exceptions in the close operations are discarded silently.
-<pre><code class="language-ballerina"> connection.abortConnection(320, &quot;Channel Aborted&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -743,9 +733,6 @@ the socket is forced to close. Any encountered exceptions in the close operation
     <div class="param-details"> 
             
         Checks whether <code>close</code> was already called.
-<pre><code class="language-ballerina"> boolean closed = newConnection.isClosed();
-</code></pre>
-
     </div>
 </div>
 
@@ -773,12 +760,12 @@ the socket is forced to close. Any encountered exceptions in the close operation
     </div>
     <div class="function-desc">
         
-        Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+        <p>Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
 It waits with a provided timeout for all the close operations to complete.
 When the timeout is reached, the socket is forced to close.
 <pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newConnection.close();
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -851,12 +838,12 @@ Use -1 for infinity</p>
     </div>
     <div class="function-desc">
         
-        Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+        <p>Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
 Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete. When the timeout is reached,
 the socket is forced to close. Any encountered exceptions in the close operations are discarded silently.
 <pre><code class="language-ballerina"> connection.abortConnection(320, &quot;Channel Aborted&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -924,10 +911,10 @@ Use -1 for infinity</p>
     </div>
     <div class="function-desc">
         
-        Checks whether <code>close</code> was already called.
+        <p>Checks whether <code>close</code> was already called.
 <pre><code class="language-ballerina"> boolean closed = newConnection.isClosed();
 </code></pre>
-
+</p>
     </div>
     
 

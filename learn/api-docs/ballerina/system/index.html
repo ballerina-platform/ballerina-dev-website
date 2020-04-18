@@ -653,7 +653,6 @@
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -678,8 +677,6 @@
                             <td class="module-desc">
                                 
                                 This object contains information on a process being created from Ballerina.
-This is returned from the <code>exec</code> function in the <code>system</code> module.
-
                             </td>
                         </tr>
                     
@@ -709,9 +706,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Executes an operating system command as a subprocess of the current process.
-<pre><code class="language-ballerina"> system:Process|system:Error proc = system:exec(&quot;ls&quot;, {}, &quot;/&quot;, &quot;-la&quot;)
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -722,9 +716,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Returns the environment variable value associated with the provided name.
-<pre><code class="language-ballerina"> string port = system:getEnv(&quot;HTTP_PORT&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -735,9 +726,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Returns the current user's home directory path.
-<pre><code class="language-ballerina"> string userHome = system:getUserHome();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -748,9 +736,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Returns the current user's name.
-<pre><code class="language-ballerina"> string username = system:getUsername();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -761,9 +746,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Returns a random UUID string.
-<pre><code class="language-ballerina"> string providerId = system:uuid();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -789,7 +771,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents the error code for invalid operations.
-
                             </td>
                         </tr>
                     
@@ -800,7 +781,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents the error code for permission errors.
-
                             </td>
                         </tr>
                     
@@ -811,7 +791,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents the error code for file system errors.
-
                             </td>
                         </tr>
                     
@@ -822,7 +801,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents the error code for file not found.
-
                             </td>
                         </tr>
                     
@@ -850,7 +828,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents System related errors.
-
                             </td>
                         </tr>
                     
@@ -875,7 +852,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents a <code>FileNotFoundError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -886,7 +862,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents a <code>FileSystemError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -897,7 +872,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents an <code>InvalidOperationError</code> with a detailed message.
-
                             </td>
                         </tr>
                     
@@ -908,7 +882,6 @@ This is returned from the <code>exec</code> function in the <code>system</code> 
                             <td class="module-desc">
                                 
                                 Represents a <code>PermissionError</code> with a detailed message.
-
                             </td>
                         </tr>
                     

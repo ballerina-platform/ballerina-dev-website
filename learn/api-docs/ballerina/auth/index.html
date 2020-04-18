@@ -622,7 +622,8 @@
                         Module : <span class="modules">auth</span>
                     
                 </h1>
-                    <p>This module provides the default authentication provider configurations, which can be extended to create new authentication providers.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides the default authentication provider configurations, which can be extended to create new authentication providers.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Objects</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/secured-service-with-basic-auth.html">Secured Service with Basic Auth Example</a> and <a href="https://ballerina.io/learn/by-example/secured-client-with-basic-auth.html">Secured Client with Basic Auth Example</a>.</p>
 
 
@@ -644,7 +645,6 @@
                             <td class="module-desc">
                                 
                                 Represents the inbound Basic Authentication configurations.
-
                             </td>
                         </tr>
                     
@@ -655,7 +655,6 @@
                             <td class="module-desc">
                                 
                                 Represents the Basic Authentication configurations, which are used by the HTTP endpoint.
-
                             </td>
                         </tr>
                     
@@ -666,7 +665,6 @@
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -690,10 +688,7 @@
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the inbound Auth provider, which could be used to authenticate endpoints. The <code>auth:InboundAuthProvider</code> acts
-as the interface for all the inbound authentication providers. Any type of implementation such as JWT, OAuth2,
-LDAP, JDBC, file-based etc. should be object-wise similar.
-
+                                Represents the inbound Auth provider, which could be used to authenticate endpoints.
                             </td>
                         </tr>
                     
@@ -705,15 +700,6 @@ LDAP, JDBC, file-based etc. should be object-wise similar.
                                 
                                 Represents the configuration file based inbound Basic Auth provider, which is an implementation of the
 <code>auth:InboundAuthProvider</code> interface.
-<pre><code class="language-ballerina">  auth:InboundBasicAuthProvider inboundBasicAuthProvider = new;
-</code></pre>
-A user is denoted by a section in the Ballerina configuration file. The password and the scopes assigned to the user
-are denoted as keys under the relevant user section as shown below.
-<pre><code> [b7a.users.&lt;username&gt;]
- password=&quot;&lt;password&gt;&quot;
- scopes=&quot;&lt;comma_separated_scopes&gt;&quot;
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -723,9 +709,7 @@ are denoted as keys under the relevant user section as shown below.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the outbound Auth provider, which could be used to authenticate external endpoints. Any type of
-implementation such as JWT, OAuth2, LDAP, JDBC, file-based etc. should be object-wise similar to the <code>auth:OutboundAuthProvider</code> object.
-
+                                Represents the outbound Auth provider, which could be used to authenticate external endpoints.
                             </td>
                         </tr>
                     
@@ -736,13 +720,6 @@ implementation such as JWT, OAuth2, LDAP, JDBC, file-based etc. should be object
                             <td class="module-desc">
                                 
                                 Represents the outbound Basic Auth authenticator, which is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
-This uses the usernames and passwords provided by the Ballerina configurations to authenticate external endpoints.
-<pre><code class="language-ballerina">  auth:OutboundBasicAuthProvider outboundBasicAuthProvider = new({
-      username: &quot;tom&quot;,
-      password: &quot;123&quot;
-  });
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -772,7 +749,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Checks whether the scopes of the user match the scopes of the resource.
-
                             </td>
                         </tr>
                     
@@ -783,9 +759,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Extracts the username and the password from the base64-encoded <code>username:password</code> value.
-<pre><code class="language-ballerina"> [string, string]|auth:Error [username, password] = auth:extractUsernameAndPassword(&quot;&lt;credential&gt;&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -796,9 +769,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Sets the authentication-related values (scheme, auth token) to the authentication context of the invocation context.
-<pre><code class="language-ballerina"> auth:setAuthenticationContext(&quot;jwt&quot;, &quot;&lt;credential&gt;&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -809,7 +779,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Sets the authentication-related values (user ID, username, scopes, claims) to the principal of the invocation context.
-
                             </td>
                         </tr>
                     
@@ -835,7 +804,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Represents the Auth error reason.
-
                             </td>
                         </tr>
                     
@@ -846,7 +814,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Default charset to be used with password hashing.
-
                             </td>
                         </tr>
                     
@@ -857,7 +824,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Prefix used to denote special configuration values.
-
                             </td>
                         </tr>
                     
@@ -868,7 +834,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Prefix used to denote that the config value is a SHA-256 hash.
-
                             </td>
                         </tr>
                     
@@ -879,7 +844,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Prefix used to denote that the config value is a SHA-384 hash.
-
                             </td>
                         </tr>
                     
@@ -890,7 +854,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Prefix used to denote that the config value is a SHA-512 hash.
-
                             </td>
                         </tr>
                     
@@ -901,7 +864,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 Prefix used to denote Basic Authentication scheme.
-
                             </td>
                         </tr>
                     
@@ -912,7 +874,6 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             <td class="module-desc">
                                 
                                 The prefix used to denote the Bearer Authentication scheme.
-
                             </td>
                         </tr>
                     
@@ -941,9 +902,7 @@ This uses the usernames and passwords provided by the Ballerina configurations t
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the Auth error type with details. This will be returned if an error occurred while inbound auth providers
-try to authenticate the received credentials and outbound auth providers try to generate the token.
-
+                                Represents the Auth error type with details.
                             </td>
                         </tr>
                     

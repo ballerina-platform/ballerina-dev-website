@@ -783,10 +783,6 @@
     <div class="param-details"> 
             
         Reads string as JSON using the reader.
-<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;{\&quot;name\&quot;: \&quot;Alice\&quot;}&quot;);
- json|io:Error? person = reader.readJson();
-</code></pre>
-
     </div>
 </div>
 
@@ -799,10 +795,6 @@
     <div class="param-details"> 
             
         Reads a string as XML using the reader.
-<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;&lt;Person&gt;&lt;Name&gt;Alice&lt;/Name&gt;&lt;/Person&gt;&quot;);
- xml|io:Error? person = reader.readXml();
-</code></pre>
-
     </div>
 </div>
 
@@ -815,10 +807,6 @@
     <div class="param-details"> 
             
         Reads the characters from the given string.
-<pre><code class="language-ballerina"> io:StringReader reader = new(&quot;Some text&quot;);
- string|io:Error? person = reader.readChar(4);
-</code></pre>
-
     </div>
 </div>
 
@@ -831,9 +819,6 @@
     <div class="param-details"> 
             
         Closes the reader.
-<pre><code class="language-ballerina"> io:Error? err = reader.close();
-</code></pre>
-
     </div>
 </div>
 
@@ -861,11 +846,11 @@
     </div>
     <div class="function-desc">
         
-        Reads string as JSON using the reader.
+        <p>Reads string as JSON using the reader.
 <pre><code class="language-ballerina"> io:StringReader reader = new(&quot;{\&quot;name\&quot;: \&quot;Alice\&quot;}&quot;);
  json|io:Error? person = reader.readJson();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -897,11 +882,11 @@
     </div>
     <div class="function-desc">
         
-        Reads a string as XML using the reader.
+        <p>Reads a string as XML using the reader.
 <pre><code class="language-ballerina"> io:StringReader reader = new(&quot;&lt;Person&gt;&lt;Name&gt;Alice&lt;/Name&gt;&lt;/Person&gt;&quot;);
  xml|io:Error? person = reader.readXml();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -933,11 +918,11 @@
     </div>
     <div class="function-desc">
         
-        Reads the characters from the given string.
+        <p>Reads the characters from the given string.
 <pre><code class="language-ballerina"> io:StringReader reader = new(&quot;Some text&quot;);
  string|io:Error? person = reader.readChar(4);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -987,10 +972,10 @@
     </div>
     <div class="function-desc">
         
-        Closes the reader.
+        <p>Closes the reader.
 <pre><code class="language-ballerina"> io:Error? err = reader.close();
 </code></pre>
-
+</p>
     </div>
     
 

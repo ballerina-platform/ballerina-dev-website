@@ -622,7 +622,8 @@
                         Module : <span class="modules">time</span>
                     
                 </h1>
-                    <p>This module provides implementations related to time, date, time zones, and durations.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides implementations related to time, date, time zones, and durations.</p>
 <p>The module has two main types as <a href="records/Time.html">Time</a> and <a href="records/TimeZone.html">TimeZone</a>. The <code>Time</code> type represents a time associated with a given time zone. It has <code>time</code> and <code>zone</code> as its attributes. The <code>TimeZone</code> type represents the time zone associated with a given time. It has <code>id</code> and <code>offset</code> as its attributes. An <code>id</code> can be one of the following:</p>
 <ul>
 <li>If <code>id</code> equals 'Z', the result is UTC.</li>
@@ -695,7 +696,6 @@
                             <td class="module-desc">
                                 
                                 Details of an error.
-
                             </td>
                         </tr>
                     
@@ -706,7 +706,6 @@
                             <td class="module-desc">
                                 
                                 Represents a particular time with its associated time-zone.
-
                             </td>
                         </tr>
                     
@@ -717,7 +716,6 @@
                             <td class="module-desc">
                                 
                                 Represents the time-zone information associated with a particular time.
-
                             </td>
                         </tr>
                     
@@ -749,14 +747,6 @@
                             <td class="module-desc">
                                 
                                 Add specified durations to the given time value.
-<pre><code class="language-ballerina">  string timeText = &quot;2020-06-26T09:46:22.444-0500&quot;;
-  string timeFormat = &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;;
-  time:Time|error originalTime = time:parse(timeText, timeFormat);
-  if (originalTime is time:Time) {
-      time:Time newTime = time:addDuration(originalTime, 1, 1, 1, 1, 1, 1, 1);
-  }
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -767,9 +757,6 @@
                             <td class="module-desc">
                                 
                                 Returns the Time object correspoding to the given time components and time-zone.
-<pre><code class="language-ballerina">  time:Time|error dateTime = time:createTime(2020, 3, 28, 23, 42, 45, 554, &quot;America/Panama&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -780,9 +767,6 @@
                             <td class="module-desc">
                                 
                                 Returns the current time value with the default system time-zone.
-<pre><code class="language-ballerina">  time:Time now = time:currentTime();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -793,11 +777,6 @@
                             <td class="module-desc">
                                 
                                 Returns the formatted string representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  string|error timeString = time:format(time, time:TIME_FORMAT_RFC_1123);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -808,11 +787,6 @@
                             <td class="module-desc">
                                 
                                 Returns the date representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  [int, int, int] date = time:getDate(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -823,11 +797,6 @@
                             <td class="module-desc">
                                 
                                 Returns the date representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int day = time:getDay(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -838,11 +807,6 @@
                             <td class="module-desc">
                                 
                                 Returns the hour representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int hour = time:getHour(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -853,11 +817,6 @@
                             <td class="module-desc">
                                 
                                 Returns the millisecond representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int milliSecond = time:getMilliSecond(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -868,11 +827,6 @@
                             <td class="module-desc">
                                 
                                 Returns the minute representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int minute = time:getMinute(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -883,11 +837,6 @@
                             <td class="module-desc">
                                 
                                 Returns the month representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int month = time:getMonth(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -898,11 +847,6 @@
                             <td class="module-desc">
                                 
                                 Returns the second representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int second = time:getSecond(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -913,11 +857,6 @@
                             <td class="module-desc">
                                 
                                 Returns the time representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  [int, int, int, int] timeGenerated = time:getTime(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -928,11 +867,6 @@
                             <td class="module-desc">
                                 
                                 Returns the weekday representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  string weekDay = time:getWeekday(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -943,11 +877,6 @@
                             <td class="module-desc">
                                 
                                 Returns the year representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  int year = time:getYear(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -958,9 +887,6 @@
                             <td class="module-desc">
                                 
                                 Returns the current system time in nano seconds.
-<pre><code class="language-ballerina">  int now = time:nanoTime();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -971,10 +897,6 @@
                             <td class="module-desc">
                                 
                                 Returns the time for the given string representation based on the given format string.
-<pre><code class="language-ballerina">  string timeFormat = &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;;
-  time:Time|error time = time:parse(&quot;2020-06-26T09:46:22.444-0500&quot;, timeFormat);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -985,14 +907,6 @@
                             <td class="module-desc">
                                 
                                 Subtract specified durations from the given time value.
-<pre><code class="language-ballerina">  string timeText = &quot;2020-06-26T09:46:22.444-0500&quot;;
-  string timeFormat = &quot;yyyy-MM-dd'T'HH:mm:ss.SSSZ&quot;;
-  time:Time|error originalTime = time:parse(timeText, timeFormat);
-  if (originalTime is time:Time) {
-      time:Time newTime = time:subtractDuration(originalTime, 1, 1, 1, 1, 1, 1, 1);
-  }
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -1003,11 +917,6 @@
                             <td class="module-desc">
                                 
                                 Returns the ISO 8601 string representation of the given time.
-<pre><code class="language-ballerina">  time:TimeZone zoneValue = {id: &quot;America/Panama&quot;};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  string timeString = time:toString(time);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -1018,12 +927,6 @@
                             <td class="module-desc">
                                 
                                 Change the time-zone of the given time.
-<pre><code class="language-ballerina">  string zoneId = &quot;America/Panama&quot;;
-  time:TimeZone zoneValue = {id: zoneId};
-  time:Time time = {time: 1578488382444, zone: zoneValue};
-  time:Time|time:Error newTime = time:toTimeZone(time, zoneId);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -1049,7 +952,6 @@
                             <td class="module-desc">
                                 
                                 Specifies the time error, which occurs in the module.
-
                             </td>
                         </tr>
                     
@@ -1060,7 +962,6 @@
                             <td class="module-desc">
                                 
                                 Specifies the time format defined by the RFC-1123.
-
                             </td>
                         </tr>
                     
@@ -1088,7 +989,6 @@
                             <td class="module-desc">
                                 
                                 The time format defined by the RFC-1123.
-
                             </td>
                         </tr>
                     
@@ -1113,7 +1013,6 @@
                             <td class="module-desc">
                                 
                                 Represents the Time module related error.
-
                             </td>
                         </tr>
                     

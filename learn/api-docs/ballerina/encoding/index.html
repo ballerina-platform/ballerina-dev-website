@@ -614,7 +614,8 @@
                         Module : <span class="modules">encoding</span>
                     
                 </h1>
-                    <p>This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides the necessary utilities, which are required to encode and decode content using different URL encoding mechanisms and algorithms.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>.</p>
 
 
@@ -636,7 +637,6 @@
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -668,9 +668,6 @@
                             <td class="module-desc">
                                 
                                 Decodes the Base64 URL encoded <code>string</code> into a byte array.
-<pre><code class="language-ballerina"> byte[]|encoding:Error urlDecodedValue = encoding:decodeBase64Url(&quot;SGVsbMO2IFfDtnJsZEBCYWxsZXJpbmE&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -681,10 +678,6 @@
                             <td class="module-desc">
                                 
                                 Decodes the given URI component into a <code>string</code> using the provided charset.
-<pre><code class="language-ballerina"> string encodedUrl = &quot;http://www.domain.com/?param1=http%3A%2F%2Fxyz.com%2F%3Fa%3D12%26b%3D55¶m2=99&quot;;
- string|encoding:Error decodedUriComponent = encoding:decodeUriComponent(encodedUrl, &quot;UTF-8&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -695,10 +688,6 @@
                             <td class="module-desc">
                                 
                                 Returns the Base64 URL encoded <code>string</code> value of the given byte array.
-<pre><code class="language-ballerina"> string query = &quot;Hellö Wörld@Ballerina&quot;;
- string urlEncodedValue = encoding:encodeBase64Url(query.toBytes());
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -709,10 +698,6 @@
                             <td class="module-desc">
                                 
                                 Encodes the given URI component into a <code>string</code> using the provided charset.
-<pre><code class="language-ballerina"> string urlValue = &quot;param1=http://xyz.com/?a=12&amp;b=55¶m2=99&quot;;
- string|encoding:Error encodedUriComponent = encoding:encodeUriComponent(urlValue, &quot;UTF-8&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -738,7 +723,6 @@
                             <td class="module-desc">
                                 
                                 Represents the Encoding error code.
-
                             </td>
                         </tr>
                     
@@ -768,7 +752,6 @@
                             <td class="module-desc">
                                 
                                 Represents the Encoding error type with details.
-
                             </td>
                         </tr>
                     

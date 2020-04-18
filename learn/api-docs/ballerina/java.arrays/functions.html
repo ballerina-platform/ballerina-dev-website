@@ -643,13 +643,7 @@
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
-completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
-to a Java array.
-<pre><code class="language-ballerina"> handle words = getSortedArray();
- handle firstWord = java.arrays:get(words, 0);
-</code></pre>
-
+                                        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array.
                                     </div>
                                 </td>
                             </tr>
@@ -662,10 +656,6 @@ to a Java array.
                                     <div class="function-desc">
                                         
                                         Returns the length of the given Java array.
-<pre><code class="language-ballerina"> handle array = getArray();
- int length = java.arrays:getLength(array);
-</code></pre>
-
                                     </div>
                                 </td>
                             </tr>
@@ -677,12 +667,7 @@ to a Java array.
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
-with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
-<pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
- handle StrArray = java.arrays:newInstance(stringClass, 4);
-</code></pre>
-
+                                        Returns a new Java array instance with the specified element type and dimensions.
                                     </div>
                                 </td>
                             </tr>
@@ -694,13 +679,7 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
                                 <td width="70%">
                                     <div class="function-desc">
                                         
-                                        Replaces the indexed element at the specified index in the given Java array with the specified element. This
-function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
-not refer to a Java array.
-<pre><code class="language-ballerina"> handle strArray = getStringArray();
- java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
-</code></pre>
-
+                                        Replaces the indexed element at the specified index in the given Java array with the specified element.
                                     </div>
                                 </td>
                             </tr>
@@ -726,13 +705,13 @@ not refer to a Java array.
     </div>
     <div class="function-desc">
         
-        Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
+        <p>Returns a <code>handle</code>, which refers to the element at the specified index in the given Java array. This function
 completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does not refer
 to a Java array.
 <pre><code class="language-ballerina"> handle words = getSortedArray();
  handle firstWord = java.arrays:get(words, 0);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -795,11 +774,11 @@ to a Java array.
     </div>
     <div class="function-desc">
         
-        Returns the length of the given Java array.
+        <p>Returns the length of the given Java array.
 <pre><code class="language-ballerina"> handle array = getArray();
  int length = java.arrays:getLength(array);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -849,12 +828,12 @@ to a Java array.
     </div>
     <div class="function-desc">
         
-        Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
+        <p>Returns a new Java array instance with the specified element type and dimensions. This function completes abruptly
 with a <code>panic</code> if the specified handle refers to a Java null or if zero dimensions have been provided.
 <pre><code class="language-ballerina"> handle stringClass = check java:getClass(&quot;java.lang.String&quot;);
  handle StrArray = java.arrays:newInstance(stringClass, 4);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -912,13 +891,13 @@ with a <code>panic</code> if the specified handle refers to a Java null or if ze
     </div>
     <div class="function-desc">
         
-        Replaces the indexed element at the specified index in the given Java array with the specified element. This
+        <p>Replaces the indexed element at the specified index in the given Java array with the specified element. This
 function completes abruptly with a <code>panic</code> if the specified handle refers to a Java null or if the handle does
 not refer to a Java array.
 <pre><code class="language-ballerina"> handle strArray = getStringArray();
  java.arrays:set(strArray, 0, java:fromString(&quot;Ballerina&quot;));
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

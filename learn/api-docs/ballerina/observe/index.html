@@ -611,7 +611,7 @@
 Ballerina supports Observability out of the box. This module provides user api's to make Ballerina Observability more flexible for the user.</p>
 <p>To observe Ballerina code, the '--b7a.observability.enabled=true' property should be given when starting the service.
 i.e. `ballerina run hello_world.bal --b7a.observability.enabled=true'
-For more information on Ballerina Observability visit <a href="https://ballerina.io/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
+For more information on Ballerina Observability visit <a href="https://ballerina.io/v1-2/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
 <h1>Tracing</h1>
 <h2>Samples</h2>
 <h3>Start a root span &amp; attach a child span</h3>
@@ -853,7 +853,6 @@ if metric is observe:Counter {
                             <td class="module-desc">
                                 
                                 This represents the generic metric record that can represent both counter and gauge.
-
                             </td>
                         </tr>
                     
@@ -864,7 +863,6 @@ if metric is observe:Counter {
                             <td class="module-desc">
                                 
                                 This represents the percentile value record.
-
                             </td>
                         </tr>
                     
@@ -875,7 +873,6 @@ if metric is observe:Counter {
                             <td class="module-desc">
                                 
                                 This represents the snapshot of the statistics calculation of the gauge.
-
                             </td>
                         </tr>
                     
@@ -886,7 +883,6 @@ if metric is observe:Counter {
                             <td class="module-desc">
                                 
                                 This represents the statistic configuration that can be used to instatiate gauge metric.
-
                             </td>
                         </tr>
                     
@@ -911,7 +907,6 @@ if metric is observe:Counter {
                             <td class="module-desc">
                                 
                                 This represents the metric type - counter, that can be only increased by an integer number.
-
                             </td>
                         </tr>
                     
@@ -923,7 +918,6 @@ if metric is observe:Counter {
                                 
                                 This represents the metric type - gauge, that can hold instantaneous, increased or decreased value
 during the usage.
-
                             </td>
                         </tr>
                     
@@ -953,7 +947,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Add a key value pair as a tag to the span.
-
                             </td>
                         </tr>
                     
@@ -964,7 +957,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Finish the current span.
-
                             </td>
                         </tr>
                     
@@ -975,7 +967,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Retrieve all registered metrics including default metrics from the ballerina runtime, and user defined metrics.
-
                             </td>
                         </tr>
                     
@@ -986,7 +977,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Retrieves the specific metric that is described by the given name and tags.
-
                             </td>
                         </tr>
                     
@@ -997,7 +987,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Start a span with no parent span.
-
                             </td>
                         </tr>
                     
@@ -1008,7 +997,6 @@ during the usage.
                             <td class="module-desc">
                                 
                                 Start a span and create child relationship to current active span or user specified span.
-
                             </td>
                         </tr>
                     

@@ -722,10 +722,7 @@ service through this listener.
     </div>
     <div class="param-details"> 
             
-        Stops the service listener gracefully. Already-accepted requests will be served before the connection closure.
-<pre><code class="language-ballerina"> error? result = listenerEp.__gracefulStop();
-</code></pre>
-
+        Stops the service listener gracefully.
     </div>
 </div>
 
@@ -738,9 +735,6 @@ service through this listener.
     <div class="param-details"> 
             
         Stops the registered service.
-<pre><code class="language-ballerina"> error? result = listenerEp.__immediateStop();
-</code></pre>
-
     </div>
 </div>
 
@@ -752,11 +746,7 @@ service through this listener.
     </div>
     <div class="param-details"> 
             
-        Detaches an HTTP or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
-the functionality of the existing connections.
-<pre><code class="language-ballerina"> error? result = listenerEp.__detach(helloService);
-</code></pre>
-
+        Detaches an HTTP or WebSocket service from the listener.
     </div>
 </div>
 
@@ -776,9 +766,6 @@ the functionality of the existing connections.
     <div class="param-details"> 
             
         Starts the registered service.
-<pre><code class="language-ballerina"> error? result = listenerEp.__start();
-</code></pre>
-
     </div>
 </div>
 
@@ -791,9 +778,6 @@ the functionality of the existing connections.
     <div class="param-details"> 
             
         Gets called every time a service attaches itself to this endpoint - also happens at module init time.
-<pre><code class="language-ballerina"> error? result = listenerEp.__attach(helloService);
-</code></pre>
-
     </div>
 </div>
 
@@ -822,10 +806,10 @@ the functionality of the existing connections.
     </div>
     <div class="function-desc">
         
-        Stops the service listener gracefully. Already-accepted requests will be served before the connection closure.
+        <p>Stops the service listener gracefully. Already-accepted requests will be served before the connection closure.
 <pre><code class="language-ballerina"> error? result = listenerEp.__gracefulStop();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -857,10 +841,10 @@ the functionality of the existing connections.
     </div>
     <div class="function-desc">
         
-        Stops the registered service.
+        <p>Stops the registered service.
 <pre><code class="language-ballerina"> error? result = listenerEp.__immediateStop();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -892,11 +876,11 @@ the functionality of the existing connections.
     </div>
     <div class="function-desc">
         
-        Detaches an HTTP or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
+        <p>Detaches an HTTP or WebSocket service from the listener. Note that detaching a WebSocket service would not affect
 the functionality of the existing connections.
 <pre><code class="language-ballerina"> error? result = listenerEp.__detach(helloService);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -951,10 +935,10 @@ the functionality of the existing connections.
     </div>
     <div class="function-desc">
         
-        Starts the registered service.
+        <p>Starts the registered service.
 <pre><code class="language-ballerina"> error? result = listenerEp.__start();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -986,10 +970,10 @@ the functionality of the existing connections.
     </div>
     <div class="function-desc">
         
-        Gets called every time a service attaches itself to this endpoint - also happens at module init time.
+        <p>Gets called every time a service attaches itself to this endpoint - also happens at module init time.
 <pre><code class="language-ballerina"> error? result = listenerEp.__attach(helloService);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

@@ -3,6 +3,9 @@ layout: ballerina-example-page
 title: Taint Checking
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /1.1/learn/by-example/taint-checking
+redirect_from:
+  - /v1-1/learn/by-example/taint-checking
+  - /v1-1/learn/by-example/taint-checking.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -35,13 +38,10 @@ permalink: /1.1/learn/by-example/taint-checking
         <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Validation error: ID should be an integer&quot;</span><span class="p">);</span>
         <span class="nx">panic</span> <span class="nx">err</span><span class="p">;</span>
     <span class="p">}</span>    <span class="k">while</span> <span class="p">(</span><span class="nx">dataTable</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">jsonResult</span> <span class="p">=</span> <span class="nx">dataTable</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">jsonResult</span> <span class="nx">is</span> <span class="nx">Student</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">Student</span> <span class="nx">jsonData</span> <span class="p">=</span> <span class="nx">jsonResult</span><span class="p">;</span>
-            <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>            <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
-            <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>            <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
-            <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="nx">Student</span> <span class="nx">jsonData</span> <span class="p">=</span> <span class="nx">dataTable</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
+        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>        <span class="kt">string</span> <span class="nx">sanitizedData1</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnTainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
+        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData1</span><span class="p">);</span>        <span class="kt">string</span> <span class="nx">sanitizedData2</span> <span class="p">=</span> <span class="nx">sanitizeAndReturnUntainted</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">.</span><span class="nx">firstname</span><span class="p">);</span>
+        <span class="nx">userDefinedSecureOperation</span><span class="p">(</span><span class="nx">sanitizedData2</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">checkpanic</span> <span class="nx">customerDBEP</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">return</span><span class="p">;</span>
@@ -344,9 +344,7 @@ import ballerinax/java.jdbc;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    while (dataTable.hasNext()) {
-        var jsonResult = dataTable.getNext();
-        if (jsonResult is Student) {
-            Student jsonData = jsonResult;
+        Student jsonData = dataTable.getNext();
 </code></pre></div>
 
                                 </td>
@@ -358,7 +356,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            userDefinedSecureOperation(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -382,7 +380,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData1 = sanitizeAndReturnTainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -394,7 +392,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            userDefinedSecureOperation(sanitizedData1);
+                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData1);
 </code></pre></div>
 
                                 </td>
@@ -414,7 +412,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
+                                    <div class="highlight"><pre><code class=ballerina>        string sanitizedData2 = sanitizeAndReturnUntainted(jsonData.firstname);
 </code></pre></div>
 
                                 </td>
@@ -426,8 +424,7 @@ import ballerinax/java.jdbc;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            userDefinedSecureOperation(sanitizedData2);
-        }
+                                    <div class="highlight"><pre><code class=ballerina>        userDefinedSecureOperation(sanitizedData2);
     }
     checkpanic customerDBEP.stop();
     return;

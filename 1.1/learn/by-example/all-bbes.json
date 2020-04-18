@@ -1,33 +1,33 @@
 [{
-    "title": "Hello World",
-    "column": 0,
-    "category": "Language concepts",
-    "samples": [{
-        "name": "Hello World Service",
-        "url": "hello-world-service"
+        "title": "Hello World",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [{
+                "name": "Hello World Service",
+                "url": "hello-world-service"
+            },
+            {
+                "name": "Hello World Main",
+                "url": "hello-world"
+            },
+            {
+                "name": "Hello World Parallel",
+                "url": "hello-world-parallel"
+            },
+            {
+                "name": "Hello World Client",
+                "url": "hello-world-client"
+            }
+        ]
     },
-        {
-            "name": "Hello World Main",
-            "url": "hello-world"
-        },
-        {
-            "name": "Hello World Parallel",
-            "url": "hello-world-parallel"
-        },
-        {
-            "name": "Hello World Client",
-            "url": "hello-world-client"
-        }
-    ]
-},
-    {
+ 	{
         "title": "Ballerina Basics",
         "column": 0,
         "category": "Language concepts",
         "samples": [{
-            "name": "Modules",
-            "url": "modules"
-        },
+                "name": "Modules",
+                "url": "modules"
+            },
             {
                 "name": "Variables",
                 "url": "variables"
@@ -67,9 +67,9 @@
         "column": 0,
         "category": "Language concepts",
         "samples": [{
-            "name": "Function Pointers",
-            "url": "function-pointers"
-        },
+                "name": "Function Pointers",
+                "url": "function-pointers"
+            },
             {
                 "name": "Anonymous Functions",
                 "url": "anonymous-functions"
@@ -93,9 +93,9 @@
         "column": 0,
         "category": "Language concepts",
         "samples": [{
-            "name": "If/Else",
-            "url": "if-else"
-        },
+                "name": "If/Else",
+                "url": "if-else"
+            },
             {
                 "name": "While",
                 "url": "while"
@@ -139,9 +139,9 @@
         "column": 1,
         "category": "Language concepts",
         "samples": [{
-            "name": "Values",
-            "url": "values"
-        },
+                "name": "Values",
+                "url": "values"
+            },
             {
                 "name": "Arrays",
                 "url": "arrays"
@@ -197,9 +197,9 @@
         "column": 1,
         "category": "Language concepts",
         "samples": [{
-            "name": "Record",
-            "url": "records"
-        },
+                "name": "Record",
+                "url": "records"
+            },
             {
                 "name": "Anonymous Records",
                 "url": "anonymous-records"
@@ -219,9 +219,9 @@
         "column": 1,
         "category": "Language concepts",
         "samples": [{
-            "name": "Object",
-            "url": "objects"
-        },
+                "name": "Object",
+                "url": "objects"
+            },
             {
                 "name": "Object Initializer",
                 "url": "object-initializer"
@@ -296,9 +296,9 @@
         "column": 2,
         "category": "Language concepts",
         "samples": [{
-            "name": "JSON",
-            "url": "json"
-        },
+                "name": "JSON",
+                "url": "json"
+            },
             {
                 "name": "JSON Objects",
                 "url": "json-objects"
@@ -350,9 +350,9 @@
         "column": 2,
         "category": "Language concepts",
         "samples": [ {
-            "name": "Tuple-Typed Binding Pattern",
-            "url": "tuple-typed-binding-pattern"
-        },
+                "name": "Tuple-Typed Binding Pattern",
+                "url": "tuple-typed-binding-pattern"
+            },
             {
                 "name": "Record-Typed Binding Pattern",
                 "url": "record-typed-binding-pattern"
@@ -380,9 +380,9 @@
         "column": 2,
         "category": "Language concepts",
         "samples": [{
-            "name": "Error Handling",
-            "url": "error-handling"
-        },
+                "name": "Error Handling",
+                "url": "error-handling"
+            },
             {
                 "name": "Check",
                 "url": "check"
@@ -410,9 +410,9 @@
         "column": 2,
         "category": "Language concepts",
         "samples": [{
-            "name": "Workers",
-            "url": "workers"
-        },
+                "name": "Workers",
+                "url": "workers"
+            },
             {
                 "name": "Worker Interactions",
                 "url": "worker-interaction"
@@ -436,9 +436,9 @@
         "column": 3,
         "category": "Language concepts",
         "samples": [{
-            "name": "Byte I/O",
-            "url": "byte-io"
-        },
+                "name": "Byte I/O",
+                "url": "byte-io"
+            },
             {
                 "name": "Record I/O",
                 "url": "record-io"
@@ -500,14 +500,14 @@
             }
         ]
     },
-    {
+ 	{
         "title": "Common Libraries",
         "column": 3,
         "category": "Language concepts",
         "samples": [{
-            "name": "Time",
-            "url": "time"
-        },
+                "name": "Time",
+                "url": "time"
+            },
             {
                 "name": "Caching",
                 "url": "cache"
@@ -559,23 +559,23 @@
         "column": 3,
         "category": "Language concepts",
         "samples": [{
-            "name": "Taint Checking",
-            "url": "taint-checking"
-        },
+                "name": "Taint Checking",
+                "url": "taint-checking"
+            },
             {
                 "name": "Cryptographic Operations",
                 "url": "crypto"
             }
         ]
     },
-    {
+ 	{
         "title": "Testing",
         "column": 3,
         "category": "Language concepts",
         "samples": [{
-            "name": "Assertions",
-            "url": "testerina-assertions"
-        },
+                "name": "Assertions",
+                "url": "testerina-assertions"
+            },
             {
                 "name": "Before and After Test",
                 "url": "testerina-before-and-after-test"
@@ -603,9 +603,9 @@
         "column": 3,
         "category": "Language concepts",
         "samples": [{
-            "name": "Docker Deployment",
-            "url": "docker-deployment"
-        },
+                "name": "Docker Deployment",
+                "url": "docker-deployment"
+            },
             {
                 "name": "Kubernetes Deployment",
                 "url": "kubernetes-deployment"
@@ -625,9 +625,9 @@
         "column": 0,
         "category": "Working over the network",
         "samples": [{
-            "name": "Client Endpoint",
-            "url": "http-client-endpoint"
-        },
+                "name": "Client Endpoint",
+                "url": "http-client-endpoint"
+            },
             {
                 "name": "Redirects",
                 "url": "http-redirects"
@@ -715,23 +715,23 @@
         "column": 0,
         "category": "Working over the network",
         "samples": [{
-            "name": "HTTP 1.1 to 2.0 Protocol Switch",
-            "url": "http-1.1-to-2.0-protocol-switch"
-        },
+                "name": "HTTP 1.1 to 2.0 Protocol Switch",
+                "url": "http-1.1-to-2.0-protocol-switch"
+            },
             {
                 "name": "HTTP 2.0 Server Push",
                 "url": "http-2.0-server-push"
             }
         ]
     },
-    {
+ 	{
         "title": "WebSockets ",
         "column": 1,
         "category": "Working over the network",
         "samples": [{
-            "name": "Client Endpoint",
-            "url": "websocket-client"
-        },
+                "name": "Client Endpoint",
+                "url": "websocket-client"
+            },
             {
                 "name": "Basic Server Functionalities",
                 "url": "websocket-basic-sample"
@@ -755,9 +755,9 @@
         "column": 1,
         "category": "Working over the network",
         "samples": [{
-            "name": "Header-Based Routing",
-            "url": "header-based-routing"
-        },
+                "name": "Header-Based Routing",
+                "url": "header-based-routing"
+            },
             {
                 "name": "Passthrough",
                 "url": "passthrough"
@@ -773,9 +773,9 @@
         "column": 1,
         "category": "Working over the network",
         "samples": [{
-            "name": "Circuit Breaker",
-            "url": "http-circuit-breaker"
-        },
+                "name": "Circuit Breaker",
+                "url": "http-circuit-breaker"
+            },
             {
                 "name": "Load Balancing",
                 "url": "http-load-balancer"
@@ -853,9 +853,9 @@
         "column": 2,
         "category": "Working over the network",
         "samples": [{
-            "name": "Unary Blocking",
-            "url": "grpc-unary-blocking"
-        },
+                "name": "Unary Blocking",
+                "url": "grpc-unary-blocking"
+            },
             {
                 "name": "Unary Non-Blocking",
                 "url": "grpc-unary-non-blocking"
@@ -882,14 +882,14 @@
             }
         ]
     },
-    {
+ 	{
         "title": "Observability",
         "column": 2,
         "category": "Working over the network",
         "samples": [{
-            "name": "Distributed Tracing",
-            "url": "tracing"
-        },
+                "name": "Distributed Tracing",
+                "url": "tracing"
+            },
             {
                 "name": "Counter-Based Metrics",
                 "url": "counter-metrics"
@@ -900,14 +900,14 @@
             }
         ]
     },
-    {
+ 	{
         "title": "OpenAPI",
         "column": 2,
         "category": "Working over the network",
         "samples": [{
-            "name": "Client Generation",
-            "url": "client-generation"
-        },
+                "name": "Client Generation",
+                "url": "client-generation"
+            },
             {
                 "name": "Ballerina To OpenAPI",
                 "url": "ballerina-to-openapi"
@@ -1008,9 +1008,9 @@
         "column": 3,
         "category": "Working over the network",
         "samples": [{
-            "name": "Basic TCP Socket",
-            "url": "tcp-socket-listener-client"
-        },
+                "name": "Basic TCP Socket",
+                "url": "tcp-socket-listener-client"
+            },
             {
                 "name": "Basic UDP Client Socket",
                 "url": "udp-socket-client"
@@ -1022,9 +1022,9 @@
         "column": 3,
         "category": "Working over the network",
         "samples": [{
-            "name": "Secured Service with JWT",
-            "url": "secured-service-with-jwt"
-        },
+                "name": "Secured Service with JWT",
+                "url": "secured-service-with-jwt"
+            },
             {
                 "name": "Secured Service with Basic Auth",
                 "url": "secured-service-with-basic-auth"
@@ -1062,16 +1062,16 @@
         "column": 1,
         "category": "Experimental features",
         "samples": [{
-            "name": "Streams",
-            "url": "streams"
-        },
-            {
-                "name": "Simple Filtering",
-                "url": "simple-filtering"
+                "name": "Streams",
+                "url": "streams"
             },
             {
-                "name": "Projection",
-                "url": "projection"
+              "name": "Simple Filtering",
+              "url": "simple-filtering"
+            },
+            {
+              "name": "Projection",
+              "url": "projection"
             },
             {
                 "name": "Temporal Aggregations",
@@ -1082,8 +1082,8 @@
                 "url": "join-multiple-streams"
             },
             {
-                "name": "Join Tables and Streams",
-                "url": "join-tables-and-streams"
+              "name": "Join Tables and Streams",
+              "url": "join-tables-and-streams"
             }
         ]
     },
@@ -1092,9 +1092,9 @@
         "column": 2,
         "category": "Experimental features",
         "samples": [{
-            "name": "Local Transactions",
-            "url": "local-transactions"
-        },
+                "name": "Local Transactions",
+                "url": "local-transactions"
+            },
             {
                 "name": "Local Transactions with participants",
                 "url": "local-transactions-with-participants"
@@ -1114,9 +1114,9 @@
         "column": 3,
         "category": "Experimental features",
         "samples": [{
-            "name": "Select all the fields",
-            "url": "table-queries"
-        },
+                "name": "Select all the fields",
+                "url": "table-queries"
+            },
             {
                 "name": "Select a few field for the output",
                 "url": "table-queries-select-with-few-output-fields"

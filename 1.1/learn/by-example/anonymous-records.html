@@ -3,6 +3,9 @@ layout: ballerina-example-page
 title: Anonymous Records
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /1.1/learn/by-example/anonymous-records
+redirect_from:
+  - /v1-1/learn/by-example/anonymous-records
+  - /v1-1/learn/by-example/anonymous-records.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -18,23 +21,20 @@ permalink: /1.1/learn/by-example/anonymous-records
     <span class="nx">Person</span> <span class="nx">john</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John Doe&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-        <span class="nx">address</span><span class="p">:</span> <span class="p">{</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span> <span class="p">}</span>
+        <span class="nx">address</span><span class="p">:</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;Colombo&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span><span class="p">}</span>
     <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">record</span> <span class="p">{|</span>
         <span class="kt">string</span> <span class="nx">city</span><span class="p">;</span>
         <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
-    <span class="p">|}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span> <span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span> <span class="p">};</span>
+    <span class="p">|}</span> <span class="nx">adr</span> <span class="p">=</span> <span class="p">{</span><span class="nx">city</span><span class="p">:</span> <span class="s">&quot;London&quot;</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;UK&quot;</span><span class="p">};</span>    <span class="nx">Person</span> <span class="nx">jane</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane Doe&quot;</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="nx">adr</span><span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jane</span><span class="p">);</span>    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">john</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">fields</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">toFieldsArray</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">anydataRecord</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">anydata</span><span class="p">[]</span> <span class="p">{</span>
-    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>
-    <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">field</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
-        <span class="nx">fields</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="p">=</span> <span class="nx">field</span><span class="p">;</span>
-        <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
+    <span class="nx">anydata</span><span class="p">[]</span> <span class="nx">fields</span> <span class="p">=</span> <span class="p">[];</span>    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">field</span> <span class="nx">in</span> <span class="nx">anydataRecord</span> <span class="p">{</span>
+        <span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">field</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="k">return</span> <span class="nx">fields</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -101,6 +101,8 @@ permalink: /1.1/learn/by-example/anonymous-records
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -194,7 +196,7 @@ permalink: /1.1/learn/by-example/anonymous-records
                                     <div class="highlight"><pre><code class=ballerina>    Person john = {
         name: &quot;John Doe&quot;,
         age: 25,
-        address: { city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot; }
+        address: {city: &quot;Colombo&quot;, country: &quot;Sri Lanka&quot;}
     };
     io:println(john);
 </code></pre></div>
@@ -219,7 +221,7 @@ permalink: /1.1/learn/by-example/anonymous-records
                                     <div class="highlight"><pre><code class=ballerina>    record {|
         string city;
         string country;
-    |} adr = { city: &quot;London&quot;, country: &quot;UK&quot; };
+    |} adr = {city: &quot;London&quot;, country: &quot;UK&quot;};
 </code></pre></div>
 
                                 </td>
@@ -240,7 +242,7 @@ permalink: /1.1/learn/by-example/anonymous-records
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person jane = { name: &quot;Jane Doe&quot;, age: 20, address: adr };
+                                    <div class="highlight"><pre><code class=ballerina>    Person jane = {name: &quot;Jane Doe&quot;, age: 20, address: adr};
     io:println(jane);
 </code></pre></div>
 
@@ -269,7 +271,6 @@ permalink: /1.1/learn/by-example/anonymous-records
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function toFieldsArray(record {} anydataRecord) returns anydata[] {
     anydata[] fields = [];
-    int i = 0;
 </code></pre></div>
 
                                 </td>
@@ -288,12 +289,22 @@ permalink: /1.1/learn/by-example/anonymous-records
                             
                             <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    foreach var field in anydataRecord {
-        fields[i] = field;
-        i += 1;
+        fields.push(field);
     }
-    return fields;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    return fields;
 }
 </code></pre></div>
 

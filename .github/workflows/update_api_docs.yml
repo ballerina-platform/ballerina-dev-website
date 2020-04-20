@@ -1,0 +1,65 @@
+name: Generate API Docs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/latest/**'
+
+jobs:
+  apidoc-gen:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+
+    steps:    
+    - name: Install jq for json manipulation
+      run: sudo apt-get install jq
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Clone ballerina-lang repo
+      shell: bash
+      run: |
+        version="`jq -r '.version' _data/latest/metadata.json`"
+        BAL_VERSION="v${version}"
+        git clone https://github.com/ballerina-platform/ballerina-lang
+        echo "checkout Ballerina lang repo: $BAL_VERSION"
+        git --git-dir=ballerina-lang/.git --work-tree=ballerina-lang/ checkout $BAL_VERSION
+
+    - name: Generate API Docs
+      run: |
+        cd ballerina-lang/distribution/zip/jballerina-tools
+        ../../../gradlew build -x check -x :composer-library:npmInstall -x :testerina:report-tools:npmInstall -x :testerina:report-tools:npmBuild -x :composer-library:npmBuild
+
+    - name: Remove old API Docs
+      run: git rm -r learn/api-docs/ballerina
+
+    - name: Copy newly generated API Docs
+      run: |
+        VERSION="`jq -r '.version' _data/latest/metadata.json`"
+        cp -r ballerina-lang/distribution/zip/jballerina-tools/build/extracted-distributions/jballerina-tools-$VERSION/docs learn/api-docs/ballerina
+
+    - name: Push changes for new API Docs
+      run: |
+        git checkout automate-apidoc-$GITHUB_SHA 2>/dev/null || git checkout -b automate-apidoc-$GITHUB_SHA
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        
+        git add learn/api-docs/ballerina
+        git commit --allow-empty -m 'Update API Docs'
+        
+        git push --set-upstream origin automate-apidoc-$GITHUB_SHA
+        echo 'Successfully pushed to automate-apidoc-$GITHUB_SHA branch'
+
+    - name: Create pull request for new BBEs
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update API Docs for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

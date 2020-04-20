@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - '_data/latest/**'
 
 jobs:
   bbe-gen:

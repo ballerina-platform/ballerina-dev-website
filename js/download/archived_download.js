@@ -50,7 +50,7 @@ $(document).ready(function() {
 
     // Get it from Liquid variables. To do so I have added a front-matter at the top
     // of this file.
-    var latestVersion = "{{ site.data.metadata.version }}";
+    var latestVersion = "{{ site.data.latest.metadata.version }}";
     var data = {{ site.data.release_notes_versions | jsonify }};
     // remove latest version
     var ltestIndex = data.findIndex(function(element) {

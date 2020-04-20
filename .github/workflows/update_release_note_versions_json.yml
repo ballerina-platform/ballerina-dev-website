@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-    - '_data/latest/**'
+      - '_data/latest/**'
 
 jobs:
   Update:
@@ -43,5 +43,11 @@ jobs:
         
         git push --set-upstream origin automate-release-notes-json-$GITHUB_SHA
         echo 'Successfully pushed to automate-downloads-page-update branch'
-        sudo snap install hub --classic
-        hub pull-request -m '[Automated] Update release_notes_versions.json for new release'
+
+    - name: Create pull request for new BBEs
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -654,7 +654,8 @@
                         Module : <span class="modules">http</span>
                     
                 </h1>
-                    <p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides an implementation for connecting and interacting with HTTP, HTTP2, and WebSocket endpoints. The module facilitates two types of network entry points as ‘Client’ and ‘Listener’.</p>
 <h2>Client</h2>
 <p>The <code>Client</code> is used to connect to and interact with HTTP endpoints. They support connection pooling and can be configured to have a maximum number of active connections that can be made with the remote endpoint. The <code>Client</code> activates connection eviction after a given idle period and also supports follow-redirects so that the users do not have to manually handle 3xx HTTP status codes.</p>
 <p>The <code>Client</code> handles resilience in multiple ways such as load balancing, circuit breaking, endpoint timeouts, and a retry mechanism.</p>
@@ -767,7 +768,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Represents a discrete sub-part of the time window (Bucket).
-
                             </td>
                         </tr>
                     
@@ -778,7 +778,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Provides a set of configurations for controlling the caching behaviour of the endpoint.
-
                             </td>
                         </tr>
                     
@@ -789,7 +788,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Provides a set of configurations for controlling the behaviour of the Circuit Breaker.
-
                             </td>
                         </tr>
                     
@@ -800,7 +798,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Derived set of configurations from the <code>CircuitBreakerConfig</code>.
-
                             </td>
                         </tr>
                     
@@ -811,7 +808,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Maintains the health of the Circuit Breaker.
-
                             </td>
                         </tr>
                     
@@ -822,20 +818,6 @@ resource function upgrader(http:Caller caller, http:Request req, string name) {
                             <td class="module-desc">
                                 
                                 Provides a set of configurations for controlling the behaviours when communicating with a remote HTTP endpoint.
-httpVersion - Copied from CommonClientConfiguration
-http1Settings - Copied from CommonClientConfiguration
-http2Settings - Copied from CommonClientConfiguration
-timeoutInMillis - Copied from CommonClientConfiguration
-forwarded - Copied from CommonClientConfiguration
-followRedirects - Copied from CommonClientConfiguration
-poolConfig - Copied from CommonClientConfiguration
-cache - Copied from CommonClientConfiguration
-compression - Copied from CommonClientConfiguration
-auth - Copied from CommonClientConfiguration
-circuitBreaker - Copied from CommonClientConfiguration
-retryConfig - Copied from CommonClientConfiguration
-cookieConfig - Copied from CommonClientConfiguration
-
                             </td>
                         </tr>
                     
@@ -845,8 +827,7 @@ cookieConfig - Copied from CommonClientConfiguration
                             </td>
                             <td class="module-desc">
                                 
-                                Provides settings related to HTTP/1.x protocol.
-
+                                Provides settings related to HTTP/1.
                             </td>
                         </tr>
                     
@@ -857,7 +838,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides settings related to HTTP/2 protocol.
-
                             </td>
                         </tr>
                     
@@ -868,7 +848,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides configurations for facilitating secure communication with a remote HTTP endpoint.
-
                             </td>
                         </tr>
                     
@@ -879,7 +858,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Common client configurations for the next level clients.
-
                             </td>
                         </tr>
                     
@@ -890,7 +868,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 A record for providing configurations for content compression.
-
                             </td>
                         </tr>
                     
@@ -901,7 +878,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Client configuration for cookies.
-
                             </td>
                         </tr>
                     
@@ -912,7 +888,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for CORS support.
-
                             </td>
                         </tr>
                     
@@ -934,20 +909,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides a set of HTTP related configurations and failover related configurations.
-httpVersion - Copied from CommonClientConfiguration
-http1Settings - Copied from CommonClientConfiguration
-http2Settings - Copied from CommonClientConfiguration
-timeoutInMillis - Copied from CommonClientConfiguration
-forwarded - Copied from CommonClientConfiguration
-followRedirects - Copied from CommonClientConfiguration
-poolConfig - Copied from CommonClientConfiguration
-cache - Copied from CommonClientConfiguration
-compression - Copied from CommonClientConfiguration
-auth - Copied from CommonClientConfiguration
-circuitBreaker - Copied from CommonClientConfiguration
-retryConfig - Copied from CommonClientConfiguration
-cookieConfig - Copied from CommonClientConfiguration
-
                             </td>
                         </tr>
                     
@@ -958,7 +919,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides a set of configurations for controlling the failover behaviour of the endpoint.
-
                             </td>
                         </tr>
                     
@@ -969,7 +929,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents the inferred failover configurations passed into the failover client.
-
                             </td>
                         </tr>
                     
@@ -980,7 +939,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides configurations for controlling the endpoint's behaviour in response to HTTP redirect related responses.
-
                             </td>
                         </tr>
                     
@@ -991,7 +949,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configuration for an HTTP resource.
-
                             </td>
                         </tr>
                     
@@ -1002,7 +959,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Contains the configurations for an HTTP service.
-
                             </td>
                         </tr>
                     
@@ -1013,7 +969,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Defines a timeout error occurred during service invocation.
-
                             </td>
                         </tr>
                     
@@ -1024,7 +979,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Authentication configurations for the listener.
-
                             </td>
                         </tr>
                     
@@ -1035,7 +989,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides a set of configurations for HTTP service endpoints.
-
                             </td>
                         </tr>
                     
@@ -1045,8 +998,7 @@ cookieConfig - Copied from CommonClientConfiguration
                             </td>
                             <td class="module-desc">
                                 
-                                Provides settings related to HTTP/1.x protocol.
-
+                                Provides settings related to HTTP/1.
                             </td>
                         </tr>
                     
@@ -1057,7 +1009,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 A record for providing configurations for certificate revocation status checks.
-
                             </td>
                         </tr>
                     
@@ -1068,7 +1019,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configures the SSL/TLS options to be used for HTTP service.
-
                             </td>
                         </tr>
                     
@@ -1079,7 +1029,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents an error occurred in an remote function of the Load Balance connector.
-
                             </td>
                         </tr>
                     
@@ -1090,20 +1039,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 The configurations related to the load balance client endpoint.
-httpVersion - Copied from CommonClientConfiguration
-http1Settings - Copied from CommonClientConfiguration
-http2Settings - Copied from CommonClientConfiguration
-timeoutInMillis - Copied from CommonClientConfiguration
-forwarded - Copied from CommonClientConfiguration
-followRedirects - Copied from CommonClientConfiguration
-poolConfig - Copied from CommonClientConfiguration
-cache - Copied from CommonClientConfiguration
-compression - Copied from CommonClientConfiguration
-auth - Copied from CommonClientConfiguration
-circuitBreaker - Copied from CommonClientConfiguration
-retryConfig - Copied from CommonClientConfiguration
-cookieConfig - Copied from CommonClientConfiguration
-
                             </td>
                         </tr>
                     
@@ -1114,7 +1049,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Presents a read-only view of the local address.
-
                             </td>
                         </tr>
                     
@@ -1125,7 +1059,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 A record for providing mutual SSL handshake results.
-
                             </td>
                         </tr>
                     
@@ -1136,7 +1069,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 The <code>OutboundAuthConfig</code> record can be used to configure the authentication mechanism used by the HTTP endpoint.
-
                             </td>
                         </tr>
                     
@@ -1147,7 +1079,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for managing HTTP client connection pool.
-
                             </td>
                         </tr>
                     
@@ -1158,7 +1089,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 A record for configuring SSL/TLS protocol and version to be used.
-
                             </td>
                         </tr>
                     
@@ -1169,7 +1099,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Proxy server configurations to be used with the HTTP client endpoint.
-
                             </td>
                         </tr>
                     
@@ -1180,7 +1109,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Presents a read-only view of the remote address.
-
                             </td>
                         </tr>
                     
@@ -1191,7 +1119,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configures the authentication scheme for a resource.
-
                             </td>
                         </tr>
                     
@@ -1202,7 +1129,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides configurations for controlling the retrying behavior in failure scenarios.
-
                             </td>
                         </tr>
                     
@@ -1213,7 +1139,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Derived set of configurations from the <code>RetryConfig</code>.
-
                             </td>
                         </tr>
                     
@@ -1224,7 +1149,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents a rolling window in the Circuit Breaker.
-
                             </td>
                         </tr>
                     
@@ -1235,7 +1159,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configures the authentication scheme for a service.
-
                             </td>
                         </tr>
                     
@@ -1246,7 +1169,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents a single service and its related configurations.
-
                             </td>
                         </tr>
                     
@@ -1257,7 +1179,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 A record for providing configurations for certificate revocation status checks.
-
                             </td>
                         </tr>
                     
@@ -1268,7 +1189,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for service versioning.
-
                             </td>
                         </tr>
                     
@@ -1279,7 +1199,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for a WebSocket service.
-
                             </td>
                         </tr>
                     
@@ -1290,7 +1209,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for the WebSocket client endpoint.
-
                             </td>
                         </tr>
                     
@@ -1301,7 +1219,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Configurations for the WebSocket client endpoint.
-
                             </td>
                         </tr>
                     
@@ -1312,7 +1229,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Retry configurations for WebSocket.
-
                             </td>
                         </tr>
                     
@@ -1323,7 +1239,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Resource configuration to upgrade from HTTP to WebSocket.
-
                             </td>
                         </tr>
                     
@@ -1348,7 +1263,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Representation of the Authentication filter.
-
                             </td>
                         </tr>
                     
@@ -1359,7 +1273,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Representation of the Authorization filter.
-
                             </td>
                         </tr>
                     
@@ -1370,7 +1283,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Representation of Authorization Handler for HTTP.
-
                             </td>
                         </tr>
                     
@@ -1381,7 +1293,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Defines the Basic Auth header handler for inbound and outbound HTTP traffic.
-
                             </td>
                         </tr>
                     
@@ -1392,7 +1303,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Representation of the Bearer Auth header handler for both inbound and outbound HTTP traffic.
-
                             </td>
                         </tr>
                     
@@ -1403,7 +1313,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents a Cookie.
-
                             </td>
                         </tr>
                     
@@ -1414,7 +1323,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Provides the cookie functionality across HTTP client actions.
-
                             </td>
                         </tr>
                     
@@ -1425,7 +1333,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents the cookie store.
-
                             </td>
                         </tr>
                     
@@ -1436,7 +1343,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Represents a default persistent cookie handler, which stores persistent cookies in a CSV file.
-
                             </td>
                         </tr>
                     
@@ -1447,7 +1353,6 @@ cookieConfig - Copied from CommonClientConfiguration
                             <td class="module-desc">
                                 
                                 Representation of request filter Context.
-
                             </td>
                         </tr>
                     
@@ -1457,9 +1362,7 @@ cookieConfig - Copied from CommonClientConfiguration
                             </td>
                             <td class="module-desc">
                                 
-                                Implements a cache for storing HTTP responses. This cache complies with the caching policy set when configuring
-HTTP caching in the HTTP client endpoint.
-
+                                Implements a cache for storing HTTP responses.
                             </td>
                         </tr>
                     
@@ -1470,8 +1373,6 @@ HTTP caching in the HTTP client endpoint.
                             <td class="module-desc">
                                 
                                 Represents a 'future' that returns as a result of an asynchronous HTTP request submission.
-This can be used as a reference to fetch the results of the submission.
-
                             </td>
                         </tr>
                     
@@ -1482,7 +1383,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 The representation of an inbound authentication handler for HTTP traffic.
-
                             </td>
                         </tr>
                     
@@ -1493,7 +1393,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 Implementation of round robin load balancing strategy.
-
                             </td>
                         </tr>
                     
@@ -1504,7 +1403,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 LoadBalancerRule provides a required interfaces to implement different algorithms.
-
                             </td>
                         </tr>
                     
@@ -1515,7 +1413,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 The representation of an outbound authentication handler for HTTP traffic.
-
                             </td>
                         </tr>
                     
@@ -1526,7 +1423,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 The representation of a persistent cookie handler for managing persistent cookies.
-
                             </td>
                         </tr>
                     
@@ -1537,7 +1433,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 Represents an HTTP/2 <code>PUSH_PROMISE</code> frame.
-
                             </td>
                         </tr>
                     
@@ -1548,7 +1443,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 Represents an HTTP request.
-
                             </td>
                         </tr>
                     
@@ -1559,7 +1453,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 Configures the cache control directives for an <code>http:Request</code>.
-
                             </td>
                         </tr>
                     
@@ -1570,9 +1463,6 @@ This can be used as a reference to fetch the results of the submission.
                             <td class="module-desc">
                                 
                                 Abstract Representation of a HTTP Request Filter.
-This filter will be applied before the request is dispatched to the relevant resource.
-Any RequestFilter implementation should be structurally similar to or implement the RequestFilter object.
-
                             </td>
                         </tr>
                     
@@ -1583,7 +1473,6 @@ Any RequestFilter implementation should be structurally similar to or implement 
                             <td class="module-desc">
                                 
                                 Represents an HTTP response.
-
                             </td>
                         </tr>
                     
@@ -1594,7 +1483,6 @@ Any RequestFilter implementation should be structurally similar to or implement 
                             <td class="module-desc">
                                 
                                 Configures cache control directives for an <code>http:Response</code>.
-
                             </td>
                         </tr>
                     
@@ -1605,9 +1493,6 @@ Any RequestFilter implementation should be structurally similar to or implement 
                             <td class="module-desc">
                                 
                                 Abstract Representation of a HTTP Response Filter.
-This filter will be applied in the response path.
-Any ResponseFilter implementation should be structurally similar to or implement the ResponseFilter object.
-
                             </td>
                         </tr>
                     
@@ -1632,7 +1517,6 @@ Any ResponseFilter implementation should be structurally similar to or implement
                             <td class="module-desc">
                                 
                                 The caller actions for responding to client requests.
-
                             </td>
                         </tr>
                     
@@ -1643,7 +1527,6 @@ Any ResponseFilter implementation should be structurally similar to or implement
                             <td class="module-desc">
                                 
                                 A Circuit Breaker implementation which can be used to gracefully handle network failures.
-
                             </td>
                         </tr>
                     
@@ -1653,10 +1536,7 @@ Any ResponseFilter implementation should be structurally similar to or implement
                             </td>
                             <td class="module-desc">
                                 
-                                The HTTP client provides the capability for initiating contact with a remote HTTP service. The API it
-provides includes functions for the standard HTTP methods, forwarding a received request and sending requests
-using custom HTTP verbs.
-
+                                The HTTP client provides the capability for initiating contact with a remote HTTP service.
                             </td>
                         </tr>
                     
@@ -1667,7 +1547,6 @@ using custom HTTP verbs.
                             <td class="module-desc">
                                 
                                 An HTTP client endpoint which provides failover support over multiple HTTP clients.
-
                             </td>
                         </tr>
                     
@@ -1678,7 +1557,6 @@ using custom HTTP verbs.
                             <td class="module-desc">
                                 
                                 An HTTP caching client implementation which takes an <code>HttpActions</code> instance and wraps it with an HTTP caching layer.
-
                             </td>
                         </tr>
                     
@@ -1688,10 +1566,7 @@ using custom HTTP verbs.
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the HTTP actions for interacting with an HTTP server. Apart from the standard HTTP methods,
-<code>HttpClient.forward()</code> and <code>HttpClient.execute()</code> functions are provided. More complex and specific endpoint types
-can be created by wrapping this generic HTTP actions implementation.
-
+                                Provides the HTTP actions for interacting with an HTTP server.
                             </td>
                         </tr>
                     
@@ -1701,9 +1576,7 @@ can be created by wrapping this generic HTTP actions implementation.
                             </td>
                             <td class="module-desc">
                                 
-                                Provides secure HTTP remote functions for interacting with HTTP endpoints. This will make use of the authentication
-schemes configured in the HTTP client endpoint to secure the HTTP requests.
-
+                                Provides secure HTTP remote functions for interacting with HTTP endpoints.
                             </td>
                         </tr>
                     
@@ -1714,7 +1587,6 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.
                             <td class="module-desc">
                                 
                                 LoadBalanceClient endpoint provides load balancing functionality over multiple HTTP clients.
-
                             </td>
                         </tr>
                     
@@ -1725,7 +1597,6 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.
                             <td class="module-desc">
                                 
                                 Provides redirect functionality for HTTP client remote functions.
-
                             </td>
                         </tr>
                     
@@ -1735,9 +1606,7 @@ schemes configured in the HTTP client endpoint to secure the HTTP requests.
                             </td>
                             <td class="module-desc">
                                 
-                                Provides the HTTP remote functions for interacting with an HTTP endpoint. This is created by wrapping the HTTP client
-to provide retrying over HTTP requests.
-
+                                Provides the HTTP remote functions for interacting with an HTTP endpoint.
                             </td>
                         </tr>
                     
@@ -1748,7 +1617,6 @@ to provide retrying over HTTP requests.
                             <td class="module-desc">
                                 
                                 Represents a WebSocket caller.
-
                             </td>
                         </tr>
                     
@@ -1759,7 +1627,6 @@ to provide retrying over HTTP requests.
                             <td class="module-desc">
                                 
                                 Represents a WebSocket client endpoint.
-
                             </td>
                         </tr>
                     
@@ -1770,7 +1637,6 @@ to provide retrying over HTTP requests.
                             <td class="module-desc">
                                 
                                 A WebSocket client endpoint, which provides failover support for multiple WebSocket targets.
-
                             </td>
                         </tr>
                     
@@ -1794,9 +1660,7 @@ to provide retrying over HTTP requests.
                             </td>
                             <td class="module-desc">
                                 
-                                This is used for creating HTTP server endpoints. An HTTP server endpoint is capable of responding to
-remote callers. The <code>Listener</code> is responsible for initializing the endpoint using the provided configurations.
-
+                                This is used for creating HTTP server endpoints.
                             </td>
                         </tr>
                     
@@ -1807,7 +1671,6 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                             <td class="module-desc">
                                 
                                 Mock server endpoint which does not open a listening port.
-
                             </td>
                         </tr>
                     
@@ -1833,7 +1696,6 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                             <td class="module-desc">
                                 
                                 Creates an HTTP client capable of caching HTTP responses.
-
                             </td>
                         </tr>
                     
@@ -1844,7 +1706,6 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                             <td class="module-desc">
                                 
                                 Creates an HTTP client capable of securing HTTP requests with authentication.
-
                             </td>
                         </tr>
                     
@@ -1855,7 +1716,6 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                             <td class="module-desc">
                                 
                                 Extracts the Authorization header value from the request.
-
                             </td>
                         </tr>
                     
@@ -1865,9 +1725,7 @@ remote callers. The <code>Listener</code> is responsible for initializing the en
                             </td>
                             <td class="module-desc">
                                 
-                                The HEAD remote function implementation of the Circuit Breaker. This wraps the <code>head</code> function of the underlying
-HTTP remote function provider.
-
+                                The HEAD remote function implementation of the Circuit Breaker.
                             </td>
                         </tr>
                     
@@ -1878,7 +1736,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Parses the given header value to extract its value and parameter map.
-
                             </td>
                         </tr>
                     
@@ -1904,7 +1761,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Represents the Authorization header name.
-
                             </td>
                         </tr>
                     
@@ -1915,7 +1771,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Indicates that the authentication credentials should be sent via the Authentication header.
-
                             </td>
                         </tr>
                     
@@ -1926,7 +1781,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Indicates that the Authentication credentials should be sent via the body of the POST request.
-
                             </td>
                         </tr>
                     
@@ -1937,7 +1791,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Indicates that the authentication credentials should not be sent.
-
                             </td>
                         </tr>
                     
@@ -1948,7 +1801,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Indicates the status code.
-
                             </td>
                         </tr>
                     
@@ -1959,7 +1811,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Forces the cache to validate a cached response with the origin server before serving.
-
                             </td>
                         </tr>
                     
@@ -1970,7 +1821,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Instructs the cache to not store a response in non-volatile storage.
-
                             </td>
                         </tr>
                     
@@ -1981,7 +1831,6 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 Instructs intermediaries not to transform the payload.
-
                             </td>
                         </tr>
                     
@@ -1992,9 +1841,7 @@ HTTP remote function provider.
                             <td class="module-desc">
                                 
                                 When used in requests, <code>max-age</code> implies that clients are not willing to accept responses whose age is greater
-than <code>max-age</code>. When used in responses, the response is to be considered stale after the specified
-number of seconds.
-
+than <code>max-age</code>.
                             </td>
                         </tr>
                     
@@ -2006,7 +1853,6 @@ number of seconds.
                                 
                                 Indicates that the client is willing to accept responses which have exceeded their freshness lifetime by no more
 than the specified number of seconds.
-
                             </td>
                         </tr>
                     
@@ -2017,7 +1863,6 @@ than the specified number of seconds.
                             <td class="module-desc">
                                 
                                 Indicates that the client is only accepting responses whose freshness lifetime &gt;= current age + min-fresh.
-
                             </td>
                         </tr>
                     
@@ -2027,9 +1872,7 @@ than the specified number of seconds.
                             </td>
                             <td class="module-desc">
                                 
-                                Indicates that the client is only willing to accept a cached response. A cached response is served subject to
-other constraints posed by the request.
-
+                                Indicates that the client is only willing to accept a cached response.
                             </td>
                         </tr>
                     
@@ -2041,7 +1884,6 @@ other constraints posed by the request.
                                 
                                 Indicates that once the response has become stale, it should not be reused for subsequent requests without
 validating with the origin server.
-
                             </td>
                         </tr>
                     
@@ -2052,7 +1894,6 @@ validating with the origin server.
                             <td class="module-desc">
                                 
                                 Indicates that any cache may store the response.
-
                             </td>
                         </tr>
                     
@@ -2063,7 +1904,6 @@ validating with the origin server.
                             <td class="module-desc">
                                 
                                 Indicates that the response is intended for a single user and should not be stored by shared caches.
-
                             </td>
                         </tr>
                     
@@ -2074,7 +1914,6 @@ validating with the origin server.
                             <td class="module-desc">
                                 
                                 Has the same semantics as <code>must-revalidate</code>, except that this does not apply to private caches.
-
                             </td>
                         </tr>
                     
@@ -2085,7 +1924,6 @@ validating with the origin server.
                             <td class="module-desc">
                                 
                                 In shared caches, <code>s-maxage</code> overrides the <code>max-age</code> or <code>expires</code> header field.
-
                             </td>
                         </tr>
                     
@@ -2096,7 +1934,6 @@ validating with the origin server.
                             <td class="module-desc">
                                 
                                 Setting this as the <code>max-stale</code> directives indicates that the <code>max-stale</code> directive does not specify a limit.
-
                             </td>
                         </tr>
                     
@@ -2106,9 +1943,7 @@ validating with the origin server.
                             </td>
                             <td class="module-desc">
                                 
-                                This is a more restricted mode of RFC 7234. Setting this as the caching policy restricts caching to instances
-where the <code>cache-control</code> header and either the <code>etag</code> or <code>last-modified</code> header are present.
-
+                                This is a more restricted mode of RFC 7234.
                             </td>
                         </tr>
                     
@@ -2119,7 +1954,6 @@ where the <code>cache-control</code> header and either the <code>etag</code> or 
                             <td class="module-desc">
                                 
                                 Caching behaviour is as specified by the RFC 7234 specification.
-
                             </td>
                         </tr>
                     
@@ -2262,8 +2096,7 @@ where the <code>cache-control</code> header and either the <code>etag</code> or 
                             <td class="module-desc">
                                 
                                 If the payload is less than 8KB, content-length header is set in the outbound request/response,
-otherwise chunking header is set in the outbound request/response.}
-
+otherwise chunking header is set in the outbound request/response.
                             </td>
                         </tr>
                     
@@ -2274,7 +2107,6 @@ otherwise chunking header is set in the outbound request/response.}
                             <td class="module-desc">
                                 
                                 Always set chunking header in the response.
-
                             </td>
                         </tr>
                     
@@ -2285,7 +2117,6 @@ otherwise chunking header is set in the outbound request/response.}
                             <td class="module-desc">
                                 
                                 Never set the chunking header even if the payload is larger than 8KB in the outbound request/response.
-
                             </td>
                         </tr>
                     
@@ -2297,7 +2128,6 @@ otherwise chunking header is set in the outbound request/response.}
                                 
                                 When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
 outbound request/response accept-encoding/content-encoding option.
-
                             </td>
                         </tr>
                     
@@ -2308,7 +2138,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Always set accept-encoding/content-encoding in outbound request/response.
-
                             </td>
                         </tr>
                     
@@ -2319,7 +2148,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Never set accept-encoding/content-encoding header in outbound request/response.
-
                             </td>
                         </tr>
                     
@@ -2330,7 +2158,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>300 - Multiple Choices</code>.
-
                             </td>
                         </tr>
                     
@@ -2341,7 +2168,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>301 - Moved Permanently</code>.
-
                             </td>
                         </tr>
                     
@@ -2352,7 +2178,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>302 - Found</code>.
-
                             </td>
                         </tr>
                     
@@ -2363,7 +2188,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>303 - See Other</code>.
-
                             </td>
                         </tr>
                     
@@ -2374,7 +2198,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>304 - Not Modified</code>.
-
                             </td>
                         </tr>
                     
@@ -2385,7 +2208,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>305 - Use Proxy</code>.
-
                             </td>
                         </tr>
                     
@@ -2396,7 +2218,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>307 - Temporary Redirect</code>.
-
                             </td>
                         </tr>
                     
@@ -2407,7 +2228,6 @@ outbound request/response accept-encoding/content-encoding option.
                             <td class="module-desc">
                                 
                                 Represents the HTTP redirect status code <code>308 - Permanent Redirect</code>.
-
                             </td>
                         </tr>
                     
@@ -2747,8 +2567,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>age</code>. Gives the current age of a cached HTTP response.
-
+                                HTTP header key <code>age</code>.
                             </td>
                         </tr>
                     
@@ -2769,8 +2588,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>cache-control</code>. Specifies the cache control directives required for the function of HTTP caches.
-
+                                HTTP header key <code>cache-control</code>.
                             </td>
                         </tr>
                     
@@ -2780,8 +2598,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>content-length</code>. Specifies the size of the response body in bytes.
-
+                                HTTP header key <code>content-length</code>.
                             </td>
                         </tr>
                     
@@ -2791,8 +2608,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>content-type</code>. Specifies the type of the message payload.
-
+                                HTTP header key <code>content-type</code>.
                             </td>
                         </tr>
                     
@@ -2802,8 +2618,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>date</code>. The timestamp at the time the response was generated/received.
-
+                                HTTP header key <code>date</code>.
                             </td>
                         </tr>
                     
@@ -2813,9 +2628,7 @@ outbound request/response accept-encoding/content-encoding option.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>etag</code>. A finger print for a resource which is used by HTTP caches to identify whether a
-resource representation has changed.
-
+                                HTTP header key <code>etag</code>.
                             </td>
                         </tr>
                     
@@ -2825,8 +2638,7 @@ resource representation has changed.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>expect</code>. Specifies expectations to be fulfilled by the server.
-
+                                HTTP header key <code>expect</code>.
                             </td>
                         </tr>
                     
@@ -2836,8 +2648,7 @@ resource representation has changed.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>expires</code>. Specifies the time at which the response becomes stale.
-
+                                HTTP header key <code>expires</code>.
                             </td>
                         </tr>
                     
@@ -2858,10 +2669,7 @@ resource representation has changed.
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-modified-since</code>. Used when validating (with the origin server) whether a cached response
-is still valid. If the representation of the resource has modified since the timestamp in this field, a
-304 response is returned.
-
+                                HTTP header key <code>if-modified-since</code>.
                             </td>
                         </tr>
                     
@@ -2871,10 +2679,7 @@ is still valid. If the representation of the resource has modified since the tim
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>if-none-match</code>. Used when validating (with the origin server) whether a cached response is
-still valid. If the ETag provided in this field matches the representation of the requested resource, a
-304 response is returned.
-
+                                HTTP header key <code>if-none-match</code>.
                             </td>
                         </tr>
                     
@@ -2906,8 +2711,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>last-modified</code>. The time at which the resource was last modified.
-
+                                HTTP header key <code>last-modified</code>.
                             </td>
                         </tr>
                     
@@ -2917,8 +2721,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>location</code>. Indicates the URL to redirect a request to.
-
+                                HTTP header key <code>location</code>.
                             </td>
                         </tr>
                     
@@ -2928,8 +2731,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>pragma</code>. Used in dealing with HTTP 1.0 caches which do not understand the <code>cache-control</code> header.
-
+                                HTTP header key <code>pragma</code>.
                             </td>
                         </tr>
                     
@@ -2939,8 +2741,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>server</code>. Specifies the details of the origin server.
-
+                                HTTP header key <code>server</code>.
                             </td>
                         </tr>
                     
@@ -2950,8 +2751,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>warning</code>. Specifies warnings generated when serving stale responses from HTTP caches.
-
+                                HTTP header key <code>warning</code>.
                             </td>
                         </tr>
                     
@@ -2961,8 +2761,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>transfer-encoding</code>. Specifies what type of transformation has been applied to entity body.
-
+                                HTTP header key <code>transfer-encoding</code>.
                             </td>
                         </tr>
                     
@@ -2972,8 +2771,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>connection</code>. Allows the sender to specify options that are desired for that particular connection.
-
+                                HTTP header key <code>connection</code>.
                             </td>
                         </tr>
                     
@@ -2983,9 +2781,7 @@ still valid. If the ETag provided in this field matches the representation of th
                             </td>
                             <td class="module-desc">
                                 
-                                HTTP header key <code>upgrade</code>. Allows the client to specify what additional communication protocols it supports and
-would like to use, if the server finds it appropriate to switch protocols.
-
+                                HTTP header key <code>upgrade</code>.
                             </td>
                         </tr>
                     
@@ -2996,7 +2792,6 @@ would like to use, if the server finds it appropriate to switch protocols.
                             <td class="module-desc">
                                 
                                 Mutual SSL handshake is successful.
-
                             </td>
                         </tr>
                     
@@ -3007,7 +2802,6 @@ would like to use, if the server finds it appropriate to switch protocols.
                             <td class="module-desc">
                                 
                                 Mutual SSL handshake has failed.
-
                             </td>
                         </tr>
                     
@@ -3018,7 +2812,6 @@ would like to use, if the server finds it appropriate to switch protocols.
                             <td class="module-desc">
                                 
                                 Not a mutual ssl connection.
-
                             </td>
                         </tr>
                     
@@ -3028,9 +2821,7 @@ would like to use, if the server finds it appropriate to switch protocols.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the open state of the circuit. When the Circuit Breaker is in <code>OPEN</code> state, requests will fail
-immediately.
-
+                                Represents the open state of the circuit.
                             </td>
                         </tr>
                     
@@ -3040,10 +2831,7 @@ immediately.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the half-open state of the circuit. When the Circuit Breaker is in <code>HALF_OPEN</code> state, a trial request
-will be sent to the upstream service. If it fails, the circuit will trip again and move to the <code>OPEN</code> state. If not,
-it will move to the <code>CLOSED</code> state.
-
+                                Represents the half-open state of the circuit.
                             </td>
                         </tr>
                     
@@ -3053,10 +2841,7 @@ it will move to the <code>CLOSED</code> state.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the closed state of the circuit. When the Circuit Breaker is in <code>CLOSED</code> state, all requests will be
-allowed to go through to the upstream service. If the failures exceed the configured threhold values, the circuit
-will trip and move to the <code>OPEN</code> state.
-
+                                Represents the closed state of the circuit.
                             </td>
                         </tr>
                     
@@ -3562,7 +3347,6 @@ will trip and move to the <code>OPEN</code> state.
                             <td class="module-desc">
                                 
                                 Constant for the service name reference.
-
                             </td>
                         </tr>
                     
@@ -3573,7 +3357,6 @@ will trip and move to the <code>OPEN</code> state.
                             <td class="module-desc">
                                 
                                 Constant for the resource name reference.
-
                             </td>
                         </tr>
                     
@@ -3584,7 +3367,6 @@ will trip and move to the <code>OPEN</code> state.
                             <td class="module-desc">
                                 
                                 Constant for the request method reference.
-
                             </td>
                         </tr>
                     
@@ -3683,22 +3465,19 @@ will trip and move to the <code>OPEN</code> state.
                         <tr>
                             <td class="module-title truncate annotations" id="ResourceConfig" title="ResourceConfig"><a
                                     class="annotations" href="annotations.html#ResourceConfig">ResourceConfig</a></td>
-                            <td class="module-desc">The annotation which is used to configure an HTTP resource.
-</td>
+                            <td class="module-desc">The annotation which is used to configure an HTTP resource.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="ServiceConfig" title="ServiceConfig"><a
                                     class="annotations" href="annotations.html#ServiceConfig">ServiceConfig</a></td>
-                            <td class="module-desc">The annotation which is used to configure an HTTP service.
-</td>
+                            <td class="module-desc">The annotation which is used to configure an HTTP service.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="WebSocketServiceConfig" title="WebSocketServiceConfig"><a
                                     class="annotations" href="annotations.html#WebSocketServiceConfig">WebSocketServiceConfig</a></td>
-                            <td class="module-desc">The annotation which is used to configure a WebSocket service.
-</td>
+                            <td class="module-desc">The annotation which is used to configure a WebSocket service.</td>
                         </tr>
                     
                 </table>
@@ -3721,9 +3500,7 @@ will trip and move to the <code>OPEN</code> state.
                             </td>
                             <td class="module-desc">
                                 
-                                Used for configuring the caching behaviour. Setting the <code>policy</code> field in the <code>CacheConfig</code> record allows
-the user to control the caching behaviour.
-
+                                Used for configuring the caching behaviour.
                             </td>
                         </tr>
                     
@@ -3734,11 +3511,6 @@ the user to control the caching behaviour.
                             <td class="module-desc">
                                 
                                 Defines the possible values for the chunking configuration in HTTP services and clients.
-<code>AUTO</code>: If the payload is less than 8KB, content-length header is set in the outbound request/response,
-otherwise chunking header is set in the outbound request/response
-<code>ALWAYS</code>: Always set chunking header in the response
-<code>NEVER</code>: Never set the chunking header even if the payload is larger than 8KB in the outbound request/response
-
                             </td>
                         </tr>
                     
@@ -3748,11 +3520,7 @@ otherwise chunking header is set in the outbound request/response
                             </td>
                             <td class="module-desc">
                                 
-                                A finite type for modeling the states of the Circuit Breaker. The Circuit Breaker starts in the <code>CLOSED</code> state.
-If any failure thresholds are exceeded during execution, the circuit trips and goes to the <code>OPEN</code> state. After
-the specified timeout period expires, the circuit goes to the <code>HALF_OPEN</code> state. If the trial request sent while
-in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code>CLOSED</code> state.
-
+                                A finite type for modeling the states of the Circuit Breaker.
                             </td>
                         </tr>
                     
@@ -3785,11 +3553,6 @@ in the <code>HALF_OPEN</code> state succeeds, the circuit goes back to the <code
                             <td class="module-desc">
                                 
                                 Options to compress using gzip or deflate.
-<code>AUTO</code>: When service behaves as a HTTP gateway inbound request/response accept-encoding option is set as the
-outbound request/response accept-encoding/content-encoding option
-<code>ALWAYS</code>: Always set accept-encoding/content-encoding in outbound request/response
-<code>NEVER</code>: Never set accept-encoding/content-encoding header in outbound request/response
-
                             </td>
                         </tr>
                     
@@ -3800,7 +3563,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Specifies how to send the authentication credentials when exchanging tokens.
-
                             </td>
                         </tr>
                     
@@ -3811,17 +3573,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Defines the HTTP operations related to circuit breaker, failover and load balancer.
-<code>FORWARD</code>: Forward the specified payload
-<code>GET</code>: Request a resource
-<code>POST</code>: Create a new resource
-<code>DELETE</code>: Deletes the specified resource
-<code>OPTIONS</code>: Request communication options available
-<code>PUT</code>: Replace the target resource
-<code>PATCH</code>: Apply partial modification to the resource
-<code>HEAD</code>: Identical to <code>GET</code> but no resource body should be returned
-<code>SUBMIT</code>: Submits a http request and returns an HttpFuture object
-<code>NONE</code>: No operation should be performed
-
                             </td>
                         </tr>
                     
@@ -3832,10 +3583,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Defines the supported HTTP protocols.
-<code>HTTP_1_0</code>: HTTP/1.0 protocol
-<code>HTTP_1_1</code>: HTTP/1.1 protocol
-<code>HTTP_2_0</code>: HTTP/2.0 protocol
-
                             </td>
                         </tr>
                     
@@ -3846,7 +3593,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Represents inbound auth handler patterns.
-
                             </td>
                         </tr>
                     
@@ -3879,7 +3625,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Defines the possible values for the keep-alive configuration in service and client endpoints.
-
                             </td>
                         </tr>
                     
@@ -3901,9 +3646,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Defines the possible values for the mutual ssl status.
-<code>passed</code>: Mutual SSL handshake is successful.
-<code>failed</code>: Mutual SSL handshake has failed.
-
                             </td>
                         </tr>
                     
@@ -3936,7 +3678,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Defines the HTTP redirect codes as a type.
-
                             </td>
                         </tr>
                     
@@ -3947,7 +3688,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 The types of messages that are accepted by HTTP <code>client</code> when sending out the outbound request.
-
                             </td>
                         </tr>
                     
@@ -3969,7 +3709,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 The types of messages that are accepted by HTTP <code>listener</code> when sending out the outbound response.
-
                             </td>
                         </tr>
                     
@@ -3980,7 +3719,6 @@ outbound request/response accept-encoding/content-encoding option
                             <td class="module-desc">
                                 
                                 Represents scopes patterns.
-
                             </td>
                         </tr>
                     

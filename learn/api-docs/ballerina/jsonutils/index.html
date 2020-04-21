@@ -598,7 +598,8 @@
                         Module : <span class="modules">jsonutils</span>
                     
                 </h1>
-                    <p>This module provides utility functions to manipulate the built-in <code>json</code> data type. It provides APIs to convert an <code>xml</code> to a <code>json</code> or convert a <code>table</code> to a <code>json</code>.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides utility functions to manipulate the built-in <code>json</code> data type. It provides APIs to convert an <code>xml</code> to a <code>json</code> or convert a <code>table</code> to a <code>json</code>.</p>
 
 
             
@@ -639,7 +640,6 @@
                             <td class="module-desc">
                                 
                                 Provides configurations for converting XML to JSON.
-
                             </td>
                         </tr>
                     
@@ -671,15 +671,6 @@
                             <td class="module-desc">
                                 
                                 Converts a table to its JSON representation.
-<pre><code class="language-ballerina"> table&lt;Person&gt; tableValue = table{
-     { key id, age, salary, name, married },
-     [ { 1, 30,  300.5, &quot;Mary&quot;, true },
-         { 2, 20,  300.5, &quot;John&quot;, true }
-     ]
- };
- json jsonValue = jsonutils:fromTable(tableValue);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -690,10 +681,6 @@
                             <td class="module-desc">
                                 
                                 Converts an XML object to its JSON representation.
-<pre><code class="language-ballerina"> xml xmlValue = xml `&lt;!-- outer comment --&gt;` + xml `&lt;name&gt;supun&lt;/name&gt;`;
- json|error jsonValue = fromXML(mxlValue);
-</code></pre>
-
                             </td>
                         </tr>
                     

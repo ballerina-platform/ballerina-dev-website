@@ -622,7 +622,8 @@
                         Module : <span class="modules">oauth2</span>
                     
                 </h1>
-                    <p>This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/secured-service-with-oauth2.html">Secured Service with OAuth2 Example</a> and <a href="https://ballerina.io/learn/by-example/secured-client-with-oauth2.html">Secured Client with OAuth2 Example</a>.</p>
 
 
@@ -644,7 +645,6 @@
                             <td class="module-desc">
                                 
                                 The data structure, which is used to configure the OAuth2 client credentials grant type.
-
                             </td>
                         </tr>
                     
@@ -655,7 +655,6 @@
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -666,7 +665,6 @@
                             <td class="module-desc">
                                 
                                 The data structure, which is used to configure the OAuth2 access token directly.
-
                             </td>
                         </tr>
                     
@@ -677,7 +675,6 @@
                             <td class="module-desc">
                                 
                                 The data structure, which can be used to pass the configurations for refreshing the access token directly.
-
                             </td>
                         </tr>
                     
@@ -688,7 +685,6 @@
                             <td class="module-desc">
                                 
                                 Represents cached OAuth2 information.
-
                             </td>
                         </tr>
                     
@@ -699,7 +695,6 @@
                             <td class="module-desc">
                                 
                                 Represents introspection server onfigurations.
-
                             </td>
                         </tr>
                     
@@ -711,7 +706,6 @@
                                 
                                 The data structure, which stores the values received from the authorization/token server to use them
 for the latter requests without requesting tokens again.
-
                             </td>
                         </tr>
                     
@@ -722,7 +716,6 @@ for the latter requests without requesting tokens again.
                             <td class="module-desc">
                                 
                                 The data structure, which is used to configure the OAuth2 password grant type.
-
                             </td>
                         </tr>
                     
@@ -734,7 +727,6 @@ for the latter requests without requesting tokens again.
                                 
                                 The data structure, which can be used to pass the configurations for refreshing the access token of
 the password grant type.
-
                             </td>
                         </tr>
                     
@@ -759,14 +751,7 @@ the password grant type.
                             <td class="module-desc">
                                 
                                 Represents the inbound OAuth2 provider, which calls the introspection server, validates the received credentials,
-and performs authentication and authorization. The <code>oauth2:InboundOAuth2Provider</code> is an implementation of the
-<code>auth:InboundAuthProvider</code> interface.
-<pre><code class="language-ballerina"> oauth2:IntrospectionServerConfig introspectionServerConfig = {
-     url: &quot;https://localhost:9196/oauth2/token/introspect&quot;
- };
- oauth2:InboundOAuth2Provider inboundOAuth2Provider = new(introspectionServerConfig);
-</code></pre>
-
+and performs authentication and authorization.
                             </td>
                         </tr>
                     
@@ -776,46 +761,7 @@ and performs authentication and authorization. The <code>oauth2:InboundOAuth2Pro
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the outbound OAuth2 provider, which generates OAtuh2 tokens. This supports the client credentials grant type,
-password grant type, and the direct token mode, which sends the access token directly.
-The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code>auth:OutboundAuthProvider</code> interface.
-<ol>
-<li>Client Credentials Grant Type</li>
-</ol>
-<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider1 = new({
-     tokenUrl: &quot;https://localhost:9196/oauth2/token&quot;,
-     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-     clientSecret: &quot;9205371918321623741&quot;,
-     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
- });
-</code></pre>
-<ol start="2">
-<li>Password Grant Type</li>
-</ol>
-<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider5 = new({
-     tokenUrl: &quot;https://localhost:9196/oauth2/token/authorize/header&quot;,
-     username: &quot;johndoe&quot;,
-     password: &quot;A3ddj3w&quot;,
-     clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-     clientSecret: &quot;9205371918321623741&quot;,
-     scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
- });
-</code></pre>
-<ol start="3">
-<li>Direct Token Mode</li>
-</ol>
-<pre><code class="language-ballerina"> oauth2:OutboundOAuth2Provider oauth2Provider13 = new({
-     accessToken: &quot;2YotnFZFEjr1zCsicMWpAA&quot;,
-     refreshConfig: {
-         refreshUrl: &quot;https://localhost:9196/oauth2/token/refresh&quot;,
-         refreshToken: &quot;XlfBs91yquexJqDaKEMzVg==&quot;,
-         clientId: &quot;3MVG9YDQS5WtC11paU2WcQjBB3L&quot;,
-         clientSecret: &quot;9205371918321623741&quot;,
-         scopes: [&quot;token-scope1&quot;, &quot;token-scope2&quot;]
-     }
- });
-</code></pre>
-
+                                Represents the outbound OAuth2 provider, which generates OAtuh2 tokens.
                             </td>
                         </tr>
                     
@@ -845,7 +791,6 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
                             <td class="module-desc">
                                 
                                 Reads the scope(s) for the user with the given username.
-
                             </td>
                         </tr>
                     
@@ -871,7 +816,6 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
                             <td class="module-desc">
                                 
                                 Represents the OAuth2 error reason.
-
                             </td>
                         </tr>
                     
@@ -901,7 +845,6 @@ The <code>oauth2:OutboundOAuth2Provider</code> is an implementation of the <code
                             <td class="module-desc">
                                 
                                 Represents the OAuth2 error type with details.
-
                             </td>
                         </tr>
                     

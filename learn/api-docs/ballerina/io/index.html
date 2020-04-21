@@ -709,7 +709,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -733,8 +732,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             </td>
                             <td class="module-desc">
                                 
-                                ReadableByteChannel represents an input resource (i.e file). which could be used to source bytes.
-
+                                ReadableByteChannel represents an input resource (i.
                             </td>
                         </tr>
                     
@@ -745,7 +743,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a ReadableCSVChannel which could be used to read records from CSV file.
-
                             </td>
                         </tr>
                     
@@ -756,7 +753,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a channel, which could be used to read characters through a given ReadableByteChannel.
-
                             </td>
                         </tr>
                     
@@ -767,7 +763,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a data channel for reading data.
-
                             </td>
                         </tr>
                     
@@ -789,7 +784,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a reader which will wrap string content as a channel.
-
                             </td>
                         </tr>
                     
@@ -799,8 +793,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             </td>
                             <td class="module-desc">
                                 
-                                WritableByteChannel represents an output resource (i.e file). which could be used to sink bytes.
-
+                                WritableByteChannel represents an output resource (i.
                             </td>
                         </tr>
                     
@@ -811,7 +804,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a WritableCSVChannel, which could be used to write records from the CSV file.
-
                             </td>
                         </tr>
                     
@@ -822,7 +814,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a channel which could be used to write characters through a given WritableCharacterChannel.
-
                             </td>
                         </tr>
                     
@@ -833,7 +824,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a WritableDataChannel for writing data.
-
                             </td>
                         </tr>
                     
@@ -844,7 +834,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Represents a channel, which will allow to write records through a given WritableCharacterChannel.
-
                             </td>
                         </tr>
                     
@@ -874,9 +863,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Creates an in-memory channel, which will be a reference stream of bytes.
-<pre><code class="language-ballerina"> var byteChannel = io:createReadableChannel(content);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -887,9 +873,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Retrieves a readable CSV channel from a given file path.
-<pre><code class="language-ballerina"> io:ReadableCSVChannel rCsvChannel = check io:openReadableCsvFile(srcFileName);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -900,9 +883,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Retrieves a <code>ReadableByteChannel</code> from a given file path.
-<pre><code class="language-ballerina"> io:ReadableByteChannel readableFieldResult = check io:openReadableFile(&quot;./files/sample.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -913,9 +893,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Retrieves a writable CSV channel from a given file path.
-<pre><code class="language-ballerina"> io:WritableCSVChannel wCsvChannel = check io:openWritableCsvFile(srcFileName);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -926,9 +903,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Retrieves a <code>WritableByteChannel</code> from a given file path.
-<pre><code class="language-ballerina"> io:WritableByteChannel writableFileResult = check io:openWritableFile(&quot;./files/sampleResponse.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -939,9 +913,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Prints <code>any</code> or <code>error</code> value(s) to the STDOUT.
-<pre><code class="language-ballerina">io:print(&quot;Start processing the CSV file from &quot;, srcFileName);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -952,9 +923,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Prints <code>any</code> or <code>error</code> value(s) to the STDOUT followed by a new line.
-<pre><code class="language-ballerina">io:println(&quot;Start processing the CSV file from &quot;, srcFileName);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -965,9 +933,6 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             <td class="module-desc">
                                 
                                 Retrieves the input read from the STDIN.
-<pre><code class="language-ballerina"> string choice = io:readln(&quot;Enter choice 1 - 5: &quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -977,18 +942,7 @@ the respective type. For examples on reading/writing JSON or XML sources, see th
                             </td>
                             <td class="module-desc">
                                 
-                                Returns a formatted string using the specified format string and arguments. Following format specifiers are allowed.
-b - boolean
-B - boolean (ALL_CAPS)
-d - int
-f - float
-x - hex
-X - HEX (ALL_CAPS)
-s - string (This specifier is applicable for any of the supported types in Ballerina.
-These values will be converted to their string representation.)
-<pre><code class="language-ballerina"> string s8 = io:sprintf(&quot;%s scored %d for %s and has an average of %.2f.&quot;, name, marks, subjects[0], average);
-</code></pre>
-
+                                Returns a formatted string using the specified format string and arguments.
                             </td>
                         </tr>
                     
@@ -1013,8 +967,7 @@ These values will be converted to their string representation.)
                             </td>
                             <td class="module-desc">
                                 
-                                Default value is the format specified by the CSVChannel. Precedence will be given to the field separator and record separator.
-
+                                Default value is the format specified by the CSVChannel.
                             </td>
                         </tr>
                     
@@ -1025,7 +978,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Field separator will be &quot;,&quot; and the record separator will be a new line.
-
                             </td>
                         </tr>
                     
@@ -1036,7 +988,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Field separator will be a tab and the record separator will be a new line.
-
                             </td>
                         </tr>
                     
@@ -1047,7 +998,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Comma (,) will be used as the field separator.
-
                             </td>
                         </tr>
                     
@@ -1058,7 +1008,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Tab (/t) will be use as the field separator.
-
                             </td>
                         </tr>
                     
@@ -1069,7 +1018,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Colon (:) will be use as the field separator.
-
                             </td>
                         </tr>
                     
@@ -1080,7 +1028,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 This will be used to construct a ConnectionTimedOutError.
-
                             </td>
                         </tr>
                     
@@ -1091,7 +1038,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 This will be used to construct an IO GenericError.
-
                             </td>
                         </tr>
                     
@@ -1102,7 +1048,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 This will be used to construct a AccessDeniedError.
-
                             </td>
                         </tr>
                     
@@ -1113,7 +1058,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 This will be used to construct a FileNotFoundError.
-
                             </td>
                         </tr>
                     
@@ -1124,7 +1068,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 This will be used to construct an EofError.
-
                             </td>
                         </tr>
                     
@@ -1135,7 +1078,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Represents the record separator of the CSV file.
-
                             </td>
                         </tr>
                     
@@ -1146,7 +1088,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Represents the colon separator, which should be used to identify colon-separated files.
-
                             </td>
                         </tr>
                     
@@ -1157,7 +1098,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Represents the minimum number of headers, which will be included in the CSV.
-
                             </td>
                         </tr>
                     
@@ -1168,7 +1108,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Specifies the bytes to be in the order of most significant byte first.
-
                             </td>
                         </tr>
                     
@@ -1179,7 +1118,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Specifies the byte order to be the least significant byte first.
-
                             </td>
                         </tr>
                     
@@ -1207,7 +1145,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 Represents IO module related errors.
-
                             </td>
                         </tr>
                     
@@ -1218,11 +1155,6 @@ These values will be converted to their string representation.)
                             <td class="module-desc">
                                 
                                 The format, which will be used to represent the CSV.
-DEFAULT - The default value is the format specified by the CSVChannel. Precedence will be given to the field
-separator and record separator.
-CSV - Field separator will be &quot;,&quot; and the record separator will be a new line.
-TDF - Field separator will be a tab and record separator will be a new line.
-
                             </td>
                         </tr>
                     
@@ -1233,10 +1165,6 @@ TDF - Field separator will be a tab and record separator will be a new line.
                             <td class="module-desc">
                                 
                                 Field separators, which are supported by the <code>DelimitedTextRecordChannel</code>.
-COMMA - Delimited text records will be separated using a comma.
-TAB - Delimited text records will be separated using a tab.
-COLON - Delimited text records will be separated using a colon(:).
-
                             </td>
                         </tr>
                     
@@ -1261,7 +1189,6 @@ COLON - Delimited text records will be separated using a colon(:).
                             <td class="module-desc">
                                 
                                 This will get returned due to file permission issues.
-
                             </td>
                         </tr>
                     
@@ -1272,7 +1199,6 @@ COLON - Delimited text records will be separated using a colon(:).
                             <td class="module-desc">
                                 
                                 This will return when connection timed out happen when try to connect to a remote host.
-
                             </td>
                         </tr>
                     
@@ -1283,7 +1209,6 @@ COLON - Delimited text records will be separated using a colon(:).
                             <td class="module-desc">
                                 
                                 This will get returned if read operations are performed on a channel after it closed.
-
                             </td>
                         </tr>
                     
@@ -1294,7 +1219,6 @@ COLON - Delimited text records will be separated using a colon(:).
                             <td class="module-desc">
                                 
                                 This will get returned if the file is not available in the given file path.
-
                             </td>
                         </tr>
                     
@@ -1304,8 +1228,7 @@ COLON - Delimited text records will be separated using a colon(:).
                             </td>
                             <td class="module-desc">
                                 
-                                Represents generic IO error. The detail record contains the information related to the error.
-
+                                Represents generic IO error.
                             </td>
                         </tr>
                     

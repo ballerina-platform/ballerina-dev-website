@@ -319,7 +319,7 @@ twitter:Status|error status = twitterClient->tweet("Hello World!");
                                        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-client-with-basic-auth.html">Basic Auth</a></td>
                                     </tr>
                                     <tr>
-                                       <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-service-with-jwt.html">JWT</a></td>
+                                       <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-service-with-jwt-auth.html">JWT</a></td>
                                        <td><a href="https://ballerina.io/v1-2/learn/by-example/secured-client-with-jwt-auth.html">JWT</a></td>
                                     </tr>
                                     <tr>

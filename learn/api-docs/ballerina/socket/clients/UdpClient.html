@@ -855,10 +855,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Sends the given data to the specified remote client.
+        <p>Sends the given data to the specified remote client.
 <pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -921,12 +921,12 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+        <p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
 If the request length is lesser than the data in the buffer, then the rest will be discarded.
 <pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -977,10 +977,10 @@ or else a <code>socket:Error</code> if the data can't be read from the client</p
     </div>
     <div class="function-desc">
         
-        Closes the client socket connection.
+        <p>Closes the client socket connection.
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
-
+</p>
     </div>
     
 

@@ -899,10 +899,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Writes the given data to the client socket.
+        <p>Writes the given data to the client socket.
 <pre><code class="language-ballerina"> int|socket:Error writeResult = socketClient:write(payloadByte);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -952,14 +952,14 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Reads data from the client socket. If the data has the specified length, then it waits until that number of bytes
+        <p>Reads data from the client socket. If the data has the specified length, then it waits until that number of bytes
 are received from the client. Else, it returns the data available in the OS buffer.
 In the case of the connection being closed by the client, then return either -1 or the data
 that is currently available in the buffer.
 Number of bytes returned will be &lt; 0 if the client closes the connection.
 <pre><code class="language-ballerina"> [byte[], int]|socket:ReadTimedOutError result = socketClient-&gt;read();
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1010,10 +1010,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        Closes the client socket connection.
+        <p>Closes the client socket connection.
 <pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1045,10 +1045,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        Shuts down any further reading from the socket.
+        <p>Shuts down any further reading from the socket.
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownRead();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1080,10 +1080,10 @@ can't be read from the client</p>
     </div>
     <div class="function-desc">
         
-        Shuts down any further writing from the socket.
+        <p>Shuts down any further writing from the socket.
 <pre><code class="language-ballerina"> socket:Error? result = socketClient-&gt;shutdownWrite();
 </code></pre>
-
+</p>
     </div>
     
 

@@ -622,7 +622,8 @@
                         Module : <span class="modules">ldap</span>
                     
                 </h1>
-                    <p>This module provides an inbound LDAP authentication provider, which is used to authenticate using LDAP credentials.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides an inbound LDAP authentication provider, which is used to authenticate using LDAP credentials.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/secured-service-with-ldap.html">Secured Service with LDAP Example</a>.</p>
 
 
@@ -644,7 +645,6 @@
                             <td class="module-desc">
                                 
                                 Represets the LDAP connection.
-
                             </td>
                         </tr>
                     
@@ -655,7 +655,6 @@
                             <td class="module-desc">
                                 
                                 Represents the configurations that are required for an LDAP auth store.
-
                             </td>
                         </tr>
                     
@@ -666,7 +665,6 @@
                             <td class="module-desc">
                                 
                                 Configures the SSL/TLS options to be used for LDAP communication.
-
                             </td>
                         </tr>
                     
@@ -690,12 +688,7 @@
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the inbound LDAP auth provider. This connects to an active directory or an LDAP, retrieves the necessary
-user information, and performs authentication and authorization.
-The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <code>auth:InboundAuthProvider</code> interface.
-<pre><code class="language-ballerina"> ldap:InboundLdapAuthProvider inboundLdapAuthProvider = new(ldapConfig, &quot;instanceId&quot;);
-</code></pre>
-
+                                Represents the inbound LDAP auth provider.
                             </td>
                         </tr>
                     
@@ -725,9 +718,6 @@ The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <
                             <td class="module-desc">
                                 
                                 Authenticates with the username and password.
-<pre><code class="language-ballerina"> boolean|ldap:Error result = ldap:doAuthenticate(ldapConnection, username, password);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -758,9 +748,6 @@ The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <
                             <td class="module-desc">
                                 
                                 Retrieves the group(s) of the user related to the provided username.
-<pre><code class="language-ballerina"> string[]|ldap:Error groups = ldap:getGroups(ldapConnection, username);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -771,9 +758,6 @@ The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <
                             <td class="module-desc">
                                 
                                 Initailizes the LDAP connection context.
-<pre><code class="language-ballerina"> ldap:LdapConnection|ldap:Error connection = ldap:initLdapConnectionContext(ldapConnectionConfig, instanceId);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -799,7 +783,6 @@ The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <
                             <td class="module-desc">
                                 
                                 Represents the LDAP error reason.
-
                             </td>
                         </tr>
                     
@@ -829,7 +812,6 @@ The <code>ldap:InboundLdapAuthProvider</code> is another implementation of the <
                             <td class="module-desc">
                                 
                                 Represents the LDAP error type with details.
-
                             </td>
                         </tr>
                     

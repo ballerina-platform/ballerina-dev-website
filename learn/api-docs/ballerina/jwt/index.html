@@ -630,7 +630,8 @@
                         Module : <span class="modules">jwt</span>
                     
                 </h1>
-                    <p>This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
 <ul>
 <li><a href="https://ballerina.io/learn/by-example/jwt-issue-validate.html">JWT Token Validation Example</a></li>
@@ -657,7 +658,6 @@
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -668,7 +668,6 @@
                             <td class="module-desc">
                                 
                                 Represents an entry of JWT cache.
-
                             </td>
                         </tr>
                     
@@ -679,7 +678,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT header.
-
                             </td>
                         </tr>
                     
@@ -690,7 +688,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT validator configurations.
-
                             </td>
                         </tr>
                     
@@ -701,7 +698,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT key store configurations.
-
                             </td>
                         </tr>
                     
@@ -712,7 +708,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT payload.
-
                             </td>
                         </tr>
                     
@@ -723,7 +718,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT trust store configurations.
-
                             </td>
                         </tr>
                     
@@ -734,7 +728,6 @@
                             <td class="module-desc">
                                 
                                 Represents JWT validator configurations.
-
                             </td>
                         </tr>
                     
@@ -759,20 +752,6 @@
                             <td class="module-desc">
                                 
                                 Represents the inbound JWT auth provider, which authenticates by validating a JWT.
-The <code>jwt:InboundJwtAuthProvider</code> is another implementation of the <code>auth:InboundAuthProvider</code> interface.
-<pre><code class="language-ballerina"> jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new({
-     issuer: &quot;example&quot;,
-     audience: &quot;ballerina&quot;,
-     trustStoreConfig: {
-         certificateAlias: &quot;ballerina&quot;,
-         trustStore: {
-             path: &quot;${ballerina.home}/bre/security/ballerinaTruststore.p12&quot;,
-             password: &quot;ballerina&quot;
-         }
-     }
- });
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -783,21 +762,6 @@ The <code>jwt:InboundJwtAuthProvider</code> is another implementation of the <co
                             <td class="module-desc">
                                 
                                 Represents the outbound JWT auth provider, which is used to authenticate with an external endpoint by generating a JWT.
-The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <code>auth:OutboundAuthProvider</code> interface.
-<pre><code class="language-ballerina"> jwt:OutboundJwtAuthProvider jwtAuthProvider = new({
-     issuer: &quot;example&quot;,
-     audience: [&quot;ballerina&quot;],
-     keyStoreConfig: {
-         keyAlias: &quot;ballerina&quot;,
-         keyPassword: &quot;ballerina&quot;,
-         keyStore: {
-             path: &quot;${ballerina.home}/bre/security/ballerinaKeystore.p12&quot;,
-             password: &quot;ballerina&quot;
-         }
-     }
- });
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -827,9 +791,6 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
                             <td class="module-desc">
                                 
                                 Builds the header string from the <code>jwt:JwtHeader</code> record.
-<pre><code class="language-ballerina"> string|jwt:Error jwtHeader = buildHeaderString(header);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -840,9 +801,6 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
                             <td class="module-desc">
                                 
                                 Builds the payload string from the <code>jwt:JwtPayload</code> record.
-<pre><code class="language-ballerina"> string|jwt:Error jwtPayload = jwt:buildPayloadString(payload);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -853,9 +811,6 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
                             <td class="module-desc">
                                 
                                 Decodes the given JWT string.
-<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -865,11 +820,7 @@ The <code>jwt:OutboundJwtAuthProvider</code> is another implementation of the <c
                             </td>
                             <td class="module-desc">
                                 
-                                Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
-provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
-<pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
-</code></pre>
-
+                                Issues a JWT based on the provided header and payload.
                             </td>
                         </tr>
                     
@@ -880,9 +831,6 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
                             <td class="module-desc">
                                 
                                 Validates the given JWT string.
-<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -952,7 +900,6 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
                             <td class="module-desc">
                                 
                                 Represents the reason of the JWT error.
-
                             </td>
                         </tr>
                     
@@ -980,7 +927,6 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
                             <td class="module-desc">
                                 
                                 The key algorithms supported by crypto module.
-
                             </td>
                         </tr>
                     
@@ -1004,9 +950,7 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
                             </td>
                             <td class="module-desc">
                                 
-                                Represents the JWT error type with details. This will be returned if an error occurred while issuing/validating a
-JWT or any operation related to JWT.
-
+                                Represents the JWT error type with details.
                             </td>
                         </tr>
                     

@@ -758,9 +758,6 @@
     <div class="param-details"> 
             
         Stops the started up Ballerina WebSub Hub.
-<pre><code class="language-ballerina"> error? registrationResponse = webSubHub.stop();
-</code></pre>
-
     </div>
 </div>
 
@@ -773,10 +770,6 @@
     <div class="param-details"> 
             
         Publishes an update against the topic in the initialized Ballerina Hub.
-<pre><code class="language-ballerina"> error? publishResponse = webSubHub.publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
- &quot;mode&quot;: &quot;internal-hub&quot;});
-</code></pre>
-
     </div>
 </div>
 
@@ -789,9 +782,6 @@
     <div class="param-details"> 
             
         Registers a topic in the Ballerina Hub.
-<pre><code class="language-ballerina"> error? registrationResponse = webSubHub.registerTopic(&quot;http://websubpubtopic.com&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -804,9 +794,6 @@
     <div class="param-details"> 
             
         Unregisters a topic in the Ballerina Hub.
-<pre><code class="language-ballerina"> error? registrationResponse = webSubHub.unregisterTopic(&quot;http://websubpubtopic.com&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -819,9 +806,6 @@
     <div class="param-details"> 
             
         Removes a subscription from the Ballerina Hub, without verifying intent.
-<pre><code class="language-ballerina"> error? registrationResponse = webSubHub.removeSubscription(&quot;http://websubpubtopic.com&quot;, &quot;removeSubscriptioCallback&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -834,9 +818,6 @@
     <div class="param-details"> 
             
         Retrieves topics currently recognized by the Hub.
-<pre><code class="language-ballerina"> string[] topic = webSubHub.getAvailableTopics();
-</code></pre>
-
     </div>
 </div>
 
@@ -849,9 +830,6 @@
     <div class="param-details"> 
             
         Retrieves details of subscribers registered to receive updates for a particular topic.
-<pre><code class="language-ballerina"> string[] topic = webSubHub.getSubscribers(&quot;http://websubpubtopic.com&quot;);
-</code></pre>
-
     </div>
 </div>
 
@@ -965,10 +943,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Stops the started up Ballerina WebSub Hub.
+        <p>Stops the started up Ballerina WebSub Hub.
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.stop();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1000,11 +978,11 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Publishes an update against the topic in the initialized Ballerina Hub.
+        <p>Publishes an update against the topic in the initialized Ballerina Hub.
 <pre><code class="language-ballerina"> error? publishResponse = webSubHub.publishUpdate(&quot;http://websubpubtopic.com&quot;,{&quot;action&quot;: &quot;publish&quot;,
  &quot;mode&quot;: &quot;internal-hub&quot;});
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1080,10 +1058,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Registers a topic in the Ballerina Hub.
+        <p>Registers a topic in the Ballerina Hub.
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.registerTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1133,10 +1111,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Unregisters a topic in the Ballerina Hub.
+        <p>Unregisters a topic in the Ballerina Hub.
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.unregisterTopic(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1186,10 +1164,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Removes a subscription from the Ballerina Hub, without verifying intent.
+        <p>Removes a subscription from the Ballerina Hub, without verifying intent.
 <pre><code class="language-ballerina"> error? registrationResponse = webSubHub.removeSubscription(&quot;http://websubpubtopic.com&quot;, &quot;removeSubscriptioCallback&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1252,10 +1230,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Retrieves topics currently recognized by the Hub.
+        <p>Retrieves topics currently recognized by the Hub.
 <pre><code class="language-ballerina"> string[] topic = webSubHub.getAvailableTopics();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1287,10 +1265,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Retrieves details of subscribers registered to receive updates for a particular topic.
+        <p>Retrieves details of subscribers registered to receive updates for a particular topic.
 <pre><code class="language-ballerina"> string[] topic = webSubHub.getSubscribers(&quot;http://websubpubtopic.com&quot;);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">

@@ -630,7 +630,8 @@
                         Module : <span class="modules">socket</span>
                     
                 </h1>
-                    <p>This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.</p>
 <h3>TCP Client</h3>
 <p>The <code>socket:Client</code> is used to connect to a socket server and interact with it. The client can only send the data to the server and the client's call-back service can retrieve the data from the server and do multiple requests/responses between the client and the server.</p>
 <p>A Client can be defined by providing the host, port, and callbackService as follows.</p>
@@ -694,7 +695,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 This represent the IP socket address.
-
                             </td>
                         </tr>
                     
@@ -705,7 +705,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Configurations for the socket client.
-
                             </td>
                         </tr>
                     
@@ -716,7 +715,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -727,7 +725,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Represents the socket server configuration.
-
                             </td>
                         </tr>
                     
@@ -738,7 +735,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Configurations for the UDP client.
-
                             </td>
                         </tr>
                     
@@ -765,7 +761,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Represents the socket client and related remote functions.
-
                             </td>
                         </tr>
                     
@@ -776,7 +771,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Initializes the UDP client based on the provided configurations.
-
                             </td>
                         </tr>
                     
@@ -801,7 +795,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Represents the socket listener on which the socket listener service is registered and started.
-
                             </td>
                         </tr>
                     
@@ -830,7 +823,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 This will used to construct a ReadTimedOutError.
-
                             </td>
                         </tr>
                     
@@ -841,7 +833,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 This will used to construct a GENERIC_ERROR.
-
                             </td>
                         </tr>
                     
@@ -869,8 +860,6 @@ service echoServer on server {
                             <td class="module-desc">
                                 
                                 Represents caller object in socket service resources and client callback service resources.
-This has all the remote functions expose by socket:Client.
-
                             </td>
                         </tr>
                     
@@ -881,7 +870,6 @@ This has all the remote functions expose by socket:Client.
                             <td class="module-desc">
                                 
                                 Represents socket module related errors.
-
                             </td>
                         </tr>
                     
@@ -905,8 +893,7 @@ This has all the remote functions expose by socket:Client.
                             </td>
                             <td class="module-desc">
                                 
-                                Represents generic socket error. The detail record contains the information related to the error.
-
+                                Represents generic socket error.
                             </td>
                         </tr>
                     
@@ -917,7 +904,6 @@ This has all the remote functions expose by socket:Client.
                             <td class="module-desc">
                                 
                                 This will returns once the given read timed out time exceed for socket reads.
-
                             </td>
                         </tr>
                     

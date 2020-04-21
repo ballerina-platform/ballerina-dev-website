@@ -590,7 +590,8 @@
                         Module : <span class="modules">config</span>
                     
                 </h1>
-                    <p>This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides the Config API to read configurations from environment variables, TOML files, and command-line parameters and build a consolidated set of configurations.</p>
 <p>The precedence order for configuration lookup is as follows:</p>
 <ol>
 <li>CLI arguments (used with the --)</li>
@@ -709,9 +710,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Checks whether the given key is in the configuration registry.
-<pre><code class="language-ballerina"> boolean configAvailable = config:contains(&quot;host&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -722,9 +720,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as an array.
-<pre><code class="language-ballerina"> int[]|error ports = int[].constructFrom(config:getAsArray(&quot;ports&quot;));
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -735,9 +730,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as a boolean.
-<pre><code class="language-ballerina"> boolean cachingEnabled = config:getAsBoolean(&quot;http.caching_enabled&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -748,9 +740,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as a float.
-<pre><code class="language-ballerina"> float evictionFactor = config:getAsFloat(&quot;http.eviction_factor&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -761,9 +750,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as an int.
-<pre><code class="language-ballerina"> int port = config:getAsInt(&quot;http.port&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -774,9 +760,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as a map.
-<pre><code class="language-ballerina"> map&lt;anydata&gt; configValue = config:getAsMap(&quot;http.listenerConfig&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -787,9 +770,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Retrieves the specified configuration value as a string.
-<pre><code class="language-ballerina"> string host = config:getAsString(&quot;http.host&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -800,9 +780,6 @@ ballerina: enter secret for config value decryption:
                             <td class="module-desc">
                                 
                                 Sets the specified key/value pair as a configuration.
-<pre><code class="language-ballerina"> config:setConfig(&quot;john.country&quot;, &quot;USA&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     

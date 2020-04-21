@@ -1,0 +1,64 @@
+name: Generate ballerina by examples
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/latest/**'
+
+jobs:
+  bbe-gen:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.12
+      env:
+        GOPATH: /home/runner/work/ballerina-release
+    
+    - name: Install jq for json manipulation
+      run: sudo apt-get install jq
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Clone ballerina-release
+      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
+
+    - name: Generate BBEs
+      run: |
+        cd ballerina-release
+        ./ballerinaByExample/build-bbe.sh ../_data/metadata.json
+
+    - name: Remove old examples file
+      run: git rm -r learn/by-example
+
+    - name: Copy newly generated examples file
+      run: cp -r ballerina-release/by-example learn/
+
+    - name: Push changes for new BBEs
+      run: |
+        git checkout automate-bbes-$GITHUB_SHA 2>/dev/null || git checkout -b automate-bbes-$GITHUB_SHA
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        
+        git add learn/by-example
+        git commit --allow-empty -m 'Update Ballerina by examples'
+        
+        git push --set-upstream origin automate-bbes-$GITHUB_SHA
+        echo 'Successfully pushed to automate-bbes-$GITHUB_SHA branch'
+
+    - name: Create pull request for new BBEs
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

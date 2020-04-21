@@ -638,7 +638,8 @@
                         Module : <span class="modules">file</span>
                     
                 </h1>
-                    <p>This module contains functions to perform file system based operations such as create, delete, rename the
+                    <h2>Module Overview</h2>
+<p>This module contains functions to perform file system based operations such as create, delete, rename the
 file/directory, and retrieve metadata of the file.</p>
 <p>For an example on the usage of the operations, see the <a href="https://ballerina.io/learn/by-example/file.html">File Example</a>.</p>
 <h1>Directory Listener</h1>
@@ -664,7 +665,6 @@ file/directory, and retrieve metadata of the file.</p>
                             <td class="module-desc">
                                 
                                 Record type to hold the details of an error.
-
                             </td>
                         </tr>
                     
@@ -675,7 +675,6 @@ file/directory, and retrieve metadata of the file.</p>
                             <td class="module-desc">
                                 
                                 Represents an event which will trigger when there is a changes to listining direcotry.
-
                             </td>
                         </tr>
                     
@@ -686,7 +685,6 @@ file/directory, and retrieve metadata of the file.</p>
                             <td class="module-desc">
                                 
                                 Represents configurations that required for directory listener.
-
                             </td>
                         </tr>
                     
@@ -711,8 +709,6 @@ file/directory, and retrieve metadata of the file.</p>
                             <td class="module-desc">
                                 
                                 FileInfo record contains metadata information of a file.
-This record is returned by getFileInfo function is os module.
-
                             </td>
                         </tr>
                     
@@ -739,7 +735,6 @@ This record is returned by getFileInfo function is os module.
                             <td class="module-desc">
                                 
                                 Represents the directory listener endpoint, which is used to listen to a directory in the local file system.
-
                             </td>
                         </tr>
                     
@@ -765,10 +760,6 @@ This record is returned by getFileInfo function is os module.
                             <td class="module-desc">
                                 
                                 Copy the file/directory in the old path to the new path.
-If a file already exists in the new path, this replaces that file.
-<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -779,10 +770,6 @@ If a file already exists in the new path, this replaces that file.
                             <td class="module-desc">
                                 
                                 Creates a new directory with the specified file name.
-If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.
-<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -793,10 +780,6 @@ If the <code>parentDirs</code> flag is true, it creates a directory in the speci
                             <td class="module-desc">
                                 
                                 Creates a file in the specified file path.
-Truncates if the file already exists in the given path.
-<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -807,9 +790,6 @@ Truncates if the file already exists in the given path.
                             <td class="module-desc">
                                 
                                 Reports whether the file or directory exists in the given the path.
-<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -820,9 +800,6 @@ Truncates if the file already exists in the given path.
                             <td class="module-desc">
                                 
                                 Returns the current working directory.
-<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -833,9 +810,6 @@ Truncates if the file already exists in the given path.
                             <td class="module-desc">
                                 
                                 Returns the metadata information of the file specified in the file path.
-<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -847,9 +821,6 @@ Truncates if the file already exists in the given path.
                                 
                                 Reads the directory and returns a list of files and directories
 inside the specified directory.
-<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -860,10 +831,6 @@ inside the specified directory.
                             <td class="module-desc">
                                 
                                 Removes the specified file or directory.
-If the recursive flag is true, it removes the path and any children it contains.
-<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -874,10 +841,6 @@ If the recursive flag is true, it removes the path and any children it contains.
                             <td class="module-desc">
                                 
                                 Renames(Moves) the old path with the new path.
-If the new path already exists and it is not a directory, this replaces the file.
-<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -888,9 +851,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Returns the default directory to use for temporary files.
-<pre><code class="language-ballerina"> string results = file:tempDir();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -916,7 +876,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Identifies invalid operation error.
-
                             </td>
                         </tr>
                     
@@ -927,7 +886,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Identifies permission error.
-
                             </td>
                         </tr>
                     
@@ -938,7 +896,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Identifies file system error.
-
                             </td>
                         </tr>
                     
@@ -949,7 +906,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Identifies file not found error.
-
                             </td>
                         </tr>
                     
@@ -977,7 +933,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Represents file system related errors.
-
                             </td>
                         </tr>
                     
@@ -1002,7 +957,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Represents an error that occurs when the file/directory does not exist at the given filepath.
-
                             </td>
                         </tr>
                     
@@ -1013,7 +967,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Represents an error that occurs when a file system operation fails.
-
                             </td>
                         </tr>
                     
@@ -1024,7 +977,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Represents an error that occurs when a file system operation is denied due to invalidity.
-
                             </td>
                         </tr>
                     
@@ -1035,7 +987,6 @@ If the new path already exists and it is not a directory, this replaces the file
                             <td class="module-desc">
                                 
                                 Represents an error that occurs when a file system operation is denied, due to the absence of file permission.
-
                             </td>
                         </tr>
                     

@@ -606,7 +606,8 @@
                         Module : <span class="modules">java</span>
                     
                 </h1>
-                    <p>This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods, and fields can provide implementations of Ballerina functions with external function bodies.</p>
+                    <h2>Module Overview</h2>
+<p>This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods, and fields can provide implementations of Ballerina functions with external function bodies.</p>
 <p>For information on the operations, which you can perform with the Java module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
 <ul>
 <li><a href="https://ballerina.io/learn/by-example/create-java-objects.html">Create Java Objects Example</a></li>
@@ -635,9 +636,7 @@
                             </td>
                             <td class="module-desc">
                                 
-                                Represents a Java array type. It is used to specify the parameter types in the <code>java:Constructor</code> and <code>java:Method</code>
-annotations.
-
+                                Represents a Java array type.
                             </td>
                         </tr>
                     
@@ -647,9 +646,7 @@ annotations.
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java constructor. If the <code>paramTypes</code> field is not specified, then the parameter types are inferred from
-the corresponding Ballerina function.
-
+                                Describes a Java constructor.
                             </td>
                         </tr>
                     
@@ -660,7 +657,6 @@ the corresponding Ballerina function.
                             <td class="module-desc">
                                 
                                 Describes a Java field.
-
                             </td>
                         </tr>
                     
@@ -670,9 +666,7 @@ the corresponding Ballerina function.
                             </td>
                             <td class="module-desc">
                                 
-                                Describes a Java method. If the <code>paramTypes</code> field is not specified, then the parameter types are inferred from the
-corresponding Ballerina function.
-
+                                Describes a Java method.
                             </td>
                         </tr>
                     
@@ -704,9 +698,6 @@ corresponding Ballerina function.
                             <td class="module-desc">
                                 
                                 Returns a <code>handle</code>, which refers to Java null.
-<pre><code class="language-ballerina"> handle nullHandle = java:createNull();
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -717,9 +708,6 @@ corresponding Ballerina function.
                             <td class="module-desc">
                                 
                                 Returns a <code>handle</code>, which refers to the Java string representation of the Ballerina <code>string</code>.
-<pre><code class="language-ballerina"> handle header = java:fromString(&quot;Content-Type&quot;);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -731,25 +719,6 @@ corresponding Ballerina function.
                                 
                                 Returns a <code>handle</code>, which refers to the Java Class object associated with the class or interface with the given
 string name.
-<pre><code class="language-ballerina"> handle|error intClass = java:getClass(&quot;int&quot;);
-</code></pre>
-This function performs a Java <code>class.forName(name)</code> except for the following cases:
-<table>
-<thead>
-<tr><th align="center">Name</th><th align="center">Output</th></tr>
-</thead>
-<tbody>
-<tr><td align="center">boolean</td><td align="center">Java Class instance representing the primitive type boolean</td></tr>
-<tr><td align="center">byte</td><td align="center">Java Class instance representing the primitive type byte</td></tr>
-<tr><td align="center">char</td><td align="center">Java Class instance representing the primitive type char</td></tr>
-<tr><td align="center">short</td><td align="center">Java Class instance representing the primitive type short</td></tr>
-<tr><td align="center">int</td><td align="center">Java Class instance representing the primitive type int</td></tr>
-<tr><td align="center">long</td><td align="center">Java Class instance representing the primitive type long</td></tr>
-<tr><td align="center">float</td><td align="center">Java Class instance representing the primitive type float</td></tr>
-<tr><td align="center">double</td><td align="center">Java Class instance representing the primitive type double</td></tr>
-</tbody>
-</table>
-
                             </td>
                         </tr>
                     
@@ -760,9 +729,6 @@ This function performs a Java <code>class.forName(name)</code> except for the fo
                             <td class="module-desc">
                                 
                                 Returns <code>true</code> if this handle refers to Java null.
-<pre><code class="language-ballerina"> boolean status = java:isNull(value);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -773,10 +739,6 @@ This function performs a Java <code>class.forName(name)</code> except for the fo
                             <td class="module-desc">
                                 
                                 Returns a Ballerina <code>string</code> representation of the Java object referred by the <code>handle</code>.
-If the <code>handle</code> refers to Java null, then this function returns a <code>nil</code> value.
-<pre><code class="language-ballerina"> string? version = java:toString(versionProperty);
-</code></pre>
-
                             </td>
                         </tr>
                     
@@ -802,59 +764,28 @@ If the <code>handle</code> refers to Java null, then this function returns a <co
                             <td class="module-title truncate annotations" id="Constructor" title="Constructor"><a
                                     class="annotations" href="annotations.html#Constructor">Constructor</a></td>
                             <td class="module-desc">Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
-function is not provided in the Ballerina source module.
-The following code snippet shows an example usage of this annotation. Here, the <code>newJavaLinkedList</code> Ballerina function's
-implementation is provided by the default constructor of the <code>java.util.LinkedList</code> class.
-<pre><code class="language-ballerina"> function newJavaLinkedList() returns handle = @java:Constructor {
-      class: &quot;java.util.LinkedList&quot;
- } external;
-</code></pre>
-</td>
+<code>external</code>.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="FieldGet" title="FieldGet"><a
                                     class="annotations" href="annotations.html#FieldGet">FieldGet</a></td>
                             <td class="module-desc">Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
-<pre><code class="language-ballerina"> function getError() returns handle = @java:FieldGet {
-     name:&quot;err&quot;,
-     class:&quot;java/lang/System&quot;
- } external;
-</code></pre>
-</td>
+<code>external</code>.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="FieldSet" title="FieldSet"><a
                                     class="annotations" href="annotations.html#FieldSet">FieldSet</a></td>
                             <td class="module-desc">Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>.
-<pre><code class="language-ballerina"> function setContractId(handle contractId) = @java:FieldSet {
-   name:&quot;contractId&quot;,
-   class:&quot;org/lang/impl/JavaFieldAccessMutate&quot;
- } external;
-</code></pre>
-</td>
+<code>external</code>.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="Method" title="Method"><a
                                     class="annotations" href="annotations.html#Method">Method</a></td>
                             <td class="module-desc">Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
-<code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
-function is not provided in the Ballerina source module.
-The following code snippet shows an example usage of this annotation. Here, the <code>getUUID</code> Ballerina function's
-implementation is provided by the <code>java.util.UUID.randomUUID</code> static method.
-<pre><code class="language-ballerina"> function getUUID() returns handle = @java:Method {
-     name: &quot;randomUUID&quot;,
-     class: &quot;java.util.UUID&quot;
- } external;
-</code></pre>
-The <code>name</code> field is optional. If it is not provided, the name of the Java method is inferred
-from the Ballerina function.
-</td>
+<code>external</code>.</td>
                         </tr>
                     
                 </table>

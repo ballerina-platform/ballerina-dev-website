@@ -744,9 +744,6 @@
     <div class="param-details"> 
             
         Returns the unique identification of the caller.
-<pre><code class="language-ballerina"> int result = caller.getId();
-</code></pre>
-
     </div>
 </div>
 
@@ -759,9 +756,6 @@
     <div class="param-details"> 
             
         Checks whether the connection is closed by the caller.
-<pre><code class="language-ballerina"> boolean result = caller.isCancelled();
-</code></pre>
-
     </div>
 </div>
 
@@ -875,10 +869,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Sends the outbound response to the caller.
+        <p>Sends the outbound response to the caller.
 <pre><code class="language-ballerina"> grpc:Error? err = caller-&gt;send(message, headers);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -947,10 +941,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Informs the caller, when the server has sent all the messages.
+        <p>Informs the caller, when the server has sent all the messages.
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;complete();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -982,10 +976,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Sends a server error to the caller.
+        <p>Sends a server error to the caller.
 <pre><code class="language-ballerina"> grpc:Error? result = caller-&gt;sendError(grpc:ABORTED, &quot;Operation aborted&quot;, headers);
 </code></pre>
-
+</p>
     </div>
     
         <div class="data-wrapper">
@@ -1065,10 +1059,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Returns the unique identification of the caller.
+        <p>Returns the unique identification of the caller.
 <pre><code class="language-ballerina"> int result = caller.getId();
 </code></pre>
-
+</p>
     </div>
     
 
@@ -1100,10 +1094,10 @@ contentWrapper.addEventListener("scroll", event => {
     </div>
     <div class="function-desc">
         
-        Checks whether the connection is closed by the caller.
+        <p>Checks whether the connection is closed by the caller.
 <pre><code class="language-ballerina"> boolean result = caller.isCancelled();
 </code></pre>
-
+</p>
     </div>
     
 

@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-    - '_data/**'
+      - '_data/latest/**'
 
 jobs:
   Update:
@@ -22,7 +22,7 @@ jobs:
       with:
         python-version: '3.x'
    
-    - name: Cloning ballerina-release
+    - name: Clone ballerina-release
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
     - name: Generate the new release-notes-json file
@@ -31,7 +31,7 @@ jobs:
     - name: Copy newly generated release-notes-json file
       run: cp ballerina-release/publish_scripts/target/output/release_notes_versions.json _data/release_notes_versions.json
 
-    - name: Updating release-notes-versions json file
+    - name: Update release-notes-versions json file
       run: |
         git checkout automate-release-notes-json-$GITHUB_SHA 2>/dev/null || git checkout -b automate-release-notes-json-$GITHUB_SHA
         git pull origin master
@@ -43,5 +43,11 @@ jobs:
         
         git push --set-upstream origin automate-release-notes-json-$GITHUB_SHA
         echo 'Successfully pushed to automate-downloads-page-update branch'
-        sudo snap install hub --classic
-        hub pull-request -m '[Automated] Update release_notes_versions.json for new release'
+
+    - name: Create pull request for new BBEs
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

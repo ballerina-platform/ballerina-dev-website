@@ -646,7 +646,8 @@
                         Module : <span class="modules">nats</span>
                     
                 </h1>
-                    <p>This module provides the capability to connect with NATS and NATS Streaming servers and performs the
+                    <h2>Module Overview</h2>
+<p>This module provides the capability to connect with NATS and NATS Streaming servers and performs the
 below functionalities.</p>
 <ul>
 <li>Point to point communication (Queues)</li>
@@ -816,7 +817,6 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                             <td class="module-desc">
                                 
                                 Configurations related to creating a NATS streaming subscription.
-
                             </td>
                         </tr>
                     
@@ -827,7 +827,6 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                             <td class="module-desc">
                                 
                                 Holds the details of an error.
-
                             </td>
                         </tr>
                     
@@ -839,8 +838,6 @@ nats:Connection connection = new(&quot;tls://localhost:4222&quot;, config = conf
                                 
                                 The configurations to set limits on the maximum number of messages or maximum size of messages this consumer will
 hold before it starts to drop new messages waiting for the resource functions to drain the queue.
-Setting a value less than or equal to 0 will disable this check.
-
                             </td>
                         </tr>
                     
@@ -851,7 +848,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 Configurations related to facilitating a secure communication with a remote HTTP endpoint.
-
                             </td>
                         </tr>
                     
@@ -862,7 +858,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 Configuration related to establishing a streaming connection.
-
                             </td>
                         </tr>
                     
@@ -873,7 +868,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 The configurations for the NATS streaming subscription.
-
                             </td>
                         </tr>
                     
@@ -884,7 +878,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 The configurations for the NATS basic subscription.
-
                             </td>
                         </tr>
                     
@@ -909,7 +902,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 Represents a single network connection to the NATS server.
-
                             </td>
                         </tr>
                     
@@ -920,7 +912,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 Represents the message, which a NATS server sends to its subscribed services.
-
                             </td>
                         </tr>
                     
@@ -945,8 +936,6 @@ Setting a value less than or equal to 0 will disable this check.
                             <td class="module-desc">
                                 
                                 The producer provides the capability to publish messages to the NATS server.
-The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be initialized.
-
                             </td>
                         </tr>
                     
@@ -957,7 +946,6 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                             <td class="module-desc">
                                 
                                 Represents the message a NATS Streaming Server sends to its subscribed services.
-
                             </td>
                         </tr>
                     
@@ -968,8 +956,6 @@ The <code>nats:Producer</code> needs the <code>nats:Connection</code> to be init
                             <td class="module-desc">
                                 
                                 The streaming producer provides the capability to publish messages to the NATS streaming server.
-The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> to be initialized.
-
                             </td>
                         </tr>
                     
@@ -995,7 +981,6 @@ The <code>nats:StreamingProducer</code> needs the <code>nats:Connection</code> t
                                 
                                 Represents the NATS server connection to which a subscription service should be bound in order to
 receive messages of the corresponding subscription.
-
                             </td>
                         </tr>
                     
@@ -1007,7 +992,6 @@ receive messages of the corresponding subscription.
                                 
                                 Represents the NATS streaming server connection to which a subscription service should be bound in order to
 receive messages of the corresponding subscription.
-
                             </td>
                         </tr>
                     
@@ -1036,7 +1020,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Default URL for NATS connections.
-
                             </td>
                         </tr>
                     
@@ -1047,7 +1030,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Represents the reason for the NATS module related errors.
-
                             </td>
                         </tr>
                     
@@ -1058,7 +1040,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Specifies that message delivery should start with the messages, which are published after the subscription is created.
-
                             </td>
                         </tr>
                     
@@ -1069,7 +1050,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Specifies that message delivery should start with the last (most recent) message stored for this subject.
-
                             </td>
                         </tr>
                     
@@ -1080,7 +1060,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Specifies that message delivery should begin at the oldest available message for this subject.
-
                             </td>
                         </tr>
                     
@@ -1091,7 +1070,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 The key for the <code>TimeDeltaStart</code> type.
-
                             </td>
                         </tr>
                     
@@ -1102,7 +1080,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 The key for the <code>SequenceNumber</code> type.
-
                             </td>
                         </tr>
                     
@@ -1124,15 +1101,13 @@ receive messages of the corresponding subscription.
                         <tr>
                             <td class="module-title truncate annotations" id="StreamingSubscriptionConfig" title="StreamingSubscriptionConfig"><a
                                     class="annotations" href="annotations.html#StreamingSubscriptionConfig">StreamingSubscriptionConfig</a></td>
-                            <td class="module-desc">The annotation, which is used to configure the streaming subscription.
-</td>
+                            <td class="module-desc">The annotation, which is used to configure the streaming subscription.</td>
                         </tr>
                     
                         <tr>
                             <td class="module-title truncate annotations" id="SubscriptionConfig" title="SubscriptionConfig"><a
                                     class="annotations" href="annotations.html#SubscriptionConfig">SubscriptionConfig</a></td>
-                            <td class="module-desc">The annotation, which is used to configure the basic subscription.
-</td>
+                            <td class="module-desc">The annotation, which is used to configure the basic subscription.</td>
                         </tr>
                     
                 </table>
@@ -1156,7 +1131,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Data types supported when publishing and consuming messages.
-
                             </td>
                         </tr>
                     
@@ -1167,7 +1141,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Specifies the position to start receiving messages.
-
                             </td>
                         </tr>
                     
@@ -1192,7 +1165,6 @@ receive messages of the corresponding subscription.
                             <td class="module-desc">
                                 
                                 Represents NATS module related errors.
-
                             </td>
                         </tr>
                     

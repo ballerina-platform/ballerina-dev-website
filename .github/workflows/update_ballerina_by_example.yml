@@ -1,4 +1,4 @@
-name: Generate ballerina by examples
+name: Generate Ballerina by examples pages
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
   bbe-gen:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
 
     steps:
     - name: Install Go
@@ -59,6 +59,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) for the new release'
+        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) pages for the new release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

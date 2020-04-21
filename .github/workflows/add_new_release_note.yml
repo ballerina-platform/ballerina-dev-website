@@ -1,4 +1,4 @@
-name: Add release Note template
+name: Add Release-note template
 
 on:
   push:

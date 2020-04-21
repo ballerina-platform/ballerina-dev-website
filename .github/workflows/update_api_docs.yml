@@ -1,4 +1,4 @@
-name: Generate API Docs
+name: Generate API Docs pages
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
   apidoc-gen:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
 
     steps:    
     - name: Install jq for json manipulation
@@ -60,6 +60,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update API Docs for the new release'
+        bin/hub pull-request -m '[Automated] Update API Docs pages for the new release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -25,7 +25,7 @@ jobs:
           npm install
           wget -O latest_release.json https://raw.githubusercontent.com/ballerina-platform/ballerina-dev-website/master/_data/latest/metadata.json
           jq .version latest_release.json
-          python3  .github/workflows/publish_scripts/publish_vscode_plugin.py  
+          python3  .github/workflows/publish_script/publish_vscode_plugin.py  
              
       - name: Execute the VSCE commands
         uses: lannonbr/vsce-action@master

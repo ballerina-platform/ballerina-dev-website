@@ -1,7 +1,10 @@
 ---
 layout: ballerina-layer-page
 title: The Network in the Language
-permalink: /why/the-network-in-the-language/
+permalink: /why-ballerina/the-network-in-the-language/
+redirect_from:
+  - /why/the-network-in-the-language/
+  - /why/the-network-in-the-language
 ---
 <div class="row cBallerina-io-Gray-row">
    <div class="container">

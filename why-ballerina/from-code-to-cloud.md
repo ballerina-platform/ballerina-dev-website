@@ -1,7 +1,10 @@
 ---
 layout: ballerina-layer-page
 title: From Code to Cloud
-permalink: /why/from-code-to-cloud/
+permalink: /why-ballerina/from-code-to-cloud/
+redirct_from:
+  - /why/from-code-to-cloud/
+  - /why/from-code-to-cloud
 ---
 <div class="row cBallerina-io-Gray-row">
    <div class="container">

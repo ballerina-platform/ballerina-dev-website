@@ -1,7 +1,10 @@
 ---
 layout: ballerina-layer-page
 title: Sequence Diagrams for Programming
-permalink: /why/sequence-diagrams-for-programming/
+permalink: /why-ballerina/sequence-diagrams-for-programming/
+redirect_from:
+  - /why/sequence-diagrams-for-programming/
+  - /why/sequence-diagrams-for-programming
 ---
 <div class="row cBallerina-io-Gray-row">
    <div class="container">

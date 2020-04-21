@@ -8,7 +8,7 @@ redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug/
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-2/learn/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug
+  - /v1-2/learn/vscode-plugin/run-and-debug
 ---
 
 # Run and debug

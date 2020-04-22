@@ -3,8 +3,7 @@ layout: ballerina-inner-page
 title: Top Level definitions
 permalink: /learn/style-guide/definitions/
 redirect_from:
-  - /learn/style-guide/definitions/
-  - /learn/style-guide/definitions
+  - /v1-2/learn/style-guide/definitions/
   - /v1-2/learn/style-guide/definitions
 ---
 

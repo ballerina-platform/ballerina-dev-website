@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - prod-sync
+    paths:
+      - '_data/latest/**'
+                        
+name: Publish Extension with json
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository.
+        uses: actions/checkout@v2
+      
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+        
+      - name: Wget required files
+        id: version
+        run: |
+          npm install
+          wget -O latest_release.json https://raw.githubusercontent.com/ballerina-platform/ballerina-dev-website/master/_data/latest/metadata.json
+          jq .version latest_release.json
+          python3  .github/workflows/publish_script/publish_vscode_plugin.py  
+             
+      - name: Execute the VSCE commands
+        uses: lannonbr/vsce-action@master
+        with:
+          args: publish -p $VSCE_TOKEN --packagePath ballerina.vsix
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCODE_PAT }}

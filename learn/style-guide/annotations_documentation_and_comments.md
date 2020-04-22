@@ -3,8 +3,7 @@ layout: ballerina-inner-page
 title: Annotations, Documentation and Comments
 permalink: /learn/style-guide/annotations_documentation_and_comments/
 redirect_from:
-  - /learn/style-guide/annotations_documentation_and_comments/
-  - /learn/style-guide/annotations_documentation_and_comments
+  - /v1-2/learn/style-guide/annotations_documentation_and_comments/
   - /v1-2/learn/style-guide/annotations_documentation_and_comments
 ---
 

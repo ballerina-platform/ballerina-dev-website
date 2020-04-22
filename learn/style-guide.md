@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
-title: Ballerina Style Guide
+layout: ballerina-left-nav-pages
+title: Style Guide
 permalink: /learn/style-guide/
+active: style-guide
 redirect_from:
   - /learn/style-guide
   - /v1-2/learn/style-guide

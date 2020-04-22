@@ -16,7 +16,8 @@ updated_ballerina_rb = ""
 g = Github(token)
 
 # Getting an instance of the Homebrew/homebrew-core repo
-#TODO: Change this to homebrew_user = g.get_user("Homebrew") in production usage
+#TODO: Change this to homebrew_user = g.get_user("Homebrew") in production usage. 
+# And change to homebrew_user = g.get_user("iHomebrew") when testing.
 homebrew_user = g.get_user("Homebrew")
 homebrew_core_repo = homebrew_user.get_repo("homebrew-core")
 

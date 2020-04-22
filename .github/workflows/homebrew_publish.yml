@@ -1,15 +1,15 @@
 # Github action to open a PR in Homebrew/homebrew-core when a new release of ballerina is being published
 name: Update Homebrew
-on:
-  release:
-    types: [published]
-
 # on:
-#   push:
-#     branches:
-#       - prod-sync
-#     paths:
-#       - '_data/latest/**'
+#   release:
+#     types: [published]
+
+on:
+  push:
+    branches:
+      - prod-sync
+    paths:
+      - '_data/latest/**'
 
 jobs:
   publish:

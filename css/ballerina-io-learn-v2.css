@@ -1,0 +1,90 @@
+
+nav.cLeftNavContainer {
+    padding-top: 10px;
+}
+
+nav.cLeftNavContainer ul {
+    padding: 0;
+}
+
+nav.cLeftNavContainer ul li {
+    padding: 0;
+    border-bottom: .5px solid #abacae;
+}
+/* nav.cLeftNavContainer ul li::before {
+    content: "- ";
+} */
+
+
+
+
+
+nav.cLeftNavContainer ul li:last-child {
+    border: none;
+}
+
+nav.cLeftNavContainer ul li.current a , nav.cLeftNavContainer ul li.current-sub a {
+    color: #464646
+}
+
+.sub-menu {
+    background-image: url("/img/down-arrow-learn.svg");
+background-size: 15px;
+background-repeat: no-repeat;
+background-position: right 15px;
+}
+
+
+.sub-menu.OpenUL , .sub-menu.OpenULElement {
+    padding: 2px 0px 0 10px;
+    background-color: #f4f4f4;
+    background-image: url("/img/up-arrow-learn.svg");
+}
+
+.sub-menu.OpenUL ul, .sub-menu.OpenULElement ul {
+	padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+nav.cLeftNavContainer ul li::after {
+    background-color: seagreen;
+}
+
+nav.cLeftNavContainer ul li a {
+    padding: 10px 0;
+    display: inline-block;
+    width: 100%;
+    color: #22b7b1;
+    padding-right: 30px;
+}
+
+ul.sub-ul.Open-submenu {
+display: block !important;
+
+
+}
+
+
+
+
+
+/* .sub-menu.OpenUL */
+
+/* .sub-menu  {
+    background-color: #eeeeee;
+    
+
+}
+nav.cLeftNavContainer ul li.sub-menu  a {
+    padding:10px 20px;
+} */
+
+
+
+
+
+
+/* .sub-ul.Open-submenu {
+    background-color: #abacae;
+} */

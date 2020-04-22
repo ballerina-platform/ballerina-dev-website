@@ -41,7 +41,7 @@ current_user = g.get_user()
 current_user_login = current_user.login
 
 # Commiting and pushing the updated ballerina.rb file to the current users forked homebrew-core repo
-# [Important]The user who provides the access token also should fork the Homebrew/homebrew-core repo in order for this to work
+# [Important] The user who provides the access token also should fork the Homebrew/homebrew-core repo in order for this to work
 
 repo = g.get_repo(current_user_login+"/homebrew-core")
 contents = repo.get_contents("Formula/ballerina.rb", ref="master")

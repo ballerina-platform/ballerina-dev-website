@@ -17,7 +17,7 @@ g = Github(token)
 
 # Getting an instance of the Homebrew/homebrew-core repo
 #TODO: Change this to homebrew_user = g.get_user("Homebrew") in production usage
-homebrew_user = g.get_user("s-anjana")
+homebrew_user = g.get_user("iHomebrew")
 homebrew_core_repo = homebrew_user.get_repo("homebrew-core")
 
 # Reading the current ballerina.rb Formula file and updating it.

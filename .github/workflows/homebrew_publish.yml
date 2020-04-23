@@ -1,8 +1,5 @@
 # Github action to open a PR in Homebrew/homebrew-core when a new release of ballerina is being published
 name: Update Homebrew
-# on:
-#   release:
-#     types: [published]
 
 on:
   push:
@@ -15,6 +12,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Install jq for json manipulation
+        run: sudo apt-get install jq
+
       - name: Check out repository.
         uses: actions/checkout@v2
       
@@ -23,18 +23,14 @@ jobs:
         with:
           python-version: '3.x'
         
-      - name: Wget required files
-        id: version
-        run: wget -O ./.github/scripts/latest_release.json https://product-dist.ballerina.io/downloads/latest_release.json?982
-        
       - name: Send the PR to Homebrew
         run: |
           python -m pip install --upgrade pip
           pip install PyGithub
-          version=$(cat ./.github/scripts/latest_release.json | jq '.version')
-          version=$(sed -e 's/^"//' -e 's/"$//' <<<"$version")
+
+          VERSION="`jq -r '.version' _data/latest/metadata.json`"
           
-          dist_url="https://product-dist.ballerina.io/downloads/$version/ballerina-$version.zip"
+          dist_url="https://product-dist.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip"
           
           checksum="$(curl -fsSL "$dist_url" | shasum -a 256 -b | awk '{print $1}')"
 
@@ -43,5 +39,5 @@ jobs:
             exit 1
           fi
 
-          python3 ./.github/scripts/homebrew_publish.py ${{ secrets.WEBSITE_TOKEN }} "$version" "$checksum" "$dist_url"
+          python3 ./.github/scripts/homebrew_publish.py ${{ secrets.WEBSITE_TOKEN }} "$VERSION" "$checksum" "$dist_url"
       

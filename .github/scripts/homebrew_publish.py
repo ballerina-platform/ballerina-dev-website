@@ -6,11 +6,8 @@ token = sys.argv[1]
 version = str(sys.argv[2])
 sha256 = sys.argv[3]
 url = sys.argv[4]
-
-sha256_replacement = 'sha256 "'+sha256+'"\n'
-
-url_replacement = 'url "'+url+'"\n'
-
+sha256_replacement = '  sha256 "'+sha256+'"\n'
+url_replacement = '  url "'+url+'"\n'
 ballerina_rb_file_contents = ""
 
 github_instance = Github(token)
@@ -34,7 +31,6 @@ for line in ballerina_rb_file.decoded_content.decode("utf-8").split("\n"):
     ballerina_rb_file_contents += updated_line+"\n"
 
 ballerina_rb_file_contents = ballerina_rb_file_contents.rstrip()
-
 commit_msg_title = " ".join(["ballerina", version])
 
 current_user = github_instance.get_user()
@@ -46,7 +42,6 @@ current_user_login = current_user.login
 repo = github_instance.get_repo(current_user_login+"/homebrew-core")
 contents = repo.get_contents("Formula/ballerina.rb", ref="master")
 update = repo.update_file(contents.path, commit_msg_title, ballerina_rb_file_contents, contents.sha, branch="master")
-
 
 # Opening a PR in Homebrew/homebrew-core repo
 

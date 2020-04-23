@@ -108,23 +108,43 @@ ul.sub-ul {
 
 
 
+/* LANDING PAGE */
 
-/* .sub-menu.OpenUL */
-
-/* .sub-menu  {
-    background-color: #eeeeee;
-    
-
+.cLandingPageintro {
+    padding-top: 0;;
 }
-nav.cLeftNavContainer ul li.sub-menu  a {
-    padding:10px 20px;
-} */
+
+.cBallerina-io .cLearnPageContentCol h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.cLearnPageContentCol  {
+    min-height: 340px;
+}
+
+ul.cLearnLandingLinks {
+margin: 20px 0 0 0;
+padding: 0;;   
+}
+
+ul.cLearnLandingLinks li {
+    list-style: none !important;
+    padding-left: 40px;
+    background-image: url("/img/toc-bg.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0 0 10px 0;
+    margin-left: 0 !important;
+}
+
+ul.cLearnLandingLinks li::marker {
+    margin-left: 0px !important;
+}
+
+ul.cLearnLandingLinks li a {
+    font-weight: 400;
+}
 
 
-
-
-
-
-/* .sub-ul.Open-submenu {
-    background-color: #abacae;
-} */

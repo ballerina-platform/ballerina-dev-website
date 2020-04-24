@@ -42,7 +42,7 @@ redirect_from:
 
    <ul class="cLearnLandingLinks">
    <li><a href="/learn/how-to-structure-ballerina-code/" class="cGreenLinkArrow">Code organization</a></li>
-   <li><a href="/learn/network-inttegration/" class="cGreenLinkArrow">Network Integration</a></li>
+   <li><a href="/learn/network-integration/" class="cGreenLinkArrow">Network Integration</a></li>
     <li><a href="/learn/how-to-deploy-and-run-ballerina-programs/" class="cGreenLinkArrow">Cloud Development</a></li>
     <li><a href="/learn/how-to-observe-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
     <li><a href="/learn/how-to-write-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
@@ -57,7 +57,7 @@ redirect_from:
    <p>Dive deep into mastering Ballerina by referring to the reference materials.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">The Standrad Library</a></li>
+   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standrad Library</a></li>
      <li><a href="/spec/" class="cGreenLinkArrow">Language Specification</a></li>
     <li><a href="/learn/style-guide/" class="cGreenLinkArrow">Style Guide</a></li>
     <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">CLI Guide</a></li>

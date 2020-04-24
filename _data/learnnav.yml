@@ -1,7 +1,10 @@
 
 - title: Setting up Ballerina
-  url: /learn//installing-ballerina/
+  url: '#'
   sublinks:
+    - title: Installing Ballerina
+      url: /learn/installing-ballerina/
+      active: installing-ballerina
     - title: Setting up the IDEs
       url: /learn/setting-up-ides
       active: setting-up-ides
@@ -15,14 +18,17 @@
   active: by-example
 
 - title: Code organization 
-  url: /learn/how-to-structure-ballerina-code/
+  url: '#'
   sublinks:
+    - title: How to Structure Ballerina Code
+      url: /learn/how-to-structure-ballerina-code/
+      active: how-to-structure-ballerina-code
     - title: Module deployment to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
 
 - title: Network integration
-  url: /learn/network-inttegration/
+  url: '#'
   sublinks:
     - title: Open API
       url: /learn/how-to-use-openapi-tools/
@@ -32,25 +38,39 @@
       active: how-to-generate-code-for-protocol-buffers
 
 - title: Cloud development
-  url: /learn/how-to-deploy-and-run-ballerina-programs/ 
-  active: how-to-deploy-and-run-ballerina-programs
+  url: '#' 
+  sublinks:
+    - title: How to Deploy and Run Ballerina Programs
+      url: /learn/how-to-eploy-and-run-ballerina-programs/
+      active: how-to-eploy-and-run-ballerina-programs
 
 - title: Observability
-  url: /learn/how-to-observe-ballerina-code 
-  active: how-to-observe-ballerina-code
+  url: '#' 
+  sublinks:
+    - title: How to Observe Ballerina Code
+      url: /learn/how-to-observe-ballerina-code
+      active: how-to-observe-ballerina-code
 
 - title: Security
-  url: /learn/how-to-write-secure-ballerina-code
-  active: how-to-write-secure-ballerina-code
-      
-- title: Testing
-  url: /learn/how-to-test-ballerina-code
-  active: how-to-test-ballerina-code
+  url: '#' 
+  sublinks:
+    - title: How to Write Secure Ballerina Code
+      url: /learn/how-to-write-secure-ballerina-code
+      active: how-to-write-secure-ballerina-code
 
+- title: Testing
+  url: '#' 
+  sublinks:
+    - title: How to Test Ballerina Code
+      url: /learn/how-to-test-ballerina-code
+      active: how-to-test-ballerina-code
 
 - title: Extending Ballerina
-  url: /learn/how-to-extend-ballerina
+  url: '#' 
   sublinks:
+    - title: How To Extend Ballerina
+      url: /learn/how-to-extend-ballerina
+      active: how-to-extend-ballerina
     - title: Java Interoperability
       url: /learn/how-to-use-java-interoperability
       active: how-to-use-java-interoperability
@@ -69,7 +89,7 @@
 
 - title: CLI Guide
   url: /learn/cli-commands/ 
-  active: cli-guide
+  active: cli-commands
    
 
       

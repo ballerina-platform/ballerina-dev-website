@@ -1,68 +1,59 @@
 
 - title: Setting up Ballerina
   url: /learn//installing-ballerina/
-  active: setting-up-ballerina
-
-- title: Setting up Ballerina Tools 
-  url: /learn/setting-up-ballerina-tools
-  active: setting-up-ballerina-tools
+  sublinks:
+    - title: Setting up the IDEs
+      url: /learn/setting-up-ides
+      active: setting-up-ides
 
 - title: Quick Tour
-  url: /learn/quick-tour/
+  url: /learn/quick-tour 
   active: quick-tour
 
-- title: Learning the Basics
-  url: /learn/learning-the-basics/ 
-  active: learning-the-basics
-
 - title: Ballerina By Examples
-  url: /learn/by-example/ 
+  url: /learn/by-example 
   active: by-example
 
-- title: Writing Ballerina Code
-  url: '#'
+- title: Code organization 
+  url: /learn/how-to-structure-ballerina-code/
   sublinks:
-    - title: Using Ballerina tools
-      url: /learn/writing-ballerina-code/using-ballerina-tools
-      active: using-ballerina-tools
-    - title: Structuring Ballerina code
-      url: /learn/writing-ballerina-code/structuring-ballerina-code
-      active: structuring-ballerina-code
-    - title: Writing secure code
-      url: /learn/writing-ballerina-code/writing-secure-code
-      active: writing-secure-code
-    - title: Testing Ballerina code
-      url: /learn/writing-ballerina-code/testing-ballerina-code
-      active: testing-ballerina-code
-    - title: Running Ballerina Code
-      url: /learn/writing-ballerina-code/running-ballerina-code
-      active: running-ballerina-code
-    - title: Publishing modules to Ballerina Central
-      url: /learn/writing-ballerina-code/publishing-modules-to-ballerina-central
-      active: publishing-modules-to-ballerina-central
-      
-- title: Working with Ballerina services
-  url: '#'
-  sublinks:
-    - title: Using Ballerina tools
-      url: /learn/working-with-ballerina-services/developing-ballerina-services-using-openapi-documentation
-      active: developing-ballerina-services-using-openapi-documentation
-    - title: Generating Ballerina code for Protocol Buffer Definitions
-      url: /learn/working-with-ballerina-services/generating-ballerina-code-for-protocol-buffer-definitions
-      active: generating-ballerina-code-for-protocol-buffer-definitions
-    - title: Deploying Ballerina services
-      url: /learn/working-with-ballerina-services/deploying-ballerina-services
-      active: deploying-ballerina-services
-    - title: Observing Ballerina services
-      url: /learn/working-with-ballerina-services/observing-ballerina-services
-      active: observing-ballerina-services
+    - title: Module deployment to Ballerina Central
+      url: /learn/how-to-publish-modules
+      active: how-to-publish-modules
 
-- title: Managing Ballerina
-  url: '#'
+- title: Network integration
+  url: /learn/network-inttegration/
   sublinks:
-    - title: Keeping Ballerina up to date
-      url: /learn/managing-ballerina/keeping-ballerina-up-to-date
-      active: keeping-ballerina-up-to-date
+    - title: Open API
+      url: /learn/how-to-use-openapi-tools/
+      active: how-to-use-openapi-tools
+    - title: GRPC
+      url: /learn/how-to-generate-code-for-protocol-buffers/
+      active: how-to-generate-code-for-protocol-buffers
+
+- title: Cloud development
+  url: /learn/how-to-deploy-and-run-ballerina-programs/ 
+  active: how-to-deploy-and-run-ballerina-programs
+
+- title: Observability
+  url: /learn/how-to-observe-ballerina-code 
+  active: how-to-observe-ballerina-code
+
+- title: Security
+  url: /learn/how-to-write-secure-ballerina-code
+  active: how-to-write-secure-ballerina-code
+      
+- title: Testing
+  url: /learn/how-to-test-ballerina-code
+  active: how-to-test-ballerina-code
+
+
+- title: Extending Ballerina
+  url: /learn/how-to-extend-ballerina
+  sublinks:
+    - title: Java Interoperability
+      url: /learn/how-to-use-java-interoperability
+      active: how-to-use-java-interoperability
  
 - title: Standard Library
   url: /learn/api-docs/ballerina/

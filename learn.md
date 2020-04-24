@@ -15,13 +15,13 @@ redirect_from:
 
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Setting up Ballerina</h2>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<h2>Get Started</h2>
+   <p>Download, install, set the tools up, and take the Quick Tour to get started with Ballerina.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
+   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
+     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Setting up the IDEs</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
 
 
@@ -29,36 +29,43 @@ redirect_from:
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <h2>Grab the fundamentals</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <p>Get familiar with Ballerina by learning the basics, trying the Ballerina By Examples, and using the Playground.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
+   <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Example</a></li>
+     <li><a href="https://play.ballerina.io/" class="cGreenLinkArrow">Try Ballerina</a></li>
    </ul>
 
 </div>
 
 <div class="col-sm-6 col-md-6  cLearnPageContentCol">
 <h2>Grow with Ballerina</h2>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+   <p>Know more about Ballerina by exploring its features.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
+   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Learn the Basics</a></li>
+     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Network Integration</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Sequence Diagrammatic Development</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Structural Type System</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Cloud Development</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Observability</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Security</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Testing</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Extending Ballerina</a></li>
+    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Experimental Features</a></li>
    </ul>
 
 </div>
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <h2>Master Ballerina</h2>
-   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+   <p>Dive deep into mastering Ballerina by referring to the reference materials.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Take Quick Tour</a></li>
+   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">The Standrad Library</a></li>
+     <li><a href="/spec/" class="cGreenLinkArrow">Language Specification</a></li>
+    <li><a href="/learn/style-guide/" class="cGreenLinkArrow">Style Guide</a></li>
+    <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">CLI Guide</a></li>
    </ul>
 
 </div>

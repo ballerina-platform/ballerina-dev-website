@@ -20,10 +20,8 @@ redirect_from:
 
    <ul class="cLearnLandingLinks">
    <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Setting up the IDEs</a></li>
     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
-
 
 </div>
 
@@ -32,7 +30,7 @@ redirect_from:
     <p>Get familiar with Ballerina by learning the basics, trying the Ballerina By Examples, and using the Playground.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Example</a></li>
+   <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Examples</a></li>
      <li><a href="https://play.ballerina.io/" class="cGreenLinkArrow">Try Ballerina</a></li>
    </ul>
 
@@ -43,16 +41,13 @@ redirect_from:
    <p>Know more about Ballerina by exploring its features.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Learn the Basics</a></li>
-     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Network Integration</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Sequence Diagrammatic Development</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Structural Type System</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Cloud Development</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Observability</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Testing</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Extending Ballerina</a></li>
-    <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Experimental Features</a></li>
+   <li><a href="/learn/how-to-structure-ballerina-code/" class="cGreenLinkArrow">Code organization</a></li>
+   <li><a href="/learn/network-inttegration/" class="cGreenLinkArrow">Network Integration</a></li>
+    <li><a href="/learn/how-to-deploy-and-run-ballerina-programs/" class="cGreenLinkArrow">Cloud Development</a></li>
+    <li><a href="/learn/how-to-observe-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
+    <li><a href="/learn/how-to-write-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
+    <li><a href="/learn/how-to-test-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
+    <li><a href="/learn/how-to-extend-ballerina" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 
 </div>

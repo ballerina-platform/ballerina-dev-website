@@ -3,6 +3,7 @@ layout: ballerina-left-nav-pages
 title: Learning the Basics
 permalink: /learn/learning-the-basics/
 active: learning-the-basics
+active: learning-the-basics
 ---
 
 # Learning the Basics

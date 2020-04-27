@@ -6,8 +6,17 @@
       url: /learn/installing-ballerina/
       active: installing-ballerina
     - title: Setting up the IDEs
-      url: /learn/setting-up-ides
-      active: setting-up-ides
+      url: '#'
+      sublinks:
+        - title: Setting up VSCode
+          url: /learn/tools-ides/vscode-plugin/
+          active: vscode-plugin
+        - title: Setting up IntelliJ
+          url: /learn/tools-ides/intellij-plugin/
+          active: intellij-plugin
+    - title: Keeping Ballerina Up To Date
+      url: /learn/how-to-keep-ballerina-up-to-date
+      active: how-to-keep-ballerina-up-to-date
 
 - title: Quick Tour
   url: /learn/quick-tour 
@@ -20,10 +29,13 @@
 - title: Code organization 
   url: '#'
   sublinks:
-    - title: How to Structure Ballerina Code
+    - title: Structuring Ballerina Code
       url: /learn/how-to-structure-ballerina-code/
       active: how-to-structure-ballerina-code
-    - title: Module deployment to Ballerina Central
+    - title: Documenting Ballerina Code
+      url: /learn/how-to-document-ballerina-code/
+      active: how-to-document-ballerina-code
+    - title: Deploying Modules to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
 
@@ -40,28 +52,28 @@
 - title: Cloud development
   url: '#' 
   sublinks:
-    - title: How to Deploy and Run Ballerina Programs
-      url: /learn/how-to-eploy-and-run-ballerina-programs/
-      active: how-to-eploy-and-run-ballerina-programs
+    - title: Deploying and Running Ballerina Programs
+      url: /learn/how-to-deploy-and-run-ballerina-programs/
+      active: how-to-deploy-and-run-ballerina-programs
 
 - title: Observability
   url: '#' 
   sublinks:
-    - title: How to Observe Ballerina Code
+    - title: Observing Ballerina Code
       url: /learn/how-to-observe-ballerina-code
       active: how-to-observe-ballerina-code
 
 - title: Security
   url: '#' 
   sublinks:
-    - title: How to Write Secure Ballerina Code
+    - title: Writing Secure Ballerina Code
       url: /learn/how-to-write-secure-ballerina-code
       active: how-to-write-secure-ballerina-code
 
 - title: Testing
   url: '#' 
   sublinks:
-    - title: How to Test Ballerina Code
+    - title: Testing Ballerina Code
       url: /learn/how-to-test-ballerina-code
       active: how-to-test-ballerina-code
 

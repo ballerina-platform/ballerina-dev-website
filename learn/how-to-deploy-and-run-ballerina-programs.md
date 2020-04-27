@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Run and Deploy Ballerina Programs
 permalink: /learn/how-to-deploy-and-run-ballerina-programs/
+active: how-to-deploy-and-run-ballerina-programs
 redirect_from:
   - /learn/how-to-deploy-and-run-ballerina-programs
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs

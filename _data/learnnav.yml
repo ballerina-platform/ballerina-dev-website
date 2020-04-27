@@ -6,8 +6,14 @@
       url: /learn/installing-ballerina/
       active: installing-ballerina
     - title: Setting up the IDEs
-      url: /learn/setting-up-ides
-      active: setting-up-ides
+      url: '#'
+      sublinks:
+        - title: Setting up VSCode
+        url: /learn/vscode-plugin/
+        active: vscode-plugin
+        - title: Setting up IntelliJ
+        url: /learn/intellij-plugin/
+        active: intellij-plugin
     - title: Keeping Ballerina Up To Date
       url: /learn/how-to-keep-ballerina-up-to-date
       active: how-to-keep-ballerina-up-to-date
@@ -80,6 +86,13 @@
     - title: Java Interoperability
       url: /learn/how-to-use-java-interoperability
       active: how-to-use-java-interoperability
+
+- title: Experimental Features
+  url: '#' 
+  sublinks:
+    - title: Streams
+      url: /learn//ballerina-streaming-reference
+      active: /ballerina-streaming-reference
  
 - title: Standard Library
   url: /learn/api-docs/ballerina/

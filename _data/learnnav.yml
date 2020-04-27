@@ -8,6 +8,9 @@
     - title: Setting up the IDEs
       url: /learn/setting-up-ides
       active: setting-up-ides
+    - title: Keeping Ballerina Up To Date
+      url: /learn/how-to-keep-ballerina-up-to-date
+      active: how-to-keep-ballerina-up-to-date
 
 - title: Quick Tour
   url: /learn/quick-tour 
@@ -23,6 +26,9 @@
     - title: How to Structure Ballerina Code
       url: /learn/how-to-structure-ballerina-code/
       active: how-to-structure-ballerina-code
+    - title: How to Document Ballerina Code
+      url: /learn/how-to-document-ballerina-code/
+      active: how-to-document-ballerina-code
     - title: Module deployment to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
@@ -41,7 +47,7 @@
   url: '#' 
   sublinks:
     - title: How to Deploy and Run Ballerina Programs
-      url: /learn/how-to-eploy-and-run-ballerina-programs/
+      url: /learn/how-to-deploy-and-run-ballerina-programs/
       active: how-to-eploy-and-run-ballerina-programs
 
 - title: Observability

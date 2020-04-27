@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to generate Ballerina code for Protocol Buffer Definition
 permalink: /learn/how-to-generate-code-for-protocol-buffers/
 redirect_from:

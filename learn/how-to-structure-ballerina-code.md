@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Structure Ballerina Code
 permalink: /learn/how-to-structure-ballerina-code/
 redirect_from:

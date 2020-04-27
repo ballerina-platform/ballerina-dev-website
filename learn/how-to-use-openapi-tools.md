@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Ballerina OpenAPI Tools
 permalink: /learn/how-to-use-openapi-tools/
 redirect_from:

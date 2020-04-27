@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Observe Ballerina Services
 permalink: /learn/how-to-observe-ballerina-code/
 redirect_from:

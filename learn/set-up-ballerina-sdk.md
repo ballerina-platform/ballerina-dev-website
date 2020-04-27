@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Setting up Ballerina SDK
 permalink: /learn/set-up-ballerina-sdk/
 redirect_from:

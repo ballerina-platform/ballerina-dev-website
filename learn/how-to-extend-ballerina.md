@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Extend Ballerina
 permalink: /learn/how-to-extend-ballerina/
 redirect_from:

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: CLI Commands
 permalink: /learn/cli-commands/
 redirect_from:

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Keep Ballerina up to date
 permalink: /learn/how-to-keep-ballerina-up-to-date/
 redirect_from:

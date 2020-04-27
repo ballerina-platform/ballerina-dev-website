@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Document Ballerina Code
 permalink: /learn/how-to-document-ballerina-code/
 redirect_from:

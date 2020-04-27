@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Use Java Interoperability
 permalink: /learn/how-to-use-java-interoperability/
 redirect_from:

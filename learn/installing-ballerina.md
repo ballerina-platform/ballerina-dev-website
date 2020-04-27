@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Installing Ballerina
 permalink: /learn/installing-ballerina/
 redirect_from:

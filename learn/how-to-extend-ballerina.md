@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: How to Extend Ballerina
 permalink: /learn/how-to-extend-ballerina/
+active: how-to-extend-ballerina
 redirect_from:
   - /learn/how-to-extend-ballerina
   - /v1-2/learn/how-to-extend-ballerina

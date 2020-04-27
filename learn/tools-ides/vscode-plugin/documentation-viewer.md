@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Documentation Viewer
 permalink: /learn/vscode-plugin/documentation-viewer/
+active: documentation-viewer
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/

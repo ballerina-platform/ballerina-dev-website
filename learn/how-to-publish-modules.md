@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: How to Publish a Module
 permalink: /learn/how-to-publish-modules/
+active: how-to-publish-modules
 redirect_from:
   - /learn/how-to-publish-modules
   - /v1-2/learn/how-to-publish-modules

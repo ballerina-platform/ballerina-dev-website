@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: CLI Commands
 permalink: /learn/cli-commands/
+active: cli-commands
 redirect_from:
   - /learn/cli-commands
   - /v1-2/learn/cli-commands

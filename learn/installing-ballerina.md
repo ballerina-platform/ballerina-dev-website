@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: Installing Ballerina
 permalink: /learn/installing-ballerina/
+active: installing-ballerina
 redirect_from:
   - /v1-2/learn/getting-started
   - /learn/getting-started

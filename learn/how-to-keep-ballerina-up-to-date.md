@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: How to Keep Ballerina up to date
 permalink: /learn/how-to-keep-ballerina-up-to-date/
+active: how-to-keep-ballerina-up-to-date
 redirect_from:
   - /learn/how-to-keep-ballerina-up-to-date
   - /v1-2/learn/how-to-keep-ballerina-up-to-date

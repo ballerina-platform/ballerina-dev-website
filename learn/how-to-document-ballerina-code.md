@@ -2,6 +2,7 @@
 layout: ballerina-left-nav-pages
 title: How to Document Ballerina Code
 permalink: /learn/how-to-document-ballerina-code/
+active: how-to-document-ballerina-code
 redirect_from:
   - /learn/how-to-document-ballerina-code
   - /v1-2/learn/how-to-document-ballerina-code

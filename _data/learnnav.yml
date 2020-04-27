@@ -86,13 +86,6 @@
     - title: Java Interoperability
       url: /learn/how-to-use-java-interoperability
       active: how-to-use-java-interoperability
-
-- title: Experimental Features
-  url: '#' 
-  sublinks:
-    - title: Streams
-      url: /learn//ballerina-streaming-reference
-      active: /ballerina-streaming-reference
  
 - title: Standard Library
   url: /learn/api-docs/ballerina/

@@ -46,7 +46,6 @@ redirect_from:
     <li><a href="/learn/how-to-write-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
     <li><a href="/learn/how-to-test-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
     <li><a href="/learn/how-to-extend-ballerina" class="cGreenLinkArrow">Extending Ballerina</a></li>
-    <li><a href="/learn//ballerina-streaming-reference" class="cGreenLinkArrow">Experimental Features</a></li>
    </ul>
 
 </div>

@@ -1,30 +1,26 @@
-<nav class="breadcrumbs bootstrap hidden-sm-down" {% if (page.url == '/') and (site.breadcrumbs.root.hide) %}{{ 'style="display: none;"' }}{% endif %}>
-  <ul id="breadcrumb-list" class="breadcrumb list-unstyled  wy-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
-    {% assign position = 0 %}
-    {% for crumbitem in breadcrumbs %}
-      {% assign position = position  | plus: 1 %}
+<nav class="breadcrumbs bootstrap hidden-sm-down"
+  {% if (page.url == '/') and (site.breadcrumbs.root.hide) %}{{ 'style="display: none;"' }}{% endif %}>
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
 
-      {% if forloop.first and site.breadcrumbs.root.image %}
-        {% include icon.html class="breadcrumb-item" color=include.color %}
-        {% continue %}
-      {% endif %}
 
-      {% if forloop.last %}
-        <li class="breadcrumb-item" property="itemListElement" typeof="ListItem"><span property="name">{{ crumbitem.title }}</span><meta property="position" content="{{ position }}" /></li>
-        {% continue %}
-      {% endif %}
-
-      <li class="breadcrumb-item" property="itemListElement" typeof="ListItem">
-          <a property="item" typeof="WebPage" href="{{ crumbitem.url | prepend: site.baseurl }}"><span property="name">{{ crumbitem.title }}</span><meta property="position" content="{{ position }}" /></a>
-      </li>
+    {% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
+    <li><a href="/">Home</a></li>
+    {% for crumb in crumbs offset: 1 %}
+    {% if forloop.last %}
+    <li>/</li> {{ page.title }}
+    {% else %}
+    <li>/</li>
+    <li><a
+        href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+    </li>
+    {% endif %}
     {% endfor %}
 
-    </ul>
+  </ul>
 </nav>
 <style type="text/css">
-  .breadcrumb>li+li:before {
-    padding: 0 5px;
-    color: #22b7b1 !important;
-    content: " »\00a0";
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
   }
 </style>

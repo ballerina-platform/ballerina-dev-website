@@ -5,7 +5,7 @@ permalink: /learn/intellij-plugin/using-the-intellij-plugin/
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
-  - /learn/intellij-plugin/using-the-intellij-plugin
+  - /v1-2/learn/intellij-plugin/using-the-intellij-plugin
   - /v1-2/learn/intellij-plugin/using-the-intellij-plugin/
 ---
 

@@ -1,0 +1,101 @@
+
+- title: Setting up Ballerina
+  url: '#'
+  sublinks:
+    - title: Installing Ballerina
+      url: /learn/installing-ballerina/
+      active: installing-ballerina
+    - title: Setting up the IDEs
+      url: /learn/setting-up-ides
+      active: setting-up-ides
+
+- title: Quick Tour
+  url: /learn/quick-tour 
+  active: quick-tour
+
+- title: Ballerina By Examples
+  url: /learn/by-example 
+  active: by-example
+
+- title: Code organization 
+  url: '#'
+  sublinks:
+    - title: How to Structure Ballerina Code
+      url: /learn/how-to-structure-ballerina-code/
+      active: how-to-structure-ballerina-code
+    - title: Module deployment to Ballerina Central
+      url: /learn/how-to-publish-modules
+      active: how-to-publish-modules
+
+- title: Network integration
+  url: '#'
+  sublinks:
+    - title: Open API
+      url: /learn/how-to-use-openapi-tools/
+      active: how-to-use-openapi-tools
+    - title: GRPC
+      url: /learn/how-to-generate-code-for-protocol-buffers/
+      active: how-to-generate-code-for-protocol-buffers
+
+- title: Cloud development
+  url: '#' 
+  sublinks:
+    - title: How to Deploy and Run Ballerina Programs
+      url: /learn/how-to-eploy-and-run-ballerina-programs/
+      active: how-to-eploy-and-run-ballerina-programs
+
+- title: Observability
+  url: '#' 
+  sublinks:
+    - title: How to Observe Ballerina Code
+      url: /learn/how-to-observe-ballerina-code
+      active: how-to-observe-ballerina-code
+
+- title: Security
+  url: '#' 
+  sublinks:
+    - title: How to Write Secure Ballerina Code
+      url: /learn/how-to-write-secure-ballerina-code
+      active: how-to-write-secure-ballerina-code
+
+- title: Testing
+  url: '#' 
+  sublinks:
+    - title: How to Test Ballerina Code
+      url: /learn/how-to-test-ballerina-code
+      active: how-to-test-ballerina-code
+
+- title: Extending Ballerina
+  url: '#' 
+  sublinks:
+    - title: How To Extend Ballerina
+      url: /learn/how-to-extend-ballerina
+      active: how-to-extend-ballerina
+    - title: Java Interoperability
+      url: /learn/how-to-use-java-interoperability
+      active: how-to-use-java-interoperability
+ 
+- title: Standard Library
+  url: /learn/api-docs/ballerina/
+  active: standard-library
+
+- title: Language specification
+  url: /spec/ 
+  active: language-specification
+
+- title: Style Guide
+  url: /learn/style-guide/ 
+  active: style-guide
+
+- title: CLI Guide
+  url: /learn/cli-commands/ 
+  active: cli-commands
+   
+
+      
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 name: Create PR for new Release-notes/Archive pages
 
 on:
-  pull_request:
+  push:
     branches:
       - master
     paths:

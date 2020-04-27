@@ -1,7 +1,7 @@
 name: Create PR for new Ballerina by examples pages
 
 on:
-  pull_request:
+  push:
     branches:
       - master
     paths:

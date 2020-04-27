@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Run all tests
 permalink: /learn/vscode-plugin/run-all-tests/
+active: run-all-tests
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests
   - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests/

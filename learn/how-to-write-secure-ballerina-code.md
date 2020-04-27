@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Write Secure Ballerina Programs
 permalink: /learn/how-to-write-secure-ballerina-code/
+active: how-to-write-secure-ballerina-code
 redirect_from:
   - /learn/how-to-write-secure-ballerina-code
   - /v1-2/learn/how-to-write-secure-ballerina-code

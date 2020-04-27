@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Graphical View
 permalink: /learn/vscode-plugin/graphical-editor/
+active: graphical-editor
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor/

@@ -12,8 +12,6 @@ redirect_from:
   - /v1-2/learn/
 ---
 
-
-
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
 <h2>Get Started</h2>
    <p>Download, install, set the tools up, and take the Quick Tour to get started with Ballerina.</p>

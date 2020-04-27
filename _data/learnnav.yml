@@ -9,10 +9,10 @@
       url: '#'
       sublinks:
         - title: Setting up VSCode
-          url: /learn/vscode-plugin/
+          url: /learn/tools-ides/vscode-plugin/
           active: vscode-plugin
         - title: Setting up IntelliJ
-          url: /learn/intellij-plugin/
+          url: /learn/tools-ides/intellij-plugin/
           active: intellij-plugin
     - title: Keeping Ballerina Up To Date
       url: /learn/how-to-keep-ballerina-up-to-date

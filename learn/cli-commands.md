@@ -98,12 +98,12 @@ Ballerina Central is how you share Ballerina modules with others in a safe, secu
 
 ## Manage projects
 
-Ballerina projects are the way to organize real world Ballerina development tasks. Learn more about it in <a href="/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
+Ballerina projects are the way to organize real world Ballerina development tasks. 
 
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project.
+<td class="cDescription">Create a Ballerina project. For more information, see <a href="/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
 </td>
 </tr>
 </table>

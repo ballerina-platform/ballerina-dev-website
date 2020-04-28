@@ -18,7 +18,7 @@
     - title: Using the CLI Tools
       url: /learn/cli-commands/ 
       active: cli-commands
-    - title: Keeping Ballerina Up To Date
+    - title: Keeping Ballerina up to date
       url: /learn/how-to-keep-ballerina-up-to-date
       active: how-to-keep-ballerina-up-to-date
     - title: Using the Open API Tools
@@ -31,16 +31,19 @@
 - title: Code organization 
   url: '#'
   sublinks:
-    - title: Structuring Ballerina Code
+    - title: Structuring Ballerina code
       url: /learn/how-to-structure-ballerina-code/
       active: how-to-structure-ballerina-code
-    - title: Documenting Ballerina Code
+    - title: Documenting Ballerina code
       url: /learn/how-to-document-ballerina-code/
       active: how-to-document-ballerina-code
-    - title: Coding Conventions
+    - title: Coding conventions
       url: /learn/style-guide/
       active: style-guide
-    - title: Publishing Modules to Ballerina Central
+    - title: Running Ballerina code
+      url: /learn/how-to-run-ballerina-programs/
+      active: how-to-run-ballerina-programs
+    - title: Publishing modules to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
 
@@ -48,38 +51,38 @@
 - title: Cloud development
   url: '#' 
   sublinks:
-    - title: Deploying Ballerina Programs in the Cloud
-      url: /learn/how-to-deploy-ballerina-programs-in-the-cloud/
-      active: how-to-deploy-ballerina-programs-in-the-cloud/
+    - title: Deploying Ballerina programs in the cloud
+      url: /learn/how-to-deploy-ballerina-programs-in-cloud/
+      active: how-to-deploy-ballerina-programs-in-cloud/
 
 - title: Observability
   url: '#' 
   sublinks:
-    - title: Observing Ballerina Code
+    - title: Observing Ballerina code
       url: /learn/how-to-observe-ballerina-code
       active: how-to-observe-ballerina-code
 
 - title: Security
   url: '#' 
   sublinks:
-    - title: Writing Secure Ballerina Code
+    - title: Writing secure Ballerina code
       url: /learn/how-to-write-secure-ballerina-code
       active: how-to-write-secure-ballerina-code
 
 - title: Testing
   url: '#' 
   sublinks:
-    - title: Testing Ballerina Code
+    - title: Testing Ballerina code
       url: /learn/how-to-test-ballerina-code
       active: how-to-test-ballerina-code
 
 - title: Extending Ballerina
   url: '#' 
   sublinks:
-    - title: Extending with Compiler Extensions 
+    - title: Extending with compiler extensions 
       url: /learn/how-to-extend-ballerina
       active: how-to-extend-ballerina
-    - title: Calling Java Code from Ballerina
+    - title: Calling Java code from Ballerina
       url: /learn/how-to-use-java-interoperability
       active: how-to-use-java-interoperability
  

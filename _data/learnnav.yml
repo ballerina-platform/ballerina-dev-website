@@ -40,7 +40,7 @@
     - title: Coding Conventions
       url: /learn/style-guide/
       active: style-guide
-    - title: Deploying Modules to Ballerina Central
+    - title: Publishing Modules to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
 

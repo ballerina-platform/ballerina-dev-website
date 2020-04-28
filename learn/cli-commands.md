@@ -91,7 +91,7 @@ Ballerina Central is how you share Ballerina modules with others in a safe, secu
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central.
+<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/learn/how-to-publish-modules">How to Publish a Module</a>.
 </td>
 </tr>
 </table>

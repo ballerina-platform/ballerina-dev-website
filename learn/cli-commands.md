@@ -50,7 +50,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project.
+<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/learn/how-to-test-ballerina-code">How to Test Ballerina Code</a>.
 </td>
 </tr>
 <tr>

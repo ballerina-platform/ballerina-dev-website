@@ -17,7 +17,7 @@ redirect_from:
    <p>Download, install, set the tools up, and take the Quick Tour to get started with Ballerina.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Setting up Ballerina</a></li>
+   <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
     <li><a href="/learn/quick-tour" class="cGreenLinkArrow">Quick Tour</a></li>
    </ul>
 

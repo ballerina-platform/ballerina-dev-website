@@ -53,7 +53,7 @@
   sublinks:
     - title: Deploying Ballerina programs in the cloud
       url: /learn/how-to-deploy-ballerina-programs-in-cloud/
-      active: how-to-deploy-ballerina-programs-in-cloud/
+      active: how-to-deploy-ballerina-programs-in-cloud
 
 - title: Observability
   url: '#' 

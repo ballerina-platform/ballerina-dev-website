@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-inner-page
 title: Quick Tour
 permalink: /learn/quick-tour/
 active: quick-tour

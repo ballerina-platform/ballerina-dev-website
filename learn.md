@@ -39,7 +39,7 @@ redirect_from:
    <p>Know more about Ballerina by exploring its features.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/how-to-structure-ballerina-code/" class="cGreenLinkArrow">Ballerina User Guide</a></li>
+   <li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>
    <!--<li><a href="/learn/network-integration/" class="cGreenLinkArrow">Network Integration</a></li>
     <li><a href="/learn/how-to-deploy-and-run-ballerina-programs/" class="cGreenLinkArrow">Cloud Development</a></li>
     <li><a href="/learn/how-to-observe-ballerina-code" class="cGreenLinkArrow">Observability</a></li>

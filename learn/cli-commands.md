@@ -65,7 +65,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/learn/how-to-document-ballerina-code">How to Document Ballerina Code</a>.
 </td>
 </tr>
 <tr>

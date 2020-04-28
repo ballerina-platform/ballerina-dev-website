@@ -11,7 +11,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository.
+      - name: Check out repository
         uses: actions/checkout@v2
       
       - name: Set up Python 3.x
@@ -23,9 +23,8 @@ jobs:
         id: version
         run: |
           npm install
-          wget -O latest_release.json https://raw.githubusercontent.com/ballerina-platform/ballerina-dev-website/master/_data/latest/metadata.json
-          jq .version latest_release.json
-          python3  .github/workflows/publish_script/publish_vscode_plugin.py  
+          jq .version _data/latest/metadata.json
+          python3  .github/scripts/publish_vscode_plugin.py  
              
       - name: Execute the VSCE commands
         uses: lannonbr/vsce-action@master

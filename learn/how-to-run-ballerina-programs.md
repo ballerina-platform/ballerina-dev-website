@@ -9,7 +9,8 @@ redirect_from:
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
 ---
 
-## Running Ballerina Programs and Services
+# How to Run Ballerina Programs and Services
+
 A Ballerina application can have:
 
 1. A [`main()`](/learn/by-example/the-main-function.html) function that runs as a terminating process.

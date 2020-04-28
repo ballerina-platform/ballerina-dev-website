@@ -11,7 +11,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository.
+      - name: Check out repository
         uses: actions/checkout@v2
       
       - name: Set up Python 3.x

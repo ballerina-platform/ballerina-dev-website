@@ -55,7 +55,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program.
+<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program. For more information, see <a href="/learn/how-to-run-ballerina-programs">How to Run Ballerina Programs</a>.
 </td>
 </tr>
 <tr>

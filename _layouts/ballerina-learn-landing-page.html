@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="no-js">
    <head>
@@ -75,13 +73,8 @@
       <div class="row cBallerina-io-Gray-row">
          <div class="container">
             <div class="row">
-               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
-                 {% include left-nav.html %}
-               </div>
-               <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
-                 
-                  
-                  <div class="cBlallerina-io-docs-content-container">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col" style="padding-left:0;">
+                 <div class="cBlallerina-io-docs-content-container">
                      <div class="wy-nav-content">
                         <div class="rst-content">
                            <div role="main">
@@ -96,18 +89,7 @@
             </div>
          </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
+   
       {% include ballerina-footer.html %}
       <script src="/js/theme.js"></script>
 
@@ -121,55 +103,9 @@
 
          });
 
-
-
-         $('.sub-menu ul').hide();
-         $(".sub-menu a").click(function () {
-            $(this).parent(".sub-menu").children("ul").slideToggle("100");
-            $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-            
-         });
-
-
-
-
-         $(document).ready(function () {
-
-
-
-
-            $('li.current-sub').parent().addClass('Open-submenu');
-
-            $('ul.Open-submenu').parent().addClass('OpenUL');
-
-            // $('ul.sub-ul').parent().addClass('OpenUL');
-
-
-            // $(".sub-menu a").click(function () {
-            // $('.cCovidMessage').addClass('cHideCovidMessagePermanent');
-            // $('sub-menu').parent().addClass('OpenUL');
-            // });
-
-
-            $(function() {
-    $(".sub-menu").on("click", function(e) {
-        $(this).toggleClass("OpenULElement").siblings();
-    });
-})
-
-
-
-});
-
-
-
-
-
-
-
-
       </script>
          
+         <script src="/js/ballerina-leftnav.js"></script>
             
             
 

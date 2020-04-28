@@ -4,7 +4,6 @@
       {% include ballerina-head.html %}
       <link rel="stylesheet" href="{{ "/css/ballerina-io-docs.css?200618" | prepend: site.baseurl }}">
       <link rel="stylesheet" href=/css/ballerina-io-learn-v2.css>
-      
    </head>
    <body class="cBallerina-io">
       {% include nav.html %}
@@ -12,7 +11,7 @@
          <div class="container">
             <div class="row">
                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-Home-Middle-col">
-                 {% include left-nav.html %}
+                  {% include left-nav.html %}
                </div>
                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 cBallerina-io-Home-Middle-col">
                   <div class="col-xs-12 col-sm-12" style="padding: 0;">
@@ -45,68 +44,46 @@
       </div>
       {% include ballerina-footer.html %}
       <script src="/js/theme.js"></script>
-
       <script>
          $(document).ready(function () {
             var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
             $('[data-button="iGitStarText"]').replaceWith(gitstar);
-
+         
             var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
             $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
-
+         
          });
-
-
-
+         
          $('.sub-menu ul').hide();
-         $(".sub-menu a").click(function () {
-            $(this).parent(".sub-menu").children("ul").slideToggle("100");
+         $(".sub-menu .cLeftMenuLink").click(function () {
+            $(this).parent(".sub-menu").children("ul").toggleClass("showmenu");
             $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
             
          });
-
-
-
-
+         
          $(document).ready(function () {
-
-
-
-
-            $('li.current-sub').parent().addClass('Open-submenu');
-
-            $('ul.Open-submenu').parent().addClass('OpenUL');
-
+         $('li.current-sub').parent().addClass('Open-submenu');
+         $('ul.Open-submenu').parent().addClass('OpenUL');
+         
             // $('ul.sub-ul').parent().addClass('OpenUL');
-
-
+         
+         
             // $(".sub-menu a").click(function () {
             // $('.cCovidMessage').addClass('cHideCovidMessagePermanent');
             // $('sub-menu').parent().addClass('OpenUL');
             // });
-
-
-            $(function() {
-    $(".sub-menu").on("click", function(e) {
-        $(this).toggleClass("OpenULElement").siblings();
-    });
-})
-
-
-
-});
-
-
-
-
-
-
-
-
-      </script>
          
+         $(function() {
+         $(".sub-menu").on("click", function(e) {
+         $(this).toggleClass("OpenULElement").siblings();
+         });
+         })
+         
+         
+         
+         });
   
-
+         </script>
    </body>
 </html>
 

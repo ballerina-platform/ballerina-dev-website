@@ -15,16 +15,16 @@
 - title: Ballerina CLI Tools
   url: '#' 
   sublinks:
-    - title: CLI Guide
+    - title: Using the CLI Tools
       url: /learn/cli-commands/ 
       active: cli-commands
     - title: Keeping Ballerina Up To Date
       url: /learn/how-to-keep-ballerina-up-to-date
       active: how-to-keep-ballerina-up-to-date
-    - title: Open API
+    - title: Using the Open API Tools
       url: /learn/how-to-use-openapi-tools/
       active: how-to-use-openapi-tools
-    - title: GRPC
+    - title: Generating Ballerina code for the Protocol Buffer definition
       url: /learn/how-to-generate-code-for-protocol-buffers/
       active: how-to-generate-code-for-protocol-buffers
 
@@ -48,7 +48,7 @@
 - title: Cloud development
   url: '#' 
   sublinks:
-    - title: Deploying and Running Ballerina Programs
+    - title: Deploying Ballerina Programs in the Cloud
       url: /learn/how-to-deploy-and-run-ballerina-programs/
       active: how-to-deploy-and-run-ballerina-programs
 
@@ -76,10 +76,10 @@
 - title: Extending Ballerina
   url: '#' 
   sublinks:
-    - title: How To Extend Ballerina
+    - title: Extending with Compiler Extensions 
       url: /learn/how-to-extend-ballerina
       active: how-to-extend-ballerina
-    - title: Java Interoperability
+    - title: Calling Java Code from Ballerina
       url: /learn/how-to-use-java-interoperability
       active: how-to-use-java-interoperability
  

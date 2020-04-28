@@ -18,7 +18,7 @@ These deployment artifacts can be a form of simple files or complex types, like 
 
 -   [Dockerfiles](https://docs.docker.com/engine/reference/builder/)
 -   [Docker images](https://docs.docker.com/engine/reference/commandline/images/)
--   [Kubernetes](http://kubernetes.io) artifacts
+-   [Kubernetes artifacts](http://kubernetes.io) 
 
 It is possible for third parties and the ecosystem to create their own annotations and builder extensions that generate different kinds of deployment artifacts. You can publish these extensions within Ballerina Central for others to use.
 

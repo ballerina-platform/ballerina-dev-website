@@ -124,6 +124,6 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/how-to-generate-code-for-protocol-buffers">How to generate Ballerina code for Protocol Buffer Definition</a>.</td>
 </tr>
 </table>

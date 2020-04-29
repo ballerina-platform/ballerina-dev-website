@@ -346,4 +346,7 @@ public function main() {
 .nav > li.cVersionItem {
     display: none !important;
 }
+.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+   display:none !important;
+}
 </style>

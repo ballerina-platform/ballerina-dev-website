@@ -44,11 +44,11 @@ redirect_from:
                               <h2 id="services">Statically Typed and Structural</h2>
                               <p>Ballerina is a statically typed language, which means all the variables are checked at compile-time and only compatible values are assigned. Statically typed languages are generally more robust, easier to debug, and aids in creating better language tooling.</p>
                               <p>
-                                 Also, Ballerina’s type system is structural as opposed to nominal. This means that the type compatibility is identified by considering the structure of the value. This is different from languages like Java, C++, and C# that have nominal type systems where it is bound by the name of the actual type.
+                                 Ballerina’s type system is also structural as opposed to nominal. This means that the type compatibility is identified by considering the structure of the value. This is different from languages like Java, C++, and C# that have nominal type systems where it is bound by the name of the actual type.
                               </p>
                               <h3 >Shapes in Ballerina</h3>
                               <p>
-                                 Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a shape. For simple types like int and boolean, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the <a href="https://ballerina.io/learn/by-example/records">record type</a> in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
+                                 Types in Ballerina deal with an abstraction of values that don’t consider storage identity. This abstraction is called a <i>shape</i>. For simple types like int and boolean, there is no difference between a shape and a value because they don’t have a storage identity. To understand the concept of a shape, let’s look at the <a href="https://ballerina.io/learn/by-example/records">record type</a> in Ballerina. Because records have storage identity, a reference to the value is stored in the variable rather than storing the actual value. This is comparable to references in Java or pointers in C++.
                               </p>
                               <p>Here’s an example of a record that stores the state of a door:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type DoorState record {|
@@ -57,13 +57,13 @@ redirect_from:
 |};
 </code></pre>
                               <p>Now let’s create some values of the DoorState record type:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">tDoorState v1 = { open: false, locked: true };
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">DoorState v1 = { open: false, locked: true };
 DoorState v2 = { open: false, locked: true };
 DoorState v3 = { open: false, locked: true };
 </code></pre>
                               <p>The three variables above all represent a single state of the door being closed and locked. Nonetheless, we have created three different values where each variable is stored in a distinct memory reference. If we ignore the storage identity of these variables, we are left with the representation of the data it has, which is { open: false, locked: true }. This is a single shape of the type DoorState.</p>
                               <p>In this way, there are four possible shapes for DoorState as shown in the variables below:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">tDoorState ds1 = { open: true, locked: true };
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">DoorState ds1 = { open: true, locked: true };
 DoorState ds2 = { open: true, locked: false };
 DoorState ds3 = { open: false, locked: true };
 DoorState ds4 = { open: false, locked: false };
@@ -76,7 +76,7 @@ DoorState ds4 = { open: false, locked: false };
                               <p>The boolean type’s shapes can be defined in set notation as Sboolean = { true, false }. This can be visualized as seen in Figure 2 below. </p>
                               <p>Figure 3: Shapes sets of types boolean and boolean_false</p>
                               <p>The new type boolean_false can be defined in Ballerina code in the following manner: </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">ttype boolean_false false;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type boolean_false false;
 </code></pre>
                               <p>Here, we are using the value false in defining the new type boolean_false. In a more practical scenario, we can provide multiple values as a union when defining new types using the syntax T1|T2. A type created with a single value is called a singleton type. This new type can be used in the code in the following way. </p>
                               <pre class="highlight"><code class="cBasicCode hljs">boolean_false bv1 = false;
@@ -89,7 +89,7 @@ bv2 = bv1;
                               <p>
                                  The type definition of EmergencyDoorState type is shown below:
                               </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">ttype EmergencyDoorState record {|
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type EmergencyDoorState record {|
     boolean open;
     boolean_false locked = false;
 |};
@@ -97,13 +97,13 @@ bv2 = bv1;
                               <p>In the above type, we have modified the field locked to be of type boolean_false, which allows its only value to be false. In this type definition, default values in Ballerina records have been used, wherein the absence of an explicit value provided by the user, the default value mentioned here will be used.</p>
                               <p>In this manner, the type EmergencyDoorState can only have the shapes { open: true, locked: false } and { open: false, locked: false }. These two elements make it a subset of the DoorState shapes set, thus EmergencyDoorState is a subtype of DoorState. </p>
                               <p>The following code snippet shows a sample usage of the EmergencyDoorState type: </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">tEmergencyDoorState eds1 = { open: true };
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">EmergencyDoorState eds1 = { open: true };
 DoorState eds2 = eds1;
 io:println("Door - Open: ", eds2.open, " Locked: ", eds2.locked);
 </code></pre>
                               <h3>Benefits of a Structural Type System</h3>
                               <p>A structural type system proves beneficial when you have multiple systems interacting with each other since data exchange and type compatibilities can be resolved easier. Let’s dive into a Ballerina 
-                                 <a href="https://ballerina.io/v1-2/learn/by-example/query-expression.html?utm_source=hackernoon&utm_medium=article&utm_campaign=network_aware_type_system_article_hackernoon_mar20">integrated query</a> example, which shows this behavior.
+                                 <a href="https://ballerina.io/learn/by-example/query-expression.html">integrated query</a> example, which shows this behavior.
                               </p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type Result record {|
     string name;
@@ -151,7 +151,7 @@ Result[] results = from var person in persons
                               </p>
                               <h3 >Get Started</h3>
                               <p>The code snippet below shows a call to a simple HTTP GET request endpoint:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">ttype Ethnicity "Asian"|"White"|"African American"|"Native American/Alaskan Native"|"Pacific Islander"|"Native Hawaiian";
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type Ethnicity "Asian"|"White"|"African American"|"Native American/Alaskan Native"|"Pacific Islander"|"Native Hawaiian";
  
 type Person record {
     string name;
@@ -174,7 +174,7 @@ type Person record {
 </code></pre>
                               <p>The Student type defined above has an extra field college of type string compared to the Person type. All the possible shapes in the Student type are included in the set of shapes in Person as well. This is possible because the Person type is an open record. If we make the Person type a closed record, Student will no longer be a subtype of Person.</p>
                               <p>Sample usage of the above types is shown below:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">tpublic function main() {
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">public function main() {
    Student s1 = { name: "Tom", birthYear: 1990, married: false,
                   college: "Yale" };
    Student s2 = { name: "Anne", birthYear: 1988, married: true,
@@ -308,5 +308,3 @@ $ ballerina run sample.bal
       </div>
    </div>
 </div>
-
-

@@ -210,7 +210,7 @@ name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
 </code></pre>
                               <h3>Network Communication with Data Binding</h3>
                               <p>
-                                 The type system features for records in Ballerina can be used when implementing data binding operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
+                                 The type system features for records in Ballerina can be used when implementing <a href="https://ballerina.io/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
                               </p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
 http:Client asianRecordsDB = new("http://example.com/");

@@ -15,7 +15,6 @@ jobs:
      runs-on: ${{ matrix.os }}
      
      env:
-         working-directory: ./tool-plugins/intellij
          publish_token: ${{ secrets.IDEA_TOKEN }}
 
      steps:
@@ -30,14 +29,15 @@ jobs:
          run: |
               version="`jq -r '.version' _data/latest/metadata.json`"
               BAL_VERSION="v${version}"
+              echo "::set-env name=ballerina_version::$BAL_VERSION"
 
        - uses: actions/checkout@v2
          with:
            repository: ballerina-platform/ballerina-lang
-           ref: $BAL_VERSION
+           ref: ${{ env.ballerina_version }}
            
        - name: Build and publish plugin
-         working-directory: ${{env.working-directory}}
          run: |
+              cd tools-plugin/intellij
               ./gradlew buildPlugin 
               ./gradlew publishPlugin -PintellijPublishToken=${{ env.publish_token }}    

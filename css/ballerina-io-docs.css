@@ -83,6 +83,10 @@
     color: #20b6b0 !important;
 }
 
+.wy-breadcrumbs li a:hover , .cBlallerina-io-docs-content-container a:hover {
+    color: #464646 !important;
+}
+
 nav.stickynav,
 .affix {
     position: static;

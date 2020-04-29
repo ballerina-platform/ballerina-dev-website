@@ -67,8 +67,13 @@ http:Request request) {
 }
 </code></pre>
                               <p>Adding the <code class="highlighter-rouge cBasicCode">@docker:Config {}</code> annotation to a service generates the Dockerfile and a Docker image and adding the <code class="highlighter-rouge cBasicCode">@docker:Expose {}</code> annotation to the <code class="highlighter-rouge cBasicCode">listener</code> object exposes the endpoint port by allowing incoming traffic to the container.</p>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) </a></p>
-                           </div>
+
+<ul class="cInlinelinklist">
+                                 <li>
+                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/docker-deployment.html">Docker Deployment Ballerina By Example (BBE) </a>
+                                 </li>
+                                 </ul>
+</div>
                         </div>
                      </div>
                   </div>
@@ -117,10 +122,18 @@ http:Request request) {
 }
 </code></pre>
                               <p>Adding the <code class="highlighter-rouge cBasicCode">@kubernetes:Deployment{}</code> annotation to the Ballerina service will generate the Kubernetes Deployment YAML that is required to deploy our hello application into Kubernetes. Adding the <code class="highlighter-rouge cBasicCode">@kubernetes:Service{}</code> annotation will generate the Kubernetes Service YAML. In this scenario, we have set <code class="highlighter-rouge cBasicCode">serviceType</code> as <code class="highlighter-rouge cBasicCode">NodePort</code> to access the hello service via the nodeIP:Port.</p>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a></p>
-                              <p>If you are an OpenShift user follow the example below to deploy your application.</p>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a></p>
-                           </div>
+                    <ul class="cInlinelinklist">
+                                 <li>
+                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/kubernetes-deployment.html">Kubernetes Deployment BBE</a>
+                                 </li>
+                                 </ul>
+                            <p>If you are an OpenShift user follow the example below to deploy your application.</p>
+                            <ul class="cInlinelinklist">
+                                 <li>
+                                 <a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/openshift-deployment.html">OpenShift Deployment BBE</a>
+                                 </li>
+                                 </ul>
+                          </div>
                         </div>
                      </div>
                   </div>
@@ -154,7 +167,13 @@ http:Request request) {
 listener http:Listener helloWorldEP = new(9090);
 
 </code></pre>
-                              <p><a class="cBallerinaLearnButtons" href="https://github.com/ballerinax/kubernetes/blob/master/samples/sample16">Istio Gateway and Virtual Service Generation </a></p>
+                              <p>
+                                <ul class="cInlinelinklist">
+                                 <li>
+                                 <a class="cGreenLinkArrow" href="https://github.com/ballerinax/kubernetes/blob/master/samples/sample16">Istio Gateway and Virtual Service Generation </a>
+                                 </li>
+                                 </ul>
+                              </p>
                            </div>
                         </div>
                      </div>
@@ -200,8 +219,15 @@ http:Request request) {
   }
 }
 </code></pre>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/learn/by-example/knative-deployment.html">Knative Deployment BBE </a></p>
-                           </div>
+                           
+                           
+
+ <ul class="cInlinelinklist">
+                                 <li>
+                                 <a class="cGreenLinkArrow"  href="https://ballerina.io/learn/by-example/knative-deployment.html">Knative Deployment BBE </a>
+                                 </li>
+                                 </ul>
+</div>
                         </div>
                      </div>
                   </div>
@@ -223,7 +249,9 @@ http:Request request) {
                            <div class="section">
                               <h2 id="async-network-protocol">From Code to AWS Lambda</h2>
                               <p><a href="https://aws.amazon.com/lambda/">AWS Lambda</a> is an event-driven, serverless computing platform. Ballerina functions can be deployed in AWS Lambda by annotating a Ballerina function with <code class="highlighter-rouge cBasicCode">@awslambda:Function</code>, which should have the function signature <code class="highlighter-rouge cBasicCode">function (awslambda:Context, json) returns json|error</code>.</p>
-                              <p><a class="cBallerinaLearnButtons" href="https://ballerina.io/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE </a></p>
+<ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/awslambda-deployment.html">AWS Lambda Deployment BBE </a></li>
+                              </ul>
                            </div>
                         </div>
                      </div>
@@ -247,8 +275,8 @@ http:Request request) {
                               <h2 id="cicd-with-github-actions">CI/CD with GitHub Actions</h2>
                               <p>In a microservice architecture, continuous integration and continuous delivery (CI/CD) is critical in creating an agile environment for incorporating incremental changes to your system. There are different technologies that provide this CI / CD functionality and very recently GitHub has introduced <a href="https://github.com/features/actions">GitHub Actions</a>, which is now available for general usage. GitHub Actions provides a convenient mechanism for implementing CI/CD pipelines using their workflows concept, right from our GitHub repositories.</p>
                               <p>With <a href="https://github.com/marketplace/actions/ballerina-action">Ballerina GitHub Actions</a> we can create a Ballerina development environment with built-in CI/CD. The following article has a comprehensive guideline:</p>
-                              <ul>
-                                 <li><a class="cBallerinaLearnButtons" href="https://dzone.com/articles/effective-microservices-cicd-with-github-actions-a">Effective Microservices CI/CD With GitHub Actions and Ballerina</a></li>
+                              <ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="https://dzone.com/articles/effective-microservices-cicd-with-github-actions-a">Effective Microservices CI/CD With GitHub Actions and Ballerina</a></li>
                               </ul>
                            </div>
                         </div>

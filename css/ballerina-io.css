@@ -49,6 +49,11 @@ a {
 
 a:hover {
     text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.wy-breadcrumbs li a:hover {
+    color: #464646 !important;
 }
 
 .row.cBallerina-io {

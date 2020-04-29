@@ -169,3 +169,9 @@ public function execute(http:Client lkSvc, http:Client rpSvc) {
       </div>
    </div>
 </div>
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

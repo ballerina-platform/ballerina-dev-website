@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: The IntelliJ IDEA Ballerina Plugin
 permalink: /learn/intellij-plugin/
+active: intellij-plugin
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/
@@ -9,6 +10,7 @@ redirect_from:
   - /learn/tools-ides/intellij-plugin
   - /learn/intellij-plugin
   - /v1-2/learn/intellij-plugin
+  - /v1-2/learn/intellij-plugin/
 ---
 
 # The IntelliJ IDEA Ballerina Plugin

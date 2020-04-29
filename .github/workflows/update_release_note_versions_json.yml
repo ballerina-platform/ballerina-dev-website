@@ -1,4 +1,4 @@
-name: Update release notes json of ballerina.io
+name: Create PR for new Release-notes/Archive pages
 
 on:
   push:
@@ -8,11 +8,11 @@ on:
       - '_data/latest/**'
 
 jobs:
-  Update:
+  update-rn-archive-pages:
 
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
     steps:
     - name: Check out repository
       uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
     - name: Generate the new release-notes-json file
-      run: python3 ballerina-release/publish_scripts/publish_json.py _data/release_notes_versions.json _data/metadata.json
+      run: python3 ballerina-release/publish_scripts/publish_json.py _data/release_notes_versions.json _data/latest/metadata.json
 
     - name: Copy newly generated release-notes-json file
       run: cp ballerina-release/publish_scripts/target/output/release_notes_versions.json _data/release_notes_versions.json
@@ -48,6 +48,6 @@ jobs:
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-        bin/hub pull-request -m '[Automated] Update Ballerina by examples(BBEs) for the new release'
+        bin/hub pull-request -m '[Automated] Update Release-notes/Archive pages for the new release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

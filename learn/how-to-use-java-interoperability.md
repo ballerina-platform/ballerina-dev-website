@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: How to Use Java Interoperability
 permalink: /learn/how-to-use-java-interoperability/
+active: how-to-use-java-interoperability
 redirect_from:
   - /learn/how-to-use-java-interoperability
   - /v1-2/learn/how-to-use-java-interoperability
@@ -16,7 +17,7 @@ Ballerina offers a straightforward way to call the existing Java code from Balle
 ### Ballerina bindings to Java code
 Your task is to write Ballerina code (Ballerina bindings) that lets you call the corresponding Java API as illustrated in the below diagram. 
 
-<img src="/v1-2/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350">
+<img src="/learn/images/interoperability-diagram.png" alt="Ballerina bindings to Java code" width="300" height="350">
 
 This guide teaches you how to write those bindings manually as well as how to generate those bindings automatically but first, let's look at why you want to call Java from Ballerina. 
 

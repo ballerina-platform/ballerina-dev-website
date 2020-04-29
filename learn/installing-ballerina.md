@@ -122,7 +122,7 @@ To get help when you work with Ballerina, see [Community](/community).
 
 ## What's next
 
-Once you have successfully installed Ballerina, click the below links to set up the Ballerina extensions in your IDE.
+Once you have successfully installed Ballerina, click the below links to set up your IDE.
 
 - [Setting up VS Code](learn/vscode-plugin/)
 - [Setting up IntelliJ](learn/intellij-plugin/)

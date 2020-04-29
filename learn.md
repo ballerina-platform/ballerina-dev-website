@@ -13,8 +13,8 @@ redirect_from:
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Gear yourself up</h2>
-   <p>Download, install, set the tools up, and take the Quick Tour to get started with Ballerina.</p>
+<h2>Gear Yourself Up</h2>
+   <p>Download Ballerina, set the tools up, and take the Quick Tour.</p>
 
    <ul class="cLearnLandingLinks">
    <li><a href="/learn/installing-ballerina/" class="cGreenLinkArrow">Setting up Ballerina</a></li>
@@ -24,8 +24,8 @@ redirect_from:
 </div>
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Grab the basics</h2>
-    <p>Get familiar with Ballerina by learning the basics, trying the Ballerina By Examples, and using the Playground.</p>
+<h2>Take Ballerina for a Spin</h2>
+    <p>Try out the Ballerina By Examples and use the Playground.</p>
 
    <ul class="cLearnLandingLinks">
    <li><a href="/learn/by-example" class="cGreenLinkArrow">Ballerina By Examples</a></li>
@@ -35,7 +35,7 @@ redirect_from:
 </div>
 
 <div class="col-sm-6 col-md-6  cLearnPageContentCol">
-<h2>Get more familiar</h2>
+<h2>Sharpen Your Skills</h2>
    <p>Know more about Ballerina by exploring its features.</p>
 
    <ul class="cLearnLandingLinks">
@@ -52,8 +52,8 @@ redirect_from:
 </div>
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
-<h2>Know it inside out</h2>
-   <p>Dive deep into mastering Ballerina by referring to the reference materials.</p>
+<h2>Know it Inside Out</h2>
+   <p>Master Ballerina by reading through the reference materials.</p>
 
    <ul class="cLearnLandingLinks">
    <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library</a></li>

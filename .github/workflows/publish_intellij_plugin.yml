@@ -9,10 +9,7 @@ on:
     
 jobs:
   trigger_workflow:
-     strategy:
-       matrix:
-         os: [ubuntu-latest]
-     runs-on: ${{ matrix.os }}
+     runs-on: ubuntu-latest
           
      steps:
        - uses: actions/setup-java@v1

@@ -13,10 +13,7 @@ jobs:
        matrix:
          os: [ubuntu-latest]
      runs-on: ${{ matrix.os }}
-     
-     env:
-         publish_token: ${{ secrets.IDEA_TOKEN }}
-
+          
      steps:
        - uses: actions/setup-java@v1
          with:
@@ -40,4 +37,4 @@ jobs:
          run: |
               cd tools-plugin/intellij
               ./gradlew buildPlugin 
-              ./gradlew publishPlugin -PintellijPublishToken=${{ env.publish_token }}    
+              ./gradlew publishPlugin -PintellijPublishToken=${{ secrets.IDEA_TOKEN }}   

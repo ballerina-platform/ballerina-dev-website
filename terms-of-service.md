@@ -168,3 +168,9 @@ YOU AGREE TO HOLD HARMLESS AND INDEMNIFY WSO2 AND ITS SUBSIDIARIES, AFFILIATES, 
 ## General
 
 These Terms will be governed by and construed in accordance with the laws of the State of California, without giving effect to its conflict of laws provisions. Any claims, legal proceeding or litigation arising in connection with the service will be brought solely in Santa Clara County, California, and you consent to the jurisdiction of such courts. The failure of WSO2 to exercise or enforce any right or provision of these Terms not constitute a waiver of such right or provision. If any provision of the Terms is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties’ intentions as reflected in the provision, and the other provisions of these Terms remain in full force and effect. These Terms constitute the entire agreement between you and WSO2 and govern your use of the Sites and Services superseding any prior agreements between you and WSO2 with respect to the Sites and Services.
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

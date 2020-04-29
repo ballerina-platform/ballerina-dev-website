@@ -71,12 +71,12 @@ Hello, World!
 </code></pre>
                               <p>Ballerina services come with built-in concurrency. Every request to a resource method is handled in a separate strand (Ballerina concurrent unit), which gives implicit concurrent behavior to a service.</p>
                               <p>Some protocols supported out-of-the-box include:</p>
-                              <ul>
-                                 <li><a href="https://ballerina.io/learn/by-example/https-listener.html">HTTPS</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-1.1-to-2.0-protocol-switch.html">HTTP 2.0</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/nats-basic-client.html">NATS</a></li>
+                              <ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/https-listener.html">HTTPS</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html">WebSocket Upgrade</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-1.1-to-2.0-protocol-switch.html">HTTP 2.0</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/grpc-unary-blocking.html">gRPC</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/nats-basic-client.html">NATS</a></li>
                               </ul>
                            </div>
                         </div>
@@ -222,12 +222,12 @@ public function main() {
                               <p><i>The network is unreliable</i>. That’s why network programs need to be written in a way that handles failures. In some cases, an automatic retry will help recover from failures while in others failover techniques will help deliver uninterrupted service. Techniques like circuit breakers also help to prevent catastrophic cascading failure across multiple programs.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>Ballerina helps developers write resilient, robust programs with out-of-the-box support for techniques such as:</p>
-                              <ul>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-load-balancer.html">Load Balancing</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-failover.html">Failover</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-retry.html">Retry</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/http-timeout.html">Timeout</a></li>
+                              <ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-circuit-breaker.html">Circuit Breaker</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-load-balancer.html">Load Balancing</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-failover.html">Failover</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-retry.html">Retry</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/http-timeout.html">Timeout</a></li>
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows how you can easily configure a circuit breaker to handle network-related errors in the Ballerina HTTP client object.</p>
@@ -268,13 +268,13 @@ http:Client backendClientEP = new("http://localhost:8080", {
                            <div class="section">
                               <h2 id="async-network-protocol">Error Handling</h2>
                               <p>Due to the inherent unreliability of networks, errors are an expected part of network programming. That’s why in Ballerina errors are explicitly checked rather than thrown as exceptions. It’s impossible to ignore errors by design because of Ballerina’s comprehensive error handling capabilities:</p>
-                              <ul>
-                                 <li><a href="https://ballerina.io/learn/by-example/error-handling.html">Error Handling</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/check.html">Check</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/panic.html">Panic</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/checkpanic.html">Check Panic</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/trap.html">Trap</a></li>
-                                 <li><a href="https://ballerina.io/learn/by-example/user-defined-error.html">User-defined Error Types</a></li>
+                              <ul class="cInlinelinklist">
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/error-handling.html">Error Handling</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/check.html">Check</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/panic.html">Panic</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/checkpanic.html">Check Panic</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/trap.html">Trap</a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/by-example/user-defined-error.html">User-defined Error Types</a></li>
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
@@ -357,7 +357,7 @@ twitter:Status|error status = twitterClient->tweet("Hello World!");
                               <p>Ballerina becomes fully observable by exposing itself via these three methods to various external systems. This helps with monitoring metrics such as request count and response time statistics, analyzing logs, and performing distributed tracing. For more information, follow this guide:</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
-                              <ul>
+                              <ul class="cInlinelinklist">
                                  <li><a href="https://ballerina.io/learn/how-to-observe-ballerina-code">How to Observe Ballerina Services</a></li>
                               </ul>
                            </div>

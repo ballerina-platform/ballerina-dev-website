@@ -10,6 +10,9 @@ redirect_from:
   - /learn
   - /v1-2/learn
   - /v1-2/learn/
+  - /learn/faqs
+  - /v1-2/learn/faqs
+  - /v1-2/learn/faqs/
 ---
 
 <div class="col-sm-6 col-md-6 cLearnPageContentCol">
@@ -36,7 +39,7 @@ redirect_from:
 
 <div class="col-sm-6 col-md-6  cLearnPageContentCol">
 <h2>Sharpen Your Skills</h2>
-   <p>Know more about Ballerina by exploring its features.</p>
+   <p>Learn more about Ballerina by exploring its features.</p>
 
    <ul class="cLearnLandingLinks">
    <!--<li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>-->
@@ -56,7 +59,7 @@ redirect_from:
    <p>Master Ballerina by reading through the reference materials.</p>
 
    <ul class="cLearnLandingLinks">
-   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library</a></li>
+   <li><a href="/learn/api-docs/ballerina/" class="cGreenLinkArrow">Standard Library (API Documentation)</a></li>
    <li><a href="/spec/" class="cGreenLinkArrow">Language Specification</a></li>
     <!--<li><a href="/learn/style-guide/" class="cGreenLinkArrow">Style Guide</a></li>
     <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">CLI Guide</a></li>-->

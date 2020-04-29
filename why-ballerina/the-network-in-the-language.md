@@ -370,3 +370,9 @@ twitter:Status|error status = twitterClient->tweet("Hello World!");
       </div>
    </div>
 </div>
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

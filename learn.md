@@ -11,6 +11,7 @@ redirect_from:
   - /v1-2/learn
   - /v1-2/learn/
   - /learn/faqs
+  - /learn/faqs/
   - /v1-2/learn/faqs
   - /v1-2/learn/faqs/
 ---

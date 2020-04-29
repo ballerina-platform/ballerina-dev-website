@@ -341,3 +341,9 @@ public function main() {
       </div>
    </div>
 </div>
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

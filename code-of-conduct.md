@@ -111,3 +111,9 @@ Project/Community leaders will follow the below Community Impact Guidelines in d
 ## Attribution
 
 This code of conduct is adapted from the [Contributor Covenant, version 2.0](https://www.contributor-covenant.org/version/2/0/code_of_conduct).
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

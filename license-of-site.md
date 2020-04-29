@@ -48,3 +48,9 @@ In the creation of this website, we used the following Creative Commons Attribut
 
 ## Contact
 If you have any comments regarding Ballerina.io license policies, please send feedback to [legal@wso2.com](mailto:legal@wso2.com).
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

@@ -311,4 +311,8 @@ redirect_from:
 .navbar-nav > li#Eventsli a  {
   color: #20b6b0 !important;
 }
+
+.nav > li.cVersionItem {
+    display: none !important;
+}
 </style>

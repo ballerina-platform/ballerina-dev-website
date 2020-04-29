@@ -310,3 +310,9 @@ $ ballerina run sample.bal
       </div>
    </div>
 </div>
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

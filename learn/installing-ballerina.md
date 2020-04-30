@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Installing Ballerina
 permalink: /learn/installing-ballerina/
+active: installing-ballerina
 redirect_from:
   - /v1-2/learn/getting-started
   - /learn/getting-started
@@ -121,4 +122,7 @@ To get help when you work with Ballerina, see [Community](/community).
 
 ## What's next
 
-Once you have successfully installed Ballerina, try out the [Quick Tour](/learn/quick-tour) and take Ballerina for its first spin.
+Once you have successfully installed Ballerina, click the below links to set up your IDE.
+
+- [Setting up VS Code](/learn/vscode-plugin/)
+- [Setting up IntelliJ](/learn/intellij-plugin/)

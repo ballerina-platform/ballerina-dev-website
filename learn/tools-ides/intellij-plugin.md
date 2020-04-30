@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: The IntelliJ IDEA Ballerina Plugin
 permalink: /learn/intellij-plugin/
+active: intellij-plugin
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/
@@ -9,6 +10,7 @@ redirect_from:
   - /learn/tools-ides/intellij-plugin
   - /learn/intellij-plugin
   - /v1-2/learn/intellij-plugin
+  - /v1-2/learn/intellij-plugin/
 ---
 
 # The IntelliJ IDEA Ballerina Plugin
@@ -29,9 +31,10 @@ You need [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) installed.
 **Plugin Version**|**Platform Version Compatibility**
 :-----:|:-----:
 0.8.0 - 0.8.2|IntelliJ IDEA 2016.3 - 2016.4
-0.8.3 - 0.981.0|IntelliJ IDEA 2016.3+
-0.982.0 - 0.991.0|IntelliJ IDEA 2017.3+
-0.991.1+ | IntelliJ IDEA 2018.3+
+0.8.3 - 0.981.0|IntelliJ IDEA 2016.3 - 2017.2
+0.982.0 - 0.991.0|IntelliJ IDEA 2017.3 - 2018.2
+0.991.1 - 1.2.1 | IntelliJ IDEA 2018.3 - 2019.3
+1.2.2+ | IntelliJ IDEA 2018.3+
 
 ## Installing the plugin
 

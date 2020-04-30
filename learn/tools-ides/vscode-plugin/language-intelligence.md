@@ -1,12 +1,14 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Language intelligence
 permalink: /learn/vscode-plugin/language-intelligence/
+active: language-intelligence
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
   - /learn/tools-ides/vscode-plugin/language-intelligence
   - /v1-2/learn/vscode-plugin/language-intelligence/
+  - /v1-2/learn/vscode-plugin/language-intelligence
 ---
 
 # Language intelligence

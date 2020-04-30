@@ -49,6 +49,11 @@ a {
 
 a:hover {
     text-decoration: none !important;
+    color: #464646 !important;
+}
+
+.wy-breadcrumbs li a:hover {
+    color: #464646 !important;
 }
 
 .row.cBallerina-io {
@@ -135,16 +140,17 @@ a.cLogo img {
     padding-top: 0;
     line-height: 12px;
     padding: 0px 16px;
-    color: #57595d;
+    color: #20b6b0;
     font-size: 16px;
+    font-weight: 600;
 }
 
 .navbar-nav>li>a:hover {
-    color: #20b6b0 !important;
+    color: #57595d !important;
 }
 
 .navbar-nav>li.cActive>a {
-    color: #20b6b0 !important;
+    color: #57595d !important;
 }
 
 .nav.navbar-nav.cTopNav li ul {
@@ -1032,7 +1038,7 @@ pre code {
     text-transform: none;
     /* font-family: "pragmatica", sans-serif; */
     line-height: 28px;
-    font-weight: 400;
+    font-weight: 600;
     padding: 0;
     margin: 20px 0 15px 0;
     border: none;
@@ -1067,7 +1073,7 @@ pre code {
 }
 
 .cBallerina-io h2 {
-    font-size: 36px;
+    font-size: 30px;
 
     margin-top: 40px;
     

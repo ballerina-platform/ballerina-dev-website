@@ -1,0 +1,131 @@
+nav.cLeftNavContainer {
+    padding-top: 10px;
+    padding-right: 30px;
+    }
+    nav.cLeftNavContainer ul {
+    padding: 0;
+    }
+    nav.cLeftNavContainer ul li {
+    padding: 0;
+    border-bottom: 1px solid #e6e6e6;
+    }
+    nav.cLeftNavContainer ul li:last-child {
+    border: none;
+    }
+    nav.cLeftNavContainer ul li.current a , nav.cLeftNavContainer ul li.current-sub a {
+    color: #464646;
+    font-weight: 600;
+    }
+    .sub-menu {
+    background-image: url("/img/down-arrow-learn.svg");
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: right 15px;
+    transition: all .5s ease 0s;
+    }
+    /* sub-ul */
+    .sub-ul.showmenu {
+    display: block !important;
+    }
+    .sub-menu.OpenUL , .sub-menu.OpenULElement {
+    padding: 2px 0px 0 0px;
+    background-color: #f7f7f7;
+    transition: all .5s ease 0s;
+    /* border: 1px solid #e6e6e6; */
+    border-top: none;
+    margin-top: -1px;
+    }
+    .sub-menu.OpenULElement {
+    background-image: url("/img/up-arrow-learn.svg");
+    cursor: pointer;
+    }
+    .sub-menu.OpenUL {
+    background-image: none;
+    }
+    .sub-menu.OpenUL .cLeftMenuLink.cTopiAtag {
+    cursor: text !important;
+    }
+    .cLeftMenuLink.cTopiAtag {
+    cursor: pointer;
+    }
+    .sub-menu.OpenUL ul, .sub-menu.OpenULElement ul {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    transition: all .5s ease 0s;
+    }
+    .sub-menu.OpenUL.cTopicURL , .sub-menu.OpenULElement.cTopicURL {
+    color: #464646 !important;
+    /* font-weight: 600; */
+    background-color: #f0f0f0;
+    padding-left: 0px;
+    /* cursor: pointer; */
+    }
+    .sub-menu.OpenUL a.cTopiAtag  , .sub-menu.OpenULElement .cTopiAtag , .sub-menu.OpenULElement .cLeftMenuLink , .sub-menu.OpenUL .cLeftMenuLink {
+    color: #464646 !important;
+    padding-left: 10px;
+    transition: all .5s ease 0s;
+    /* cursor: pointer; */
+    }
+    /* nav.cLeftNavContainer ul li::after {
+    background-color: seagreen;
+    } */
+    nav.cLeftNavContainer ul li a , nav.cLeftNavContainer ul li .cLeftMenuLink {
+    padding: 10px 0;
+    display: inline-block;
+    width: 100%;
+    color: #22b7b1;
+    padding-right: 30px;
+    transition: all .5s ease 0s;
+    }
+    nav.cLeftNavContainer ul li ul li a {
+    padding-right: 0;
+    padding-left: 15px;
+    }
+    /* nav.cLeftNavContainer ul li ul li::before {
+    content: "–";
+    position: absolute;
+    display: inline-block;
+    line-height: 43px;
+    transition: all .5s ease 0s;
+    } */
+    ul.sub-ul.Open-submenu {
+    display: block !important;
+    transition: all .5s ease 0s;
+    }
+    ul.sub-ul {
+    background-color: #f7f7f7;
+    }
+    /* LANDING PAGE */
+    .cLandingPageintro {
+    padding-top: 0;;
+    }
+    .cBallerina-io .cLearnPageContentCol h2 {
+    margin-top: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    }
+    .cLearnPageContentCol  {
+    min-height: 240px;
+    }
+    ul.cLearnLandingLinks {
+    margin: 20px 0 0 0;
+    padding: 0;;   
+    }
+    ul.cLearnLandingLinks li {
+    list-style: none !important;
+    padding-left: 40px;
+    background-image: url("/img/toc-bg.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin: 0 0 10px 0;
+    margin-left: 0 !important;
+    }
+    ul.cLearnLandingLinks li::marker {
+    margin-left: 0px !important;
+    }
+    ul.cLearnLandingLinks li a {
+    font-weight: 400;
+    }
+    
+    

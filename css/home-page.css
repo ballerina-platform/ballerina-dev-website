@@ -285,6 +285,34 @@ a.cBallerina-io-Home-main-download-button.cCentralButton:hover {
     color: #20b6b0;
 }
 
+
+p a {
+    color: #20b6b0;
+}
+
+ul.cInlinelinklist {
+    padding: 0;
+}
+
+ul.cInlinelinklist li a {
+    color: #20b6b0;
+}
+
+
+ul.cInlinelinklist li {
+	list-style: none !important;
+	padding-left: 40px;
+	background-image: url("/img/toc-bg.svg");
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin: 0 0 10px 0;
+	margin-left: 0 !important;
+	width: 100%;
+	display: block;
+	float: none;
+}
+
+
   @media screen and (max-width: 990px) {
     .cBallerina-io p.cQuotes {
         margin-top: 30px;

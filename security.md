@@ -42,3 +42,9 @@ The below is an overview of the vulnerability handling process.
 3. The fix gets applied to the master branch and a new version of the distribution gets released if required.
 4. The reported user is kept updated on the progress of the process. 
 
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

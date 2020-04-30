@@ -1,0 +1,42 @@
+{% for entry in site.data.learnnav %}
+{% capture fullurl %}{{ site.baseurl }}{{ entry.url }}{% endcapture %}
+{% if fullurl == page.url %}
+{% assign current_page = fullurl %}
+{% break %}
+{% elsif page.url contains fullurl %}
+{% assign current_page = fullurl %}
+{% endif %}
+{% endfor %}
+<!-- Then we build the nav bar. -->
+<nav class="cLeftNavContainer">
+   <ul class="cMainLeftNav">
+      {% for entry in site.data.learnnav %}
+      {% if entry.url == current_page %}
+      {% assign current = ' class="current"' %}
+      {% else %}
+      <!-- We have to declare it 'null' to ensure it doesn't propagate. -->
+      <!-- {% assign current = null %} -->
+      {% endif %}
+      {% assign sublinks = entry.sublinks %}
+      {% if sublinks %}
+      <li class="sub-menu cTopicURL">
+         <div class="cLeftMenuLink cTopiAtag">{{ entry.title }}</div>
+         <ul class="sub-ul">
+            {% if sublink.url == current_page %}
+            <!-- {% assign current = ' class="current"' %} -->
+            {% assign page.active = ' class="current-sub"' %}
+            {% else %}
+            {% endif %}
+            {% for sublink in sublinks %}
+            <!-- <li {{ current-sub }} ><a href="{{ site.baseurl }}{{ sublink.url }}">- {{ sublink.title }}</a></li> -->
+            <li{% if sublink.active == page.active %} class="current-sub"{% endif %}><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
+            {% endfor %}
+         </ul>
+      </li>
+      {% else %}
+      <!-- <li{{ current }}><a href="{{ site.baseurl }}{{ entry.url }}">- {{ entry.title }}</a></li> -->
+      <li{% if entry.active == page.active %} class="current"{% endif %}><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+   </ul>
+</nav>

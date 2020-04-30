@@ -45,7 +45,7 @@ redirect_from:
     <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
-                  <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -268,7 +268,7 @@ import ballerina/ldap;
                                     <div class="highlight"><pre><code class=ballerina>    secureSocket: {
         keyStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
-                  &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
             password: &quot;ballerina&quot;
         }
     }

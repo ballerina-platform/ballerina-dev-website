@@ -4,8 +4,8 @@ title: Kubernetes Deployment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/kubernetes-deployment
 redirect_from:
-  - /v1-2/learn/by-example/kubernetes-deployment
-  - /v1-2/learn/by-example/kubernetes-deployment.html
+  - /v-/learn/by-example/kubernetes-deployment
+  - /v-/learn/by-example/kubernetes-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -88,7 +88,8 @@ Before running the sample, create a directory named <code>security</code> inside
 from where the ballerina build command will be issued.
 Then copy the ballerinaKeystore.p12 and ballerinaTruststore.p12 files
 located in <a href="https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/">https://github.com/ballerina-platform/ballerina-lang/tree/master/examples/resources/</a>
-to the security folder.</p>
+to the security folder.<br/><br/>
+For more information, see <a href="https://ballerina.io/learn/how-to-deploy-and-run-ballerina-programs/">How to Run and Deploy Ballerina Programs</a>.</p>
 </p>
 
                         </td>
@@ -589,7 +590,7 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy the Kubernetes artifacts: 
+                                    <div class="highlight"><pre><code class=shell-session>	Execute the below command to deploy the Kubernetes artifacts:
 	kubectl apply -f ./kubernetes
 </code></pre></div>
 
@@ -602,8 +603,8 @@ Generating executables
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to install the application using Helm: 
-	helm install --name kubernetes-deployment-deployment ./kubernetes/kubernetes-deployment-deployment
+                                    <div class="highlight"><pre><code class=shell-session>	Execute the below command to install the application using Helm:
+	helm install --name kubernetes-deployment-deployment ./kubernetes-deployment-deployment
 </code></pre></div>
 
                                 </td>
@@ -630,7 +631,7 @@ kubernetes  v1.0   6c0a26a62545        2 seconds ago       127MB
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># Apply the Kubernetes artifacts.
+                                    <div class="highlight"><pre><code class=shell-session># Run the generated Docker image
 $ kubectl apply -f ./kubernetes/
 service/helloworldep-svc created
 ingress.extensions/helloworldep-ingress created

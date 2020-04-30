@@ -4,8 +4,8 @@ title: OpenShift Deployment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/openshift-deployment
 redirect_from:
-  - /v1-2/learn/by-example/openshift-deployment
-  - /v1-2/learn/by-example/openshift-deployment.html
+  - /v-/learn/by-example/openshift-deployment
+  - /v-/learn/by-example/openshift-deployment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -55,7 +55,8 @@ redirect_from:
                             <p><p>Ballerina supports generating the OpenShift Route, BuildConfig, and ImageStream artifacts based on annotations.
 Docker image of the Ballerina service is built using the BuildConfig, which then can be used by the generated Kubernetes Deployment.
 A generated OpenShift Route exposes the Kubernetes Service of the Ballerina Service.
-This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; followed by a name.</p>
+This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; followed by a name.<br/><br/>
+For more information, see <a href="https://ballerina.io/learn/how-to-deploy-and-run-ballerina-programs/">How to Run and Deploy Ballerina Programs</a>.</p>
 </p>
 
                         </td>
@@ -70,9 +71,9 @@ This example deploys an HTTP service, which responses &ldquo;Hello&rdquo; follow
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="awslambda-deployment.html">
+                                    <a class="next" href="knative-deployment.html">
                                         <span>NEXT ></span>
-                                        <p>AWS Lambda Deployment</p>
+                                        <p>Knative Deployment</p>
                                     </a>
                                 </div>
                                 
@@ -443,7 +444,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy the OpenShift artifacts:
+                                    <div class="highlight"><pre><code class=shell-session>	Execute the below command to deploy the OpenShift artifacts:
 	oc apply -f ./kubernetes/openshift
 </code></pre></div>
 
@@ -456,7 +457,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to start a build:
+                                    <div class="highlight"><pre><code class=shell-session>	Execute the below command to start a build:
 	oc start-build bc/openshift-openshift-bc-openshift-bc --from-dir=. --follow
 </code></pre></div>
 
@@ -469,7 +470,7 @@ Compiling source
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>	Run the following command to deploy the Kubernetes artifacts:
+                                    <div class="highlight"><pre><code class=shell-session>	Execute the below command to deploy the Kubernetes artifacts:
 	kubectl apply -f ./kubernetes
 </code></pre></div>
 

@@ -4,8 +4,8 @@ title: JWT Issue/Validate
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/jwt-issue-validate
 redirect_from:
-  - /v1-2/learn/by-example/jwt-issue-validate
-  - /v1-2/learn/by-example/jwt-issue-validate.html
+  - /v-/learn/by-example/jwt-issue-validate
+  - /v-/learn/by-example/jwt-issue-validate.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -50,7 +50,7 @@ redirect_from:
         <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
         <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">clockSkewInSeconds</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-        <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
@@ -326,7 +326,7 @@ import ballerina/time;
         issuer: &quot;wso2&quot;,
         audience: &quot;ballerina&quot;,
         clockSkewInSeconds: 60,
-        trustStoreConfig: {
+        signatureConfig: {
             certificateAlias: &quot;ballerina&quot;,
             trustStore: trustStore
         }

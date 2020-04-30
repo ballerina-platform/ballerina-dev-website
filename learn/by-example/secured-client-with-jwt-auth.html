@@ -4,8 +4,8 @@ title: Secured Client with JWT Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/secured-client-with-jwt-auth
 redirect_from:
-  - /v1-2/learn/by-example/secured-client-with-jwt-auth
-  - /v1-2/learn/by-example/secured-client-with-jwt-auth.html
+  - /v-/learn/by-example/secured-client-with-jwt-auth
+  - /v-/learn/by-example/secured-client-with-jwt-auth.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -56,7 +56,7 @@ redirect_from:
 <span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">inboundJwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
-    <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
@@ -413,7 +413,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider inboundJwtAuthProvider = new ({
     issuer: &quot;ballerina&quot;,
     audience: &quot;ballerina.io&quot;,
-    trustStoreConfig: {
+    signatureConfig: {
         certificateAlias: &quot;ballerina&quot;,
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +

@@ -4,8 +4,8 @@ title: Data I/O
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/data-io
 redirect_from:
-  - /v1-2/learn/by-example/data-io
-  - /v1-2/learn/by-example/data-io.html
+  - /v-/learn/by-example/data-io
+  - /v-/learn/by-example/data-io.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -69,14 +69,14 @@ redirect_from:
     <span class="k">var</span> <span class="nx">closeResult</span> <span class="p">=</span> <span class="nx">dc</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="k">return</span> <span class="nx">person</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">writeRecordToFile</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">writeRecordToFile</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">p</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">wc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="nx">serialize</span><span class="p">(</span><span class="nx">p</span><span class="p">,</span> <span class="nx">wc</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">readRecordFromFile</span><span class="p">(</span><span class="kt">string</span> <span class="nx">path</span><span class="p">)</span> <span class="nx">returns</span> <span class="nd">@tainted Person|error {</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">rc</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">io</span><span class="p">:</span><span class="nx">openReadableFile</span><span class="p">(</span><span class="nx">path</span><span class="p">);</span>
     <span class="k">return</span> <span class="nx">deserialize</span><span class="p">(</span><span class="nx">rc</span><span class="p">);</span>
-<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="nx">Person</span> <span class="nx">wPerson</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Ballerina&quot;</span><span class="p">,</span>
         <span class="nx">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
@@ -417,7 +417,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function writeRecordToFile(Person p, string path) returns error? {
+                                    <div class="highlight"><pre><code class=ballerina>function writeRecordToFile(Person p, string path) returns @tainted error? {
     io:WritableByteChannel wc = check io:openWritableFile(path);
     serialize(p, wc);
 }
@@ -461,7 +461,7 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
     Person wPerson = {
         name: &quot;Ballerina&quot;,
         age: 21,

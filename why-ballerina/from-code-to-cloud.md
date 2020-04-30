@@ -6,31 +6,6 @@ redirct_from:
   - /why/from-code-to-cloud/
   - /why/from-code-to-cloud
 ---
-<div class="row cBallerina-io-Gray-row">
-   <div class="container">
-      <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
-            <div class="col-xs-12 col-sm-12" style="padding: 0;">
-               <div class="cBlallerina-io-docs-content-container">
-                  <div class="wy-nav-content">
-                     <div class="rst-content">
-                        <div role="main">
-                           <div class="section">
-                              <h1 id="the-network-in-the-language">From Code to Cloud</h1>
-                              <p>In the past, developers simply wrote their program, built it and ran it. Today, developers also need to think of the various deployment options such as Docker, Kubernetes, serverless environments and service meshes. But this deployment process is not part of the programming experience for developers. They have to write code in a certain way to work well in a given execution environment, and removing this from the programming problem isn’t good.</p>
-                              <p>
-                                 Ballerina specializes in moving from code to cloud while providing a unique developer experience. Its compiler can be extended to read annotations defined in the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files or serverless functions.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">
@@ -41,6 +16,11 @@ redirct_from:
                      <div class="rst-content">
                         <div role="main">
                            <div class="section">
+                               <h1>From Code to Cloud</h1>
+                              <p>In the past, developers simply wrote their program, built it and ran it. Today, developers also need to think of the various deployment options such as Docker, Kubernetes, serverless environments and service meshes. But this deployment process is not part of the programming experience for developers. They have to write code in a certain way to work well in a given execution environment, and removing this from the programming problem isn’t good.</p>
+                              <p>
+                                 Ballerina specializes in moving from code to cloud while providing a unique developer experience. Its compiler can be extended to read annotations defined in the source code and generate artifacts to deploy your code into different clouds. These artifacts can be Dockerfiles, Docker images, Kubernetes YAML files or serverless functions.
+                              </p>
                               <h2 id="sequence-diagrams-in-ballerina">From Code to Docker</h2>
                               <p>Agility is a key benefit of microservices-based application development and Docker plays a major role. Docker helps to package applications and their dependencies in a binary image that can run in various locations, whether on-premises, in a public cloud, or in a private cloud. To create optimized Docker images, developers need to follow best practices when creating a Dockerfile. This includes choosing a suitable image base, bundling all dependencies, copying the application binary and setting the execution command with proper permissions.</p>
                               <p>Ballerina supports generating Docker images and Dockerfiles based on annotations. The Ballerina compiler can do this out of the application code.</p>

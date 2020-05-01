@@ -34,6 +34,17 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
+                  <tr class="event-expiry" style="display:none" data-expiry="May 07, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 7, 2020</span>
+                      <p class="cEventLocation">Online</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/CloudDC/"><h4>Cloud DC Meetup</h4></a>
+                        <h5>Cloud Native Development with Ballerina</h5>
+                        <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
+                        <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CloudDC/events/270223699/" target="_blank">More Info</a></td> 
+                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="May 28, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 28, 2020</span>
                       <p class="cEventLocation">San Diego, California, USA</p>

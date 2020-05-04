@@ -185,4 +185,4 @@ Star [GitHub repo](https://github.com/ballerina-platform/ballerina-lang) and sho
 
 Now, that you have taken Ballerina around for a quick tour, you can explore Ballerina more.
 
-* Go through [Ballerina by Example](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.
+* Go through the [Ballerina by Examples](/learn/by-example) to learn Ballerina incrementally with commented examples that cover every nuance of the syntax.

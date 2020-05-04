@@ -512,3 +512,11 @@ $(document).ready(function() {
         }
     });
 });
+
+$(document).ready(function() {
+$('#searchBtn').click(function () {
+    // alert("test");
+    let searchText = $('#searchTxt').val();
+    window.location.assign("/search?" + searchText);
+});
+});

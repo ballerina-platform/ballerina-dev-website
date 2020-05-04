@@ -33,7 +33,7 @@ jobs:
     - name: Generate BBEs
       run: |
         cd ballerina-release
-        ./ballerinaByExample/build-bbe.sh ../_data/metadata.json
+        ./ballerinaByExample/build-bbe.sh ../_data/latest/metadata.json
 
     - name: Remove old examples file
       run: git rm -r learn/by-example

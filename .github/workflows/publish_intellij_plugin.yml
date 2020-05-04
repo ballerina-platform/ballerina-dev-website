@@ -1,4 +1,4 @@
-name: Build and Publish Intellij Plugin
+name: Publish Intellij Plugin
 
 on:
   push:
@@ -12,10 +12,10 @@ jobs:
      runs-on: ubuntu-latest
           
      steps:
-       - uses: actions/setup-java@v1
+       - uses: actions/checkout@v2
          with:
-           java-version: 1.8
-           
+           repository: ballerina-platform/ballerina-dev-website
+                  
        - name: Install jq for json manipulation
          run: sudo apt-get install jq
          
@@ -29,6 +29,10 @@ jobs:
          with:
            repository: ballerina-platform/ballerina-lang
            ref: ${{ env.ballerina_version }}
+         
+       - uses: actions/setup-java@v1
+         with:
+           java-version: 1.8  
            
        - name: Build and publish plugin
          run: |

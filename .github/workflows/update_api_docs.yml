@@ -29,7 +29,7 @@ jobs:
         echo "checkout Ballerina lang repo: $BAL_VERSION"
         git --git-dir=ballerina-lang/.git --work-tree=ballerina-lang/ checkout $BAL_VERSION
 
-    -name: Clone ballerina-release repo 
+    - name: Clone ballerina-release repo 
       run: git clone https://github.com/ballerina-platform/ballerina-release
 
     - name: Generate API Docs
@@ -38,7 +38,7 @@ jobs:
         ../../../gradlew build -x check -x :composer-library:npmInstall -x :testerina:report-tools:npmInstall -x :testerina:report-tools:npmBuild -x :composer-library:npmBuild
     
     - name: Add redirects
-       run: |
+      run: |
          VERSION="`jq -r '.version' _data/latest/metadata.json`"
          cd ballerina-release/apiDocRedirectionModifier 
          ./redirection.sh ../ballerina-lang/distribution/zip/jballerina-tools/build/extracted-distributions/jballerina-tools-$VERSION/docs $VERSION /learn/api-docs/ballerina/ target

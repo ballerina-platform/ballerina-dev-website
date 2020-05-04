@@ -29,7 +29,7 @@ jobs:
         echo "checkout Ballerina lang repo: $BAL_VERSION"
         git --git-dir=ballerina-lang/.git --work-tree=ballerina-lang/ checkout $BAL_VERSION
 
-    -name: Clone ballerina-release repo 
+    - name: Clone ballerina-release repo 
       run: git clone https://github.com/ballerina-platform/ballerina-release
 
     - name: Generate API Docs

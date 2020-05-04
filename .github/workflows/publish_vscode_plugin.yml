@@ -1,3 +1,5 @@
+name: Publish VS-Code plugin
+
 on:
   push:
     branches:
@@ -5,8 +7,6 @@ on:
     paths:
       - '_data/latest/**'
                         
-name: Publish Extension with json
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.x'
         
-      - name: Wget required files
+      - name: Run python script
         id: version
         run: |
           npm install

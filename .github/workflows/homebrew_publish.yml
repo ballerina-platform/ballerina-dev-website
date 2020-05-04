@@ -1,5 +1,5 @@
 # Github action to open a PR in Homebrew/homebrew-core when a new release of ballerina is being published
-name: Update Homebrew
+name: Publish Homebrew
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Build and Publish Intellij Plugin
+name: Publish Intellij Plugin
 
 on:
   push:

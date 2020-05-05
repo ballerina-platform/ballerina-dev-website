@@ -3,9 +3,7 @@ name: Sync artifacts from dev to prod
 on:
   push:
     branches:
-      - prod-sync
-    paths:
-      - '_data/latest/**'
+      - master
 
 jobs:
   prod-artifact-sync:

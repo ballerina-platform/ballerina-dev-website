@@ -1,9 +1,11 @@
 name: Sync artifacts from dev to prod
 
 on:
-  pull_request:
+  push:
     branches:
       - master
+    paths:
+      - '_data/latest/**'
 
 jobs:
   prod-artifact-sync:

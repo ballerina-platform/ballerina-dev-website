@@ -83,8 +83,8 @@
       url: /learn/how-to-extend-ballerina
       active: how-to-extend-ballerina
     - title: Calling Java code from Ballerina
-      url: /learn/how-to-use-java-interoperability
-      active: how-to-use-java-interoperability
+      url: /learn/how-to-call-java-code-from-ballerina/
+      active: how-to-call-java-code-from-ballerina
  
 
 

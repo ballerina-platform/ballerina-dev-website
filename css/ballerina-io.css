@@ -1548,6 +1548,13 @@ padding-right: 0;
         font-weight: 300;
     
     }
+
+    #versions {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        width: 80px;
+    }
     .form-control-field {
         float: left;
         /* margin-top: -10px; */

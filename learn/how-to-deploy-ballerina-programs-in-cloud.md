@@ -3,6 +3,12 @@ layout: ballerina-left-nav-pages
 title: How to Deploy Ballerina Programs in the Cloud
 permalink: /learn/how-to-deploy-ballerina-programs-in-cloud/
 active: how-to-deploy-ballerina-programs-in-cloud
+redirect_from:
+  - /learn/how-to-deploy-and-run-ballerina-programs/
+  - /learn/how-to-deploy-and-run-ballerina-programs
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
+  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
+
 ---
 
 # How to Deploy Ballerina Programs and Services in the Cloud

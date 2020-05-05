@@ -511,12 +511,19 @@ $(document).ready(function() {
             $(this).removeAttr("disabled");
         }
     });
+
+    //Lunr Search field
+    $('#searchBtn').click(function () {
+        let searchText = $('#searchTxt').val();
+        window.location.assign("/search?" + searchText);
+    });
+    $( "#searchTxt" ).keypress(function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            let searchText = $('#searchTxt').val();
+            window.location.assign("/search?" + searchText);
+        }
+    });
 });
 
-$(document).ready(function() {
-$('#searchBtn').click(function () {
-    // alert("test");
-    let searchText = $('#searchTxt').val();
-    window.location.assign("/search?" + searchText);
-});
-});
+

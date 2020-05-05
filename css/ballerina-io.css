@@ -1224,6 +1224,11 @@ padding-right: 0;
 padding-right: 0;
 }
 
+
+/* .cSearch-form-inline {
+    margin-top: -10px;
+} */
+
 /*  
  * Loader
  * ---------------------------------------------
@@ -1525,12 +1530,10 @@ padding-right: 0;
 
 /* select */
 
-#versions {
+#versions , .form-control-field {
     float: right;
     
-    /* margin-right: 15px; */
-    
-    /* margin-top: 41px; */
+
     
     border: 1px solid #e6e9ea;
     
@@ -1540,13 +1543,33 @@ padding-right: 0;
     width: 130px;
     
     border-radius: 0;
-    
-    /* font-size: 12px; */
-        /* line-height: 24px;  */
+
         padding-right: 30px;
         font-weight: 300;
     
     }
+
+    #versions {
+        border: none;
+        outline: none;
+        box-shadow: none;
+        width: 80px;
+    }
+    .form-control-field {
+        float: left;
+        /* margin-top: -10px; */
+    }
+
+  .cSearchButton img {
+      width: 20px;
+  }
+  .cSearchButton {
+      margin-left: 10px;
+  }
+
+  .cSearch-form-inline {
+      margin-top: -10px;
+  }
 
 
 .cVersionContainer {
@@ -1614,6 +1637,30 @@ text-shadow: 0 1px 0 rgba(255,255,255,.25);
 .select-css option {
 	font-weight:normal;
 }
+
+@media (max-width: 1000px) {
+.cSearchMenu {
+   
+        position: absolute;
+        bottom: 25px;
+        left: 30px;
+
+        width: 65%;
+
+}
+
+li.cSearchMenu .form-control-field {
+    width: 75%;
+}
+
+.cVlable {
+    color: #fff !important;
+}
+}
+
+
+
+
 
 @media (max-width: 991px) {
     .navbar-header {

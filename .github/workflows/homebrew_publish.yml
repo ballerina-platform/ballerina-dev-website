@@ -28,7 +28,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install PyGithub
           VERSION="`jq -r '.version' _data/latest/metadata.json`"
-          dist_url="https://product-dist.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip"
+          dist_url="https://dist.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip"
           checksum="$(curl -fsSL "$dist_url" | shasum -a 256 -b | awk '{print $1}')"
 
           if [ -z "$checksum" ]; then

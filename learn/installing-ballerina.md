@@ -15,28 +15,25 @@ redirect_from:
 
 # Installing Ballerina
 
-- [Downloading the Ballerina distribution](#downloading-the-ballerina-distribution)
+- [Prerequisites](#prerequisites)
 - [Installing Ballerina via installers](#installing-ballerina-via-installers)
 - [Installing from source](#installing-from-source)
 - [Uninstalling Ballerina](#uninstalling-ballerina)
 - [Getting help](#getting-help)
 - [What's next](#what's-next)
 
-## Downloading the Ballerina distribution
+## Prerequisites
 
-[Download](https://ballerina.io/downloads/) a Ballerina distribution based on your operating system.
-
-> Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
+Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
 - Windows Vista SP2 x64 or later
 - Ubuntu Linux 12.04 x64 - LTS and above
 - OS X 10.8.3 x64 and above
 
-If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
-
 ## Installing Ballerina via installers
 
-If you are upgrading to a new version of Ballerina from an older version, you can download and use the installer for the latest version. The installer will automatically uninstall the old version. 
-If you are building from source, you must update the path with the new version of Ballerina.
+Follow the below instructions to download and use the installers to install the latest Ballerina version. The installer will automatically uninstall the old Ballerina version if you have one already installed.
+
+>**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
 
 ### Installing on OS X
 

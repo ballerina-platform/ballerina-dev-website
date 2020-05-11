@@ -1,6 +1,6 @@
 name: Create PR for new search index
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   ubuntu-build:

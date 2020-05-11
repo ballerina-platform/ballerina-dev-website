@@ -57,6 +57,7 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
   ```
   dpkg -i <ballerina-binary>.deb
   ```
+  
 ## Installing from source
 
 Alternatively, follow the instructions below to install Ballerina from the source.

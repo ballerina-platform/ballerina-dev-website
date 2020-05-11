@@ -79,7 +79,7 @@ Follow the steps below to obtain the Ballerina source code.
     ```
     git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
     ```
-    >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing <YOUR-GITHUB-USERNAME> with your Git username.
+    >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing `<YOUR-GITHUB-USERNAME>` with your Git username.
 
     ```
     git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
@@ -95,7 +95,7 @@ Follow the steps below to obtain the Ballerina source code.
 
 Follow the steps below to build the project of the obtained source.
 
-1. Navigate to the root directory of the Ballerina repo (i.e., <BALLERINA_PROJECT_ROOT>) and execute one of the below Gradle commands to build the project using Gradle.
+1. Navigate to the root directory of the Ballerina repo (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute one of the below Gradle commands to build the project using Gradle.
 
     - **On Unix/Mac OS:** ```./gradlew build ```
     - **Windows:** ```gradlew build ```

@@ -48,6 +48,7 @@ redirect_from:
    <li><a href="/learn/how-to-structure-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
     <li><a href="/learn/how-to-deploy-ballerina-programs-in-cloud/" class="cGreenLinkArrow">Cloud Development</a></li>
     <li><a href="/learn/how-to-observe-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
+    <li><a href="/learn/how-to-call-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/learn/how-to-write-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
     <li><a href="/learn/how-to-test-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
     <li><a href="/learn/how-to-extend-ballerina" class="cGreenLinkArrow">Extending Ballerina</a></li>

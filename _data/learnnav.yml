@@ -62,6 +62,13 @@
       url: /learn/how-to-observe-ballerina-code
       active: how-to-observe-ballerina-code
 
+- title: Interoperability
+  url: '#' 
+  sublinks:
+    - title: Calling Java Code from Ballerina
+      url: /learn/how-to-call-java-code-from-ballerina/
+      active: how-to-call-java-code-from-ballerina
+
 - title: Security
   url: '#' 
   sublinks:
@@ -82,9 +89,7 @@
     - title: Extending with Compiler Extensions 
       url: /learn/how-to-extend-ballerina
       active: how-to-extend-ballerina
-    - title: Calling Java code from Ballerina
-      url: /learn/how-to-call-java-code-from-ballerina/
-      active: how-to-call-java-code-from-ballerina
+      
  
 
 

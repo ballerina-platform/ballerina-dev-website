@@ -1,6 +1,11 @@
 name: Create PR for new search index
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/latest/**'
 
 jobs:
   search-index-gen:

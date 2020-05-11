@@ -21,6 +21,6 @@ The Documentation Viewer represents the documented entities in a file in an orga
 ## What's next?
 
 - For information on the next capability of the VS Code Ballerina plugin, see [Run All tests](/1.0//learn/vscode-plugin/run-all-tests).
-- For information on the VS Code Ballerina extension, see [The Visual Studio Code Extension](/1.0/learn/vscode-plugin).
+- For information on the VS Code Ballerina extension, see [The Visual Studio Code Ballerina Extension](/1.0/learn/vscode-plugin).
 
 

@@ -122,5 +122,5 @@ To get help when you work with Ballerina, see [Community](/community).
 
 Once you have successfully installed Ballerina, click the below links to set up your IDE.
 
-- [Setting up VS Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ](/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/learn/vscode-plugin/)
+- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)

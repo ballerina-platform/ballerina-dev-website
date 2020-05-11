@@ -5,6 +5,8 @@ on: [push, pull_request]
 jobs:
   search-index-gen:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
 
     steps:
     - name: Checkout code

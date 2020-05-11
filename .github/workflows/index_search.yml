@@ -3,7 +3,7 @@ name: Create PR for new search index
 on: [push, pull_request]
 
 jobs:
-  ubuntu-build:
+  search-index-gen:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,21 +19,23 @@ jobs:
       run: npm install cheerio
 
     - name: Remove unwanted folders from the build
-      run: rm -r 0.990 0.990 1.0 1.1
+      run: |
+        echo | pwd
+        rm -r 0.990/ 0.991/ 1.0/ 1.1/
     
-    - name: Build
+    - name: Build the site
       uses: jerryjvl/jekyll-build-action@v1
 
-    - name: Copy search index tool to _site
-      run: cp .github/scripts/search_index_generator.js _site/
+    - name: Copy search index tool
+      run: cp .github/scripts/search_index_generator.js .
 
     - name: Run search generator
       run: node search_index_generator.js
 
     - name: Copy output to js directory
-      run: cp _site/searchIndex.js js/
+      run: cp ./searchIndex.js js/
 
-      - name: Push changes for new API Docs
+    - name: Push changes for new API Docs
       run: |
         git checkout automate-search-index-$GITHUB_SHA 2>/dev/null || git checkout -b automate-search-index-$GITHUB_SHA
         git pull origin master
@@ -54,5 +56,3 @@ jobs:
         bin/hub pull-request -m '[Automated] Update search index for the new release'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-

@@ -3,7 +3,7 @@ var fs = require('fs');
 var path = require('path');
 
 
-walk("learn/", function (err, results) {
+walk("_site/learn/", function (err, results) {
     if (err) throw err;
 
 });

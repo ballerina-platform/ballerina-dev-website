@@ -181,4 +181,4 @@ This option allows you to view the definition of a selected variable, function, 
 ## What's next?
 
 - For more information on the IntelliJ IDEA Ballerina plugin, see [IntelliJ IDEA Ballerina Plugin](/learn/intellij-plugin).
-- For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/v1-2/learn).
+- For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/learn/installing-ballerina/).

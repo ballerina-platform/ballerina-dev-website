@@ -2,7 +2,7 @@
 	"version":"1.2.3",
 	"release-date":"2020-04-30",
 	"windows-installer":"ballerina-windows-installer-x64-1.2.3.msi",
-	"windows-installer-size":"132mb",
+	"windows-installer-size":"131mb",
 	"linux-installer":"ballerina-linux-installer-x64-1.2.3.deb",
 	"linux-installer-size":"126mb",
 	"macos-installer":"ballerina-macos-installer-x64-1.2.3.pkg",

@@ -10,6 +10,9 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,websub">
 
     <title>API Docs - ballerina/websub</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -62,7 +65,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.3</div>
     
 
 
@@ -357,7 +360,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.3</div>
     
 
 
@@ -1000,7 +1003,7 @@ service specificSubscriber on new WebhookListener(8080) {
 <p>For a step-by-step guide on introducing custom subscriber services, see the <a href="https://ballerina.io/learn/how-to-extend-ballerina/#create-webhook-callback-services">&quot;Create Webhook Callback Services&quot;</a> section of &quot;How to Extend Ballerina&quot;.</p>
 <p>For information on the operations, which you can perform with this module, see the below <strong>Functions</strong>. For examples on the usage of the operations, see the following.</p>
 <ul>
-<li><a href="hhttps://ballerina.io/learn/by-example/websub-internal-hub-sample.html">Internal Hub Sample Example</a></li>
+<li><a href="https://ballerina.io/learn/by-example/websub-internal-hub-sample.html">Internal Hub Sample Example</a></li>
 <li><a href="https://ballerina.io/learn/by-example/websub-remote-hub-sample.html">Remote Hub Sample Example</a></li>
 <li><a href="https://ballerina.io/learn/by-example/websub-hub-client-sample.html">Hub Client Sample Example</a></li>
 <li><a href="https://ballerina.io/learn/by-example/websub-service-integration-sample.html">Service Integration Sample Example</a></li>
@@ -1460,15 +1463,23 @@ the JSON payload of the request.
                 <table>
                     
                         <tr>
-                            <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber"><a
-                                    class="annotations" href="annotations.html#SpecificSubscriber">SpecificSubscriber</a></td>
-                            <td class="module-desc">Annotation to declare that the service represents a specific webhook.</td>
+                            <td class="module-title truncate annotations" id="SpecificSubscriber" title="SpecificSubscriber">
+                                <a class="annotations " href="annotations.html#SpecificSubscriber">SpecificSubscriber</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Annotation to declare that the service represents a specific webhook.
+                            </td>
                         </tr>
                     
                         <tr>
-                            <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig"><a
-                                    class="annotations" href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a></td>
-                            <td class="module-desc">WebSub Subscriber Configuration for the service, indicating subscription related parameters.</td>
+                            <td class="module-title truncate annotations" id="SubscriberServiceConfig" title="SubscriberServiceConfig">
+                                <a class="annotations " href="annotations.html#SubscriberServiceConfig">SubscriberServiceConfig</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                WebSub Subscriber Configuration for the service, indicating subscription related parameters.
+                            </td>
                         </tr>
                     
                 </table>

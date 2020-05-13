@@ -146,3 +146,9 @@ Most browsers allow you to control cookies through their settings preferences. H
 For further information about our Privacy Policy or if you have any questions, complaints, or concerns regarding the use of cookies, please contact our Data Protection Officer at [dpo@wso2.com](mailto:dpo@wso2.com).
 
 **Effective April 12, 2018**
+
+<style>
+.nav > li.cVersionItem {
+    display: none !important;
+}
+</style>

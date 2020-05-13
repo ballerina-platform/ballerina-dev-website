@@ -3,8 +3,7 @@ layout: ballerina-inner-page
 title: Statements
 permalink: /learn/style-guide/statements/
 redirect_from:
-  - /learn/style-guide/statements/
-  - /learn/style-guide/statements
+  - /v1-2/learn/style-guide/statements/
   - /v1-2/learn/style-guide/statements
 ---
 

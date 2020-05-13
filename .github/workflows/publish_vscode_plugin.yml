@@ -1,0 +1,34 @@
+name: Publish VS-Code plugin
+
+on:
+  push:
+    branches:
+      - prod-sync
+    paths:
+      - '_data/latest/**'
+                        
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+        
+      - name: Run python script
+        id: version
+        run: |
+          npm install
+          jq .version _data/latest/metadata.json
+          python3  .github/scripts/publish_vscode_plugin.py  
+             
+      - name: Execute the VSCE commands
+        uses: lannonbr/vsce-action@master
+        with:
+          args: publish -p $VSCE_TOKEN --packagePath ballerina.vsix
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCODE_PAT }}

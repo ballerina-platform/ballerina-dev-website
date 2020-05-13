@@ -1,7 +1,8 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: CLI Commands
 permalink: /learn/cli-commands/
+active: cli-commands
 redirect_from:
   - /learn/cli-commands
   - /v1-2/learn/cli-commands
@@ -49,12 +50,12 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">test</td>
-<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project.
+<td class="cDescription">Run tests of a particular module or all the modules of a Ballerina project. For more information, see <a href="/learn/how-to-test-ballerina-code">How to Test Ballerina Code</a>.
 </td>
 </tr>
 <tr>
 <td class="cCommand">run</td>
-<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program.
+<td class="cDescription">Build and run a Ballerina program, a single BAL file, an entire project, or a previously-built program. For more information, see <a href="/learn/how-to-run-ballerina-programs">How to Run Ballerina Programs</a>.
 </td>
 </tr>
 <tr>
@@ -64,7 +65,7 @@ These everyday commands are your best friends! They address the very basics of p
 </tr>
 <tr>
 <td class="cCommand">doc</td>
-<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project.
+<td class="cDescription">Generate API documents for all public symbols of a Ballerina module or project. For more information, see <a href="/learn/how-to-document-ballerina-code">How to Document Ballerina Code</a>.
 </td>
 </tr>
 <tr>
@@ -90,19 +91,19 @@ Ballerina Central is how you share Ballerina modules with others in a safe, secu
 </tr>
 <tr>
 <td class="cCommand">push</td>
-<td class="cDescription">Upload a module to Ballerina Central.
+<td class="cDescription">Upload a module to Ballerina Central. For more information, see <a href="/learn/how-to-publish-modules">How to Publish a Module</a>.
 </td>
 </tr>
 </table>
 
 ## Manage projects
 
-Ballerina projects are the way to organize real world Ballerina development tasks. Learn more about it in <a href="/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
+Ballerina projects are the way to organize real world Ballerina development tasks. 
 
 <table class="cComandTable">
 <tr>
 <td class="cCommand">new</td>
-<td class="cDescription">Create a Ballerina project.
+<td class="cDescription">Create a Ballerina project. For more information, see <a href="/learn/how-to-structure-ballerina-code">How to Structure Ballerina Code</a>.
 </td>
 </tr>
 </table>
@@ -123,6 +124,6 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 </tr>
 <tr>
 <td class="cCommand">grpc</td>
-<td class="cDescription">This is the gRPC stub/skeleton generation tool.</td>
+<td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/how-to-generate-code-for-protocol-buffers">How to generate Ballerina code for Protocol Buffer Definition</a>.</td>
 </tr>
 </table>

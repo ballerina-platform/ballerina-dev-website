@@ -1,4 +1,4 @@
-name: Update Release-notes/Archive pages
+name: Create PR for new Release-notes/Archive pages
 
 on:
   push:

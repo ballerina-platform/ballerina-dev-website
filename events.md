@@ -34,15 +34,16 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                <tr class="event-expiry" style="display:none" data-expiry="May 06, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">May 4 - 6, 2020</span>
-                      <p class="cEventLocation">São Paulo, Brazil</p>
+                  <tr class="event-expiry" style="display:none" data-expiry="May 07, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 7, 2020</span>
+                      <p class="cEventLocation">Online</p>
                       </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
-                        <h5></h5>
-                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/CloudDC/"><h4>Cloud DC Meetup</h4></a>
+                        <h5>Cloud Native Development with Ballerina</h5>
+                        <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
+                        <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle
                  </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CloudDC/events/270223699/" target="_blank">More Info</a></td> 
                   </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="May 28, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 28, 2020</span>
@@ -81,6 +82,16 @@ redirect_from:
                       <td class="cEventDetail"><a target="_blank" href="https://www.developerweek.com/CloudEdition/"><h4>DeveloperWeek Seattle: Cloud Edition</h4></a>
                         <h5>Code to Kubernetes: Languages of Infrastructure</h5>
                             <b>Sameera Jayasoma,</b> Senior Director, WSO2
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
+                  </tr>
+                  <tr class="event-expiry" style="display:none" data-expiry="December106, 2020 12:00:00">
+                    <td class="cEventDateContainer"><span class="cEventDate">December 14 - 16, 2020</span>
+                      <p class="cEventLocation">São Paulo, Brazil</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://qconsp.com/"><h4>QCon São Paulo</h4></a>
+                        <h5></h5>
+                            <b>Nuwan Bandara,</b> Senior Director - Solutions Architecture, WSO2
                  </td>
                <td class="cEventURL"><a class="cEventRegistration" href="https://qconsp.com/schedule/sp2020/tabular" target="_blank">More Info</a></td> 
                   </tr>
@@ -310,5 +321,9 @@ redirect_from:
 
 .navbar-nav > li#Eventsli a  {
   color: #20b6b0 !important;
+}
+
+.nav > li.cVersionItem {
+    display: none !important;
 }
 </style>

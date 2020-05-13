@@ -4,2508 +4,2506 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://ballerina.io/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/downloads/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>1.0.0</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>1.0.0</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/downloads/release-notes/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
+  <loc>https://ballerina.io/community/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/downloads/archived/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
+  <loc>https://ballerina.io/downloads/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/why/the-network-in-the-language/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/why/sequence-diagrams-for-programming/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/why/from-code-to-cloud/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/license-of-site/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/terms-of-service/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/privacy-policy/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/community/slack/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/getting-started/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/events/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/vscode-plugin/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/security/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/intellij-plugin/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/downloads/release-notes/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/quick-tour/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/downloads/archived/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/vscode-plugin/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://ballerina.io/spec/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/https-listener</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-structure-ballerina-code/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/http-to-websocket-upgrade</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-use-openapi-tools/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/http-1-1-to-2-0-protocol-switch</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-document-ballerina-code/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/grpc-unary-blocking</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-test-ballerina-code/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/nats-basic-client</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-deploy-and-run-ballerina-programs/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/vscode-plugin/graphical-editor/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-publish-modules/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/http-circuit-breaker</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-load-balancer</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-failover</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-retry</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-timeout</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/error-handling</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/check</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/panic</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/checkpanic</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/trap</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/user-defined-error</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/crypto</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-basic-auth</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-basic-auth</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-jwt-auth</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-jwt-auth</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-oauth2</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-oauth2</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/taint-checking</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/how-to-observe-ballerina-code/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-write-secure-ballerina-code/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/vscode-plugin/language-intelligence/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-extend-ballerina/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/vscode-plugin/run-all-tests/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://ballerina.io/learn/by-example/docker-deployment</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/community/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/by-example/kubernetes-deployment</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/vscode-plugin/language-intelligence</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/by-example/openshift-deployment</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/vscode-plugin/run-and-debug</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/by-example/knative-deployment</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/vscode-plugin/graphical-editor</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/by-example/awslambda-deployment</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.51</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/vscode-plugin/documentation-viewer</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/installing-ballerina/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/intellij-plugin/using-the-intellij-plugin</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/intellij-plugin/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/intellij-plugin/using-intellij-plugin-features</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/quick-tour/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/cli-commands/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/auth/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/cache/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/config/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/index.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/file/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.arrays/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jsonutils/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.boolean/index.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.decimal/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.float/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.future/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.int/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.object/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.string/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.table/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.typedesc/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.value/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/ldap/index.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/log/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/math/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/mime/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/nats/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/observe/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/openapi/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openshift/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/reflect/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/socket/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/stringutils/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/system/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/task/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/test/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/time/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/transactions/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/websub/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/xmlutils/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/xslt/index.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/spec/lang/2020R1/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/spec/lang/2019R3/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/spec/lang/2019R2/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/spec/lang/2019R1/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/definitions</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-structure-ballerina-code/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/operators_keywords_and_types</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-document-ballerina-code/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/statements</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-test-ballerina-code/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/expressions</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-deploy-and-run-ballerina-programs/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/style-guide/annotations_documentation_and_comments</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-publish-modules/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/by-example/the-main-function.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-write-secure-ballerina-code/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/by-example/hello-world-service.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/style-guide/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/by-example/config-api.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.60</priority>
+  <loc>https://ballerina.io/learn/how-to-extend-ballerina/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/community/slack/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/how-to-generate-code-for-protocol-buffers/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides/</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/how-to-use-openapi-tools/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/tools-ides//vscode-plugin/graphical-editor</loc>
-  <lastmod>2019-11-29T06:43:35+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/how-to-keep-ballerina-up-to-date/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/BasicAuthConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/Credential.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/InboundAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/InboundBasicAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/OutboundAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/OutboundBasicAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/objects/Cache.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/config/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/Certificate.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/KeyStore.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/PrivateKey.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/PublicKey.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/TrustStore.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/records/DockerConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/records/ExposeConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/records/FileConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/records/FileConfigs.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/docker/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/FileEvent.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/ListenerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/objects/FileInfo.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/file/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/GrpcResourceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/GrpcServiceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerOcspStapling.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerSecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Local.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/PoolConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Protocols.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Remote.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/SecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ServiceDescriptorData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ValidateCert.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/objects/AbstractClientEndpoint.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/objects/Headers.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/Caller.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/Client.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/StreamingClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-client-endpoint.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-circuit-breaker.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-redirects.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-data-binding.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-cors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-failover.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-load-balancer.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/mutual-ssl.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/cache.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-disable-chunking.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/websocket-basic-sample.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/websocket-chat-application.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/websocket-proxy-server.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/by-example/http-access-logs.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/how-to-use-java-interoperability/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/by-example/http-trace-logs.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/AuthzCacheConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/basic-https-listener-client.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/websocket-basic-sample.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/websocket-proxy-server.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-filters.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/jdbc-streaming-big-dataset.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-unary-non-blocking.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/openapi-to-ballerina.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/nats-streaming-client.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/content-based-routing.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-load-balancer.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-circuit-breaker.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-failover.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-retry.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-timeout.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/websub-internal-hub-sample.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/error-destructure-binding-pattern.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/check.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/error-handling.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/panic.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/checkpanic.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/trap.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/user-defined-error.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/workers.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/taint-checking.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/jwt-issue-validate.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/udp-socket-client.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-jwt-auth.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-ldap.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-jwt-auth.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-basic-auth.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-service-with-oauth2.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-basic-auth.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/secured-client-with-oauth2.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/send-and-receive-emails.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/xslt-transformation.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/crypto.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/vscode-plugin/run-and-debug/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/vscode-plugin/documentation-viewer/</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/testerina-group-tests.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/kubernetes-deployment.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/docker-deployment.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/openshift-deployment.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/awslambda-deployment.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-client-endpoint.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/knative-deployment.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/intellij-plugin/using-intellij-plugin-features</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/BasicAuthConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/Credential.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/InboundAuthProvider.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/InboundBasicAuthProvider.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/OutboundAuthProvider.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/objects/OutboundBasicAuthProvider.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/auth/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/cache.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/records/CacheConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/records/LinkedList.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/records/Node.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/objects/AbstractCache.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/objects/AbstractEvictionPolicy.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/objects/Cache.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/objects/LruEvictionPolicy.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/cache/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/config/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/Certificate.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/KeyStore.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/PrivateKey.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/PublicKey.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/records/TrustStore.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/types.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/crypto/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/records/Email.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/records/ImapConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/records/PopConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/records/SmtpConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/clients/ImapClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/clients/PopClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/clients/SmtpClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/types.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/email/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/encoding/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/file.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/directory-listener.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/FileEvent.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/records/ListenerConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/objects/FileInfo.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/listeners/Listener.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/types.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/file/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/filepath.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/types.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/filepath/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/proto-to-ballerina.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-unary-blocking.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-server-streaming.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-client-streaming.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-bidirectional-streaming.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/grpc-secured-unary.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ClientConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Detail.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/GrpcResourceConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/GrpcServiceConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerOcspStapling.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ListenerSecureSocket.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Local.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/PoolConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Protocols.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/Remote.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/RetryConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/SecureSocket.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ServiceDescriptorData.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/records/ValidateCert.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/objects/AbstractClientEndpoint.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/objects/Headers.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/Caller.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/Client.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/clients/StreamingClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/listeners/Listener.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/annotations.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/types.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/grpc/errors.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-redirects.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-data-binding.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-cors.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/mutual-ssl.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-disable-chunking.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-to-websocket-upgrade.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/websocket-chat-application.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/http-access-logs.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Bucket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CacheConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CircuitBreakerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CircuitBreakerInferredConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CircuitHealth.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ClientHttp2Settings.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ClientSecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CommonClientConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CompressionConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CookieConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/FailoverClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/FailoverConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/FailoverInferredConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/FollowRedirects.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/HttpServiceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/HttpTimeoutError.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerAuth.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerHttp1Settings.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerOcspStapling.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/LoadBalanceActionErrorData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/LoadBalanceClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Local.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/MutualSslHandshake.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/OutboundAuthConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/PoolConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Protocols.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ProxyConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Remote.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ResourceAuth.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/RetryConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/RetryInferredConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/RollingWindow.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ServiceResourceAuth.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ServiceAuth.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/TargetService.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/ValidateCert.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/Versioning.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/WSServiceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/WebSocketClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/WebSocketFailoverClientConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/WebSocketRetryConfig.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/records/WebSocketUpgradeConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/AuthnFilter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/AuthzFilter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/AuthzHandler.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/BasicAuthHandler.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/BearerAuthHandler.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/Cookie.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/CookieClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/CookieStore.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/CsvPersistentCookieHandler.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/FilterContext.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/HttpCache.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/HttpFuture.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/InboundAuthHandler.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/LoadBalancerRoundRobinRule.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/LoadBalancerRule.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/OutboundAuthHandler.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/PersistentCookieHandler.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/PushPromise.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/RequestCacheControl.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/RequestFilter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseCacheControl.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseFilter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/CircuitBreakerClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/FailoverClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/HttpCachingClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/HttpClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/HttpSecureClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/LoadBalanceClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/RedirectClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/RetryClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketCaller.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/listeners/MockListener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/http/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/byte-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/character-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/json-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/xml-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/record-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/csv-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/data-io.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/io/records/T11.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/io/records/T12.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/io/records/T13.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/io/records/T14.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableByteChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableCSVChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableCharacterChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableDataChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableTextRecordChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/StringReader.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableByteChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableCSVChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableCharacterChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableDataChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableTextRecordChannel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/io/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/DestinationConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/create-java-objects.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/DestinationWeightConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/invoke-java-methods.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/GatewayConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/access-mutate-java-fields.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/HTTPRouteConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/java-varargs.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/PortConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/overloaded-methods-constructors.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/ServerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/TLSOptionConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/records/VirtualServiceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/istio/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/java-exceptions.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/records/ArrayType.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/records/ConstructorData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/records/FieldData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/records/MethodData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/java-arrays.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.arrays/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T0.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T1.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T2.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T3.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T4.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T43.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T5.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T6.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/T7.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/ApplicationErrorData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/BatchUpdateResult.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/ClientConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/DatabaseErrorData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/Parameter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/PoolOptions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/records/UpdateResult.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/clients/Client.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/java.jdbc/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/jsonutils/records/T0.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/jsonutils/records/T1.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jsonutils/records/XmlOptions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jsonutils/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/CachedJwt.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/InboundJwtCacheEntry.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtHeader.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtIssuerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtKeyStoreConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtPayload.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtTrustStoreConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/records/JwtValidatorConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/objects/InboundJwtAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/objects/OutboundJwtAuthProvider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/jwt/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/ConsumerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/by-example/kafka_message_producer.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/kafka_message_consumer_service.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/kafka_message_consumer_simple.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/kafka_message_consumer_group_service.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/by-example/kafka_message_producer_transactional.html</loc>
+  <lastmod>2020-04-20T19:49:58+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/AvroGenericRecord.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/AvroRecord.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/ConsumerConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/ConsumerRecord.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/KeyStore.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/PartitionOffset.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/ProducerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/ProducerConfiguration.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/Protocols.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/SecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/TopicPartition.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/records/TrustStore.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/objects/Deserializer.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/objects/Serializer.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/clients/Consumer.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/clients/Producer.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/kafka/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/BuildExtension.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/records/T0.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ConfigMap.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/records/T2.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ConfigMapKeyRef.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ConfigMapKeyValue.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ConfigMapMount.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/DeploymentConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/FieldRef.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/FieldValue.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/FileConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/IngressConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/JobConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/Metadata.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/OpenShiftBuildConfigConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/PersistentVolumeClaimConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/PersistentVolumeClaims.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/PodAutoscalerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/PodTolerationConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ProbeConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ResourceFieldRef.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ResourceFieldValue.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ResourceQuotaConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ResourceQuotas.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/Secret.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/SecretKeyRef.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/SecretKeyValue.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/SecretMount.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/records/ServiceConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/kubernetes/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/objects/$anonType$1.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/objects/T1.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.array/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.boolean/functions.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.decimal/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/records/CallStackElement.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/objects/CallStack.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.error/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.float/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.float/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.future/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.int/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/objects/$anonType$2.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.int/constants.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/records/T0.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/records/T1.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/objects/T2.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.map/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
   <loc>https://ballerina.io/learn/api-docs/ballerina/lang.object/objects/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/records/T1.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.string/objects/$anonType$2.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/records/T5.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.string/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/objects/T0.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.table/objects/$anonType$2.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/objects/T2.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.table/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/objects/T3.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.typedesc/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/objects/T4.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 <url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.value/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/log/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/math/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/math/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/math/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/math/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/objects/ContentDisposition.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/objects/MediaType.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/mime/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/ConnectionConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/PendingLimits.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/SecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/StreamingConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/StreamingSubscriptionConfigData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/records/SubscriptionConfigData.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/objects/Connection.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/objects/Message.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/clients/Producer.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/clients/StreamingMessage.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/clients/StreamingProducer.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/listeners/StreamingListener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/nats/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/CachedToken.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/ClientCredentialsGrantConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/DirectTokenConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/DirectTokenRefreshConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/IntrospectionServerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/PasswordGrantConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/records/RefreshConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/objects/InboundOAuth2Provider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/objects/OutboundOAuth2Provider.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/oauth2/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/records/Metric.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/records/PercentileValue.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/records/Snapshot.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/records/StatisticConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/objects/Counter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/objects/Gauge.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/observe/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openapi/records/ClientInformation.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openapi/records/ServiceInformation.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openapi/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openshift/records/RouteConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openshift/records/RouteDomainConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openshift/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/openshift/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/BasicProperties.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/ConnectionConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/ExchangeConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/QueueConfiguration.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/RabbitMQServiceConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/records/SecureSocket.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/objects/Connection.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/clients/Channel.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/clients/Message.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/annotations.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/rabbitmq/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/reflect/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/records/AuthenticationContext.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/records/CallStackElement.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/records/InvocationContext.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/records/Principal.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/runtime/functions.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/records/Address.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/records/ClientConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/records/Detail.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/records/ListenerConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/records/UdpClientConfig.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/clients/Client.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/clients/UdpClient.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/listeners/Listener.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/constants.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/types.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/socket/errors.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/records/SnapshottableStreamEvent.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/AbstractOperatorProcessor.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/AbstractPatternProcessor.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/Aggregator.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/AndOperatorProcessor.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/Average.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/CompoundPatternProcessor.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/Count.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/DelayWindow.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/DistinctCount.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/ExternalTimeBatchWindow.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/ExternalTimeWindow.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/Filter.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/FollowedByProcessor.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
-</url>
-<url>
-  <loc>https://ballerina.io/learn/api-docs/ballerina/streams/objects/HoppingWindow.html</loc>
-  <lastmod>2019-11-29T06:43:27+00:00</lastmod>
-  <priority>0.50</priority>
+  <loc>https://ballerina.io/learn/api-docs/ballerina/lang.stream/objects/T6.html</loc>
+  <lastmod>2020-04-20T19:45:36+00:00</lastmod>
+  <priority>0.33</priority>
 </url>
 
 

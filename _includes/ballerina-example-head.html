@@ -3,9 +3,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ page.description }}">
+{% if page.description %}
+<meta name="description" content="{{ page.description }}" />
+{% else %}
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+{% endif %}
 <meta name="author" content="WSO2, Inc.">
-{% if page.keywords == ""  %}
+{% if page.keywords %}
 <meta name="keywords" content="{{ page.keywords }}" />
 {% else %}
 <meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
@@ -90,5 +94,5 @@
 
     var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
     var dev_download_url = 'https://product-dist.ballerina.io/dev';
-    var base_download_url = 'https://product-dist.ballerina.io/downloads';
+    var base_download_url = 'https://dist.ballerina.io/downloads';
 </script>

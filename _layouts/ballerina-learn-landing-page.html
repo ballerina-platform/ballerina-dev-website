@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      {% include ballerina-head.html %}
+      <link rel="stylesheet" href="{{ "/css/ballerina-io-docs.css?200618" | prepend: site.baseurl }}">
+      <link rel="stylesheet" href=/css/ballerina-io-learn-v2.css>
+   </head>
+   <body class="cBallerina-io">
+      {% include nav.html %}
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        {% include nav-breadcrumbs.html %} 
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <!-- <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/{{ site.github_username }}/{{ site.git_repo }}/blob/master/{{ page.path | replace: ".html", ".md"}}">Edit on GitHub</a>
+                           </li>-->
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                             
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row cBallerina-io-Gray-row cLandingPageintro">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="cBlallerina-io-docs-content-container">
+                        <div class="wy-nav-content">
+                           <div class="rst-content">
+                              <div role="main">
+                                 <div class="section">
+                                    <h1 id="the-network-in-the-language">Let’s learn Ballerina!</h1>
+                                 <p>
+                                    Ballerina is meant to be a quick start for anyone with prior programming experience. The below resources will help you to get going with Ballerina.
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+       <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col" style="padding-left:0;">
+                 <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 {{ content }}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   
+      {% include ballerina-footer.html %}
+      <script src="/js/theme.js"></script>
+
+      <script>
+         $(document).ready(function () {
+            var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitStarText"]').replaceWith(gitstar);
+
+            var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+            $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+
+         });
+
+      </script>
+         
+         <script src="/js/ballerina-leftnav.js"></script>
+            
+            
+
+   </body>
+</html>
+

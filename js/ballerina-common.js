@@ -160,7 +160,7 @@ function versionSelectorValue(){
     let pathValue = window.location.pathname;
     let options = $("#versions").find("option");
     $.each(options, function (key, option) {
-        let optionText = $(option).text();
+        let optionText = $(option).text().replace("v","");
         //let ver = "v" + optionText.replace(".", "-");
         if(pathValue.indexOf(optionText) > -1){
             $(option).attr("selected", "selected");
@@ -511,4 +511,19 @@ $(document).ready(function() {
             $(this).removeAttr("disabled");
         }
     });
+
+    //Lunr Search field
+    $('#searchBtn').click(function () {
+        let searchText = $('#searchTxt').val();
+        window.location.assign("/search?" + searchText);
+    });
+    $( "#searchTxt" ).keypress(function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+            let searchText = $('#searchTxt').val();
+            window.location.assign("/search?" + searchText);
+        }
+    });
 });
+
+

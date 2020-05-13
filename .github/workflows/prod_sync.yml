@@ -1,4 +1,4 @@
-name: Production Sync
+name: Create Production Sync PR
 
 on:
   push:

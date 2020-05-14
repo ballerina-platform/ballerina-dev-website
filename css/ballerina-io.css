@@ -691,14 +691,17 @@ code:not(.hljs) {
     user-select: none;
 }
 
+
 .line-number {
-    height: 18px;
-    line-height: 18px;
-    width: 100%;
-    color: #514e4f;
-    display: block;
-    font-size: 12px;
+	height: 20px;
+	line-height: 17px;
+	width: 100%;
+	color: #514e4f;
+	display: block;
+	font-size: 12px;
+	/* background: red; */
 }
+
 
 .ballerina-pre-wrapper {
     padding-top: 0;
@@ -838,10 +841,15 @@ pre {
 }
 
 pre code {
-    padding: 6px;
+    /* padding: 6px;
     width: 100%;
-    line-height: 20px;
+    line-height: 20px; */
+    padding: 4px !important;
+width: 100%;
+line-height: 20px;
 }
+
+
 
 .highlight code,
 .highlight pre {

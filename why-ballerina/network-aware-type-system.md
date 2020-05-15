@@ -186,8 +186,7 @@ type Person record {
    io:println(p2);
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
 P1's ethnicity: N/A
 P2's ethnicity: White
 name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
@@ -196,8 +195,7 @@ name=Anne birthYear=1988 married=true ethnicity=White college=Harvard
                               <p>
                                  The type system features for records in Ballerina can be used when implementing <a href="https://ballerina.io/learn/by-example/http-data-binding.html">data binding</a> operations with structural validation, data types handling, and payload passthrough operations. The functionality will be demonstrated using an HTTP service in Ballerina: 
                               </p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-http:Client asianRecordsDB = new("http://example.com/");
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client asianRecordsDB = new("http://example.com/");
  
 @http:ServiceConfig {
    basePath: "/"
@@ -223,8 +221,7 @@ service RecordService on new http:Listener(8080) {
  
 }
 </code></pre>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-$ ballerina run sample.bal 
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">$ ballerina run sample.bal 
 [ballerina/http] started HTTP/WS listener 0.0.0.0:8080
 
 </code></pre>

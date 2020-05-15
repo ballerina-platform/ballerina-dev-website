@@ -10,6 +10,9 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides lang library operations on <code>xml</code> values defined by the language specification 2020R1.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,lang.xml">
 
     <title>API Docs - Functions : lang.xml</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -153,7 +156,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -518,7 +521,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -1085,12 +1088,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        xs<span class="type">  <span class="array-type"><span class="builtin-type">xml</span> | <span class="builtin-type">string</span>[]</span> </span>
+                        <span >xs</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">xml</span> | <span class="builtin-type">string</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml or string items to concatenate</p>
-</p>
+                        <p>
+                            
+                            <p>xml or string items to concatenate</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1121,7 +1128,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> content)</p>
-            <b> returns </b><a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> 
+            <b> returns </b><span class="builtin-type">Comment</span> 
         </span>
         
     </div>
@@ -1137,12 +1144,16 @@ an empty xml sequence if the <code>xs</code> are empty</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        content<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >content</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the content of the comment to be constructed.</p>
-</p>
+                        <p>
+                            
+                            <p>the content of the comment to be constructed.</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1154,7 +1165,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/Comment.html">Comment</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Comment</span></span>)</li>
                 <li><p>an xml sequence consisting of a comment with content <code>content</code></p>
 </li>
             </ul>
@@ -1172,7 +1183,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> name, <span class="builtin-type">xml</span> children)</p>
-            <b> returns </b><a href="../lang.xml/UNKNOWN/Element.html">Element</a> 
+            <b> returns </b><span class="builtin-type">Element</span> 
         </span>
         
     </div>
@@ -1188,12 +1199,16 @@ an empty xml sequence if the <code>xs</code> are empty</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        name<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >name</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the name of the new element</p>
-</p>
+                        <p>
+                            
+                            <p>the name of the new element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1201,12 +1216,16 @@ an empty xml sequence if the <code>xs</code> are empty</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        children<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >children</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         <span class="default"> (default concat())</span>
                     </li>
                     <li>
-                        <p><p>the children of the new element</p>
-</p>
+                        <p>
+                            
+                            <p>the children of the new element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1218,7 +1237,7 @@ an empty xml sequence if the <code>xs</code> are empty</p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/Element.html">Element</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">Element</span></span>)</li>
                 <li><p>an xml sequence consisting of only a new xml element with name <code>name</code>,
 no attributes, and children <code>children</code></p>
 </li>
@@ -1237,7 +1256,7 @@ no attributes, and children <code>children</code></p>
         
         <span class="method-types">
             <p>(<span class="builtin-type">string</span> target, <span class="builtin-type">string</span> content)</p>
-            <b> returns </b><a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> 
+            <b> returns </b><span class="builtin-type">ProcessingInstruction</span> 
         </span>
         
     </div>
@@ -1253,12 +1272,16 @@ no attributes, and children <code>children</code></p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        target<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >target</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the target part of the processing instruction to be constructed</p>
-</p>
+                        <p>
+                            
+                            <p>the target part of the processing instruction to be constructed</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1266,12 +1289,16 @@ no attributes, and children <code>children</code></p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        content<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >content</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the content part of the processing instruction to be constructed</p>
-</p>
+                        <p>
+                            
+                            <p>the content part of the processing instruction to be constructed</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1283,7 +1310,7 @@ no attributes, and children <code>children</code></p>
         
         <div class="returns-listing">
             <ul>
-                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a></span>)</li>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">ProcessingInstruction</span></span>)</li>
                 <li><p>an xml sequence consisting of a processing instruction with target <code>target</code>
 and content <code>content</code></p>
 </li>
@@ -1318,12 +1345,16 @@ and content <code>content</code></p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml value</p>
-</p>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1370,12 +1401,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml value</p>
-</p>
+                        <p>
+                            
+                            <p>xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1383,12 +1418,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">boolean</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
-                        <p><p>a predicate to apply to each item to test whether it should be selected</p>
-</p>
+                        <p>
+                            
+                            <p>a predicate to apply to each item to test whether it should be selected</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1430,12 +1469,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml value</p>
-</p>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1443,12 +1486,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">()</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
-                        <p><p>a function to apply to each item in <code>x</code></p>
-</p>
+                        <p>
+                            
+                            <p>a function to apply to each item in <code>x</code></p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1486,12 +1533,16 @@ XML 1.0 Recommendation.
             <div class="params-listing">
                 <ul>
                     <li>
-                        s<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >s</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>a string in XML format</p>
-</p>
+                        <p>
+                            
+                            <p>a string in XML format</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1539,12 +1590,16 @@ This differs from <code>x[i]</code> in that it panics if
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml sequence</p>
-</p>
+                        <p>
+                            
+                            <p>the xml sequence</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1552,12 +1607,16 @@ This differs from <code>x[i]</code> in that it panics if
             <div class="params-listing">
                 <ul>
                     <li>
-                        i<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span >i</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the index</p>
-</p>
+                        <p>
+                            
+                            <p>the index</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1586,7 +1645,7 @@ This differs from <code>x[i]</code> in that it panics if
             <h2 > getAttributes </h2>
         
         <span class="method-types">
-            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> x)</p>
+            <p>(<span class="builtin-type">Element</span> x)</p>
             <b> returns </b><span class="builtin-type">map</span> 
         </span>
         
@@ -1605,12 +1664,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml element</p>
-</p>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1639,7 +1702,7 @@ The keys in the map are the expanded names of the attributes.
             <h2 > getChildren </h2>
         
         <span class="method-types">
-            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> elem)</p>
+            <p>(<span class="builtin-type">Element</span> elem)</p>
             <b> returns </b><span class="builtin-type">xml</span> 
         </span>
         
@@ -1656,12 +1719,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml element</p>
-</p>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1690,7 +1757,7 @@ The keys in the map are the expanded names of the attributes.
             <h2 > getContent </h2>
         
         <span class="method-types">
-            <p>(<a href="../lang.xml/UNKNOWN/Text.html">Text</a> | <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> | <a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> x)</p>
+            <p>(<span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> x)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -1707,12 +1774,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <a href="../lang.xml/UNKNOWN/Text.html">Text</a> | <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> | <a href="../lang.xml/UNKNOWN/Comment.html">Comment</a> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">Text</span> | <span class="builtin-type">ProcessingInstruction</span> | <span class="builtin-type">Comment</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml item</p>
-</p>
+                        <p>
+                            
+                            <p>xml item</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1741,7 +1812,7 @@ The keys in the map are the expanded names of the attributes.
             <h2 > getName </h2>
         
         <span class="method-types">
-            <p>(<a href="../lang.xml/UNKNOWN/Element.html">Element</a> elem)</p>
+            <p>(<span class="builtin-type">Element</span> elem)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -1758,12 +1829,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml element</p>
-</p>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1792,7 +1867,7 @@ The keys in the map are the expanded names of the attributes.
             <h2 > getTarget </h2>
         
         <span class="method-types">
-            <p>(<a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> x)</p>
+            <p>(<span class="builtin-type">ProcessingInstruction</span> x)</p>
             <b> returns </b><span class="builtin-type">string</span> 
         </span>
         
@@ -1809,12 +1884,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <a href="../lang.xml/UNKNOWN/ProcessingInstruction.html">ProcessingInstruction</a> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">ProcessingInstruction</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml processing instruction item</p>
-</p>
+                        <p>
+                            
+                            <p>xml processing instruction item</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1860,12 +1939,16 @@ The keys in the map are the expanded names of the attributes.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml sequence to iterate over</p>
-</p>
+                        <p>
+                            
+                            <p>xml sequence to iterate over</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1912,12 +1995,16 @@ Each item is represented by an xml singleton.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml item</p>
-</p>
+                        <p>
+                            
+                            <p>xml item</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1964,12 +2051,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml value</p>
-</p>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1977,12 +2068,16 @@ Each item is represented as a singleton value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        func<span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> </span>
+                        <span >func</span>
+                        <span class="type">  <code> <span>function(</span><span class="builtin-type">ItemType</span><span>) </span><span>returns (</span><span class="builtin-type">XmlType</span><span>)</span> </code> </span>
                         
                     </li>
                     <li>
-                        <p><p>a function to apply to each child or <code>item</code></p>
-</p>
+                        <p>
+                            
+                            <p>a function to apply to each child or <code>item</code></p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2025,12 +2120,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml element</p>
-</p>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2038,12 +2137,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        children<span class="type">  <span class="builtin-type">xml</span> | <span class="builtin-type">string</span> </span>
+                        <span >children</span>
+                        <span class="type">  <span class="builtin-type">xml</span> | <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml or string to set as children</p>
-</p>
+                        <p>
+                            
+                            <p>xml or string to set as children</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2074,12 +2177,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        elem<span class="type">  <a href="../lang.xml/UNKNOWN/Element.html">Element</a> </span>
+                        <span >elem</span>
+                        <span class="type">  <span class="builtin-type">Element</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>xml element</p>
-</p>
+                        <p>
+                            
+                            <p>xml element</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2087,12 +2194,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        xName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >xName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>new expanded name</p>
-</p>
+                        <p>
+                            
+                            <p>new expanded name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2128,12 +2239,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml value</p>
-</p>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2141,12 +2256,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        startIndex<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span >startIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>start index, inclusive</p>
-</p>
+                        <p>
+                            
+                            <p>start index, inclusive</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2154,12 +2273,16 @@ becoming cyclic.
             <div class="params-listing">
                 <ul>
                     <li>
-                        endIndex<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span >endIndex</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
                         <span class="default"> (default x.length(x))</span>
                     </li>
                     <li>
-                        <p><p>end index, exclusive</p>
-</p>
+                        <p>
+                            
+                            <p>end index, exclusive</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2209,12 +2332,16 @@ and a chunk is considered insignificant if the entire chunk is whitespace.
             <div class="params-listing">
                 <ul>
                     <li>
-                        x<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >x</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>the xml value</p>
-</p>
+                        <p>
+                            
+                            <p>the xml value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>

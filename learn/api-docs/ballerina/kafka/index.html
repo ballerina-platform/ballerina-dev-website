@@ -10,6 +10,10 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+This module supports Kafka 1.x.x and 2.0.0 versions.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,kafka">
 
     <title>API Docs - ballerina/kafka</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -62,7 +66,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -345,7 +349,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -897,6 +901,16 @@ name=Lahiru Perera age=28
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate records" id="AuthenticationConfiguration" title="AuthenticationConfiguration">
+                                <a class="records " href="records/AuthenticationConfiguration.html">AuthenticationConfiguration</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Configurations related to Kafka authentication mechanisms.
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate records" id="AvroGenericRecord" title="AvroGenericRecord">
                                 <a class="records " href="records/AvroGenericRecord.html">AvroGenericRecord</a>
                             </td>
@@ -912,7 +926,7 @@ name=Lahiru Perera age=28
                             </td>
                             <td class="module-desc">
                                 
-                                Defines a records to send data using Avro serialization.
+                                Defines a record to send data using Avro serialization.
                             </td>
                         </tr>
                     
@@ -1180,7 +1194,7 @@ name=Lahiru Perera age=28
                             </td>
                             <td class="module-desc">
                                 
-                                Configures the consumer to read all the messages even the aborted ones.
+                                Configures the consumer to read all the messages including the aborted ones.
                             </td>
                         </tr>
                     
@@ -1325,6 +1339,37 @@ name=Lahiru Perera age=28
                         </tr>
                     
                         <tr>
+                            <td class="module-title truncate constant" id="AUTH_SASL_PLAIN" title="AUTH_SASL_PLAIN">
+                                <a class="constant " href="constants.html#AUTH_SASL_PLAIN">AUTH_SASL_PLAIN</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Kafka SASL_PLAIN authentication mechanism
+
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PROTOCOL_SASL_PLAINTEXT" title="PROTOCOL_SASL_PLAINTEXT">
+                                <a class="constant " href="constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate constant" id="PROTOCOL_SASL_SSL" title="PROTOCOL_SASL_SSL">
+                                <a class="constant " href="constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate constant" id="CONSUMER_ERROR" title="CONSUMER_ERROR">
                                 <a class="constant " href="constants.html#CONSUMER_ERROR">CONSUMER_ERROR</a>
                             </td>
@@ -1372,6 +1417,16 @@ name=Lahiru Perera age=28
                 <table>
                     
                         <tr>
+                            <td class="module-title truncate types" id="AuthenticationMechanism" title="AuthenticationMechanism">
+                                <a class="types " href="types.html#AuthenticationMechanism">AuthenticationMechanism</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the supported Kafka SASL authentication mechanisms.
+                            </td>
+                        </tr>
+                    
+                        <tr>
                             <td class="module-title truncate types" id="CompressionType" title="CompressionType">
                                 <a class="types " href="types.html#CompressionType">CompressionType</a>
                             </td>
@@ -1408,6 +1463,16 @@ name=Lahiru Perera age=28
                             <td class="module-desc">
                                 
                                 Kafka producer acknowledgement types.
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td class="module-title truncate types" id="SecurityProtocol" title="SecurityProtocol">
+                                <a class="types " href="types.html#SecurityProtocol">SecurityProtocol</a>
+                            </td>
+                            <td class="module-desc">
+                                
+                                Represents the supported security protocols for Kafka clients.
                             </td>
                         </tr>
                     

@@ -49,3 +49,4 @@ exclude:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+dist_server: dist.ballerina.io

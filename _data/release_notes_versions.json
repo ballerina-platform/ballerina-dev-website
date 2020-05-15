@@ -42,7 +42,7 @@
       "other-artefacts": [
          "ballerina-1.1.3.zip",
          "ballerina-linux-installer-x64-1.1.3.rpm",
-         "ballerina-vscode-plugin-1.1.3.vsix",
+         "ballerina-1.1.3.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "128mb",
@@ -78,7 +78,7 @@
       "other-artefacts": [
          "ballerina-1.1.1.zip",
          "ballerina-linux-installer-x64-1.1.1.rpm",
-         "ballerina-vscode-plugin-1.1.1.vsix",
+         "ballerina-1.1.1.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "128mb",
@@ -192,7 +192,7 @@
       "other-artefacts": [
          "ballerina-1.1.2.zip",
          "ballerina-linux-installer-x64-1.1.2.rpm",
-         "ballerina-vscode-plugin-1.1.2.vsix",
+         "ballerina-1.1.2.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "128mb",
@@ -210,7 +210,7 @@
       "other-artefacts": [
          "ballerina-1.0.5.zip",
          "ballerina-linux-installer-x64-1.0.5.rpm",
-         "ballerina-vscode-plugin-1.0.5.vsix",
+         "ballerina-1.0.5.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "122mb",
@@ -318,7 +318,7 @@
       "other-artefacts": [
          "ballerina-1.1.4.zip",
          "ballerina-linux-installer-x64-1.1.4.rpm",
-         "ballerina-vscode-plugin-1.1.4.vsix",
+         "ballerina-1.1.4.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "128mb",
@@ -390,7 +390,7 @@
       "other-artefacts": [
          "ballerina-1.2.0.zip",
          "ballerina-linux-installer-x64-1.2.0.rpm",
-         "ballerina-vscode-plugin-1.2.0.vsix",
+         "ballerina-1.2.0.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "windows-installer-size": "130mb",
@@ -532,7 +532,7 @@
       "other-artefacts": [
          "ballerina-1.2.1.zip",
          "ballerina-linux-installer-x64-1.2.1.rpm",
-         "ballerina-vscode-plugin-1.2.1.vsix",
+         "ballerina-1.2.1.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "api-docs": "ballerina-api-docs-1.2.1.zip",
@@ -550,7 +550,7 @@
       "other-artefacts": [
          "ballerina-1.2.2.zip",
          "ballerina-linux-installer-x64-1.2.2.rpm",
-         "ballerina-vscode-plugin-1.2.2.vsix",
+         "ballerina-1.2.2.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "api-docs": "ballerina-api-docs-1.2.2.zip",
@@ -568,10 +568,28 @@
       "other-artefacts": [
          "ballerina-1.2.3.zip",
          "ballerina-linux-installer-x64-1.2.3.rpm",
-         "ballerina-vscode-plugin-1.2.3.vsix",
+         "ballerina-1.2.3.vsix",
          "ballerina-metrics-grafana-dashboard-prometheus.json"
       ],
       "api-docs": "ballerina-api-docs-1.2.3.zip",
       "release-notes": "ballerina-release-notes-1.2.3.md"
+   },
+   {
+      "version": "1.2.4",
+      "release-date": "2020-05-15",
+      "windows-installer": "ballerina-windows-installer-x64-1.2.4.msi",
+      "windows-installer-size": "131mb",
+      "linux-installer": "ballerina-linux-installer-x64-1.2.4.deb",
+      "linux-installer-size": "127mb",
+      "macos-installer": "ballerina-macos-installer-x64-1.2.4.pkg",
+      "macos-installer-size": "141mb",
+      "other-artefacts": [
+         "ballerina-1.2.4.zip",
+         "ballerina-linux-installer-x64-1.2.4.rpm",
+         "ballerina-1.2.4.vsix",
+         "ballerina-metrics-grafana-dashboard-prometheus.json"
+      ],
+      "api-docs": "ballerina-api-docs-1.2.4.zip",
+      "release-notes": "ballerina-release-notes-1.2.4.md"
    }
 ]

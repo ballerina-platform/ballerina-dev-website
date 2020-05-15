@@ -10,6 +10,9 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides an inbound and outbound JWT authentication provider, which can be used to authenticate using a JWT and the functionality related to issuing and validating JWT.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,jwt">
 
     <title>API Docs - Functions : jwt</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -89,7 +92,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -398,7 +401,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -782,12 +785,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        header<span class="type">  <a href="../jwt/records/JwtHeader.html">JwtHeader</a> </span>
+                        <span >header</span>
+                        <span class="type">  <a href="../jwt/records/JwtHeader.html">JwtHeader</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT header record to be built as a string</p>
-</p>
+                        <p>
+                            
+                            <p>JWT header record to be built as a string</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -835,12 +842,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        payload<span class="type">  <a href="../jwt/records/JwtPayload.html">JwtPayload</a> </span>
+                        <span >payload</span>
+                        <span class="type">  <a href="../jwt/records/JwtPayload.html">JwtPayload</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT payload record to be built as a string</p>
-</p>
+                        <p>
+                            
+                            <p>JWT payload record to be built as a string</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -869,7 +880,7 @@ redirect_from:
             <h2 > decodeJwt </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> jwtToken)</p>
+            <p>(<span class="builtin-type">string</span> jwt)</p>
             <b> returns </b><span>[</span><a href="../jwt/records/JwtHeader.html">JwtHeader</a>, <a href="../jwt/records/JwtPayload.html">JwtPayload</a><span>]</span> | <a href="../jwt/errors.html#Error">Error</a> 
         </span>
         
@@ -877,7 +888,7 @@ redirect_from:
     <div class="function-desc">
         
         <p>Decodes the given JWT string.
-<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwtToken);
+<pre><code class="language-ballerina"> [jwt:JwtHeader, jwt:JwtPayload]|jwt:Error [header, payload] = jwt:decodeJwt(jwt);
 </code></pre>
 </p>
     </div>
@@ -888,12 +899,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        jwtToken<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >jwt</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT that needs to be decoded</p>
-</p>
+                        <p>
+                            
+                            <p>JWT that needs to be decoded</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -931,7 +946,7 @@ redirect_from:
         
         <p>Issues a JWT based on the provided header and payload. JWT will be signed (JWS) if <code>crypto:KeyStore</code> information is
 provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> field of the <code>jwt:JwtHeader</code> is not <code>jwt:NONE</code>.
-<pre><code class="language-ballerina"> string|jwt:error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
+<pre><code class="language-ballerina"> string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
 </code></pre>
 </p>
     </div>
@@ -942,12 +957,16 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <div class="params-listing">
                 <ul>
                     <li>
-                        header<span class="type">  <a href="../jwt/records/JwtHeader.html">JwtHeader</a> </span>
+                        <span >header</span>
+                        <span class="type">  <a href="../jwt/records/JwtHeader.html">JwtHeader</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>JwtHeader object</p>
-</p>
+                        <p>
+                            
+                            <p>JwtHeader object</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -955,12 +974,16 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <div class="params-listing">
                 <ul>
                     <li>
-                        payload<span class="type">  <a href="../jwt/records/JwtPayload.html">JwtPayload</a> </span>
+                        <span >payload</span>
+                        <span class="type">  <a href="../jwt/records/JwtPayload.html">JwtPayload</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>JwtPayload object</p>
-</p>
+                        <p>
+                            
+                            <p>JwtPayload object</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -968,12 +991,16 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <div class="params-listing">
                 <ul>
                     <li>
-                        config<span class="type">  <a href="../jwt/records/JwtKeyStoreConfig.html">JwtKeyStoreConfig</a>? </span>
+                        <span >config</span>
+                        <span class="type">  <a href="../jwt/records/JwtKeyStoreConfig.html">JwtKeyStoreConfig</a>? </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT key store config record</p>
-</p>
+                        <p>
+                            
+                            <p>JWT key store config record</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1002,7 +1029,7 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <h2 > validateJwt </h2>
         
         <span class="method-types">
-            <p>(<span class="builtin-type">string</span> jwtToken, <a href="../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a> config)</p>
+            <p>(<span class="builtin-type">string</span> jwt, <a href="../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a> config)</p>
             <b> returns </b><a href="../jwt/records/JwtPayload.html">JwtPayload</a> | <a href="../jwt/errors.html#Error">Error</a> 
         </span>
         
@@ -1010,7 +1037,7 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
     <div class="function-desc">
         
         <p>Validates the given JWT string.
-<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:error result = jwt:validateJwt(jwt, validatorConfig);
+<pre><code class="language-ballerina"> jwt:JwtPayload|jwt:Error result = jwt:validateJwt(jwt, validatorConfig);
 </code></pre>
 </p>
     </div>
@@ -1021,12 +1048,16 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <div class="params-listing">
                 <ul>
                     <li>
-                        jwtToken<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >jwt</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT that needs to be validated</p>
-</p>
+                        <p>
+                            
+                            <p>JWT that needs to be validated</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1034,12 +1065,16 @@ provided in the <code>jwt:JwtKeyStoreConfig</code> and the <code>alg</code> fiel
             <div class="params-listing">
                 <ul>
                     <li>
-                        config<span class="type">  <a href="../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a> </span>
+                        <span >config</span>
+                        <span class="type">  <a href="../jwt/records/JwtValidatorConfig.html">JwtValidatorConfig</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>JWT validator config record</p>
-</p>
+                        <p>
+                            
+                            <p>JWT validator config record</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>

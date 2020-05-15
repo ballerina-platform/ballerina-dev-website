@@ -26,7 +26,7 @@ $(function () {
 
                 $('h2').html("Search Results");
                 $('#searchResult').append('<li><h3><a href="' + refObj.page + '">' + refObj.name + '</a></h3>' +
-                    '<p><a href="' + refObj.page + '"> https://ballerina.io/' + refObj.page + '</a></p>'
+                    '<p><a href="' + refObj.page + '"> https://ballerina.io' + refObj.page + '</a></p>'
                     + '<p>' + searchDesc +
                     '</p></li>');
             });

@@ -23,8 +23,8 @@ However, you need to use the following commands instead of the above if you have
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
 
 ## Standard Library
-- 
+- SASL/PLAIN authentication support for Kafka module
 
 ## Dev Tools
-- 
+- Improved API documentation and error mappings in the Bindgen Tool
 

@@ -59,7 +59,8 @@ redirect_from:
                             <p><p>Here, is an example in which we create a Kafka consumer used as a listener
  to a service with manual offset commits.
  This consumer uses the builtin <code>int</code> deserializer for the keys and the
- builtin <code>string</code> deserializer for the values.</p>
+ builtin <code>string</code> deserializer for the values. For this example to work
+ properly, an active Kafka broker should be present.</p>
 </p>
 
                         </td>
@@ -471,8 +472,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
-# To run this sample, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run kafka_message_consumer_service.bal
 </code></pre></div>

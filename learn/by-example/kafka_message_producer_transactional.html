@@ -45,8 +45,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Transactional Producer</h2>
-                            <p><p>This example shows you how to do transactional message producing by sending messages
- to kafka brokers atomically using the <code>kafka:Producer</code> object.</p>
+                            <p><p>This example shows you how to do transactional message producing by sending
+ messages to kafka brokers atomically using the <code>kafka:Producer</code> object. For
+ this example to work properly, an active Kafka broker should be present.</p>
 </p>
 
                         </td>
@@ -304,8 +305,7 @@ import ballerina/kafka;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
-# To run this sample, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run --experimental kafka_message_producer_transactional.bal
 </code></pre></div>

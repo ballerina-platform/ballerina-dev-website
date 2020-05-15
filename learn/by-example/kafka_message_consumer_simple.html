@@ -54,7 +54,8 @@ redirect_from:
  consumer. The records from a subscribed topic can be retrieved using the
  <code>poll()</code> function.
  This consumer uses the builtin byte array deserializer for both the key and
- the value, which is the default deserializer in the <code>kafka:Consumer</code>.</p>
+ the value, which is the default deserializer in the <code>kafka:Consumer</code>. For
+ this example to work properly, an active Kafka broker should be present.</p>
 </p>
 
                         </td>
@@ -321,8 +322,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
-# To run this sample, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run kafka_message_consumer_simple.bal
 </code></pre></div>

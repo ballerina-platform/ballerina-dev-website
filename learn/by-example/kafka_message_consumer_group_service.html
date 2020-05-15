@@ -47,7 +47,8 @@ redirect_from:
                             <p><p>Here, is an example of a kafka consumer used as a listener to listen to a
  given topic/topics. The listener uses a group of concurrent consumers within
  the service. This consumer uses the builtin <code>string</code> deserializer for the
- values.</p>
+ values. For this example to work properly, an active Kafka broker should be
+ present.</p>
 </p>
 
                         </td>
@@ -364,8 +365,7 @@ import ballerina/log;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
-# To run this sample, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run kafka_message_consumer_group_service.bal
 </code></pre></div>

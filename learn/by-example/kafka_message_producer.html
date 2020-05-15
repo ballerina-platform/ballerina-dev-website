@@ -44,7 +44,8 @@ redirect_from:
                             <h2>Producer</h2>
                             <p><p>This is an example on how to send messages to a Kafka topic using a
  <code>kafka:Producer</code> object. The producer is configured to send <code>string</code>
- values and <code>int</code> keys.</p>
+ values and <code>int</code> keys. For this example to work properly, an active Kafka
+ broker should be present.</p>
 </p>
 
                         </td>
@@ -263,8 +264,7 @@ import ballerina/kafka;
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># For this example to work properly, an active Kafka broker should be present.
-# To run this sample, navigate to the directory that contains the
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run kafka_message_producer_simple.bal
 </code></pre></div>

@@ -10,6 +10,11 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
     <title>API Docs - Functions : mime</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -101,7 +106,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -422,7 +427,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -840,12 +845,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentToBeDecoded<span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span >contentToBeDecoded</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content that needs to be decoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
-</p>
+                        <p>
+                            
+                            <p>Content that needs to be decoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -853,12 +862,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        charset<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >charset</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default utf-8)</span>
                     </li>
                     <li>
-                        <p><p>Charset to be used. This is used only with the string input</p>
-</p>
+                        <p>
+                            
+                            <p>Charset to be used. This is used only with the string input</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -906,12 +919,16 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        valueToBeDecoded<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        <span >valueToBeDecoded</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content, which needs to be decoded</p>
-</p>
+                        <p>
+                            
+                            <p>Content, which needs to be decoded</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -957,12 +974,16 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentToBeEncoded<span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span >contentToBeEncoded</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content that needs to be encoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
-</p>
+                        <p>
+                            
+                            <p>Content that needs to be encoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -970,12 +991,16 @@ or else a <code>mime:DecodeError</code> in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        charset<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >charset</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default utf-8)</span>
                     </li>
                     <li>
-                        <p><p>Charset to be used. This is used only with the string input</p>
-</p>
+                        <p>
+                            
+                            <p>Charset to be used. This is used only with the string input</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1023,12 +1048,16 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        valueToBeEncoded<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        <span >valueToBeEncoded</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content, which needs to be encoded</p>
-</p>
+                        <p>
+                            
+                            <p>Content, which needs to be encoded</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1074,12 +1103,16 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentDisposition<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentDisposition</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content disposition string</p>
-</p>
+                        <p>
+                            
+                            <p>Content disposition string</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1125,12 +1158,16 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content-Type in string</p>
-</p>
+                        <p>
+                            
+                            <p>Content-Type in string</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1176,12 +1213,16 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        detail<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >detail</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Error details</p>
-</p>
+                        <p>
+                            
+                            <p>Error details</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1227,12 +1268,16 @@ or else a <code>mime:EncodeError</code> record in case of errors</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        detail<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >detail</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Error details</p>
-</p>
+                        <p>
+                            
+                            <p>Error details</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>

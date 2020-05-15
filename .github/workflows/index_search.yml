@@ -1,0 +1,65 @@
+name: Create PR for new search index
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/latest/**'
+
+jobs:
+  search-index-gen:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.WEBSITE_TOKEN}}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '8.x'
+
+    - name: Install node module cheerio
+      run: npm install cheerio
+
+    - name: Remove unwanted folders from the build
+      run: |
+        echo | pwd
+        rm -r 0.990/ 0.991/ 1.0/ 1.1/
+    
+    - name: Build the site
+      uses: jerryjvl/jekyll-build-action@v1
+
+    - name: Copy search index tool
+      run: cp .github/scripts/search_index_generator.js .
+
+    - name: Run search generator
+      run: node search_index_generator.js
+
+    - name: Copy output to js directory
+      run: cp ./searchIndex.js js/
+
+    - name: Push changes for new API Docs
+      run: |
+        git checkout automate-search-index-$GITHUB_SHA 2>/dev/null || git checkout -b automate-search-index-$GITHUB_SHA
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        
+        git add js/searchIndex.js
+        git commit --allow-empty -m 'Update search index'
+        
+        git push --set-upstream origin automate-search-index-$GITHUB_SHA
+        echo 'Successfully pushed to automate-search-index-$GITHUB_SHA branch'
+
+    - name: Create pull request for new search index
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update search index for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

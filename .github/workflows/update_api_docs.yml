@@ -43,7 +43,7 @@ jobs:
     - name: Copy newly generated API Docs
       run: |
         VERSION="`jq -r '.version' _data/latest/metadata.json`"
-        cp -r ballerina-release/apiDocRedirectionModifier/target/docs learn/api-docs/ballerina
+        cp -r ballerina-release/apiDocRedirectionModifier/target learn/api-docs/ballerina
 
     - name: Push changes for new API Docs
       run: |

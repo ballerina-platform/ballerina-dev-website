@@ -23,8 +23,7 @@ redirect_from:
                               <p>Ballerina introduces service typing where services, which work in conjunction with a listener object, can have one or more resource methods in which the application logic is implemented. The listener object provides an interface between the network and the service. It receives network messages from a remote process according to the defined protocol and translates it into calls on the resource methods of the service that has been attached to the listener object.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>Here’s a simple Hello World service to get you started:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-import ballerina/http;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
 import ballerina/log; 
 listener http:Listener helloWorldEP = new(9090);
  
@@ -38,8 +37,7 @@ service hello on helloWorldEP {
 }
 </code></pre>
                               <p>The Ballerina source file can compile into an executable jar:</p>
-                              <pre class="highlight"><code class="cBasicCode hljs">
-$ ballerina build hello.bal
+                              <pre class="highlight"><code class="cBasicCode hljs">$ ballerina build hello.bal
 Compiling source
     hello.bal
 Generating executables
@@ -83,8 +81,7 @@ Hello, World!
                               <p>On the other hand, Ballerina’s request-response protocols are implicitly non-blocking and will take care of asynchronous invocation.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows a call to a simple HTTP GET request endpoint:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-import ballerina/http;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
 import ballerina/io;
  
 http:Client clientEndpoint = new("http://postman-echo.com");
@@ -123,8 +120,7 @@ public function main() {
                               <p>Client objects allow workers to send network messages that follow a certain protocol to a remote process. The remote methods of the client object correspond to distinct network messages defined by the protocol for the role played by the client object.</p>
                               <h3 id="get-started">Get Started</h3>
                               <p>The following sample illustrates sending out a tweet by invoking tweet remote method in the twitter client object.</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-import ballerina/config;
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/config;
 import ballerina/log;
 import wso2/twitter;
 // Twitter package defines this type of endpoint
@@ -211,8 +207,7 @@ public function main() {
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>The code snippet below shows how you can easily configure a circuit breaker to handle network-related errors in the Ballerina HTTP client object.</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-http:Client backendClientEP = new("http://localhost:8080", {
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">http:Client backendClientEP = new("http://localhost:8080", {
        circuitBreaker: {
            rollingWindow: {
                timeWindowInMillis: 10000,
@@ -258,8 +253,7 @@ http:Client backendClientEP = new("http://localhost:8080", {
                               </ul>
                               <h3 id="get-started">Get Started</h3>
                               <p>Below is a simple example of how you can explicitly check for errors:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-twitter:Status|error status = twitterClient->tweet("Hello World!");
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">twitter:Status|error status = twitterClient->tweet("Hello World!");
    if (status is error) {
        log:printError("Tweet Failed", status);
    } else {

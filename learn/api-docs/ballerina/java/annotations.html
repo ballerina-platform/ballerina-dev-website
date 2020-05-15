@@ -10,6 +10,9 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the API for Java interoperability in Ballerina. It includes a set of Ballerina annotations with which Java constructors, methods, and fields can provide implementations of Ballerina functions with external function bodies.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,java">
 
     <title>API Docs - Annotations : java</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -85,7 +88,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -378,7 +381,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -661,9 +664,12 @@ redirect_from:
                         <div class="params-listing">
                             <ul>
                                 <li>
-                                    <b>Constructor</b><span class="type"> <a href="../java/records/ConstructorData.html">ConstructorData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                                    <b >Constructor</b>
+                                    <span class="type"> <span ><a href="../java/records/ConstructorData.html">ConstructorData</a></span></span>
+                                    <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
+                                    
                                     Describes a Java constructor, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
 function is not provided in the Ballerina source module.
@@ -681,9 +687,12 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                         <div class="params-listing">
                             <ul>
                                 <li>
-                                    <b>FieldGet</b><span class="type"> <a href="../java/records/FieldData.html">FieldData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                                    <b >FieldGet</b>
+                                    <span class="type"> <span ><a href="../java/records/FieldData.html">FieldData</a></span></span>
+                                    <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
+                                    
                                     Describes a Java Field access, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
 <pre><code class="language-ballerina"> function getError() returns handle = @java:FieldGet {
@@ -699,9 +708,12 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                         <div class="params-listing">
                             <ul>
                                 <li>
-                                    <b>FieldSet</b><span class="type"> <a href="../java/records/FieldData.html">FieldData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                                    <b >FieldSet</b>
+                                    <span class="type"> <span ><a href="../java/records/FieldData.html">FieldData</a></span></span>
+                                    <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
+                                    
                                     Describes a Java Field mutate, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>.
 <pre><code class="language-ballerina"> function setContractId(handle contractId) = @java:FieldSet {
@@ -717,9 +729,12 @@ implementation is provided by the default constructor of the <code>java.util.Lin
                         <div class="params-listing">
                             <ul>
                                 <li>
-                                    <b>Method</b><span class="type"> <a href="../java/records/MethodData.html">MethodData</a></span> <img class="attach-icon" src="../html-template-resources/images/attach.svg">
+                                    <b >Method</b>
+                                    <span class="type"> <span ><a href="../java/records/MethodData.html">MethodData</a></span></span>
+                                    <img class="attach-icon" src="../html-template-resources/images/attach.svg">
                                         external</li>
                                 <li>
+                                    
                                     Describes a Java method, which provides an implementation of a Ballerina function of which the body is marked as
 <code>external</code>. If the Ballerina function body is marked as <code>external</code>, it means that the implementation of the
 function is not provided in the Ballerina source module.

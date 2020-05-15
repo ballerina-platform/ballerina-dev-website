@@ -114,7 +114,7 @@ $(document).ready(function() {
     //Nightly Packages
     $("#nightlyPackContainer").hide();
 
-    var nightly_pack = {{ site.data.nightly_versions }};
+    var nightly_pack = {{ site.data.nightly_versions | jsonify }};
     var version = nightly_pack['version'];
     var version_pack = version.replace(/ /g, "-").toLowerCase();
     var released_date = nightly_pack['release-date'];

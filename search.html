@@ -20,24 +20,35 @@ layout: ballerina-inner-page
     ul.cResults li {
         list-style: none !important;
         margin-left: 0 !important;
-        padding: 20px 0 40px 0 !important;
+        padding: 10px 0 30px 0 !important;
         border-bottom: 1px solid #e6e9ea;
 
 
     }
+
+.cSearchPage .form-control-field {
+padding: 20px;
+}
+
+.cSearchButton img {
+	width: 30px;
+	margin-top: 5px;
+}
+
+
 </style>
 
 <div class="container">
-    <h1>Search</h1>
+    <h1>Search </h1>
 </div>
 
 <div class="container cSearchField">
     <div class="col-sm-12 col-md-3"></div>
 
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-6 cSearchPage">
         <form class="cSearch-form-inline ">
             <input id="searchText" name="searchText" class="form-control-field" type="text" placeholder="Search" aria-label="Search">
-            <a id="searchButton" class="cSearchButton"><img src="/img/search.svg"/></a>
+            <a id="searchButton" class="cSearchButton"><img src="/img/search-green.svg"/></a>
         </form>
     </div>
 

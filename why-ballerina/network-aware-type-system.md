@@ -6,31 +6,6 @@ redirect_from:
 - /why/the-network-in-the-language/
 - /why/the-network-in-the-language
 ---
-<div class="row cBallerina-io-Gray-row">
-   <div class="container">
-      <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
-            <div class="col-xs-12 col-sm-12" style="padding: 0;">
-               <div class="cBlallerina-io-docs-content-container">
-                  <div class="wy-nav-content">
-                     <div class="rst-content">
-                        <div role="main">
-                           <div class="section">
-                              <h1 id="the-network-in-the-language">Network-Aware Type System</h1>
-                              <p>In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.</p>
-                              <p>
-                                 With more services being available in the cloud, the network-distributed programming domain has grown. As the developer is given the added responsibility of working with networked resources in their code, it is critical that the programming language itself aids in this operation. That’s why Ballerina’s network-friendly type system is specialized for this domain.
-                              </p>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">
       <div class="row">
@@ -41,6 +16,11 @@ redirect_from:
                      <div class="rst-content">
                         <div role="main">
                            <div class="section">
+                                <h1 id="the-network-in-the-language">Network-Aware Type System</h1>
+                              <p>In a programming language, the type system is the foundation for representing data and implementing logic. It provides the means of creating abstractions to the solutions that you provide. While some languages provide basic functionality, others strive to give in-built functionality for specialized domains.</p>
+                              <p>
+                                 With more services being available in the cloud, the network-distributed programming domain has grown. As the developer is given the added responsibility of working with networked resources in their code, it is critical that the programming language itself aids in this operation. That’s why Ballerina’s network-friendly type system is specialized for this domain.
+                              </p>
                               <h2 id="services">Statically Typed and Structural</h2>
                               <p>Ballerina is a statically typed language, which means all the variables are checked at compile-time and only compatible values are assigned. Statically typed languages are generally more robust, easier to debug, and aids in creating better language tooling.</p>
                               <p>
@@ -69,14 +49,17 @@ DoorState ds3 = { open: false, locked: true };
 DoorState ds4 = { open: false, locked: false };
 </code></pre>
                               <p>A type in Ballerina represents a set of the possible shapes it can have. So any value that belongs to either of the above four shapes will be considered to be of the type <code>DoorState</code>. </p>
-                              <p>Figure 1: Set of shapes of the type <code>DoorState</code></p>
+                             <div class="cInlineImage"> <img src="/img/why-pages/why-diagram-01.svg"/></div>
+                              <p class="cCaption">Figure 1: Set of shapes of the type <code>DoorState</code></p>
                               <h3>Subtypes in Ballerina</h3>
                               <p>Subtyping in Ballerina is semantic. It is defined by means of shapes, where S is a subtype of T, if the shapes representing S are a subset of the shapes representing T. Let’s demonstrate this behavior with a few examples. </p>
                               <p>The type <code>boolean</code> is a simple basic type in Ballerina without a storage identity, so its values become equivalent to its shapes. Therefore the <code>boolean</code> type is defined as having two shapes true and false. </p>
                               <p>The <code>boolean</code> type’s shapes can be defined in set notation as S<sub>boolean</sub> = { true, false }. This can be visualized as seen in Figure 2 below. </p>
-                              <p>Figure 2: Set of shapes of the type <code>boolean</code></p>
+                               <div class="cInlineImage"> <img src="/img/why-pages/why-diagram-02.svg"/></div>
+                              <p class="cCaption">Figure 2: Set of shapes of the type <code>boolean</code></p>
                               <p>Now, according to our subtyping rules, we can derive new types based on the <code>boolean</code> type by creating subsets of its shapes. For example, a new type we can create is <code>boolean_false</code> where its only supported shape/value would be <code>false</code>. The new type is shown in Figure 3 below.</p>
-                              <p>Figure 3: Shapes sets of types <code>boolean</code> and <code>boolean_false</code></p>
+                              <div class="cInlineImage"> <img src="/img/why-pages/why-diagram-03.svg"/></div>
+                              <p class="cCaption">Figure 3: Shapes sets of types <code>boolean</code> and <code>boolean_false</code></p>
                               <p>The new type <code>boolean_false</code> can be defined in Ballerina code in the following manner: </p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">type boolean_false false;
 </code></pre>
@@ -87,7 +70,8 @@ bv2 = bv1;
 </code></pre>
                               <p>As you can see, <code>bv1</code> of type <code>boolean_false</code> can be assigned to <code>bv2</code> of type <code>boolean</code> because <code>bv1</code>’s type is a subset of <code>bv2</code>’s type. In simple terms, all the values that can be held in the variable <code>bv1</code> can be held in the variable <code>bv2</code>, thus the assignment is possible.</p>
                               <p>We have now seen how Ballerina’s subtyping works in relation to simple types. Let’s take a look at creating subtypes of records by revisiting our <code>DoorState</code> scenario. Here, we will create a new type <code>EmergencyDoorState</code>, where the <code>locked</code> field has to always have the value <code>false</code>. The resultant types and their shapes can be seen below in Figure 4.</p>
-                              <p>Figure 4: Shapes sets of types <code>DoorState</code> and <code>EmergencyDoorState</code></p>
+                              <div class="cInlineImage"> <img src="/img/why-pages/why-diagram-04.svg"/></div>
+                              <p class="cCaption">Figure 4: Shapes sets of types <code>DoorState</code> and <code>EmergencyDoorState</code></p>
                               <p>
                                  The type definition of <code>EmergencyDoorState</code> type is shown below:
                               </p>
@@ -314,5 +298,8 @@ $ ballerina run sample.bal
 <style>
 .nav > li.cVersionItem {
     display: none !important;
+}
+.cBalleinaBreadcrumbs li:nth-child(3) , .cBalleinaBreadcrumbs li:nth-child(2) {
+   display:none !important;
 }
 </style>

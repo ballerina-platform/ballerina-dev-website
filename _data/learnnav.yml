@@ -5,10 +5,10 @@
     - title: Installing Ballerina
       url: /learn/installing-ballerina/
       active: installing-ballerina
-    - title: Setting up VSCode
+    - title: Setting up Visual Stusio Code
       url: /learn/tools-ides/vscode-plugin/
       active: vscode-plugin
-    - title: Setting up IntelliJ
+    - title: Setting up IntelliJ IDEA
       url: /learn/tools-ides/intellij-plugin/
       active: intellij-plugin
 
@@ -18,73 +18,78 @@
     - title: Using the CLI Tools
       url: /learn/cli-commands/ 
       active: cli-commands
-    - title: Keeping Ballerina up to date
+    - title: Keeping Ballerina Up To Date
       url: /learn/how-to-keep-ballerina-up-to-date
       active: how-to-keep-ballerina-up-to-date
     - title: Using the Open API Tools
       url: /learn/how-to-use-openapi-tools/
       active: how-to-use-openapi-tools
-    - title: Generating Ballerina code for the Protocol Buffer definition
+    - title: Generating Ballerina Code for the Protocol Buffer Definition
       url: /learn/how-to-generate-code-for-protocol-buffers/
       active: how-to-generate-code-for-protocol-buffers
 
-- title: Code organization 
+- title: Code Organization 
   url: '#'
   sublinks:
-    - title: Structuring Ballerina code
+    - title: Structuring Ballerina Code
       url: /learn/how-to-structure-ballerina-code/
       active: how-to-structure-ballerina-code
-    - title: Documenting Ballerina code
+    - title: Documenting Ballerina Code
       url: /learn/how-to-document-ballerina-code/
       active: how-to-document-ballerina-code
-    - title: Coding conventions
+    - title: Coding Conventions
       url: /learn/style-guide/
       active: style-guide
-    - title: Running Ballerina code
+    - title: Running Ballerina Code
       url: /learn/how-to-run-ballerina-programs/
       active: how-to-run-ballerina-programs
-    - title: Publishing modules to Ballerina Central
+    - title: Publishing Modules to Ballerina Central
       url: /learn/how-to-publish-modules
       active: how-to-publish-modules
 
 
-- title: Cloud development
+- title: Cloud Development
   url: '#' 
   sublinks:
-    - title: Deploying Ballerina programs in the cloud
+    - title: Deploying Ballerina Programs in the Cloud
       url: /learn/how-to-deploy-ballerina-programs-in-cloud/
       active: how-to-deploy-ballerina-programs-in-cloud
 
 - title: Observability
   url: '#' 
   sublinks:
-    - title: Observing Ballerina code
+    - title: Observing Ballerina Code
       url: /learn/how-to-observe-ballerina-code
       active: how-to-observe-ballerina-code
+
+- title: Interoperability
+  url: '#' 
+  sublinks:
+    - title: Calling Java Code from Ballerina
+      url: /learn/how-to-call-java-code-from-ballerina/
+      active: how-to-call-java-code-from-ballerina
 
 - title: Security
   url: '#' 
   sublinks:
-    - title: Writing secure Ballerina code
+    - title: Writing Secure Ballerina Code
       url: /learn/how-to-write-secure-ballerina-code
       active: how-to-write-secure-ballerina-code
 
 - title: Testing
   url: '#' 
   sublinks:
-    - title: Testing Ballerina code
+    - title: Testing Ballerina Code
       url: /learn/how-to-test-ballerina-code
       active: how-to-test-ballerina-code
 
 - title: Extending Ballerina
   url: '#' 
   sublinks:
-    - title: Extending with compiler extensions 
+    - title: Extending with Compiler Extensions 
       url: /learn/how-to-extend-ballerina
       active: how-to-extend-ballerina
-    - title: Calling Java code from Ballerina
-      url: /learn/how-to-call-java-code-from-ballerina/
-      active: how-to-call-java-code-from-ballerina
+      
  
 
 

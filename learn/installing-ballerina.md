@@ -59,6 +59,7 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
   ```
   dpkg -i <ballerina-binary>.deb
   ```
+  
 ## Installing from source
 
 Alternatively, follow the instructions below to install Ballerina from the source.
@@ -122,4 +123,7 @@ To get help when you work with Ballerina, see [Community](/community).
 
 ## What's next
 
-Once you have successfully installed Ballerina, try out the [Quick Tour](/learn/quick-tour) and take Ballerina for its first spin.
+Once you have successfully installed Ballerina, click the below links to set up your IDE.
+
+- [Setting up VS Code](/learn/vscode-plugin/)
+- [Setting up IntelliJ](/learn/intellij-plugin/)

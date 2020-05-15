@@ -10,6 +10,9 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the default authentication provider configurations, which can be extended to create new authentication providers.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,auth">
 
     <title>API Docs - Functions : auth</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -85,7 +88,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -386,7 +389,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -752,12 +755,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        resourceScopes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> </span>
+                        <span >resourceScopes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> | <span class="array-type"><span class="builtin-type">string</span>[][]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Scopes of the resource</p>
-</p>
+                        <p>
+                            
+                            <p>Scopes of the resource</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -765,12 +772,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        userScopes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> </span>
+                        <span >userScopes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Scopes of the user</p>
-</p>
+                        <p>
+                            
+                            <p>Scopes of the user</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -778,12 +789,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        authzCacheKey<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >authzCacheKey</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Authorization cache key</p>
-</p>
+                        <p>
+                            
+                            <p>Authorization cache key</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -791,12 +806,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        positiveAuthzCache<span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
+                        <span >positiveAuthzCache</span>
+                        <span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
                         
                     </li>
                     <li>
-                        <p><p>The <code>cache:Cache</code> for positive authorizations</p>
-</p>
+                        <p>
+                            
+                            <p>The <code>cache:Cache</code> for positive authorizations</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -804,12 +823,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        negativeAuthzCache<span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
+                        <span >negativeAuthzCache</span>
+                        <span class="type">  <a href="../cache/objects/Cache.html">Cache</a>? </span>
                         
                     </li>
                     <li>
-                        <p><p>The <code>cache:Cache</code> for negative authorizations</p>
-</p>
+                        <p>
+                            
+                            <p>The <code>cache:Cache</code> for negative authorizations</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -857,12 +880,16 @@ redirect_from:
             <div class="params-listing">
                 <ul>
                     <li>
-                        credential<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >credential</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Base64-encoded <code>username:password</code> value</p>
-</p>
+                        <p>
+                            
+                            <p>Base64-encoded <code>username:password</code> value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -906,12 +933,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        scheme<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >scheme</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Auth scheme (<code>JWT</code>, <code>LDAP</code>, <code>OAuth2</code>, <code>Basic</code>, etc.)</p>
-</p>
+                        <p>
+                            
+                            <p>Auth scheme (<code>JWT</code>, <code>LDAP</code>, <code>OAuth2</code>, <code>Basic</code>, etc.)</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -919,12 +950,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        authToken<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >authToken</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Auth token (credential)</p>
-</p>
+                        <p>
+                            
+                            <p>Auth token (credential)</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -955,12 +990,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        userId<span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span >userId</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>User ID of the authenticated user</p>
-</p>
+                        <p>
+                            
+                            <p>User ID of the authenticated user</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -968,12 +1007,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        username<span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span >username</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Username of the authenticated user</p>
-</p>
+                        <p>
+                            
+                            <p>Username of the authenticated user</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -981,12 +1024,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        scopes<span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span> </span>
+                        <span >scopes</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]?</span> </span>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Authenticated user scopes</p>
-</p>
+                        <p>
+                            
+                            <p>Authenticated user scopes</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -994,12 +1041,16 @@ extracting credentials</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        claims<span class="type">  <span class="builtin-type">map?</span> </span>
+                        <span >claims</span>
+                        <span class="type">  <span class="builtin-type">map?</span> </span>
                         <span class="default"> (default ())</span>
                     </li>
                     <li>
-                        <p><p>Claims of the authenticated user</p>
-</p>
+                        <p>
+                            
+                            <p>Claims of the authenticated user</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>

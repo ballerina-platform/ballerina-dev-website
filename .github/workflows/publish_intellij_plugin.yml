@@ -10,32 +10,26 @@ on:
 jobs:
   trigger_workflow:
      runs-on: ubuntu-latest
-          
-     steps:
-       - uses: actions/checkout@v2
-         with:
-           repository: ballerina-platform/ballerina-dev-website
+
+       - name: Checkout code
+         uses: actions/checkout@v2
                   
        - name: Install jq for json manipulation
          run: sudo apt-get install jq
-         
-       - name: Get ballerina version
+
+       - uses: actions/setup-java@v1
+         with:
+           java-version: 1.8 
+
+       - name: Clone ballerina-dev-website
+         run: git clone https://github.com/ballerina-platform/ballerina-lang.git
+          
+       - name: Build and publish plugin
          run: |
               version="`jq -r '.version' _data/latest/metadata.json`"
               BAL_VERSION="v${version}"
-              echo "::set-env name=ballerina_version::$BAL_VERSION"
 
-       - uses: actions/checkout@v2
-         with:
-           repository: ballerina-platform/ballerina-lang
-           ref: ${{ env.ballerina_version }}
-         
-       - uses: actions/setup-java@v1
-         with:
-           java-version: 1.8  
-           
-       - name: Build and publish plugin
-         run: |
-              cd tools-plugin/intellij
+              cd ballerina-lang/tool-plugins/intellij/
+              git checkout $BAL_VERSION
               ./gradlew buildPlugin 
               ./gradlew publishPlugin -PintellijPublishToken=${{ secrets.IDEA_TOKEN }}   

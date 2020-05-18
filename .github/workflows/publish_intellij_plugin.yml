@@ -8,7 +8,7 @@ on:
       - '_data/latest/**'
     
 jobs:
-  trigger_workflow:
+  publish_idea_plugin:
     runs-on: ubuntu-latest
 
     steps:

@@ -31,7 +31,7 @@ jobs:
         aws configure set aws_secret_access_key $s3_acc_key
 
         version="`jq -r '.version' _data/latest/metadata.json`"
-        echo "checkout Ballerina lang repo: $version"
+        echo "extracted release version: $version"
 
         aws s3 cp s3://dist-dev.ballerina.io/downloads/$version/ s3://dist.ballerina.io/downloads/$version/ --recursive
 

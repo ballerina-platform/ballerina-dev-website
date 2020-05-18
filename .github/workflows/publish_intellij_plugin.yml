@@ -21,7 +21,7 @@ jobs:
          with:
            java-version: 1.8 
 
-       - name: Clone ballerina-dev-website
+       - name: Clone ballerina-lang repo
          run: git clone https://github.com/ballerina-platform/ballerina-lang.git
           
        - name: Build and publish plugin

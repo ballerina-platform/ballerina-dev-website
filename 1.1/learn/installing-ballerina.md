@@ -49,7 +49,7 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 
 [Download the DEB file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib/ballerina`.
 
-> **Info:** Alternatively, you can use the below command to install Ballerina using the downloaded the DEB file. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path.
+> **Info:** Alternatively, you can use the below command to install Ballerina using the downloaded DEB file. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path.
 
 ```
 dpkg -i <ballerina-binary>.deb

@@ -10,6 +10,10 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+This module supports Kafka 1.x.x and 2.0.0 versions.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,kafka">
 
     <title>API Docs - Types : kafka</title>
     <script src="../html-template-resources/jquery.min.js"></script>
@@ -64,6 +68,10 @@ redirect_from:
                 <ul>
                     
                         <li >
+                            <a href="#AuthenticationMechanism">AuthenticationMechanism</a>
+                        </li>
+                    
+                        <li >
                             <a href="#CompressionType">CompressionType</a>
                         </li>
                     
@@ -80,6 +88,10 @@ redirect_from:
                         </li>
                     
                         <li >
+                            <a href="#SecurityProtocol">SecurityProtocol</a>
+                        </li>
+                    
+                        <li >
                             <a href="#SerializerType">SerializerType</a>
                         </li>
                     
@@ -89,7 +101,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -373,6 +385,10 @@ redirect_from:
                     <ul>
                         
                             <li >
+                                <a href="#AuthenticationMechanism">AuthenticationMechanism</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#CompressionType">CompressionType</a>
                             </li>
                         
@@ -389,6 +405,10 @@ redirect_from:
                             </li>
                         
                             <li >
+                                <a href="#SecurityProtocol">SecurityProtocol</a>
+                            </li>
+                        
+                            <li >
                                 <a href="#SerializerType">SerializerType</a>
                             </li>
                         
@@ -398,7 +418,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -692,6 +712,19 @@ redirect_from:
                     
                         <div class="params-listing">
                             <ul>
+                                <li id="AuthenticationMechanism">
+                                    <b >AuthenticationMechanism</b>
+                                    <span class="type">  <a href="../kafka/constants.html#AUTH_SASL_PLAIN">AUTH_SASL_PLAIN</a></span></li>
+                                <li>
+                                    
+                                    Represents the supported Kafka SASL authentication mechanisms.
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
                                 <li id="CompressionType">
                                     <b >CompressionType</b>
                                     <span class="type">  <a href="../kafka/constants.html#COMPRESSION_NONE">COMPRESSION_NONE</a> | <a href="../kafka/constants.html#COMPRESSION_GZIP">COMPRESSION_GZIP</a> | <a href="../kafka/constants.html#COMPRESSION_SNAPPY">COMPRESSION_SNAPPY</a> | <a href="../kafka/constants.html#COMPRESSION_LZ4">COMPRESSION_LZ4</a> | <a href="../kafka/constants.html#COMPRESSION_ZSTD">COMPRESSION_ZSTD</a></span></li>
@@ -737,6 +770,19 @@ redirect_from:
                                 <li>
                                     
                                     Kafka producer acknowledgement types.
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SecurityProtocol">
+                                    <b >SecurityProtocol</b>
+                                    <span class="type">  <a href="../kafka/constants.html#PROTOCOL_SASL_PLAINTEXT">PROTOCOL_SASL_PLAINTEXT</a> | <a href="../kafka/constants.html#PROTOCOL_SASL_SSL">PROTOCOL_SASL_SSL</a></span></li>
+                                <li>
+                                    
+                                    Represents the supported security protocols for Kafka clients.
 
                                 </li>
                             </ul>

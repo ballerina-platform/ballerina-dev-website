@@ -5,7 +5,7 @@
     - title: Installing Ballerina
       url: /learn/installing-ballerina/
       active: installing-ballerina
-    - title: Setting up Visual Stusio Code
+    - title: Setting up Visual Studio Code
       url: /learn/tools-ides/vscode-plugin/
       active: vscode-plugin
     - title: Setting up IntelliJ IDEA

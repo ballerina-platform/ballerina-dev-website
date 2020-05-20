@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
-title: Events
+title: Ballerina Events
+description: Check out the events that we will be presenting at and covering the Ballerina programming language.
+keywords: ballerina, events, programming language, ballerina events
 permalink: /events/
 redirect_from:
   - /learn/events

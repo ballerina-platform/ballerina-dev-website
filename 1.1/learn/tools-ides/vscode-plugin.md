@@ -11,7 +11,7 @@ redirect_from:
   - /v1-1/learn/vscode-plugin
 ---
 
-# The Visual Studio Code Extension
+# The Visual Studio Code Ballerina Extension
 
 The VS Code Ballerina extension provides the Ballerina development capabilities in VS Code. The below sections include instructions on how to download, install, and use the features of the VS Code extension.
 

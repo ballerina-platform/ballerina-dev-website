@@ -1,6 +1,8 @@
 ---
 layout: ballerina-left-nav-pages
 title: Installing Ballerina
+description: Get started with the Ballerina programming language by following these instructions on installing and setting up Ballerina.
+keywords: ballerina, installing ballerina, programming language, ballerina installation
 permalink: /learn/installing-ballerina/
 active: installing-ballerina
 redirect_from:
@@ -15,28 +17,25 @@ redirect_from:
 
 # Installing Ballerina
 
-- [Downloading the Ballerina distribution](#downloading-the-ballerina-distribution)
+- [Prerequisites](#prerequisites)
 - [Installing Ballerina via installers](#installing-ballerina-via-installers)
 - [Installing from source](#installing-from-source)
 - [Uninstalling Ballerina](#uninstalling-ballerina)
 - [Getting help](#getting-help)
 - [What's next](#what's-next)
 
-## Downloading the Ballerina distribution
+## Prerequisites
 
-[Download](https://ballerina.io/downloads/) a Ballerina distribution based on your operating system.
-
-> Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
+Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
 - Windows Vista SP2 x64 or later
 - Ubuntu Linux 12.04 x64 - LTS and above
 - OS X 10.8.3 x64 and above
 
-If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
-
 ## Installing Ballerina via installers
 
-If you are upgrading to a new version of Ballerina from an older version, you can download and use the installer for the latest version. The installer will automatically uninstall the old version. 
-If you are building from source, you must update the path with the new version of Ballerina.
+Follow the below instructions to download and use the installers to install the latest Ballerina version. The installer will automatically uninstall the old Ballerina version if you have one already installed.
+
+>**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
 
 ### Installing on OS X
 
@@ -52,13 +51,13 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 
 ### Installing on Linux
 
-* [Download](/downloads) the latest version of Ballerina.
+[Download the DEB file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib/ballerina`.
 
-* If you downloaded the DEB file, use the following command to install Ballerina. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path. This installs Ballerina to the `/usr/lib/ballerina` directory.
+> **Info:** Alternatively, you can use the below command to install Ballerina using the downloaded DEB file. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path.
 
-  ```
-  dpkg -i <ballerina-binary>.deb
-  ```
+```
+dpkg -i <ballerina-binary>.deb
+```
   
 ## Installing from source
 
@@ -82,7 +81,7 @@ Follow the steps below to obtain the Ballerina source code.
     ```
     git clone --recursive https://github.com/ballerina-platform/ballerina-lang.git
     ```
-    >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing <YOUR-GITHUB-USERNAME> with your Git username.
+    >**Tip:** If you have already forked the repository to your GitHub account, then execute the below command replacing `<YOUR-GITHUB-USERNAME>` with your Git username.
 
     ```
     git clone --recursive https://github.com/<YOUR-GITHUB-USERNAME>/ballerina-lang.git
@@ -98,7 +97,7 @@ Follow the steps below to obtain the Ballerina source code.
 
 Follow the steps below to build the project of the obtained source.
 
-1. Navigate to the root directory of the Ballerina repo (i.e., <BALLERINA_PROJECT_ROOT>) and execute one of the below Gradle commands to build the project using Gradle.
+1. Navigate to the root directory of the Ballerina repo (i.e., `<BALLERINA_PROJECT_ROOT>`) and execute one of the below Gradle commands to build the project using Gradle.
 
     - **On Unix/Mac OS:** ```./gradlew build ```
     - **Windows:** ```gradlew build ```
@@ -125,5 +124,5 @@ To get help when you work with Ballerina, see [Community](/community).
 
 Once you have successfully installed Ballerina, click the below links to set up your IDE.
 
-- [Setting up VS Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ](/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/learn/vscode-plugin/)
+- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)

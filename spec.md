@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
-title: Ballerina Website License
+title: Ballerina Platform Spec
+description: Read the Ballerina language spec and other specifications that cover the standard library, built-in language extensions, testing, documentation, and more.
+keywords: ballerina, language specification, spec 
 permalink: /spec/
 redirect_from:
   - /learn/language-specification

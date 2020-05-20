@@ -1,6 +1,8 @@
 ---
 layout: ballerina-layer-page
 title: Batteries Included
+description: Explore the Ballerina platform, which includes a standard library (API docs), Ballerina Central, a documentation and testing framework, and popular IDE plugins.
+keywords: ballerina, ballerina platform, api documentation, testing, ide, ballerina central
 permalink: /why-ballerina/batteries-included/
 redirct_from:
   - /why/batteries-included/

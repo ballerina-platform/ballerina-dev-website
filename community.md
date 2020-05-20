@@ -20,6 +20,31 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
+
+
+
+## Ballerina Newsletter
+
+We curate a bi-quarterly newsletter with all the latest content on Ballerina. Subscribe to it below:
+
+<div class="col-sm-12 col-md-12" style="padding:0;">
+<div class="col-sm-12 col-md-6 cFormSection">
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+   <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive emails from Ballerina to stay up to date on content and new releases.</label>
+  </div>
+  <button type="submit" class="cSignUp">Submit</button>
+</form>
+</div>
+</div>
+
 ## Seek for help
 
 We are happy to help! Come engage with us on any channel that works for you.
@@ -84,5 +109,30 @@ Join us and contribute to the source code to make Ballerina better! To be aware 
 <style>
 .nav > li.cVersionItem {
     display: none !important;
+}
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	padding: 10px 20px;
+	margin-top: 15px;
+}
+
+.cSignUp:hover {
+background:#464646;
 }
 </style>

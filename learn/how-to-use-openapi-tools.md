@@ -1,6 +1,8 @@
 ---
 layout: ballerina-left-nav-pages
-title: Ballerina OpenAPI Tools
+title: How to Use Ballerina OpenAPI Tools
+description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
+keywords: ballerina, programming language, openapi, open api, restful api
 permalink: /learn/how-to-use-openapi-tools/
 active: how-to-use-openapi-tools
 redirect_from:
@@ -9,7 +11,7 @@ redirect_from:
   - /v1-2/learn/how-to-use-openapi-tools/
 ---
 
-## Ballerina OpenAPI Tools
+## How to Use Ballerina OpenAPI Tools
 
 OpenAPI Specification is a specification that creates a RESTFUL contract for APIs, detailing all of its resources and operations in a human and machine-readable format for easy development, discovery, and integration. Ballerina OpenAPI tooling will make it easy for users to start development of a service documented in OpenAPI contract in Ballerina by generating Ballerina service and client skeletons.
 

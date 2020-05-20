@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
 title: The Ballerina Community
+description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
+keywords: ballerina, community, ballerina community
 permalink: /community/
 ---
 

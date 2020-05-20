@@ -1,6 +1,8 @@
 ---
 layout: ballerina-layer-page
 title: Sequence Diagrams for Programming
+description: See why the sequence diagram is the foundation for designing the syntax and semantics of the Ballerina programming language.
+keywords: ballerina, programming lanaguage, sequence diagram, concurrency
 permalink: /why-ballerina/sequence-diagrams-for-programming/
 redirect_from:
   - /why/sequence-diagrams-for-programming/

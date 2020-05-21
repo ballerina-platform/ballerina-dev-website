@@ -3,7 +3,7 @@ name: Update github release with the new release
 on:
   push:
     branches:
-      - master
+      - prod-sync
     paths:
       - '_data/latest/**'
 

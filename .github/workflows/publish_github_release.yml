@@ -27,4 +27,6 @@ jobs:
         #python script takes RN.md as the input and produces out.json as the output
         python3 .github/scripts/sanitize_rn.py
 
-        curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases
+        if ! curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases --fail; then
+          exit 1
+        fi

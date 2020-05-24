@@ -466,7 +466,7 @@ $(document).ready(function() {
     };
 
     //subscribe form
-    $("#subscribeUserButtonOS").click(function(event) {
+    $("#subscribeUserButton").click(function(event) {
         event.preventDefault();
         subscribeUserOS();
     });
@@ -481,18 +481,20 @@ $(document).ready(function() {
     });
 
     function subscribeUserOS() {
-        var email = $('#emailUserOS').val();
+        $("#form-error").html("");
+        var email = $('#userEmail').val();
+        var optin = $('#optin').is(":checked");
         $('#subscribeUserMessage').remove("");
         if (email == "") {
-            $('#emailUserOS').val('');
-            $("#emailUserOS").attr("placeholder","Please enter your email.");
+            $("#form-error").text("Please enter your email.");
         } else if (!isEmail(email)) {
-            $('#emailUserOS').val('');
-            $("#emailUserOS").attr("placeholder","Please enter a valid email.");
-        } else {
-            $('#emailUserOS').val('');
+            $("#form-error").text("Please enter a valid email.");
+        } else if(!optin){
+            $("#form-error").text("Please confirm email subscription");
+        }else {
+            $('#subscribeForm').trigger("reset");
             $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2018-03-26/4yl979?email=" + email + "'></iframe>");
-            $("#emailUserOS").attr("placeholder","Your email address has been added.");
+            $("#form-status").text("You have successfully subscribed to the newsletter.");
         }
         return;
     }

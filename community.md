@@ -22,6 +22,29 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
+## Ballerina Newsletter
+
+We curate a bi-quarterly newsletter with all the latest content on Ballerina. Subscribe to it below:
+
+<div class="col-sm-12 col-md-12" style="padding:0;">
+   <div class="col-sm-12 col-md-6 cFormSection">
+      <form id="subscribeForm">
+      <div id="form-error"></div>
+      <div id="form-status"></div>
+      <div class="form-group">
+         <label for="userEmail">Email address</label>
+         <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+         <div class="form-check">
+         <input type="checkbox" class="form-check-input" id="optin">
+         <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive emails from Ballerina to stay up to date on content and new releases.</label>
+      </div>
+      <button type="button" class="cSignUp" id="subscribeUserButton">Subscribe</button>
+      </form>
+   </div>
+</div>
+
 ## Seek help
 
 We are happy to help! Come engage with us on any channel that works for you.

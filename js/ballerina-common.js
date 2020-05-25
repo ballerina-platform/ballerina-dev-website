@@ -487,14 +487,20 @@ $(document).ready(function() {
         $('#subscribeUserMessage').remove("");
         if (email == "") {
             $("#form-error").text("Please enter your email.");
+            $("#form-error").addClass("cShowBlock");
         } else if (!isEmail(email)) {
             $("#form-error").text("Please enter a valid email.");
+            $("#form-error").addClass("cShowBlock");
         } else if(!optin){
             $("#form-error").text("Please confirm email subscription");
+            $("#form-error").addClass("cShowBlock");
         }else {
             $('#subscribeForm').trigger("reset");
             $(".pdframe").html("<iframe src='https://go.pardot.com/l/142131/2017-02-16/3c6zgy?email=" + email + "'></iframe>");
             $("#form-status").text("You have successfully subscribed to the newsletter.");
+            $("#form-status").addClass("cShowBlock");
+            $("#form-error").removeClass("cShowBlock");
+            
         }
         return;
     }

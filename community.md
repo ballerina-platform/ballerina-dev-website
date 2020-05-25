@@ -39,7 +39,7 @@ We curate a bi-quarterly newsletter with all the latest content on Ballerina. Su
       </div>
          <div class="form-check">
          <input type="checkbox" class="form-check-input" id="optin">
-         <label class="form-check-label" for="exampleCheck1">Yes, I would like to receive emails from Ballerina to stay up to date on content and new releases.</label>
+         <label class="form-check-label" for="cBallerinaCheck">Yes, I would like to receive emails from Ballerina to stay up to date on content and new releases.</label>
       </div>
       <button type="button" class="cSignUp" id="subscribeUserButton">Subscribe</button>
       </form>

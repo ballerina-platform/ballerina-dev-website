@@ -30,8 +30,8 @@ We curate a bi-quarterly newsletter with all the latest content on Ballerina. Su
 <div class="col-sm-12 col-md-12" style="padding:0;">
    <div class="col-sm-12 col-md-6 cFormSection">
       <form id="subscribeForm">
-      <div id="form-error"></div>
-      <div id="form-status"></div>
+      <div id="form-error" class="alert alert-danger"></div>
+      <div id="form-status" class="alert alert-success"></div>
       <div class="form-group">
          <label for="userEmail">Email address</label>
          <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
@@ -142,29 +142,17 @@ label {
 	font-weight: 400;
 }
 
-.cSignUp:hover {
+.cSignUp:hover , button#subscribeUserButton:hover {
 background:#464646;
 }
 
-#form-status {
-	display: inline-block;
-	width: 100%;
-	font-size: 1.6em;
-	margin-bottom: 20px;
-	font-weight: 600;
-	padding: 20px;
-	border: 1px solid #6eb1ae;
+#form-status , #form-error {
+display:none;
 }
 
-.form-error {
-   display: inline-block;
-	width: 100%;
-	font-size: 1em;
-	margin-bottom: 20px;
-	font-weight: 600;
-   padding: 20px;
-   color:#d91515;
-	border: 1px solid #6eb1ae;
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
 }
+
 
 </style>

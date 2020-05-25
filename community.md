@@ -155,4 +155,16 @@ background:#464646;
 	padding: 20px;
 	border: 1px solid #6eb1ae;
 }
+
+.form-error {
+   display: inline-block;
+	width: 100%;
+	font-size: 1em;
+	margin-bottom: 20px;
+	font-weight: 600;
+   padding: 20px;
+   color:#d91515;
+	border: 1px solid #6eb1ae;
+}
+
 </style>

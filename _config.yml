@@ -43,6 +43,10 @@ latest_version: 1.2
 exclude:
   - downloads/RELEASE_NOTE.md
   - vendor
+  - 0.990
+  - 0.991
+  - 1.0
+  - 1.1
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/
@@ -50,3 +54,5 @@ exclude:
 #   - vendor/gems/
 #   - vendor/ruby/
 dist_server: http://dist-dev.ballerina.io
+keep_files: ['0.990','0.991','1.0','1.1']
+

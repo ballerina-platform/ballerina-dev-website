@@ -127,15 +127,32 @@ label {
    float:left;
    margin-right:10px !important;
 }
-.cSignUp {
+.cSignUp, button#subscribeUserButton {
 	background: #56b3af;
 	border: none;
 	color: #fff;
-	padding: 10px 20px;
+	/* padding: 10px 20px; */
 	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
 }
 
 .cSignUp:hover {
 background:#464646;
+}
+
+#form-status {
+	display: inline-block;
+	width: 100%;
+	font-size: 1.6em;
+	margin-bottom: 20px;
+	font-weight: 600;
+	padding: 20px;
+	border: 1px solid #6eb1ae;
 }
 </style>

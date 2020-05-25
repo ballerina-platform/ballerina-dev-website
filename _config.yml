@@ -41,7 +41,7 @@ keep_files: ['0.990','0.991',"1.1"]
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude: ["downloads/RELEASE_NOTE.md","vendor","0.990","0.991","1.0","1.1"]
+exclude: ["downloads/RELEASE_NOTE.md","vendor","0.990","0.991","1.1"]
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/

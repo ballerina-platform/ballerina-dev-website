@@ -22,12 +22,6 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 23e4e58faed3192afa65c0627e964acd5f101c17
 ## Ballerina Newsletter
 
 We curate a bi-quarterly newsletter with all the latest content on Ballerina. Subscribe to it below:

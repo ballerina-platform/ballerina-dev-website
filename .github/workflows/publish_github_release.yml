@@ -1,0 +1,32 @@
+name: Update github release with the new release
+
+on:
+  push:
+    branches:
+      - prod-sync
+    paths:
+      - '_data/latest/**'
+
+jobs:
+  update-github-release:
+    runs-on: ubuntu-latest
+
+    steps:    
+    - name: Install jq for json manipulation
+      run: sudo apt-get install jq
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Create new release in github
+      env:
+        WEBSITE_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+      run: |
+        VERSION="`jq -r '.version' _data/latest/metadata.json`"
+        cat downloads/release-notes/$VERSION/RELEASE_NOTE.md | sed '/---/d' | sed '/layout: release-note/d' | sed '/title: Release note/d' > RN.md
+        #python script takes RN.md as the input and produces out.json as the output
+        python3 .github/scripts/sanitize_rn.py
+
+        if ! curl -v -H "Authorization: token $WEBSITE_TOKEN" -H "Content-Type: application/json" -d @out.json https://api.github.com/repos/ballerina-platform/ballerina-lang/releases --fail; then
+          exit 1
+        fi

@@ -6,7 +6,7 @@ permalink: /0.991/learn/getting-started/
 
 # Getting Started
 
-- [Downloading the Ballerina distribution](#downloading-the-ballerina-distribution)
+- [Prerequisites](#prerequisites)
 - [Installing Ballerina via installers](#installing-ballerina-via-installers)
 - [Installing via the Ballerina language ZIP file](#installing-via-the-ballerinalanguag-zip-file)
 - [Installing from source](#installing-from-source)
@@ -14,13 +14,7 @@ permalink: /0.991/learn/getting-started/
 - [Getting help](#getting-help)
 - [What's next](#what's-next)
 
-## Downloading the Ballerina distribution
-
-You can download the Ballerina distribution from [download page](https://ballerina.io/downloads/) for your operating system.
-
-If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](https://github.com/ballerina-platform/ballerina-lang#install-from-source).
-
-### System requirements
+### Prerequisites
 
 Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the requirements before you proceed with the installation.
 
@@ -30,12 +24,11 @@ Ballerina binary distributions are available for the following supported operati
 - Red Hat Enterprise Linux 5.5 x64 and above
 - OS X 10.8.3 x64 and above
 
-If your operating system or architecture is not on the list, you can [install from source](#installing-from-source) instead.
-
 ## Installing Ballerina via installers
 
-If you are upgrading to the latest version of Ballerina from an older version, you can download the latest version and run it without uninstalling the old version. 
-If you are building from source, you must update the path with the new version of Ballerina.
+Follow the below instructions to download and use the installers to install the latest Ballerina version. The installer will automatically uninstall the old Ballerina version if you have one already installed.
+
+>**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
 
 ### Installing on OS X
 
@@ -51,19 +44,13 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 
 ### Installing on Linux
 
-* [Download](/downloads) the latest version of Ballerina.
+[Download the DEB file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib/ballerina`.
 
-* If you downloaded the DEB file, use the following command to install Ballerina. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path. This installs Ballerina to the `/usr/lib/ballerina` directory.
+> **Info:** Alternatively, you can use the below command to install Ballerina using the downloaded DEB file. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path.
 
-  ```
-  dpkg -i <ballerina-binary>.deb
-  ```
-
-* If you downloaded the RPM file, use the following command to install Ballerina. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path. This installs Ballerina to the `/usr/lib64/ballerina` directory.
- 
-  ```
-  rpm -i <ballerina-binary>.rpm
-  ```
+```
+dpkg -i <ballerina-binary>.deb
+```
 
 ## Installing via the Ballerina language ZIP file
 

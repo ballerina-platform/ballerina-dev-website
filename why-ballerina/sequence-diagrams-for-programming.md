@@ -1,6 +1,8 @@
 ---
 layout: ballerina-layer-page
 title: Sequence Diagrams for Programming
+description: See why the sequence diagram is the foundation for designing the syntax and semantics of the Ballerina programming language.
+keywords: ballerina, programming lanaguage, sequence diagram, concurrency
 permalink: /why-ballerina/sequence-diagrams-for-programming/
 redirect_from:
   - /why/sequence-diagrams-for-programming/
@@ -48,8 +50,7 @@ redirect_from:
                               <h2 id="client-objects-and-remote-methods">Client Objects and Remote Methods</h2>
                               <p>Ballerina has special network client objects, like HTTP clients and database connections, that have their own lifeline to represent its functionality and the messages that it can receive. The messages sent to or the invocations done on these network clients are called <em>remote methods</em> — a special method inside a client object that represents a call through the network. Remote calls are distinguished from normal method calls by using the arrow “<code class="highlighter-rouge cBasicCode">-&gt;</code>” notation.</p>
                               <p>The following code shows an HTTP client that is used to do GET and POST requests to a remote endpoint:</p>
-                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">
-public function execute(http:Client lkSvc, http:Client rpSvc) {
+                              <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">public function execute(http:Client lkSvc, http:Client rpSvc) {
   var res1 = lkSvc->get("/query");
   boolean report = true;
   http:Request req = new;

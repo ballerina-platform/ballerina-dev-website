@@ -1,10 +1,13 @@
 ---
 layout: ballerina-left-nav-pages
 title: How to Observe Ballerina Services
-permalink: /learn/how-to-observe-ballerina-code/
+description: See how Ballerina supports observability by exposing itself via metrics, tracing and logs to external systems.
+keywords: ballerina, observability, metrics, tracing, logs
+permalink: /learn/how-to-observe-ballerina-services/
 active: how-to-observe-ballerina-code
 redirect_from:
   - /learn/how-to-observe-ballerina-code
+  - /learn/how-to-observe-ballerina-code/
   - /v1-2/learn/how-to-observe-ballerina-code
   - /v1-2/learn/how-to-observe-ballerina-code/
 ---

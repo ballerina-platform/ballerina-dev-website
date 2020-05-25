@@ -1,8 +1,8 @@
 ---
 layout: ballerina-learn-landing-page
 title: Let’s learn Ballerina!
-description: Ballerina is meant to be a quick start for anyone with prior programming experience.
-keywords: Ballerina, ballerinalang
+description: Learn and master the Ballerina programming language through setting up, Ballerina by examples, the standard library or API documentation, and how to guides.
+keywords: ballerina, learn, documentation, docs, programming language
 permalink: /learn/
 redirect_from:
   - /v1-2/learn/tools-ides

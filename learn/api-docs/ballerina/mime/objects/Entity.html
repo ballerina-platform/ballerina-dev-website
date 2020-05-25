@@ -10,6 +10,11 @@ redirect_from:
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
 
     <title>API Docs - Object : Entity</title>
     <script src="../../html-template-resources/jquery.min.js"></script>
@@ -81,7 +86,7 @@ redirect_from:
             
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -382,7 +387,7 @@ redirect_from:
                 
 
     
-        <div class="version">v1.2.2</div>
+        <div class="version">v1.2.4</div>
     
 
 
@@ -1096,12 +1101,16 @@ and an entity(body part) inside of a multipart entity.
             <div class="params-listing">
                 <ul>
                     <li>
-                        mediaType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >mediaType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content type, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Content type, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1179,12 +1188,16 @@ and an entity(body part) inside of a multipart entity.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentId<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentId</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content ID, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Content ID, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1252,12 +1265,16 @@ and an entity(body part) inside of a multipart entity.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentLength<span class="type">  <span class="builtin-type">int</span> </span>
+                        <span >contentLength</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content length, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Content length, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1325,12 +1342,16 @@ and an entity(body part) inside of a multipart entity.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentDisposition<span class="type">  <a href="../../mime/objects/ContentDisposition.html">ContentDisposition</a> </span>
+                        <span >contentDisposition</span>
+                        <span class="type">  <a href="../../mime/objects/ContentDisposition.html">ContentDisposition</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>Content disposition, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Content disposition, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1397,12 +1418,16 @@ JSON-compatible string, set the content-type header to <code>application/json</c
             <div class="params-listing">
                 <ul>
                     <li>
-                        entityBody<span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
+                        <span >entityBody</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="builtin-type">xml</span> | <span class="builtin-type">json</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Entity body can be of the type <code>string</code>,<code>xml</code>,<code>json</code>,<code>byte[]</code>,<code>io:ReadableByteChannel</code>, or <code>Entity[]</code>.</p>
-</p>
+                        <p>
+                            
+                            <p>Entity body can be of the type <code>string</code>,<code>xml</code>,<code>json</code>,<code>byte[]</code>,<code>io:ReadableByteChannel</code>, or <code>Entity[]</code>.</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1437,12 +1462,16 @@ can be overridden by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        filePath<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >filePath</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Path of the file</p>
-</p>
+                        <p>
+                            
+                            <p>Path of the file</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1450,13 +1479,17 @@ can be overridden by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default application/octet-stream)</span>
                     </li>
                     <li>
-                        <p><p>Content type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content type to be used with the payload. This is an optional parameter.
 The default value is <code>application/octet-stream</code></p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1491,12 +1524,16 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        jsonContent<span class="type">  <span class="builtin-type">json</span> </span>
+                        <span >jsonContent</span>
+                        <span class="type">  <span class="builtin-type">json</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>JSON content, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>JSON content, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1504,13 +1541,17 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default application/json)</span>
                     </li>
                     <li>
-                        <p><p>Content type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content type to be used with the payload. This is an optional parameter.
 The default value is <code>application/json</code></p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1578,12 +1619,16 @@ by passing the content-type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        xmlContent<span class="type">  <span class="builtin-type">xml</span> </span>
+                        <span >xmlContent</span>
+                        <span class="type">  <span class="builtin-type">xml</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>XML content, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>XML content, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1591,13 +1636,17 @@ by passing the content-type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default application/xml)</span>
                     </li>
                     <li>
-                        <p><p>Content type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content type to be used with the payload. This is an optional parameter.
 The default value is <code>application/xml</code></p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1665,12 +1714,16 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        textContent<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >textContent</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Text content, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Text content, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1678,13 +1731,17 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default text/plain)</span>
                     </li>
                     <li>
-                        <p><p>Content type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content type to be used with the payload. This is an optional parameter.
 The default value is <code>text/plain</code></p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1751,12 +1808,16 @@ can be overridden by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        blobContent<span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        <span >blobContent</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>byte[] content that needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>byte[] content that needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1764,13 +1825,17 @@ can be overridden by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default application/octet-stream)</span>
                     </li>
                     <li>
-                        <p><p>Content type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content type to be used with the payload. This is an optional parameter.
 The default value is <code>application/octet-stream</code></p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1838,12 +1903,16 @@ can be overridden by passing the content-type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        byteChannel<span class="type">  <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        <span >byteChannel</span>
+                        <span class="type">  <a href="../../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
                         
                     </li>
                     <li>
-                        <p><p>Byte channel, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Byte channel, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1851,13 +1920,17 @@ can be overridden by passing the content-type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default application/octet-stream)</span>
                     </li>
                     <li>
-                        <p><p>Content-type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content-type to be used with the payload. This is an optional parameter.
 The <code>application/octet-stream</code> is the default value</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -1990,12 +2063,16 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        bodyParts<span class="type">  <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
+                        <span >bodyParts</span>
+                        <span class="type">  <span class="array-type"><a href="../../mime/objects/Entity.html">Entity</a>[]</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Body parts, which needs to be set to the entity</p>
-</p>
+                        <p>
+                            
+                            <p>Body parts, which needs to be set to the entity</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2003,13 +2080,17 @@ by passing the content type as an optional parameter.
             <div class="params-listing">
                 <ul>
                     <li>
-                        contentType<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         <span class="default"> (default multipart/form-data)</span>
                     </li>
                     <li>
-                        <p><p>Content-type to be used with the payload. This is an optional parameter.
+                        <p>
+                            
+                            <p>Content-type to be used with the payload. This is an optional parameter.
 The default value is <code>multipart/form-data</code>.</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2047,12 +2128,16 @@ The default value is <code>multipart/form-data</code>.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2060,12 +2145,16 @@ The default value is <code>multipart/form-data</code>.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter</p>
-</p>
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2113,12 +2202,16 @@ present, then the first value is returned. An exception is thrown if no header i
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2126,13 +2219,17 @@ present, then the first value is returned. An exception is thrown if no header i
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
 the body of the <code>Entity</code> must be accessed initially</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2181,12 +2278,16 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter</p>
-</p>
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2217,7 +2318,7 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
     </div>
     <div class="function-desc">
         
-        <p>Adds the given header value against the given header.
+        <p>Adds the given header value against the given header. Panic if an illegal header is passed.
 <pre><code class="language-ballerina"> mimeEntity.addHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
 </code></pre>
 </p>
@@ -2229,12 +2330,16 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2242,12 +2347,16 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerValue<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerValue</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>The header value to be added</p>
-</p>
+                        <p>
+                            
+                            <p>The header value to be added</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2255,12 +2364,16 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter</p>
-</p>
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2282,7 +2395,7 @@ found. Use the <code>Entity.hasHeader()</code> beforehand to check the existence
     <div class="function-desc">
         
         <p>Sets the given header value against the existing header. If a header already exists, its value is replaced
-with the given header value.
+with the given header value. Panic if an illegal header is passed.
 <pre><code class="language-ballerina"> mimeEntity.setHeader(&quot;custom-header&quot;, &quot;header-value&quot;);
 </code></pre>
 </p>
@@ -2294,12 +2407,16 @@ with the given header value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2307,12 +2424,16 @@ with the given header value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerValue<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerValue</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header value</p>
-</p>
+                        <p>
+                            
+                            <p>Header value</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2320,12 +2441,16 @@ with the given header value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter</p>
-</p>
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2356,12 +2481,16 @@ with the given header value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2369,13 +2498,17 @@ with the given header value.
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
 the body of the <code>Entity</code> must be accessed initially.</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2406,13 +2539,17 @@ the body of the <code>Entity</code> must be accessed initially.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
 the body of the <code>Entity</code> must be accessed initially.</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2448,12 +2585,16 @@ the body of the <code>Entity</code> must be accessed initially.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        headerName<span class="type">  <span class="builtin-type">string</span> </span>
+                        <span >headerName</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
                         
                     </li>
                     <li>
-                        <p><p>Header name</p>
-</p>
+                        <p>
+                            
+                            <p>Header name</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>
@@ -2461,13 +2602,17 @@ the body of the <code>Entity</code> must be accessed initially.</p>
             <div class="params-listing">
                 <ul>
                     <li>
-                        position<span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
+                        <span >position</span>
+                        <span class="type">  <a href="../../mime/types.html#HeaderPosition">HeaderPosition</a> </span>
                         <span class="default"> (default LEADING)</span>
                     </li>
                     <li>
-                        <p><p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
+                        <p>
+                            
+                            <p>Position of the header as an optional parameter. If the position is <code>mime:TRAILING</code>,
 the body of the <code>Entity</code> must be accessed initially.</p>
-</p>
+
+                        </p>
                     </li>
                 </ul>
             </div>

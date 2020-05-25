@@ -1,6 +1,8 @@
 ---
 layout: ballerina-inner-page
-title: Events
+title: Ballerina Events
+description: Check out the events that we will be presenting at and covering the Ballerina programming language.
+keywords: ballerina, events, programming language, ballerina events
 permalink: /events/
 redirect_from:
   - /learn/events
@@ -14,37 +16,10 @@ redirect_from:
 
 <!-- <h2>No upcoming events</h2> -->
 
-<!-- ## Meetups -->
-
-<!-- <table class="cEventTable cMeetupsList">
- <tr>
-    <td class="cEventDateContainer"><span class="cEventDate">January 21, 2019 </span>6:30 PM to 8:30 PM
-            <p class="cEventLocation">1061 Budapest, Paulay Ede u. 12. Budapest</p>
-        </td>
-        <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/Microservices-Budapest-Meetup/events/257128863/"><h4> Microservices Meetup</h4></a>
-      </td>
-        <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/Microservices-Budapest-Meetup/events/257128863/" target="_blank">Register Now</a></td>
-</tr>
-
-</table>  -->
-
-<!-- ## No upcoming events -->
-
 <h2>Upcoming Events</h2>
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
-                  <tr class="event-expiry" style="display:none" data-expiry="May 07, 2020 12:00:00">
-                    <td class="cEventDateContainer"><span class="cEventDate">May 7, 2020</span>
-                      <p class="cEventLocation">Online</p>
-                      </td>
-                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/CloudDC/"><h4>Cloud DC Meetup</h4></a>
-                        <h5>Cloud Native Development with Ballerina</h5>
-                        <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
-                        <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle
-                 </td>
-               <td class="cEventURL"><a class="cEventRegistration" href="https://www.meetup.com/CloudDC/events/270223699/" target="_blank">More Info</a></td> 
-                  </tr>
                   <tr class="event-expiry" style="display:none" data-expiry="May 28, 2020 12:00:00">
                     <td class="cEventDateContainer"><span class="cEventDate">May 28, 2020</span>
                       <p class="cEventLocation">San Diego, California, USA</p>
@@ -103,6 +78,17 @@ redirect_from:
 
 
 <table class="cEventTable cConferencesList" style="width:100%;">
+                    <tr class="event-expiry" style="display:none" data-expiry="">
+                    <td class="cEventDateContainer"><span class="cEventDate">May 7, 2020</span>
+                      <p class="cEventLocation">Online</p>
+                      </td>
+                      <td class="cEventDetail"><a target="_blank" href="https://www.meetup.com/CloudDC/"><h4>Cloud DC Meetup</h4></a>
+                        <h5>Cloud Native Development with Ballerina</h5>
+                        <b>Jadd Jennings,</b> Hub Solutions Engineer, Oracle Cloud Solution Hub<br/>
+                        <b>Dhvani Sheth,</b> Senior Solutions Engineer, Oracle
+                 </td>
+               <td class="cEventURL"><a class="cEventRegistration" href="https://www.slideshare.net/BallerinaLang/cloud-dc-meetup-cloud-native-development-with-ballerina" target="_blank">View Slides</a></td> 
+                  </tr>
                       <tr class="event-expiry" style="display:none" data-expiry="">
                     <td class="cEventDateContainer"><span class="cEventDate">March 26, 2020</span>
                       <p class="cEventLocation">Vilnius, Lithuania</p>

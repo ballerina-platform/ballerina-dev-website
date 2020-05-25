@@ -5,7 +5,7 @@
             {{#each lefttable}}
             <tr>
                 <td style="width: 96%">{{this}}</td>
-                <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this null}}}" class="cDownloadLinkIcon {{{isjson this}}}" name="{{this}}" target="{{settarget this}}" ><img src="{{downloadimgurl this "../../img/download-bg-green-fill.svg" "../../img/right-bg-green-fill.svg"}}"></a></td>
+                <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this null}}}" class="cDownloadLinkIcon {{{isjson this}}}" name="{{this}}" data-pack="{{this}}" target="{{settarget this}}" ><img src="{{downloadimgurl this "../../img/download-bg-green-fill.svg" "../../img/right-bg-green-fill.svg"}}"></a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".md5"}}}">{{checksome  this "md5"}}</a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".sha1"}}}">{{checksome this "SHA-1"}}</a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".asc"}}}">{{checksome this "asc"}}</a></td>
@@ -19,7 +19,7 @@
             {{#each righttable}}
             <tr>
                 <td style="width: 96%">{{this}}</td>
-                <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this null}}}" class="cDownloadLinkIcon {{{isjson this}}}" name="{{this}}" target="{{settarget this}}" ><img src="{{downloadimgurl this "../../img/download-bg-green-fill.svg" "../../img/right-bg-green-fill.svg"}}"></a></td>
+                <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this null}}}" class="cDownloadLinkIcon {{{isjson this}}}" name="{{this}}" data-pack="{{this}}" target="{{settarget this}}" ><img src="{{downloadimgurl this "../../img/download-bg-green-fill.svg" "../../img/right-bg-green-fill.svg"}}"></a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".md5"}}}">{{checksome  this "md5"}}</a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".sha1"}}}">{{checksome this "SHA-1"}}</a></td>
                 <td style="width: 1%; white-space: nowrap;"><a href="{{{basedownloadurl ../version this ".asc"}}}">{{checksome this "asc"}}</a></td>

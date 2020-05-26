@@ -22,6 +22,34 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
+<a class="cBookmark" id="newsletter"></a>
+
+## Ballerina Newsletter
+
+We curate a periodic newsletter with all the latest content on Ballerina. Subscribe to it below:
+
+
+<div class="col-sm-12 col-md-12" style="padding:0;">
+   <div class="col-sm-12 col-md-6 cFormSection">
+      <form id="subscribeForm">
+      <div id="form-error" class="alert alert-danger"></div>
+      <div id="form-status" class="alert alert-success"></div>
+      <div class="form-group">
+         <label for="userEmail">Email address</label>
+         <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+         <div class="form-check">
+         <input type="checkbox" class="form-check-input" id="optin">
+         <label class="form-check-label" for="cBallerinaCheck">Yes, I would like to receive emails from Ballerina to stay up to date on content and new releases.</label>
+      </div>
+      <button type="button" class="cSignUp" id="subscribeUserButton">Subscribe</button>
+      </form>
+   </div>
+</div>
+
+
+
 ## Seek help
 
 We are happy to help! Come engage with us on any channel that works for you.
@@ -87,4 +115,51 @@ Join us and contribute to the source code to make Ballerina better! To be aware 
 .nav > li.cVersionItem {
     display: none !important;
 }
+.cFormSection {
+   background:#f3f3f3;
+   padding:30px;
+}
+label {
+	display: inline-block;
+	max-width: 95%;
+	margin-bottom: 5px;
+	font-weight: 700;
+}
+.form-check-input {
+   float:left;
+   margin-right:10px !important;
+}
+.cSignUp, button#subscribeUserButton {
+	background: #56b3af;
+	border: none;
+	color: #fff;
+	/* padding: 10px 20px; */
+	margin-top: 15px;
+	display: inline-block;
+	width: auto;
+	padding: 18px;
+	line-height: 0px;
+	font-family: "roboto";
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+.cSignUp:hover , button#subscribeUserButton:hover {
+background:#464646;
+}
+
+#form-status , #form-error {
+display:none;
+}
+
+#form-status.cShowBlock , #form-error.cShowBlock  {
+display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
+}
+
+
 </style>

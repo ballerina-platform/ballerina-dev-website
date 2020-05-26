@@ -37,16 +37,21 @@ breadcrumbs:
 github_username:  ballerina-platform
 git_repo: ballerina-platform.github.io
 latest_version: 1.2
+#keep_files: ['0.990','0.991',"1.1"]
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-exclude:
-  - downloads/RELEASE_NOTE.md
-  - vendor
+exclude: ["downloads/RELEASE_NOTE.md","vendor"]
 #   - Gemfile.lock
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+<<<<<<< HEAD
 dist_server: https://dist.ballerina.io
+=======
+dist_server: http://dist.ballerina.io
+
+
+>>>>>>> master

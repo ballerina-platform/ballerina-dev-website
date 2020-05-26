@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>How to Observe Ballerina Services</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - How to Observe Ballerina Services" />
+<meta property="og:description"        content="" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content=""/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="https://resources.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/release-notes');
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="1.2" data-value="latest">v1.2</option>
+                                        <option value="1.1">v1.1</option>
+                                        <option value="1.0">v1.0</option>
+                                        <option value="0.991">v0.991</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.0/">1.0</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/1.0/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li> How to Observe Ballerina Services
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/1.0/learn/how-to-observe-ballerina-code.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="how-to-observe-ballerina-services">How to Observe Ballerina Services</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Observability is a measure of how well internal states of a system can be inferred from knowledge of its external
+outputs. Monitoring, logging, and distributed tracing are key methods that reveal the internal state of the system to
+provide the observability. Ballerina becomes fully observable by exposing itself via these three methods to various 
+external systems allowing to monitor metrics such as request count and response time statistics, analyze logs, and
+perform distributed tracing.</p>
+
+<p>HTTP/HTTPS based Ballerina services and any client connectors are observable by default. HTTP/HTTPS and SQL client
+connectors use semantic tags to make tracing and metrics monitoring more informative.</p>
+
+<h2 id="getting-started">Getting Started</h2>
+<p>This section focuses on enabling Ballerina service observability with some of its default supported systems.
+<a href="https://prometheus.io/">Prometheus</a> and <a href="https://grafana.com/">Grafana</a> are used for metrics monitoring, and <a href="https://www.jaegertracing.io/">Jaeger</a> is used for distributed tracing. 
+Ballerina logs can be fed to any external log monitoring system like <a href="https://www.elastic.co/">Elastic Stack</a> to perform log monitoring and 
+analysis.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Make sure you have already installed <a href="https://www.docker.com/">Docker</a> to setup external products such as Jaeger,
+Prometheus, etc. You can follow <a href="https://docs.docker.com/install/">Docker documentation</a> to install Docker.</p>
+
+<h3 id="steps">Steps</h3>
+
+<p><strong>Step 1:</strong> Install and configure Prometheus, Grafana, Jeager and Elastic Stack to Observe Ballerina.</p>
+
+<ul>
+  <li>Setup Prometheus for collecting metrics information by following section on <a href="#prometheus">Setting up Prometheus</a></li>
+  <li>Setup Grafana to visualize metrics by following section on <a href="#grafana">Setting up Grafana</a></li>
+  <li>Setup Jaeger analyze tracing as mentioned in section <a href="#jaeger-server">Setting up Jaeger</a></li>
+  <li>Setup Elastic Stack only if you are interested in analysing logs by following section on <a href="#elastic-stack">Setting up Elastic Stack</a></li>
+</ul>
+
+<p><strong>Step 2:</strong> Create Hello World Ballerina service.</p>
+
+<p>Create a Service as shown below and save it as <code class="highlighter-rouge">hello_world_service.bal</code>.</p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/log;
+
+service hello on new http:Listener(9090) {
+    
+    resource function sayHello (http:Caller caller, http:Request req) returns error? {
+        log:printInfo("This is a test Info log");
+        log:printError("This is a test Error log");
+        log:printWarn("This is a test Warn log");
+        http:Response res = new;
+        res.setPayload("Hello, World!");
+        check caller-&gt;respond(res);
+    }
+    
+}
+</code></pre>
+
+<p><strong>Step 3:</strong> Observe Hello World Ballerina service</p>
+
+<p>Observability is disabled by default and can be enabled by using the <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag or updating the configurations.</p>
+
+<p>When Ballerina observability is enabled, Ballerina runtime exposes internal metrics via an HTTP endpoint for metrics
+monitoring and tracers will be published to Jaeger. Prometheus should be configured to scrape metrics from
+the metrics HTTP endpoint in Ballerina.</p>
+
+<p>Ballerina logs are logged on to the console. Therefore, the logs need to be redirected to a file, which can then be
+pushed to <a href="#distributed-logging">Elastic Stack</a> to perform the log analysis.</p>
+
+<p><strong>Start the service using <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag:</strong></p>
+
+<p>The Ballerina service is observable with default settings when the <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag is used along with the Ballerina
+<code class="highlighter-rouge">run</code> command to start the service.
+This lets you to collect the distributed tracing information with Jaeger and metrics information with Prometheus.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.observability.enabled<span class="o">=</span><span class="nb">true</span>
+
+<span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+ballerina: started Prometheus HTTP listener 0.0.0.0:9797
+ballerina: started publishing tracers to Jaeger on localhost:5775
+<span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div></div>
+
+<p>Redirect the standard output to a file if you want to monitor logs.</p>
+
+<p>For example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.observability.enabled<span class="o">=</span><span class="nb">true</span> <span class="o">&gt;</span> ballerina.log &amp;
+</code></pre></div></div>
+
+<p><strong>Start the service using a configuration file:</strong></p>
+
+<p>Observability of Ballerina service can also be enabled from the configuration. Create a configuration file such as 
+<code class="highlighter-rouge">ballerina.conf</code> and add the below configuration that starts metrics monitoring and distributed tracing with default 
+settings.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.metrics]</span>
+<span class="c"># Flag to enable Metrics</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+
+<span class="nn">[b7a.observability.tracing]</span>
+<span class="c"># Flag to enable Tracing</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+</code></pre></div></div>
+
+<p>The created configuration file can be passed to the Ballerina program with <code class="highlighter-rouge">--b7a.config.file</code> option along with
+the path of the configuration file.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.config.file<span class="o">=</span>&lt;path-to-conf&gt;/ballerina.conf
+
+<span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+ballerina: started Prometheus HTTP listener 0.0.0.0:9797
+ballerina: started publishing tracers to Jaeger on localhost:5775
+<span class="o">[</span>ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+</code></pre></div></div>
+
+<p>Redirect the standard output to a file if you want to monitor logs.</p>
+
+<p>For example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="nt">--b7a</span>.config.file<span class="o">=</span>&lt;path-to-conf&gt;/ballerina.conf <span class="o">&gt;</span> ballerina.log &amp;
+</code></pre></div></div>
+
+<p><strong>Step 4:</strong> Send few requests.</p>
+
+<p>Send few requests to <a href="http://localhost:9090/hello/sayHello">http://localhost:9090/hello/sayHello</a></p>
+
+<p>Example cURL command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl http://localhost:9090/hello/sayHello
+</code></pre></div></div>
+
+<p><strong>Step 5:</strong> View tracing and metrics in dashboard.</p>
+
+<p>View the tracing information on Jaeger via <a href="http://localhost:16686/">http://localhost:16686/</a> and view metrics information from Grafana
+dashboard on <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
+
+<p>Sample view of Jaeger dashboard for hello_world_service.bal is shown below. 
+<img src="../images/jaeger-sample-dashboard.png" alt="Jaeger Sample Dashboard" title="Jaeger Sample Dashboard" /></p>
+
+<p>Sample view of Grafana dashboard for hello_world_service.bal is shown below. 
+<img src="../images/grafana-sample-hello-world-service-stats.png" alt="Grafana Sample Dashboard" title="Grafana HelloWorld Service Sample Dashboard" /></p>
+
+<p><strong>Step 6:</strong> Visualize the logs.</p>
+
+<p>If you have configured log analytics, view the logs in Kibana via <a href="http://localhost:5601">http://localhost:5601</a></p>
+
+<p><img src="../images/kibana-sample-dashboard.png" alt="Kibana Sample Dashboard" title="Kibana Sample Dashboard" /></p>
+
+<h2 id="monitoring-metrics">Monitoring Metrics</h2>
+<p>Metrics help to monitor the runtime behaviour of a service. Therefore, metrics is a vital part of monitoring
+Ballerina services. However, metrics is not the same as analytics. For example, you should not use metrics to do
+something like per-request billing. Metrics are used to measure what Ballerina service does at runtime to make
+better decisions using the numbers. The code generates business value when it continuously run in production.
+Therefore, it is imperative to continuously measure the code in production.</p>
+
+<p>Metrics, by default, supports Prometheus. In order to support Prometheus, an HTTP endpoint starts with the context
+of <code class="highlighter-rouge">/metrics</code> in default port 9797 when starting the Ballerina service.</p>
+
+<h3 id="advanced-metrics-configuration-for-ballerina">Advanced Metrics Configuration for Ballerina</h3>
+<p>This section focuses on the Ballerina configurations that are available for metrics monitoring with Prometheus,
+and the sample configuration is provided below.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.metrics]</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+<span class="py">reporter</span><span class="p">=</span><span class="s">"prometheus"</span>
+
+<span class="nn">[b7a.observability.metrics.prometheus]</span>
+<span class="py">port</span><span class="p">=</span><span class="mi">9797</span>
+<span class="py">host</span><span class="p">=</span><span class="s">"0.0.0.0"</span>
+</code></pre></div></div>
+
+<p>The descriptions of each configuration above are provided below with possible alternate options.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration Key</th>
+      <th>Description</th>
+      <th>Default Value</th>
+      <th>Possible Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>b7a.observability.metrics. enabled</td>
+      <td>Whether metrics monitoring is enabled (true) or disabled (false)</td>
+      <td>false</td>
+      <td>true or false</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.metrics. reporter</td>
+      <td>Reporter name that reports the collected Metrics to the remote metrics server. This is only required to be modified if a custom reporter is implemented and needs to be used.</td>
+      <td>prometheus</td>
+      <td>prometheus or if any custom implementation, then name of the reporter.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.metrics. prometheus.port</td>
+      <td>The value of the port in which the service ‘/metrics’ will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service.</td>
+      <td>9797</td>
+      <td>Any suitable value for port 0 - 0 - 65535. However, within that range, ports 0 - 1023 are generally reserved for specific purposes, therefore it is advisable to select a port without that range.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.metrics. prometheus.host</td>
+      <td>The name of the host in which the service ‘/metrics’ will bind to. This service will be used by Prometheus to scrape the information of the Ballerina service.</td>
+      <td>0.0.0.0</td>
+      <td>IP or Hostname or 0.0.0.0 of the node in which the Ballerina service is running.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="setup-external-systems-for-metrics">Setup External Systems for Metrics</h3>
+<p>There are mainly two systems involved in collecting and visualizing the metrics. <a href="https://prometheus.io/">Prometheus</a> is used to collect the
+metrics from the Ballerina service and <a href="https://grafana.com/">Grafana</a> can connect to Prometheus and visualize the metrics in the dashboard.</p>
+
+<h4 id="prometheus">Prometheus</h4>
+<p><a href="https://prometheus.io/">Prometheus</a> is used as the monitoring system, which pulls out the metrics collected from the Ballerina service
+‘/metrics’. This section focuses on the quick installation of Prometheus with Docker, and configure it to collect 
+metrics from Ballerina service with default configurations. Below provided steps needs to be followed to configure 
+Prometheus. There are many other ways to install the Prometheus and you can find possible options from
+<a href="https://prometheus.io/docs/prometheus/latest/installation/">installation guide</a>.</p>
+
+<p><strong>Step 1:</strong> Create a <code class="highlighter-rouge">prometheus.yml</code> file in <code class="highlighter-rouge">/tmp/</code> directory.</p>
+
+<p><strong>Step 2:</strong> Add the following content to <code class="highlighter-rouge">/tmp/prometheus.yml</code>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">global</span><span class="pi">:</span>
+  <span class="na">scrape_interval</span><span class="pi">:</span>     <span class="s">15s</span>
+  <span class="na">evaluation_interval</span><span class="pi">:</span> <span class="s">15s</span>
+
+<span class="na">scrape_configs</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">job_name</span><span class="pi">:</span> <span class="s1">'</span><span class="s">prometheus'</span>
+    <span class="na">static_configs</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">targets</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">a.b.c.d:9797'</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>Here the targets <code class="highlighter-rouge">'a.b.c.d:9797'</code> should contain the host and port of the <code class="highlighter-rouge">/metrics</code> service that’s exposed from 
+Ballerina for metrics collection. Add the IP of the host in which the Ballerina service is running as <code class="highlighter-rouge">a.b.c.d</code> and its
+port (default <code class="highlighter-rouge">9797</code>).
+If you need more information refer <a href="https://prometheus.io/docs/introduction/first_steps/">official documentation of Prometheus</a>.</p>
+
+<p><strong>Step 3:</strong> Start the Prometheus server in a Docker container with below command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-p</span> 19090:9090 <span class="nt">-v</span> /tmp/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+</code></pre></div></div>
+
+<p><strong>Step 4:</strong> Go to <a href="http://localhost:19090/">http://localhost:19090/</a> and check whether you can see the Prometheus graph.
+Ballerina metrics should appear in Prometheus graph’s metrics list when Ballerina service is started.</p>
+
+<h4 id="grafana">Grafana</h4>
+<p>Let’s use <a href="https://grafana.com/">Grafana</a> to visualize metrics in a dashboard. For this, we need to install Grafana, and configure
+Prometheus as a datasource. Follow the below provided steps and configure Grafana.</p>
+
+<p><strong>Step 1:</strong> Start Grafana as Docker container with below command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>grafana <span class="nt">-p</span> 3000:3000 grafana/grafana
+</code></pre></div></div>
+<p>For more information refer <a href="https://hub.docker.com/r/grafana/grafana/">Grafana in Docker Hub</a>.</p>
+
+<p><strong>Step 2:</strong> Go to <a href="http://localhost:3000/">http://localhost:3000/</a> to access the Grafana dashboard running on Docker.</p>
+
+<p><strong>Step 3:</strong> Login to the dashboard with default user, username: <code class="highlighter-rouge">admin</code> and password: <code class="highlighter-rouge">admin</code></p>
+
+<p><strong>Step 4:</strong> Add Prometheus as datasource with <code class="highlighter-rouge">Browser</code> access configuration as provided below.</p>
+
+<p><img src="../images/grafana-prometheus-datasource.png" alt="Grafana Prometheus Datasource" title="Grafana Prometheus Datasource" /></p>
+
+<p><strong>Step 5:</strong> Import the Grafana dashboard designed to visualize Ballerina metrics from <a href="https://grafana.com/dashboards/5841">https://grafana.com/dashboards/5841</a>.
+This dashboard consists of service and client invocation level metrics in near real-time view.</p>
+
+<p>Ballerina HTTP Service Metrics Dashboard Panel will be as below.
+<img src="../images/grafana-ballerina-metrics-1.png" alt="Ballerina Service Metrics" title="Ballerina Sample Service Metrics Dashboard" /></p>
+
+<p>Ballerina HTTP Client Metrics Dashboard Panel will be as below.
+<img src="../images/grafana-ballerina-metrics-3.png" alt="Ballerina Client Metrics" title="Ballerina Sample Client Metrics Dashboard" /></p>
+
+<p>Ballerina SQL Client Metrics Dashboard Panel will be as below.
+<img src="../images/grafana-ballerina-metrics-2.png" alt="Ballerina SQL Client Metrics" title="Ballerina Sample SQL Client Metrics Dashboard" /></p>
+
+<h2 id="distributed-tracing">Distributed Tracing</h2>
+
+<p>Tracing provides information regarding the roundtrip of a service invocation based on the concept of spans, which are
+structured in a hierarchy based on the cause and effect concept. Tracers propagate across several services that can be
+deployed in several nodes, depicting a high-level view of interconnections among services as well, hence coining the
+term distributed tracing.</p>
+
+<p>A span is a logical unit of work, which encapsulates a start and end time as well as metadata to give more meaning to
+the unit of work being completed. For example, a span representing a client call to an HTTP endpoint would give the
+user the latency of the client call and metadata like the HTTP URL being called and HTTP method used. If the span
+represents an SQL client call, the metadata would include the query being executed.</p>
+
+<p>Tracing gives the user a high-level view of how a single service invocation is processed across several distributed
+microservices.</p>
+
+<ul>
+  <li>Identify service bottlenecks - The user can monitor the latencies and identify when a service invocation slows down,
+pinpoint where the slowing down happens (by looking at the span latencies) and take action to improve the latency.</li>
+  <li>Error identification - If an error occurs during the service invocation, it will show up in the list of tracers.
+The user can easily identify where the error occurred and information of the error will be attached to the relevant
+span as metadata.</li>
+</ul>
+
+<p>Ballerina supports <a href="http://opentracing.io/">OpenTracing</a> standards by default. This means that Ballerina services
+can be traced using OpenTracing implementations like <a href="http://www.jaegertracing.io/">Jaeger</a>, and
+<a href="https://zipkin.io/">Zipkin</a>. Jaeger is the default tracer of Ballerina.</p>
+
+<p>Semantic tags used by Ballerina also follow the <a href="https://github.com/opentracing/specification/blob/master/semantic_conventions.md">semantic conventions defined in OpenTracing
+specification.</a></p>
+
+<h3 id="advanced-tracing-configuration-for-ballerina">Advanced Tracing Configuration for Ballerina</h3>
+
+<p>Tracing can be enabled in Ballerina with <code class="highlighter-rouge">--b7a.observability.enabled=true</code> flag as mentioned in the <a href="#getting-started">Getting Started</a> section, as well as configuration option. This section mainly focuses on the configuration options with description and possible values.</p>
+
+<p>The sample configuration that enables tracing, and uses Jaeger as the sample tracer as provided below.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.tracing]</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+<span class="py">name</span><span class="p">=</span><span class="s">"jaeger"</span>
+</code></pre></div></div>
+
+<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration Key</th>
+      <th>Description</th>
+      <th>Default Value</th>
+      <th>Possible Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>b7a.observability.tracing.enabled</td>
+      <td>Whether tracing is enabled (true) or disabled (false)</td>
+      <td>false</td>
+      <td>true or false</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing.name</td>
+      <td>Tracer name which implements tracer interface.</td>
+      <td>jaeger</td>
+      <td>jaeger or zipkin</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="jaeger-client">Jaeger Client</h4>
+<p>Jaeger is the default tracer supported by Ballerina. Below is the sample configuration options that are available in
+the Jaeger.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.tracing]</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+<span class="py">name</span><span class="p">=</span><span class="s">"jaeger"</span>
+
+<span class="nn">[b7a.observability.tracing.jaeger.sampler]</span>
+<span class="py">type</span><span class="p">=</span><span class="s">"const"</span>
+<span class="py">param</span><span class="p">=</span><span class="mf">1.0</span>
+
+<span class="nn">[b7a.observability.tracing.jaeger.reporter]</span>
+<span class="py">hostname</span><span class="p">=</span><span class="s">"localhost"</span>
+<span class="py">port</span><span class="p">=</span><span class="mi">5775</span>
+
+<span class="nn">[b7a.observability.tracing.jaeger.reporter.flush.interval]</span>
+<span class="py">ms</span><span class="p">=</span><span class="mi">2000</span>
+
+<span class="nn">[b7a.observability.tracing.jaeger.reporter.max.buffer]</span>
+<span class="py">spans</span><span class="p">=</span><span class="mi">1000</span>
+</code></pre></div></div>
+
+<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration Key</th>
+      <th>Description</th>
+      <th>Default Value</th>
+      <th>Possible Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.reporter.hostname</td>
+      <td>Hostname of the Jaeger server</td>
+      <td>localhost</td>
+      <td>IP or hostname of the Jaeger server. If it is running on the same node as Ballerina, it can be localhost.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.reporter.port</td>
+      <td>Port of the Jaeger server</td>
+      <td>5775</td>
+      <td>The port which the Jaeger server is listening to.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.sampler.type</td>
+      <td>Type of the sampling methods used in the Jaeger tracer.</td>
+      <td>const</td>
+      <td><code class="highlighter-rouge">const</code>, <code class="highlighter-rouge">probabilistic</code>, or <code class="highlighter-rouge">ratelimiting</code>.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.sampler.param</td>
+      <td>It is a floating value. Based on the sampler type, the effect of the sampler param varies</td>
+      <td>1.0</td>
+      <td>For <code class="highlighter-rouge">const</code> <code class="highlighter-rouge">0</code> (no sampling) or <code class="highlighter-rouge">1</code> (sample all spans), for <code class="highlighter-rouge">probabilistic</code> <code class="highlighter-rouge">0.0</code> to <code class="highlighter-rouge">1.0</code>, for <code class="highlighter-rouge">ratelimiting</code> any positive integer (rate per second).</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.reporter.flush.interval.ms</td>
+      <td>Jaeger client will be sending the spans to the server at this interval.</td>
+      <td>2000</td>
+      <td>Any positive integer value.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing. jaeger.reporter.max.buffer.spans</td>
+      <td>Queue size of the Jaeger client.</td>
+      <td>2000</td>
+      <td>Any positive integer value.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="zipkin-client">Zipkin Client</h4>
+<p>The tracing of Ballerina service can be done via Zipkin as well, but the required dependencies are not included in
+default Ballerina distribution. Follow the below steps to add the required dependencies to the Ballerina distribution.</p>
+
+<p><strong>Step 1:</strong> Go to <a href="https://github.com/ballerina-platform/ballerina-observability">ballerina-observability</a> and clone
+the GitHub repository in any preferred location.</p>
+
+<p><strong>Step 2:</strong> Make sure you have installed <a href="http://maven.apache.org/">Apache Maven</a>.</p>
+
+<p><strong>Step 3:</strong> Open the command line and build the repository by using <a href="http://maven.apache.org/">Apache Maven</a> with below command, while being in the root project directory <code class="highlighter-rouge">ballerina-observability</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mvn clean <span class="nb">install</span>
+</code></pre></div></div>
+
+<p><strong>Step 4:</strong> Go to the path - <code class="highlighter-rouge">ballerina-observability/tracing-extensions/modules/ballerina-zipkin-extension/target/</code> and
+extract <code class="highlighter-rouge">distribution.zip</code>.</p>
+
+<p><strong>Step 5:</strong> Copy all the JAR files inside the <code class="highlighter-rouge">distribution.zip</code> to ‘bre/lib’ directory in the Ballerina distribution.</p>
+
+<p><strong>Step 6:</strong> Add following configuration to the <code class="highlighter-rouge">Ballerina.toml</code> of your module.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[platform]</span>
+<span class="py">target</span> <span class="p">=</span> <span class="s">"java8"</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"ballerina-zipkin-extension"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"1.0.0-rc1-SNAPSHOT"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/ballerina-zipkin-extension-1.0.0-rc1-SNAPSHOT.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"org.ballerinalang"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"brave-opentracing"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"4.17.1"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/brave-4.17.1.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.opentracing.brave"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"brave"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"0.29.0"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/brave-opentracing-0.29.0.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.zipkin.brave"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"zipkin-reporter"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"2.6.1"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/zipkin-2.6.1.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.zipkin.reporter2"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"zipkin"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"2.5.0"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/zipkin-reporter-2.5.0.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.zipkin.zipkin2"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"zipkin-sender-okhttp3"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"2.5.0"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/zipkin-sender-okhttp3-2.5.0.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.zipkin.reporter2"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"zipkin-sender-urlconnection"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"2.5.0"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/zipkin-sender-urlconnection-2.5.0.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"io.zipkin.reporter2"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+
+    <span class="nn">[[platform.libraries]]</span>
+    <span class="py">artifactId</span> <span class="p">=</span> <span class="s">"kotlin-stdlib"</span>
+    <span class="py">version</span> <span class="p">=</span> <span class="s">"1.3.31"</span>
+    <span class="py">path</span> <span class="p">=</span> <span class="s">"/&lt;absolute_path_to&gt;/kotlin-stdlib-1.3.31.jar"</span>
+    <span class="py">groupId</span> <span class="p">=</span> <span class="s">"org.jetbrains.kotlin"</span>
+    <span class="py">modules</span> <span class="p">=</span> <span class="nn">["yourModuleName"]</span>
+</code></pre></div></div>
+
+<p><strong>Step 7:</strong> Change the following configuration name to Zipkin. This ensures that all tracers are sent to Zipkin instead
+of the default Jaeger tracer.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.tracing]</span>
+<span class="py">name</span><span class="p">=</span><span class="s">"zipkin"</span>
+</code></pre></div></div>
+
+<p><strong>Step 8:</strong> The following configuration is a sample configuration option available for Zipkin tracer.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[b7a.observability.tracing.zipkin.reporter]</span>
+<span class="py">hostname</span><span class="p">=</span><span class="s">"localhost"</span>
+<span class="py">port</span><span class="p">=</span><span class="mi">9411</span>
+
+<span class="nn">[b7a.observability.tracing.zipkin.reporter.api]</span>
+<span class="py">context</span><span class="p">=</span><span class="s">"/api/v2/spans"</span>
+<span class="py">version</span><span class="p">=</span><span class="s">"v2"</span>
+
+<span class="nn">[b7a.observability.tracing.zipkin.reporter.compression]</span>
+<span class="py">enabled</span><span class="p">=</span><span class="kc">true</span>
+</code></pre></div></div>
+
+<p>The below table provides the descriptions of each configuration option and possible values that can be assigned.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration Key</th>
+      <th>Description</th>
+      <th>Default Value</th>
+      <th>Possible Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>b7a.observability.tracing.zipkin. reporter.hostname</td>
+      <td>Hostname of the Zipkin server</td>
+      <td>localhost</td>
+      <td>IP or hostname of the Zipkin server. If it is running on the same node as Ballerina, it can be localhost.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing.zipkin. reporter.port</td>
+      <td>Port of the Zipkin server</td>
+      <td>9411</td>
+      <td>The port that the Zipkin server is listening to.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing.zipkin. reporter.api.context</td>
+      <td>API context of the Zipkin server</td>
+      <td><code class="highlighter-rouge">/api/v2/spans</code></td>
+      <td>The API context of the Zipkin API. For V1 API, the context will be <code class="highlighter-rouge">/api/v1/spans</code>, and for V2 API, the context will be <code class="highlighter-rouge">/api/v2/spans</code> for default Zipkin server.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing.zipkin. reporter.api.version</td>
+      <td>API version of the Zipkin API</td>
+      <td>v2</td>
+      <td>v1 or v2.</td>
+    </tr>
+    <tr>
+      <td>b7a.observability.tracing.zipkin. reporter.compression.enabled</td>
+      <td>Enable the compression for the spans request</td>
+      <td>true</td>
+      <td>true or false.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="setup-external-systems-for-tracing">Setup External Systems for Tracing</h3>
+<p>Ballerina by default supports Jaerger and Zipkin for distributed tracing. This section focuses on configuring the
+Jaeger and Zipkin with Dockers as a quick installation.</p>
+
+<h4 id="jaeger-server">Jaeger Server</h4>
+<p>Jaeger is the default distributed tracing system that is supported. There are many possible ways to deploy Jaeger and you can find more information on this <a href="https://www.jaegertracing.io/docs/deployment/">link</a>. Here we focus on all in one deployment with Docker.</p>
+
+<p><strong>Step 1:</strong> Install Jaeger via Docker and start the Docker container by executing below command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">-p5775</span>:5775/udp <span class="nt">-p6831</span>:6831/udp <span class="nt">-p6832</span>:6832/udp <span class="nt">-p5778</span>:5778 <span class="nt">-p16686</span>:16686 <span class="nt">-p14268</span>:14268 jaegertracing/all-in-one:latest
+</code></pre></div></div>
+
+<p><strong>Step 2:</strong> Go to <a href="http://localhost:16686">http://localhost:16686</a> and load the web UI of the Jaeger to make sure it is functioning properly.</p>
+
+<p>The below image is the sample tracing information you can see from Jaeger.</p>
+
+<p><img src="../images/jaeger-tracing-dashboard.png" alt="Jaeger Tracing Dashboard" title="Jaeger Tracing Dashboard" /></p>
+
+<h4 id="zipkin-server">Zipkin Server</h4>
+<p>Similar to Jaeger, Zipkin is another distributed tracing system that is supported by the Ballerina. There are many
+different configurations and deployment exist for Zipkin, please go to <a href="https://github.com/openzipkin/zipkin">link</a>
+for more information. Here we focus on all in one deployment with Docker.</p>
+
+<p><strong>Step 1:</strong> Install Zipkin via Docker and start the Docker container by executing following command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">-p</span> 9411:9411 openzipkin/zipkin
+</code></pre></div></div>
+
+<p><strong>Step 2:</strong> Go to <a href="http://localhost:9411/zipkin/">http://localhost:9411/zipkin/</a> and load the web UI of the Zipkin to make sure it is functioning
+properly. The below shown is the sample Zipkin dashboard for the hello world sample in the <a href="/v1-0/learn/quick-tour">Quick Start</a></p>
+
+<p><img src="../images/zipkin-sample.png" alt="Zipkin Sample" title="Zipkin Sample" /></p>
+
+<h2 id="distributed-logging">Distributed Logging</h2>
+<p>Ballerina distributed logging and analysis is supported by Elastic Stack. Ballerina has a log module for logging in to 
+the console. In order to monitor the logs, the Ballerina standard output needs to be redirected to a file.</p>
+
+<p>This can be done by running the Ballerina service as below.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">nohup </span>ballerina run hello_world_service.bal <span class="o">&gt;</span> ballerina.log &amp;
+</code></pre></div></div>
+
+<p>You can view the logs with below command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">tail</span> <span class="nt">-f</span> ~/wso2-ballerina/workspace/ballerina.log
+</code></pre></div></div>
+
+<h3 id="setup-external-systems-for-log-analytics">Setup External Systems for Log Analytics</h3>
+
+<h4 id="elastic-stack">Elastic Stack</h4>
+<p>The elastic stack comprises of the following components.</p>
+
+<ol>
+  <li>Beats - Multiple agents that ship data to Logstash or Elasticsearch. In our context, Filebeat will ship the Ballerina logs to Logstash. Filebeat should be a container running on the same host as the Ballerina service. This is so that the log file (ballerina.log) can be mounted to the Filebeat container.</li>
+  <li>Logstash - Used to process and structure the log files received from Filebeat and send to Elasticsearch.</li>
+  <li>Elasticsearch - Storage and indexing of the logs received by Logstash.</li>
+  <li>Kibana - Visualizes the data stored in Elasticsearch</li>
+</ol>
+
+<p>Elasticsearch and Kibana are provided as <a href="https://www.elastic.co/cloud">Cloud Services</a>
+Alternatively, Docker containers can be used to set up Elasticsearch and Kibana as well.</p>
+
+<p><strong>Step 1:</strong> Download the Docker images using the following commands.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Elasticsearch Image</span>
+<span class="nv">$ </span>docker pull docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+<span class="c"># Kibana Image</span>
+<span class="nv">$ </span>docker pull docker.elastic.co/kibana/kibana:6.5.1
+<span class="c"># Filebeat Image</span>
+<span class="nv">$ </span>docker pull docker.elastic.co/beats/filebeat:6.5.1
+<span class="c"># Logstash Image</span>
+<span class="nv">$ </span>docker pull docker.elastic.co/logstash/logstash:6.5.1
+</code></pre></div></div>
+
+<p><strong>Step 2:</strong> Start Elasticsearch and Kibana containers by executing the following commands.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-p</span> 9200:9200 <span class="nt">-p</span> 9300:9300 <span class="nt">-it</span> <span class="nt">-h</span> elasticsearch <span class="nt">--name</span> elasticsearch docker.elastic.co/elasticsearch/elasticsearch:6.5.1
+<span class="nv">$ </span>docker run <span class="nt">-p</span> 5601:5601 <span class="nt">-h</span> kibana <span class="nt">--name</span> kibana <span class="nt">--link</span> elasticsearch:elasticsearch docker.elastic.co/kibana/kibana:6.5.1
+</code></pre></div></div>
+
+<p>If you run on Linux you may have to increase the <code class="highlighter-rouge">vm.max_map_count</code> for the Elasticsearch container to start. 
+Execute the following command to do that.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>sysctl <span class="nt">-w</span> vm.max_map_count<span class="o">=</span>262144
+</code></pre></div></div>
+
+<p><strong>Step 3:</strong> Create a <code class="highlighter-rouge">logstash.conf</code> file in the <code class="highlighter-rouge">/tmp/pipeline/</code> directory and include the following content in the file.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input {
+  beats {
+    port =&gt; 5044
+    }
+}
+filter {
+  grok  {
+    match =&gt; { "message" =&gt; "%{TIMESTAMP_ISO8601:date}%{SPACE}%{WORD:logLevel}%{SPACE}\[%{GREEDYDATA:module}\]%{SPACE}\-%{SPACE}%{GREEDYDATA:logMessage}"}
+  }
+}
+output {
+    elasticsearch {
+        hosts =&gt; "elasticsearch:9200"
+        index =&gt; "ballerina"
+      document_type =&gt; "ballerina_logs"
+    }
+}
+</code></pre></div></div>
+
+<p>Here the 3 stages are specified in the pipeline. Input is specified as beats and listens to port 5044. 
+A grok filter is used to structure the Ballerina logs and the output is specified to push to Elasticsearch on
+<code class="highlighter-rouge">elasticsearch:9200</code>.</p>
+
+<p><strong>Step 4:</strong> Start the Logstash container by the following command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-h</span> logstash <span class="nt">--name</span> logstash <span class="nt">--link</span> elasticsearch:elasticsearch <span class="nt">-it</span> <span class="nt">--rm</span> <span class="nt">-v</span> /tmp/pipeline:/usr/share/logstash/pipeline/ <span class="nt">-p</span> 5044:5044 docker.elastic.co/logstash/logstash:6.5.1
+</code></pre></div></div>
+
+<p><strong>Step 5:</strong> Configure Filebeat to ship the Ballerina logs. Create a <code class="highlighter-rouge">filebeat.yml</code> file in the <code class="highlighter-rouge">/tmp/</code> directory and include the following content in the file.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat.prospectors:
+- type: log
+  paths:
+    - /usr/share/filebeat/ballerina.log
+output.logstash:
+  hosts: ["logstash:5044"]
+</code></pre></div></div>
+
+<p><strong>Step 6:</strong> Start the Filebeat container with the following command.</p>
+
+<p>The <code class="highlighter-rouge">-v</code> flag is used for bind mounting, where the container will read the file from the host machine. Provide the path to the ballerina.log file, to be bind mounted to the filebeat container.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-v</span> /tmp/filebeat.yml:/usr/share/filebeat/filebeat.yml <span class="nt">-v</span> /&lt;path-to-ballerina.log&gt;/ballerina.log:/usr/share/filebeat/ballerina.log <span class="nt">--link</span> logstash:logstash docker.elastic.co/beats/filebeat:6.5.1
+</code></pre></div></div>
+
+<p><strong>Step 7:</strong> Access Kibana to visualize the logs at <a href="http://localhost:5601">http://localhost:5601</a>. Add an index named <code class="highlighter-rouge">ballerina</code> and click on <code class="highlighter-rouge">Discover</code> to visualize the logs.</p>
+
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+      <script src="/js/theme.js"></script>
+
+      <script>
+            $(document).ready(function() {
+                     var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+                     var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+             });
+            </script>
+         
+            <style>
+                .cGitButtonContainer {
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+         
+                 #iGitStarText {
+                     height: 20px;
+                     float: left;
+                     padding: 0;
+                     margin: 0;
+                 }
+                #iGitStarIframe , #iGitWatchIframe {
+                     height: 20px;
+                     width: 100px;
+                     float: left;
+                 }
+             </style>
+
+   </body>
+</html>
+

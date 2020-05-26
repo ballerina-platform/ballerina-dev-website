@@ -48,6 +48,6 @@ exclude: ["downloads/RELEASE_NOTE.md","vendor"]
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-dist_server: http://dist.ballerina.io
+dist_server: https://dist.ballerina.io
 
 

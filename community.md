@@ -22,9 +22,11 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
+<a class="cBookmark" id="newsletter"></a>
+
 ## Ballerina Newsletter
 
-We curate a bi-quarterly newsletter with all the latest content on Ballerina. Subscribe to it below:
+We curate a periodic newsletter with all the latest content on Ballerina. Subscribe to it below:
 
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
@@ -48,7 +50,7 @@ We curate a bi-quarterly newsletter with all the latest content on Ballerina. Su
 
 
 
-## Seek for help
+## Seek help
 
 We are happy to help! Come engage with us on any channel that works for you.
 
@@ -152,6 +154,11 @@ display:none;
 
 #form-status.cShowBlock , #form-error.cShowBlock  {
 display:block;
+}
+a.cBookmark {
+display: inline-block;
+position: absolute;
+margin: -150px 0px 0px;
 }
 
 

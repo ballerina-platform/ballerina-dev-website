@@ -1,8 +1,8 @@
 ---
 layout: ballerina-newsletter
-title: Issue 1
-description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
-keywords: ballerina, community, ballerina community
+title: Ballerina Newsletter Issue 1
+description: This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
+keywords: ballerina, community, ballerina community, newsletter
 permalink: /community/newsletter/issue-1/
 ---
 

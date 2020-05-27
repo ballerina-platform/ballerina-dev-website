@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      {% include ballerina-head-nl.html %}
+      <link rel="stylesheet" href="{{ "/css/ballerina-io-docs.css?200618" | prepend: site.baseurl }}">
+   </head>
+   <body class="cBallerina-io">
+      {% include nav.html %}
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        {% include nav-breadcrumbs.html %}
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                       
+                        
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 {{ content }}
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% include ballerina-footer.html %}
+      <script src="/js/theme.js"></script>
+
+      <script>
+            $(document).ready(function() {
+                     var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+                     var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+             });
+            </script>
+         
+            <style>
+                .cGitButtonContainer {
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+         
+                 #iGitStarText {
+                     height: 20px;
+                     float: left;
+                     padding: 0;
+                     margin: 0;
+                 }
+                #iGitStarIframe , #iGitWatchIframe {
+                     height: 20px;
+                     width: 100px;
+                     float: left;
+                 }
+             </style>
+
+   </body>
+</html>
+

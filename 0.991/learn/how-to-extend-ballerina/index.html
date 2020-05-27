@@ -1,0 +1,1415 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Documentation for the Ballerina Programming Language">
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="ballerinalang, integration, microservices, programming language, cloud native, ballerina language" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title></title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - " />
+<meta property="og:description"        content="" />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content=""/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="https://resources.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/release-notes');
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="1.2" data-value="latest">v1.2</option>
+                                        <option value="1.1">v1.1</option>
+                                        <option value="1.0">v1.0</option>
+                                        <option value="0.991">v0.991</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/0.991/">0.991</a>
+    </li>
+    
+    
+    
+    <li>/</li>
+    <li><a
+        href="/0.991/learn/">Learn</a>
+    </li>
+    
+    
+    
+    <li>/</li> 
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/0.991/learn/how-to-extend-ballerina.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="how-to-extend-ballerina">How to Extend Ballerina</h1>
+
+<p>Developers and third parties can extend the behavior of Ballerina and collate the customizations for use by others. There are three ways to customize the behavior of Ballerina:</p>
+
+<ol>
+  <li>
+    <p>Collate and distribute new client connectors to third party endpoints, such as databases, infrastructure and APIs.</p>
+  </li>
+  <li>
+    <p>Add new annotations to Ballerina source files so that the compiler can act to alter binaries and generate artifacts.</p>
+  </li>
+  <li>
+    <p>Collate and distribute new webhook callback services, that programmatically subscribe to accept content-delivery requests on the occurrence of particular events.</p>
+  </li>
+</ol>
+
+<h2 id="create-client-connectors">Create Client Connectors</h2>
+
+<p>A client connector is instantiated by developers when they create an <code class="highlighter-rouge">endpoint</code> object within their code. You can create your own connectors that are part of Ballerina modules that you push into a Ballerina registry, such as what is available at Ballerina Central.</p>
+
+<p>To create a client connector, you:</p>
+
+<ol>
+  <li>
+    <p>Create a Ballerina module in a Ballerina project.</p>
+  </li>
+  <li>
+    <p>Create a <code class="highlighter-rouge">client</code> object representing the connector.</p>
+  </li>
+  <li>
+    <p>Implement <code class="highlighter-rouge">public</code> <code class="highlighter-rouge">remote</code> functions to represent actions performed on remote endpoints.</p>
+  </li>
+  <li>
+    <p>Build the module and push it into a registry for others to use it.</p>
+  </li>
+</ol>
+
+<h3 id="the-twilio-connector">The Twilio Connector</h3>
+
+<p>You can see the source code for this example at:</p>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/wso2-ballerina/package-twilio/blob/master/guide/twilio_sample.bal">Single file</a> version (easier for reading).</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/wso2-ballerina/package-twilio/tree/master/twilio">Multiple files</a> version (split across files following good project structure).</p>
+  </li>
+</ol>
+
+<p>WSO2 has created a connector for Twilio and pushed it into Ballerina Central as <code class="highlighter-rouge">wso2/twilio</code>. You can find this connector on the command line:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ballerina search twilio
+</code></pre></div></div>
+
+<p>The Twilio connector reuses the HTTP client connector and adds some additional properties in order to create a programmable connection with a Twilio endpoint. A simple Ballerina program that would use this connector might be the following:</p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import wso2/twilio;
+
+public function main(string... args) {
+    twilio:Client twilioClient = new({
+        accountSId: "",
+        authToken: ""
+    });
+
+    twilio:Account account = check twilioClient-&gt;getAccountDetails();
+    io:println(account);
+}
+</code></pre>
+
+<p>In this example, a <code class="highlighter-rouge">TwilioClient</code> object is instantiated. Instantiating the client requires a <code class="highlighter-rouge">TwilioConfiguration</code> record to provide the authentication details.</p>
+
+<p>The Twilio connector defines a remote function <code class="highlighter-rouge">getAccountDetails()</code>, which is called by the end user to interact with the endpoint.</p>
+
+<p>You need to implement the <code class="highlighter-rouge">TwilioClient.__init()</code> method, which will be called when the endpoint is instantiated. This method establishes the connection to Twilio.</p>
+
+<h3 id="the-twilioclient-object">The Twilio:Client Object</h3>
+
+<p>The connector is a data structure that is represented by a <code class="highlighter-rouge">client</code> object.</p>
+
+<pre><code class="language-ballerina">public type Client client object {
+
+    public string accountSId;
+    public string xAuthyKey;
+    public http:Client basicClient;
+    public http:Client authyClient;
+
+    public function __init(TwilioConfiguration twilioConfig) {
+        self.init(twilioConfig);
+        self.basicClient = new(TWILIO_API_BASE_URL, config = twilioConfig.basicClientConfig);
+        self.authyClient = new(AUTHY_API_BASE_URL, config = twilioConfig.authyClientConfig);
+        self.accountSId = twilioConfig.accountSId;
+        self.xAuthyKey = twilioConfig.xAuthyKey;
+    }
+    
+    ...
+</code></pre>
+
+<p>A <code class="highlighter-rouge">client</code> object is similar to an ordinary object. However, unlike in ordinary objects in <code class="highlighter-rouge">client</code> objects, the actions are performed on a remote network endpoint. Hence, the ‘remote’ keyword should be used in the method signature.</p>
+
+<p>Similar to other objects, <code class="highlighter-rouge">client</code> objects take their configurations parameters such as API keys as the values of the <code class="highlighter-rouge">constructor</code> parameter.</p>
+
+<pre><code class="language-ballerina">
+// Constant
+final string BASE_URL = "https://api.twilio.com/2010-04-01";
+
+public type Client client object {
+
+    public string accountSId;
+    public string xAuthyKey;
+    public http:Client basicClient;
+    public http:Client authyClient;
+
+    public function __init(TwilioConfiguration twilioConfig) {
+        self.init(twilioConfig);
+        self.basicClient = new(TWILIO_API_BASE_URL, config = twilioConfig.basicClientConfig);
+        self.authyClient = new(AUTHY_API_BASE_URL, config = twilioConfig.authyClientConfig);
+        self.accountSId = twilioConfig.accountSId;
+        self.xAuthyKey = twilioConfig.xAuthyKey;
+    }
+
+    # Initialize the Twilio endpoint.
+    # + twilioConfig - The Twilio configuration
+
+    public function init(TwilioConfiguration twilioConfig);
+
+    ..
+}
+
+public function Client.init(TwilioConfiguration twilioConfig) {
+    http:AuthConfig authConfig = {
+        scheme: http:BASIC_AUTH,
+        username: twilioConfig.accountSId,
+        password: twilioConfig.authToken
+    };
+    twilioConfig.basicClientConfig.auth = authConfig;
+}
+
+</code></pre>
+
+<h3 id="implement-remote-functions-for-endpoint-interaction">Implement Remote Functions For Endpoint Interaction</h3>
+
+<p>When you want to expose custom actions for your end users to use against the connector, define them in the <code class="highlighter-rouge">Twilio:Client</code> object as remote functions.</p>
+
+<p>In our example, we added a <code class="highlighter-rouge">getAccountDetails()</code> function that can be invoked as part of the endpoint by the end user:</p>
+
+<pre><code class="language-ballerina">// Account is a custom object that represents Twilio data return values.
+// The -&gt; represents making a non-blocking worker call over the network
+// twilioClient is the end user's endpoint that uses the Twilio:Client connector
+// getAccountDetails() is our custom function
+Twilio:Account account = check twilioClient-&gt;getAccountDetails();
+</code></pre>
+
+<p>And within the module that includes your custom connector, we have these additional items that define the custom function:</p>
+
+<pre><code class="language-ballerina">// Constants
+final string TWILIO_ACCOUNTS_API = "/Accounts";
+
+public remote function Client.getAccountDetails() returns Account|error {
+    string requestPath = TWILIO_ACCOUNTS_API + FORWARD_SLASH + self.accountSId + ACCOUNT_DETAILS;
+    var response = self.basicClient-&gt;get(requestPath);
+    json jsonResponse = check parseResponseToJson(response);
+    return mapJsonToAccount(jsonResponse);
+}
+</code></pre>
+
+<p>The <code class="highlighter-rouge">Account</code> record is defined in the <code class="highlighter-rouge">twilio_types.bal</code> file:</p>
+
+<pre><code class="language-ballerina">public type Account record {
+    string sid;
+    string name;
+    string status;
+    string ^"type";    // type is a keyword and therefore escaped
+    string createdDate;
+    string updatedDate;
+};
+</code></pre>
+
+<h3 id="publish-your-connector">Publish Your Connector</h3>
+
+<p>You can publish your custom connector for others to use into a Ballerina registry, such as Ballerina Central. You will need to have your connector as part of a module, and built using Ballerina’s project and build management tooling.</p>
+
+<p>Once you have built the module, you can <code class="highlighter-rouge">ballerina push &lt;org-name&gt;/&lt;module-name&gt;</code> and your module will be available at Ballerina Central for others to use. The <code class="highlighter-rouge">&lt;org-name&gt;</code> is defined in the <code class="highlighter-rouge">Ballerina.toml</code> that resides with the project and must match the organization name that is attached to your account at Ballerina Central. The <code class="highlighter-rouge">&lt;module-name&gt;</code> is defined by the folder that you placed the source code within the Ballerina project.</p>
+
+<p>You will need to have an account at Ballerina Central and your CLI token from central placed into your Ballerina settings. The <code class="highlighter-rouge">ballerina deploy</code> command will initiate an OAuth flow that automates this for you, even if you do not already have an existing account on Ballerina Central.</p>
+
+<p>For more information on how to structure the code you write, see <a href="/0.991/learn/how-to-structure-ballerina-code/">How to Structure Ballerina Code</a>.</p>
+
+<h3 id="learn-more">Learn More</h3>
+
+<p>You can create connectors for a range of protocols and interfaces, including those endpoints, which are backed by proxies, firewalls, or special security parameters. You can also reuse existing connectors as part of your own endpoint implementation. The best way to learn about how to implement different kinds of connectors is to see the source for the connectors that ship as part of the standard library and with some of the modules built by the community:</p>
+
+<ol>
+  <li>
+    <p>ballerina/http Client <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/stdlib/http/src/main/ballerina/http/client_endpoint.bal">source code</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-salesforce">Salesforce client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-github">GitHub client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-jira">Jira client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-sonarqube">Sonarqube client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-scim2">SCIM2 client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-gmail">Gmail client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-googlespreadsheet">Google Spreadsheet client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/wso2-ballerina/package-twitter">Twitter client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/stdlib/grpc/src/main/ballerina/grpc/client_endpoint.bal">gRPC client connector</a>.</p>
+  </li>
+  <li>
+    <p>Source code for a <a href="https://github.com/ballerina-platform/ballerina-lang/blob/master/stdlib/database/mysql/src/main/ballerina/mysql/endpoint.bal">MySQL client connector</a>.</p>
+  </li>
+</ol>
+
+<h2 id="create-custom-annotations--builder-extensions">Create Custom Annotations &amp; Builder Extensions</h2>
+
+<p>Annotations decorate objects in Ballerina code. The Ballerina compiler parses annotations into an AST that can be read and acted upon. You can introduce custom annotations for use by others with Ballerina and module builder extensions that can act on those annotations. The builder can generate additional artifacts as part of the build process.</p>
+
+<p>Custom annotations are how the <code class="highlighter-rouge">ballerinax/docker</code> and <code class="highlighter-rouge">ballerinax/kubernetes</code> modules work. They introduce new annotations such as <code class="highlighter-rouge">@docker</code> and <code class="highlighter-rouge">@kubernetes</code> that can be attached to different parts of Ballerina code. The builder detects these annotations and then runs a post-compile process that generates deployment artifacts for direct deployment to those environments.</p>
+
+<h3 id="special-notes">Special Notes</h3>
+
+<p>There are two caveats to building custom annotations:</p>
+
+<ol>
+  <li>
+    <p>Currently, the Ballerina Compiler is implemented in Java and you will need JDK 1.8 and Apache Maven.</p>
+  </li>
+  <li>
+    <p>End users will need to manually install the extension into Ballerina. We will have a release mid-year that enables collating these extensions as part of a Ballerina project, so that it’s included in any modules pushed to central.</p>
+  </li>
+</ol>
+
+<h3 id="custom-annotation-helloworld">Custom Annotation HelloWorld</h3>
+
+<p>We will create a custom annotation <code class="highlighter-rouge">@hello:Greeting{}</code> with an attribute <code class="highlighter-rouge">salutation</code> that can be attached to a Ballerina service. The builder extension will read the annotation that is attached to a source file containing the text value and save it in another file. We’ll ship this customization as a module that is pushed to Ballerina Central and available to end users by adding <code class="highlighter-rouge">import ballerinax/hello</code> to their source files.</p>
+
+<p>The end user might write some code that would look like:</p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerinax/hello;
+
+@hello:Greeting{
+  salutation: "Guten Tag!"
+}
+service helloWorld on new http:Listener(9091) {
+   resource function sayHello(http:Caller outboundEP, http:Request request) returns error? {
+       http:Response response = new;
+       response.setTextPayload("Hello, World from service helloWorld ! \n");
+       check outboundEP-&gt;respond(response);
+   }
+}
+</code></pre>
+
+<p>If the end user saved this file as <code class="highlighter-rouge">hello_world.bal</code> then after building the file (with our custom build extension) will produce:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>tree
+├── hello_world.bal
+├── hello_world.balx
+└── hello_world.txt
+<span class="nv">$ </span><span class="nb">cat </span>hello_world.txt
+Guten Tag!
+</code></pre></div></div>
+
+<h3 id="custom-annotation-getting-started">Custom Annotation Getting Started</h3>
+
+<p>The source code and results for this example are on <a href="https://github.com/ballerinax/hello">GitHub</a>.</p>
+
+<p>An annotation is a Ballerina code snippet that can be attached to some Ballerina code, and will hold some metadata related to that attached code. Annotations are not executable, but can be used to alter the behavior of some executable code.</p>
+
+<p>Annotations can be attached to:</p>
+
+<ul>
+  <li>Services</li>
+  <li>Type definition</li>
+  <li>Function definition</li>
+  <li>Variable declaration</li>
+  <li>Annotations</li>
+</ul>
+
+<p>Ballerina has built-in a set of annotations such as @http:ServiceConfig, @http:ResourceConfig. These annotations are part of the standard library and shipped with each distribution of Ballerina. You can view the definitions of these annotations by browsing the module’s API reference.</p>
+
+<p>A Ballerina “builder extension” is Java code that the build process will load and execute after the compilation phase. Builder extensions can act on any annotation information, whether those in the system library or custom annotations provided by you. Builder extensions that you write can register callbacks that act on annotations attached to different objects:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">public void process(PackageNode packageNode)</code></li>
+  <li><code class="highlighter-rouge">public void process(BLangTestablePackage packageNode)</code></li>
+  <li><code class="highlighter-rouge">public void process(ServiceNode serviceNode, List&lt;AnnotationAttachmentNode&gt; annotations)</code></li>
+  <li><code class="highlighter-rouge">public void process(TypeDefinition typeDefinition, List&lt;AnnotationAttachmentNode&gt; annotations)</code></li>
+  <li><code class="highlighter-rouge">public void process(FunctionNode functionNode, List&lt;AnnotationAttachmentNode&gt; annotations)</code></li>
+  <li><code class="highlighter-rouge">public void process(SimpleVariableNode variableNode, List&lt;AnnotationAttachmentNode&gt; annotations)</code></li>
+  <li><code class="highlighter-rouge">public void process(AnnotationNode annotationNode, List&lt;AnnotationAttachmentNode&gt; annotations)</code></li>
+  <li><code class="highlighter-rouge">public void codeGenerated(PackageID packageID, Path binaryPath)</code></li>
+</ul>
+
+<h3 id="create-a-maven-project">Create a Maven Project</h3>
+
+<p>We have a Maven arctetype that will create a sample template that can be used for writing the Ballerina builder extension.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn archetype:generate -DgroupId=ballerinax.hello
+                       -DartifactId=hello-extension
+		       -DarchetypeArtifactId=maven-archetype-quickstart
+		       -DinteractiveMode=false
+</code></pre></div></div>
+
+<p>This will create an Apache Maven project in following structure.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── pom.xml
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── ballerinax
+│   │           └── hello
+│   │               └── App.java
+│   └── <span class="nb">test</span>
+│       └── java
+│           └── ballerinax
+│               └── hello
+│                   └── AppTest.java
+└── target
+</code></pre></div></div>
+
+<p>In the <code class="highlighter-rouge">pom.xml</code>, add Ballerina IO as the parent.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>io.ballerina<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>ballerina<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>0.970.0-beta5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+</code></pre></div></div>
+
+<p>In the <code class="highlighter-rouge">pom.xml</code> add Ballerina’s Apache Maven dependencies.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.ballerinalang<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>ballerina-lang<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>0.982.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+         <span class="nt">&lt;dependency&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.ballerinalang<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>0.982.0<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>lib-creator<span class="nt">&lt;/artifactId&gt;</span>
+         <span class="nt">&lt;/dependency&gt;</span>
+         <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.ballerinalang<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>ballerina-builtin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>0.982.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;type&gt;</span>zip<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;classifier&gt;</span>ballerina-binary-repo<span class="nt">&lt;/classifier&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+</code></pre></div></div>
+
+<p>In the <code class="highlighter-rouge">pom.xml</code>, add Ballerina’s repository information.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;repositories&gt;</span>
+   <span class="nt">&lt;repository&gt;</span>
+       <span class="nt">&lt;id&gt;</span>wso2.releases<span class="nt">&lt;/id&gt;</span>
+       <span class="nt">&lt;name&gt;</span>WSO2 Releases Repository<span class="nt">&lt;/name&gt;</span>
+       <span class="nt">&lt;url&gt;</span>http://maven.wso2.org/nexus/content/repositories/releases/<span class="nt">&lt;/url&gt;</span>
+       <span class="nt">&lt;releases&gt;</span>
+           <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+           <span class="nt">&lt;updatePolicy&gt;</span>daily<span class="nt">&lt;/updatePolicy&gt;</span>
+           <span class="nt">&lt;checksumPolicy&gt;</span>ignore<span class="nt">&lt;/checksumPolicy&gt;</span>
+       <span class="nt">&lt;/releases&gt;</span>
+   <span class="nt">&lt;/repository&gt;</span>
+   <span class="nt">&lt;repository&gt;</span>
+       <span class="nt">&lt;id&gt;</span>wso2.snapshots<span class="nt">&lt;/id&gt;</span>
+       <span class="nt">&lt;name&gt;</span>WSO2 Snapshot Repository<span class="nt">&lt;/name&gt;</span>
+       <span class="nt">&lt;url&gt;</span>http://maven.wso2.org/nexus/content/repositories/snapshots/<span class="nt">&lt;/url&gt;</span>
+       <span class="nt">&lt;snapshots&gt;</span>
+           <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+           <span class="nt">&lt;updatePolicy&gt;</span>daily<span class="nt">&lt;/updatePolicy&gt;</span>
+       <span class="nt">&lt;/snapshots&gt;</span>
+       <span class="nt">&lt;releases&gt;</span>
+           <span class="nt">&lt;enabled&gt;</span>false<span class="nt">&lt;/enabled&gt;</span>
+       <span class="nt">&lt;/releases&gt;</span>
+   <span class="nt">&lt;/repository&gt;</span>
+<span class="nt">&lt;/repositories&gt;</span>
+</code></pre></div></div>
+
+<h5 id="remove-some-unnecessary-files">Remove Some Unnecessary Files</h5>
+
+<p>Remove the archetype generated by the <code class="highlighter-rouge">App.java</code> and <code class="highlighter-rouge">AppTest.java</code> files as they are not needed.
+Then, add an XML file named <code class="highlighter-rouge">spotbugs-exclude.xml</code> together with the <code class="highlighter-rouge">pom.xml</code> and add the following.
+Make sure you are able to build the project.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;FindBugsFilter&gt;</span>
+
+<span class="nt">&lt;/FindBugsFilter&gt;</span>
+</code></pre></div></div>
+
+<p>Then build it.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean <span class="nb">install</span>
+</code></pre></div></div>
+
+<h3 id="create-custom-annotation-definition">Create Custom Annotation Definition</h3>
+
+<p>In the maven project, create a hello-extension/src/main/ballerina/ballerinax/hello/annotation.bal file.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── pom.xml
+├── src
+│   ├── main
+│   │   ├── ballerina
+│   │   │   └── ballerinax
+│   │   │       └── hello
+│   │   │           └── annotation.bal
+│   │   └── java
+│   │       └── ballerinax
+│   │           └── hello
+│   │               └── App.java
+│   └── <span class="nb">test</span>
+│       └── java
+│           └── ballerinax
+│               └── hello
+│                   └── AppTest.java
+└── target
+</code></pre></div></div>
+
+<p>The annotation is defined using Ballerina syntax in the <code class="highlighter-rouge">annotation.bal</code>:</p>
+
+<pre><code class="language-ballerina"># Hello annotation configuration
+#
+# + salutation - Greeting
+public type HelloConfiguration record {
+    string salutation;
+};
+
+# @hello:Greeting annotation configuration
+public annotation &lt;service&gt; Greeting HelloConfiguration;
+
+// You can replace the &lt;&gt; value with different objects this annotation may attach to
+</code></pre>
+
+<h5 id="define-an-extension-provider">Define an Extension Provider</h5>
+
+<p>Create <code class="highlighter-rouge">HelloExtensionProvider.java</code> class in <code class="highlighter-rouge">hello/src/main/java/org/ballerinax/hello</code> module. This class will implement <code class="highlighter-rouge">SystemPackageRepositoryProvider</code>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">ballerinax</span><span class="o">.</span><span class="na">hello</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.ballerinalang.annotation.JavaSPIService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.spi.SystemPackageRepositoryProvider</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.wso2.ballerinalang.compiler.packaging.repo.JarRepo</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.wso2.ballerinalang.compiler.packaging.repo.Repo</span><span class="o">;</span>
+
+<span class="cm">/**
+* This represents the Ballerina Hello extension package repository provider.
+*/</span>
+<span class="nd">@JavaSPIService</span><span class="o">(</span><span class="s">"org.ballerinalang.spi.SystemPackageRepositoryProvider"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloExtensionProvider</span> <span class="kd">implements</span> <span class="n">SystemPackageRepositoryProvider</span> <span class="o">{</span>
+
+   <span class="nd">@Override</span>
+   <span class="kd">public</span> <span class="n">Repo</span> <span class="nf">loadRepository</span><span class="o">()</span> <span class="o">{</span>
+       <span class="k">return</span> <span class="k">new</span> <span class="nf">JarRepo</span><span class="o">(</span><span class="n">SystemPackageRepositoryProvider</span><span class="o">.</span><span class="na">getClassUri</span><span class="o">(</span><span class="k">this</span><span class="o">));</span>
+   <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h5 id="update-the-pomxml">Update the pom.xml</h5>
+
+<p>Configure bsc plugin in the <code class="highlighter-rouge">pom.xml</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;build&gt;</span>
+    <span class="c">&lt;!-- For ballerina annotation processing --&gt;</span>
+    <span class="nt">&lt;resources&gt;</span>
+       <span class="nt">&lt;resource&gt;</span>
+           <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+           <span class="nt">&lt;excludes&gt;</span>
+               <span class="nt">&lt;exclude&gt;</span>ballerina/**<span class="nt">&lt;/exclude&gt;</span>
+           <span class="nt">&lt;/excludes&gt;</span>
+       <span class="nt">&lt;/resource&gt;</span>
+
+       <span class="c">&lt;!-- copy ballerina annotation sources to the jar --&gt;</span>
+       <span class="nt">&lt;resource&gt;</span>
+           <span class="nt">&lt;directory&gt;</span>${project.build.directory}/../src/main/ballerina<span class="nt">&lt;/directory&gt;</span>
+           <span class="nt">&lt;targetPath&gt;</span>META-INF/<span class="nt">&lt;/targetPath&gt;</span>
+       <span class="nt">&lt;/resource&gt;</span>
+    <span class="nt">&lt;/resources&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+           <span class="nt">&lt;groupId&gt;</span>org.bsc.maven<span class="nt">&lt;/groupId&gt;</span>
+           <span class="nt">&lt;artifactId&gt;</span>maven-processor-plugin<span class="nt">&lt;/artifactId&gt;</span>
+           <span class="nt">&lt;version&gt;</span>2.2.4<span class="nt">&lt;/version&gt;</span>
+           <span class="nt">&lt;configuration&gt;</span>
+               <span class="nt">&lt;processors&gt;</span>
+                   <span class="nt">&lt;processor&gt;</span>org.ballerinalang.codegen.BallerinaAnnotationProcessor<span class="nt">&lt;/processor&gt;</span>
+               <span class="nt">&lt;/processors&gt;</span>
+               <span class="nt">&lt;options&gt;</span>
+                   <span class="nt">&lt;nativeEntityProviderPackage&gt;</span>org.ballerinalang.net.generated.providers<span class="nt">&lt;/nativeEntityProviderPackage&gt;</span>
+                   <span class="nt">&lt;nativeEntityProviderClass&gt;</span>StandardNativeElementProvider<span class="nt">&lt;/nativeEntityProviderClass&gt;</span>
+               <span class="nt">&lt;/options&gt;</span>
+           <span class="nt">&lt;/configuration&gt;</span>
+           <span class="nt">&lt;executions&gt;</span>
+               <span class="nt">&lt;execution&gt;</span>
+                   <span class="nt">&lt;id&gt;</span>process<span class="nt">&lt;/id&gt;</span>
+                   <span class="nt">&lt;goals&gt;</span>
+                       <span class="nt">&lt;goal&gt;</span>process<span class="nt">&lt;/goal&gt;</span>
+                   <span class="nt">&lt;/goals&gt;</span>
+                   <span class="nt">&lt;phase&gt;</span>generate-sources<span class="nt">&lt;/phase&gt;</span>
+               <span class="nt">&lt;/execution&gt;</span>
+           <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></div>
+
+<p>Configure the Apache Maven shade plugin. This plugin manages the packaging of dependency .jar files. The Ballerina Tools distribution contains all the dependency .jar files we have used in the plugin. Since we are copying the final .jar file to Ballerina tools, we are excluding the Ballerina dependencies from the final .jar file.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;plugin&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>2.4.3<span class="nt">&lt;/version&gt;</span>
+   <span class="nt">&lt;executions&gt;</span>
+       <span class="nt">&lt;execution&gt;</span>
+           <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+           <span class="nt">&lt;goals&gt;</span>
+               <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+           <span class="nt">&lt;/goals&gt;</span>
+           <span class="nt">&lt;configuration&gt;</span>
+               <span class="nt">&lt;createDependencyReducedPom&gt;</span>true<span class="nt">&lt;/createDependencyReducedPom&gt;</span>
+               <span class="nt">&lt;minimizeJar&gt;</span>true<span class="nt">&lt;/minimizeJar&gt;</span>
+               <span class="nt">&lt;artifactSet&gt;</span>
+                   <span class="nt">&lt;excludes&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.slf4j:slf4j-api<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.slf4j:slf4j-jdk14<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>com.fasterxml.jackson.core:jackson-databind<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>com.fasterxml.jackson.core:jackson-annotations<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>com.fasterxml.jackson.core:jackson-core<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>commons-lang:commons-lang<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.yaml:snakeyaml<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-lang<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-launcher<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-builtin<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-core<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-mime<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-logging<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.ballerinalang:ballerina-http<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>junit:junit<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;exclude&gt;</span>org.bsc.maven:maven-processor-plugin<span class="nt">&lt;/exclude&gt;</span>
+                   <span class="nt">&lt;/excludes&gt;</span>
+               <span class="nt">&lt;/artifactSet&gt;</span>
+               <span class="nt">&lt;filters&gt;</span>
+                   <span class="nt">&lt;filter&gt;</span>
+                       <span class="nt">&lt;artifact&gt;</span>*:*<span class="nt">&lt;/artifact&gt;</span>
+                       <span class="nt">&lt;excludes&gt;</span>
+                           <span class="nt">&lt;exclude&gt;</span>META-INF/*.SF<span class="nt">&lt;/exclude&gt;</span>
+                           <span class="nt">&lt;exclude&gt;</span>META-INF/*.DSA<span class="nt">&lt;/exclude&gt;</span>
+                           <span class="nt">&lt;exclude&gt;</span>META-INF/*.RSA<span class="nt">&lt;/exclude&gt;</span>
+                       <span class="nt">&lt;/excludes&gt;</span>
+                   <span class="nt">&lt;/filter&gt;</span>
+               <span class="nt">&lt;/filters&gt;</span>
+           <span class="nt">&lt;/configuration&gt;</span>
+       <span class="nt">&lt;/execution&gt;</span>
+   <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div></div>
+
+<p>Configure Apache Maven compiler plugin. Ballerina requires Java 8 for the builder extensions.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;plugin&gt;</span>
+   <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+   <span class="nt">&lt;artifactId&gt;</span>maven-compiler-plugin<span class="nt">&lt;/artifactId&gt;</span>
+   <span class="nt">&lt;version&gt;</span>3.7.0<span class="nt">&lt;/version&gt;</span>
+   <span class="nt">&lt;configuration&gt;</span>
+       <span class="nt">&lt;source&gt;</span>1.8<span class="nt">&lt;/source&gt;</span>
+       <span class="nt">&lt;target&gt;</span>1.8<span class="nt">&lt;/target&gt;</span>
+   <span class="nt">&lt;/configuration&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div></div>
+
+<p>Configure Apache Maven plugins to generate .balo files.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>1.6.0<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;executions&gt;</span>
+                    <span class="nt">&lt;execution&gt;</span>
+                        <span class="nt">&lt;id&gt;</span>gen-balo<span class="nt">&lt;/id&gt;</span>
+                        <span class="nt">&lt;goals&gt;</span>
+                            <span class="nt">&lt;goal&gt;</span>java<span class="nt">&lt;/goal&gt;</span>
+                        <span class="nt">&lt;/goals&gt;</span>
+                        <span class="nt">&lt;phase&gt;</span>compile<span class="nt">&lt;/phase&gt;</span>
+                        <span class="nt">&lt;configuration&gt;</span>
+                            <span class="nt">&lt;systemProperties&gt;</span>
+                                <span class="nt">&lt;systemProperty&gt;</span>
+                                    <span class="nt">&lt;key&gt;</span>BALLERINA_DEV_MODE_COMPILE<span class="nt">&lt;/key&gt;</span>
+                                    <span class="nt">&lt;value&gt;</span>true<span class="nt">&lt;/value&gt;</span>
+                                <span class="nt">&lt;/systemProperty&gt;</span>
+                            <span class="nt">&lt;/systemProperties&gt;</span>
+                            <span class="nt">&lt;arguments&gt;</span>
+                                <span class="c">&lt;!--is built in pkg loaded from source--&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>false<span class="nt">&lt;/argument&gt;</span>
+                                <span class="c">&lt;!--source project dir--&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>${basedir}/src/main/ballerina/ballerinax<span class="nt">&lt;/argument&gt;</span>
+                                <span class="c">&lt;!--balo destination--&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>${project.build.directory}/generated-balo/repo/ballerinax<span class="nt">&lt;/argument&gt;</span>
+                                <span class="c">&lt;!--ballerina home--&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>${project.build.directory}<span class="nt">&lt;/argument&gt;</span>
+                                <span class="c">&lt;!--not used--&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>${project.version}<span class="nt">&lt;/argument&gt;</span>
+                            <span class="nt">&lt;/arguments&gt;</span>
+                        <span class="nt">&lt;/configuration&gt;</span>
+                    <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;/executions&gt;</span>
+                <span class="nt">&lt;configuration&gt;</span>
+                    <span class="nt">&lt;mainClass&gt;</span>org.ballerinalang.stdlib.utils.GenerateBalo<span class="nt">&lt;/mainClass&gt;</span>
+                <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>maven-dependency-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;executions&gt;</span>
+                    <span class="nt">&lt;execution&gt;</span>
+                        <span class="nt">&lt;id&gt;</span>unpack-dependencies<span class="nt">&lt;/id&gt;</span>
+                        <span class="nt">&lt;phase&gt;</span>generate-resources<span class="nt">&lt;/phase&gt;</span>
+                        <span class="nt">&lt;goals&gt;</span>
+                            <span class="nt">&lt;goal&gt;</span>unpack-dependencies<span class="nt">&lt;/goal&gt;</span>
+                        <span class="nt">&lt;/goals&gt;</span>
+                        <span class="nt">&lt;configuration&gt;</span>
+                            <span class="nt">&lt;includeClassifiers&gt;</span>ballerina-binary-repo<span class="nt">&lt;/includeClassifiers&gt;</span>
+                            <span class="nt">&lt;outputDirectory&gt;</span>${project.build.directory}/lib<span class="nt">&lt;/outputDirectory&gt;</span>
+                        <span class="nt">&lt;/configuration&gt;</span>
+                    <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;/executions&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>2.5.2<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;executions&gt;</span>
+                    <span class="nt">&lt;execution&gt;</span>
+                        <span class="nt">&lt;id&gt;</span>distribution<span class="nt">&lt;/id&gt;</span>
+                        <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+                        <span class="nt">&lt;goals&gt;</span>
+                            <span class="nt">&lt;goal&gt;</span>attached<span class="nt">&lt;/goal&gt;</span>
+                        <span class="nt">&lt;/goals&gt;</span>
+                        <span class="nt">&lt;configuration&gt;</span>
+                            <span class="nt">&lt;descriptorSourceDirectory&gt;</span>assembly<span class="nt">&lt;/descriptorSourceDirectory&gt;</span>
+                        <span class="nt">&lt;/configuration&gt;</span>
+                    <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;/executions&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+
+</code></pre></div></div>
+
+<p>Create a folder named <code class="highlighter-rouge">assembly</code> in  <code class="highlighter-rouge">hello-extension/</code> folder and add the following files.</p>
+<ol>
+  <li>balo.xml
+```xml</li>
+</ol>
+<assembly>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>/</baseDirectory>
+    <id>ballerina-binary-repo</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/generated-balo</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2. source.xml
+```xml
+&lt;assembly&gt;
+    &lt;includeBaseDirectory&gt;true&lt;/includeBaseDirectory&gt;
+    &lt;baseDirectory&gt;ballerina&lt;/baseDirectory&gt;
+    &lt;id&gt;ballerina-sources&lt;/id&gt;
+    &lt;formats&gt;
+        &lt;format&gt;zip&lt;/format&gt;
+    &lt;/formats&gt;
+
+    &lt;fileSets&gt;
+        &lt;fileSet&gt;
+            &lt;directory&gt;src/main/ballerina&lt;/directory&gt;
+            &lt;outputDirectory&gt;/&lt;/outputDirectory&gt;
+            &lt;includes&gt;
+                &lt;include&gt;**&lt;/include&gt;
+            &lt;/includes&gt;
+        &lt;/fileSet&gt;
+    &lt;/fileSets&gt;
+&lt;/assembly&gt;
+</code></pre></div></div>
+
+<p>Create a file named <code class="highlighter-rouge">Ballerina.toml</code> in <code class="highlighter-rouge">hello-extension/src/main/ballerina/ballerinax</code> folder and add the following content.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[project]</span>
+<span class="py">org-name</span> <span class="p">=</span> <span class="s">"ballerinax"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"0.0.0"</span>
+</code></pre></div></div>
+
+<p>Final folder structure will look like below.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── assembly
+│   ├── balo.xml
+│   └── source.xml
+├── pom.xml
+├── spotbugs-exclude.xml
+└── src
+    └── main
+        ├── ballerina
+        │   └── ballerinax
+        │       ├── Ballerina.toml
+        │       └── hello
+        │           └── annotation.bal
+        └── java
+            └── ballerinax
+                    └── hello
+                        ├── HelloExtensionProvider.java
+                        ├── HelloModel.java
+                        └── HelloPlugin.java
+
+</code></pre></div></div>
+
+<h5 id="verify-the-annotation">Verify the Annotation</h5>
+
+<p>Build the project and verify that the JAR file is built. The JAR file will contain your annotation definitions.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>The resulting <code class="highlighter-rouge">target/hello-extension-0.990.x.jar</code> will have the annotation definitions.</p>
+
+<p>Place the .jar file at <code class="highlighter-rouge">&lt;ballerina_lang_home&gt;/bre/lib</code> of your Ballerina distribution.</p>
+
+<p>Extract <code class="highlighter-rouge">target/hello-extension-0.990.x-ballerina-binary-repo.zip</code> file and copy the <code class="highlighter-rouge">repo/ballerinax</code> folder to <code class="highlighter-rouge">&lt;ballerina_lang_home&gt;/lib/repo/</code> folder.
+The final <code class="highlighter-rouge">&lt;ballerina_lang_home&gt;/lib/repo/</code> folder will  have two folders <code class="highlighter-rouge">ballerina</code> and <code class="highlighter-rouge">ballerinax</code>.</p>
+
+<p>You can now verify that the annotation is present even though we cannot react to it yet. Create a sample Ballerina file with your  annotation and make sure that Ballerina can compile the file without errors.</p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerinax/hello;
+
+@hello:Greeting{salutation : "Guten Tag!"}
+service helloWorld on new http:Listener(9091) {
+   resource function sayHello(http:Caller outboundEP, http:Request request) returns error? {
+       http:Response response = new;
+       response.setTextPayload("Hello, World from service helloWorld ! \n");
+       check outboundEP-&gt;respond(response);
+   }
+}
+</code></pre>
+
+<h3 id="write-the-build-extension-processor">Write the Build Extension Processor</h3>
+
+<p>Create <code class="highlighter-rouge">HelloPlugin.java</code> in the <code class="highlighter-rouge">hello/src/main/java/org/ballerinax/hello</code> module. We will then implement the annotation methods that we want to act upon.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">ballerinax</span><span class="o">.</span><span class="na">hello</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.ballerinalang.compiler.plugins.AbstractCompilerPlugin</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.compiler.plugins.SupportedAnnotationPackages</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.model.elements.PackageID</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.model.tree.AnnotationAttachmentNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.model.tree.ServiceNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.util.diagnostic.Diagnostic</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.ballerinalang.util.diagnostic.DiagnosticLog</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.wso2.ballerinalang.compiler.tree.BLangAnnotationAttachment</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.wso2.ballerinalang.compiler.tree.expressions.BLangRecordLiteral</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.charset.StandardCharsets</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Path</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Paths</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.StandardOpenOption</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Compiler plugin to generate greetings.
+ */</span>
+<span class="nd">@SupportedAnnotationPackages</span><span class="o">(</span>
+        <span class="c1">// Tell compiler we are only interested in ballerinax.hello annotations.</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="s">"ballerinax.hello"</span>
+<span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloPlugin</span> <span class="kd">extends</span> <span class="n">AbstractCompilerPlugin</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">DiagnosticLog</span> <span class="n">dlog</span><span class="o">;</span>
+
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="n">DiagnosticLog</span> <span class="n">diagnosticLog</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Initialize the logger.</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dlog</span> <span class="o">=</span> <span class="n">diagnosticLog</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Our annotation is attached to service&lt;&gt; objects</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="n">ServiceNode</span> <span class="n">serviceNode</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">AnnotationAttachmentNode</span><span class="o">&gt;</span> <span class="n">annotations</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//Iterate through the annotation Attachment Nodes</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">AnnotationAttachmentNode</span> <span class="n">attachmentNode</span> <span class="o">:</span> <span class="n">annotations</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">BLangRecordLiteral</span><span class="o">.</span><span class="na">BLangRecordKeyValue</span><span class="o">&gt;</span> <span class="n">keyValues</span> <span class="o">=</span>
+                    <span class="o">((</span><span class="n">BLangRecordLiteral</span><span class="o">)</span> <span class="o">((</span><span class="n">BLangAnnotationAttachment</span><span class="o">)</span> <span class="n">attachmentNode</span><span class="o">).</span><span class="na">expr</span><span class="o">).</span><span class="na">getKeyValuePairs</span><span class="o">();</span>
+            <span class="c1">//Iterate through the annotations</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">BLangRecordLiteral</span><span class="o">.</span><span class="na">BLangRecordKeyValue</span> <span class="n">keyValue</span> <span class="o">:</span> <span class="n">keyValues</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">String</span> <span class="n">annotationValue</span> <span class="o">=</span> <span class="n">keyValue</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="c1">//Match annotation key and assign the value</span>
+                <span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">keyValue</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">toString</span><span class="o">();</span>
+                <span class="k">if</span> <span class="o">(</span><span class="s">"salutation"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">HelloModel</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">setGreeting</span><span class="o">(</span><span class="n">annotationValue</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">codeGenerated</span><span class="o">(</span><span class="n">PackageID</span> <span class="n">packageID</span><span class="o">,</span> <span class="n">Path</span> <span class="n">binaryPath</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//extract file name.</span>
+        <span class="n">String</span> <span class="n">filePath</span> <span class="o">=</span> <span class="n">binaryPath</span><span class="o">.</span><span class="na">toAbsolutePath</span><span class="o">().</span><span class="na">toString</span><span class="o">().</span><span class="na">replace</span><span class="o">(</span><span class="s">".balx"</span><span class="o">,</span> <span class="s">".txt"</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">greeting</span> <span class="o">=</span> <span class="n">HelloModel</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">getGreeting</span><span class="o">();</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">writeToFile</span><span class="o">(</span><span class="n">greeting</span><span class="o">,</span> <span class="n">filePath</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">dlog</span><span class="o">.</span><span class="na">logDiagnostic</span><span class="o">(</span><span class="n">Diagnostic</span><span class="o">.</span><span class="na">Kind</span><span class="o">.</span><span class="na">ERROR</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Write content to a File. Create the required directories if they don't not exists.
+     *
+     * @param context        context of the file
+     * @param targetFilePath target file path
+     * @throws IOException If an error occurs when writing to a file
+     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">writeToFile</span><span class="o">(</span><span class="n">String</span> <span class="n">context</span><span class="o">,</span> <span class="n">String</span> <span class="n">targetFilePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+        <span class="n">File</span> <span class="n">newFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="n">targetFilePath</span><span class="o">);</span>
+        <span class="c1">// append if file exists</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">newFile</span><span class="o">.</span><span class="na">exists</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">targetFilePath</span><span class="o">),</span> <span class="n">context</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">),</span>
+                    <span class="n">StandardOpenOption</span><span class="o">.</span><span class="na">APPEND</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="c1">//create required directories</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">newFile</span><span class="o">.</span><span class="na">getParentFile</span><span class="o">().</span><span class="na">mkdirs</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">targetFilePath</span><span class="o">),</span> <span class="n">context</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">Files</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">Paths</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">targetFilePath</span><span class="o">),</span> <span class="n">context</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>The annotation value is read and cached in a singleton model class. Upon receiving the code generated event, we are extracting the output file name and write the value from the model class to a file.</p>
+
+<p>Create <code class="highlighter-rouge">HelloModel.java</code> in <code class="highlighter-rouge">hello/src/main/java/org/ballerinax/hello</code> module.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">ballerinax</span><span class="o">.</span><span class="na">hello</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Model class to store greeting value.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloModel</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">HelloModel</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">greeting</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nf">HelloModel</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Initialize with the default greeting.</span>
+        <span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hello!"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">HelloModel</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kd">synchronized</span> <span class="o">(</span><span class="n">HelloModel</span><span class="o">.</span><span class="na">class</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">instance</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HelloModel</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">instance</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getGreeting</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">greeting</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGreeting</span><span class="o">(</span><span class="n">String</span> <span class="n">greeting</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">greeting</span> <span class="o">=</span> <span class="n">greeting</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Create an file named <code class="highlighter-rouge">org.ballerinalang.compiler.plugins.CompilerPlugin</code> in <code class="highlighter-rouge">hello/src/main/resources/META-INF/services</code> directory. This file is read by the compiler and registers our <code class="highlighter-rouge">HelloPlugin.java</code> class as an extension. The events will be received by the registered classes. The file should contain the fully qualified Java class name of the builder extension.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>org.ballerinax.hello.HelloPlugin
+</code></pre></div></div>
+
+<p>Rebuild the maven project and replace the jar file in <code class="highlighter-rouge">&lt;ballerina_tools_home&gt;/bre/lib</code> with the latest. You should now be able to compile the sample Ballerina file we created earlier. There should be a text file created with annotation value.</p>
+
+<h3 id="learn-more-about-java-libraries-for-builder-extensions">Learn More About Java Libraries for Builder Extensions</h3>
+
+<p>First, the Ballerina developers will be eager and excited to help you if you run into any issues with writing Java extensions that parse the AST. AST parsing is a bit of a different world and it does take some work to learn all of the libraries. You can post questions on the ballerina-dev Google group, chat in our Slack channel, or post onto StackOverflow with the #ballerina label.</p>
+
+<p>Second, the fastest way to learn about advanced annotation processing is to review the processors for Docker and Kubernetes.</p>
+
+<p>Docker:</p>
+
+<ol>
+  <li>
+    <p>The <a href="https://github.com/ballerinax/docker/blob/master/docker-extension/src/main/ballerina/ballerinax/docker/annotation.bal">Ballerina file defining the annotation</a>.</p>
+  </li>
+  <li>
+    <p>The <a href="https://github.com/ballerinax/docker/tree/master/docker-extension/src/main/java/org/ballerinax/docker">Java code with the builder extension</a>.</p>
+  </li>
+</ol>
+
+<p>Kubernetes</p>
+
+<ol>
+  <li>
+    <p>The <a href="https://github.com/ballerinax/kubernetes/blob/master/kubernetes-extension/src/main/ballerina/ballerinax/kubernetes/annotation.bal">Ballerina file defining the annotation</a>.</p>
+  </li>
+  <li>
+    <p>The <a href="https://github.com/ballerinax/kubernetes/tree/master/kubernetes-extension/src/main/java/org/ballerinax/kubernetes">Java code with the builder extension</a>.</p>
+  </li>
+</ol>
+
+<h2 id="create-webhook-callback-services">Create Webhook Callback Services</h2>
+
+<p>A webhook callback service type is introduced by implementing a new <code class="highlighter-rouge">listener</code> type wrapping the generic 
+<code class="highlighter-rouge">websub:Listener</code>. The implementation should define a mapping between an indicator (in the content delivery requests) and the resources (to which the requests need to be dispatched based on the value of the indicator).</p>
+
+<p>This indicator could be one of the following:</p>
+<ul>
+  <li>A request header</li>
+  <li>The payload - the value for a particular key in the JSON payload</li>
+  <li>A request header and the payload (combination of the above)</li>
+</ul>
+
+<p>The <a href="https://ballerina.io/0.991/learn/api-docs/ballerina/websub.html">ballerina/websub Module.md</a> explains the extension points in detail.</p>
+
+<p>You can create and share your own webhook callback service types as Ballerina modules, which you push into a Ballerina registry (such as Ballerina Central).</p>
+
+<p>Follow the steps below to create a webhook callback service type.</p>
+
+<ol>
+  <li>
+    <p>Create a Ballerina module in a Ballerina project.</p>
+  </li>
+  <li>
+    <p>Create a new <code class="highlighter-rouge">listener</code> wrapping the generic <code class="highlighter-rouge">websub:Listener</code>.</p>
+  </li>
+  <li>
+    <p>Implement the <code class="highlighter-rouge">__init()</code> function specifying the mapping between possible notifications and resources as <code class="highlighter-rouge">extensionConfig</code>.</p>
+  </li>
+  <li>
+    <p>Implement the <code class="highlighter-rouge">__attach()</code>, <code class="highlighter-rouge">__start()</code> and <code class="highlighter-rouge">__stop()</code> functions calling the same functions on the generic <code class="highlighter-rouge">websub:Listener</code>.</p>
+  </li>
+  <li>
+    <p>Build the module and push it into a registry for others to use it.</p>
+  </li>
+</ol>
+
+<h3 id="the-github-webhook">The GitHub Webhook</h3>
+
+<p>A <a href="https://github.com/wso2-ballerina/module-github/tree/master/githubwebhook3">GitHub webhook implementation</a> is made available by WSO2 as the <code class="highlighter-rouge">wso2/githubwebhook3</code> module.</p>
+
+<p>This webhook can be used by anyone by importing it.</p>
+
+<pre><code class="language-ballerina">import ballerina/http;
+import ballerina/io;
+import ballerina/websub;
+import wso2/githubwebhook3;
+
+// Initiate a new listener of type `githubwebhook3:WebhookListener`.
+listener githubwebhook3:WebhookListener githubListener = new(8080);
+
+// Attach a service accepting "ping", "issue opened" and "repository starred" notifications.
+@websub:SubscriberServiceConfig {
+    path: "/webhook",
+    subscribeOnStartUp: true,
+    hub: githubwebhook3:HUB,
+    topic: "https://github.com/&lt;GH_USERNAME&gt;/&lt;GH_REPO_NAME&gt;/events/*.json", // subscribe to notifications for all events
+    secret: "&lt;SECRET&gt;",
+    callback: "&lt;CALLBACK_URL&gt;", // only needs to be specified if not http(s)://&lt;HOST&gt;:&lt;PORT&gt;/&lt;path&gt;
+    subscriptionClientConfig: {
+        auth: {
+            scheme: http:OAUTH2,
+            config: {
+                grantType: http:DIRECT_TOKEN,
+                config: {
+                    accessToken: "&lt;GH_ACCESS_TOKEN&gt;"
+                }
+            }
+        }
+    }
+}
+service githubWebhook on githubListener {
+
+    resource function onPing(websub:Notification notification, githubwebhook3:PingEvent event) {
+        io:println("[onPing] Webhook Registered: ", event);
+    }
+
+    resource function onIssuesOpened(websub:Notification notification, githubwebhook3:IssuesEvent event) {
+        io:println("[onIssuesOpened] Issue ID: ", event.issue.number);
+    }
+
+    resource function onWatch(websub:Notification notification, githubwebhook3:WatchEvent event) {
+        io:println("[onWatch] Repository starred by: ", event.sender);
+    }
+}
+</code></pre>
+
+<h3 id="the-webhooklistener-object">The <code class="highlighter-rouge">WebhookListener</code> Object</h3>
+
+<p>The <code class="highlighter-rouge">WebhookListener</code> object that is implemented as a <code class="highlighter-rouge">listener</code> for the GitHub webhook callback service.</p>
+
+<pre><code class="language-ballerina">public type WebhookListener object {
+
+    *AbstractListener;
+
+    public WebhookListenerConfiguration? webhookListenerConfig = ();
+
+    private websub:Listener websubListener;
+
+    public function __init(int port, WebhookListenerConfiguration? config = ());
+
+    public function __attach(service s, map&lt;any&gt; data) returns error?;
+
+    public function __start() returns error?;
+    
+    public function __stop() returns error?;
+};
+</code></pre>
+
+<h3 id="implement-the-__init-function">Implement the <code class="highlighter-rouge">__init()</code> function</h3>
+
+<p>For the GitHub webhook, the mapping between events and resources could be based either only on a header or on both a header and the payload.</p>
+
+<p>e.g.,</p>
+<ul>
+  <li>When the repository is starred, the content-delivery request received will have the header <code class="highlighter-rouge">X-GitHub-Event</code> with 
+the value set to “watch”.</li>
+  <li>When an issue is opened, the content-delivery request received will have the header <code class="highlighter-rouge">X-GitHub-Event</code> with the 
+value set to “issues”, and the <code class="highlighter-rouge">json</code> payload will contain the value “opened” for the key “action”.</li>
+</ul>
+
+<p>The implementation of the <code class="highlighter-rouge">__init()</code> function initializes the <code class="highlighter-rouge">websub:Listener</code> specifying the mapping to the resources as the <code class="highlighter-rouge">extensionConfig</code>.</p>
+<pre><code class="language-ballerina">const string TOPIC_HEADER = "X-GitHub-Event";
+
+final map&lt;(string, typedesc)&gt; GITHUB_TOPIC_HEADER_RESOURCE_MAP = {
+    "ping": ("onPing", PingEvent),
+    ...
+    "watch": ("onWatch", WatchEvent)
+};
+
+final map&lt;map&lt;map&lt;(string, typedesc)&gt;&gt;&gt; GITHUB_TOPIC_HEADER_AND_PAYLOAD_KEY_RESOURCE_MAP = {
+    "create": {
+        "ref_type": {
+            "repository": ("onCreateRepository", CreateEvent)
+            ...
+        }
+    },
+    "issues": {
+        "action": {
+            "opened": ("onIssuesOpened", IssuesEvent),
+            ...
+            "closed": ("onIssuesClosed", IssuesEvent),
+        }
+    }
+    ...
+};
+
+public type WebhookListenerConfiguration record {
+    string host?;
+    http:ServiceSecureSocket httpServiceSecureSocket?;
+};
+
+function WebhookListener.__init(int port, WebhookListenerConfiguration? config = ()) {
+    self.webhookListenerConfig = config;
+    websub:ExtensionConfig extensionConfig = {
+        topicIdentifier: websub:TOPIC_ID_HEADER_AND_PAYLOAD,
+        topicHeader: TOPIC_HEADER,
+        headerResourceMap: GITHUB_TOPIC_HEADER_RESOURCE_MAP,
+        headerAndPayloadKeyResourceMap: GITHUB_TOPIC_HEADER_AND_PAYLOAD_KEY_RESOURCE_MAP
+    };
+    websub:SubscriberServiceEndpointConfiguration sseConfig = {
+        extensionConfig: extensionConfig
+    };
+    if (config is WebhookListenerConfiguration) {
+        string? specHost = config["host"];
+        if (specHost is string) {
+            sseConfig.host = specHost;
+        }
+        sseConfig.httpServiceSecureSocket = config["httpServiceSecureSocket"];
+    }
+    self.websubListener = new(port, config = sseConfig);
+}
+</code></pre>
+
+<h3 id="implement-the-__attach-__start-and-__stop-functions">Implement the <code class="highlighter-rouge">__attach()</code>, <code class="highlighter-rouge">__start()</code> and <code class="highlighter-rouge">__stop()</code> functions</h3>
+
+<p>The implementations of these functions only need to call the corresponding functions of the wrapped <code class="highlighter-rouge">websub:Listener</code>.</p>
+
+<pre><code class="language-ballerina">function WebhookListener.__attach(service s, map&lt;any&gt; data) returns error? {
+    return self.websubListener.__attach(s, data);
+}
+
+function WebhookListener.__start() returns error? {
+    return self.websubListener.__start();
+}
+
+function WebhookListener.__stop() returns error? {
+    return self.websubListener.__stop();
+}
+</code></pre>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+      <script src="/js/theme.js"></script>
+
+      <script>
+            $(document).ready(function() {
+                     var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+                     var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+             });
+            </script>
+         
+            <style>
+                .cGitButtonContainer {
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+         
+                 #iGitStarText {
+                     height: 20px;
+                     float: left;
+                     padding: 0;
+                     margin: 0;
+                 }
+                #iGitStarIframe , #iGitWatchIframe {
+                     height: 20px;
+                     width: 100px;
+                     float: left;
+                 }
+             </style>
+
+   </body>
+</html>
+

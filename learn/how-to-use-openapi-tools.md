@@ -27,7 +27,7 @@ Code generation from OpenAPI to Ballerina can produce `ballerina mock services` 
 For build time client stub generation, annotation support is provided.
 
 ### Mock service from OpenAPI
-`ballerina openapi gen-service <moduleName>:<serivceName> 
+`ballerina openapi gen-service <moduleName>:<serviceName> 
                                <openapi_contract>
                                [-c: copy-contract] 
                                [-o: outputFile]`

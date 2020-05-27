@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="no-js">
+   <head>
+      
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Ballerina is meant to be a quick start for anyone with prior programming experience." />
+
+<meta name="author" content="WSO2, Inc.">
+
+<meta name="keywords" content="Ballerina, ballerinalang" />
+
+<link rel="shortcut icon" href="/img/favicon.ico">
+<title>Let’s learn Ballerina!</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-92163714-2"></script>
+<!--FB-->
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Ballerina - Let’s learn Ballerina!" />
+<meta property="og:description"        content="Ballerina is meant to be a quick start for anyone with prior programming experience." />
+<meta property="og:image"              content="/img/ballerina-sm-2.jpg" />
+<!--TWITTER-->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@ballerinalang">
+<meta name="twitter:creator" content="@ballerinalang">
+<meta name="twitter:title" content="Ballerina">
+<meta name="twitter:description" content="Ballerina is meant to be a quick start for anyone with prior programming experience.">
+<meta name="twitter:image" content="/img/ballerina-sm-2.jpg">
+<meta name="twitter:text:description" content="Ballerina is meant to be a quick start for anyone with prior programming experience.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:width" content="610">
+<!--LINKED IN  -->
+<meta property='og:title' content="Ballerina"/>
+<meta property='og:image' content="/img/ballerina-sm-2.jpg"/>
+<meta property='og:description' content="Ballerina is meant to be a quick start for anyone with prior programming experience."/>
+<script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag() {
+       dataLayer.push(arguments);
+   }
+   gtag('js', new Date());
+   gtag('config', 'UA-92163714-2');
+</script>
+<!-- Google Tag Manager -->
+<script>
+   (function(w, d, s, l, i) {
+       w[l] = w[l] || [];
+       w[l].push({
+           'gtm.start': new Date().getTime(),
+           event: 'gtm.js'
+       });
+       var f = d.getElementsByTagName(s)[0],
+           j = d.createElement(s),
+           dl = l != 'dataLayer' ? '&l=' + l : '';
+       j.async = true;
+       j.src =
+           'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+       f.parentNode.insertBefore(j, f);
+   })(window, document, 'script', 'dataLayer', 'GTM-PSL2TX4');
+</script>
+<!-- End Google Tag Manager -->
+<script src="/js/moment-2.22.0/moment.min.js"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+   var base_url = "";
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="https://use.typekit.net/son4ymv.css">
+<!-- <link rel="stylesheet" href="./js/vs/editor/editor.main.css">-->
+<link rel="stylesheet" href="https://use.typekit.net/son4ymv.css" />
+<link rel="stylesheet" href="/css/theme.css" type="text/css" />
+<link rel="stylesheet" href="/css/theme_extra.css" type="text/css" />
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script src="/js/ballerina-common.js?100"></script>
+<script src="/js/handlebars-4.0.5/handlebars.js"></script>
+<script src="https://resources.ballerina.io/js/slackservice.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<script>
+   // Current page data
+   var mkdocs_page_name = '"Home"'.replace(/^"|"$/g, '');
+   var mkdocs_page_input_path = '"index.md"'.replace(/^"|"$/g, '');
+   var mkdocs_page_url = '"/"'.replace(/^"|"$/g, '');
+   
+   var releaseNoteFilename = 'RELEASE_NOTE.html';
+
+   var nightly_download_url = 'https://product-dist.ballerina.io/nightly';
+   var dev_download_url = 'https://product-dist.ballerina.io/dev';
+   var base_download_url = 'https://dist.ballerina.io/downloads';
+   
+   var base_releasenote_url = ''.concat('/downloads/release-notes');
+</script>
+
+
+      <link rel="stylesheet" href="/css/ballerina-io-docs.css?200618">
+   </head>
+   <body class="cBallerina-io">
+      <div class="row cBallerina-io-Nav" id="iMainNavigation">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <nav class="navbar">
+                <div>
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">&#9776</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="cMobileLogo" href="/"><img src="/img/ballerina-logo.svg" alt="Ballerina"/></a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav cTopNav">
+                            <li class="active toctree-l1" id="learnli"><a class="cBioTopLink" href="/learn">Learn</a>
+                            </li>
+                            <li class="active toctree-l1" id="Eventsli"><a class="cBioTopLink" href="/learn/events">Events</a>
+                            </li>
+                            <li class="toctree-l1"><a class="cBioTopLink" href="https://central.ballerina.io/"
+                                                      target="_blank">Central</a></li>
+                            <li class="toctree-l1" id="openli"><a class="cBioTopLink" href="/community">Community</a>
+                            </li>
+                            <li class="toctree-l1" id="helpli"><a class="cBioTopLink" href="https://blog.ballerina.io">Blog</a>
+                            </li>
+                            <li class="cVersionItem">
+                                <div class="cVersionContainer">
+                                    <!-- <lable class="cVlable">Version</lable> -->
+                                    <select name="versions" id="versions" class="select-css">
+                                        <option value="1.2" data-value="latest">v1.2</option>
+                                        <option value="1.1">v1.1</option>
+                                        <option value="1.0">v1.0</option>
+                                        <option value="0.991">v0.991</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+      <div class="row cBallerina-io-Gray-row">
+         <div class="container">
+            <div class="row">
+               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cBallerina-io-Home-Middle-col">
+                  <div class="col-xs-12 col-sm-12" style="padding: 0;">
+                     <div class="col-md-12 col-lg-10 cBallerina-io-breadcrumbs">
+                        <nav class="breadcrumbs bootstrap hidden-sm-down"
+  >
+  <ul id="breadcrumb-list" class=" cBalleinaBreadcrumbs list-unstyled  wy-breadcrumbs" vocab="http://schema.org/"
+    typeof="BreadcrumbList">
+
+
+    
+    <li><a href="/">Home</a></li>
+    
+    
+    <li>/</li>
+    <li><a
+        href="/0.991/">0.991</a>
+    </li>
+    
+    
+    
+    <li>/</li> Let’s learn Ballerina!
+    
+    
+
+  </ul>
+</nav>
+<style type="text/css">
+  .cBalleinaBreadcrumbs li {
+    margin-right: 10px;
+  }
+</style>
+                        <div class="cVersionContainer"></div>
+                     </div>
+                     <div class="col-md-12 col-lg-2 cBallerina-io-breadcrumbs">
+                        <ul class="wy-breadcrumbs">
+                           <li class="wy-breadcrumbs-aside">
+                              <a class="icon icon-github" target="_blank" href="https://www.github.com/ballerina-platform/ballerina-platform.github.io/blob/master/0.991/learn.md">Edit on GitHub</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="cBlallerina-io-docs-content-container">
+                     <div class="wy-nav-content">
+                        <div class="rst-content">
+                           <div role="main">
+                              <div class="section">
+                                 <h1 id="learn-ballerina">Learn Ballerina</h1>
+
+<p>Ballerina is a simple programming language whose syntax and platform address the hard problems of integration. It is a general purpose, concurrent, transactional, statically and strongly typed programming language with both textual and graphical syntaxes. Its specialization is integration - it brings fundamental concepts, ideas and tools of distributed system integration into the language and offers a type safe, concurrent environment to implement such applications. These include distributed transactions, reliable messaging, stream processing, workflows and container management platforms.</p>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p><a href="/0.991/learn/getting-started/">Getting Started</a> includes instructions on how to download Ballerina and install its tools. It also includes system requirements and uninstall instructions.</p>
+
+<h2 id="learning-ballerina">Learning Ballerina</h2>
+
+<h3 id="quick-tour">Quick Tour</h3>
+
+<p>The <a href="/0.991/learn/quick-tour/">Quick Tour</a> is the fastest way to try Ballerina. Take this dancer for a twirl and a spin!</p>
+
+<h3 id="ballerina-by-example">Ballerina by Example</h3>
+
+<p><a href="/0.991/learn/by-example/">Ballerina by Example</a> teaches you the Ballerina language incrementally with commented examples that cover every nuance of the syntax.</p>
+
+<h3 id="ballerina-by-guide">Ballerina by Guide</h3>
+
+<p><a href="/0.991/learn/by-guide/">Ballerina by Guide</a> are long form examples that showcase how to build different types of integrations using a complete development lifecycle including IDE configuration, packages, dependencies, coding, unit testing, deployment, and observability.</p>
+
+<h3 id="tools-and-ides">Tools and IDEs</h3>
+
+<p>The <a href="/0.991/learn/vscode-plugin">VS Code</a> and <a href="/0.991/learn/intellij-plugin">IntelliJ IDEA</a> extesnions are the Tools &amp; IDEs that are currently supported by Ballerina.</p>
+
+<h3 id="how-to-structure-ballerina-code">How to Structure Ballerina Code</h3>
+
+<p><a href="/0.991/learn/how-to-structure-ballerina-code/">How to Structure Ballerina Code</a> demonstrates the development of a Ballerina project and shows how to use Ballerina to fetch, build, create, version, search, and install Ballerina modules with repositories that are local and remote.</p>
+
+<h3 id="how-to-test-ballerina-code">How to Test Ballerina Code</h3>
+
+<p><a href="/0.991/learn/how-to-test-ballerina-code/">How to Test Ballerina Code</a> provides information on the set of building blocks used to help write tests and a set of tools used for testing.</p>
+
+<h3 id="how-to-document-ballerina-code">How to Document Ballerina Code</h3>
+
+<p><a href="/0.991/learn/how-to-document-ballerina-code/">How to Document Ballerina Code</a> provides guidelines on documenting your Ballerina programs and modules in order to generate API documentation.</p>
+
+<h3 id="how-to-write-secure-ballerina-services">How to Write Secure Ballerina Services</h3>
+
+<p><a href="/0.991/learn/how-to-write-secure-ballerina-code/">How to Write Secure Ballerina Services</a> provides guidelines on writing secure Ballerina services, while demonstrating different security features and controls available within Ballerina.</p>
+
+<h3 id="how-to-publish-ballerina-modules">How to Publish Ballerina Modules</h3>
+
+<p><a href="/0.991/learn/how-to-publish-modules/">How to Publish Ballerina Modules</a> provides settings and commands you need to share your local modules with the Ballerina community.</p>
+
+<h3 id="how-to-run-and-deploy-ballerina-services">How to Run and Deploy Ballerina Services</h3>
+
+<p><a href="/0.991/learn/how-to-deploy-and-run-ballerina-programs/">How to Deploy and Run Ballerina Services</a> provides an overview of how to configure your runtime services and to generate deployment artifacts for various targets including Docker and Kubernetes.</p>
+
+<h3 id="how-to-observe-ballerina-services">How to Observe Ballerina Services</h3>
+
+<p><a href="/0.991/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a> instructs you on how to use logging, metrics, and tracing to observe Ballerina services.</p>
+
+<h3 id="how-to-extend-ballerina">How to Extend Ballerina</h3>
+
+<p><a href="/0.991/learn/how-to-extend-ballerina/">How to Extend Ballerina</a> provides instructions on how developers and third parties can extend the behavior of Ballerina and collate these customizations for use by others.</p>
+
+<h2 id="reference-documentation">Reference Documentation</h2>
+
+<h3 id="module-and-api-documentation">Module and API Documentation</h3>
+
+<p>The <a href="/0.991/learn/api-docs/">API Documentation</a> describes the native functions in Ballerina that you can use in your programs.</p>
+
+<h3 id="language-specification">Language Specification</h3>
+
+<p>The <a href="https://ballerina.io/0.991/learn/language-specification/0.990/">Language Specification</a> is the document that defines Ballerina programming language and will be useful to those who wish to understand, evaluate, or start using the language.</p>
+
+<h3 id="ballerina-streaming-guide">Ballerina Streaming Guide</h3>
+
+<p>The <a href="/0.991/learn/ballerina-streaming-reference/">Ballerina Streaming Guide</a> provides detailed information on Ballerina Streaming concepts and its capabilities. This includes Ballerina streaming language syntax, explanations, and sample queries as well.</p>
+
+<h3 id="ballerina-style-guide">Ballerina Style Guide</h3>
+
+<p>The <a href="/0.991/learn/style-guide/">Ballerina Style Guide</a> provides guidelines to maintain a standard coding style among the Ballerina community.</p>
+
+<h3 id="faq">FAQ</h3>
+
+<p><a href="/0.991/learn/faq/">Frequently Asked Questions</a> about Ballerina.</p>
+
+<h2 id="events">Events</h2>
+
+<p>The <a href="/0.991/learn/events">Events</a> page consists of upcoming webinars, meetups, and conferences about Ballerina.</p>
+
+<p>Refer to the <a href="/0.991/learn/events/past-events">Past Events</a> page to view videos and slides from conferences and webinars.</p>
+
+<h2 id="articles-and-videos">Articles and Videos</h2>
+
+<ol>
+  <li><a href="https://medium.com/ballerinalang/conceiving-ballerina-2dadf67c0503" target="_blank">Conceiving Ballerina</a></li>
+  <li><a href="https://medium.com/ballerinalang/ballerina-why-it-is-different-from-other-programming-languages-cbdf5f248390" target="_blank">How Ballerina is Different From Other Programming Languages</a></li>
+  <li><a href="https://dzone.com/articles/ballerina-dances-onto-the-integration-stage" target="_blank">Ballerina Dances Onto the Programming Stage</a></li>
+  <li><a href="https://medium.com/ballerinalang/ballerina-making-sequence-diagrams-work-d0d7b3846a80" target="_blank">Ballerina Making Sequence Diagrams Work</a></li>
+  <li><a href="https://medium.com/ballerinalang/ballerina-thinking-about-names-why-restrict-to-english-c1f9803e827" target="_blank">Ballerina Thinking About Names</a></li>
+  <li><a href="https://medium.com/@sanjiva.weerawarana/an-year-of-ballerina-ad0d9251415" target="_blank">A Year of Ballerina</a></li>
+  <li><a href="https://medium.com/@chathura.ekanayake/9e9097983fb" target="_blank">Integration Versus Integration Programming</a></li>
+  <li><a href="https://medium.com/@sameera.jayasoma/ballerina-compiler-design-3406acc2476c" target="_blank">Ballerina Compiler Design</a></li>
+  <li><a href="https://medium.com/@sameera.jayasoma/ballerina-runtime-evolution-f82305e4ab8e" target="_blank">Ballerina Runtime Evolution</a></li>
+  <li><a href="https://medium.com/@lanka.vitharana/ballerina-native-client-connectors-and-all-you-need-to-know-e76957ca05dd" target="_blank">All You Need to Know About Native Client Connectors</a></li>
+  <li><a href="https://medium.com/@lanka.vitharana/plug-custom-native-functions-to-ballerina-5bbc2e15b6ac" target="_blank">Plug Custom Native Functions Into Ballerina</a></li>
+  <li><a href="https://medium.com/@lanka.vitharana/identifier-literals-in-ballerina-makes-it-possible-to-have-spaces-in-identifiers-83336ecb693e" target="_blank">Identifier Literal Support in Ballerina</a></li>
+  <li><a href="https://medium.com/@lanka.vitharana/any-type-support-in-ballerina-d9651ac53695" target="_blank">Any Type Support in Ballerina</a></li>
+  <li><a href="https://medium.com/@anupama.pathirage/data-integration-with-ballerina-c5bcf6de49b3" target="_blank">Data Integration with Ballerina</a></li>
+  <li><a href="https://medium.com/@anupama.pathirage/ballerina-sql-connector-connecting-to-db-ee31a81c8df6" target="_blank">Ballerina SQL Connector - Connecting to a Database</a></li>
+  <li><a href="https://medium.com/@anupama.pathirage/ballerina-sql-connector-performing-db-operations-8e555e3688be" target="_blank">Ballerina SQL Connector - Performing Database Operations</a></li>
+  <li><a href="https://dzone.com/articles/introduction-to-data-integration-with-ballerina" target="_blank">Introduction to Data Integration with Ballerina</a></li>
+  <li><a href="https://medium.com/@kevinratnasekera/write-integration-tests-for-ballerina-service-running-inside-docker-container-39fbbc20641c" target="_blank">Write Integration Tests for Ballerina Using TestContainers</a></li>
+  <li><a href="https://medium.com/@kevinratnasekera/connect-with-kafka-brokers-using-ballerina-6f5f2880b7e8" target="_blank">Connect with Kafka Brokers Using Ballerina</a></li>
+  <li><a href="https://medium.com/@lafernando/ballerina-concurrency-done-right-fa0afa350cb0" target="_blank">Ballerina: Concurrency Done Right!</a></li>
+  <li><a href="https://www.infoq.com/articles/ballerina-microservices-language-part-1" target="_blank">Ballerina Microservices Programming Language: Introducing the Latest Release and “Ballerina Central”</a></li>
+  <li><a href="https://dzone.com/articles/yaml-less-kubernetes" target="_blank">Generate Kubernetes YAML Right From Your App Code</a></li>
+</ol>
+
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="iBallerinaFooter" class="row cBallerina-io-White-row">
+    <div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-left-col cBallerinaFooterLinks">
+        <ul>
+            <li><a class="cBioFooterLink" href="/downloads">Download</a></li>
+            <li><a class="cBioFooterLink" href="https://github.com/ballerina-lang/ballerina/blob/master/LICENSE">Code License</a></li>
+            <li><a class="cBioFooterLink" href="/license-of-site">Site License</a></li>
+            <li><a class="cBioFooterLink" href="/terms-of-service">TERMS OF SERVICE</a></li>
+            <li><a class="cBioFooterLink" href="/privacy-policy">PRIVACY POLICY</a></li>
+            </ul>
+        </div>
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 cBallerina-io-middle-col cBallerinaFooterSignUp">
+        <div class="cSocialmedia">
+            <ul>
+                <li>
+                    <a class="cBioFooterLink" href="https://github.com/ballerina-platform" target="_blank"><img src="/img/github.svg"/></a>
+                    </li>
+                <li><a class="cBioFooterLink" href="https://stackoverflow.com/questions/tagged/ballerina" target="_blank"><img src="/img/stackoverflow.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="https://twitter.com/ballerinalang" target="_blank"><img src="/img/twitter.svg"/></a></li>
+                <li><a class="cBioFooterLink" href="/community/slack/"><img src="/img/slack.svg"/></a></li>
+                </ul>
+            <div class="pdframe"></div>
+            </div>
+        </div>
+    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6 cBallerina-io-right-col">
+        <p>In the creation of Ballerina, we were inspired by so many technologies. Thank you to all that have come before us (and forgive us if we missed one): Java, Go, C, C++, D, Rust, Haskell, Kotlin, Dart, TypeScript, JavaScript, Python, Perl, Flow, Swift, Elm, RelaxNG, NPM, Crates, Maven, Gradle, Kubernetes, Docker, Envoy, Markdown, GitHub and WSO2.</p></div>
+    </div>
+</div>
+
+      <script src="/js/theme.js"></script>
+
+      <script>
+            $(document).ready(function() {
+                     var gitstar = '<iframe id="iGitStarIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitStarText"]').replaceWith(gitstar);
+         
+                     var gitwatch = '<iframe id="iGitWatchIframe" src="https://ghbtns.com/github-btn.html?user=ballerina-platform&repo=ballerina-lang&type=watch&count=true&size=lsmalle&v=2" frameborder="0" scrolling="0"></iframe>';
+                     $('[data-button="iGitWatchText"]').replaceWith(gitwatch);
+         
+             });
+            </script>
+         
+            <style>
+                .cGitButtonContainer {
+                    display: inline-block;
+                    width: 100%;
+                    margin-bottom: 0px;
+                }
+         
+                 #iGitStarText {
+                     height: 20px;
+                     float: left;
+                     padding: 0;
+                     margin: 0;
+                 }
+                #iGitStarIframe , #iGitWatchIframe {
+                     height: 20px;
+                     width: 100px;
+                     float: left;
+                 }
+             </style>
+
+   </body>
+</html>
+

@@ -22,7 +22,9 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
-## Ballerina Newsletter {: #newsletter }
+<a class="cBookmark" id="newsletter"></a>
+
+## Ballerina Newsletter
 
 We curate a periodic newsletter with all the latest content on Ballerina. Subscribe to it below:
 

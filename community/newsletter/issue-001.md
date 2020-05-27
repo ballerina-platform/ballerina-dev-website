@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-newsletter
 title: Issue-001
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 keywords: ballerina, community, ballerina community
@@ -104,7 +104,7 @@ td {
 }
 
 .rst-content img{
-	height:28px !important;
+	/* height:28px !important; */
 }
 </style>
 

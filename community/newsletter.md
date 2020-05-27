@@ -1,5 +1,5 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-newsletter
 title: Newsletter
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 keywords: ballerina, community, ballerina community
@@ -20,8 +20,8 @@ permalink: /community/newsletter
 <style>
     td {
         padding:20px;
-        border:none 
-        border-bottom:1px solid #cecfd0 !important;;
+        border:none; 
+        border-bottom:1px solid #cecfd0 !important;
         background: #fff !important;
 	
     }

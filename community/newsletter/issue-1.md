@@ -1,12 +1,12 @@
 ---
 layout: ballerina-newsletter
-title: Issue-001
+title: Issue 1
 description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
 keywords: ballerina, community, ballerina community
-permalink: /community/newsletter/issue-001
+permalink: /community/newsletter/issue-1/
 ---
 
-# Newsletter Issue-001
+# Ballerina Newsletter Issue #1
 
 
 
@@ -85,6 +85,25 @@ permalink: /community/newsletter/issue-001
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
     .cNLbg {
         text-align:center;
@@ -106,6 +125,11 @@ td {
 .rst-content img{
 	/* height:28px !important; */
 }
+
+
+
+
+
 </style>
 
 

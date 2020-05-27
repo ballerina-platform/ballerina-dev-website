@@ -1,15 +1,23 @@
 ---
 layout: ballerina-newsletter
 title: Ballerina Newsletter
-description: We warmly welcome all contributors to the Ballerina community to help establish Ballerina as a truly community-owned resource!
-keywords: ballerina, community, ballerina community
+description: This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
+keywords: ballerina, community, ballerina community, newsletter
 permalink: /community/newsletter/
 ---
 
 # Ballerina Newsletter
 
-We curate a periodic newsletter with all the latest content on Ballerina. Subscribe to it below:
+This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
+## Archives
+
+<table class="cTable">
+<tr><td class="cLink"><a href="/community/newsletter/issue-1">Issue 1</a></td><td>May 26, 2020</td></tr>
+
+</table>
+
+Interested? Subscribe below:
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
    <div class="col-sm-12 col-md-6 cFormSection">
@@ -29,14 +37,6 @@ We curate a periodic newsletter with all the latest content on Ballerina. Subscr
       </form>
    </div>
 </div>
-
-
-## Archives
-
-<table class="cTable">
-<tr><td class="cLink"><a href="/community/newsletter/issue-1">Issue 1</a></td><td>May 26, 2020</td></tr>
-
-</table>
 
 
 

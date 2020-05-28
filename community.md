@@ -26,7 +26,13 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 ## Ballerina Newsletter
 
-We curate a periodic newsletter with all the latest content on Ballerina. Subscribe to it below:
+We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
+
+<ul class="cInlinelinklist">
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-1/">Latest Ballerina Newsletter</a></li>
+</ul>
+
+Interested? Subscribe to it below:
 
 
 <div class="col-sm-12 col-md-12" style="padding:0;">

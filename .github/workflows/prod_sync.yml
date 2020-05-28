@@ -24,7 +24,7 @@ jobs:
         git config --global user.name "ballerina-bot"
 
         git remote add dev https://github.com/ballerina-platform/ballerina-dev-website.git
-        git pull dev prod-sync --no-edit
+        git pull dev prod-sync -X theirs --no-edit
         
         git push --set-upstream origin automate-prod-sync-$GITHUB_SHA
         echo 'Successfully pushed to automate-prod-sync-$GITHUB_SHA branch'

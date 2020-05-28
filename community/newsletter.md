@@ -13,7 +13,7 @@ This is a periodic newsletter on Ballerina with hand-picked content and regular 
 ## Archives
 
 <table class="cTable">
-<tr><td class="cLink"><a href="/community/newsletter/issue-1">Issue 1</a></td><td>May 26, 2020</td></tr>
+<tr><td class="cLink"><a href="/community/newsletter/2020-1">Issue 1</a></td><td>May 26, 2020</td></tr>
 
 </table>
 

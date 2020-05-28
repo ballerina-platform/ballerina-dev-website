@@ -10,6 +10,13 @@ permalink: /community/newsletter/
 
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
+## Archives
+
+<table class="cTable">
+<tr><td class="cLink"><a href="/community/newsletter/2020-1">2020-1</a></td><td>May 26, 2020</td></tr>
+
+</table>
+
 Interested? Subscribe below:
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
@@ -30,16 +37,6 @@ Interested? Subscribe below:
       </form>
    </div>
 </div>
-
-
-## Archives
-
-<table class="cTable">
-<tr><td class="cLink"><a href="/community/newsletter/2020-1">2020-1</a></td><td>May 26, 2020</td></tr>
-
-</table>
-
-
 
 <style>
     td {

@@ -15,6 +15,18 @@ layout: ballerina-inner-page
     letter-spacing: -1px;
   }
 </style> -->
+<script>
+  //Handling bulk redirections
+  var pathname = window.location.pathname;
+  var redirection = validate_redirection(pathname);
+
+  if (redirection) {
+    var new_path = pathname.replace('v', '').replace('-', '.');
+    document.write('<meta http-equiv="refresh" content="0; url=' + new_path + '">');
+  } else {
+    $('body').show();
+  }
+</script>
 
 <div class="container">
   <h1>404</h1>

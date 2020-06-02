@@ -532,6 +532,18 @@ $(document).ready(function() {
             window.location.assign("/search?" + searchText);
         }
     });
+
 });
 
-
+function validate_redirection(path) {
+    $('body').hide();
+    var obsolete_paths = ["/v0-990", "/v0-991", "/v1-0", "/v1-1"];
+    var status = false;
+    $.each(obsolete_paths, function (key, val) {
+      if (path.startsWith(val)) {
+        status = true;
+        return;
+      }
+    });
+    return status;
+  }

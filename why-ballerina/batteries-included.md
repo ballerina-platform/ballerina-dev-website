@@ -164,8 +164,7 @@ and assemble them in powerful ways.
                              <div class="cQUOTE">
                               <p>"Ballerina will enable fast, quality, 12-factor ready deployments out of the box. The strong annotation set is a great ‘batteries included’ approach that will have Devs and Ops collaborating from the start of development."</p>
                               <p class="cName">Jim Kittle, an application architect at a leading university in the United States.</p>
-</div>
-                        </div>
+                             </div>
                            </div>
                         </div>
                      </div>
@@ -176,7 +175,6 @@ and assemble them in powerful ways.
       </div>
    </div>
 </div>
-<
 
 
 <style>

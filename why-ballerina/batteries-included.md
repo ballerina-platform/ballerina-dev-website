@@ -20,7 +20,7 @@ redirct_from:
                            <div class="section">
                                <h1>Batteries Included</h1>
                               <p>Ballerina includes not only the programming language but also a full platform, which consists of various components of the surrounding ecosystem. The Ballerina platform consists of the following components.</p>
-                             <img src="/img/why-pages/batteries-included.png"/>
+                             <img align="center" src="/img/why-pages/batteries-included.svg"/>
 </div>
                         </div>
                      </div>

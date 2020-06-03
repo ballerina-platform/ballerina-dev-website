@@ -37,7 +37,7 @@ Follow the below instructions to download and use the installers to install the 
 
 >**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
 
-### Installing on OS X
+### Installing on Mac OS
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/Library/Ballerina`.
 

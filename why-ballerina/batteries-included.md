@@ -42,7 +42,7 @@ redirct_from:
                         <div role="main">
                            <div class="section">
                               <h2 id="Standard-Library">Standard Library</h2>
- <p>This contains a list of modules that help developers rapidly build applications. From HTTP and HTTP/2 to WebSockets, WebSub, AMQP, JSON, XML, ProtoBuf, gRPC, and OpenAPI. </p>
+ <p>This contains a list of modules that help developers rapidly build applications. From HTTP and HTTP/2 to WebSockets, WebSub, AMQP, JSON, XML, ProtoBuf, gRPC, and OpenAPI.</p>
 <ul class="cInlinelinklist">
                                  <li>
                                <a class="cGreenLinkArrow" href="https://ballerina.io/learn/api-docs/ballerina/">Check out the standard library</a>
@@ -69,7 +69,7 @@ redirct_from:
                         <div role="main">
                            <div class="section">
                               <h2 id="async-network-protocol">Ballerina Central</h2>
-                              <p>TThis is a centralized module repository where you can discover modules of reusable code
+                              <p>This is a centralized module repository where you can discover modules of reusable code
 and assemble them in powerful ways.
 </p>
 <ul class="cInlinelinklist">

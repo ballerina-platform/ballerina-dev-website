@@ -20,7 +20,7 @@ redirct_from:
                            <div class="section">
                                <h1>Batteries Included</h1>
                               <p>Ballerina includes not only the programming language but also a full platform, which consists of various components of the surrounding ecosystem. The Ballerina platform consists of the following components.</p>
-                             
+                             <img align="center" src="/img/why-pages/batteries-included.svg"/>
 </div>
                         </div>
                      </div>
@@ -158,9 +158,14 @@ and assemble them in powerful ways.
                               <h2 id="async-network-protocol">IDE Plugins</h2>
                               <p>We provide plugins for popular IDEs so you can code in your preferred platform.</p>
 <ul class="cInlinelinklist">
-                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/vscode-plugin/">VSCode  </a></li>
+                                 <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/vscode-plugin/">VS Code  </a></li>
                                  <li><a class="cGreenLinkArrow" href="https://ballerina.io/learn/intellij-plugin/">IntelliJ Idea </a></li>
                               </ul>
+                             <div class="cQUOTE">
+                              <p>"Ballerina will enable fast, quality, 12-factor ready deployments out of the box. The strong annotation set is a great ‘batteries included’ approach that will have Devs and Ops collaborating from the start of development."</p>
+                              <p class="cName">Jim Kittle, an application architect at a leading university in the United States.</p>
+</div>
+                        </div>
                            </div>
                         </div>
                      </div>

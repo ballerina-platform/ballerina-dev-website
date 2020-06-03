@@ -13,6 +13,7 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2
 We warmly welcome all contributors to the community to help establish Ballerina as a truly community-owned resource!
 
 - [Try out Ballerina](#try-out-ballerina)
+- [Subscribe to the Ballerina Newsletter](#subscribe-to-the-ballerina-newsletter)
 - [Seek for help](#seek-for-help)
 - [Report issues](#report-issues)
 - [Help us grow](#help-us-grow)
@@ -24,7 +25,7 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 <a class="cBookmark" id="newsletter"></a>
 
-## Ballerina Newsletter
+## Subscribe to the Ballerina Newsletter
 
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 

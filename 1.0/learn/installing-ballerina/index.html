@@ -252,13 +252,20 @@
 
 <h3 id="installing-on-linux">Installing on Linux</h3>
 
-<p><a href="/downloads">Download the DEB file</a> and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to <code class="highlighter-rouge">/usr/lib/ballerina</code>.</p>
+<p><a href="/downloads">Download the DEB file or RPM file</a> and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to <code class="highlighter-rouge">/usr/lib/ballerina</code>.</p>
 
 <blockquote>
-  <p><strong>Info:</strong> Alternatively, you can use the below command to install Ballerina using the downloaded DEB file. Replace <code class="highlighter-rouge">&lt;ballerina-home&gt;/&lt;ballerina-binary&gt;.deb</code> with the actual file path.</p>
+  <p><strong>Info:</strong> Alternatively, you can use either of the below commands to install Ballerina using the downloaded DEB or RPM file. Replace the <code class="highlighter-rouge">&lt;ballerina-home&gt;/&lt;ballerina-binary&gt;.deb</code> or <code class="highlighter-rouge">&lt;ballerina-home&gt;/&lt;ballerina-binary&gt;.rpm</code>with the actual file path.</p>
 </blockquote>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg -i &lt;ballerina-binary&gt;.deb
+<p>For the DEB file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg -i &lt;ballerina-home&gt;/&lt;ballerina-binary&gt;.deb
+</code></pre></div></div>
+
+<p>For the RPM file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpm -i &lt;ballerina-home&gt;/&lt;ballerina-binary&gt;.deb
 </code></pre></div></div>
 
 <h2 id="installing-from-source">Installing from source</h2>

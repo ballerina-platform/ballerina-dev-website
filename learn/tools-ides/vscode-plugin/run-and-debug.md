@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages
-title: Run and debug
+title: Run and Debug
 permalink: /learn/vscode-plugin/run-and-debug/
 active: run-and-debug
 redirect_from:
@@ -12,7 +12,7 @@ redirect_from:
   - /v1-2/learn/vscode-plugin/run-and-debug
 ---
 
-# Run and debug
+# Run and Debug
 
 The VS Code Ballerina extension gives you the  same debugging experience as the conventional VS Code Debugger.
 

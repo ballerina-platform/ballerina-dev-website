@@ -12,7 +12,7 @@ redirect_from:
   - /v1-2/learn/intellij-plugin/using-intellij-plugin-features
 ---
 
-# Using the features of the IntelliJ plugin
+# Using the Features of the IntelliJ Plugin
 
 The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 

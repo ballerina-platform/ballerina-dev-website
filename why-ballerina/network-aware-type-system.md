@@ -8,6 +8,7 @@ redirect_from:
 - /why/the-network-in-the-language/
 - /why/the-network-in-the-language
 - /why-ballerina
+- /why-ballerina/
 ---
 <div class="row cBallerina-io-Gray-row cContentRows">
    <div class="container">

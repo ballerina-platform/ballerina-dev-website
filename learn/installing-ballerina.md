@@ -17,28 +17,40 @@ redirect_from:
 
 # Installing Ballerina
 
-- [Prerequisites](#prerequisites)
+- [Updating Ballerina](#updating-ballerina)
 - [Installing Ballerina via installers](#installing-ballerina-via-installers)
 - [Installing via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file)
-- [Installing from source](#installing-from-source)
+- [Building from source](#building-from-source)
 - [Uninstalling Ballerina](#uninstalling-ballerina)
 - [Getting help](#getting-help)
 - [What's next](#what's-next)
 
-## Prerequisites
+## Updating Ballerina
 
-Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
-- Windows 7 or later
-- Ubuntu Linux 12.04 x64 - LTS and above
-- Suse Linux Enterprise Server 10 SP2 and above
-- Red Hat Enterprise Linux 5.5 x64 and above
-- Mac OS 10.8.3 x64 and above
+If you already have a jBallerina version installed, you can use the update tool (by executing the below commands) to update to the latest jBallerina version as follows. 
+
+>**Note:** If you are a new user who have not installed jBallerina, install via the [installers](#installing-ballerina-via-installers).
+
+**jBallerina version**|**update tool usage**
+:-----:|:-----:
+jBallerina version 1.2.0 or above|`ballerina dist update`
+jBallerina 1.2.0 but switched to a previous version|`ballerina dist pull jballerina-<LATEST-VERSION>`
+jBallerina version 1.1.0 or below|use the [installers](#installing-ballerina-via-installers)
+
 
 ## Installing Ballerina via installers
 
-Follow the below instructions to download and use the installers to install the latest Ballerina version. The installer will automatically uninstall the old Ballerina version if you have one already installed.
+Ballerina installers support the below operating systems:
 
->**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source).
+- Windows 7 or later
+- Ubuntu Linux 
+- Red Hat Enterprise Linux
+- Cent OS
+- Mac OS 
+
+>**Info:** If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
+
+Follow the below instructions to download and use the installers to install the latest Ballerina version. The installer will automatically uninstall the old Ballerina version if you have one already installed.
 
 ### Installing on Mac OS
 
@@ -56,34 +68,34 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 
 [Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib64/ballerina`.
 
-> **Info:** Alternatively, you can use either of the below commands to install Ballerina using the downloaded DEB or RPM file. Replace the `<ballerina-home>/<ballerina-binary>.deb` or `<ballerina-home>/<ballerina-binary>.rpm` with the actual file path.
+> **Info:** Alternatively, you can use either of the below commands to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
 
 For the DEB file:
 ```
-dpkg -i <ballerina-home>/<ballerina-binary>.deb 
+dpkg -i ballerina-linux-installer-x64-<JBALLERINA-VERSION>.deb 
 ```
 
 For the RPM file:
 ```
-rpm -i <ballerina-home>/<ballerina-binary>.rpm 
+rpm -i ballerina-linux-installer-x64<JBALLERINA-VERSION>.rpm 
 ```
 
 ## Installing via the Ballerina language ZIP file
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have Java Development Kit (JDK) version 1.8 installed.
 
-1. [Download the Ballerina language ZIP file] (/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<version> in your system.
+1. [Download the Ballerina language ZIP file] (/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
 
  - **For Linux or Mac OS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
  - **For Windows:** add a new environment variable specifying the following values:
    - **Variable name:** PATH
-   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, C:\Program Files\Ballerina\ballerina-<version>\bin
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, C:\Program Files\Ballerina\ballerina-<VERSION>\bin
   
-## Installing from source
+## Building from source
 
-Alternatively, follow the instructions below to install Ballerina from the source.
+Alternatively, follow the instructions below to build Ballerina from the source.
 
 ### Setting up the prerequisites
 

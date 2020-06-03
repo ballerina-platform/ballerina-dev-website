@@ -23,9 +23,11 @@ redirect_from:
 ## Prerequisites
 
 Ballerina binary distributions are available for the following supported operating systems and architectures. Ensure that your system meets the below requirements before you proceed with the installation.
-- Windows Vista SP2 x64 or later
+- Windows 7 or later
 - Ubuntu Linux 12.04 x64 - LTS and above
-- OS X 10.8.3 x64 and above
+- Suse Linux Enterprise Server 10 SP2 and above
+- Red Hat Enterprise Linux 5.5 x64 and above
+- Mac OS 10.8.3 x64 and above
 
 ## Installing Ballerina via installers
 
@@ -33,7 +35,7 @@ Follow the below instructions to download and use the installers to install the 
 
 >**Info:** If a binary distribution is not available for your combination of operating system and architecture, try [installing from source](#installing-from-source). 
 
-### Installing on OS X
+### Installing on Mac OS 
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/Library/Ballerina`.
 
@@ -47,13 +49,32 @@ The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\b
 
 ### Installing on Linux
 
-[Download the DEB file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib/ballerina`.
+[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib64/ballerina`.
 
-> **Info:** Alternatively, you can use the below command to install Ballerina using the downloaded DEB file. Replace `<ballerina-home>/<ballerina-binary>.deb` with the actual file path.
+> **Info:** Alternatively, you can use either of the below commands to install Ballerina using the downloaded DEB or RPM file. Replace the `<ballerina-home>/<ballerina-binary>.deb` or `<ballerina-home>/<ballerina-binary>.rpm` with the actual file path.
 
+For the DEB file:
 ```
-dpkg -i <ballerina-binary>.deb
+dpkg -i <ballerina-home>/<ballerina-binary>.deb 
 ```
+
+For the RPM file:
+```
+rpm -i <ballerina-home>/<ballerina-binary>.rpm 
+```
+
+## Installing via the Ballerina language ZIP file
+
+> **Note:** Before you install Ballerina using the ZIP file, ensure that you have Java Development Kit (JDK) version 1.8 installed.
+
+1. [Download the Ballerina language ZIP file] (/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<version> in your system.
+
+2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
+
+ - **For Linux or Mac OS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
+ - **For Windows:** add a new environment variable specifying the following values:
+   - **Variable name:** PATH
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, C:\Program Files\Ballerina\ballerina-<version>\bin
   
 ## Installing from source
 
@@ -110,7 +131,7 @@ Follow the steps below to build the project of the obtained source.
 To remove an existing Ballerina installation, go to the Ballerina installation location and delete the Ballerina directory.
 
 > **Note**:
-> - The installation location is usually `/Library/Ballerina` in Mac OS X, `/usr/lib/ballerina/` in Ubuntu and `C:\Program Files\Ballerina\` in Windows.
+> - The installation location is usually `/Library/Ballerina` in Mac OS, `/usr/lib64/ballerina/` in Linux, and `C:\Program Files\Ballerina\` in Windows.
 
 ## Getting help
 

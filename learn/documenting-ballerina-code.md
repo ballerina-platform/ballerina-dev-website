@@ -1,17 +1,19 @@
 ---
 layout: ballerina-left-nav-pages
-title: How to Document Ballerina Code
+title: Documenting Ballerina Code
 description: Learn how to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
 keywords: ballerina, programming language, api documentation, api docs
-permalink: /learn/how-to-document-ballerina-code/
-active: how-to-document-ballerina-code
+permalink: /learn/documenting-ballerina-code
+active: documenting-ballerina-code
 redirect_from:
   - /learn/how-to-document-ballerina-code
+  - /learn/how-to-document-ballerina-code/
   - /v1-2/learn/how-to-document-ballerina-code
   - /v1-2/learn/how-to-document-ballerina-code/
+  - /learn/documenting-ballerina-code/
 ---
 
-# How to Document Ballerina Code
+# Documenting Ballerina Code
 
 Ballerina has a built-in Ballerina Flavored Markdown (BFM) documentation framework named Docerina. The documentation framework allows you to write unstructured documents with a bit of structure to enable generating HTML content as API documentation.
 

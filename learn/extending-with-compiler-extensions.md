@@ -1,17 +1,19 @@
 ---
 layout: ballerina-left-nav-pages
-title: How to Extend Ballerina
+title: Extending with Compiler Extensions
 description: Learn how to extend Ballerina using annotations, which can be used to provide structured metadata about a particular construct.
 keywords: ballerina, programming language, annotations, metadata, extend ballerina
-permalink: /learn/how-to-extend-ballerina/
-active: how-to-extend-ballerina
+permalink: /learn/extending-with-compiler-extensions
+active: extending-with-compiler-extensions
 redirect_from:
   - /learn/how-to-extend-ballerina
+  - /learn/how-to-extend-ballerina/
   - /v1-2/learn/how-to-extend-ballerina
   - /v1-2/learn/how-to-extend-ballerina/
+  - /learn/extending-with-compiler-extensions/
 ---
 
-# How to Extend Ballerina
+# Extending with Compiler Extensions 
 
 Annotations can be used to provide structured metadata about a particular construct. Annotations are not executable. However, they can be used to alter the behavior of constructs they are attached to.
 

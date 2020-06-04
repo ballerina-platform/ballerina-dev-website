@@ -1,4 +1,4 @@
-Lea---
+---
 layout: ballerina-inner-page
 title: Run all Tests
 permalink: /1.1/learn/vscode-plugin/run-all-tests

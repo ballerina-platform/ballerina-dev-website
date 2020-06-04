@@ -1,19 +1,21 @@
 ---
 layout: ballerina-left-nav-pages
-title: Style Guide
+title: Coding Conventions
 description: The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. The Ballerina code formatting tools are based on this guide.
 keywords: ballerina, programming language, ballerina style guide
-permalink: /learn/style-guide/
-active: style-guide
+permalink: /learn/coding-conventions
+active: coding-conventions
 redirect_from:
   - /learn/style-guide
+  - /learn/style-guide/
   - /v1-2/learn/style-guide
   - /v1-2/learn/style-guide/
+  - /learn/coding-conventions/
 ---
 
-# Ballerina Style Guide
+# Coding Conventions
 
-The Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
+This Ballerina Style Guide aims at maintaining a standard coding style among the Ballerina community. Therefore, the Ballerina code formatting tools are based on this guide.
 
 You can follow your own coding style when writing Ballerina source code. Also, plugins and tools can be configured to match your coding style.
 

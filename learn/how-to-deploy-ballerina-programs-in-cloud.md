@@ -1,19 +1,22 @@
 ---
 layout: ballerina-left-nav-pages
-title: How to Deploy Ballerina Programs and Services in the Cloud
+title: Deploying Ballerina Programs in the Cloud
 description: See how the Ballerina compiler generates the necessary artifacts to deploy to cloud platforms like Kubernetes, Docker, Moby or Cloud Foundry.
 keywords: ballerina, programming language, services, cloud
-permalink: /learn/how-to-deploy-ballerina-programs-in-cloud/
-active: how-to-deploy-ballerina-programs-in-cloud
+permalink: /learn/deploying-ballerina-programs-in-the-cloud
+active: deploying-ballerina-programs-in-the-cloud
 redirect_from:
   - /learn/how-to-deploy-and-run-ballerina-programs/
   - /learn/how-to-deploy-and-run-ballerina-programs
+  - /learn/how-to-deploy-ballerina-programs-in-cloud/
+  - /learn/how-to-deploy-ballerina-programs-in-cloud
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
+  - /learn/deploying-ballerina-programs-in-the-cloud/
 
 ---
 
-# How to Deploy Ballerina Programs and Services in the Cloud
+# Deploying Ballerina Programs in the Cloud
 
 Deploying a Ballerina program or service is the process of creating assets that ready the program and services(s) for activation in another runtime, such as Docker Engine, Moby, Kubernetes, or Cloud Foundry. The Ballerina compiler is able to generate the necessary artifacts for different deployment annotations based upon annotations that decorate the source code, which provide compiler instructions for artifact generation.
 

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Using the IntelliJ Ballerina Plugin
-permalink: /learn/intellij-plugin/using-the-intellij-plugin/
+permalink: /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
 active: using-the-intellij-plugin
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-the-intellij-plugin
@@ -10,6 +10,11 @@ redirect_from:
   - /v1-2/learn/intellij-plugin/using-the-intellij-plugin/
   - /learn/set-up-ballerina-sdk/
   - /learn/set-up-ballerina-sdk
+  - /learn/intellij-plugin/using-the-intellij-plugin/
+  - /learn/intellij-plugin/using-the-intellij-plugin
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin/
+  - /learn/tools-ides/intellij-plugin/using-the-intellij-plugin
+  - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
 ---
 
 # Using the IntelliJ Ballerina Plugin

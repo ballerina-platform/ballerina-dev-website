@@ -1,17 +1,19 @@
 ---
 layout: ballerina-left-nav-pages
-title: How to Test Ballerina Code
+title: Testing Ballerina Code
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/how-to-test-ballerina-code/
-active: how-to-test-ballerina-code
+permalink: /learn/testing-ballerina-code
+active: testing-ballerina-code
 redirect_from:
   - /learn/how-to-test-ballerina-code
+  - /learn/how-to-test-ballerina-code/
   - /v1-2/learn/how-to-test-ballerina-code
   - /v1-2/learn/how-to-test-ballerina-code/
+  - /learn/testing-ballerina-code/
 ---
 
-# How to Test Ballerina Code
+# Testing Ballerina Code
 
 Ballerina has a built-in test framework named Testerina. Testerina enables developers to write testable code. The test framework provides a set of building blocks to help write tests and a set of tools to help test. 
 

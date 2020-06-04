@@ -10,18 +10,14 @@ permalink: /community/newsletter/
 
 This is a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
-## Archives
 
-<table class="cTable">
-<tr><td class="cLink"><a href="/community/newsletter/2020-1">2020-1</a></td><td>May 26, 2020</td></tr>
-
-</table>
+## Subscribe
 
 Interested? Subscribe below:
 
 <div class="col-sm-12 col-md-12" style="padding:0;">
    <div class="col-sm-12 col-md-6 cFormSection">
-      <form id="subscribeForm">
+<form id="subscribeForm">
       <div id="form-error" class="alert alert-danger"></div>
       <div id="form-status" class="alert alert-success"></div>
       <div class="form-group">
@@ -35,8 +31,23 @@ Interested? Subscribe below:
       </div>
       <button type="button" class="cSignUp" id="subscribeUserButton">Subscribe</button>
       </form>
-   </div>
+      </div>
 </div>
+
+
+
+
+
+<div class="col-sm-12 col-md-12" style="padding:0;">
+<h2 id="past-issues">Past issues </h2>
+<!-- <table class="cTable">
+<tr><td class="cLink"><a href="/community/newsletter/2020-1"></a></td><td></td></tr>
+</table> -->
+<ul class="cInlinelinklist cPastIssues">
+<li><a class="cGreenLinkArrow" href="/community/newsletter/2020-1">2020-1</a>May 26, 2020</li>
+</ul>
+</div>
+
 
 <style>
     td {
@@ -164,6 +175,9 @@ position: absolute;
 margin: -150px 0px 0px;
 }
 
+.cGreenLinkArrow {
+   margin-right:10px;
+}
 
 
 

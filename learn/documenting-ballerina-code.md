@@ -3,14 +3,14 @@ layout: ballerina-left-nav-pages
 title: Documenting Ballerina Code
 description: Learn how to write unstructured documents with a bit of structure to enable HTML content generation as API documentation.
 keywords: ballerina, programming language, api documentation, api docs
-permalink: /learn/documenting-ballerina-code
+permalink: /learn/documenting-ballerina-code/
 active: documenting-ballerina-code
 redirect_from:
   - /learn/how-to-document-ballerina-code
   - /learn/how-to-document-ballerina-code/
   - /v1-2/learn/how-to-document-ballerina-code
   - /v1-2/learn/how-to-document-ballerina-code/
-  - /learn/documenting-ballerina-code/
+  - /learn/documenting-ballerina-code
 ---
 
 # Documenting Ballerina Code

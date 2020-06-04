@@ -51,7 +51,7 @@ redirect_from:
     <li><a href="/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
     <li><a href="/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
     <li><a href="/learn/testing-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
-    <li><a href="/learn/eextending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
+    <li><a href="/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 
 </div>

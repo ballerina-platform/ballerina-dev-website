@@ -1,17 +1,19 @@
 ---
 layout: ballerina-left-nav-pages
-title: How to Keep Ballerina Up to Date
+title: Keeping Ballerina Up to Date
 description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest patch and minor releases.
 keywords: ballerina, programming language, release, update
-permalink: /learn/how-to-keep-ballerina-up-to-date/
-active: how-to-keep-ballerina-up-to-date
+permalink: /learn/keeping-ballerina-up-to-date
+active: keeping-ballerina-up-to-date
 redirect_from:
-  - /learn/how-to-keep-ballerina-up-to-date
   - /v1-2/learn/how-to-keep-ballerina-up-to-date
   - /v1-2/learn/how-to-keep-ballerina-up-to-date/
+  - /learn/how-to-keep-ballerina-up-to-date/
+  - /learn/how-to-keep-ballerina-up-to-date
+  /learn/keeping-ballerina-up-to-date/
 ---
 
-# How to Keep Ballerina Up to Date
+# Keeping Ballerina Up to Date
 
 This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. If you haven’t installed Ballerina yet, visit [installation guide](/learn/installing-ballerina/).
 

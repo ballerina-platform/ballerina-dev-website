@@ -1,19 +1,21 @@
 ---
 layout: ballerina-left-nav-pages
-title: The IntelliJ IDEA Ballerina Plugin
-permalink: /learn/intellij-plugin/
-active: intellij-plugin
+title: Setting up IntelliJ IDEA
+permalink: /learn/setting-up-intellij-idea
+active: setting-up-intellij-idea
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
   - /v1-2/learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin/
   - /learn/tools-ides/intellij-plugin
   - /learn/intellij-plugin
+  - /learn/intellij-plugin/
   - /v1-2/learn/intellij-plugin
   - /v1-2/learn/intellij-plugin/
+  - /learn/setting-up-intellij-idea/
 ---
 
-# The IntelliJ IDEA Ballerina Plugin
+# Setting up IntelliJ IDEA
 
 The IntelliJ Ballerina plugin provides the Ballerina development capabilities in IntelliJ IDEA. The below sections include instructions on how to download, install, and use the features of the IntelliJ plugin.
 

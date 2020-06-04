@@ -1,6 +1,6 @@
 ---
 layout: ballerina-inner-page
-title: Using the features of the IntelliJ plugin
+title: Using the Features of the IntelliJ Plugin
 permalink: /1.1/learn/intellij-plugin/using-intellij-plugin-features
 redirect_from:
   - /1.1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
@@ -11,7 +11,7 @@ redirect_from:
   - /v1-1/learn/intellij-plugin/using-intellij-plugin-features/
 ---
 
-# Using the features of the IntelliJ plugin
+# Using the Features of the IntelliJ Plugin
 
 The below sections include information on the various capabilities that are facilitated by the IntelliJ Ballerina plugin for the development process.
 

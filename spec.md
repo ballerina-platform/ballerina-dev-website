@@ -36,7 +36,7 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ### Proposals for improvements/enhancements
 
-Work in progress proposals for improving Ballerina can be found at the following URL: <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/tree/master/lang/proposals">https://github.com/ballerina-platform/ballerina-spec/tree/master/lang/proposals</a>.
+Work in progress proposals for improving Ballerina can be found at the following URL: <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md</a>.
 
 <style> 
 table {

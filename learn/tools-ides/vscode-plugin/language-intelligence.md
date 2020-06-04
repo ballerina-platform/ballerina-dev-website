@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages
-title: Language intelligence
+title: Language Intelligence
 permalink: /learn/vscode-plugin/language-intelligence/
 active: language-intelligence
 redirect_from:
@@ -11,7 +11,7 @@ redirect_from:
   - /v1-2/learn/vscode-plugin/language-intelligence
 ---
 
-# Language intelligence
+# Language Intelligence
 
 The VS Code Ballerina extension brings in language intelligence to enhance the development experience and increase its efficiency.
 

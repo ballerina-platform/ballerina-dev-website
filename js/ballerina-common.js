@@ -510,15 +510,64 @@ $(document).ready(function() {
         event.preventDefault();
         inviteSlackUser();
     });
-    $('#email').on('keypress', function(event) {
+    $('#slackEmail').on('keypress', function(event) {
         if (event.which === 13) {
             event.preventDefault();
             $(this).attr("disabled", "disabled");
-            var email = $("#email").val();
-            inviteSlackUserService(email);
+            var email = $("#slackEmail").val();
+            if (email == "") {
+                $('#slackEmail').val('');
+                $("#slackEmail").attr("placeholder", "Please enter your email.");
+            } else if (!isEmail(email)) {
+                $('#slackEmail').val('');
+                $("#slackEmail").attr("placeholder", "Please enter a valid email.");
+            } else {
+                $('#slackEmail').val('');
+                $("#slackEmail").attr("placeholder", "Processing...");
+
+                AWS.config.region = 'us-east-1';
+                AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                    IdentityPoolId: atob('dXMtZWFzdC0xOjhiMGViNzYzLTUwNWEtNGE0NS04ODA1LTNkY2ZlZGQwNDVhMA=='),
+                }); 
+                var lambda = new AWS.Lambda();
+                var result;
+                
+                if (email == null || email == '') {
+                    input = {};
+                } else {
+                    input = {
+                    email: email
+                    };
+                }
+
+                lambda.invoke({
+                    FunctionName: 'slackService',
+                    Payload: JSON.stringify(input)
+                }, function(err, data) {
+                    if (err) {
+                    result = err;
+                    } else {
+                    result = JSON.parse(data.Payload);
+                    }
+                    if (result.body.ok) {
+                        $('#slackEmail').val('');
+                        $("#slackEmail").attr("placeholder", "Your invitation has been sent to "+email);
+                    } else if(result.body.error == "already_in_team"){
+                        $('#slackEmail').val('');
+                        $("#slackEmail").attr("placeholder", "This email is already subscribed");
+                    }else if(result.body.error == "already_invited"){
+                        $('#slackEmail').val('');
+                        $("#slackEmail").attr("placeholder", "This email is already invited");
+                    }else{
+                        $('#slackEmail').val('');
+                        $("#slackEmail").attr("placeholder", "Something went wrong, try again!");
+                    }
+                });
+            }            
             $(this).removeAttr("disabled");
         }
     });
+
 
     //Lunr Search field
     $('#searchBtn').click(function () {
@@ -532,6 +581,18 @@ $(document).ready(function() {
             window.location.assign("/search?" + searchText);
         }
     });
+
 });
 
-
+function validate_redirection(path) {
+    $('body').hide();
+    var obsolete_paths = ["/v0-990", "/v0-991", "/v1-0", "/v1-1"];
+    var status = false;
+    $.each(obsolete_paths, function (key, val) {
+      if (path.startsWith(val)) {
+        status = true;
+        return;
+      }
+    });
+    return status;
+  }

@@ -3,6 +3,7 @@ layout: ballerina-inner-page
 permalink: /community/slack/
 ---
 
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.32.min.js"></script>
 <link rel="stylesheet" href="/css/slack-page.css">
 # Slack
 
@@ -26,6 +27,6 @@ Request an invite below.
 
 <form>
 <label class="subscribeForm">Email Address</label>
-<input maxlength="90" value="" id="email" name="email" placeholder="Email" title="Email" class="cTextfieldstyle slackSubscribeEmail" type="text">
+<input maxlength="90" value="" id="slackEmail" name="slackEmail" placeholder="Email" title="Email" class="cTextfieldstyle slackSubscribeEmail" type="text">
 <span id="subscribeMessage"></span>
 </form>

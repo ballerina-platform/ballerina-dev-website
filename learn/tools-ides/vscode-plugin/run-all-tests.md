@@ -1,6 +1,6 @@
 ---
 layout: ballerina-left-nav-pages
-title: Run all tests
+title: Run all Tests
 permalink: /learn/vscode-plugin/run-all-tests/
 active: run-all-tests
 redirect_from:
@@ -11,7 +11,7 @@ redirect_from:
   - /v1-2/learn/vscode-plugin/run-all-tests
 ---
 
-# Run all tests
+# Run all Tests
 
 This option allows you to run all the tests that belong to multiple modules of your project. Follow the steps below to do this.
 

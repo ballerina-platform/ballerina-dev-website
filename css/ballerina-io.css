@@ -1293,6 +1293,25 @@ padding-right: 0;
 }
 
 
+ul.cInlinelinklist li {
+	list-style: none !important;
+	padding-left: 40px;
+	background-image: url("/img/toc-bg.svg");
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin: 0 0 10px 0;
+	margin-left: 0 !important;
+	width: 100%;
+	display: block;
+	float: none;
+}
+
+ul.cInlinelinklist {
+	margin: 20px 0 0 0;
+	padding: 0;
+}
+
+
 @-webkit-keyframes loader {
     from {
         -webkit-transform: rotate(0deg);

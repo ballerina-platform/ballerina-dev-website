@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Language Intelligence
-permalink: /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
+permalink: /learn/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
@@ -13,6 +13,8 @@ redirect_from:
   - /learn/vscode-plugin/language-intelligence/
   - /learn/vscode-plugin/language-intelligence/
   - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
+  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
+  - /learn/setting-up-visual-studio-code/language-intelligence
 ---
 
 # Language Intelligence

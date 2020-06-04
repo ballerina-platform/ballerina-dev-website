@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Graphical View
-permalink: /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
+permalink: /learn/setting-up-visual-studio-code/graphical-editor/
 active: graphical-editor
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
@@ -13,6 +13,8 @@ redirect_from:
   - /learn/tools-ides/vscode-plugin/graphical-editor/
   - /learn/tools-ides/vscode-plugin/graphical-editor
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
+  - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
+  - /learn/setting-up-visual-studio-code/graphical-editor
 ---
 
 # Graphical View

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Run all Tests
-permalink: /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
+permalink: /learn/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests
@@ -13,6 +13,8 @@ redirect_from:
   - /learn/vscode-plugin/run-all-tests/
   - /learn/vscode-plugin/run-all-tests
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
+  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
+  - /learn/setting-up-visual-studio-code/run-all-tests
 ---
 
 # Run all Tests

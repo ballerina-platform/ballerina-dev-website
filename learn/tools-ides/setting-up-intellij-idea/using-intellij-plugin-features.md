@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Using the features of the IntelliJ plugin
-permalink: /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/
+permalink: /learn/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
@@ -13,6 +13,8 @@ redirect_from:
   - /learn/intellij-plugin/using-intellij-plugin-features/
   - /learn/intellij-plugin/using-intellij-plugin-features/
   - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features
+  - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/
+  - /learn/setting-up-intellij-idea/using-intellij-plugin-features
 ---
 
 # Using the Features of the IntelliJ Plugin

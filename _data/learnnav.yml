@@ -21,7 +21,7 @@
     - title: Keeping Ballerina Up To Date
       url: /learn/keeping-ballerina-up-to-date
       active: keeping-ballerina-up-to-date
-    - title: Using the Open API Tools
+    - title: Using the OpenAPI Tools
       url: /learn/using-the-openapi-tools/
       active: using-the-openapi-tools
     - title: Generating Ballerina Code for Protocol Buffer Definitions

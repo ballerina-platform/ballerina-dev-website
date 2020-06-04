@@ -10,7 +10,7 @@ redirect_from:
   - /v1-2/learn/how-to-keep-ballerina-up-to-date/
   - /learn/how-to-keep-ballerina-up-to-date/
   - /learn/how-to-keep-ballerina-up-to-date
-  /learn/keeping-ballerina-up-to-date/
+  - /learn/keeping-ballerina-up-to-date/
 ---
 
 # Keeping Ballerina Up to Date

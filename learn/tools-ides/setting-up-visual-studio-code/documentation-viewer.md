@@ -1,13 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Documentation Viewer
-permalink: /learn/vscode-plugin/documentation-viewer/
+permalink: /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
 active: documentation-viewer
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
   - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
   - /v1-2/learn/vscode-plugin/documentation-viewer/
   - /v1-2/learn/vscode-plugin/documentation-viewer
+  - /learn/tools-ides/vscode-plugin/documentation-viewer/
+  - /learn/tools-ides/vscode-plugin/documentation-viewer
+  - /learn/vscode-plugin/documentation-viewer/
+  - /learn/vscode-plugin/documentation-viewer
+  - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
 ---
 
 # Documentation Viewer

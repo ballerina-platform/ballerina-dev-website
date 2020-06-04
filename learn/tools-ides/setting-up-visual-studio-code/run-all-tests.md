@@ -15,6 +15,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
   - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
   - /learn/setting-up-visual-studio-code/run-all-tests
+  - /learn/run-all-tests
+  - /learn/run-all-tests/
 ---
 
 # Run all Tests

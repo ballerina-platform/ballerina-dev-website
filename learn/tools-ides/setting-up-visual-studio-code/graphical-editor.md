@@ -15,6 +15,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
   - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
   - /learn/setting-up-visual-studio-code/graphical-editor
+  - /learn/graphical-editor
+  - /learn/graphical-editor/
 ---
 
 # Graphical View

@@ -15,6 +15,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
   - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
   - /learn/setting-up-visual-studio-code/run-and-debug
+  - /learn/run-and-debug
+  - /learn/run-and-debug/
 ---
 
 # Run and Debug

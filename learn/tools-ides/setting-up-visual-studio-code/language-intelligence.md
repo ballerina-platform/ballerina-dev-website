@@ -15,6 +15,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
   - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
   - /learn/setting-up-visual-studio-code/language-intelligence
+  - /learn/language-intelligence
+  - /learn/language-intelligence/
 ---
 
 # Language Intelligence

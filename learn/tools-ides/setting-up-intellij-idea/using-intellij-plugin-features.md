@@ -15,6 +15,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features
   - /learn/tools-ides/setting-up-intellij-idea/using-intellij-plugin-features/
   - /learn/setting-up-intellij-idea/using-intellij-plugin-features
+  - /learn/using-intellij-plugin-features
+  - /learn/using-intellij-plugin-features/
 ---
 
 # Using the Features of the IntelliJ Plugin

@@ -18,7 +18,7 @@ We warmly welcome all contributors to the community to help establish Ballerina 
    <li><a href="#report-issues" class="cGreenLinkArrow">Report issues</a></li>
    <li><a href="#help-us-grow" class="cGreenLinkArrow">Help us grow</a></li>
    <li><a href="#contribute-to-ballerina" class="cGreenLinkArrow">Contribute to Ballerina</a></li>
-   <li><a href="#ballerina-newsletter" class="cGreenLinkArrow">Ballerina Newsletter</a></li>
+   <li><a href="#newsletter" class="cGreenLinkArrow">Ballerina Newsletter</a></li>
 </ul>
 
 
@@ -29,7 +29,9 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 
 ## Subscribe to the Ballerina Newsletter
-<a class="cBookmark" id="ballerina-newsletter"></a>
+
+<a class="cBookmark" id="newsletter"></a>
+
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">

@@ -14,11 +14,11 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 <ul class="cInlinelinklist">
    <li><a href="#try-out-ballerina" class="cGreenLinkArrow">Try out Ballerina</a></li>
+   <li><a href="#newsletter" class="cGreenLinkArrow">Subscribe to the newsletter</a></li>
    <li><a href="#seek-help" class="cGreenLinkArrow">Seek help</a></li>
    <li><a href="#report-issues" class="cGreenLinkArrow">Report issues</a></li>
    <li><a href="#help-us-grow" class="cGreenLinkArrow">Help us grow</a></li>
    <li><a href="#contribute-to-ballerina" class="cGreenLinkArrow">Contribute to Ballerina</a></li>
-   <li><a href="#newsletter" class="cGreenLinkArrow">Ballerina Newsletter</a></li>
 </ul>
 
 
@@ -28,7 +28,7 @@ We warmly welcome all contributors to the community to help establish Ballerina 
 
 
 
-## Subscribe to the Ballerina Newsletter
+## Subscribe to the newsletter
 
 <a class="cBookmark" id="newsletter"></a>
 

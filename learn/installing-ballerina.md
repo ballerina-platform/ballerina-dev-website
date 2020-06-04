@@ -23,19 +23,19 @@ redirect_from:
 - [Building from source](#building-from-source)
 - [Uninstalling Ballerina](#uninstalling-ballerina)
 - [Getting help](#getting-help)
-- [What's next](#what's-next)
+- [What is next](#what-is-next)
 
 ## Updating Ballerina
 
 If you already have a jBallerina version installed, you can use the update tool (by executing the below commands) to update to the latest jBallerina version as follows. 
 
->**Note:** If you are a new user who have not installed jBallerina, install via the [installers](#installing-ballerina-via-installers).
+>**Note:** If you are a new user who has not installed jBallerina, install via the [installers](#installing-ballerina-via-installers).
 
-**jBallerina version**|**update tool usage**
+**The jBallerina Version**|**Update Tool Usage**
 :-----:|:-----:
-jBallerina version 1.2.0 or above|`ballerina dist update`
+jBallerina ersion 1.2.0 or above|`ballerina dist update`
 jBallerina 1.2.0 but switched to a previous version|`ballerina dist pull jballerina-<LATEST-VERSION>`
-jBallerina version 1.1.0 or below|use the [installers](#installing-ballerina-via-installers)
+jBallerina version 1.1.0 or below|Use the [installers](#installing-ballerina-via-installers)
 
 
 ## Installing Ballerina via installers
@@ -54,19 +54,19 @@ Follow the below instructions to download and use the installers to install the 
 
 ### Installing on Mac OS
 
-[Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/Library/Ballerina`.
+[Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/Library/Ballerina` directory.
 
 The package automatically sets your PATH environment variable for you. You may need to restart any open Terminal sessions for the change to take effect.
 
 ### Installing on Windows
 
-[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `C:\Program Files\Ballerina\`.
+[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:\Program Files\Ballerina\` directory.
 
 The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
 
 ### Installing on Linux
 
-[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution to `/usr/lib64/ballerina`.
+[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/usr/lib64/ballerina`directory.
 
 > **Info:** Alternatively, you can use either of the below commands to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
 
@@ -84,7 +84,7 @@ rpm -i ballerina-linux-installer-x64<JBALLERINA-VERSION>.rpm
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have Java Development Kit (JDK) version 1.8 installed.
 
-1. [Download the Ballerina language ZIP file] (/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
+1. [Download the Ballerina language ZIP file](/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
 
@@ -145,20 +145,18 @@ Follow the steps below to build the project of the obtained source.
 
 ## Uninstalling Ballerina
 
-The installation location is usually `/Library/Ballerina/distributions` in Mac OS, `/usr/lib64/Ballerina/distributions` in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
+Usually,the installation location is `/Library/Ballerina/distributions` in Mac OS, `/usr/lib64/Ballerina/distributions` in Linux, and `C:\Program Files\Ballerina\distributions` in Windows. You can either remove a particular jBallerina version or all the jBallerina versions installed in these locations.
 
 Navigate to the corresponding installation location and follow the instructions below. To remove:
 
-- a particluar jBallerina version: execute `ballerina dist remove` () or delete the required version from the `/../Ballerina/distributions` directory.
+- a particluar jBallerina version: execute `ballerina dist remove` or delete the required version from the `/../Ballerina/distributions` directory.
 - all the installed jBallerina versions: delete the `/../Ballerina` directory.
-
-> **Note**: 
 
 ## Getting help
 
 To get help when you work with Ballerina, see [Community](/community).
 
-## What's next
+## What is next
 
 Once you have successfully installed Ballerina, click the below links to set up your IDE.
 

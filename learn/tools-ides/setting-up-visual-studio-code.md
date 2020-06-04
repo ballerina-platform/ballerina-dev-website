@@ -13,6 +13,8 @@ redirect_from:
   - /learn/vscode-plugin/
   - /learn/vscode-plugin
   - /learn/tools-ides/setting-up-visual-studio-code/
+  - /learn/setting-up-visual-studio-code/
+  - /learn/setting-up-visual-studio-code
 ---
 
 # Setting up Visual Studio Code 

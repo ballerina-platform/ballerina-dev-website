@@ -13,6 +13,8 @@ redirect_from:
   - /v1-2/learn/intellij-plugin
   - /v1-2/learn/intellij-plugin/
   - /learn/tools-ides/setting-up-intellij-idea/
+  - /learn/setting-up-intellij-idea/
+  - /learn/setting-up-intellij-idea
 ---
 
 # Setting up IntelliJ IDEA

@@ -17,6 +17,8 @@ redirect_from:
   - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin
   - /learn/tools-ides/setting-up-intellij-idea/using-the-intellij-plugin/
   - /learn/setting-up-intellij-idea/using-the-intellij-plugin
+  - /learn/using-the-intellij-plugin
+  - - /learn/using-the-intellij-plugin/
 ---
 
 # Using the IntelliJ Ballerina Plugin

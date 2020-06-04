@@ -33,7 +33,7 @@ If you already have a jBallerina version installed, you can use the update tool 
 
 **The jBallerina Version**|**Update Tool Usage**
 :-----:|:-----:
-jBallerina ersion 1.2.0 or above|`ballerina dist update`
+jBallerina version 1.2.0 or above|`ballerina dist update`
 jBallerina 1.2.0 but switched to a previous version|`ballerina dist pull jballerina-<LATEST-VERSION>`
 jBallerina version 1.1.0 or below|Use the [installers](#installing-ballerina-via-installers)
 

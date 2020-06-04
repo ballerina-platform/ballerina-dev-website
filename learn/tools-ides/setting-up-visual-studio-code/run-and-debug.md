@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Run and Debug
-permalink: /learn/vscode-plugin/run-and-debug/
+permalink: /learn/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug
@@ -10,6 +10,11 @@ redirect_from:
   - /learn/tools-ides/vscode-plugin/run-and-debug
   - /v1-2/learn/vscode-plugin/run-and-debug/
   - /v1-2/learn/vscode-plugin/run-and-debug
+  - /learn/vscode-plugin/run-and-debug/
+  - /learn/vscode-plugin/run-and-debug
+  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
+  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
+  - /learn/setting-up-visual-studio-code/run-and-debug
 ---
 
 # Run and Debug

@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Setting up IntelliJ IDEA
-permalink: /learn/tools-ides/setting-up-intellij-idea
+permalink: /learn/setting-up-intellij-idea/
 active: setting-up-intellij-idea
 redirect_from:
   - /v1-2/learn/tools-ides/intellij-plugin
@@ -12,6 +12,7 @@ redirect_from:
   - /learn/intellij-plugin/
   - /v1-2/learn/intellij-plugin
   - /v1-2/learn/intellij-plugin/
+  - /learn/tools-ides/setting-up-intellij-idea
   - /learn/tools-ides/setting-up-intellij-idea/
   - /learn/setting-up-intellij-idea/
   - /learn/setting-up-intellij-idea

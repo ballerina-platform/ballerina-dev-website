@@ -3,14 +3,14 @@ layout: ballerina-left-nav-pages
 title: Structuring Ballerina Code
 description: Learn how to develop a Ballerina project, structure code, and use the Ballerina Tool to fetch, build, and install Ballerina modules.
 keywords: ballerina, programming language, ballerina modules, structure code
-permalink: /learn/structuring-ballerina-code
+permalink: /learn/structuring-ballerina-code/
 active: structuring-ballerina-code
 redirect_from:
   - /learn/how-to-structure-ballerina-code
   - /learn/how-to-structure-ballerina-code/
   - /v1-2/learn/how-to-structure-ballerina-code
   - /v1-2/learn/how-to-structure-ballerina-code/
-  - /learn/structuring-ballerina-code/
+  - /learn/structuring-ballerina-code
 ---
 
 # Structuring Ballerina Code

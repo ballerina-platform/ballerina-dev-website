@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages
 title: Deploying Ballerina Programs in the Cloud
 description: See how the Ballerina compiler generates the necessary artifacts to deploy to cloud platforms like Kubernetes, Docker, Moby or Cloud Foundry.
 keywords: ballerina, programming language, services, cloud
-permalink: /learn/deploying-ballerina-programs-in-the-cloud
+permalink: /learn/deploying-ballerina-programs-in-the-cloud/
 active: deploying-ballerina-programs-in-the-cloud
 redirect_from:
   - /learn/how-to-deploy-and-run-ballerina-programs/
@@ -12,7 +12,7 @@ redirect_from:
   - /learn/how-to-deploy-ballerina-programs-in-cloud
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
   - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
-  - /learn/deploying-ballerina-programs-in-the-cloud/
+  - /learn/deploying-ballerina-programs-in-the-cloud
 
 ---
 

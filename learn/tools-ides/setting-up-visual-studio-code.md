@@ -1,7 +1,7 @@
 ---
 layout: ballerina-left-nav-pages
 title: Setting up Visual Studio Code
-permalink: /learn/tools-ides/setting-up-visual-studio-code
+permalink: /learn/setting-up-visual-studio-code/
 active: setting-up-visual-studio-code
 redirect_from:
   - /v1-2/learn/tools-ides/vscode-plugin
@@ -12,6 +12,7 @@ redirect_from:
   - /v1-2/learn/vscode-plugin/
   - /learn/vscode-plugin/
   - /learn/vscode-plugin
+  - /learn/tools-ides/setting-up-visual-studio-code
   - /learn/tools-ides/setting-up-visual-studio-code/
   - /learn/setting-up-visual-studio-code/
   - /learn/setting-up-visual-studio-code

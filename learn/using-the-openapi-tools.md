@@ -3,14 +3,14 @@ layout: ballerina-left-nav-pages
 title: Using the OpenAPI Tools
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api
-permalink: /learn/using-the-openapi-tools
+permalink: /learn/using-the-openapi-tools/
 active: using-the-openapi-tools
 redirect_from:
   - /v1-2/learn/how-to-use-openapi-tools
   - /v1-2/learn/how-to-use-openapi-tools/
   - /learn/how-to-use-openapi-tools/
   - /learn/how-to-use-openapi-tools
-  - /learn/using-the-openapi-tools/
+  - /learn/using-the-openapi-tools
 ---
 
 # Using the OpenAPI Tools

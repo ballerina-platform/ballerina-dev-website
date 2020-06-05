@@ -5,6 +5,7 @@ permalink: /1.1/learn/quick-tour/
 redirect_from:
   - /v1-1/learn/quick-tour/
   - /v1-1/learn/quick-tour
+  - /1.1/learn/quick-tour
 ---
 
 # Quick Tour

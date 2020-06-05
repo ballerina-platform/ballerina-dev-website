@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-keep-ballerina-up-to-date/
 redirect_from:
   - /v1-1/learn/how-to-keep-ballerina-up-to-date/
   - /v1-1/learn/how-to-keep-ballerina-up-to-date
+  - /1.1/learn/how-to-keep-ballerina-up-to-date
 ---
 
 # How to Keep Ballerina up to date

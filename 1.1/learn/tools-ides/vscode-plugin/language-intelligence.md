@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Language Intelligence
-permalink: /1.1/learn/vscode-plugin/language-intelligence
+permalink: /1.1/learn/vscode-plugin/language-intelligence/
 redirect_from:
   - /1.1/learn/tools-ides/vscode-plugin/language-intelligence
   - /1.1/learn/tools-ides/vscode-plugin/language-intelligence/
@@ -9,6 +9,7 @@ redirect_from:
   - /v1-1/learn/tools-ides/vscode-plugin/language-intelligence/
   - /v1-1/learn/vscode-plugin/language-intelligence
   - /v1-1/learn/vscode-plugin/language-intelligence
+  - /1.1/learn/vscode-plugin/language-intelligence
 ---
 
 # Language Intelligence

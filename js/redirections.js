@@ -106,14 +106,5 @@ let redirections = {
     "/0.991/learn/how-to-test-ballerina-code":"/0.991/learn/testing-ballerina-code/",
     "/1.1/learn/how-to-extend-ballerina":"/1.1/learn/extending-with-compiler-extensions/",
     "/1.0/learn/how-to-extend-ballerina":"/1.0/learn/extending-with-compiler-extensions/",
-    "/0.991/learn/how-to-extend-ballerina":"/0.991/learn/extending-with-compiler-extensions/",
-
-
-
-
-
-
-
-    
-
+    "/0.991/learn/how-to-extend-ballerina":"/0.991/learn/extending-with-compiler-extensions/",   
 };

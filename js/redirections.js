@@ -19,7 +19,7 @@ let redirections = {
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/run-and-debug":"/1.1/learn/vscode-plugin/run-and-debug/",
     "/1.0/learn/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/vscode-plugin/run-and-debug/",
     "/1.0/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/":"/1.0/learn/vscode-plugin/run-and-debug/",
-    "/0.991/learn/setting-up-visual-studio-code/run-and-debu/g":"/0.991/learn/vscode-plugin/run-and-debug/",
+    "/0.991/learn/setting-up-visual-studio-code/run-and-debug/":"/0.991/learn/vscode-plugin/run-and-debug/",
     "/0.991/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/":"/0.991/learn/vscode-plugin/run-and-debug/",
     "/1.1/learn/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",
     "/1.1/learn/tools-ides/setting-up-visual-studio-code/graphical-editor":"/1.1/learn/vscode-plugin/graphical-editor/",

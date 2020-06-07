@@ -130,4 +130,8 @@ These powerful supporting tools extend Ballerina to various ecosystem technologi
 <td class="cCommand">grpc</td>
 <td class="cDescription">This is the gRPC stub/skeleton generation tool. For more information, see <a href="/learn/how-to-generate-code-for-protocol-buffers">How to generate Ballerina code for Protocol Buffer Definition</a>.</td>
 </tr>
+<tr>
+<td class="cCommand">bindgen</td>
+<td class="cDescription">Use this tool for auto-generating Ballerina bridge code for Java APIs. For more information, see <a href="/learn/how-to-use-java-interoperability">How to Call Java Code from Ballerina</a>.</td>
+</tr>
 </table>

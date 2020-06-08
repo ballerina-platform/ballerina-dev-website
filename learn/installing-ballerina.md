@@ -85,6 +85,8 @@ If you already have a jBallerina version above 1.1.0 installed, you can use the 
 :-----:|:-----:
 `ballerina dist update`|update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
+
+For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
   
 ## Building from source
 

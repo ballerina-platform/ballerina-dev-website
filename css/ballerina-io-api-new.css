@@ -33,3 +33,25 @@ a.toc.item {
 body .content-wrapper .main-wrapper {
     margin-bottom: 20px !important;
 }
+
+
+
+.module-wrapper h1 {
+    font-size: 45px;
+    color: #585A5E;
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+
+.module-wrapper h2 {
+	font-size: 30px;
+	margin-top: 40px !important;
+	margin-bottom: 40px;
+	font-weight: 600;
+	color: #464646;
+	border-bottom: 2px solid #464646 !important;
+	display: inline-block;
+	padding-bottom: 10px;
+
+    
+}

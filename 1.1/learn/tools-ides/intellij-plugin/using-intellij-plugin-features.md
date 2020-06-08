@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Using the Features of the IntelliJ Plugin
-permalink: /1.1/learn/intellij-plugin/using-intellij-plugin-features
+permalink: /1.1/learn/intellij-plugin/using-intellij-plugin-features/
 redirect_from:
   - /1.1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features
   - /1.1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
@@ -9,6 +9,7 @@ redirect_from:
   - /v1-1/learn/tools-ides/intellij-plugin/using-intellij-plugin-features/
   - /v1-1/learn/intellij-plugin/using-intellij-plugin-features
   - /v1-1/learn/intellij-plugin/using-intellij-plugin-features/
+  - /1.1/learn/intellij-plugin/using-intellij-plugin-features
 ---
 
 # Using the Features of the IntelliJ Plugin

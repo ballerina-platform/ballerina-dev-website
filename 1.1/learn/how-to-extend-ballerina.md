@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-extend-ballerina/
 redirect_from:
   - /v1-1/learn/how-to-extend-ballerina/
   - /v1-1/learn/how-to-extend-ballerina
+  - /1.1/learn/how-to-extend-ballerina
 ---
 
 # How to Extend Ballerina

@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-structure-ballerina-code/
 redirect_from:
   - /v1-1/learn/how-to-structure-ballerina-code/
   - /v1-1/learn/how-to-structure-ballerina-code
+  - /1.1/learn/how-to-structure-ballerina-code
 ---
 
 # How to Structure Ballerina Code

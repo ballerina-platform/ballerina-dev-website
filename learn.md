@@ -44,14 +44,14 @@ redirect_from:
 
    <ul class="cLearnLandingLinks">
    <!--<li><a href="/learn/installing-ballerina//" class="cGreenLinkArrow">Ballerina User Guide</a></li>-->
-   <li><a href="/learn/cli-commands/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
-   <li><a href="/learn/how-to-structure-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
-    <li><a href="/learn/how-to-deploy-ballerina-programs-in-cloud/" class="cGreenLinkArrow">Cloud Development</a></li>
-    <li><a href="/learn/how-to-observe-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
-    <li><a href="/learn/how-to-call-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
-    <li><a href="/learn/how-to-write-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
-    <li><a href="/learn/how-to-test-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
-    <li><a href="/learn/how-to-extend-ballerina" class="cGreenLinkArrow">Extending Ballerina</a></li>
+   <li><a href="/learn/using-the-cli-tools/" class="cGreenLinkArrow">Ballerina CLI Tools</a></li>
+   <li><a href="/learn/structuring-ballerina-code/" class="cGreenLinkArrow">Code Organization</a></li>
+    <li><a href="/learn/deploying-ballerina-programs-in-the-cloud/" class="cGreenLinkArrow">Cloud Development</a></li>
+    <li><a href="/learn/observing-ballerina-code" class="cGreenLinkArrow">Observability</a></li>
+    <li><a href="/learn/calling-java-code-from-ballerina" class="cGreenLinkArrow">Interoperability</a></li>
+    <li><a href="/learn/writing-secure-ballerina-code" class="cGreenLinkArrow">Security</a></li>
+    <li><a href="/learn/testing-ballerina-code" class="cGreenLinkArrow">Testing</a></li>
+    <li><a href="/learn/extending-with-compiler-extensions" class="cGreenLinkArrow">Extending Ballerina</a></li>
    </ul>
 
 </div>

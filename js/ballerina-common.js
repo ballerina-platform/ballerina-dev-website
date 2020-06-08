@@ -586,13 +586,28 @@ $(document).ready(function() {
 
 function validate_redirection(path) {
     $('body').hide();
-    var obsolete_paths = ["/v0-990", "/v0-991", "/v1-0", "/v1-1"];
-    var status = false;
+    let obsolete_paths = ["/v0-990", "/v0-991", "/v1-0", "/v1-1"];
+    let redirection = {};
+    let status = false;
     $.each(obsolete_paths, function (key, val) {
-      if (path.startsWith(val)) {
-        status = true;
-        return;
-      }
+        if (path.startsWith(val)) {
+            redirection = { type: "versioned" };
+            status = true;
+            return;
+        }
     });
-    return status;
-  }
+
+    if (!status) {
+        //read the json data and redirect
+        var dest = redirections[path];
+        //check for the destination URL without trailing slash
+        if (typeof dest == "undefined") {
+            dest = redirections[path.replace(/\/([^\/]*)$/, '$1')];
+        }
+
+        if (dest != "" && typeof dest != "undefined") {
+            redirection = { type: "path", dest: dest };
+        }
+    }
+    return redirection;
+}

@@ -165,52 +165,41 @@ Great! You are all set for the next step.
 ### Step 3: Generate Ballerina bindings 
 In this step, we'll use the `bindgen` tool to generate Ballerina bindings for those four classes that we talked about in Step 1. If you want more information about the tool, you can refer [The `bindgen` tool](#the-bindgen-tool).
 
-#### Copy the SnakeYAML library to your project
-Download the latest version of the SnakeYAML library and copy it to the project. We need to copy only the SnakeYAML library but for most cases, you may need to copy more than one JAR file. Make sure that you add all the direct and transitive dependencies of them. 
-
-Create a directory in your project root to store all the Java libraries. 
-```sh
-> mkdir javalibs
-> cp <path-to-snakeyaml-lib>/snakeyaml-1.25.jar javalibs
-```
-
-#### Add the SnakeYAML library to the Ballerina.toml file
-Copy and paste the following TOML snippet to the `Ballerina.toml` file in your project’s root directory. This step ensures that the SnakeYAML library is always packaged with the stand-alone executable JAR generated for your Ballerina program. Refer to the [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs) for more details. 
-
-```toml
-[platform]
-target = "java8"
-
-   [[platform.libraries]]
-   path = "./javalibs/snakeyaml-1.25.jar"
-   modules = ["yamlparser"]
-```
-
 #### Generate Ballerina bindings
 ```sh
-> ballerina bindgen -cp ./javalibs/snakeyaml-1.25.jar -o src/yamlparser
- org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
+> ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o src/yamlparser org.yaml.snakeyaml.Yaml
+ java.io.FileInputStream java.io.InputStream java.util.Map
 
-Generating bindings for: 
+Ballerina project detected at: /Users/sameera/yaml-project
+
+Resolving maven dependencies...
+snakeyaml-1.25.pom 100% [=================================================] 37/37 KB (0:00:00 / 0:00:00)
+snakeyaml-1.25.jar 100% [===============================================] 297/297 KB (0:00:01 / 0:00:00)
+
+Updated the Ballerina.toml file with new platform libraries.
+
+Following jars were added to the classpath:
+	snakeyaml-1.25.jar
+
+Generating bindings for:
 	java.util.Map
 	java.io.FileInputStream
 	org.yaml.snakeyaml.Yaml
 	java.io.InputStream
 
-Generating dependency bindings for: 
+Generating dependency bindings for:
 	org.yaml.snakeyaml.introspector.BeanAccess
 	java.util.function.BiFunction
-	org.yaml.snakeyaml.constructor.BaseConstructor
-	java.util.function.Function
-	... 
-	... 
+	org.yaml.snakeyaml.DumperOptions$FlowStyle
+	...
+	...
 ```
-- The `-cp` option specifies the list of Java libraries required to generate bindings. 
+- The `-mvn` option specifies the maven dependency of the Java library required to generate bindings.
 - The `-o` option specifies the output directory to which the generated bindings are stored. In this case, we instruct the tool to store bindings inside the `yamlparser` module. 
 - The argument list specifies the Java class names. 
 
 The `bindgen` tool generate bindings for 
-- The specified Java classes 
+- The specified Java classes.
 - The Java classes exposed in the public APIs of all the specified classes. 
 
 
@@ -256,11 +245,10 @@ FileInputStream | error fileInputStream = newFileInputStream3(filename);
 
 Here, `FileInputStream` is the Ballerina object generated for the `java.io.FileInputStream` class. 
 - You can find functions that start with `newFileInputStream` in the generated code. Each such function creates a new `java.io.FileInputStream` instance. Ballerina does not support function overloading. Therefore, the bindgen tool generates a separate Ballerina function for each overloaded method or constructor. We will improve the function names of the generated bindings in a future release. 
-- All the methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina object.  
+- All the public methods in the `java.io.FileInputStream` class are mapped to methods in the generated Ballerina object.
 
 Next, we’ll handle the error using a type guard.
 ```ballerina
-
 if fileInputStream is error {
 	// The type of fileInputStream is error within this block
        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
@@ -269,18 +257,16 @@ if fileInputStream is error {
 }
 ```
 ### Create the SnakeYAML entry point
-The `org.yaml.snakeyaml.Yaml` Class is the entry point to the SnakeYAML API.  The corresponding generated Ballerina object is `Yaml`. The `newYaml5()`  function is mapped to the default constructor of the Java class.   
+The `org.yaml.snakeyaml.Yaml` Class is the entry point to the SnakeYAML API.  The corresponding generated Ballerina object is `Yaml`. The `newYaml1()` function is mapped to the default constructor of the Java class.
 ```ballerina
-Yaml yaml = newYaml5();
+Yaml yaml = newYaml1();
 ```
 ###  Loads the YAML Document
 We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given InputStream. 
 ```ballerina
-
-InputStream inputStream = new (fileInputStream.jObj);
-Object mapObj = yaml.load2(inputStream);
+InputStream inputStream = check newFileInputStream3(filename);
+Object mapObj = yaml.load1(inputStream);
 ```
-The generated code does not handle Java subtyping at the moment. Therefore, `InputStream inputStream = newFileInputStream3(filename) `will not compile. We will improve this in a future release. As a workaround, you can create a new `java.io.InputStream` as above. 
 
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
 
@@ -300,9 +286,9 @@ public function main(string... args) returns error? {
    if fileInputStream is error {
        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
    } else {
-       Yaml yaml = newYaml5();
-       InputStream inputStream = new (fileInputStream.jObj);
-       Object mapObj = yaml.load2(inputStream);
+       Yaml yaml = newYaml1();
+       InputStream inputStream = check newFileInputStream3(filename);
+       Object mapObj = yaml.load1(inputStream);
        io:println(mapObj);
    }
 }
@@ -325,7 +311,7 @@ Generating executables
 
 Now, we need to pass the YAML file name as the first argument. 
 ```sh
-> ballerina run target/bin/yamlparser.jar invoice.yaml
+> ballerina run target/bin/yamlparser.jar invoice.yml
 {invoice=34843, date=Mon Jan 22 16:00:00 PST 2001, bill-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
 Suite #292
 , city=Royal Oak, state=MI, postal=48046}}, ship-to={given=Chris, family=Dumars, address={lines=458 Walkman Dr.
@@ -347,12 +333,16 @@ The `bindgen` is a CLI tool, which generates Ballerina bindings for Java classes
 
 ```sh
 ballerina bindgen [(-cp|--classpath) <classpath>...]
+                  [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output>]
                   (<class-name>...)
 ```
 
 `(-cp|--classpath) <classpath>...`
 This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library or from a library available inside the Ballerina SDK, then you need not specify the classpath explicitly.
+
+`(-mvn|--maven) <groupId>:<artifactId>:<version>`
+This optional parameter could be used to specify a maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into `target/platform-libs` directory of the project. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
 
 `(-o|--output) <output>`
 This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
@@ -365,19 +355,23 @@ One or more space-separated fully-qualified Java class names for which the Balle
 When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina object along with the required Java interoperability mappings. These `.bal` files would reside inside sub directories representing the package structure. Apart from creating bindings for the specified Java classes, the command would also generate empty Ballerina objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the Ballerina objects generated. A set of additional utility files will also be generated in order to support the auto-generated Ballerina bindings. The folder structure of the generated bindings will be as follows.
 
 	<ballerina_bindings>
-		├── <package-name>
-			└── <class-name>.bal
-			└── ...
-		├── ... 
-		└── <dependencies>
-			├── <utils>
-				├── ArrayUtils.bal
-				├── Constants.bal
-				└── JObject.bal
-			├── <package-name>
-				└── <class-name>.bal
-				└── ...
-			└── ...
+        ├── <bindings>
+            ├── <package-name>
+                ├── <class-name>.bal
+                └── ...
+            └── ...
+        ├── <dependencies>
+            ├── <package-name>
+                ├── <class-name>.bal
+                └── ...
+            └── ...
+        └── <utils>
+            ├── ArrayUtils.bal
+            ├── Constants.bal
+            ├── JObject.bal
+            └── <error_types>
+                ├── <class-name>.bal
+                └── ...
 
 ### Mapping Java code with Ballerina
 

@@ -36,6 +36,8 @@ $(document).ready(function () {
         '                                    </select>\n' +
         '                                </div>\n' +
         '                            </li>\n' +
+        '                           <li class="cSearchMenu"><form class="cSearch-form-inline"><input id="searchTxt" class="form-control-field" type="search" placeholder="Search" aria-label="Search"><a id="searchBtn" href="#" class="cSearchButton"><img src="/img/search.svg"/></a></form></li>\n' +
+        '                            </li>\n' +
         '                        </ul>\n' +
         '                    </div>\n' +
         '                </div>\n' +

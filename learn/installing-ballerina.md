@@ -29,7 +29,7 @@ redirect_from:
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
 
->**Info:** Ballerina installers support operating systems such as Windows, Ubuntu Linux, Red Hat Enterprise Linux, Maxc OS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
+>**Info:** Ballerina installers support operating systems such as Windows, Ubuntu Linux, Red Hat Enterprise Linux, macOS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
 
 ### Installing on macOS
 

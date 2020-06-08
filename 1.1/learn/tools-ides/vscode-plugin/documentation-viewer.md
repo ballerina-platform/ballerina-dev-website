@@ -1,7 +1,7 @@
 ---
 layout: ballerina-inner-page
 title: Documentation Viewer
-permalink: /1.1/learn/vscode-plugin/documentation-viewer
+permalink: /1.1/learn/vscode-plugin/documentation-viewer/
 redirect_from:
   - /1.1/learn/tools-ides/vscode-plugin/documentation-viewer
   - /1.1/learn/tools-ides/vscode-plugin/documentation-viewer/
@@ -9,6 +9,7 @@ redirect_from:
   - /v1-1/learn/tools-ides/vscode-plugin/documentation-viewer/
   - /v1-1/learn/vscode-plugin/documentation-viewer
   - /v1-1/learn/vscode-plugin/documentation-viewer/
+  - /1.1/learn/vscode-plugin/documentation-viewer
 ---
 
 # Documentation Viewer

@@ -9,6 +9,7 @@ redirect_from:
   - /v1-1/learn/getting-started/
   - /v1-1/learn/installing-ballerina/
   - /v1-1/learn/installing-ballerina
+  - /1.1/learn/installing-ballerina
 ---
 
 # Installing Ballerina

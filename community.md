@@ -12,25 +12,32 @@ The Ballerina community has been bootstrapped by <a href="https://wso2.com">WSO2
 
 We warmly welcome all contributors to the community to help establish Ballerina as a truly community-owned resource!
 
-- [Try out Ballerina](#try-out-ballerina)
-- [Subscribe to the Ballerina Newsletter](#subscribe-to-the-ballerina-newsletter)
-- [Seek for help](#seek-for-help)
-- [Report issues](#report-issues)
-- [Help us grow](#help-us-grow)
-- [Contribute to Ballerina](#contribute-to-ballerina)
+<ul class="cInlinelinklist">
+   <li><a href="#try-out-ballerina" class="cGreenLinkArrow">Try out Ballerina</a></li>
+   <li><a href="#newsletter" class="cGreenLinkArrow">Subscribe to the newsletter</a></li>
+   <li><a href="#seek-help" class="cGreenLinkArrow">Seek help</a></li>
+   <li><a href="#report-issues" class="cGreenLinkArrow">Report issues</a></li>
+   <li><a href="#help-us-grow" class="cGreenLinkArrow">Help us grow</a></li>
+   <li><a href="#contribute-to-ballerina" class="cGreenLinkArrow">Contribute to Ballerina</a></li>
+</ul>
+
 
 ## Try out Ballerina
 
 [Learn Ballerina](https://ballerina.io/learn) and try out writing Ballerina code on your own.
 
-<a class="cBookmark" id="newsletter"></a>
 
-## Subscribe to the Ballerina Newsletter
+
+## Subscribe to the newsletter
+
+<a class="cBookmark" id="newsletter"></a>
 
 We curate a periodic newsletter on Ballerina with hand-picked content and regular updates on the language.
 
 <ul class="cInlinelinklist">
 <li><a class="cGreenLinkArrow" href="/community/newsletter/2020-1/">Latest Ballerina Newsletter</a></li>
+<li><a class="cGreenLinkArrow" href="/community/newsletter/#past-issues">Past issues</a></li>
+
 </ul>
 
 Interested? Subscribe to it below:

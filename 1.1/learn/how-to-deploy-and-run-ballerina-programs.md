@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-deploy-and-run-ballerina-programs/
 redirect_from:
   - /v1-1/learn/how-to-deploy-and-run-ballerina-programs/
   - /v1-1/learn/how-to-deploy-and-run-ballerina-programs
+  - /1.1/learn/how-to-deploy-and-run-ballerina-programs
 
 ---
 

@@ -5,6 +5,7 @@ permalink: /1.1/learn/set-up-ballerina-sdk
 redirect_from:
   - /v1-1/learn/set-up-ballerina-sdk/
   - /v1-1/learn/set-up-ballerina-sdk
+  - /1.1/learn/set-up-ballerina-sdk
 ---
 
 # Setting up Ballerina SDK

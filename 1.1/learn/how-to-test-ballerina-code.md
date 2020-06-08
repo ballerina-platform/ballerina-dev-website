@@ -5,6 +5,7 @@ permalink: /1.1/learn/how-to-test-ballerina-code/
 redirect_from:
   - /v1-1/learn/how-to-test-ballerina-code/
   - /v1-1/learn/how-to-test-ballerina-code
+  - /1.1/learn/how-to-test-ballerina-code
 ---
 
 # How to Test Ballerina Code

@@ -37,9 +37,9 @@ Follow the instructions below to install the latest Ballerina version using the 
 
 > **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew.
 
-    ```
-    brew install ballerina
-    ```
+        ```
+        brew install ballerina
+        ```
 
     Homebrew installs the Ballerina distribution in the `\usr\local\Cellar\ballerina` directory. 
 

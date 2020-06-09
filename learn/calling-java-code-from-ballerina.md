@@ -339,10 +339,10 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 ```
 
 `(-cp|--classpath) <classpath>...`
-This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library or from a library available inside the Ballerina SDK, then you need not specify the classpath explicitly.
+This optional parameter could be used to specify one or more comma-delimited classpaths for retrieving the required Java libraries needed by the bindgen tool execution. The classpath could be provided as comma-separated paths of JAR files or as comma-separated paths of directories containing all the relevant Java libraries. If the Ballerina bindings are to be generated from a standard Java library, from a library available inside the Ballerina SDK or from a platform library specified in the `Ballerina.toml`, then you need not specify the classpath explicitly.
 
 `(-mvn|--maven) <groupId>:<artifactId>:<version>`
-This optional parameter could be used to specify a maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into `target/platform-libs` directory of the project. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project.
+This optional parameter could be used to specify a maven dependency required for the generation of Ballerina bindings. Here, the specified library and its transitive dependencies will be resolved into `target/platform-libs` directory of the project. If the tool is not executed inside a project or if the output path does not point to a project, a directory structure `target/platform-libs` will be created in the output path to store the maven dependencies. The tool will also update the `Ballerina.toml` file with the platform libraries if the command is executed inside a Ballerina project. If Java classes from multiple dependencies are to be generated, it should be done in stages. 
 
 `(-o|--output) <output>`
 This optional parameter could be used to specify the directory path into which the Ballerina bindings should be inserted. If this path is not specified, the output will be written onto the same directory from where the command is run. You can point the path of a Ballerina module to generate the code inside a Ballerina module. 
@@ -443,9 +443,7 @@ The getters and setters of an instance field will take the name of the field pre
 These interop functions take the fully-qualified Java method name as the function name. However, if there exists overloaded methods, a numeric suffix will be appended at the end.
 
 #### Dependency Objects
-When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina object to represent each one of these classes. These would represent a Java class mapping without the constructor, method, or field bindings. If one of these classes are required later, the bindgen tool could be re-run to generate the Ballerina bindings. 
-
->**Note:** If the complete implementation of a dependency object is generated using the bindgen tool, the existing empty Ballerina object should be deleted manually as instructed in the command output.
+When there are dependent Java classes present inside generated Ballerina bindings (as parameters or return types), the bindgen tool generates an empty Ballerina object to represent each one of these classes. These would represent a Java class mapping without the constructors, methods, or field bindings. If one of these classes are required later, the bindgen tool could be re-run to generate the Ballerina bindings. 
 
 E.g., Generated dependency object representing `java.util.List` will be as follows.
 ```ballerina
@@ -461,7 +459,7 @@ public type List object {
 ```
 
 #### Ballerina Object
-A Ballerina object representing a Java class will always store the handle reference of the Java class in it’s `jObj` field. To explain the implementation further, a Ballerina object representing a Java class would always be implemented using the following `JObject` abstract class. Hence, the handle reference could be accessed when needed.
+A Ballerina object representing a Java class will always be implemented using the following `JObject` abstract class. To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s `jObj` field.
 
 ```ballerina
 public type JObject abstract object {
@@ -470,19 +468,24 @@ public type JObject abstract object {
 };
 ```
 
-A Ballerina object could be initialized using the `__init` function or a constructor. If the first approach is used, you should pass on a handle reference of the Java class to the `__init` function. This could be used if you have already obtained a handle reference through some means other than using the constructor. If not, you could use the second approach to create a new object using a constructor.
+#### Type mappings between Java and Ballerina
+In generated Ballerina bindings, Ballerina primitive types, Ballerina string type, and the generated Ballerina objects will be mapped internally onto the respective Java primitives, Java String object, and the respective handle references of the objects.
 
-E.g., Generated `__init` function of a Ballerina object mapping a Java class.
+#### Support for Java Subtyping
+Ballerina bindings provide support for Java subtyping with the aid of its structural typing.
+
+E.g., A Ballerina object mapping the Java class `java.io.FileInputStream` could be assigned to a Ballerina object mapping `java.io.InputStream` as follows.
 ```ballerina
-public function __init(handle obj) {
-
-   self.jObj = obj;
-}
-
+InputStream inputStream = check newFileInputStream("sample.txt");
 ```
 
-#### Type mappings between Java and Ballerina
-When using the Ballerina bindings, you could use the Ballerina primitive types, Ballerina string type, and the generated Ballerina objects. They will be mapped internally onto the respective Java primitives, Java String object, and the respective handle references of the objects.
+#### Support for Java Casting
+The `ballerina/java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding objects into its subtypes based on assignability.
+
+E.g., A Ballerina object mapping the Java class `java.io.InputStream` could be casted into a Ballerina object mapping `java.io.FileInputStream` as follows.
+```ballerina
+FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, typedesc<FileInputStream>);
+```
 
 ## Packaging Java libraries with Ballerina programs
 This section assumes that you have already read the guide [How to Structure Ballerina Code](https://ballerina.io/v1-1/learn/how-to-structure-ballerina-code/). When you compile a Ballerina program with `ballerina build <root-module>`, the compiler creates an executable JAR file and when you compile a Ballerina module with `ballerina build -c <module>`, the compiler creates a BALO file. In both cases, the Ballerina compiler produces self-contained archives. There are situations in which you need to package JAR files with these archives. The most common example would be packing the corresponding JDBC driver.

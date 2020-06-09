@@ -23,7 +23,9 @@
     <h3>Ballerina Language Specifications</h3>
     <p/>
     <ul>
-        <li><a href="/spec/draft/v2020-06-27/">v2020-06-27</a></li>
+        {%- for date in site.data.draft_spec %}
+        <li><a href="/spec/lang/draft/{{ date }}/">{{ date }}</a></li>
+        {%- endfor %}
     </ul>
     <p/>
     <p/>

@@ -35,7 +35,7 @@ Follow the instructions below to install the latest Ballerina version using the 
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/Library/Ballerina` directory.
 
-> **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew. Homebrew installs the Ballerina distribution in the `\usr\local\Cellar\ballerina` directory. 
+> **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew. Homebrew installs the Ballerina distribution in the `/usr/local/Cellar/ballerina/<BALLERINA-VERSION>/libexec` directory. 
 
     ```
     brew install ballerina
@@ -45,9 +45,9 @@ The package automatically sets your PATH environment variable for you. You may n
 
 ### Installing on Windows
 
-[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:\Program Files\Ballerina\` directory.
+[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:/Program Files/Ballerina/` directory.
 
-The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
+The installer should put the `C:/Program Files/Ballerina/<BALLERINA-DIRECTORY>/bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
 
 ### Installing on Linux
 
@@ -76,7 +76,7 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
  - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
  - **For Windows:** add a new environment variable specifying the following values:
    - **Variable name:** PATH
-   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, C:\Program Files\Ballerina\ballerina-<VERSION>\bin
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:/Program Files/Ballerina/ballerina-<VERSION>\bin
 
 ## Updating Ballerina
 

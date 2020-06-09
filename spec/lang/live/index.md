@@ -1,3 +1,3 @@
 ---
-redirect_to: /ballerina-spec/spec.html
+redirect_to: /spec/draft/
 ---

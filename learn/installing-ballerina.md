@@ -45,9 +45,9 @@ The package automatically sets your PATH environment variable for you. You may n
 
 ### Installing on Windows
 
-[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:/Program Files/Ballerina/` directory.
+[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:\Program Files\Ballerina` directory.
 
-The installer should put the `C:/Program Files/Ballerina/<BALLERINA-DIRECTORY>/bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
+The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
 
 ### Installing on Linux
 
@@ -76,12 +76,13 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
  - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
  - **For Windows:** add a new environment variable specifying the following values:
    - **Variable name:** PATH
-   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:/Program Files/Ballerina/ballerina-<VERSION>\bin
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin
 
 ## Updating Ballerina
 
-If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version by executing either of the commands below. 
-**Command** | **Description**
+If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version by executing either of the commands below.
+
+**Command**|**Description**
 :-----:|:-----:
 `ballerina dist update`|Update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version

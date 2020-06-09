@@ -29,7 +29,7 @@ redirect_from:
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
 
->**Info:** Ballerina installers support operating systems such as Windows, Ubuntu Linux, Red Hat Enterprise Linux, macOS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
+>**Info:** Ballerina installers support operating systems such as Windows, Ubuntu, Red Hat Enterprise Linux, macOS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
 
 ### Installing on macOS
 
@@ -37,9 +37,11 @@ Follow the instructions below to install the latest Ballerina version using the 
 
 > **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew.
 
-```
-brew install ballerina
-```
+    ```
+    brew install ballerina
+    ```
+
+    Homebrew installs the Ballerina distribution in the `\usr\local\Cellar\ballerina` directory. 
 
 The package automatically sets your PATH environment variable for you. You may need to restart any open Terminal sessions for the change to take effect.
 

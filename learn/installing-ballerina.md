@@ -29,25 +29,25 @@ redirect_from:
 
 Follow the instructions below to install the latest Ballerina version using the installer. The installer will automatically uninstall the old Ballerina version if you have one already installed.
 
->**Info:** Ballerina installers support operating systems such as Windows, Ubuntu Linux, Red Hat Enterprise Linux, macOS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
+>**Info:** Ballerina installers support operating systems such as Windows, Ubuntu, Red Hat Enterprise Linux, macOS, and Cent OS. If you are using an unsupported operating system, [install via the Ballerina language ZIP file](#installing-via-the-ballerina-language-zip-file).
 
 ### Installing on macOS
 
 [Download the package file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/Library/Ballerina` directory.
 
-> **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew.
+> **Info:** Alternatively, you can execute the command below to install Ballerina in macOS using Homebrew. Homebrew installs the Ballerina distribution in the `/usr/local/Cellar/ballerina/<BALLERINA-VERSION>/libexec` directory. 
 
-```
-brew install ballerina
-```
+    ```
+    brew install ballerina
+    ```
 
 The package automatically sets your PATH environment variable for you. You may need to restart any open Terminal sessions for the change to take effect.
 
 ### Installing on Windows
 
-[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:\Program Files\Ballerina\` directory.
+[Download the MSI file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `C:/Program Files/Ballerina/` directory.
 
-The installer should put the `C:\Program Files\Ballerina\<ballerina-directory>\bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
+The installer should put the `C:/Program Files/Ballerina/<BALLERINA-DIRECTORY>/bin` directory in your PATH environment variable. You may have to restart any open command prompts for the change to take effect.
 
 ### Installing on Linux
 
@@ -76,14 +76,14 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
  - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
  - **For Windows:** add a new environment variable specifying the following values:
    - **Variable name:** PATH
-   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, C:\Program Files\Ballerina\ballerina-<VERSION>\bin
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:/Program Files/Ballerina/ballerina-<VERSION>\bin
 
 ## Updating Ballerina
 
 If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version by executing either of the commands below. 
-
+**Command** | **Description**
 :-----:|:-----:
-`ballerina dist update`|update to the latest patch version of the active distribution
+`ballerina dist update`|Update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
 
 For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
@@ -133,8 +133,8 @@ Follow the steps below to build the project of the obtained source.
 
 2. Extract the built Ballerina distributions created in the locations below: 
 
-    - **runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
-    - **runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
+    - **Runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
+    - **Runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
 
 >**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 

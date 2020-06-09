@@ -81,9 +81,9 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
 ## Updating Ballerina
 
 If you already have a jBallerina version above 1.1.0 installed, you can use the update tool to update to the latest jBallerina version by executing either of the commands below. 
-
+**Command** | **Description**
 :-----:|:-----:
-`ballerina dist update`|update to the latest patch version of the active distribution
+`ballerina dist update`|Update to the latest patch version of the active distribution
 `ballerina dist pull jballerina-<JBALLERINA-VERSION>`|Fetch a specific distribution and set it as the active version
 
 For more information, see [Keeping Ballerina Up to Date](/learn/keeping-ballerina-up-to-date/).
@@ -133,8 +133,8 @@ Follow the steps below to build the project of the obtained source.
 
 2. Extract the built Ballerina distributions created in the locations below: 
 
-    - **runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
-    - **runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
+    - **Runtime only:** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina/build/distributions/jballerina-<version>-SNAPSHOT.zip`
+    - **Runtime and tools (e.g., Ballerina Language Server):** `<BALLERINA_PROJECT_ROOT>/distribution/zip/jballerina-tools/build/distributions/jballerina-tools-<version>-SNAPSHOT.zip`
 
 >**Note:** If you face an IOException error stating “Too many open files”, this is due to the default number of possible open files being set to a lower number on your operating system than required for Ballerina to be compiled. You may have to increase the number of open files/file descriptors (FD) on your operating system to 1000000 (or higher).
 

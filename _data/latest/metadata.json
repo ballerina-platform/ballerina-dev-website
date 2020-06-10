@@ -3,7 +3,7 @@
 	"release-date":"2020-05-15",
 	"windows-installer":"ballerina-windows-installer-x64-1.2.4.msi",
 	"windows-installer-size":"131mb",
-	"zip-installer":"ballerina-windows-installer-x64-1.2.4.zip",
+	"zip-installer":"ballerina-1.2.4.zip",
 	"zip-installer-size":"105mb",
 	"linux-installer":"ballerina-linux-installer-x64-1.2.4.deb",
 	"linux-installer-size":"127mb",

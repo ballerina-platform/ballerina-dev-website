@@ -51,6 +51,8 @@ This downloads the extension and installs it.
 
 1. Download the [Visual Studio Code Ballerina Extension](https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina).
 
+>**Tip:** Alternatively, you can download the latest [VSIX package of the VSCode Ballerina Extension](https://dist.ballerina.io/downloads/1.2.4/ballerina-1.2.4.vsix) and its [md5](https://dist.ballerina.io/downloads/1.2.4/ballerina-1.2.4.vsix.md5), [SHA-1](https://dist.ballerina.io/downloads/1.2.4/ballerina-1.2.4.vsix.sha1), and [asc](https://dist.ballerina.io/downloads/1.2.4/ballerina-1.2.4.vsix.asc) certificates.
+
 2. Follow either of the below approaches to install the extension.
     - [Using the VS Code editor](#using-the-vs-code-editor)
     - [Using the Command Line](#using-the-command-line)

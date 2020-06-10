@@ -76,7 +76,7 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
  - **For Linux or macOS:** set the PATH environment variable to point to the bin directory of the unzipped Ballerina distribution.
  - **For Windows:** add a new environment variable specifying the following values:
    - **Variable name:** PATH
-   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin
+   - **Variable value:** The location of the bin directory of the unzipped Ballerina distribution. For example, `C:\Program Files\Ballerina\ballerina-<VERSION>\bin`
 
 ## Updating Ballerina
 

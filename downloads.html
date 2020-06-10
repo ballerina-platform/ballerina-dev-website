@@ -27,10 +27,12 @@ redirect_from:
                 <div class="cFeaturedVersion">
                     <h2>Current version: <span id="versionInfo">{{ site.data.latest.metadata.version }} ({{ site.data.latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
                     <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
-                        <p>If you are already using jBallerina version 1.2.0, you can directly execute following command:</p>
-                        <pre>ballerina dist update</pre>
-                        <p>If you are already using the jBallerina version 1.1.0 - 1.2.0, you can directly update your distribution to jBallerina {{ site.data.latest.metadata.version }} by executing the below command:</p>
-                        <pre>ballerina dist pull jballerina-{{ site.data.latest.metadata.version }}</pre>
+                        <p>If you already have the jBallerina distributions below installed, you can use the Ballerina Update Tool to directly update them to jBallerina {{ site.data.latest.metadata.version }} by executing the commands below.</p>
+                        <br>
+                        <ul>
+                            <li><p>For jBallerina version 1.2.0: <pre>ballerina dist update</pre></p></li>
+                                <li><p>For jBallerina version 1.1.0 - 1.2.0: <pre>ballerina dist pull jballerina-{{ site.data.latest.metadata.version }}</pre></p>
+                    </li></ul>
                         <p>For further details, see the <a href="https://ballerina.io/downloads/release-notes/">Release Note</a>.</p>
                     </div>
                 </div>
@@ -90,9 +92,20 @@ redirect_from:
             <div class="cReleaseNotes">
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>
+            <div class="cReleaseNotes">
+            <h2>What's Next?</h2>
+                <p>
+                    After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                </p>
+            </div>
         </div>
         <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers">
+
+                <h2>What's Next?</h2>
+                <p>
+                    After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                </p>
                 <h2>Other Installation Packages</h2>
                 <div class="cInstallers">
                     <h3 class="release-version">Stable <span id="stableInfo">{{ site.data.latest.metadata.version }} ({{ site.data.latest.metadata.release-date | date: "%B %e, %Y" }})</span></h3>
@@ -144,17 +157,11 @@ redirect_from:
                             <table id="nightlyPackages1"></table>
                         </div>
                     </div></div>
-                    <div class="clearfix"></div>-->
+                    <div class="clearfix"></div>
                 </div>
             </div>            
         </div>-->
-        <div>
-            <h2>What's Next?</h2>
-            <p>
-                After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina-platform.github.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
-            </p>
-
-        </div>
+    
     </div>
 </div>
 

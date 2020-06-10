@@ -108,4 +108,5 @@ let redirections = {
     "/1.1/learn/extending-with-compiler-extensions":"/1.1/learn/how-to-extend-ballerina/",
     "/1.0/learn/extending-with-compiler-extensions":"/1.0/learn/how-to-extend-ballerina/",
     "/0.991/learn/extending-with-compiler-extensions":"/0.991/learn/how-to-extend-ballerina/",
+    "/learn/by-example/documentation.html":"/learn/by-example/basic-documentation.html"
 };

@@ -17,9 +17,9 @@ redirect_from:
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cDownloadsHeader">
                 <h1>Downloads</h1>
-                <p>
+                <!--<p>
                     After downloading a Ballerina distribution from below based on your system, follow the <a href="https://ballerina-platform.github.io/learn/installing-ballerina">installation instructions</a> or <a href="https://ballerina.io/learn/installing-ballerina/#installing-from-source">build instructions</a>.
-                </p>
+                </p>-->
             </div>
         </div>
         <div class="row">
@@ -71,6 +71,17 @@ redirect_from:
                     <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.asc">asc</a></li>
                 </ul>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
+                <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.macos-installer }}">
+                    <div>ZIP Archive</div>
+                    <div class="cSize">Installer zip <span id="packMacName">{{ site.data.latest.metadata.macos-installer-size }}</span></div>
+                </a>
+                <ul class="cDiwnloadSubLinks">
+                    <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.md5">md5</a></li> 
+                    <li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
+                    <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.asc">asc</a></li>
+                </ul>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cReleaseNotes">
@@ -80,12 +91,12 @@ redirect_from:
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+        <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers">
                 <h2>Other Installation Packages</h2>
                 <div class="cInstallers">
                     <h3 class="release-version">Stable <span id="stableInfo">{{ site.data.latest.metadata.version }} ({{ site.data.latest.metadata.release-date | date: "%B %e, %Y" }})</span></h3>
-                    <!--<div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
+                    <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
                         <div class="insPackages0container">
                             <table id="insPackages0">
                                 <tr><td style="width: 96%">{{ site.data.latest.metadata.windows-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.latest.metadata.windows-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.asc">asc</a></td></tr>
@@ -94,20 +105,20 @@ redirect_from:
                                 <tr><td style="width: 96%">ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.asc">asc</a></td></tr>
                             </table>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cRightTable">
                         <div class="insPackages1container">
                             <table id="insPackages1">
                                 <tr><td style="width: 96%">ballerina-{{ site.data.latest.metadata.version }}.zip</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.latest.metadata.version }}.zip"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.asc">asc</a></td></tr>
                                 <tr><td style="width: 96%">ballerina-{{ site.data.latest.metadata.version }}.vsix</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.asc">asc</a></td></tr>
-                                <!--<tr><td style="width: 96%">ballerina-metrics-grafana-dashboard-prometheus.json</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-metrics-grafana-dashboard-prometheus.json" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-metrics-grafana-dashboard-prometheus.json-{{ site.data.latest.metadata.version }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
-                                <tr><td style="width: 96%">ballerina-intellij-idea-plugin</td><td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>-->
+                                <tr><td style="width: 96%">ballerina-metrics-grafana-dashboard-prometheus.json</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-metrics-grafana-dashboard-prometheus.json" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-metrics-grafana-dashboard-prometheus.json-{{ site.data.latest.metadata.version }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
+                                <tr><td style="width: 96%">ballerina-intellij-idea-plugin</td><td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
                             </table>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    <!--<div id="devPackContainer">
+                    <div id="devPackContainer">
                     <h3 class="release-version">RC <span id="devInfo"></span></h3>
                     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
                         <div class="devPackages0container">
@@ -136,6 +147,13 @@ redirect_from:
                     <div class="clearfix"></div>-->
                 </div>
             </div>            
+        </div>-->
+        <div>
+            <h2>What's Next?</h2>
+            <p>
+                After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina-platform.github.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+            </p>
+
         </div>
     </div>
 </div>

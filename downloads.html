@@ -52,9 +52,10 @@ redirect_from:
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
-                <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.linux-installe }}">
-                    <div>Linux</div>
-                    <div class="cSize">deb Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
+               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+                <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs" data-download="downloads" data-pack="{{ site.data.latest.metadata.linux-installe }}">
+                    <div>.deb</div>
+                    <div class="cSize">Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
                 </a>
                 <ul class="cDiwnloadSubLinks">
                     <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}	/{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
@@ -62,7 +63,19 @@ redirect_from:
                     <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.asc">asc</a></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+                <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs" data-download="downloads" data-pack="{{ site.data.latest.metadata.linux-installe }}">
+                    <div>.rpm</div>
+                    <div class="cSize">Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
+                </a>
+                <ul class="cDiwnloadSubLinks">
+                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}	/{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
+                    <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
+                    <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.asc">asc</a></li>
+                </ul>
+            </div>
+     </div>
+     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
                 <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.macos-installer }}">
                     <div>macOS</div>
                     <div class="cSize">Installer pkg <span id="packMacName">{{ site.data.latest.metadata.macos-installer-size }}</span></div>
@@ -169,4 +182,9 @@ redirect_from:
 .nav > li.cVersionItem {
     display: none !important;
 }
+a.cDownload.cLinuxPKGs {
+        margin: 0 5px;
+    }
 </style>
+
+   

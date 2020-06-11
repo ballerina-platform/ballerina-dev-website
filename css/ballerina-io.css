@@ -1217,7 +1217,14 @@ cursor: pointer;
     
 
 
-}  
+} 
+
+pre.cInfoCode {
+    background-color: #F5F6F6;
+    border: 1px solid #e1e4e5;
+    padding: 12px !important;
+    margin-left: 25px !important;
+}
 
 
 .cSecondCTAcontainer-left {

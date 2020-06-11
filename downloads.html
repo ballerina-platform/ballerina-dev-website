@@ -58,7 +58,7 @@ redirect_from:
                     <div class="cSize">Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
                 </a>
                 <ul class="cDiwnloadSubLinks">
-                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}	/{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
+                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }} /{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
                     <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
                     <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.asc">asc</a></li>
                 </ul>
@@ -69,7 +69,7 @@ redirect_from:
                     <div class="cSize">Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
                 </a>
                 <ul class="cDiwnloadSubLinks">
-                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}	/{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
+                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }} /{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
                     <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
                     <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.asc">asc</a></li>
                 </ul>
@@ -98,21 +98,45 @@ redirect_from:
                 </ul>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+        <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">-->
             <div class="cReleaseNotes">
                 <p><a href="/downloads/release-notes">RELEASE NOTES ></a></p>
             </div>
             <div class="cReleaseNotes">
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+            <div class="row">
+            <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+                <div class="cInstallers">
+                    <h2>Other Installation Options</h2>
+                    <!--<div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
+                        <div class="insPackages0container">-->
+                            <table id="insPackages0">
+                                <tr><td style="width: 50%">Install from source <a href="/learn/installing-ballerina/#building-from-source" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                                <tr><td style="width: 50%">Install using macOS Homebrew <a href="/learn/installing-ballerina/#installing-on-macos" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                            </table>
+                        <!--</div>
+                    </div>-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+
+                    <h2>What's Next?</h2>
+                <p>
+                    After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                </p>
+                    </div>
+                </div>
+            </div></div>
+
+
+            <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
             <h2>What's Next?</h2>
                 <p>
                     After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
                 </p>
             </div>
+
         </div>
-        <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers">
 
                 <h2>What's Next?</h2>
@@ -186,5 +210,3 @@ a.cDownload.cLinuxPKGs {
         margin: 0 5px;
     }
 </style>
-
-   

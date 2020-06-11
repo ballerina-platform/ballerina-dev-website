@@ -1,10 +1,13 @@
 ---
 layout: ballerina-inner-page
 title: Expressions
-permalink: /learn/style-guide/expressions/
+permalink: /learn/coding-conventions/expressions/
 redirect_from:
   - /v1-2/learn/style-guide/expressions/
   - /v1-2/learn/style-guide/expressions
+  - /learn/style-guide/expressions
+  - /learn/style-guide/expressions/
+  - /learn/coding-conventions/expressions
 ---
 
 # Expressions

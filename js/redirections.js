@@ -108,5 +108,14 @@ let redirections = {
     "/1.1/learn/extending-with-compiler-extensions":"/1.1/learn/how-to-extend-ballerina/",
     "/1.0/learn/extending-with-compiler-extensions":"/1.0/learn/how-to-extend-ballerina/",
     "/0.991/learn/extending-with-compiler-extensions":"/0.991/learn/how-to-extend-ballerina/",
-    "/learn/by-example/documentation.html":"/learn/by-example/basic-documentation.html"
+    "/learn/by-example/documentation.html":"/learn/by-example/basic-documentation.html",
+
+    "/1.1/learn/setting-up-visual-studio-code/language-intelligence":"/1.1/learn/vscode-plugin/language-intelligence/",
+    "/1.1/learn/tools-ides/setting-up-visual-studio-code/language-intelligence":"/1.1/learn/vscode-plugin/language-intelligence/",
+    "/1.0/learn/setting-up-visual-studio-code/language-intelligence/":"/1.0/learn/vscode-plugin/language-intelligence",
+    "/1.0/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/":"/1.0/learn/vscode-plugin/language-intelligence",
+    "/0.991/learn/setting-up-visual-studio-code/language-intelligence/":"/0.991/learn/vscode-plugin/language-intelligence",
+    "/0.991/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/":"/0.991/learn/vscode-plugin/language-intelligence",
+
+
 };

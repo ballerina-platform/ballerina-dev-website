@@ -40,7 +40,8 @@ For the current state of the language specification of the the Ballerina Swan La
 
 ### Draft language specification 
 
-For the draft language specification of the Ballerina Swan Lake release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
+- For the draft language specifications of the Ballerina Swan Lake release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
+- For the latest draft language specification of the Ballerina Swan Lake release, see the [draft language specification](https://ballerina.io/spec/lang/draft/latest/).
 
 ### Proposals for improvements/enhancements
 

@@ -1,10 +1,13 @@
 ---
 layout: ballerina-inner-page
 title: Statements
-permalink: /learn/style-guide/statements/
+permalink: /learn/coding-conventions/statements/
 redirect_from:
   - /v1-2/learn/style-guide/statements/
   - /v1-2/learn/style-guide/statements
+  - /learn/style-guide/statements
+  - /learn/style-guide/statements/
+  - /learn/coding-conventions/statements
 ---
 
 # Statements

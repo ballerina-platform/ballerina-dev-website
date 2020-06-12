@@ -1,10 +1,13 @@
 ---
 layout: ballerina-inner-page
 title: Operators, keywords, and types
-permalink: /learn/style-guide/operators_keywords_and_types/
+permalink: /learn/coding-conventions/operators_keywords_and_types/
 redirect_from:
   - /v1-2/learn/style-guide/operators_keywords_and_types/
   - /v1-2/learn/style-guide/operators_keywords_and_types
+  - /learn/style-guide/operators_keywords_and_types
+  - /learn/style-guide/operators_keywords_and_types/
+  - /learn/coding-conventions/operators_keywords_and_types
 ---
 
 # Operators, keywords, and types

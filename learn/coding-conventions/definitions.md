@@ -1,10 +1,13 @@
 ---
 layout: ballerina-inner-page
 title: Top Level definitions
-permalink: /learn/style-guide/definitions/
+permalink: /learn/coding-conventions/definitions/
 redirect_from:
   - /v1-2/learn/style-guide/definitions/
   - /v1-2/learn/style-guide/definitions
+  - /learn/style-guide/definitions
+  - /learn/style-guide/definitions/
+  - /learn/coding-conventions/definitions
 ---
 
 # Top Level definitions

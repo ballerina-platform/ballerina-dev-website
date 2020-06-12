@@ -1,6 +1,7 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Statements
+active: statements
 permalink: /learn/coding-conventions/statements/
 redirect_from:
   - /v1-2/learn/style-guide/statements/

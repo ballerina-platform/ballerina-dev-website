@@ -1,13 +1,15 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Top Level definitions
-permalink: /learn/coding-conventions/definitions/
+active: definitions
+permalink: /learn/coding-conventions/top-level-definitions/
 redirect_from:
   - /v1-2/learn/style-guide/definitions/
   - /v1-2/learn/style-guide/definitions
   - /learn/style-guide/definitions
   - /learn/style-guide/definitions/
   - /learn/coding-conventions/definitions
+  - /learn/coding-conventions/top-level-definitions
 ---
 
 # Top Level definitions

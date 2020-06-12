@@ -1,6 +1,7 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Operators, keywords, and types
+active: operators_keywords_and_types
 permalink: /learn/coding-conventions/operators_keywords_and_types/
 redirect_from:
   - /v1-2/learn/style-guide/operators_keywords_and_types/

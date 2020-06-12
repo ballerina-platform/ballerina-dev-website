@@ -1,6 +1,7 @@
 ---
-layout: ballerina-inner-page
+layout: ballerina-left-nav-pages
 title: Expressions
+active: expressions
 permalink: /learn/coding-conventions/expressions/
 redirect_from:
   - /v1-2/learn/style-guide/expressions/

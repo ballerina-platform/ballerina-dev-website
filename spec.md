@@ -23,7 +23,7 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ## Ballerina Language specifications and proposals
 
-### Language specification 
+### Release language specification 
 
 **Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
 
@@ -33,6 +33,14 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 | 2019R3 | 2019-09-07 | Stable release used as the basis for jBallerina 1.0.0 implementation. Mostly a cleanup from 2019R2 | <a target="_blank" href="/spec/lang/2019R3/">Read</a> |
 | 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/2019R2/">Read</a> |
 | 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/2019R1/">Read</a> |
+
+### Master language specification 
+
+For the current state of the language specification of the the Ballerina Swan Lake release, see the [master language specification](https://ballerina.io/spec/lang/master/).
+
+### Draft language specification 
+
+For the draft language specification of the Ballerina Swan Lake release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
 
 ### Proposals for improvements/enhancements
 

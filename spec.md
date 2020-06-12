@@ -25,7 +25,7 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ### Release language specification 
 
-**Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
+> **Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
 
 | Version | Release Date | Description | Link |
 | ------- | ------------ | ----------- | ---- |

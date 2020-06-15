@@ -23,7 +23,9 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 
 ## Ballerina Language specifications and proposals
 
-### Release language specification 
+### Released specifications
+
+The below are the most stable versions of the lanuguage specification, which are in sync with the Ballerina releases.
 
 > **Note:** The `ChangeLog` section of the specification identifies the changes that have occurred in each version of the specification.
 
@@ -34,14 +36,14 @@ From the start of 2019, Ballerina  specifications are versioned chronologically 
 | 2019R2 | 2019-07-01 | Major revised edition of the language | <a target="_blank" href="/spec/lang/2019R2/">Read</a> |
 | 2019R1 | 2019-05-01 | First release with new versioning scheme with significant revisions | <a target="_blank" href="/spec/lang/2019R1/">Read</a> |
 
-### Master language specification 
+### Working drafts 
 
-For the current state of the language specification of the the Ballerina Swan Lake release, see the [master language specification](https://ballerina.io/spec/lang/master/).
+- For working draft language specifications of a Ballerina release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
+- For the latest working draft language specification of a Ballerina release, see the [latest draft language specification](https://ballerina.io/spec/lang/draft/latest/).
 
-### Draft language specification 
+### GitHub master 
 
-- For the draft language specifications of the Ballerina Swan Lake release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
-- For the latest draft language specification of the Ballerina Swan Lake release, see the [latest draft language specification](https://ballerina.io/spec/lang/draft/latest/).
+For a current repo snapshot of the language specification including all changes, see the [master language specification](https://ballerina.io/spec/lang/master/). 
 
 ### Proposals for improvements/enhancements
 

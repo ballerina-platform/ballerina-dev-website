@@ -44,7 +44,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 ### GitHub master 
 
-For a current repo snapshot of the language specification including all changes, see the<a target="_blank" href="https://ballerina.io/spec/lang/master/">master language specification</a>.
+For a current repo snapshot of the language specification including all changes, see the <a target="_blank" href="https://ballerina.io/spec/lang/master/">master language specification</a>.
 
 
 ## Proposals for improvements/enhancements

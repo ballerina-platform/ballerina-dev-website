@@ -6,8 +6,8 @@ token = sys.argv[1]
 version = str(sys.argv[2])
 sha256 = sys.argv[3]
 url = sys.argv[4]
-sha256_replacement = '  sha256 "'+sha256
-url_replacement = '  url "'+url
+sha256_replacement = '  sha256 "' + sha256 + '"'
+url_replacement = '  url "' + url + '"'
 ballerina_rb_file_contents = ""
 
 github_instance = Github(token)

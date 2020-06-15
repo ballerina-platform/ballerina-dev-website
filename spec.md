@@ -38,12 +38,14 @@ The below are the most stable versions of the lanuguage specification, which are
 
 ### Working drafts 
 
-- For working draft language specifications of a Ballerina release, see the [draft language specification](https://ballerina.io/spec/lang/draft/).
-- For the latest working draft language specification of a Ballerina release, see the [latest draft language specification](https://ballerina.io/spec/lang/draft/latest/).
+- For working draft language specifications of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/">draft language specification</a>.
+- For the latest working draft language specification of a Ballerina release, see the <a target="_blank" href="https://ballerina.io/spec/lang/draft/latest/">latest draft language specification</a>.
+
 
 ### GitHub master 
 
-For a current repo snapshot of the language specification including all changes, see the [master language specification](https://ballerina.io/spec/lang/master/). 
+For a current repo snapshot of the language specification including all changes, see the<a target="_blank" href="https://ballerina.io/spec/lang/master/">master language specification</a>.
+
 
 ## Proposals for improvements/enhancements
 

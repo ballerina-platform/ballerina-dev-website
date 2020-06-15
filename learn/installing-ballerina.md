@@ -68,7 +68,7 @@ rpm -i ballerina-linux-installer-x64-1.2.4.rpm
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have a supported Java Runtime Environment (JRE) installed. It is recommended to use the [AdaptOpenJRE](https://adoptopenjdk.net/) version 1.8 or above.
 
-1. [Download the Ballerina language ZIP file](https://dist.ballerina.io/downloads/1.2.4/ballerina-1.2.4.zip) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
+1. <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.zip-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.zip-installer }}"> Download the Ballerina language ZIP file </a> and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<VERSION> in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
 

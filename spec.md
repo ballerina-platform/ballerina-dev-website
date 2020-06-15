@@ -45,7 +45,7 @@ The below are the most stable versions of the lanuguage specification, which are
 
 For a current repo snapshot of the language specification including all changes, see the [master language specification](https://ballerina.io/spec/lang/master/). 
 
-### Proposals for improvements/enhancements
+## Proposals for improvements/enhancements
 
 Work in progress proposals for improving Ballerina can be found at the following URL: <a target="_blank" href="https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md">https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/README.md</a>.
 

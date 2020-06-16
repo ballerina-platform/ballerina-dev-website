@@ -40,24 +40,25 @@ h2 {
 }
 
 a.cDownload {
-    display: block;
-    margin: 0 15px;
-    transition: none !important;
-    font-size: 25px;
-    font-weight: 200;
-    background-color: #57595d;
-    color: #ffffff !important;
-    padding: 15px 10px 20px 67px;
-    background-image: url("../img/download-bg.svg");
-    background-repeat: no-repeat;
-    background-position: left 25px top 18px;
-    text-decoration: none;
-    min-height: 85px;
+	display: block;
+	margin: 0 15px;
+	transition: none !important;
+	font-size: 25px;
+	font-weight: 200;
+	background-color: #57595d;
+	color: #ffffff !important;
+	padding: 20px 10px 20px 60px;
+	background-image: url("../img/download-bg.svg");
+	background-repeat: no-repeat;
+	background-position: left 20px top 20px;
+	text-decoration: none;
+	min-height: 60px;
+	line-height: 35px;
 }
 
 a.cDownload .cSize {
     font-family: monaco, Consolas, "Lucida Console", monospace;
-    font-size: 12px;
+    font-size: 14px;
     color: #d9dadb;
     margin-top: -4px;
 }
@@ -176,7 +177,7 @@ ul.cDiwnloadSubLinks li {
     list-style: none;
     float: right;
     display: inline-block;
-    margin-right: 25px;
+    margin-right: 8px;
     font-size: 13px;
 }
 
@@ -273,6 +274,25 @@ pre code {
     white-space: pre;
     word-wrap: normal;
     display: block;
+}
+
+
+.cWindows , .cLinux , .cMac {
+    
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    line-height: 32px;
+    background-size: 30px;
+}
+.cWindows {
+    background-image: url("/img/downloads/windows.svg");
+}
+
+.cLinux {
+    background-image: url("/img/downloads/linux.svg");
+}
+.cMac {
+    background-image: url("/img/downloads/mac.svg");
 }
 
 @media screen and (max-width: 991px) {

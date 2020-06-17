@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   search-index-gen:

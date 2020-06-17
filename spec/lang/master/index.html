@@ -324,6 +324,8 @@ mailing list.
 </li>
 <li>6.36.6 <a href="#section_6.36.6">Select clause</a>
 </li>
+<li>6.36.7 <a href="#section_6.36.7">On conflict clause</a>
+</li>
 </ul>
 </li>
 <li>6.37 <a href="#section_6.37">XML navigation expression</a><ul>
@@ -5619,7 +5621,7 @@ syntax. In this version of Ballerina, the functionality is similar to a list
 comprehensions; future versions will provided richer functionality.
 </p>
 
-<pre class="grammar"><span class="ntdfn" id="query-expr">query-expr</span> := [<a href="#query-construct-type"><span class="ntref">query-construct-type</span></a>] <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#select-clause"><span class="ntref">select-clause</span></a>
+<pre class="grammar"><span class="ntdfn" id="query-expr">query-expr</span> := [<a href="#query-construct-type"><span class="ntref">query-construct-type</span></a>] <a href="#query-pipeline"><span class="ntref">query-pipeline</span></a> <a href="#select-clause"><span class="ntref">select-clause</span></a> [<a href="#on-conflict-clause"><span class="ntref">on-conflict-clause</span></a>]
 <span class="ntdfn" id="query-construct-type">query-construct-type</span> :=
   <code>table</code> <a href="#key-specifier"><span class="ntref">key-specifier</span></a>
   | <code>stream</code>
@@ -5692,7 +5694,8 @@ basic types that a query expression can construct.
 When during the construction of a table, an emitted value is added as a new
 member, it replaces any existing member with the same key value; when a new
 member replaces an existing member, it will have the same position in the order
-of members as the existing member.
+of members as the existing member. This behavior may be controlled by an
+<code>on conflict</code> clause.
 </p>
 <p>
 Variables bound by the clauses of a query-pipeline are implicitly final, and
@@ -5885,6 +5888,31 @@ A <code>select</code> clause is executed as follows:
 </li> 
 </ul>
 </section>
+
+<section>
+<h4 id="section_6.36.7">6.36.7 On conflict clause</h4>
+<pre class="grammar">
+<span class="ntdfn" id="on-conflict-clause">on-conflict-clause</span> := <code>on</code> <code>conflict</code> <a href="#expression"><span class="ntref">expression</span></a>
+</pre>
+<p>
+An <code>on conflict</code> clause is allowed only for a query expression that
+constructs a table with a key sequence. The expression is evaluated when the
+<code>select</code> clause emits a value that conflicts with a previous value,
+in the sense that both values have the same key value in the table. The
+expression is evaluated with the same frame in scope as the select clause that
+emitted the value that conflicts with the previous value. The static type of the
+expression must be a subtype of <code>error?</code>. If the result of evaluating
+the expression is an error <var>e</var>, then the result of evaluating the
+query-expr is <var>e</var>. Otherwise, the result must be nil, and the earlier
+new value replaces the earlier conflicting value, in the same way as if there
+not been an <code>on conflict</code> clause.
+</p>
+<p>
+Note that the expression may have side-effects; for example, it may call a
+function that logs an error.
+</p>
+</section>
+
 </section>
 <section>
 <h3 id="section_6.37">6.37 XML navigation expression</h3>
@@ -8568,8 +8596,8 @@ structural types and no longer has preview status.</li>
 of a parameter of typedesc type.</li>
 <li>The XML item-specific subtypes can be used as constructors, both in
 expressions and in binding patterns.</li>
-<li>Query expressions can have a <code>join</code> clause.</li>
-<li>Query expressions can have a <code>limit</code> clause.</li>
+<li>Query expressions support some new clauses: <code>join</code> clause,
+<code>limit</code> clause and <code>on conflict</code> clause.</li>
 </ol>
 </section>
 <section>

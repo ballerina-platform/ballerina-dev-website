@@ -5,7 +5,7 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
     
 jobs:
   publish_idea_plugin:
@@ -28,7 +28,7 @@ jobs:
           
     - name: Build and publish plugin
       run: |
-        version="`jq -r '.version' _data/latest/metadata.json`"
+        version="`jq -r '.version' _data/stable-latest/metadata.json`"
         BAL_VERSION="v${version}"
 
         cd ballerina-lang/tool-plugins/intellij/

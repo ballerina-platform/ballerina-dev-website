@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   add-release-note:
@@ -22,7 +22,7 @@ jobs:
 
     - name: Create new release note
       run: |
-        VERSION="`jq -r '.version' _data/latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
         mkdir downloads/release-notes/$VERSION
         cp downloads/RELEASE_NOTE.md downloads/release-notes/$VERSION
 
@@ -34,7 +34,7 @@ jobs:
         git config --global user.email "ballerina-bot@ballerina.org"
         git config --global user.name "ballerina-bot"
         
-        VERSION="`jq -r '.version' _data/latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
         git add downloads/release-notes/$VERSION
         git commit --allow-empty -m 'Add releaste note template for the new release'
         

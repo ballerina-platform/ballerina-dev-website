@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   update-rn-archive-pages:
@@ -26,7 +26,7 @@ jobs:
       run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
     - name: Generate the new release-notes-json file
-      run: python3 ballerina-release/publish_scripts/publish_json.py _data/release_notes_versions.json _data/latest/metadata.json
+      run: python3 ballerina-release/publish_scripts/publish_json.py _data/release_notes_versions.json _data/stable-latest/metadata.json
 
     - name: Copy newly generated release-notes-json file
       run: cp ballerina-release/publish_scripts/target/output/release_notes_versions.json _data/release_notes_versions.json

@@ -5,7 +5,7 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
                         
 jobs:
   publish:
@@ -23,7 +23,7 @@ jobs:
         id: version
         run: |
           npm install
-          jq .version _data/latest/metadata.json
+          jq .version _data/stable-latest/metadata.json
           python3  .github/scripts/publish_vscode_plugin.py  
              
       - name: Execute the VSCE commands

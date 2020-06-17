@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   bbe-gen:
@@ -33,7 +33,7 @@ jobs:
     - name: Generate BBEs
       run: |
         cd ballerina-release
-        ./ballerinaByExample/build-bbe-wf.sh ../_data/latest/metadata.json
+        ./ballerinaByExample/build-bbe-wf.sh ../_data/stable-latest/metadata.json
 
     - name: Remove old examples file
       run: git rm -r learn/by-example

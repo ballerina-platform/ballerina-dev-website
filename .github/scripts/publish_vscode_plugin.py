@@ -1,7 +1,7 @@
 import json
 import os
 
-with open('_data/latest/metadata.json') as f:
+with open('_data/stable-latest/metadata.json') as f:
     data =json.load(f)
 
 version = data['version'] 

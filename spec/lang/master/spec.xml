@@ -3478,6 +3478,8 @@ associativity.
 <code>(x) => y</code>
 <br />
 <code>let x = y in z</code>
+<br />
+<code>from x in y select z</code>
    </td>
    <td>right</td>
   </tr>
@@ -5262,7 +5264,7 @@ syntax. In this version of Ballerina, the functionality is similar to a list
 comprehensions; future versions will provided richer functionality.
 </p>
 
-<pre class="grammar"><dfn>query-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr>
+<pre class="grammar"><dfn>query-expr</dfn> := [<abbr>query-construct-type</abbr>] <abbr>query-pipeline</abbr> <abbr>select-clause</abbr> [<abbr>on-conflict-clause</abbr>]
 <dfn>query-construct-type</dfn> :=
   <code>table</code> <abbr>key-specifier</abbr>
   | <code>stream</code>
@@ -5271,6 +5273,8 @@ comprehensions; future versions will provided richer functionality.
    <abbr>from-clause</abbr>
    | <abbr>where-clause</abbr>
    | <abbr>let-clause</abbr>
+   | <abbr>join-clause</abbr>
+   | <abbr>limit-clause</abbr>
 </pre>
 <p>
 A query expression consists of a sequence of clauses. The semantics of clauses
@@ -5333,7 +5337,8 @@ basic types that a query expression can construct.
 When during the construction of a table, an emitted value is added as a new
 member, it replaces any existing member with the same key value; when a new
 member replaces an existing member, it will have the same position in the order
-of members as the existing member.
+of members as the existing member. This behavior may be controlled by an
+<code>on conflict</code> clause.
 </p>
 <p>
 Variables bound by the clauses of a query-pipeline are implicitly final, and
@@ -5413,6 +5418,100 @@ E<sub>2</sub></code>.
 </section>
 
 <section>
+<h4>Join clause</h4>
+<pre class="grammar"><dfn>join-clause</dfn> := <code>join</code> <abbr>typed-binding-pattern</abbr> <code>in</code> <abbr>expression</abbr> <abbr>join-on-condition</abbr>
+<dfn>join-on-condition</dfn> := <code>on</code> <abbr>expression</abbr> <code>equals</code> <abbr>expression</abbr>
+</pre>
+<p>
+A join clause performs an inner equijoin.
+</p>
+<p>
+A <code>join</code> clause is executed as follows:
+</p>
+<ul>
+<li>compute a mapping for the right side of the join; during this computation
+variable bindings from input frames are not in scope:
+<ul>
+<li>create an empty mapping <var>m</var> that maps from keys to lists of frames
+(using <a href="#DeepEquals">DeepEquals</a> to compare keys);</li>
+<li>evaluate the expression following <code>in</code> resulting in an iterable
+value <var>c</var>;</li>
+<li>create an Iterator object <var>i</var> from <var>c</var>;</li>
+<li>do the following in a loop <var>L</var>
+<ul>
+<li>call <code><var>i</var>.next()</code> resulting in a value <var>r</var>;</li>
+<li>if <var>r</var> is an error, then complete execution of the join-clause
+early with error <var>r</var>;</li>
+<li>if <var>r</var> is <code>()</code>, stop loop <var>L</var>;</li>
+<li>let <var>v</var> be <code><var>r</var>.value</code>;</li>
+<li>let <var>f</var> be a frame with the result of binding the
+typed-binding-pattern to <var>v</var>;</li>
+<li>evaluate the expression to right of <code>equals</code> with <var>f</var>
+in scope resulting in a value <var>k</var>;</li>
+<li>add an entry to <var>m</var> with key <var>k</var> and and frame <var>f</var>;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>for each input frame <var>f</var>
+<ul>
+<li>evaluate the expression to the left of <code>equals</code> with frame <var>f</var>
+in scope resulting in a value <var>k</var>;</li>
+<li>let <var>fs</var> be the list of frames for key <var>k</var> in <var>m</var>;</li>
+<li>for each frame <var>f'</var> in <var>fs</var>
+<ul>
+<li>emit a frame consisting of <var>f</var> augmented with <var>f'</var>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+In the above, if <var>c</var> evaluates to a table, and the result of evaluating
+the expression to the right of <code>equals</code> for a member of the table
+will always be the key value for that member of the table, then the above can be
+optimized by using the table instead of creating a new mapping.
+</p>
+<p>
+Variables bound by previous clauses are not in scope for the expression
+following <code>in</code>, nor for the expression on the right of
+<code>equals</code>. Variables bound by the typed-binding-pattern are not in
+scope for the expression following <code>in</code>, nor for the expression on
+the left of <code>equals</code>.
+</p>
+
+</section>
+
+<section>
+<h4>Limit clause</h4>
+<pre class="grammar">
+<dfn>limit-clause</dfn> := <code>limit</code> <abbr>expression</abbr>
+</pre>
+<p>
+A <code>limit</code> clause limits the number of frames emitted by a query pipeline.
+</p>
+<p>
+A <code>limit</code> clause is executed as follows:
+</p>
+<ul>
+<li>evaluate expression resulting in a value <var>n</var>; variable bindings
+from input frames are not in scope for this evaluation;</li>
+<li>if <var>n</var> is less than zero, then panic;</li>
+<li>for each input frame <var>f</var>, while <var>n</var> is greater than 0
+<ul>
+<li>decrement <var>n</var>;</li>
+<li>emit <var>f</var>.</li> 
+</ul>
+</li> 
+</ul>
+
+<p>
+The static type of expression must be a subtype of <code>int</code>.
+</p>
+
+</section>
+
+<section>
 <h4>Select clause</h4>
 <pre class="grammar">
 <dfn>select-clause</dfn> := <code>select</code> <abbr>expression</abbr>
@@ -5429,6 +5528,31 @@ A <code>select</code> clause is executed as follows:
 </li> 
 </ul>
 </section>
+
+<section>
+<h4>On conflict clause</h4>
+<pre class="grammar">
+<dfn>on-conflict-clause</dfn> := <code>on</code> <code>conflict</code> <abbr>expression</abbr>
+</pre>
+<p>
+An <code>on conflict</code> clause is allowed only for a query expression that
+constructs a table with a key sequence. The expression is evaluated when the
+<code>select</code> clause emits a value that conflicts with a previous value,
+in the sense that both values have the same key value in the table. The
+expression is evaluated with the same frame in scope as the select clause that
+emitted the value that conflicts with the previous value. The static type of the
+expression must be a subtype of <code>error?</code>. If the result of evaluating
+the expression is an error <var>e</var>, then the result of evaluating the
+query-expr is <var>e</var>. Otherwise, the result must be nil, and the earlier
+new value replaces the earlier conflicting value, in the same way as if there
+not been an <code>on conflict</code> clause.
+</p>
+<p>
+Note that the expression may have side-effects; for example, it may call a
+function that logs an error.
+</p>
+</section>
+
 </section>
 <section>
 <h3>XML navigation expression</h3>
@@ -8153,6 +8277,8 @@ structural types and no longer has preview status.</li>
 of a parameter of typedesc type.</li>
 <li>The XML item-specific subtypes can be used as constructors, both in
 expressions and in binding patterns.</li>
+<li>Query expressions support some new clauses: <code>join</code> clause,
+<code>limit</code> clause and <code>on conflict</code> clause.</li>
 </ol>
 </section>
 <section>

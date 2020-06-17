@@ -6,12 +6,34 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+        GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
     steps:
+      - name: Clone ballerina-bot/homebrew-core repo 
+        run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-bot/homebrew-core.git
+
+      - name: Synch local homebrow-core repo with remote upstream
+        run: |
+          cd homebrew-core
+          git pull origin master
+          
+          git config --global user.email "ballerina+bot@ballerina.org"
+          git config --global user.name "ballerina-bot"
+
+          git remote add upstream https://github.com/Homebrew/homebrew-core.git
+          
+          git fetch upstream
+          git checkout master
+          git reset --hard upstream/master
+          git push origin master --force
+
+          echo 'Successfully pushed to ballerina-bot/homebrew-core branch'
+
       - name: Install jq for json manipulation
         run: sudo apt-get install jq
 
@@ -27,7 +49,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install PyGithub
-          VERSION="`jq -r '.version' _data/latest/metadata.json`"
+          VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
           dist_url="https://dist.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip"
           checksum="$(curl -fsSL "$dist_url" | shasum -a 256 -b | awk '{print $1}')"
 

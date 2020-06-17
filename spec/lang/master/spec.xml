@@ -7605,10 +7605,8 @@ class="grammar"><dfn>module-type-defn</dfn> :=
 <h3>Module variable declaration</h3>
 
 <pre
-class="grammar"><dfn>module-var-decl</dfn> :=
-   <abbr>metadata</abbr>
-   [<code>final</code>]
-   <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>expression</abbr> <code>;</code>
+class="grammar"><dfn>module-var-decl</dfn> := <abbr>module-init-var-decl</abbr> | <abbr>module-no-init-var-decl</abbr>
+<dfn>module-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>final</code>] <abbr>typed-binding-pattern</abbr> <code>=</code> <abbr>expression</abbr> <code>;</code>
 </pre>
 <p>
 The scope of variables declared in a module-var-decl is the entire module. Note
@@ -7620,6 +7618,17 @@ the precise type is used, and otherwise the broad type is used. If the
 typed-binding-pattern specifies a type-descriptor, then that type-descriptor
 provides the contextually expected type for action-or-expr.
 </p>
+
+<pre
+class="grammar"><dfn>module-no-init-var-decl</dfn> := <abbr>metadata</abbr> [<code>final</code>] <abbr>type-descriptor</abbr> <abbr>variable-name</abbr> <code>;</code>
+</pre>
+<p>
+A module variable declared with <code>module-no-init-var-decl</code> must be
+initialized in the module's <code>init</code> function. It must be definitely
+assigned at each point that the variable is referenced. If <code>final</code> is
+specified, then the variable must not be assigned more than once.
+</p>
+
 </section>
 <section>
 <h3>Module constant declaration</h3>
@@ -8104,10 +8113,10 @@ basic type int</li>
 basic type mapping</li>
 <li><code><a href="./lib/object.bal" type="text/plain">lang.object</a></code>
 for basic type object</li>
-<li><code><a href="./lib/string.bal" type="text/plain">lang.string</a></code>
-for basic type string</li>
 <li><code><a href="./lib/stream.bal" type="text/plain">lang.stream</a></code>
 for basic type stream</li>
+<li><code><a href="./lib/string.bal" type="text/plain">lang.string</a></code>
+for basic type string</li>
 <li><code><a href="./lib/table.bal" type="text/plain">lang.table</a></code> for
 basic type table</li>
 <li><code><a href="./lib/typedesc.bal" type="text/plain">lang.typedesc</a></code> for
@@ -8270,6 +8279,8 @@ from the detail record into the error value.</li>
 instead of using names prefixed with double underscore.</li>
 <li>The <code>__init</code> method of object and the <code>__init</code> function
 of modules have been renamed to <code>init</code>.</li>
+<li>Module variables can be initialized in the module's <code>init</code>
+function.</li>
 <li>The table type has been redesigned to be more consistent with other
 structural types and no longer has preview status.</li>
 <li>Enum declarations have been added.</li>

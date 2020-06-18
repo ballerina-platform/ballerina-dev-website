@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Using the OpenAPI Tools
 description: Check out how the Ballerina OpenAPI tooling makes it easy for users to start developing a service documented in the OpenAPI contract.
 keywords: ballerina, programming language, openapi, open api, restful api

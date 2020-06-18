@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Graphical View
 permalink: /swan-lake/learn/setting-up-visual-studio-code/graphical-editor/
 active: graphical-editor

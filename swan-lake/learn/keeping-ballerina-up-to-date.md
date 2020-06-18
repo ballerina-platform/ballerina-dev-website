@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Keeping Ballerina Up to Date
 description: Learn how to maintain your Ballerina programming language installation and keep it up to date with the latest patch and minor releases.
 keywords: ballerina, programming language, release, update

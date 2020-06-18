@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Top Level definitions
 active: definitions
 permalink: /swan-lake/learn/coding-conventions/top-level-definitions/

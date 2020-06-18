@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Documentation Viewer
 permalink: /swan-lake/learn/setting-up-visual-studio-code/documentation-viewer/
 active: documentation-viewer

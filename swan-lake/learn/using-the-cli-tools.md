@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Using the CLI Tools
 description: Learn all the command line interface (CLI) commands need to get started, build, test and run programs, work with Ballerina Central, and manage projects.
 keywords: ballerina, cli, command line interface, programming language

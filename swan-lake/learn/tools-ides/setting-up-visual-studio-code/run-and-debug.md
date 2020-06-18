@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Run and Debug
 permalink: /swan-lake/learn/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug

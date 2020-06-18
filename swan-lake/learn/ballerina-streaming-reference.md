@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Ballerina Streaming Reference Guide
 permalink: /swan-lake/learn/ballerina-streaming-reference/
 active: ballerina-streaming-reference

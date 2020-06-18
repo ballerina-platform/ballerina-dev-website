@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Annotations, Documentation and Comments
 permalink: /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
 active: annotations_documentation_and_comments

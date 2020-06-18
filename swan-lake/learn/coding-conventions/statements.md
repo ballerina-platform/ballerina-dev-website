@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Statements
 active: statements
 permalink: /swan-lake/learn/coding-conventions/statements/

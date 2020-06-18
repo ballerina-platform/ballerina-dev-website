@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Setting up Ballerina SDK
 permalink: /swan-lake/learn/set-up-ballerina-sdk/
 active: set-up-ballerina-sdk

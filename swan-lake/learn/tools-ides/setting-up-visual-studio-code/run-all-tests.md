@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Run all Tests
 permalink: /swan-lake/learn/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests

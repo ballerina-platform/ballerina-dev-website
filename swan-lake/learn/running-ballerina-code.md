@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Running Ballerina Code
 description: Learn how to run Ballerina programs and services using the CLI tool.
 keywords: ballerina, programming language, services

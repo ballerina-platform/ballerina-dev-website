@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Using the features of the IntelliJ plugin
 permalink: /swan-lake/setting-up-intellij-idea/using-intellij-plugin-features/
 active: using-intellij-plugin-features

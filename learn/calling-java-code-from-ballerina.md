@@ -361,7 +361,7 @@ One or more space-separated fully-qualified Java class names for which the Balle
 
 When the tool is run, a `.bal` file will be created to represent each Java class. This would contain the respective Ballerina binding object along with the required Java interoperability mappings. These `.bal` files would reside inside sub directories representing the package structure.
 
-Apart from creating bindings for the specified Java classes, the command would also generate empty Ballerina binding objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding objects.
+Apart from creating bindings for the specified Java classes, the command will also generate empty Ballerina binding objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding objects.
 
 A set of additional utility files will also be generated in order to support the auto-generated Ballerina bindings. This includes a `Constants.bal` file to store constants used for proper functioning of the Ballerina binding objects and `.bal` files to store the error types used within the Ballerina binding objects.
 
@@ -389,14 +389,23 @@ The folder structure of the generated bindings will be as follows.
 #### Java Classes
 A Java class will be mapped onto a Ballerina object. This Ballerina object will have the same name as that of the Java class. 
 
-E.g., Generated Ballerina object of the `java.utils.ArrayDeque` class will be as follows.
+E.g., Generated Ballerina object of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
-public type ArrayDeque object {
- 
-	...
+@java:Binding {
+    class: "java.util.ArrayDeque"
+}
+type ArrayDeque object {
+
+    *java:JObject;
+
+    function init(handle obj) {
+        self.jObj = obj;
+    }
+
+    ...
 };
 ```
-If there are multiple classes with the same simple name, they need to be generated using a single execution. The tool will then apply a numerical identifier at the end of duplicated object names. This could be manually changed to something meaningful if required.
+If there are multiple classes with the same simple name, they need to be generated using a single execution. The tool will then apply a numerical identifier at the end of duplicated object names. This could be manually changed into something meaningful if required.
 
 The format for specifying inner classes using the command is `<package-name>.ClassName$InnerClassName`. The dollar sign might have to be escaped using the blackslash key.
 
@@ -405,23 +414,22 @@ E.g. The command to generate bindings for `java.lang.Character.Subset` class wil
 > ballerina bindgen java.lang.Character\$Subset
 ```
 
-When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is exposed as the Ballerina `string` type from within the Ballerina bindings generated.
+When referring a Java code to figure out the imported classes, you should be cautious about the Java classes from the `java.lang` package since these will not be visible as imports in the Java code. However, you need not generate bindings for the `java.lang.String` class since it is mapped into the Ballerina `string` type from within the Ballerina bindings generated.
 
 #### Constructors
 Constructors of Java classes will be mapped onto public functions outside the Ballerina object. These function names are comprised of the constructor name prefixed with the `new` keyword. If there exists multiple constructors, they will be suffixed with an auto increment number.
 
-E.g., Generated constructors of the `java.utils.ArrayDeque` class will be as follows.
+E.g., Generated constructors of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
-public function newArrayDeque1() returns ArrayDeque {
-
+function newArrayDeque1() returns ArrayDeque {
    ...
 }
-public function newArrayDeque2(int arg0) returns ArrayDeque {
 
+function newArrayDeque2(int arg0) returns ArrayDeque {
    ...
 }
-public function newArrayDeque3(Collection arg0) returns ArrayDeque {
 
+function newArrayDeque3(Collection arg0) returns ArrayDeque {
    ...
 }
 ```
@@ -429,39 +437,37 @@ public function newArrayDeque3(Collection arg0) returns ArrayDeque {
 #### Methods
 All public methods will be exposed through Ballerina bindings. Instance methods will reside inside the Ballerina object and these would take the name of the Java method. However, if there exists overloaded methods, a numeric suffix will be appended at the end of the name.
 
-E.g., Some of the generated instance methods of the `java.utils.ArrayDeque` class will be as follows.
+E.g., Some of the generated instance methods of the `java.util.ArrayDeque` class will be as follows.
 ```ballerina
-public type ArrayDeque object {
+type ArrayDeque object {
    ...
  
-   public function add(Object arg0) returns boolean {
-   
+   function add(Object arg0) returns boolean {
        ...
    }
-   public function isEmpty() returns boolean {
-   
+
+   function isEmpty() returns boolean {
        ...
    }
 };
 ```
 Static methods would reside outside the Ballerina object as public functions, which take the name of the Java method with the Java class name appended at the beginning as a prefix.
  
-E.g., A generated static method `randomUUID()` of the `java.utils.UUID` class will be as follows. Here, the Ballerina equivalent of calling `UUID.randomUUID()` in Java will be `UUID_randomUUID()`.
+E.g., A generated static method `randomUUID()` of the `java.util.UUID` class will be as follows. Here, the Ballerina equivalent of calling `UUID.randomUUID()` in Java will be `UUID_randomUUID()`.
 ```ballerina
-public function UUID_randomUUID() returns UUID {
- 
+function UUID_randomUUID() returns UUID {
    ...
 }
 ```
 
 #### Fields
-All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getters and setters inside the Ballerina object, whereas the static fields will have getters and setters outside the Ballerina object as public functions. 
+All public fields of a Java class will be exposed through Ballerina bindings in the form of getters and setters. Instance fields will have the respective getter and setter functions inside the Ballerina object, whereas the static fields will have getter and setter functions outside the Ballerina object.
 
-The getters and setters of an instance field will take the name of the field prefixed with a `get` or `set` at the beginning.
+The getter and setter functions of an instance field will take the name of the field prefixed with a `get` or `set` at the beginning.
 
 E.g., `get<FIELD_NAME>()` and `set<FIELD_NAME>(<type> arg)`
 
-For a static field, the getters and setters (if the field is not final) will take the name of the field with a `get` or `set` prefix along with the Java simple class name appended at the beginning.
+For a static field, the getter and setter (if the field is not final) functions will take the name of the field with a `get` or `set` prefix along with the Java simple class name appended at the beginning.
 
 E.g., `<Class_Name>_get<FIELD_NAME>()` and `<Class_Name>_set<FIELD_NAME>(<type> arg)`
 
@@ -487,7 +493,6 @@ public type List object {
    *JObject;
   
    public function __init(handle obj) {
-   
        self.jObj = obj;
    }
 
@@ -498,7 +503,7 @@ public type List object {
 ```
 
 #### Ballerina JObject
-A Ballerina binding object representing a Java class will always be implemented using the following abstract class `JObject`. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a project.
+A Ballerina binding object representing a Java class will always be implemented using the abstract class `JObject`. This is present inside the `ballerina/java` module of the Ballerina standard library and could be accessed as `java:JObject` if the java module is imported into a project.
 
 To explain the implementation further, this Ballerina object will always store the handle reference of the Java object in it’s `jObj` field.
 
@@ -528,7 +533,7 @@ InputStream inputStream = check newFileInputStream3("sample.txt");
 >**Note:** For Java Subtyping to work, the Ballerina binding objects need to be fully implemented, it will not work with empty dependency objects.
 
 ### Support for Java Casting
-The `ballerina/java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding objects into its subtypes based on assignability.
+The `ballerina/java` module of the Ballerina standard library provides the `cast` function to support Java casting. This could be used to cast Ballerina binding objects into their subtypes based on assignability.
 
 E.g., A Ballerina binding object instance mapping the `java.io.InputStream` Java class `inputStream` could be casted onto a Ballerina binding object mapping the `java.io.FileInputStream` Java class as follows.
 ```ballerina
@@ -536,23 +541,21 @@ type FileInputStreamTypedesc typedesc<FileInputStream>;
 FileInputStream fileInputStream = <FileInputStream>check java:cast(inputStream, FileInputStreamTypedesc);
 ```
 
->**Note:** For Java Casting to work, the Ballerina binding objects need to be fully implemented, it will not work with empty dependency objects.
-
 ### Java Exceptions to Ballerina Errors
-When generating Ballerina bindings, Java exceptions will be mapped onto Ballerina errors. They will have identical names as that of the corresponding Java classes and these will be generated inside the `ballerina_bindings/utils/error_types` directory. Instead of returning a generic error from the Java side, the bindings will return a more meaningful error representing the exact Java exception.
+When generating Ballerina bindings, Java exceptions will be mapped onto Ballerina errors. They will have identical names as that of the corresponding Java exceptions and these will be generated inside the `ballerina_bindings/utils/error_types` directory. Instead of returning a generic error from the Java side, the bindings will return a more meaningful error representing the exact Java exception.
 
 E.g. The following `IOException` will be returned from the `read()` function in the `java.io.FileInputStream` Ballerina binding object.
 
 ```ballerina
-    function read() returns int|IOException {
-        int|error externalObj = java_io_FileInputStream_read(self.jObj);
-        if (externalObj is error) {
-            IOException e = IOException(IOEXCEPTION, message = externalObj.message(), cause = externalObj);
-            return e;
-        } else {
+function read() returns int|IOException {
+    int|error externalObj = java_io_FileInputStream_read(self.jObj);
+    if (externalObj is error) {
+        IOException e = IOException(IOEXCEPTION, message = externalObj.message(), cause = externalObj);
+        return e;
+    } else {
         return externalObj;
-        }
     }
+}
 ```
 
 >**Note:** If a Java exception class is generated as a Ballerina binding object, it would follow the naming convention `JException` or `JError`. For instance, the binding object's name for `java.io.FileNotFoundException` would be as `JFileNotFoundException`.

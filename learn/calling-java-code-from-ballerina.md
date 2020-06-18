@@ -324,7 +324,7 @@ The next sections provide more details on various aspects related to Java intero
 The following subsections explain how the `bindgen` tool works.
 * [The `bindgen` Command](#the-bindgen-command)
 * [Generated Bridge Code](#generated-bridge-code)
-* [Java to Ballerina Type Mapping](#java-to-ballerina-type-mapping)
+* [Java to Ballerina Mapping](#java-to-ballerina-mapping)
 * [Support for Java Subtyping](#support-for-java-subtyping)
 * [Support for Java Casting](#support-for-java-casting)
 * [Java Exceptions to Ballerina Errors](#java-exceptions-to-ballerina-errors)

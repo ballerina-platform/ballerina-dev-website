@@ -1,0 +1,421 @@
+---
+layout: ballerina-example-page
+title: XSLT Transformation
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /learn/by-example/xslt-transformation
+redirect_from:
+  - /v1-2/learn/by-example/xslt-transformation
+  - /v1-2/learn/by-example/xslt-transformation.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xslt</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">xml</span> <span class="nx">sourceXml</span> <span class="p">=</span> <span class="nx">getXml</span><span class="p">();</span>
+    <span class="kt">xml</span> <span class="nx">xsl</span> <span class="p">=</span> <span class="nx">getXsl</span><span class="p">();</span>
+    <span class="kt">xml</span><span class="p">|</span><span class="nx">error</span> <span class="nx">target</span> <span class="p">=</span> <span class="nx">xslt</span><span class="p">:</span><span class="nx">transform</span><span class="p">(</span><span class="nx">sourceXml</span><span class="p">,</span> <span class="nx">xsl</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">target</span> <span class="nx">is</span> <span class="kt">xml</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transformed xml : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Error : &quot;</span><span class="p">,</span> <span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">getXml</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;samples&gt;</span>
+<span class="s">                    &lt;song&gt;</span>
+<span class="s">                        &lt;title&gt;Summer of 69&lt;/title&gt;</span>
+<span class="s">                        &lt;artist&gt;Bryan Adams&lt;/artist&gt;</span>
+<span class="s">                        &lt;country&gt;Canada&lt;/country&gt;</span>
+<span class="s">                        &lt;year&gt;1984&lt;/year&gt;</span>
+<span class="s">                    &lt;/song&gt;</span>
+<span class="s">                    &lt;song&gt;</span>
+<span class="s">                        &lt;title&gt;Zombie&lt;/title&gt;</span>
+<span class="s">                        &lt;artist&gt;Bad Wolves&lt;/artist&gt;</span>
+<span class="s">                        &lt;country&gt;USA&lt;/country&gt;</span>
+<span class="s">                        &lt;year&gt;2018&lt;/year&gt;</span>
+<span class="s">                    &lt;/song&gt;</span>
+<span class="s">                &lt;/samples&gt;`</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">getXsl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">xml</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kt">xml</span> <span class="s">`&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</span>
+<span class="s">                    &lt;xsl:template match=&quot;/&quot;&gt;</span>
+<span class="s">                        &lt;html&gt;</span>
+<span class="s">                            &lt;body&gt;</span>
+<span class="s">                                &lt;h2&gt;All time favourites&lt;/h2&gt;</span>
+<span class="s">                                &lt;table border=&quot;1&quot;&gt;</span>
+<span class="s">                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;</span>
+<span class="s">                                        &lt;th&gt;Title&lt;/th&gt;</span>
+<span class="s">                                        &lt;th&gt;Artist&lt;/th&gt;</span>
+<span class="s">                                    &lt;/tr&gt;</span>
+<span class="s">                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;</span>
+<span class="s">                                    &lt;tr&gt;</span>
+<span class="s">                                        &lt;td&gt;</span>
+<span class="s">                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;</span>
+<span class="s">                                        &lt;/td&gt;</span>
+<span class="s">                                        &lt;td&gt;</span>
+<span class="s">                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;</span>
+<span class="s">                                        &lt;/td&gt;</span>
+<span class="s">                                    &lt;/tr&gt;</span>
+<span class="s">                                &lt;/xsl:for-each&gt;</span>
+<span class="s">                                &lt;/table&gt;</span>
+<span class="s">                            &lt;/body&gt;</span>
+<span class="s">                        &lt;/html&gt;</span>
+<span class="s">                    &lt;/xsl:template&gt;</span>
+<span class="s">                &lt;/xsl:stylesheet&gt;`</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>XSLT Transformation</h2>
+                            <p><p>This example demonstrates how the XML content can be transformed to HTML using a given XSL transformation.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="task-service-timer.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Task Service Timer</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="taint-checking.html">
+                                        <span>NEXT ></span>
+                                        <p>Taint Checking</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="xslt-transformation">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/xslt-transformation/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/xslt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    xml sourceXml = getXml();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gets an <code>XML</code> object, which needs to be transformed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    xml xsl = getXsl();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gets an <code>XSL</code> style sheet represented in an XML object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    xml|error target = xslt:transform(sourceXml, xsl);
+    if (target is xml) {
+        io:println(&quot;Transformed xml : &quot;, target);
+    } else {
+        io:print(&quot;Error : &quot;, target);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Transforms the <code>XML</code> to another formats.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getXml() returns xml {
+    return xml `&lt;samples&gt;
+                    &lt;song&gt;
+                        &lt;title&gt;Summer of 69&lt;/title&gt;
+                        &lt;artist&gt;Bryan Adams&lt;/artist&gt;
+                        &lt;country&gt;Canada&lt;/country&gt;
+                        &lt;year&gt;1984&lt;/year&gt;
+                    &lt;/song&gt;
+                    &lt;song&gt;
+                        &lt;title&gt;Zombie&lt;/title&gt;
+                        &lt;artist&gt;Bad Wolves&lt;/artist&gt;
+                        &lt;country&gt;USA&lt;/country&gt;
+                        &lt;year&gt;2018&lt;/year&gt;
+                    &lt;/song&gt;
+                &lt;/samples&gt;`;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns an <code>XML</code> object, which needs to be transformed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function getXsl() returns xml {
+    return xml `&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+                    &lt;xsl:template match=&quot;/&quot;&gt;
+                        &lt;html&gt;
+                            &lt;body&gt;
+                                &lt;h2&gt;All time favourites&lt;/h2&gt;
+                                &lt;table border=&quot;1&quot;&gt;
+                                    &lt;tr bgcolor=&quot;#9acd33&quot;&gt;
+                                        &lt;th&gt;Title&lt;/th&gt;
+                                        &lt;th&gt;Artist&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                &lt;xsl:for-each select=&quot;samples/song&quot;&gt;
+                                    &lt;tr&gt;
+                                        &lt;td&gt;
+                                            &lt;xsl:value-of select=&quot;title&quot;/&gt;
+                                        &lt;/td&gt;
+                                        &lt;td&gt;
+                                            &lt;xsl:value-of select=&quot;artist&quot;/&gt;
+                                        &lt;/td&gt;
+                                    &lt;/tr&gt;
+                                &lt;/xsl:for-each&gt;
+                                &lt;/table&gt;
+                            &lt;/body&gt;
+                        &lt;/html&gt;
+                    &lt;/xsl:template&gt;
+                &lt;/xsl:stylesheet&gt;`;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns an <code>XSL</code> style sheet represented in an XML object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and run the `ballerina run` command.
+$ ballerina run xslt_transformation.bal
+Transformed xml : &lt;html&gt;
+&lt;body&gt;
+&lt;h2&gt;All time favourites&lt;/h2&gt;
+&lt;table border=&quot;1&quot;&gt;
+&lt;tr bgcolor=&quot;#9acd33&quot;&gt;
+&lt;th&gt;Title&lt;/th&gt;&lt;th&gt;Artist&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Summer of 69&lt;/td&gt;&lt;td&gt;Bryan Adams&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Zombie&lt;/td&gt;&lt;td&gt;Bad Wolves&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

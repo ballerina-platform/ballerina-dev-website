@@ -2,16 +2,17 @@
 layout: ballerina-example-page
 title: Disable Chunking
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-disable-chunking
+permalink: /swan-lake/learn/by-example/http-disable-chunking
 redirect_from:
-  - /v1-2/learn/by-example/http-disable-chunking
-  - /v1-2/learn/by-example/http-disable-chunking.html
+  - /vswan-lake/learn/by-example/http-disable-chunking
+  - /vswan-lake/learn/by-example/http-disable-chunking.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">,</span>
                                   <span class="p">{</span><span class="nx">http1Settings</span><span class="p">:</span> <span class="p">{</span><span class="nx">chunking</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="nx">CHUNKING_NEVER</span><span class="p">}});</span><span class="kd">service</span> <span class="nx">chunkingSample</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9092</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -81,7 +82,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Disable Chunking</h2>
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
-If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.</p>
+If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -160,8 +163,6 @@ If the message size is larger than the buffer size (8K), messages are chunked. C
                         
                             
                         
-                            
-                        
 
                     <div>
 
@@ -182,25 +183,6 @@ import ballerina/log;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code empty leading">
-                                    
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The HTTP client&rsquo;s chunking behaviour can be configured as <code>CHUNKING_AUTO</code>, <code>CHUNKING_ALWAYS</code>, or <code>CHUNKING_NEVER</code>.
-In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is specified
-in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new (&quot;http://localhost:9090&quot;,
                                   {http1Settings: {chunking: http:CHUNKING_NEVER}});
@@ -208,6 +190,19 @@ in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is 
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_AUTO">CHUNKING_AUTO</a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
+ or <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_NEVER">CHUNKING_NEVER</a>.
+ In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
+ specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html">http1Settings</a> annotation
+ provides the chunking-related configurations.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -292,7 +287,7 @@ in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is 
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>A sample backend, which responds according to the chunking behaviour.</p>
+                                            <p>A sample backend, which responds according to the chunking behavior.</p>
 
                                         </div>
                                     </div>

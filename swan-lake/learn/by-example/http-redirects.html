@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Redirects
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-redirects
+permalink: /swan-lake/learn/by-example/http-redirects
 redirect_from:
-  - /v1-2/learn/by-example/http-redirects
-  - /v1-2/learn/by-example/http-redirects.html
+  - /vswan-lake/learn/by-example/http-redirects
+  - /vswan-lake/learn/by-example/http-redirects.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -25,20 +25,20 @@ redirect_from:
             <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">returnResult</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Response received : &quot;</span> 
-                                                <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">);</span>
+                                                <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Error in payload : &quot;</span> 
-                        <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                        <span class="o">+</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Error in connection : &quot;</span> 
-                                <span class="o">+</span> <span class="nx">returnResult</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                                <span class="o">+</span> <span class="nx">returnResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
@@ -58,7 +58,7 @@ redirect_from:
             <span class="p">[</span><span class="s">&quot;http://localhost:9093/redirect2&quot;</span><span class="p">]);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in sending redirect response to caller&quot;</span><span class="p">,</span>
-                <span class="nx">err</span> <span class="p">=</span> <span class="nx">result</span><span class="p">);</span>
+                <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
@@ -86,7 +86,9 @@ redirect_from:
                             <h2>Redirects</h2>
                             <p><p>This example demonstrates an HTTP redirect.
  To follow redirects when calling an external HTTP server using the Ballerina HTTP client connector, set <code>followRedirect</code>
- to true.</p>
+ to true.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -197,7 +199,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an HTTP client to interact with a remote endpoint.</p>
+                                            <p>Creates an HTTP client to interact with a remote endpoint.
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/FollowRedirects.html">followRedirects</a> record provides configurations associated with HTTP redirects.</p>
 
                                         </div>
                                     </div>
@@ -259,20 +262,20 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>            var payload = returnResult.getTextPayload();
             if (payload is string) {
                 var result = caller-&gt;respond(&quot;Response received : &quot; 
-                                                + &lt;@untained&gt;payload);
+                                                + &lt;@untainted&gt;payload);
                 if (result is error) {
                     log:printError(&quot;Error in responding&quot;, result);
                 }
             } else {
                 var result = caller-&gt;respond(&quot;Error in payload : &quot; 
-                        + &lt;@untained&gt;payload.detail()?.message.toString());
+                        + &lt;@untainted&gt;payload.message());
                 if (result is error) {
                     log:printError(&quot;Error in responding&quot;, result);
                 }
             }
         } else {
             var result = caller-&gt;respond(&quot;Error in connection : &quot; 
-                                + returnResult.detail()?.message.toString());
+                                + returnResult.message());
             if (result is error) {
                 log:printError(&quot;Error in responding&quot;, result);
             }
@@ -334,7 +337,7 @@ service redirect1 on new http:Listener(9092) {
             [&quot;http://localhost:9093/redirect2&quot;]);
         if (result is error) {
             log:printError(&quot;Error in sending redirect response to caller&quot;,
-                err = result);
+                result);
         }
     }
 }

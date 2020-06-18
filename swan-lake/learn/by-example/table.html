@@ -2,72 +2,65 @@
 layout: ballerina-example-page
 title: Table
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/table
+permalink: /swan-lake/learn/by-example/table
 redirect_from:
-  - /v1-2/learn/by-example/table
-  - /v1-2/learn/by-example/table.html
+  - /vswan-lake/learn/by-example/table
+  - /vswan-lake/learn/by-example/table.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jsonutils</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">xmlutils</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Person</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">|};</span>
 <span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
     <span class="kt">float</span> <span class="nx">salary</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">tbEmployee</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span><span class="p">},</span>
-        <span class="p">[</span>
-            <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Mary&quot;</span><span class="p">,</span> <span class="mf">300.5</span><span class="p">},</span>
-            <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="mf">200.5</span><span class="p">},</span>
-            <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="s">&quot;Jim&quot;</span><span class="p">,</span> <span class="mf">330.5</span><span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">};</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Table Information: &quot;</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tbEmployee</span><span class="p">);</span>
-    <span class="nx">Employee</span> <span class="nx">e1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Jane&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Anne&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">100.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">400.50</span><span class="p">};</span>
-    <span class="nx">Employee</span> <span class="nx">e4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">150.0</span><span class="p">};</span>
-    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">tb</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">{</span>
-        <span class="p">{</span><span class="nx">key</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">salary</span><span class="p">},</span>
-        <span class="p">[</span>
-            <span class="nx">e1</span><span class="p">,</span>
-            <span class="nx">e2</span>
-        <span class="p">]</span>
-    <span class="p">};</span>    <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">employees</span> <span class="p">=</span> <span class="p">[</span><span class="nx">e3</span><span class="p">,</span> <span class="nx">e4</span><span class="p">];</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">emp</span> <span class="nx">in</span> <span class="nx">employees</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">ret</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Adding record to table successful&quot;</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Adding to table failed: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Table Information: &quot;</span><span class="p">,</span> <span class="nx">tb</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Using foreach:&quot;</span><span class="p">);</span>
-    <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">x</span> <span class="nx">in</span> <span class="nx">tb</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">x</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Using while loop:&quot;</span><span class="p">);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="nx">tb</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">getNext</span><span class="p">();</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Name: &quot;</span><span class="p">,</span> <span class="nx">ret</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="kt">json</span> <span class="nx">retValJson</span> <span class="p">=</span> <span class="nx">jsonutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JSON: &quot;</span><span class="p">,</span> <span class="nx">retValJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-    <span class="kt">xml</span> <span class="nx">retValXml</span> <span class="p">=</span> <span class="nx">xmlutils</span><span class="p">:</span><span class="nx">fromTable</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;XML: &quot;</span><span class="p">,</span> <span class="nx">retValXml</span><span class="p">);</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">count</span> <span class="p">=</span> <span class="nx">tb</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">isHigherSalary</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Deleted Count: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">tb</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">isHigherSalary</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">salary</span> <span class="p">&gt;</span> <span class="mf">300.0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">EmployeeTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Employee</span><span class="p">&gt;</span> <span class="nx">key</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="nx">type</span> <span class="nx">CustomerTable</span> <span class="nx">table</span><span class="p">&lt;</span><span class="kt">map</span><span class="p">&lt;</span><span class="kt">any</span><span class="o">&gt;&gt;</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">EmployeeTable</span> <span class="nx">employeeTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+      <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">300.50</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Bella&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">500.50</span> <span class="p">},</span>
+      <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">750.0</span> <span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee Table Information: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Total number of Employees: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">length</span><span class="p">());</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Max&quot;</span><span class="p">,</span> <span class="nx">salary</span><span class="p">:</span> <span class="mf">900.0</span> <span class="p">};</span>
+    <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;New Employee: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee 1: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Information of the removed Employee: &quot;</span><span class="p">,</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+    <span class="k">var</span> <span class="nx">personTblKeys</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">keys</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee table keys: &quot;</span><span class="p">,</span> <span class="nx">personTblKeys</span><span class="p">);</span>
+    <span class="nx">Employee</span><span class="p">[]</span> <span class="nx">tableToList</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">toArray</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee table to list: &quot;</span><span class="p">,</span> <span class="nx">tableToList</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">filtered</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+    <span class="nx">employeeTab</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Employee</span> <span class="nx">employee</span><span class="p">)</span> <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="nx">employee</span><span class="p">.</span><span class="nx">salary</span> <span class="p">&lt;</span> <span class="mf">400.0</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">filtered</span> <span class="o">+=</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+              <span class="nx">filtered</span> <span class="o">+=</span> <span class="s">&quot; &quot;</span><span class="p">;</span>
+           <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employees with salary &lt; 400.0: &quot;</span><span class="p">,</span> <span class="nx">filtered</span><span class="p">);</span>
+    <span class="nx">table</span><span class="p">&lt;</span><span class="nx">Person</span><span class="p">&gt;</span> <span class="nx">personTab</span> <span class="p">=</span> <span class="nx">employeeTab</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">Employee</span> <span class="nx">employee</span><span class="p">)</span>
+    <span class="nx">returns</span> <span class="nx">Person</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="nx">employee</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">name</span><span class="p">:</span><span class="nx">employee</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span><span class="mi">23</span> <span class="p">};</span>
+    <span class="p">});</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Person Table Information: &quot;</span><span class="p">,</span> <span class="nx">personTab</span><span class="p">);</span>
+    <span class="nx">CustomerTable</span> <span class="nx">customerTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">13</span> <span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Dan&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Bing&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">23</span> <span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Hay&quot;</span> <span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Kelsey&quot;</span> <span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer Table Information: &quot;</span><span class="p">,</span> <span class="nx">customerTab</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">studentTab</span> <span class="p">=</span> <span class="nx">table</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Meena&quot;</span><span class="p">,</span> <span class="nx">lname</span><span class="p">:</span> <span class="s">&quot;Kaur&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nx">id</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span> <span class="nx">fname</span><span class="p">:</span> <span class="s">&quot;Jay&quot;</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="s">&quot;Palm Grove, NY&quot;</span><span class="p">}</span>
+    <span class="p">];</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Student Table Information: &quot;</span><span class="p">,</span> <span class="nx">studentTab</span><span class="p">);}</span>
 </pre></div>
 
             </div>
@@ -77,8 +70,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Table</h2>
-                            <p><p>The type <code>table</code> is a data structure that organizes information in rows and columns. This example demonstrates how to
- create an in-memory table using a type constraint, insert data to it, and then access/delete the data.</p>
+                            <p><p>A <code>table</code> is a structural value whose members are mapping values that represent rows of the table. A <code>table</code>
+ provides access to its members using a key that comes from the read-only fields of the member. It keeps its
+ members in order but does not provide random access to a member using its position in this order. The built-in
+ functions enable inserting, accessing, deleting data, and applying functions on members of a <code>table</code>.
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/lang.table/index.html">lang.table module</a>.</p>
 </p>
 
                         </td>
@@ -167,6 +164,12 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -176,8 +179,22 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/jsonutils;
-import ballerina/xmlutils;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Person record {|
+    readonly int id;
+    string name;
+    int age;
+|};
 </code></pre></div>
 
                                 </td>
@@ -190,7 +207,7 @@ import ballerina/xmlutils;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>type Employee record {
-    int id;
+    readonly int id;
     string name;
     float salary;
 };
@@ -201,7 +218,49 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the <code>type</code> created to represent a data row.</p>
+                                            <p>This is the <code>type</code> created to represent a data row.
+ The type of the value of the ID field is <code>readonly</code> and the field itself cannot be mutated.
+ The ID is the unique identifier of an Employee.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type EmployeeTable table&lt;Employee&gt; key(id);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a <code>table</code> type.
+ The <code>EmployeeTable</code> type has members that are employees, and within the <code>EmployeeTable</code>, each member is
+ uniquely identified by its ID field.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type CustomerTable table&lt;map&lt;any&gt;&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>You can define a <code>table</code> value whose members are of type <code>map</code> constrained by <code>any</code> type.</p>
 
                                         </div>
                                     </div>
@@ -224,14 +283,11 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tbEmployee = table {
-        {key id, name, salary},
-        [
-            {1, &quot;Mary&quot;, 300.5},
-            {2, &quot;John&quot;, 200.5},
-            {3, &quot;Jim&quot;, 330.5}
-        ]
-    };
+                                    <div class="highlight"><pre><code class=ballerina>    EmployeeTable employeeTab = table [
+      { id: 1, name: &quot;John&quot;, salary: 300.50 },
+      { id: 2, name: &quot;Bella&quot;, salary: 500.50 },
+      { id: 3, name: &quot;Peter&quot;, salary: 750.0 }
+    ];
 </code></pre></div>
 
                                 </td>
@@ -239,9 +295,9 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an in-memory <code>table</code> constrained by the <code>Employee</code> type with the <code>id</code> marked as the
- primary key in the column descriptor. Three data records are inserted into the <code>table</code>. The order of
- the data values should match the order of the column descriptor.</p>
+                                            <p>A <code>table</code> constructor works like a <code>list</code> constructor.
+ The table preserves the order of its members. Iterating over the table gives the
+ members of the table sequentially.</p>
 
                                         </div>
                                     </div>
@@ -252,8 +308,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:print(&quot;Table Information: &quot;);
-    io:println(tbEmployee);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Employee Table Information: &quot;, employeeTab);
 </code></pre></div>
 
                                 </td>
@@ -261,7 +316,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Print the <code>table</code> data.</p>
+                                            <p>Prints the <code>table</code> data.</p>
 
                                         </div>
                                     </div>
@@ -272,10 +327,7 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee e1 = {id: 1, name: &quot;Jane&quot;, salary: 300.50};
-    Employee e2 = {id: 2, name: &quot;Anne&quot;, salary: 100.50};
-    Employee e3 = {id: 3, name: &quot;John&quot;, salary: 400.50};
-    Employee e4 = {id: 4, name: &quot;Peter&quot;, salary: 150.0};
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Total number of Employees: &quot;, employeeTab.length());
 </code></pre></div>
 
                                 </td>
@@ -283,7 +335,7 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create <code>Employee</code> records.</p>
+                                            <p>Returns the number of members of a <code>table</code>.</p>
 
                                         </div>
                                     </div>
@@ -294,13 +346,8 @@ import ballerina/xmlutils;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Employee&gt; tb = table {
-        {key id, name, salary},
-        [
-            e1,
-            e2
-        ]
-    };
+                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = { id: 4, name: &quot;Max&quot;, salary: 900.0 };
+    employeeTab.add(emp);
 </code></pre></div>
 
                                 </td>
@@ -308,8 +355,202 @@ import ballerina/xmlutils;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an in-memory <code>table</code> constrained by the <code>Employee</code> type with
- the <code>id</code> as the primary key. Two records are inserted into the <code>table</code>.</p>
+                                            <p>Adds a new member to the <code>Employee</code> table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;New Employee: &quot;, employeeTab[4]);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Retrieves a member using the ID field of an Employee.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Employee 1: &quot;, employeeTab.get(1));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns the member of a <code>table</code> with a given key.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Information of the removed Employee: &quot;, employeeTab.remove(2));
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Removes the member of a <code>table</code> with a given key and returns it.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var personTblKeys = employeeTab.keys();
+    io:println(&quot;Employee table keys: &quot;, personTblKeys);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Gives a list of all keys of a <code>table</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee[] tableToList = employeeTab.toArray();
+    io:println(&quot;Employee table to list: &quot;, tableToList);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The members of a <code>table</code> can be returned as an <code>array</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string filtered = &quot;&quot;;
+    employeeTab.forEach(function (Employee employee) {
+           if (employee.salary &lt; 400.0) {
+              filtered += employee.name;
+              filtered += &quot; &quot;;
+           }
+    });
+    io:println(&quot;Employees with salary &lt; 400.0: &quot;, filtered);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Tables are an iterable type and tables support functional iteration operations such as <code>.forEach()</code>,
+ <code>.map()</code>, <code>.filter()</code>, and <code>.reduce()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    table&lt;Person&gt; personTab = employeeTab.&#39;map(function (Employee employee)
+    returns Person {
+        return { id: employee.id, name:employee.name, age:23 };
+    });
+    io:println(&quot;Person Table Information: &quot;, personTab);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>.map()</code> applies a function to each member of a table and returns a table of the result.
+ The resulting table will have the same keys as the argument table.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    CustomerTable customerTab = table [
+        { id: 13 , fname: &quot;Dan&quot;, lname: &quot;Bing&quot; },
+        { id: 23 , fname: &quot;Hay&quot; , lname: &quot;Kelsey&quot; }
+    ];
+    io:println(&quot;Customer Table Information: &quot;, customerTab);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create <code>table</code> values with map-constrained members.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var studentTab = table [
+        { id: 44, fname: &quot;Meena&quot;, lname: &quot;Kaur&quot; },
+        { id: 55, fname: &quot;Jay&quot;, address: &quot;Palm Grove, NY&quot;}
+    ];
+   io:println(&quot;Student Table Information: &quot;, studentTab);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The table constructor can be used without a contextually-expected type. Member access is not
+ allowed here.</p>
 
                                         </div>
                                     </div>
@@ -319,204 +560,12 @@ import ballerina/xmlutils;
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Employee[] employees = [e3, e4];
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    foreach var emp in employees {
-        var ret = tb.add(emp);
-        if (ret is ()) {
-            io:println(&quot;Adding record to table successful&quot;);
-        } else {
-            io:println(&quot;Adding to table failed: &quot;, ret.reason());
-        }
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Add the created records to the <code>table</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Table Information: &quot;, tb);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Print the <code>table</code> data.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using foreach:&quot;);
-    foreach var x in tb {
-        io:println(&quot;Name: &quot;, x.name);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Access the rows using the <code>foreach</code> loop.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Using while loop:&quot;);
-    while (tb.hasNext()) {
-        var ret = tb.getNext();
-        io:println(&quot;Name: &quot;, ret.name);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Access rows using the <code>while</code> loop.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json retValJson = jsonutils:fromTable(tb);
-    io:println(&quot;JSON: &quot;, retValJson.toJsonString());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Convert the <code>table</code> to JSON format.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    xml retValXml = xmlutils:fromTable(tb);
-    io:println(&quot;XML: &quot;, retValXml);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Convert the <code>table</code> to XML format.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error count = tb.remove(isHigherSalary);
-    io:println(&quot;Deleted Count: &quot;, count);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Remove employees with salaries higher than 300.0
- from the table.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(tb);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Now the table contains the employees with salaries less than 300.0.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function isHigherSalary(Employee emp) returns boolean {
-    return emp.salary &gt; 300.0;
-}
+                                    <div class="highlight"><pre><code class=ballerina>}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Check whether a given employee&rsquo;s salary is higher than 300.0.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -540,24 +589,23 @@ import ballerina/xmlutils;
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run table.bal
-Table Information: id=1 name=Mary salary=300.5 id=2 name=John salary=200.5 id=3 name=Jim salary=330.5
-Adding record to table successful
-Adding record to table successful
-Table Information: id=1 name=Jane salary=300.5 id=2 name=Anne salary=100.5 id=3 name=John salary=400.5 id=4 name=Peter salary=150.0
-Using foreach:
-Name: Jane
-Name: Anne
-Name: John
-Name: Peter
-Using while loop:
-Name: Jane
-Name: Anne
-Name: John
-Name: Peter
-JSON: [{&quot;id&quot;:1, &quot;name&quot;:&quot;Jane&quot;, &quot;salary&quot;:300.5}, {&quot;id&quot;:2, &quot;name&quot;:&quot;Anne&quot;, &quot;salary&quot;:100.5}, {&quot;id&quot;:3, &quot;name&quot;:&quot;John&quot;, &quot;salary&quot;:400.5}, {&quot;id&quot;:4, &quot;name&quot;:&quot;Peter&quot;, &quot;salary&quot;:150.0}]
-XML: &lt;results&gt;&lt;result&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;Jane&lt;/name&gt;&lt;salary&gt;300.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;Anne&lt;/name&gt;&lt;salary&gt;100.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;3&lt;/id&gt;&lt;name&gt;John&lt;/name&gt;&lt;salary&gt;400.5&lt;/salary&gt;&lt;/result&gt;&lt;result&gt;&lt;id&gt;4&lt;/id&gt;&lt;name&gt;Peter&lt;/name&gt;&lt;salary&gt;150.0&lt;/salary&gt;&lt;/result&gt;&lt;/results&gt;
-Deleted Count: 2
-id=2 name=Anne salary=100.5 id=4 name=Peter salary=150.0
+Employee Table Information: id=1 name=John salary=300.5
+id=2 name=Bella salary=500.5
+id=3 name=Peter salary=750.0
+Total number of Employees: 3
+New Employee: id=4 name=Max salary=900.0
+Employee 1: id=1 name=John salary=300.5
+Information of the removed Employee: id=2 name=Bella salary=500.5
+Employee table keys: 1 3 4
+Employee table to list: id=1 name=John salary=300.5 id=3 name=Peter salary=750.0 id=4 name=Max salary=900.0
+Employees with salary &lt; 400.0: John
+Person Table Information: id=1 name=John age=23
+id=3 name=Peter age=23
+id=4 name=Max age=23
+Customer Table Information: id=13 fname=Dan lname=Bing
+id=23 fname=Hay lname=Kelsey
+Student Table Information: id=44 fname=Meena lname=Kaur
+id=55 fname=Jay address=Palm Grove, NY
 </code></pre></div>
 
                                 </td>

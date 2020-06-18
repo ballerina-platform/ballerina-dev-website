@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Task Scheduler Timer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/task-scheduler-timer
+permalink: /swan-lake/learn/by-example/task-scheduler-timer
 redirect_from:
-  - /v1-2/learn/by-example/task-scheduler-timer
-  - /v1-2/learn/by-example/task-scheduler-timer.html
+  - /vswan-lake/learn/by-example/task-scheduler-timer
+  - /vswan-lake/learn/by-example/task-scheduler-timer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -40,7 +40,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="k">while</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
-    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">stopResult</span> <span class="p">=</span> <span class="nx">timer</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">stopResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Stopping the task is failed.&quot;</span><span class="p">);</span>
@@ -51,7 +51,8 @@ redirect_from:
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onTrigger</span><span class="p">(</span><span class="nx">Person</span> <span class="nx">person</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">&lt;</span> <span class="nx">person</span><span class="p">.</span><span class="nx">maxAge</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hi &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span>
+                <span class="s">&quot; you are &quot;</span> <span class="o">+</span> <span class="nx">person</span><span class="p">.</span><span class="nx">age</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; years old now.&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span><span class="kd">service</span> <span class="nx">service2</span> <span class="p">=</span> <span class="kd">service</span> <span class="p">{</span>
@@ -70,13 +71,15 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Scheduler Timer</h2>
-                            <p><p>A Task scheduler can be used to create timers to trigger periodically. A
+                            <p><p>A <code>task:Scheduler</code> can be used to create timers to trigger periodically. A
  service can be attached to the task Scheduler object using the <code>attach()</code>
  function and the Listener can be started using the <code>start()</code> function.
  The service that is being attached must contain the <code>onTrigger()</code> resource function.
  Additionally, a user can pass a set of <code>any</code> values to the resource using
- the <code>attach()</code> function, which then can be used inside the <code>onTrigger()</code>
- function. The Listener can be stopped by calling the <code>stop()</code> function.</p>
+ the <a href="https://ballerina.io/learn/api-docs/ballerina/task/objects/Scheduler.html#attach"><code>attach()</code></a> function, which then can be used inside the <code>onTrigger()</code>
+ function. The Listener can be stopped by calling the <code>stop()</code> function.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/task/index.html">Task module</a>.</p>
 </p>
 
                         </td>
@@ -252,8 +255,8 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Initializes the timer scheduler using the interval value.
- The delay will be equal to the interval as an initial delay is not provided.</p>
+                                            <p>Initializes the timer scheduler using the interval value. The delay will
+ be equal to the interval if an initial delay is not provided.</p>
 
                                         </div>
                                     </div>
@@ -386,7 +389,7 @@ import ballerina/task;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(1000);
+                                    <div class="highlight"><pre><code class=ballerina>    runtime:sleep(2000);
 </code></pre></div>
 
                                 </td>
@@ -457,7 +460,8 @@ import ballerina/task;
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger(Person person) {
         if (person.age &lt; person.maxAge) {
             person.age = person.age + 1;
-            io:println(&quot;Hi &quot; + person.name + &quot; you are &quot; + person.age.toString() + &quot; years old now.&quot;);
+            io:println(&quot;Hi &quot; + person.name +
+                &quot; you are &quot; + person.age.toString() + &quot; years old now.&quot;);
         }
     }
 };

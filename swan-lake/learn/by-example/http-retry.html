@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Retry
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-retry
+permalink: /swan-lake/learn/by-example/http-retry
 redirect_from:
-  - /v1-2/learn/by-example/http-retry
-  - /v1-2/learn/by-example/http-retry.html
+  - /vswan-lake/learn/by-example/http-retry
+  - /vswan-lake/learn/by-example/http-retry.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,15 +14,14 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
-            <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="nx">backOffFactor</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
-            <span class="nx">maxWaitIntervalInMillis</span><span class="p">:</span> <span class="mi">20000</span>
-        <span class="p">},</span>
-        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
-    <span class="p">}</span>
-<span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+            <span class="nx">retryConfig</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+                <span class="nx">count</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                <span class="nx">backOffFactor</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+                <span class="nx">maxWaitIntervalInMillis</span><span class="p">:</span> <span class="mi">20000</span>            <span class="p">},</span>
+            <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
+        <span class="p">}</span>
+    <span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/retry&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">retryDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
@@ -30,8 +29,7 @@ redirect_from:
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>        <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -40,14 +38,13 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="nx">errCause</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">();</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">errCause</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span><span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
@@ -61,8 +58,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
                 <span class="s">&quot;Request received from the client to delayed service.&quot;</span><span class="p">);</span>
-            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
-            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
+            <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">responseToCaller</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span>
@@ -85,7 +81,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Retry</h2>
-                            <p><p>The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.</p>
+                            <p><p>The HTTP retry client tries sending over the same request to the backend service when there is a network level failure.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -172,6 +170,12 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -213,7 +217,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        retryConfig: {
+                                    <div class="highlight"><pre><code class=ballerina>            retryConfig: {
 </code></pre></div>
 
                                 </td>
@@ -232,7 +236,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            intervalInMillis: 3000,
+                                    <div class="highlight"><pre><code class=ballerina>                intervalInMillis: 3000,
 </code></pre></div>
 
                                 </td>
@@ -251,7 +255,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            count: 3,
+                                    <div class="highlight"><pre><code class=ballerina>                count: 3,
 </code></pre></div>
 
                                 </td>
@@ -270,7 +274,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            backOffFactor: 2.0,
+                                    <div class="highlight"><pre><code class=ballerina>                backOffFactor: 2.0,
 </code></pre></div>
 
                                 </td>
@@ -278,8 +282,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Multiplier of the retry interval to exponentially increase the
- retry interval.</p>
+                                            <p>Multiplier of the retry interval to exponentially increase
+ the retry interval.</p>
 
                                         </div>
                                     </div>
@@ -290,11 +294,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            maxWaitIntervalInMillis: 20000
-        },
-        timeoutInMillis: 2000
-    }
-);
+                                    <div class="highlight"><pre><code class=ballerina>                maxWaitIntervalInMillis: 20000
 </code></pre></div>
 
                                 </td>
@@ -304,7 +304,7 @@ import ballerina/runtime;
                                         <div>
                                             <p>Upper limit of the retry interval in milliseconds. If
  <code>intervalInMillis</code> into <code>backOffFactor</code> value exceeded
- <code>maxWaitIntervalInMillis</code> interval value.
+ <code>maxWaitIntervalInMillis</code> interval value,
  <code>maxWaitIntervalInMillis</code> will be considered as the retry
  interval.</p>
 
@@ -317,10 +317,10 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
-    basePath: &quot;/retry&quot;
-}
-service retryDemoService on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=ballerina>            },
+            timeoutInMillis: 2000
+        }
+    );
 </code></pre></div>
 
                                 </td>
@@ -329,10 +329,14 @@ service retryDemoService on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/retry&quot;
+}
+service retryDemoService on new http:Listener(9090) {
+    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -341,13 +345,6 @@ service retryDemoService on new http:Listener(9090) {
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a REST resource within the API.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
@@ -355,7 +352,6 @@ service retryDemoService on new http:Listener(9090) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
-        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>
@@ -372,6 +368,18 @@ service retryDemoService on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
@@ -383,15 +391,13 @@ service retryDemoService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errCause = &lt;string&gt;backendResponse.detail()?.message;
+            string errCause = &lt;string&gt;backendResponse.message();
             response.setPayload(errCause);
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -405,6 +411,19 @@ service retryDemoService on new http:Listener(9090) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -469,7 +488,25 @@ service mockHelloService on new http:Listener(8080) {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            runtime:sleep(5000);
-            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Delay the response by 5000 milliseconds to mimic network level delays.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var responseToCaller = caller-&gt;respond(&quot;Hello World!!!&quot;);
             handleRespondResult(responseToCaller);
         } else {
             log:printInfo(
@@ -483,14 +520,6 @@ service mockHelloService on new http:Listener(8080) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Delay the response by 5000 milliseconds to
- mimic network level delays.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

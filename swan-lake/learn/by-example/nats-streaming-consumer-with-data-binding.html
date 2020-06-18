@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Streaming Publisher and Subscriber With Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/nats-streaming-consumer-with-data-binding
+permalink: /swan-lake/learn/by-example/nats-streaming-consumer-with-data-binding
 redirect_from:
-  - /v1-2/learn/by-example/nats-streaming-consumer-with-data-binding
-  - /v1-2/learn/by-example/nats-streaming-consumer-with-data-binding.html
+  - /vswan-lake/learn/by-example/nats-streaming-consumer-with-data-binding
+  - /vswan-lake/learn/by-example/nats-streaming-consumer-with-data-binding.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -22,7 +22,7 @@ redirect_from:
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">publisher</span><span class="o">-&gt;</span><span class="nx">publish</span><span class="p">(</span><span class="nx">subject</span><span class="p">,</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="kt">message</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">nats</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">error</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">result</span><span class="p">;</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while closing the connection&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while sending the message&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;GUID &quot;</span> <span class="o">+</span> <span class="nx">result</span>
                                         <span class="o">+</span> <span class="s">&quot; received for the produced message.&quot;</span><span class="p">);</span>
@@ -66,7 +66,9 @@ redirect_from:
                             <h2>Streaming Publisher and Subscriber With Data Binding</h2>
                             <p><p>This sample demonstrates the usage of NATS subscriber
  services to bind the data in the incoming message to
- a user-provided compatible type.</p>
+ a user-provided compatible type.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/nats/index.html">NATS module</a>.</p>
 </p>
 
                         </td>
@@ -240,7 +242,7 @@ import ballerina/nats;
                                     <div class="highlight"><pre><code class=ballerina>            var result = publisher-&gt;publish(subject, &lt;@untainted&gt;message);
             if (result is nats:Error) {
                 error e = result;
-                log:printError(&quot;Error occurred while closing the connection&quot;, e);
+                log:printError(&quot;Error occurred while sending the message&quot;, e);
             } else {
                 log:printInfo(&quot;GUID &quot; + result
                                         + &quot; received for the produced message.&quot;);

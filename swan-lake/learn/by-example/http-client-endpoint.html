@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Client Endpoint
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-client-endpoint
+permalink: /swan-lake/learn/by-example/http-client-endpoint
 redirect_from:
-  - /v1-2/learn/by-example/http-client-endpoint
-  - /v1-2/learn/by-example/http-client-endpoint.html
+  - /vswan-lake/learn/by-example/http-client-endpoint
+  - /vswan-lake/learn/by-example/http-client-endpoint.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -23,11 +23,11 @@ redirect_from:
     <span class="nx">req</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">,</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">);</span>
     <span class="nx">response</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get&quot;</span><span class="p">,</span> <span class="nx">req</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getHeader</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="nx">contentType</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getContentType</span><span class="p">();</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Content-Type: &quot;</span> <span class="o">+</span> <span class="nx">contentType</span><span class="p">);</span>        <span class="kt">int</span> <span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">;</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                                    <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                    <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">handleResponse</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
@@ -36,11 +36,11 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid payload received:&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invalid payload received:&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error when calling the backend: &quot;</span><span class="p">,</span>
-                                    <span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                    <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -52,7 +52,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Client Endpoint</h2>
-                            <p><p>The HTTP Client Connector can be used to connect to and interact with an HTTP server.</p>
+                            <p><p>The HTTP Client Connector can be used to connect to and interact with an HTTP server.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -60,9 +62,9 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="knative-deployment.html">
+                                    <a class="prev" href="retry-transactions.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Knative Deployment</p>
+                                        <p>Retry Transactions</p>
                                     </a>
                                 </div>
                                  
@@ -106,6 +108,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -333,8 +339,6 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    response = clientEndpoint-&gt;get(&quot;/get&quot;, req);
     if (response is http:Response) {
-        string contentType = response.getHeader(&quot;Content-Type&quot;);
-        io:println(&quot;Content-Type: &quot; + contentType);
 </code></pre></div>
 
                                 </td>
@@ -344,6 +348,26 @@ import ballerina/io;
                                         <div>
                                             <p>The <code>get()</code>, <code>head()</code>, and <code>options()</code> can have the optional <code>message</code> parameter,
  which will be a request or a payload.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        string contentType = response.getContentType();
+        io:println(&quot;Content-Type: &quot; + contentType);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getContentType">Get the content type</a> from the response.</p>
 
                                         </div>
                                     </div>
@@ -369,7 +393,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                                    response.detail()?.message);
+                                    response.message());
     }
 }
 </code></pre></div>
@@ -385,8 +409,6 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function handleResponse(http:Response|error response) {
     if (response is http:Response) {
-        var msg = response.getJsonPayload();
-        if (msg is json) {
 </code></pre></div>
 
                                 </td>
@@ -404,14 +426,34 @@ import ballerina/io;
                             
                             <tr class="cTR hover-enable">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var msg = response.getJsonPayload();
+        if (msg is json) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#getJsonPayload">Get the JSON payload</a> from the response.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>            io:println(msg.toJsonString());
         } else {
-            io:println(&quot;Invalid payload received:&quot;, msg.reason());
+            io:println(&quot;Invalid payload received:&quot;, msg.message());
         }
     } else {
         io:println(&quot;Error when calling the backend: &quot;,
-                                    response.detail()?.message);
+                                    response.message());
     }
 }
 </code></pre></div>
@@ -421,7 +463,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Prints the received <code>json</code> response.</p>
+                                            <p>Prints the received <code>JSON</code> response.</p>
 
                                         </div>
                                     </div>

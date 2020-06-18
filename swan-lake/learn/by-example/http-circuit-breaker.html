@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Circuit Breaker
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-circuit-breaker
+permalink: /swan-lake/learn/by-example/http-circuit-breaker
 redirect_from:
-  - /v1-2/learn/by-example/http-circuit-breaker
-  - /v1-2/learn/by-example/http-circuit-breaker.html
+  - /vswan-lake/learn/by-example/http-circuit-breaker
+  - /vswan-lake/learn/by-example/http-circuit-breaker.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,22 +14,20 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
-        <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nx">rollingWindow</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nx">timeWindowInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-                <span class="nx">bucketSizeInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-                <span class="nx">requestVolumeThreshold</span><span class="p">:</span> <span class="mi">0</span>            <span class="p">},</span>
-            <span class="nx">failureThreshold</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
-            <span class="nx">resetTimeInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
-            <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>        <span class="p">},</span>
-        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
-    <span class="p">}</span>
-<span class="p">);</span>
-<span class="nd">@http:ServiceConfig {</span>
+            <span class="nx">circuitBreaker</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">rollingWindow</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">timeWindowInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                    <span class="nx">bucketSizeInMillis</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+                    <span class="nx">requestVolumeThreshold</span><span class="p">:</span> <span class="mi">0</span>                <span class="p">},</span>
+                <span class="nx">failureThreshold</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+                <span class="nx">resetTimeInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+                <span class="nx">statusCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>            <span class="p">},</span>
+            <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">2000</span>
+        <span class="p">}</span>
+    <span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cb&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">circuitbreaker</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">circuitbreaker</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -43,18 +41,16 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span><span class="kt">int</span> <span class="nx">counter</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">helloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">8080</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -66,7 +62,7 @@ redirect_from:
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span>
-                    <span class="s">&quot;Internal error occurred while processing the request.&quot;</span><span class="p">);</span>
+                <span class="s">&quot;Internal error occurred while processing the request.&quot;</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="nx">handleRespondResult</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -89,7 +85,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Circuit Breaker</h2>
-                            <p><p>The Circuit Breaker is used to gracefully handle network related errors, which occur when using the HTTP Client.</p>
+                            <p><p>The Circuit Breaker is used to gracefully handle network related errors, which occur when using the HTTP Client.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -188,6 +186,10 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -231,7 +233,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        circuitBreaker: {
+                                    <div class="highlight"><pre><code class=ballerina>            circuitBreaker: {
 </code></pre></div>
 
                                 </td>
@@ -251,7 +253,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            rollingWindow: {
+                                    <div class="highlight"><pre><code class=ballerina>                rollingWindow: {
 </code></pre></div>
 
                                 </td>
@@ -259,8 +261,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Failure calculation window. This is how long the circuit breaker
- keeps the statistics for the operations.</p>
+                                            <p>Failure calculation window. This is how long the circuit
+ breaker keeps the statistics for the operations.</p>
 
                                         </div>
                                     </div>
@@ -271,7 +273,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                timeWindowInMillis: 10000,
+                                    <div class="highlight"><pre><code class=ballerina>                    timeWindowInMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -279,8 +281,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Time period in milliseconds for which the failure threshold
- is calculated.</p>
+                                            <p>Time period in milliseconds for which the failure
+ threshold is calculated.</p>
 
                                         </div>
                                     </div>
@@ -291,7 +293,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                bucketSizeInMillis: 2000,
+                                    <div class="highlight"><pre><code class=ballerina>                    bucketSizeInMillis: 2000,
 </code></pre></div>
 
                                 </td>
@@ -299,16 +301,9 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The granularity (in milliseconds) at which the time window
- slides.
- The <code>RollingWindow</code> is divided into buckets and slides by
- these increments.
- For an example, if this <code>timeWindowInMillis</code> is set to 10000
- milliseconds and <code>bucketSizeInMillis</code> 2000, then
- <code>RollingWindow</code> breaks into sub windows with 2-second
- buckets. Stats are collected with respect to the buckets. As
- time rolls, a new bucket will be appended to the end of the
- window and the old bucket will be removed.</p>
+                                            <p>The granularity (in milliseconds) at which the time
+ window slides. The <code>RollingWindow</code> is divided into
+ buckets and slides by these increments.</p>
 
                                         </div>
                                     </div>
@@ -319,7 +314,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>                requestVolumeThreshold: 0
+                                    <div class="highlight"><pre><code class=ballerina>                    requestVolumeThreshold: 0
 </code></pre></div>
 
                                 </td>
@@ -327,8 +322,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Minimum number of requests in a <code>RollingWindow</code> that will
- trip the circuit.</p>
+                                            <p>Minimum number of requests in the <code>RollingWindow</code> that
+ will trip the circuit.</p>
 
                                         </div>
                                     </div>
@@ -339,7 +334,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            },
+                                    <div class="highlight"><pre><code class=ballerina>                },
 </code></pre></div>
 
                                 </td>
@@ -351,7 +346,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            failureThreshold: 0.2,
+                                    <div class="highlight"><pre><code class=ballerina>                failureThreshold: 0.2,
 </code></pre></div>
 
                                 </td>
@@ -360,9 +355,10 @@ import ballerina/runtime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The threshold for request failures.
- When this threshold exceeds, the circuit trips.
- This is the ratio between failures and total requests and the
- ratio is considered only within the configured <code>RollingWindow</code>.</p>
+ When this threshold exceeds, the circuit trips. This is the
+ ratio between failures and total requests. The ratio is
+ calculated using the requests received within the given
+ rolling window.</p>
 
                                         </div>
                                     </div>
@@ -373,7 +369,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            resetTimeInMillis: 10000,
+                                    <div class="highlight"><pre><code class=ballerina>                resetTimeInMillis: 10000,
 </code></pre></div>
 
                                 </td>
@@ -382,11 +378,7 @@ import ballerina/runtime;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The time period (in milliseconds) to wait before attempting to
- make another request to the upstream service.
- When the failure threshold exceeds, the circuit trips to <code>OPEN</code>
- state. Once the circuit is in <code>OPEN</code> state circuit breaker waits
- for the time configured in <code>resetTimeInMillis</code> and switch the
- circuit to the <code>HALF_OPEN</code> state.</p>
+ make another request to the upstream service.</p>
 
                                         </div>
                                     </div>
@@ -397,7 +389,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            statusCodes: [400, 404, 500]
+                                    <div class="highlight"><pre><code class=ballerina>                statusCodes: [400, 404, 500]
 </code></pre></div>
 
                                 </td>
@@ -416,10 +408,24 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        },
-        timeoutInMillis: 2000
-    }
-);
+                                    <div class="highlight"><pre><code class=ballerina>            },
+            timeoutInMillis: 2000
+        }
+    );
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/cb&quot;
+}
 </code></pre></div>
 
                                 </td>
@@ -431,10 +437,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
-    basePath: &quot;/cb&quot;
-}
-service circuitbreaker on new http:Listener(9090) {
+                                    <div class="highlight"><pre><code class=ballerina>service circuitbreaker on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -450,45 +453,19 @@ service circuitbreaker on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a REST resource within the API.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+    resource function invokeEndpoint(http:Caller caller, http:Request request) {
         var backendResponse = backendClientEP-&gt;forward(&quot;/hello&quot;, request);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The parameters include a reference to the caller
- and an object of the request data.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -504,14 +481,12 @@ service circuitbreaker on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(&lt;string&gt;backendResponse.detail()?.message);
+            response.setPayload(&lt;string&gt;backendResponse.message());
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -532,7 +507,34 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>int counter = 1;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/hello&quot;
+}
 </code></pre></div>
 
                                 </td>
@@ -543,15 +545,16 @@ service circuitbreaker on new http:Listener(9090) {
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code empty leading">
-                                    
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service helloWorld on new http:Listener(8080) {
+</code></pre></div>
+
                                 </td>
                                 <td class="docs">
                                     
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This sample service is used to mock connection timeouts and service outages.
- Mock a service outage by stopping/starting this service.
  This should run separately from the <code>circuitBreakerDemo</code> service.</p>
 
                                         </div>
@@ -563,11 +566,7 @@ service circuitbreaker on new http:Listener(9090) {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
-    basePath: &quot;/hello&quot;
-}
-service helloWorld on new http:Listener(8080) {
-    @http:ResourceConfig {
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         methods: [&quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -610,7 +609,7 @@ service helloWorld on new http:Listener(8080) {
             http:Response res = new;
             res.statusCode = 500;
             res.setPayload(
-                    &quot;Internal error occurred while processing the request.&quot;);
+                &quot;Internal error occurred while processing the request.&quot;);
             var result = caller-&gt;respond(res);
             handleRespondResult(result);
         } else {

@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Basic Server Functionalities
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/websocket-basic-sample
+permalink: /swan-lake/learn/by-example/websocket-basic-sample
 redirect_from:
-  - /v1-2/learn/by-example/websocket-basic-sample
-  - /v1-2/learn/by-example/websocket-basic-sample.html
+  - /vswan-lake/learn/by-example/websocket-basic-sample
+  - /vswan-lake/learn/by-example/websocket-basic-sample.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -94,7 +94,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Basic Server Functionalities</h2>
-                            <p><p>This example explains the basic functions of a WebSocket server endpoint.</p>
+                            <p><p>This example explains the basic functions of a WebSocket server.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -331,7 +333,7 @@ service basic on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This <code>resource</code> is triggered when a ping message is received from the client. If this resource is not implemented,
- a pong message is automatically sent to the connected <code>http:WebSocketCaller</code> when a ping is received.</p>
+ a pong message is automatically sent to the connected <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketCaller.html">http:WebSocketCaller</a> when a ping is received.</p>
 
                                         </div>
                                     </div>
@@ -380,7 +382,7 @@ service basic on new http:Listener(9090) {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This resource is triggered when a particular client reaches the idle timeout that is defined in the
- <code>http:WebSocketServiceConfig</code> annotation.</p>
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/annotations.html#WebSocketServiceConfig">http:WebSocketServiceConfig</a> annotation.</p>
 
                                         </div>
                                     </div>

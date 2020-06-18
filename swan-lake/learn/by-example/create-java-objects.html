@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Create Java Objects
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/create-java-objects
+permalink: /swan-lake/learn/by-example/create-java-objects
 redirect_from:
-  - /v1-2/learn/by-example/create-java-objects
-  - /v1-2/learn/by-example/create-java-objects.html
+  - /vswan-lake/learn/by-example/create-java-objects
+  - /vswan-lake/learn/by-example/create-java-objects.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -40,7 +40,9 @@ redirect_from:
  They can be created only by functions with an external function body. In jBallerina handle value refers to
  Java reference value, i.e., a Java object. Also, in jBallerina, Java constructors and Java methods can provide
  the implementations of Ballerina functions that are marked as <code>external</code>.
- In this example, let&rsquo;s look at how to create Java objects by invoking their constructors from Ballerina.</p>
+ In this example, let&rsquo;s look at how to create Java objects by invoking their constructors from Ballerina.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/java/index.html">Java module</a>.</p>
 </p>
 
                         </td>
@@ -163,8 +165,9 @@ import ballerina/java;
                                         <div>
                                             <p>This ballerina function is linked with the <code>java.util.ArrayDeque</code> constructor that takes the initial capacity.
  There are other overloaded constructors that take a single parameter in this class.
- To link with the exact constructor, you can specify the <code>paramTypes</code> field. Refer to the <code>Overloaded
- Methods/Constructors</code> section for more details on dealing with overloaded methods and constructors.
+ To link with the exact constructor, you can specify the <code>paramTypes</code> field. Refer
+ the <a href="https://ballerina.io/learn/by-example/overloaded-methods-constructors.html">OverloadedMethods/Constructors</a><br />
+ section for more details on dealing with overloaded methods and constructors.
  This function returns a <code>handle</code> value, which refers to an object of <code>java.util.ArrayDeque</code> class.</p>
 
                                         </div>

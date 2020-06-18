@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Failover
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/websocket-failover
+permalink: /swan-lake/learn/by-example/websocket-failover
 redirect_from:
-  - /v1-2/learn/by-example/websocket-failover
-  - /v1-2/learn/by-example/websocket-failover.html
+  - /vswan-lake/learn/by-example/websocket-failover
+  - /vswan-lake/learn/by-example/websocket-failover.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -109,7 +109,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nd">@http:WebSocketServiceConfig {</span>
     <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/failover/ws&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">server</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">service</span> <span class="nx">secondserver</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9095</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">WebSocketCaller</span> <span class="nx">caller</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;WebSocket client connects wih the server 9095. The Connection ID: &quot;</span>
         <span class="o">+</span> <span class="nx">caller</span><span class="p">.</span><span class="nx">getConnectionId</span><span class="p">());</span>
@@ -130,7 +130,12 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Failover</h2>
-                            <p><p>Ballerina users can configure multiple backends in a given failover config. If the client looses the connection by the server being shut down or by getting any IOExceptions, Ballerina automatically tries to connect with the remaining backends that are specified in the configuration. The trying happens only once for each of the backends.</p>
+                            <p><p>Ballerina users can configure multiple backends in a given failover config.
+ If the client looses the connection by the server being shut down or by getting any IOExceptions,
+ Ballerina automatically tries to connect with the remaining backends that are specified in the configuration.
+ The trying happens only once for each of the backends.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -316,7 +321,7 @@ service failoverProxyService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the webSocket failover client.</p>
+                                            <p>Defines the <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html">webSocket failover client</a>.</p>
 
                                         </div>
                                     </div>
@@ -419,7 +424,7 @@ service failoverProxyService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Once the client is ready to receive frames the remote <code>ready</code> function
+                                            <p>Once the client is ready to receive frames, the remote <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/WebSocketFailoverClient.html#ready">ready</a> function
  of the client needs to be called separately.</p>
 
                                         </div>
@@ -1148,7 +1153,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>service server on new http:Listener(9095) {
+                                    <div class="highlight"><pre><code class=ballerina>service secondserver on new http:Listener(9095) {
 </code></pre></div>
 
                                 </td>

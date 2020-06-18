@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Invoke Java Methods
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/invoke-java-methods
+permalink: /swan-lake/learn/by-example/invoke-java-methods
 redirect_from:
-  - /v1-2/learn/by-example/invoke-java-methods
-  - /v1-2/learn/by-example/invoke-java-methods.html
+  - /vswan-lake/learn/by-example/invoke-java-methods
+  - /vswan-lake/learn/by-example/invoke-java-methods.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -43,7 +43,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Invoke Java Methods</h2>
                             <p><p>The <code>Method</code> annotation in <code>ballerina/java</code> module allows you to link a Java method (static or instance) with a
- Ballerina function with an external function body.</p>
+ Ballerina function with an external function body.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/java/index.html">Java module</a>.</p>
 </p>
 
                         </td>
@@ -292,8 +294,10 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Ballerina strings are different from Java strings. The <code>fromString</code> function in <code>ballerina/java</code> module converts
- a Ballerina string value to a Java String representation. Java String is a reference type; hence,
+                                            <p>Ballerina strings are different from Java strings.
+ The <a href="https://ballerina.io/learn/api-docs/ballerina/java/functions.html#fromString">fromString</a> function in
+ <code>ballerina/java</code> module converts a Ballerina string value to a Java String representation.
+ Java String is a reference type; hence,
  this method returns a handle value referring to the created to Java string.</p>
 
                                         </div>
@@ -327,7 +331,8 @@ import ballerina/java;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>toString</code> function in <code>ballerina/java</code> module creates a Ballerina string
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/java/functions.html#toString">toString</a> function in
+ <code>ballerina/java</code> module creates a Ballerina string
  representation of the Java reference value.</p>
 
                                         </div>

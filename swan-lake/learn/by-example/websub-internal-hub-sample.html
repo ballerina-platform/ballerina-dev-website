@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Internal Hub Sample
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/websub-internal-hub-sample
+permalink: /swan-lake/learn/by-example/websub-internal-hub-sample
 redirect_from:
-  - /v1-2/learn/by-example/websub-internal-hub-sample
-  - /v1-2/learn/by-example/websub-internal-hub-sample.html
+  - /vswan-lake/learn/by-example/websub-internal-hub-sample
+  - /vswan-lake/learn/by-example/websub-internal-hub-sample.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -21,14 +21,14 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">startedUpHub</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">var</span> <span class="nx">registrationResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span>
                                             <span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">registrationResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred registering topic: &quot;</span> <span class="o">+</span>
-                                <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">registrationResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                <span class="nx">registrationResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic registration successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -37,7 +37,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">publishResponse</span> <span class="p">=</span> <span class="nx">webSubHub</span><span class="p">.</span><span class="nx">publishUpdate</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">,</span>
         <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;internal-hub&quot;</span><span class="p">});</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error notifying hub: &quot;</span> <span class="o">+</span>
-                                <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">publishResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                <span class="nx">publishResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -97,7 +97,9 @@ redirect_from:
  up a hub.</p>
 
 <p>In this example, a WebSub Publisher brings up an internal hub and publishes updates to it, and a WebSub Subscriber
- subscribes at the publisher&rsquo;s hub to receive notifications of the updates sent to the topic.</p>
+ subscribes at the publisher&rsquo;s hub to receive notifications of the updates sent to the topic.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/websub/index.html">WebSub module</a>.</p>
 </p>
 
                         </td>
@@ -238,7 +240,7 @@ import ballerina/websub;
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println(&quot;Hub start error:&quot; + &lt;string&gt;result.detail()?.message);
+        io:println(&quot;Hub start error:&quot; + result.message());
         return;
     }
 </code></pre></div>
@@ -256,7 +258,7 @@ import ballerina/websub;
                                             &quot;http://websubpubtopic.com&quot;);
     if (registrationResponse is error) {
         io:println(&quot;Error occurred registering topic: &quot; +
-                                &lt;string&gt;registrationResponse.detail()?.message);
+                                registrationResponse.message());
     } else {
         io:println(&quot;Topic registration successful!&quot;);
     }
@@ -267,7 +269,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Registers a topic at the hub.</p>
+                                            <p>Registers a topic at the hub using <a href="https://ballerina.io/learn/api-docs/ballerina/websub/objects/Hub.html#registerTopic">registerTopic</a>.</p>
 
                                         </div>
                                     </div>
@@ -307,7 +309,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes directly to the internal Ballerina hub.</p>
+                                            <p>Publishes directly to the internal Ballerina hub using <a href="https://ballerina.io/learn/api-docs/ballerina/websub/objects/Hub.html#publishUpdate">publishUpdate</a>.</p>
 
                                         </div>
                                     </div>
@@ -320,7 +322,7 @@ import ballerina/websub;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    if (publishResponse is error) {
         io:println(&quot;Error notifying hub: &quot; +
-                                &lt;string&gt;publishResponse.detail()?.message);
+                                publishResponse.message());
     } else {
         io:println(&quot;Update notification successful!&quot;);
     }

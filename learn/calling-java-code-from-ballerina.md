@@ -250,7 +250,7 @@ Next, we’ll handle the error using a type guard.
 ```ballerina
 if fileInputStream is FileNotFoundException {
 	// The type of fileInputStream is FileNotFoundException within this block
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
+       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
 } else {
 	// The type of fileInputStream is FileInputStream within this block
 }

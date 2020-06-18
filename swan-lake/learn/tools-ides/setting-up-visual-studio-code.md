@@ -28,24 +28,9 @@ Download the [Visual Studio Code editor](https://code.visualstudio.com/download)
 
 ## Installing the extension
 
-Use either of the below approaches to install the VS Code Ballerina extension.
+Follow the steps below to download and install the Ballerina VS Code extension.
 
-- [Installing via the VS Code editor](#installing-via-the-vs-code-editor)
-- [Installing by downloading the extension](#installing-by-downloading-the-extension)
-
-### Installing via the VS Code editor
-
-Click **Extensions** on the left-most menu of the editor, search for the Ballerina extension, and click **Install**.
-
-> **Tip**: Click **Reload** to reload the editor to apply the change.
-
-![Install the extension via VS Code](/swan-lake/learn/images/install-via-editor.gif)
-
-This downloads the extension and installs it.
-
-### Installing by downloading the extension
-
-1. Download the [Visual Studio Code Ballerina Extension](https://marketplace.visualstudio.com/items?itemName=ballerina.ballerina).
+1. Download the [Visual Studio Code Ballerina Extension](/downloads).
 
 2. Follow either of the below approaches to install the extension.
     - [Using the VS Code editor](#using-the-vs-code-editor)

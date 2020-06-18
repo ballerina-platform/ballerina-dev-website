@@ -123,7 +123,7 @@ service hello on new http:Listener(9090) {
 ```
 
 * When formatting resource functions and function definitions, block indent each element and
-  follow the [function formatting guidelines](/learn/style-guide/definitions#function-definition).
+  follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/definitions#function-definition).
   
 **Example,**
 
@@ -147,7 +147,7 @@ service hello on ep1, ep2 {
 
 * Block indent each field definition and each function definition on their own line.
 * Init function should be placed before all the other functions. 
-* For function definitions in the object definition, follow the [function formatting guidelines](/learn/style-guide/definitions#function-definition).
+* For function definitions in the object definition, follow the [function formatting guidelines](/swan-lake/learn/coding-conventions/definitions#function-definition).
 
 **Example,**
 

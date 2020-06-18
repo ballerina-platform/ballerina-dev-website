@@ -153,5 +153,5 @@ To get help when you work with Ballerina, see [Community](/community).
 
 Once you have successfully installed Ballerina, click the links below to set up your IDE.
 
-- [Setting up Visual Studio Code](/learn/vscode-plugin/)
-- [Setting up IntelliJ IDEA](/learn/intellij-plugin/)
+- [Setting up Visual Studio Code](/swan-lake/learn/vscode-plugin/)
+- [Setting up IntelliJ IDEA](/swan-lake/learn/intellij-plugin/)

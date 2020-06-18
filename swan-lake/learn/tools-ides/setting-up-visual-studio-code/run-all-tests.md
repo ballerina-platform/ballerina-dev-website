@@ -22,9 +22,9 @@ This option allows you to run all the tests that belong to multiple modules of y
 1. Click **View** in the top menu and click **Command Palette**.
 2. In the search box, type "Ballerina" and click **Ballerina: Run All Tests**.
 
-![Run all tests](/learn/images/run-all-tests.gif)
+![Run all tests](/swan-lake/learn/images/run-all-tests.gif)
 
 ## What's next?
 
-- For information on the Ballerina VSCode extension, see [The Visual Studio Code Ballerina Extension](/learn/vscode-plugin/).
-- For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/learn/installing-ballerina/).
+- For information on the Ballerina VSCode extension, see [The Visual Studio Code Ballerina Extension](/swan-lake/learn/vscode-plugin/).
+- For information on all the tools and IDEs that are supported by Ballerina, see [Setting up Ballerina](/swan-lake/learn/installing-ballerina/).

@@ -46,6 +46,7 @@ The [fourth](#ballerina-ffi) and [fifth](#calling-java-code-from-ballerina) sect
 - [The bindgen tool](#the-bindgen-tool)
 - [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs)
 - [Ballerina FFI](#ballerina-ffi)
+- [Calling Java code from Ballerina](#calling-java-code-from-ballerina)
 
 ## How to use SnakeYAML Java library in Ballerina
 SnakeYAML is a YAML parser for Java. In this section, we'll learn how to use this library to parse a YAML document using Ballerina. 
@@ -640,7 +641,7 @@ target = "java8"
 	modules = ["ordermgt"]
 ```
 
-Or, if you are adding it as a Maven dependency, it would look like the one below.
+Or, if you are adding it as a Maven dependency, it would take the following form.
 ```toml
 [platform]
 target = "java8"

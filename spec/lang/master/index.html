@@ -190,6 +190,8 @@ mailing list.
 </li>
 <li>5.7.4 <a href="#section_5.7.4">Listener</a>
 </li>
+<li>5.7.5 <a href="#section_5.7.5">RawTemplate</a>
+</li>
 </ul>
 </li>
 <li>5.8 <a href="#section_5.8">Abstract operations</a><ul>
@@ -243,6 +245,8 @@ mailing list.
 <li>6.6.1 <a href="#section_6.6.1">String template expression</a>
 </li>
 <li>6.6.2 <a href="#section_6.6.2">XML template expression</a>
+</li>
+<li>6.6.3 <a href="#section_6.6.3">Raw template expression</a>
 </li>
 </ul>
 </li>
@@ -3147,6 +3151,19 @@ precise service type that is used to the first argument to
 <code>attach</code>.
 </p>
 </section>
+<section>
+<h4 id="section_5.7.5">5.7.5 RawTemplate</h4>
+<p>
+The RawTemplate type describes the type of object constructed by a raw template
+expression. The type is defined in <code>lang.object</code> as follows.
+</p>
+<pre>distinct abstract object {
+    public (readonly &amp; string[]) strings;
+    public (any|error)[] insertions;
+}
+</pre>
+
+</section>
 </section>
 <section>
 <h3 id="section_5.8">5.8 Abstract operations</h3>
@@ -3716,6 +3733,7 @@ same identifier in the same symbol space also with block-scope.
    <a href="#literal"><span class="ntref">literal</span></a>
    | <a href="#string-template-expr"><span class="ntref">string-template-expr</span></a>
    | <a href="#xml-template-expr"><span class="ntref">xml-template-expr</span></a>
+   | <a href="#raw-template-expr"><span class="ntref">raw-template-expr</span></a>
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#new-expr"><span class="ntref">new-expr</span></a>
    | <a href="#service-constructor-expr"><span class="ntref">service-constructor-expr</span></a>
@@ -4058,6 +4076,7 @@ different types of number; there are no implicit conversions.
    <a href="#literal"><span class="ntref">literal</span></a>
    | <a href="#string-template-expr"><span class="ntref">string-template-expr</span></a>
    | <a href="#xml-template-expr"><span class="ntref">xml-template-expr</span></a>
+   | <a href="#raw-template-expr"><span class="ntref">raw-template-expr</span></a>
    | <a href="#structural-constructor-expr"><span class="ntref">structural-constructor-expr</span></a>
    | <a href="#functional-constructor-expr"><span class="ntref">functional-constructor-expr</span></a>
    | <a href="#constant-reference-expr"><span class="ntref">constant-reference-expr</span></a>
@@ -4254,6 +4273,51 @@ evaluation.</li>
 An xml-template-expr occurring within a const-expr will construct an xml value
 that has its read-only bit on.
 </p>
+</section>
+
+<section>
+<h4 id="section_6.6.3">6.6.3 Raw template expression</h4>
+
+<pre class="grammar"><span class="ntdfn" id="raw-template-expr">raw-template-expr</span> := <a href="#BacktickString"><span class="ntref">BacktickString</span></a>
+</pre>
+<p>
+A raw-template-expr constructs an object belonging to the abstract RawTemplate
+object type.
+</p>
+<p>
+A raw-template-expr is evaluated by
+</p>
+<ul>
+<li>constructing an array <var>v</var> whose members are the result of
+evaluating each interpolation's expression in the order in which they occur in
+the BacktickString;</li>
+<li>constructing an object with two fields
+<ul>
+<li>an <code>insertions</code> field with value <var>v</var>
+</li>
+<li>a <code>strings</code> field consisting of a read-only array of strings
+containing the characters in BacktickString outside of interpolations, split at
+the interpolation points; the length of the this array is one more than the
+length of <var>v</var>.</li>
+</ul>
+</li>
+</ul>
+<p>
+The result of the raw-template-expr is the newly constructed object.
+</p>
+<p>
+For each raw-template-expr there is a separate non-abstract object type, which
+is a subtype of the RawTemplate type. The objects constructed by a
+raw-template-expr belong to this non-abstract object type. The type of the
+<code>insertions</code> field is determined from the contextually expected type
+or the static type of the expressions in the BacktickString in the same way as
+with a list-constructor-expr. The <code>strings</code> and
+<code>insertions</code> fields will be read-only if required by the contextually
+expected type. The value of the <code>strings</code> field is constructed once
+by the non-abstract object type. The value of the <code>insertions</code> is
+constructed once for each evaluation of the raw-template-expr.
+</p>
+
 </section>
 </section>
 
@@ -8640,6 +8704,7 @@ of a parameter of typedesc type.</li>
 expressions and in binding patterns.</li>
 <li>Query expressions support some new clauses: <code>join</code> clause,
 <code>limit</code> clause and <code>on conflict</code> clause.</li>
+<li>Raw template expressions have been added.</li>
 </ol>
 </section>
 <section>

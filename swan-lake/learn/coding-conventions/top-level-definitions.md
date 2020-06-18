@@ -2,14 +2,12 @@
 layout: ballerina-left-nav-pages
 title: Top Level definitions
 active: definitions
-permalink: /learn/coding-conventions/top-level-definitions/
+permalink: /swan-lake/learn/coding-conventions/top-level-definitions/
 redirect_from:
-  - /v1-2/learn/style-guide/definitions/
-  - /v1-2/learn/style-guide/definitions
-  - /learn/style-guide/definitions
-  - /learn/style-guide/definitions/
-  - /learn/coding-conventions/definitions
-  - /learn/coding-conventions/top-level-definitions
+  - /swan-lake/learn/style-guide/definitions/
+  - /swan-lake/learn/style-guide/definitions
+  - /swan-lake/learn/coding-conventions/definitions
+  - /swan-lake/learn/coding-conventions/top-level-definitions
 ---
 
 # Top Level definitions

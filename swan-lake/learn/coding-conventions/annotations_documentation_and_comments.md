@@ -1,14 +1,12 @@
 ---
 layout: ballerina-left-nav-pages
 title: Annotations, Documentation and Comments
-permalink: /learn/coding-conventions/annotations_documentation_and_comments/
+permalink: /swan-lake/learn/coding-conventions/annotations_documentation_and_comments/
 active: annotations_documentation_and_comments
 redirect_from:
-  - /v1-2/learn/style-guide/annotations_documentation_and_comments/
-  - /v1-2/learn/style-guide/annotations_documentation_and_comments
-  - /learn/style-guide/annotations_documentation_and_comments/
-  - /learn/style-guide/annotations_documentation_and_comments
-  - /learn/coding-conventions/annotations_documentation_and_comments
+  - /swan-lake/learn/style-guide/annotations_documentation_and_comments/
+  - /swan-lake/learn/style-guide/annotations_documentation_and_comments
+  - /swan-lake/learn/coding-conventions/annotations_documentation_and_comments
 ---
 
 # Annotations, Documentation and Comments

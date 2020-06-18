@@ -1,22 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Run and Debug
-permalink: /learn/setting-up-visual-studio-code/run-and-debug/
+permalink: /swan-lake/learn/setting-up-visual-studio-code/run-and-debug/
 active: run-and-debug
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug
-  - /v1-2/learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug/
-  - /learn/tools-ides/vscode-plugin/run-and-debug
-  - /v1-2/learn/vscode-plugin/run-and-debug/
-  - /v1-2/learn/vscode-plugin/run-and-debug
-  - /learn/vscode-plugin/run-and-debug/
-  - /learn/vscode-plugin/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug
-  - /learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
-  - /learn/setting-up-visual-studio-code/run-and-debug
-  - /learn/run-and-debug
-  - /learn/run-and-debug/
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-and-debug/
+  - /swan-lake/learn/vscode-plugin/run-and-debug/
+  - /swan-lake/learn/vscode-plugin/run-and-debug
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-and-debug/
+  - /swan-lake/learn/setting-up-visual-studio-code/run-and-debug
+  - /swan-lake/learn/run-and-debug
+  - /swan-lake/learn/run-and-debug/
 ---
 
 # Run and Debug

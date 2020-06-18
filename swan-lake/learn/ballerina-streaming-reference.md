@@ -1,12 +1,10 @@
 ---
 layout: ballerina-left-nav-pages
 title: Ballerina Streaming Reference Guide
-permalink: /learn/ballerina-streaming-reference/
+permalink: /swan-lake/learn/ballerina-streaming-reference/
 active: ballerina-streaming-reference
 redirect_from:
-  - /learn/ballerina-streaming-reference
-  - /v1-2/learn/ballerina-streaming-reference
-  - /v1-2/learn/ballerina-streaming-reference/
+  - /swan-lake/learn/ballerina-streaming-reference
 ---
 
 # Ballerina Streaming Reference Guide

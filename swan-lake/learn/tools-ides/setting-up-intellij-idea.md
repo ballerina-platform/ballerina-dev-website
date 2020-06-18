@@ -1,20 +1,16 @@
 ---
 layout: ballerina-left-nav-pages
 title: Setting up IntelliJ IDEA
-permalink: /learn/setting-up-intellij-idea/
+permalink: /swan-lake/learn/setting-up-intellij-idea/
 active: setting-up-intellij-idea
 redirect_from:
-  - /v1-2/learn/tools-ides/intellij-plugin
-  - /v1-2/learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin/
-  - /learn/tools-ides/intellij-plugin
-  - /learn/intellij-plugin
-  - /learn/intellij-plugin/
-  - /v1-2/learn/intellij-plugin
-  - /v1-2/learn/intellij-plugin/
-  - /learn/tools-ides/setting-up-intellij-idea
-  - /learn/tools-ides/setting-up-intellij-idea/
-  - /learn/setting-up-intellij-idea
+  - /swan-lake/learn/tools-ides/intellij-plugin
+  - /swan-lake/learn/tools-ides/intellij-plugin/
+  - /swan-lake/learn/intellij-plugin
+  - /swan-lake/learn/intellij-plugin/
+  - /swan-lake/learn/tools-ides/setting-up-intellij-idea
+  - /swan-lake/learn/tools-ides/setting-up-intellij-idea/
+  - /swan-lake/learn/setting-up-intellij-idea
 ---
 
 # Setting up IntelliJ IDEA

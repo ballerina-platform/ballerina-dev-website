@@ -1,22 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Documentation Viewer
-permalink: /learn/setting-up-visual-studio-code/documentation-viewer/
+permalink: /swan-lake/learn/setting-up-visual-studio-code/documentation-viewer/
 active: documentation-viewer
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer
-  - /v1-2/learn/tools-ides/vscode-plugin/documentation-viewer/
-  - /v1-2/learn/vscode-plugin/documentation-viewer/
-  - /v1-2/learn/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/vscode-plugin/documentation-viewer/
-  - /learn/tools-ides/vscode-plugin/documentation-viewer
-  - /learn/vscode-plugin/documentation-viewer/
-  - /learn/vscode-plugin/documentation-viewer
-  - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
-  - /learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
-  - /learn/setting-up-visual-studio-code/documentation-viewer
-  - /learn/documentation-viewer
-  - /learn/documentation-viewer/
+  - /swan-lake/learn/tools-ides/vscode-plugin/documentation-viewer
+  - /swan-lake/learn/tools-ides/vscode-plugin/documentation-viewer/
+  - /swan-lake/learn/vscode-plugin/documentation-viewer/
+  - /swan-lake/learn/vscode-plugin/documentation-viewer
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/documentation-viewer/
+  - /swan-lake/learn/setting-up-visual-studio-code/documentation-viewer
+  - /swan-lake/learn/documentation-viewer
+  - /swan-lake/learn/documentation-viewer/
 ---
 
 # Documentation Viewer

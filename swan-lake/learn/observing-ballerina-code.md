@@ -3,16 +3,14 @@ layout: ballerina-left-nav-pages
 title: Observing Ballerina Code
 description: See how Ballerina supports observability by exposing itself via metrics, tracing and logs to external systems.
 keywords: ballerina, observability, metrics, tracing, logs
-permalink: /learn/observing-ballerina-code/
+permalink: /swan-lake/learn/observing-ballerina-code/
 active: how-to-observing-ballerina-code
 redirect_from:
-  - /learn/how-to-observe-ballerina-code
-  - /learn/how-to-observe-ballerina-code/
-  - /v1-2/learn/how-to-observe-ballerina-code
-  - /v1-2/learn/how-to-observe-ballerina-code/
-  - /learn/how-to-observe-ballerina-services/
-  - /learn/how-to-observe-ballerina-services
-  - /learn/observing-ballerina-code
+  - /swan-lake/learn/how-to-observe-ballerina-code
+  - /swan-lake/learn/how-to-observe-ballerina-code/
+  - /swan-lake/learn/how-to-observe-ballerina-services/
+  - /swan-lake/learn/how-to-observe-ballerina-services
+  - /swan-lake/learn/observing-ballerina-code
 ---
 
 # Observing Ballerina Code

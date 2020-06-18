@@ -2,13 +2,12 @@
 layout: ballerina-left-nav-pages
 title: Statements
 active: statements
-permalink: /learn/coding-conventions/statements/
+permalink: /swan-lake/learn/coding-conventions/statements/
 redirect_from:
-  - /v1-2/learn/style-guide/statements/
-  - /v1-2/learn/style-guide/statements
-  - /learn/style-guide/statements
-  - /learn/style-guide/statements/
-  - /learn/coding-conventions/statements
+  - /swan-lake/learn/style-guide/statements/
+  - /swan-lake/learn/style-guide/statements
+  - /swan-lake/learn/coding-conventions/statements
+
 ---
 
 # Statements

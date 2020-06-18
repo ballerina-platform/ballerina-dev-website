@@ -3,14 +3,13 @@ layout: ballerina-left-nav-pages
 title: Running Ballerina Code
 description: Learn how to run Ballerina programs and services using the CLI tool.
 keywords: ballerina, programming language, services
-permalink: /learn/running-ballerina-code/
+permalink: /swan-lake/learn/running-ballerina-code/
 active: running-ballerina-code
 redirect_from:
-  - /learn/how-to-deploy-and-run-ballerina-programs
-  - /learn/how-to-run-ballerina-programs/
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs
-  - /v1-2/learn/how-to-deploy-and-run-ballerina-programs/
-  - /learn/running-ballerina-code
+  - /swan-lake/learn/how-to-deploy-and-run-ballerina-programs
+  - /swan-lake/learn/how-to-run-ballerina-programs/
+  - /swan-lake/learn/how-to-deploy-and-run-ballerina-programs/
+  - /swan-lake/learn/running-ballerina-code
 ---
 
 # Running Ballerina Code

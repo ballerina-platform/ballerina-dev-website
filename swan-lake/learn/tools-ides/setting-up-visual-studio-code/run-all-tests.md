@@ -1,22 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Run all Tests
-permalink: /learn/setting-up-visual-studio-code/run-all-tests/
+permalink: /swan-lake/learn/setting-up-visual-studio-code/run-all-tests/
 active: run-all-tests
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests
-  - /v1-2/learn/tools-ides/vscode-plugin/run-all-tests/
-  - /learn/tools-ides/vscode-plugin/run-all-tests
-  - /learn/tools-ides/vscode-plugin/run-all-tests/
-  - /v1-2/learn/vscode-plugin/run-all-tests/
-  - /v1-2/learn/vscode-plugin/run-all-tests
-  - /learn/vscode-plugin/run-all-tests/
-  - /learn/vscode-plugin/run-all-tests
-  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests
-  - /learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
-  - /learn/setting-up-visual-studio-code/run-all-tests
-  - /learn/run-all-tests
-  - /learn/run-all-tests/
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-all-tests
+  - /swan-lake/learn/tools-ides/vscode-plugin/run-all-tests/
+  - /swan-lake/learn/vscode-plugin/run-all-tests/
+  - /swan-lake/learn/vscode-plugin/run-all-tests
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-all-tests
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/run-all-tests/
+  - /swan-lake/learn/setting-up-visual-studio-code/run-all-tests
+  - /swan-lake/learn/run-all-tests
+  - /swan-lake/learn/run-all-tests/
 ---
 
 # Run all Tests

@@ -1,12 +1,10 @@
 ---
 layout: ballerina-left-nav-pages
 title: Setting up Ballerina SDK
-permalink: /learn/set-up-ballerina-sdk/
+permalink: /swan-lake/learn/set-up-ballerina-sdk/
 active: set-up-ballerina-sdk
 redirect_from:
-  - /learn/set-up-ballerina-sdk
-  - /v1-2/learn/set-up-ballerina-sdk
-  - /v1-2/learn/set-up-ballerina-sdk/
+  - /swan-lake/learn/set-up-ballerina-sdk
 ---
 
 # Setting up Ballerina SDK

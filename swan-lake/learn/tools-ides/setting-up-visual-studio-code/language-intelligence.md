@@ -1,22 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Language Intelligence
-permalink: /learn/setting-up-visual-studio-code/language-intelligence/
+permalink: /swan-lake/learn/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence
-  - /v1-2/learn/tools-ides/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/vscode-plugin/language-intelligence
-  - /learn/tools-ides/vscode-plugin/language-intelligence/
-  - /v1-2/learn/vscode-plugin/language-intelligence/
-  - /v1-2/learn/vscode-plugin/language-intelligence
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/vscode-plugin/language-intelligence/
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence
-  - /learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
-  - /learn/setting-up-visual-studio-code/language-intelligence
-  - /learn/language-intelligence
-  - /learn/language-intelligence/
+  - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence
+  - /swan-lake/learn/tools-ides/vscode-plugin/language-intelligence/
+  - /swan-lake/learn/vscode-plugin/language-intelligence/
+  - /swan-lake/learn/vscode-plugin/language-intelligence
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/language-intelligence
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/language-intelligence/
+  - /swan-lake/learn/setting-up-visual-studio-code/language-intelligence
+  - /swan-lake/learn/language-intelligence
+  - /swan-lake/learn/language-intelligence/
 ---
 
 # Language Intelligence

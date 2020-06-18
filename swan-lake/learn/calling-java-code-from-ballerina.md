@@ -3,16 +3,14 @@ layout: ballerina-left-nav-pages
 title: Calling Java Code from Ballerina
 description: See how Ballerina offers a straightforward way to call existing Java code from Ballerina and a Java API to call Ballerina code from Java.
 keywords: ballerina, programming language, java api, interoperability
-permalink: /learn/calling-java-code-from-ballerina/
-active: how-to-use-calling-java-code-from-ballerina
+permalink: /swan-lake/learn/calling-java-code-from-ballerina/
+active: how-to-use-calling-java-code-from-ballerina/
 redirect_from:
-  - /learn/how-to-use-java-interoperability
-  - /learn/how-to-use-java-interoperability/
-  - /v1-2/learn/how-to-use-java-interoperability
-  - /v1-2/learn/how-to-use-java-interoperability/
-  - /learn/how-to-call-java-code-from-ballerina/
-  - /learn/how-to-call-java-code-from-ballerina
-  - /learn/calling-java-code-from-ballerina
+  - /swan-lake/learn/how-to-use-java-interoperability
+  - /swan-lake/learn/how-to-use-java-interoperability/
+  - /swan-lake/learn/how-to-call-java-code-from-ballerina/
+  - /swan-lake/learn/how-to-call-java-code-from-ballerina
+  - /swan-lake/learn/calling-java-code-from-ballerina
 ---
 
 # Calling Java Code from Ballerina

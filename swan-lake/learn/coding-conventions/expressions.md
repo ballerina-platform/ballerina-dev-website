@@ -2,13 +2,11 @@
 layout: ballerina-left-nav-pages
 title: Expressions
 active: expressions
-permalink: /learn/coding-conventions/expressions/
+permalink: /swan-lake/learn/coding-conventions/expressions/
 redirect_from:
-  - /v1-2/learn/style-guide/expressions/
-  - /v1-2/learn/style-guide/expressions
-  - /learn/style-guide/expressions
-  - /learn/style-guide/expressions/
-  - /learn/coding-conventions/expressions
+  - /swan-lake/learn/style-guide/expressions/
+  - /swan-lake/learn/style-guide/expressions
+  - /swan-lake/learn/coding-conventions/expressions
 ---
 
 # Expressions

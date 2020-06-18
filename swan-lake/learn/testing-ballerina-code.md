@@ -3,14 +3,12 @@ layout: ballerina-left-nav-pages
 title: Testing Ballerina Code
 description: Learn how to use Ballerina's built-in test framework to write testable code. The test framework provides a set of building blocks to help write and run tests.
 keywords: ballerina, programming language, testing
-permalink: /learn/testing-ballerina-code/
+permalink: /swan-lake/learn/testing-ballerina-code/
 active: testing-ballerina-code
 redirect_from:
-  - /learn/how-to-test-ballerina-code
-  - /learn/how-to-test-ballerina-code/
-  - /v1-2/learn/how-to-test-ballerina-code
-  - /v1-2/learn/how-to-test-ballerina-code/
-  - /learn/testing-ballerina-code
+  - /swan-lake/learn/how-to-test-ballerina-code
+  - /swan-lake/learn/how-to-test-ballerina-code/
+  - /swan-lake/learn/testing-ballerina-code
 ---
 
 # Testing Ballerina Code

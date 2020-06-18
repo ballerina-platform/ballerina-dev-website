@@ -3,12 +3,10 @@ layout: ballerina-inner-page
 title: Ballerina Quick Tour
 description: A quick tour of the Ballerina programming language, including writing, running and invoking an HTTP service and using a client to interact with a service.
 keywords: ballerina, quick tour, programming language, http service
-permalink: /learn/quick-tour/
+permalink: /swan-lake/learn/quick-tour/
 active: quick-tour
 redirect_from:
-  - /learn/quick-tour
-  - /v1-2/learn/quick-tour
-  - /v1-2/learn/quick-tour/
+  - /swan-lake/learn/quick-tour
 ---
 
 # Quick Tour

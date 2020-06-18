@@ -1,22 +1,18 @@
 ---
 layout: ballerina-left-nav-pages
 title: Graphical View
-permalink: /learn/setting-up-visual-studio-code/graphical-editor/
+permalink: /swan-lake/learn/setting-up-visual-studio-code/graphical-editor/
 active: graphical-editor
 redirect_from:
-  - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor
-  - /v1-2/learn/tools-ides/vscode-plugin/graphical-editor/
-  - /learn/vscode-plugin/graphical-editor
-  - /learn/vscode-plugin/graphical-editor/
-  - /v1-2/learn/vscode-plugin/graphical-editor/
-  - /v1-2/learn/vscode-plugin/graphical-editor
-  - /learn/tools-ides/vscode-plugin/graphical-editor/
-  - /learn/tools-ides/vscode-plugin/graphical-editor
-  - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor
-  - /learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
-  - /learn/setting-up-visual-studio-code/graphical-editor
-  - /learn/graphical-editor
-  - /learn/graphical-editor/
+  - /swan-lake/learn/tools-ides/vscode-plugin/graphical-editor
+  - /swan-lake/learn/tools-ides/vscode-plugin/graphical-editor/
+  - /swan-lake/learn/vscode-plugin/graphical-editor
+  - /swan-lake/learn/vscode-plugin/graphical-editor/
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/graphical-editor
+  - /swan-lake/learn/tools-ides/setting-up-visual-studio-code/graphical-editor/
+  - /swan-lake/learn/setting-up-visual-studio-code/graphical-editor
+  - /swan-lake/learn/graphical-editor
+  - /swan-lake/learn/graphical-editor/
 ---
 
 # Graphical View

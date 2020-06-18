@@ -46,7 +46,6 @@ The [fourth](#ballerina-ffi) and [fifth](#calling-java-code-from-ballerina) sect
 - [The bindgen tool](#the-bindgen-tool)
 - [Packaging Java libraries with Ballerina programs](#packaging-java-libraries-with-ballerina-programs)
 - [Ballerina FFI](#ballerina-ffi)
-- [Calling Java code from Ballerina](#calling-java-code-from-ballerina)
 
 ## How to use SnakeYAML Java library in Ballerina
 SnakeYAML is a YAML parser for Java. In this section, we'll learn how to use this library to parse a YAML document using Ballerina. 
@@ -167,8 +166,7 @@ In this step, we'll use the `bindgen` tool to generate Ballerina bindings for th
 
 #### Generate Ballerina bindings
 ```sh
-> ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o src/yamlparser org.yaml.snakeyaml.Yaml
- java.io.FileInputStream java.io.InputStream java.util.Map
+> ballerina bindgen -mvn org.yaml:snakeyaml:1.25 -o src/yamlparser org.yaml.snakeyaml.Yaml java.io.FileInputStream java.io.InputStream java.util.Map
 
 Ballerina project detected at: /Users/sameera/yaml-project
 
@@ -240,7 +238,7 @@ public class SnakeYamlSample {
 Our goal here is to create a new `java.io.FileInputStream` instance from the filename. In step 3, we generated bindings for the required Java classes. The following is the code snippet that does the job. 
 
 ```ballerina
-FileInputStream | error fileInputStream = newFileInputStream3(filename);
+FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
 ```
 
 Here, `FileInputStream` is the Ballerina object generated for the `java.io.FileInputStream` class. 
@@ -249,8 +247,8 @@ Here, `FileInputStream` is the Ballerina object generated for the `java.io.FileI
 
 Next, we’ll handle the error using a type guard.
 ```ballerina
-if fileInputStream is error {
-	// The type of fileInputStream is error within this block
+if fileInputStream is FileNotFoundException {
+	// The type of fileInputStream is FileNotFoundException within this block
        io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
 } else {
 	// The type of fileInputStream is FileInputStream within this block
@@ -264,8 +262,7 @@ Yaml yaml = newYaml1();
 ###  Loads the YAML Document
 We'll be using the `org.yaml.snakeyaml.Yaml.load(InputStream is)` method to get a Java Map instance from the given `InputStream`.
 ```ballerina
-InputStream inputStream = check newFileInputStream3(filename);
-Object mapObj = yaml.load1(inputStream);
+Object mapObj = yaml.load(inputStream);
 ```
 
 The `org.yaml.snakeyaml.Yaml.load(InputStream is)` is a generic method. The bindgen tool does not support Java generics at the moment. That is why the corresponding Ballerina method returns an Object.  
@@ -282,13 +279,12 @@ import ballerina/io;
  
 public function main(string... args) returns error? {
    string filename = args[0];
-   FileInputStream | error fileInputStream = newFileInputStream3(filename);
-   if fileInputStream is error {
-       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.reason());
+   FileInputStream | FileNotFoundException fileInputStream = newFileInputStream3(filename);
+   if fileInputStream is FileNotFoundException {
+       io:println("The file '" + filename + "' cannot be loaded. Reason: " + fileInputStream.message());
    } else {
        Yaml yaml = newYaml1();
-       InputStream inputStream = check newFileInputStream3(filename);
-       Object mapObj = yaml.load1(inputStream);
+       Object mapObj = yaml.load(fileInputStream);
        io:println(mapObj);
    }
 }

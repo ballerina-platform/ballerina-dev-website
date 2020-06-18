@@ -26,7 +26,7 @@ jobs:
     - name: Get API Docs from dist-dev
       run: |
         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
-        echo "curl https://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip"
+        echo "curl http://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip"
         curl https://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip
         unzip ballerina.zip
 

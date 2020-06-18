@@ -891,13 +891,6 @@ cycles, can be compared for equality.
 </section>
 <section>
 <h4 id="section_5.1.2">5.1.2 Type descriptors</h4>
-<pre class="grammar"><span class="ntdfn" id="type-descriptor">type-descriptor</span> :=
-   <a href="#simple-type-descriptor"><span class="ntref">simple-type-descriptor</span></a>
-   | <a href="#sequence-type-descriptor"><span class="ntref">sequence-type-descriptor</span></a>
-   | <a href="#structured-type-descriptor"><span class="ntref">structured-type-descriptor</span></a>
-   | <a href="#behavioral-type-descriptor"><span class="ntref">behavioral-type-descriptor</span></a>
-   | <a href="#other-type-descriptor"><span class="ntref">other-type-descriptor</span></a>
-</pre>
 <p>
 Ballerina provides a rich variety of type descriptors, which programs use to
 describe types. For example, there is a type descriptor for each simple basic
@@ -1070,6 +1063,43 @@ described by a type descriptor is known at compile time, this additional
 information may need to be resolved at runtime. The typedesc basic type
 represents a type descriptor that has been resolved.
 </p>
+
+<pre class="grammar"><span class="ntdfn" id="type-descriptor">type-descriptor</span> :=
+   <a href="#simple-type-descriptor"><span class="ntref">simple-type-descriptor</span></a>
+   | <a href="#sequence-type-descriptor"><span class="ntref">sequence-type-descriptor</span></a>
+   | <a href="#structured-type-descriptor"><span class="ntref">structured-type-descriptor</span></a>
+   | <a href="#behavioral-type-descriptor"><span class="ntref">behavioral-type-descriptor</span></a>
+   | <a href="#other-type-descriptor"><span class="ntref">other-type-descriptor</span></a>
+</pre>
+<p>
+For simplicity, the type-descriptor grammar is ambiguous. The following table
+shows the various types of type descriptor in decreasing order of precedence,
+together with associativity.
+</p>
+<table>
+  <tr>
+   <td><strong>Operator</strong></td>
+   <td><strong>Associativity</strong></td>
+  </tr>
+  <tr>
+   <td><code>T[]</code></td>
+   <td></td>
+  </tr>
+  <tr>
+   <td><code>T1 &amp; T2</code></td>
+   <td>left</td>
+  </tr>
+  <tr>
+   <td><code>T1 | T2</code></td>
+   <td>left</td>
+  </tr>
+  <tr>
+   <td><code>function(args) returns T</code></td>
+   <td>right</td>
+  </tr>
+</table>
+
+
 </section>
 <section>
 <h4 id="section_5.1.3">5.1.3 Type-ids</h4>

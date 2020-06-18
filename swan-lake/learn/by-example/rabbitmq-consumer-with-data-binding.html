@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/rabbitmq-consumer-with-data-binding
+permalink: /swan-lake/learn/by-example/rabbitmq-consumer-with-data-binding
 redirect_from:
-  - /v1-2/learn/by-example/rabbitmq-consumer-with-data-binding
-  - /v1-2/learn/by-example/rabbitmq-consumer-with-data-binding.html
+  - /vswan-lake/learn/by-example/rabbitmq-consumer-with-data-binding
+  - /vswan-lake/learn/by-example/rabbitmq-consumer-with-data-binding.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -33,8 +33,7 @@ redirect_from:
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">rabbitmq</span><span class="p">:</span><span class="nx">Message</span> <span class="kt">message</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                                  <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">RabbitMQ</span> <span class="nx">broker</span> <span class="nx">running</span><span class="p">.</span>
 <span class="err">#</span>
@@ -54,7 +53,9 @@ redirect_from:
  The messages can be accessed using the rabbitmq:Message object and also
  the second parameter of the resource function.
  <code>string</code>, <code>json</code>, <code>xml</code>, <code>byte[]</code>, <code>record</code>, <code>float</code> and <code>int</code> are
- supported as parameter types.</p>
+ supported as parameter types.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/rabbitmq/index.html">RabbitMQ module</a>.</p>
 </p>
 
                         </td>
@@ -304,8 +305,7 @@ import ballerina/rabbitmq;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(rabbitmq:Message message, error err) {
-        log:printError(&quot;Error from connector: &quot; + err.reason() + &quot; - &quot;
-                                                  + &lt;string&gt;err.detail()?.message);
+        log:printError(&quot;Error from connector: &quot; + err.message(), err);
     }
 }
 </code></pre></div>

@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Restrict By Media Type
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/restrict-by-media-type
+permalink: /swan-lake/learn/by-example/restrict-by-media-type
 redirect_from:
-  - /v1-2/learn/by-example/restrict-by-media-type
-  - /v1-2/learn/by-example/restrict-by-media-type.html
+  - /vswan-lake/learn/by-example/restrict-by-media-type
+  - /vswan-lake/learn/by-example/restrict-by-media-type.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -24,10 +24,10 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">msg</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">nameString</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
             <span class="kt">xml</span> <span class="nx">name</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;name&gt;${nameString}&lt;/name&gt;`</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">name</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setXmlPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">name</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">msg</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error in responding&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -44,7 +44,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Restrict By Media Type</h2>
                             <p><p>You can configure resources of HTTP services to restrict the types of media they consume and produce.
- This is done through the &lsquo;consumes&rsquo; and &lsquo;produces&rsquo; annotation attributes of the ResourceConfig annotation, which is used with resources.</p>
+ This is done through the &lsquo;consumes&rsquo; and &lsquo;produces&rsquo; annotation attributes of the ResourceConfig annotation, which is used with resources.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -160,8 +162,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>consumes</code> and <code>produces</code> annotations contain MIME types as an
- array of strings. The resource can only consume/accept <code>text/json</code> and
+                                            <p>The <code>consumes</code> and <code>produces</code> annotations of the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">resource configuration</a>
+ contain MIME types as an array of strings. The resource can only consume/accept <code>text/json</code> and
  <code>application/json</code> media types. Therefore, the <code>Content-Type</code> header
  of the request must be in one of these two types. The resource can produce
  <code>application/xml</code> payloads. Therefore, you need to set the <code>Accept</code> header accordingly.</p>
@@ -216,10 +218,10 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            xml name = xml `&lt;name&gt;${nameString}&lt;/name&gt;`;
-            res.setXmlPayload(&lt;@untained&gt;name);
+            res.setXmlPayload(&lt;@untainted&gt;name);
         } else {
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted string&gt;msg.detail()?.message);
+            res.setPayload(&lt;@untainted&gt;msg.message());
         }
 </code></pre></div>
 

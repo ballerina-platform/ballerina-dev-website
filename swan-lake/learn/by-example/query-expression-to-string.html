@@ -1,39 +1,27 @@
 ---
 layout: ballerina-example-page
-title: Local Transactions with participants
+title: String From Query Expression
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/local-transactions-with-participants
+permalink: /swan-lake/learn/by-example/query-expression-to-string
 redirect_from:
-  - /v1-2/learn/by-example/local-transactions-with-participants
-  - /v1-2/learn/by-example/local-transactions-with-participants.html
+  - /vswan-lake/learn/by-example/query-expression-to-string
+  - /vswan-lake/learn/by-example/query-expression-to-string.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">localTransactionParticipant</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant panicked.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">onretry</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrying transaction&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nd">@transactions:Participant {</span>
-    <span class="nx">oncommit</span><span class="p">:</span> <span class="nx">participantOnCommit</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">localTransactionParticipant</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
-    <span class="nx">error</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
-    <span class="nx">panic</span> <span class="nx">er</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">participantOnCommit</span><span class="p">(</span><span class="kt">string</span> <span class="nx">transactionId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant committed function handler...&quot;</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Student</span> <span class="nx">record</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">intakeYear</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">score</span><span class="p">;</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">Student</span> <span class="nx">s1</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Alex&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;George&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s2</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Ranjan&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fonseka&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2020</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s3</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;David&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2022</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">};</span>
+    <span class="nx">Student</span> <span class="nx">s4</span> <span class="p">=</span> <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Gorge&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Fernando&quot;</span><span class="p">,</span> <span class="nx">intakeYear</span><span class="p">:</span> <span class="mi">2021</span><span class="p">,</span> <span class="nx">score</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">};</span>    <span class="nx">Student</span><span class="p">[]</span> <span class="nx">studentList</span> <span class="p">=</span> <span class="p">[</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nx">s3</span><span class="p">,</span> <span class="nx">s4</span><span class="p">];</span>
+    <span class="kt">string</span> <span class="nx">students</span> <span class="p">=</span> <span class="nx">from</span> <span class="k">var</span> <span class="nx">student</span> <span class="nx">in</span> <span class="nx">studentList</span>
+       <span class="nx">where</span> <span class="nx">student</span><span class="p">.</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">1</span>
+       <span class="nx">select</span> <span class="nx">student</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">student</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span><span class="p">;</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">students</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -43,14 +31,10 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Local Transactions with participants</h2>
-                            <p><p>A Ballerina transaction is a series of data manipulation statements
- that must either fully complete or fully fail, thereby, leaving the
- system in a consistent state. This example demonstrates the usage of
- transactions with local participants. If the participant panics even when it
- is trapped and if the initiator completes, the transaction is considered as a failure.
- Ballerina transactions are at the experimental stage.
- Hence, use the &ndash;experimental flag to enable them.</p>
+                            <h2>String From Query Expression</h2>
+                            <p><p>Having the <code>string</code> type as the target type for a <code>query expression</code> allows users to create a string from that query expression.
+ The resulted string is the concatenation of the emitted values from the select clause.
+ Therefore, every emitted value from the select clause must be of the type string.</p>
 </p>
 
                         </td>
@@ -58,16 +42,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="local-transactions.html">
+                                    <a class="prev" href="query-expression-to-stream.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Local Transactions</p>
+                                        <p>Stream From Query Expression</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xa-transactions.html">
+                                    <a class="next" href="query-expression-to-table.html">
                                         <span>NEXT ></span>
-                                        <p>XA Transactions</p>
+                                        <p>Table From Query Expression</p>
                                     </a>
                                 </div>
                                 
@@ -76,7 +60,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="local-transactions-with-participants">
+            <div class="example" id="query-expression-to-string">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -87,7 +71,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/local-transactions-with-participants/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/query-expression-to-string/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -104,6 +88,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -138,22 +124,19 @@ redirect_from:
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/transactions;
+                                    <div class="highlight"><pre><code class=ballerina>type Student record {
+    string firstName;
+    string lastName;
+    int intakeYear;
+    float score;
+};
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Import the <code>ballerina/transactions</code> module to use the
- <code>@transactions:Participant</code> annotation.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -170,10 +153,37 @@ redirect_from:
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Student s1 = {firstName: &quot;Alex&quot;, lastName: &quot;George&quot;, intakeYear: 2020, score: 1.5};
+    Student s2 = {firstName: &quot;Ranjan&quot;, lastName: &quot;Fonseka&quot;, intakeYear: 2020, score: 0.9};
+    Student s3 = {firstName: &quot;John&quot;, lastName: &quot;David&quot;, intakeYear: 2022, score: 1.2};
+    Student s4 = {firstName: &quot;Gorge&quot;, lastName: &quot;Fernando&quot;, intakeYear: 2021, score: 1.1};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Student[] studentList = [s1, s2, s3, s4];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=ballerina>    string students = from var student in studentList
 </code></pre></div>
 
                                 </td>
@@ -181,7 +191,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>transaction</code> block initiates the transaction. Thus, it is called the initiator.</p>
+                                            <p>The <code>from</code> clause works similarly to a <code>foreach</code> statement.
+It can be used to iterate any iterable value.
+The <code>students</code> is the concatenated string of the query expression results.</p>
 
                                         </div>
                                     </div>
@@ -192,8 +204,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var res = trap localTransactionParticipant();
-        if (res is error) {
+                                    <div class="highlight"><pre><code class=ballerina>       where student.score &gt;= 1
 </code></pre></div>
 
                                 </td>
@@ -201,7 +212,9 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invokes the local participant.</p>
+                                            <p>The <code>where</code> clause provides a way to perform conditional execution and works similarly to an <code>if</code> condition.
+It can refer to variables bound by the from clause.
+When the <code>where</code> condition evaluates to false, the iteration skips the following clauses.</p>
 
                                         </div>
                                     </div>
@@ -212,16 +225,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Local participant panicked.&quot;);
-        }
-    } onretry {
-        io:println(&quot;Retrying transaction&quot;);
-    } committed {
-        io:println(&quot;Transaction committed&quot;);
-    } aborted {
-        io:println(&quot;Transaction aborted&quot;);
-    }
-}
+                                    <div class="highlight"><pre><code class=ballerina>       select student.firstName + &quot; &quot; + student.lastName + &quot;, &quot;;
 </code></pre></div>
 
                                 </td>
@@ -229,34 +233,7 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The local participant gets panicked.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@transactions:Participant {
-    oncommit: participantOnCommit
-}
-function localTransactionParticipant() {
-    io:println(&quot;Invoke local participant function.&quot;);
-    error er = error(&quot;Simulated Failure&quot;);
-    panic er;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>@transactions:Participant</code> annotation from the
- <code>transactions</code> module is used to indicate the function as a local participant.</p>
+                                            <p>The concatenation of the <code>select</code> clause is evaluated for each iteration.</p>
 
                                         </div>
                                     </div>
@@ -267,8 +244,7 @@ function localTransactionParticipant() {
                             <tr class="cTR">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function participantOnCommit(string transactionId) {
-    io:println(&quot;Local participant committed function handler...&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(students);
 }
 </code></pre></div>
 
@@ -299,8 +275,8 @@ function localTransactionParticipant() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command with the --experimental option.
-$ ballerina run --experimental local_transactions_with_participants.bal
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run query_expression_to_string.bal
 </code></pre></div>
 
                                 </td>
@@ -312,32 +288,7 @@ $ ballerina run --experimental local_transactions_with_participants.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2020-03-18 11:57:09,328 INFO  [ballerina/transactions] - Created transaction: bf592603-4639-4c16-9daf-605b8e131470 
-2020-03-18 11:57:09,343 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:bf592603-4639-4c16-9daf-605b8e131470 
-2020-03-18 11:57:09,344 INFO  [ballerina/transactions] - participant registered: bf592603-4639-4c16-9daf-605b8e131470 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,350 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: bf592603-4639-4c16-9daf-605b8e131470:$anon$.$0 
-2020-03-18 11:57:09,350 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Retrying transaction
-2020-03-18 11:57:09,359 INFO  [ballerina/transactions] - Created transaction: 371da573-8e4f-436e-99b3-adc2b9e911a4 
-2020-03-18 11:57:09,360 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:371da573-8e4f-436e-99b3-adc2b9e911a4 
-2020-03-18 11:57:09,361 INFO  [ballerina/transactions] - participant registered: 371da573-8e4f-436e-99b3-adc2b9e911a4 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,362 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 371da573-8e4f-436e-99b3-adc2b9e911a4:$anon$.$0 
-2020-03-18 11:57:09,364 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Retrying transaction
-2020-03-18 11:57:09,366 INFO  [ballerina/transactions] - Created transaction: 9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-2020-03-18 11:57:09,366 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-2020-03-18 11:57:09,367 INFO  [ballerina/transactions] - participant registered: 9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,367 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 9a792401-17fd-4486-bb8e-2fb0a79a04a8:$anon$.$0 
-2020-03-18 11:57:09,368 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Transaction aborted
-[ballerina/http] started HTTP/WS listener 172.17.0.1:35909
-[ballerina/http] stopped HTTP/WS listener 172.17.0.1:35909
+                                    <div class="highlight"><pre><code class=shell-session>Alex George, John David, Gorge Fernando,
 </code></pre></div>
 
                                 </td>

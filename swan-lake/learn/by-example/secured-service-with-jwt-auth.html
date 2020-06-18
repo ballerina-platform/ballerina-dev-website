@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Secured Service with JWT Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/secured-service-with-jwt-auth
+permalink: /swan-lake/learn/by-example/secured-service-with-jwt-auth
 redirect_from:
-  - /v1-2/learn/by-example/secured-service-with-jwt-auth
-  - /v1-2/learn/by-example/secured-service-with-jwt-auth.html
+  - /vswan-lake/learn/by-example/secured-service-with-jwt-auth
+  - /vswan-lake/learn/by-example/secured-service-with-jwt-auth.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -17,12 +17,28 @@ redirect_from:
 <span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwtAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
     <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
-    <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
         <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
                   <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">jwt</span><span class="p">:</span><span class="nx">InboundJwtAuthProvider</span> <span class="nx">jwkAuthProvider</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
+    <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+    <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
+    <span class="nx">signatureConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://example.com/jwks&quot;</span><span class="p">,</span>
+        <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">trustStore</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                          <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
+                    <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">});</span>
@@ -66,16 +82,19 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Secured Service with JWT Auth</h2>
-                            <p><p>A service can be secured using JWT and optionally, by enforcing
+                            <p><p>A service can be secured using JWT and optionally by enforcing
  authorization. The JWT auth provider verifies the signature of the JWT
- token sent in the Authorization header. For this, Ballerina should trust the
+ sent in the Authorization header. For this, Ballerina should trust the
  JWT issuer (the certificate of the JWT issuer must be present in the Ballerina
- certificate truststore).
+ certificate truststore). Alternatively, the signature of the JWT can be verified
+ using the configured JWKs endpoint.
  Ballerina uses the concept of scopes for authorization. A resource declared
  in a service can be bound to one/more scope(s). The scope can be included
  in the JWT using the <code>scope</code> attribute.
  In the authorization phase, the scopes of the resource are compared against
- the scopes mapped to the user for at least one match between the two sets.</p>
+ the scopes mapped to the user for at least one match between the two sets.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/jwt/index.html">JWT module</a>.</p>
 </p>
 
                         </td>
@@ -146,6 +165,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -172,7 +193,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider jwtAuthProvider = new ({
     issuer: &quot;ballerina&quot;,
     audience: &quot;ballerina.io&quot;,
-    trustStoreConfig: {
+    signatureConfig: {
         certificateAlias: &quot;ballerina&quot;,
         trustStore: {
             path: config:getAsString(&quot;b7a.home&quot;) +
@@ -190,6 +211,41 @@ import ballerina/log;
                                         <div>
                                             <p>Creates an inbound JWT authentication provider with the relevant
  configurations.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>jwt:InboundJwtAuthProvider jwkAuthProvider = new ({
+    issuer: &quot;ballerina&quot;,
+    audience: &quot;ballerina.io&quot;,
+    signatureConfig: {
+        url: &quot;https://example.com/jwks&quot;,
+        clientConfig: {
+            secureSocket: {
+                trustStore: {
+                    path: config:getAsString(&quot;b7a.home&quot;) +
+                          &quot;/bre/security/ballerinaTruststore.p12&quot;,
+                    password: &quot;ballerina&quot;
+                }
+            }
+        }
+    }
+});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Alternatively, you can create an inbound JWT authentication provider
+ with the JWKs endpoint configurations.</p>
 
                                         </div>
                                     </div>

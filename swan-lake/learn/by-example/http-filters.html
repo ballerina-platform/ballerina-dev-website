@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: HTTP Interceptors/Filters
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-filters
+permalink: /swan-lake/learn/by-example/http-filters
 redirect_from:
-  - /v1-2/learn/by-example/http-filters
-  - /v1-2/learn/by-example/http-filters.html
+  - /vswan-lake/learn/by-example/http-filters
+  - /vswan-lake/learn/by-example/http-filters.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -63,7 +63,9 @@ redirect_from:
                             <p><p>HTTP Listener supports intercepting request in the request path.
  Its possible to define a filter with custom logic, engage to a HTTP Listener.
  The request will go through the filter logic before its dispatched to the
- actual resource in the target service.</p>
+ actual resource in the target service.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -220,8 +222,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The Request filter implementation. It intercepts the request and adds a new
- header to request before it is dispatched to the HTTP resource.</p>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/RequestFilter.html">Request filter</a> implementation.
+ It intercepts the request and adds a new header to the request before it is dispatched to the HTTP resource.</p>
 
                                         </div>
                                     </div>
@@ -241,7 +243,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Intercepts the request.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/RequestFilter.html#filterRequest">Intercepts the request</a>.</p>
 
                                         </div>
                                     </div>
@@ -300,7 +302,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new RequestFilter.</p>
+                                            <p>Creates a new RequestFilter.</p>
 
                                         </div>
                                     </div>
@@ -320,8 +322,8 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The response filter implementation. It intercepts the response in response
- path and adds a new header to response.</p>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseFilter.html">response filter</a> implementation.
+ It intercepts the response in the response path and adds a new header to the response.</p>
 
                                         </div>
                                     </div>
@@ -341,7 +343,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Intercepts the response.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseFilter.html#filterResponse">Intercepts the response</a>.</p>
 
                                         </div>
                                     </div>
@@ -360,7 +362,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Set a header to the response inside the filter.</p>
+                                            <p>Sets a header to the response inside the filter.</p>
 
                                         </div>
                                     </div>
@@ -400,7 +402,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a new ResponseFilter.</p>
+                                            <p>Creates a new <a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/ResponseFilter.html">ResponseFilter</a>.</p>
 
                                         </div>
                                     </div>
@@ -420,7 +422,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create an HTTP listener and assign the filters as a config parameter.</p>
+                                            <p>Creates an HTTP listener and assigns the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerConfiguration.html">filters as a config parameter</a>.</p>
 
                                         </div>
                                     </div>

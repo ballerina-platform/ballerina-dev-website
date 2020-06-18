@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Failover
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/http-failover
+permalink: /swan-lake/learn/by-example/http-failover
 redirect_from:
-  - /v1-2/learn/by-example/http-failover
-  - /v1-2/learn/by-example/http-failover.html
+  - /vswan-lake/learn/by-example/http-failover
+  - /vswan-lake/learn/by-example/http-failover.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,15 +14,14 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span>
 <span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">backendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">FailoverClient</span> <span class="nx">foBackendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
-    <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">FailoverClient</span> <span class="nx">foBackendEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>    <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
     <span class="nx">failoverCodes</span><span class="p">:</span> <span class="p">[</span><span class="mi">501</span><span class="p">,</span> <span class="mi">502</span><span class="p">,</span> <span class="mi">503</span><span class="p">],</span>
     <span class="nx">intervalInMillis</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
     <span class="nx">targets</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://nonexistentEP/mock1&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/echo&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock&quot;</span><span class="p">}</span>
-    <span class="p">]</span>
+            <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://nonexistentEP/mock1&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/echo&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
 <span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/fo&quot;</span>
 <span class="p">}</span>
@@ -41,19 +40,16 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">response</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="nd">@http:ServiceConfig {</span>
+        <span class="p">}</span>    <span class="p">}</span>
+<span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/echo&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">echo</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;PUT&quot;</span><span class="p">,</span> <span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -63,12 +59,10 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response from mock service&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="nd">@http:ServiceConfig {</span>
+<span class="p">}</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/mock&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">mock</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">mock</span> <span class="nx">on</span> <span class="nx">backendEP</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;PUT&quot;</span><span class="p">,</span> <span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
@@ -88,7 +82,10 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Failover</h2>
-                            <p><p>Ballerina users can configure multiple HTTP clients in a given failover group. If one of the HTTP clients (dependencies) fails, Ballerina automatically fails over to another endpoint.</p>
+                            <p><p>Ballerina users can configure multiple HTTP clients in a given failover group.
+ If one of the HTTP clients (dependencies) fails, Ballerina automatically fails over to another endpoint.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -167,6 +164,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -209,9 +214,6 @@ import ballerina/runtime;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>http:FailoverClient foBackendEP = new ({
-    timeoutInMillis: 5000,
-    failoverCodes: [501, 502, 503],
-    intervalInMillis: 5000,
 </code></pre></div>
 
                                 </td>
@@ -227,14 +229,28 @@ import ballerina/runtime;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    timeoutInMillis: 5000,
+    failoverCodes: [501, 502, 503],
+    intervalInMillis: 5000,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    targets: [
-        {url: &quot;http://nonexistentEP/mock1&quot;},
-        {url: &quot;http://localhost:8080/echo&quot;},
-        {url: &quot;http://localhost:8080/mock&quot;}
-    ]
+            {url: &quot;http://nonexistentEP/mock1&quot;},
+            {url: &quot;http://localhost:8080/echo&quot;},
+            {url: &quot;http://localhost:8080/mock&quot;}
+        ]
 });
 </code></pre></div>
 
@@ -258,53 +274,16 @@ import ballerina/runtime;
     basePath: &quot;/fo&quot;
 }
 service failoverDemoService on new http:Listener(9090) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+    @http:ResourceConfig {
         methods: [&quot;GET&quot;, &quot;POST&quot;],
         path: &quot;/&quot;
     }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a REST resource within the API.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
+    resource function invokeEndpoint(http:Caller caller, http:Request request) {
         var backendResponse = foBackendEP-&gt;get(&quot;/&quot;, &lt;@untainted&gt;request);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Parameters include a reference to the caller and an object with the
- request data.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -320,14 +299,12 @@ service failoverDemoService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            response.setPayload(&lt;string&gt;backendResponse.detail()?.message);
+            response.setPayload(&lt;string&gt;backendResponse.message());
             var responseToCaller = caller-&gt;respond(response);
             if (responseToCaller is error) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -345,18 +322,37 @@ service failoverDemoService on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
     basePath: &quot;/echo&quot;
 }
-service echo on backendEP {
-    @http:ResourceConfig {
-        methods: [&quot;POST&quot;, &quot;PUT&quot;, &quot;GET&quot;],
-        path: &quot;/&quot;
-    }
-    resource function echoResource(http:Caller caller, http:Request req) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service echo on backendEP {
 </code></pre></div>
 
                                 </td>
@@ -368,6 +364,22 @@ service echo on backendEP {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;POST&quot;, &quot;PUT&quot;, &quot;GET&quot;],
+        path: &quot;/&quot;
+    }
+    resource function echoResource(http:Caller caller, http:Request req) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -409,14 +421,43 @@ service echo on backendEP {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
     basePath: &quot;/mock&quot;
 }
-service mock on backendEP {
-    @http:ResourceConfig {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service mock on backendEP {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define the sample service to mock a healthy service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
         methods: [&quot;POST&quot;, &quot;PUT&quot;, &quot;GET&quot;],
         path: &quot;/&quot;
     }
@@ -431,13 +472,6 @@ service mock on backendEP {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Define the sample service to mock a healthy service.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

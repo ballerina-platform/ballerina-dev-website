@@ -154,12 +154,32 @@
         "column": 0,
         "category": "Language concepts",
         "samples": [{
-            "name": "Query Expression",
-            "url": "query-expression"
-        },
+                "name": "Query Expression",
+                "url": "query-expression"
+            },
+            {
+                "name": "Stream From Query Expression",
+                "url": "query-expression-to-stream"
+            },
+            {
+                "name": "String From Query Expression",
+                "url": "query-expression-to-string"
+            },
+            {
+                "name": "Table From Query Expression",
+                "url": "query-expression-to-table"
+            },
+            {
+                "name": "XML From Query Expression",
+                "url": "query-expression-to-xml"
+            },
             {
                 "name": "Query Action",
                 "url": "query-action"
+            },
+            {
+                "name": "Join Iterables",
+                "url": "query-join"
             }
         ]
     },
@@ -553,7 +573,7 @@
             },
             {
                 "name": "Java Arrays",
-                "url": "java-arrays"
+                "url": "java.arrays"
             },
             {
                 "name": "Java Varargs",
@@ -678,13 +698,17 @@
                 "url": "testerina-guarantee-test-execution-order"
             },
             {
-                "name": "Function Mocks",
-                "url": "testerina-function-mocks"
-            },
-            {
                 "name": "Group Tests",
                 "url": "testerina-group-tests"
-            }        
+            },
+            {
+                "name": "Function Mocking",
+                "url": "testerina-mocking-functions"
+            },
+            {
+                "name": "Object Mocking",
+                "url": "testerina-mocking-objects"
+            }
         ]
     },
     {
@@ -710,6 +734,28 @@
             {
                 "name": "Knative Deployment",
                 "url": "knative-deployment"
+            }
+        ]
+    },
+    {
+        "title": "Transactions",
+        "column": 0,
+        "category": "Language concepts",
+        "samples": [{
+                "name": "Local Transactions",
+                "url": "local-transactions"
+            },
+            {
+                "name": "Local Transactions with handlers",
+                "url": "local-transactions-with-handlers"
+            },
+            {
+                "name": "Non Transaction Retry",
+                "url": "non-transaction-retry"
+            },
+            {
+                "name": "Retry Transactions",
+                "url": "retry-transactions"
             }
         ]
     },
@@ -800,6 +846,10 @@
             {
                 "name": "HTTP Interceptors/Filters",
                 "url": "http-filters"
+            },
+            {
+                "name": "HTTP Cookies",
+                "url": "http-cookies"
             }
         ]
     },
@@ -927,25 +977,64 @@
         }]
     },
     {
-        "title": "Database",
+        "title": "JDBC Database Connector",
         "column": 2,
         "category": "Working over the network",
         "samples": [
             {
-                "name": "JDBC Client CRUD Operations",
-                "url": "jdbc-client-crud-operations"
+                "name": "Client Initialization",
+                "url": "jdbc-init-options"
             },
             {
-                "name": "JDBC Client Batch Update",
-                "url": "jdbc-client-batch-update"
+                "name": "Select Query Operations",
+                "url": "jdbc-query-operation"
             },
             {
-                "name": "JDBC Client Call Procedures",
-                "url": "jdbc-client-call-procedures"
+                "name": "Query with Complex Types",
+                "url": "jdbc-complex-type-queries"
             },
             {
-                "name": "Streaming a Big Dataset",
-                "url": "jdbc-streaming-big-dataset"
+                "name": "DDL and DML Operations",
+                "url": "jdbc-execute-operation"
+            },
+            {
+                "name": "Batch Execute Operations",
+                "url": "jdbc-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "jdbc-parameterized-query"
+            }
+        ]
+    },
+    {
+        "title": "MySQL Database Connector",
+        "column": 2,
+        "category": "Working over the network",
+        "samples": [
+            {
+                "name": "Client Initialization",
+                "url": "mysql-init-options"
+            },
+            {
+                "name": "Select Query Operations",
+                "url": "mysql-query-operation"
+            },
+            {
+                "name": "Query with Complex Types",
+                "url": "mysql-complex-type-queries"
+            },
+            {
+                "name": "DDL and DML Operations",
+                "url": "mysql-execute-operation"
+            },
+            {
+                "name": "Batch Execute Operations",
+                "url": "mysql-batch-execute-operation"
+            },
+            {
+                "name": "Parameterized Query",
+                "url": "mysql-parameterized-query"
             }
         ]
     },
@@ -1057,31 +1146,31 @@
         "samples": [
             {
                 "name": "Producer",
-                "url": "kafka_message_producer"
+                "url": "kafka-producer"
             },
             {
                 "name": "Consumer Service",
-                "url": "kafka_message_consumer_service"
+                "url": "kafka-consumer-service"
             },
             {
                 "name": "Consumer Client",
-                "url": "kafka_message_consumer_simple"
+                "url": "kafka-consumer-client"
             },
             {
                 "name": "Transactional Producer",
-                "url": "kafka_message_producer_transactional"
+                "url": "kafka-producer-transactional"
             },
             {
                 "name": "Consumer Groups",
-                "url": "kafka_message_consumer_group_service"
+                "url": "kafka-consumer-group-service"
             },
             {
                 "name": "SASL Authentication - Consumer",
-                "url": "kafka_authentication_sasl_plain_consumer"
+                "url": "kafka-authentication-sasl-plain-consumer"
             },
             {
                 "name": "SASL Authentication - Producer",
-                "url": "kafka_authentication_sasl_plain_producer"
+                "url": "kafka-authentication-sasl-plain-producer"
             }
         ]
     },
@@ -1109,6 +1198,14 @@
             {
                 "name": "QoS Settings",
                 "url": "rabbitmq-consumer-with-qos-settings"
+            },
+            {
+                "name": "Transactional Producer",
+                "url": "rabbitmq-transaction-producer"
+            },
+            {
+                "name": "Transactional Consumer",
+                "url": "rabbitmq-transaction-consumer"
             }
         ]
     },
@@ -1167,74 +1264,6 @@
         "samples": [{
                 "name": "Send and Receive Emails",
                 "url": "send-and-receive-emails"
-            }
-        ]
-    },
-    {
-        "title": "JDBC Database Connector",
-        "column": 0,
-        "category": "Preview features",
-        "samples": [
-            {
-                "name": "JDBC Client Initialization",
-                "url": "jdbc2-init-options"
-            },
-            {
-                "name": "JDBC Select Query Operations",
-                "url": "jdbc2-query-operation"
-            },
-            {
-                "name": "JDBC Query with Complex Types",
-                "url": "jdbc2-complex-type-queries"
-            },
-            {
-                "name": "JDBC DDL and DML Operations",
-                "url": "jdbc2-execute-operation"
-            }
-        ]
-    },
-    {
-        "title": "MySQL Database Connector",
-        "column": 1,
-        "category": "Preview features",
-        "samples": [
-            {
-                "name": "MySQL Client Initialization",
-                "url": "mysql-init-options"
-            },
-            {
-                "name": "MySQL Select Query Operations",
-                "url": "mysql-query-operation"
-            },
-            {
-                "name": "MySQL Query with Complex Types",
-                "url": "mysql-complex-type-queries"
-            },
-            {
-                "name": "MySQL DDL and DML Operations",
-                "url": "mysql-execute-operation"
-            }
-        ]
-    },
-    {
-        "title": "Transactions",
-        "column": 0,
-        "category": "Experimental features",
-        "samples": [{
-                "name": "Local Transactions",
-                "url": "local-transactions"
-            },
-            {
-                "name": "Local Transactions with participants",
-                "url": "local-transactions-with-participants"
-            },
-            {
-                "name": "XA Transactions",
-                "url": "xa-transactions"
-            },
-            {
-                "name": "Distributed Transactions",
-                "url": "transactions-distributed"
             }
         ]
     }

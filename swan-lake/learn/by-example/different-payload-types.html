@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Handling Different Payload Types
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/different-payload-types
+permalink: /swan-lake/learn/by-example/different-payload-types
 redirect_from:
-  - /v1-2/learn/by-example/different-payload-types
-  - /v1-2/learn/by-example/different-payload-types.html
+  - /vswan-lake/learn/by-example/different-payload-types
+  - /vswan-lake/learn/by-example/different-payload-types.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -47,7 +47,7 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">bChannel</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">bChannel</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
@@ -75,7 +75,7 @@ redirect_from:
                 <span class="k">if</span> <span class="p">(</span><span class="nx">returnValue</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">textValue</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">;</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                    <span class="nx">textValue</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">returnValue</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+                    <span class="nx">textValue</span> <span class="p">=</span> <span class="nx">returnValue</span><span class="p">.</span><span class="kt">message</span><span class="p">();</span>
                 <span class="p">}</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">textValue</span><span class="p">);</span>
                 <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
@@ -181,17 +181,17 @@ redirect_from:
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Entity body is not available&quot;</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">response</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">sendErrorMsg</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
     <span class="nx">handleError</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">handleError</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">getBaseType</span><span class="p">(</span><span class="kt">string</span> <span class="nx">contentType</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
@@ -210,7 +210,7 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Json Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mime</span><span class="p">:</span><span class="nx">TEXT_PLAIN</span> <span class="o">==</span> <span class="nx">baseType</span><span class="p">)</span> <span class="p">{</span>
@@ -218,7 +218,7 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Text Part: &quot;</span> <span class="o">+</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">payload</span><span class="p">);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">payload</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -233,7 +233,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Handling Different Payload Types</h2>
                             <p><p>Ballerina supports different payload types to be used directly with HTTP client actions
-(eg: POST, PUT, DELETE etc..) and service respond calls.</p>
+(eg: POST, PUT, DELETE etc..) and service respond calls.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -375,7 +377,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Client endpoint.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html">Client</a> endpoint.</p>
 
                                         </div>
                                     </div>
@@ -426,7 +428,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>GET remote function without any payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get">GET</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -447,7 +449,8 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>GET remote function with request as message.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#get">GET</a> remote function with
+the request given as a message.</p>
 
                                         </div>
                                     </div>
@@ -467,7 +470,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function without any payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function without any payload.</p>
 
                                         </div>
                                     </div>
@@ -487,7 +490,8 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with text as payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function with
+text as the payload.</p>
 
                                         </div>
                                     </div>
@@ -507,7 +511,8 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with <code>xml</code> as payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function with
+<code>xml</code> as the payload.</p>
 
                                         </div>
                                     </div>
@@ -527,7 +532,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with <code>json</code> as payload.</p>
+                                            <p>POST remote function with <code>json</code> as the payload.</p>
 
                                         </div>
                                     </div>
@@ -549,7 +554,8 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with <code>byte[]</code> as payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function with
+<code>byte[]</code> as the payload.</p>
 
                                         </div>
                                     </div>
@@ -568,7 +574,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Get a byte channel to a given file.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openReadableFile">Get a byte channel</a> to a given file.</p>
 
                                         </div>
                                     </div>
@@ -600,8 +606,9 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with byte channel as payload. Since the file path is static
-<code>untaint</code> is used to denote that the byte channel is trusted .</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function
+with a byte channel as the payload. Since the file path is static,
+<code>untaint</code> is used to denote that the byte channel is trusted.</p>
 
                                         </div>
                                     </div>
@@ -621,7 +628,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a JSON body part.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#setJson">Create a JSON body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -641,7 +648,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Create a text body part.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/mime/objects/Entity.html#setText">Create a text body part</a>.</p>
 
                                         </div>
                                     </div>
@@ -662,7 +669,8 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>POST remote function with body parts as payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">POST</a> remote function
+with a body parts as the payload.</p>
 
                                         </div>
                                     </div>
@@ -678,7 +686,7 @@ import ballerina/mime;
         } else {
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted string&gt;bChannel.detail()?.message);
+            res.setPayload(&lt;@untainted&gt;bChannel.message());
             var result = caller-&gt;respond(res);
             handleError(result);
         }
@@ -748,7 +756,7 @@ import ballerina/mime;
                 if (returnValue is string) {
                     textValue = returnValue;
                 } else {
-                    textValue = &lt;string&gt;returnValue.detail()?.message;
+                    textValue = returnValue.message();
                 }
                 var result = caller-&gt;respond(&lt;@untainted&gt;textValue);
                 handleError(result);
@@ -895,7 +903,7 @@ import ballerina/mime;
             log:printInfo(&quot;Entity body is not available&quot;);
         }
     } else {
-        log:printError(response.reason(), response);
+        log:printError(response.message(), response);
     }
 }
 </code></pre></div>
@@ -919,7 +927,7 @@ import ballerina/mime;
                                     <div class="highlight"><pre><code class=ballerina>function sendErrorMsg(http:Caller caller, error err) {
     http:Response res = new;
     res.statusCode = 500;
-    res.setPayload(&lt;@untainted string&gt;err.detail()?.message);
+    res.setPayload(&lt;@untainted&gt;err.message());
     var result = caller-&gt;respond(res);
     handleError(result);
 }
@@ -936,7 +944,7 @@ import ballerina/mime;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function handleError(error? result) {
     if (result is error) {
-        log:printError(result.reason(), result);
+        log:printError(result.message(), result);
     }
 }
 </code></pre></div>
@@ -984,7 +992,7 @@ import ballerina/mime;
             if (payload is json) {
                 log:printInfo(&quot;Json Part: &quot; + payload.toJsonString());
             } else {
-                log:printError(payload.reason(), payload);
+                log:printError(payload.message(), payload);
             }
         }
         if (mime:TEXT_PLAIN == baseType) {
@@ -992,7 +1000,7 @@ import ballerina/mime;
             if (payload is string) {
                 log:printInfo(&quot;Text Part: &quot; + payload);
             } else {
-                log:printError(payload.reason(), payload);
+                log:printError(payload.message(), payload);
             }
         }
     }

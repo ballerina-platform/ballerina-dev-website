@@ -1,11 +1,11 @@
 ---
 layout: ballerina-example-page
-title: JDBC Client Initialization
+title: Client Initialization
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/jdbc2-init-options
+permalink: /swan-lake/learn/by-example/jdbc-init-options
 redirect_from:
-  - /v1-2/learn/by-example/jdbc2-init-options
-  - /v1-2/learn/by-example/jdbc2-init-options.html
+  - /vswan-lake/learn/by-example/jdbc-init-options
+  - /vswan-lake/learn/by-example/jdbc-init-options.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -28,8 +28,7 @@ redirect_from:
     <span class="nx">sql</span><span class="p">:</span><span class="nx">ConnectionPool</span> <span class="nx">connPool</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">maxOpenConnections</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
         <span class="nx">maxConnectionLifeTimeInSeconds</span><span class="p">:</span> <span class="mf">2000.0</span><span class="p">,</span>
-        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>
-    <span class="p">};</span>
+        <span class="nx">minIdleConnections</span><span class="p">:</span> <span class="mi">5</span>    <span class="p">};</span>
     <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient4</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/sample4&quot;</span><span class="p">,</span>
         <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">,</span> <span class="nx">h2Options</span><span class="p">,</span> <span class="nx">connPool</span><span class="p">);</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;JDBC client with connection pool created.&quot;</span><span class="p">);</span>
@@ -44,12 +43,9 @@ redirect_from:
     <span class="nx">check</span> <span class="nx">jdbcClient3</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient4</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
     <span class="nx">check</span> <span class="nx">jdbcClient5</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="nx">check</span> <span class="nx">jdbcClient6</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occured, initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">jdbcClient6</span><span class="p">.</span><span class="nx">close</span><span class="p">();}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeClients</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred, initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -62,13 +58,15 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>JDBC Client Initialization</h2>
+                            <h2>Client Initialization</h2>
                             <p><p>This example demonstrates how to initialize the JDBC client with different
  initialization options. Note that, the relevant database driver JAR
  should be placed in the <code>BALLERINA_HOME/bre/lib</code> folder. However, this sample
  is based on an H2 database and the H2 database driver JAR is included by
  default in the Ballerina distribution. Therefore, it is not required to copy
- the driver JAR for H2 databases.</p>
+ the driver JAR for H2 databases.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/java.jdbc/index.html">JDBC module</a>.</p>
 </p>
 
                         </td>
@@ -76,16 +74,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="send-and-receive-emails.html">
+                                    <a class="prev" href="directory-listener.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Send and Receive Emails</p>
+                                        <p>Directory Listener</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="jdbc2-query-operation.html">
+                                    <a class="next" href="jdbc-query-operation.html">
                                         <span>NEXT ></span>
-                                        <p>JDBC Select Query Operations</p>
+                                        <p>Select Query Operations</p>
                                     </a>
                                 </div>
                                 
@@ -94,7 +92,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="jdbc2-init-options">
+            <div class="example" id="jdbc-init-options">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -105,7 +103,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc2-init-options/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/jdbc-init-options/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,6 +120,14 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -319,7 +325,6 @@ import ballerina/sql;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        minIdleConnections: 5
-    };
 </code></pre></div>
 
                                 </td>
@@ -331,6 +336,18 @@ import ballerina/sql;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -409,7 +426,6 @@ import ballerina/sql;
     check jdbcClient4.close();
     check jdbcClient5.close();
     check jdbcClient6.close();
-}
 </code></pre></div>
 
                                 </td>
@@ -426,17 +442,34 @@ import ballerina/sql;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
-    sql:Error? err = initializeClients();
-    if (err is sql:Error) {
-        io:println(&quot;Error occured, initialization failed!&quot;, err);
-    } else {
-        io:println(&quot;Sample executed successfully!&quot;);
-    }
-}
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeClients();
 </code></pre></div>
 
                                 </td>
@@ -448,6 +481,23 @@ import ballerina/sql;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    if (err is sql:Error) {
+        io:println(&quot;Error occurred, initialization failed!&quot;, err);
+    } else {
+        io:println(&quot;Sample executed successfully!&quot;);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -474,7 +524,7 @@ import ballerina/sql;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run jdbc2_init_options.bal
+$ ballerina run jdbc_init_options.bal
 </code></pre></div>
 
                                 </td>

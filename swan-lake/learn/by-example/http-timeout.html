@@ -4,8 +4,8 @@ title: Timeout
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-timeout
 redirect_from:
-  - /v1-2/learn/by-example/http-timeout
-  - /v1-2/learn/by-example/http-timeout.html
+  - /vswan-lake-preview1/learn/by-example/http-timeout
+  - /vswan-lake-preview1/learn/by-example/http-timeout.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -13,16 +13,14 @@ redirect_from:
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">runtime</span><span class="p">;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">backendClientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span> <span class="p">{</span>
-    <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">10000</span><span class="p">});</span>
+        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">10000</span>    <span class="p">});</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/timeout&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">timeoutService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">timeoutService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-    <span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">invokeEndpoint</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">backendResponse</span> <span class="p">=</span> <span class="nx">backendClientEP</span><span class="o">-&gt;</span><span class="nx">forward</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">backendResponse</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">backendResponse</span><span class="p">);</span>
@@ -32,7 +30,7 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="nx">http</span><span class="p">:</span><span class="nx">STATUS_INTERNAL_SERVER_ERROR</span><span class="p">;</span>
-            <span class="kt">string</span> <span class="nx">errorMessage</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="nx">errorMessage</span> <span class="p">=</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">backendResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">();</span>
             <span class="kt">string</span> <span class="nx">expectedMessage</span> <span class="p">=</span> <span class="s">&quot;Idle timeout triggered before &quot;</span> <span class="o">+</span>
                 <span class="s">&quot;initiating inbound response&quot;</span><span class="p">;</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">errorMessage</span> <span class="o">==</span> <span class="nx">expectedMessage</span><span class="p">)</span> <span class="p">{</span>
@@ -46,8 +44,7 @@ redirect_from:
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/hello&quot;</span>
@@ -78,7 +75,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Timeout</h2>
-                            <p><p>The Timeout is used to gracefully handle network timeouts, which occur when using the HTTP Client.</p>
+                            <p><p>The Timeout is used to gracefully handle network timeouts, which occur when using the HTTP Client.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -155,6 +154,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -189,7 +190,7 @@ import ballerina/runtime;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    timeoutInMillis: 10000
+                                    <div class="highlight"><pre><code class=ballerina>        timeoutInMillis: 10000
 </code></pre></div>
 
                                 </td>
@@ -208,7 +209,7 @@ import ballerina/runtime;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>});
+                                    <div class="highlight"><pre><code class=ballerina>    });
 </code></pre></div>
 
                                 </td>
@@ -239,7 +240,7 @@ service timeoutService on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
@@ -251,17 +252,10 @@ service timeoutService on new http:Listener(9090) {
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a REST resource within the API.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function invokeEndpoint(http:Caller caller, http:Request request) {
@@ -270,14 +264,6 @@ service timeoutService on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The parameters include a reference to the caller
- endpoint and an object of the request data.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -293,7 +279,7 @@ service timeoutService on new http:Listener(9090) {
         } else {
             http:Response response = new;
             response.statusCode = http:STATUS_INTERNAL_SERVER_ERROR;
-            string errorMessage = &lt;string&gt;backendResponse.detail()?.message;
+            string errorMessage = &lt;string&gt;backendResponse.message();
             string expectedMessage = &quot;Idle timeout triggered before &quot; +
                 &quot;initiating inbound response&quot;;
             if (errorMessage == expectedMessage) {
@@ -308,8 +294,6 @@ service timeoutService on new http:Listener(9090) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -323,6 +307,19 @@ service timeoutService on new http:Listener(9090) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -365,8 +362,8 @@ service helloWorld on new http:Listener(8080) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Delay the response by 15000 milliseconds to
- mimic the network level delays.</p>
+                                            <p>Delay the response by 15000 milliseconds to mimic the network level
+ delays.</p>
 
                                         </div>
                                     </div>

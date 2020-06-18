@@ -4,8 +4,8 @@ title: HTTP Compression
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-compression
 redirect_from:
-  - /v1-2/learn/by-example/http-compression
-  - /v1-2/learn/by-example/http-compression.html
+  - /vswan-lake-preview1/learn/by-example/http-compression
+  - /vswan-lake-preview1/learn/by-example/http-compression.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -97,7 +97,9 @@ redirect_from:
                             <p><p>This sample demonstrates how the Ballerina HTTP service is configured to change the compression behaviour. By default, the server
  compresses the response entity body with the scheme(gzip, deflate) that is specified in the Accept-Encoding request header. When
  the particular header is not present or the header value is &ldquo;identity&rdquo;, the server does not perform any compression. Compression
- is disabled when the option is set to <code>COMPRESSION_NEVER</code>.&rdquo;</p>
+ is disabled when the option is set to <code>COMPRESSION_NEVER</code>.&rdquo;<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -225,9 +227,11 @@ service autoCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since compression behaviour of the service is set as <code>COMPRESSION_AUTO</code>, entity body compression is done according
- to the scheme indicated in <code>Accept-Encoding</code> request header. Compression is not performed when the header is not
- present or the header value is &ldquo;identity&rdquo;.</p>
+                                            <p>Since compression behavior of the service is set as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>,
+ entity body compression is done according to the scheme indicated in the <code>Accept-Encoding</code> request header.
+ Compression is not performed when the header is not present or when the header value is &ldquo;identity&rdquo;.
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/CompressionConfig.html">compression</a> annotation
+ provides the related configurations.</p>
 
                                         </div>
                                     </div>
@@ -268,10 +272,11 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p><code>COMPRESSION_ALWAYS</code> guarantees a compressed response entity body. Compression scheme is set to the
- value indicated in Accept-Encoding request header. When particular header is not present or the header
- value is &ldquo;identity&rdquo;, encoding is done using &ldquo;gzip&rdquo; scheme.
- By default Ballerina compresses any MIME type unless they are mentioned under <code>contentTypes</code>.
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>
+ guarantees a compressed response entity body. Compression scheme is set to the
+ value indicated in Accept-Encoding request header. When a particular header is not present or the header
+ value is &ldquo;identity&rdquo;, encoding is done using the &ldquo;gzip&rdquo; scheme.
+ By default, Ballerina compresses any MIME type unless they are mentioned under <code>contentTypes</code>.
  Compression can be constrained to certain MIME types by specifying them as an array of MIME types.
  In this example encoding is applied to &ldquo;text/plain&rdquo; responses only.</p>
 
@@ -346,12 +351,13 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client can indicate the compression behaviour (&ldquo;AUTO&rdquo;, &ldquo;ALWAYS&rdquo;, &ldquo;NEVER&rdquo;) for content negotiation.
+                                            <p>The HTTP client can indicate the <a href="https://ballerina.io/learn/api-docs/ballerina/http/types.html#Compression">compression</a>
+ behavior (&ldquo;AUTO&rdquo;, &ldquo;ALWAYS&rdquo;, &ldquo;NEVER&rdquo;) for content negotiation.
  Depending on the compression option values, the <code>Accept-Encoding</code> header is sent along with the request.
- In this example, the client compression behaviour is set as <code>COMPRESSION_ALWAYS</code>. If you have not specified
- <code>Accept-Encoding</code> header, the client specifies it with &ldquo;deflate, gzip&rdquo;. Alternatively, the existing header is sent.
- When compression is specified as <code>COMPRESSION_AUTO</code>, only the user specified <code>Accept-Encoding</code> header is sent.
- If the behaviour is set as <code>COMPRESSION_NEVER</code>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
+ In this example, the client compression behavior is set as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_ALWAYS">COMPRESSION_ALWAYS</a>. If you have not specified
+ an <code>Accept-Encoding</code> header, the client specifies it with &ldquo;deflate, gzip&rdquo;. Alternatively, the existing header is sent.
+ When compression is specified as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, only the user-specified <code>Accept-Encoding</code> header is sent.
+ If the behavior is set as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_NEVER">COMPRESSION_NEVER</a>, the client makes sure not to send the <code>Accept-Encoding</code> header.</p>
 
                                         </div>
                                     </div>
@@ -409,8 +415,8 @@ service alwaysCompress on listenerEndpoint {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The compression behaviour of the service is inferred by <code>COMPRESSION_AUTO</code>, which is the default value
- of the compression config</p>
+                                            <p>The compression behavior of the service is inferred by <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#COMPRESSION_AUTO">COMPRESSION_AUTO</a>, which is the default value
+ of the compression config.</p>
 
                                         </div>
                                     </div>

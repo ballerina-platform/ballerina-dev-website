@@ -4,8 +4,8 @@ title: HTTP Streaming
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-streaming
 redirect_from:
-  - /v1-2/learn/by-example/http-streaming
-  - /v1-2/learn/by-example/http-streaming.html
+  - /vswan-lake-preview1/learn/by-example/http-streaming
+  - /vswan-lake-preview1/learn/by-example/http-streaming.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -54,8 +54,7 @@ redirect_from:
         <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">clientRequest</span><span class="p">.</span><span class="nx">getByteChannel</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">var</span> <span class="nx">destinationChannel</span> <span class="p">=</span>
-                <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">destinationChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">io</span><span class="p">:</span><span class="nx">openWritableFile</span><span class="p">(</span><span class="s">&quot;./files/ReceivedFile.pdf&quot;</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">destinationChannel</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span><span class="p">)</span> <span class="p">{</span>
                 <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">destinationChannel</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;error occurred while performing copy &quot;</span><span class="p">,</span>
@@ -77,7 +76,7 @@ redirect_from:
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">setError</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">copy</span><span class="p">(</span><span class="nx">io</span><span class="p">:</span><span class="nx">ReadableByteChannel</span> <span class="nx">src</span><span class="p">,</span>
               <span class="nx">io</span><span class="p">:</span><span class="nx">WritableByteChannel</span> <span class="nx">dst</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
@@ -86,7 +85,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
+            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
@@ -119,7 +118,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>HTTP Streaming</h2>
-                            <p><p>Ballerina supports HTTP input and output streaming capability through io:ReadableByteChannel.</p>
+                            <p><p>Ballerina supports HTTP input and output streaming capability through io:ReadableByteChannel.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -204,6 +205,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -235,7 +238,7 @@ import ballerina/mime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Creates an endpoint for the client.</p>
+                                            <p>Creates an endpoint for the <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html">client</a>.</p>
 
                                         </div>
                                     </div>
@@ -288,7 +291,7 @@ service HTTPStreamingService on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Sets the file as request payload.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#setFileAsPayload">Sets the file</a> as the request payload.</p>
 
                                         </div>
                                     </div>
@@ -370,7 +373,26 @@ service HTTPStreamingService on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            var destinationChannel =
                 io:openWritableFile(&quot;./files/ReceivedFile.pdf&quot;);
-            if (destinationChannel is io:WritableByteChannel) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Writes the incoming stream to a file. First, <a href="https://ballerina.io/learn/api-docs/ballerina/io/functions.html#openWritableFile">get the destination channel</a>
+by providing the file name to which the content should be written to.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (destinationChannel is io:WritableByteChannel) {
                 var result = copy(payload, destinationChannel);
                 if (result is error) {
                     log:printError(&quot;error occurred while performing copy &quot;,
@@ -395,15 +417,6 @@ service HTTPStreamingService on new http:Listener(9090) {
                                 </td>
                                 <td class="docs">
                                     
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Writes the incoming stream to a file. First get the destination
-channel by providing the file name, the content should be
-written to.</p>
-
-                                        </div>
-                                    </div>
-                                    
                                 </td>
                             </tr>
                             
@@ -412,7 +425,7 @@ written to.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function setError(http:Response res, error err) {
     res.statusCode = 500;
-    res.setPayload(&lt;@untainted string&gt;err.detail()?.message);
+    res.setPayload(&lt;@untainted&gt;err.message());
 }
 </code></pre></div>
 
@@ -476,7 +489,7 @@ written to.</p>
         if (result is io:EofError) {
             break;
         } else if (result is error) {
-            return &lt;@untained&gt;result;
+            return &lt;@untainted&gt;result;
         } else {
 </code></pre></div>
 
@@ -485,7 +498,7 @@ written to.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The operation attempts to read a maximum of 1000 bytes and returns
+                                            <p>The operation attempts to <a href="https://ballerina.io/learn/api-docs/ballerina/io/objects/ReadableByteChannel.html#read">read</a> a maximum of 1000 bytes and returns
  with the available content, which could be &lt; 1000.</p>
 
                                         </div>
@@ -517,7 +530,7 @@ written to.</p>
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The operation writes the given content into the channel.</p>
+                                            <p>The operation <a href="https://ballerina.io/learn/api-docs/ballerina/io/objects/WritableByteChannel.html#write">writes</a> the given content into the channel.</p>
 
                                         </div>
                                     </div>

@@ -4,8 +4,8 @@ title: Remote Hub Sample
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/websub-remote-hub-sample
 redirect_from:
-  - /v1-2/learn/by-example/websub-remote-hub-sample
-  - /v1-2/learn/by-example/websub-remote-hub-sample.html
+  - /vswan-lake-preview1/learn/by-example/websub-remote-hub-sample
+  - /vswan-lake-preview1/learn/by-example/websub-remote-hub-sample.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -26,7 +26,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">webSubHub</span> <span class="p">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">startedUpHub</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hub start error:&quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);}</span>
@@ -39,7 +39,7 @@ redirect_from:
                 <span class="nx">websubHubClientEP</span><span class="o">-&gt;</span><span class="nx">registerTopic</span><span class="p">(</span><span class="s">&quot;http://websubpubtopic.com&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">registrationResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred registering topic: &quot;</span> <span class="o">+</span>
-                                <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">registrationResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                <span class="nx">registrationResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic registration successful!&quot;</span><span class="p">);</span>
     <span class="p">}</span>
@@ -50,7 +50,7 @@ redirect_from:
                                 <span class="p">{</span><span class="s">&quot;action&quot;</span><span class="p">:</span> <span class="s">&quot;publish&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">:</span> <span class="s">&quot;remote-hub&quot;</span><span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">publishResponse</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error notifying hub: &quot;</span> <span class="o">+</span>
-                                    <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">publishResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                                    <span class="nx">publishResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Update notification successful!&quot;</span><span class="p">);</span>
     <span class="p">}}</span>
@@ -108,7 +108,9 @@ redirect_from:
 
 <p>This example demonstrates a simple WebSub publisher and subscriber scenario, in which a Ballerina WebSub Hub
  that is brought up remotely is used by a Ballerina WebSub publisher to publish updates to a topic. A Ballerina
- WebSub Subscriber subscribes at this remote hub to get the topic updates.</p>
+ WebSub Subscriber subscribes at this remote hub to get the topic updates.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/websub/index.html">WebSub module</a>.</p>
 </p>
 
                         </td>
@@ -263,7 +265,7 @@ import ballerina/websub;
     } else if (result is websub:HubStartedUpError) {
         webSubHub = result.startedUpHub;
     } else {
-        io:println(&quot;Hub start error:&quot; + &lt;string&gt;result.detail()?.message);
+        io:println(&quot;Hub start error:&quot; + result.message());
         return;
     }
 </code></pre></div>
@@ -425,7 +427,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the remote WebSub Hub Endpoint to which registration and publish requests are sent.</p>
+                                            <p>This is the remote [WebSub Hub client]((<a href="https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html">https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html</a>) to which registration and publish requests are sent.</p>
 
                                         </div>
                                     </div>
@@ -452,7 +454,7 @@ import ballerina/websub;
                 websubHubClientEP-&gt;registerTopic(&quot;http://websubpubtopic.com&quot;);
     if (registrationResponse is error) {
         io:println(&quot;Error occurred registering topic: &quot; +
-                                &lt;string&gt;registrationResponse.detail()?.message);
+                                registrationResponse.message());
     } else {
         io:println(&quot;Topic registration successful!&quot;);
     }
@@ -463,7 +465,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Registers a topic at the hub.</p>
+                                            <p>Registers a topic at the hub using <a href="https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html#registerTopic">registerTopic</a>.</p>
 
                                         </div>
                                     </div>
@@ -499,7 +501,7 @@ import ballerina/websub;
                                 {&quot;action&quot;: &quot;publish&quot;, &quot;mode&quot;: &quot;remote-hub&quot;});
     if (publishResponse is error) {
         io:println(&quot;Error notifying hub: &quot; +
-                                    &lt;string&gt;publishResponse.detail()?.message);
+                                    publishResponse.message());
     } else {
         io:println(&quot;Update notification successful!&quot;);
     }
@@ -510,7 +512,7 @@ import ballerina/websub;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Publishes updates to the remote hub.</p>
+                                            <p>Publishes updates to the remote hub using <a href="https://ballerina.io/learn/api-docs/ballerina/websub/clients/PublisherClient.html#publishUpdate">publishUpdate</a>.</p>
 
                                         </div>
                                     </div>

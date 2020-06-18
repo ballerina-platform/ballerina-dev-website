@@ -4,8 +4,8 @@ title: Mutual SSL
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/mutual-ssl
 redirect_from:
-  - /v1-2/learn/by-example/mutual-ssl
-  - /v1-2/learn/by-example/mutual-ssl.html
+  - /vswan-lake-preview1/learn/by-example/mutual-ssl
+  - /vswan-lake-preview1/learn/by-example/mutual-ssl.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -74,10 +74,10 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">resp</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -91,7 +91,9 @@ redirect_from:
                             <h2>Mutual SSL</h2>
                             <p><p>Ballerina supports mutual SSL, which is a certificate-based authentication process where two parties (client and
 server) authenticate each other by verifying the digital certificates. It ensures that both parties are assured of
-each other&rsquo;s identity.</p>
+each other&rsquo;s identity.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -208,7 +210,8 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Create an HTTP listener configuration, which will configure a listener to
- accept new connections that are secured via mutual SSL.</p>
+ accept new connections that are secured via mutual SSL.
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/ListenerSecureSocket.html">secureSocket</a> record provides the SSL related listener configurations.</p>
 
                                         </div>
                                     </div>
@@ -496,8 +499,9 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>Create a client configuration to be passed to the client endpoint.
- Configure the <code>keyStoreFile</code>, <code>keyStorePassword</code>, <code>trustStoreFile</code>, and
- the<code>trustStorePassword</code>, which are required to enable mutual SSL.</p>
+ Configure the <code>keyStore</code> file <code>path</code> and <code>password</code>, <code>truststore</code>
+ file <code>path</code> and <code>password</code>, which are required to enable mutual SSL.
+ <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/ClientSecureSocket.html">secureSocket</a> record provides the SSL related configurations.</p>
 
                                         </div>
                                     </div>
@@ -600,7 +604,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            log:printError(&lt;string&gt;payload.detail()[&quot;message&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>            log:printError(payload.message());
         }
     } else {
 </code></pre></div>
@@ -622,7 +626,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printError(&lt;string&gt;resp.detail()[&quot;message&quot;]);
+                                    <div class="highlight"><pre><code class=ballerina>        log:printError(resp.message());
     }
 }
 </code></pre></div>

@@ -1,11 +1,11 @@
 ---
 layout: ballerina-example-page
-title: MySQL Query with Complex Types
+title: Query with Complex Types
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/mysql-complex-type-queries
 redirect_from:
-  - /v1-2/learn/by-example/mysql-complex-type-queries
-  - /v1-2/learn/by-example/mysql-complex-type-queries.html
+  - /vswan-lake-preview1/learn/by-example/mysql-complex-type-queries
+  - /vswan-lake-preview1/learn/by-example/mysql-complex-type-queries.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -44,8 +44,7 @@ redirect_from:
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">queryDateTimeType</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Query Date Time Type -------&quot;</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
@@ -65,12 +64,10 @@ redirect_from:
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
+    <span class="p">}</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ ********* -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
-    <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span>
+<span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">? {    mysql:Client mysqlClient = check new (</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span>
         <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;</span><span class="p">);</span>    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS &quot;</span> <span class="o">+</span>
         <span class="s">&quot;MYSQL_BBE.BINARY_TYPES&quot;</span><span class="p">);</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE MYSQL_BBE.BINARY_TYPES&quot;</span><span class="o">+</span>
@@ -90,18 +87,15 @@ redirect_from:
         <span class="s">&quot;timestamp_type, datetime_type) values (1,&#39;2017-05-23&#39;,&#39;14:15:23&#39;,&quot;</span><span class="o">+</span>
         <span class="s">&quot;&#39;2017-01-25 16:33:55&#39;,&#39;2017-01-25 16:33:55&#39;)&quot;</span><span class="p">);</span>    <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample data initialization failed!&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span>
             <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">,</span> <span class="nx">database</span> <span class="p">=</span> <span class="s">&quot;MYSQL_BBE&quot;</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">mysqlClient</span> <span class="nx">is</span> <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">queryBinaryType</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">queryDateTimeType</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
-            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">queryDateTimeType</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample executed successfully!&quot;</span><span class="p">);</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL Client initialization for querying data&quot;</span> <span class="o">+</span>
             <span class="s">&quot;failed!!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
@@ -115,13 +109,15 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>MySQL Query with Complex Types</h2>
+                            <h2>Query with Complex Types</h2>
                             <p><p>This example demonstrates how to use the MySQL client with complex data types
  such as binary, blobs, and date/time fields. Note that the MySQL database
  driver JAR should be placed in the <code>BALLERINA_HOME/bre/lib</code> directory. The
  MySQL connector uses some database properties from MySQL version 8.0.x
  onwards. Therefore, it is recommended to use a MySQL driver version greater
- than 8.0.x.</p>
+ than 8.0.x.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/mysql/index.html">MySQL module</a>.</p>
 </p>
 
                         </td>
@@ -131,14 +127,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="mysql-query-operation.html">
                                         <span>< PREVIOUS</span>
-                                        <p>MySQL Select Query Operations</p>
+                                        <p>Select Query Operations</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="mysql-execute-operation.html">
                                         <span>NEXT ></span>
-                                        <p>MySQL DDL and DML Operations</p>
+                                        <p>DDL and DML Operations</p>
                                     </a>
                                 </div>
                                 
@@ -175,6 +171,18 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -428,8 +436,6 @@ string dbPassword = &quot;Test@123&quot;;
     if (e is error) {
         io:println(e);
     }
-    io:println(&quot;------ ********* -------&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -441,6 +447,19 @@ string dbPassword = &quot;Test@123&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ ********* -------&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -565,8 +584,6 @@ string dbPassword = &quot;Test@123&quot;;
     if (e is error) {
         io:println(e);
     }
-    io:println(&quot;------ ********* -------&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -582,13 +599,23 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ ********* -------&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function initializeTable() returns sql:Error? {
-    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result = check
-        mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
 </code></pre></div>
 
                                 </td>
@@ -600,6 +627,20 @@ string dbPassword = &quot;Test@123&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
+    sql:ExecutionResult result = check
+        mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -674,12 +715,6 @@ string dbPassword = &quot;Test@123&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeTable();
-    if (err is sql:Error) {
-        io:println(&quot;Sample data initialization failed!&quot;, err);
-    } else {
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
-        if (mysqlClient is mysql:Client) {
 </code></pre></div>
 
                                 </td>
@@ -695,12 +730,28 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (err is sql:Error) {
+        io:println(&quot;Sample data initialization failed!&quot;, err);
+    } else {
+        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
+            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
+        if (mysqlClient is mysql:Client) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            queryBinaryType(mysqlClient);
             queryDateTimeType(mysqlClient);
-            io:println(&quot;Sample executed successfully!&quot;);
 </code></pre></div>
 
                                 </td>
@@ -716,16 +767,22 @@ string dbPassword = &quot;Test@123&quot;;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Sample executed successfully!&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            sql:Error? e = mysqlClient.close();
-        } else {
-            io:println(&quot;MySQL Client initialization for querying data&quot; +
-            &quot;failed!!&quot;, mysqlClient);
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -737,6 +794,23 @@ string dbPassword = &quot;Test@123&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        } else {
+            io:println(&quot;MySQL Client initialization for querying data&quot; +
+            &quot;failed!!&quot;, mysqlClient);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -763,7 +837,7 @@ string dbPassword = &quot;Test@123&quot;;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>#  To run this sample, navigate to the directory that contains the
 # `.bal` file and execute the `ballerina run` command.
-$ ballerina run mysql-complex-type-queries.bal
+$ ballerina run mysql_complex_type_queries.bal
 </code></pre></div>
 
                                 </td>

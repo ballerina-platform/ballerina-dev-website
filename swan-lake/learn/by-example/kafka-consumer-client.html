@@ -2,10 +2,10 @@
 layout: ballerina-example-page
 title: Consumer Client
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/kafka_message_consumer_simple
+permalink: /learn/by-example/kafka-consumer-client
 redirect_from:
-  - /v1-2/learn/by-example/kafka_message_consumer_simple
-  - /v1-2/learn/by-example/kafka_message_consumer_simple.html
+  - /vswan-lake-preview1/learn/by-example/kafka-consumer-client
+  - /vswan-lake-preview1/learn/by-example/kafka-consumer-client.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -14,24 +14,19 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">string</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerConfiguration</span> <span class="nx">consumerConfiguration</span> <span class="p">=</span> <span class="p">{</span>
-    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>
-    <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
+    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>    <span class="nx">groupId</span><span class="p">:</span> <span class="s">&quot;group-id&quot;</span><span class="p">,</span>
     <span class="nx">offsetReset</span><span class="p">:</span> <span class="s">&quot;earliest&quot;</span><span class="p">,</span>
-    <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">]</span>
-<span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfiguration</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">results</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">topics</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;test-kafka-topic&quot;</span><span class="p">]};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Consumer</span> <span class="nx">consumer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">consumerConfiguration</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">results</span> <span class="p">=</span> <span class="nx">consumer</span><span class="o">-&gt;</span><span class="nx">poll</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">results</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while polling &quot;</span><span class="p">,</span> <span class="nx">results</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]</span> <span class="nx">records</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ConsumerRecord</span><span class="p">[]&gt;</span><span class="nx">results</span><span class="p">;</span>
     <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">kafkaRecord</span> <span class="nx">in</span> <span class="nx">records</span> <span class="p">{</span>
         <span class="nx">anydata</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">serializedMessage</span> <span class="nx">is</span> <span class="nx">byte</span><span class="p">[])</span> <span class="p">{</span>
-            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(</span><span class="nx">serializedMessage</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">&#39;string:fromBytes(serializedMessage);            if (</span><span class="kt">message</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Topic: &quot;</span><span class="p">,</span> <span class="nx">kafkaRecord</span><span class="p">.</span><span class="nx">topic</span><span class="p">,</span> <span class="s">&quot; Received Message: &quot;</span><span class="p">,</span>
-                    <span class="kt">message</span><span class="p">);</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="kt">message</span><span class="p">);</span>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error occurred while converting message data&quot;</span><span class="p">,</span>
                     <span class="kt">message</span><span class="p">);</span>
             <span class="p">}</span>
@@ -55,7 +50,10 @@ redirect_from:
  <code>poll()</code> function.
  This consumer uses the builtin byte array deserializer for both the key and
  the value, which is the default deserializer in the <code>kafka:Consumer</code>. For
- this example to work properly, an active Kafka broker should be present.</p>
+ this example to work properly, an active Kafka broker should be present.
+ <br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/kafka/index.html">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -63,14 +61,14 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="kafka_message_consumer_service.html">
+                                    <a class="prev" href="kafka-consumer-service.html">
                                         <span>< PREVIOUS</span>
                                         <p>Consumer Service</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="kafka_message_producer_transactional.html">
+                                    <a class="next" href="kafka-producer-transactional.html">
                                         <span>NEXT ></span>
                                         <p>Transactional Producer</p>
                                     </a>
@@ -81,7 +79,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="kafka_message_consumer_simple">
+            <div class="example" id="kafka-consumer-client">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -92,7 +90,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/kafka_message_consumer_simple/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/kafka-consumer-client/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -109,6 +107,16 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -164,8 +172,6 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
-    groupId: &quot;group-id&quot;,
-    offsetReset: &quot;earliest&quot;,
 </code></pre></div>
 
                                 </td>
@@ -182,11 +188,23 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    groupId: &quot;group-id&quot;,
+    offsetReset: &quot;earliest&quot;,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    topics: [&quot;test-kafka-topic&quot;]
-};
 </code></pre></div>
 
                                 </td>
@@ -198,6 +216,18 @@ import ballerina/log;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -230,13 +260,6 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var results = consumer-&gt;poll(1000);
-    if (results is error) {
-        log:printError(&quot;Error occurred while polling &quot;, results);
-    }
-    kafka:ConsumerRecord[] records = &lt;kafka:ConsumerRecord[]&gt;results;
-    foreach var kafkaRecord in records {
-        anydata serializedMessage = kafkaRecord.value;
-        if (serializedMessage is byte[]) {
 </code></pre></div>
 
                                 </td>
@@ -252,11 +275,28 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (results is error) {
+        log:printError(&quot;Error occurred while polling &quot;, results);
+    }
+    kafka:ConsumerRecord[] records = &lt;kafka:ConsumerRecord[]&gt;results;
+    foreach var kafkaRecord in records {
+        anydata serializedMessage = kafkaRecord.value;
+        if (serializedMessage is byte[]) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            string|error message = &#39;string:fromBytes(serializedMessage);
-            if (message is string) {
 </code></pre></div>
 
                                 </td>
@@ -272,12 +312,42 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (message is string) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>                io:println(&quot;Topic: &quot;, kafkaRecord.topic, &quot; Received Message: &quot;,
                     message);
-            } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Prints the retrieved Kafka record.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>            } else {
                 log:printError(&quot;Error occurred while converting message data&quot;,
                     message);
             }
@@ -291,13 +361,6 @@ import ballerina/log;
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Prints the retrieved Kafka record.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -324,7 +387,7 @@ import ballerina/log;
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
-$ ballerina run kafka_message_consumer_simple.bal
+$ ballerina run kafka_consumer_client.bal
 </code></pre></div>
 
                                 </td>

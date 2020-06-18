@@ -4,8 +4,8 @@ title: CORS
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-cors
 redirect_from:
-  - /v1-2/learn/by-example/http-cors
-  - /v1-2/learn/by-example/http-cors.html
+  - /vswan-lake-preview1/learn/by-example/http-cors
+  - /vswan-lake-preview1/learn/by-example/http-cors.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -37,7 +37,7 @@ redirect_from:
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -50,7 +50,7 @@ redirect_from:
         <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">responseJson</span><span class="p">);</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -65,7 +65,9 @@ redirect_from:
                             <h2>CORS</h2>
                             <p><p>This sample demonstrates the Ballerina server connector CORS configuration.
 CORS headers can be applied in both the service-level and the resource-level. Service-level CORS headers apply to all the resources
-unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.</p>
+unless there are headers configured at the resource-level. Ballerina CORS supports both simple and pre-flight requests.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -166,7 +168,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Service-level CORS headers apply globally to each <code>resource</code>.</p>
+                                            <p>Service-level <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html">CORS config</a> applies
+ globally to each <code>resource</code>.</p>
 
                                         </div>
                                     </div>
@@ -192,7 +195,7 @@ service crossOriginService on new http:Listener(9092) {
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 </code></pre></div>
@@ -202,7 +205,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Resource-level CORS headers override the service-level CORS headers.</p>
+                                            <p>Resource-level <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/CorsConfig.html">CORS config</a>
+ overrides the service-level CORS headers.</p>
 
                                         </div>
                                     </div>
@@ -223,7 +227,7 @@ service crossOriginService on new http:Listener(9092) {
         res.setJsonPayload(responseJson);
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 }
@@ -234,8 +238,8 @@ service crossOriginService on new http:Listener(9092) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Since there are no resource-level CORS headers defined here, the global
-service-level CORS headers are applied to this resource.</p>
+                                            <p>Since there are no resource-level CORS configs defined here, the global
+ service-level CORS configs will be applied to this resource.</p>
 
                                         </div>
                                     </div>

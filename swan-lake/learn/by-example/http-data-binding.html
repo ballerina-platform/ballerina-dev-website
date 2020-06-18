@@ -4,8 +4,8 @@ title: Data Binding
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-data-binding
 redirect_from:
-  - /v1-2/learn/by-example/http-data-binding
-  - /v1-2/learn/by-example/http-data-binding.html
+  - /vswan-lake-preview1/learn/by-example/http-data-binding
+  - /vswan-lake-preview1/learn/by-example/http-data-binding.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -33,7 +33,7 @@ redirect_from:
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -46,7 +46,7 @@ redirect_from:
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">city</span><span class="p">);</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
     <span class="nd">@http:ResourceConfig {</span>
@@ -58,11 +58,11 @@ redirect_from:
                                  <span class="nx">Student</span> <span class="nx">student</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">name</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Name</span><span class="p">;</span>
         <span class="kt">int</span> <span class="nx">grade</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Grade</span><span class="p">;</span>
-        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
+        <span class="kt">string</span> <span class="nx">english</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">student</span><span class="p">.</span><span class="nx">Marks</span><span class="p">[</span><span class="s">&quot;English&quot;</span><span class="p">];</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">({</span><span class="nx">Name</span><span class="p">:</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">Grade</span><span class="p">:</span> <span class="nx">grade</span><span class="p">,</span> <span class="nx">English</span><span class="p">:</span> <span class="nx">english</span><span class="p">});</span>        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">(),</span> <span class="nx">result</span><span class="p">);</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -77,7 +77,9 @@ redirect_from:
                             <h2>Data Binding</h2>
                             <p><p>HTTP data binding helps access payload through the last resource signature parameter. The parameter name should be
  declared in the resource config under the <code>body</code> annotation. <code>string</code>, <code>json</code>, <code>xml</code>, <code>byte[]</code>, record, and record[] are
- supported as parameter types.</p>
+ supported as parameter types.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -217,7 +219,8 @@ service hello on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>body</code> annotation represents the entity body of the inbound request.</p>
+                                            <p>The <code>body</code> annotation in the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">ResourceConfig</a>
+ represents the entity body of the inbound request.</p>
 
                                         </div>
                                     </div>
@@ -238,7 +241,7 @@ service hello on new http:Listener(9090) {
         }
         var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 </code></pre></div>
@@ -306,7 +309,7 @@ service hello on new http:Listener(9090) {
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 </code></pre></div>
@@ -348,7 +351,7 @@ match the record.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        string name = &lt;@untainted&gt;student.Name;
         int grade = &lt;@untainted&gt;student.Grade;
-        string english = &lt;@untained string&gt;student.Marks[&quot;English&quot;];
+        string english = &lt;@untainted string&gt;student.Marks[&quot;English&quot;];
         http:Response res = new;
         res.setPayload({Name: name, Grade: grade, English: english});
 </code></pre></div>
@@ -371,7 +374,7 @@ match the record.</p>
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>        var result = caller-&gt;respond(res);
         if (result is error) {
-            log:printError(result.reason(), result);
+            log:printError(result.message(), result);
         }
     }
 }

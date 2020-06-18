@@ -1,11 +1,11 @@
 ---
 layout: ballerina-example-page
-title: MySQL Select Query Operations
+title: Select Query Operations
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/mysql-query-operation
 redirect_from:
-  - /v1-2/learn/by-example/mysql-query-operation
-  - /v1-2/learn/by-example/mysql-query-operation.html
+  - /vswan-lake-preview1/learn/by-example/mysql-query-operation
+  - /vswan-lake-preview1/learn/by-example/mysql-query-operation.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -26,8 +26,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;ForEach operation on the stream failed!&quot;</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
+    <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Simple Query -------&quot;</span><span class="p">);</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">countRows</span><span class="p">(</span><span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ Start Count Total Rows -------&quot;</span><span class="p">);</span>
     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
@@ -40,8 +39,7 @@ redirect_from:
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table is empty&quot;</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Count Total Rows -------&quot;</span><span class="p">);</span>
+    <span class="nx">error</span><span class="p">? e = resultStream.close();    io:println(</span><span class="s">&quot;------ End Count Total Rows -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="nx">type</span> <span class="nx">Customer</span> <span class="nx">record</span> <span class="p">{|</span>
     <span class="kt">int</span> <span class="nx">customerId</span><span class="p">;</span>
@@ -60,13 +58,13 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">customer</span><span class="p">);</span>
     <span class="p">});</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;------ End Query With Type Description -------&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
     <span class="nx">mysql</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mysqlClient</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">user</span> <span class="p">=</span> <span class="nx">dbUser</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">dbPassword</span><span class="p">);</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecuteResult</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
         <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;</span><span class="p">);</span>
     <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS &quot;</span><span class="o">+</span>
         <span class="s">&quot;MYSQL_BBE.Customers&quot;</span><span class="p">);</span>
@@ -83,8 +81,7 @@ redirect_from:
         <span class="s">&quot;CreditLimit,Country) VALUES (&#39;Dan&#39;, &#39;Brown&#39;, 2, 10000, &#39;UK&#39;)&quot;</span><span class="p">);</span>
     <span class="nx">check</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Sample data initialization failed!&quot;</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -95,8 +92,7 @@ redirect_from:
             <span class="nx">countRows</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
             <span class="nx">typedQuery</span><span class="p">(</span><span class="nx">mysqlClient</span><span class="p">);</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Queried the database successfully!&quot;</span><span class="p">);</span>
-            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">mysqlClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;MySQL Client initialization for &quot;</span> <span class="o">+</span>
                 <span class="s">&quot;querying data failed!&quot;</span><span class="p">,</span> <span class="nx">mysqlClient</span><span class="p">);</span>
         <span class="p">}</span>
@@ -110,12 +106,14 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>MySQL Select Query Operations</h2>
+                            <h2>Select Query Operations</h2>
                             <p><p>This example demonstrates how to use the JDBC client select query operations
  with the stream return type. Note that the MySQL database driver JAR should
  be placed in the <code>BALLERINA_HOME/bre/lib</code> directory. The MySQL connector uses
  database properties from MySQL version 8.0.x onwards. Therefore, it is
- recommended to use a MySQL driver version greater than 8.0.x.</p>
+ recommended to use a MySQL driver version greater than 8.0.x.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/mysql/index.html">MySQL module</a>.</p>
 </p>
 
                         </td>
@@ -125,14 +123,14 @@ redirect_from:
                                 <div class="cButtonInfoContainer">
                                     <a class="prev" href="mysql-init-options.html">
                                         <span>< PREVIOUS</span>
-                                        <p>MySQL Client Initialization</p>
+                                        <p>Client Initialization</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
                                     <a class="next" href="mysql-complex-type-queries.html">
                                         <span>NEXT ></span>
-                                        <p>MySQL Query with Complex Types</p>
+                                        <p>Query with Complex Types</p>
                                     </a>
                                 </div>
                                 
@@ -169,6 +167,14 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -345,8 +351,6 @@ string dbPassword = &quot;Test@123&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    e = resultStream.close();
-    io:println(&quot;------ End Simple Query -------&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -361,6 +365,19 @@ string dbPassword = &quot;Test@123&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Simple Query -------&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -447,8 +464,6 @@ string dbPassword = &quot;Test@123&quot;;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    error? e = resultStream.close();
-    io:println(&quot;------ End Count Total Rows -------&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -460,6 +475,19 @@ string dbPassword = &quot;Test@123&quot;;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;------ End Count Total Rows -------&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -554,7 +582,7 @@ and the defined field name of the record will be matched case insensitively.</p>
         io:println(customer);
     });
     if (e is error) {
-            io:println(e);
+       io:println(e);
     }
 </code></pre></div>
 
@@ -608,7 +636,7 @@ and the defined field name of the record will be matched case insensitively.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>function initializeTable() returns sql:Error? {
     mysql:Client mysqlClient = check new (user = dbUser, password = dbPassword);
-    sql:ExecuteResult? result =
+    sql:ExecutionResult result =
         check mysqlClient-&gt;execute(&quot;CREATE DATABASE IF NOT EXISTS MYSQL_BBE&quot;);
     result = check mysqlClient-&gt;execute(&quot;DROP TABLE IF EXISTS &quot;+
         &quot;MYSQL_BBE.Customers&quot;);
@@ -656,13 +684,6 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    sql:Error? err = initializeTable();
-    if (err is sql:Error) {
-        io:println(&quot;Sample data initialization failed!&quot;);
-        io:println(err);
-    } else {
-        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
-            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
-        if (mysqlClient is mysql:Client) {
 </code></pre></div>
 
                                 </td>
@@ -674,6 +695,24 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (err is sql:Error) {
+        io:println(&quot;Sample data initialization failed!&quot;);
+        io:println(err);
+    } else {
+        mysql:Client|sql:Error mysqlClient = new (user = dbUser,
+            password = dbPassword, database = &quot;MYSQL_BBE&quot;);
+        if (mysqlClient is mysql:Client) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -702,14 +741,8 @@ and the defined field name of the record will be matched case insensitively.</p>
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            sql:Error? e = mysqlClient.close();
-        } else {
-            io:println(&quot;MySQL Client initialization for &quot; +
-                &quot;querying data failed!&quot;, mysqlClient);
-        }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -721,6 +754,23 @@ and the defined field name of the record will be matched case insensitively.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>        } else {
+            io:println(&quot;MySQL Client initialization for &quot; +
+                &quot;querying data failed!&quot;, mysqlClient);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

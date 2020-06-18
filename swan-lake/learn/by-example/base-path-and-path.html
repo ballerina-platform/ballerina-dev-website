@@ -4,8 +4,8 @@ title: Base Path and Path
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/base-path-and-path
 redirect_from:
-  - /v1-2/learn/by-example/base-path-and-path
-  - /v1-2/learn/by-example/base-path-and-path.html
+  - /vswan-lake-preview1/learn/by-example/base-path-and-path
+  - /vswan-lake-preview1/learn/by-example/base-path-and-path.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -27,7 +27,7 @@ redirect_from:
             <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">);</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">payload</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -46,7 +46,9 @@ redirect_from:
                             <h2>Base Path and Path</h2>
                             <p><p>Ballerina supports writing RESTful services according to the JAX-RS specification.
  You can use <code>BasePath</code>, <code>Path</code>, and HTTP verb annotations such as <code>POST</code> and <code>GET</code> to
- constrain your service in a RESTful manner.</p>
+ constrain your service in a RESTful manner.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -145,8 +147,9 @@ service echo on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>basePath</code> attribute associates a path to the service.
- When bound to a listener endpoint, the service will be accessible at the specified path.</p>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpServiceConfig.html">basePath</a> attribute
+ associates a path to the service. When bound to a listener endpoint, the service will be accessible at the
+ specified path.</p>
 
                                         </div>
                                     </div>
@@ -169,9 +172,10 @@ service echo on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>When the <code>methods</code> attribute is used, it confines the resource to the HTTP methods specified.
- In this instance, only <code>POST</code> requests are allowed.
- The <code>path</code> attribute associates a subpath to the resource (i.e., relative to the <code>basePath</code> given in the <code>ServiceConfig</code> annotation).</p>
+                                            <p>When the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">methods</a> attribute
+ is used, it confines the resource to the specified HTTP methods. In this instance, only <code>POST</code> requests are
+ allowed. The <code>path</code> attribute associates a subpath to the resource (i.e., relative to the <code>basePath</code> given in
+ the <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpServiceConfig.html">ServiceConfig</a> annotation).</p>
 
                                         </div>
                                     </div>
@@ -206,7 +210,7 @@ service echo on new http:Listener(9090) {
                                     <div class="highlight"><pre><code class=ballerina>            res.setJsonPayload(&lt;@untainted&gt;payload);
         } else {
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted string&gt;payload.detail()?.message);
+            res.setPayload(&lt;@untainted&gt;payload.message());
         }
 </code></pre></div>
 

@@ -1,27 +1,28 @@
 ---
 layout: ballerina-example-page
-title: Java Arrays
+title: Non Transaction Retry
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/java-arrays
+permalink: /learn/by-example/non-transaction-retry
 redirect_from:
-  - /v1-2/learn/by-example/java-arrays
-  - /v1-2/learn/by-example/java-arrays.html
+  - /vswan-lake-preview1/learn/by-example/non-transaction-retry
+  - /vswan-lake-preview1/learn/by-example/non-transaction-retry.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">arrays</span> <span class="k">as</span> <span class="nx">jarrays</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">handle</span> <span class="nx">receiver</span><span class="p">,</span> <span class="nx">handle</span> <span class="nx">regex</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">handle</span> <span class="p">=</span> <span class="nd">@java:Method {</span>
-    <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;split&quot;</span><span class="p">,</span>
-    <span class="nx">class</span><span class="p">:</span> <span class="s">&quot;java/lang/String&quot;</span>
-<span class="p">}</span> <span class="nx">external</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">handle</span> <span class="nx">helloString</span> <span class="p">=</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">);</span>
-    <span class="nx">handle</span> <span class="nx">regex</span> <span class="p">=</span> <span class="nx">java</span><span class="p">:</span><span class="nx">fromString</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">);</span>
-    <span class="nx">handle</span> <span class="nx">words</span> <span class="p">=</span> <span class="nx">splitString</span><span class="p">(</span><span class="nx">helloString</span><span class="p">,</span> <span class="nx">regex</span><span class="p">);</span>    <span class="kt">int</span> <span class="nx">numWords</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">getLength</span><span class="p">(</span><span class="nx">words</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">numWords</span><span class="p">);</span>
-    <span class="nx">handle</span> <span class="nx">secondWord</span> <span class="p">=</span> <span class="nx">jarrays</span><span class="p">:</span><span class="nx">get</span><span class="p">(</span><span class="nx">words</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">secondWord</span><span class="p">);</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span><span class="p">{</span>    <span class="kt">string</span> <span class="nx">str</span> <span class="p">=</span> <span class="s">&quot;start&quot;</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">retry</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="p">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">str</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&quot; attempt &quot;</span> <span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;:error,&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nx">trxError</span><span class="p">();</span>
+        <span class="p">}</span>        <span class="nx">str</span> <span class="o">+=</span> <span class="p">(</span><span class="s">&quot; attempt &quot;</span><span class="o">+</span> <span class="nx">count</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;:result returned end.&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">trxError</span><span class="p">()</span>  <span class="nx">returns</span> <span class="nx">error</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;RetryError&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -31,9 +32,12 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Java Arrays</h2>
-                            <p><p>Java arrays are represented by the <code>handle</code> type in Ballerina. They can be manipulated using the
- <code>getArrayElement</code>, <code>setArrayElement</code> and <code>getArrayLength</code> methods provided by the <code>ballerina/java</code> module.</p>
+                            <h2>Non Transaction Retry</h2>
+                            <p><p>The retry statement provides a general-purpose retry facility,
+ which is independent of the transactions. This example demonstrates how to
+ use the retry capabilities of Ballerina.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
 </p>
 
                         </td>
@@ -41,16 +45,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="access-mutate-java-fields.html">
+                                    <a class="prev" href="local-transactions-with-handlers.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Access/Mutate Java Fields</p>
+                                        <p>Local Transactions with handlers</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="java-varargs.html">
+                                    <a class="next" href="retry-transactions.html">
                                         <span>NEXT ></span>
-                                        <p>Java Varargs</p>
+                                        <p>Retry Transactions</p>
                                     </a>
                                 </div>
                                 
@@ -59,7 +63,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="java-arrays">
+            <div class="example" id="non-transaction-retry">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -70,7 +74,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/java-arrays/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/non-transaction-retry/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -102,6 +106,8 @@ redirect_from:
                         
                             
                         
+                            
+                        
 
                     <div>
 
@@ -111,8 +117,6 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/java;
-import ballerina/java.arrays as jarrays;
 </code></pre></div>
 
                                 </td>
@@ -124,10 +128,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function splitString(handle receiver, handle regex) returns handle = @java:Method {
-    name: &quot;split&quot;,
-    class: &quot;java/lang/String&quot;
-} external;
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error?{
 </code></pre></div>
 
                                 </td>
@@ -139,7 +140,8 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=ballerina>    string str = &quot;start&quot;;
+    int count = 0;
 </code></pre></div>
 
                                 </td>
@@ -151,8 +153,10 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle helloString = java:fromString(&quot;Hello world&quot;);
-    handle regex = java:fromString(&quot; &quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    retry (3) {
+        count = count + 1;
+        if (count &lt; 3) {
+            str += (&quot; attempt &quot; + count.toString() + &quot;:error,&quot;);
 </code></pre></div>
 
                                 </td>
@@ -160,7 +164,12 @@ import ballerina/java.arrays as jarrays;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Convert Ballerina strings to Java strings before passing to Java methods.</p>
+                                            <p>The retry statement provides a general-purpose retry
+ facility, which is independent of the transactions.
+ Here, retrying happens according to the default retry manager
+ since there is no custom retry manager being passed to
+ the retry operation.
+ As defined, retrying happens for 3 times.</p>
 
                                         </div>
                                     </div>
@@ -171,7 +180,8 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    handle words = splitString(helloString, regex);
+                                    <div class="highlight"><pre><code class=ballerina>            return trxError();
+        }
 </code></pre></div>
 
                                 </td>
@@ -179,7 +189,8 @@ import ballerina/java.arrays as jarrays;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke an external method, implemented in Java.</p>
+                                            <p>Calls a method, which throws an error to simulate the
+ retry operation.</p>
 
                                         </div>
                                     </div>
@@ -190,8 +201,7 @@ import ballerina/java.arrays as jarrays;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int numWords = jarrays:getLength(words);
-    io:println(numWords);
+                                    <div class="highlight"><pre><code class=ballerina>        str += (&quot; attempt &quot;+ count.toString() + &quot;:result returned end.&quot;);
 </code></pre></div>
 
                                 </td>
@@ -202,9 +212,9 @@ import ballerina/java.arrays as jarrays;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    handle secondWord = jarrays:get(words, 1);
-    io:println(secondWord);
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        io:println(str);
+    }
 }
 </code></pre></div>
 
@@ -213,7 +223,28 @@ import ballerina/java.arrays as jarrays;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Access an array element, pass the handle that refers to the Java array instance as the first argument.</p>
+                                            <p>Prints the execution flow as a string for clarification.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function trxError()  returns error {
+    return error(&quot;RetryError&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The method, which throws the error.</p>
 
                                         </div>
                                     </div>
@@ -229,6 +260,10 @@ import ballerina/java.arrays as jarrays;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -236,12 +271,22 @@ import ballerina/java.arrays as jarrays;
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file and use the `ballerina run` command.
-$ ballerina run java_arrays.bal
-2
-world
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run non_transaction_retry.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>start attempt 1:error, attempt 2:error, attempt 3:result returned end.
 </code></pre></div>
 
                                 </td>

@@ -4,13 +4,43 @@ title: JWT Issue/Validate
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/jwt-issue-validate
 redirect_from:
-  - /v1-2/learn/by-example/jwt-issue-validate
-  - /v1-2/learn/by-example/jwt-issue-validate.html
+  - /vswan-lake-preview1/learn/by-example/jwt-issue-validate
+  - /vswan-lake-preview1/learn/by-example/jwt-issue-validate.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">oauth2Server</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">keyStore</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
+                  <span class="s">&quot;/bre/security/ballerinaKeystore.p12&quot;</span><span class="p">,</span>
+            <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span><span class="kd">service</span> <span class="nx">oauth2</span> <span class="nx">on</span> <span class="nx">oauth2Server</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/jwks&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">jwks</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="kt">json</span> <span class="nx">jwks</span> <span class="p">=</span> <span class="p">{</span>
+          <span class="s">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="s">&quot;kty&quot;</span><span class="p">:</span> <span class="s">&quot;RSA&quot;</span><span class="p">,</span>
+              <span class="s">&quot;e&quot;</span><span class="p">:</span> <span class="s">&quot;AQAB&quot;</span><span class="p">,</span>
+              <span class="s">&quot;use&quot;</span><span class="p">:</span> <span class="s">&quot;sig&quot;</span><span class="p">,</span>
+              <span class="s">&quot;kid&quot;</span><span class="p">:</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">,</span>
+              <span class="s">&quot;alg&quot;</span><span class="p">:</span> <span class="s">&quot;RS256&quot;</span><span class="p">,</span>
+              <span class="s">&quot;n&quot;</span><span class="p">:</span> <span class="s">&quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZOPuqgGa8TMPs=&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">};</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jwks</span><span class="p">);</span>
+        <span class="nx">checkpanic</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">crypto</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">jwt</span><span class="p">;</span>
@@ -28,39 +58,60 @@ redirect_from:
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtHeader</span> <span class="nx">header</span> <span class="p">=</span> <span class="p">{};</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">alg</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">RS256</span><span class="p">;</span>
     <span class="nx">header</span><span class="p">.</span><span class="nx">typ</span> <span class="p">=</span> <span class="s">&quot;JWT&quot;</span><span class="p">;</span>
+    <span class="nx">header</span><span class="p">.</span><span class="nx">kid</span> <span class="p">=</span> <span class="s">&quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;</span><span class="p">;</span>
     <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span> <span class="nx">payload</span> <span class="p">=</span> <span class="p">{};</span>
-    <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span> <span class="p">=</span> <span class="s">&quot;John&quot;</span><span class="p">;</span>
-    <span class="nx">payload</span><span class="p">.</span><span class="nx">iss</span> <span class="p">=</span> <span class="s">&quot;wso2&quot;</span><span class="p">;</span>
+    <span class="nx">payload</span><span class="p">.</span><span class="nx">sub</span> <span class="p">=</span> <span class="s">&quot;admin&quot;</span><span class="p">;</span>
+    <span class="nx">payload</span><span class="p">.</span><span class="nx">iss</span> <span class="p">=</span> <span class="s">&quot;ballerina&quot;</span><span class="p">;</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">jti</span> <span class="p">=</span> <span class="s">&quot;100078234ba23&quot;</span><span class="p">;</span>
-    <span class="nx">payload</span><span class="p">.</span><span class="nx">aud</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerinaSamples&quot;</span><span class="p">];</span>
+    <span class="nx">payload</span><span class="p">.</span><span class="nx">aud</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">];</span>
     <span class="nx">payload</span><span class="p">.</span><span class="nx">exp</span> <span class="p">=</span> <span class="nx">time</span><span class="p">:</span><span class="nx">currentTime</span><span class="p">().</span><span class="nx">time</span><span class="o">/</span><span class="mi">1000</span> <span class="o">+</span> <span class="mi">600</span><span class="p">;</span>
     <span class="kt">string</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jwt</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">issueJwt</span><span class="p">(</span><span class="nx">header</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">keyStoreConfig</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">jwt</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span><span class="p">,</span> <span class="nx">jwt</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Issued JWT: &quot;</span> <span class="o">+</span> <span class="nx">jwt</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while issuing the JWT: &quot;</span><span class="p">,</span>
-                    <span class="nx">jwt</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                    <span class="nx">jwt</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="nx">crypto</span><span class="p">:</span><span class="nx">TrustStore</span> <span class="nx">trustStore</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">path</span><span class="p">:</span> <span class="nx">config</span><span class="p">:</span><span class="nx">getAsString</span><span class="p">(</span><span class="s">&quot;b7a.home&quot;</span><span class="p">)</span> <span class="o">+</span>
               <span class="s">&quot;/bre/security/ballerinaTruststore.p12&quot;</span><span class="p">,</span>
         <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
     <span class="p">};</span>
-    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;wso2&quot;</span><span class="p">,</span>
-        <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig1</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
         <span class="nx">clockSkewInSeconds</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
         <span class="nx">trustStoreConfig</span><span class="p">:</span> <span class="p">{</span>
             <span class="nx">certificateAlias</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
             <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig</span><span class="p">);</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">|</span><span class="nx">jwt</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig1</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
-                    <span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                    <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="p">}</span>
+    <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtValidatorConfig</span> <span class="nx">validatorConfig2</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">issuer</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span>
+        <span class="nx">audience</span><span class="p">:</span> <span class="s">&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;</span><span class="p">,</span>
+        <span class="nx">clockSkewInSeconds</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+        <span class="nx">jwksConfig</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">url</span><span class="p">:</span> <span class="s">&quot;https://localhost:20000/oauth2/jwks&quot;</span><span class="p">,</span>
+            <span class="nx">clientConfig</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nx">secureSocket</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nx">trustStore</span><span class="p">:</span> <span class="nx">trustStore</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">validateJwt</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">jwt</span><span class="p">,</span> <span class="nx">validatorConfig2</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">jwt</span><span class="p">:</span><span class="nx">JwtPayload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Validated JWT Payload: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;An error occurred while validating the JWT: &quot;</span><span class="p">,</span>
+                    <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -72,7 +123,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>JWT Issue/Validate</h2>
-                            <p><p>This example demonstrates how to issue and validate a JWT.</p>
+                            <p><p>This example demonstrates how to issue and validate a JWT.
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/jwt/index.html">JWT module</a>.</p>
 </p>
 
                         </td>
@@ -137,14 +190,187 @@ redirect_from:
                         
                             
                         
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code empty leading">
+                                    
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Copyright &copy; 2020 WSO2 Inc. (<a href="http://www.wso2.org">http://www.wso2.org</a>) All Rights Reserved.</p>
+
+<p>WSO2 Inc. licenses this file to you under the Apache License,
+ Version 2.0 (the &ldquo;License&rdquo;); you may not use this file except
+ in compliance with the License.
+ You may obtain a copy of the License at</p>
+
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+
+<p>Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ &ldquo;AS IS&rdquo; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/config;
+import ballerina/http;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a mock JWK server, which is to expose the JWK components for testing purpose.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener oauth2Server = new(20000, {
+    secureSocket: {
+        keyStore: {
+            path: config:getAsString(&quot;b7a.home&quot;) +
+                  &quot;/bre/security/ballerinaKeystore.p12&quot;,
+            password: &quot;ballerina&quot;
+        }
+    }
+});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service oauth2 on oauth2Server {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;GET&quot;],
+        path: &quot;/jwks&quot;
+    }
+    resource function jwks(http:Caller caller, http:Request req) {
+        http:Response res = new;
+        json jwks = {
+          &quot;keys&quot;: [
+            {
+              &quot;kty&quot;: &quot;RSA&quot;,
+              &quot;e&quot;: &quot;AQAB&quot;,
+              &quot;use&quot;: &quot;sig&quot;,
+              &quot;kid&quot;: &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;,
+              &quot;alg&quot;: &quot;RS256&quot;,
+              &quot;n&quot;: &quot;AIFcoun1YlS4mShJ8OfcczYtZXGIes_XWZ7oPhfYCqhSIJnXD3vqrUu4GXNY2E41jAm8dd7BS5GajR3g1GnaZrSqN0w3bjpdbKjOnM98l2-i9-JP5XoedJsyDzZmml8Xd7zkKCuDqZIDtZ99poevrZKd7Gx5n2Kg0K5FStbZmDbTyX30gi0_griIZyVCXKOzdLp2sfskmTeu_wF_vrCaagIQCGSc60Yurnjd0RQiMWA10jL8axJjnZ-IDgtKNQK_buQafTedrKqhmzdceozSot231I9dth7uXvmPSjpn23IYUIpdj_NXCIt9FSoMg5-Q3lhLg6GK3nZOPuqgGa8TMPs=&quot;
+            }
+          ]
+        };
+        res.setJsonPayload(jwks);
+        checkpanic caller-&gt;respond(res);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
                             
                         
                             
-                        
+                                
                             
                         
                             
+                                
+                            
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
                             
                         
 
@@ -232,6 +458,7 @@ import ballerina/time;
                                     <div class="highlight"><pre><code class=ballerina>    jwt:JwtHeader header = {};
     header.alg = jwt:RS256;
     header.typ = &quot;JWT&quot;;
+    header.kid = &quot;NTAxZmMxNDMyZDg3MTU1ZGM0MzEzODJhZWI4NDNlZDU1OGFkNjFiMQ&quot;;
 </code></pre></div>
 
                                 </td>
@@ -251,10 +478,10 @@ import ballerina/time;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    jwt:JwtPayload payload = {};
-    payload.sub = &quot;John&quot;;
-    payload.iss = &quot;wso2&quot;;
+    payload.sub = &quot;admin&quot;;
+    payload.iss = &quot;ballerina&quot;;
     payload.jti = &quot;100078234ba23&quot;;
-    payload.aud = [&quot;ballerina&quot;, &quot;ballerinaSamples&quot;];
+    payload.aud = [&quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;];
     payload.exp = time:currentTime().time/1000 + 600;
 </code></pre></div>
 
@@ -276,10 +503,10 @@ import ballerina/time;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    string|jwt:Error jwt = jwt:issueJwt(header, payload, keyStoreConfig);
     if (jwt is string) {
-        io:println(&quot;Issued JWT: &quot;, jwt);
+        io:println(&quot;Issued JWT: &quot; + jwt);
     } else {
         io:println(&quot;An error occurred while issuing the JWT: &quot;,
-                    jwt.detail()?.message);
+                    jwt.message());
     }
 </code></pre></div>
 
@@ -288,7 +515,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Issues a JWT based on the provided header, payload and config.</p>
+                                            <p>Issues a JWT based on the provided header, payload and keystore config.</p>
 
                                         </div>
                                     </div>
@@ -322,9 +549,9 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    jwt:JwtValidatorConfig validatorConfig = {
-        issuer: &quot;wso2&quot;,
-        audience: &quot;ballerina&quot;,
+                                    <div class="highlight"><pre><code class=ballerina>    jwt:JwtValidatorConfig validatorConfig1 = {
+        issuer: &quot;ballerina&quot;,
+        audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
         clockSkewInSeconds: 60,
         trustStoreConfig: {
             certificateAlias: &quot;ballerina&quot;,
@@ -338,7 +565,63 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Defines the JWT validator configurations.</p>
+                                            <p>Defines the JWT validator configurations with truststore configurations.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(&lt;string&gt;jwt, validatorConfig1);
+    if (result is jwt:JwtPayload) {
+        io:println(&quot;Validated JWT Payload: &quot; + result.toString());
+    } else {
+        io:println(&quot;An error occurred while validating the JWT: &quot;,
+                    result.message());
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Validates the created JWT. Signature is validated using the truststore.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    jwt:JwtValidatorConfig validatorConfig2 = {
+        issuer: &quot;ballerina&quot;,
+        audience: &quot;vEwzbcasJVQm1jVYHUHCjhxZ4tYa&quot;,
+        clockSkewInSeconds: 60,
+        jwksConfig: {
+            url: &quot;https://localhost:20000/oauth2/jwks&quot;,
+            clientConfig: {
+                secureSocket: {
+                    trustStore: trustStore
+                }
+            }
+        }
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the JWT validator configurations with JWKs configurations.</p>
 
                                         </div>
                                     </div>
@@ -349,12 +632,12 @@ import ballerina/time;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    jwt:JwtPayload|jwt:Error result = jwt:validateJwt(&lt;string&gt;jwt, validatorConfig);
+                                    <div class="highlight"><pre><code class=ballerina>    result = jwt:validateJwt(&lt;string&gt;jwt, validatorConfig2);
     if (result is jwt:JwtPayload) {
-        io:println(&quot;Validated JWT Payload: &quot;, result);
+        io:println(&quot;Validated JWT Payload: &quot; + result.toString());
     } else {
         io:println(&quot;An error occurred while validating the JWT: &quot;,
-                    result.detail()?.message);
+                    result.message());
     }
 }
 </code></pre></div>
@@ -364,7 +647,7 @@ import ballerina/time;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Validates the created JWT.</p>
+                                            <p>Validates the created JWT. Signature is validated using the truststore.</p>
 
                                         </div>
                                     </div>

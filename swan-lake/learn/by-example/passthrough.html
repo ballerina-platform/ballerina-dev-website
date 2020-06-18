@@ -4,8 +4,8 @@ title: Passthrough
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/passthrough
 redirect_from:
-  - /v1-2/learn/by-example/passthrough
-  - /v1-2/learn/by-example/passthrough.html
+  - /vswan-lake-preview1/learn/by-example/passthrough
+  - /vswan-lake-preview1/learn/by-example/passthrough.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -25,7 +25,7 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -54,7 +54,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Passthrough</h2>
-                            <p><p>The passthrough sample exhibits the process of an HTTP client connector. The &lsquo;Echo Service&rsquo; is used as a sample backend.</p>
+                            <p><p>The passthrough sample exhibits the process of an HTTP client connector. The &lsquo;Echo Service&rsquo; is used as a sample backend.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -207,7 +209,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>When <code>forward()</code> is called on the backend client endpoint, it forwards the request that the passthrough
+                                            <p>When <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#forward">forward()</a> is called on the backend client endpoint, it forwards the request that the passthrough
  resource received to the backend. When forwarding, the request is made using the same HTTP method that was
  used to invoke the passthrough resource. The <code>forward()</code> function returns the response from the backend if
  there are no errors.</p>
@@ -266,7 +268,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>            http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;string&gt;clientResponse.detail()?.message);
+            res.setPayload(clientResponse.message());
             var result = caller-&gt;respond(res);
             if (result is error) {
                 log:printError(&quot;Error sending response&quot;, result);
@@ -347,7 +349,7 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Send the response back to the caller.</p>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#respond">Send the response</a> back to the caller.</p>
 
                                         </div>
                                     </div>
@@ -400,7 +402,8 @@ $ ballerina run passthrough.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/passthrough -X POST
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use following curl commands.
+$ curl http://localhost:9090/passthrough -X POST
 Hello World!
 $ curl http://localhost:9090/passthrough -X GET
 Hello World!

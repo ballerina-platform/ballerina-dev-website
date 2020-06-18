@@ -4,8 +4,8 @@ title: Service Integration Sample
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/websub-service-integration-sample
 redirect_from:
-  - /v1-2/learn/by-example/websub-service-integration-sample
-  - /v1-2/learn/by-example/websub-service-integration-sample.html
+  - /vswan-lake-preview1/learn/by-example/websub-service-integration-sample
+  - /vswan-lake-preview1/learn/by-example/websub-service-integration-sample.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -66,7 +66,7 @@ redirect_from:
         <span class="nx">panic</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">hubVar</span> <span class="p">=</span> <span class="nx">hubStartUpResult</span> <span class="nx">is</span> <span class="nx">websub</span><span class="p">:</span><span class="nx">HubStartedUpError</span>
-                            <span class="err">?</span> <span class="nx">hubStartUpResult</span><span class="p">.</span><span class="nx">startedUpHub</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
+                            <span class="err">?</span> <span class="nx">hubStartUpResult</span><span class="p">[</span><span class="s">&quot;startedUpHub&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="nx">hubStartUpResult</span><span class="p">;</span>
     <span class="p">}</span>    <span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span> <span class="nx">internalHub</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">websub</span><span class="p">:</span><span class="nx">Hub</span><span class="p">&gt;</span><span class="nx">hubVar</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">internalHub</span><span class="p">.</span><span class="nx">registerTopic</span><span class="p">(</span><span class="nx">ORDER_TOPIC</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
@@ -112,7 +112,9 @@ redirect_from:
  the occurrence of particular events.</p>
 
 <p>Any of the Ballerina&rsquo;s WebSub components (Publisher, Hub, or Subscriber) could be used with non-Ballerina components, which
- are WebSub-compliant.</p>
+ are WebSub-compliant.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/websub/index.html">WebSub module</a>.</p>
 </p>
 
                         </td>
@@ -485,7 +487,7 @@ service orderMgt on httpListener {
         panic hubStartUpResult;
     } else {
         hubVar = hubStartUpResult is websub:HubStartedUpError
-                            ? hubStartUpResult.startedUpHub : hubStartUpResult;
+                            ? hubStartUpResult[&quot;startedUpHub&quot;] : hubStartUpResult;
     }
 </code></pre></div>
 

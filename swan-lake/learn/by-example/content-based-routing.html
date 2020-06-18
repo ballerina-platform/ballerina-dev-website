@@ -4,8 +4,8 @@ title: Content-Based Routing
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/content-based-routing
 redirect_from:
-  - /v1-2/learn/by-example/content-based-routing
-  - /v1-2/learn/by-example/content-based-routing.html
+  - /vswan-lake-preview1/learn/by-example/content-based-routing
+  - /vswan-lake-preview1/learn/by-example/content-based-routing.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -39,7 +39,7 @@ redirect_from:
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
                     <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-                    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">clientResponse</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+                    <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(</span><span class="nx">clientResponse</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
                     <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
                     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
@@ -48,7 +48,7 @@ redirect_from:
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
                 <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">nameString</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">nameString</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
                 <span class="p">}</span>
@@ -56,7 +56,7 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span><span class="p">&gt;</span><span class="nx">jsonMsg</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">jsonMsg</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">outboundEP</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
             <span class="p">}</span>
@@ -72,7 +72,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Content-Based Routing</h2>
-                            <p><p>The Content-Based Router service reads the content of a request and routes it to a specific recipient based on the content.</p>
+                            <p><p>The Content-Based Router service reads the content of a request and routes it to a specific recipient based on the content.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -199,7 +201,7 @@ service contentBasedRouting on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use <code>resourceConfig</code> annotation to declare the HTTP method.</p>
+                                            <p>Use <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/HttpResourceConfig.html">resourceConfig</a> annotation to declare the HTTP method.</p>
 
                                         </div>
                                     </div>
@@ -291,7 +293,7 @@ service contentBasedRouting on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Here, <code>post</code> remote function represents the POST operation of
+                                            <p>Here, <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Client.html#post">post</a> remote function represents the POST operation of
  the HTTP client.
  This routes the payload to the relevant service when the server
  accepts the enclosed entity.</p>
@@ -328,7 +330,7 @@ service contentBasedRouting on new http:Listener(9090) {
                 } else {
                     http:Response res = new;
                     res.statusCode = 500;
-                    res.setPayload(&lt;string&gt;clientResponse.detail()?.message);
+                    res.setPayload(clientResponse.message());
                     var result = outboundEP-&gt;respond(res);
                     if (result is error) {
                         log:printError(&quot;Error sending response&quot;, result);
@@ -337,7 +339,7 @@ service contentBasedRouting on new http:Listener(9090) {
             } else {
                 http:Response res = new;
                 res.statusCode = 500;
-                res.setPayload(&lt;@untainted string&gt;nameString.detail()?.message);
+                res.setPayload(&lt;@untainted&gt;nameString.message());
 </code></pre></div>
 
                                 </td>
@@ -345,7 +347,7 @@ service contentBasedRouting on new http:Listener(9090) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Use the remote function <code>respond</code> to send the client response
+                                            <p>Use the remote function <a href="https://ballerina.io/learn/api-docs/ballerina/http/clients/Caller.html#respond">respond</a> to send the client response
  back to the caller.</p>
 
                                         </div>
@@ -365,7 +367,7 @@ service contentBasedRouting on new http:Listener(9090) {
         } else {
             http:Response res = new;
             res.statusCode = 500;
-            res.setPayload(&lt;@untainted string&gt;jsonMsg.detail()?.message);
+            res.setPayload(&lt;@untainted&gt;jsonMsg.message());
 </code></pre></div>
 
                                 </td>
@@ -440,7 +442,8 @@ $ ballerina run content_based_routing.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;sanFrancisco&quot;}&#39; -H &quot;Content-Type:application/json&quot;
+                                    <div class="highlight"><pre><code class=shell-session># To invoke the service, use following curl commands.
+$ curl http://localhost:9090/cbr/route -d &#39;{&quot;name&quot; : &quot;sanFrancisco&quot;}&#39; -H &quot;Content-Type:application/json&quot;
 {
     &quot;name&quot;: &quot;San Francisco Test Station,USA&quot;,
     &quot;longitude&quot;: -122.43,

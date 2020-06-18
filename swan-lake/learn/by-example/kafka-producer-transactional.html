@@ -1,39 +1,39 @@
 ---
 layout: ballerina-example-page
-title: Local Transactions with participants
+title: Transactional Producer
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /learn/by-example/local-transactions-with-participants
+permalink: /learn/by-example/kafka-producer-transactional
 redirect_from:
-  - /v1-2/learn/by-example/local-transactions-with-participants
-  - /v1-2/learn/by-example/local-transactions-with-participants.html
+  - /vswan-lake-preview1/learn/by-example/kafka-producer-transactional
+  - /vswan-lake-preview1/learn/by-example/kafka-producer-transactional.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">transactions</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">kafka</span><span class="p">;</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">ProducerConfiguration</span> <span class="nx">producerConfigs</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">bootstrapServers</span><span class="p">:</span> <span class="s">&quot;localhost:9092&quot;</span><span class="p">,</span>    <span class="nx">clientId</span><span class="p">:</span> <span class="s">&quot;basic-producer&quot;</span><span class="p">,</span>
+    <span class="nx">acks</span><span class="p">:</span> <span class="s">&quot;all&quot;</span><span class="p">,</span>
+    <span class="nx">retryCount</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nx">enableIdempotence</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">transactionalId</span><span class="p">:</span> <span class="s">&quot;test-transactional-id&quot;</span><span class="p">};</span><span class="nx">kafka</span><span class="p">:</span><span class="nx">Producer</span> <span class="nx">kafkaProducer</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">producerConfigs</span><span class="p">);</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="s">&quot;Hello World Transaction Message&quot;</span><span class="p">;</span>
+    <span class="nx">byte</span><span class="p">[]</span> <span class="nx">serializedMessage</span> <span class="p">=</span> <span class="kt">message</span><span class="p">.</span><span class="nx">toBytes</span><span class="p">();</span>
+    <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">serializedMessage</span><span class="p">);}</span><span class="kd">function</span> <span class="nx">kafkaAdvancedTransactionalProduce</span><span class="p">(</span><span class="nx">byte</span><span class="p">[]</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">transaction</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">localTransactionParticipant</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant panicked.&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">sendResult</span> <span class="p">=</span> <span class="nx">kafkaProducer</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="s">&quot;test-kafka-topic&quot;</span><span class="p">,</span>
+            <span class="nx">partition</span> <span class="p">=</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">sendResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Kafka producer failed to send first message&quot;</span><span class="p">,</span>
+                <span class="nx">sendResult</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="p">}</span>
-    <span class="p">}</span> <span class="nx">onretry</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retrying transaction&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">committed</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="nx">aborted</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction aborted&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction successful&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction unsuccessful. &quot;</span> <span class="o">+</span> <span class="nx">commitResult</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="nd">@transactions:Participant {</span>
-    <span class="nx">oncommit</span><span class="p">:</span> <span class="nx">participantOnCommit</span>
-<span class="p">}</span>
-<span class="kd">function</span> <span class="nx">localTransactionParticipant</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
-    <span class="nx">error</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
-    <span class="nx">panic</span> <span class="nx">er</span><span class="p">;</span>
-<span class="p">}</span><span class="kd">function</span> <span class="nx">participantOnCommit</span><span class="p">(</span><span class="kt">string</span> <span class="nx">transactionId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant committed function handler...&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -43,14 +43,13 @@ redirect_from:
                 <table class="cTopInfoContainer cTopControlsContainer">
                     <tr>
                         <td class="cLeftTD">
-                            <h2>Local Transactions with participants</h2>
-                            <p><p>A Ballerina transaction is a series of data manipulation statements
- that must either fully complete or fully fail, thereby, leaving the
- system in a consistent state. This example demonstrates the usage of
- transactions with local participants. If the participant panics even when it
- is trapped and if the initiator completes, the transaction is considered as a failure.
- Ballerina transactions are at the experimental stage.
- Hence, use the &ndash;experimental flag to enable them.</p>
+                            <h2>Transactional Producer</h2>
+                            <p><p>This example shows you how to do transactional message producing by sending
+ messages to kafka brokers atomically using the <code>kafka:Producer</code> object. For
+ this example to work properly, an active Kafka broker should be present.
+ <br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/kafka/index.html">Kafka module</a>.</p>
 </p>
 
                         </td>
@@ -58,16 +57,16 @@ redirect_from:
                             <div class="cTopButtonContainer">
                                 
                                 <div class="cButtonInfoContainer">
-                                    <a class="prev" href="local-transactions.html">
+                                    <a class="prev" href="kafka-consumer-client.html">
                                         <span>< PREVIOUS</span>
-                                        <p>Local Transactions</p>
+                                        <p>Consumer Client</p>
                                     </a>
                                 </div>
                                  
                                 <div class="cButtonInfoContainer">
-                                    <a class="next" href="xa-transactions.html">
+                                    <a class="next" href="kafka-consumer-group-service.html">
                                         <span>NEXT ></span>
-                                        <p>XA Transactions</p>
+                                        <p>Consumer Groups</p>
                                     </a>
                                 </div>
                                 
@@ -76,7 +75,7 @@ redirect_from:
                     </tr>
                 </table>
             </div>
-            <div class="example" id="local-transactions-with-participants">
+            <div class="example" id="kafka-producer-transactional">
                 <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
                     <table class="cTopControlsContainer">
                         <tr>
@@ -87,7 +86,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/local-transactions-with-participants/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/kafka-producer-transactional/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -121,6 +120,14 @@ redirect_from:
                         
                             
                         
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
 
                     <div>
 
@@ -130,6 +137,19 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/kafka;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>kafka:ProducerConfiguration producerConfigs = {
 </code></pre></div>
 
                                 </td>
@@ -141,7 +161,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/transactions;
+                                    <div class="highlight"><pre><code class=ballerina>    bootstrapServers: &quot;localhost:9092&quot;,
 </code></pre></div>
 
                                 </td>
@@ -149,11 +169,88 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Import the <code>ballerina/transactions</code> module to use the
- <code>@transactions:Participant</code> annotation.</p>
+                                            <p>The <code>bootstrapServers</code> is the list of remote server endpoints of the
+ Kafka brokers.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    clientId: &quot;basic-producer&quot;,
+    acks: &quot;all&quot;,
+    retryCount: 3,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    enableIdempotence: true,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>enableIdempotence</code> should set to <code>true</code> to make a producer
+ transactional.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    transactionalId: &quot;test-transactional-id&quot;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>transactionalId</code> must be provided to make a producer transactional.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>kafka:Producer kafkaProducer = new (producerConfigs);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -162,6 +259,8 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
+    string message = &quot;Hello World Transaction Message&quot;;
+    byte[] serializedMessage = message.toBytes();
 </code></pre></div>
 
                                 </td>
@@ -173,7 +272,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+                                    <div class="highlight"><pre><code class=ballerina>    kafkaAdvancedTransactionalProduce(serializedMessage);
 </code></pre></div>
 
                                 </td>
@@ -181,82 +280,8 @@ redirect_from:
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The <code>transaction</code> block initiates the transaction. Thus, it is called the initiator.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var res = trap localTransactionParticipant();
-        if (res is error) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Invokes the local participant.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Local participant panicked.&quot;);
-        }
-    } onretry {
-        io:println(&quot;Retrying transaction&quot;);
-    } committed {
-        io:println(&quot;Transaction committed&quot;);
-    } aborted {
-        io:println(&quot;Transaction aborted&quot;);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The local participant gets panicked.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@transactions:Participant {
-    oncommit: participantOnCommit
-}
-function localTransactionParticipant() {
-    io:println(&quot;Invoke local participant function.&quot;);
-    error er = error(&quot;Simulated Failure&quot;);
-    panic er;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The <code>@transactions:Participant</code> annotation from the
- <code>transactions</code> module is used to indicate the function as a local participant.</p>
+                                            <p>Here, we create a producer config with optional parameters.
+ transactional.id - enable transactional message production.</p>
 
                                         </div>
                                     </div>
@@ -266,9 +291,34 @@ function localTransactionParticipant() {
                             
                             <tr class="cTR">
 
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>function participantOnCommit(string transactionId) {
-    io:println(&quot;Local participant committed function handler...&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>function kafkaAdvancedTransactionalProduce(byte[] message) {
+    transaction {
+        var sendResult = kafkaProducer-&gt;send(message, &quot;test-kafka-topic&quot;,
+            partition = 0);
+        if (sendResult is error) {
+            io:println(&quot;Kafka producer failed to send first message&quot;,
+                sendResult.toString());
+        }
+        var commitResult = commit;
+        if (commitResult is ()) {
+            io:println(&quot;Transaction successful&quot;);
+        } else {
+            io:println(&quot;Transaction unsuccessful. &quot; + commitResult.message());
+        }
+    }
 }
 </code></pre></div>
 
@@ -299,8 +349,8 @@ function localTransactionParticipant() {
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
-# `.bal` file, and execute the `ballerina run` command with the --experimental option.
-$ ballerina run --experimental local_transactions_with_participants.bal
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run --experimental kafka_message_producer_transactional.bal
 </code></pre></div>
 
                                 </td>
@@ -312,32 +362,9 @@ $ ballerina run --experimental local_transactions_with_participants.bal
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>2020-03-18 11:57:09,328 INFO  [ballerina/transactions] - Created transaction: bf592603-4639-4c16-9daf-605b8e131470 
-2020-03-18 11:57:09,343 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:bf592603-4639-4c16-9daf-605b8e131470 
-2020-03-18 11:57:09,344 INFO  [ballerina/transactions] - participant registered: bf592603-4639-4c16-9daf-605b8e131470 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,350 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: bf592603-4639-4c16-9daf-605b8e131470:$anon$.$0 
-2020-03-18 11:57:09,350 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Retrying transaction
-2020-03-18 11:57:09,359 INFO  [ballerina/transactions] - Created transaction: 371da573-8e4f-436e-99b3-adc2b9e911a4 
-2020-03-18 11:57:09,360 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:371da573-8e4f-436e-99b3-adc2b9e911a4 
-2020-03-18 11:57:09,361 INFO  [ballerina/transactions] - participant registered: 371da573-8e4f-436e-99b3-adc2b9e911a4 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,362 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 371da573-8e4f-436e-99b3-adc2b9e911a4:$anon$.$0 
-2020-03-18 11:57:09,364 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Retrying transaction
-2020-03-18 11:57:09,366 INFO  [ballerina/transactions] - Created transaction: 9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-2020-03-18 11:57:09,366 INFO  [ballerina/transactions] - Registered local participant: 5ca42804-876c-4a69-9b34-8bc537c8d87a:$anon$.$1 for transaction:9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-2020-03-18 11:57:09,367 INFO  [ballerina/transactions] - participant registered: 9a792401-17fd-4486-bb8e-2fb0a79a04a8 
-Invoke local participant function.
-Local participant panicked.
-2020-03-18 11:57:09,367 INFO  [ballerina/transactions] - Running 2-phase commit for transaction: 9a792401-17fd-4486-bb8e-2fb0a79a04a8:$anon$.$0 
-2020-03-18 11:57:09,368 INFO  [ballerina/transactions] - Local prepare failed, aborting.. 
-Transaction aborted
-[ballerina/http] started HTTP/WS listener 172.17.0.1:35909
-[ballerina/http] stopped HTTP/WS listener 172.17.0.1:35909
+                                    <div class="highlight"><pre><code class=shell-session># If the producer successfully sent the message, the following will be printed
+# in the Console.
+Transaction successful
 </code></pre></div>
 
                                 </td>

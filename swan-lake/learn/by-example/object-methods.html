@@ -4,8 +4,8 @@ title: Object Methods
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/object-methods
 redirect_from:
-  - /v1-2/learn/by-example/object-methods
-  - /v1-2/learn/by-example/object-methods.html
+  - /vswan-lake-preview1/learn/by-example/object-methods
+  - /vswan-lake-preview1/learn/by-example/object-methods.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -15,7 +15,7 @@ redirect_from:
     <span class="nx">public</span> <span class="kt">int</span> <span class="nx">age</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">;</span>
     <span class="nx">public</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">;</span>
-    <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">age</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">age</span> <span class="p">=</span> <span class="nx">age</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">firstName</span> <span class="p">=</span> <span class="nx">firstName</span><span class="p">;</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">lastName</span> <span class="p">=</span> <span class="nx">lastName</span><span class="p">;</span>
@@ -34,9 +34,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Object Methods</h2>
-                            <p><p>Objects can have functions associated with them. These associated functions are known as methods.
- Methods can be defined inside or outside the object. To define a method outside the object,
- first declare the method signature inside the object.</p>
+                            <p><p>Objects can have functions associated with them. These associated functions are known as methods.</p>
 </p>
 
                         </td>
@@ -149,7 +147,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    function __init(int age, string firstName, string lastName) {
+                                    <div class="highlight"><pre><code class=ballerina>    function init(int age, string firstName, string lastName) {
         self.age = age;
         self.firstName = firstName;
         self.lastName = lastName;

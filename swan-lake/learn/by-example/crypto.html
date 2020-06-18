@@ -4,8 +4,8 @@ title: Cryptographic Operations
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/crypto
 redirect_from:
-  - /v1-2/learn/by-example/crypto
-  - /v1-2/learn/by-example/crypto.html
+  - /vswan-lake-preview1/learn/by-example/crypto
+  - /vswan-lake-preview1/learn/by-example/crypto.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -41,7 +41,7 @@ redirect_from:
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;CRC32B for text: &quot;</span> <span class="o">+</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">crc32b</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">));</span>
     <span class="kt">xml</span> <span class="nx">xmlContent</span> <span class="p">=</span> <span class="kt">xml</span> <span class="s">`&lt;foo&gt;Hello Ballerina&lt;/foo&gt;`</span><span class="p">;</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;CRC32 for xml content: &quot;</span> <span class="o">+</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">crc32b</span><span class="p">(</span><span class="nx">xmlContent</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">toBytes</span><span class="p">()));</span>
-    <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;./sampleKeystore.p12&quot;</span><span class="p">,</span> <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">};</span>
+    <span class="nx">crypto</span><span class="p">:</span><span class="nx">KeyStore</span> <span class="nx">keyStore</span> <span class="p">=</span> <span class="p">{</span><span class="nx">path</span><span class="p">:</span> <span class="s">&quot;src/crypto/sampleKeystore.p12&quot;</span><span class="p">,</span> <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span><span class="p">};</span>
     <span class="k">var</span> <span class="nx">privateKey</span> <span class="p">=</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">decodePrivateKey</span><span class="p">(</span><span class="nx">keyStore</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">,</span> <span class="s">&quot;ballerina&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">privateKey</span> <span class="nx">is</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">PrivateKey</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">output</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">crypto</span><span class="p">:</span><span class="nx">signRsaMd5</span><span class="p">(</span><span class="nx">inputArr</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">);</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Hex encoded RSA-MD5 signature: &quot;</span> <span class="o">+</span> <span class="nx">output</span><span class="p">.</span><span class="nx">toBase16</span><span class="p">());</span>
@@ -105,7 +105,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Cryptographic Operations</h2>
                             <p><p>The <code>crypto</code> stdlib provides functions usable to perform different cryptographic operations such as hashing,
- HMAC generation, checksum generation and digitally signing data.</p>
+ HMAC generation, checksum generation and digitally signing data.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/crypto/index.html">Crypto module</a>.</p>
 </p>
 
                         </td>
@@ -294,7 +296,7 @@ import ballerina/math;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Hashing input value using MD5 hashing algorithm, and printing hash value using Hex encoding.</p>
+                                            <p>Hashing input value using <a href="https://ballerina.io/learn/api-docs/ballerina/crypto/functions.html#hashMd5">MD5 hashing algorithm</a>, and printing hash value using Hex encoding.</p>
 
                                         </div>
                                     </div>
@@ -544,7 +546,7 @@ import ballerina/math;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    crypto:KeyStore keyStore = {path: &quot;./sampleKeystore.p12&quot;, password: &quot;ballerina&quot;};
+                                    <div class="highlight"><pre><code class=ballerina>    crypto:KeyStore keyStore = {path: &quot;src/crypto/sampleKeystore.p12&quot;, password: &quot;ballerina&quot;};
     var privateKey = crypto:decodePrivateKey(keyStore, &quot;ballerina&quot;, &quot;ballerina&quot;);
 </code></pre></div>
 

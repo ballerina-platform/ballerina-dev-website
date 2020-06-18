@@ -4,8 +4,8 @@ title: Log
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/log-api
 redirect_from:
-  - /v1-2/learn/by-example/log-api
-  - /v1-2/learn/by-example/log-api.html
+  - /vswan-lake-preview1/learn/by-example/log-api
+  - /vswan-lake-preview1/learn/by-example/log-api.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -27,7 +27,7 @@ redirect_from:
     <span class="p">});</span>
 <span class="p">}</span><span class="nx">public</span> <span class="nx">type</span> <span class="nx">Fruit</span> <span class="nx">object</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">name</span><span class="p">;</span>
-    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">__init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">self</span><span class="p">.</span><span class="nx">name</span> <span class="p">=</span> <span class="nx">name</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">getName</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
@@ -43,8 +43,16 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Log</h2>
-                            <p><p>The <code>ballerina/log</code> module contains the Ballerina-log-handling functions including &lsquo;DEBUG&rsquo;, &lsquo;ERROR&rsquo;, &lsquo;INFO&rsquo;, &lsquo;TRACE&rsquo;,
-&lsquo;WARN&rsquo;, &lsquo;OFF&rsquo;, and &lsquo;ALL&rsquo;.</p>
+                            <p><p>The <code>ballerina/log</code> module contains the Ballerina-log-handling
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/index.html#functions">functions</a> including
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printDebug">&lsquo;DEBUG&rsquo;</a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printError">&lsquo;ERROR&rsquo;</a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printInfo">&lsquo;INFO&rsquo;</a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printTrace">&lsquo;TRACE&rsquo;</a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printWarn">&lsquo;WARN&rsquo;</a>,
+ &lsquo;OFF&rsquo;, and &lsquo;ALL&rsquo;.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/log/index.html">Log module</a>.</p>
 </p>
 
                         </td>
@@ -163,7 +171,11 @@ import ballerina/log;
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>The Ballerina log API provides functions to log at five levels, which are
- <code>DEBUG</code>, <code>ERROR</code>, <code>INFO</code>, <code>TRACE</code>, and <code>WARN</code>. By default, all log
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printDebug"><code>DEBUG</code></a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printError"><code>ERROR</code></a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printInfo"><code>INFO</code></a>,
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printTrace"><code>TRACE</code></a>, and
+ <a href="https://ballerina.io/learn/api-docs/ballerina/log/functions.html#printWarn"><code>WARN</code></a>. By default, all log
  messages are logged to the console at the <code>INFO</code> level. In addition to
  these log levels, there are 2 additional levels named <code>OFF</code> and <code>ALL</code>.
  <code>OFF</code> turns off logging and <code>ALL</code> enables all the log levels. The log
@@ -266,7 +278,7 @@ import ballerina/log;
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>public type Fruit object {
     string name;
-    public function __init(string name) {
+    public function init(string name) {
         self.name = name;
     }
     function getName() returns string {
@@ -304,6 +316,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=shell-session># As shown in the output, only the `INFO` and higher level logs are logged by default.
 # To run this sample, navigate to the directory that contains the
 # `.bal` file, and execute the `ballerina run` command.
+# Note that in this sample, the org name is `ballerina` and the module name is `log`.
 $ ballerina run log_api.bal
 2019-08-09 11:47:07,334 ERROR [ballerina/log] - error log
 2019-08-09 11:47:07,340 ERROR [ballerina/log] - error log with cause : error error occurred

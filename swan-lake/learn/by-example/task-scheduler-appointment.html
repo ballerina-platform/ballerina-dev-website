@@ -4,8 +4,8 @@ title: Task Scheduler Appointment
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/task-scheduler-appointment
 redirect_from:
-  - /v1-2/learn/by-example/task-scheduler-appointment
-  - /v1-2/learn/by-example/task-scheduler-appointment.html
+  - /vswan-lake-preview1/learn/by-example/task-scheduler-appointment
+  - /vswan-lake-preview1/learn/by-example/task-scheduler-appointment.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -33,8 +33,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Starting the task is failed.&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>    <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">appointment</span><span class="p">.</span><span class="nx">stop</span><span class="p">();</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred while cancelling the task&quot;</span><span class="p">);</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
@@ -46,8 +45,7 @@ redirect_from:
             <span class="nx">reminderCount</span> <span class="p">=</span> <span class="nx">reminderCount</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Schedule is due - Reminder: &quot;</span> <span class="o">+</span> <span class="nx">reminderCount</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">};</span>
+    <span class="p">}};</span>
 </pre></div>
 
             </div>
@@ -57,14 +55,16 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Task Scheduler Appointment</h2>
-                            <p><p>A Task Scheduler can be used to schedule an Appointment. An appointment should
+                            <p><p>A <code>task:Scheduler</code> can be used to schedule an Appointment. An appointment should
  have an <code>appointmentData</code> field. It can be either a <code>string</code> representing a
- CRON expression or an <code>AppointmentData</code> record. There is an optional
+ CRON expression or a <code>task:AppointmentData</code> record. There is an optional
  <code>noOfRecurrences</code> field that can be used to provide the maximum number of times
- the appointment should run before shutting down.
+ the appointment should run before shutting down.<br/><br/>
  A service can be attached to the Scheduler using the <code>attach()</code> function.
  Then the Scheduler can be started using <code>start()</code> method. When the scheduler
- needs to be cancelled, <code>stop()</code> method can be called.</p>
+ needs to be cancelled, <code>stop()</code> method can be called.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/task/index.html">Task module</a>.</p>
 </p>
 
                         </td>
@@ -118,6 +118,10 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -203,7 +207,7 @@ import ballerina/task;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The Appointment data record provides the appointment configurations.</p>
+                                            <p>The <a href="https://ballerina.io/learn/api-docs/ballerina/task/records/AppointmentData.html"><code>task:Appointment</code></a> data record provides the appointment configurations.</p>
 
                                         </div>
                                     </div>
@@ -292,12 +296,6 @@ import ballerina/task;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var result = appointment.stop();
-    if (result is error) {
-        io:println(&quot;Error occurred while cancelling the task&quot;);
-        return;
-    }
-    io:println(&quot;Appointment cancelled.&quot;);
-}
 </code></pre></div>
 
                                 </td>
@@ -309,6 +307,23 @@ import ballerina/task;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (result is error) {
+        io:println(&quot;Error occurred while cancelling the task&quot;);
+        return;
+    }
+    io:println(&quot;Appointment cancelled.&quot;);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -334,14 +349,13 @@ import ballerina/task;
                             
                             <tr class="cTR hover-enable">
 
-                                <td class="code">
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onTrigger() {
         if (reminderCount &lt; 5) {
             reminderCount = reminderCount + 1;
             io:println(&quot;Schedule is due - Reminder: &quot; + reminderCount.toString());
         }
     }
-};
 </code></pre></div>
 
                                 </td>
@@ -353,6 +367,18 @@ import ballerina/task;
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

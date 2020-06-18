@@ -4,8 +4,8 @@ title: Load Balancing
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
 permalink: /learn/by-example/http-load-balancer
 redirect_from:
-  - /v1-2/learn/by-example/http-load-balancer
-  - /v1-2/learn/by-example/http-load-balancer.html
+  - /vswan-lake-preview1/learn/by-example/http-load-balancer
+  - /vswan-lake-preview1/learn/by-example/http-load-balancer.html
 ---
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
@@ -18,14 +18,11 @@ redirect_from:
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock1&quot;</span><span class="p">},</span>
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock2&quot;</span><span class="p">},</span>
             <span class="p">{</span><span class="nx">url</span><span class="p">:</span> <span class="s">&quot;http://localhost:8080/mock3&quot;</span><span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span>
-<span class="p">});</span>
-<span class="nd">@http:ServiceConfig {</span>
+        <span class="p">],</span>        <span class="nx">timeoutInMillis</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="p">});</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/lb&quot;</span>
 <span class="p">}</span>
-<span class="kd">service</span> <span class="nx">loadBalancerDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@http:ResourceConfig {</span>
+<span class="kd">service</span> <span class="nx">loadBalancerDemoService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
         <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">roundRobin</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
@@ -39,13 +36,12 @@ redirect_from:
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">outResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
             <span class="nx">outResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">detail</span><span class="p">()</span><span class="err">?</span><span class="p">.</span><span class="kt">message</span><span class="p">);</span>
+            <span class="nx">outResponse</span><span class="p">.</span><span class="nx">setPayload</span><span class="p">(&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="k">var</span> <span class="nx">responseToCaller</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">outResponse</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">responseToCaller</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">ListenerError</span><span class="p">)</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error sending response&quot;</span><span class="p">,</span> <span class="nx">responseToCaller</span><span class="p">);</span>
             <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+        <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span>
 <span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/mock1&quot;</span>
@@ -102,7 +98,9 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Load Balancing</h2>
                             <p><p>An HTTP load balancing endpoint is used when the request load needs to be load balanced across a given
- set of target endpoints.</p>
+ set of target endpoints.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -156,6 +154,12 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
+                        
+                            
+                        
+                            
                         
                             
                         
@@ -243,8 +247,6 @@ import ballerina/log;
             {url: &quot;http://localhost:8080/mock2&quot;},
             {url: &quot;http://localhost:8080/mock3&quot;}
         ],
-        timeoutInMillis: 5000
-});
 </code></pre></div>
 
                                 </td>
@@ -260,13 +262,37 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        timeoutInMillis: 5000
+});
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
     basePath: &quot;/lb&quot;
 }
-service loadBalancerDemoService on new http:Listener(9090) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service loadBalancerDemoService on new http:Listener(9090) {
 </code></pre></div>
 
                                 </td>
@@ -282,7 +308,7 @@ service loadBalancerDemoService on new http:Listener(9090) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
@@ -295,13 +321,6 @@ service loadBalancerDemoService on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Create a REST resource within the API.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -317,14 +336,12 @@ service loadBalancerDemoService on new http:Listener(9090) {
         } else {
             http:Response outResponse = new;
             outResponse.statusCode = 500;
-            outResponse.setPayload(&lt;string&gt;response.detail()?.message);
+            outResponse.setPayload(&lt;string&gt;response.message());
             var responseToCaller = caller-&gt;respond(outResponse);
             if (responseToCaller is http:ListenerError) {
                 log:printError(&quot;Error sending response&quot;, responseToCaller);
             }
         }
-    }
-}
 </code></pre></div>
 
                                 </td>
@@ -338,6 +355,19 @@ service loadBalancerDemoService on new http:Listener(9090) {
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

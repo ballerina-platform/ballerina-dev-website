@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     // Get it from Liquid variables. To do so I have added a front-matter at the top
     // of this file.
-    var data = {{ site.data.release_notes_versions | jsonify }};
+    var data = {{ site.data.swanlake_release_notes_versions | jsonify }};
     data.sort(function(a, b) {
         return new Date(b["release-date"]) - new Date(a["release-date"]);
     });
@@ -53,5 +53,5 @@ function getReleaseNotesDivId(version) {
 }
 
 function getReleaseNoteURL(version) {
-    return base_releasenote_url + "/" + version + "/" + releaseNoteFilename;
+    return base_swanlake_releasenote_url + "/" + version + "/" + releaseNoteFilename;
 }

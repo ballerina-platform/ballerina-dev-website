@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Deploying Ballerina Programs in the Cloud
 description: See how the Ballerina compiler generates the necessary artifacts to deploy to cloud platforms like Kubernetes, Docker, Moby or Cloud Foundry.
 keywords: ballerina, programming language, services, cloud

@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Operators, keywords, and types
 active: operators_keywords_and_types
 permalink: /swan-lake/learn/coding-conventions/operators_keywords_and_types/

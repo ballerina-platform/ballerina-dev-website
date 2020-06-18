@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Publishing Modules to Ballerina Central
 description: Learn how to use the CLI tool in the Ballerina programming language to push modules to Ballerina Central.
 keywords: ballerina, programming language, ballerina central, ballerina modules

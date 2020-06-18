@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Language Intelligence
 permalink: /swan-lake/learn/setting-up-visual-studio-code/language-intelligence/
 active: language-intelligence

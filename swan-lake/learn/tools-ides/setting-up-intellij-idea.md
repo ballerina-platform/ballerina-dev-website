@@ -1,5 +1,5 @@
 ---
-layout: ballerina-left-nav-pages
+layout: ballerina-left-nav-pages-swanlake
 title: Setting up IntelliJ IDEA
 permalink: /swan-lake/learn/setting-up-intellij-idea/
 active: setting-up-intellij-idea

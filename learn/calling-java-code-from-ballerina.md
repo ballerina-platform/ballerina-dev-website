@@ -367,7 +367,7 @@ When the tool is run, a `.bal` file will be created to represent each Java class
 
 Apart from creating bindings for the specified Java classes, the command would also generate empty Ballerina binding objects for the dependent Java classes. A Java class would be considered dependent if it is used inside one of the generated Ballerina binding objects.
 
-A set of additional utility files will also be generated in order to support the auto-generated Ballerina bindings. This includes a `Constants.bal` file to store constants used for proper functioning of the Ballerina binding objects and `.bal` files to store error types to map Java exceptions referred in the Ballerina binding objects.
+A set of additional utility files will also be generated in order to support the auto-generated Ballerina bindings. This includes a `Constants.bal` file to store constants used for proper functioning of the Ballerina binding objects and `.bal` files to store the error types used within the Ballerina binding objects.
 
 The folder structure of the generated bindings will be as follows.
 
@@ -470,7 +470,7 @@ For a static field, the getters and setters (if the field is not final) will tak
 E.g., `<Class_Name>_get<FIELD_NAME>()` and `<Class_Name>_set<FIELD_NAME>(<type> arg)`
 
 #### External Interop Functions
-These external interop functions are module private and they take the fully-qualified Java method name as the function it is calling. However, if overloaded methods exists, a numeric suffix will be appended at the end.
+These external interop functions are module private and they take the fully-qualified Java method name as the function it is calling. However, if overloaded methods exist, a numeric suffix will be appended at the end.
 
 E.g., Generated external interop function for `close()` method of `java.io.FileInputStream` will be as follows.
 ```ballerina

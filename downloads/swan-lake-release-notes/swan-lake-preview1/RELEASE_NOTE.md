@@ -659,7 +659,7 @@ service emailObserver on emailListener {
 
 ### Native dependency manager
 
-THis bringhs the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
+This brings the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
 
 ```
 [[platform.libraries]]

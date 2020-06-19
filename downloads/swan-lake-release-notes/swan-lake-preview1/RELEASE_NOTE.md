@@ -513,7 +513,7 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ### Enhanced auth module
 
-Extend capability to validate the JWT signature with JWKs. With that the JWT signature can be validated either from TrustStore configuration or JWKs configuration.
+The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 
 ```ballerina
 jwt:JwtValidatorConfig validatorConfig = {

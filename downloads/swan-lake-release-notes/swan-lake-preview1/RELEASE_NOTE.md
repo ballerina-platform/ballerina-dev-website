@@ -713,7 +713,7 @@ scope = "provided"
 ### The Bindgen tool
 
 - Java Subtyping support is added to the generated bindings.
-- Maven dependency resolving is integrated into the tool and a new command option `-mvn|--maven` is introduced to facilitate this.
+- Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.
 - Error mappings are improved by generating Ballerina error types for Java exceptions.
 - Introduces a function in the `java` module of the Ballerina standard library to support Java Casting.
 - Introduces the generation of API documentation comments in the generated bindings.

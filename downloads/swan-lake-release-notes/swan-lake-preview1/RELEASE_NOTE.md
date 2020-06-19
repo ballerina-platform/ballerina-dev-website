@@ -568,14 +568,12 @@ groupId = "json.org"
 version = "0.7.2"
 ```
 Maven resolver will fetch those dependencies from maven central
-Scoping support
+
+### Scoping support
 Added an additional attribute called “scope” for platform libraries. Based on scope, dependencies will be included to different phases.
-default - Will be available to compile, run tests, execute, and also distributed with the balo.
-provided - Will be available to compile, run tests, execute but not distributed with the balo.
-testOnly - Will be only available to run tests.
-
-
-	
+ - default - Will be available to compile, run tests, execute, and also distributed with the balo.
+ - provided - Will be available to compile, run tests, execute but not distributed with the balo.
+ - testOnly - Will be only available to run tests.
 
 
 Ex : 
@@ -590,15 +588,15 @@ scope = "provided"
 ```
 ### Bindgen tool
 
-Providing support for Java Subtyping.
-Integrating Maven dependency resolving into the tool and introducing a new command option `-mvn|--maven` to facilitate it.
-Improve the error mappings by generating error types for Java exceptions.
-Introducing a function in the `java` module of the Ballerina standard library to support Java Casting.
-Introduce the generation API documentation comments in the generated bindings.
-Introduced a flag `--public` to change the visibility modifier (which is module private by default) to public.
-Moving the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time the tool is executed.
-Bug fixes and improvements to usability and generated bindings.
-The bindgen tool command after the newly introduced options is as follows.
+- Providing support for Java Subtyping.
+- Integrating Maven dependency resolving into the tool and introducing a new command option `-mvn|--maven` to facilitate it.
+- Improve the error mappings by generating error types for Java exceptions.
+- Introducing a function in the `java` module of the Ballerina standard library to support Java Casting.
+- Introduce the generation API documentation comments in the generated bindings.
+- Introduced a flag `--public` to change the visibility modifier (which is module private by default) to public.
+- Moving the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time the tool is executed.
+- Bug fixes and improvements to usability and generated bindings.
+- The bindgen tool command after the newly introduced options is as follows.
 ```
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]

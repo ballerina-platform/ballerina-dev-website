@@ -774,7 +774,7 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 
 ### Test Framework
 
-#### Introduced the Mocking API in test module
+#### Introduction of the Mocking API in the Test Module
 
 The new mocking API simplifies function and object mocking in unit tests via the ***when-then*** convention. 
 

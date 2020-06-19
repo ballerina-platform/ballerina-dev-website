@@ -807,6 +807,10 @@ Object mocking enables controlling the values of member variables and the behavi
 - Introduced the ability to create a `test double`, which provides an equivalent mock in place of the real object
 - Introduced the capability of stubbing the member function or member variable
 
+Obejct mocking is done by using the following functions:
+- The `test:mock()` and `test:prepare()` are used to initialize the mocking capability
+- The `test:prepare()` function allows you to use the associated mocking functions like `thenReturn()`, `thenReturnSequence()`, `doNothing() `, and `withArguments()`
+
 ### API documentation
 
 - The search capability is added into the API Documentation

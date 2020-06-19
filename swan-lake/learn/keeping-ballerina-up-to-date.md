@@ -38,9 +38,9 @@ This section introduces various terms used throughout this guide. We recommend t
 
 ### Ballerina tool
 
-**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build and run programs, etc.
+**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 
-It also enables you to easily install, update and switch among Ballerina distributions. The main focus of this guide is to teach you how, but first, let’s talk about Ballerina distributions.
+It also enables you to easily install, update, and switch among Ballerina distributions. The main focus of this guide is to teach you how to perform these actions but first, let’s talk about Ballerina distributions.
 
 ### Ballerina distributions
 
@@ -56,13 +56,13 @@ Ballerina distribution is a term that we use to refer to jBallerina and nBalleri
 
 ### Release channels
 
-Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. We don’t yet have a release channel for nightly builds that give you access to the latest, perhaps unstable features.
+Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
 
 Ballerina distribution releases strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
 
 #### Patch release channel
 
-This channel gives you access to patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
+This channel gives you access to the patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security related issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
 
 *Example patch releases: 1.0.6, 1.1.5, 1.1.10*
 
@@ -75,7 +75,7 @@ This channel gives you access to feature releases of Ballerina distributions. Ba
 #### Release maintenance
 
 - We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
-- In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, we stop maintaining 1.0.0.
+- In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
 
 ## Keeping Ballerina upto date
 
@@ -151,7 +151,7 @@ Most of these subcommands are self-explanatory. Therefore, the following section
 
 The `ballerina dist update` command updates your active distribution to the latest patch version.
 
-E.g., If the active distribution in your environment is 1.1.0” and there exists patch version 1.1.4” in our servers, this command will fetch and set it as the active distribution.
+E.g., If the active distribution in your environment is 1.1.0 and there exists the patch version 1.1.4 in our servers, this command will fetch and set it as the active distribution.
 
 ```sh
 → sudo ballerina dist update

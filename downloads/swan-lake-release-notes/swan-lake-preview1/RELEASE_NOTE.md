@@ -712,14 +712,13 @@ scope = "provided"
 
 ### The Bindgen tool
 
-This provides support for Java Subtyping. 
-
-- Maven dependency resolving is integrtaed into the tool and this is introducing a new command option `-mvn|--maven` to facilitate it.
-- Error mappings are improved by generating error types for Java exceptions.
+- Java Subtyping support is added to the generated bindings.
+- Maven dependency resolving is integrated into the tool and a new command option `-mvn|--maven` is introduced to facilitate this.
+- Error mappings are improved by generating Ballerina error types for Java exceptions.
 - Introduces a function in the `java` module of the Ballerina standard library to support Java Casting.
 - Introduces the generation of API documentation comments in the generated bindings.
 - Introduces a `--public` flag to change the visibility modifier (which is module private by default) to public.
-- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the  tool is executed.
+- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the tool is executed.
 - Bug fixes and improvements to usability and generated bindings.
 
 The bindgen tool command after the newly-introduced options is as follows.

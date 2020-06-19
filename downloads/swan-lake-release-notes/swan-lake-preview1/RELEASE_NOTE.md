@@ -238,21 +238,33 @@ public function main() {
 }
 ```
 ### Never type
-The `never` type represents the type of values that never occur. This can be useful to describe the return type of a function, if the function never returns. No value can ever belong to `never` type. Thus it can not be declared or assigned a value to it.
+The `never` type provides a way to describe the type that contains no shapes. This would be useful for the return type of a function that never terminates normally. 
 ```ballerina
-function somefunction(int age) returns never {
-   if (age < 18) {
-       error e = error("Invalid Age");
-       panic e;
-   }
+function somefunction() returns never {
+     panic error("Invalid");
 }
 ```
-Never types can be used to specify key-less tables. Here, the key constraint is type `never`
+`never` is a subtype of `nil`. Therefore, functions with `never` return type can only be invoked in call statements. Also, the `never` type represents the type which has no values. Therefore, variables of type `never` cannot be declared.
+```ballerina
+never s;    // error: cannot define a variable type of 'never'
+```
+Never types can be used when defining key-less tables. Here, the key constraint is set to type `never`.
 ```ballerina
 table<Person> key<never> personTable = table [
        { name: "John", age: 23 },
        { name: "Paul", age:25 }
    ];
+```
+An optional field can be defined in a `record`, but no value can be assigned to such fields
+```ballerina
+type SampleRecord record {
+   int x;
+   never y?;
+};
+```
+For `xml`, the `never` type can be used to describe the `xml` type that has no constituents, i.e., the empty `xml` value.
+```ballerina
+xml<never> xmlValue = <xml<never>> 'xml:concat();
 ```
 
 ### Object and Module Init Change

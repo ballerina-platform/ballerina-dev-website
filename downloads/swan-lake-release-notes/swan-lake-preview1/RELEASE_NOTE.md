@@ -34,7 +34,6 @@ If you have not installed jBallerina, then download the [installers](https://bal
 - Enhanced Query expressions that bring the power of SQL-like query capabilities directly into the language as comprehensions for data processing
 - Introducing the `table` type: A new built-in collection type that works like a general-purpose hash table, where the keys are part of the values being stored
 - Improved Ballerina SQL module API that leverages the latest languages features such as `stream` type, query expressions, and raw templates
-
 - The new mocking API in Ballerina test framework helps you to mock an entire object or a function allowing you to test your code independent of external dependencies
 
 # What's new in Ballerina Swan Lake - Preview 1

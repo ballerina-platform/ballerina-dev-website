@@ -1,0 +1,35 @@
+{
+  "modules": [
+    {
+      "id": "docker",
+      "searchString": "\u003cp\u003eThis module offers an annotation based docker extension implementation for ballerina.\u003c/p\u003e"
+    }
+  ],
+  "objects": [],
+  "functions": [],
+  "records": [
+    {
+      "id": "DockerConfiguration",
+      "searchString": "\u003cp\u003eDocker annotation configuration.\u003c/p\u003e",
+      "moduleId": "docker"
+    },
+    {
+      "id": "ExposeConfig",
+      "searchString": "\u003cp\u003eExpose ports for docker.\u003c/p\u003e",
+      "moduleId": "docker"
+    },
+    {
+      "id": "FileConfig",
+      "searchString": "\u003cp\u003eExternal file type for docker.\u003c/p\u003e",
+      "moduleId": "docker"
+    },
+    {
+      "id": "FileConfigs",
+      "searchString": "\u003cp\u003eExternal File configurations for docker.\u003c/p\u003e",
+      "moduleId": "docker"
+    }
+  ],
+  "constants": [],
+  "errors": [],
+  "types": []
+}

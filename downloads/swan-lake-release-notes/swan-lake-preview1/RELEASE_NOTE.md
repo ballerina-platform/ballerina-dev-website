@@ -6,29 +6,39 @@ title: Swan Lake Preview 1 Release note
 This release is the first preview version of Ballerina Swan Lake. This release includes a new set of Language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
  
 # Highlights
-- Highlight I
-- Highlight II
+
+- New recursive descent parser
+- Type system enhancements
+- Improved language integration support
+- Improvements on Standard Library modules 
+- Improved mocking support in testing
 
 # What's new in Ballerina Swan Lake - Preview 1
+
 ## Language
+
 The Language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/). This Specification introduces a set of new features and improvements in the following main areas.   
  
-- Type system enhancements (e.g. New Error and Table Design) 
-- Improved Immutability support 
-- [New Transaction support] (https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md) 
-- Improved Query support 
+- Type system enhancements (e.g., new `distinct` type, revamped `error` type, revamped `table` type revamp, `intersection` type support, new `readonly` type) 
+- Improved immutability support 
+- [New transactions support](https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md) 
+- Improved query support 
  
-Some of these new language features are revamped of the existing language features and Therefore source code will not be backward compatible with the stable Ballerina 1.2 releases. 
+Some of these new language features are revamped versions of the existing language features. Therefore, the source code will not be backward compatible with the stable Ballerina 1.2 releases. 
  
-In addition to the new Language features, this release introduces a new parser implementation aiming to improve the performance and usability of the compiler. Now compiler has more control over syntax errors, and it can provide a better diagnostic for syntax errors. Additionally, New parser has tightened up the language parser rules with respect to the Ballerina specification, and still, it doesn’t cover the full set of the language features. This will be fixed in upcoming preview versions.  
+In addition to the new Language features, this release introduces a new parser implementation aiming to improve the performance and usability of the compiler. Now, the compiler has more control over syntax errors and it can provide a better diagnostic for syntax errors. Additionally, the new parser has tightened up the language parser rules with respect to the Ballerina specification. However, still it doesn’t cover the full set of the language features. This will be fixed in the upcoming preview versions.  
 
 ### Introduction of `distinct` types
-Ballerina `distinct` types provide functionality similar to that provided by nominal types, but which works within Ballerina's structural type system. With`distinct` types it's possible to define unique types that are structurally similar. 
-##### `distinct` `error` type
-`error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
+
+Ballerina `distinct` types provide functionalities similar to those provided by the nominal types but they work within the Ballerina's structural type system. With`distinct` types, it is possible to define unique types that are structurally similar. 
+
+##### The `distinct` `error` type
+
+The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
+
 ```ballerina
-// Define distinct error type ApplicationError to be a subtype `error`
-type ApplicationError distinct error;
+// Define distinct error type ApplicationError to be a subtype `error`.
+ type ApplicationError distinct error;
 // FileUploadError is a subtype of ApplicationError
 type FileUploadError distinct ApplicationError;
 // UserPermissionError is a subtype of ApplicationError
@@ -49,6 +59,7 @@ function uploadFile(string filePath, string securityToken, UserId userId) return
 ```
 
 Type-guards can be used to identify values of each distinct error at runtime.
+
 ```ballerina
  ApplicationError? status = uploadFile(path, token, userId);
  if (status is FileUploadError) {
@@ -58,33 +69,36 @@ Type-guards can be used to identify values of each distinct error at runtime.
  }
 ```
 
-With the introduction of `distinct` error type, error reason is removed from the error type. Please see the `error type changes` section for more information.
+With the introduction of the `distinct` error type, the error reason is removed from the error type. For more information, see [error type changes](#error-type-changes).
 
 ### `error` type changes
-Previous error type was `error<reasonType, detailType>`, where `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
+Previous error type was `error<reasonType, detailType>` in which the `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
 
 ```ballerina
 type Error error<map<anydata|readonly>>;
 ```
 
-The error detail type parameter is optional and if absent it defaults to `map<anydata|readonly>` and if present, it must be a subtype of `map<anydata|readonly>`.
+The error detail type parameter is optional and if absent, it defaults to `map<anydata|readonly>` and if present, it must be a subtype of `map<anydata|readonly>`.
 
 ```ballerina
 type Error0 error;
 type Error1 error<map<string>>;
 type Error2 error<record {| int code; |}>;
 ```
+
 #### Revised error constructor
-Error-values of user-defined types is created using error constructor of that type.
-Mandatory first positional augment to error constructor is the error message and must be a subtype of string. An optional second positional argument can be provided to pass in an `error` cause. Error details are provided as named arguments to error constructor.
+
+Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of string. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
 ```ballerina
 type AppError error<record {| string buildNo; string userId; |};
 
 AppError appError = AppError("Failed to delete order line", buildNo=getBuildNo(), userId=userId);
 ```
+
 #### Error type infer 
-A type of error<*> means that the type is a subtype of error, where the precise subtype is to be inferred from the context.
+
+A type of `error<*>` means that the type is a subtype of error in which the precise subtype is to be inferred from the context.
 
 ```Ballerina
 type TrxErrorData record {|
@@ -100,10 +114,13 @@ error<*> err = e;
 ```
 
 ### Introduction of the `readonly` type and improved support for immutability
+
 This release introduces improved support for immutability. With the introduction of the `readonly` type, values that are known to be immutable can now be defined at compile-time. 
+
 #### The `readonly` type
-A value belongs to the `readonly` type if its read-only flag is set.
-A value belonging to one of the following inherently immutable basic types will always have it’s read-only bit set, and will always belong to the `readonly` type.
+
+A value belongs to the `readonly` type if its read-only flag is set. A value belonging to one of the following inherently-immutable basic types will always have it’s read-only bit set and will always belong to the `readonly` type.
+
 - all simple basic types - nil, boolean, int, float, decimal
 - string
 - error
@@ -111,15 +128,18 @@ A value belonging to one of the following inherently immutable basic types will 
 - service 
 - typedesc
 
-A value belonging to one of the following selectively immutable types will belong to `readonly` (i.e., will be immutable) only if its read-only bit is set.
+A value belonging to one of the following selectively-immutable types will belong to `readonly` (i.e., will be immutable) only if its read-only bit is set.
+
 - xml
 - list
 - mapping 
 - table
 - object
-An immutable value is deeply immutable and thus an immutable structure is guaranteed to have only immutable values at any level. 
-As with previous versions of Ballerina, an immutable value can be created by calling `.cloneReadOnly()` on the value. Additionally, it is now possible to create an immutable value by providing a read-only type as the contextually expected type.
-An intersection type `T & readonly` where `T` is a selectively immutable type results in a read-only type, which when used with a constructor expression creates an immutable value.
+
+An immutable value is deeply immutable and thus an immutable structure is guaranteed to have only immutable values at any level. As with previous versions of Ballerina, an immutable value can be created by calling `.cloneReadOnly()` on the value. Additionally, it is now possible to create an immutable value by providing a read-only type as the contextually expected type.
+
+An intersection type `T & readonly` where `T` is a selectively-immutable type results in a read-only type. When it is used with a constructor,the  expression creates an immutable value.
+
 ```ballerina
 import ballerina/io;
  
@@ -146,10 +166,12 @@ public function main() {
    io:println(emp.details.isReadOnly());   // true
 }
 ```
-Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.
-Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. See “Read-only objects”
+
+Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objetcs).
+
 #### Read-only fields
-A record or an object can now have `readonly` fields. A `readonly` field cannot be updated once the record or the object value is created, and the value provided for the particular field should be an immutable value. If the field is of type `T`, the contextually expected type for a value provided for a field would be `T & readonly`.
+A record or an object can now have `readonly` fields. A `readonly` field cannot be updated once the record or the object value is created and the value provided for the particular field should be an immutable value. If the field is of type `T`, the contextually-expected type for a value provided for a field would be `T & readonly`.
+
 Thus, a `readonly` field guarantees that the field will not change and also that the value set for the field itself will not be updated.
 
 ```ballerina
@@ -180,7 +202,9 @@ public function main() {
    };
 }
 ```
+
 If all the fields of a closed record or an object are `readonly`, the record or the object itself is considered immutable and a value of the particular type can be used where an immutable value is expected.
+
 ```ballerina
 type Identifier record {|
    readonly int id;
@@ -210,8 +234,10 @@ public function main() {
    readonly[] arr = [details, controller];
 }
 ```
+
 #### Read-only objects
-An object type can also be defined as a `readonly object` type, and any value belonging to this type will be immutable. Similar to `readonly` fields, each value provided for a field of a `readonly object` is expected to be immutable and the field itself cannot be updated once set.
+An object type can also be defined as a `readonly object` type and any value belonging to this type will be immutable. Similar to `readonly` fields, each value provided for a field of a `readonly object` is expected to be immutable and the field itself cannot be updated once set.
+
 ```ballerina
 type Details record {
    int id;
@@ -237,8 +263,10 @@ public function main() {
    controller.allow = false; // error - cannot update 'readonly' value of type 'Controller'
 }
 ```
-### Never type
-The `never` type represents the type of values that never occur. This can be useful to describe the return type of a function, if the function never returns. No value can ever belong to `never` type. Thus it can not be declared or assigned a value to it.
+
+### The Never type
+The `never` type represents the type of values that never occur. This can be useful to describe the return type of a function if the function never returns. No value can ever belong to the `never` type. Thus, it can not be declared or a value cannot be assigned to it.
+
 ```ballerina
 function somefunction(int age) returns never {
    if (age < 18) {
@@ -256,9 +284,12 @@ table<Person> key<never> personTable = table [
 ```
 
 ### Object and Module Init Change
-Module level variables can be initialized inside the module init function. Now this is same as initializing the fields inside an object.
+
+Module level variables can be initialized inside the module init function. Now, this is the same as initializing the fields inside an object.
+
 ### Type inclusion
-Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of included type provided that overriding field type is a subtype of overridden field.
+
+Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of the included type provided that overriding field type is a subtype of the overridden field.
 
 ```Ballerina
 type GridMessage object {
@@ -304,8 +335,10 @@ type EfficientGridPacket record {
     int address = 0;
     byte[] header?;
 };
+
 ```
 ### Enum
+
 The typical way of doing an enumeration in Ballerina previously was:
 
 ```ballerina
@@ -316,7 +349,8 @@ The typical way of doing an enumeration in Ballerina previously was:
  public type Direction NORTH|EAST|SOUTH|WEST;
 
 ```
-With the introduction of enums the above can be simplified to the following:
+
+With the introduction of enums, the above can be simplified to the following:
 
 ```ballerina
 public enum Direction {
@@ -326,7 +360,8 @@ public enum Direction {
       WEST
     }
 ```
-The value of the const can be overridden in the enum declaration:
+
+The value of the const can be overridden in the enum declaration as follows:
 
 
 ```ballerina
@@ -337,16 +372,20 @@ public enum Direction {
       WEST = "W"
     }
 ```
+
 The expression following `=` must be a constant expression with a static type that is a subtype of string.
+
 ### Raw templates
 
-### Typedesc function parameters referencing in return type
+### Typedesc function parameters referencing in the return type
 
-### Backward incompatible improvements and bug fixes
-- Parameter defaults are not added if a rest argument is provided when calling a function.
+### Backward-incompatible improvements and bug fixes
+
+Parameter defaults are not added if a rest argument is provided when calling a function.
 
 ### Transactions
-A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every Begin() operation will be paired with a corresponding Rollback() or Commit() operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information and etc. This release provides support only for local transactions.
+
+A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release provides support only for local transactions.
 
 ```Ballerina
 public function main() returns error? {
@@ -394,10 +433,9 @@ public function main() returns error? {
 
 ```
 
-
-
 ### Table
-A `table` is a structural value whose members are mapping values that represent rows of the table. A table provides access to its members using a key that comes from the read-only fields of the member. It keeps its members in order but does not provide random access to a member using its position in this order. The built-in functions enable inserting, accessing, deleting data, and applying functions on members of a table.
+A `table` is a structural value whose members are mapping values that represent rows of the table. A table provides access to its members using a key, which comes from the read-only fields of the member. It keeps its members in order but does not provide random access to a member using its position in this order. The built-in functions enable inserting, accessing, deleting data, and applying functions on members of a table.
+
 ```Ballerina
 type Employee record {
     readonly int id;
@@ -431,7 +469,7 @@ public function main() {
 
 ### Query Improvements 
 
-Ballerina query action/expression provides a language-integrated query feature using SQL-like syntax. Ballerina query is a comprehension, which can be used with a value that is iterable with any error type. A query consists of a sequence of clauses (i.e `from`, `join`, `let`, `on`, `where`, `select`, `do` and `limit`). The first clause must be a `from` clause and must consist of either a `select` or a `do` clause as well. When a query is evaluated, its clauses are executed in a pipeline by making the sequence of frames emitted by one clause be the input to the next clause. Each clause in the pipeline is executed lazily, pulling input from its preceding clause. The result of such a query can either be a list, stream, table, string, XML, or termination value of the iterator which is ().
+Ballerina query action/expression provides a language-integrated query feature using SQL-like syntax. A Ballerina query is a comprehension, which can be used with a value that is iterable with any error type. A query consists of a sequence of clauses (i.e., `from`, `join`, `let`, `on`, `where`, `select`, `do`, and `limit`). The first clause must be a `from` clause and must consist of either a `select` or a `do` clause as well. When a query is evaluated, its clauses are executed in a pipeline by making the sequence of frames emitted by one clause being the input to the next clause. Each clause in the pipeline is executed lazily pulling input from its preceding clause. The result of such a query can either be a list, stream, table, string, XML, or termination value of the iterator which is ().
 
 
 ```ballerina
@@ -475,20 +513,51 @@ public function main() {
     }
 }
 
-
 ```
+
 ## Standard Library
+
 ### Introduced new JDBC module
 
 ### Enhanced log api module
 
+Revamped log API to support `anydata` and improved performance.
+
+```ballerina
+import ballerina/log;
+
+public function main() {
+    log:printDebug("Debug log");
+    log:printDebug(12345);
+    log:printDebug(3.146);
+    log:printDebug(true);
+
+    Fruit apple = new ("Apple", 20);
+    log:printDebug(function() returns int {
+        return apple.getCount();
+    });
+}
+
+public type Fruit object {
+    string name;
+    int count;
+    public function init(string name, int count) {
+        self.name = name;
+        self.count = count;
+    }
+    function getCount() returns int {
+        return self.count;
+    }
+};
+```
+
 ### Enhanced gRPC module
 
-Revamped client/bidirectional streaming service implementation to support multiple service resources
+The client/bidirectional streaming service implementation is revamped to support multiple service resources.
 
-The previous gRPC client/bidirectional streaming had a shortcoming where a service can only contain a single streaming resource. In order to overcome this, the implementation of the client/bidi streaming has been changed to accept stream type like below,
+The previous gRPC client/bidirectional streaming had a shortcoming where a service can only contain a single streaming resource. In order to overcome this, the implementation of the client/bidi streaming has been changed to accept a stream type like below.
 
-E.g: 
+E.g.,
 
 ```ballerina
 
@@ -511,15 +580,14 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ```
 
-
-
-
 ### Enhanced auth module
 
 ### Enhanced email module
 
-Email Connector clients are given the capability to add custom SMTP properties, custom POP properties and custom IMAP properties via the configuration of each of the clients.
-SMTP client is made capable of sending custom email headers (SMTP header) via the SMTP client and retrieving all the email headers to the user via POP and IMAP clients.
+The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.
+
+The SMTP client is made capable of sending custom email headers (SMTP header) via the SMTP client and retrieving all the email headers to the user via POP and IMAP clients.
+
 A `listener` is introduced to asynchronously listen to email servers with polling and receive if any email is received. This listener supports both POP3 and IMAP4 protocols. A sample code is given below.
 
 ```ballerina
@@ -552,14 +620,14 @@ service emailObserver on emailListener {
 }
 ```
 
-
 ### Added new connectors
 
+## Build Tools
 
-## Build Tools-
 ### Native dependency manager
-Maven dependency resolving support
-Now you can specify maven dependencies by specifying Group ID, Artifact ID and version as below. 
+
+THis bringhs the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
+
 ```
 [[platform.libraries]]
 modules = [ "module1", "module2"]
@@ -567,16 +635,19 @@ artifactId = "json"
 groupId = "json.org"
 version = "0.7.2"
 ```
-Maven resolver will fetch those dependencies from maven central
+
+The Maven resolver will fetch those dependencies from the Maven Central.
 
 ### Scoping support
-Added an additional attribute called “scope” for platform libraries. Based on scope, dependencies will be included to different phases.
- - default - Will be available to compile, run tests, execute, and also distributed with the balo.
- - provided - Will be available to compile, run tests, execute but not distributed with the balo.
- - testOnly - Will be only available to run tests.
 
+Added an additional attribute called “scope” for platform libraries. Based on the scope, dependencies will be included to different phases. The values of this will be as follows
 
-Ex : 
+- default - will be available to compile, run tests, execute, and also distributed with the BALO.
+- provided - will be available to compile, run tests, execute but not distributed with the BALO.
+- testOnly - will be only available to run tests.
+
+E.g., 
+
 ```
 [platform]
 target = "java8"
@@ -586,17 +657,21 @@ modules = ["sap-client"]
 path = "path/to/sap_client_1.2.3.jar"
 scope = "provided" 
 ```
-### Bindgen tool
 
-- Providing support for Java Subtyping.
-- Integrating Maven dependency resolving into the tool and introducing a new command option `-mvn|--maven` to facilitate it.
-- Improve the error mappings by generating error types for Java exceptions.
-- Introducing a function in the `java` module of the Ballerina standard library to support Java Casting.
-- Introduce the generation API documentation comments in the generated bindings.
-- Introduced a flag `--public` to change the visibility modifier (which is module private by default) to public.
-- Moving the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time the tool is executed.
+### The Bindgen tool
+
+This provides support for Java Subtyping. 
+
+- Maven dependency resolving is integrtaed into the tool and this is introducing a new command option `-mvn|--maven` to facilitate it.
+- Error mappings are improved by generating error types for Java exceptions.
+- Introduces a function in the `java` module of the Ballerina standard library to support Java Casting.
+- Introduces the generation of API documentation comments in the generated bindings.
+- Introduces a `--public` flag to change the visibility modifier (which is module private by default) to public.
+- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the  tool is executed.
 - Bug fixes and improvements to usability and generated bindings.
-- The bindgen tool command after the newly introduced options is as follows.
+
+The bindgen tool command after the newly-introduced options is as follows.
+
 ```
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
@@ -605,14 +680,16 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
                   (<class-name>...)
 ```
 
-
 ### Testerina
-Introducing the Mocking API for object and function mocking
+
+Introducing the Mocking API for object and function mocking.
 
 ### API Documentation
-Added search capability to API Documentation
-Feature to combine documentation from multiple projects
+
+- The search capability is added into the API Documentation
+- A feature is added to combine documentation from multiple projects
 
 ### Debugger
-Variable evaluation support : This will allow you to evaluate a variable using expression evaluation option to retrieve the value of the variable at a debug hit. 
+
+This provides variable evaluation support. This will allow you to evaluate a variable using the expression evaluation option to retrieve the value of the variable at a debug hit. 
 	

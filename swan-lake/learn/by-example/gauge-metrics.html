@@ -14,8 +14,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
-<span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span>
-<span class="nd">@http:ServiceConfig {</span>
+<span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">globalGauge</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;global_gauge&quot;</span><span class="p">,</span> <span class="s">&quot;Global gauge defined&quot;</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -71,7 +70,7 @@ redirect_from:
 <span class="p">}</span><span class="kd">function</span> <span class="nx">printGauge</span><span class="p">(</span><span class="nx">observe</span><span class="p">:</span><span class="nx">Gauge</span> <span class="nx">gauge</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">io</span><span class="p">:</span><span class="nx">print</span><span class="p">(</span><span class="s">&quot;Gauge - &quot;</span> <span class="o">+</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s">&quot; Snapshot: &quot;</span><span class="p">);</span>
     <span class="nx">observe</span><span class="p">:</span><span class="nx">Snapshot</span><span class="p">[]</span><span class="err">?</span> <span class="nx">snapshots</span> <span class="p">=</span> <span class="nx">gauge</span><span class="p">.</span><span class="nx">getSnapshot</span><span class="p">();</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">snapshotAsAJson</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">snapshots</span><span class="p">);</span>
+    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">snapshotAsAJson</span> <span class="p">=</span> <span class="nx">snapshots</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
     <span class="k">if</span> <span class="nx">snapshotAsAJson</span> <span class="nx">is</span> <span class="kt">json</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">snapshotAsAJson</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
     <span class="p">}</span>
@@ -88,7 +87,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Gauge-Based Metrics</h2>
                             <p><p>Ballerina supports Observability out of the box, and Metrics is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
+ Observability. To observe Ballerina code, the <code>--b7a.observability.enabled=true</code> property should be given when starting the service.
  The developers can define and use metrics to measure their own logic. A gauge is one type of metric that is
  supported by default in Ballerina, and it represents a single numerical value that can arbitrarily go up and down,
  and also based on the statistics configurations provided to the Gauge, it can also report the statistics such as max,
@@ -130,7 +129,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/gauge-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/gauge-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -243,7 +242,7 @@ and default statistics configurations = { timeWindow: 600000, buckets: 5,
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
@@ -254,13 +253,6 @@ service onlineStoreService on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Make sure you start the service with the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property or with metrics enabled.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -697,7 +689,7 @@ counter instance.</p>
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    io:print(&quot;Gauge - &quot; + gauge.name + &quot; Snapshot: &quot;);
     observe:Snapshot[]? snapshots = gauge.getSnapshot();
-    json|error snapshotAsAJson = json.constructFrom(snapshots);
+    json|error snapshotAsAJson = snapshots.cloneWithType(json);
     if snapshotAsAJson is json {
         io:println(snapshotAsAJson.toJsonString());
     }
@@ -733,6 +725,88 @@ counter instance.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command with `--b7a.observability.enabled=true` property.
+$ ballerina run gauge_metrics.bal --b7a.observability.enabled=true
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+ballerina: started Prometheus HTTP listener 0.0.0.0:9797
+ballerina: started publishing tracers to Jaeger on localhost:5775
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9090
+------------------------------------------
+Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:15.0, &quot;max&quot;:15.0, &quot;min&quot;:15.0, &quot;stdDev&quot;:0.0, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.75, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.95, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.99, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.999, &quot;value&quot;:15.0}]}]
+Gauge - global_gauge Current Value: 15.0
+Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
+Gauge - local_operations Current Value: 10.0
+Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:6.515625, &quot;max&quot;:12.0546875, &quot;min&quot;:1.0, &quot;stdDev&quot;:5.515625, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:1.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:1.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:12.0546875}]}]
+Gauge - registered_gauge_with_tags Current Value: 12.0
+Gauge - gauge_with_no_stats Snapshot: null
+Gauge - gauge_with_no_stats Current Value: 100.0
+Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
+Gauge - gauge_with_custom_stats Current Value: 500.0
+------------------------------------------
+------------------------------------------
+Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:22.53125, &quot;max&quot;:30.0625, &quot;min&quot;:15.0, &quot;stdDev&quot;:7.53125, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.66, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.75, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.95, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.99, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.999, &quot;value&quot;:30.0625}]}]
+Gauge - global_gauge Current Value: 30.0
+Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
+Gauge - local_operations Current Value: 10.0
+Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:55.4140625, &quot;max&quot;:156.9921875, &quot;min&quot;:1.0, &quot;stdDev&quot;:61.38432884406833, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:156.9921875}]}]
+Gauge - registered_gauge_with_tags Current Value: 156.0
+Gauge - gauge_with_no_stats Snapshot: null
+Gauge - gauge_with_no_stats Current Value: 100.0
+Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
+Gauge - gauge_with_custom_stats Current Value: 500.0
+------------------------------------------
+------------------------------------------
+Gauge - global_gauge Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:30.0625, &quot;max&quot;:45.1875, &quot;min&quot;:15.0, &quot;stdDev&quot;:12.298479750223873, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:15.0}, {&quot;percentile&quot;:0.5, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.66, &quot;value&quot;:30.0625}, {&quot;percentile&quot;:0.75, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:45.1875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:45.1875}]}]
+Gauge - global_gauge Current Value: 45.0
+Gauge - local_operations Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:13.0390625, &quot;max&quot;:21.1171875, &quot;min&quot;:1.0, &quot;stdDev&quot;:8.180620171277893, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:10.0546875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:20.1171875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:21.1171875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:21.1171875}]}]
+Gauge - local_operations Current Value: 10.0
+Gauge - registered_gauge_with_tags Snapshot: [{&quot;timeWindow&quot;:600000, &quot;mean&quot;:377.1927083333333, &quot;max&quot;:1887.9921875, &quot;min&quot;:1.0, &quot;stdDev&quot;:676.7534301455432, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:12.0546875}, {&quot;percentile&quot;:0.5, &quot;value&quot;:52.2421875}, {&quot;percentile&quot;:0.66, &quot;value&quot;:156.9921875}, {&quot;percentile&quot;:0.75, &quot;value&quot;:157.9921875}, {&quot;percentile&quot;:0.95, &quot;value&quot;:1887.9921875}, {&quot;percentile&quot;:0.99, &quot;value&quot;:1887.9921875}, {&quot;percentile&quot;:0.999, &quot;value&quot;:1887.9921875}]}]
+Gauge - registered_gauge_with_tags Current Value: 1884.0
+Gauge - gauge_with_no_stats Snapshot: null
+Gauge - gauge_with_no_stats Current Value: 100.0
+Gauge - gauge_with_custom_stats Snapshot: [{&quot;timeWindow&quot;:30000, &quot;mean&quot;:300.7, &quot;max&quot;:501.5, &quot;min&quot;:100.0, &quot;stdDev&quot;:141.775033062948, &quot;percentileValues&quot;:[{&quot;percentile&quot;:0.33, &quot;value&quot;:200.5}, {&quot;percentile&quot;:0.5, &quot;value&quot;:301.5}, {&quot;percentile&quot;:0.9, &quot;value&quot;:501.5}, {&quot;percentile&quot;:0.99, &quot;value&quot;:501.5}]}]
+Gauge - gauge_with_custom_stats Current Value: 500.0
+------------------------------------------
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>

@@ -12,14 +12,15 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="kt">int</span><span class="p">;</span>
 <span class="nd">@test:Config {</span>
     <span class="nx">dataProvider</span><span class="p">:</span> <span class="s">&quot;stringDataProvider&quot;</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">fValue</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">testAddingValues</span><span class="p">(</span><span class="kt">string</span> <span class="nx">fValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">sValue</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">fValue</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">value1</span> <span class="p">=</span> <span class="nx">val1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val1</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val2</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">sValue</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">val2</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">sValue</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">value2</span> <span class="p">=</span> <span class="nx">val2</span> <span class="nx">is</span> <span class="kt">int</span> <span class="err">?</span> <span class="nx">val2</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="kt">int</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res1</span> <span class="p">=</span> <span class="p">&#39;int:fromString(</span><span class="nx">result</span><span class="p">);</span>
     <span class="kt">int</span> <span class="nx">result1</span> <span class="p">=</span> <span class="nx">res1</span> <span class="nx">is</span> <span class="kt">int</span> <span class="p">? res1 : 0;    io:println(</span><span class="s">&quot;Input : [&quot;</span> <span class="o">+</span> <span class="nx">fValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">sValue</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="nx">result</span> <span class="o">+</span> <span class="s">&quot;]&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">value1</span> <span class="o">+</span> <span class="nx">value2</span><span class="p">,</span> <span class="nx">result1</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;Incorrect Sum&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -88,7 +89,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-data-driven-tests/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/testerina-data-driven-tests/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -136,6 +137,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
 import ballerina/test;
+import ballerina/lang.&#39;int;
 </code></pre></div>
 
                                 </td>
@@ -205,11 +207,11 @@ import ballerina/test;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    int|error val1 = int.constructFrom(fValue);
+                                    <div class="highlight"><pre><code class=ballerina>    int|error val1 = &#39;int:fromString(fValue);
     int value1 = val1 is int ? val1 : 0;
-    int|error val2 = int.constructFrom(sValue);
+    int|error val2 = &#39;int:fromString(sValue);
     int value2 = val2 is int ? val2 : 0;
-    int|error res1 = int.constructFrom(result);
+    int|error res1 = &#39;int:fromString(result);
     int result1 = res1 is int ? res1 : 0;
 </code></pre></div>
 

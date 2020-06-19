@@ -54,7 +54,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Distributed Tracing</h2>
                             <p><p>Ballerina supports Observability out of the box, and Tracing is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
+ Observability. To observe Ballerina code, the <code>--b7a.observability.enabled=true</code> property should be given when starting the service.
  The developers can trace their code blocks and measure the time incurred during the actual runtime execution.
  They can choose the hook their measurement with the default trace created or can create a completely new trace.<br/><br/>
  For more information, see <a href="https://ballerina.io/learn/how-to-observe-ballerina-code/">How to Observe Ballerina Services</a>.</p>
@@ -94,7 +94,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/tracing/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/tracing/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -177,7 +177,7 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Make sure you start the service with the &lsquo;&ndash;b7a.observability.enabled=true` property or with tracing enabled.</p>
+                                            <p>Simple <code>Hello</code> HTTP Service</p>
 
                                         </div>
                                     </div>
@@ -198,7 +198,8 @@ import ballerina/runtime;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke all resources with arguments of server connector and request.</p>
+                                            <p>Resource functions are invoked with the HTTP caller and the
+ incoming request as arguments.</p>
 
                                         </div>
                                     </div>
@@ -484,6 +485,10 @@ import ballerina/runtime;
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -504,11 +509,22 @@ $ docker run -d -p5775:5775/udp -p6831:6831/udp -p6832:6832/udp -p5778:5778 -p16
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command with &#39;--b7a.observability.enabled=true&#39; property.
+# `.bal` file and execute the `ballerina run` command with `--b7a.observability.enabled=true` property.
 $ ballerina run tracing.bal --b7a.observability.enabled=true
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9234
@@ -545,7 +561,7 @@ Hello, World!
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Invoke the service using cURL.</p>
+                                            <p>Invoke the service using cURL and access Jaeger UI in <code>http://localhost:16686</code>.</p>
 
                                         </div>
                                     </div>

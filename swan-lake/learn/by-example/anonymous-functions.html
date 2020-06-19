@@ -17,12 +17,13 @@ redirect_from:
             <span class="p">};</span>
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction</span><span class="p">(</span><span class="s">&quot;Hello &quot;</span><span class="p">,</span> <span class="s">&quot;World.!!!&quot;</span><span class="p">));</span>
     <span class="k">var</span> <span class="nx">anonFunction2</span> <span class="p">=</span> <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span> <span class="nx">x</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">y</span><span class="p">,</span> <span class="kt">string</span><span class="o">...</span> <span class="nx">z</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-                            <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
-                            <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">z</span> <span class="p">{</span>
-                                <span class="nx">value</span> <span class="o">+=</span> <span class="nx">item</span><span class="p">;</span>
-                            <span class="p">}</span>
-                            <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
-                        <span class="p">};</span>
+        <span class="kt">string</span> <span class="nx">value</span> <span class="p">=</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">item</span> <span class="nx">in</span> <span class="nx">z</span> <span class="p">{</span>
+            <span class="nx">value</span> <span class="o">+=</span> <span class="nx">item</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">};</span>
+    
     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Output: &quot;</span><span class="p">,</span> <span class="nx">anonFunction2</span><span class="p">(</span><span class="s">&quot;Ballerina &quot;</span><span class="p">,</span> <span class="s">&quot;is &quot;</span><span class="p">,</span> <span class="s">&quot;an &quot;</span><span class="p">,</span> <span class="s">&quot;open &quot;</span><span class="p">,</span>
      <span class="s">&quot;source &quot;</span><span class="p">,</span> <span class="s">&quot;programming &quot;</span><span class="p">,</span> <span class="s">&quot;language.&quot;</span><span class="p">));</span>
     <span class="kd">function</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="nx">arrowExpr</span> <span class="p">=</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">x</span> <span class="o">+</span> <span class="nx">y</span><span class="p">;</span>
@@ -37,7 +38,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Anonymous Functions</h2>
-                            <p><p>In Ballerina, anonymous functions are a syntactic shortcut for defining inline functions.
+                            <p><p>In Ballerina, anonymous functions provide a way of defining inline functions.
  The only difference between an anonymous function and a normal function definition is that
  an anonymous function does not have a name.</p>
 </p>
@@ -76,7 +77,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/anonymous-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/anonymous-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -160,12 +161,13 @@ redirect_from:
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    var anonFunction2 = function (string x, string y, string... z) returns string {
-                            string value = x + y;
-                            foreach var item in z {
-                                value += item;
-                            }
-                            return value;
-                        };
+        string value = x + y;
+        foreach var item in z {
+            value += item;
+        }
+        return value;
+    };
+    
     io:println(&quot;Output: &quot;, anonFunction2(&quot;Ballerina &quot;, &quot;is &quot;, &quot;an &quot;, &quot;open &quot;,
      &quot;source &quot;, &quot;programming &quot;, &quot;language.&quot;));
 </code></pre></div>

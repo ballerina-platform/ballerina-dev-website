@@ -124,18 +124,6 @@
                 "url": "match"
             },
             {
-                "name": "Tuple Match",
-                "url": "tuple-match-statement"
-            },
-            {
-                "name": "Record Match",
-                "url": "record-match-statement"
-            },
-            {
-                "name": "Error Match",
-                "url": "error-match-statement"
-            },
-            {
                 "name": "Type Test Expression",
                 "url": "type-test-expression"
             },
@@ -228,6 +216,14 @@
                 "url": "any-type"
             },
             {
+                "name": "Never Type",
+                "url": "never-type"
+            },
+            {
+                "name": "Readonly Type",
+                "url": "readonly-type"
+            },
+            {
                 "name": "Constants",
                 "url": "constants"
             },
@@ -238,6 +234,10 @@
             {
                 "name": "String Template Literal",
                 "url": "string-template"
+            },
+            {
+                "name": "Raw Template Literal",
+                "url": "raw-template"
             },
             {
                 "name": "Let Expression",
@@ -260,6 +260,10 @@
             {
                 "name": "Optional Fields",
                 "url": "record-optional-fields"
+            },
+            {
+                "name": "Read-only Fields",
+                "url": "record-readonly-fields"
             },
             {
                 "name": "Record Type Reference",
@@ -294,6 +298,10 @@
             {
                 "name": "Anonymous Objects",
                 "url": "anonymous-objects"
+            },
+            {
+                "name": "Read-only Objects and Fields",
+                "url": "readonly-objects-and-fields"
             },
             {
                 "name": "Object Type Reference",
@@ -429,20 +437,12 @@
                 "url": "record-typed-binding-pattern"
             },
             {
-                "name": "Error-Typed Binding Pattern",
-                "url": "error-typed-binding-pattern"
-            },
-            {
                 "name": "Tuple Destructure Binding Pattern",
                 "url": "tuple-destructure-binding-pattern"
             },
             {
                 "name": "Record Destructure Binding Pattern",
                 "url": "record-destructure-binding-pattern"
-            },
-            {
-                "name": "Error Destructure Binding Pattern",
-                "url": "error-destructure-binding-pattern"
             }
         ]
     },

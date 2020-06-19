@@ -12,7 +12,6 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">config</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">oauth2</span><span class="p">;</span>
 <span class="nx">oauth2</span><span class="p">:</span><span class="nx">OutboundOAuth2Provider</span> <span class="nx">oauth2Provider1</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">({</span>
     <span class="nx">tokenUrl</span><span class="p">:</span> <span class="s">&quot;&lt;Token URL for the authorization endpoint&gt;&quot;</span><span class="p">,</span>
@@ -109,41 +108,7 @@ redirect_from:
             <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;ballerina&quot;</span>
         <span class="p">}</span>
     <span class="p">}</span>
-<span class="p">});</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nx">response1</span> <span class="p">=</span> <span class="nx">clientEP1</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response1</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response1</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP1.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP1.&quot;</span><span class="p">,</span> <span class="nx">response1</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response2</span> <span class="p">=</span> <span class="nx">clientEP2</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response2</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response2</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP2.&quot;</span><span class="p">,</span> <span class="nx">response2</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">var</span> <span class="nx">response3</span> <span class="p">=</span> <span class="nx">clientEP3</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">response3</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response3</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to retrieve payload for clientEP2.&quot;</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint from clientEP3.&quot;</span><span class="p">,</span> <span class="nx">response3</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </pre></div>
 
             </div>
@@ -200,7 +165,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-client-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/secured-client-with-oauth2/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -232,14 +197,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -250,7 +207,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/http;
 import ballerina/config;
-import ballerina/log;
 import ballerina/oauth2;
 </code></pre></div>
 
@@ -437,7 +393,7 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
                             
                             <tr class="cTR">
 
-                                <td class="code leading">
+                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>http:Client clientEP3 = new (&quot;&lt;URL of the secured endpoint&gt;&quot;, {
     auth: {
         authHandler: oauth2Handler3
@@ -454,106 +410,6 @@ http:BearerAuthHandler oauth2Handler3 = new (oauth2Provider3);
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response1 = clientEP1-&gt;get(&quot;/&quot;);
-    if (response1 is http:Response) {
-        var result = response1.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError(&quot;Failed to retrieve payload for clientEP1.&quot;);
-        }
-    } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP1.&quot;, response1);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Sends a <code>GET</code> request to the specified endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var response2 = clientEP2-&gt;get(&quot;/&quot;);
-    if (response2 is http:Response) {
-        var result = response2.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
-        }
-    } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP2.&quot;, response2);
-    }
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send a <code>GET</code> request to the specified endpoint.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>    var response3 = clientEP3-&gt;get(&quot;/&quot;);
-    if (response3 is http:Response) {
-        var result = response3.getJsonPayload();
-        if (result is json) {
-            log:printInfo(result.toJsonString());
-        } else {
-            log:printError(&quot;Failed to retrieve payload for clientEP2.&quot;);
-        }
-    } else {
-        log:printError(&quot;Failed to call the endpoint from clientEP3.&quot;, response3);
-    }
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Send a <code>GET</code> request to the specified endpoint.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>

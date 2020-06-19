@@ -12,53 +12,38 @@ redirect_from:
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">math</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="p">(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span><span class="p">)[]</span> <span class="nx">outputs</span> <span class="p">=</span> <span class="p">[];</span><span class="nd">@test:Mock {</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">addValues</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">intAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">public</span> <span class="kd">function</span> <span class="nx">printMathConsts</span><span class="p">()</span> <span class="p">{</span>
+   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Value of PI : &quot;</span><span class="p">,</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;(</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span><span class="p">)[]</span> <span class="nx">outputs</span> <span class="p">=</span> <span class="p">[];</span><span class="nd">@test:Mock {</span>
     <span class="nx">moduleName</span><span class="p">:</span> <span class="s">&quot;ballerina/io&quot;</span><span class="p">,</span>
     <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;println&quot;</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">mockIoPrintLn</span><span class="p">((</span><span class="kt">any</span><span class="p">|</span><span class="nx">error</span><span class="p">)</span><span class="o">...</span> <span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">outputs</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">printMathConsts</span><span class="p">()</span> <span class="p">{</span>
-   <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Value of PI : &quot;</span><span class="p">,</span> <span class="nx">math</span><span class="p">:</span><span class="nx">PI</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testMathConsts</span><span class="p">()</span> <span class="p">{</span>
    <span class="nx">printMathConsts</span><span class="p">();</span>
    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">toString</span><span class="p">(),</span> <span class="s">&quot;Value of PI :  3.141592653589793&quot;</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">addValues</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Performing addition of integers&quot;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">intAdd</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">public</span> <span class="kd">function</span> <span class="nx">intAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the original function!&quot;</span><span class="p">);</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="nd">@test:MockFn {</span> <span class="nx">functionName</span><span class="p">:</span> <span class="s">&quot;intAdd&quot;</span> <span class="p">}</span>
 <span class="nx">test</span><span class="p">:</span><span class="nx">MockFunction</span> <span class="nx">intAddMockFn</span> <span class="p">=</span> <span class="nx">new</span><span class="p">();</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testAssertIntEquals1</span><span class="p">()</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">testAssertIntEquals</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
-<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testAssertIntEquals2</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
-    
+    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">20</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">intAdd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
-        <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking with arguments failed&quot;</span><span class="p">);}</span>
+        <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking with arguments failed&quot;</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;mockIntAdd&quot;</span><span class="p">);</span>    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">addValues</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">mockIntAdd</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the mock function!&quot;</span><span class="p">);</span>
     <span class="k">return</span> <span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">);</span>
-<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testAssertIntEquals3</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">when</span><span class="p">(</span><span class="nx">intAddMockFn</span><span class="p">).</span><span class="nx">call</span><span class="p">(</span><span class="s">&quot;mockIntAdd&quot;</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">addValues</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">msg</span> <span class="p">=</span> <span class="s">&quot;function mocking failed&quot;</span><span class="p">);}</span>
+<span class="p">}</span>
 </pre></div>
 
             </div>
@@ -112,7 +97,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-mocking-functions/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/testerina-mocking-functions/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -138,12 +123,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -154,7 +133,6 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/io;
 import ballerina/math;
-import ballerina/test;
 </code></pre></div>
 
                                 </td>
@@ -162,7 +140,7 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the example for mocking an imported function.</p>
+                                            <p>This demonstrates different ways to mock functions.</p>
 
                                         </div>
                                     </div>
@@ -173,7 +151,9 @@ import ballerina/test;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>(any|error)[] outputs = [];
+                                    <div class="highlight"><pre><code class=ballerina>public function addValues(int a, int b) returns int {
+    return intAdd(a, b);
+}
 </code></pre></div>
 
                                 </td>
@@ -181,10 +161,158 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the global array to which the mock function will push elements.</p>
+                                            <p>This function calls the <code>intAdd</code> function and returns the result.</p>
 
                                         </div>
                                     </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function intAdd(int a, int b) returns int {
+    return (a + b);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function adds two integers and returns the result.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>public function printMathConsts() {
+   io:println(&quot;Value of PI : &quot;, math:PI);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The function prints the value of PI using <code>io:println</code> function</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/test;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This demonstrates different ways to mock functions.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>(any|error)[] outputs = [];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
                                     
                                 </td>
                             </tr>
@@ -208,26 +336,7 @@ import ballerina/test;
     functionName: &quot;println&quot;
 }
 function mockIoPrintLn((any|error)... text) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This specifies a mock function that should replace the <code>io:println</code>
- function. The mock function signature should match that of the real.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    outputs.push(text);
+    outputs.push(text);
 }
 </code></pre></div>
 
@@ -236,7 +345,8 @@ function mockIoPrintLn((any|error)... text) {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This line adds the value to an array instead printing it.</p>
+                                            <p>This specifies a mock function that should replace the
+ imported function <code>io:println</code>.</p>
 
                                         </div>
                                     </div>
@@ -244,34 +354,23 @@ function mockIoPrintLn((any|error)... text) {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function printMathConsts() {
-   io:println(&quot;Value of PI : &quot;, math:PI);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The function makes a call to io:println which should be replaced
- with the mock function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>@test:Config {}
 function testMathConsts() {
-   printMathConsts();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>   printMathConsts();
    test:assertEquals(outputs[0].toString(), &quot;Value of PI :  3.141592653589793&quot;);
 }
 </code></pre></div>
@@ -281,305 +380,7 @@ function testMathConsts() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This specifies the test function that tests <code>printMathConsts</code> function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main_test.bal` file residing inside the tests/ directory
-under the created module, and execute the `ballerina test` command from the project root directory.
-# Function mocking is not supported for testing single BAL files.
-$ ballerina test bbe_mocking
-Compiling source
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/bbe_mocking-2020r1-any-0.1.0.balo
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testMathConsts
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        1 passing
-        0 failing
-        0 skipped
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the main.bal file of the example for mocking a function
- from the module under test.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function addValues(int a, int b) returns int {
-    io:println(&quot;Performing addition of integers&quot;);
-    return intAdd(a, b);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function calls the <code>intAdd</code> function and returns the result.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>public function intAdd(int a, int b) returns int {
-    io:println(&quot;I&#39;m the original function!&quot;);
-    return (a + b);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function adds two integers and returns the result.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/test;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the main_test.bal file of the example for mocking a function
- from the module under test.</p>
+                                            <p>This function call to <code>io:println</code> will be replaced with <code>mockIoPrintLn</code></p>
 
                                         </div>
                                     </div>
@@ -591,6 +392,7 @@ import ballerina/test;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@test:MockFn { functionName: &quot;intAdd&quot; }
+test:MockFunction intAddMockFn = new();
 </code></pre></div>
 
                                 </td>
@@ -598,26 +400,7 @@ import ballerina/test;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This creates an object for stubbing calls to <code>intAdd</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>test:MockFunction intAddMockFn = new();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This object will be used to stub the calls to <code>intAdd</code> function.</p>
+                                            <p>This creates an object for stubbing calls to <code>intAdd</code> which is written in the same module.</p>
 
                                         </div>
                                     </div>
@@ -629,41 +412,7 @@ import ballerina/test;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testAssertIntEquals1() {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:when(intAddMockFn).thenReturn(20);
-    test:assertEquals(intAdd(10, 6), 20, msg = &quot;function mocking failed&quot;);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the calls to <code>intAdd</code> function to return the specified value.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testAssertIntEquals2() {
+function testAssertIntEquals() {
 </code></pre></div>
 
                                 </td>
@@ -703,7 +452,7 @@ function testAssertIntEquals2() {
                                     <div class="cCodeDesription">
                                         <div>
                                             <p>This stubs the calls to <code>intAdd</code> function to return the specified value
- if the specified arguments are provided.</p>
+ when the specified arguments are provided.</p>
 
                                         </div>
                                     </div>
@@ -711,87 +460,12 @@ function testAssertIntEquals2() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    test:assertEquals(intAdd(10, 6), 20, msg = &quot;function mocking failed&quot;);
-    
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This should return <code>20</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(intAdd(0, 0), -1,
+    test:assertEquals(intAdd(0, 0), -1,
         msg = &quot;function mocking with arguments failed&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This should return <code>-1</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function mockIntAdd(int a, int b) returns int {
-    io:println(&quot;I&#39;m the mock function!&quot;);
-    return (a - b);
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the mock function that should be called
- in place of <code>intAdd</code> function. The mock function
- signature should match the <code>intAdd</code> function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testAssertIntEquals3() {
 </code></pre></div>
 
                                 </td>
@@ -811,27 +485,7 @@ function testAssertIntEquals3() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the calls to <code>intAdd</code> function to invoke the
- created mock function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(addValues(10, 6), 4, msg = &quot;function mocking failed&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the mock function is called in place of the real.</p>
+                                            <p>This stubs the calls to <code>intAdd</code> function to invoke the specifed function.</p>
 
                                         </div>
                                     </div>
@@ -841,12 +495,35 @@ function testAssertIntEquals3() {
                             
                             <tr class="cTR">
 
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(addValues(11, 6), 5, msg = &quot;function mocking failed&quot;);
+}
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>public function mockIntAdd(int a, int b) returns int {
+    return (a - b);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a mock function that can be called
+ in place of <code>intAdd</code> function.</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -916,8 +593,6 @@ Compiling source
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running Tests
         ballerinatest/bbe_mocking:0.1.0
-Performing addition of integers
-I&#39;m the mock function!
 </code></pre></div>
 
                                 </td>
@@ -929,9 +604,8 @@ I&#39;m the mock function!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testAssertIntEquals3
-        [pass] testAssertIntEquals2
-        [pass] testAssertIntEquals1
+                                    <div class="highlight"><pre><code class=shell-session>        [pass] testAssertIntEquals
+        [pass] testMathConsts
 </code></pre></div>
 
                                 </td>
@@ -943,7 +617,7 @@ I&#39;m the mock function!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        3 passing
+                                    <div class="highlight"><pre><code class=shell-session>        2 passing
         0 failing
         0 skipped
 </code></pre></div>

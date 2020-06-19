@@ -71,7 +71,7 @@ redirect_from:
         
         
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.linux-installe }}">
+                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.linux-installer }}">
                             <div class="cSize">deb  <span id="packLinuxName">{{ site.data.stable-latest.metadata.linux-installer-size }}</span></div>
                            </a>
                            <ul class="cDiwnloadSubLinks">
@@ -81,13 +81,13 @@ redirect_from:
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
-                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.linux-installe }}">
-                            <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.stable-latest.metadata.linux-installer-size }}</span></div>
+                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}" class="cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.rpm-installer }}">
+                            <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.stable-latest.metadata.rpm-installer-size }}</span></div>
                            </a>
                            <ul class="cDiwnloadSubLinks">
-                            <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }} /{{ site.data.stable-latest.metadata.linux-installer }}.md5">md5</a></li>
-                            <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
-                            <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}.asc">asc</a></li>
+                            <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }} /{{ site.data.stable-latest.metadata.rpm-installer }}.md5">md5</a></li>
+                            <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
+                            <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}.asc">asc</a></li>
                         </ul>
                     </div>
         
@@ -160,7 +160,12 @@ redirect_from:
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                     <div class="cFeaturedVersion">
                         <h2>Preview release: Swan Lake (preview version) </span></h2>
-                        
+                        <p>If you already have jBallerina version 1.2.0 or above installed, you need to update the update tool to latest in order to get the swan lake channel. This can be done by executing following command.</p>
+                        <pre>ballerina update</pre>
+                        <p>Then you can get swan lake preview 1 by executing following command</p>
+                        <pre>ballerina dist pull slp1</pre>
+                        <p>For further details, see the <a href="https://ballerina.io/downloads/release-notes/">Release Note</a>. </p>
+                        <br>
                     </div>
                 </div>
             

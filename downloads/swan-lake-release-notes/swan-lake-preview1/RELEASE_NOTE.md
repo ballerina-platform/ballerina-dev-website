@@ -69,9 +69,9 @@ if (status is FileUploadError) {
 }
 ```
 
-With the introduction of the `distinct error` type, the error reason is removed from the error type. For more information, see [error type changes](#error-type-changes).
+With the introduction of the `distinct error` type, the error reason is removed from the error type. For more information, see [error type changes](#the-error-type-changes).
 
-### `error` type changes
+### The `error` type changes
 Previous error type was `error<reasonType, detailType>` in which the `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
 
 ```ballerina
@@ -167,7 +167,7 @@ public function main() {
 }
 ```
 
-Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objetcs).
+Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objects).
 
 #### Read-only fields
 A record or an object can now have `readonly` fields. A `readonly` field cannot be updated once the record or the object value is created and the value provided for the particular field should be an immutable value. If the field is of type `T`, the contextually-expected type for a value provided for a field would be `T & readonly`.
@@ -264,32 +264,47 @@ public function main() {
 }
 ```
 
-### The Never type
-The `never` type represents the type of values that never occur. This can be useful to describe the return type of a function if the function never returns. No value can ever belong to the `never` type. Thus, it can not be declared or a value cannot be assigned to it.
+### The `never` type
 
+The `never` type provides a way to describe the type that contains no shapes. 
+
+The `never` type is useful as the return type of a function that never terminates normally. 
 ```ballerina
-function somefunction(int age) returns never {
-   if (age < 18) {
-       error e = error("Invalid Age");
-       panic e;
-   }
+function somefunction() returns never {
+    panic error("Invalid");
 }
 ```
-Never types can be used to specify key-less tables. Here, the key constraint is type `never`
+The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type, which has no values, variables of type `never` cannot be declared.
+```ballerina
+never s;    // error: cannot define a variable of type 'never'
+```
+The `never` type can be used to define key-less tables by setting the `never` type as the key constraint.
 ```ballerina
 table<Person> key<never> personTable = table [
        { name: "John", age: 23 },
        { name: "Paul", age:25 }
    ];
 ```
+An optional field of type `never` can be defined in a `record` but no value can be assigned to such a field.
+This can be used to ensure that a value of the particular record type will never have a field by that name.
+```ballerina
+type SampleRecord record {
+   int x;
+   never y?;
+};
+```
+For `xml`, the `never` type can be used to describe the `xml` type that has no constituents, i.e., the empty `xml` value.
+```ballerina
+xml<never> xmlValue = <xml<never>> 'xml:concat();
+```
 
-### Object and Module Init Change
+### Object and module init changes
 
 Module level variables can be initialized inside the module init function. Now, this is the same as initializing the fields inside an object.
 
 ### Type inclusion
 
-Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of the included type provided that overriding field type is a subtype of the overridden field.
+The type (including type) that includes another object (included type) can override fields and functions of the included type. The types of the fields and functions in the including type should be subtypes of the types of the corresponding fields and functions in the included type. Object type inclusion can now include non-abstract objects. 
 
 ```ballerina
 type GridMessage object {
@@ -337,6 +352,7 @@ type EfficientGridPacket record {
 };
 
 ```
+
 ### Enum
 
 The typical way of doing an enumeration in Ballerina previously was:
@@ -500,7 +516,7 @@ public function main() {
 }
 ```
 
-### Query Improvements 
+### Query improvements 
 
 Ballerina query action/expression provides a language-integrated query feature using SQL-like syntax. A Ballerina query is a comprehension, which can be used with a value that is iterable with any error type. A query consists of a sequence of clauses (i.e., `from`, `join`, `let`, `on`, `where`, `select`, `do`, and `limit`). The first clause must be a `from` clause and must consist of either a `select` or a `do` clause as well. When a query is evaluated, its clauses are executed in a pipeline by making the sequence of frames emitted by one clause being the input to the next clause. Each clause in the pipeline is executed lazily pulling input from its preceding clause. The result of such a query can either be a list, stream, table, string, XML, or termination value of the iterator which is ().
 
@@ -550,9 +566,32 @@ public function main() {
 
 ## Standard Library
 
-### Introduced new JDBC module
+### Introduced new SQL module
 
-### Enhanced log api module
+The newly-introduced `sql` module provides a common interface and functionality to interact with a database. The corresponding database clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity module JDBC. 
+
+The revamped SQL implementation has the support for `sql:ParameterizedQuery` through which parameterized queries can be passed easily.
+
+A sample connector for a MySQL database is as follows.
+```ballerina
+import ballerina/mysql;
+import ballerina/sql;
+
+public function main() returns sql:Error? {
+
+    mysql:Client mysqlClient = check new ("localhost", "root", "root", "testdb");
+
+    int id = 10;
+    string name = "Alice";
+    sql:ParameterizedQuery sqlQuery = `INSERT INTO Persons (id, name) values (${id}, ${name})`;
+
+    sql:ExecutionResult result = check mysqlClient->execute(sqlQuery);
+    
+    check mysqlClient.close();   
+}
+```
+
+### Enhanced log API module
 
 Revamped log API to support `anydata` and improved performance.
 
@@ -613,7 +652,7 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ```
 
-### Enhanced auth module
+### Enhanced Auth module
 
 The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 
@@ -633,7 +672,7 @@ jwt:JwtValidatorConfig validatorConfig = {
 };
 ```
 
-### Enhanced email module
+### Enhanced Email module
 
 The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.
 
@@ -671,9 +710,13 @@ service emailObserver on emailListener {
 }
 ```
 
-### Added new connectors
 
-## Build Tools
+### Adding the Socket module to Ballerina Central
+
+Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
+ released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
+
+## Build tools
 
 ### Native dependency manager
 
@@ -712,14 +755,13 @@ scope = "provided"
 
 ### The Bindgen tool
 
-This provides support for Java Subtyping. 
-
-- Maven dependency resolving is integrtaed into the tool and this is introducing a new command option `-mvn|--maven` to facilitate it.
-- Error mappings are improved by generating error types for Java exceptions.
+- Java Subtyping support is added to the generated bindings.
+- Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.
+- Error mappings are improved by generating Ballerina error types for Java exceptions.
 - Introduces a function in the `java` module of the Ballerina standard library to support Java Casting.
 - Introduces the generation of API documentation comments in the generated bindings.
 - Introduces a `--public` flag to change the visibility modifier (which is module private by default) to public.
-- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the  tool is executed.
+- Moves the array util functions into the `java.arrays` module in the Ballerina standard library instead of generating it each time when the tool is executed.
 - Bug fixes and improvements to usability and generated bindings.
 
 The bindgen tool command after the newly-introduced options is as follows.
@@ -732,11 +774,40 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
                   (<class-name>...)
 ```
 
-### Testerina
+### Test framework
 
-Introducing the Mocking API for object and function mocking.
+#### Introduction of the Mocking API in the Test module
 
-### API Documentation
+The new mocking API simplifies function and object mocking in unit tests via the ***when-then*** convention. 
+
+The mocking features can be used to control the behavior of functions and objects by defining return values or
+ replacing the entire object or function with a user-defined equivalent. This feature will help you to test your Ballerina code independently 
+from other modules and external endpoints. For the complete list of available mocking features, see 
+[API Documentation of the test module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
+
+#### Function mocking
+
+The `MockFunction` object is added to handle function mocking. The `MockFunction` objects are defined by attaching the `@test:MockFn` annotation to the `MockFunction` to specify the function to mock.
+
+```ballerina
+@test:MockFn {
+    functionName : "<function_to_mock>"
+}
+test:MockFunction mockObj = new();
+```
+
+Function mocking is done by using the following functions:
+- The `test:when(mockObj)` is used to initialize the mocking capability within a particular test case
+- This allows you to use the associated mocking functions like `call()`, `thenReturn()` and `withArguments()`
+
+#### Object mocking
+
+Object mocking enables controlling the values of member variables and the behavior of the member functions of an object
+
+- Introduced the ability to create a `test double`, which provides an equivalent mock in place of the real object
+- Introduced the capability of stubbing the member function or member variable
+
+### API documentation
 
 - The search capability is added into the API Documentation
 - A feature is added to combine documentation from multiple projects

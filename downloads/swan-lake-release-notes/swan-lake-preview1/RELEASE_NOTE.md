@@ -524,14 +524,12 @@ The revamped SQL implementation has the support for `sql:ParameterizedQuery` thr
 
 A sample connector for a MySQL database is as follows.
 ```ballerina
-import ballerina/io;
 import ballerina/mysql;
 import ballerina/sql;
 
 public function main() returns sql:Error? {
 
     mysql:Client mysqlClient = check new ("localhost", "root", "root", "testdb");
-    io:println("MySQL client with user and password created.");
 
     int id = 10;
     string name = "Alice";

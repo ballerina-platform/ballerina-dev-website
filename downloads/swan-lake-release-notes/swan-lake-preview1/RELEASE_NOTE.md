@@ -478,7 +478,32 @@ public function main() {
 
 ```
 ## Standard Library
-### Introduced new JDBC module
+### Introduced new SQL module
+
+The newly introduced `sql` module provides a common interface and functionality to interact with a database. The corresponding database clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity module JDBC. 
+
+The revamped SQL implementation has the support for `sql:ParameterizedQuery`, through which parameterized queries can be passed easily.
+
+A sample connector for MySQL database is as follows,
+```ballerina
+import ballerina/io;
+import ballerina/mysql;
+import ballerina/sql;
+
+public function main() returns sql:Error? {
+
+    mysql:Client mysqlClient = check new ("localhost", "root", "root", "testdb");
+    io:println("MySQL client with user and password created.");
+
+    int id = 10;
+    string name = "Alice";
+    sql:ParameterizedQuery sqlQuery = `INSERT INTO Persons (id, name) values (${id}, ${name})`;
+
+    sql:ExecutionResult result = check mysqlClient->execute(sqlQuery);
+    
+    check mysqlClient.close();   
+}
+```
 
 ### Enhanced log api module
 

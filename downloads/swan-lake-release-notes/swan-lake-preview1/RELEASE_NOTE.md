@@ -13,7 +13,7 @@ This release is the first preview version of Ballerina Swan Lake. This release i
 - Improvements on Standard Library modules 
 - Improved mocking support in testing
 
-# What's new in Ballerina Swan Lake - Preview 1
+# What's New in Ballerina Swan Lake - Preview 1
 
 ## Language
 
@@ -28,11 +28,11 @@ Some of these new language features are revamped versions of the existing langua
  
 In addition to the new Language features, this release introduces a new parser implementation aiming to improve the performance and usability of the compiler. Now, the compiler has more control over syntax errors and it can provide a better diagnostic for syntax errors. Additionally, the new parser has tightened up the language parser rules with respect to the Ballerina specification. However, still it doesn’t cover the full set of the language features. This will be fixed in the upcoming preview versions.  
 
-### Introduction of `distinct` types
+### Introduction of `distinct` Types
 
 Ballerina `distinct` types provide functionalities similar to those provided by the nominal types but they work within the Ballerina's structural type system. With`distinct` types, it is possible to define unique types that are structurally similar. 
 
-##### The `distinct` `error` type
+##### The `distinct` Error Type
 
 The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
 
@@ -69,9 +69,9 @@ Type-guards can be used to identify values of each distinct error at runtime.
  }
 ```
 
-With the introduction of the `distinct` error type, the error reason is removed from the error type. For more information, see [error type changes](#error-type-changes).
+With the introduction of the `distinct` error type, the error reason is removed from the error type. For more information, see [error type changes](#the-error-type-changes).
 
-### `error` type changes
+### The `error` Type Changes
 Previous error type was `error<reasonType, detailType>` in which the `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
 
 ```ballerina
@@ -86,7 +86,7 @@ type Error1 error<map<string>>;
 type Error2 error<record {| int code; |}>;
 ```
 
-#### Revised error constructor
+#### Revised Error Constructor
 
 Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of string. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
@@ -96,7 +96,7 @@ type AppError error<record {| string buildNo; string userId; |};
 AppError appError = AppError("Failed to delete order line", buildNo=getBuildNo(), userId=userId);
 ```
 
-#### Error type infer 
+#### Error Type Infer 
 
 A type of `error<*>` means that the type is a subtype of error in which the precise subtype is to be inferred from the context.
 
@@ -113,11 +113,11 @@ TrxError e = TrxError("IAmAInferedErr");
 error<*> err = e;
 ```
 
-### Introduction of the `readonly` type and improved support for immutability
+### Introduction of the `readonly` Type and Improved support for Immutability
 
 This release introduces improved support for immutability. With the introduction of the `readonly` type, values that are known to be immutable can now be defined at compile-time. 
 
-#### The `readonly` type
+#### The `readonly` Type
 
 A value belongs to the `readonly` type if its read-only flag is set. A value belonging to one of the following inherently-immutable basic types will always have it’s read-only bit set and will always belong to the `readonly` type.
 
@@ -167,9 +167,9 @@ public function main() {
 }
 ```
 
-Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objetcs).
+Attempting to create an immutable value with incompatible mutable values as members will result in compilation errors.Read-only intersections for objects are only allowed with abstract objects. In order to represent a non-abstract object type as a read-only type, the object would have to be defined as a `readonly object`. For more information, see [Read-only objects](#read-only-objects).
 
-#### Read-only fields
+#### Read-only Fields
 A record or an object can now have `readonly` fields. A `readonly` field cannot be updated once the record or the object value is created and the value provided for the particular field should be an immutable value. If the field is of type `T`, the contextually-expected type for a value provided for a field would be `T & readonly`.
 
 Thus, a `readonly` field guarantees that the field will not change and also that the value set for the field itself will not be updated.
@@ -235,7 +235,7 @@ public function main() {
 }
 ```
 
-#### Read-only objects
+#### Read-only Objects
 An object type can also be defined as a `readonly object` type and any value belonging to this type will be immutable. Similar to `readonly` fields, each value provided for a field of a `readonly object` is expected to be immutable and the field itself cannot be updated once set.
 
 ```ballerina
@@ -264,7 +264,7 @@ public function main() {
 }
 ```
 
-### Never type
+### The `never` Type
 
 The `never` type provides a way to describe the type that contains no shapes. 
 
@@ -298,11 +298,11 @@ For `xml`, the `never` type can be used to describe the `xml` type that has no c
 xml<never> xmlValue = <xml<never>> 'xml:concat();
 ```
 
-### Object and Module Init Change
+### Object and Module Init Changes
 
 Module level variables can be initialized inside the module init function. Now, this is the same as initializing the fields inside an object.
 
-### Type inclusion
+### Type Inclusion
 
 Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of the included type provided that overriding field type is a subtype of the overridden field.
 
@@ -390,7 +390,7 @@ public enum Direction {
 
 The expression following `=` must be a constant expression with a static type that is a subtype of string.
 
-### Raw templates
+### Raw Templates
 Similar to string template literals, a raw template literal allows interpolating expressions into a string literal. However, for a raw template, the resulting value is an object whose type is a subtype of `lang.object:RawTemplate`.
 
 ```ballerina
@@ -407,7 +407,7 @@ public function main() {
 
 ```
 
-### Dependently-typed function signatures
+### Dependently-typed Function Signatures
 A function's return type descriptor can now refer to a name of a parameter of the function if the type of the parameter is a subtype of `typedesc`. The actual return type of such a function then depends on the value the user specifies for the referenced `typedesc` parameter when calling the function.
 
 Note that currently this is only supported for external functions.
@@ -427,7 +427,7 @@ public function main() {
 }
 ```
 
-### Backward-incompatible improvements and bug fixes
+### Backward-incompatible Improvements and Bug Fixes
 
 Parameter defaults are not added if a rest argument is provided when calling a function.
 
@@ -564,7 +564,8 @@ public function main() {
 ```
 
 ## Standard Library
-### Introduced new SQL module
+
+### Introduced New SQL Module
 
 The newly-introduced `sql` module provides a common interface and functionality to interact with a database. The corresponding database clients can be created by using specific database modules such as MySQL or using the Java Database Connectivity module JDBC. 
 
@@ -589,7 +590,7 @@ public function main() returns sql:Error? {
 }
 ```
 
-### Enhanced log api module
+### Enhanced Log API Module
 
 Revamped log API to support `anydata` and improved performance.
 
@@ -621,7 +622,7 @@ public type Fruit object {
 };
 ```
 
-### Enhanced gRPC module
+### Enhanced gRPC Module
 
 The client/bidirectional streaming service implementation is revamped to support multiple service resources.
 
@@ -650,7 +651,7 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ```
 
-### Enhanced auth module
+### Enhanced Auth Module
 
 The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
 
@@ -670,7 +671,7 @@ jwt:JwtValidatorConfig validatorConfig = {
 };
 ```
 
-### Enhanced email module
+### Enhanced Email Module
 
 The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.
 
@@ -709,14 +710,14 @@ service emailObserver on emailListener {
 ```
 
 
-### Adding the Socket module to Ballerina Central
+### Adding the Socket Module to Ballerina Central
 
 Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
  released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
 
 ## Build Tools
 
-### Native dependency manager
+### Native Dependency Manager
 
 This brings the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
 
@@ -731,7 +732,7 @@ version = "0.7.2"
 The Maven resolver will fetch those dependencies from the Maven Central.
 
 
-### Scoping support
+### Scoping Support
 
 Added an additional attribute called “scope” for platform libraries. Based on the scope, dependencies will be included to different phases. The values of this will be as follows
 
@@ -751,7 +752,7 @@ path = "path/to/sap_client_1.2.3.jar"
 scope = "provided" 
 ```
 
-### The Bindgen tool
+### The Bindgen Tool
 
 - Java Subtyping support is added to the generated bindings.
 - Maven dependency resolving is integrated into the tool and a new `-mvn|--maven` command option is introduced to facilitate this.

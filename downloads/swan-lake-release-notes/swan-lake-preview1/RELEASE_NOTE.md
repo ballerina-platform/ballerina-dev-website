@@ -274,7 +274,7 @@ function somefunction() returns never {
     panic error("Invalid");
 }
 ```
-The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type, which has no values, variables of type `never` cannot be declared.
+The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type which has no values, variables of type `never` cannot be declared.
 ```ballerina
 never s;    // error: cannot define a variable of type 'never'
 ```
@@ -434,7 +434,7 @@ Parameter defaults are not added if a rest argument is provided when calling a f
 
 ### Transactions
 
-A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release provides support only for local transactions.
+A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release only supports local transactions.
 
 ```ballerina
 public function main() returns error? {
@@ -504,15 +504,15 @@ table<Employee> tbEmployee = table {
 type EmployeeTable table<Employee> key(id);
 
 public function main() {
-	EmployeeTable employeeTab = table [
-	  { id: 1, name: "John", salary: 300.50 },
-	  { id: 2, name: "Bella", salary: 500.50 },
-	  { id: 3, name: "Peter", salary: 750.0 }
-	];
-
-	Employee emp = { id: 5, name: "Gimantha", salary: 100.50 };
-	employeeTab.add(emp);
-	Employee peekEmp = employeeTab.get(1);
+    EmployeeTable employeeTab = table [
+        { id: 1, name: "John", salary: 300.50 },
+        { id: 2, name: "Bella", salary: 500.50 },
+        { id: 3, name: "Peter", salary: 750.0 }
+    ];
+    
+    Employee emp = { id: 5, name: "Gimantha", salary: 100.50 };
+    employeeTab.add(emp);
+    Employee peekEmp = employeeTab.get(1);
 }
 ```
 

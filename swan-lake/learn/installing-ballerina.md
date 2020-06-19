@@ -48,19 +48,7 @@ The installer should put the `C:\Program Files\Ballerina\<BALLERINA-DIRECTORY>\b
 
 ### Installing on Linux
 
-[Download the DEB file or RPM file](/downloads) and double-click on it to launch the installer. The installer guides you through the installation process and installs the Ballerina distribution in the `/usr/lib64/ballerina`directory.
-
-> **Info:** Alternatively, you can use either of the commands below to install Ballerina using the downloaded DEB or RPM file. Replace the `ballerina-linux-installer-x64-<BALLERINA-VERSION>.deb` or `ballerina-linux-installer-x64<BALLERINA-VERSION>.rpm` with the actual file path. 
-
-For example, for the DEB file:
-```
-dpkg -i ballerina-linux-installer-x64-1.2.4.deb 
-```
-
-For example, for the RPM file:
-```
-rpm -i ballerina-linux-installer-x64-1.2.4.rpm 
-```
+If you are using Linux, [use the ZIP file](#installing-via-the-ballerina-language-zip-file) to install Ballerina.
 
 ## Installing via the Ballerina language ZIP file
 

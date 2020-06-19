@@ -393,7 +393,7 @@ public function main() {
 ```
 
 ### Dependently-typed function signatures
-A function's return type descriptor can now refer to a parameter name of the function if the type of the parameter is a subtype of `typedesc`. The actual return type of such a function then depends on the value the user specifies for the referenced `typedesc` parameter when calling the function.
+A function's return type descriptor can now refer to a name of a parameter of the function if the type of the parameter is a subtype of `typedesc`. The actual return type of such a function then depends on the value the user specifies for the referenced `typedesc` parameter when calling the function.
 
 Note that currently this is only supported for external functions.
 

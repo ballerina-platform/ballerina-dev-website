@@ -27,8 +27,7 @@ redirect_from:
         <span class="nx">resHeader</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="s">&quot;server_header_key&quot;</span><span class="p">,</span> <span class="s">&quot;Response Header value&quot;</span><span class="p">);</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="kt">message</span><span class="p">,</span> <span class="nx">resHeader</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                             <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
@@ -46,8 +45,7 @@ redirect_from:
     <span class="nx">headers</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="s">&quot;client_header_key&quot;</span><span class="p">,</span> <span class="s">&quot;Request Header Value&quot;</span><span class="p">);</span>
     <span class="k">var</span> <span class="nx">unionResp</span> <span class="p">=</span> <span class="nx">helloWorldBlockingEp</span><span class="o">-&gt;</span><span class="nx">hello</span><span class="p">(</span><span class="s">&quot;WSO2&quot;</span><span class="p">,</span> <span class="nx">headers</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">unionResp</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">unionResp</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">unionResp</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">unionResp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="kt">string</span> <span class="nx">result</span><span class="p">;</span>
         <span class="nx">grpc</span><span class="p">:</span><span class="nx">Headers</span> <span class="nx">resHeaders</span><span class="p">;</span>
@@ -109,7 +107,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-unary-blocking/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/grpc-unary-blocking/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -356,8 +354,7 @@ import ballerina/log;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        grpc:Error? err = caller-&gt;send(message, resHeader);
         if (err is grpc:Error) {
-            log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                             + &lt;string&gt;err.detail()[&quot;message&quot;]);
+            log:printError(&quot;Error from Connector: &quot; + err.message());
         }
 </code></pre></div>
 
@@ -613,8 +610,7 @@ import ballerina/io;
 
                                 <td class="code">
                                     <div class="highlight"><pre><code class=ballerina>    if (unionResp is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + unionResp.reason() + &quot; - &quot;
-                + &lt;string&gt;unionResp.detail()[&quot;message&quot;]);
+        io:println(&quot;Error from Connector: &quot; + unionResp.message());
     } else {
         string result;
         grpc:Headers resHeaders;

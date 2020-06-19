@@ -108,7 +108,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/deprecation/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/deprecation/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -525,10 +525,11 @@ public function createPerson(string fname, string lname, string street,
 $ ballerina run deprecation.bal
 warning: .::deprecation.bal:35:5: usage of construct &#39;Address&#39; is deprecated
 warning: .::deprecation.bal:39:22: usage of construct &#39;LKA&#39; is deprecated
+warning: .::deprecation.bal:65:76: usage of construct &#39;Person&#39; is deprecated
 warning: .::deprecation.bal:68:5: usage of construct &#39;Person&#39; is deprecated
 warning: .::deprecation.bal:78:5: usage of construct &#39;Person&#39; is deprecated
-warning: .::deprecation.bal:78:16: usage of construct &#39;createPerson&#39; is deprecated
-warning: .::deprecation.bal:81:16: usage of construct &#39;Person.getFullName&#39; is deprecated
+warning: .::deprecation.bal:78:16: usage of construct &#39;createPerson(Jane, Doe, Castro Street, Mountain View, USA)&#39; is deprecated
+warning: .::deprecation.bal:81:16: usage of construct &#39;p.getFullName()&#39; is deprecated
 Running executables
 </code></pre></div>
 

@@ -15,8 +15,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">observe</span><span class="p">;</span>
 <span class="nx">observe</span><span class="p">:</span><span class="nx">Counter</span> <span class="nx">globalCounter</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;total_orders&quot;</span><span class="p">,</span>
-                                    <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">);</span>
-<span class="nd">@http:ServiceConfig {</span>
+                                    <span class="nx">desc</span> <span class="p">=</span> <span class="s">&quot;Total quantity required&quot;</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
     <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/online-store-service&quot;</span>
 <span class="p">}</span>
 <span class="kd">service</span> <span class="nx">onlineStoreService</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="nd">@http:ResourceConfig {</span>
@@ -58,7 +57,7 @@ redirect_from:
                         <td class="cLeftTD">
                             <h2>Counter-Based Metrics</h2>
                             <p><p>Ballerina supports Observability out of the box, and Metrics is one of the three important aspect of the
- Observability. To observe Ballerina code, the &lsquo;&ndash;b7a.observability.enabled=true&rsquo; property should be given when starting the service.
+ Observability. To observe Ballerina code, the <code>--b7a.observability.enabled=true</code> property should be given when starting the service.
  The developers can define and use metrics to measure their own logic. A counter is one type of metric that is
  supported by default in Ballerina, and it is a cumulative metric that represents a single monotonically increasing
  counter whose value can only increase or be reset to zero.<br/><br/>
@@ -99,7 +98,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/counter-metrics/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -185,7 +184,7 @@ import ballerina/observe;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
+                            <tr class="cTR">
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
@@ -196,13 +195,6 @@ service onlineStoreService on new http:Listener(9090) {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Make sure you start the service with &lsquo;&ndash;b7a.observability.enabled=true&rsquo;, or metrics enabled.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -440,6 +432,10 @@ counter instance.</p>
                                 
                             
                         
+                            
+                                
+                            
+                        
 
                     <div>
 
@@ -447,11 +443,22 @@ counter instance.</p>
                             
                             <tr class="cTR cOutputTr">
 
-                                <td class="code cOutput">
+                                <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session># To start the service, navigate to the directory that contains the
-# `.bal` file and execute the `ballerina run` command with the &#39;--b7a.observability.enabled=true&#39; property.
+# `.bal` file and execute the `ballerina run` command with the `--b7a.observability.enabled=true` property.
 $ ballerina run counter_metrics.bal --b7a.observability.enabled=true
-[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>[ballerina/http] started HTTP/WS listener 0.0.0.0:9797
 ballerina: started Prometheus HTTP listener 0.0.0.0:9797
 ballerina: started publishing tracers to Jaeger on localhost:5775
 [ballerina/http] started HTTP/WS listener 0.0.0.0:9090

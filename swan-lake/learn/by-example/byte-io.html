@@ -19,7 +19,7 @@ redirect_from:
         <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">io</span><span class="p">:</span><span class="nx">EofError</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untained</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
+            <span class="k">return</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="nx">i</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">while</span> <span class="p">(</span><span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">())</span> <span class="p">{</span>
@@ -106,7 +106,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/byte-io/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/byte-io/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -211,7 +211,7 @@ import ballerina/log;
         if (result is io:EofError) {
             break;
         } else if (result is error) {
-            return &lt;@untained&gt;result;
+            return &lt;@untainted&gt;result;
         } else {
 </code></pre></div>
 
@@ -406,7 +406,7 @@ import ballerina/log;
 # `.bal` file, and execute the `ballerina run` command.
 $ ballerina run byte_io.bal
 Start to copy files from ./files/ballerina.jpg to ./files/ballerinaCopy.jpg
-File copy completed. The copied file could be located in ./files/ballerinaCopy.jpg
+File copy completed. The copied file is located at ./files/ballerinaCopy.jpg
 </code></pre></div>
 
                                 </td>

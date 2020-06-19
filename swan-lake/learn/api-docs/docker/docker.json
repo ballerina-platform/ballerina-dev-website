@@ -535,7 +535,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "function, listener, service",
+      "attachmentPoints": "listener, function, service",
       "name": "Config",
       "description": "\u003cp\u003e@docker:Config annotation to configure docker artifact generation.\u003c/p\u003e\n",
       "isDeprecated": false
@@ -557,7 +557,7 @@
         "paramTypes": [],
         "arrayDimensions": 0
       },
-      "attachmentPoints": "service, listener, function",
+      "attachmentPoints": "listener, function, service",
       "name": "CopyFiles",
       "description": "\u003cp\u003e@docker:CopyFile annotation to copy external files to docker image.\u003c/p\u003e\n",
       "isDeprecated": false

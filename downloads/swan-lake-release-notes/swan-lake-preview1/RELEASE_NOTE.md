@@ -591,9 +591,9 @@ service emailObserver on emailListener {
 ```
 
 
-### Socket module is available in Ballerina Central
+### Adding the Socket module to Ballerina Central
 
-Previously the Socket module was available only in Ballerina distribution. From this release, It is available in both
+Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
  released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
 
 ## Build Tools

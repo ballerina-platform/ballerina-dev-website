@@ -243,21 +243,22 @@ The `never` type provides a way to describe the type that contains no shapes.
 The `never` type is useful as the return type of a function that never terminates normally. 
 ```ballerina
 function somefunction() returns never {
-     panic error("Invalid");
+    panic error("Invalid");
 }
 ```
-`never` is a subtype of `nil`. Therefore, functions with `never` return type can only be invoked in call statements. Also, the `never` type represents the type which has no values. Therefore, variables of type `never` cannot be declared.
+The `never` type is a subtype of `nil`. Therefore, functions with the `never` type as the return type can only be invoked in call statements. i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable. Since the `never` type represents the type which has no values, variables of type `never` cannot be declared.
 ```ballerina
 never s;    // error: cannot define a variable type of 'never'
 ```
-Never types can be used when defining key-less tables. Here, the key constraint is set to type `never`.
+The `never` type can be used to define key-less tables by setting the `never` type as the key constraint.
 ```ballerina
 table<Person> key<never> personTable = table [
        { name: "John", age: 23 },
        { name: "Paul", age:25 }
    ];
 ```
-An optional field can be defined in a `record`, but no value can be assigned to such fields
+An optional field of type `never` can be defined in a `record`, but no value can be assigned to such a field.
+This can be used to ensure that a value of the particular record type will never have a field by that name.
 ```ballerina
 type SampleRecord record {
    int x;

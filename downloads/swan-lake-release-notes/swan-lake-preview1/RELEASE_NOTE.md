@@ -6,11 +6,12 @@ title: Swan Lake Preview 1 Release note
 This release is the first preview version of Ballerina Swan Lake. This release includes a new set of Language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
  
 # Highlights
+
 - New recursive descent parser
 - Type system enhancements
-- Improved Language Integration support
-- More Standard Library Module. 
-- Improved Mocking support in test
+- Improved language integration support
+- Improvements on Standard Library modules 
+- Improved mocking support in testing
 
 # What's new in Ballerina Swan Lake - Preview 1
 

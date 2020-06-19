@@ -118,7 +118,7 @@ With`distinct` types, it is possible to define unique types that are structurall
 
 The error type has been revised to take advantage of distinct types. The previous error value had a reason string for categorizing errors and a detail record for additional data about the error such as message and cause. 
 
-**Old Syntax**
+*Old Syntax*
 ```ballerina
 type Error error<reasonType, detailType>;
 ```
@@ -126,7 +126,7 @@ Here the `reasonType` is a subtype of `string` and `detailType` is a subtype of 
 
 Now error value has a message string, an optional cause, and mapping value for additional details about the error value and distinct error types are used for categorizing. .
 
-**New Syntax**
+*New Syntax*
 ```ballerina
 type Error error<typeParameter>>;
 ```

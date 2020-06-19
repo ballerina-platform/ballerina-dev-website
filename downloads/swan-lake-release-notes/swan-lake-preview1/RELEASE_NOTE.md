@@ -482,6 +482,36 @@ public function main() {
 
 ### Enhanced log api module
 
+Revamped log API to support `anydata` and improved performance.
+
+```ballerina
+import ballerina/log;
+
+public function main() {
+    log:printDebug("Debug log");
+    log:printDebug(12345);
+    log:printDebug(3.146);
+    log:printDebug(true);
+
+    Fruit apple = new ("Apple", 20);
+    log:printDebug(function() returns int {
+        return apple.getCount();
+    });
+}
+
+public type Fruit object {
+    string name;
+    int count;
+    public function init(string name, int count) {
+        self.name = name;
+        self.count = count;
+    }
+    function getCount() returns int {
+        return self.count;
+    }
+};
+```
+
 ### Enhanced gRPC module
 
 Revamped client/bidirectional streaming service implementation to support multiple service resources

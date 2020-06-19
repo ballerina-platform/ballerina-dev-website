@@ -705,13 +705,15 @@ service emailObserver on emailListener {
 Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
  released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
 
-## Build tools
+## Developer tools
 
-### Native dependency manager
+### Maven dependency management
 
-This brings the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
+Now, you can specify your native jar dependencies with maven artifact id in the Ballerina.toml. When you build the program build tool will fetch those dependencies from the Maven Central automatically. If you specify the maven artifact id and the jar path both the jar path will get precedence.
 
-```ballerina
+E.g.,
+
+```toml
 [[platform.libraries]]
 modules = [ "module1", "module2"]
 artifactId = "json"
@@ -719,12 +721,9 @@ groupId = "json.org"
 version = "0.7.2"
 ```
 
-The Maven resolver will fetch those dependencies from the Maven Central.
+### Scoping support for native dependencies
 
-
-### Scoping support
-
-Added an additional attribute called “scope” for platform libraries. Based on the scope, dependencies will be included to different phases. The values of this will be as follows
+Now you can specify the scope for platform libraries. Based on the scope, dependencies will be included to different phases. The values of this will be as follows
 
 - default - will be available to compile, run tests, execute, and also distributed with the BALO.
 - provided - will be available to compile, run tests, execute but not distributed with the BALO.
@@ -763,7 +762,18 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
                   (<class-name>...)
 ```
 
-### Test framework
+
+### API documentation
+
+- The search capability is added into the API Documentation
+- You can now combine documentation from multiple projects using the doc tool
+
+### Debugger
+
+This provides variable evaluation support. This will allow you to evaluate a variable using the expression evaluation option to retrieve the value of the variable at a debug hit. 
+
+
+## Test framework
 
 #### Introduction of the Mocking API in the Test module
 
@@ -796,16 +806,8 @@ Object mocking enables controlling the values of member variables and the behavi
 - Introduced the ability to create a `test double`, which provides an equivalent mock in place of the real object
 - Introduced the capability of stubbing the member function or member variable
 
-Obejct mocking is done by using the following functions:
+Object mocking is done by using the following functions:
 - The `test:mock()` and `test:prepare()` are used to initialize the mocking capability
 - The `test:prepare()` function allows you to use the associated mocking functions like `thenReturn()`, `thenReturnSequence()`, `doNothing() `, and `withArguments()`
 
-### API documentation
-
-- The search capability is added into the API Documentation
-- A feature is added to combine documentation from multiple projects
-
-### Debugger
-
-This provides variable evaluation support. This will allow you to evaluate a variable using the expression evaluation option to retrieve the value of the variable at a debug hit. 
 	

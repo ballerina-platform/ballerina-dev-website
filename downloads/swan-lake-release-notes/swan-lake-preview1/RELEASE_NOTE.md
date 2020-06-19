@@ -809,7 +809,7 @@ Object mocking enables controlling the values of member variables and the behavi
 
 Obejct mocking is done by using the following functions:
 - The `test:mock()` and `test:prepare()` are used to initialize the mocking capability
-- `test:prepare()` allows you to use the associated mocking functions like `thenReturn()`, `thenReturnSequence()`, `doNothing() ` and `withArguments()`
+- The `test:prepare()` function allows you to use the associated mocking functions like `thenReturn()`, `thenReturnSequence()`, `doNothing() `, and `withArguments()`
 
 ### API documentation
 

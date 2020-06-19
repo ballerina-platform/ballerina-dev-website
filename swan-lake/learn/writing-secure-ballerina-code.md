@@ -490,7 +490,10 @@ JWT validation requires several additional configurations for the `jwt:JwtValida
 * `trustStoreConfig` - JWT trust store configurations
   * `trustStore` - Trust store used for signature verification
   * `certificateAlias` - Token-signed public key certificate alias
-* `jwtCache` - Cache used to store parsed JWT information as `CachedJwt`
+* `jwksConfig` - JWKs configurations
+  * `url` - URL of the JWKs endpoint
+  * `clientConfig` - HTTP client configurations which calls the JWKs endpoint
+* `jwtCache` - Cache used to store parsed JWT information
 
 The `jwt:JwtValidatorConfig` record should be provided into the `jwt:InboundJwtAuthProvider` when initializing. The initialized `jwt:InboundJwtAuthProvider` is passed to the `http:BearerAuthHandler.
 
@@ -653,6 +656,8 @@ OAuth2 token validation requires several additional configurations for the `oaut
 
 * `url` - URL of the introspection server
 * `tokenTypeHint` - A hint about the type of the token submitted for introspection
+* `oauth2Cache` - Cache used to store the OAuth2 token and other related information
+* `defaultTokenExpTimeInSeconds` - Expiration time of the tokens if introspection response does not contain an `exp` field
 * `clientConfig` - HTTP client configurations, which calls the introspection server
 
 The `oauth2:IntrospectionServerConfig` record should be provided into the `oauth2:InboundOAuth2Provider` when initializing and the initialized `oauth2:InboundOAuth2Provider` is passed to the `http:BearerAuthHandler`.

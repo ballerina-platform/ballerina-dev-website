@@ -38,7 +38,7 @@ This section introduces various terms used throughout this guide. We recommend t
 
 ### Ballerina tool
 
-**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build and run programs, etc. 
+**Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build and run programs, etc.
 
 It also enables you to easily install, update and switch among Ballerina distributions. The main focus of this guide is to teach you how, but first, let’s talk about Ballerina distributions.
 
@@ -56,26 +56,26 @@ Ballerina distribution is a term that we use to refer to jBallerina and nBalleri
 
 ### Release channels
 
-Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. We don’t yet have a release channel for nightly builds that give you access to the latest, perhaps unstable features. 
+Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. We don’t yet have a release channel for nightly builds that give you access to the latest, perhaps unstable features.
 
-Ballerina distribution releases strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers. 
+Ballerina distribution releases strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
 
 #### Patch release channel
 
-This channel gives you access to patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well. 
+This channel gives you access to patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
 
-*Example patch releases: jballerina-1.0.6, jballerina-1.1.5, jballerina-1.1.10*
+*Example patch releases: 1.0.6, 1.1.5, 1.1.10*
 
 #### Minor release channel
 
-This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter. 
+This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter.
 
-*Example minor releases: jballerina 1.1.0, jballerina 1.2.0, jballerina 1.3.0*
+*Example minor releases: 1.1.0, 1.2.0, 1.3.0*
 
 #### Release maintenance
 
 - We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
-- In other words, patch releases for jBallerina 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when jBallerina 1.2 is available, we stop maintaining jBallerina 1.0.0.
+- In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, we stop maintaining 1.0.0.
 
 ## Keeping Ballerina upto date
 
@@ -151,14 +151,14 @@ Most of these subcommands are self-explanatory. Therefore, the following section
 
 The `ballerina dist update` command updates your active distribution to the latest patch version.
 
-E.g., If the active distribution in your environment is “jballerina-1.1.0” and there exists patch version “jballerina-1.1.4” in our servers, this command will fetch and set it as the active distribution.
+E.g., If the active distribution in your environment is 1.1.0” and there exists patch version 1.1.4” in our servers, this command will fetch and set it as the active distribution.
 
 ```sh
 → sudo ballerina dist update
-Fetching the latest patch distribution for 'jballerina-1.0.4' from the remote server...
-Fetching the 'jballerina-1.0.5' distribution from the remote server...
-Downloading jballerina-1.0.5 100% [==========================================================] 96/96 MB
-Successfully set the latest patch distribution 'jballerina-1.0.5' as the active distribution
+Fetching the latest patch distribution for '1.0.4' from the remote server...
+Fetching the '1.0.5' distribution from the remote server...
+Downloading 1.0.5 100% [==========================================================] 96/96 MB
+Successfully set the latest patch distribution '1.0.5' as the active distribution
 ```
 
 ### List local and remote distributions
@@ -169,17 +169,33 @@ The `ballerina dist list` command lists the installed distributions in your loca
 → ballerina dist list
 Distributions available locally:
 
-  jballerina-1.0.5
-* jballerina-1.1.0
+  [1.0.5] jballerina version 1.0.5
+* [1.1.0] jballerina version 1.1.0
 
 Distributions available remotely:
 
-  jballerina-1.1.0
-  jballerina-1.0.0
-  jballerina-1.0.1
-  jballerina-1.0.2  
-  jballerina-1.0.3
-  jballerina-1.0.4
+1.* channel
+
+  [1.0.0] jballerina version 1.0.0
+  [1.0.1] jballerina version 1.0.1
+  [1.0.2] jballerina version 1.0.2
+  [1.0.3] jballerina version 1.0.3
+  [1.0.4] jballerina version 1.0.4
+  [1.0.5] jballerina version 1.0.5
+  [1.1.0] jballerina version 1.1.0
+  [1.1.1] jballerina version 1.1.1
+  [1.1.2] jballerina version 1.1.2
+  [1.1.3] jballerina version 1.1.3
+  [1.1.4] jballerina version 1.1.4
+  [1.2.0] jballerina version 1.2.0
+  [1.2.1] jballerina version 1.2.1
+  [1.2.2] jballerina version 1.2.2
+  [1.2.3] jballerina version 1.2.3
+  [1.2.4] jballerina version 1.2.4
+
+Swan Lake channel
+
+  [slp1b1] Preview 1
 
 Use 'ballerina help dist' for more information on specific commands.
 
@@ -189,28 +205,29 @@ The star (*) indicates the active distribution.
 
 ### Remove distributions
 
-The `ballerina dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up. 
+The `ballerina dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ ballerina dist remove jballerina-1.0.5
-Distribution 'jballerina-1.0.5' successfully removed
+→ ballerina dist remove 1.0.5
+Distribution '1.0.5' successfully removed
 ```
 
 ### Change the active distribution
 
-The `ballerina dist use <distribution>` command sets a particular distribution version as the active one.  See the following workflow. 
+The `ballerina dist use <distribution>` command sets a particular distribution version as the active one.  See the following workflow.
 
 ```sh
-→ ballerina dist use jballerina-1.0.4
-'jballerina-1.1.0' successfully set as the active distribution
+→ ballerina dist use 1.0.4
+'1.1.0' successfully set as the active distribution
 
 → ballerina dist list
 Distributions available locally:
 
-  jballerina-1.1.0
-  jballerina-1.0.5
-* jballerina-1.0.4
-  jballerina-1.0.0
+  [1.0.0] jballerina version 1.0.5
+* [1.0.4] jballerina version 1.1.0
+  [1.0.5] jballerina version 1.0.5
+  [1.1.0] jballerina version 1.1.0
+
 …
 ```
 
@@ -219,9 +236,9 @@ Distributions available locally:
 - The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
 
 ```sh
-→ sudo ballerina dist pull jballerina-1.0.3
-Fetching the 'jballerina-1.0.3' distribution from the remote server...
-Downloading jballerina-1.0.3 100% [==================================] 96/96 MB 'jballerina-1.0.3' successfully set as the active distribution
+→ sudo ballerina dist pull 1.0.3
+Fetching the '1.0.3' distribution from the remote server...
+Downloading 1.0.3 100% [==================================] 96/96 MB '1.0.3' successfully set as the active distribution
 ```
 
 ### Update the Ballerina tool

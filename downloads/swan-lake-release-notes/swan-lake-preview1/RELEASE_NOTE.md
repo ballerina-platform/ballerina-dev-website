@@ -376,8 +376,41 @@ public enum Direction {
 The expression following `=` must be a constant expression with a static type that is a subtype of string.
 
 ### Raw templates
+Similar to string template literals, a raw template literal allows interpolating expressions into a string literal. However, for a raw template, the resulting value is an object whose type is a subtype of `lang.object:RawTemplate`.
 
-### Typedesc function parameters referencing in the return type
+```ballerina
+import ballerina/io;
+import ballerina/lang.'object;
+
+public function main() {
+    string name = "Ballerina";
+    'object:RawTemplate template = `Hello ${name}!!!`;
+
+    io:println(template.strings);
+    io:println(template.insertions[0]);
+}
+
+```
+
+### Dependently-typed function signatures
+A function's return type descriptor can now refer to a name of a parameter of the function if the type of the parameter is a subtype of `typedesc`. The actual return type of such a function then depends on the value the user specifies for the referenced `typedesc` parameter when calling the function.
+
+Note that currently this is only supported for external functions.
+
+```ballerina
+import ballerina/java;
+
+function query(typedesc<anydata> rowType) returns map<rowType> = @java:Method {
+    class: "org.ballerinalang.test.DependentlyTypedFunctions",
+    name: "query",
+    paramTypes: ["org.ballerinalang.jvm.values.api.BTypedesc"]
+} external;
+
+public function main() {
+    map<int> m1 = query(int);
+    map<string> m2 = query(string);
+}
+```
 
 ### Backward-incompatible improvements and bug fixes
 
@@ -644,7 +677,7 @@ service emailObserver on emailListener {
 
 ### Native dependency manager
 
-THis bringhs the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
+This brings the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
 
 ```ballerina
 [[platform.libraries]]

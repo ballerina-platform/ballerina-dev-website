@@ -100,7 +100,7 @@ AppError appError = AppError("Failed to delete order line", buildNo=getBuildNo()
 
 A type of `error<*>` means that the type is a subtype of error in which the precise subtype is to be inferred from the context.
 
-```Ballerina
+```ballerina
 type TrxErrorData record {|
    string message = "";
    error cause?;
@@ -291,7 +291,7 @@ Module level variables can be initialized inside the module init function. Now, 
 
 Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of the included type provided that overriding field type is a subtype of the overridden field.
 
-```Ballerina
+```ballerina
 type GridMessage object {
     int|string address = "";
     string body = "";
@@ -322,7 +322,7 @@ type EfficientGridMessage object {
 };
 ```
 
-```Ballerina
+```ballerina
 type GridPacket record {
     int|string address;
     string body = "";
@@ -387,7 +387,7 @@ Parameter defaults are not added if a rest argument is provided when calling a f
 
 A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release provides support only for local transactions.
 
-```Ballerina
+```ballerina
 public function main() returns error? {
     // JDBC Client for H2 database.
     jdbc:Client dbClient = check new (url = "jdbc:h2:file:./local-transactions/testdb",
@@ -436,7 +436,7 @@ public function main() returns error? {
 ### Table
 A `table` is a structural value whose members are mapping values that represent rows of the table. A table provides access to its members using a key, which comes from the read-only fields of the member. It keeps its members in order but does not provide random access to a member using its position in this order. The built-in functions enable inserting, accessing, deleting data, and applying functions on members of a table.
 
-```Ballerina
+```ballerina
 type Employee record {
     readonly int id;
     string name;
@@ -646,7 +646,7 @@ service emailObserver on emailListener {
 
 THis bringhs the Maven dependency resolving support. Now, you can specify Maven dependencies by specifying the Group ID, Artifact ID, and version as below. 
 
-```
+```ballerina
 [[platform.libraries]]
 modules = [ "module1", "module2"]
 artifactId = "json"
@@ -667,7 +667,7 @@ Added an additional attribute called “scope” for platform libraries. Based o
 
 E.g., 
 
-```
+```ballerina
 [platform]
 target = "java8"
 
@@ -691,7 +691,7 @@ This provides support for Java Subtyping.
 
 The bindgen tool command after the newly-introduced options is as follows.
 
-```
+```ballerina
 ballerina bindgen [(-cp|--classpath) <classpath>...]
                   [(-mvn|--maven) <groupId>:<artifactId>:<version>]
                   [(-o|--output) <output>]

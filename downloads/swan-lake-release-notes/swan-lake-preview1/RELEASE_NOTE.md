@@ -50,13 +50,13 @@ In addition to the new Language features, this release introduces a new parser i
 
 Ballerina `distinct` types provide functionalities similar to those provided by the nominal types but they work within the Ballerina's structural type system. With`distinct` types, it is possible to define unique types that are structurally similar. 
 
-##### The `distinct` error type
+##### The `distinct error` type
 
 The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
 
 ```ballerina
-// Define distinct error type ApplicationError to be a subtype `error`.
- type ApplicationError distinct error;
+// Define distinct error type ApplicationError to be a subtype of `error`.
+type ApplicationError distinct error;
 // FileUploadError is a subtype of ApplicationError
 type FileUploadError distinct ApplicationError;
 // UserPermissionError is a subtype of ApplicationError
@@ -64,30 +64,30 @@ type UserPermissionError distinct ApplicationError;
  
  
 function uploadFile(string filePath, string securityToken, UserId userId) returns ApplicationError? {
- if (!PermTokenValidator:validToken(securityToken)) {
-   return UserPermissionError(userId.userName + " does not have permission to upload file");
- }
+    if (!PermTokenValidator:validToken(securityToken)) {
+        return UserPermissionError(userId.userName + " does not have permission to upload file");
+    }
  
- error|int fileId = NetworkUtil:uploadFile(filePath, getContentServerUri(securityToken, userId));
- if (fileId is error) {
-   return FileUploadError("File upload failed", fileId);
- }
- notifyFileUploadEvent(userId, <int> fileId);
+    error|int fileId = NetworkUtil:uploadFile(filePath, getContentServerUri(securityToken, userId));
+    if (fileId is error) {
+        return FileUploadError("File upload failed", fileId);
+    }
+    notifyFileUploadEvent(userId, <int> fileId);
 }
 ```
 
-Type-guards can be used to identify values of each distinct error at runtime.
+Type test expression can be used to identify values of each distinct error at runtime.
 
 ```ballerina
- ApplicationError? status = uploadFile(path, token, userId);
- if (status is FileUploadError) {
-     // handle FileUploadError
- } else if (status is UserPermissionError) {
-     // handle UserPermissionError
- }
+ApplicationError? status = uploadFile(path, token, userId);
+if (status is FileUploadError) {
+    // handle FileUploadError
+} else if (status is UserPermissionError) {
+    // handle UserPermissionError
+}
 ```
 
-With the introduction of the `distinct` error type, the error reason is removed from the error type. For more information, see [error type changes](#the-error-type-changes).
+With the introduction of the `distinct error` type, the error reason is removed from the error type. For more information, see [error type changes](#the-error-type-changes).
 
 ### The `error` type changes
 Previous error type was `error<reasonType, detailType>` in which the `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
@@ -106,17 +106,17 @@ type Error2 error<record {| int code; |}>;
 
 #### Revised error constructor
 
-Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of string. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
+Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of `string`. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
 ```ballerina
 type AppError error<record {| string buildNo; string userId; |};
 
-AppError appError = AppError("Failed to delete order line", buildNo=getBuildNo(), userId=userId);
+AppError appError = AppError("Failed to delete the order line", buildNo=getBuildNo(), userId=userId);
 ```
 
-#### Error type infer 
+#### Inferring the type of the error 
 
-A type of `error<*>` means that the type is a subtype of error in which the precise subtype is to be inferred from the context.
+A type of `error<*>` means that the type is a subtype of `error`, where the precise subtype is to be inferred from the context.
 
 ```ballerina
 type TrxErrorData record {|
@@ -127,7 +127,7 @@ type TrxErrorData record {|
 
 type TrxError error<TrxErrorData>;
 
-TrxError e = TrxError("IAmAInferedErr");
+TrxError e = TrxError("IAmAnInferredErr");
 error<*> err = e;
 ```
 
@@ -292,7 +292,7 @@ function somefunction() returns never {
     panic error("Invalid");
 }
 ```
-The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type, which has no values, variables of type `never` cannot be declared.
+The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type which has no values, variables of type `never` cannot be declared.
 ```ballerina
 never s;    // error: cannot define a variable of type 'never'
 ```
@@ -452,7 +452,7 @@ Parameter defaults are not added if a rest argument is provided when calling a f
 
 ### Transactions
 
-A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release provides support only for local transactions.
+A Ballerina transaction is a series of data manipulation statements that must either fully complete or fully fail, thereby, leaving the system in a consistent state. A transaction is performed using a transaction statement. The semantics of the transaction statement guarantees that every `Begin()` operation will be paired with a corresponding `Rollback()` or `Commit()` operation. It is also possible to perform retry operations over the transactions as well. Other than that, the transaction module provides some util functions to set commit/rollback handlers, retrieve transaction information, etc. This release only supports local transactions.
 
 ```ballerina
 public function main() returns error? {
@@ -522,15 +522,15 @@ table<Employee> tbEmployee = table {
 type EmployeeTable table<Employee> key(id);
 
 public function main() {
-	EmployeeTable employeeTab = table [
-	  { id: 1, name: "John", salary: 300.50 },
-	  { id: 2, name: "Bella", salary: 500.50 },
-	  { id: 3, name: "Peter", salary: 750.0 }
-	];
-
-	Employee emp = { id: 5, name: "Gimantha", salary: 100.50 };
-	employeeTab.add(emp);
-	Employee peekEmp = employeeTab.get(1);
+    EmployeeTable employeeTab = table [
+        { id: 1, name: "John", salary: 300.50 },
+        { id: 2, name: "Bella", salary: 500.50 },
+        { id: 3, name: "Peter", salary: 750.0 }
+    ];
+    
+    Employee emp = { id: 5, name: "Gimantha", salary: 100.50 };
+    employeeTab.add(emp);
+    Employee peekEmp = employeeTab.get(1);
 }
 ```
 

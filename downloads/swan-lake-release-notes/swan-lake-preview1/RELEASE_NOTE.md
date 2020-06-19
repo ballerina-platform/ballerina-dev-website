@@ -671,7 +671,11 @@ service emailObserver on emailListener {
 }
 ```
 
-### Added new connectors
+
+### Adding the Socket module to Ballerina Central
+
+Previously, the Socket module was available only in the Ballerina distribution. From this release onwards, it is available in both the
+ released Ballerina distribution and Ballerina Central. This will allow us to release the module independently.
 
 ## Build Tools
 

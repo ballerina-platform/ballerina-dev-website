@@ -264,23 +264,38 @@ public function main() {
 }
 ```
 
-### The Never type
-The `never` type represents the type of values that never occur. This can be useful to describe the return type of a function if the function never returns. No value can ever belong to the `never` type. Thus, it can not be declared or a value cannot be assigned to it.
+### Never type
 
+The `never` type provides a way to describe the type that contains no shapes. 
+
+The `never` type is useful as the return type of a function that never terminates normally. 
 ```ballerina
-function somefunction(int age) returns never {
-   if (age < 18) {
-       error e = error("Invalid Age");
-       panic e;
-   }
+function somefunction() returns never {
+    panic error("Invalid");
 }
 ```
-Never types can be used to specify key-less tables. Here, the key constraint is type `never`
+The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type, which has no values, variables of type `never` cannot be declared.
+```ballerina
+never s;    // error: cannot define a variable of type 'never'
+```
+The `never` type can be used to define key-less tables by setting the `never` type as the key constraint.
 ```ballerina
 table<Person> key<never> personTable = table [
        { name: "John", age: 23 },
        { name: "Paul", age:25 }
    ];
+```
+An optional field of type `never` can be defined in a `record` but no value can be assigned to such a field.
+This can be used to ensure that a value of the particular record type will never have a field by that name.
+```ballerina
+type SampleRecord record {
+   int x;
+   never y?;
+};
+```
+For `xml`, the `never` type can be used to describe the `xml` type that has no constituents, i.e., the empty `xml` value.
+```ballerina
+xml<never> xmlValue = <xml<never>> 'xml:concat();
 ```
 
 ### Object and Module Init Change

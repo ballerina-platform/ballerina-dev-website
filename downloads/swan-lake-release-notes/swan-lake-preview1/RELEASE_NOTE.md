@@ -582,6 +582,24 @@ service HelloWorld on new grpc:Listener(9090) {
 
 ### Enhanced auth module
 
+The capability to validate the JWT signature with JWKs is extended now. With that, the JWT signature can be validated either from the TrustStore configuration or JWKs configuration.
+
+```ballerina
+jwt:JwtValidatorConfig validatorConfig = {
+    issuer: "ballerina",
+    audience: "vEwzbcasJVQm1jVYHUHCjhxZ4tYa",
+    clockSkewInSeconds: 60,
+    jwksConfig: {
+        url: "https://example.com/oauth2/jwks",
+        clientConfig: {
+            secureSocket: {
+                trustStore: trustStore
+            }
+        }
+    }
+};
+```
+
 ### Enhanced email module
 
 The Email Connector clients are given the capability to add custom SMTP properties, custom POP properties, and custom IMAP properties via the configuration of each of the clients.

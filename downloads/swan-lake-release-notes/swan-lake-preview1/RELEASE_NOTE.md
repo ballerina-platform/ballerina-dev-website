@@ -32,13 +32,13 @@ In addition to the new Language features, this release introduces a new parser i
 
 Ballerina `distinct` types provide functionalities similar to those provided by the nominal types but they work within the Ballerina's structural type system. With`distinct` types, it is possible to define unique types that are structurally similar. 
 
-##### The `distinct` `error` type
+##### The `distinct error` type
 
 The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
 
 ```ballerina
-// Define distinct error type ApplicationError to be a subtype `error`.
- type ApplicationError distinct error;
+// Define distinct error type ApplicationError to be a subtype of `error`.
+type ApplicationError distinct error;
 // FileUploadError is a subtype of ApplicationError
 type FileUploadError distinct ApplicationError;
 // UserPermissionError is a subtype of ApplicationError
@@ -46,30 +46,30 @@ type UserPermissionError distinct ApplicationError;
  
  
 function uploadFile(string filePath, string securityToken, UserId userId) returns ApplicationError? {
- if (!PermTokenValidator:validToken(securityToken)) {
-   return UserPermissionError(userId.userName + " does not have permission to upload file");
- }
+    if (!PermTokenValidator:validToken(securityToken)) {
+        return UserPermissionError(userId.userName + " does not have permission to upload file");
+    }
  
- error|int fileId = NetworkUtil:uploadFile(filePath, getContentServerUri(securityToken, userId));
- if (fileId is error) {
-   return FileUploadError("File upload failed", fileId);
- }
- notifyFileUploadEvent(userId, <int> fileId);
+    error|int fileId = NetworkUtil:uploadFile(filePath, getContentServerUri(securityToken, userId));
+    if (fileId is error) {
+        return FileUploadError("File upload failed", fileId);
+    }
+    notifyFileUploadEvent(userId, <int> fileId);
 }
 ```
 
-Type-guards can be used to identify values of each distinct error at runtime.
+Type test expression can be used to identify values of each distinct error at runtime.
 
 ```ballerina
- ApplicationError? status = uploadFile(path, token, userId);
- if (status is FileUploadError) {
-     // handle FileUploadError
- } else if (status is UserPermissionError) {
-     // handle UserPermissionError
- }
+ApplicationError? status = uploadFile(path, token, userId);
+if (status is FileUploadError) {
+    // handle FileUploadError
+} else if (status is UserPermissionError) {
+    // handle UserPermissionError
+}
 ```
 
-With the introduction of the `distinct` error type, the error reason is removed from the error type. For more information, see [error type changes](#error-type-changes).
+With the introduction of the `distinct error` type, the error reason is removed from the error type. For more information, see [error type changes](#error-type-changes).
 
 ### `error` type changes
 Previous error type was `error<reasonType, detailType>` in which the `reasonType` is a subtype of string and `detailType` is a subtype of `record {| string message?; error cause; (anydata|error)... |}`. With the error type change, the reason type parameter is removed and the detail type parameter is a subtype of `map<anydata|readonly>`.
@@ -88,17 +88,17 @@ type Error2 error<record {| int code; |}>;
 
 #### Revised error constructor
 
-Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of string. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
+Error-values of user-defined types are created using the error constructor of that type. The first mandatory positional augment of the error constructor is the error message and it must be a subtype of `string`. The second optional positional argument can be provided to pass an `error` cause. Error details are provided as named arguments in the error constructor.
 
 ```ballerina
 type AppError error<record {| string buildNo; string userId; |};
 
-AppError appError = AppError("Failed to delete order line", buildNo=getBuildNo(), userId=userId);
+AppError appError = AppError("Failed to delete the order line", buildNo=getBuildNo(), userId=userId);
 ```
 
-#### Error type infer 
+#### Inferring the type of the error 
 
-A type of `error<*>` means that the type is a subtype of error in which the precise subtype is to be inferred from the context.
+A type of `error<*>` means that the type is a subtype of `error`, where the precise subtype is to be inferred from the context.
 
 ```ballerina
 type TrxErrorData record {|
@@ -109,7 +109,7 @@ type TrxErrorData record {|
 
 type TrxError error<TrxErrorData>;
 
-TrxError e = TrxError("IAmAInferedErr");
+TrxError e = TrxError("IAmAnInferredErr");
 error<*> err = e;
 ```
 

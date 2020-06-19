@@ -62,9 +62,10 @@
 
 .rst-content .section ol li, .rst-content ol.arabic li, .wy-plain-list-decimal li, article ol li, .rst-content .section ul li, .rst-content .toctree-wrapper ul li, .wy-plain-list-disc li, article ul li {
     font-size: 14px;
+    list-style: none;
 }
 
 .cBBEtop img {
     width: 200px;
-    list-style: none;
+    
 }

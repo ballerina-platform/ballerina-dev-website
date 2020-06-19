@@ -90,7 +90,6 @@ An immutable value is deeply immutable and thus an immutable structure is guaran
 
 ```ballerina
 readonly immutableValue = “hello world“;
-
 ```
 #### Intersection type 
 

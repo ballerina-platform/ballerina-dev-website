@@ -737,7 +737,29 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
 
 ### Testerina
 
-Introducing the Mocking API for object and function mocking.
+Introducing the Mocking API for object and function mocking
+
+#### Function Mocking
+
+The `MockFunction` object is added to handle function mocking. The `MockFunction` objects are defined by attaching the `@test:MockFn` annotation to the `MockFunction` to specify the function to mock.
+
+```ballerina
+@test:MockFn {
+    functionName : "<function_to_mock>"
+}
+test:MockFunction mockObj = new();
+```
+
+Function mocking is done by using the following functions:
+- The `test:when(mockObj)` is used to initialize the mocking capability within a particular test case
+- This allows you to use the associated mocking functions like `call()`, `thenReturn()` and `withArguments()`
+
+#### Object Mocking
+
+Object mocking enables controlling the values of member variables and the behavior of the member functions of an object
+
+- Introduced the ability to create a `test double`, which provides an equivalent mock in place of the real object
+- Introduced the capability of stubbing the member function or member variable
 
 ### API Documentation
 

@@ -304,7 +304,7 @@ Module level variables can be initialized inside the module init function. Now, 
 
 ### Type inclusion
 
-Object type inclusion can now include non-abstract objects. Type reference expressions can also override fields and function declarations of the same name. Including type overrides fields of the included type provided that overriding field type is a subtype of the overridden field.
+The type (including type) that includes another object (included type) can override fields and functions of the included type. The types of the fields and functions in the including type should be subtypes of the types of the corresponding fields and functions in the included type. Object type inclusion can now include non-abstract objects. 
 
 ```ballerina
 type GridMessage object {
@@ -352,6 +352,7 @@ type EfficientGridPacket record {
 };
 
 ```
+
 ### Enum
 
 The typical way of doing an enumeration in Ballerina previously was:

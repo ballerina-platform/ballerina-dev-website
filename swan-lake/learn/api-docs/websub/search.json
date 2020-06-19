@@ -1,0 +1,220 @@
+{
+  "modules": [
+    {
+      "id": "websub",
+      "searchString": "\u003cp\u003eThis module contains an implementation of the W3C \u003ca href\u003d\"https://www.\u003c/p\u003e"
+    }
+  ],
+  "objects": [
+    {
+      "id": "Hub",
+      "searchString": "\u003cp\u003eRepresents the Ballerina WebSub Hub.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "HubPersistenceStore",
+      "searchString": "\u003cp\u003eRepresents the hub persistence configuration and functions.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "IntentVerificationRequest",
+      "searchString": "\u003cp\u003eObject representing an intent verification request received.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "Notification",
+      "searchString": "\u003cp\u003eRepresents the WebSub Content Delivery Request received.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "functions": [
+    {
+      "id": "addWebSubLinkHeader",
+      "searchString": "\u003cp\u003eFunction to add link headers to a response to allow WebSub discovery.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e0",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e1",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e2",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e3",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e4",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e5",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ballerina/websub:1.0.0.\u003cinit\u003e6",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "extractTopicAndHubUrls",
+      "searchString": "\u003cp\u003eRetrieves hub and topic URLs from the \u003ccode\u003ehttp:response\u003c/code\u003e from a publisher to a discovery request.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "startHub",
+      "searchString": "\u003cp\u003eStarts up the Ballerina Hub.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "records": [
+    {
+      "id": "T37",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "T38",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "T39",
+      "searchString": "",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ExtensionConfig",
+      "searchString": "\u003cp\u003eThe extension configuration to introduce custom subscriber services.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "HubConfiguration",
+      "searchString": "\u003cp\u003eRecord representing hub specific configurations.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "HubStartedUpError",
+      "searchString": "\u003cp\u003eError to represent that a WebSubHub is already started up, encapsulating the started up Hub.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "RemotePublishConfig",
+      "searchString": "\u003cp\u003eRecord representing remote publishing allowance.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriberDetails",
+      "searchString": "\u003cp\u003eRecord to represent Subscriber Details.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriberListenerConfiguration",
+      "searchString": "\u003cp\u003eRepresents the configuration for the WebSub Subscriber Service Listener.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriberServiceConfiguration",
+      "searchString": "\u003cp\u003eConfiguration for a WebSubSubscriber service.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriptionChangeRequest",
+      "searchString": "\u003cp\u003eRecord representing a WebSub subscription change request.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriptionChangeResponse",
+      "searchString": "\u003cp\u003eRecord representing subscription/unsubscription details if a subscription/unsubscription request is successful.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SubscriptionDetails",
+      "searchString": "\u003cp\u003eRecord to represent persisted Subscription Details retrieved.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "constants": [
+    {
+      "id": "PUBLISH_MODE_DIRECT",
+      "searchString": "\u003cp\u003e\u003ccode\u003eRemotePublishMode\u003c/code\u003e indicating direct update content notification (fat-ping).\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "PUBLISH_MODE_FETCH",
+      "searchString": "\u003cp\u003e\u003ccode\u003eRemotePublishMode\u003c/code\u003e indicating that once the publisher notifies the hub that an update is available, the hub\nneeds to fetch the topic URL to identify the update content.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SHA1",
+      "searchString": "\u003cp\u003eThe constant used to represent SHA-1 cryptographic hash algorithm\u003c/p\u003e\n",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SHA256",
+      "searchString": "\u003cp\u003eThe constant used to represent SHA-256 cryptographic hash algorithm\u003c/p\u003e\n",
+      "moduleId": "websub"
+    },
+    {
+      "id": "TOPIC_ID_HEADER",
+      "searchString": "\u003cp\u003e\u003ccode\u003eTopicIdentifier\u003c/code\u003e indicating dispatching based solely on a header of the request.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "TOPIC_ID_PAYLOAD_KEY",
+      "searchString": "\u003cp\u003e\u003ccode\u003eTopicIdentifier\u003c/code\u003e indicating dispatching based solely on a value for a key in the JSON payload of the request.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "TOPIC_ID_HEADER_AND_PAYLOAD",
+      "searchString": "\u003cp\u003e\u003ccode\u003eTopicIdentifier\u003c/code\u003e indicating dispatching based on a combination of header and values specified for a key/key(s) in\nthe JSON payload of the request.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "errors": [
+    {
+      "id": "HubStartupError",
+      "searchString": "\u003cp\u003eRepresents a hub startup error.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "ListenerStartupError",
+      "searchString": "\u003cp\u003eRepresents a listener startup error.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "WebSubError",
+      "searchString": "\u003cp\u003eRepresents a webSub distinct error.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ],
+  "types": [
+    {
+      "id": "RemotePublishMode",
+      "searchString": "\u003cp\u003eThe identifier to be used to identify the mode in which update content should be identified.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "SignatureMethod",
+      "searchString": "\u003cp\u003eThe identifier to be used to identify the cryptographic hash algorithm.\u003c/p\u003e",
+      "moduleId": "websub"
+    },
+    {
+      "id": "TopicIdentifier",
+      "searchString": "\u003cp\u003eThe identifier to be used to identify the topic for dispatching with custom subscriber services.\u003c/p\u003e",
+      "moduleId": "websub"
+    }
+  ]
+}

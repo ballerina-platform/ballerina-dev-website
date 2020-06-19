@@ -274,7 +274,7 @@ function somefunction() returns never {
     panic error("Invalid");
 }
 ```
-The `never` type is a subtype of `nil`. Functions with the `never` type as the return type can only be invoked in call statements. i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable. Since the `never` type represents the type which has no values, variables of type `never` cannot be declared.
+The `never` type is a subtype of `nil`. Therefore, functions with the `never` type as the return type can only be invoked in call statements (i.e., they can never be called as an expression nor can the result of calling such a function be assigned to a variable). Since the `never` type represents the type, which has no values, variables of type `never` cannot be declared.
 ```ballerina
 never s;    // error: cannot define a variable of type 'never'
 ```

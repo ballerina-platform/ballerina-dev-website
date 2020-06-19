@@ -238,7 +238,9 @@ public function main() {
 }
 ```
 ### Never type
-The `never` type provides a way to describe the type that contains no shapes. This would be useful for the return type of a function that never terminates normally. 
+The `never` type provides a way to describe the type that contains no shapes. 
+
+The `never` type is useful as the return type of a function that never terminates normally. 
 ```ballerina
 function somefunction() returns never {
      panic error("Invalid");

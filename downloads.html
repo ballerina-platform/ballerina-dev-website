@@ -25,11 +25,14 @@ redirect_from:
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                 <div class="cFeaturedVersion">
                     <h2>Current version: <span id="versionInfo">{{ site.data.stable-latest.metadata.version }} ({{ site.data.stable-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+                    <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
+                    
                     <p>
-                        If you already have jBallerina version 1.2.0 or above installed, you can use the Ballerina Update Tool to directly update to jBallerina 1.2.4 by executing the command below. 
-                        For further details, see the <a href="https://ballerina.io/downloads/release-notes/">Release Note</a>.<pre>ballerina dist update</pre> </p>
+                        If you already have jBallerina version 1.2.0 or above installed, you can use the <a href="/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to directly update to jBallerina 1.2.4 by executing the command below. </p>
+                        <pre>ballerina dist update</pre> 
+                        <p>For further details, see the <a href="/downloads/release-notes/">Release Note</a>.</p>
                 </div>
-            </div>
+            </div></div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
             
@@ -160,14 +163,21 @@ redirect_from:
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                     <div class="cFeaturedVersion">
                         <h2>Preview release: Swan Lake (preview version) </span></h2>
-                        <p>If you already have jBallerina version 1.2.0 or above installed, you need to update the update tool to latest in order to get the swan lake channel. This can be done by executing following command.</p>
+                        <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
+                        <p>If you already have jBallerina installed, you can use the <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to update it to the Swan Lake channel. To do this, first, execute the command below to get the Update Toole updated to its latest version. </p>
                         <pre>ballerina update</pre>
-                        <p>Then you can get swan lake preview 1 by executing following command</p>
+                        <p>Next, execute the command below to update to Swan Lake Preview 1.</p>
                         <pre>ballerina dist pull slp1</pre>
+<<<<<<< HEAD
+                        <p>For further details, see the <a href="/downloads/swan-lake-release-notes">Release Note</a>. </p><br></div>
+=======
+                       
                         <p>For further details, see the <a href="https://ballerina.io/downloads/release-notes/">Release Note</a>. </p>
                         <br>
+
+>>>>>>> 58b130e0dc37786c6bba854d1c4a4217f23a7f72
                     </div>
-                </div>
+                </div></div>
             
                     <!--<div class="cStandaloneInstallers">
                         <h2>Preview release: Swan Lake (preview version)</h2>-->

@@ -4,6 +4,24 @@ title: Swan Lake Preview 1 Release note
 ---
 # Overview of Ballerina Swan Lake - Preview 1
 This release is the first preview version of Ballerina Swan Lake. This release includes a new set of Language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
+
+You can use the update tool to update to jBallerina 1.2.4 as follows.
+
+**For existing users:**
+
+If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
+                        
+> `ballerina update`
+                        
+ Next, execute the command below to update to Swan Lake Preview 1.
+
+ > `ballerina dist pull slp1`                  
+
+However, if you are using a jBallerina version below 1.1.0, install via the [installers](https://ballerina.io/downloads/).
+
+**For new users:**
+
+If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
  
 # Highlights
 

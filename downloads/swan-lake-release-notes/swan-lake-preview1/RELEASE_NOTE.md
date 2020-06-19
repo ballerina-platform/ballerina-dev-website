@@ -750,9 +750,18 @@ ballerina bindgen [(-cp|--classpath) <classpath>...]
                   (<class-name>...)
 ```
 
-### Testerina
+### Test Framework
 
-Introducing the Mocking API for object and function mocking
+#### Introduced the Mocking API in test module
+
+The test module now provides capabilities to mock a function or an object for unit testing. The mocking features can 
+be used to control the behavior of functions and objects by defining return values or replacing the entire object 
+or function with a user-defined equivalent. This feature will help you to test your Ballerina code independently 
+from other modules and external endpoints. 
+
+The new mocking API simplifies function and object mocking via the ***when-then*** convention.
+For the complete list of available mocking features, see 
+[API Docs for the test module](https://ballerina.io/learn/api-docs/ballerina/test/index.html).
 
 #### Function Mocking
 

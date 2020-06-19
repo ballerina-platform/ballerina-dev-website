@@ -19,7 +19,7 @@ This release is the first preview version of Ballerina Swan Lake. This release i
 
 The Language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/). This Specification introduces a set of new features and improvements in the following main areas.   
  
-- Type system enhancements (e.g., new error and table design) 
+- Type system enhancements (e.g., new `distinct` type, revamped `error` type, revamped `table` type revamp, `intersection` type support, new `readonly` type) 
 - Improved immutability support 
 - [New transactions support](https://github.com/ballerina-platform/ballerina-spec/blob/master/lang/proposals/transaction/transaction.md) 
 - Improved query support 
@@ -37,8 +37,8 @@ Ballerina `distinct` types provide functionalities similar to those provided by 
 The `error` types can be defined as `distinct` types so that Ballerina programmers can have more fine-grained control over error handling.
 
 ```ballerina
-// Define distinct error type ApplicationError to be a subtype `error` type.
- ApplicationError distinct error;
+// Define distinct error type ApplicationError to be a subtype `error`.
+ type ApplicationError distinct error;
 // FileUploadError is a subtype of ApplicationError
 type FileUploadError distinct ApplicationError;
 // UserPermissionError is a subtype of ApplicationError

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Secured Client with Basic Auth
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/secured-client-with-basic-auth
+permalink: /learn/by-example/secured-client-with-basic-auth
 redirect_from:
   - /vswan-lake/learn/by-example/secured-client-with-basic-auth
   - /vswan-lake/learn/by-example/secured-client-with-basic-auth.html
@@ -18,8 +18,7 @@ redirect_from:
     <span class="nx">username</span><span class="p">:</span> <span class="s">&quot;tom&quot;</span><span class="p">,</span>
     <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;1234&quot;</span>
 <span class="p">});</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">outboundBasicAuthHandler</span> <span class="p">=</span>
-                                            <span class="nx">new</span> <span class="p">(</span><span class="nx">outboundBasicAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">BasicAuthHandler</span> <span class="nx">outboundBasicAuthHandler</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">outboundBasicAuthProvider</span><span class="p">);</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpEndpoint</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;https://localhost:9090&quot;</span><span class="p">,</span> <span class="p">{</span>
     <span class="nx">auth</span><span class="p">:</span> <span class="p">{</span>
         <span class="nx">authHandler</span><span class="p">:</span> <span class="nx">outboundBasicAuthHandler</span>
     <span class="p">},</span>
@@ -34,8 +33,7 @@ redirect_from:
     <span class="k">var</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">httpEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/hello/sayHello&quot;</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span>
-                                        <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">((</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="err">?</span> <span class="s">&quot;Failed to retrieve payload.&quot;</span> <span class="p">:</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to call the endpoint.&quot;</span><span class="p">,</span> <span class="nx">response</span><span class="p">);</span>
     <span class="p">}</span>
@@ -120,7 +118,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/secured-client-with-basic-auth/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -198,8 +196,7 @@ import ballerina/log;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:BasicAuthHandler outboundBasicAuthHandler =
-                                            new (outboundBasicAuthProvider);
+                                    <div class="highlight"><pre><code class=ballerina>http:BasicAuthHandler outboundBasicAuthHandler = new (outboundBasicAuthProvider);
 </code></pre></div>
 
                                 </td>
@@ -256,8 +253,7 @@ import ballerina/log;
                                     <div class="highlight"><pre><code class=ballerina>    var response = httpEndpoint-&gt;get(&quot;/hello/sayHello&quot;);
     if (response is http:Response) {
         var result = response.getTextPayload();
-        log:printInfo((result is error) ? &quot;Failed to retrieve payload.&quot;
-                                        : result);
+        log:printInfo((result is error) ? &quot;Failed to retrieve payload.&quot; : result);
     } else {
         log:printError(&quot;Failed to call the endpoint.&quot;, response);
     }

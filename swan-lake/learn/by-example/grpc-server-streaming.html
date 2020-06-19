@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Server Streaming
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/grpc-server-streaming
+permalink: /learn/by-example/grpc-server-streaming
 redirect_from:
   - /vswan-lake/learn/by-example/grpc-server-streaming
   - /vswan-lake/learn/by-example/grpc-server-streaming.html
@@ -17,16 +17,14 @@ redirect_from:
 			<span class="nx">returns</span> <span class="p">(</span><span class="nx">stream</span> <span class="nx">google</span><span class="p">.</span><span class="nx">protobuf</span><span class="p">.</span><span class="nx">StringValue</span><span class="p">);</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nd">@grpc:ResourceConfig {</span><span class="nx">streaming</span><span class="p">:</span> <span class="kc">true</span><span class="p">}</span>
-    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">lotsOfReplies</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kd">service</span> <span class="nx">HelloWorld</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">lotsOfReplies</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="kt">string</span> <span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server received hello from &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">);</span>
         <span class="kt">string</span><span class="p">[]</span> <span class="nx">greets</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Hi&quot;</span><span class="p">,</span> <span class="s">&quot;Hey&quot;</span><span class="p">,</span> <span class="s">&quot;GM&quot;</span><span class="p">];</span>
         <span class="nx">foreach</span> <span class="kt">string</span> <span class="nx">greet</span> <span class="nx">in</span> <span class="nx">greets</span> <span class="p">{</span>
             <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="nx">greet</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
             <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                           <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                 <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Send reply: &quot;</span> <span class="o">+</span> <span class="nx">msg</span><span class="p">);</span>
             <span class="p">}</span>
@@ -47,8 +45,7 @@ redirect_from:
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">helloWorldEp</span><span class="o">-&gt;</span><span class="nx">lotsOfReplies</span><span class="p">(</span><span class="s">&quot;Sam&quot;</span><span class="p">,</span>
                                                     <span class="nx">HelloWorldMessageListener</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                            <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Connected successfully&quot;</span><span class="p">);</span>
     <span class="p">}</span>    <span class="k">while</span> <span class="p">(</span><span class="nx">total</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
@@ -59,8 +56,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                            <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">total</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -119,7 +115,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-server-streaming/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/grpc-server-streaming/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -249,10 +245,6 @@ $ ballerina grpc --input grpc_server_streaming.proto  --output stubs
                         
                             
                                 
-                            
-                        
-                            
-                                
                                     <div class="bal-separator">
                                         <!-- This table is a temporary table to add spacing between output and next bal file-->
                                         <table class="cTopBorder-table">
@@ -302,30 +294,11 @@ import ballerina/log;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    @grpc:ResourceConfig {streaming: true}
-    resource function lotsOfReplies(grpc:Caller caller, string name) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The annotation indicates how the service resource operates as server streaming.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        log:printInfo(&quot;Server received hello from &quot; + name);
+                                    <div class="highlight"><pre><code class=ballerina>    resource function lotsOfReplies(grpc:Caller caller, string name) {
+        log:printInfo(&quot;Server received hello from &quot; + name);
         string[] greets = [&quot;Hi&quot;, &quot;Hey&quot;, &quot;GM&quot;];
 </code></pre></div>
 
@@ -342,8 +315,7 @@ import ballerina/log;
             string msg = greet + &quot; &quot; + name;
             grpc:Error? err = caller-&gt;send(msg);
             if (err is grpc:Error) {
-                log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                           + &lt;string&gt;err.detail()[&quot;message&quot;]);
+                log:printError(&quot;Error from Connector: &quot; + err.message());
             } else {
                 log:printInfo(&quot;Send reply: &quot; + msg);
             }
@@ -578,8 +550,7 @@ public function main() {
                                     <div class="highlight"><pre><code class=ballerina>    grpc:Error? result = helloWorldEp-&gt;lotsOfReplies(&quot;Sam&quot;,
                                                     HelloWorldMessageListener);
     if (result is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + result.reason() + &quot; - &quot;
-                                            + &lt;string&gt;result.detail()[&quot;message&quot;]);
+        io:println(&quot;Error from Connector: &quot; + result.message());
     } else {
         io:println(&quot;Connected successfully&quot;);
     }
@@ -656,8 +627,7 @@ public function main() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(error err) {
-        io:println(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                            + &lt;string&gt;err.detail()[&quot;message&quot;]);
+        io:println(&quot;Error from Connector: &quot; + err.message());
     }
 </code></pre></div>
 

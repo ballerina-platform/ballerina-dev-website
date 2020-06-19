@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: JSON/Record/Map Conversion
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/json-record-map-conversion
+permalink: /learn/by-example/json-record-map-conversion
 redirect_from:
   - /vswan-lake/learn/by-example/json-record-map-conversion
   - /vswan-lake/learn/by-example/json-record-map-conversion.html
@@ -20,7 +20,7 @@ redirect_from:
     <span class="kt">string</span> <span class="nx">year</span><span class="p">;</span>
     <span class="kt">string</span> <span class="nx">released</span><span class="p">;</span>
     <span class="nx">Person</span> <span class="nx">writer</span><span class="p">;</span>
-<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">};</span><span class="nx">type</span> <span class="nx">MapAnydata</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Movie</span> <span class="nx">theRevenant</span> <span class="p">=</span> <span class="p">{</span>
         <span class="nx">title</span><span class="p">:</span> <span class="s">&quot;The Revenant&quot;</span><span class="p">,</span>
         <span class="nx">year</span><span class="p">:</span> <span class="s">&quot;2015&quot;</span><span class="p">,</span>
@@ -31,14 +31,14 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="kt">json</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
+    <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">j</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="kt">json</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">j</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">toJsonString</span><span class="p">());</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">j</span><span class="p">.</span><span class="nx">writer</span><span class="p">.</span><span class="nx">lname</span><span class="p">);</span>
     <span class="p">}</span>
-    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">theRevenant</span><span class="p">);</span>
+    <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;|</span><span class="nx">error</span> <span class="nx">movieMap</span> <span class="p">=</span> <span class="nx">theRevenant</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">MapAnydata</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">movieMap</span> <span class="nx">is</span> <span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;)</span> <span class="p">{</span>
-        <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">]);</span>
+        <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">writer</span> <span class="p">=</span> <span class="nx">movieMap</span><span class="p">[</span><span class="s">&quot;writer&quot;</span><span class="p">].</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Person</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">writer</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">writer</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span>
         <span class="p">}</span>
@@ -53,7 +53,7 @@ redirect_from:
             <span class="nx">age</span><span class="p">:</span> <span class="mi">30</span>
         <span class="p">}</span>
     <span class="p">};</span>
-    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">Movie</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">inceptionJ</span><span class="p">);</span>
+    <span class="nx">Movie</span><span class="p">|</span><span class="nx">error</span> <span class="nx">inception</span> <span class="p">=</span> <span class="nx">inceptionJ</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Movie</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">inception</span> <span class="nx">is</span> <span class="nx">Movie</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">inception</span><span class="p">);</span>
     <span class="p">}</span>
@@ -106,7 +106,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/json-record-map-conversion/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/json-record-map-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -123,6 +123,8 @@ redirect_from:
                     </table>
 
                     
+                        
+                            
                         
                             
                         
@@ -198,6 +200,18 @@ redirect_from:
                             <tr class="cTR">
 
                                 <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type MapAnydata map&lt;anydata&gt;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public function main() {
     Movie theRevenant = {
         title: &quot;The Revenant&quot;,
@@ -220,7 +234,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    json|error j = json.constructFrom(theRevenant);
+                                    <div class="highlight"><pre><code class=ballerina>    json|error j = theRevenant.cloneWithType(json);
     if (j is json) {
         io:println(j.toJsonString());
         io:println(j.writer.lname);
@@ -245,9 +259,9 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt;|error movieMap = map&lt;anydata&gt;.constructFrom(theRevenant);
+                                    <div class="highlight"><pre><code class=ballerina>    map&lt;anydata&gt;|error movieMap = theRevenant.cloneWithType(MapAnydata);
     if (movieMap is map&lt;anydata&gt;) {
-        Person|error writer = Person.constructFrom(movieMap[&quot;writer&quot;]);
+        Person|error writer = movieMap[&quot;writer&quot;].cloneWithType(Person);
         if (writer is Person) {
             io:println(writer.age);
         }
@@ -280,7 +294,7 @@ redirect_from:
             age: 30
         }
     };
-    Movie|error inception = Movie.constructFrom(inceptionJ);
+    Movie|error inception = inceptionJ.cloneWithType(Movie);
     if (inception is Movie) {
         io:println(inception);
     }

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Bidirectional Streaming
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/grpc-bidirectional-streaming
+permalink: /learn/by-example/grpc-bidirectional-streaming
 redirect_from:
   - /vswan-lake/learn/by-example/grpc-bidirectional-streaming
   - /vswan-lake/learn/by-example/grpc-bidirectional-streaming.html
@@ -21,7 +21,8 @@ redirect_from:
 	<span class="kt">string</span> <span class="kt">message</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">grpc</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span><span class="p">&gt;</span> <span class="nx">consMap</span> <span class="p">=</span> <span class="p">{};</span><span class="kd">service</span> <span class="nx">Chat</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span>  <span class="nx">chat</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span><span class="p">&gt;</span> <span class="nx">consMap</span> <span class="p">=</span> <span class="p">{};</span><span class="kd">service</span> <span class="nx">Chat</span> <span class="nx">on</span> <span class="nx">new</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Listener</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span> <span class="p">{</span>    <span class="kd">resource</span> <span class="kd">function</span>  <span class="nx">chat</span><span class="p">(</span><span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span>
+                                <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">ChatMessage</span><span class="p">,</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">clientStream</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="kt">string</span> <span class="s">`${caller.getId()} connected to chat`</span><span class="p">);</span>
         <span class="nx">consMap</span><span class="p">[</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">()]</span> <span class="p">=</span> <span class="p">&lt;</span><span class="err">@</span><span class="nx">untainted</span><span class="p">&gt;</span><span class="nx">caller</span><span class="p">;</span>
         <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">clientStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ChatMessage</span> <span class="nx">chatMsg</span><span class="p">)</span> <span class="p">{</span>
@@ -32,8 +33,7 @@ redirect_from:
                 <span class="nx">ep</span> <span class="p">=</span> <span class="nx">connection</span><span class="p">;</span>
                 <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server message to caller &quot;</span> <span class="o">+</span> <span class="nx">callerId</span>
                                                         <span class="o">+</span> <span class="s">&quot; sent successfully.&quot;</span><span class="p">);</span>
@@ -41,24 +41,21 @@ redirect_from:
             <span class="p">}</span>
         <span class="p">});</span>
         <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">EOS</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">ep</span><span class="p">;</span>
             <span class="kt">string</span> <span class="nx">msg</span> <span class="p">=</span> <span class="kt">string</span> <span class="s">`${caller.getId()} left the chat`</span><span class="p">;</span>
             <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
             <span class="k">var</span> <span class="nx">v</span> <span class="p">=</span> <span class="nx">consMap</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">caller</span><span class="p">.</span><span class="nx">getId</span><span class="p">().</span><span class="nx">toString</span><span class="p">());</span>
             <span class="nx">foreach</span> <span class="k">var</span> <span class="p">[</span><span class="nx">callerId</span><span class="p">,</span> <span class="nx">connection</span><span class="p">]</span> <span class="nx">in</span> <span class="nx">consMap</span><span class="p">.</span><span class="nx">entries</span><span class="p">()</span> <span class="p">{</span>
-                <span class="nx">ep</span> <span class="p">=</span> <span class="nx">connection</span><span class="p">;</span>
+                <span class="nx">grpc</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">ep</span> <span class="p">=</span> <span class="nx">connection</span><span class="p">;</span>
                 <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="nx">err</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                            <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                     <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="s">&quot;Server message to caller &quot;</span> <span class="o">+</span> <span class="nx">callerId</span>
                                                         <span class="o">+</span> <span class="s">&quot; sent successfully.&quot;</span><span class="p">);</span>
                 <span class="p">}</span>
             <span class="p">}</span>
         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                        <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">e</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="p">}</span>    <span class="p">}</span>
 <span class="p">}</span><span class="err">#</span> <span class="nx">Create</span> <span class="nx">a</span> <span class="nx">Ballerina</span> <span class="nx">project</span> <span class="nx">and</span> <span class="nx">a</span> <span class="nx">module</span> <span class="nx">inside</span> <span class="nx">it</span><span class="p">.</span>
 <span class="err">#</span> <span class="nx">Copy</span> <span class="nx">generated</span> <span class="nx">stub</span> <span class="nx">file</span> <span class="s">`grpc_bidirectional_streaming_pb.bal`</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">module</span><span class="p">.</span>
@@ -69,8 +66,7 @@ redirect_from:
 <span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">ChatClient</span> <span class="nx">chatEp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://localhost:9090&quot;</span><span class="p">);</span>    <span class="nx">grpc</span><span class="p">:</span><span class="nx">StreamingClient</span> <span class="nx">ep</span><span class="p">;</span>
     <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">chatEp</span><span class="o">-&gt;</span><span class="nx">chat</span><span class="p">(</span><span class="nx">ChatMessageListener</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                  <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
         <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialized connection sucessfully.&quot;</span><span class="p">);</span>
@@ -78,8 +74,7 @@ redirect_from:
     <span class="p">}</span>
     <span class="nx">ChatMessage</span> <span class="nx">mes</span> <span class="p">=</span> <span class="p">{</span><span class="nx">name</span><span class="p">:</span> <span class="s">&quot;Sam&quot;</span><span class="p">,</span> <span class="kt">message</span><span class="p">:</span> <span class="s">&quot;Hi &quot;</span><span class="p">};</span>
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">connErr</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">mes</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">connErr</span> <span class="nx">is</span> <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">connErr</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                               <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">connErr</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error from Connector: &quot;</span> <span class="o">+</span> <span class="nx">connErr</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="nx">runtime</span><span class="p">:</span><span class="nx">sleep</span><span class="p">(</span><span class="mi">6000</span><span class="p">);</span>
     <span class="nx">grpc</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">ep</span><span class="o">-&gt;</span><span class="nx">complete</span><span class="p">();</span>
@@ -91,8 +86,7 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Response received from server: &quot;</span> <span class="o">+</span> <span class="kt">message</span><span class="p">);</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onError</span><span class="p">(</span><span class="nx">error</span> <span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="nx">reason</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot; - &quot;</span>
-                                  <span class="o">+</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span><span class="nx">err</span><span class="p">.</span><span class="nx">detail</span><span class="p">()[</span><span class="s">&quot;message&quot;</span><span class="p">]);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error reported from server: &quot;</span> <span class="o">+</span> <span class="nx">err</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">onComplete</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Server Complete Sending Responses.&quot;</span><span class="p">);</span>
@@ -151,7 +145,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/grpc-bidirectional-streaming/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/grpc-bidirectional-streaming/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -361,7 +355,8 @@ import ballerina/log;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    resource function  chat(grpc:Caller caller, stream&lt;ChatMessage, error&gt; clientStream) {
+                                    <div class="highlight"><pre><code class=ballerina>    resource function  chat(grpc:Caller caller,
+                                stream&lt;ChatMessage, error&gt; clientStream) {
         log:printInfo(string `${caller.getId()} connected to chat`);
         consMap[caller.getId().toString()] = &lt;@untainted&gt;caller;
 </code></pre></div>
@@ -383,8 +378,7 @@ import ballerina/log;
                 ep = connection;
                 grpc:Error? err = ep-&gt;send(msg);
                 if (err is grpc:Error) {
-                    log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                                + &lt;string&gt;err.detail()[&quot;message&quot;]);
+                    log:printError(&quot;Error from Connector: &quot; + err.message());
                 } else {
                     log:printInfo(&quot;Server message to caller &quot; + callerId
                                                         + &quot; sent successfully.&quot;);
@@ -410,16 +404,14 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        if (e is grpc:EOS) {
-            grpc:Caller ep;
             string msg = string `${caller.getId()} left the chat`;
             log:printInfo(msg);
             var v = consMap.remove(caller.getId().toString());
             foreach var [callerId, connection] in consMap.entries() {
-                ep = connection;
+                grpc:Caller ep = connection;
                 grpc:Error? err = ep-&gt;send(msg);
                 if (err is grpc:Error) {
-                    log:printError(&quot;Error from Connector: &quot; + err.reason() + &quot; - &quot;
-                            + &lt;string&gt;err.detail()[&quot;message&quot;]);
+                    log:printError(&quot;Error from Connector: &quot; + err.message());
                 } else {
                     log:printInfo(&quot;Server message to caller &quot; + callerId
                                                         + &quot; sent successfully.&quot;);
@@ -444,8 +436,7 @@ import ballerina/log;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>        } else if (e is error) {
-            log:printError(&quot;Error from Connector: &quot; + e.reason() + &quot; - &quot;
-                        + &lt;string&gt;e.detail()[&quot;message&quot;]);
+            log:printError(&quot;Error from Connector: &quot; + e.message());
         }
 </code></pre></div>
 
@@ -711,8 +702,7 @@ public function main() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    if (res is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + res.reason() + &quot; - &quot;
-                                  + &lt;string&gt;res.detail()[&quot;message&quot;]);
+        io:println(&quot;Error from Connector: &quot; + res.message());
         return;
     } else {
         io:println(&quot;Initialized connection sucessfully.&quot;);
@@ -750,8 +740,7 @@ public function main() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    if (connErr is grpc:Error) {
-        io:println(&quot;Error from Connector: &quot; + connErr.reason() + &quot; - &quot;
-                               + &lt;string&gt;connErr.detail()[&quot;message&quot;]);
+        io:println(&quot;Error from Connector: &quot; + connErr.message());
     }
     runtime:sleep(6000);
 </code></pre></div>
@@ -822,8 +811,7 @@ public function main() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    resource function onError(error err) {
-        io:println(&quot;Error reported from server: &quot; + err.reason() + &quot; - &quot;
-                                  + &lt;string&gt;err.detail()[&quot;message&quot;]);
+        io:println(&quot;Error reported from server: &quot; + err.message());
     }
 </code></pre></div>
 

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Panic
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/panic
+permalink: /learn/by-example/panic
 redirect_from:
   - /vswan-lake/learn/by-example/panic
   - /vswan-lake/learn/by-example/panic.html
@@ -17,8 +17,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="nx">is</span> <span class="nx">Record</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Record ID: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="s">&quot;, value: &quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">error</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Record is nil&quot;</span><span class="p">);</span>
-        <span class="nx">panic</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">panic</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Record is nil&quot;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">Record</span> <span class="nx">r1</span> <span class="p">=</span> <span class="p">{</span>
@@ -87,7 +86,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/panic/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/panic/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -171,8 +170,7 @@ redirect_from:
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        error err = error(&quot;Record is nil&quot;);
-        panic err;
+                                    <div class="highlight"><pre><code class=ballerina>        panic error(&quot;Record is nil&quot;);
     }
 }
 </code></pre></div>
@@ -291,7 +289,7 @@ $ ballerina run panic.bal
 Record ID: 1, value: record1
 error: Record is nil
         at panic:readRecord(panic.bal:13)
-           panic:main(panic.bal:28)
+           panic:main(panic.bal:27)
 </code></pre></div>
 
                                 </td>

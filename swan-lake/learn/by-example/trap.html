@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Trap
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/trap
+permalink: /learn/by-example/trap
 redirect_from:
   - /vswan-lake/learn/by-example/trap
   - /vswan-lake/learn/by-example/trap.html
@@ -15,7 +15,7 @@ redirect_from:
     <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;int result: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">reason</span><span class="p">());</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span><span class="kd">function</span> <span class="nx">divide</span><span class="p">(</span><span class="kt">int</span> <span class="nx">a</span><span class="p">,</span> <span class="kt">int</span> <span class="nx">b</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">int</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">b</span><span class="p">;</span>
@@ -29,7 +29,7 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Trap</h2>
-                            <p><p>The <code>trap</code> unary opearator captures a panic making it possible to treat the panic as a normal error.</p>
+                            <p><p>The <code>trap</code> expression stops a panic and gives access to the error value associated with the panic.</p>
 </p>
 
                         </td>
@@ -66,7 +66,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/trap/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/trap/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -128,7 +128,7 @@ redirect_from:
     if (result is int) {
         io:println(&quot;int result: &quot;, result);
     } else {
-        io:println(&quot;Error occurred: &quot;, result.reason());
+        io:println(&quot;Error occurred: &quot;, result.message());
     }
 }
 </code></pre></div>

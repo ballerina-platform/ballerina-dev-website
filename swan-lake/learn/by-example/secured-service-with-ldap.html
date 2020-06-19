@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Secured Service with LDAP
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/secured-service-with-ldap
+permalink: /learn/by-example/secured-service-with-ldap
 redirect_from:
   - /vswan-lake/learn/by-example/secured-service-with-ldap
   - /vswan-lake/learn/by-example/secured-service-with-ldap.html
@@ -16,7 +16,7 @@ redirect_from:
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">ldap</span><span class="p">;</span>
 <span class="nx">ldap</span><span class="p">:</span><span class="nx">LdapConnectionConfig</span> <span class="nx">ldapConfig</span> <span class="p">=</span> <span class="p">{</span>
     <span class="nx">domainName</span><span class="p">:</span> <span class="s">&quot;ballerina.io&quot;</span><span class="p">,</span>
-    <span class="nx">connectionURL</span><span class="p">:</span> <span class="s">&quot;ldap://localhost:9095&quot;</span><span class="p">,</span>
+    <span class="nx">connectionURL</span><span class="p">:</span> <span class="s">&quot;ldap://localhost:20000&quot;</span><span class="p">,</span>
     <span class="nx">connectionName</span><span class="p">:</span> <span class="s">&quot;uid=admin,ou=system&quot;</span><span class="p">,</span>
     <span class="nx">connectionPassword</span><span class="p">:</span> <span class="s">&quot;secret&quot;</span><span class="p">,</span>
     <span class="nx">userSearchBase</span><span class="p">:</span> <span class="s">&quot;ou=Users,dc=ballerina,dc=io&quot;</span><span class="p">,</span>
@@ -69,7 +69,9 @@ redirect_from:
                             <p><p>A service can be secured using LDAP and optionally by enforcing
  authorization. The LDAP auth provider verifies the token against the
  configured LDAP server. The result returned from the LDAP
- server is used for authentication and authorization.</p>
+ server is used for authentication and authorization.
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/ldap/index.html">LDAP module</a>.</p>
 </p>
 
                         </td>
@@ -106,7 +108,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/secured-service-with-ldap/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/secured-service-with-ldap/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -163,7 +165,7 @@ import ballerina/ldap;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>ldap:LdapConnectionConfig ldapConfig = {
     domainName: &quot;ballerina.io&quot;,
-    connectionURL: &quot;ldap://localhost:9095&quot;,
+    connectionURL: &quot;ldap://localhost:20000&quot;,
     connectionName: &quot;uid=admin,ou=system&quot;,
     connectionPassword: &quot;secret&quot;,
     userSearchBase: &quot;ou=Users,dc=ballerina,dc=io&quot;,

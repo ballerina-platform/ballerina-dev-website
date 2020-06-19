@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Object Mocking
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/testerina-mocking-objects
+permalink: /learn/by-example/testerina-mocking-objects
 redirect_from:
   - /vswan-lake/learn/by-example/testerina-mocking-objects
   - /vswan-lake/learn/by-example/testerina-mocking-objects.html
@@ -10,56 +10,16 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
-                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
-<span class="kd">function</span> <span class="nx">performGet</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/get?test=1234&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">public</span> <span class="nx">type</span> <span class="nx">MockHttpClient</span> <span class="nx">client</span> <span class="nx">object</span> <span class="p">{</span>
-    <span class="nx">public</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
-        <span class="nx">public</span> <span class="nx">http</span><span class="p">:</span><span class="nx">RequestMessage</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">())</span>
-        <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">};</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testPerformGet</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">new</span> <span class="nx">MockHttpClient</span><span class="p">());</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">500</span><span class="p">);}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
-<span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="s">&quot;admin&quot;</span><span class="p">);</span>
-<span class="kd">function</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span>
-        <span class="err">&#39;</span><span class="nx">from</span><span class="p">:</span> <span class="s">&quot;builder@abc.com&quot;</span><span class="p">,</span>
-        <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;Error Alert ...&quot;</span><span class="p">,</span>
-        <span class="nx">to</span><span class="p">:</span> <span class="nx">emailIds</span><span class="p">,</span>
-        <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
-    <span class="p">};</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error while sending the email: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
-        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>    <span class="p">}</span>
-<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testSendNotification</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">mockSmtpClient</span> <span class="p">=</span>
-        <span class="p">&lt;</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">mockSmtpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;send&quot;</span><span class="p">).</span><span class="nx">doNothing</span><span class="p">();</span>
-    <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">mockSmtpClient</span><span class="p">;</span>    <span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;user1@test.com&quot;</span><span class="p">,</span> <span class="s">&quot;user2@test.com&quot;</span><span class="p">];</span>
-    <span class="nx">error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="nx">emailIds</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="p">());}</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
 <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
-<span class="kd">function</span> <span class="nx">performGet</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing the 1st GET request&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">);</span>    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span> <span class="nx">smtpClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="s">&quot;admin&quot;</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">performGet</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing the 1st GET request&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">error</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">clientEndpoint</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">&gt;</span><span class="nx">result</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>    <span class="k">if</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Executing the 2nd GET request&quot;</span><span class="p">);</span>
         <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
         <span class="nx">req</span><span class="p">.</span><span class="nx">addHeader</span><span class="p">(</span><span class="s">&quot;Sample-Name&quot;</span><span class="p">,</span> <span class="s">&quot;http-client-connector&quot;</span><span class="p">);</span>
@@ -68,62 +28,63 @@ redirect_from:
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Status code: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
-<span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testPerformGet1</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the testPerformGet1 function&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mockHttpClient</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">mockHttpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">mockHttpClient</span><span class="p">;</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testPerformGet2</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the testPerformGet2 function&quot;</span><span class="p">);</span>
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">());</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testPerformGet3</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the testPerformGet3 function&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mockHttpClient</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">mockHttpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">thenReturnSequence</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">(),</span> <span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">mockHttpClient</span><span class="p">;</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);}</span><span class="nd">@test:Config {</span><span class="p">}</span>
-<span class="kd">function</span> <span class="nx">testPerformGet4</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;I&#39;m the testPerformGet4 function&quot;</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">mockHttpClient</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
-    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">mockHttpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">());</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">mockHttpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">,</span> <span class="nx">test</span><span class="p">:</span><span class="nx">ANY</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
-    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">mockHttpClient</span><span class="p">;</span>
-    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Email</span> <span class="nx">msg</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="err">&#39;</span><span class="nx">from</span><span class="p">:</span> <span class="s">&quot;builder@abc.com&quot;</span><span class="p">,</span>
+        <span class="nx">subject</span><span class="p">:</span> <span class="s">&quot;Error Alert ...&quot;</span><span class="p">,</span>
+        <span class="nx">to</span><span class="p">:</span> <span class="nx">emailIds</span><span class="p">,</span>
+        <span class="nx">body</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">email</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">smtpClient</span><span class="o">-&gt;</span><span class="nx">send</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;error while sending the email: &quot;</span> <span class="o">+</span> <span class="nx">response</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+        <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">test</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
-<span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://postman-echo.com&quot;</span><span class="p">);</span>
-<span class="kd">function</span> <span class="nx">getClientUrl</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
-    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Mock client url value: &quot;</span> <span class="o">+</span> <span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">email</span><span class="p">;</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">MockHttpClient</span> <span class="nx">client</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">public</span> <span class="nx">remote</span> <span class="kd">function</span> <span class="nx">get</span><span class="p">(</span><span class="err">@</span><span class="nx">untainted</span> <span class="kt">string</span> <span class="nx">path</span><span class="p">,</span>
+        <span class="nx">public</span> <span class="nx">http</span><span class="p">:</span><span class="nx">RequestMessage</span> <span class="kt">message</span> <span class="p">=</span> <span class="p">())</span> <span class="nx">returns</span>
+            <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">|</span><span class="nx">http</span><span class="p">:</span><span class="nx">ClientError</span> <span class="p">{</span>        <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">500</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="kd">function</span> <span class="nx">testPerformGet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">mockResponse</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">,</span> <span class="nx">new</span> <span class="nx">MockHttpClient</span><span class="p">());</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+    <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">());</span>
+    <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">200</span><span class="p">);</span>    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">401</span><span class="p">;</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">thenReturnSequence</span><span class="p">(</span><span class="nx">new</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">(),</span> <span class="nx">mockResponse</span><span class="p">);</span>
+    <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">401</span><span class="p">);</span>    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">403</span><span class="p">;</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">).</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/headers&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
+    <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">403</span><span class="p">);</span>    <span class="nx">mockResponse</span><span class="p">.</span><span class="nx">statusCode</span> <span class="p">=</span> <span class="mi">404</span><span class="p">;</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;get&quot;</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">withArguments</span><span class="p">(</span><span class="s">&quot;/get?test=123&quot;</span><span class="p">,</span> <span class="nx">test</span><span class="p">:</span><span class="nx">ANY</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockResponse</span><span class="p">);</span>
+    <span class="nx">res</span> <span class="p">=</span> <span class="nx">performGet</span><span class="p">();</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span> <span class="mi">404</span><span class="p">);</span>
 <span class="p">}</span><span class="nd">@test:Config {</span><span class="p">}</span>
+<span class="kd">function</span> <span class="nx">testSendNotification</span><span class="p">()</span> <span class="p">{</span>    <span class="nx">smtpClient</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">email</span><span class="p">:</span><span class="nx">SmtpClient</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">smtpClient</span><span class="p">).</span><span class="nx">when</span><span class="p">(</span><span class="s">&quot;send&quot;</span><span class="p">).</span><span class="nx">doNothing</span><span class="p">();</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">emailIds</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;user1@test.com&quot;</span><span class="p">,</span> <span class="s">&quot;user2@test.com&quot;</span><span class="p">];</span>
+    <span class="nx">error</span><span class="err">?</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">sendNotification</span><span class="p">(</span><span class="nx">emailIds</span><span class="p">);</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="p">());}</span><span class="nd">@test:Config {</span><span class="p">}</span>
 <span class="kd">function</span> <span class="nx">testGetClientUrl</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">string</span> <span class="nx">mockClientUrl</span> <span class="p">=</span> <span class="s">&quot;http://foo&quot;</span><span class="p">;</span>
     <span class="nx">clientEndpoint</span> <span class="p">=</span> <span class="p">&lt;</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">&gt;</span><span class="nx">test</span><span class="p">:</span><span class="nx">mock</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Client</span><span class="p">);</span>
     <span class="nx">test</span><span class="p">:</span><span class="nx">prepare</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">).</span><span class="nx">getMember</span><span class="p">(</span><span class="s">&quot;url&quot;</span><span class="p">).</span><span class="nx">thenReturn</span><span class="p">(</span><span class="nx">mockClientUrl</span><span class="p">);</span>
-    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">getClientUrl</span><span class="p">(),</span> <span class="nx">mockClientUrl</span><span class="p">);}</span>
+    <span class="nx">test</span><span class="p">:</span><span class="nx">assertEquals</span><span class="p">(</span><span class="nx">clientEndpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">,</span> <span class="nx">mockClientUrl</span><span class="p">);}</span>
 </pre></div>
 
             </div>
@@ -179,7 +140,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-mocking-objects/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/testerina-mocking-objects/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -207,16 +168,221 @@ redirect_from:
                         
                             
                         
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/io;
+import ballerina/email;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This demonstrates different ways to mock a client object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
+email:SmtpClient smtpClient = new (&quot;localhost&quot;, &quot;admin&quot;,&quot;admin&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Clients objects are defined globally to be able to replace in test files.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function performGet() returns http:Response {
+    io:println(&quot;Executing the 1st GET request&quot;);
+    http:Response|error result = clientEndpoint-&gt;get(&quot;/headers&quot;);
+    http:Response response = &lt;http:Response&gt;result;
+    io:println(&quot;Status code: &quot; + response.statusCode.toString());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function performs two <code>GET</code> requests to the specified
+ endpoint and returns the response.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if(response.statusCode == 200) {
+        io:println(&quot;Executing the 2nd GET request&quot;);
+        http:Request req = new;
+        req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
+        result = clientEndpoint-&gt;get(&quot;/get?test=123&quot;, req);
+        response = &lt;http:Response&gt;result;
+        io:println(&quot;Status code: &quot; + response.statusCode.toString());
+    }
+    return response;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function sendNotification(string[] emailIds) returns error? {
+    email:Email msg = {
+        &#39;from: &quot;builder@abc.com&quot;,
+        subject: &quot;Error Alert ...&quot;,
+        to: emailIds,
+        body: &quot;&quot;
+    };
+    email:Error? response = smtpClient-&gt;send(msg);
+    if (response is error) {
+        io:println(&quot;error while sending the email: &quot; + response.message());
+        return response;
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This function sends out email to specified email addresses
+ and returns an error if found.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
                             
                         
                             
-                        
+                                
                             
                         
                             
-                        
+                                
                             
                         
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
                             
                         
 
@@ -229,7 +395,7 @@ redirect_from:
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>import ballerina/test;
 import ballerina/http;
-import ballerina/io;
+import ballerina/email;
 </code></pre></div>
 
                                 </td>
@@ -237,51 +403,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This is the example for creating a test double for an object.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is a global http client with the backend URL.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function performGet() returns http:Response {
-    http:Response|error result = clientEndpoint-&gt;get(&quot;/get?test=1234&quot;);
-    http:Response response = &lt;http:Response&gt;result;
-    io:println(&quot;Status code: &quot; + response.statusCode.toString());
-    return response;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function sends a <code>GET</code> request to the specified
- endpoint and returns the response.</p>
+                                            <p>This demonstrates different ways to mock a client object.</p>
 
                                         </div>
                                     </div>
@@ -293,6 +415,9 @@ import ballerina/io;
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>public type MockHttpClient client object {
+    public remote function get(@untainted string path,
+        public http:RequestMessage message = ()) returns
+            http:Response|http:ClientError {
 </code></pre></div>
 
                                 </td>
@@ -300,29 +425,8 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The mock object that would act as the test double to the clientEndpoint.
- It should contain the specific function to replace with.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    public remote function get(@untainted string path,
-        public http:RequestMessage message = ())
-        returns http:Response|http:ClientError {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>The function signature should be equivalent to that of real.</p>
+                                            <p>This is the test double of <code>http:Client</code> object with the
+ implementation of required functions.</p>
 
                                         </div>
                                     </div>
@@ -351,6 +455,7 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@test:Config {}
 function testPerformGet() {
+    http:Response mockResponse = new;
 </code></pre></div>
 
                                 </td>
@@ -363,6 +468,8 @@ function testPerformGet() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    clientEndpoint = &lt;http:Client&gt;test:mock(http:Client, new MockHttpClient());
+    http:Response res = performGet();
+    test:assertEquals(res.statusCode, 500);
 </code></pre></div>
 
                                 </td>
@@ -370,8 +477,47 @@ function testPerformGet() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This specifies the creation of a new instance of the
- user-defined mock object and assigns it to the global http client.</p>
+                                            <p>This creates and assigns the defined test-double.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = &lt;http:Client&gt;test:mock(http:Client);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This creates and assigns a default mock object which subsequently needs to stubbed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).thenReturn(new http:Response());
+    res = performGet();
+    test:assertEquals(res.statusCode, 200);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This stubs the <code>get</code> function to return the specified HTTP response.</p>
 
                                         </div>
                                     </div>
@@ -382,7 +528,7 @@ function testPerformGet() {
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response res = performGet();
+                                    <div class="highlight"><pre><code class=ballerina>    mockResponse.statusCode = 401;
 </code></pre></div>
 
                                 </td>
@@ -394,7 +540,10 @@ function testPerformGet() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 500);
+                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;)
+        .thenReturnSequence(new http:Response(), mockResponse);
+    res = performGet();
+    test:assertEquals(res.statusCode, 401);
 </code></pre></div>
 
                                 </td>
@@ -402,261 +551,9 @@ function testPerformGet() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>Verifies that the status code is set with the
- value specified in the mock object.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main_test.bal` file residing inside the tests/ directory
-under the created module, and execute the `ballerina test` command from the project root directory.
-$ ballerina test bbe_mocking
-Compiling source
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/bbe_mocking-2020r1-any-0.1.0.balo
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
-Status code: 500
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testPerformGet
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        1 passing
-        0 failing
-        0 skipped
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
-import ballerina/test;
-import ballerina/email;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the example for stubbing a member functions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>email:SmtpClient smtpClient = new (&quot;localhost&quot;, &quot;admin&quot;,&quot;admin&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is a global SMTP client</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function sendNotification(string[] emailIds) returns error? {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function sends out email to specified email addresses.</p>
+                                            <p>This stubs the <code>get</code> function to return the specified HTTP response
+ for each call. The first call will return the <code>200</code> status code and
+ the second call will return the status code <code>403</code>.</p>
 
                                         </div>
                                     </div>
@@ -667,12 +564,7 @@ import ballerina/email;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:Email msg = {
-        &#39;from: &quot;builder@abc.com&quot;,
-        subject: &quot;Error Alert ...&quot;,
-        to: emailIds,
-        body: &quot;&quot;
-    };
+                                    <div class="highlight"><pre><code class=ballerina>    mockResponse.statusCode = 403;
 </code></pre></div>
 
                                 </td>
@@ -684,7 +576,10 @@ import ballerina/email;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:Error? response = smtpClient-&gt;send(msg);
+                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).withArguments(&quot;/headers&quot;)
+        .thenReturn(mockResponse);
+    res = performGet();
+    test:assertEquals(res.statusCode, 403);
 </code></pre></div>
 
                                 </td>
@@ -692,7 +587,8 @@ import ballerina/email;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This invokes the remote function <code>send()</code> in the smtp client object.</p>
+                                            <p>This stubs the <code>get</code> function to return the specified HTTP response
+ when a specific argument is passed.</p>
 
                                         </div>
                                     </div>
@@ -703,7 +599,7 @@ import ballerina/email;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (response is error) {
+                                    <div class="highlight"><pre><code class=ballerina>    mockResponse.statusCode = 404;
 </code></pre></div>
 
                                 </td>
@@ -715,32 +611,22 @@ import ballerina/email;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(&quot;error while sending the email: &quot; + response.message());
-        return response;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>returns an error if email sending fails</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    }
+                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;)
+        .withArguments(&quot;/get?test=123&quot;, test:ANY).thenReturn(mockResponse);
+    res = performGet();
+    test:assertEquals(res.statusCode, 404);
 }
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The object and record types should be denoted by the <code>test:ANY</code> constant</p>
+
+                                        </div>
+                                    </div>
                                     
                                 </td>
                             </tr>
@@ -758,68 +644,10 @@ function testSendNotification() {
                                 </td>
                             </tr>
                             
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    email:SmtpClient mockSmtpClient =
-        &lt;email:SmtpClient&gt;test:mock(email:SmtpClient);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object which subsequently needs to stubbed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(mockSmtpClient).when(&quot;send&quot;).doNothing();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>send()</code> method of the <code>mockSmtpClient</code> to do nothing.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    smtpClient = mockSmtpClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This assigns the mock client to the real.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string[] emailIds = [&quot;user1@test.com&quot;, &quot;user2@test.com&quot;];
+                                    <div class="highlight"><pre><code class=ballerina>    smtpClient = &lt;email:SmtpClient&gt;test:mock(email:SmtpClient);
 </code></pre></div>
 
                                 </td>
@@ -831,7 +659,10 @@ function testSendNotification() {
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    error? err = sendNotification(emailIds);
+                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(smtpClient).when(&quot;send&quot;).doNothing();
+    string[] emailIds = [&quot;user1@test.com&quot;, &quot;user2@test.com&quot;];
+    error? err = sendNotification(emailIds);
+    test:assertEquals(err, ());
 </code></pre></div>
 
                                 </td>
@@ -839,588 +670,9 @@ function testSendNotification() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This invokes the <code>sendNotification()</code> function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(err, ());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the <code>send()</code> function is not executed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main_test.bal` file residing inside the tests/ directory
-under the created module, and execute the `ballerina test` command from the project root directory.
-# Function mocking is not supported for testing single BAL files.
-$ ballerina test bbe_mocking
-Compiling source
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/bbe_mocking-2020r1-any-0.1.0.balo
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testSendNotification
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        1 passing
-        0 failing
-        0 skipped
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/test;
-import ballerina/http;
-import ballerina/io;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is another example for stubbing a member functions.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is a global http client with the backend URL</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function performGet() returns http:Response {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This function sends two <code>GET</code> requests to the specified
- endpoint and returns the response</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;Executing the 1st GET request&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response|error result = clientEndpoint-&gt;get(&quot;/headers&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This executes the first get request</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response response = &lt;http:Response&gt;result;
-    io:println(&quot;Status code: &quot; + response.statusCode.toString());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if(response.statusCode == 200) {
-        io:println(&quot;Executing the 2nd GET request&quot;);
-        http:Request req = new;
-        req.addHeader(&quot;Sample-Name&quot;, &quot;http-client-connector&quot;);
-        result = clientEndpoint-&gt;get(&quot;/get?test=123&quot;, req);
-        response = &lt;http:Response&gt;result;
-        io:println(&quot;Status code: &quot; + response.statusCode.toString());
-    }
-    return response;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If the status code of the first get request is <code>200</code>
- then the second request is executed</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testPerformGet1() {
-    io:println(&quot;I&#39;m the testPerformGet1 function&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client mockHttpClient = &lt;http:Client&gt;test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object which subsequently needs to stubbed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response mockResponse = new;
-    mockResponse.statusCode = 404;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates the HTTP response to be used for stubbing.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(mockHttpClient).when(&quot;get&quot;).thenReturn(mockResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> function of the mockHttpClient
- to return the specified HTTP response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = mockHttpClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This assigns the mock client to the real.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response res = performGet();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This invokes the <code>performGet()</code> function.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 404);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the response is equal to the
- value specified when stubbing.</p>
+                                            <p>This stubs the <code>send</code> method of the <code>mockSmtpClient</code> to do nothing.
+ This is used for functions with optional or no
+ return types</p>
 
                                         </div>
                                     </div>
@@ -1436,742 +688,6 @@ function testPerformGet1() {
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testPerformGet2() {
-    io:println(&quot;I&#39;m the testPerformGet2 function&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = &lt;http:Client&gt;test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object and  assigns the mock client
- to the real which subsequently needs to stubbed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response mockResponse = new;
-    mockResponse.statusCode = 404;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates one of the HTTP response to be used for stubbing.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;).thenReturn(new http:Response());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> function of the mockHttpClient to return.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response res = performGet();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This invokes the <code>performGet()</code> function
- This invokes the <code>get()</code> function twice and both the calls
- will return the status code <code>200</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 200);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the response is equal to the value
- specified when stubbing.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).when(&quot;get&quot;)
-        .withArguments(&quot;/headers&quot;).thenReturn(mockResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> function of the mockHttpClient to return the
-  status 404 when the <code>get()</code> is called with the specified argument.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    res = performGet();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This will execute only the first call to <code>get()</code>. Since the status
- code is not <code>200</code> the second call to <code>get()</code> will not be executed.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 404);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the response is equal to the value
- specified when stubbing.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testPerformGet3() {
-    io:println(&quot;I&#39;m the testPerformGet3 function&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client mockHttpClient = &lt;http:Client&gt;test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object which subsequently needs to stubbed</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response mockResponse = new;
-    mockResponse.statusCode = 404;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates one of the HTTP response to be used for stubbing</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(mockHttpClient).when(&quot;get&quot;)
-        .thenReturnSequence(new http:Response(), mockResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> function of the mockHttpClient to return
- the respective HTTP response for each call
- The first call to <code>get()</code> will return the <code>200</code> status code and
- the second <code>get()</code> will return the status code <code>404</code></p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = mockHttpClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This assigns the mock client to the real</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response res = performGet();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This invokes the <code>performGet()</code> function</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 404);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the response is equal to the value
- specified when stubbing</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>@test:Config {}
-function testPerformGet4() {
-    io:println(&quot;I&#39;m the testPerformGet4 function&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Client mockHttpClient = &lt;http:Client&gt;test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object which subsequently needs to stubbed</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response mockResponse = new;
-    mockResponse.statusCode = 404;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates the HTTP response to be used for stubbing</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(mockHttpClient).when(&quot;get&quot;).thenReturn(new http:Response());
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> function of the mockHttpClient to return</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:prepare(mockHttpClient).when(&quot;get&quot;)
-        .withArguments(&quot;/get?test=123&quot;, test:ANY).thenReturn(mockResponse);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This stubs the <code>get()</code> to return the specified HTTP response
- when the <code>get()</code> is called with the specified arguments.
- The object and record types should be denoted by the <code>test:ANY</code> constant</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = mockHttpClient;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This assigns the mock client to the real</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    http:Response res = performGet();
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This invokes the <code>performGet()</code> function</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(res.statusCode, 404);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the response is equal to the value
- specified when stubbing</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR">
-
-                                <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
-# Replace the content of the `main_test.bal` file residing inside the tests/ directory
-under the created module, and execute the `ballerina test` command from the project root directory.
-# Function mocking is not supported for testing single BAL files.
-$ ballerina test bbe_mocking
-Compiling source
-        ballerinatest/bbe_mocking:0.1.0
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Creating balos
-        target/balo/bbe_mocking-2020r1-any-0.1.0.balo
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>Running Tests
-        ballerinatest/bbe_mocking:0.1.0
-I&#39;m the testPerformGet4 function
-Executing the 1st GET request
-Status code: 200
-Executing the 2nd GET request
-Status code: 404
-I&#39;m the testPerformGet3 function
-Executing the 1st GET request
-Status code: 200
-Executing the 2nd GET request
-Status code: 404
-I&#39;m the testPerformGet2 function
-Executing the 1st GET request
-Status code: 200
-Executing the 2nd GET request
-Status code: 200
-Executing the 1st GET request
-Status code: 404
-I&#39;m the testPerformGet1 function
-Executing the 1st GET request
-Status code: 404
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        [pass] testPerformGet4
-        [pass] testPerformGet3
-        [pass] testPerformGet2
-        [pass] testPerformGet1
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR cOutputTr">
-
-                                <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        4 passing
-        0 failing
-        0 skipped
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                        </table>
-                    </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                            
-                        
-                            
-                                
-                                    <div class="bal-separator">
-                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
-                                        <table class="cTopBorder-table">
-                                            <tbody><tr>
-                                                <td class="cCodeTD"></td>
-                                                <td class="cDescTD"></td>
-                                            </tr>
-                                        </tbody></table>
-                                    </div>
-                                
-                            
-                        
-
-                    <div>
-
-                        <table class="cBBE-body">
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>import ballerina/test;
-import ballerina/http;
-import ballerina/io;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is another example for stubbing a member variable.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>http:Client clientEndpoint = new(&quot;http://postman-echo.com&quot;);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is a global http client with the backend URL.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>function getClientUrl() returns string {
-    io:println(&quot;Mock client url value: &quot; + clientEndpoint.url);
-    return clientEndpoint.url;
-}
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This returns the <code>url</code> member variable from the HTTP Client object.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -2181,49 +697,12 @@ import ballerina/io;
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>@test:Config {}
 function testGetClientUrl() {
+    string mockClientUrl = &quot;http://foo&quot;;
+    clientEndpoint = &lt;http:Client&gt;test:mock(http:Client);
 </code></pre></div>
 
                                 </td>
                                 <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    string mockClientUrl = &quot;http://foo&quot;;
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This is the mock url value to return.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    clientEndpoint = &lt;http:Client&gt;test:mock(http:Client);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This creates a default mock object and  assigns the mock client
- to the real which subsequently needs to stubbed.</p>
-
-                                        </div>
-                                    </div>
                                     
                                 </td>
                             </tr>
@@ -2232,6 +711,7 @@ function testGetClientUrl() {
 
                                 <td class="code leading">
                                     <div class="highlight"><pre><code class=ballerina>    test:prepare(clientEndpoint).getMember(&quot;url&quot;).thenReturn(mockClientUrl);
+    test:assertEquals(clientEndpoint.url, mockClientUrl);
 </code></pre></div>
 
                                 </td>
@@ -2239,28 +719,7 @@ function testGetClientUrl() {
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>This stubs the retrieval of the specifed
- member variable to return the <code>mockClientUrl</code>.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    test:assertEquals(getClientUrl(), mockClientUrl);
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>This verifies that the url is equal to the value
- specified when stubbing.</p>
+                                            <p>This stubs the value of <code>url</code> to return the specified string.</p>
 
                                         </div>
                                     </div>
@@ -2315,7 +774,6 @@ function testGetClientUrl() {
                                     <div class="highlight"><pre><code class=shell-session># To run this sample, create a Ballerina project and a module inside it.
 # Replace the content of the `main_test.bal` file residing inside the tests/ directory
 under the created module, and execute the `ballerina test` command from the project root directory.
-# Function mocking is not supported for testing single BAL files.
 $ ballerina test bbe_mocking
 Compiling source
         ballerinatest/bbe_mocking:0.1.0
@@ -2345,7 +803,20 @@ Compiling source
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>Running Tests
         ballerinatest/bbe_mocking:0.1.0
-Mock client url value: http://foo
+Executing the 1st GET request
+Status code: 500
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 200
+Executing the 1st GET request
+Status code: 200
+Executing the 2nd GET request
+Status code: 401
+Executing the 1st GET request
+Status code: 403
+Executing the 1st GET request
+Status code: 404
 </code></pre></div>
 
                                 </td>
@@ -2358,6 +829,8 @@ Mock client url value: http://foo
 
                                 <td class="code leading cOutput">
                                     <div class="highlight"><pre><code class=shell-session>        [pass] testGetClientUrl
+        [pass] testSendNotification
+        [pass] testPerformGet
 </code></pre></div>
 
                                 </td>
@@ -2369,7 +842,7 @@ Mock client url value: http://foo
                             <tr class="cTR cOutputTr">
 
                                 <td class="code cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>        1 passing
+                                    <div class="highlight"><pre><code class=shell-session>        3 passing
         0 failing
         0 skipped
 </code></pre></div>

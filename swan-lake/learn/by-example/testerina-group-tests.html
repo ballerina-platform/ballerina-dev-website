@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Group Tests
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/testerina-group-tests
+permalink: /learn/by-example/testerina-group-tests
 redirect_from:
   - /vswan-lake/learn/by-example/testerina-group-tests
   - /vswan-lake/learn/by-example/testerina-group-tests.html
@@ -82,7 +82,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/testerina-group-tests/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/testerina-group-tests/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -251,7 +251,7 @@ function testFunction3() {
 # `.bal` file, and execute the `ballerina test` command.
 # You need to have the ballerina-tools distribution
 # installed to execute this command.
-$ ballerina test testerina_group_tests.bal --groups g1 --groups g2
+$ ballerina test --groups g1 --groups g2 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>
@@ -296,7 +296,7 @@ I&#39;m in test belonging to group g1!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test testerina_group_tests.bal --groups g1
+                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test --groups g1 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>
@@ -341,7 +341,7 @@ I&#39;m in test belonging to group g1!
                             <tr class="cTR cOutputTr">
 
                                 <td class="code leading cOutput">
-                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test testerina_group_tests.bal --disable-groups g2
+                                    <div class="highlight"><pre><code class=shell-session>$ ballerina test --disable-groups g2 testerina_group_tests.bal 
 Compiling tests
     testerina_group_tests.bal
 </code></pre></div>

@@ -2,7 +2,7 @@
 layout: ballerina-example-page
 title: Type Conversion
 description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
-permalink: /swan-lake/learn/by-example/type-conversion
+permalink: /learn/by-example/type-conversion
 redirect_from:
   - /vswan-lake/learn/by-example/type-conversion
   - /vswan-lake/learn/by-example/type-conversion.html
@@ -22,7 +22,7 @@ redirect_from:
     <span class="kt">int</span> <span class="nx">empNo</span><span class="p">;</span>
 <span class="p">};</span>
 <span class="kd">function</span> <span class="nx">convertEmployeeToPerson</span><span class="p">(</span><span class="nx">Employee</span> <span class="nx">emp</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">emp</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Employee to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -30,7 +30,7 @@ redirect_from:
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="kd">function</span> <span class="nx">convertAnydataMapToPerson</span><span class="p">(</span><span class="kt">map</span><span class="p">&lt;</span><span class="nx">anydata</span><span class="p">&gt;</span> <span class="nx">m</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">constructFrom</span><span class="p">(</span><span class="nx">m</span><span class="p">);</span>
+    <span class="nx">Person</span><span class="p">|</span><span class="nx">error</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">m</span><span class="p">.</span><span class="nx">cloneWithType</span><span class="p">(</span><span class="nx">Person</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">Person</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;map&lt;anydata&gt; to Person, name: &quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -83,9 +83,9 @@ redirect_from:
                     <tr>
                         <td class="cLeftTD">
                             <h2>Type Conversion</h2>
-                            <p><p>The <code>.constructFrom()</code> method creates a new value with a target storage type from a given <code>anydata</code>-typed
+                            <p><p>The <code>.cloneWithType()</code> method creates a new value with a target storage type from a given <code>anydata</code>-typed
  value, and assigns it to a target variable.
- <code>.constructFrom()</code> is defined on all structured types, and returns an error if the operation is unsuccessful.</p>
+ <code>.cloneWithType()</code> is defined on all structured types, and returns an error if the operation is unsuccessful.</p>
 </p>
 
                         </td>
@@ -122,7 +122,7 @@ redirect_from:
                                             <a class="copy"><img src="/img/copy-icon.svg" /></a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/type-conversion/"><img src="/img/github-logo-green.svg" /></a>
+                                            <a target="_blank" href="https://github.com/ballerina-lang/ballerina/tree/master/examples/type-conversion/"><img src="/img/github-logo-green.svg" /></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -251,7 +251,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(emp);
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = emp.cloneWithType(Person);
     if (res is Person) {
 </code></pre></div>
 
@@ -315,7 +315,7 @@ import ballerina/lang.&#39;int;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = Person.constructFrom(m);
+                                    <div class="highlight"><pre><code class=ballerina>    Person|error res = m.cloneWithType(Person);
     if (res is Person) {
 </code></pre></div>
 

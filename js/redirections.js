@@ -163,8 +163,5 @@ let redirections = {
     "/1.1/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
     "/1.0/learn/coding-conventions/statements/":"/1.0/learn/style-guide/statements",
     "/0.991/learn/coding-conventions/statements/":"/0.991/learn/style-guide/statements",
-    "/swan-lake/learn/api-docs/ballerina":"/swan-lake/learn/api-docs/",
-
-
 
 };

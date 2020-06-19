@@ -719,7 +719,7 @@ Now, you can specify your native jar dependencies with maven artifact id in the 
 
 E.g.,
 
-```toml
+```ballerina
 [[platform.libraries]]
 modules = [ "module1", "module2"]
 artifactId = "json"

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides an implementation for sending/receiving messages to/from another application process (local or remote) for both connection-oriented and connectionless protocols.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,socket">
+
+    <title>API Docs - Client : UdpClient</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Clients</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="Client.html">Client</a> 
+                        </li>
+                    
+                        <li class="active active-item">
+                            <a href="UdpClient.html">UdpClient</a> 
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../socket/index.html">
+            <h3>socket</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../socket/index.html#records">Records</a>
+        </li>
+        
+        
+        
+            <li>
+                <a data="clients" href="../../socket/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../socket/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../socket/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../socket/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Clients</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="Client.html">Client</a>
+                            </li>
+                        
+                            <li class="active active-item">
+                                <a href="UdpClient.html">UdpClient</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../socket/index.html">
+            <h3>socket</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../socket/index.html#records">Records</a>
+        </li>
+        
+        
+        
+            <li>
+                <a data="clients" href="../../socket/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../socket/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../socket/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../socket/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Clients - </span>
+                
+                    <a href="../../socket/index.html">socket</a> :
+                
+                <span class="clients">UdpClient</span>
+            </h1>
+            <p><p>Initializes the UDP client based on the provided configurations.</p>
+</p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                            <h2>Constructor</h2>
+<h3 >__init</h3><p>(<a href="../../socket/records/Address.html">Address</a>? localAddress, <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>? config)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>localAddress</b><span class="type">  <a href="../../socket/records/Address.html">Address</a>?</span> ()</li>
+                <li>
+                    <p>Local binding of the interface and port</p>
+
+                </li>
+            </ul>
+        </div>
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>config</b><span class="type">  <a href="../../socket/records/UdpClientConfig.html">UdpClientConfig</a>?</span> ()</li>
+                <li>
+                    <p>The configurations for the UDP client</p>
+
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                    
+                        <h2>Remote Methods</h2>
+                        <table>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="sendTo"><a
+                                            class="functions" href="#sendTo">sendTo</a></td>
+                                    <td class="module-desc"><p>Sends the given data to the specified remote client.</p>
+<pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
+</code></pre>
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="receiveFrom"><a
+                                            class="functions" href="#receiveFrom">receiveFrom</a></td>
+                                    <td class="module-desc"><p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
+<pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
+</code></pre>
+</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="module-title truncate functions" title="close"><a
+                                            class="functions" href="#close">close</a></td>
+                                    <td class="module-desc"><p>Closes the client socket connection.</p>
+<pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
+</code></pre>
+</td>
+                                </tr>
+                            
+                        </table>
+                    
+
+                    
+                
+                    
+                        <h2>Fields</h2>
+                                
+                                <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >localPort</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The local port number to which this socket is bound</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >interface</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The network interface to bind</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >id</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>A unique identifier to identify each client</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                            
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="sendTo" title="sendTo">
+             <a class="url-link" href="#sendTo">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > sendTo </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> content, <a href="../../socket/records/Address.html">Address</a> address)</p>
+            <b> returns </b><span class="builtin-type">int</span> | <a href="../../socket/types.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Sends the given data to the specified remote client.</p>
+<pre><code class="language-ballerina"> int|socket:Error result = socketClient-&gt;sendTo(c1, {host: &quot;localhost&quot;, port: 48826});
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >content</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The content to be sent to the client socket</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >address</span>
+                        <span class="type">  <a href="../../socket/records/Address.html">Address</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The address of the remote client socket</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">int</span> | <a href="../../socket/types.html#Error">Error</a></span>)</li>
+                <li><p>The number of bytes got written or else a <code>socket:Error</code> if the given data can't be sent</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="receiveFrom" title="receiveFrom">
+             <a class="url-link" href="#receiveFrom">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > receiveFrom </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">int</span> length)</p>
+            <b> returns </b><span>[</span><span class="array-type"><span class="builtin-type">byte</span>[]</span>, <span class="builtin-type">int</span>, <a href="../../socket/records/Address.html">Address</a><span>]</span> | <a href="../../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Reads data from the remote client. If the data has the specified length, then it waits until that number of bytes
+are received from the client. Else, it returns the data available in the OS buffer or waits until the data is received.
+If the request length is lesser than the data in the buffer, then the rest will be discarded.</p>
+<pre><code class="language-ballerina"> [byte[], int, Address]|ReadTimedOutError result = socketClient-&gt;receiveFrom();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >length</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default -100)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Represents the number of bytes, which should be read</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span>[</span><span class="array-type"><span class="builtin-type">byte</span>[]</span>, <span class="builtin-type">int</span>, <a href="../../socket/records/Address.html">Address</a><span>]</span> | <a href="../../socket/errors.html#ReadTimedOutError">ReadTimedOutError</a></span>)</li>
+                <li><p>The content as a byte array, the number of bytes read, the address of the sender,
+or else a <code>socket:Error</code> if the data can't be read from the client</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="close" title="close">
+             <a class="url-link" href="#close">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > close </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><a href="../../socket/types.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Closes the client socket connection.</p>
+<pre><code class="language-ballerina"> socket:Error? closeResult = socketClient-&gt;close();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../socket/types.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>socket:Error</code> if it can't close the connection or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

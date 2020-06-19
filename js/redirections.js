@@ -1,8 +1,6 @@
 let redirections = {
     // "/SOURCE (BROKEN) URL without trailing slash":"/DESTINATION (CORRECT) URL with slash"
-    "/learn/intellij-plugin-old":"/learn/tools-ides/setting-up-intellij-idea/",
-    "/source3":"/why/",
-
+ 
     "/swan-lake/learn/tools-ides/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
     "/swan-lake/learn/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
      "/1.1/learn/tools-ides/setting-up-visual-studio-code":"/1.1/learn/vscode-plugin/",
@@ -164,8 +162,8 @@ let redirections = {
     "/swan-lake/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
     "/1.1/learn/coding-conventions/statements":"/1.1/learn/style-guide/statements",
     "/1.0/learn/coding-conventions/statements/":"/1.0/learn/style-guide/statements",
-    "/0.991/learn/coding-conventions/statements/":"/0.991/learn/style-guide/statements"
-
+    "/0.991/learn/coding-conventions/statements/":"/0.991/learn/style-guide/statements",
+    "/swan-lake/learn/api-docs/ballerina":"/swan-lake/learn/api-docs/",
 
 
 

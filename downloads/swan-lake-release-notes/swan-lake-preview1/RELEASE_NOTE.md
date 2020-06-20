@@ -3,6 +3,8 @@ layout: release-note
 title: Swan Lake Preview 1 Release note
 ---
 # Overview of Ballerina Swan Lake - Preview 1
+Ballerina Swan Lake will be a major new version of Ballerina that we plan to release in January 2021. We will be doing major releases every 6 months from then on. We also plan to use popular ballet names as the codename for each release - so the 2021-07 release will be the Nutcracker release. We will announce details on maintenance of released versions and will also have an LTS release model similar to Ubuntu or Java.
+
 This release is the first preview version of Ballerina Swan Lake. This release includes a new set of language features and significant improvements to the compiler, runtime, standard libraries, and developer tooling.
 
 You can use the update tool to update to Ballerina Swan Lake Preview 1 as follows.
@@ -12,7 +14,7 @@ You can use the update tool to update to Ballerina Swan Lake Preview 1 as follow
 If you are already using jBallerina, you can directly update your distribution to the Swan Lake channel using the [Ballerina Update Tool](swan-lake/learn/keeping-ballerina-up-to-date/). To do this, first, execute the command below to get the Update Tool updated to its latest version. 
                         
 > `ballerina update`
-                        
+
  Next, execute the command below to update to Swan Lake Preview 1.
 
  > `ballerina dist pull slp1`                  
@@ -22,28 +24,31 @@ However, if you are using a jBallerina version below 1.1.0, install via the [ins
 **For new users:**
 
 If you have not installed jBallerina, then download the [installers](https://ballerina.io/downloads/) to install.
- 
+
 # Highlights
 
-- New recursive descent parser
-- Type system enhancements
-- Improved language integration support
-- Improvements on Standard Library modules 
-- Improved mocking support in testing
+- Immutability in the type system: Ballerina compiler guarantees that when you state a value as immutable,  it stays unchanged 
+- `distinct` types bring native support for nominal typing into the structural type system in Ballerina 
+- Improved the error type design eliminates pain-points in the previous version. The `distinct error` type allows programmers  to define more refined error types that support common error handling use cases
+- Improved transaction support in the language: A set of language features that are designed to make it easier and more convenient to write robust applications in Ballerina
+- Enhanced Query expressions that bring the power of SQL-like query capabilities directly into the language as comprehensions for data processing
+- Introducing the `table` type: A new built-in collection type that works like a general-purpose hash table, where the keys are part of the values being stored
+- Improved Ballerina SQL module API that leverages the latest languages features such as `stream` type, query expressions, and raw templates
+- The new mocking API in Ballerina test framework helps you to mock an entire object or a function allowing you to test your code independent of external dependencies
 
 # What's new in Ballerina Swan Lake - Preview 1
 
 ## Language
 
 The Language implementation is based on [Ballerina Language Specifications Draft 2020-06-18](https://ballerina.io/spec/lang/draft/v2020-06-18/). This Specification introduces a set of new features and improvements in the following main areas.   
- 
+
 - Type system enhancements
 - Improved immutability support 
 - New transactions support 
 - Improved query support 
- 
+
 Some of these new language features are revamped versions of the existing language features. Therefore, the source code will not be backward compatible with the stable Ballerina 1.2 releases. 
- 
+
 In addition to the new Language features, this release introduces a new parser implementation aiming to improve the performance and usability of the compiler. Now, the compiler has more control over syntax errors and it can provide better diagnostics for syntax errors. Additionally, the new parser has tightened up the language parser rules with respect to the Ballerina language specification. However, it still does not cover the full set of the language features. This will be fixed in the upcoming preview versions.  
 
 ### Type system enhancements
@@ -128,7 +133,7 @@ Now error value has a message string, an optional cause, and mapping value for a
 
 *New Syntax*
 ```ballerina
-type Error error<typeParameter>>;
+type Error error<typeParameter>;
 ```
 
 Here the error `typeParameter` has to be a subtype of `map<anydata|readonly>`. The error type parameter is optional and if absent, it defaults to `map<anydata|readonly>`. If present, it must be a subtype of `map<anydata|readonly>`.

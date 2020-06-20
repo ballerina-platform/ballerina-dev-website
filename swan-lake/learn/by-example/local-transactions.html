@@ -1,0 +1,604 @@
+---
+layout: ballerina-example-page
+title: Local Transactions
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/local-transactions
+redirect_from:
+  - /vswan-lake/learn/by-example/local-transactions
+  - /vswan-lake/learn/by-example/local-transactions.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span>
+                <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
+                                        <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS CUSTOMER &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;(ID INTEGER, NAME VARCHAR(30))&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create CUSTOMER table&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS SALARY &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;(ID INTEGER, MON_SALARY FLOAT)&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create SALARY table&quot;</span><span class="p">);</span>
+    <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">customerResult</span> <span class="p">=</span>
+                        <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO CUSTOMER(ID,NAME) &quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;VALUES (1, &#39;Anne&#39;)&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">salaryResult</span> <span class="p">=</span>
+                        <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO SALARY(ID, MON_SALARY)&quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot; VALUES (1, 2500)&quot;</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">transInfo</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()){</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed&quot;</span><span class="p">);</span>
+            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">customerResult</span><span class="p">,</span> <span class="s">&quot;Insert data into CUSTOMER table&quot;</span><span class="p">);</span>
+            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">salaryResult</span><span class="p">,</span> <span class="s">&quot;Insert data into SALARY table&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE CUSTOMER&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table CUSTOMER&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE SALARY&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table SALARY&quot;</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="err">#</span> <span class="nx">Before</span> <span class="nx">running</span> <span class="nx">this</span> <span class="nx">sample</span><span class="p">,</span> <span class="nx">change</span> <span class="nx">the</span> <span class="nx">H2</span> <span class="nx">DB</span> <span class="nx">connection</span> <span class="nx">properties</span> <span class="k">as</span> <span class="nx">required</span><span class="p">.</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Local Transactions</h2>
+                            <p><p>A Ballerina transaction is a series of data manipulation statements
+ that must either fully complete or fully fail, thereby, leaving the
+ system in a consistent state. This sample uses an H2 database, which is
+ created when running the sample. Prior to running this sample,
+ the DB connection properties need to be changed as required.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="knative-deployment.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Knative Deployment</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="local-transactions-with-handlers.html">
+                                        <span>NEXT ></span>
+                                        <p>Local Transactions with handlers</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="local-transactions">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/local-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+import ballerina/io;
+import ballerina/sql;
+import ballerina/java.jdbc;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client dbClient =
+                check new (url = &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
+                                        user = &quot;test&quot;, password = &quot;test&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The JDBC Client for the H2 database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS CUSTOMER &quot; +
+                                &quot;(ID INTEGER, NAME VARCHAR(30))&quot;);
+    handleExecute(ret, &quot;Create CUSTOMER table&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create the tables that are required for the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS SALARY &quot; +
+                                &quot;(ID INTEGER, MON_SALARY FLOAT)&quot;);
+    handleExecute(ret, &quot;Create SALARY table&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a <code>transaction</code> statement block. It is a must to have either
+ a commit action or a rollback statement in it. The transaction scope ends after
+ the commit action or rollback statement.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var customerResult =
+                        dbClient-&gt;execute(&quot;INSERT INTO CUSTOMER(ID,NAME) &quot; +
+                                        &quot;VALUES (1, &#39;Anne&#39;)&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the first remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var salaryResult =
+                        dbClient-&gt;execute(&quot;INSERT INTO SALARY(ID, MON_SALARY)&quot; +
+                                        &quot; VALUES (1, 2500)&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the second remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+        io:println(transInfo);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns information about the current transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var commitResult = commit;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>commit</code> action performs the commit operation of the current transaction.
+ The result of the commit action is an error. Otherwise, the result is <code>()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if(commitResult is ()){
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Based on the result of the <code>commit</code> action, the followup tasks could be performed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction committed&quot;);
+            handleExecute(customerResult, &quot;Insert data into CUSTOMER table&quot;);
+            handleExecute(salaryResult, &quot;Insert data into SALARY table&quot;);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Any action that needs to be performed after the transaction, which is
+ committed should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction failed&quot;);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the transaction is failed, any action that needs to perform
+ after the commit failure should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE CUSTOMER&quot;);
+    handleExecute(ret, &quot;Drop table CUSTOMER&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Drop the tables.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE SALARY&quot;);
+    handleExecute(ret, &quot;Drop table SALARY&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    check dbClient.close();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the JDBC client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
+    if (returned is sql:ExecutionResult) {
+        io:println(message + &quot; status: &quot;, returned.affectedRowCount);
+    } else {
+        io:println(message + &quot; failed: &quot;, returned.message());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Function to handle the return value of the <code>execute</code> remote function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># Before running this sample, change the H2 DB connection properties as required.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run local_transactions.bal
+Create CUSTOMER table status: 0
+Create SALARY table status: 0
+xid=a87ced8b-a2b6-4f2e-9afc-befbbc6b78bd retryNumber=0 startTime=1592403803161 prevAttempt=
+Transaction committed
+Insert data into CUSTOMER table status: 1
+Insert data into SALARY table status: 1
+Drop table CUSTOMER status: 0
+Drop table SALARY status: 0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

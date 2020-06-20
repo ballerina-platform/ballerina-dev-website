@@ -1,0 +1,1011 @@
+---
+layout: ballerina-example-page
+title: HTTP Cookies
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/http-cookies
+redirect_from:
+  - /vswan-lake/learn/by-example/http-cookies
+  - /vswan-lake/learn/by-example/http-cookies.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span><span class="nx">listener</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Listener</span> <span class="nx">serverEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">9095</span><span class="p">);</span><span class="nd">@http:ServiceConfig {</span>
+    <span class="nx">basePath</span><span class="p">:</span> <span class="s">&quot;/cookie-demo&quot;</span>
+<span class="p">}</span><span class="kd">service</span> <span class="nx">cookieServer</span> <span class="nx">on</span> <span class="nx">serverEP</span> <span class="p">{</span>
+    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;POST&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/login&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">login</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getJsonPayload</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">details</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">name</span> <span class="p">=</span> <span class="nx">details</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+            <span class="kt">json</span><span class="p">|</span><span class="nx">error</span> <span class="nx">password</span> <span class="p">=</span> <span class="nx">details</span><span class="p">.</span><span class="nx">password</span><span class="p">;</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="nx">is</span> <span class="kt">json</span> <span class="o">&amp;&amp;</span> <span class="nx">password</span> <span class="nx">is</span> <span class="kt">json</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">password</span> <span class="o">==</span> <span class="s">&quot;p@ssw0rd&quot;</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+                    <span class="nx">cookie</span><span class="p">.</span><span class="nx">path</span> <span class="p">=</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>                    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">response</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+                    <span class="nx">response</span><span class="p">.</span><span class="nx">addCookie</span><span class="p">(</span><span class="nx">cookie</span><span class="p">);</span>
+                    <span class="nx">response</span><span class="p">.</span><span class="nx">setTextPayload</span><span class="p">(</span><span class="s">&quot;Login succeeded&quot;</span><span class="p">);</span>
+                    <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Failed to respond&quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>    <span class="nd">@http:ResourceConfig {</span>
+        <span class="nx">methods</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;GET&quot;</span><span class="p">],</span>
+        <span class="nx">path</span><span class="p">:</span> <span class="s">&quot;/welcome&quot;</span>
+    <span class="p">}</span>
+    <span class="kd">resource</span> <span class="kd">function</span> <span class="nx">welcome</span><span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Caller</span> <span class="nx">caller</span><span class="p">,</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">req</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">cookies</span> <span class="p">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">getCookies</span><span class="p">();</span>
+        <span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span><span class="p">[]</span> <span class="nx">usernameCookie</span> <span class="p">=</span> <span class="nx">cookies</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span>
+                                <span class="p">(</span><span class="nx">http</span><span class="p">:</span><span class="nx">Cookie</span> <span class="nx">cookie</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">cookie</span><span class="p">.</span><span class="nx">name</span> <span class="o">==</span> <span class="s">&quot;username&quot;</span><span class="p">;</span>
+        <span class="p">});</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">usernameCookie</span><span class="p">.</span><span class="nx">length</span><span class="p">()</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">string</span><span class="err">?</span> <span class="nx">user</span> <span class="p">=</span> <span class="nx">usernameCookie</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">user</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Welcome back &quot;</span> <span class="o">+</span> <span class="p">&lt;</span><span class="nd">@untainted&gt; user);            } else {</span>
+                <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Please login&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">result</span> <span class="p">=</span> <span class="nx">caller</span><span class="o">-&gt;</span><span class="nx">respond</span><span class="p">(</span><span class="s">&quot;Please login&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">log</span><span class="p">;</span>
+<span class="nx">http</span><span class="p">:</span><span class="nx">ClientConfiguration</span> <span class="nx">clientEPConfig</span> <span class="p">=</span> <span class="p">{</span>
+    <span class="nx">cookieConfig</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">enabled</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">httpClient</span> <span class="p">=</span> <span class="nx">new</span><span class="p">(</span><span class="s">&quot;http://localhost:9095/cookie-demo&quot;</span><span class="p">,</span>
+                                  <span class="nx">clientEPConfig</span><span class="p">);</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Request</span> <span class="nx">request</span> <span class="p">=</span> <span class="nx">new</span><span class="p">;</span>
+    <span class="kt">json</span> <span class="nx">jsonPart</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">name</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span>
+        <span class="nx">password</span><span class="p">:</span> <span class="s">&quot;p@ssw0rd&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">request</span><span class="p">.</span><span class="nx">setJsonPayload</span><span class="p">(</span><span class="nx">jsonPart</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">loginResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">post</span><span class="p">(</span><span class="s">&quot;/login&quot;</span><span class="p">,</span> <span class="nx">request</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">loginResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">loginMessage</span> <span class="p">=</span> <span class="nx">loginResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">loginMessage</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="s">&quot;Login failed&quot;</span><span class="p">,</span> <span class="nx">loginMessage</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="nx">welcomeResp</span> <span class="p">=</span> <span class="nx">httpClient</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/welcome&quot;</span><span class="p">);</span>            <span class="k">if</span> <span class="p">(</span><span class="nx">welcomeResp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kt">string</span><span class="p">|</span><span class="nx">error</span> <span class="nx">textPayload</span> <span class="p">=</span> <span class="nx">welcomeResp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">textPayload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">log</span><span class="p">:</span><span class="nx">printInfo</span><span class="p">(</span><span class="nx">textPayload</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">:</span><span class="nx">printError</span><span class="p">(</span><span class="nx">loginResp</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>HTTP Cookies</h2>
+                            <p><p>This example demonstrates how to handle HTTP cookies in a Ballerina service and client.
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="http-filters.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>HTTP Interceptors/Filters</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-1-1-to-2-0-protocol-switch.html">
+                                        <span>NEXT ></span>
+                                        <p>HTTP 1.1 to 2.0 Protocol Switch</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="http-cookies">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/http-cookies/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>listener http:Listener serverEP = new (9095);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>@http:ServiceConfig {
+    basePath: &quot;/cookie-demo&quot;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>service cookieServer on serverEP {
+    @http:ResourceConfig {
+        methods: [&quot;POST&quot;],
+        path: &quot;/login&quot;
+    }
+    resource function login(http:Caller caller, http:Request req) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        json|error details = req.getJsonPayload();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Retrieve the JSON payload from the request as it
+ contains the login details of a user.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (details is json) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            json|error name = details.name;
+            json|error password = details.password;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Retrieve the username and password.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (name is json &amp;&amp; password is json) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                if (password == &quot;p@ssw0rd&quot;) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Check the password value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                    http:Cookie cookie = new(&quot;username&quot;, name.toString());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Cookie.html">Create a new cookie</a> by setting <code>name</code> as the <code>username</code>
+ and <code>value</code> as the logged-in user&rsquo;s name.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                    cookie.path = &quot;/&quot;;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set the cookies path as <code>/</code> to apply it to all the
+ resources in the service.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                    http:Response response = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                    response.addCookie(cookie);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Response.html#addCookie">Add the created cookie to the response</a>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                    response.setTextPayload(&quot;Login succeeded&quot;);
+                    var result = caller-&gt;respond(response);
+                    if (result is error) {
+                        log:printError(&quot;Failed to respond&quot;, result);
+                    }
+                }
+            }
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Set a message payload to inform that the login has
+ been succeeded.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    @http:ResourceConfig {
+        methods: [&quot;GET&quot;],
+        path: &quot;/welcome&quot;
+    }
+    resource function welcome(http:Caller caller, http:Request req) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        http:Cookie[] cookies = req.getCookies();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><a href="https://ballerina.io/learn/api-docs/ballerina/http/objects/Request.html#getCookies">Retrieve cookies from the request</a>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        http:Cookie[] usernameCookie = cookies.filter(function
+                                (http:Cookie cookie) returns boolean {
+            return cookie.name == &quot;username&quot;;
+        });
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Get the cookie value of the <code>username</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (usernameCookie.length() &gt; 0) {
+            string? user = usernameCookie[0].value;
+            if (user is string) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Welcome back &quot; + &lt;@untainted&gt; user);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Respond with the username added to the welcome message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>                var result = caller-&gt;respond(&quot;Please login&quot;);
+            }
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the user is <code>nil</code>, send a login message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>            var result = caller-&gt;respond(&quot;Please login&quot;);
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the <code>username</code> cookie is not presented, send a login message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run cookie_server.bal
+[ballerina/http] started HTTP/WS listener 0.0.0.0:9095
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                                    <div class="bal-separator">
+                                        <!-- This table is a temporary table to add spacing between output and next bal file-->
+                                        <table class="cTopBorder-table">
+                                            <tbody><tr>
+                                                <td class="cCodeTD"></td>
+                                                <td class="cDescTD"></td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/http;
+import ballerina/log;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>http:ClientConfiguration clientEPConfig = {
+    cookieConfig: {
+        enabled: true
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>HTTP client configurations associated with <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/CookieConfig.html">enabling cookies</a>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    http:Client httpClient = new(&quot;http://localhost:9095/cookie-demo&quot;,
+                                  clientEPConfig);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a new HTTP client by giving the URL and the client configuration.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    http:Request request = new;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize an HTTP request.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    json jsonPart = {
+        name: &quot;John&quot;,
+        password: &quot;p@ssw0rd&quot;
+    };
+    request.setJsonPayload(jsonPart);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send a username and a password as a JSON payload to the backend.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var loginResp = httpClient-&gt;post(&quot;/login&quot;, request);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Send an outbound request to the <code>login</code> backend resource.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (loginResp is http:Response) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        string|error loginMessage = loginResp.getTextPayload();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This response contains the cookies added by the backend server.
+ Get the login response message.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (loginMessage is error) {
+            log:printError(&quot;Login failed&quot;, loginMessage);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            var welcomeResp = httpClient-&gt;get(&quot;/welcome&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>When the login is successful, make another request to the
+ <code>/welcome</code> resource of the backend service.
+ As cookies are enabled in the HTTP client, it automatically handles cookies
+ received with the login response and sends the relevant cookies
+ to the <code>welcome</code> service resource.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            if (welcomeResp is http:Response) {
+                string|error textPayload = welcomeResp.getTextPayload();
+                if (textPayload is string) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>                    log:printInfo(textPayload);
+                }
+            }
+        }
+    } else {
+        log:printError(loginResp.message());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A welcome message with the sent username
+ will get printed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run http_client.bal
+2020-06-12 15:52:15,513 INFO  [] - Welcome back John
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

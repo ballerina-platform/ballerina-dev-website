@@ -3,7 +3,7 @@ layout: ballerina-landing-page
 title: Release Notes
 permalink: /downloads/archived/
 ---
-<script src="{{ "/js/download/archived_download.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/download/swan_lake_archived_download.js" | prepend: site.baseurl }}"></script>
 <link rel="stylesheet" href="/css/download-page.css" />
 <div class="row cBallerina-io-Gray-row">
     <div class="container">

@@ -1,0 +1,488 @@
+---
+layout: ballerina-example-page
+title: Local Transactions with handlers
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/local-transactions-with-handlers
+redirect_from:
+  - /vswan-lake/learn/by-example/local-transactions-with-handlers
+  - /vswan-lake/learn/by-example/local-transactions-with-handlers.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">onRollbackFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
+                                <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #1 executed.&quot;</span><span class="p">);</span>
+        <span class="p">};</span>        <span class="k">var</span> <span class="nx">onRollbackFunc2</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
+                                        <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler #2 executed.&quot;</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">var</span> <span class="nx">onCommitFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc2</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">onCommit</span><span class="p">(</span><span class="nx">onCommitFunc</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">transInfo</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">res</span> <span class="p">=</span> <span class="nx">trap</span> <span class="nx">throwError</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">res</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant panicked.&quot;</span><span class="p">);</span>
+            <span class="nx">rollback</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Local participant successfully executed.&quot;</span><span class="p">);</span>
+            <span class="k">var</span> <span class="nx">commitRes</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">throwError</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Invoke local participant function.&quot;</span><span class="p">);</span>
+    <span class="nx">error</span> <span class="nx">er</span> <span class="p">=</span> <span class="nx">error</span><span class="p">(</span><span class="s">&quot;Simulated Failure&quot;</span><span class="p">);</span>
+    <span class="nx">panic</span> <span class="nx">er</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Local Transactions with handlers</h2>
+                            <p><p>A Ballerina transaction is a series of data manipulation statements
+ that must either fully complete or fully fail, thereby, leaving the
+ system in a consistent state. This example demonstrates how to use
+ transaction util methods and the various usages of them.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="local-transactions.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Local Transactions</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="non-transaction-retry.html">
+                                        <span>NEXT ></span>
+                                        <p>Non Transaction Retry</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="local-transactions-with-handlers">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/local-transactions-with-handlers/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    transaction {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>transaction</code> block initiates the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc = function(transactions:Info info,
+                                error? cause, boolean willRetry) {
+            io:println(&quot;Rollback handler #1 executed.&quot;);
+        };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the rollback handler, which is triggered once the
+ rollback statement is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc2 = function(transactions:Info info,
+                                        error? cause, boolean willRetry) {
+            io:println(&quot;Rollback handler #2 executed.&quot;);
+        };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var onCommitFunc = function(transactions:Info info) {
+            io:println(&quot;Commit handler executed.&quot;);
+        };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the commit handler, which gets triggered once the commit
+ action is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:onRollback(onRollbackFunc);
+        transactions:onRollback(onRollbackFunc2);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Register the rollback handler to the transaction context.
+ Multiple rollback handlers can be registered and they
+ are executed in reverse order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:onCommit(onCommitFunc);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Register the commit handler to the transaction context.
+ Multiple commit handlers can be registered and they
+ are executed in reverse order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+        io:println(transInfo);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns information about the current transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var res = trap throwError();
+        if (res is error) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Invokes the local participant.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Local participant panicked.&quot;);
+            rollback;
+        } else {
+            io:println(&quot;Local participant successfully executed.&quot;);
+            var commitRes = commit;
+        }
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The local participant gets panicked.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function throwError() {
+    io:println(&quot;Invoke local participant function.&quot;);
+    error er = error(&quot;Simulated Failure&quot;);
+    panic er;
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The method, which throws the error.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run local_transactions_with_handlers.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>xid=3ba5e301-3cfd-40f9-bd6f-1faf8d61b0ac retryNumber=0 startTime=1592404040052 prevAttempt=
+Invoke local participant function.
+Local participant panicked.
+Rollback handler #2 executed.
+Rollback handler #1 executed.
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

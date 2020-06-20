@@ -1,0 +1,699 @@
+---
+layout: ballerina-example-page
+title: Read-only Objects and Fields
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/readonly-objects-and-fields
+redirect_from:
+  - /vswan-lake/learn/by-example/readonly-objects-and-fields
+  - /vswan-lake/learn/by-example/readonly-objects-and-fields.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">string</span> <span class="nx">department</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">department</span> <span class="p">=</span> <span class="nx">department</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="nx">details</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">Controller</span> <span class="nx">abstract</span> <span class="nx">object</span> <span class="p">{</span>
+   <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+   <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>   <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">DefaultController</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Default: ${self.id}`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">type</span> <span class="nx">MainController</span> <span class="nx">readonly</span> <span class="nx">object</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>    <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">readonly</span> <span class="o">&amp;</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">id</span> <span class="p">=</span> <span class="nx">id</span><span class="p">;</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">codes</span> <span class="p">=</span> <span class="nx">codes</span><span class="p">;</span>
+    <span class="p">}</span>    <span class="kd">function</span> <span class="nx">getId</span><span class="p">()</span> <span class="nx">returns</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">string</span> <span class="s">`Main: ${self.id}`</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Details</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableDetails</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
+        <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+    <span class="p">};</span>
+    <span class="nx">Employee</span> <span class="nx">emp</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;IT&quot;</span><span class="p">,</span> <span class="nx">immutableDetails</span><span class="p">);</span>    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">emp</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;details is immutable: &quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+    <span class="nx">DefaultController</span> <span class="nx">dc</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">1122</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;LC&quot;</span><span class="p">,</span> <span class="s">&quot;AB&quot;</span><span class="p">]);</span>
+    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">controllerOne</span> <span class="p">=</span> <span class="nx">dc</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">controllerOne</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
+    <span class="nx">MainController</span> <span class="nx">mc</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="mi">4246</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;AB&quot;</span><span class="p">]);</span>
+    <span class="nx">Controller</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">controllerTwo</span> <span class="p">=</span> <span class="nx">mc</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">controllerTwo</span><span class="p">.</span><span class="nx">getId</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Read-only Objects and Fields</h2>
+                            <p><p>Fields of an object can be marked as <code>readonly</code>. These fields cannot be updated once the object is created and can
+ only hold immutable values.
+ If all the fields of an object are <code>readonly</code>, the object itself is considered to have its read-only bit set and
+ can thus be used where a <code>readonly</code> (immutable) value is expected.
+ An object itself can also be defined as a <code>readonly object</code>. This is equivalent to all the fields of the object being
+ <code>readonly</code>. A <code>readonly object</code> value can also be used where an immutable value is expected.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="anonymous-objects.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Anonymous Objects</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="object-type-reference.html">
+                                        <span>NEXT ></span>
+                                        <p>Object Type Reference</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="readonly-objects-and-fields">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/readonly-objects-and-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Details record {|
+    int id;
+    string country;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Employee object {
+    string department;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An object with both read-only and non-read-only fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    readonly Details details;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>details</code> is a <code>readonly</code> field which cannot be updated once the value is created.
+ <code>details</code> also expects an immutable value, and thus the effective contextually expected type for
+ <code>details</code> is <code>Details &amp; readonly</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function init(string department, readonly &amp; Details details) {
+        self.department = department;
+        self.details = details;
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Controller abstract object {
+   int id;
+   string[] codes;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>An abstract object with non-readonly fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>   function getId() returns string;
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type DefaultController object {
+    readonly int id;
+    readonly string[] codes;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A non-abstract object with all read-only fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function init(int id, readonly &amp; string[] codes) {
+        self.id = id;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        self.codes = codes;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The expected type for <code>codes</code> is <code>readonly &amp; string[]</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function getId() returns string {
+        return string `Default: ${self.id}`;
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type MainController readonly object {
+    int id;
+    string[] codes;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A non-abstract <code>readonly object</code>.
+ If the object type-descriptor includes <code>readonly</code> all the fields in the
+ object are considered to be <code>readonly</code> fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function init(int id, readonly &amp; string[] codes) {
+        self.id = id;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        self.codes = codes;
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The expected type for <code>codes</code> is <code>readonly &amp; string[]</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    function getId() returns string {
+        return string `Main: ${self.id}`;
+    }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Details &amp; readonly immutableDetails = {
+        id: 112233,
+        country: &quot;Sri Lanka&quot;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define an immutable <code>Details</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee emp = new (&quot;IT&quot;, immutableDetails);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Use <code>immutableDetails</code> as the value for the <code>readonly</code> <code>details</code> field in <code>Employee</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Details details = emp.details;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>details</code> field of <code>emp</code> is immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    DefaultController dc = new (1122, [&quot;LC&quot;, &quot;AB&quot;]);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A <code>readonly</code> intersection (<code>T &amp; readonly</code>) can be used with an object only if it is an abstract object.
+ A non-abstract object can be <code>readonly</code> either if all of its fields are <code>readonly</code> fields, or if the object
+ is defined as a <code>readonly</code> object.
+ In either case the fields cannot be updated once the value is created.
+ Define a value of the non-abstract object type <code>DefaultController</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Controller &amp; readonly controllerOne = dc;
+    io:println(controllerOne.getId());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since all the fields of <code>DefaultController</code> are <code>readonly</code> fields, the object value itself is considered
+ to be immutable. Thus, it can be used where a <code>readonly</code> value is expected.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    MainController mc = new (4246, [&quot;AB&quot;]);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define a value of the non-abstract <code>readonly object</code> type <code>MainController</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    Controller &amp; readonly controllerTwo = mc;
+    io:println(controllerTwo.getId());
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since the object was defined as a <code>readonly object</code>, the object value is considered immutable.
+ Thus, it can be used where a <code>readonly</code> value is expected.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run readonly_objects_and_fields.bal
+details is immutable: true
+Default: 1122
+Main: 4246
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

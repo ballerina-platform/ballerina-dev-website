@@ -68,7 +68,7 @@ rpm -i <ballerina-home>/<ballerina-binary>.rpm
 
 > **Note:** Before you install Ballerina using the ZIP file, ensure that you have Java Development Kit (JDK) version 1.8 installed.
 
-1. [Download the Ballerina language ZIP file] (/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<version> in your system.
+1. [Download the Ballerina language ZIP file](/downloads) and unzip it to a preferred location using an archiver tool of your choice. This creates a directory named ballerina-<version> in your system.
 
 2. Follow either of the steps below depending on your operating system to configure your system environment to run Ballerina:
 

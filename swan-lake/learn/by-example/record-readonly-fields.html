@@ -1,0 +1,602 @@
+---
+layout: ballerina-example-page
+title: Read-only Fields
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/record-readonly-fields
+redirect_from:
+  - /vswan-lake/learn/by-example/record-readonly-fields
+  - /vswan-lake/learn/by-example/record-readonly-fields.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">type</span> <span class="nx">Details</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">type</span> <span class="nx">Employee</span> <span class="nx">record</span> <span class="p">{|</span>
+    <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
+    <span class="nx">readonly</span> <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
+<span class="p">|};</span>
+<span class="nx">type</span> <span class="nx">Identifier</span> <span class="nx">record</span> <span class="p">{|</span>
+   <span class="nx">readonly</span> <span class="kt">int</span> <span class="nx">id</span><span class="p">;</span>
+   <span class="nx">readonly</span> <span class="kt">string</span><span class="p">[]</span> <span class="nx">codes</span><span class="p">;</span>
+<span class="p">|};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">Details</span> <span class="o">&amp;</span> <span class="nx">readonly</span> <span class="nx">immutableDetails</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="p">:</span> <span class="mi">112233</span><span class="p">,</span>
+        <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+    <span class="p">};</span>    <span class="nx">Employee</span> <span class="nx">empOne</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">department</span><span class="p">:</span> <span class="s">&quot;IT&quot;</span><span class="p">,</span>
+        <span class="nx">details</span><span class="p">:</span> <span class="nx">immutableDetails</span>
+    <span class="p">};</span>    <span class="nx">Employee</span> <span class="nx">empTwo</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">department</span><span class="p">:</span> <span class="s">&quot;finance&quot;</span><span class="p">,</span>
+        <span class="nx">details</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="p">:</span> <span class="mi">212141</span><span class="p">,</span>
+            <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;empTwo is immutable: &quot;</span><span class="p">,</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>    <span class="nx">Details</span> <span class="nx">details</span> <span class="p">=</span> <span class="nx">empTwo</span><span class="p">.</span><span class="nx">details</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;details is immutable: &quot;</span><span class="p">,</span> <span class="nx">details</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>
+    <span class="nx">Identifier</span> <span class="nx">identifier</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+        <span class="nx">codes</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;AS&quot;</span><span class="p">,</span> <span class="s">&quot;KL&quot;</span><span class="p">]</span>
+    <span class="p">};</span>
+    <span class="nx">readonly</span> <span class="nx">readonlyValue</span> <span class="p">=</span> <span class="nx">identifier</span><span class="p">;</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;identifier is immutable: &quot;</span><span class="p">,</span> <span class="nx">identifier</span><span class="p">.</span><span class="nx">isReadOnly</span><span class="p">());</span>    <span class="nx">record</span> <span class="p">{</span>
+        <span class="kt">string</span> <span class="nx">department</span><span class="p">;</span>
+        <span class="nx">Details</span> <span class="nx">details</span><span class="p">;</span>
+    <span class="p">}</span> <span class="nx">anyEmployee</span> <span class="p">=</span> <span class="nx">empOne</span><span class="p">;</span>
+    <span class="nx">anyEmployee</span><span class="p">.</span><span class="nx">details</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">id</span><span class="p">:</span> <span class="mi">222288</span><span class="p">,</span>
+        <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;Sri Lanka&quot;</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Read-only Fields</h2>
+                            <p><p>Fields of a record can be marked as <code>readonly</code>. These fields cannot be updated once the record is created and can
+ only hold immutable values.
+ If all the fields of a record are <code>readonly</code>, the record itself is considered to have its read-only bit set and
+ can thus be used where a <code>readonly</code> (immutable) value is expected.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="record-optional-fields.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Optional Fields</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="record-type-reference.html">
+                                        <span>NEXT ></span>
+                                        <p>Record Type Reference</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="record-readonly-fields">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/record-readonly-fields/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Details record {|
+    int id;
+    string country;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Employee record {|
+    string department;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A record with both read-only and non-read-only fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    readonly Details details;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>details</code> is a <code>readonly</code> field which cannot be updated once the value is created.
+ <code>details</code> also expects an immutable value, and thus the effective contextually expected type for
+ <code>details</code> is <code>Details &amp; readonly</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>type Identifier record {|
+   readonly int id;
+   readonly string[] codes;
+|};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>A record with all read-only fields.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Details &amp; readonly immutableDetails = {
+        id: 112233,
+        country: &quot;Sri Lanka&quot;
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define an immutable <code>Details</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee empOne = {
+        department: &quot;IT&quot;,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        details: immutableDetails
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Since <code>immutableDetails</code> was created as an immutable value, it can be used as the value for the <code>readonly</code>
+ record field <code>details</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Employee empTwo = {
+        department: &quot;finance&quot;,
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        details: {
+            id: 212141,
+            country: &quot;USA&quot;
+        }
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Alternatively, if the constructor expression is defined in-line for the <code>readonly</code> field, the value created
+ would be created as an immutable value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;empTwo is immutable: &quot;, empTwo.isReadOnly());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p><code>empTwo</code> is not immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Details details = empTwo.details;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;details is immutable: &quot;, details.isReadOnly());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>But, the <code>details</code> field of <code>empTwo</code> is immutable.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    Identifier identifier = {
+        id: 1234,
+        codes: [&quot;AS&quot;, &quot;KL&quot;]
+    };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Define an <code>Identifier</code> value.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    readonly readonlyValue = identifier;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If all the fields in a record are <code>read-only</code> fields, the record value itself is considered to be immutable.
+ Thus, <code>identifier</code> belongs to <code>readonly</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(&quot;identifier is immutable: &quot;, identifier.isReadOnly());
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The immutable check for <code>identifier</code> also evaluates to true.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    record {
+        string department;
+        Details details;
+    } anyEmployee = empOne;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>    anyEmployee.details = {
+        id: 222288,
+        country: &quot;Sri Lanka&quot;
+    };
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Attempting to update a <code>readonly</code> field results in a panic.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run record_readonly_fields.bal
+empTwo is immutable: false
+details is immutable: true
+identifier is immutable: true
+error: {ballerina/lang.map}InherentTypeViolation message=cannot update &#39;readonly&#39; field &#39;details&#39; in record of type &#39;Employee&#39;
+        at record_readonly_fields:main(record_readonly_fields.bal:70)
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

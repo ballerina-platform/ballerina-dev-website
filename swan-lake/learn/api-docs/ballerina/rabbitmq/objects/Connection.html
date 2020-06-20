@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="<a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
+
+    <title>API Docs - Object : Connection</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Objects</h3>
+                <ul>
+                    
+                        <li class="active">
+                            <a href="Connection.html">Connection</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../rabbitmq/index.html">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Objects</h3>
+                    <ul>
+                        
+                            <li class="active"></li>>
+                                <a href="Connection.html">Connection</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../rabbitmq/index.html">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Object - </span>
+                
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                 :
+                <span class="objects ">Connection</span>
+            </h1>
+            <p>
+                
+                <p>Represents a single network connection to the RabbitMQ broker.</p>
+
+            </p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                        <h2>Constructor</h2>
+<h3 >__init</h3><p>(<a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a> connectionConfiguration)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>connectionConfiguration</b><span class="type">  <a href="../../rabbitmq/records/ConnectionConfiguration.html">ConnectionConfiguration</a></span> </li>
+                <li>
+                    <p>Configurations required to initialize the <code>rabbitmq:Connection</code></p>
+
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                
+                    
+                        <h2>Methods</h2>
+                        <div class="method-list">
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="close">
+        <a href="#close">close </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+    </div>
+</div>
+
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="abortConnection">
+        <a href="#abortConnection">abortConnection </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+    </div>
+</div>
+
+                            
+                                
+<div class="param-sum">
+    <div class="param-name " title="isClosed">
+        <a href="#isClosed">isClosed </a>
+    </div>
+    <div class="param-details">
+        
+        <p>Checks whether <code>close</code> was already called.
+    </div>
+</div>
+
+                            
+                        </div>
+                    
+
+                    
+                </div>
+
+                
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="close" title="close">
+             <a class="url-link" href="#close">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > close </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">int?</span> closeCode, <span class="builtin-type">string?</span> closeMessage, <span class="builtin-type">int?</span> timeoutInMillis)</p>
+            <b> returns </b><a href="../../rabbitmq/errors.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Closes the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+It waits with a provided timeout for all the close operations to complete.
+When the timeout is reached, the socket is forced to close.</p>
+<pre><code class="language-ballerina"> rabbitmq:Error? closeResult = newConnection.close();
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeCode</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default &lt;int?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeMessage</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span class="default"> (default &lt;string?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>A message indicating the reason for closing the connection</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >timeoutInMillis</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default &lt;int?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Timeout (in milliseconds) for completing all the close-related operations.
+Use -1 for infinity</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../../rabbitmq/errors.html#Error">Error</a>?</span>)</li>
+                <li><p>A <code>rabbitmq:Error</code> if an I/O error is encountered or else <code>()</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="abortConnection" title="abortConnection">
+             <a class="url-link" href="#abortConnection">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > abortConnection </h2>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Aborts the <code>rabbitmq:Connection</code> and all its <code>rabbitmq:Channel</code>s.
+Forces the <code>rabbitmq:Connection</code> to close and waits for all the close operations to complete. When the timeout is reached,
+the socket is forced to close. Any encountered exceptions in the close operations are discarded silently.</p>
+<pre><code class="language-ballerina"> connection.abortConnection(320, &quot;Channel Aborted&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeCode</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default &lt;int?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The close code (for information, go to the &quot;Reply Codes&quot; section in the
+[AMQP 0-9-1 specification] (#https://www.rabbitmq.com/resources/specs/amqp0-9-1.pdf))</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >closeMessage</span>
+                        <span class="type">  <span class="builtin-type">string?</span> </span>
+                        <span class="default"> (default &lt;string?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>A message indicating the reason for closing the connection</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >timeoutInMillis</span>
+                        <span class="type">  <span class="builtin-type">int?</span> </span>
+                        <span class="default"> (default &lt;int?&gt; ())</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Timeout (in milliseconds) for completing all the close-related operations.
+Use -1 for infinity</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+</div>
+                    
+                        <div class="method-content">
+    <div class="main-method-title here" id="isClosed" title="isClosed">
+             <a class="url-link" href="#isClosed">
+                <img class="url-link-img" src="../../html-template-resources/images/link.svg">
+            </a>
+            <h2 > isClosed </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Checks whether <code>close</code> was already called.</p>
+<pre><code class="language-ballerina"> boolean closed = newConnection.isClosed();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>The value <code>true</code> if the <code>rabbitmq:Connection</code> is already closed or else <code>false</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                    
+                
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

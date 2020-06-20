@@ -15,99 +15,299 @@ redirect_from:
 <div class="row cBallerina-io-Gray-row">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cDownloadsHeader">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
                 <h1>Downloads</h1>
-                <p>
-                    After downloading a Ballerina distribution from below based on your system, follow the <a href="https://ballerina-platform.github.io/learn/installing-ballerina">installation instructions</a> or <a href="https://ballerina.io/learn/installing-ballerina/#installing-from-source">build instructions</a>.
-                </p>
+                <!--<p>
+                    After downloading a Ballerina distribution from below based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>.</p>-->
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                 <div class="cFeaturedVersion">
-                    <h2>Current version: <span id="versionInfo">{{ site.data.latest.metadata.version }} ({{ site.data.latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
+                    <h2>Stable release: <span id="versionInfo">{{ site.data.stable-latest.metadata.version }} ({{ site.data.stable-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
                     <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
-                        <p>If you are already using jBallerina version 1.2.0, you can directly execute following command:</p>
-                        <pre>$ ballerina dist update</pre>
-                        <p>If you are already using the jBallerina version 1.1.0 - 1.2.0, you can directly update your distribution to jBallerina {{ site.data.latest.metadata.version }} by executing the below command:</p>
-                        <pre>ballerina dist pull jballerina-{{ site.data.latest.metadata.version }}</pre>
-                        <p>For further details, see the <a href="https://ballerina.io/downloads/release-notes/">Release Note</a>.</p>
-                    </div>
+                    
+                    <p>
+                        If you already have jBallerina version 1.2.0 or above installed, you can use the <a href="/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to directly update to jBallerina 1.2.4 by executing the command below. </p>
+                        <pre>ballerina dist update</pre> 
+                        <p>For further details, see the <a href="/downloads/release-notes/">Release Note</a>.</p>
+                </div>
+            </div></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+            
+                    <p>
+                    If you are new to Ballerina, download a Ballerina distribution from below based on your operating system.  
                 </div>
             </div>
-        </div>
+        </div></br>
         <div class="clearfix"></div>
         <div class="row cDownloads">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadLeft">
-                <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.windows-installer }}">
-                    <div>Windows</div>
-                    <div class="cSize">Installer msi <span id="packWindowsName">{{ site.data.latest.metadata.windows-installer-size }}</span></div>
+            
+            <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cDownloadMiddle">
+                <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.zip-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.macos-installer }}">
+                    <div>ZIP Archive</div>
+                    <div class="cSize">Installer zip <span id="packMacName">{{ site.data.stable-latest.metadata.zip-installer-size }}</span></div>
                 </a>
                 <ul class="cDiwnloadSubLinks">
-                    <li><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.md5">md5</a></li>
-                    <li><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
-                    <li><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.asc">asc</a></li>
+                    <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.zip-installer }}.md5">md5</a></li> 
+                    <li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.zip-installer }}.sha1">SHA-1</a></li>
+                    <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.zip-installer }}.asc">asc</a></li>
                 </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
-                <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.linux-installe }}">
-                    <div>Linux</div>
-                    <div class="cSize">deb Package <span id="packLinuxName">{{ site.data.latest.metadata.linux-installer-size }}</span></div>
-                </a>
-                <ul class="cDiwnloadSubLinks">
-                    <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}	/{{ site.data.latest.metadata.linux-installer }}.md5">md5</a></li>
-                    <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
-                    <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}.asc">asc</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 cDownloadMiddle">
-                <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.latest.metadata.macos-installer }}">
-                    <div>MacOS</div>
-                    <div class="cSize">Installer pkg <span id="packMacName">{{ site.data.latest.metadata.macos-installer-size }}</span></div>
-                </a>
-                <ul class="cDiwnloadSubLinks">
-                    <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.md5">md5</a></li>
-                    <li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
-                    <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.asc">asc</a></li>
-                </ul>
-            </div>
+            </div>-->
+
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+                    <h3 class="cWindows">Windows</h3>
+                    <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.windows-installer }}" class="cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.windows-installer }}">
+                 <div class="cSize">Installer  msi <span id="packWindowsName">{{ site.data.stable-latest.metadata.windows-installer-size }}</span></div>
+                    </a>
+                    <ul class="cDiwnloadSubLinks">
+                        <li><a id="packWindowsMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.windows-installer }}.md5">md5</a></li>
+                        <li><a id="packWindowsSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.windows-installer }}.sha1">SHA-1</a></li>
+                        <li><a id="packWindowsAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.windows-installer }}.asc">asc</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+                    <h3 class="cLinux">Linux </h3>
+        
+        
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}" class="cDownload cLinuxPKGs  cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.linux-installer }}">
+                            <div class="cSize">deb  <span id="packLinuxName">{{ site.data.stable-latest.metadata.linux-installer-size }}</span></div>
+                           </a>
+                           <ul class="cDiwnloadSubLinks">
+                            <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }} /{{ site.data.stable-latest.metadata.linux-installer }}.md5">md5</a></li>
+                            <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}.sha1">SHA-1</a></li>
+                            <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.linux-installer }}.asc">asc</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding: 0;">
+                        <a id="packLinux" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}" class="cDownload cLinuxPKGs cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.rpm-installer }}">
+                            <div class="cSize">rpm  <span id="packLinuxName">{{ site.data.stable-latest.metadata.rpm-installer-size }}</span></div>
+                           </a>
+                           <ul class="cDiwnloadSubLinks">
+                            <li><a id="packLinuxMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }} /{{ site.data.stable-latest.metadata.rpm-installer }}.md5">md5</a></li>
+                            <li><a id="packLinuxSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}.sha1">SHA-1</a></li>
+                            <li><a id="packLinuxAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.rpm-installer }}.asc">asc</a></li>
+                        </ul>
+                    </div>
+        
+                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
+                    <h3 class="cMac">macOS</h3>
+                    <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}" class="cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.macos-installer }}">
+                        <div class="cSize">Installer msi <span id="packWindowsName">{{ site.data.stable-latest.metadata.windows-installer-size }}</span></div>
+                       </a>
+                       <ul class="cDiwnloadSubLinks">
+                        <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}.md5">md5</a></li>
+                        <li><a id="packMacSha1" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}.sha1">SHA-1</a></li>
+                        <li><a id="packMacAsc" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}.asc">asc</a></li>
+                    </ul>
+                </div>
+         
+             </div>
+
+             
+               
+            </div></br>
+            <div class="clearfix"></div>
+        <div class="row cDownloads">
         </div>
-        <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+        <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">-->
+            <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cReleaseNotes">
                 <p><a href="/downloads/release-notes">RELEASE NOTES ></a></p>
             </div>
             <div class="cReleaseNotes">
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+                    <div class="cInstallers">
+                        <h3 style="margin-bottom: 24px; margin-top: 40px;">Other Installation Options</h3>
+                        <!-- <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
+                            <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
+                            <div class="insPackages0container">-->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <table id="insPackages0">
+                                    <tr><td style="width: 50%">Install on macOS using Homebrew <a href="/learn/installing-ballerina/#installing-on-macos" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                                    <tr><td style="width: 50%">Install via the ZIP archive <a href="/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                                    <tr><td style="width: 50%">Install from source <a href="/learn/installing-ballerina/#building-from-source" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                                </table>
+                            </div>
+                            <!--</div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+    
+                        <h2>What's Next?</h2>
+                    <p>
+                        After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                    </p>
+                        </div> -->
+                    
+
+                <!--<div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
+                        <div class="cFeaturedVersion">
+    
+                 </div></div></div>-->  
+                </div>
+            </div></div> 
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
+                    <div class="cFeaturedVersion">
+                        <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+                            
+                        <p style="margin-top: 30px;"></p><p>For downloading the VSCode and IntelliJ Ballerina extensions, see <a href="/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a> and <a href="/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a>,
+                             and for installation instructions, see <a href="/learn/installing-ballerina/">Installing Ballerina</a>.
+                        </p></p>
+                    
+                        <h2>Preview release: Swan Lake (preview version) </span></h2>
+                        <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
+                        <p>If you already have jBallerina installed, you can use the <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to update it to the Swan Lake channel. To do this, first, execute the command below to get the Update Toole updated to its latest version. </p>
+                        <pre>ballerina update</pre>
+                        <p>Next, execute the command below to update to Swan Lake Preview 1.</p>
+                        <pre>ballerina dist pull slp1</pre>
+                       
+                        <p>For further details, see the <a href="/downloads/swan-lake-release-notes">Release Note</a>. </p>
+                        
+
+                    </div>
+                    <br>
+                </div></div></div>
+            
+                    <!--<div class="cStandaloneInstallers">
+                        <h2>Preview release: Swan Lake (preview version)</h2>-->
+                        <div class="cInstallers">
+                            
+                            <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
+                                <div class="insPackages0container">
+                                    <table id="insPackages0">
+                                        <tr><td style="width: 50%">{{ site.data.swanlake-latest.metadata.windows-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></td></tr>
+                                        <tr><td style="width: 50%">{{ site.data.swanlake-latest.metadata.macos-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></td></tr>
+                                        <tr><td style="width: 50%">{{ site.data.swanlake-latest.metadata.linux-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}.asc">asc</a></td></tr>
+                                        <tr><td style="width: 50%">ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.asc">asc</a></td></tr>
+                                        <tr><td style="width: 50%">ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cRightTable">
+                                <div class="insPackages1container">
+                                    <table id="insPackages1">
+                                        
+                                        <!--<tr><td style="width: 96%">ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></td></tr>-->
+                                        <!--<tr><td style="width: 96%">ballerina-intellij-idea-plugin</td><td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>-->
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <br>
+          </div>
+
+          <div class="clearfix"></div>
+          <div class="row cDownloads">
+        </div>
+
+          <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+            <div class="cReleaseNotes">
+                <p><a href="/downloads/swan-lake-release-notes">RELEASE NOTES ></a></p>
+            </div>
+            <!--<div class="cReleaseNotes">
+                <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
+            </div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
+                    <div class="cFeaturedVersion">
+                    <!--<p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/swan-lake/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>.</p>-->
+             </div></div></div>  
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+                    <div class="cInstallers">
+                        <h3 style="margin-bottom: 24px; margin-top: 40px;">Other Installation Options</h3>
+                        <!-- <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
+                            <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
+                            <div class="insPackages0container">-->
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <table id="insPackages0">
+                                    <tr><td style="width: 50%">Install via the ZIP archive <a href="/swan-lake/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
+                                    <tr><td style="width: 50%">Install from source <a href="/swan-lake/learn/installing-ballerina/#building-from-source" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>   
+                                </table>
+                                <p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/swan-lake/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>
+                                    and for installation instructions, see <a href="/swan-lake/learn/installing-ballerina/">Installing Ballerina</a>.</p></p>
+                            </div></div></div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
+                            <div class="cInstallers">                             
+                
+                <div class=" cDownloadsHeader">
+                <div class="cInstallers">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+
+                    <!--<h2>What's Next?</h2>-->
+                    
+                   
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            </div></div>
+
+            
+
+
+            <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+            <h2>What's Next?</h2>
+                <p>
+                    After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                </p>
+            </div>
+
         </div>
         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cStandaloneInstallers">
-                <h2>Installation Packages</h2>
+
+                <h2>What's Next?</h2>
+                <p>
+                    After downloading a Ballerina distribution based on your operating system, follow the <a href="https://ballerina.io/learn/installing-ballerina">installation instructions</a>. If you want to build Ballerina from source, see <a href="https://ballerina.io/learn/installing-ballerina/#building-from-source">Building from source</a>.
+                </p>
+                <h2>Other Installation Packages</h2>
                 <div class="cInstallers">
-                    <h3 class="release-version">Stable <span id="stableInfo">{{ site.data.latest.metadata.version }} ({{ site.data.latest.metadata.release-date | date: "%B %e, %Y" }})</span></h3>
+                    <h3 class="release-version">Stable <span id="stableInfo">{{ site.data.swanlake-latest.metadata.version }} ({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h3>
                     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
                         <div class="insPackages0container">
                             <table id="insPackages0">
-                                <tr><td style="width: 96%">{{ site.data.latest.metadata.windows-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.latest.metadata.windows-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.windows-installer }}.asc">asc</a></td></tr>
-                                <tr><td style="width: 96%">{{ site.data.latest.metadata.linux-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.latest.metadata.linux-installe }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installe }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installe }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.linux-installe }}.asc">asc</a></td></tr>
-                                <tr><td style="width: 96%">{{ site.data.latest.metadata.macos-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.latest.metadata.macos-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/{{ site.data.latest.metadata.macos-installer }}.asc">asc</a></td></tr>
-                                <tr><td style="width: 96%">ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.latest.metadata.version }}.rpm.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">{{ site.data.swanlake-latest.metadata.windows-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.windows-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.windows-installer }}.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">{{ site.data.swanlake-latest.metadata.linux-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.linux-installe }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installe }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installe }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.linux-installe }}.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">{{ site.data.swanlake-latest.metadata.macos-installer }}</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}" class="cDownloadLinkIcon" data-download="downloads" data-pack="{{ site.data.swanlake-latest.metadata.macos-installer }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/{{ site.data.swanlake-latest.metadata.macos-installer }}.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-linux-installer-x64-{{ site.data.swanlake-latest.metadata.version }}.rpm.asc">asc</a></td></tr>
                             </table>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cRightTable">
                         <div class="insPackages1container">
                             <table id="insPackages1">
-                                <tr><td style="width: 96%">ballerina-{{ site.data.latest.metadata.version }}.zip</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.latest.metadata.version }}.zip"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.zip.asc">asc</a></td></tr>
-                                <tr><td style="width: 96%">ballerina-{{ site.data.latest.metadata.version }}.vsix</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-{{ site.data.latest.metadata.version }}.vsix.asc">asc</a></td></tr>
-                                <tr><td style="width: 96%">ballerina-metrics-grafana-dashboard-prometheus.json</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.latest.metadata.version }}/ballerina-metrics-grafana-dashboard-prometheus.json" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-metrics-grafana-dashboard-prometheus.json-{{ site.data.latest.metadata.version }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
+                                <tr><td style="width: 96%">ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.zip.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.md5">md5</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.sha1">SHA-1</a></td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-{{ site.data.swanlake-latest.metadata.version }}.vsix.asc">asc</a></td></tr>
+                                <tr><td style="width: 96%">ballerina-metrics-grafana-dashboard-prometheus.json</td><td style="width: 1%; white-space: nowrap;"><a href="{{ site.dist_server }}/downloads/{{ site.data.swanlake-latest.metadata.version }}/ballerina-metrics-grafana-dashboard-prometheus.json" class="cDownloadLinkIcon" data-download="downloads" data-pack="ballerina-metrics-grafana-dashboard-prometheus.json-{{ site.data.swanlake-latest.metadata.version }}"><img src="/img/download-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
                                 <tr><td style="width: 96%">ballerina-intellij-idea-plugin</td><td style="width: 1%; white-space: nowrap;"><a href="https://plugins.jetbrains.com/plugin/9520-ballerina" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td><td style="width: 1%; white-space: nowrap;"></td></tr>
                             </table>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                     <br>
-                    <!--<div id="devPackContainer">
+                    <div id="devPackContainer">
                     <h3 class="release-version">RC <span id="devInfo"></span></h3>
                     <div class="col-xs-12 col-sm-16 col-md-6 col-lg-6 cLeftTable">
                         <div class="devPackages0container">
@@ -133,15 +333,26 @@ redirect_from:
                             <table id="nightlyPackages1"></table>
                         </div>
                     </div></div>
-                    <div class="clearfix"></div>-->
+                    <div class="clearfix"></div>
                 </div>
             </div>            
-        </div>
+        </div>-->
+    
     </div>
 </div>
 
 <style>
-.nav > li.cVersionItem {
-    display: none !important;
-}
-</style>
+    .nav > li.cVersionItem {
+        display: none !important;
+    }
+    
+    
+        a.cDownload.cDownloadNew {
+            margin: 0;
+        }  
+        
+        
+        a.cDownload.cDownloadNew.cLinuxPKGs {
+            margin: 0 0.5px;
+        }
+    </style>

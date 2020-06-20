@@ -23,5 +23,5 @@ This option allows you to run all the tests that belong to multiple modules of y
 
 ## What's next?
 
-- For information on the Ballerina VSCode extension, see [The Visual Studio Code Ballerina Extension](/1.1/learn/vscode-plugin/vscode-plugin).
+- For information on the Ballerina VSCode extension, see [The Visual Studio Code Ballerina Extension](/1.1/learn/vscode-plugin/).
 - For information on all the tools and IDEs that are supported by Ballerina, see [Learn](/1.1/learn/).

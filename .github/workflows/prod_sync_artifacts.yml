@@ -5,7 +5,8 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
+      - '_data/swanlake-latest/**'
 
 jobs:
   prod-artifact-sync:
@@ -30,7 +31,7 @@ jobs:
         aws configure set aws_access_key_id $s3_acc_id
         aws configure set aws_secret_access_key $s3_acc_key
 
-        version="`jq -r '.version' _data/latest/metadata.json`"
+        version="`jq -r '.version' _data/stable-latest/metadata.json`"
         echo "extracted release version: $version"
 
         aws s3 cp s3://dist-dev.ballerina.io/downloads/$version/ s3://dist.ballerina.io/downloads/$version/ --recursive

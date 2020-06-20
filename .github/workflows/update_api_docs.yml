@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   apidoc-gen:
@@ -25,14 +25,14 @@ jobs:
 
     - name: Get API Docs from dist-dev
       run: |
-        VERSION="`jq -r '.version' _data/latest/metadata.json`"
-        echo "curl https://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip"
+        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
+        echo "curl http://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip"
         curl https://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip
         unzip ballerina.zip
 
     - name: Add redirects (we can remove this for 2.0)
       run: |
-         VERSION="`jq -r '.version' _data/latest/metadata.json`"
+         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
          mv ./ballerina-$VERSION/distributions/jballerina-$VERSION/docs ./ballerina-release/apiDocRedirectionModifier/
          cd ballerina-release/apiDocRedirectionModifier 
          ./redirection.sh ./docs v1-2 /learn/api-docs/ballerina/ target
@@ -42,7 +42,7 @@ jobs:
 
     - name: Copy newly generated API Docs
       run: |
-        VERSION="`jq -r '.version' _data/latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
         cp -r ballerina-release/apiDocRedirectionModifier/target learn/api-docs/ballerina
 
     - name: Push changes for new API Docs

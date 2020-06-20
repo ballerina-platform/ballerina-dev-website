@@ -52,6 +52,10 @@ a:hover {
     color: #464646 !important;
 }
 
+.wy-breadcrumbs li {
+    text-transform: capitalize;
+}
+
 .wy-breadcrumbs li a:hover {
     color: #464646 !important;
 }
@@ -1217,7 +1221,14 @@ cursor: pointer;
     
 
 
-}  
+} 
+
+pre.cInfoCode {
+    background-color: #F5F6F6;
+    border: 1px solid #e1e4e5;
+    padding: 12px !important;
+    margin-left: 25px !important;
+}
 
 
 .cSecondCTAcontainer-left {
@@ -1580,7 +1591,7 @@ ul.cInlinelinklist {
         border: none;
         outline: none;
         box-shadow: none;
-        width: 90px;
+        width: 120px;
     }
     .form-control-field {
         float: left;

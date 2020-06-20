@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module is used to interact with Kafka Brokers via Kafka Consumer and Kafka Producer clients.
+This module supports Kafka 1.x.x and 2.0.0 versions.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,kafka">
+
+    <title>API Docs - Constants : kafka</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+            <div class="primary-list module">
+    
+        <a href="../kafka/index.html">
+            <h3>kafka</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../kafka/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../kafka/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../kafka/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../kafka/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../kafka/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../kafka/index.html">
+            <h3>kafka</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../kafka/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../kafka/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../kafka/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="constants" href="../kafka/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../kafka/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../kafka/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Constants - </span> 
+                <a href="../kafka/index.html">kafka</a> 
+            </h1>
+            <div class="constants">
+                <div class="data-wrapper">
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_BYTE_ARRAY">
+                                    <b >DES_BYTE_ARRAY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BYTE_ARRAY
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka byte array deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_STRING">
+                                    <b >DES_STRING</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> STRING
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka string deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_INT">
+                                    <b >DES_INT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> INT
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka int deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_FLOAT">
+                                    <b >DES_FLOAT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> FLOAT
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka float deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_CUSTOM">
+                                    <b >DES_CUSTOM</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> CUSTOM
+                                </li>
+                                <li>
+                                    
+                                    <p>User-defined deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="DES_AVRO">
+                                    <b >DES_AVRO</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> AVRO
+                                </li>
+                                <li>
+                                    
+                                    <p>Apache Avro deserializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ISOLATION_COMMITTED">
+                                    <b >ISOLATION_COMMITTED</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> read_committed
+                                </li>
+                                <li>
+                                    
+                                    <p>Configures the consumer to read the committed messages only in the transactional mode when poll() is called.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ISOLATION_UNCOMMITTED">
+                                    <b >ISOLATION_UNCOMMITTED</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> read_uncommitted
+                                </li>
+                                <li>
+                                    
+                                    <p>Configures the consumer to read all the messages including the aborted ones.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ACKS_ALL">
+                                    <b >ACKS_ALL</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> all
+                                </li>
+                                <li>
+                                    
+                                    <p>Producer acknowledgement type is 'all'. This will guarantee that the record will not be lost as long as at least one
+in-sync replica is alive.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ACKS_NONE">
+                                    <b >ACKS_NONE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> 0
+                                </li>
+                                <li>
+                                    
+                                    <p>Producer acknowledgement type '0'. If the acknowledgement type set to this, the producer will not wait for any
+acknowledgement from the server.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="ACKS_SINGLE">
+                                    <b >ACKS_SINGLE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> 1
+                                </li>
+                                <li>
+                                    
+                                    <p>Producer acknowledgement type '1'. If the acknowledgement type set to this, the leader will write the record to its
+A local log will respond without waiting FOR full acknowledgement from all the followers.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_BYTE_ARRAY">
+                                    <b >SER_BYTE_ARRAY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> BYTE_ARRAY
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka Byte Array serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_STRING">
+                                    <b >SER_STRING</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> STRING
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka string serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_INT">
+                                    <b >SER_INT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> INT
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka int serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_FLOAT">
+                                    <b >SER_FLOAT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> FLOAT
+                                </li>
+                                <li>
+                                    
+                                    <p>In-built Kafka float serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_CUSTOM">
+                                    <b >SER_CUSTOM</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> CUSTOM
+                                </li>
+                                <li>
+                                    
+                                    <p>User-defined serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SER_AVRO">
+                                    <b >SER_AVRO</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> AVRO
+                                </li>
+                                <li>
+                                    
+                                    <p>Apache Avro serializer.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="COMPRESSION_NONE">
+                                    <b >COMPRESSION_NONE</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> none
+                                </li>
+                                <li>
+                                    
+                                    <p>No compression.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="COMPRESSION_GZIP">
+                                    <b >COMPRESSION_GZIP</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> gzip
+                                </li>
+                                <li>
+                                    
+                                    <p>Kafka GZIP compression type.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="COMPRESSION_SNAPPY">
+                                    <b >COMPRESSION_SNAPPY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> snappy
+                                </li>
+                                <li>
+                                    
+                                    <p>Kafka Snappy compression type.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="COMPRESSION_LZ4">
+                                    <b >COMPRESSION_LZ4</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> lz4
+                                </li>
+                                <li>
+                                    
+                                    <p>Kafka LZ4 compression type.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="COMPRESSION_ZSTD">
+                                    <b >COMPRESSION_ZSTD</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> zstd
+                                </li>
+                                <li>
+                                    
+                                    <p>Kafka ZSTD compression type.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="AUTH_SASL_PLAIN">
+                                    <b >AUTH_SASL_PLAIN</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> PLAIN
+                                </li>
+                                <li>
+                                    
+                                    <p>Kafka SASL_PLAIN authentication mechanism</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="PROTOCOL_SASL_PLAINTEXT">
+                                    <b >PROTOCOL_SASL_PLAINTEXT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SASL_PLAINTEXT
+                                </li>
+                                <li>
+                                    
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="PROTOCOL_SASL_SSL">
+                                    <b >PROTOCOL_SASL_SSL</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SASL_SSL
+                                </li>
+                                <li>
+                                    
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../";
+</script>
+<script src="../doc-search/search-data.js"></script>
+<script src="../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

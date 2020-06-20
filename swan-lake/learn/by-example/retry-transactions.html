@@ -1,0 +1,790 @@
+---
+layout: ballerina-example-page
+title: Retry Transactions
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/retry-transactions
+redirect_from:
+  - /vswan-lake/learn/by-example/retry-transactions
+  - /vswan-lake/learn/by-example/retry-transactions.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">lang</span><span class="p">.</span><span class="err">&#39;</span><span class="nx">transaction</span> <span class="k">as</span> <span class="nx">transactions</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="nx">public</span> <span class="nx">type</span> <span class="nx">MyRetryManager</span> <span class="nx">object</span> <span class="p">{</span>
+   <span class="nx">private</span> <span class="kt">int</span> <span class="nx">count</span><span class="p">;</span>
+   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">init</span><span class="p">(</span><span class="kt">int</span> <span class="nx">count</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+       <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retry count: &quot;</span><span class="p">,</span> <span class="nx">count</span><span class="p">);</span>
+       <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">=</span> <span class="nx">count</span><span class="p">;</span>
+   <span class="p">}</span>
+   <span class="nx">public</span> <span class="kd">function</span> <span class="nx">shouldRetry</span><span class="p">(</span><span class="nx">error</span><span class="err">?</span> <span class="nx">e</span><span class="p">)</span> <span class="nx">returns</span> <span class="kt">boolean</span> <span class="p">{</span>
+     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Retry count: &quot;</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span><span class="p">);</span>
+     <span class="k">if</span> <span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="p">&gt;</span>  <span class="mi">0</span> <span class="p">{</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">count</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">};</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">dbClient</span> <span class="p">=</span>
+                <span class="nx">check</span> <span class="nx">new</span> <span class="p">(</span><span class="nx">url</span> <span class="p">=</span> <span class="s">&quot;jdbc:h2:file:./local-transactions/testdb&quot;</span><span class="p">,</span>
+                                        <span class="nx">user</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">,</span> <span class="nx">password</span> <span class="p">=</span> <span class="s">&quot;test&quot;</span><span class="p">);</span>
+    <span class="k">var</span> <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;(ID INTEGER, AMOUNT FLOAT)&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create DEPOSITS table&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot;</span> <span class="o">+</span>
+                                <span class="s">&quot;(ID INTEGER, AMOUNT FLOAT)&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Create WITHDRAWALS table&quot;</span><span class="p">);</span>
+    <span class="nx">retry</span><span class="p">&lt;</span><span class="nx">MyRetryManager</span><span class="p">&gt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="nx">transaction</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nx">onRollbackFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">,</span>
+                                <span class="nx">error</span><span class="err">?</span> <span class="nx">cause</span><span class="p">,</span> <span class="kt">boolean</span> <span class="nx">willRetry</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Rollback handler executed.&quot;</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="k">var</span> <span class="nx">onCommitFunc</span> <span class="p">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">info</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Commit handler executed.&quot;</span><span class="p">);</span>
+        <span class="p">};</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">onRollback</span><span class="p">(</span><span class="nx">onRollbackFunc</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">onCommit</span><span class="p">(</span><span class="nx">onCommitFunc</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">withdrawalResult</span> <span class="p">=</span>
+                    <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO WITHDRAWALS(ID,AMOUNT) &quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;VALUES (1234553, 10500)&quot;</span><span class="p">);</span>
+        <span class="k">var</span> <span class="nx">depositResult</span> <span class="p">=</span>
+                    <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO DEPOSITS (ID, AMOUNT) &quot;</span> <span class="o">+</span>
+                                        <span class="s">&quot;VALUES (1234554, 10500)&quot;</span><span class="p">);</span>
+        <span class="nx">transactions</span><span class="p">:</span><span class="nx">Info</span> <span class="nx">transInfo</span> <span class="p">=</span> <span class="nx">transactions</span><span class="p">:</span><span class="nx">info</span><span class="p">();</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">transInfo</span><span class="p">.</span><span class="nx">xid</span><span class="p">);</span>        <span class="k">if</span><span class="p">(</span><span class="nx">withdrawalResult</span> <span class="nx">is</span> <span class="nx">error</span> <span class="o">||</span> <span class="nx">depositResult</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">check</span> <span class="nx">getError</span><span class="p">(</span><span class="s">&quot;DB operation failed&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">var</span> <span class="nx">commitResult</span> <span class="p">=</span> <span class="nx">commit</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">commitResult</span> <span class="nx">is</span> <span class="p">()){</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction committed.&quot;</span><span class="p">);</span>
+            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">withdrawalResult</span><span class="p">,</span>
+                                    <span class="s">&quot;Insert data into WITHDRAWALS table&quot;</span><span class="p">);</span>
+            <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">depositResult</span><span class="p">,</span>
+                                    <span class="s">&quot;Insert data into DEPOSITS table&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Transaction failed&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE WITHDRAWALS&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table WITHDRAWALS&quot;</span><span class="p">);</span>    <span class="nx">ret</span> <span class="p">=</span> <span class="nx">dbClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE DEPOSITS&quot;</span><span class="p">);</span>
+    <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">ret</span><span class="p">,</span> <span class="s">&quot;Drop table DEPOSITS&quot;</span><span class="p">);</span>
+    <span class="nx">check</span> <span class="nx">dbClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">getError</span><span class="p">(</span><span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="nx">returns</span> <span class="nx">error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">(</span><span class="kt">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">handleExecute</span><span class="p">(</span><span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">returned</span><span class="p">,</span> <span class="kt">string</span> <span class="kt">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">returned</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; status: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="nx">affectedRowCount</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="kt">message</span> <span class="o">+</span> <span class="s">&quot; failed: &quot;</span><span class="p">,</span> <span class="nx">returned</span><span class="p">.</span><span class="kt">message</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Retry Transactions</h2>
+                            <p><p>A Ballerina transaction is a series of data manipulation statements
+ that must either fully complete or fully fail, thereby, leaving the
+ system in a consistent state. A retry transaction statement combines
+ the retry statement and the transaction statement with the
+ additional semantics that each transaction is part of a sequence of
+ retries. This sample uses an H2 database, which is
+ created when running the sample. Prior to running this sample,
+ the DB connection properties need to be changed as required.<br/><br/>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/lang.transaction/index.html">Transactions module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="non-transaction-retry.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Non Transaction Retry</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="http-client-endpoint.html">
+                                        <span>NEXT ></span>
+                                        <p>Client Endpoint</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="retry-transactions">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/retry-transactions/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/lang.&#39;transaction as transactions;
+import ballerina/io;
+import ballerina/sql;
+import ballerina/java.jdbc;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public type MyRetryManager object {
+   private int count;
+   public function init(int count = 2) {
+       io:println(&quot;Retry count: &quot;, count);
+       self.count = count;
+   }
+   public function shouldRetry(error? e) returns boolean {
+     io:println(&quot;Retry count: &quot;, self.count);
+     if e is error &amp;&amp; self.count &gt;  0 {
+        self.count -= 1;
+        return true;
+     } else {
+        return false;
+     }
+   }
+};
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The user-defined retry manager object.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client dbClient =
+                check new (url = &quot;jdbc:h2:file:./local-transactions/testdb&quot;,
+                                        user = &quot;test&quot;, password = &quot;test&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The JDBC client for the H2 database.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS DEPOSITS &quot; +
+                                &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
+    handleExecute(ret, &quot;Create DEPOSITS table&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create the tables that are required for the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS WITHDRAWALS &quot; +
+                                &quot;(ID INTEGER, AMOUNT FLOAT)&quot;);
+    handleExecute(ret, &quot;Create WITHDRAWALS table&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    retry&lt;MyRetryManager&gt; (3) transaction {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is a <code>retry transaction</code> statement block. A retry
+ transaction statement combines the retry statement and
+ the transaction statement with the additional semantics.
+ Each transaction is part of a sequence of retries.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var onRollbackFunc = function(transactions:Info info,
+                                error? cause, boolean willRetry) {
+            io:println(&quot;Rollback handler executed.&quot;);
+        };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the rollback handler, which gets triggered once
+ the rollback statement is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var onCommitFunc = function(transactions:Info info) {
+            io:println(&quot;Commit handler executed.&quot;);
+        };
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Defines the commit handler, which gets triggered once the commit
+ action is executed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:onRollback(onRollbackFunc);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Register the rollback handler to the transaction context.
+ Multiple rollback handlers can be registered and they
+ are executed in reverse order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:onCommit(onCommitFunc);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Register the commit handler to the transaction context.
+ Multiple commit handlers can be registered and they
+ are executed in reverse order.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var withdrawalResult =
+                    dbClient-&gt;execute(&quot;INSERT INTO WITHDRAWALS(ID,AMOUNT) &quot; +
+                                        &quot;VALUES (1234553, 10500)&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the first remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var depositResult =
+                    dbClient-&gt;execute(&quot;INSERT INTO DEPOSITS (ID, AMOUNT) &quot; +
+                                        &quot;VALUES (1234554, 10500)&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>This is the second remote function participant of the transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        transactions:Info transInfo = transactions:info();
+        io:println(transInfo.xid);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Returns information about the current transaction.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if(withdrawalResult is error || depositResult is error) {
+            check getError(&quot;DB operation failed&quot;);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        var commitResult = commit;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>The <code>commit</code> action performs the commit operation of the current transaction.
+ The result of the commit action is an error. Otherwise, the result is <code>()</code>.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if(commitResult is ()){
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Based on the result of the <code>commit</code> action, the followup tasks could be performed.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction committed.&quot;);
+            handleExecute(withdrawalResult,
+                                    &quot;Insert data into WITHDRAWALS table&quot;);
+            handleExecute(depositResult,
+                                    &quot;Insert data into DEPOSITS table&quot;);
+        } else {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Any action that needs to be performed after the transaction, which is
+ committed should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;Transaction failed&quot;);
+        }
+    }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>If the transaction is failed, any action that needs to perform
+ after the commit failure should be added here.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE WITHDRAWALS&quot;);
+    handleExecute(ret, &quot;Drop table WITHDRAWALS&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Drop the tables.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    ret = dbClient-&gt;execute(&quot;DROP TABLE DEPOSITS&quot;);
+    handleExecute(ret, &quot;Drop table DEPOSITS&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    check dbClient.close();
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the JDBC client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function getError(string message) returns error? {
+    return error(message);
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>function handleExecute(sql:ExecutionResult|sql:Error returned, string message) {
+    if (returned is sql:ExecutionResult) {
+        io:println(message + &quot; status: &quot;, returned.affectedRowCount);
+    } else {
+        io:println(message + &quot; failed: &quot;, returned.message());
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Function to handle the return value of the <code>execute</code> remote function.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file, and execute the `ballerina run` command.
+$ ballerina run retry_transactions.bal
+Create DEPOSITS table status: 0
+Create WITHDRAWALS table status: 0
+101 52 97 50 49 55 102 97 45 55 57 57 102 45 52 56 52 55 45 57 53 49 52 45 55 98 98 49 49 54 101 49 55 54 49 49
+Commit handler executed.
+Transaction committed.
+Insert data into WITHDRAWALS table status: 1
+Insert data into DEPOSITS table status: 1
+Retry count: 3
+Drop table WITHDRAWALS status: 0
+Drop table DEPOSITS status: 0
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

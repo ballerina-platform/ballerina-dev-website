@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides an inbound LDAP authentication provider, which is used to authenticate using LDAP credentials.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,ldap">
+
+    <title>API Docs - Record : LdapConnectionConfig</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Records</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="LdapConnection.html">LdapConnection</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="LdapConnectionConfig.html">LdapConnectionConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SecureSocket.html">SecureSocket</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../ldap/index.html">
+            <h3>ldap</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../ldap/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../ldap/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../ldap/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../ldap/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../ldap/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+    
+     <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Records</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="LdapConnection.html">LdapConnection</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="LdapConnectionConfig.html">LdapConnectionConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="SecureSocket.html">SecureSocket</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../ldap/index.html">
+            <h3>ldap</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../ldap/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../ldap/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../ldap/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../ldap/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../ldap/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1> 
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Record - </span>
+                
+                    <a href="../../ldap/index.html">ldap</a>
+                
+                 : <span class="records ">LdapConnectionConfig</span>
+            </h1>
+            <p>
+                
+                <p>Represents the configurations that are required for an LDAP auth store.</p>
+
+            </p>
+            <div class="constants">
+                
+                    
+                        <h2>Fields</h2>
+                            <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >domainName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Unique name to identify the user store</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionURL</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Connection URL of the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The username used to connect to the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionPassword</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The password used to connect to the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userSearchBase</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>DN of the context or object under which the user entries are stored in the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userEntryObjectClass</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Object class used to construct user entries</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userNameAttribute</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The attribute used for uniquely identifying a user entry</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userNameSearchFilter</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Filtering criteria used to search for a particular user entry</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userNameListFilter</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Filtering criteria for searching user entries in the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >groupSearchBase</span>
+                <span class="type">  <span class="array-type"><span class="builtin-type">string</span>[]</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>DN of the context or object under which the group entries are stored in the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >groupEntryObjectClass</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Object class used to construct group entries</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >groupNameAttribute</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The attribute used for uniquely identifying a group entry</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >groupNameSearchFilter</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Filtering criteria used to search for a particular group entry</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >groupNameListFilter</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Filtering criteria for searching group entries in the LDAP server</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >membershipAttribute</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Define the attribute, which contains the distinguished names (DN) of user objects that are there in a group</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >userRolesCacheEnabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>To indicate whether to cache the role list of a user</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionPoolingEnabled</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default true)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Define whether LDAP connection pooling is enabled</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 5000)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Timeout (in milliseconds) in making the initial LDAP connection</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >readTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 60000)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Reading timeout in milliseconds for LDAP operations</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >retryAttempts</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 0)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Retry the authentication request if a timeout happened</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >secureSocket</span>
+                <span class="type">  <a href="../../ldap/records/SecureSocket.html">SecureSocket</a></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The SSL configurations for the LDAP client socket. This needs to be configured in order to
+communicate through LDAPs</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                    
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

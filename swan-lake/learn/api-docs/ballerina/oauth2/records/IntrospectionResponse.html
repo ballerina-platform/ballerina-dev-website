@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides an inbound OAuth2 authentication provider, which can be used to authenticate the provided credentials against an introspection endpoint and an outbound OAuth2 authentication provider, which can be used to authenticate an external endpoint.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,oauth2">
+
+    <title>API Docs - Record : IntrospectionResponse</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Records</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DirectTokenConfig.html">DirectTokenConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="IntrospectionResponse.html">IntrospectionResponse</a>
+                        </li>
+                    
+                        <li >
+                            <a href="IntrospectionServerConfig.html">IntrospectionServerConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a>
+                        </li>
+                    
+                        <li >
+                            <a href="PasswordGrantConfig.html">PasswordGrantConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RefreshConfig.html">RefreshConfig</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../oauth2/index.html">
+            <h3>oauth2</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../oauth2/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../oauth2/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../oauth2/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../oauth2/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../oauth2/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+    
+     <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Records</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="ClientCredentialsGrantConfig.html">ClientCredentialsGrantConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="DirectTokenConfig.html">DirectTokenConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="DirectTokenRefreshConfig.html">DirectTokenRefreshConfig</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="IntrospectionResponse.html">IntrospectionResponse</a>
+                            </li>
+                        
+                            <li >
+                                <a href="IntrospectionServerConfig.html">IntrospectionServerConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="OutboundOAuth2CacheEntry.html">OutboundOAuth2CacheEntry</a>
+                            </li>
+                        
+                            <li >
+                                <a href="PasswordGrantConfig.html">PasswordGrantConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="RefreshConfig.html">RefreshConfig</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../oauth2/index.html">
+            <h3>oauth2</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../oauth2/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../oauth2/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../../oauth2/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../../oauth2/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../oauth2/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1> 
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Record - </span>
+                
+                    <a href="../../oauth2/index.html">oauth2</a>
+                
+                 : <span class="records ">IntrospectionResponse</span>
+            </h1>
+            <p>
+                
+                <p>Represents the introspection server response.</p>
+
+            </p>
+            <div class="constants">
+                
+                    
+                        <h2>Fields</h2>
+                            <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >active</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Boolean indicator of whether or not the presented token is currently active</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >scopes</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>A JSON string containing a space-separated list of scopes associated with this token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >clientId</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Client identifier for the OAuth 2.0 client, which requested this token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >username</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Resource owner who authorized this token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >tokenType</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Type of the token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >exp</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Expiry time (seconds since the Epoch)</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >iat</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Time when the token was issued originally (seconds since the Epoch)</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >nbf</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Token is not to be used before this time (seconds since the Epoch)</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >sub</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Subject of the token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >aud</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Intended audience of the token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >iss</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Issuer of the token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >jti</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>String identifier for the token</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                    
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

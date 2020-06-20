@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the common interface and functionality to interact with a database. The corresponding database
+clients can be created by using specific database modules such as <code>MySQL</code> or using the Java Database Connectivity
+module <code>JDBC</code>.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,sql">
+
+    <title>API Docs - Object : VarcharValue</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Objects</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="T6.html">T6</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ArrayValue.html">ArrayValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BigIntValue.html">BigIntValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BinaryValue.html">BinaryValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BitValue.html">BitValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BlobValue.html">BlobValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="BooleanValue.html">BooleanValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="CharValue.html">CharValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ClobValue.html">ClobValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DateTimeValue.html">DateTimeValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DateValue.html">DateValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DecimalValue.html">DecimalValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="DoubleValue.html">DoubleValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="FloatValue.html">FloatValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="IntegerValue.html">IntegerValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="NCharValue.html">NCharValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="NClobValue.html">NClobValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="NVarcharValue.html">NVarcharValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="NumericValue.html">NumericValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ParameterizedQuery.html">ParameterizedQuery</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RealValue.html">RealValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RefValue.html">RefValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RowValue.html">RowValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SmallIntValue.html">SmallIntValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StructValue.html">StructValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TextValue.html">TextValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimeValue.html">TimeValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TimestampValue.html">TimestampValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="TypedValue.html">TypedValue</a>
+                        </li>
+                    
+                        <li >
+                            <a href="VarBinaryValue.html">VarBinaryValue</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="VarcharValue.html">VarcharValue</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../sql/index.html">
+            <h3>sql</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../sql/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../sql/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../sql/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="functions" href="../../sql/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../sql/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../sql/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../sql/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Objects</h3>
+                    <ul>
+                        
+                            <li ></li>>
+                                <a href="T6.html">T6</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ArrayValue.html">ArrayValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BigIntValue.html">BigIntValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BinaryValue.html">BinaryValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BitValue.html">BitValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BlobValue.html">BlobValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="BooleanValue.html">BooleanValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="CharValue.html">CharValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ClobValue.html">ClobValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DateTimeValue.html">DateTimeValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DateValue.html">DateValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DecimalValue.html">DecimalValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="DoubleValue.html">DoubleValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="FloatValue.html">FloatValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="IntegerValue.html">IntegerValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="NCharValue.html">NCharValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="NClobValue.html">NClobValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="NVarcharValue.html">NVarcharValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="NumericValue.html">NumericValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="ParameterizedQuery.html">ParameterizedQuery</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="RealValue.html">RealValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="RefValue.html">RefValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="RowValue.html">RowValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="SmallIntValue.html">SmallIntValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="StructValue.html">StructValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TextValue.html">TextValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimeValue.html">TimeValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TimestampValue.html">TimestampValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="TypedValue.html">TypedValue</a>
+                            </li>
+                        
+                            <li ></li>>
+                                <a href="VarBinaryValue.html">VarBinaryValue</a>
+                            </li>
+                        
+                            <li class="active"></li>>
+                                <a href="VarcharValue.html">VarcharValue</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../sql/index.html">
+            <h3>sql</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../sql/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../sql/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../sql/index.html#clients">Clients</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="functions" href="../../sql/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../../sql/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../../sql/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../sql/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Object - </span>
+                
+                    <a href="../../sql/index.html">sql</a>
+                 :
+                <span class="objects ">VarcharValue</span>
+            </h1>
+            <p>
+                
+                <p>Represents Varchar SQL field.</p>
+
+            </p>
+
+            <div class="constants">
+                <div class="method-sum">
+                    
+                        
+                        <h2>Constructor</h2>
+<h3 >__init</h3><p>(<span class="builtin-type">string?</span> value)</p>
+<div class="data-wrapper">
+    
+        <div class="params-listing">
+            <ul>
+                <li> <b>value</b><span class="type">  <span class="builtin-type">string?</span></span> &lt;string?&gt; ()</li>
+                <li>
+                    
+                </li>
+            </ul>
+        </div>
+    
+</div>
+                        
+                    
+
+                
+                    
+
+                    
+                </div>
+
+                
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

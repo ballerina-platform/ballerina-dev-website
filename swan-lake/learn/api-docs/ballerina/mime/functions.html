@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
+
+    <title>API Docs - Functions : mime</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#base64Decode">base64Decode</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#base64DecodeBlob">base64DecodeBlob</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#base64Encode">base64Encode</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#base64EncodeBlob">base64EncodeBlob</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getContentDispositionObject">getContentDispositionObject</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getMediaType">getMediaType</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Functions</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#base64Decode">base64Decode</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#base64DecodeBlob">base64DecodeBlob</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#base64Encode">base64Encode</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#base64EncodeBlob">base64EncodeBlob</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#getContentDispositionObject">getContentDispositionObject</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#getMediaType">getMediaType</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../mime/index.html">mime</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#base64Decode">base64Decode</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p><strong>Deprecated API</strong>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#base64DecodeBlob">base64DecodeBlob</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p><strong>Deprecated API</strong>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#base64Encode">base64Encode</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p><strong>Deprecated API</strong>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#base64EncodeBlob">base64EncodeBlob</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p><strong>Deprecated API</strong>.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getContentDispositionObject">getContentDispositionObject</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getMediaType">getMediaType</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#prepareDecodingErrorWithDetail">prepareDecodingErrorWithDetail</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs a <code>DecodeError</code> with the given details.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#prepareEncodingErrorWithDetail">prepareEncodingErrorWithDetail</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Constructs an <code>EncodeError</code> with the given details.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="base64Decode" title="base64Decode">
+             <a class="url-link" href="#base64Decode">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > base64Decode </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeDecoded, <span class="builtin-type">string</span> charset)</p>
+            <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p><strong>Deprecated API</strong>. Decodes a given input with MIME specific Base64 encoding scheme.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >contentToBeDecoded</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content that needs to be decoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >charset</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default utf-8)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Charset to be used. This is used only with the string input</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
+                <li><p>A decoded <code>string</code> if the given input is of type string, a decoded <code>byte[]</code> if the given input is of
+type byte[], a decoded <code>io:ReadableByteChannel</code> if the given input is of type io:ReadableByteChannel
+or else a <code>mime:DecodeError</code> in case of errors</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="base64DecodeBlob" title="base64DecodeBlob">
+             <a class="url-link" href="#base64DecodeBlob">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > base64DecodeBlob </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> valueToBeDecoded)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#DecodeError">DecodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p><strong>Deprecated API</strong>. Decodes a given byte[] using the Base64 encoding scheme.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >valueToBeDecoded</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content, which needs to be decoded</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
+                <li><p>A decoded <code>byte[]</code> or else a <code>mime:DecodeError</code> record in case of errors</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="base64Encode" title="base64Encode">
+             <a class="url-link" href="#base64Encode">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > base64Encode </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> contentToBeEncoded, <span class="builtin-type">string</span> charset)</p>
+            <b> returns </b><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p><strong>Deprecated API</strong>. Encodes a given input with MIME specific Base64 encoding scheme.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >contentToBeEncoded</span>
+                        <span class="type">  <span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content that needs to be encoded can be of type <code>string</code>, <code>byte[]</code> or <code>io:ReadableByteChannel</code></p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >charset</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        <span class="default"> (default utf-8)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Charset to be used. This is used only with the string input</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../io/objects/ReadableByteChannel.html">ReadableByteChannel</a> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
+                <li><p>An encoded <code>string</code> if the given input is of type string, an encoded <code>byte[]</code> if the given input is of
+type byte[], an encoded <code>io:ReadableByteChannel</code> if the given input is of type <code>io:ReadableByteChannel</code>,
+or else a <code>mime:EncodeError</code> record in case of errors</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="base64EncodeBlob" title="base64EncodeBlob">
+             <a class="url-link" href="#base64EncodeBlob">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > base64EncodeBlob </h2>
+        
+        <span class="method-types">
+            <p>(<span class="array-type"><span class="builtin-type">byte</span>[]</span> valueToBeEncoded)</p>
+            <b> returns </b><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#EncodeError">EncodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p><strong>Deprecated API</strong>. Encodes a given byte[] using the Base64 encoding scheme.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >valueToBeEncoded</span>
+                        <span class="type">  <span class="array-type"><span class="builtin-type">byte</span>[]</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content, which needs to be encoded</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><span class="builtin-type">byte</span>[]</span> | <a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
+                <li><p>An encoded byte[] or else a <code>mime:EncodeError</code> record in case of errors</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getContentDispositionObject" title="getContentDispositionObject">
+             <a class="url-link" href="#getContentDispositionObject">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getContentDispositionObject </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> contentDisposition)</p>
+            <b> returns </b><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Given the Content-Disposition as a string, gets the ContentDisposition object with it.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >contentDisposition</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content disposition string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/objects/ContentDisposition.html">ContentDisposition</a></span>)</li>
+                <li><p>A <code>ContentDisposition</code> object</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getMediaType" title="getMediaType">
+             <a class="url-link" href="#getMediaType">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getMediaType </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> contentType)</p>
+            <b> returns </b><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Gets the <code>MediaType</code> object populated with it when the <code>Content-Type</code> is in string.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >contentType</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Content-Type in string</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/objects/MediaType.html">MediaType</a> | <a href="../mime/errors.html#InvalidContentTypeError">InvalidContentTypeError</a></span>)</li>
+                <li><p><code>MediaType</code> object or else a <code>mime:InvalidContentTypeError</code> in case of an invalid content-type</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="prepareDecodingErrorWithDetail" title="prepareDecodingErrorWithDetail">
+             <a class="url-link" href="#prepareDecodingErrorWithDetail">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > prepareDecodingErrorWithDetail </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> detail)</p>
+            <b> returns </b><a href="../mime/errors.html#DecodeError">DecodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs a <code>DecodeError</code> with the given details.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >detail</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Error details</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/errors.html#DecodeError">DecodeError</a></span>)</li>
+                <li><p><code>DecodeError</code> with the given details set to the message</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="prepareEncodingErrorWithDetail" title="prepareEncodingErrorWithDetail">
+             <a class="url-link" href="#prepareEncodingErrorWithDetail">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > prepareEncodingErrorWithDetail </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> detail)</p>
+            <b> returns </b><a href="../mime/errors.html#EncodeError">EncodeError</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Constructs an <code>EncodeError</code> with the given details.</p>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >detail</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Error details</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../mime/errors.html#EncodeError">EncodeError</a></span>)</li>
+                <li><p>An <code>EncodeError</code> with the given details set to the message</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../";
+</script>
+<script src="../doc-search/search-data.js"></script>
+<script src="../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

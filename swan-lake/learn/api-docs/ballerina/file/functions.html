@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module contains functions to perform file system based operations such as create, delete, rename the
+file/directory, and retrieve metadata of the file.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,file">
+
+    <title>API Docs - Functions : file</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Functions</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="#copy">copy</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createDir">createDir</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#createFile">createFile</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#exists">exists</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getCurrentDirectory">getCurrentDirectory</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#getFileInfo">getFileInfo</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#readDir">readDir</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#remove">remove</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#rename">rename</a>
+                        </li>
+                    
+                        <li >
+                            <a href="#tempDir">tempDir</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../file/index.html">
+            <h3>file</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../file/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../file/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="listeners" href="../file/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../file/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../file/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../file/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Functions</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#copy">copy</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#createDir">createDir</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#createFile">createFile</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#exists">exists</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#getCurrentDirectory">getCurrentDirectory</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#getFileInfo">getFileInfo</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#readDir">readDir</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#remove">remove</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#rename">rename</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#tempDir">tempDir</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../file/index.html">
+            <h3>file</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../file/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../file/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="listeners" href="../file/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../file/index.html#functions">Functions</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="types" href="../file/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../file/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Functions - </span>
+                
+                    <a href="../file/index.html">file</a>
+                
+            </h1>
+            <div class="constants">
+                <table class="ui table row-border details-table">
+                    <tbody>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#copy">copy</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Copy the file/directory in the old path to the new path.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#createDir">createDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Creates a new directory with the specified file name.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#createFile">createFile</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Creates a file in the specified file path.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#exists">exists</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Reports whether the file or directory exists in the given the path.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getCurrentDirectory">getCurrentDirectory</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the current working directory.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#getFileInfo">getFileInfo</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the metadata information of the file specified in the file path.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#readDir">readDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Reads the directory and returns a list of files and directories
+inside the specified directory.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#remove">remove</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Removes the specified file or directory.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#rename">rename</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Renames(Moves) the old path with the new path.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                            <tr>
+                                <td width="30%"><a class="functions " href="#tempDir">tempDir</a></td>
+                                <td width="70%">
+                                    <div class="function-desc">
+                                        
+                                        <p>Returns the default directory to use for temporary files.
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <div>
+                    
+                        <div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="copy" title="copy">
+             <a class="url-link" href="#copy">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > copy </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> sourcePath, <span class="builtin-type">string</span> destinationPath, <span class="builtin-type">boolean</span> replaceExisting)</p>
+            <b> returns </b><a href="../file/types.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Copy the file/directory in the old path to the new path.
+If a file already exists in the new path, this replaces that file.</p>
+<pre><code class="language-ballerina"> file:Error? results = file:copy(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;, true);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >sourcePath</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the old file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >destinationPath</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the new file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >replaceExisting</span>
+                        <span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default false)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Flag to replace if the file already exists in the destination path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
+                <li><p>An <code>file:Error</code> if failed to rename</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createDir" title="createDir">
+             <a class="url-link" href="#createDir">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createDir </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> dir, <span class="builtin-type">boolean</span> parentDirs)</p>
+            <b> returns </b><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Creates a new directory with the specified file name.
+If the <code>parentDirs</code> flag is true, it creates a directory in the specified path with any necessary parents.</p>
+<pre><code class="language-ballerina"> string | error results = file:createDir(&quot;foo/bar&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >dir</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Directory name</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >parentDirs</span>
+                        <span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default false)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Indicates whether the <code>createDir</code> should create non-existing parent directories</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li><p>Absolute path value of the created directory or else an <code>file:Error</code> if failed</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="createFile" title="createFile">
+             <a class="url-link" href="#createFile">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > createFile </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path)</p>
+            <b> returns </b><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Creates a file in the specified file path.
+Truncates if the file already exists in the given path.</p>
+<pre><code class="language-ballerina"> string | error results = file:createFile(&quot;bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li><p>Absolute path value of the created file or else an <code>file:Error</code> if failed</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="exists" title="exists">
+             <a class="url-link" href="#exists">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > exists </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path)</p>
+            <b> returns </b><span class="builtin-type">boolean</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Reports whether the file or directory exists in the given the path.</p>
+<pre><code class="language-ballerina"> boolean result = file:exists(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">boolean</span></span>)</li>
+                <li><p>True if the path is absolute or else false</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getCurrentDirectory" title="getCurrentDirectory">
+             <a class="url-link" href="#getCurrentDirectory">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getCurrentDirectory </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the current working directory.</p>
+<pre><code class="language-ballerina"> string dirPath = file:getCurrentDirectory();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>Current working directory or else an empty string if the current working directory cannot be determined</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="getFileInfo" title="getFileInfo">
+             <a class="url-link" href="#getFileInfo">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > getFileInfo </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path)</p>
+            <b> returns </b><a href="../file/objects/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the metadata information of the file specified in the file path.</p>
+<pre><code class="language-ballerina"> file:FileInfo | error result = file:getFileInfo(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the file path.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/objects/FileInfo.html">FileInfo</a> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li><p>The <code>FileInfo</code> instance with the file metadata or else an <code>file:Error</code></p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="readDir" title="readDir">
+             <a class="url-link" href="#readDir">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > readDir </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">int</span> maxDepth)</p>
+            <b> returns </b><span class="array-type"><a href="../file/objects/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Reads the directory and returns a list of files and directories
+inside the specified directory.</p>
+<pre><code class="language-ballerina"> file:FileInfo[] | error results = file:readDir(&quot;foo/bar&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the directory path.</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >maxDepth</span>
+                        <span class="type">  <span class="builtin-type">int</span> </span>
+                        <span class="default"> (default -1)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>The maximum number of directory levels to visit. -1 to indicate that all levels should be visited</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="array-type"><a href="../file/objects/FileInfo.html">FileInfo</a>[]</span> | <a href="../file/types.html#Error">Error</a></span>)</li>
+                <li><p>The <code>FileInfo</code> array or else an <code>file:Error</code> if there is an error while changing the mode.</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="remove" title="remove">
+             <a class="url-link" href="#remove">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > remove </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> path, <span class="builtin-type">boolean</span> recursive)</p>
+            <b> returns </b><a href="../file/types.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Removes the specified file or directory.
+If the recursive flag is true, it removes the path and any children it contains.</p>
+<pre><code class="language-ballerina"> file:Error? results = file:remove(&quot;foo/bar.txt&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >path</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the file/directory path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >recursive</span>
+                        <span class="type">  <span class="builtin-type">boolean</span> </span>
+                        <span class="default"> (default false)</span>
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>Indicates whether the <code>remove</code> should recursively remove all the files inside the given directory</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
+                <li><p>An <code>file:Error</code> if failed to remove</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="rename" title="rename">
+             <a class="url-link" href="#rename">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > rename </h2>
+        
+        <span class="method-types">
+            <p>(<span class="builtin-type">string</span> oldPath, <span class="builtin-type">string</span> newPath)</p>
+            <b> returns </b><a href="../file/types.html#Error">Error</a>? 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Renames(Moves) the old path with the new path.
+If the new path already exists and it is not a directory, this replaces the file.</p>
+<pre><code class="language-ballerina"> file:error? results = file:rename(&quot;/A/B/C&quot;, &quot;/A/B/D&quot;);
+</code></pre>
+
+    </div>
+    
+        <div class="data-wrapper">
+            <h3 class="param-title">Parameters</h3>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >oldPath</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the old file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+                
+            <div class="params-listing">
+                <ul>
+                    <li>
+                        <span >newPath</span>
+                        <span class="type">  <span class="builtin-type">string</span> </span>
+                        
+                    </li>
+                    <li>
+                        <p>
+                            
+                            <p>String value of the new file path</p>
+
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><a href="../file/types.html#Error">Error</a>?</span>)</li>
+                <li><p>An <code>file:Error</code> if failed to rename</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                                <div class="method-content">
+    <div class="main-method-title here" id="tempDir" title="tempDir">
+             <a class="url-link" href="#tempDir">
+                <img class="url-link-img" src="../html-template-resources/images/link.svg">
+            </a>
+            <h2 > tempDir </h2>
+        
+        <span class="method-types">
+            <p>()</p>
+            <b> returns </b><span class="builtin-type">string</span> 
+        </span>
+        
+    </div>
+    <div class="function-desc">
+        
+        <p>Returns the default directory to use for temporary files.</p>
+<pre><code class="language-ballerina"> string results = file:tempDir();
+</code></pre>
+
+    </div>
+    
+
+    
+        
+        <div class="returns-listing">
+            <ul>
+                <li> <h3 class="type">Return Type</h3> (<span class="type"><span class="builtin-type">string</span></span>)</li>
+                <li><p>Temporary directory location</p>
+</li>
+            </ul>
+        </div>
+        
+    
+</div>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../";
+</script>
+<script src="../doc-search/search-data.js"></script>
+<script src="../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

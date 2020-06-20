@@ -1,0 +1,877 @@
+---
+layout: ballerina-example-page
+title: Parameterized Query
+description: Ballerina by Example is a hands-on introduction to Ballerina using annotated example programs. Check out the first example or browse the full list below.
+permalink: /swan-lake/learn/by-example/jdbc-parameterized-query
+redirect_from:
+  - /vswan-lake/learn/by-example/jdbc-parameterized-query
+  - /vswan-lake/learn/by-example/jdbc-parameterized-query.html
+---
+<div class="row cBallerina-io-Gray-row">
+        <div class="container cBallerinaBySampleContainer">
+            <div class="FullCode">
+                <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">java</span><span class="p">.</span><span class="nx">jdbc</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">sql</span><span class="p">;</span><span class="kd">function</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span>
+<span class="nx">returns</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="p">{</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;DROP TABLE IF EXISTS Customers&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Drop table executed: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="nx">result</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS Customers&quot;</span> <span class="o">+</span>
+        <span class="s">&quot;(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), &quot;</span> <span class="o">+</span>
+        <span class="s">&quot;lastName VARCHAR(300), registrationID INTEGER UNIQUE, &quot;</span> <span class="o">+</span> 
+        <span class="s">&quot;creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))&quot;</span><span class="p">);</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Create table executed: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);}</span><span class="kd">function</span> <span class="nx">insertSingleRecord</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">string</span> <span class="nx">firstName</span> <span class="p">=</span> <span class="s">&quot;Camellia&quot;</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">lastName</span> <span class="p">=</span> <span class="s">&quot;Johns&quot;</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="nx">registrationId</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="nx">creditLimit</span> <span class="p">=</span> <span class="mf">5000.75</span><span class="p">;</span>
+    <span class="kt">string</span> <span class="nx">country</span> <span class="p">=</span> <span class="s">&quot;USA&quot;</span><span class="p">;</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span> <span class="nx">insertQuery</span> <span class="p">=</span>
+            <span class="s">`INSERT INTO Customers (firstName, lastName, registrationID, </span>
+<span class="s">             creditLimit, country) VALUES (${firstName}, ${lastName},</span>
+<span class="s">             ${registrationId}, ${creditLimit}, ${country})`</span><span class="p">;</span>
+    
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">execute</span><span class="p">(</span><span class="nx">insertQuery</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nInsert success, generated Id: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">insertMultipleRecords</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nx">insertRecords</span> <span class="p">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Peter&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Stuart&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">5000.75</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Stephanie&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;Mike&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">8000.00</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">firstName</span><span class="p">:</span> <span class="s">&quot;Bill&quot;</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">:</span> <span class="s">&quot;John&quot;</span><span class="p">,</span> <span class="nx">registrationID</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+                                    <span class="nx">creditLimit</span><span class="p">:</span> <span class="mf">3000.25</span><span class="p">,</span> <span class="nx">country</span><span class="p">:</span> <span class="s">&quot;USA&quot;</span><span class="p">}</span>
+    <span class="p">];</span>
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ParameterizedQuery</span><span class="p">[]</span> <span class="nx">insertQueries</span> <span class="p">=</span>
+        <span class="nx">from</span> <span class="k">var</span> <span class="nx">data</span> <span class="nx">in</span> <span class="nx">insertRecords</span>
+            <span class="nx">select</span>  <span class="s">`INSERT INTO Customers</span>
+<span class="s">                (firstName, lastName, registrationID, creditLimit, country)</span>
+<span class="s">                VALUES (${data.firstName}, ${data.lastName},</span>
+<span class="s">                ${data.registrationID}, ${data.creditLimit}, ${data.country})`</span><span class="p">;</span>
+    
+    <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[]|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">result</span> <span class="p">=</span>
+        <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">batchExecute</span><span class="p">(</span><span class="nx">insertQueries</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="nx">is</span> <span class="nx">sql</span><span class="p">:</span><span class="nx">ExecutionResult</span><span class="p">[])</span> <span class="p">{</span>
+        <span class="kt">int</span><span class="p">[]</span> <span class="nx">generatedIds</span> <span class="p">=</span> <span class="p">[];</span>
+        <span class="nx">foreach</span> <span class="k">var</span> <span class="nx">summary</span> <span class="nx">in</span> <span class="nx">result</span> <span class="p">{</span>
+            <span class="nx">generatedIds</span><span class="p">.</span><span class="nx">push</span><span class="p">(&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="nx">summary</span><span class="p">.</span><span class="nx">lastInsertId</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nBatch Insert success, generated IDs are: &quot;</span><span class="p">,</span> <span class="nx">generatedIds</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Error occurred: &quot;</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">|</span><span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span> <span class="nx">jdbcClient</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;jdbc:h2:file:./target/customers&quot;</span><span class="p">,</span>
+        <span class="s">&quot;rootUser&quot;</span><span class="p">,</span> <span class="s">&quot;rootPass&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">jdbcClient</span> <span class="nx">is</span> <span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">initResult</span> <span class="p">=</span> <span class="nx">initializeTable</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>        <span class="k">if</span> <span class="p">(</span><span class="nx">initResult</span> <span class="nx">is</span> <span class="p">())</span> <span class="p">{</span>
+            <span class="nx">insertSingleRecord</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
+            <span class="nx">insertMultipleRecords</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
+            <span class="nx">checkData</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nSample executed successfully!&quot;</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Customer table initialization failed: &quot;</span><span class="p">,</span> <span class="nx">initResult</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">sql</span><span class="p">:</span><span class="nx">Error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">jdbcClient</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Initialization failed!!&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">jdbcClient</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span><span class="kd">function</span> <span class="nx">checkData</span><span class="p">(</span><span class="nx">jdbc</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">jdbcClient</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">stream</span><span class="p">&lt;</span><span class="nx">record</span><span class="p">{},</span> <span class="nx">error</span><span class="p">&gt;</span> <span class="nx">resultStream</span> <span class="p">=</span>
+        <span class="nx">jdbcClient</span><span class="o">-&gt;</span><span class="nx">query</span><span class="p">(</span><span class="s">&quot;Select * from Customers&quot;</span><span class="p">);</span>     <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;\nData in Customers table:&quot;</span><span class="p">);</span>
+     <span class="nx">error</span><span class="err">?</span> <span class="nx">e</span> <span class="p">=</span> <span class="nx">resultStream</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">record</span> <span class="p">{}</span> <span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+     <span class="p">});</span>
+     <span class="k">if</span> <span class="p">(</span><span class="nx">e</span> <span class="nx">is</span> <span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="s">&quot;Select data from Customers table failed!&quot;</span><span class="p">);</span>
+        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table class="cTopInfoContainer cTopControlsContainer">
+                    <tr>
+                        <td class="cLeftTD">
+                            <h2>Parameterized Query</h2>
+                            <p><p>This example demonstrates how to use the <code>sql:ParameterizedQuery</code> to easily
+ create pre-compiled SQL statements that can be reused. Note that the
+ relevant database driver JAR should be placed in the <code>BALLERINA_HOME/bre/lib</code>
+ folder. However, this sample is based on an H2 database and the H2 database
+ driver JAR is included by default into the Ballerina distribution.
+ Therefore, it is not required to copy the driver JAR for H2 databases.<br><br>
+ For more information on the underlying module,
+ see the <a href="https://ballerina.io/learn/api-docs/ballerina/java.jdbc/index.html">JDBC module</a>.</p>
+</p>
+
+                        </td>
+                        <td class="cRightTD">
+                            <div class="cTopButtonContainer">
+                                
+                                <div class="cButtonInfoContainer">
+                                    <a class="prev" href="jdbc-batch-execute-operation.html">
+                                        <span>< PREVIOUS</span>
+                                        <p>Batch Execute Operations</p>
+                                    </a>
+                                </div>
+                                 
+                                <div class="cButtonInfoContainer">
+                                    <a class="next" href="mysql-init-options.html">
+                                        <span>NEXT ></span>
+                                        <p>Client Initialization</p>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="example" id="jdbc-parameterized-query">
+                <div class="col-xs-12 col-sm-12 col-md-12 cBBETable-container cCodeLeft">
+                    <table class="cTopControlsContainer">
+                        <tr>
+                            <td class="cLeftTD">
+                                <div class="cBBE-links">
+                                    <ul>
+                                        <li>
+                                            <a class="copy"><img src="/img/copy-icon.svg" /></a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="https://github.com/ballerina-platform/ballerina-distribution/tree/master/examples/jdbc-parameterized-query/"><img src="/img/github-logo-green.svg" /></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <table class="cTopBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+
+                    
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>import ballerina/io;
+import ballerina/java.jdbc;
+import ballerina/sql;
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function initializeTable(jdbc:Client jdbcClient)
+returns sql:Error? {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult result =
+        check jdbcClient-&gt;execute(&quot;DROP TABLE IF EXISTS Customers&quot;);
+    io:println(&quot;Drop table executed: &quot;, result);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Execute dropping the table. The <code>sql:ExecutionResult</code> is returned upon
+ successful execution. An error will be returned in case of a failure.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    result = check jdbcClient-&gt;execute(&quot;CREATE TABLE IF NOT EXISTS Customers&quot; +
+        &quot;(customerId INTEGER NOT NULL IDENTITY, firstName VARCHAR(300), &quot; +
+        &quot;lastName VARCHAR(300), registrationID INTEGER UNIQUE, &quot; + 
+        &quot;creditLimit DOUBLE, country VARCHAR(300), PRIMARY KEY (customerId))&quot;);
+    io:println(&quot;Create table executed: &quot;, result);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Similarly, to drop a table, the <code>create</code> table query is executed.
+ Here, the <code>customerId</code> is an auto-generated column.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function insertSingleRecord(jdbc:Client jdbcClient) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    string firstName = &quot;Camellia&quot;;
+    string lastName = &quot;Johns&quot;;
+    int registrationId = 1;
+    float creditLimit = 5000.75;
+    string country = &quot;USA&quot;;
+    sql:ParameterizedQuery insertQuery =
+            `INSERT INTO Customers (firstName, lastName, registrationID, 
+             creditLimit, country) VALUES (${firstName}, ${lastName},
+             ${registrationId}, ${creditLimit}, ${country})`;
+    
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a Parameterized Query.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult|sql:Error result =
+        jdbcClient-&gt;execute(insertQuery);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Insert the records with the auto-generated ID.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecutionResult) {
+        io:println(&quot;\nInsert success, generated Id: &quot;, result.lastInsertId);
+    } else {
+        io:println(&quot;Error occurred: &quot;, result);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function insertMultipleRecords(jdbc:Client jdbcClient) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    var insertRecords = [
+        {firstName: &quot;Peter&quot;, lastName: &quot;Stuart&quot;, registrationID: 2,
+                                    creditLimit: 5000.75, country: &quot;USA&quot;},
+        {firstName: &quot;Stephanie&quot;, lastName: &quot;Mike&quot;, registrationID: 3,
+                                    creditLimit: 8000.00, country: &quot;USA&quot;},
+        {firstName: &quot;Bill&quot;, lastName: &quot;John&quot;, registrationID: 4,
+                                    creditLimit: 3000.25, country: &quot;USA&quot;}
+    ];
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Records to be inserted.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    sql:ParameterizedQuery[] insertQueries =
+        from var data in insertRecords
+            select  `INSERT INTO Customers
+                (firstName, lastName, registrationID, creditLimit, country)
+                VALUES (${data.firstName}, ${data.lastName},
+                ${data.registrationID}, ${data.creditLimit}, ${data.country})`;
+    
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Create a batch Parameterized Query.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    sql:ExecutionResult[]|sql:Error result =
+        jdbcClient-&gt;batchExecute(insertQueries);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Insert the records with the auto-generated ID.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (result is sql:ExecutionResult[]) {
+        int[] generatedIds = [];
+        foreach var summary in result {
+            generatedIds.push(&lt;int&gt; summary.lastInsertId);
+        }
+        io:println(&quot;\nBatch Insert success, generated IDs are: &quot;, generatedIds);
+    } else {
+        io:println(&quot;Error occurred: &quot;, result);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    jdbc:Client|sql:Error jdbcClient = new (&quot;jdbc:h2:file:./target/customers&quot;,
+        &quot;rootUser&quot;, &quot;rootPass&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize the JDBC client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    if (jdbcClient is jdbc:Client) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        sql:Error? initResult = initializeTable(jdbcClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Initialize a table and insert sample data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        if (initResult is ()) {
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            insertSingleRecord(jdbcClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Insert a batch of records.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            insertMultipleRecords(jdbcClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Simulate Failure Rollback.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            checkData(jdbcClient);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Check the data.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>            io:println(&quot;\nSample executed successfully!&quot;);
+        } else {
+            io:println(&quot;Customer table initialization failed: &quot;, initResult);
+        }
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR hover-enable">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>        sql:Error? e = jdbcClient.close();
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                    <div class="cCodeDesription">
+                                        <div>
+                                            <p>Close the JDBC client.</p>
+
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>    } else {
+        io:println(&quot;Initialization failed!!&quot;);
+        io:println(jdbcClient);
+    }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code leading">
+                                    <div class="highlight"><pre><code class=ballerina>function checkData(jdbc:Client jdbcClient) {
+     stream&lt;record{}, error&gt; resultStream =
+        jdbcClient-&gt;query(&quot;Select * from Customers&quot;);
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR">
+
+                                <td class="code">
+                                    <div class="highlight"><pre><code class=ballerina>     io:println(&quot;\nData in Customers table:&quot;);
+     error? e = resultStream.forEach(function(record {} result) {
+                 io:println(result.toString());
+     });
+     if (e is error) {
+        io:println(&quot;Select data from Customers table failed!&quot;);
+        io:println(e);
+     }
+}
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+                            
+                                
+                            
+                        
+
+                    <div>
+
+                        <table class="cBBE-body">
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session># To run this sample, navigate to the directory that contains the
+# `.bal` file and execute the `ballerina run` command.
+$ ballerina run jdbc_parameterized_query.bal
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Drop table executed: affectedRowCount=0 lastInsertId=
+Create table executed: affectedRowCount=0 lastInsertId=
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Insert success, generated Id: 1
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Batch Insert success, generated IDs are: 2 3 4
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code leading cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Data in Customers table:
+CUSTOMERID=1 FIRSTNAME=Camellia LASTNAME=Johns REGISTRATIONID=1 CREDITLIMIT=5000.75 COUNTRY=USA
+CUSTOMERID=2 FIRSTNAME=Peter LASTNAME=Stuart REGISTRATIONID=2 CREDITLIMIT=5000.75 COUNTRY=USA
+CUSTOMERID=3 FIRSTNAME=Stephanie LASTNAME=Mike REGISTRATIONID=3 CREDITLIMIT=8000.0 COUNTRY=USA
+CUSTOMERID=4 FIRSTNAME=Bill LASTNAME=John REGISTRATIONID=4 CREDITLIMIT=3000.25 COUNTRY=USA
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                            <tr class="cTR cOutputTr">
+
+                                <td class="code cOutput">
+                                    <div class="highlight"><pre><code class=shell-session>Sample executed successfully!
+</code></pre></div>
+
+                                </td>
+                                <td class="docs">
+                                    
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    
+
+
+                    <table class="cBottomBorder-table">
+                        <tr>
+                            <td class="cCodeTD"></td>
+                            <td class="cDescTD"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script>
+            $(document).ready(function() {
+
+                hljs.initHighlightingOnLoad();
+
+                $(".switch").click(function() {
+                    $(".cCodeRight").toggleClass('cShow');
+                    $(".cCodeLeft").toggleClass('cHide');
+                });
+
+                // register "copy to clipboard" event to elements with "copy" class
+                var clipboard = new ClipboardJS('.copy', {
+                    text: function(trigger) {
+                        return $('.FullCode').find('pre').text();
+                    }
+                });
+
+                // Register events show hide tooltip on click event
+                clipboard.on('success', function(e) {
+                    setTooltip(e.trigger, 'Copied!');
+                    hideTooltip(e.trigger);
+                });
+
+                clipboard.on('error', function(e) {
+                    setTooltip(e.trigger, 'Failed!');
+                    hideTooltip(e.trigger);
+                });
+
+                $('.copy').tooltip({
+                    trigger: 'click',
+                    placement: 'bottom'
+                });
+                $("a.copy").unbind("click");
+            });
+
+            function setTooltip(btn, message) {
+                $(btn).attr('data-original-title', message)
+                    .tooltip('show');
+            }
+
+            function hideTooltip(btn) {
+                setTimeout(function() {
+                    $(btn).tooltip('hide').removeAttr('data-original-title');
+                }, 1000);
+            }
+        </script>

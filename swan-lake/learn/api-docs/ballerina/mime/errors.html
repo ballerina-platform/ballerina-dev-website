@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides functions to encapsulate multiple body parts such as attachments into a single message. The
+communication of such messages follow the MIME (Multipurpose Internet Mail Extensions) specification as specified in
+the <a href="https://www.ietf.org/rfc/rfc2045.txt">RFC 2045 standard</a>.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,mime">
+
+    <title>API Docs - Errors : mime</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Errors</h3>
+                <ul>
+                    
+                        <li ></li>
+                            <a href="#DecodeError">DecodeError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#EncodeError">EncodeError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#GenericMimeError">GenericMimeError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#HeaderNotFoundError">HeaderNotFoundError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#HeaderUnavailableError">HeaderUnavailableError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#IdleTimeoutTriggeredError">IdleTimeoutTriggeredError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidContentLengthError">InvalidContentLengthError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidContentTypeError">InvalidContentTypeError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidHeaderOperationError">InvalidHeaderOperationError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidHeaderParamError">InvalidHeaderParamError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#InvalidHeaderValueError">InvalidHeaderValueError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#NoContentError">NoContentError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#ParserError">ParserError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#SerializationError">SerializationError</a>
+                        </li>
+                    
+                        <li ></li>
+                            <a href="#SetHeaderError">SetHeaderError</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Errors</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="#DecodeError">DecodeError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#EncodeError">EncodeError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#GenericMimeError">GenericMimeError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#HeaderNotFoundError">HeaderNotFoundError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#HeaderUnavailableError">HeaderUnavailableError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#IdleTimeoutTriggeredError">IdleTimeoutTriggeredError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidContentLengthError">InvalidContentLengthError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidContentTypeError">InvalidContentTypeError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidHeaderOperationError">InvalidHeaderOperationError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidHeaderParamError">InvalidHeaderParamError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#InvalidHeaderValueError">InvalidHeaderValueError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#NoContentError">NoContentError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#ParserError">ParserError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#SerializationError">SerializationError</a>
+                            </li>
+                        
+                            <li >
+                                <a href="#SetHeaderError">SetHeaderError</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../mime/index.html">
+            <h3>mime</h3>
+        </a>
+    
+    <ul>
+        
+        
+            <li>
+                <a  data="objects" href="../mime/index.html#objects">Objects</a>
+            </li>
+        
+        
+        
+        
+            <li>
+                <a data="functions" href="../mime/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../mime/index.html#constants">Constants</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="types" href="../mime/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../mime/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Errors - </span>
+                
+                    <a href="../mime/index.html">mime</a>
+                
+            </h1>
+            <div class="errors">
+                <div class="data-wrapper">
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >DecodeError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>DecodeError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >EncodeError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents an <code>EncodeError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >GenericMimeError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>GenericMimeError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >HeaderNotFoundError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>HeaderNotFoundError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >HeaderUnavailableError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>HeaderUnavailableError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >IdleTimeoutTriggeredError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents an <code>IdleTimeoutTriggeredError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >InvalidContentLengthError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>InvalidContentLengthError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >InvalidContentTypeError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents an <code>InvalidContentTypeError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >InvalidHeaderOperationError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>InvalidHeaderOperationError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >InvalidHeaderParamError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>InvalidHeaderParamError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >InvalidHeaderValueError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>InvalidHeaderValueError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >NoContentError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>NoContentError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >ParserError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>ParserError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >SerializationError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>SerializationError</code> error with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li>
+                                    <b >SetHeaderError </b>
+                                    <span class="type"></span>
+                                    
+                                </li>
+                                <li>
+                                    
+                                    <p>Represents a <code>SetHeaderError</code> with the message and the cause.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../";
+</script>
+<script src="../doc-search/search-data.js"></script>
+<script src="../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

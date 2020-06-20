@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module provides the capability to connect with NATS and NATS Streaming servers and performs the
+below functionalities.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,nats">
+
+    <title>API Docs - Record : StreamingSubscriptionConfigData</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Records</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="T1.html">T1</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ConnectionConfig.html">ConnectionConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="PendingLimits.html">PendingLimits</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SecureSocket.html">SecureSocket</a>
+                        </li>
+                    
+                        <li >
+                            <a href="StreamingConfig.html">StreamingConfig</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="StreamingSubscriptionConfigData.html">StreamingSubscriptionConfigData</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SubscriptionConfigData.html">SubscriptionConfigData</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../nats/index.html">
+            <h3>nats</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../nats/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../nats/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../nats/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../nats/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../nats/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../nats/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../nats/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../nats/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+    
+     <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Records</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="T1.html">T1</a>
+                            </li>
+                        
+                            <li >
+                                <a href="ConnectionConfig.html">ConnectionConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="PendingLimits.html">PendingLimits</a>
+                            </li>
+                        
+                            <li >
+                                <a href="SecureSocket.html">SecureSocket</a>
+                            </li>
+                        
+                            <li >
+                                <a href="StreamingConfig.html">StreamingConfig</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="StreamingSubscriptionConfigData.html">StreamingSubscriptionConfigData</a>
+                            </li>
+                        
+                            <li >
+                                <a href="SubscriptionConfigData.html">SubscriptionConfigData</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../nats/index.html">
+            <h3>nats</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../nats/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../nats/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../nats/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../nats/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../nats/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../nats/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../nats/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../nats/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1> 
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Record - </span>
+                
+                    <a href="../../nats/index.html">nats</a>
+                
+                 : <span class="records ">StreamingSubscriptionConfigData</span>
+            </h1>
+            <p>
+                
+                <p>The configurations for the NATS streaming subscription.</p>
+
+            </p>
+            <div class="constants">
+                
+                    
+                        <h2>Fields</h2>
+                            <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >subject</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Name of the subject to which it is subscribed to</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >queueName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The name of the queue group to which the subscription belongs to</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >durableName</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>If set, this will survive client restarts</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >maxInFlight</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 1024)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The number of messages the cluster will have in-flight without an ACK</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >ackWaitInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 30)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The time (in seconds) the cluster will wait for an ACK for a given message</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >subscriptionTimeoutInSeconds</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 2)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The time (in seconds) the subscription will wait if a network failure occurs during
+the creation of it</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >manualAck</span>
+                <span class="type">  <span class="builtin-type">boolean</span></span>
+                 <span class="default">(default false)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Enables manual acknowledgments</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >startPosition</span>
+                <span class="type">  <a href="../../nats/types.html#StartPosition">StartPosition</a></span>
+                 <span class="default">(default NEW_ONLY)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The position to start receiving messages</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                    
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

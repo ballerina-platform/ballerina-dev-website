@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="This module contains an implementation of the W3C <a href="https://www.w3.org/TR/websub/"><strong>WebSub</strong></a> recommendation, which facilitates a push-based content delivery/notification mechanism between publishers and subscribers.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,websub">
+
+    <title>API Docs - Constants : websub</title>
+    <script src="../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../html-template-resources/styles/css/font.css">
+    <script src="../html-template-resources/semantic.min.js"></script>
+    <script src="../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            
+            <div class="primary-list module">
+    
+        <a href="../websub/index.html">
+            <h3>websub</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../websub/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../websub/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../websub/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../websub/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../websub/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../websub/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+
+    <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../index.html">
+    <img class="logo" src="../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                
+                <div class="primary-list module">
+    
+        <a href="../websub/index.html">
+            <h3>websub</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../websub/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../websub/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../websub/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../websub/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+            <li>
+                <a data="functions" href="../websub/index.html#functions">Functions</a>
+            </li>
+        
+        
+            <li>
+                <a data="constants" href="../websub/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../websub/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../websub/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../websub/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1>
+                <a class="breadcrumb-home" href="
+    ../index.html">
+    <img class="breadcrumb-home-icon" src="../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Constants - </span> 
+                <a href="../websub/index.html">websub</a> 
+            </h1>
+            <div class="constants">
+                <div class="data-wrapper">
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="PUBLISH_MODE_DIRECT">
+                                    <b >PUBLISH_MODE_DIRECT</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> PUBLISH_MODE_DIRECT
+                                </li>
+                                <li>
+                                    
+                                    <p><code>RemotePublishMode</code> indicating direct update content notification (fat-ping). The payload of the update
+notification request from the publisher to the hub would include be the update content.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="PUBLISH_MODE_FETCH">
+                                    <b >PUBLISH_MODE_FETCH</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> PUBLISH_MODE_FETCH
+                                </li>
+                                <li>
+                                    
+                                    <p><code>RemotePublishMode</code> indicating that once the publisher notifies the hub that an update is available, the hub
+needs to fetch the topic URL to identify the update content.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SHA1">
+                                    <b >SHA1</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SHA1
+                                </li>
+                                <li>
+                                    
+                                    <p>The constant used to represent SHA-1 cryptographic hash algorithm</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="SHA256">
+                                    <b >SHA256</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> SHA256
+                                </li>
+                                <li>
+                                    
+                                    <p>The constant used to represent SHA-256 cryptographic hash algorithm</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TOPIC_ID_HEADER">
+                                    <b >TOPIC_ID_HEADER</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TOPIC_ID_HEADER
+                                </li>
+                                <li>
+                                    
+                                    <p><code>TopicIdentifier</code> indicating dispatching based solely on a header of the request.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TOPIC_ID_PAYLOAD_KEY">
+                                    <b >TOPIC_ID_PAYLOAD_KEY</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TOPIC_ID_PAYLOAD_KEY
+                                </li>
+                                <li>
+                                    
+                                    <p><code>TopicIdentifier</code> indicating dispatching based solely on a value for a key in the JSON payload of the request.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                        <div class="params-listing">
+                            <ul>
+                                <li id="TOPIC_ID_HEADER_AND_PAYLOAD">
+                                    <b >TOPIC_ID_HEADER_AND_PAYLOAD</b>
+                                    <span class="type">  <span class="builtin-type">string</span></span> TOPIC_ID_HEADER_AND_PAYLOAD
+                                </li>
+                                <li>
+                                    
+                                    <p><code>TopicIdentifier</code> indicating dispatching based on a combination of header and values specified for a key/key(s) in
+the JSON payload of the request.</p>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../";
+</script>
+<script src="../doc-search/search-data.js"></script>
+<script src="../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

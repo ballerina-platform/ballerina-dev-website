@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="<a href="https://www.rabbitmq.com/">RabbitMQ</a> is one of the most popular open-source enterprise messaging systems modelled on the Advanced Message Queuing Protocol (AMQP) standard. This guide covers the Ballerina RabbitMQ module and its public API. This module contains the functionality to support messaging with the RabbitMQ broker (AMQP 0-9-1). It assumes that the most recent version of Ballerina is used and is built on top of the basics.
+">
+    <meta name="keywords" content="ballerina,ballerina lang,api docs,rabbitmq">
+
+    <title>API Docs - Record : ConnectionConfiguration</title>
+    <script src="../../html-template-resources/jquery.min.js"></script>
+
+    <!-- BIO THEME START -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/js/api-doc-template.js"></script>
+<script type="text/javascript" src="/js/ballerina-common.js"></script>
+<link rel="stylesheet" href="/css/ballerina-io.css">
+<link rel="stylesheet" href="/css/ballerina-io-docs.css">
+<link rel="stylesheet" href="/css/ballerina-io-api-new.css">
+
+<style>
+    .line-numbers-wrap {
+        display: none;
+    }
+</style>
+<!-- BIO THEME END -->
+
+    <link rel="stylesheet" href="../../html-template-resources/semantic.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/components/icon.min.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/styles.css">
+    <link rel="stylesheet" href="../../html-template-resources/styles/css/font.css">
+    <script src="../../html-template-resources/semantic.min.js"></script>
+    <script src="../../syntax-highlighter/highlighter.js"></script>
+
+</head>
+
+
+<body class="cBallerina-io">
+    <div class="row cBallerina-io-top-row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cTopLineContainer">
+        <div class="cTopLine"></div>
+    </div>
+</div>
+<div class="row cBallerina-io-Nav" id="iMainNavigation">
+</div>
+<div class="clearfix"></div>
+    <div class="navi-wrapper">
+        <div class="navi-wrapper-content">
+            <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+            <div class="primary-list">
+                <h3>Records</h3>
+                <ul>
+                    
+                        <li >
+                            <a href="BasicProperties.html">BasicProperties</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="ConnectionConfiguration.html">ConnectionConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="ExchangeConfiguration.html">ExchangeConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="QueueConfiguration.html">QueueConfiguration</a>
+                        </li>
+                    
+                        <li >
+                            <a href="RabbitMQServiceConfig.html">RabbitMQServiceConfig</a>
+                        </li>
+                    
+                        <li >
+                            <a href="SecureSocket.html">SecureSocket</a>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="ui divider"></div>
+            <div class="primary-list module">
+    
+        <a href="../../rabbitmq/index.html">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+        </div>
+    </div>
+    
+     <div class="ui vertical sidebar menu">
+        <div class="navi-wrapper-sidebar">
+            <div class="navi-wrapper-content">
+                <a href="
+    ../../index.html">
+    <img class="logo" src="../../html-template-resources/images/ballerina-logo.png">
+</a>
+
+                <div class="primary-list">
+                    <h3>Records</h3>
+                    <ul>
+                        
+                            <li >
+                                <a href="BasicProperties.html">BasicProperties</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="ConnectionConfiguration.html">ConnectionConfiguration</a>
+                            </li>
+                        
+                            <li >
+                                <a href="ExchangeConfiguration.html">ExchangeConfiguration</a>
+                            </li>
+                        
+                            <li >
+                                <a href="QueueConfiguration.html">QueueConfiguration</a>
+                            </li>
+                        
+                            <li >
+                                <a href="RabbitMQServiceConfig.html">RabbitMQServiceConfig</a>
+                            </li>
+                        
+                            <li >
+                                <a href="SecureSocket.html">SecureSocket</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+                <div class="ui divider"></div>
+                <div class="primary-list module">
+    
+        <a href="../../rabbitmq/index.html">
+            <h3>rabbitmq</h3>
+        </a>
+    
+    <ul>
+        
+        <li>
+            <a data="records" href="../../rabbitmq/index.html#records">Records</a>
+        </li>
+        
+        
+            <li>
+                <a  data="objects" href="../../rabbitmq/index.html#objects">Objects</a>
+            </li>
+        
+        
+            <li>
+                <a data="clients" href="../../rabbitmq/index.html#clients">Clients</a>
+            </li>
+        
+        
+            <li>
+                <a data="listeners" href="../../rabbitmq/index.html#listeners">Listeners</a>
+            </li>
+        
+        
+        
+            <li>
+                <a data="constants" href="../../rabbitmq/index.html#constants">Constants</a>
+            </li>
+        
+        
+            <li>
+                <a data="annotations" href="../../rabbitmq/index.html#annotations">Annotations</a>
+            </li>
+        
+        
+            <li>
+                <a data="types" href="../../rabbitmq/index.html#types">Types</a>
+            </li>
+        
+        
+            <li>
+                <a data="errors" href="../../rabbitmq/index.html#errors">Errors</a>
+            </li>
+        
+    </ul>
+    <div class="ui divider"></div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper pusher">
+        <div>
+    <a class="toc item"> 
+        <img src="../../html-template-resources/images/menu.svg">
+    </a>
+</div>
+        <div class="main-wrapper">
+            <div id="search-impl"></div>
+            <div id="main">
+            <h1> 
+                <a class="breadcrumb-home" href="
+    ../../index.html">
+    <img class="breadcrumb-home-icon" src="../../html-template-resources/images/home.svg">
+</a>
+                <span class="title-type">Record - </span>
+                
+                    <a href="../../rabbitmq/index.html">rabbitmq</a>
+                
+                 : <span class="records ">ConnectionConfiguration</span>
+            </h1>
+            <p>
+                
+                <p>Configurations used to create a <code>rabbitmq:Connection</code>.</p>
+
+            </p>
+            <div class="constants">
+                
+                    
+                        <h2>Fields</h2>
+                            <div class="data-wrapper">
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >host</span>
+                <span class="type">  <span class="builtin-type">string</span></span>
+                
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The host used for establishing the connection</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >port</span>
+                <span class="type">  <span class="builtin-type">int</span></span>
+                 <span class="default">(default 5672)</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The port used for establishing the connection</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >username</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The username used for establishing the connection</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >password</span>
+                <span class="type">  <span class="builtin-type">string?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The password used for establishing the connection</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >connectionTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Connection TCP establishment timeout in milliseconds and zero for infinite</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >handshakeTimeoutMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The AMQP 0-9-1 protocol handshake timeout in milliseconds</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >shutdownTimeoutInMillis</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Shutdown timeout in milliseconds, zero for infinite, and the default value is 10000. If the consumers exceed
+this timeout, then any remaining queued deliveries (and other Consumer callbacks) will be lost</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >heartbeatInSeconds</span>
+                <span class="type">  <span class="builtin-type">int?</span></span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>The initially-requested heartbeat timeout in seconds and zero for none</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+        
+    <div class="params-listing">
+        <ul>
+            <li> <span >secureSocket</span>
+                <span class="type">  <a href="../../rabbitmq/records/SecureSocket.html">SecureSocket</a>?</span>
+                 <span class="default">(default ())</span> 
+            </li>
+            <li>
+                <p>
+                    
+                    <p>Configurations for facilitating secure connections</p>
+
+                </p>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+
+                    
+                
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document)
+    .ready(function() {
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
+    })
+  ;
+
+let mainNavLinks = document.querySelectorAll(".primary-list.module ul li a");
+let mainSections = document.querySelectorAll(".main-wrapper section.method-content");
+
+let lastId;
+let cur = [];
+
+let contentWrapper = document.querySelector(".content-wrapper");
+contentWrapper.addEventListener("scroll", event => {
+  let fromTop = contentWrapper.scrollTop;
+
+  mainNavLinks.forEach(link => {
+    let section = document.querySelector("#" + link.attributes.getNamedItem("data").textContent);
+
+    if (
+      section.offsetTop <= fromTop &&
+      section.offsetTop + section.offsetHeight > fromTop
+    ) {
+      link.classList.add("current");
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+</script>
+<script>
+    var rootPath = "../../";
+</script>
+<script src="../../doc-search/search-data.js"></script>
+<script src="../../doc-search/search.js"></script>
+<script>
+    window.onload = (event) => {
+        ballerinaHighlighter.highlightSnippets();
+    };
+</script>
+

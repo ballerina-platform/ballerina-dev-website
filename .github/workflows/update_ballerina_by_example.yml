@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - '_data/latest/**'
+      - '_data/stable-latest/**'
 
 jobs:
   bbe-gen:
@@ -21,6 +21,9 @@ jobs:
       env:
         GOPATH: /home/runner/work/ballerina-release
     
+    - name: Install Go module blackfriday
+      run: go get github.com/russross/blackfriday
+
     - name: Install jq for json manipulation
       run: sudo apt-get install jq
 
@@ -33,7 +36,23 @@ jobs:
     - name: Generate BBEs
       run: |
         cd ballerina-release
-        ./ballerinaByExample/build-bbe-wf.sh ../_data/latest/metadata.json
+
+        BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
+        array=($(echo $BALLERINA_VERSION | tr "." "\n"))
+        SITE_VERSION="${array[0]}.${array[1]}"
+
+        echo "-----------------------------------------------------------------------------------------------------------------------"
+        echo "curl https://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.zip --output ballerina.zip"
+        curl http://dist-dev.ballerina.io/downloads/$BALLERINA_VERSION/ballerina-$BALLERINA_VERSION.zip --output ballerina.zip
+
+        if ! unzip ballerina.zip; then
+          exit 1
+        fi
+
+        echo "------------------------------------------------------------------------------------------------------------------------------------------------"
+        echo "go run ballerinaByExample/tools/generate.go ballerina-$BALLERINA_VERSION/distributions/jballerina-$BALLERINA_VERSION/examples $SITE_VERSION $BBE_GEN_DIR $GEN_FOR_JEKYLL $IS_LATEST_VERSION"
+        go run ballerinaByExample/tools/generate.go "ballerina-${BALLERINA_VERSION}/distributions/jballerina-${BALLERINA_VERSION}/examples" $SITE_VERSION "by-example" "true" "true"
+        echo "....Completed building BBE Site...."
 
     - name: Remove old examples file
       run: git rm -r learn/by-example

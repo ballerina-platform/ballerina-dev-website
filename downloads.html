@@ -32,7 +32,10 @@ redirect_from:
                         <pre>ballerina dist update</pre> 
                         <p>For further details, see the <a href="/downloads/release-notes/">Release Note</a>.</p>
                 </div>
-            </div></div>
+            </div>
+        </div>
+        </div>
+
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
             
@@ -43,7 +46,7 @@ redirect_from:
         </div></br>
         <div class="clearfix"></div>
         <div class="row cDownloads">
-            
+            <div class="container">
             <!--<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 cDownloadMiddle">
                 <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.zip-installer }}" class="cDownload" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.macos-installer }}">
                     <div>ZIP Archive</div>
@@ -57,7 +60,7 @@ redirect_from:
             </div>-->
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <div class=" ">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
                     <h3 class="cWindows">Windows</h3>
                     <a id="packWindows" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.windows-installer }}" class="cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.windows-installer }}">
@@ -98,7 +101,7 @@ redirect_from:
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 ">
                     <h3 class="cMac">macOS</h3>
                     <a id="packMac" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}" class="cDownload cDownloadNew" data-download="downloads" data-pack="{{ site.data.stable-latest.metadata.macos-installer }}">
-                        <div class="cSize">Installer msi <span id="packWindowsName">{{ site.data.stable-latest.metadata.windows-installer-size }}</span></div>
+                        <div class="cSize">Installer pkg <span id="packWindowsName">{{ site.data.stable-latest.metadata.windows-installer-size }}</span></div>
                        </a>
                        <ul class="cDiwnloadSubLinks">
                         <li><a id="packMacMd5" href="{{ site.dist_server }}/downloads/{{ site.data.stable-latest.metadata.version }}/{{ site.data.stable-latest.metadata.macos-installer }}.md5">md5</a></li>
@@ -110,11 +113,12 @@ redirect_from:
              </div>
 
              
-               
-            </div></br>
+               </div>
+            </div>
+        </br>
             <div class="clearfix"></div>
         <div class="row cDownloads">
-        </div>
+            <div class="container">
         <!--<div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">-->
             <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cReleaseNotes">
@@ -124,15 +128,17 @@ redirect_from:
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>
             </div>
-
+            </div>
+</div>
             <div class="row">
+                <div class="container">
                 <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
                     <div class="cInstallers">
                         <h3 style="margin-bottom: 24px; margin-top: 40px;">Other Installation Options</h3>
                         <!-- <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
                             <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
                             <div class="insPackages0container">-->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="">
                                 <table id="insPackages0">
                                     <tr><td style="width: 50%">Install on macOS using Homebrew <a href="/learn/installing-ballerina/#installing-on-macos" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
                                     <tr><td style="width: 50%">Install via the ZIP archive <a href="/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
@@ -156,19 +162,22 @@ redirect_from:
     
                  </div></div></div>-->  
                 </div>
-            </div></div> 
+            </div>
+            </div>
+        </div> 
             
             <div class="row">
+                <div class="container">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                     <div class="cFeaturedVersion">
-                        <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">
+              
+                <div class="cDownloadsHeader">
                             
                         <p style="margin-top: 30px;"></p><p>For downloading the VSCode and IntelliJ Ballerina extensions, see <a href="/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a> and <a href="/learn/setting-up-intellij-idea/">Setting up IntelliJ IDEA</a>,
                              and for installation instructions, see <a href="/learn/installing-ballerina/">Installing Ballerina</a>.
                         </p></p>
                     
-                        <h2>Preview release: Swan Lake (preview version) </span></h2>
+                        <h2>Preview release: Swan Lake Preview 1 <span id="versionInfo">({{ site.data.swanlake-latest.metadata.release-date | date: "%B %e, %Y" }})</span></h2>
                         <div class="alert alert-info" style="border: 1px solid #20b6b0; background: #fff;" >
                         <p>If you already have jBallerina installed, you can use the <a href="/swan-lake/learn/keeping-ballerina-up-to-date/">Ballerina Update Tool</a> to update it to the Swan Lake channel. To do this, first, execute the command below to get the Update Toole updated to its latest version. </p>
                         <pre>ballerina update</pre>
@@ -180,7 +189,10 @@ redirect_from:
 
                     </div>
                     <br>
-                </div></div></div>
+                </div>
+            </div>
+        </div>
+            
             
                     <!--<div class="cStandaloneInstallers">
                         <h2>Preview release: Swan Lake (preview version)</h2>-->
@@ -209,11 +221,12 @@ redirect_from:
                             <div class="clearfix"></div>
                             <br>
           </div>
-
+          </div>
+</div>
           <div class="clearfix"></div>
           <div class="row cDownloads">
-        </div>
-
+   
+            <div class="container">
           <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
             <div class="cReleaseNotes">
                 <p><a href="/downloads/swan-lake-release-notes">RELEASE NOTES ></a></p>
@@ -222,30 +235,39 @@ redirect_from:
                 <p><a href="/downloads/archived">ARCHIVED VERSIONS ></a></p>
             </div>-->
             </div>
-
+            </div>
+</div>
             <div class="row">
+                <div class="container">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cDownloadsHeader">       
                     <div class="cFeaturedVersion">
                     <!--<p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/swan-lake/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>.</p>-->
-             </div></div></div>  
+             </div></div>
+             </div>
+            </div>  
 
             <div class="row">
+                <div class="container">
                 <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
                     <div class="cInstallers">
                         <h3 style="margin-bottom: 24px; margin-top: 40px;">Other Installation Options</h3>
                         <!-- <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
                             <div class="col-xs-12 col-sm-16 col-md- col-lg-12 cLeftTable">
                             <div class="insPackages0container">-->
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="">
                                 <table id="insPackages0">
                                     <tr><td style="width: 50%">Install via the ZIP archive <a href="/swan-lake/learn/installing-ballerina/#installing-via-the-ballerina-language-zip-file" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>
                                     <tr><td style="width: 50%">Install from source <a href="/swan-lake/learn/installing-ballerina/#building-from-source" class="cDownloadLinkIcon" target="_blank"><img src="/img/right-bg-green-fill.svg"></a></td></tr>   
                                 </table>
                                 <p style="margin-top: 30px;">For setting up the VSCode Ballerina extension, see <a href="/swan-lake/learn/setting-up-visual-studio-code/">Setting up Visual Studio Code</a>
                                     and for installation instructions, see <a href="/swan-lake/learn/installing-ballerina/">Installing Ballerina</a>.</p></p>
-                            </div></div></div>
-
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+</div>
                     <div class="row">
+                        <div class="container">
                         <div class="col-xs-12 col-sm-16 col-md-12 col-lg-12">
                             <div class="cInstallers">                             
                 
@@ -262,7 +284,7 @@ redirect_from:
                     
                 </div>
             </div>
-            </div></div>
+            </div>
 
             
 
@@ -338,7 +360,9 @@ redirect_from:
             </div>            
         </div>-->
     
-    </div>
+   
+</div>
+</div>
 </div>
 
 <style>
@@ -354,5 +378,12 @@ redirect_from:
         
         a.cDownload.cDownloadNew.cLinuxPKGs {
             margin: 0 0.5px;
+        }
+        .row {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        body.cBallerina-io .row {
+            padding-bottom: 0;
         }
     </style>

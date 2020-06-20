@@ -26,15 +26,13 @@ redirect_from:
                               <h3 id="get-started">Get Started</h3>
                               <p>Here’s a simple Hello World service to get you started:</p>
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
-import ballerina/log; 
+
 listener http:Listener helloWorldEP = new(9090);
  
 service hello on helloWorldEP {
-   resource function sayHello(http:Caller caller, http:Request request) {
-       var result = caller->respond("Hello World!");
-       if (result is error) {
-           log:printError("Error in responding ", err = result);
-       }
+
+   resource function sayHello(http:Caller caller, http:Request request) returns error? {
+       check caller->respond("Hello World!");
    }
 }
 </code></pre>
@@ -86,15 +84,12 @@ Hello, World!
                               <pre class="ballerina-pre-wrapper"><code class="language-ballerina cBasicCode hljs">import ballerina/http;
 import ballerina/io;
  
-http:Client clientEndpoint = new("http://postman-echo.com");
- 
-public function main() {
-   var response = clientEndpoint->get("/get?test=123");
-   if (response is http:Response) {
-       // logic for handle response
-   } else {
-       io:println("Error when calling the backend: ", response.reason());
-   }
+public function main() returns @tainted error? {
+
+   http:Client clientEP = new ("http://www.mocky.io");
+   http:Response resp = check clientEP->get("/v2/5ae082123200006b00510c3d/");
+   string payload = check resp.getTextPayload();
+   io:println(payload);
 }
                               </code></pre>
                               <p>The above “get” operation is seemingly a blocking operation for the developer, but internally it does an asynchronous execution using non-blocking I/O, where the current execution thread is released to the operating system to be used by others. After the I/O operation is done, the program execution automatically resumes from where it was suspended. This pattern gives the developer a much more convenient programming model than handling non-blocking I/O manually while providing maximum performance efficiency. </p>

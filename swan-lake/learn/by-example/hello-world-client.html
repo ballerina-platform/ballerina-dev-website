@@ -11,18 +11,11 @@ redirect_from:
         <div class="container cBallerinaBySampleContainer">
             <div class="FullCode">
                 <div class="highlight"><pre><span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">http</span><span class="p">;</span>
-<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="kn">import</span> <span class="nx">ballerina</span><span class="o">/</span><span class="nx">io</span><span class="p">;</span><span class="nx">public</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">()</span> <span class="nx">returns</span> <span class="nd">@tainted error? {</span>
     <span class="nx">http</span><span class="p">:</span><span class="nx">Client</span> <span class="nx">clientEP</span> <span class="p">=</span> <span class="nx">new</span> <span class="p">(</span><span class="s">&quot;http://www.mocky.io&quot;</span><span class="p">);</span>
-    <span class="k">var</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>    <span class="k">if</span> <span class="p">(</span><span class="nx">resp</span> <span class="nx">is</span> <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span> <span class="nx">is</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">detail</span><span class="p">());</span>
-    <span class="p">}</span>
+    <span class="nx">http</span><span class="p">:</span><span class="nx">Response</span> <span class="nx">resp</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">clientEP</span><span class="o">-&gt;</span><span class="nx">get</span><span class="p">(</span><span class="s">&quot;/v2/5ae082123200006b00510c3d/&quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nx">payload</span> <span class="p">=</span> <span class="nx">check</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">getTextPayload</span><span class="p">();</span>
+    <span class="nx">io</span><span class="p">:</span><span class="nb">println</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -40,21 +33,7 @@ redirect_from:
                         </td>
                         <td class="cRightTD">
                             <div class="cTopButtonContainer">
-                                
-                                <div class="cButtonInfoContainer">
-                                    <a class="prev" href="hello-world-parallel.html">
-                                        <span>< PREVIOUS</span>
-                                        <p>Hello World Parallel</p>
-                                    </a>
-                                </div>
                                  
-                                <div class="cButtonInfoContainer">
-                                    <a class="next" href="modules.html">
-                                        <span>NEXT ></span>
-                                        <p>Modules</p>
-                                    </a>
-                                </div>
-                                
                             </div>
                         </td>
                     </tr>
@@ -101,12 +80,6 @@ redirect_from:
                         
                             
                         
-                            
-                        
-                            
-                        
-                            
-                        
 
                     <div>
 
@@ -128,7 +101,7 @@ import ballerina/io;
                             <tr class="cTR">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>public function main() {
+                                    <div class="highlight"><pre><code class=ballerina>public function main() returns @tainted error? {
 </code></pre></div>
 
                                 </td>
@@ -159,7 +132,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    var resp = clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
+                                    <div class="highlight"><pre><code class=ballerina>    http:Response resp = check clientEP-&gt;get(&quot;/v2/5ae082123200006b00510c3d/&quot;);
 </code></pre></div>
 
                                 </td>
@@ -175,23 +148,10 @@ import ballerina/io;
                                 </td>
                             </tr>
                             
-                            <tr class="cTR">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>    if (resp is http:Response) {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                </td>
-                            </tr>
-                            
                             <tr class="cTR hover-enable">
 
                                 <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>        var payload = resp.getTextPayload();
-        if (payload is string) {
+                                    <div class="highlight"><pre><code class=ballerina>    string payload = check resp.getTextPayload();
 </code></pre></div>
 
                                 </td>
@@ -199,50 +159,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If the request is successful, retrieve the text payload from the
- response.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(payload);
-        } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>Log the retrieved text payload.</p>
-
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                            
-                            <tr class="cTR hover-enable">
-
-                                <td class="code leading">
-                                    <div class="highlight"><pre><code class=ballerina>            io:println(payload.detail());
-        }
-    } else {
-</code></pre></div>
-
-                                </td>
-                                <td class="docs">
-                                    
-                                    <div class="cCodeDesription">
-                                        <div>
-                                            <p>If an error occurs while retrieving the text payload, print
- the detail mapping of the error.</p>
+                                            <p>Retrieve the text payload from the response.</p>
 
                                         </div>
                                     </div>
@@ -253,8 +170,7 @@ import ballerina/io;
                             <tr class="cTR hover-enable">
 
                                 <td class="code">
-                                    <div class="highlight"><pre><code class=ballerina>        io:println(resp.detail());
-    }
+                                    <div class="highlight"><pre><code class=ballerina>    io:println(payload);
 }
 </code></pre></div>
 
@@ -263,8 +179,7 @@ import ballerina/io;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>If an error occurs when getting the response, print the detail
- mapping of the error.</p>
+                                            <p>Log the retrieved text payload.</p>
 
                                         </div>
                                     </div>

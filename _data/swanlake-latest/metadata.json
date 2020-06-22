@@ -3,6 +3,8 @@
 	"release-date":"2020-06-20",
 	"windows-installer":"ballerina-windows-installer-x64-swan-lake-preview1.msi",
 	"windows-installer-size":"157mb",
+	"zip-installer":"ballerina-swan-lake-preview1.zip",
+	"zip-installer-size":"178mb",
 	"linux-installer":"ballerina-linux-installer-x64-swan-lake-preview1.deb",
 	"linux-installer-size":"151mb",
 	"macos-installer":"ballerina-macos-installer-x64-swan-lake-preview1.pkg",

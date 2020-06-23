@@ -5,7 +5,6 @@ on:
     branches:
       - prod-sync
     paths:
-      - '_data/stable-latest/**'
       - '_data/swanlake-latest/**'
 
 jobs:
@@ -23,7 +22,7 @@ jobs:
       env:
         WEBSITE_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
       run: |
-        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
         cat downloads/swan-lake-release-notes/$VERSION/RELEASE_NOTE.md | sed '/---/d' | sed '/layout: release-note/d' | sed '/title: Release note/d' > RN.md
         #python script takes RN.md as the input and produces out.json as the output
         python3 .github/scripts/sanitize_rn.py

@@ -84,7 +84,7 @@ redirect_from:
                             <p><p>This sample demonstrates how to configure the chunking behavior of an HTTP client endpoint. By default, the HTTP client sends messages with the <code>content-length</code> header.
 If the message size is larger than the buffer size (8K), messages are chunked. Chunking can be disabled using the connector options.<br/><br/>
  For more information on the underlying module,
- see the <a href="https://ballerina.io/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
+ see the <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/index.html">HTTP module</a>.</p>
 </p>
 
                         </td>
@@ -193,12 +193,12 @@ import ballerina/log;
                                     
                                     <div class="cCodeDesription">
                                         <div>
-                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_AUTO">CHUNKING_AUTO</a>,
- <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
- or <a href="https://ballerina.io/learn/api-docs/ballerina/http/constants.html#CHUNKING_NEVER">CHUNKING_NEVER</a>.
+                                            <p>The HTTP client&rsquo;s chunking behavior can be configured as <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_AUTO">CHUNKING_AUTO</a>,
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_ALWAYS">CHUNKING_ALWAYS</a>,
+ or <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/constants.html#CHUNKING_NEVER">CHUNKING_NEVER</a>.
  In this example, it is set to <code>CHUNKING_NEVER</code>, which means that chunking never happens irrespective of how it is
  specified in the request. When chunking is set to <code>CHUNKING_AUTO</code>, chunking is done as specified in the request.
- <a href="https://ballerina.io/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html">http1Settings</a> annotation
+ <a href="https://ballerina.io/swan-lake/learn/api-docs/ballerina/http/records/ClientHttp1Settings.html">http1Settings</a> annotation
  provides the chunking-related configurations.</p>
 
                                         </div>

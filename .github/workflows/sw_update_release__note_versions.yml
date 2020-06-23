@@ -1,0 +1,53 @@
+name: Create PR for new Swan Lake Release-notes/Archive pages
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '_data/swanlake-latest/**'
+
+jobs:
+  update-sl-rn-archive-pages:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+   
+    - name: Clone ballerina-release
+      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
+
+    - name: Generate the new release-notes-json file
+      run: python3 ballerina-release/publish_scripts/publish_json.py _data/swanlake_release_notes_versions.json _data/swanlake-latest/metadata.json
+
+    - name: Copy newly generated release-notes-json file
+      run: cp ballerina-release/publish_scripts/target/output/swanlake_release_notes_versions.json _data/swanlake_release_notes_versions.json
+
+    - name: Update release-notes-versions json file
+      run: |
+        git checkout automate-release-notes-json-$GITHUB_SHA 2>/dev/null || git checkout -b automate-release-notes-json-$GITHUB_SHA
+        git pull origin master
+        
+        git config --global user.email "ballerina-bot@ballerina.org"
+        git config --global user.name "ballerina-bot"
+        git add _data/swanlake_release_notes_versions.json
+        git commit --allow-empty -m 'Update release notes json'
+        
+        git push --set-upstream origin automate-release-notes-json-$GITHUB_SHA
+        echo 'Successfully pushed to automate-downloads-page-update branch'
+
+    - name: Create pull request for new BBEs
+      shell: bash
+      run: |
+        curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+        bin/hub pull-request -m '[Automated] Update Release-notes/Archive pages for the new release'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

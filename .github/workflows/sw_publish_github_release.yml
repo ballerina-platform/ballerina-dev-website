@@ -1,4 +1,4 @@
-name: Update github release with the new release
+name: Update github release with Swan Lake release
 
 on:
   push:
@@ -6,9 +6,10 @@ on:
       - prod-sync
     paths:
       - '_data/stable-latest/**'
+      - '_data/swanlake-latest/**'
 
 jobs:
-  update-github-release:
+  update-sl-github-release:
     runs-on: ubuntu-latest
 
     steps:    
@@ -23,7 +24,7 @@ jobs:
         WEBSITE_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
       run: |
         VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
-        cat downloads/release-notes/$VERSION/RELEASE_NOTE.md | sed '/---/d' | sed '/layout: release-note/d' | sed '/title: Release note/d' > RN.md
+        cat downloads/swan-lake-release-notes/$VERSION/RELEASE_NOTE.md | sed '/---/d' | sed '/layout: release-note/d' | sed '/title: Release note/d' > RN.md
         #python script takes RN.md as the input and produces out.json as the output
         python3 .github/scripts/sanitize_rn.py
 

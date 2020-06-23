@@ -1,4 +1,4 @@
-name: Create PR for new Ballerina by examples pages
+name: Create PR for new Swan Lake BBEs pages
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
       - '_data/swanlake-latest/**'
 
 jobs:
-  bbe-gen:
+  bbe-sw-gen:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}

@@ -37,7 +37,7 @@ jobs:
       run: |
         cd ballerina-release
 
-        BALLERINA_VERSION="`jq -r '.version' ../_data/stable-latest/metadata.json`"
+        BALLERINA_VERSION="`jq -r '.version' ../_data/swanlake-latest/metadata.json`"
         SHORT_VERSION="`echo $BALLERINA_VERSION | sed 's/swan-lake-preview/slp/g'`"
 
         echo "-----------------------------------------------------------------------------------------------------------------------"

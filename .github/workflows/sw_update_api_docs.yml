@@ -25,7 +25,7 @@ jobs:
 
     - name: Get API Docs from dist-dev
       run: |
-        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
         echo "curl http://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip"
         curl http://dist-dev.ballerina.io/downloads/$VERSION/ballerina-$VERSION.zip --output ballerina.zip
         unzip ballerina.zip
@@ -35,7 +35,7 @@ jobs:
 
     - name: Copy newly generated API Docs
       run: |
-        VERSION="`jq -r '.version' _data/stable-latest/metadata.json`"
+        VERSION="`jq -r '.version' _data/swanlake-latest/metadata.json`"
         SHORT_VERSION="`echo $VERSION | sed 's/swan-lake-preview/slp/g'`"
 
         cp -r ballerina-${VERSION}/distributions/ballerina-${SHORT_VERSION}/docs swan-lake/learn/api-docs/ballerina

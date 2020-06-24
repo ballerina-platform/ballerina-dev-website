@@ -59,7 +59,7 @@ jobs:
         git push --set-upstream origin automate-apidoc-$GITHUB_SHA
         echo 'Successfully pushed to automate-apidoc-$GITHUB_SHA branch'
 
-    - name: Create pull request for new BBEs
+    - name: Create pull request for new Release-notes/Archive pages
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1

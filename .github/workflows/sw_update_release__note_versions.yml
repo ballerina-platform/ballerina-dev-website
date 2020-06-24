@@ -21,15 +21,12 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: '3.x'
-   
-    - name: Clone ballerina-release
-      run: git clone https://ballerina-bot:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-release.git
 
     - name: Generate the new release-notes-json file
-      run: python3 ballerina-release/publish_scripts/publish_json.py _data/swanlake_release_notes_versions.json _data/swanlake-latest/metadata.json
+      run: python3 .github/scripts/publish_json.py _data/swanlake_release_notes_versions.json _data/swanlake-latest/metadata.json
 
     - name: Copy newly generated release-notes-json file
-      run: cp ballerina-release/publish_scripts/target/output/swanlake_release_notes_versions.json _data/swanlake_release_notes_versions.json
+      run: cp .github/scripts/target/swanlake_release_notes_versions.json _data/swanlake_release_notes_versions.json
 
     - name: Update release-notes-versions json file
       run: |
@@ -44,7 +41,7 @@ jobs:
         git push --set-upstream origin automate-release-notes-json-$GITHUB_SHA
         echo 'Successfully pushed to automate-downloads-page-update branch'
 
-    - name: Create pull request for new BBEs
+    - name: Create pull request for new Release-notes/Archive pages
       shell: bash
       run: |
         curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1

@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages-swanlake
 title: Kuberenetes
 description: See how the Ballerina deployment in Kubernetes works
 keywords: ballerina, programming language, services, cloud, kuberenetes
-permalink: /swan-lake/learn/deployment/kuberenetes/
+permalink: /swan-lake/learn/deployment/kubernetes/
 active: kuberenetes
 redirect_from:
   - /swan-lake/learn/deployment/kuberenetes

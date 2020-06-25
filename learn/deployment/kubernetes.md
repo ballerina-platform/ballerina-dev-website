@@ -3,7 +3,7 @@ layout: ballerina-left-nav-pages
 title: Kuberenetes
 description: See how the Ballerina deployment in Kubernetes works
 keywords: ballerina, programming language, services, cloud, kuberenetes
-permalink: /learn/deployment/kuberenetes/
+permalink: /learn/deployment/kubernetes/
 active: kuberenetes
 redirect_from:
   - /learn/deployment/kuberenetes

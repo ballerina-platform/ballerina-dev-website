@@ -16,27 +16,26 @@ redirect_from:
 This guide explains how to maintain your Ballerina installation up to date with the latest patch and minor releases. If you haven’t installed Ballerina yet, visit [installation guide](/swan-lake/learn/installing-ballerina/).
 
 - [Terminology](#terminology)
-  - [Ballerina tool](#ballerina-tool)
+  - [The Ballerina tool](#the-ballerina-tool)
   - [Ballerina distributions](#ballerina-distributions)
   - [Release channels](#release-channels)
-    - [Patch release channel](#patch-release-channel)
-    - [Minor release channel](#minor-release-channel)
-    - [Release maintenance](#release-maintenance)
+  - [Release maintenance](#release-maintenance)
 - [Keeping Ballerina upto date](#keeping-ballerina-upto-date)
   - [The “active” distribution](#the-active-distribution)
   - [The `ballerina dist` command](#the-ballerina-dist-command)
-  - [Update to the latest patch version](#update-to-the-latest-patch-version)
   - [List local and remote distributions](#list-local-and-remote-distributions)
-  - [Remove distributions](#remove-distributions)
-  - [Change the active distribution](#change-the-active-distribution)
-  - [Pull a specific distribution](#pull-a-specific-distribution)
   - [Update the Ballerina tool](#update-the-ballerina-tool)
+  - [Pull a specific distribution](#pull-a-specific-distribution)
+  - [Change the active distribution](#change-the-active-distribution)
+  - [Remove distributions](#remove-distributions)
+  
+  
 
 ## Terminology
 
 This section introduces various terms used throughout this guide. We recommend that you read this section before proceeding to the next.  
 
-### Ballerina tool
+### The Ballerina tool
 
 **Ballerina** is a command-line tool for managing Ballerina source code. It helps you to manage Ballerina projects and modules, test, build, and run programs, etc.
 
@@ -56,26 +55,13 @@ Ballerina distribution is a term that we use to refer to jBallerina and nBalleri
 
 ### Release channels
 
-Ballerina distributions are released on two different release channels at the moment: patch releases and minor releases. Both these channels distribute stable versions. Ballerina yet does not have a release channel for nightly builds that give you access to the latest perhaps unstable features.
+Ballerina distributions of the Swan Lake channel are currently released as preview releases. 
 
-Ballerina distribution releases strictly follow [SemVer](https://semver.org/) with major.minor.patch version numbers.
-
-#### Patch release channel
-
-This channel gives you access to the patch releases of Ballerina distributions that contain bug fixes and fixes for critical stability and security related issues. These releases are strictly time-bound and happen every two weeks. Occasionally,  you would see on-demand patch releases as well.
-
-*Example patch releases: 1.0.6, 1.1.5, 1.1.10*
-
-#### Minor release channel
-
-This channel gives you access to feature releases of Ballerina distributions. Ballerina programs that you’ve written today should continue to work on these minor releases. There will be four minor releases a year. You will get access to a minor release on the 3rd Wednesday of the 3rd month of every quarter.
-
-*Example minor releases: 1.1.0, 1.2.0, 1.3.0*
+For example: Swan Lake Preview 1
 
 #### Release maintenance
 
-- We maintain a minor release 1.x.0 by issuing a series of patch releases 1.x.y. The maintenance of a particular minor release stops when there are two newer minor releases available.
-- In other words, patch releases for 1.x.0 stop when jBallerina 1.(x+2).0 is released. E.g., when 1.2 is available, maintaining 1.0.0 will be stopped.
+The maintenance of a particular preview release stops when the stable version of it is available. For example, the preview releases of Swan Lake will stop when the stable Swan Lake GA version is released.
 
 ## Keeping Ballerina upto date
 
@@ -98,11 +84,11 @@ Now that you are familiar with the terminology, let’s look at how you can keep
     └── jballerina-1.1.1/
 ```
 
-“distributions” is the directory where we maintain all your installed distributions.
+>**Info:** “distributions” is the directory in which we maintain all your installed distributions.
 
 ### The "active" distribution
 
-- One only distribution from the above list can be active at a given time.
+- Only one distribution from the above list can be active at a given time.
 - Ballerina tool delegates most of the user requests to the active distribution. The commands such as build, test, run, pull, and push are delegated to the active distribution, while the commands such as dist and version are handled by the tool itself.  E.g., when you invoke `ballerina build`, the Ballerina tool dispatches this request to the active distribution.
 - You can change the active distribution at any time. Refer the [Change the active distribution](#change-the-active-distribution) section for more details.  
 
@@ -147,19 +133,6 @@ Use 'ballerina help dist <command>' for more information on a specific command.
 
 Most of these subcommands are self-explanatory. Therefore, the following sections introduce them briefly.
 
-### Update to the latest patch version
-
-The `ballerina dist update` command updates your active distribution to the latest patch version.
-
-E.g., If the active distribution in your environment is 1.1.0 and there exists the patch version 1.1.4 in our servers, this command will fetch and set it as the active distribution.
-
-```sh
-→ sudo ballerina dist update
-Fetching the latest patch distribution for '1.0.4' from the remote server...
-Fetching the '1.0.5' distribution from the remote server...
-Downloading 1.0.5 100% [==========================================================] 96/96 MB
-Successfully set the latest patch distribution '1.0.5' as the active distribution
-```
 
 ### List local and remote distributions
 
@@ -167,10 +140,9 @@ The `ballerina dist list` command lists the installed distributions in your loca
 
 ```sh
 → ballerina dist list
-Distributions available locally:
-
-  [1.0.5] jballerina version 1.0.5
-* [1.1.0] jballerina version 1.1.0
+* [slp1] ballerina version slp1
+  [1.1.0] jballerina version 1.1.0
+  [1.2.4] jballerina version 1.2.4
 
 Distributions available remotely:
 
@@ -195,7 +167,7 @@ Distributions available remotely:
 
 Swan Lake channel
 
-  [slp1b1] Preview 1
+  [slp1] Preview 1
 
 Use 'ballerina help dist' for more information on specific commands.
 
@@ -203,13 +175,32 @@ Use 'ballerina help dist' for more information on specific commands.
 
 The star (*) indicates the active distribution.
 
-### Remove distributions
+### Update the Ballerina tool
 
-The `ballerina dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
+- The `ballerina update` command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
 
 ```sh
-→ ballerina dist remove 1.0.5
-Distribution '1.0.5' successfully removed
+→ ballerina update
+Fetching the latest tool version from the remote server...
+Downloading ballerina-command-0.8.8 100% [=====================================================================================================================================================================] 1/1 MB (0:00:01 / 0:00:00)
+Tool version updated to the latest version: 0.8.8
+Cleaning old files...
+Update successfully completed
+
+If you want to update the Ballerina distribution, use 'ballerina dist update'
+```
+
+### Pull a specific distribution
+
+- The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
+
+```sh
+→ sudo ballerina pull slp1
+Downloading slp1 100% [====================================================================================================================================================================================] 186/186 MB (0:02:43 / 0:00:00)
+
+Fetching the dependencies for 'slp1' from the remote server...
+Dependency 'jdk8u202-b08-jre' is already available locally
+'slp1' successfully set as the active distribution
 ```
 
 ### Change the active distribution
@@ -231,27 +222,15 @@ Distributions available locally:
 …
 ```
 
-### Pull a specific distribution
+### Remove distributions
 
-- The `ballerina dist pull <distribution>` command downloads a particular distribution and stores it in your local environment. It also sets the fetched distribution as the active distribution.
-
-```sh
-→ sudo ballerina dist pull 1.0.3
-Fetching the '1.0.3' distribution from the remote server...
-Downloading 1.0.3 100% [==================================] 96/96 MB '1.0.3' successfully set as the active distribution
-```
-
-### Update the Ballerina tool
-
-- The `ballerina update` command updates the Ballerina tool itself to the latest version. Ballerina tool versions are independent from distribution versions. We expect these tool updates to be rare compared to distribution releases.
+The `ballerina dist remove <distribution>` command allows you to delete a particular distribution from your local environment. If you’ve been updating Ballerina regularly, you may have accumulated many unused distribution versions. This command helps you to clean them up.
 
 ```sh
-→ ballerina update
-Fetching the latest version from the remote server...
-Downloading ballerina-command-0.8.1
-Downloading ballerina-tool-0.8.1 100% [====================================] 1/1 MB
-
-Updated to latest tool version: 0.8.1
-Cleaning old files...
-Ballerina tool updated successfully
+→ ballerina dist remove 1.0.5
+Distribution '1.0.5' successfully removed
 ```
+
+
+
+
